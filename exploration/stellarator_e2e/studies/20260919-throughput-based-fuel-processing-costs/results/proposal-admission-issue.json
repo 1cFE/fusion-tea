@@ -1,0 +1,326 @@
+{
+  "issue": "Stock route Boolean allowlist omits new processing_enabled, so false legacy controls fail proposal validation before model execution.",
+  "completed_cases": 15,
+  "proposals": [
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0000",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0000"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0001",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.025,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0001"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0002",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.1,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0002"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0003",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.999,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0003"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0004",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 1.0,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0004"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0005",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 4.554e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0005"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0006",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.5660000000000007e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0006"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0007",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.1
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0007"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0008",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.5
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0008"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0009",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 0.5,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0009"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0010",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 2.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0010"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0011",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.25,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0011"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0012",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.5,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0012"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0013",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0013"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0014",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": true,
+      "reject_reason": null,
+      "candidate_id": "20260919-throughput-based-fuel-processing-costs:c0014"
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0015",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": false,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": false,
+      "reject_reason": "failed validation/domain",
+      "candidate_id": null
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0016",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.025,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": false,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": false,
+      "reject_reason": "failed validation/domain",
+      "candidate_id": null
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0017",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.1,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": false,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": false,
+      "reject_reason": "failed validation/domain",
+      "candidate_id": null
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0018",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": false,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 4.554e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": false,
+      "reject_reason": "failed validation/domain",
+      "candidate_id": null
+    },
+    {
+      "proposal_id": "20260919-throughput-based-fuel-processing-costs:p0019",
+      "raw": {
+        "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+        "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+        "stellarator_09__stellaris__fuel_cycle__processing_enabled": false,
+        "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+        "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+        "stellarator_09__stellaris__plasma__n_e0": 5.5660000000000007e+20,
+        "stellarator_09__stellaris__unplanned_fraction": 0.0
+      },
+      "valid": false,
+      "reject_reason": "failed validation/domain",
+      "candidate_id": null
+    }
+  ]
+}

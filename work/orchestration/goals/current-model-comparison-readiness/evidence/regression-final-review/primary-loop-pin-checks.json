@@ -1,0 +1,40 @@
+{
+  "historical_pin": 144.74743129583516,
+  "recomputed_pin": 144.74743129583518,
+  "relative_error": 1.9635380867184889e-16,
+  "original_relative_tolerance": 1e-09,
+  "four_rows": {
+    "0": {
+      "unchanged_exact": 130,
+      "changed_independent": 18,
+      "added_names": 815,
+      "unchanged_differences": {}
+    },
+    "1": {
+      "unchanged_exact": 130,
+      "changed_independent": 18,
+      "added_names": 815,
+      "unchanged_differences": {}
+    },
+    "2": {
+      "unchanged_exact": 130,
+      "changed_independent": 18,
+      "added_names": 815,
+      "unchanged_differences": {}
+    },
+    "3": {
+      "unchanged_exact": 130,
+      "changed_independent": 18,
+      "added_names": 815,
+      "unchanged_differences": {}
+    }
+  },
+  "historical_input_and_output_mappings_match_reviewed_domain": true,
+  "sha256": {
+    "primary-loop-partitions.json": "d34213d287144a47c0290a31b29a2d2e5d94cbb25884c2eacdf6a366ae46ea15",
+    "primary-loop-raw-differences.json": "85590215f49608c484a7225c8accdcef8903b8dda3c2223a66808d4f9e873ad0",
+    "primary-loop-mapping-check.json": "af11c3d5cd5248b8a8e12f144ab3a04be245539cb8f549aba766e2f97bfcd847",
+    "historical-lcoe-reproduction.json": "254405a3609df6cc3701cd93e65250b6b2034d1e8449053345cccd62a9c588a8"
+  },
+  "historical_source_sha256": "f2acb0acd25433af8cf66f0538b78661e94741b24fc761268aeb542c52030af3"
+}

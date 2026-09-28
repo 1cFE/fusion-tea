@@ -1,0 +1,435 @@
+{
+ "summary": {
+  "P3_c2823_14loops": {
+   "state": "completed",
+   "burn_rate": 1.9042052198807694e+21,
+   "inject_rate": 3.8084104397615385e+22,
+   "exhaust_rate": 3.6179899177734618e+22,
+   "loss_rate": 3.617989917773465e+20,
+   "tbr_required": 1.1900000000000002,
+   "tbr_margin": -0.1160000000000001,
+   "burn_kg_per_fpy": 300.75156064605267,
+   "p_heat_abs": 1070.0716887159617,
+   "p_sep": 424.6813841211208,
+   "f_rad_edge": 0.7480295278469816,
+   "f_rad_edge_in_range": 0.18848135331600338,
+   "p_target_nonrad": 107.00716887159615,
+   "q_target_peak": 20.331362085603267,
+   "q_target_peak_area_scaled": 16.446388438672706,
+   "q_target_margin": -10.331362085603267,
+   "p_heat_operating_minus_installed": -16.65946471163329,
+   "n_molecules": 3.8084104397615385e+22,
+   "Q_total": 157.74234195738987,
+   "S_eff_required": 157.74234195738987,
+   "lcoe": 238.2226776727277,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "violated",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "violated",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "fuel__burn_rate": 0.0,
+    "fuel__inject_rate": 0.0,
+    "fuel__exhaust_rate": 0.0,
+    "fuel__loss_rate": 0.0,
+    "fuel__tbr_required": 0.0,
+    "fuel__tbr_margin": 0.0,
+    "fuel__burn_kg_per_fpy": 0.0,
+    "divheat__p_heat_abs": 0.0,
+    "divheat__p_sep": 0.0,
+    "divheat__f_rad_edge": 0.0,
+    "divheat__f_rad_edge_in_range": 0.0,
+    "divheat__p_target_nonrad": 0.0,
+    "divheat__q_target_peak": 0.0,
+    "divheat__q_target_peak_area_scaled": 0.0,
+    "divheat__q_target_margin": 0.0,
+    "divheat__p_heat_operating_minus_installed": 0.0,
+    "vacuum__n_molecules": 0.0,
+    "vacuum__Q_total": 0.0,
+    "vacuum__S_eff_required": 0.0
+   },
+   "oracle_reldev_max": 0.0,
+   "oracle_error": null,
+   "divertor_heat_ok_rederived": "violated",
+   "divertor_heat_ok_package": "violated",
+   "rederived_agrees_with_package": true,
+   "all_verdicts": {
+    "beta_ok": "satisfied",
+    "burn_hold_ok": "satisfied",
+    "cond_strain_ok": "satisfied",
+    "cycle_domain_ok": "satisfied",
+    "divertor_heat_ok": "violated",
+    "loop_capacity_ok": "violated",
+    "loop_pressure_ok": "satisfied",
+    "net_positive": "satisfied",
+    "peak_field_ok": "satisfied",
+    "recirc_ok": "violated",
+    "sustainment_ok": "satisfied",
+    "tbr_ok": "satisfied",
+    "wall_load_ok": "satisfied",
+    "wp_stress_ok": "satisfied"
+   }
+  },
+  "P4_c3598_14loops": {
+   "state": "completed",
+   "burn_rate": 2.120783878472184e+21,
+   "inject_rate": 4.241567756944368e+22,
+   "exhaust_rate": 4.02948936909715e+22,
+   "loss_rate": 4.0294893690971534e+20,
+   "tbr_required": 1.1900000000000002,
+   "tbr_margin": -0.1160000000000001,
+   "burn_kg_per_fpy": 334.95815187579154,
+   "p_heat_abs": 1186.0916196050364,
+   "p_sep": 472.83162745381117,
+   "f_rad_edge": 0.749151378474381,
+   "f_rad_edge_in_range": 0.18792359060431577,
+   "p_target_nonrad": 118.60916196050357,
+   "q_target_peak": 22.53574077249568,
+   "q_target_peak_area_scaled": 16.639762082017157,
+   "q_target_margin": -12.535740772495679,
+   "p_heat_operating_minus_installed": -8.753791607409084,
+   "n_molecules": 4.241567756944368e+22,
+   "Q_total": 175.68348846172455,
+   "S_eff_required": 175.68348846172455,
+   "lcoe": 289.57560581862447,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "violated",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "violated",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "fuel__burn_rate": 0.0,
+    "fuel__inject_rate": 0.0,
+    "fuel__exhaust_rate": 0.0,
+    "fuel__loss_rate": 0.0,
+    "fuel__tbr_required": 0.0,
+    "fuel__tbr_margin": 0.0,
+    "fuel__burn_kg_per_fpy": 0.0,
+    "divheat__p_heat_abs": 0.0,
+    "divheat__p_sep": 0.0,
+    "divheat__f_rad_edge": 0.0,
+    "divheat__f_rad_edge_in_range": 0.0,
+    "divheat__p_target_nonrad": 0.0,
+    "divheat__q_target_peak": 0.0,
+    "divheat__q_target_peak_area_scaled": 0.0,
+    "divheat__q_target_margin": 0.0,
+    "divheat__p_heat_operating_minus_installed": 0.0,
+    "vacuum__n_molecules": 0.0,
+    "vacuum__Q_total": 0.0,
+    "vacuum__S_eff_required": 0.0
+   },
+   "oracle_reldev_max": 0.0,
+   "oracle_error": null,
+   "divertor_heat_ok_rederived": "violated",
+   "divertor_heat_ok_package": "violated",
+   "rederived_agrees_with_package": true,
+   "all_verdicts": {
+    "beta_ok": "satisfied",
+    "burn_hold_ok": "satisfied",
+    "cond_strain_ok": "satisfied",
+    "cycle_domain_ok": "satisfied",
+    "divertor_heat_ok": "violated",
+    "loop_capacity_ok": "violated",
+    "loop_pressure_ok": "satisfied",
+    "net_positive": "satisfied",
+    "peak_field_ok": "satisfied",
+    "recirc_ok": "violated",
+    "sustainment_ok": "satisfied",
+    "tbr_ok": "satisfied",
+    "wall_load_ok": "satisfied",
+    "wp_stress_ok": "satisfied"
+   }
+  },
+  "P0_low_case_q_ref_5": {
+   "state": "completed",
+   "burn_rate": 9.417518585656878e+20,
+   "inject_rate": 1.8835037171313755e+22,
+   "exhaust_rate": 1.7893285312748067e+22,
+   "loss_rate": 1.7893285312748084e+20,
+   "tbr_required": 1.1900000000000002,
+   "tbr_margin": -0.1160000000000001,
+   "burn_kg_per_fpy": 148.74097510492368,
+   "p_heat_abs": 554.4910068982205,
+   "p_sep": 334.7693616744551,
+   "f_rad_edge": 0.8343662621559043,
+   "f_rad_edge_in_range": 0.1381992027318891,
+   "p_target_nonrad": 55.449100689822046,
+   "q_target_peak": 5.544910068982205,
+   "q_target_peak_area_scaled": 5.544910068982205,
+   "q_target_margin": 4.455089931017795,
+   "p_heat_operating_minus_installed": -0.920399212073221,
+   "n_molecules": 1.8835037171313755e+22,
+   "Q_total": 78.0137257066115,
+   "S_eff_required": 78.0137257066115,
+   "lcoe": 224.60952472804465,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "satisfied",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "fuel__burn_rate": 0.0,
+    "fuel__inject_rate": 0.0,
+    "fuel__exhaust_rate": 0.0,
+    "fuel__loss_rate": 0.0,
+    "fuel__tbr_required": 0.0,
+    "fuel__tbr_margin": 0.0,
+    "fuel__burn_kg_per_fpy": 0.0,
+    "divheat__p_heat_abs": 0.0,
+    "divheat__p_sep": 0.0,
+    "divheat__f_rad_edge": 0.0,
+    "divheat__f_rad_edge_in_range": 0.0,
+    "divheat__p_target_nonrad": 0.0,
+    "divheat__q_target_peak": 0.0,
+    "divheat__q_target_peak_area_scaled": 0.0,
+    "divheat__q_target_margin": 0.0,
+    "divheat__p_heat_operating_minus_installed": 0.0,
+    "vacuum__n_molecules": 0.0,
+    "vacuum__Q_total": 0.0,
+    "vacuum__S_eff_required": 0.0
+   },
+   "oracle_reldev_max": 0.0,
+   "oracle_error": null,
+   "divertor_heat_ok_rederived": "satisfied",
+   "divertor_heat_ok_package": "satisfied",
+   "rederived_agrees_with_package": true,
+   "all_verdicts": {
+    "beta_ok": "satisfied",
+    "burn_hold_ok": "satisfied",
+    "cond_strain_ok": "satisfied",
+    "cycle_domain_ok": "satisfied",
+    "divertor_heat_ok": "satisfied",
+    "loop_capacity_ok": "satisfied",
+    "loop_pressure_ok": "satisfied",
+    "net_positive": "satisfied",
+    "peak_field_ok": "satisfied",
+    "recirc_ok": "satisfied",
+    "sustainment_ok": "satisfied",
+    "tbr_ok": "satisfied",
+    "wall_load_ok": "satisfied",
+    "wp_stress_ok": "satisfied"
+   }
+  },
+  "E_c3343_14loops_negative_net": {
+   "state": "execution_failed",
+   "burn_rate": null,
+   "inject_rate": null,
+   "exhaust_rate": null,
+   "loss_rate": null,
+   "tbr_required": null,
+   "tbr_margin": null,
+   "burn_kg_per_fpy": null,
+   "p_heat_abs": null,
+   "p_sep": null,
+   "f_rad_edge": null,
+   "f_rad_edge_in_range": null,
+   "p_target_nonrad": null,
+   "q_target_peak": null,
+   "q_target_peak_area_scaled": null,
+   "q_target_margin": null,
+   "p_heat_operating_minus_installed": null,
+   "n_molecules": null,
+   "Q_total": null,
+   "S_eff_required": null,
+   "lcoe": null,
+   "verdicts": {},
+   "oracle_reldev": null,
+   "oracle_reldev_max": null,
+   "oracle_error": "TypeError: float() argument must be a string or a real number, not 'complex'",
+   "divertor_heat_ok_package": null,
+   "all_verdicts": {}
+  },
+  "E7_c3343_7loops_loop_domain": {
+   "state": "execution_failed",
+   "burn_rate": null,
+   "inject_rate": null,
+   "exhaust_rate": null,
+   "loss_rate": null,
+   "tbr_required": null,
+   "tbr_margin": null,
+   "burn_kg_per_fpy": null,
+   "p_heat_abs": null,
+   "p_sep": null,
+   "f_rad_edge": null,
+   "f_rad_edge_in_range": null,
+   "p_target_nonrad": null,
+   "q_target_peak": null,
+   "q_target_peak_area_scaled": null,
+   "q_target_margin": null,
+   "p_heat_operating_minus_installed": null,
+   "n_molecules": null,
+   "Q_total": null,
+   "S_eff_required": null,
+   "lcoe": null,
+   "verdicts": {},
+   "oracle_reldev": null,
+   "oracle_reldev_max": null,
+   "oracle_error": "RuntimeError: oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)",
+   "divertor_heat_ok_package": null,
+   "all_verdicts": {}
+  }
+ },
+ "vs_predictions": {
+  "hand_loop_margin_at_E": {
+   "n_loops_14": {
+    "q_source_MW": 12897.55456822348,
+    "mdot_loop": 887.0151143175897,
+    "dp_loop_Pa": 5112575.374612518,
+    "p_loop_margin_Pa": 2887424.6253874823
+   },
+   "n_loops_7": {
+    "q_source_MW": 12897.55456822348,
+    "mdot_loop": 1774.0302286351794,
+    "dp_loop_Pa": 20450301.49845007,
+    "p_loop_margin_Pa": -12450301.49845007
+   }
+  },
+  "P3_c2823_14loops": {
+   "p_heat_abs": {
+    "executed": 1070.0716887159617,
+    "predicted": 1070.0716887159617,
+    "reldev": 0.0
+   },
+   "p_target_nonrad": {
+    "executed": 107.00716887159615,
+    "predicted": 107.00716887159615,
+    "reldev": 0.0
+   },
+   "q_target_peak": {
+    "executed": 20.331362085603267,
+    "predicted": 20.331362085603267,
+    "reldev": 0.0
+   },
+   "q_target_peak_area_scaled": {
+    "executed": 16.446388438672706,
+    "predicted": 16.446388438672706,
+    "reldev": 0.0
+   },
+   "burn_rate": {
+    "executed": 1.9042052198807694e+21,
+    "predicted": 1.9042052198807694e+21,
+    "reldev": 0.0
+   },
+   "inject_rate": {
+    "executed": 3.8084104397615385e+22,
+    "predicted": 3.8084104397615385e+22,
+    "reldev": 0.0
+   },
+   "tbr_required": {
+    "executed": 1.1900000000000002,
+    "predicted": 1.1900000000000002,
+    "reldev": 0.0
+   },
+   "burn_kg_per_fpy": {
+    "executed": 300.75156064605267,
+    "predicted": 300.75156064605267,
+    "reldev": 0.0
+   },
+   "Q_total": {
+    "executed": 157.74234195738987,
+    "predicted": 157.74234195738987,
+    "reldev": 0.0
+   },
+   "S_eff_required": {
+    "executed": 157.74234195738987,
+    "predicted": 157.74234195738987,
+    "reldev": 0.0
+   },
+   "p_sep_positive": true
+  },
+  "P4_c3598_14loops": {
+   "p_heat_abs": {
+    "executed": 1186.0916196050364,
+    "predicted": 1186.0916196050364,
+    "reldev": 0.0
+   },
+   "p_target_nonrad": {
+    "executed": 118.60916196050357,
+    "predicted": 118.60916196050357,
+    "reldev": 0.0
+   },
+   "q_target_peak": {
+    "executed": 22.53574077249568,
+    "predicted": 22.53574077249568,
+    "reldev": 0.0
+   },
+   "q_target_peak_area_scaled": {
+    "executed": 16.639762082017157,
+    "predicted": 16.639762082017157,
+    "reldev": 0.0
+   },
+   "burn_rate": {
+    "executed": 2.120783878472184e+21,
+    "predicted": 2.120783878472184e+21,
+    "reldev": 0.0
+   },
+   "inject_rate": {
+    "executed": 4.241567756944368e+22,
+    "predicted": 4.241567756944368e+22,
+    "reldev": 0.0
+   },
+   "tbr_required": {
+    "executed": 1.1900000000000002,
+    "predicted": 1.1900000000000002,
+    "reldev": 0.0
+   },
+   "burn_kg_per_fpy": {
+    "executed": 334.95815187579154,
+    "predicted": 334.95815187579154,
+    "reldev": 0.0
+   },
+   "Q_total": {
+    "executed": 175.68348846172455,
+    "predicted": 175.68348846172455,
+    "reldev": 0.0
+   },
+   "S_eff_required": {
+    "executed": 175.68348846172455,
+    "predicted": 175.68348846172455,
+    "reldev": 0.0
+   },
+   "p_sep_positive": true
+  },
+  "P0_low_case": {
+   "q_target_peak": {
+    "executed": 5.544910068982205,
+    "predicted": 5.544910068982205
+   },
+   "verdict": null
+  }
+ },
+ "rederivation_agrees_at_every_completed_point": true
+}

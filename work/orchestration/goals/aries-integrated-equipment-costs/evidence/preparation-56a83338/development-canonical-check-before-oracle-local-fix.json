@@ -1,0 +1,45 @@
+{
+  "kind": "independent-check-of-existing-author-evidence",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "c023c3f9fb82d26533dd1c0025bdbc4cf978598cee01b58d59219539f6c3babb",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "524c13a905320a5ca35664bdb035043f3588fca22a772503e8383e88f51a0734",
+      "semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+    }
+  },
+  "cases": [
+    {
+      "case": "nominal-source-assumed",
+      "status": "fail",
+      "error": "unsupported operand type(s) for +: 'float' and 'str'"
+    },
+    {
+      "case": "nominal-calculated",
+      "status": "fail",
+      "error": "unsupported operand type(s) for +: 'float' and 'str'"
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "status": "fail",
+      "error": "unsupported operand type(s) for +: 'float' and 'str'"
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "status": "fail",
+      "error": "unsupported operand type(s) for +: 'float' and 'str'"
+    }
+  ]
+}

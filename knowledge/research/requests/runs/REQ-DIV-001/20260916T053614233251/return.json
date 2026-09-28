@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-DIV-001",
+  "run": "knowledge/research/requests/runs/REQ-DIV-001/20260916T053614233251",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "stellarator_island_divertor_shape_optimization_for_reduced",
+      "path": "knowledge/sources/stellarator_island_divertor_shape_optimization_for_reduced/",
+      "source_id": "d790b9caba27cba49f917754522da88b4d202a2bdeb560de5bd1a62224fccfcf",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://arxiv.org/html/2602.24049v2",
+      "reason": "Latest-version fetch failed (<urlopen error [Errno -3] Temporary failure in name resolution>); retrying https://arxiv.org/html/2602.24049v2"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

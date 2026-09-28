@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "scope": "native retention and decomposition only; presentation comparison follows",
+  "native_cases": 2496,
+  "branch_decompositions": 4992,
+  "native_sha256": "bd13bb1d71831a23afd791d31dd86d3d79dc287b5d1b65f35f7947ddc6ed951d"
+}

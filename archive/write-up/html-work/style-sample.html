@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Turning a SysML model into a calculator</title>
+<link rel="stylesheet" href="../write-up.css">
+<style>
+  /* Sample only: marks this page as a style sample. */
+  .sample-banner {
+    margin: 0 0 2.5rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px dashed var(--rule);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  /* Figure 1 layout: three stages in a row, with a note under the first and the last. */
+  .fig-iteration .flow,
+  .fig-iteration .notes {
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr 2rem 1fr;
+    column-gap: 0.25rem;
+  }
+  .fig-iteration .notes { margin-top: 1.1rem; }
+  .fig-iteration .notes > :last-child { grid-column: 5; }
+  .fig-iteration .note-title { font-weight: 600; }
+  .fig-iteration .model { color: var(--role-calc); }
+  .fig-iteration .params { color: var(--role-data); }
+
+  /* Figure 2 layout: the definition across the top, plant and usage side by side, the attribute below. */
+  .fig-component .grid {
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr;
+    row-gap: 0.35rem;
+  }
+  .fig-component .span { grid-column: 1 / -1; }
+  .fig-component .right { grid-column: 3; }
+</style>
+</head>
+<body>
+
+<aside class="rail">
+  <p class="rail-eyebrow">1cFE write-up · Part 2</p>
+  <p class="rail-title">Turning a SysML model into a calculator</p>
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#1-introduction"><span class="n">1</span><span>Introduction</span></a>
+        <ol>
+          <li><a href="#11-exploring-the-design-space-parameters-components-and-architecture"><span class="n">1.1</span><span>Exploring the design space: parameters, components, and architecture</span></a></li>
+          <li><a href="#12-why-build-an-execution-pipeline"><span class="n">1.2</span><span>Why build an execution pipeline?</span></a></li>
+          <li><a href="#13-from-component-models-to-a-study"><span class="n">1.3</span><span>From component models to a study</span></a></li>
+        </ol>
+      </li>
+      <li><a href="#2-process-a-worked-example"><span class="n">2</span><span>Process: a worked example</span></a>
+        <ol>
+          <li><a href="#21-modeling-a-component-separate-its-equations-from-the-plants-choices"><span class="n">2.1</span><span>Modeling a component: separate its equations from the plant's choices</span></a></li>
+          <li><a href="#22-constraints-test-whether-a-design-point-meets-engineering-limits"><span class="n">2.2</span><span>Constraints test whether a design point meets engineering limits</span></a></li>
+          <li><a href="#23-reconstructing-the-calculation-network"><span class="n">2.3</span><span>Reconstructing the calculation network</span></a></li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+</aside>
+
+<main class="page">
+<article class="article">
+
+<p class="sample-banner">Style sample for <code>write-up.css</code>: sections 1 to 2.3 of the model-execution write-up. Figures 1 and 2 are rebuilt in HTML and Figure 3 is redrawn in the page's font. Two kinds of collapsible appear: evidence panels in 2.2 and 2.3, and the detail steps at the end of 2.3. The prose is the markdown's, unchanged.</p>
+
+<p class="eyebrow">Model execution and studies</p>
+<h1>Turning a SysML model into a calculator</h1>
+
+<section>
+<h2 id="1-introduction"><span class="num">1</span>Introduction</h2>
+
+<p>We want to iterate on engineering designs quickly enough to learn from them. That means varying numerical parameters, comparing component and material choices, and changing how the system is assembled. After each change, we want to evaluate the consequences: what performance does this design deliver, what does it cost, and which engineering limits does it violate?</p>
+
+<p>The <a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">earlier post on agentic modeling</a> described why SysML v2 is useful for representing these alternatives. This post explains how we turn those models into executable calculations with <strong>sysml-codegen</strong>, run them with <strong>TEAx</strong>, and why we designed the pipeline this way.</p>
+
+<section>
+<h3 id="11-exploring-the-design-space-parameters-components-and-architecture"><span class="num">1.1</span>Exploring the design space: parameters, components, and architecture</h3>
+
+<p>Each kind of design change needs different support from the model and its executable program.</p>
+
+<p><strong>Numerical parameters</strong> let us explore choices such as dimensions and operating conditions while keeping the same components and equations. The generated program exposes these values as inputs, with initial settings in JSON files. A study can vary the inputs and evaluate the resulting designs without changing the program.</p>
+
+<p><strong>Component and material choices</strong> are categorical: we select one alternative or another. These choices do not fit naturally into a numerical parameter sweep, because an alternative may bring different properties, equations, and engineering limits. In SysML, a component <strong>definition</strong> describes a kind of component and its calculations; a <strong>usage</strong> places a component of that kind in a particular design. We can create alternative definitions and select which one a design uses.</p>
+
+<p><strong>Architectural choices</strong> change the assembly itself: how many components there are and how they connect. The plant model expresses these choices through component usages and their connections. Codegen uses that assembly to construct the calculation network, so changing the assembly changes which calculations run and where they get their inputs.</p>
+
+<p>These choices lead to two ways of iterating. A numerical study runs the existing program with different inputs. Changing component definitions or plant architecture generally means editing the SysML model and generating a new program. Both let us evaluate the consequences of a design decision.</p>
+</section>
+
+<section>
+<h3 id="12-why-build-an-execution-pipeline"><span class="num">1.2</span>Why build an execution pipeline?</h3>
+
+<p>Two reasons. First, when we started, we did not have an out-of-the-box SysML v2 execution tool ready for this workflow. Second, we needed machinery that agents could easily configure and run within a harness. That meant programmatic control over the model's inputs and repeated evaluations, along with the ability to incorporate custom calculations beyond what our SysML execution tools supported.</p>
+
+<p>To support those studies, we built a code-generation pipeline that turns an assembled SysML plant model into an executable Python program. The program accepts design parameters, calculates performance and cost, and checks engineering limits. TEAx runs it repeatedly so a study can compare different design points.</p>
+
+<p>Python also gives us access to more sophisticated computation and flexibility than we can express and execute through our supported SysML subset alone. Later, we will show how a custom calculation, such as a surrogate for a detailed simulation, can become part of the plant model.</p>
+</section>
+
+<section>
+<h3 id="13-from-component-models-to-a-study"><span class="num">1.3</span>From component models to a study</h3>
+
+<p>Our demo models and explores stellarator designs. To show how the codegen pipeline works, we will focus on a study of the magnet system: how changing plant radius and coil ampere-turns affects cost and the design's ability to meet engineering limits.</p>
+
+<p>We will follow the component equations and plant connections through code generation, then show how the resulting program evaluates and compares design points.</p>
+
+<figure class="figure wide">
+  <div class="frame diagram-scroll">
+    <div class="diagram fig-iteration">
+      <div class="dg-head">
+        <div class="dg-title">One model, two kinds of iteration</div>
+        <div class="dg-sub">Stellarator component changes regenerate the program. Parameter studies reuse it.</div>
+      </div>
+      <div class="flow">
+        <div class="dg-box">
+          <div class="dg-label">Author the plant</div>
+          <ul><li>SysML parts and connections</li><li>Magnet, blanket, plasma, cooling</li><li>Equations + engineering checks</li></ul>
+        </div>
+        <div class="dg-arrow" aria-hidden="true">→</div>
+        <div class="dg-box">
+          <div class="dg-label">Generate the program</div>
+          <ul><li>Resolve calculation inputs</li><li>Translate equations to Python</li><li>Write the TEAx connections</li></ul>
+        </div>
+        <div class="dg-arrow" aria-hidden="true">→</div>
+        <div class="dg-box data">
+          <div class="dg-label">Evaluate a candidate</div>
+          <ul><li>Set radius and ampere-turns</li><li>Calculate outputs and cost</li><li>Record constraint results</li></ul>
+        </div>
+      </div>
+      <div class="notes">
+        <div>
+          <div class="note-title model">Change the model</div>
+          <p class="dg-note">Example: replace the blanket’s held breeding value with a transport-response calculation.</p>
+        </div>
+        <div>
+          <div class="note-title params">Change the parameters</div>
+          <p class="dg-note">Example: sweep radius and coil ampere-turns using the same generated package.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <figcaption><span class="fig-label">Figure 1</span>Model changes regenerate the program; parameter studies reuse the generated stellarator program.</figcaption>
+</figure>
+
+<p>The worked example follows our stellarator demo through seven steps:</p>
+
+<ul>
+  <li><strong><a href="#21-modeling-a-component-separate-its-equations-from-the-plants-choices">2.1</a> Model a component:</strong> separate the magnet's reusable equations from the values and connections chosen for the plant.</li>
+  <li><strong><a href="#22-constraints-test-whether-a-design-point-meets-engineering-limits">2.2</a> Define acceptable designs:</strong> express engineering limits as constraints that each design point must pass.</li>
+  <li><strong><a href="#23-reconstructing-the-calculation-network">2.3</a> Construct the calculation network:</strong> determine where every calculation gets its inputs and which other calculations it depends on.</li>
+  <li><strong>2.4 Implement the mathematics:</strong> translate equations into Python and incorporate custom methods, including a simulation surrogate.</li>
+  <li><strong>2.5 Change the component model:</strong> give the blanket a more detailed calculation while keeping its place in the plant.</li>
+  <li><strong>2.6 Assemble the executable program:</strong> connect the Python calculations with TEAx and expose the inputs a study can vary.</li>
+  <li><strong>2.7 Run a study:</strong> evaluate many design points and compare their feasibility and cost.</li>
+</ul>
+
+<p>All code examples come from the stellarator demo. Excerpts omit surrounding imports and documentation where indicated.</p>
+</section>
+</section>
+
+<section>
+<h2 id="2-process-a-worked-example"><span class="num">2</span>Process: a worked example</h2>
+
+<section>
+<h3 id="21-modeling-a-component-separate-its-equations-from-the-plants-choices"><span class="num">2.1</span>Modeling a component: separate its equations from the plant's choices</h3>
+
+<p>We begin by defining a component’s calculations and connecting their inputs and outputs to the plant model.</p>
+
+<p>The stellarator's magnets produce the magnetic field that confines the plasma. For a proposed design, we want to calculate that field from the chosen coil ampere-turns and geometry. Other calculations then use the result to evaluate the plasma and check the magnet's engineering limits.</p>
+
+<p>The magnet model uses a reusable field equation. The plant supplies the design values and connects the magnet to the plasma's radius. The figure below shows how those values reach the equation and how its result becomes available to the rest of the plant.</p>
+
+<figure class="figure wide">
+  <div class="frame diagram-scroll">
+    <div class="diagram fig-component">
+      <div class="dg-head">
+        <div class="dg-title">The equation, the plant inputs, and the calculated field</div>
+        <div class="dg-sub">Actual SysML excerpts · imports, documentation, and other members omitted; empty braces held documentation</div>
+      </div>
+      <div class="grid">
+        <div class="dg-box span">
+          <div class="dg-label">Calculation definition <span class="what">· the mathematical relationship</span></div>
+<pre>calc def 'Coil Set Axis Field' {
+    in attribute n_coils : Real;
+    in attribute I_coil : Real;
+    in attribute k_link : Real;
+    in attribute R0 : Real;
+    in attribute mu0 : Real default 1.25663706212e-6;
+    in attribute two_pi : Real default 6.283185307179586;
+
+    out attribute B_axis : Real = mu0 * k_link * n_coils * I_coil / (two_pi * R0);
+}</pre>
+        </div>
+        <div class="dg-arrow right" aria-hidden="true">↓</div>
+        <div class="dg-box data">
+          <div class="dg-label">Plant usage <span class="what">· supplies the coil values</span></div>
+<pre>part stellaris : 'MFE Power Plant' {
+    part :&gt;&gt; magnet {
+        part :&gt;&gt; coil {
+            :&gt;&gt; n_coils = 48.0 {}
+            :&gt;&gt; I_coil = 15400000.0 {}
+            :&gt;&gt; k_link = 0.7731331164622419 {}
+        }
+    }
+}</pre>
+          <p>Inherited coil binding from 'MFE Power Plant':</p>
+<pre>:&gt;&gt; R0 = plasma.R {}</pre>
+        </div>
+        <div class="dg-arrow" aria-hidden="true">→</div>
+        <div class="dg-box">
+          <div class="dg-label">Calculation usage <span class="what">· selects those values</span></div>
+<pre>calc field_calc : 'Coil Set Axis Field' {
+    in n_coils = coil.n_coils;
+    in I_coil = coil.I_coil;
+    in k_link = coil.k_link;
+    in R0 = coil.R0;
+}</pre>
+          <p>Owned by 'Magnet System'. mu0 and two_pi retain their defaults.</p>
+        </div>
+        <div class="dg-arrow right" aria-hidden="true">↓</div>
+        <div class="dg-box span">
+          <div class="dg-label">Component attribute <span class="what">· exposes the result inside 'Magnet System'</span></div>
+<pre>attribute B : Real = field_calc.B_axis;</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <figcaption><span class="fig-label">Figure 2</span>Sources: the calculation definition <code class="path">models/library/analyses/mfe_magnet_field.sysml</code>, magnet component definition <code class="path">models/library/cost_structure/mfe_power_core.sysml</code>, generic plant connections <code class="path">models/designs/generic_mfe/mfe_plant.sysml</code>, and stellarator design values <code class="path">models/designs/stellarator_09/stellarator_plant.sysml</code>. Documentation and unrelated members are omitted. The calculation usage and exposed attribute belong inside <code>'Magnet System'</code>; the radius connection is inherited from the generic plant.</figcaption>
+</figure>
+
+<p>Start with the plant's choices. At the reference point, it specifies 48 coils and 15.4 million ampere-turns per reference coil. The coil's radius attribute, <code>coil.R0</code>, is connected to the plasma's major radius, <code>plasma.R</code>. Changing the plant's plasma radius therefore also changes the radius used by the magnet.</p>
+
+<p>The <strong>calculation definition</strong> declares the field equation and its inputs. Inside the magnet, the <strong>calculation usage</strong>, <code>field_calc</code>, connects the coil's attributes to those inputs. For example, it binds the equation's <code>R0</code> input to <code>coil.R0</code>, completing the connection from the plant's plasma radius to the field equation. The equation's constants, <code>mu0</code> (vacuum permeability) and <code>two_pi</code> (twice π), come from their declared defaults.</p>
+
+<p>The equation returns the calculated field as <code>B_axis</code>. The magnet exposes that result through an attribute named <code>B</code>, which other components and calculations can read. Downstream calculations use it to determine peak conductor field and plasma beta, the ratio of plasma pressure to magnetic pressure. A new radius or coil ampere-turn value therefore affects both the field calculation and the calculations that depend on its result.</p>
+
+<div class="note">
+  <span class="note-label">Scope</span>
+  <p>The physical scope of this equation matters when interpreting those results. Here <code>I_coil</code> denotes ampere-turns per reference coil; current in an individual conductor is checked separately. The equation estimates axis-averaged field using a fixed linkage factor from the reference coil set. It is a reference-scaled approximation, not a full three-dimensional magnetic-equilibrium calculation.</p>
+</div>
+</section>
+
+<section>
+<h3 id="22-constraints-test-whether-a-design-point-meets-engineering-limits"><span class="num">2.2</span>Constraints test whether a design point meets engineering limits</h3>
+
+<p>Next, we add constraints that test whether a design meets the modeled engineering limits.</p>
+
+<p>Later, we will show how a study sweeps across a wide range of input combinations, such as plant radius and coil ampere-turns. Each complete set of input values defines a <strong>design point</strong>. The calculations tell us what performance and cost each point produces, but some combinations will violate engineering limits. We need a way to identify those failures as the study runs.</p>
+
+<p>We express engineering limits as <strong>constraints</strong>: expressions that evaluate to true or false for a design point. A constraint can compare a calculated quantity with a limit, or relate several quantities that must be consistent with one another. In SysML, an <code>assert constraint</code> applies the condition to the model so the generated program can check it during evaluation.</p>
+
+<p>For example, the magnet's conductor is arranged into a winding pack, which must fit inside its casing. A larger pack may provide the needed current capacity, but it also needs enough physical space.</p>
+
+<p>The magnet's fit calculation compares the pack dimensions with the available space, accounting for insulation and assembly allowances. It calculates clearance in two directions and exposes the smaller margin as <code>fit_minimum_margin</code>.</p>
+
+<details class="evidence">
+  <summary><span class="evidence-kind">In the model</span><span>What the fit calculation reads</span></summary>
+  <div class="evidence-body">
+    <p>Inside the magnet, the fit calculation takes the pack's size and build-up from the winding pack, the radial space from the coil, and the cavity from the casing:</p>
+    <div class="code">
+      <div class="code-head"><span class="file">models/library/cost_structure/mfe_power_core.sysml</span><span class="lang">SysML</span></div>
+<pre><code>calc wp_fit : 'Winding Pack Casing Fit' {
+    in wp_side = winding_pack.wp_side;
+    in aspect_ratio = winding_pack.fit_aspect_ratio;
+    in internal_fraction_x = winding_pack.internal_build_x;
+    in internal_fraction_y = winding_pack.internal_build_y;
+    in ground_insulation = winding_pack.ground_insulation;
+    in radial_allocation = coil.coil_t;
+    in interior_y = casing.interior_y;
+    in wall_thickness = casing.wall_thickness;
+    in assembly_clearance = casing.assembly_clearance;
+}
+
+attribute fit_minimum_margin : Real = wp_fit.minimum_margin;</code></pre>
+    </div>
+    <p>It compares a centered rectangular winding envelope with the casing cavity left after insulation and assembly allowances. The calculation is written by hand in Python; section 2.4 covers calculations like it.</p>
+  </div>
+</details>
+
+<p>The reusable constraint definition <code class="path">models/library/analyses/mfe_winding_pack_fit.sysml</code> states the condition: the minimum clearance must be nonnegative.</p>
+
+<div class="code">
+  <div class="code-head"><span class="file">models/library/analyses/mfe_winding_pack_fit.sysml</span><span class="lang">SysML</span></div>
+<pre><code>constraint def 'Winding Pack Fits Casing' {
+    in attribute minimum_margin_in : Real;
+    minimum_margin_in &gt;= 0.0
+}</code></pre>
+</div>
+
+<p>The stellarator plant applies that condition to its magnet's calculated clearance:</p>
+
+<div class="code">
+  <div class="code-head"><span class="file">models/designs/stellarator_09/stellarator_plant.sysml</span><span class="lang">SysML</span></div>
+<pre><code>assert constraint wp_fit_ok : 'Winding Pack Fits Casing' {
+    in minimum_margin_in = magnet.fit_minimum_margin;
+}</code></pre>
+</div>
+
+<p>A negative clearance means the winding pack does not fit. The program still reports the design's calculated performance and cost, alongside the failed check. That lets a study show what a proposed change improves and which engineering limits it violates.</p>
+
+<div class="note">
+  <span class="note-label">Scope</span>
+  <p>This fit check covers a local rectangular cross-section of the pack and casing cavity. Passing it does not establish that the entire nonplanar coil can be manufactured or assembled.</p>
+</div>
+
+<p>A design point passes the modeled feasibility checks only when all applicable assertions have been evaluated and satisfied. Results identify which assertions were assessed; an unassessed check cannot count as a pass. Even a point that passes every check still needs evidence for engineering limits the model does not yet represent.</p>
+</section>
+
+<section>
+<h3 id="23-reconstructing-the-calculation-network"><span class="num">2.3</span>Reconstructing the calculation network</h3>
+
+<p>Codegen now identifies the calculations used by the assembled plant and determines where each one gets its inputs.</p>
+
+<p>Those connections determine what must be calculated first. The program cannot check winding-pack clearance until it knows the pack dimensions, and it cannot calculate those dimensions until it knows how much conductor is needed. TEAx will use these dependencies to order the calculations when it runs the program.</p>
+
+<p>SysML organizes the model around physical components. Codegen constructs a second view organized around calculations: each calculation is a node, and a connection from one calculation's output to another's input is an edge. This is the <strong>computational graph</strong>. It tells the execution system which results must be available before a calculation can run. The following figure shows the magnet branch of the generated stellarator graph.</p>
+
+<figure class="figure wide">
+  <div class="plate"><svg role="img" aria-label="Actual magnet calculation dependencies: field feeds sizing; pack dimensions feed fit and material costs; separate checks assess field, current, and fit." width="355pt" height="674pt"
+ viewBox="0.00 0.00 355.10 673.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(10.8 662.8)">
+
+<text text-anchor="middle" x="153" y="-637.6" font-family="Manrope" font-size="13.00" fill="#191919">How magnet calculations depend on one another</text>
+<text text-anchor="middle" x="153" y="-623.6" font-family="Manrope" font-size="13.00" fill="#191919"> </text>
+
+<g id="node1" class="node">
+<title>radial_build</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M114.5,-616C114.5,-616 59.5,-616 59.5,-616 53.5,-616 47.5,-610 47.5,-604 47.5,-604 47.5,-592 47.5,-592 47.5,-586 53.5,-580 59.5,-580 59.5,-580 114.5,-580 114.5,-580 120.5,-580 126.5,-586 126.5,-592 126.5,-592 126.5,-604 126.5,-604 126.5,-610 120.5,-616 114.5,-616"/>
+<text text-anchor="middle" x="87" y="-601.6" font-family="Manrope" font-size="10.50" fill="#191919">Radial build</text>
+<text text-anchor="middle" x="87" y="-589.6" font-family="Manrope" font-size="10.50" fill="#191919">Coil position</text>
+</g>
+
+<g id="node3" class="node">
+<title>coil_length</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M60,-427C60,-427 12,-427 12,-427 6,-427 0,-421 0,-415 0,-415 0,-403 0,-403 0,-397 6,-391 12,-391 12,-391 60,-391 60,-391 66,-391 72,-397 72,-403 72,-403 72,-415 72,-415 72,-421 66,-427 60,-427"/>
+<text text-anchor="middle" x="36" y="-406.6" font-family="Manrope" font-size="10.50" fill="#191919">Coil length</text>
+</g>
+
+<g id="edge1" class="edge">
+<title>radial_build&#45;&gt;coil_length</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M82.29,-579.74C73.11,-546.07 52.79,-471.56 42.4,-433.45"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="44.3,-432.45 40.7,-427.22 40.25,-433.56 44.3,-432.45"/>
+</g>
+
+<g id="node4" class="node">
+<title>peak_field_calc</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M239,-553C239,-553 167,-553 167,-553 161,-553 155,-547 155,-541 155,-541 155,-529 155,-529 155,-523 161,-517 167,-517 167,-517 239,-517 239,-517 245,-517 251,-523 251,-529 251,-529 251,-541 251,-541 251,-547 245,-553 239,-553"/>
+<text text-anchor="middle" x="203" y="-538.6" font-family="Manrope" font-size="10.50" fill="#191919">Peak conductor</text>
+<text text-anchor="middle" x="203" y="-526.6" font-family="Manrope" font-size="10.50" fill="#191919">field</text>
+</g>
+
+<g id="edge3" class="edge">
+<title>radial_build&#45;&gt;peak_field_calc</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M119.62,-579.85C133.83,-572.38 150.56,-563.58 165.29,-555.83"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="166.29,-557.68 170.62,-553.03 164.34,-553.96 166.29,-557.68"/>
+</g>
+
+<g id="node2" class="node">
+<title>field_calc</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M222.5,-616C222.5,-616 183.5,-616 183.5,-616 177.5,-616 171.5,-610 171.5,-604 171.5,-604 171.5,-592 171.5,-592 171.5,-586 177.5,-580 183.5,-580 183.5,-580 222.5,-580 222.5,-580 228.5,-580 234.5,-586 234.5,-592 234.5,-592 234.5,-604 234.5,-604 234.5,-610 228.5,-616 222.5,-616"/>
+<text text-anchor="middle" x="203" y="-595.6" font-family="Manrope" font-size="10.50" fill="#191919">Axis field</text>
+</g>
+
+<g id="edge2" class="edge">
+<title>field_calc&#45;&gt;peak_field_calc</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M203,-579.68C203,-573.32 203,-566.01 203,-559.21"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="205.1,-559.15 203,-553.15 200.9,-559.15 205.1,-559.15"/>
+</g>
+
+<g id="node8" class="node">
+<title>wp_volume</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M140.5,-364C140.5,-364 77.5,-364 77.5,-364 71.5,-364 65.5,-358 65.5,-352 65.5,-352 65.5,-340 65.5,-340 65.5,-334 71.5,-328 77.5,-328 77.5,-328 140.5,-328 140.5,-328 146.5,-328 152.5,-334 152.5,-340 152.5,-340 152.5,-352 152.5,-352 152.5,-358 146.5,-364 140.5,-364"/>
+<text text-anchor="middle" x="109" y="-349.6" font-family="Manrope" font-size="10.50" fill="#191919">Winding&#45;pack</text>
+<text text-anchor="middle" x="109" y="-337.6" font-family="Manrope" font-size="10.50" fill="#191919">volume</text>
+</g>
+
+<g id="edge7" class="edge">
+<title>coil_length&#45;&gt;wp_volume</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M56.72,-390.68C65.12,-383.67 74.89,-375.5 83.7,-368.14"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="85.22,-369.61 88.48,-364.15 82.53,-366.39 85.22,-369.61"/>
+</g>
+
+<g id="node10" class="node">
+<title>winding_procurement</title>
+<path fill="#dcefed" stroke="#0b6f6a" stroke-width="1.1" d="M152,-238C152,-238 66,-238 66,-238 60,-238 54,-232 54,-226 54,-226 54,-214 54,-214 54,-208 60,-202 66,-202 66,-202 152,-202 152,-202 158,-202 164,-208 164,-214 164,-214 164,-226 164,-226 164,-232 158,-238 152,-238"/>
+<text text-anchor="middle" x="109" y="-223.6" font-family="Manrope" font-size="10.50" fill="#191919">Winding quantities</text>
+<text text-anchor="middle" x="109" y="-211.6" font-family="Manrope" font-size="10.50" fill="#191919">and cost</text>
+</g>
+
+<g id="edge11" class="edge">
+<title>coil_length&#45;&gt;winding_procurement</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M39.5,-390.75C47.21,-352.72 65,-265 65,-265 65,-265 76.31,-253.69 87.46,-242.54"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="89.1,-243.87 91.86,-238.14 86.13,-240.9 89.1,-243.87"/>
+</g>
+
+<g id="node5" class="node">
+<title>current_sizing</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M162,-490C162,-490 94,-490 94,-490 88,-490 82,-484 82,-478 82,-478 82,-466 82,-466 82,-460 88,-454 94,-454 94,-454 162,-454 162,-454 168,-454 174,-460 174,-466 174,-466 174,-478 174,-478 174,-484 168,-490 162,-490"/>
+<text text-anchor="middle" x="128" y="-475.6" font-family="Manrope" font-size="10.50" fill="#191919">Current&#45;driven</text>
+<text text-anchor="middle" x="128" y="-463.6" font-family="Manrope" font-size="10.50" fill="#191919">pack sizing</text>
+</g>
+
+<g id="edge4" class="edge">
+<title>peak_field_calc&#45;&gt;current_sizing</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M181.71,-516.68C173.01,-509.6 162.86,-501.35 153.74,-493.94"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="155.06,-492.31 149.09,-490.15 152.41,-495.56 155.06,-492.31"/>
+</g>
+
+<g id="node11" class="node">
+<title>conductor_current</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M239,-166C239,-166 171,-166 171,-166 165,-166 159,-160 159,-154 159,-154 159,-142 159,-142 159,-136 165,-130 171,-130 171,-130 239,-130 239,-130 245,-130 251,-136 251,-142 251,-142 251,-154 251,-154 251,-160 245,-166 239,-166"/>
+<text text-anchor="middle" x="205" y="-151.6" font-family="Manrope" font-size="10.50" fill="#191919">Conductor</text>
+<text text-anchor="middle" x="205" y="-139.6" font-family="Manrope" font-size="10.50" fill="#191919">current margin</text>
+</g>
+
+<g id="edge13" class="edge">
+<title>peak_field_calc&#45;&gt;conductor_current</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M230.65,-516.86C250.59,-504.51 274,-490 274,-490 274,-490 298,-473 298,-473 298,-473 298,-473 298,-219 298,-219 272,-179 272,-179 272,-179 261.47,-174.28 248.75,-168.59"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="249.53,-166.64 243.2,-166.1 247.82,-170.47 249.53,-166.64"/>
+</g>
+
+<g id="node12" class="node">
+<title>peak_field_ok</title>
+<path fill="#f6e9d8" stroke="#95520f" stroke-width="1.1" d="M250.5,-490C250.5,-490 209.5,-490 209.5,-490 203.5,-490 197.5,-484 197.5,-478 197.5,-478 197.5,-466 197.5,-466 197.5,-460 203.5,-454 209.5,-454 209.5,-454 250.5,-454 250.5,-454 256.5,-454 262.5,-460 262.5,-466 262.5,-466 262.5,-478 262.5,-478 262.5,-484 256.5,-490 250.5,-490"/>
+<text text-anchor="middle" x="230" y="-475.6" font-family="Manrope" font-size="10.50" fill="#191919">CHECK</text>
+<text text-anchor="middle" x="230" y="-463.6" font-family="Manrope" font-size="10.50" fill="#191919">Field limit</text>
+</g>
+
+<g id="edge14" class="edge">
+<title>peak_field_calc&#45;&gt;peak_field_ok</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M210.66,-516.68C213.54,-510.19 216.85,-502.71 219.91,-495.79"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="221.9,-496.49 222.41,-490.15 218.06,-494.79 221.9,-496.49"/>
+</g>
+
+<g id="node6" class="node">
+<title>wp_sizing</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M170.5,-427C170.5,-427 107.5,-427 107.5,-427 101.5,-427 95.5,-421 95.5,-415 95.5,-415 95.5,-403 95.5,-403 95.5,-397 101.5,-391 107.5,-391 107.5,-391 170.5,-391 170.5,-391 176.5,-391 182.5,-397 182.5,-403 182.5,-403 182.5,-415 182.5,-415 182.5,-421 176.5,-427 170.5,-427"/>
+<text text-anchor="middle" x="139" y="-412.6" font-family="Manrope" font-size="10.50" fill="#191919">Winding&#45;pack</text>
+<text text-anchor="middle" x="139" y="-400.6" font-family="Manrope" font-size="10.50" fill="#191919">side length</text>
+</g>
+
+<g id="edge5" class="edge">
+<title>current_sizing&#45;&gt;wp_sizing</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M131.12,-453.68C132.27,-447.32 133.59,-440.01 134.82,-433.21"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="136.91,-433.43 135.91,-427.15 132.78,-432.68 136.91,-433.43"/>
+</g>
+
+<g id="node7" class="node">
+<title>wp_fit</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M248,-364C248,-364 188,-364 188,-364 182,-364 176,-358 176,-352 176,-352 176,-340 176,-340 176,-334 182,-328 188,-328 188,-328 248,-328 248,-328 254,-328 260,-334 260,-340 260,-340 260,-352 260,-352 260,-358 254,-364 248,-364"/>
+<text text-anchor="middle" x="218" y="-349.6" font-family="Manrope" font-size="10.50" fill="#191919">Pack / casing</text>
+<text text-anchor="middle" x="218" y="-337.6" font-family="Manrope" font-size="10.50" fill="#191919">fit margins</text>
+</g>
+
+<g id="edge6" class="edge">
+<title>wp_sizing&#45;&gt;wp_fit</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M161.43,-390.68C170.59,-383.6 181.28,-375.35 190.88,-367.94"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="192.32,-369.48 195.79,-364.15 189.76,-366.15 192.32,-369.48"/>
+</g>
+
+<g id="edge8" class="edge">
+<title>wp_sizing&#45;&gt;wp_volume</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M130.48,-390.68C127.29,-384.19 123.61,-376.71 120.21,-369.79"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="121.97,-368.61 117.43,-364.15 118.2,-370.46 121.97,-368.61"/>
+</g>
+
+<g id="node14" class="node">
+<title>wp_fit_ok</title>
+<path fill="#f6e9d8" stroke="#95520f" stroke-width="1.1" d="M251,-301C251,-301 179,-301 179,-301 173,-301 167,-295 167,-289 167,-289 167,-277 167,-277 167,-271 173,-265 179,-265 179,-265 251,-265 251,-265 257,-265 263,-271 263,-277 263,-277 263,-289 263,-289 263,-295 257,-301 251,-301"/>
+<text text-anchor="middle" x="215" y="-286.6" font-family="Manrope" font-size="10.50" fill="#191919">CHECK</text>
+<text text-anchor="middle" x="215" y="-274.6" font-family="Manrope" font-size="10.50" fill="#191919">Pack fits casing</text>
+</g>
+
+<g id="edge16" class="edge">
+<title>wp_fit&#45;&gt;wp_fit_ok</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M217.15,-327.68C216.84,-321.32 216.48,-314.01 216.14,-307.21"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="218.24,-307.04 215.84,-301.15 214.04,-307.25 218.24,-307.04"/>
+</g>
+
+<g id="node9" class="node">
+<title>material_inventory</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M129.5,-301C129.5,-301 88.5,-301 88.5,-301 82.5,-301 76.5,-295 76.5,-289 76.5,-289 76.5,-277 76.5,-277 76.5,-271 82.5,-265 88.5,-265 88.5,-265 129.5,-265 129.5,-265 135.5,-265 141.5,-271 141.5,-277 141.5,-277 141.5,-289 141.5,-289 141.5,-295 135.5,-301 129.5,-301"/>
+<text text-anchor="middle" x="109" y="-286.6" font-family="Manrope" font-size="10.50" fill="#191919">Material</text>
+<text text-anchor="middle" x="109" y="-274.6" font-family="Manrope" font-size="10.50" fill="#191919">inventory</text>
+</g>
+
+<g id="edge9" class="edge">
+<title>wp_volume&#45;&gt;material_inventory</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M109,-327.68C109,-321.32 109,-314.01 109,-307.21"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="111.1,-307.15 109,-301.15 106.9,-307.15 111.1,-307.15"/>
+</g>
+
+<g id="edge10" class="edge">
+<title>material_inventory&#45;&gt;winding_procurement</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M109,-264.68C109,-258.32 109,-251.01 109,-244.21"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="111.1,-244.15 109,-238.15 106.9,-244.15 111.1,-244.15"/>
+</g>
+
+<g id="edge12" class="edge">
+<title>winding_procurement&#45;&gt;conductor_current</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M132.73,-201.7C145.98,-192.03 162.59,-179.93 176.53,-169.76"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="177.93,-171.34 181.54,-166.1 175.46,-167.94 177.93,-171.34"/>
+<text text-anchor="middle" x="214.5" y="-181.8" font-family="Manrope" font-size="9.00" fill="#5f5f5f">Tape + conductor lengths</text>
+</g>
+
+<g id="node13" class="node">
+<title>reference_conductor_current_ok</title>
+<path fill="#f6e9d8" stroke="#95520f" stroke-width="1.1" d="M239.5,-103C239.5,-103 170.5,-103 170.5,-103 164.5,-103 158.5,-97 158.5,-91 158.5,-91 158.5,-79 158.5,-79 158.5,-73 164.5,-67 170.5,-67 170.5,-67 239.5,-67 239.5,-67 245.5,-67 251.5,-73 251.5,-79 251.5,-79 251.5,-91 251.5,-91 251.5,-97 245.5,-103 239.5,-103"/>
+<text text-anchor="middle" x="205" y="-88.6" font-family="Manrope" font-size="10.50" fill="#191919">CHECK</text>
+<text text-anchor="middle" x="205" y="-76.6" font-family="Manrope" font-size="10.50" fill="#191919">Current margin</text>
+</g>
+
+<g id="edge15" class="edge">
+<title>conductor_current&#45;&gt;reference_conductor_current_ok</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M205,-129.68C205,-123.32 205,-116.01 205,-109.21"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="207.1,-109.15 205,-103.15 202.9,-109.15 207.1,-109.15"/>
+</g>
+
+<g id="node15" class="node">
+<title>legend</title>
+<path fill="none" stroke="none" stroke-width="1.1" d="M321.5,-40C321.5,-40 88.5,-40 88.5,-40 82.5,-40 76.5,-34 76.5,-28 76.5,-28 76.5,-12 76.5,-12 76.5,-6 82.5,0 88.5,0 88.5,0 321.5,0 321.5,0 327.5,0 333.5,-6 333.5,-12 333.5,-12 333.5,-28 333.5,-28 333.5,-34 327.5,-40 321.5,-40"/>
+<text text-anchor="middle" x="205" y="-27.8" font-family="Manrope" font-size="9.00" fill="#5f5f5f">Each arrow is an actual output&#45;to&#45;input binding.</text>
+<text text-anchor="middle" x="205" y="-17.8" font-family="Manrope" font-size="9.00" fill="#5f5f5f">Secondary inputs and other plant branches are omitted.</text>
+<text text-anchor="middle" x="205" y="-7.8" font-family="Manrope" font-size="9.00" fill="#5f5f5f">Amber boxes assess values; they do not resize the design.</text>
+</g>
+
+</g>
+</svg></div>
+  <figcaption><span class="fig-label">Figure 3</span>Each arrow connects a calculation's output to another calculation's input. Multiple values exchanged by the same pair share an arrow. Secondary inputs and other plant branches are omitted. Exact nodes, connections, and package identities: <code class="path">docs/write-up/sysml-codegen-assets/graph-evidence.md</code>.</figcaption>
+</figure>
+
+<details class="evidence">
+  <summary><span class="evidence-kind">In the record</span><span>The 18 connections behind the graph</span></summary>
+  <div class="evidence-body">
+    <p>Each row is one output-to-input binding in the generated stellarator program, as captured on 19 September 2026. A calculation with a single result is named without an output.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>From</th><th>To</th></tr></thead>
+        <tbody>
+          <tr><td><code>radial_build.r_coil_centre</code></td><td><code>coil_length.a_coil</code></td></tr>
+          <tr><td><code>field_calc</code></td><td><code>peak_field_calc.B_axis_in</code></td></tr>
+          <tr><td><code>radial_build.r_coil_centre</code></td><td><code>peak_field_calc.a_coil_in</code></td></tr>
+          <tr><td><code>peak_field_calc</code></td><td><code>current_sizing.B_peak</code></td></tr>
+          <tr><td><code>current_sizing.selected_effective_density</code></td><td><code>wp_sizing.j_wp</code></td></tr>
+          <tr><td><code>wp_sizing</code></td><td><code>wp_fit.wp_side</code></td></tr>
+          <tr><td><code>coil_length</code></td><td><code>wp_volume.c_coil</code></td></tr>
+          <tr><td><code>wp_sizing</code></td><td><code>wp_volume.wp_side</code></td></tr>
+          <tr><td><code>wp_volume.vol_winding_pack</code></td><td><code>material_inventory.volume_in</code></td></tr>
+          <tr><td><code>material_inventory.material_cost</code></td><td><code>winding_procurement.material_cost_in</code></td></tr>
+          <tr><td><code>material_inventory.tape_volume</code></td><td><code>winding_procurement.tape_volume_in</code></td></tr>
+          <tr><td><code>coil_length</code></td><td><code>winding_procurement.c_coil</code></td></tr>
+          <tr><td><code>winding_procurement.conductor_length</code></td><td><code>conductor_current.conductor_length</code></td></tr>
+          <tr><td><code>winding_procurement.tape_length</code></td><td><code>conductor_current.tape_length</code></td></tr>
+          <tr><td><code>peak_field_calc</code></td><td><code>conductor_current.B_peak</code></td></tr>
+          <tr><td><code>peak_field_calc</code></td><td><code>peak_field_ok.B_peak</code></td></tr>
+          <tr><td><code>conductor_current.margin_fraction</code></td><td><code>reference_conductor_current_ok.margin_fraction_in</code></td></tr>
+          <tr><td><code>wp_fit.minimum_margin</code></td><td><code>wp_fit_ok.minimum_margin_in</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</details>
+
+<p>Read the graph from the top. The calculated field and magnet geometry determine the peak field at the conductor. That field affects how much current the conductor can carry, so it feeds the calculation that sizes the conductor supply. The sizing result then feeds the calculation of winding-pack dimensions.</p>
+
+<p>The pack dimensions feed two branches: one checks whether the pack fits, while the other calculates material quantities and their procurement cost. A separate check determines whether the resulting conductor supply can carry the required current. Following the arrows shows how a change in field can affect both the physical fit and the cost of the magnet.</p>
+
+<p>This execution order depends on the model author declaring each calculation's inputs and outputs. If two calculations each need the other's result before they can run, neither can start. The pipeline therefore requires a network without circular dependencies. It does not rearrange equations or build a solver automatically; a coupled calculation needs a numerical method supplied by the author.</p>
+
+<p>Codegen constructs this network in three steps.</p>
+
+<details class="detail">
+  <summary><h4 id="231-parse-declarations-and-references"><span class="num">2.3.1</span>Parse declarations and references</h4></summary>
+  <div class="detail-body">
+    <p>SysIDE reads the SysML declarations and resolves references between them. When a calculation names <code>coil.I_coil</code>, SysIDE identifies the declared attribute that name refers to. It gives codegen a structured representation of the components, equations, and connections in the model.</p>
+    <p>Identifying a declaration is only the first step. A reusable component definition can be used at several places in a plant, with different values at each place. Codegen must determine which use of the component a calculation belongs to.</p>
+  </div>
+</details>
+
+<details class="detail">
+  <summary><h4 id="232-expand-the-assembled-design"><span class="num">2.3.2</span>Expand the assembled design</h4></summary>
+  <div class="detail-body">
+    <p>Codegen walks the plant's component hierarchy to find each use of a component definition. At each location, it applies the definitions and overrides selected by the plant and creates records for that component's values, calculations, and checks. For the stellarator's magnet, this includes the field calculation from <a href="#21-modeling-a-component-separate-its-equations-from-the-plants-choices">section 2.1</a> and the fit check from <a href="#22-constraints-test-whether-a-design-point-meets-engineering-limits">section 2.2</a>.</p>
+    <p>Each component at a particular location in the assembly is an <strong>occurrence</strong>. The field equation is declared in the reusable magnet definition; its occurrence in this plant belongs to <code>stellaris.magnet</code>. If the same definition is used elsewhere, codegen creates separate records for that occurrence. Components declared as arrays are also expanded into individual occurrences.</p>
+    <p>These records let components have their own values even when they share a definition. The next step connects calculations to those values, including values shared across components.</p>
+  </div>
+</details>
+
+<details class="detail">
+  <summary><h4 id="233-resolve-each-input-to-its-supplier"><span class="num">2.3.3</span>Resolve each input to its supplier</h4></summary>
+  <div class="detail-body">
+    <p>Codegen now follows the model's connections to find the value supplying each calculation input. The radius connection from <a href="#21-modeling-a-component-separate-its-equations-from-the-plants-choices">section 2.1</a> shows how this works: the field calculation reads <code>coil.R0</code>, and the plant connects that attribute to <code>plasma.R</code>. Following the chain reaches the plant's plasma-radius parameter, so the generated field calculation reads that input directly.</p>
+    <p>The pack-sizing calculation illustrates the other case. Its effective current density, the current per unit winding-pack area, comes from the current-sizing calculation. Following that connection reaches a calculated output, so codegen adds an edge from current sizing to pack sizing. The program must calculate the density before it can use it to calculate pack dimensions.</p>
+    <p>In both cases, codegen uses the declaration identified by SysIDE together with its location in the assembled plant to find the supplying value. It follows connections through attributes until it reaches either an external input or a calculation output. Several calculations that reach the same supplier remain connected to that same value.</p>
+    <p>A missing or ambiguous supplier stops generation with a diagnostic. A broken connection cannot silently become an adjustable study parameter. Once the connections are resolved, codegen has the calculation network it needs to generate the executable program.</p>
+  </div>
+</details>
+</section>
+</section>
+
+</article>
+</main>
+
+<script>
+  // Navigation state only; the page reads the same without it.
+  (() => {
+    const links = [...document.querySelectorAll('.toc a[href^="#"]')];
+    const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+    const heads = [...document.querySelectorAll('.article [id]')].filter((h) => byId.has(h.id));
+    const update = () => {
+      let current = heads[0];
+      for (const h of heads) {
+        if (h.getBoundingClientRect().top <= 120) current = h;
+        else break;
+      }
+      links.forEach((a) => a.removeAttribute('aria-current'));
+      if (current) byId.get(current.id).setAttribute('aria-current', 'location');
+    };
+    // A link to a heading inside a closed detail opens it.
+    const openTarget = () => {
+      const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      const details = target && target.closest('details');
+      if (details && !details.open) { details.open = true; target.scrollIntoView(); }
+    };
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('hashchange', openTarget);
+    openTarget();
+    update();
+  })();
+</script>
+</body>
+</html>

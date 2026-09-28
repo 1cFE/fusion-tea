@@ -1,0 +1,145 @@
+{
+  "cases": {
+    "best-screen-point-aries-ratings": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.1296192906533925,
+      "feasible": 1.0,
+      "return_residual": 1.7394086171407253e-11
+    },
+    "best-screen-point-reselected": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.1296192906533925,
+      "feasible": 1.0,
+      "return_residual": 1.7394086171407253e-11
+    },
+    "c1-aries-ratios-aries-ratings": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.31122159957504514,
+      "feasible": 1.0,
+      "return_residual": -3.979039320256561e-11
+    },
+    "c1-aries-ratios-reselected-ratings": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.31122159957504514,
+      "feasible": 1.0,
+      "return_residual": -3.979039320256561e-11
+    },
+    "c1-flow1400-aries-ratings": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.0,
+      "feasible": 0.0,
+      "return_residual": 72.29921291997891
+    },
+    "c1-flow4000-reselected-ratings": {
+      "pre_change_control": {
+        "compared": 0,
+        "differences": [],
+        "refused_both": true
+      }
+    },
+    "c1-ratio1.35-reselected-ratings": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.0,
+      "feasible": 0.0,
+      "return_residual": 17.79620544297643
+    },
+    "starting-point-fuel-term-wired": {
+      "pre_change_control": {
+        "compared": 245,
+        "differences": []
+      },
+      "identities": {
+        "capability_open_equals_closure_capability": true,
+        "feasible_iff_heat_removal_ok": true,
+        "mixed_return_identity": true,
+        "exchanger_return_le_mixed_le_T_out": true,
+        "residual_is_duty_minus_capability_over_C_h": true,
+        "zero_bypass_iff_zero_margin": true,
+        "exchanger_flow": true,
+        "return_check_matches_residual": true
+      },
+      "bypass_fraction": 0.31122159957504514,
+      "feasible": 1.0,
+      "return_residual": -3.979039320256561e-11
+    }
+  },
+  "passed": true
+}

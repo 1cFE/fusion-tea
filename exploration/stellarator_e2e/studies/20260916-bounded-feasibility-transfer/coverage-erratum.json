@@ -1,0 +1,120 @@
+{
+  "frozen_commit": "a16e7256",
+  "finding": "Nine below-bound oracle-only points were not authorized by the declared search envelope.",
+  "declared_current_MAturn": [
+    12,
+    16.2
+  ],
+  "actual_full_scan_current_MAturn": [
+    11.37253125,
+    16.2
+  ],
+  "all_calls": 201,
+  "all_unique": 200,
+  "planned_and_control_calls": 192,
+  "planned_and_control_unique": 191,
+  "planned_and_control_unique_evaluated": 185,
+  "planned_and_control_refused": 6,
+  "native_cases_unchanged": 71,
+  "out_of_protocol": [
+    {
+      "id": "lhs-22-i-0.06-a-0.03",
+      "current_MAturn": 11.37253125,
+      "a_m": 1.4883593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.06-a+0.00",
+      "current_MAturn": 11.37253125,
+      "a_m": 1.5183593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.06-a+0.03",
+      "current_MAturn": 11.37253125,
+      "a_m": 1.5483593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.04-a-0.03",
+      "current_MAturn": 11.6145,
+      "a_m": 1.4883593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.04-a+0.00",
+      "current_MAturn": 11.6145,
+      "a_m": 1.5183593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.04-a+0.03",
+      "current_MAturn": 11.6145,
+      "a_m": 1.5483593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.02-a-0.03",
+      "current_MAturn": 11.85646875,
+      "a_m": 1.4883593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.02-a+0.00",
+      "current_MAturn": 11.85646875,
+      "a_m": 1.5183593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    },
+    {
+      "id": "lhs-22-i-0.02-a+0.03",
+      "current_MAturn": 11.85646875,
+      "a_m": 1.5483593750000002,
+      "outcome": "evaluated",
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok"
+      ],
+      "native_selected": false
+    }
+  ]
+}

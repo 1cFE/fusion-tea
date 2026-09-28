@@ -1,0 +1,1 @@
+PASS: actual indicator parser accepts all 18 entries; verifier resolves all four new entries across both efficiency boundaries; 28 feature occurrences, 247 parameters, no demand entry

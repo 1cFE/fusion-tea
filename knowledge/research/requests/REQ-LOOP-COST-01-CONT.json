@@ -1,0 +1,18 @@
+{
+  "request_id": "REQ-LOOP-COST-01-CONT",
+  "question": "What admissible original engineering evidence prices installed replicated EU DEMO/HCPB helium primary loops, circulators or heat exchangers near 8 MPa, 300-500 C and 225 kg/s per loop, with explicit currency, price year and account boundary?",
+  "consumer": "primary-loop-sizing/T-001",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": [
+    "EUROfusion",
+    "KIT publications",
+    "IAEA nuclear engineering reports",
+    "UKAEA publications"
+  ],
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 1
+  },
+  "continuation_note": "Existing four queries reused. Previous run unchanged. Direct extraction diagnosed sandbox DNS; public PDF downloaded with approved network escalation. One bounded local-file registration attempt."
+}

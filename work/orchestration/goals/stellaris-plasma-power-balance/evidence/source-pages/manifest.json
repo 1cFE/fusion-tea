@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+      "sha256": "7fd72c1242ce3a17a9c4b9a4597fcb9ff5296b942b2d8343a0b463539d8d3865"
+    },
+    {
+      "path": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/cf4cbd0c-47f2-43ea-be9f-34ba243b7af5/scratchpad/lion_2021_nf_stellarator_process.pdf",
+      "sha256": "db74f1c6d04aa505a763c9aa8a168f39324ef345aa3fe454d89bea2eabb18793"
+    },
+    {
+      "path": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/cf4cbd0c-47f2-43ea-be9f-34ba243b7af5/scratchpad/lion_2023_phd_thesis_stellarator_systems_code_models.pdf",
+      "sha256": "4eafe5a7c38b39c0d73307541b370e9adf3288cee2ac0ec059acf6c557de3bf0"
+    }
+  ],
+  "witnesses": [
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2021-p4.png",
+      "sha256": "4bfbd784bf91dc50d8e17c7026d1aa928aadc51add89453d60f724f9052582de"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2021-p4.txt",
+      "sha256": "786ab32e4ca5cc8960175790f5d036b6344f2995a2c67680ebe4845dbc4297c5"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2021-p5.png",
+      "sha256": "4840883039f5c2ae2340014384300dc77d5b3c41fe803a57e80ee0e57c62ca6d"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2021-p5.txt",
+      "sha256": "452b1bbe15ee3b919d2052559f98519a1a4acd5b4cde29afd64f824f84bcff16"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p151.png",
+      "sha256": "84ba6c8b35d40a1fc1ce41e58b23ba116d1876c33b70d6344a0a5bb3da138e4b"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p151.txt",
+      "sha256": "8d31928c01dd3b087a169519e07e334078c00bc8f59f6290ede147a54e7554b0"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p152.png",
+      "sha256": "e7c9735933a89d804ab919a3b32bc8e98ebffb0a29eb0b63ac0d8000bd9010a4"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p152.txt",
+      "sha256": "8026d14930268d90f41c731b8f683a7cc9d373c9b04c9353cf0307ee1657df56"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p39.png",
+      "sha256": "e4e5fbd9de29c05e597d6b96a03247ce1573e42f44368d7e5bf93769c9373b4b"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p39.txt",
+      "sha256": "287100fad70b2beb793d2f4bee3d453887f8aca13fb5120ba54a6052cba8b9a6"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p40.png",
+      "sha256": "0406bddf22952e92e5700c870e7a824da4b191f56028cad9c7901257b8da3c75"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/lion2023-p40.txt",
+      "sha256": "09f8824563c93c5a0df82154d2398ab0ad597776f49739d777b6c88a2632bd73"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p10.png",
+      "sha256": "e4c7436c412b8ad6d4565fecff4c79814b2e00b984789ca497b5ce6ff1acfa8e"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p10.txt",
+      "sha256": "936ea7f4ffa7e3feb4e9b7800c762f194cd03f841fb6eb896e723d4fff19d256"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p15.png",
+      "sha256": "2c02d969a5a8b80416eeb77fe952690a86c287bb7a5f39efd91c4a9ca8109fc2"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p15.txt",
+      "sha256": "e2e80b825a1a59fb69a124a3f14328314999f4de0561631c738dd6cded5f63eb"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p16.png",
+      "sha256": "0cf9d6abc36aee8552cd7c12855f458694ece503903896675973acc057f05525"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p16.txt",
+      "sha256": "a38f26a8f30258bd33d92b07af99b26ed92b8d48f58aa13e23bbf1e25edf8c56"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p19.png",
+      "sha256": "2c247778d70591584298c048972e02aaaddd5579dc951285f621758cb9a5d4d6"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p19.txt",
+      "sha256": "a77c7cdcb180db4a7958362f90b10e8042aea42e620c037918662080caccd66f"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p32.png",
+      "sha256": "99d1451ad11d40c866a9739562d0c28d8a03437efd5a766b2198c058fd66e53e"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p32.txt",
+      "sha256": "6d53092e17ef8abac00708149d7118540556def2d970e017c555c3e277d4e89c"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p8.png",
+      "sha256": "573e8297a8dee745af70e27136efa031506ff9a99139d27116c7ba8e2ded8254"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p8.txt",
+      "sha256": "08e96573e29e12458f152a29a1733867de0decbd299c2097903f165c1f9b5947"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p9.png",
+      "sha256": "0d34bc2e43c98c35026861f4b8b74b614fbc3d473b1288078285a55987e717cd"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/source-pages/stellaris-p9.txt",
+      "sha256": "ca3641aa63f28cb8a1777fbc8d6b3951b245ec92e1163d9520568d0fffb3965a"
+    }
+  ],
+  "report_sha256": "91a52e8f6e93ea56d5bf300f0886397c43e6d8eaf9e87c84a4579be3151ef97d",
+  "renderer": "PyMuPDF 140 DPI; one-based page labels; text is navigation only"
+}

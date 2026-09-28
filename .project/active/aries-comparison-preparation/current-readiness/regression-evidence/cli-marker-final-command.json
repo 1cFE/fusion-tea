@@ -1,0 +1,32 @@
+{
+  "command": [
+    ".codex-test/run",
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/models/test_mfe_major_radius.py",
+    "tests/study/test_single_point_gate.py",
+    "--junitxml=.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cli-marker-final.xml"
+  ],
+  "stdout_stderr": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cli-marker-final.log",
+  "exit_code": 0,
+  "passed": 68,
+  "xfailed": 2,
+  "duration_seconds": 44.27,
+  "final_source_sha256": {
+    "tests/models/test_mfe_major_radius.py": "7043571f5ac1807d2600ab1a2c01ecb751b956422a1daf416f8457f71bf88098",
+    "tests/study/test_single_point_gate.py": "86f9c6fb2afada493f19be146140a1685d66d4a9e0c2e69e052e46ef44584a69"
+  },
+  "boundary_probe": {
+    "source": "cli-marker-probe.py",
+    "log": "cli-marker-probe.log",
+    "junit": "cli-marker-probe.xml",
+    "intentional_counts": {
+      "failed": 1,
+      "error": 1,
+      "xfailed": 2
+    },
+    "meaning": "The ordinary error is the wrong refusal signature. Strict XPASS fails. The two expected failures demonstrate static masking and the correct known-signature dynamic marker."
+  }
+}

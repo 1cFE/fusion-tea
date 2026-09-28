@@ -1,0 +1,37 @@
+{
+ "nodes": [
+  {
+   "thickness_m": 0.6,
+   "tbr_li6": 1.088116480899035,
+   "tbr_li7": 0.0033304339538673773,
+   "std_error": 0.0016243382548869433
+  },
+  {
+   "thickness_m": 0.7,
+   "tbr_li6": 1.1506688439561357,
+   "tbr_li7": 0.003353444871548617,
+   "std_error": 0.0015620714665053248
+  },
+  {
+   "thickness_m": 0.8,
+   "tbr_li6": 1.1947266274106922,
+   "tbr_li7": 0.0033472921433443455,
+   "std_error": 0.0009641692758224518
+  },
+  {
+   "thickness_m": 0.9,
+   "tbr_li6": 1.2276026074272819,
+   "tbr_li7": 0.003356421456190367,
+   "std_error": 0.001830689602313662
+  },
+  {
+   "thickness_m": 1.0,
+   "tbr_li6": 1.2490901192043666,
+   "tbr_li7": 0.0033586608751626874,
+   "std_error": 0.0016469771483325153
+  }
+ ],
+ "interpolation_allowance": 0.01,
+ "statistical_multiplier": 2.0,
+ "source": "exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/blanket_tritium_breeding_impl.py"
+}

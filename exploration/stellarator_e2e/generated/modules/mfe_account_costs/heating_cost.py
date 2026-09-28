@@ -16,21 +16,21 @@ All per-MW rates and delivered powers are the concept heating mix
 *Basis**: Linear per-method heating capital; MFE analogue of IFE ignition
 
 Inputs:
-    - icrf_per_mw: icrf_per_mw parameter
-    - p_nbi_in: p_nbi_in parameter
-    - ecrh_per_mw: ecrh_per_mw parameter
-    - p_lhcd_in: p_lhcd_in parameter
-    - p_ecrh_in: p_ecrh_in parameter
     - p_icrf_in: p_icrf_in parameter
     - nbi_per_mw: nbi_per_mw parameter
+    - p_nbi_in: p_nbi_in parameter
+    - p_ecrh_in: p_ecrh_in parameter
+    - icrf_per_mw: icrf_per_mw parameter
+    - ecrh_per_mw: ecrh_per_mw parameter
+    - p_lhcd_in: p_lhcd_in parameter
     - lhcd_per_mw: lhcd_per_mw parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:252
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:252
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/heating_cost_impl.py
@@ -46,22 +46,22 @@ class Heating_CostInput(BaseModel):
     """Input model for Heating_CostModule.
 
     Attributes:
-        icrf_per_mw: icrf_per_mw input
-        p_nbi_in: p_nbi_in input
-        ecrh_per_mw: ecrh_per_mw input
-        p_lhcd_in: p_lhcd_in input
-        p_ecrh_in: p_ecrh_in input
         p_icrf_in: p_icrf_in input
         nbi_per_mw: nbi_per_mw input
+        p_nbi_in: p_nbi_in input
+        p_ecrh_in: p_ecrh_in input
+        icrf_per_mw: icrf_per_mw input
+        ecrh_per_mw: ecrh_per_mw input
+        p_lhcd_in: p_lhcd_in input
         lhcd_per_mw: lhcd_per_mw input
     """
-    icrf_per_mw: float = Field(..., description="icrf_per_mw input")
-    p_nbi_in: float = Field(..., description="p_nbi_in input")
-    ecrh_per_mw: float = Field(..., description="ecrh_per_mw input")
-    p_lhcd_in: float = Field(..., description="p_lhcd_in input")
-    p_ecrh_in: float = Field(..., description="p_ecrh_in input")
     p_icrf_in: float = Field(..., description="p_icrf_in input")
     nbi_per_mw: float = Field(..., description="nbi_per_mw input")
+    p_nbi_in: float = Field(..., description="p_nbi_in input")
+    p_ecrh_in: float = Field(..., description="p_ecrh_in input")
+    icrf_per_mw: float = Field(..., description="icrf_per_mw input")
+    ecrh_per_mw: float = Field(..., description="ecrh_per_mw input")
+    p_lhcd_in: float = Field(..., description="p_lhcd_in input")
     lhcd_per_mw: float = Field(..., description="lhcd_per_mw input")
 
 
@@ -82,21 +82,21 @@ All per-MW rates and delivered powers are the concept heating mix
 *Basis**: Linear per-method heating capital; MFE analogue of IFE ignition
 
 Inputs:
-    - icrf_per_mw: icrf_per_mw parameter
-    - p_nbi_in: p_nbi_in parameter
-    - ecrh_per_mw: ecrh_per_mw parameter
-    - p_lhcd_in: p_lhcd_in parameter
-    - p_ecrh_in: p_ecrh_in parameter
     - p_icrf_in: p_icrf_in parameter
     - nbi_per_mw: nbi_per_mw parameter
+    - p_nbi_in: p_nbi_in parameter
+    - p_ecrh_in: p_ecrh_in parameter
+    - icrf_per_mw: icrf_per_mw parameter
+    - ecrh_per_mw: ecrh_per_mw parameter
+    - p_lhcd_in: p_lhcd_in parameter
     - lhcd_per_mw: lhcd_per_mw parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:252
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:252
 
     Calculation Specification:
         cost = nbi_per_mw * p_nbi_in + icrf_per_mw * p_icrf_in + ecrh_per_mw * p_ecrh_in + lhcd_per_mw * p_lhcd_in
@@ -125,43 +125,43 @@ All per-MW rates and delivered powers are the concept heating mix
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, icrf_per_mw: float, p_nbi_in: float, ecrh_per_mw: float, p_lhcd_in: float, p_ecrh_in: float, p_icrf_in: float, nbi_per_mw: float, lhcd_per_mw: float    ) -> Heating_CostInput:
+        self, p_icrf_in: float, nbi_per_mw: float, p_nbi_in: float, p_ecrh_in: float, icrf_per_mw: float, ecrh_per_mw: float, p_lhcd_in: float, lhcd_per_mw: float    ) -> Heating_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            icrf_per_mw: icrf_per_mw input
-            p_nbi_in: p_nbi_in input
-            ecrh_per_mw: ecrh_per_mw input
-            p_lhcd_in: p_lhcd_in input
-            p_ecrh_in: p_ecrh_in input
             p_icrf_in: p_icrf_in input
             nbi_per_mw: nbi_per_mw input
+            p_nbi_in: p_nbi_in input
+            p_ecrh_in: p_ecrh_in input
+            icrf_per_mw: icrf_per_mw input
+            ecrh_per_mw: ecrh_per_mw input
+            p_lhcd_in: p_lhcd_in input
             lhcd_per_mw: lhcd_per_mw input
 
         Returns:
             Validated input model
         """
-        return Heating_CostInput(icrf_per_mw=icrf_per_mw, p_nbi_in=p_nbi_in, ecrh_per_mw=ecrh_per_mw, p_lhcd_in=p_lhcd_in, p_ecrh_in=p_ecrh_in, p_icrf_in=p_icrf_in, nbi_per_mw=nbi_per_mw, lhcd_per_mw=lhcd_per_mw)
+        return Heating_CostInput(p_icrf_in=p_icrf_in, nbi_per_mw=nbi_per_mw, p_nbi_in=p_nbi_in, p_ecrh_in=p_ecrh_in, icrf_per_mw=icrf_per_mw, ecrh_per_mw=ecrh_per_mw, p_lhcd_in=p_lhcd_in, lhcd_per_mw=lhcd_per_mw)
 
     def run(
-        self, icrf_per_mw: float, p_nbi_in: float, ecrh_per_mw: float, p_lhcd_in: float, p_ecrh_in: float, p_icrf_in: float, nbi_per_mw: float, lhcd_per_mw: float    ) -> ModuleResult[Float]:
+        self, p_icrf_in: float, nbi_per_mw: float, p_nbi_in: float, p_ecrh_in: float, icrf_per_mw: float, ecrh_per_mw: float, p_lhcd_in: float, lhcd_per_mw: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            icrf_per_mw: icrf_per_mw input
-            p_nbi_in: p_nbi_in input
-            ecrh_per_mw: ecrh_per_mw input
-            p_lhcd_in: p_lhcd_in input
-            p_ecrh_in: p_ecrh_in input
             p_icrf_in: p_icrf_in input
             nbi_per_mw: nbi_per_mw input
+            p_nbi_in: p_nbi_in input
+            p_ecrh_in: p_ecrh_in input
+            icrf_per_mw: icrf_per_mw input
+            ecrh_per_mw: ecrh_per_mw input
+            p_lhcd_in: p_lhcd_in input
             lhcd_per_mw: lhcd_per_mw input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(icrf_per_mw, p_nbi_in, ecrh_per_mw, p_lhcd_in, p_ecrh_in, p_icrf_in, nbi_per_mw, lhcd_per_mw)
+        validated_inputs = self.validate_and_fill_default(p_icrf_in, nbi_per_mw, p_nbi_in, p_ecrh_in, icrf_per_mw, ecrh_per_mw, p_lhcd_in, lhcd_per_mw)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.heating_cost_impl import (

@@ -1,0 +1,37 @@
+{
+  "archive_sha256": "fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533",
+  "indexed_files": 785,
+  "base_revision": "c1b853ad80d3aefa2fc98ce45288582b3482eddb",
+  "restore_directory": "/tmp/aries-review-restore-wae085_1",
+  "tracked_package_link_restored": true,
+  "rebuild_byte_identical": true,
+  "tamper_detected": true,
+  "checks": {
+    "tests": {
+      "returncode": 0,
+      "stdout": "........................................................................ [ 82%]\n...............                                                          [100%]\n87 passed in 2.07s\n",
+      "stderr": ""
+    },
+    "lineage": {
+      "returncode": 0,
+      "stdout": "pass\n",
+      "stderr": ""
+    },
+    "accounting": {
+      "returncode": 0,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"source\": \"exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/results/native-cases.json\",\n  \"source_sha256\": \"8b04e549a54135f46337d98fa79056ffe55d7cdc8ad219c3c418b54507722d74\",\n  \"manifest_sha256\": \"416b30963490677e6c8cdacad89bd8f22e68a8b168134102d1e7efe71ca16d47\",\n  \"semantic_fingerprint\": \"8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0\",\n  \"physical_evaluations\": 0,\n  \"retained_study_cases\": 71,\n  \"selected_mode_case\": {\n    \"source\": \".project/active/aries-comparison-preparation/package/selected-mode/native-result.json\",\n    \"source_sha256\": \"314c26b3f809724fa7beecba1d75c74c89cfaa06e5a6e4c2ba4b5a4cee93846e\",\n    \"candidate_id\": \"frozen-fixed-point:c0000\",\n    \"accounting_mode\": \"frozen_selected_forward_mode\",\n    \"requested_overrides\": {\n      \"stellarator_09__stellaris__magnet__winding_pack__sizing_mode\": 1.0\n    },\n    \"violated_constraints\": [\n      \"divertor_heat_ok\",\n      \"reference_conductor_current_ok\",\n      \"wp_fit_ok\"\n    ]\n  },\n  \"native_cases\": 72,\n  \"equations\": 14,\n  \"all_passed\": true,\n  \"max_absolute_residual\": 1.9073486328125e-06,\n  \"tolerance\": {\n    \"relative\": 1e-12,\n    \"absolute_USD\": 1e-05\n  },\n  \"c220107_contaminated_rows\": [\n    \"C220107\",\n    \"C220111\",\n    \"CAS20\",\n    \"CAS22\",\n    \"CAS29\",\n    \"CAS2x\",\n    \"CAS30\",\n    \"CAS50\",\n    \"CAS60\",\n    \"CAS90_1cfe\",\n    \"lcoe_1cfe\",\n    \"lcoe_dcf\",\n    \"overnight\",\n    \"powercore\",\n    \"reactor_equipment\",\n    \"total_capital\"\n  ],\n  \"unresolved_charges\": {\n    \"manufacturing_remainder\": null,\n    \"additional_loop_installed\": null\n  },\n  \"limitations\": [\n    \"Arithmetic checks do not establish scope completeness or common-year currency\",\n    \"Retained native-case summaries supply numerical values; coordinator verifies immutable store joins and lineage\",\n    \"No reference values or new physical evaluations\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    "report": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "rebuild": {
+      "returncode": 0,
+      "stdout": "{\"archive\": \"comparison-freeze.tar.gz\", \"archive_bytes\": 4228194, \"archive_sha256\": \"fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533\", \"entering_revision\": \"c1b853ad80d3aefa2fc98ce45288582b3482eddb\", \"excluded\": [\"credentials/environment files\", \"holdout contents except protocol\", \"runtime caches/import links\", \"freeze output directory\", \"unrelated untracked owner files\"], \"file_count\": 785, \"index_sha256\": \"4b966d582715a75a4b58d13db8fbe2877bee4e24b12b2595d209ce4c9c9e14d4\", \"runtime\": \"Pinned licensed runtime is external; see freeze-procedure.md. No credentials are bundled.\", \"schema_version\": 1}\n",
+      "stderr": ""
+    }
+  },
+  "physical_or_oracle_evaluations": 0
+}

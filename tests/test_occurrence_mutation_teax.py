@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 import pytest
+from tests.ife_execution import complete_ife_package
 from sysml_codegen.cli import GenerationConfig, run_codegen  # type: ignore[import-untyped]
 from sysml_codegen.orchestration.exact_pipeline_context import (  # type: ignore[import-untyped]
     build_exact_pipeline_context,
@@ -33,9 +34,9 @@ def _resolve_models(tree_name: str, root: Path) -> Path:
     return MODEL_TREES[tree_name]
 GAIN = "hif_plant_pkg__hif_plant__gain"
 AVAILABILITY = "hif_plant_pkg__hif_plant__availability"
-LCOE = "hif_plant_pkg__hif_plant__lcoe_calc__lcoe"
+LCOE = "hif_plant_pkg__hif_plant__hawker_price__price"
 RECIRC = "hif_plant_pkg__hif_plant__recirc_calc__f_recirc"
-COE = "hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh"
+COE = "hif_plant_pkg__hif_plant__meier_price__price"
 VIABILITY = "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b"
 
 
@@ -98,6 +99,8 @@ def routes(request, tmp_path_factory):
             overwrite=True,
         )
     )
+    complete_ife_package(GenerationConfig(models_path=models, output_path=live_package, package_name=live_name, overwrite=True))
+    complete_ife_package(GenerationConfig(from_snapshot=snapshot, output_path=snapshot_package, package_name=snapshot_name, overwrite=True))
     return {
         "live": _harness(
             live_package,
@@ -153,14 +156,26 @@ def test_gain_mutates_every_and_only_its_outputs_and_constraint(routes, route_na
     baseline = _evaluate(route, {})
     high = _evaluate(route, {GAIN: 100.0})
     low = _evaluate(route, {GAIN: 20.0})
-    assert _movers(baseline, high) == {LCOE, RECIRC}
-    assert _movers(baseline, low) == {LCOE, RECIRC, VIABILITY, "headline"}
+    prefix = "hif_plant_pkg__hif_plant__"
+    physics = {prefix + "lcoe_calc__" + field for field in (
+        "fusion_energy_per_shot", "fusion_power", "thermal_power", "thermal_power_gw",
+        "gross_electric_power", "net_electric_power", "net_electric_power_gw",
+        "driver_recirculating_fraction", "total_recirculating_fraction",
+        "discounted_cost", "discounted_energy",
+    )}
+    costs = {LCOE, COE, RECIRC} | {prefix + field for field in (
+        "meier_reactor_cost_calc__reactor_cost_billions",
+        "meier_capital_calc__total_capital_billions", "meier_coe_calc__annualized_cost",
+        "meier_coe_calc__energy_denominator",
+    )}
+    assert _movers(baseline, high) == physics | costs
+    assert _movers(baseline, low) == physics | costs | {VIABILITY, "headline"}
     assert low.responses[VIABILITY] == "violated"
     assert low.responses["headline"] == "violated"
 
 
 @pytest.mark.parametrize("route_name", ["live", "snapshot"])
-def test_availability_mutates_every_and_only_two_outputs(routes, route_name: str) -> None:
+def test_availability_mutates_shots_replacements_and_both_costs(routes, route_name: str) -> None:
     route = routes[route_name]
     graph = route[0]
     assert _consumer_ports(graph, AVAILABILITY) == {
@@ -169,7 +184,13 @@ def test_availability_mutates_every_and_only_two_outputs(routes, route_name: str
     }
     baseline = _evaluate(route, {})
     changed = _evaluate(route, {AVAILABILITY: 0.91})
-    assert _movers(baseline, changed) == {LCOE, COE}
+    prefix = "hif_plant_pkg__hif_plant__"
+    assert _movers(baseline, changed) == {LCOE, COE, prefix + "meier_coe_calc__energy_denominator"} | {
+        prefix + "lcoe_calc__" + field for field in (
+            "shots_per_year", "driver_lifetime_years", "annual_driver_replacement_cost",
+            "discounted_cost", "discounted_energy",
+        )
+    }
 
 
 def test_live_and_snapshot_mutations_are_equal(routes) -> None:
@@ -183,3 +204,39 @@ def test_live_and_snapshot_mutations_are_equal(routes) -> None:
 
     assert simkit.__file__ is not None
     assert Path(simkit.__file__).resolve().is_relative_to(teax)
+
+
+@pytest.mark.parametrize('route_name', ['live', 'snapshot'])
+def test_sv074_source_cashflow_and_dependency_mutations(routes, route_name):
+    from tests.ife_oracle import PREFIX, MUTATIONS, assert_source_outputs
+
+    for overrides in MUTATIONS.values():
+        result = _evaluate(routes[route_name], {PREFIX+k:v for k,v in overrides.items()})
+        assert_source_outputs(result.outputs, overrides)
+
+
+@pytest.mark.parametrize('route_name', ['live', 'snapshot'])
+def test_sv075_non_generators_survive_execution_with_named_rejection(routes, route_name):
+    from tests.ife_oracle import PREFIX, NET_GATE, HEURISTIC, BOUNDARIES
+    import math
+
+    for name, overrides in BOUNDARIES.items():
+        result = _evaluate(routes[route_name], {PREFIX+k:v for k,v in overrides.items()})
+        net = result.outputs[PREFIX+'lcoe_calc__net_electric_power']
+        if name == 'zero':
+            assert net == 0.0
+        elif name == 'negative_neighbor':
+            assert net == -2.5
+        elif name == 'positive_neighbor':
+            assert net == 2.5
+        elif name == 'roundoff_positive':
+            assert net == 5.960464477539063e-8
+        else:
+            assert net < 0
+        assert result.responses[HEURISTIC] == 'satisfied'
+        assert result.responses[NET_GATE] == ('satisfied' if net > 0 else 'violated')
+        for channel in ('hawker_price', 'meier_price'):
+            assert result.outputs[PREFIX+channel+'__generating'] == float(net > 0)
+            price = result.outputs[PREFIX+channel+'__price']
+            assert math.isfinite(price)
+            assert price > 0 if net > 0 else price == 0

@@ -1,0 +1,35 @@
+........................................................................ [ 61%]
+..........................................F..                            [100%]
+=================================== FAILURES ===================================
+_____________ test_blanket_subtype_does_not_leak_into_a_held_plant _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12895/test_blanket_subtype_does_not_0')
+
+    @pytest.mark.codegen_available
+    def test_blanket_subtype_does_not_leak_into_a_held_plant(tmp_path):
+        fixture = ROOT / 'work/active/WI-066_computed-tritium-breeding/evidence/interface-probe/isolated-subtype.sysml'
+        subprocess.run([str(ROOT / '.codex-test/run'), 'sysml-codegen', 'generate',
+                        '--models', str(fixture), '--output', str(tmp_path / 'generated'),
+                        '--package-name', 'probe_pkg'], cwd=ROOT, check=True, capture_output=True, text=True)
+        modules = yaml.safe_load((tmp_path / 'generated/pipelines/pipeline.yaml').read_text())['modules']
+        assert 'probe__held__blanket__breeding' not in modules
+>       assert modules['probe__held__fuel_cycle__fuel']['inputs']['achieved'] == 'float probe_params.probe__held__blanket__tbr'
+E       AssertionError: assert 'float isolat..._blanket__tbr' == 'float probe_..._blanket__tbr'
+E         
+E         - float probe_params.probe__held__blanket__tbr
+E         ?        ---
+E         + float isolated_subtype_params.probe__held__blanket__tbr
+E         ?       ++++++++++++++
+
+tests/models/test_computed_tritium_breeding.py:223: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_computed_tritium_breeding.py::test_native_thickness_changes_breeding_build_and_cost
+tests/models/test_computed_tritium_breeding.py::test_unsupported_native_geometry_keeps_cost_diagnostics_but_fails_breeding
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_computed_tritium_breeding.py::test_blanket_subtype_does_not_leak_into_a_held_plant
+1 failed, 116 passed, 2 warnings in 6.93s

@@ -1,0 +1,17 @@
+{
+  "schema_version": "study-package-identity/v1",
+  "package": {
+    "name": "component_alternatives_tea",
+    "path": "exploration/component_alternatives/component_alternatives_tea"
+  },
+  "identity": {
+    "kind": "sealed",
+    "recipe": "effective-executable-fingerprint/v1",
+    "sealed_executable_fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986",
+    "allowed_modified_files": [],
+    "adapter_sources": [],
+    "adapter_source_digest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "digest": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  "glue_ledger": []
+}

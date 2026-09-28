@@ -1,0 +1,1066 @@
+{
+  "schema_version": "plant-closure-consolidated-grade/v1",
+  "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+  "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+  "inspection_commit": "7876b4e7accbdb322988700949cc18b7c43812ef",
+  "package_identity": {
+    "indicator": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "semantic": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+    "executable": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c"
+  },
+  "study_record": "exploration/stellarator_e2e/studies/20260912-plant-closure/record.md@e1ba37f4",
+  "validation_addendum": "exploration/stellarator_e2e/studies/20260912-plant-closure/addendum/20260912-post-record-validation/reading.md@59351f7d",
+  "synthesis": "exploration/stellarator_e2e/studies/20260912-plant-closure/synthesis.md@ca7529d7",
+  "summary": {
+    "scored_cells": 23,
+    "target_met": 17,
+    "below_target": 6,
+    "ungraded": 0,
+    "not_applicable": 3
+  },
+  "cells": [
+    {
+      "cell_id": "R1.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "An achievable operating point: a confinement/transport relation links field and heating to density and temperature, and a beta, density, or power limit pushes back on the choice",
+      "target_anchor": "An achievable operating point: a confinement/transport relation links field and heating to density and temperature, and a beta, density, or power limit pushes back on the choice",
+      "model_evidence": [
+        "models/library/analyses/mfe_plasma_sustainment.sysml:4",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py:1",
+        "models/designs/generic_mfe/mfe_plant.sysml:255",
+        "models/designs/generic_mfe/mfe_plant.sysml:279",
+        "models/designs/stellarator_09/stellarator_plant.sysml:714",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1555",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1593",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1610",
+        "models/library/analyses/mfe_plasma_scaling.sysml:4",
+        "models/library/analyses/mfe_plasma_scaling.sysml:147",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py:1"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/constraint-catalog.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires jointly closed operating-point/magnet/heating design search over a justified range; the present sensitivity grid and inherited empirical/domain limits do not establish that closure.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "ISS04/ash/radiation demand and beta respond to design inputs; 61 sustainment and 24 beta violations in the selected set demonstrate actual resistance. The native baseline W_th is 519.914214 MJ and demand is 49.079601 MW coupled. Temperature/density remain chosen coordinates, which the coupled power balance tests.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C50/C51/CC support the operating-demand and shared-radius dependencies. ISS04 derives demand at chosen density/temperature with ash/radiation coupling. W basis, alpha fractions, radiation prose versus executable units, fit/convergence limits and empirical transfer remain distinct.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R2a.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "2a: wall-load limit pushes back on the design",
+      "target_anchor": "2a: wall-load limit pushes back on the design",
+      "model_evidence": [
+        "models/library/analyses/mfe_plasma_scaling.sysml:52",
+        "models/library/analyses/mfe_plasma_scaling.sysml:236",
+        "models/library/analyses/mfe_plasma_scaling.sysml:272",
+        "models/library/analyses/mfe_plasma_scaling.sysml:341",
+        "models/designs/generic_mfe/mfe_plant.sysml:177",
+        "models/designs/generic_mfe/mfe_plant.sysml:395",
+        "models/designs/generic_mfe/mfe_plant.sysml:413",
+        "models/designs/generic_mfe/mfe_plant.sysml:422",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1488",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1516",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1564"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/oracle-historical-comparison.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires searched and independently checked neutronics/damage closure across the build; a fixed source peak calibration and ordered radial geometry do not supply it.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "All six additional radial outputs have selected-case identities; computed wall peak produces 63 qualified violations. Common R reaches the radial/wall chain; calibration and source-shaped wall transfer remain fixed assumptions.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C51/CC current R propagation and controls; source-calibrated peak responds through computed wall geometry. Fixed shape/standoff transfer is an assumption, not neutronics/damage closure.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R2b.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "2b: lifetime feeds replacement schedule and availability",
+      "target_anchor": "2b: lifetime feeds replacement schedule and availability",
+      "model_evidence": [
+        "models/library/analyses/mfe_lifecycle.sysml:4",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:101",
+        "models/designs/generic_mfe/mfe_plant.sysml:1148",
+        "models/designs/generic_mfe/mfe_plant.sysml:1185",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1271",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1289"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/calendar-steps.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/derived-event-tables.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires neutronics/damage closure across the build; the bundled fluence-to-life calendar lacks material-specific damage, separate divertor life and shielding-dependent coil life.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Native baseline life is 4.523926 FPY, five replacements and availability 0.902778. The retained a=1.9\u21922.0 pair changes replacements 5\u21924 and availability 0.902778\u21920.914683, so life reaches the actual schedule and availability.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E46 and C50; S-calendar verifies estimate versus target. Live lifetime is fluence/peak wall load; held mode preserves its historical clipping. One bundled in-vessel event, unsourced unplanned fraction and reported coil life do not close whole-plant maintenance.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R2c.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 1,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "Thickness, lifetime, or TBR held as cited values",
+      "target_anchor": "2c: computed TBR vs floor pushes back on blanket/build choices",
+      "model_evidence": [
+        "models/designs/stellarator_09/stellarator_plant.sysml:1522",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1526",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1568",
+        "models/library/analyses/mfe_fuel_cycle.sysml:87",
+        "models/designs/generic_mfe/mfe_plant.sysml:1078"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/report-summary.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires achieved TBR computed from blanket configuration, whereas the model holds achieved TBR and computes only the required ratio.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "The achieved binding 1.074 and floor 1.05 pass every selected held-floor check; required TBR at default recovery/burn is 1.19 and reported margin \u22120.116. No achieved-neutronics producer exists.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E47 demonstrates conditional required breeding arithmetic. Achieved 1.074 versus floor 1.05 remains a bound-versus-bound assertion. Required breeding is a different output with no adequacy fence; no blanket/neutronics calculation was added.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ],
+      "disposition": {
+        "status": "bounded",
+        "authority": "AGENT proposed; no owner residual acceptance",
+        "B-2": "The blanket/build structure exists, but its source-conditioned TBR is not evidence of neutronic correspondence at another design.",
+        "B-3": "No computed achieved-TBR response or self-sufficiency ratio can be supplied; 1.074 versus required 1.19 remains adverse conditional evidence.",
+        "B-4": "Blanket volume cost cannot certify a breeding-qualified blanket; any component comparison must retain the missing neutronic qualification.",
+        "missing_evidence_and_next_owner": "Admissible configuration-specific neutronics and recovery/extraction semantics; modeling/research owner, with source adoption and residual ruling reserved to the methodology owner."
+      }
+    },
+    {
+      "cell_id": "R3.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "A stress or current-density limit pushes back on coil sizing and field choice",
+      "target_anchor": "A stress or current-density limit pushes back on coil sizing and field choice",
+      "model_evidence": [
+        "models/library/analyses/mfe_magnet_field.sysml:4",
+        "models/library/analyses/mfe_magnet_field.sysml:48",
+        "models/library/analyses/mfe_magnet_field.sysml:84",
+        "models/library/analyses/mfe_magnet_field.sysml:197",
+        "models/library/analyses/mfe_plasma_scaling.sysml:419",
+        "models/designs/generic_mfe/mfe_plant.sysml:289",
+        "models/designs/generic_mfe/mfe_plant.sysml:300",
+        "models/designs/generic_mfe/mfe_plant.sysml:333",
+        "models/designs/generic_mfe/mfe_plant.sysml:360",
+        "models/designs/generic_mfe/mfe_plant.sysml:370",
+        "models/designs/generic_mfe/mfe_plant.sysml:1248",
+        "models/designs/generic_mfe/mfe_plant.sysml:1254",
+        "models/designs/generic_mfe/mfe_plant.sysml:1265",
+        "models/designs/stellarator_09/stellarator_plant.sysml:170"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/oracle-historical-comparison.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires coil-set closure with confinement and geometry in a checked design search; sampled common-radius responses leave pack/casing fit, conductor-current qualification and the physical geometry domain unresolved.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Computed coil field, bore-sensitive peak, winding stress and cold load are verified at the common radius; 13 stress and 80 peak-field violations occur. The retained sizing equation and earlier independently graded sizing intervention remain applicable because the canonical relation is preserved; current field/geometry responses are newly exercised.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "Historical Row-3 re-grade supplies earlier stress-response claims; C51/CC establish current R ownership and bounded response. F07/F14 retain nonpositive-bore counterexamples, missing pack/casing fit, critical-current margin and sourced geometry domain. Peak-field calibration is not independent stress validation.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R4.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Wall-plug \u2192 coupled-power chain computed with a stated deposition assumption, verified",
+      "target_anchor": "Wall-plug \u2192 coupled-power chain computed with a stated deposition assumption, verified",
+      "model_evidence": [
+        "models/library/analyses/mfe_heating_chain.sysml:4",
+        "models/library/analyses/mfe_heating_chain.sysml:79",
+        "models/designs/generic_mfe/mfe_plant.sysml:523",
+        "models/designs/generic_mfe/mfe_plant.sysml:534",
+        "models/designs/generic_mfe/mfe_plant.sysml:539",
+        "models/designs/stellarator_09/stellarator_plant.sysml:743",
+        "models/designs/stellarator_09/stellarator_plant.sysml:746"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires a modeled port, coupling or geometry limit on the required heating response; constant efficiencies and a direct installed-capacity ceiling do not supply that mechanism.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Installed 100 MW wall-plug gives 50 MW coupled capacity while operating demand draws 98.159202 MW wall-plug for 49.079601 MW coupled. Reserve controls and mapped source-efficiency variation preserve the separate chains and stated deposition assumption.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C50 verifies forward installed and inverse operating chains under independent reserve/demand/efficiency controls. Coupling 1.00 remains an explicit optimistic assumption; no port/deposition-response physics follows. Historical Row-4 owner clarification must remain visible for any higher-anchor argument.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R5.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "A heat-flux or erosion limit pushes back on operation or geometry",
+      "target_anchor": "A heat-flux or erosion limit pushes back on operation or geometry",
+      "model_evidence": [
+        "models/library/analyses/mfe_divertor_heat.sysml:4",
+        "models/designs/generic_mfe/mfe_plant.sysml:1101",
+        "models/designs/generic_mfe/mfe_plant.sysml:1287",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1531"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/constraint-catalog.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires exhaust/detachment closure; the fixed-target transport scaling lacks detachment control, transient/erosion response and a justified geometry transfer.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Computed nonradiated target load at the fixed source transport/geometry gives baseline 10.517842 MW/m\u00b2 against 10. The qualified fence fails 319 selected cases; the alternative source case and engineered radiation interventions produce actual flux response.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E47, C50/CC and S-exhaust. Current actual operand is operating heat despite stale `G:1090` installed-basis comment. The fixed-target estimate has a heat limit; radius-scaled area output is only a shadow. Radiation variation is engineered; the source cases vary transport at one radiation fraction.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R6.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Shell volume from the radial build and a computed gas-load/pumping estimate, verified",
+      "target_anchor": "Shell volume from the radial build and a computed gas-load/pumping estimate, verified",
+      "model_evidence": [
+        "models/library/analyses/mfe_plasma_scaling.sysml:52",
+        "models/library/analyses/mfe_account_costs.sysml:108",
+        "models/designs/generic_mfe/mfe_plant.sysml:177",
+        "models/designs/generic_mfe/mfe_plant.sysml:688",
+        "models/library/analyses/mfe_vacuum.sysml:4",
+        "models/designs/generic_mfe/mfe_plant.sysml:1119",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1547",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1550"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package-inputs.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires a structural or pumping-capacity limit; the declared exhaust pressure, ideal-gas throughput and required effective speed do not model an installed train or resisting capacity.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Computed radial shell geometry and species-resolved gas load both have verified outputs. Baseline throughput is 78.013726 Pa\u00b7m\u00b3/s and required speed 78.013726 m\u00b3/s at declared 1 Pa/300 K. This satisfies a conditional pumping estimate, not installed equipment adequacy.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E47 gives reduced conservation arithmetic. Gas temperature 300 K and exhaust pressure 1 Pa are declared conventions; at 1 Pa required speed numerically restates throughput. No conductance, installed pumping train, leakage/outgassing or capacity evidence is supplied. Both shell and gas/pumping conjuncts remain necessary.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R7.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "The computed loop feeds the recirculation/net-power constraints so coolant choices push back on feasibility",
+      "target_anchor": "The computed loop feeds the recirculation/net-power constraints so coolant choices push back on feasibility",
+      "model_evidence": [
+        "models/library/analyses/mfe_primary_loop.sysml:4",
+        "models/designs/generic_mfe/mfe_plant.sysml:555",
+        "models/designs/generic_mfe/mfe_plant.sysml:560",
+        "models/designs/generic_mfe/mfe_plant.sysml:590",
+        "models/designs/generic_mfe/mfe_plant.sysml:1238",
+        "models/designs/generic_mfe/mfe_plant.sysml:1242",
+        "models/designs/generic_mfe/mfe_plant.sysml:1271",
+        "models/designs/generic_mfe/mfe_plant.sysml:1274",
+        "models/designs/stellarator_09/stellarator_plant.sysml:830"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/closure-factorial.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/oracle-window-summary.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires thermal-hydraulic state closure across the loop; a calibrated representative circuit with held density/layout and an unsized IHX does not close that boundary.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Native baseline source heat 3125.932277 MW produces 3009.755707 kg/s flow, 300319.896464 Pa per-path loss and 175.280934 MW pump draw; the loop reaches net/recirculation and capacity predicates. Selected cases include 183 capacity and 107 recirculation violations, with factorial and loop-count interventions.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E45 and C50/CC support flow/loss/compression/energy identities and bounded responses. Reference layout/density are held; isentropic efficiency is source-point calibrated, drive efficiency 1 makes electrical draw a lower bound. IHX duty is computed but equipment is not sized/priced. No independent E45 item audit.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R8.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cycle responds to blanket/coolant temperature with a materials or temperature limit pushing back",
+      "target_anchor": "Cycle efficiency computed from coolant outlet temperature and a stated cycle model, verified",
+      "model_evidence": [
+        "models/library/analyses/mfe_power_cycle.sysml:4",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py:54",
+        "models/designs/generic_mfe/mfe_plant.sysml:577",
+        "models/designs/generic_mfe/mfe_plant.sysml:1278",
+        "models/designs/stellarator_09/stellarator_plant.sysml:930"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/closure-factorial.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires thermodynamic state closure with the primary loop; the printed efficiency correlation and fit-temperature fence do not solve cycle states, exchanger design or material compatibility.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "At 480 \u00b0C turbine inlet the fit gives 0.411356554 efficiency. Cases c0104/c0107 at 383/643 \u00b0C violate the temperature domain; c0105/c0106 at 384/642 \u00b0C meet its boundary. The modeled temperature response changes power/cost and is constrained, satisfying the explicit temperature-limit alternative in the higher anchor.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E45, C50/CC; S-cycle directly verifies printed fit and domains. Separate physical 273.15 conversion from fit literal 273. Blanketing/material compatibility, full thermodynamic state closure and omitted low-temperature divertor-cycle treatment are not supplied by a domain product.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R10.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 1,
+      "target": 2,
+      "target_met": false,
+      "anchor_satisfied": "Annual feed from fusion energy with held burn/recovery fractions",
+      "target_anchor": "Tritium inventory, startup requirement, and processing throughput forward-computed, verified",
+      "model_evidence": [
+        "models/library/analyses/mfe_fuel_cycle.sysml:4",
+        "models/library/analyses/mfe_fuel_cycle.sysml:29",
+        "models/library/analyses/mfe_fuel_cycle.sysml:83",
+        "models/designs/generic_mfe/mfe_plant.sysml:1078",
+        "models/designs/generic_mfe/mfe_plant.sysml:1064",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1351",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1359",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1378",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1381",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1384"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package-inputs.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires inventory, startup requirement and throughput together; throughput is computed but residence-time inventory and startup stock are explicitly absent.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Annual feed and operating burn/injection/exhaust are verified under held burn/recovery fractions and computed calendar availability. Dormant inventory/growth/extraction inputs are disclosed; startup and inventory are not outputs. Additional throughput does not earn partial credit for the target conjunction.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E47 computes burn/injection/exhaust/permanent loss and conditional required breeding. Inventory and startup are explicitly not computed; dormant inventory/growth/extraction inputs cannot satisfy those conjuncts. Annual fuel cost is a separate feedstock calculation.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ],
+      "disposition": {
+        "status": "bounded",
+        "authority": "AGENT proposed; no owner residual acceptance",
+        "B-2": "Fuel cycle has no dedicated B-2 home in the frozen frame; keep that omission visible if the comparison treats it as first-order.",
+        "B-3": "Operating throughput is computed, but startup stock and inventory are unavailable; the complete target cannot be marked passed from throughput alone.",
+        "B-4": "Annual feedstock costs omit inventory/startup capital and processing equipment consequences; no complete fuel-system cost follows.",
+        "missing_evidence_and_next_owner": "Residence times, extraction/retention and reserve/startup policy with source authority; fuel-cycle modeling/research owner and methodology owner for source/semantics decisions."
+      }
+    },
+    {
+      "cell_id": "R11.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "Availability derived from the maintenance/replacement schedule and feeds the economics, pushing back on design choices",
+      "target_anchor": "Availability derived from the maintenance/replacement schedule and feeds the economics, pushing back on design choices",
+      "model_evidence": [
+        "models/library/analyses/mfe_lifecycle.sysml:4",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:101",
+        "models/designs/generic_mfe/mfe_plant.sysml:1148",
+        "models/designs/generic_mfe/mfe_plant.sysml:1185",
+        "models/designs/generic_mfe/mfe_plant.sysml:1033",
+        "models/designs/generic_mfe/mfe_plant.sysml:1191",
+        "models/designs/generic_mfe/mfe_plant.sysml:1223",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1271",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1288"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/calendar-steps.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/derived-event-tables.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires maintenance sequence/logistics closure; held outage duration, assumed unplanned fraction and a bundled replacement calendar do not model staffing, access, component reliability or other maintenance classes.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "The deterministic live calendar supplies the actual fuel and both price consumers. The same sampled count step lowers fixed-loop LCOE 179.796468\u2192176.907586 $/MWh; dates, replacement PV, time balance and dated-energy shadow are checked. Outage duration is an assumed input, not an independently derived maintenance result.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E46/C50 and S-calendar. The calendar joins physical life to energy and replacement economics, but outage duration is held, unplanned downtime is assumed, coil life is reported only, and many maintenance classes are absent. Four sensitivity-only axes were owner-approved; no reliability-derived feasibility resistance is inferred.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R2.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "Replaceable units vs life-of-plant components separately sized; replacement logic follows computed life",
+      "target_anchor": "Replaceable units vs life-of-plant components separately sized; replacement logic follows computed life",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:22",
+        "models/library/analyses/mfe_account_costs.sysml:52",
+        "models/library/analyses/mfe_account_costs.sysml:82",
+        "models/designs/generic_mfe/mfe_plant.sysml:665",
+        "models/designs/generic_mfe/mfe_plant.sysml:673",
+        "models/designs/generic_mfe/mfe_plant.sysml:681",
+        "models/designs/generic_mfe/mfe_plant.sysml:1131",
+        "models/designs/generic_mfe/mfe_plant.sysml:1148"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires a design-based estimate per component class with fabrication basis and uncertainty; current volume proxies and bundled replacement omit that estimate treatment.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Blanket, shield, structure and divertor accounts have separate engineered quantities; blanket+divertor form the replacement numerator, while shield/structure are life-of-plant. Selected-case replacement-numerator identities and life-dependent PV/CAS72 verify this separation.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E46/C50/CC; blanket plus divertor are the bundled replaceable numerator; shield/structure have distinct volume-driven accounts. A bundle is not independently modeled divertor erosion life, and current cost rates retain calibration assumptions.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R3.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "Winding pack, structure, power supplies, cryoplant costed as separately sized sub-accounts",
+      "target_anchor": "Winding pack, structure, power supplies, cryoplant costed as separately sized sub-accounts",
+      "model_evidence": [
+        "models/library/analyses/mfe_magnet_cost.sysml:56",
+        "models/library/analyses/mfe_magnet_cost.sysml:103",
+        "models/library/analyses/mfe_magnet_cost.sysml:141",
+        "models/library/analyses/mfe_magnet_cost.sysml:178",
+        "models/library/analyses/mfe_account_costs.sysml:140",
+        "models/library/analyses/mfe_account_costs.sysml:559",
+        "models/designs/generic_mfe/mfe_plant.sysml:635",
+        "models/designs/generic_mfe/mfe_plant.sysml:646",
+        "models/designs/generic_mfe/mfe_plant.sysml:654",
+        "models/designs/generic_mfe/mfe_plant.sysml:695",
+        "models/designs/generic_mfe/mfe_plant.sysml:851"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires design-based fabrication/installation and stated uncertainty; independently driven subaccounts retain empirical casing scaling and fabrication markups without a qualified estimate uncertainty model.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Winding, casing/structure, power supplies and cryoplant have separate quantity/performance drivers and source-basis accounts. Selected-case checks cover their amounts, cold-load response and winding+structure rollup; no shared lump substitutes for all four.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "Historical Row-3 account rationale plus C50/CC preservation. Four drivers are distinct; fabrication factors/casing scaling remain calibrated. Cryo electrical-load cost is an explicit subaccount. F07/F14 and source/installation/uncertainty limits remain attached.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R4.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cost follows installed heating power with source basis",
+      "target_anchor": "Cost follows installed heating power with source basis",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:196",
+        "models/designs/generic_mfe/mfe_plant.sysml:717",
+        "models/designs/stellarator_09/stellarator_plant.sysml:743"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/axis-accounts.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires separately costed sources, transmission and launchers with appropriate replacement logic; current installed-power procurement remains an aggregate.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Installed delivered capacity remains the ECRH procurement operand; reserve and efficiency cases verify the channel and account. Operating demand is not silently substituted into installed cost.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C50 independently verifies 50/60 delivered MW procurement and unchanged installed driver during demand controls. Rates have inherited 1costingFE basis. Mixed heating and separate launcher/transmission replacement chains remain absent.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R5.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cost follows divertor thermal power or area with source basis",
+      "target_anchor": "Cost follows divertor thermal power or area with source basis",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:168",
+        "models/designs/generic_mfe/mfe_plant.sysml:703",
+        "models/designs/generic_mfe/mfe_plant.sysml:1131"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires targets/cassettes represented as replaceable units; a single thermal-scaled divertor account bundled with blanket replacement does not identify those units or their computed lives.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Divertor cost follows computed thermal power with an explicit inherited rate/power-law source and CAS home. The row expressly permits a thermal-power proxy; the reported area shadow is not its cost driver.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C50/CC retain thermal-power cost proxy. The literal anchor allows thermal power; target-flux physics does not automatically size costed target area. Bundled replacement does not prove divertor-specific erosion life.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R6.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cost follows computed shell volume/mass with source basis",
+      "target_anchor": "Cost follows computed shell volume/mass with source basis",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:108",
+        "models/designs/generic_mfe/mfe_plant.sysml:177",
+        "models/designs/generic_mfe/mfe_plant.sysml:688"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package-inputs.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires separately sized shell, ports and pumping train; the current shell calculation omits port and train sizing/costs.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Shell-volume cost is verified at baseline ($120.841903 million) and all selected geometries, with inherited rate/power scaling. Gas-load pumping equipment is explicitly outside this account.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "CC preserves shell-volume costing; model doc explicitly excludes gas-load pumping cost. Separate missing pumping equipment cannot be hidden inside shell cost.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R7.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "Costs follow loop thermal power or flow quantities with source basis",
+      "target_anchor": "Pumps, piping, heat exchangers as separately sized subaccounts",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:526",
+        "models/library/analyses/mfe_account_costs.sysml:559",
+        "models/designs/generic_mfe/mfe_plant.sysml:839",
+        "models/designs/generic_mfe/mfe_plant.sysml:851",
+        "models/designs/stellarator_09/stellarator_plant.sysml:830"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/lcoe-bridges.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires separately sized pumps, piping and heat exchangers; coolant/aux-cooling power proxies do not purchase or cost that equipment.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Primary/intermediate coolant and auxiliary-cooling costs follow plant power; the intermediate/auxiliary terms have computed thermal-power drivers and inherited source basis. This earns parametric costing, while no pump/pipe/IHX equipment subaccounts exist.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E45 exclusions and actual cost bindings show coolant/aux-cooling proxies; no independently sized/priced pump, pipe and IHX set is present. Loop flow and IHX duty alone are not equipment estimates.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ],
+      "disposition": {
+        "status": "bounded",
+        "authority": "AGENT proposed; no owner residual acceptance",
+        "B-2": "Coolant and auxiliary-cooling homes exist, but separately represented pump/pipe/IHX equipment correspondence is missing.",
+        "B-3": "Computed flow, loss, work and IHX duty can be compared only within the representative-circuit transfer; minimum loop count does not demonstrate buildable equipment.",
+        "B-4": "Existing power proxies cannot be presented as sized pump/pipe/IHX estimates or an equipment-cost optimum; missing comparable costs cannot count as a pass.",
+        "missing_evidence_and_next_owner": "Sourced sizing and installed procurement/fabrication costs for pumps, piping and IHX; thermal/equipment modeling owner, source approval by owner."
+      }
+    },
+    {
+      "cell_id": "R8.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Costs follow computed gross/net power with source basis",
+      "target_anchor": "Costs follow computed gross/net power with source basis",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:226",
+        "models/designs/generic_mfe/mfe_plant.sysml:732",
+        "models/designs/generic_mfe/mfe_plant.sysml:737",
+        "models/designs/generic_mfe/mfe_plant.sysml:742",
+        "models/designs/generic_mfe/mfe_plant.sysml:747"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/lcoe-bridges.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires turbine island, electrical plant and heat sink as separately sized subaccounts; four power-scaled totals do not decompose those facilities.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Turbine/electric/misc costs follow computed gross-power drivers with source-based rates; heat rejection retains the thermal-power proxy. All four output/account mappings are verified, with the heat-rejection limitation retained rather than recast as rejected-duty sizing.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C50 preserves explicit design-point sizing classification. Turbine uses computed gross thermal-electric power; electric/misc use gross electric; heat rejection uses thermal power, not computed rejected duty. This distinction must remain visible when applying the literal row anchor.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R9.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "Grouped building bases scaled by plant power with source basis",
+      "target_anchor": "Building set sized by volume/function from layout drivers, incl. hot cell and remote-handling facilities",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:304",
+        "models/library/analyses/mfe_account_costs.sysml:366",
+        "models/library/analyses/mfe_account_costs.sysml:476",
+        "models/designs/generic_mfe/mfe_plant.sysml:760",
+        "models/designs/generic_mfe/mfe_plant.sysml:775",
+        "models/designs/generic_mfe/mfe_plant.sysml:816"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires volume/function sizing from layout drivers including hot cell and remote handling; grouped power-scaled bases and a handling proxy lack those drivers.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Grouped fixed/fusion/staffing/thermal-electric/thermal/gross-electric building bases and the handling proxy execute with declared power drivers. There is no layout-derived building-volume or hot-cell-throughput chain.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "Current model has grouped power-scaled bases and separate power-scaled handling. S-calendar shows conceptual hot-cell discussion, not a computational layout/throughput chain. Negative-net CAS10 evaluability is a separate integrity defect.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ],
+      "disposition": {
+        "status": "bounded",
+        "authority": "AGENT proposed; no owner residual acceptance",
+        "B-2": "Grouped building and handling accounts do not establish volume/function/layout correspondence, especially for hot cell and remote handling.",
+        "B-3": "No model-owned building volume or handling-throughput output supports a derived-quantity comparison for that scope.",
+        "B-4": "Power-scaled bases may be labeled and compared only as those proxies; they do not supply layout-based facility costs.",
+        "missing_evidence_and_next_owner": "Admissible layout, component handling paths/throughput and building-rate basis; facility/RH modeling owner, owner rules on any residual or comparison amendment."
+      }
+    },
+    {
+      "cell_id": "R10.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 1,
+      "target": 2,
+      "target_met": false,
+      "anchor_satisfied": "Annual fuel cost line with a CAS home",
+      "target_anchor": "Processing-plant cost follows computed throughput with source basis",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:732",
+        "models/library/analyses/mfe_account_costs.sysml:449",
+        "models/designs/generic_mfe/mfe_plant.sysml:1033",
+        "models/designs/generic_mfe/mfe_plant.sysml:869",
+        "models/designs/generic_mfe/mfe_plant.sysml:1078"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires processing-plant cost driven by computed throughput with source basis; the annual feedstock line and power-scaled fuel-handling proxy are not that relation.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "The annual fuel line and CAS80 wrapper are verified, alongside an independent fuel-handling power proxy. Computed processing throughput does not drive a processing-equipment cost account.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E47 adds throughput but does not bind it into processing equipment cost. Feedstock recovery factor and physical recovery of exhausted fuel have different meanings despite the shared historical number. No processing-plant throughput cost basis is supplied.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ],
+      "disposition": {
+        "status": "bounded",
+        "authority": "AGENT proposed; no owner residual acceptance",
+        "B-2": "A feedstock line and power proxy are not processing-plant decomposition; the absent B-2 fuel-cycle home remains visible.",
+        "B-3": "Flow outputs do not size processing subsystems or prove a resisting capacity.",
+        "B-4": "No throughput-priced processing plant exists; do not compare annual fuel expenditure as though it were processing equipment capital.",
+        "missing_evidence_and_next_owner": "Sourced processing capacities and cost relation tied to throughput; fuel-cycle/economic modeling owner, owner source approval."
+      }
+    },
+    {
+      "cell_id": "R11.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Levelized replacement follows computed component life",
+      "target_anchor": "Levelized replacement follows computed component life",
+      "model_evidence": [
+        "models/library/analyses/mfe_lifecycle.sysml:4",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:101",
+        "models/designs/generic_mfe/mfe_plant.sysml:1131",
+        "models/designs/generic_mfe/mfe_plant.sysml:1148",
+        "models/designs/generic_mfe/mfe_plant.sysml:1162",
+        "models/designs/generic_mfe/mfe_plant.sysml:782",
+        "models/designs/generic_mfe/mfe_plant.sysml:960"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/derived-event-tables.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires replacement per component class plus decomposed O&M and decommissioning; one in-vessel bundle and aggregate staffing/decommissioning proxies do not satisfy the conjunction.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Calendar replacement PV becomes CAS72 and joins annual O&M; finite-sum ledgers and dated events verify life-dependent levelization. O&M and decommissioning remain aggregated and the in-vessel replacement is bundled.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "E46/C50 support bundled life-dependent replacement PV and levelization. O&M/decommissioning remain proxies; held and live finance have distinct singularity behavior. No per-component maintenance or outage logistics cost estimate is implied.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ]
+    },
+    {
+      "cell_id": "R12.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": 2,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "2-digit CAS coverage with computed contingency, indirects, IDC, levelization, and LCOE",
+      "target_anchor": "3-digit functional subaccounts where cost concentrates, plus a stated estimate class and uncertainty treatment",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:255",
+        "models/library/analyses/mfe_account_costs.sysml:276",
+        "models/library/analyses/mfe_account_costs.sysml:645",
+        "models/library/analyses/mfe_account_costs.sysml:672",
+        "models/library/analyses/mfe_account_costs.sysml:806",
+        "models/library/analyses/mfe_account_costs.sysml:828",
+        "models/library/analyses/mfe_account_costs.sysml:858",
+        "models/library/analyses/mfe_lcoe_dcf.sysml:4",
+        "models/designs/generic_mfe/mfe_plant.sysml:920",
+        "models/designs/generic_mfe/mfe_plant.sysml:934",
+        "models/designs/generic_mfe/mfe_plant.sysml:983",
+        "models/designs/generic_mfe/mfe_plant.sysml:1191",
+        "models/designs/generic_mfe/mfe_plant.sysml:1215",
+        "models/designs/generic_mfe/mfe_plant.sysml:1223"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv@e1ba37f4 (371 selected native cases; c0000 is the ordinary baseline)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json@e1ba37f4 (accepted identity)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/all-channel-verification.json@e1ba37f4 (141 oracle channels, seventeen local scalar identities and eighteen predicates; arithmetic evidence)",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/verification_summary.json@e1ba37f4 (128 independently rerun cases, 73 patterns; bounded verifier coverage)"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/finance-ledgers.json@e1ba37f4",
+        "exploration/stellarator_e2e/studies/20260912-plant-closure/results/lcoe-bridges.json@e1ba37f4"
+      ],
+      "why_not_next": "The next anchor requires concentrated functional subaccounts plus stated estimate class and uncertainty treatment; account arithmetic, markups and unweighted sensitivities do not supply the latter conjunction.",
+      "grader": "/root/plant_fresh_grader; fresh non-author of rubric/model/study execution; 2026-09-12",
+      "evidence_assessment": "Selected-case account identities cover contingency, indirects, IDC, annual wrappers and both LCOEs. The baseline finance ledger independently reports capital charges, annual cost and energy, rather than inferring numerators from LCOE. No model estimate class or uncertainty treatment is established.",
+      "static_evidence": "work/orchestration/goals/plant-closure/evidence/T-013_grading/static-evidence.md@7876b4e7",
+      "evidence_grade": "Direct canonical/static inspection plus retained native execution and independently reviewed numerical certificates; source/calibration authority remains at the exact scope recorded in static inventory.",
+      "limitations": "C50 independent finite sums and CC preservation support bounded arithmetic. Broad CAS coverage and magnet subaccounts do not by themselves supply estimate class/uncertainty. F05 equal/zero-rate/IDC/held-calendar limits persist; F08/F09 accounting/normalization and F11 multi-module limits remain. Financial production is held outside this checkout.",
+      "integrity_findings": [
+        "I-validation",
+        "I-coverage",
+        "I-source-process"
+      ],
+      "disposition": {
+        "status": "bounded",
+        "authority": "AGENT proposed; no owner residual acceptance",
+        "B-2": "CAS arithmetic/decomposition is available, but universal typed/scalar/dialect account correspondence remains unresolved and must be checked explicitly.",
+        "B-3": "Both price forms are verified only at selected finite, fixed-finance, single-module inputs; normalized cross-concept and zero/equal-rate claims are unavailable.",
+        "B-4": "No model estimate class/uncertainty treatment is established; the B-4 acceptance band itself does not bestow AACE estimate maturity, and cost scope/currency/year must match before a ratio is meaningful.",
+        "missing_evidence_and_next_owner": "Declared estimate maturity/uncertainty and common monetary/account/timing basis; coding/economic-model owners for concrete defects, methodology owner for finance/comparison/residual decisions."
+      }
+    },
+    {
+      "cell_id": "R1.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "target_met": true,
+      "anchor_satisfied": "S is not applicable: the plasma has no hardware or cost account of its own; its structure is the calc spine, and its cost lives in rows 3/4.",
+      "model_evidence": [
+        "models/library/analyses/mfe_plasma_scaling.sysml:4",
+        "models/library/analyses/mfe_plasma_sustainment.sysml:4",
+        "models/designs/generic_mfe/mfe_plant.sysml:635",
+        "models/designs/generic_mfe/mfe_plant.sysml:717"
+      ],
+      "runtime_evidence": [
+        "Not required: rubric explicitly assigns this dimension outside the scored area."
+      ],
+      "study_evidence": [
+        "Not required for applicability; no numerical score inferred."
+      ],
+      "why_not_next": "No next level applies because the frozen rubric assigns this dimension not_applicable.",
+      "grader": "/root/plant_fresh_grader; 2026-09-12",
+      "evidence_grade": "Frozen-rubric applicability and canonical structure.",
+      "evidence_assessment": "Current structure agrees with the rubric's assigned area. Final record should carry `not_applicable` with this rationale, not a missing numerical score. No separate numerical result is needed.",
+      "integrity_findings": []
+    },
+    {
+      "cell_id": "R9.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "target_met": true,
+      "anchor_satisfied": "Buildings carry no plasma physics; their depth is structural",
+      "model_evidence": [
+        "models/library/analyses/mfe_account_costs.sysml:304",
+        "models/library/analyses/mfe_account_costs.sysml:476",
+        "models/designs/generic_mfe/mfe_plant.sysml:760",
+        "models/designs/generic_mfe/mfe_plant.sysml:816"
+      ],
+      "runtime_evidence": [
+        "Not required: rubric explicitly assigns this dimension outside the scored area."
+      ],
+      "study_evidence": [
+        "Not required for applicability; no numerical score inferred."
+      ],
+      "why_not_next": "No next level applies because the frozen rubric assigns this dimension not_applicable.",
+      "grader": "/root/plant_fresh_grader; 2026-09-12",
+      "evidence_grade": "Frozen-rubric applicability and canonical structure.",
+      "evidence_assessment": "Rubric assigns this area to structure/cost. Final applicability is unchanged by downstream plant-power drivers; no separate numerical result is needed.",
+      "integrity_findings": []
+    },
+    {
+      "cell_id": "R12.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "target_met": true,
+      "anchor_satisfied": "The economics layer's depth is structural.",
+      "model_evidence": [
+        "models/library/analyses/mfe_lcoe_dcf.sysml:4",
+        "models/library/analyses/mfe_account_costs.sysml:645",
+        "models/library/analyses/mfe_account_costs.sysml:672",
+        "models/designs/generic_mfe/mfe_plant.sysml:1191",
+        "models/designs/generic_mfe/mfe_plant.sysml:1223"
+      ],
+      "runtime_evidence": [
+        "Not required: rubric explicitly assigns this dimension outside the scored area."
+      ],
+      "study_evidence": [
+        "Not required for applicability; no numerical score inferred."
+      ],
+      "why_not_next": "No next level applies because the frozen rubric assigns this dimension not_applicable.",
+      "grader": "/root/plant_fresh_grader; 2026-09-12",
+      "evidence_grade": "Frozen-rubric applicability and canonical structure.",
+      "evidence_assessment": "Rubric assigns economics to structure/cost. Mathematical defects remain integrity evidence on R12.S, not a new physics dimension. No separate numerical result is needed.",
+      "integrity_findings": []
+    }
+  ]
+}

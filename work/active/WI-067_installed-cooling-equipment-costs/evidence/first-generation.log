@@ -1,0 +1,11 @@
+Model failed exact-route validation: SI_EDGE_DANGLING: stellarator_09__stellaris__pb: typed producer dependency cycle: stellarator_09__stellaris__pb -> stellarator_09__stellaris__heat_transport__cooling_selection -> stellarator_09__stellaris__heat_transport__coolant
+Traceback (most recent call last):
+  File "/tmp/cooling_first_generation.py", line 15, in <module>
+    m.seed_and_generate(out,models_path=Path('exploration/stellarator_e2e/models'))
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-066_computed-tritium-breeding/evidence/regenerate.py", line 28, in seed_and_generate
+    return recipe().seed_and_generate(path,source,generator=generator,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py", line 39, in seed_and_generate
+    assert (generator or run_codegen)(GenerationConfig(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

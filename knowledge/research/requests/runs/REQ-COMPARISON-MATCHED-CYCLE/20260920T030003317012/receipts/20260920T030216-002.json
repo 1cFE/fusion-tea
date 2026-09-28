@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=0.8&TLow=42&THigh=455&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+  "slug": "nist_water0_8mpa42to455c_matched_cycle_table",
+  "path": "knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/",
+  "source_id": "89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-20T03:02:16.014933+00:00"
+}

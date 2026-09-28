@@ -1,0 +1,1 @@
+Native execution did not start. ModuleNotFoundError: No module named simkit at study_route.py:161. No study store or evaluated case was created. Correction: use the documented sealed-runner PYTHONPATH that integration supplies to its subprocesses. Same 498 inputs, package, scope and semantics.

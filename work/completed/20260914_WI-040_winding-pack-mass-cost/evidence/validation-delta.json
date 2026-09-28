@@ -1,0 +1,45 @@
+{
+  "L2": {
+    "before_success": false,
+    "after_success": false,
+    "before_count": 10,
+    "after_count": 10,
+    "removed": [],
+    "added": [],
+    "unchanged_identities": 10
+  },
+  "L6": {
+    "before_success": false,
+    "after_success": false,
+    "before_count": 245,
+    "after_count": 249,
+    "removed": [],
+    "added": [
+      {
+        "code": "ValidationCode.V4_UNSUPPORTED_OPERATOR",
+        "element": "mfe_power_core::'Magnet System'::tape_procurement_cost",
+        "message": "Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::tape_procurement_cost'",
+        "severity": "Severity.ERROR"
+      },
+      {
+        "code": "ValidationCode.V4_UNSUPPORTED_OPERATOR",
+        "element": "mfe_power_core::'Magnet System'::winding_cost_legacy",
+        "message": "Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::winding_cost_legacy'",
+        "severity": "Severity.ERROR"
+      },
+      {
+        "code": "ValidationCode.V4_UNSUPPORTED_OPERATOR",
+        "element": "mfe_power_core::'Magnet System'::winding_fabrication_cost",
+        "message": "Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::winding_fabrication_cost'",
+        "severity": "Severity.ERROR"
+      },
+      {
+        "code": "ValidationCode.V4_UNSUPPORTED_OPERATOR",
+        "element": "mfe_power_core::'Magnet System'::winding_material_cost",
+        "message": "Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::winding_material_cost'",
+        "severity": "Severity.ERROR"
+      }
+    ],
+    "unchanged_identities": 234
+  }
+}

@@ -1,0 +1,483 @@
+{
+  "passed": true,
+  "snapshot_sha256": "6f51f7ad251cdec581c556a6c9ab6655e7132142918efe012af52cd2523742c6",
+  "artifact_count": 281,
+  "cases": 64,
+  "exported_scalar_values_exactly_matching_store": 34944,
+  "exported_predicates_exactly_matching_store": 896,
+  "transition_counts": [
+    [
+      "committed",
+      64,
+      64,
+      1
+    ],
+    [
+      "started",
+      64,
+      64,
+      1
+    ]
+  ],
+  "store_hash_unchanged": true,
+  "findings": 27,
+  "case_summaries": [
+    {
+      "case": "no-breeding-credit",
+      "lcoe": 1119.4080833905023,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "assumed-new-tritium-feed-100",
+      "lcoe": 176.6865694100971,
+      "source_lcoe": 75.07957645358292,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "nominal-source-assumed",
+      "lcoe": 767.4209310802515,
+      "source_lcoe": 611.1934076833633,
+      "net_power": 796.0052878870191,
+      "violations": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "lcoe": 756.9498247890673,
+      "source_lcoe": 611.1934076833633,
+      "net_power": 807.0166597175527,
+      "violations": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "lcoe": 737.8553703208381,
+      "source_lcoe": 594.9679484692587,
+      "net_power": 805.9108652992365,
+      "violations": [
+        "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "discount-0.0-no-credit",
+      "lcoe": 1062.967326857354,
+      "source_lcoe": 452.425601628676,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-1e-12-no-credit",
+      "lcoe": 1062.967326858112,
+      "source_lcoe": 452.42560162899787,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.03-no-credit",
+      "lcoe": 1092.298618567509,
+      "source_lcoe": 464.1287244414935,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.08-no-credit",
+      "lcoe": 1171.1939621876074,
+      "source_lcoe": 490.8766964928592,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.1-no-credit",
+      "lcoe": 1212.7693620046334,
+      "source_lcoe": 503.1348796781504,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.0-feed",
+      "lcoe": 120.24581287694876,
+      "source_lcoe": 53.553724110545495,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-1e-12-feed",
+      "lcoe": 120.24581287770668,
+      "source_lcoe": 53.55372411086729,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.03-feed",
+      "lcoe": 149.57710458710372,
+      "source_lcoe": 65.25684692336297,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.08-feed",
+      "lcoe": 228.47244820720226,
+      "source_lcoe": 92.00481897472869,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "discount-0.1-feed",
+      "lcoe": 270.04784802422813,
+      "source_lcoe": 104.26300216001985,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "construction-0.0-no-credit",
+      "lcoe": 1106.7237403618278,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "construction-4.0-no-credit",
+      "lcoe": 1114.972083964931,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "construction-10.0-no-credit",
+      "lcoe": 1128.9565721540446,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "construction-0.0-feed",
+      "lcoe": 164.00222638142264,
+      "source_lcoe": 75.07957645358292,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "construction-4.0-feed",
+      "lcoe": 172.2505699845258,
+      "source_lcoe": 75.07957645358292,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "construction-10.0-feed",
+      "lcoe": 186.23505817363932,
+      "source_lcoe": 75.07957645358292,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "life-20.0-no-credit",
+      "lcoe": 1155.3210825988904,
+      "source_lcoe": 489.2675219050597,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "life-30.0-no-credit",
+      "lcoe": 1131.2765633962122,
+      "source_lcoe": 479.0545980450076,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "life-60.0-no-credit",
+      "lcoe": 1110.088437368707,
+      "source_lcoe": 469.94266342739604,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "life-20.0-feed",
+      "lcoe": 212.59956861848516,
+      "source_lcoe": 90.3956443869291,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "life-30.0-feed",
+      "lcoe": 188.55504941580693,
+      "source_lcoe": 80.18272052687698,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "life-60.0-feed",
+      "lcoe": 167.36692338830187,
+      "source_lcoe": 71.07078590926554,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "availability-0.6-no-credit",
+      "lcoe": 1171.115874615777,
+      "source_lcoe": 495.96365862597304,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "availability-0.75-no-credit",
+      "lcoe": 1135.9045816783616,
+      "source_lcoe": 480.97420627742656,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "availability-0.95-no-credit",
+      "lcoe": 1106.3824728169177,
+      "source_lcoe": 468.40630453447045,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "availability-0.6-feed",
+      "lcoe": 185.6833775243691,
+      "source_lcoe": 79.02047397048901,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "availability-0.75-feed",
+      "lcoe": 149.29094173268993,
+      "source_lcoe": 63.53127205548983,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "availability-0.95-feed",
+      "lcoe": 262.89480241339714,
+      "source_lcoe": 111.52094043930097,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "magnet_inventory_price-0.5",
+      "lcoe": 1116.0652304813432,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "magnet_inventory_price-1.5",
+      "lcoe": 1122.7509362996616,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "unallocated_source_scope_price-0.5",
+      "lcoe": 1118.9432453273096,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "unallocated_source_scope_price-2.0",
+      "lcoe": 1120.337759516888,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "tritium_price-10000000.0",
+      "lcoe": 448.39887189644617,
+      "source_lcoe": 192.81337440349864,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "tritium_price-100000000.0",
+      "lcoe": 3467.940323619699,
+      "source_lcoe": 1457.9347324604657,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "routine_om-35000000.0",
+      "lcoe": 1108.2985705994874,
+      "source_lcoe": 469.2509436305907,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "routine_om-140000000.0",
+      "lcoe": 1141.6271089725321,
+      "source_lcoe": 483.35247465395895,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "consumables-1000000.0",
+      "lcoe": 1118.138424785815,
+      "source_lcoe": 473.41425278987083,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "consumables-15000000.0",
+      "lcoe": 1122.582229902221,
+      "source_lcoe": 475.29445692632,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "terminal-0.05",
+      "lcoe": 1118.836550905161,
+      "source_lcoe": 473.67041373762856,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "terminal-0.2",
+      "lcoe": 1120.5511483611851,
+      "source_lcoe": 474.51353443988324,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "salvage-0.0",
+      "lcoe": 1119.636696384639,
+      "source_lcoe": 474.06387006534743,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "salvage-0.05",
+      "lcoe": 1119.0651638992974,
+      "source_lcoe": 473.7828298312625,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "overhaul_fraction-0.0",
+      "lcoe": 1117.8916375587305,
+      "source_lcoe": 473.20577056356274,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "overhaul_fraction-0.1",
+      "lcoe": 1120.9245292222743,
+      "source_lcoe": 474.69713737986416,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "overhaul_date-15.0",
+      "lcoe": 1119.8270494143508,
+      "source_lcoe": 474.15747254884764,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "overhaul_date-30.0",
+      "lcoe": 1118.8226037531317,
+      "source_lcoe": 473.6635554907719,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "replacement_life-2.0",
+      "lcoe": 1125.3406628496973,
+      "source_lcoe": 476.46156864749224,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "replacement_life-8.0",
+      "lcoe": 1118.0343029468538,
+      "source_lcoe": 473.37019813239124,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "replacement_factor-0.5",
+      "lcoe": 1117.7575201948696,
+      "source_lcoe": 473.2530894695345,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "replacement_factor-2.0",
+      "lcoe": 1122.7092097817679,
+      "source_lcoe": 475.3481829760714,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "new-feed-50.0",
+      "lcoe": 652.8085461678775,
+      "source_lcoe": 276.5300196445579,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "new-feed-110.0",
+      "lcoe": 132.23861151341225,
+      "source_lcoe": 56.273343483210716,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "supply-service-10000000.0",
+      "lcoe": 170.33827638666003,
+      "source_lcoe": 72.39357054436991,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "supply-service-100000000.0",
+      "lcoe": 198.90559499212685,
+      "source_lcoe": 84.48059713582842,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "density-4.5e+20-fixed-feed",
+      "lcoe": 398.9802724521205,
+      "source_lcoe": 56.271569992699185,
+      "net_power": 140.23069647161535,
+      "violations": []
+    },
+    {
+      "case": "density-5.5e+20-fixed-feed",
+      "lcoe": 221.32516549334562,
+      "source_lcoe": 163.16434244973277,
+      "net_power": 735.7593230685975,
+      "violations": []
+    },
+    {
+      "case": "he-area-5000.0",
+      "lcoe": 1215.0756889447423,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 389.19551661815603,
+      "violations": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "he-area-75000.0",
+      "lcoe": 1120.3628659451708,
+      "source_lcoe": 473.9514539717135,
+      "net_power": 423.10679410931664,
+      "violations": []
+    },
+    {
+      "case": "zero-rate-zero-construction",
+      "lcoe": 1062.967326857354,
+      "source_lcoe": 452.425601628676,
+      "net_power": 423.10679410931664,
+      "violations": []
+    }
+  ]
+}

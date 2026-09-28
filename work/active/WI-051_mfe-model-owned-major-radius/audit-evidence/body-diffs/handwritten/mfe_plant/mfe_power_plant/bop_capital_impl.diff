@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
++++ production/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:801
+ 
+ SysML Expressions:
+ """
+@@ -15,7 +15,7 @@
+ def run_bop_capital(inputs: bop_capitalInput) -> float:
+     """Execute bop_capital calculation.
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:801
+ 
+ Args:
+     inputs: Input parameters validated against bop_capitalInput schema

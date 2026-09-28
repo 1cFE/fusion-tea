@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-06",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-06/20260918T202907333762",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://www.ncbi.nlm.nih.gov/books/NBK598740/table/ch4.tab2/",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_captures",
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

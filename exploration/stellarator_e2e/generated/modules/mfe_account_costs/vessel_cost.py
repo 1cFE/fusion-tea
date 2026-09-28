@@ -18,18 +18,18 @@ deepening. See the plant doc's initial-model-limitations note.
 *Basis**: Volume-based vessel-shell cost with gross-electric power law
 
 Inputs:
-    - p_et_in: p_et_in parameter
+    - unit_cost: unit_cost parameter
     - alpha: alpha parameter
+    - p_et_in: p_et_in parameter
     - vessel_vol: vessel_vol parameter
     - p_et_ref: p_et_ref parameter
-    - unit_cost: unit_cost parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:108
+SysML Source: root-0/analyses/mfe_account_costs.sysml:164
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:108
+SysML Source: root-0/analyses/mfe_account_costs.sysml:164
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/vessel_cost_impl.py
@@ -45,17 +45,17 @@ class Vessel_CostInput(BaseModel):
     """Input model for Vessel_CostModule.
 
     Attributes:
-        p_et_in: p_et_in input
+        unit_cost: unit_cost input
         alpha: alpha input
+        p_et_in: p_et_in input
         vessel_vol: vessel_vol input
         p_et_ref: p_et_ref input
-        unit_cost: unit_cost input
     """
-    p_et_in: float = Field(..., description="p_et_in input")
+    unit_cost: float = Field(..., description="unit_cost input")
     alpha: float = Field(..., description="alpha input")
+    p_et_in: float = Field(..., description="p_et_in input")
     vessel_vol: float = Field(..., description="vessel_vol input")
     p_et_ref: float = Field(..., description="p_et_ref input")
-    unit_cost: float = Field(..., description="unit_cost input")
 
 
 class Vessel_CostModule(ModuleBase[Vessel_CostInput, Float]):
@@ -77,18 +77,18 @@ deepening. See the plant doc's initial-model-limitations note.
 *Basis**: Volume-based vessel-shell cost with gross-electric power law
 
 Inputs:
-    - p_et_in: p_et_in parameter
+    - unit_cost: unit_cost parameter
     - alpha: alpha parameter
+    - p_et_in: p_et_in parameter
     - vessel_vol: vessel_vol parameter
     - p_et_ref: p_et_ref parameter
-    - unit_cost: unit_cost parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:108
+SysML Source: root-0/analyses/mfe_account_costs.sysml:164
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:108
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:164
 
     Calculation Specification:
         p_et_ref = 1100.0
@@ -121,37 +121,37 @@ deepening. See the plant doc's initial-model-limitations note.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_et_in: float, alpha: float, vessel_vol: float, p_et_ref: float, unit_cost: float    ) -> Vessel_CostInput:
+        self, unit_cost: float, alpha: float, p_et_in: float, vessel_vol: float, p_et_ref: float    ) -> Vessel_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            p_et_in: p_et_in input
+            unit_cost: unit_cost input
             alpha: alpha input
+            p_et_in: p_et_in input
             vessel_vol: vessel_vol input
             p_et_ref: p_et_ref input
-            unit_cost: unit_cost input
 
         Returns:
             Validated input model
         """
-        return Vessel_CostInput(p_et_in=p_et_in, alpha=alpha, vessel_vol=vessel_vol, p_et_ref=p_et_ref, unit_cost=unit_cost)
+        return Vessel_CostInput(unit_cost=unit_cost, alpha=alpha, p_et_in=p_et_in, vessel_vol=vessel_vol, p_et_ref=p_et_ref)
 
     def run(
-        self, p_et_in: float, alpha: float, vessel_vol: float, p_et_ref: float, unit_cost: float    ) -> ModuleResult[Float]:
+        self, unit_cost: float, alpha: float, p_et_in: float, vessel_vol: float, p_et_ref: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            p_et_in: p_et_in input
+            unit_cost: unit_cost input
             alpha: alpha input
+            p_et_in: p_et_in input
             vessel_vol: vessel_vol input
             p_et_ref: p_et_ref input
-            unit_cost: unit_cost input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_et_in, alpha, vessel_vol, p_et_ref, unit_cost)
+        validated_inputs = self.validate_and_fill_default(unit_cost, alpha, p_et_in, vessel_vol, p_et_ref)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.vessel_cost_impl import (

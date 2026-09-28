@@ -1,0 +1,7 @@
+Created [design.md](work/active/WI-051_mfe-model-owned-major-radius/design.md) and [prototype evidence](work/active/WI-051_mfe-model-owned-major-radius/prototype/numerical-report.md).
+
+Proven: nine exact edges, 247→246 inputs, complete unchanged baseline, R-only14 parity, strict retired-key refusal, preserved standalone formals/manual implementations, and live/snapshot equality.
+
+L2/L6 retain unchanged findings. Original F07 remains open; current-study compatibility remains incomplete. No new blocker found.
+
+Production untouched. Stopped before independent review and planning.

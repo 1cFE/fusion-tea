@@ -1,0 +1,20 @@
+[
+  {
+    "page_num": 0,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/6 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/2 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  }
+]

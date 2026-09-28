@@ -1,0 +1,6 @@
+{
+  "source": "/tmp/pytest-of-reid/pytest-13056/test_green_single_point_comman0/historical-cli.log",
+  "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-study-cli.log",
+  "sha256": "ea10e612c9df7bd9062bbdd67d22b1fe296175a5b0fbbb1cebef99c51d2e4752",
+  "meaning": "Final study strict-xfail baseline signature guards; original success assertion remains expected failure."
+}

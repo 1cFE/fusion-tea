@@ -1,0 +1,40 @@
+{
+  "request_id": "REQ-fuel-processing-cost-01",
+  "run": "knowledge/research/requests/runs/REQ-fuel-processing-cost-01/20260919T160645691363",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "bartlit_1983_subsystem_cost_data_for_the_tritium_systems",
+      "path": "knowledge/sources/bartlit_1983_subsystem_cost_data_for_the_tritium_systems/",
+      "source_id": "9c70185c020dd5e3bca0163811d58ecc7d76258a95ac84753dfa839c5b33ebad",
+      "pre_existing": false
+    },
+    {
+      "slug": "bartlit_1983_tsta_subsystem_costs_original_osti_paper",
+      "path": "knowledge/sources/bartlit_1983_tsta_subsystem_costs_original_osti_paper/",
+      "source_id": "01ee45acad5e8796c02df945102f364e1f237be39dc9e9adb3dfd5549254f9b3",
+      "pre_existing": false
+    },
+    {
+      "slug": null,
+      "path": null,
+      "source_id": "23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754",
+      "pre_existing": true
+    },
+    {
+      "slug": "bartlit_denton_sherman_hydrogen_isotope_distillation_for",
+      "path": "knowledge/sources/bartlit_denton_sherman_hydrogen_isotope_distillation_for/",
+      "source_id": "1f3833667dd103f8a25fa114794a811f0c74ffd2a08aecf0563c0cc08cb0fa81",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "/tmp/fuel-tsta.pdf",
+      "reason": "input file not found: /tmp/fuel-tsta.pdf"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

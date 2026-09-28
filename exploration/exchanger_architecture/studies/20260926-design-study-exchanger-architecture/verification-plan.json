@@ -1,0 +1,10 @@
+{
+  "sample_size": 648,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerances": "manifest.json absolute_tolerances unchanged",
+  "numeric_channels": 364,
+  "predicates": 14,
+  "native_channels_exported": 551,
+  "not_independently_verified": "primary exchanger hot/return and terminal state channels outside oracle comparison_catalog",
+  "main_execution_started": false
+}

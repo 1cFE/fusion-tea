@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://web.aacei.org/docs/default-source/toc/toc_18r-97.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T18:18:58.111689+00:00"
+}

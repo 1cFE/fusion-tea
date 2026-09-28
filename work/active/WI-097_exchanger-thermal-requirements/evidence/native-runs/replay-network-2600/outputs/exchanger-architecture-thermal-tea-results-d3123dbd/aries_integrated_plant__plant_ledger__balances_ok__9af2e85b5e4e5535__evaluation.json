@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+  "margin": 3.09460772647378e-06,
+  "observed": {
+    "magnitude_in": 8.192273526219651e-09,
+    "tolerance_in": 3.1027999999999998e-06
+  },
+  "status": "satisfied"
+}

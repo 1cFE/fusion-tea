@@ -1,0 +1,3581 @@
+{
+  "status": "pass",
+  "cases": 498,
+  "counts": {
+    "pass": 498,
+    "consistent_refusal": 0,
+    "fail": 0
+  },
+  "scalar_comparisons": 593616,
+  "predicate_comparisons": 62250,
+  "sources": [
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-00/cases.json",
+      "sha256": "282d1bb76470e97b7f852f6d63fa08c89a03e53a878addab8ceb7ace38943f51"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-01/cases.json",
+      "sha256": "7887041f6e701d6fe9ccfa6595a177f30012a338351a618055a48ebc98a30340"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-02/cases.json",
+      "sha256": "0d9ada36d560978b35e6ef764d2b4a906ef55f9d7ee4c42838b5ddeb093a25ea"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-03/cases.json",
+      "sha256": "b1fcfc89df798d20eba0c19513f5f50f4f305250ff42c8d6ab6f0fdb4281594b"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-04/cases.json",
+      "sha256": "8d1f0ecbecce7f19b30a5f83d447bcc18bfad95545cdcfe041484a6e7e36cac9"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-05/cases.json",
+      "sha256": "24a6d3e2654236590cb2d2280b54b7512f5633e9a31c2397c58b6e597cee3700"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-06/cases.json",
+      "sha256": "e54d5b4ec5cc97886080ad01c8893d3ba2245d9f1d0b7f2f9f2b1dd161e64cac"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-07/cases.json",
+      "sha256": "8ef94801f1b9e79b72b4b43368bd359fe40d0f75259353f9cb5d42fa7e8ab23e"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-08/cases.json",
+      "sha256": "ffd7c5016dd8d306ba976c54e04547d47f7e22af29d8c5dd07be1ca705ac4693"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-09/cases.json",
+      "sha256": "5eb1765cedf823fa4c6f7a6176fb34cabc16c43c80ea1a484275ffac8a9952fe"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-10/cases.json",
+      "sha256": "7b5f40bc9c5ae0660fcd15424218d748942e66689363afc2d30b3fb143b18786"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-11/cases.json",
+      "sha256": "066552b0cb22ee6fdf0c78f79591d591f9304f60b7e009f335e65b06fdeab27a"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-12/cases.json",
+      "sha256": "7d52e72b37871f0ed40b740194172a2a575c3ebf916371db46dba4555d5f785e"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-13/cases.json",
+      "sha256": "c0d3555d5cbaacf780e57cd88bb779a19b42ba0aa6666da59e4746fe972c879c"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-14/cases.json",
+      "sha256": "191852be75b7d07ade183188fceb4fd2ee33c2f6503b1911122edc610a568723"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-15/cases.json",
+      "sha256": "7703480245350ab8d74178c4d7d71c311dfda1fc2927dcf8f539bd0859b7efd4"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-16/cases.json",
+      "sha256": "36b4d29187f87333e2e60d089fe1357295318703c0a6126daef926c4b73fb834"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-17/cases.json",
+      "sha256": "86a4cd5ae9e9343e80f14f15ed29d65f782f42f2a3933a6f4a8830b6f9a9020b"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-18/cases.json",
+      "sha256": "e9038c2a71c32f24871e2509953a10e15ee58bb5a9c43f85821e00eaf8b675c9"
+    },
+    {
+      "path": "work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-19/cases.json",
+      "sha256": "b061f54f0f74089795a189bc7a98d4d4c4f3e7b5754e78c6ff5cb6ff56526480"
+    }
+  ],
+  "results": [
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-20",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-25",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-40",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua30-30-50",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua40-40-60",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n10-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n10-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n10-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n10-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n10-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n10-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n11-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n11-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n11-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n11-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n11-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n11-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n12-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n12-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n12-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n12-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n12-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n12-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n14-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n14-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2500-n14-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n14-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2500-n14-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n10-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n10-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n10-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n10-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n10-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n10-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n11-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n11-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n11-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n11-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n11-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n11-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n12-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n12-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n12-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n12-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n12-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n12-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n14-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n14-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q2800-n14-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n14-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q2800-n14-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n10-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n10-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n10-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n10-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n10-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n10-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n11-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n11-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n11-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n11-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n11-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n11-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n12-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n12-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n12-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n12-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n12-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n12-k4-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n14-k2-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n14-k2-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "steam-q3000-n14-k3-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n14-k3-pump250",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "steam-q3000-n14-k4-pump225",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-gas-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-steam-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-steam-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-both-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-both-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-steam-quote-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q2500-steam-quote-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x0.5-steam-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x1.5-steam-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q2500-recurring-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-recurring-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-common-source-pv-5e+08",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2500-common-source-pv-2e+09",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "controller-q2500-gas-500",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "controller-q2500-steam-500",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-gas-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-steam-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-steam-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-both-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-both-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-steam-quote-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q2800-steam-quote-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x0.5-steam-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.6093254089355468e+24
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x1.5-steam-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q2800-recurring-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-recurring-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-common-source-pv-5e+08",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "sensitivity-q2800-common-source-pv-2e+09",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "controller-q2800-gas-500",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 3.8146972656249995e+24
+    },
+    {
+      "case": "controller-q2800-steam-500",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-gas-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-gas-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-steam-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-steam-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-both-eta-0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-both-eta+0.03",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.251697540283203e+24
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.6093254089355468e+24
+    },
+    {
+      "case": "sensitivity-q3000-steam-quote-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-steam-quote-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x0.5-steam-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.251697540283203e+24
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x1.5-steam-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.6093254089355468e+24
+    },
+    {
+      "case": "sensitivity-q3000-recurring-x0.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-recurring-x1.5",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-common-source-pv-5e+08",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "sensitivity-q3000-common-source-pv-2e+09",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "controller-q3000-gas-500",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    },
+    {
+      "case": "controller-q3000-steam-500",
+      "status": "pass",
+      "scalar_comparisons": 1192,
+      "predicates": 125,
+      "worst_relative_deviation": 1.9073486328124998e+24
+    }
+  ]
+}

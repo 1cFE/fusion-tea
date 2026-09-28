@@ -1,0 +1,11 @@
+{
+  "evidence_schema_version": "v3",
+  "executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+  "input_schema_version": "input-v1",
+  "model_contract_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+  "singleton": 1,
+  "strategy_config": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "strategy_identity": "prepared-grid/v1",
+  "study_definition_fingerprint": "591642b0a3fd93e5b1ced08a0ecd15d5e1669cb02394b4212fd011bbc6a41399",
+  "study_id": "20260913-magnet-design-transfer-baseline"
+}

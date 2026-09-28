@@ -1,0 +1,26 @@
+Ground and pursue a new goal: calculate an absolute conductor-current margin using an explicit tape-to-cable performance basis.
+
+This should be a bounded engineering estimate with traceable assumptions, not a claim of conductor qualification.
+
+Research absolute tape critical-current measurements appropriate to the modeled conductor family, temperature and field. Establish the measurement’s tape dimensions, field orientation and applicable domain. Distinguish measured behavior, interpolation and extrapolation.
+
+Connect tape performance to the actual modeled conductor inventory. State assumptions for parallel tape count, cabling, degradation, current sharing and any operating allowance. Avoid counting series turns as parallel current capacity. Use turn/conductor current consistently rather than comparing coil ampere-turns directly with tape critical current.
+
+Determine whether the current reference-density and selected-envelope sizing laws already encode an operating-margin assumption. Avoid applying that assumption twice or producing a circular check that passes by construction. Where the sizing law and performance evidence conflict, explain the conflict and revise the minimum necessary model surface.
+
+Prefer a coherent measured dataset and a simple supported relation over an elaborate unsupported performance surface. If angular or degradation evidence is incomplete, use explicit scenarios and show their consequences. Absolute-current normalization must have an admissible evidence basis; do not infer it solely from the desired design-point pass.
+
+- A bounded study evaluates reference and relevant previously passing cases, including sensitivity to material performance, orientation and degradation assumptions.
+- The final answer distinguishes numerical consistency, evidence-supported performance estimates and remaining qualification gaps.
+
+Keep detailed stress/strain degradation modeling, quench protection, full 3D field-angle mapping and new manufacturing-cost models as separate follow-ups unless a narrowly scoped element is necessary for this estimate. Do not automatically resize conductors or optimize a new machine merely to recover feasibility.
+
+Preserve the fit goal’s finding: nominal geometry fails its conditional local screen. Do not enlarge the cavity or relax its assumptions to recover a passing design.
+
+Assess whether the existing selected-field-envelope predicate remains an independent requirement or becomes redundant. Explain that decision explicitly. Report the entering predicate set, conductor-margin result and combined feasibility separately so any change in “passing” remains clear.
+
+Attribute increments against the entering package; use older results as historical references. Preserve source quarantine.
+
+Continue autonomously until implemented, studied, independently reviewed and answered. Research missing evidence; otherwise use your best engineering judgment and record assumptions with their provenance. Do not stop for routine parameter or workflow decisions. If admissible evidence cannot support an absolute-current estimate, complete a bounded evidence assessment identifying the missing normalization and the defensible alternative, without inventing a performance claim.
+
+Do not merge or push.

@@ -1,0 +1,20 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "3eecc9190133a95725a9391cc0151345ab8d07fbbd63274964b965031d930965",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260917-pre-reveal-feasible-neighborhood.db",
+      "sha256": "4519ca5b0ebe54044f8959ba62735e5537023b0896abd3ea1bd9a1fa68b0e119",
+      "cases": 334,
+      "export_joins": 334,
+      "content_addressed_evidence_checked": 334
+    }
+  ],
+  "snapshot_artifacts_checked": 0
+}

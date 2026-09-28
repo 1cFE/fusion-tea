@@ -1,0 +1,1442 @@
+{
+  "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+  "authority": "architecture-review.md released conditional offered package",
+  "defaults_provenance": "entering-model capture; hypothetical package specification, not vendor capacity",
+  "public_inputs": [
+    {
+      "public_suffix": "heat_transport__rated_helium_suction_K",
+      "default": 561.9353658449644,
+      "units": "K",
+      "capture_source": "loop_T_comp_in",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_helium_suction_K"
+    },
+    {
+      "public_suffix": "heat_transport__rated_helium_suction_Pa",
+      "default": 7699680.103536234,
+      "units": "Pa",
+      "capture_source": "cooling_circulator_suction_Pa",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_helium_suction_Pa"
+    },
+    {
+      "public_suffix": "heat_transport__rated_helium_discharge_Pa",
+      "default": 8000000.0,
+      "units": "Pa",
+      "capture_source": "loop_p input",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_helium_discharge_Pa"
+    },
+    {
+      "public_suffix": "heat_transport__rated_helium_hot_K",
+      "default": 773.15,
+      "units": "K",
+      "capture_source": "loop_T_out",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_helium_hot_K"
+    },
+    {
+      "public_suffix": "heat_transport__rated_helium_cp",
+      "default": 5193.0,
+      "units": "J/kg/K",
+      "capture_source": "loop_cp input",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_helium_cp"
+    },
+    {
+      "public_suffix": "heat_transport__rated_helium_gamma",
+      "default": 1.6666666666666667,
+      "units": "1",
+      "capture_source": "loop_gamma input",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_helium_gamma"
+    },
+    {
+      "public_suffix": "heat_transport__rated_salt_hot_C",
+      "default": 465.0,
+      "units": "degC",
+      "capture_source": "salt_hot_C input",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_salt_hot_C"
+    },
+    {
+      "public_suffix": "heat_transport__rated_salt_return_C",
+      "default": 269.6647299145299,
+      "units": "degC",
+      "capture_source": "cooling_salt_return_C",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_salt_return_C"
+    },
+    {
+      "public_suffix": "heat_transport__rated_salt_cp",
+      "default": 1.56,
+      "units": "kJ/kg/K",
+      "capture_source": "salt_cp_kJ_kgK input",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "rated_salt_cp"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_main_pressure_MPa",
+      "default": 6.2,
+      "units": "MPa",
+      "capture_source": "main_steam_generator.pressure_MPa input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_main_pressure_MPa"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_extraction_pressure_MPa",
+      "default": 0.8,
+      "units": "MPa",
+      "capture_source": "open_feedwater_heater.pressure_MPa input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_extraction_pressure_MPa"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_steam_C",
+      "default": 445.0,
+      "units": "degC",
+      "capture_source": "main_steam_generator.outlet_temperature_C input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_steam_C"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_reheat_C",
+      "default": 445.0,
+      "units": "degC",
+      "capture_source": "reheater.outlet_temperature_C input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_reheat_C"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_condenser_C",
+      "default": 42.0,
+      "units": "degC",
+      "capture_source": "condenser.temperature_C input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_condenser_C"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_salt_hot_C",
+      "default": 465.0,
+      "units": "degC",
+      "capture_source": "salt_hot_C input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_salt_hot_C"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_salt_return_C",
+      "default": 269.6647299145299,
+      "units": "degC",
+      "capture_source": "cooling_salt_return_C",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_salt_return_C"
+    },
+    {
+      "public_suffix": "turbine__rated_steam_salt_cp",
+      "default": 1.56,
+      "units": "kJ/kg/K",
+      "capture_source": "salt_cp_kJ_kgK input",
+      "child": null,
+      "owner": "turbine",
+      "name": "rated_steam_salt_cp"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_water_inlet_C",
+      "default": 25.0,
+      "units": "degC",
+      "capture_source": "water_inlet_C input",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_water_inlet_C"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_water_outlet_C",
+      "default": 35.0,
+      "units": "degC",
+      "capture_source": "water_outlet_C input",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_water_outlet_C"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_water_condenser_C",
+      "default": 42.0,
+      "units": "degC",
+      "capture_source": "matched_t_condensate_C",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_water_condenser_C"
+    },
+    {
+      "public_suffix": "cryoplant__rated_cryogenic_cold_K",
+      "default": 20.0,
+      "units": "K",
+      "capture_source": "T_cold_cryo input",
+      "child": null,
+      "owner": "cryoplant",
+      "name": "rated_cryogenic_cold_K"
+    },
+    {
+      "public_suffix": "cryoplant__rated_cryogenic_intercept_K",
+      "default": 77.0,
+      "units": "K",
+      "capture_source": "T_shield input",
+      "child": null,
+      "owner": "cryoplant",
+      "name": "rated_cryogenic_intercept_K"
+    },
+    {
+      "public_suffix": "cryoplant__rated_cryogenic_ambient_K",
+      "default": 300.0,
+      "units": "K",
+      "capture_source": "T_amb_cryo input",
+      "child": null,
+      "owner": "cryoplant",
+      "name": "rated_cryogenic_ambient_K"
+    },
+    {
+      "public_suffix": "heat_transport__helium_rated_dp_Pa",
+      "default": 300319.8964637657,
+      "units": "Pa",
+      "capture_source": "loop_dp_loop",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "helium_rated_dp_Pa"
+    },
+    {
+      "public_suffix": "heat_transport__helium_rated_electric_MW",
+      "default": 6.26003337158886,
+      "units": "MWe",
+      "capture_source": "cooling_circulator_electric_MW",
+      "child": null,
+      "owner": "heat_transport",
+      "name": "helium_rated_electric_MW"
+    },
+    {
+      "public_suffix": "turbine__selected_gross_MWe",
+      "default": 1219.9981701764736,
+      "units": "MWe",
+      "capture_source": "p_the",
+      "child": null,
+      "owner": "turbine",
+      "name": "selected_gross_MWe"
+    },
+    {
+      "public_suffix": "turbine__hp_turbine__rated_flow_kg_s",
+      "default": 1108.5733942490049,
+      "units": "kg/s",
+      "capture_source": "matched_mdot_main_kg_s",
+      "child": "hp_turbine",
+      "owner": "turbine",
+      "name": "rated_flow_kg_s"
+    },
+    {
+      "public_suffix": "turbine__hp_turbine__rated_shaft_MW",
+      "default": 507.1088862154872,
+      "units": "MW",
+      "capture_source": "matched_p_hp_shaft_MW",
+      "child": "hp_turbine",
+      "owner": "turbine",
+      "name": "rated_shaft_MW"
+    },
+    {
+      "public_suffix": "turbine__lp_turbine__rated_flow_kg_s",
+      "default": 881.3051322292799,
+      "units": "kg/s",
+      "capture_source": "matched_mdot_reheat_kg_s",
+      "child": "lp_turbine",
+      "owner": "turbine",
+      "name": "rated_flow_kg_s"
+    },
+    {
+      "public_suffix": "turbine__lp_turbine__rated_shaft_MW",
+      "default": 750.3619138014925,
+      "units": "MW",
+      "capture_source": "matched_p_lp_shaft_MW",
+      "child": "lp_turbine",
+      "owner": "turbine",
+      "name": "rated_shaft_MW"
+    },
+    {
+      "public_suffix": "turbine__main_steam_generator__installed_UA_MW_K",
+      "default": 41.07437838721364,
+      "units": "MW/K",
+      "capture_source": "matched_main_UA_MW_K",
+      "child": "main_steam_generator",
+      "owner": "turbine",
+      "name": "installed_UA_MW_K"
+    },
+    {
+      "public_suffix": "turbine__reheater__installed_UA_MW_K",
+      "default": 11.18676341684029,
+      "units": "MW/K",
+      "capture_source": "matched_reheat_UA_MW_K",
+      "child": "reheater",
+      "owner": "turbine",
+      "name": "installed_UA_MW_K"
+    },
+    {
+      "public_suffix": "turbine__condenser__rated_rejection_MW",
+      "default": 2058.639911447174,
+      "units": "MWth",
+      "capture_source": "matched_q_condenser_MW",
+      "child": "condenser",
+      "owner": "turbine",
+      "name": "rated_rejection_MW"
+    },
+    {
+      "public_suffix": "turbine__condensate_pump__rated_flow_kg_s",
+      "default": 881.3051322292799,
+      "units": "kg/s",
+      "capture_source": "matched_mdot_condensate_kg_s",
+      "child": "condensate_pump",
+      "owner": "turbine",
+      "name": "rated_flow_kg_s"
+    },
+    {
+      "public_suffix": "turbine__condensate_pump__rated_dp_MPa",
+      "default": 0.7917904366,
+      "units": "MPa",
+      "capture_source": "outlet minus inlet pressure condensate",
+      "child": "condensate_pump",
+      "owner": "turbine",
+      "name": "rated_dp_MPa"
+    },
+    {
+      "public_suffix": "turbine__condensate_pump__rated_electric_MW",
+      "default": 0.9261383157389033,
+      "units": "MWe",
+      "capture_source": "matched_p_condensate_electric_MW",
+      "child": "condensate_pump",
+      "owner": "turbine",
+      "name": "rated_electric_MW"
+    },
+    {
+      "public_suffix": "turbine__feedwater_pump__rated_flow_kg_s",
+      "default": 1108.5733942490049,
+      "units": "kg/s",
+      "capture_source": "matched_mdot_heater_kg_s",
+      "child": "feedwater_pump",
+      "owner": "turbine",
+      "name": "rated_flow_kg_s"
+    },
+    {
+      "public_suffix": "turbine__feedwater_pump__rated_dp_MPa",
+      "default": 5.4,
+      "units": "MPa",
+      "capture_source": "outlet minus inlet pressure feedwater",
+      "child": "feedwater_pump",
+      "owner": "turbine",
+      "name": "rated_dp_MPa"
+    },
+    {
+      "public_suffix": "turbine__feedwater_pump__rated_electric_MW",
+      "default": 8.780822331904837,
+      "units": "MWe",
+      "capture_source": "matched_p_feedwater_electric_MW",
+      "child": "feedwater_pump",
+      "owner": "turbine",
+      "name": "rated_electric_MW"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_rejection_MW",
+      "default": 2109.621069383624,
+      "units": "MWth",
+      "capture_source": "cw_q_total_rejection_MW",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_rejection_MW"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_water_flow_kg_s",
+      "default": 50463.801850311946,
+      "units": "kg/s",
+      "capture_source": "cw_water_flow_kg_s",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_water_flow_kg_s"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_water_head_m",
+      "default": 20.0,
+      "units": "m",
+      "capture_source": "circulating_water_pump.head_m input",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_water_head_m"
+    },
+    {
+      "public_suffix": "heat_rejection__rated_water_electric_MW",
+      "default": 13.023180063562146,
+      "units": "MWe",
+      "capture_source": "cw_p_cooling_pump_electric_MW",
+      "child": null,
+      "owner": "heat_rejection",
+      "name": "rated_water_electric_MW"
+    },
+    {
+      "public_suffix": "cryoplant__rated_cold_W",
+      "default": 21933.902368719853,
+      "units": "W",
+      "capture_source": "p_cold * 1e6",
+      "child": null,
+      "owner": "cryoplant",
+      "name": "rated_cold_W"
+    },
+    {
+      "public_suffix": "cryoplant__rated_intercept_W",
+      "default": 41599.953939961626,
+      "units": "W",
+      "capture_source": "thermal_q_shield",
+      "child": null,
+      "owner": "cryoplant",
+      "name": "rated_intercept_W"
+    },
+    {
+      "public_suffix": "cryoplant__rated_direct_electric_MW",
+      "default": 0.0,
+      "units": "MWe",
+      "capture_source": "p_cryo direct input; unspecified cold stage",
+      "child": null,
+      "owner": "cryoplant",
+      "name": "rated_direct_electric_MW"
+    },
+    {
+      "public_suffix": "electric_plant__installed_gross_rating_MWe",
+      "default": 1219.9981701764736,
+      "units": "MWe",
+      "capture_source": "p_et",
+      "child": null,
+      "owner": "electric_plant",
+      "name": "installed_gross_rating_MWe"
+    },
+    {
+      "public_suffix": "power_supplies__rated_tf_MWe",
+      "default": 0.050267327222555655,
+      "units": "MWe",
+      "capture_source": "p_tf_total",
+      "child": null,
+      "owner": "power_supplies",
+      "name": "rated_tf_MWe"
+    },
+    {
+      "public_suffix": "power_supplies__rated_pf_MWe",
+      "default": 0.0,
+      "units": "MWe",
+      "capture_source": "p_pf input",
+      "child": null,
+      "owner": "power_supplies",
+      "name": "rated_pf_MWe"
+    }
+  ],
+  "state_conditions": [
+    {
+      "group": "helium",
+      "owner": "heat_transport",
+      "calc": "helium_offered_conditions",
+      "definition": "Helium Offered Conditions",
+      "enabled_binding": "equipment_enabled",
+      "pairs": [
+        {
+          "name": "suction_K",
+          "actual_binding": "primary_loop.T_comp_in",
+          "rated_binding": "rated_helium_suction_K",
+          "units": "K"
+        },
+        {
+          "name": "suction_Pa",
+          "actual_binding": "equipment.circulator_suction_Pa",
+          "rated_binding": "rated_helium_suction_Pa",
+          "units": "Pa"
+        },
+        {
+          "name": "discharge_Pa",
+          "actual_binding": "loop_p",
+          "rated_binding": "rated_helium_discharge_Pa",
+          "units": "Pa"
+        },
+        {
+          "name": "hot_K",
+          "actual_binding": "T_out",
+          "rated_binding": "rated_helium_hot_K",
+          "units": "K"
+        },
+        {
+          "name": "cp",
+          "actual_binding": "loop_cp",
+          "rated_binding": "rated_helium_cp",
+          "units": "J/kg/K"
+        },
+        {
+          "name": "gamma",
+          "actual_binding": "loop_gamma",
+          "rated_binding": "rated_helium_gamma",
+          "units": "1"
+        }
+      ],
+      "equations": {
+        "applicable": "enabled and mode == 1",
+        "supported": "applicable and all(same_state(actual_i, rated_i))",
+        "evaluation_defined": "1.0 if supported else 0.0"
+      },
+      "mode_binding": "loop_live"
+    },
+    {
+      "group": "salt",
+      "owner": "heat_transport",
+      "calc": "salt_offered_conditions",
+      "definition": "Salt Offered Conditions",
+      "enabled_binding": "equipment_enabled",
+      "pairs": [
+        {
+          "name": "hot_C",
+          "actual_binding": "salt_hot_C",
+          "rated_binding": "rated_salt_hot_C",
+          "units": "degC"
+        },
+        {
+          "name": "return_C",
+          "actual_binding": "salt_return_C",
+          "rated_binding": "rated_salt_return_C",
+          "units": "degC"
+        },
+        {
+          "name": "cp",
+          "actual_binding": "salt_cp_kJ_kgK",
+          "rated_binding": "rated_salt_cp",
+          "units": "kJ/kg/K"
+        }
+      ],
+      "equations": {
+        "applicable": "enabled and mode == 1",
+        "supported": "applicable and all(same_state(actual_i, rated_i))",
+        "evaluation_defined": "1.0 if supported else 0.0"
+      },
+      "mode_binding": "secondary_energy_mode"
+    },
+    {
+      "group": "steam",
+      "owner": "turbine",
+      "calc": "steam_offered_conditions",
+      "definition": "Steam Offered Conditions",
+      "enabled_binding": "matched_active",
+      "pairs": [
+        {
+          "name": "main_pressure_MPa",
+          "actual_binding": "main_steam_generator.pressure_MPa",
+          "rated_binding": "rated_steam_main_pressure_MPa",
+          "units": "MPa"
+        },
+        {
+          "name": "extraction_pressure_MPa",
+          "actual_binding": "open_feedwater_heater.pressure_MPa",
+          "rated_binding": "rated_steam_extraction_pressure_MPa",
+          "units": "MPa"
+        },
+        {
+          "name": "steam_C",
+          "actual_binding": "main_steam_generator.outlet_temperature_C",
+          "rated_binding": "rated_steam_steam_C",
+          "units": "degC"
+        },
+        {
+          "name": "reheat_C",
+          "actual_binding": "reheater.outlet_temperature_C",
+          "rated_binding": "rated_steam_reheat_C",
+          "units": "degC"
+        },
+        {
+          "name": "condenser_C",
+          "actual_binding": "condenser.temperature_C",
+          "rated_binding": "rated_steam_condenser_C",
+          "units": "degC"
+        },
+        {
+          "name": "salt_hot_C",
+          "actual_binding": "cycle_salt_hot_C",
+          "rated_binding": "rated_steam_salt_hot_C",
+          "units": "degC"
+        },
+        {
+          "name": "salt_return_C",
+          "actual_binding": "cycle_salt_return_C",
+          "rated_binding": "rated_steam_salt_return_C",
+          "units": "degC"
+        },
+        {
+          "name": "salt_cp",
+          "actual_binding": "cycle_salt_cp_kJ_kgK",
+          "rated_binding": "rated_steam_salt_cp",
+          "units": "kJ/kg/K"
+        }
+      ],
+      "equations": {
+        "applicable": "enabled",
+        "supported": "enabled and all(same_state(actual_i, rated_i))",
+        "evaluation_defined": "1.0 if supported else 0.0"
+      }
+    },
+    {
+      "group": "water",
+      "owner": "heat_rejection",
+      "calc": "water_offered_conditions",
+      "definition": "Water Offered Conditions",
+      "enabled_binding": "cooling_active",
+      "pairs": [
+        {
+          "name": "inlet_C",
+          "actual_binding": "water_inlet_C",
+          "rated_binding": "rated_water_inlet_C",
+          "units": "degC"
+        },
+        {
+          "name": "outlet_C",
+          "actual_binding": "water_outlet_C",
+          "rated_binding": "rated_water_outlet_C",
+          "units": "degC"
+        },
+        {
+          "name": "condenser_C",
+          "actual_binding": "cycle_condenser_C",
+          "rated_binding": "rated_water_condenser_C",
+          "units": "degC"
+        }
+      ],
+      "equations": {
+        "applicable": "enabled",
+        "supported": "enabled and all(same_state(actual_i, rated_i))",
+        "evaluation_defined": "1.0 if supported else 0.0"
+      }
+    },
+    {
+      "group": "cryogenic",
+      "owner": "cryoplant",
+      "calc": "cryogenic_offered_conditions",
+      "definition": "Cryogenic Offered Conditions",
+      "enabled_binding": "true",
+      "pairs": [
+        {
+          "name": "cold_K",
+          "actual_binding": "T_cold_cryo",
+          "rated_binding": "rated_cryogenic_cold_K",
+          "units": "K"
+        },
+        {
+          "name": "intercept_K",
+          "actual_binding": "T_shield",
+          "rated_binding": "rated_cryogenic_intercept_K",
+          "units": "K"
+        },
+        {
+          "name": "ambient_K",
+          "actual_binding": "T_amb_cryo",
+          "rated_binding": "rated_cryogenic_ambient_K",
+          "units": "K"
+        }
+      ],
+      "equations": {
+        "applicable": "enabled",
+        "supported": "enabled and all(same_state(actual_i, rated_i))",
+        "evaluation_defined": "1.0 if supported else 0.0"
+      }
+    }
+  ],
+  "demand_conversions": [
+    {
+      "owner": "heat_transport",
+      "calc": "salt_electric_demand_conversion",
+      "output": "salt_electric_required",
+      "definition": "Salt Machine Electric",
+      "bindings": {
+        "active_in": "salt_rating_applicable",
+        "total_MW_in": "equipment.salt_electric_MW",
+        "count_in": "equipment.salt_pump_count"
+      },
+      "equation": "total_MW/count if active else 0"
+    },
+    {
+      "owner": "turbine",
+      "calc": "condensate_pressure_rise_demand_conversion",
+      "output": "condensate_pressure_rise_required",
+      "definition": "Pump Pressure Rise",
+      "bindings": {
+        "active_in": "matched_active",
+        "outlet_MPa_in": "condensate_pump.p_out_MPa",
+        "inlet_MPa_in": "condensate_pump.p_in_MPa"
+      },
+      "equation": "outlet_MPa-inlet_MPa if active else 0"
+    },
+    {
+      "owner": "turbine",
+      "calc": "feedwater_pressure_rise_demand_conversion",
+      "output": "feedwater_pressure_rise_required",
+      "definition": "Pump Pressure Rise",
+      "bindings": {
+        "active_in": "matched_active",
+        "outlet_MPa_in": "feedwater_pump.p_out_MPa",
+        "inlet_MPa_in": "feedwater_pump.p_in_MPa"
+      },
+      "equation": "outlet_MPa-inlet_MPa if active else 0"
+    },
+    {
+      "owner": "cryoplant",
+      "calc": "cold_load_W_demand_conversion",
+      "output": "cold_load_W_required",
+      "definition": "Cold Load Watts",
+      "bindings": {
+        "cold_MW_in": "cold_load.p_cold"
+      },
+      "equation": "cold_MW*1e6"
+    }
+  ],
+  "screens": [
+    {
+      "owner": "heat_transport",
+      "name": "helium_flow",
+      "calc": "helium_flow_capability",
+      "rating_binding": "mdot_loop_rated",
+      "demand_binding": "mdot_loop",
+      "units": "kg/s",
+      "group": "helium",
+      "applicable_binding": "helium_rating_applicable",
+      "supported_binding": "helium_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__helium_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__helium_flow_capability__evaluation_defined",
+      "assertion": "helium_flow_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.helium_flow_defined",
+        "margin_in": "heat_transport.helium_flow_margin"
+      },
+      "source_margin_alias": "heat_transport.helium_flow_margin",
+      "source_defined_alias": "heat_transport.helium_flow_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "helium_pumping",
+      "calc": "helium_pumping_capability",
+      "rating_binding": "equipment_helium_design_shaft_MW",
+      "demand_binding": "equipment.circulator_shaft_MW",
+      "units": "MW",
+      "group": "helium",
+      "applicable_binding": "helium_rating_applicable",
+      "supported_binding": "helium_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__helium_pumping_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__helium_pumping_capability__evaluation_defined",
+      "assertion": "helium_pumping_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.helium_pumping_defined",
+        "margin_in": "heat_transport.helium_pumping_margin"
+      },
+      "source_margin_alias": "heat_transport.helium_pumping_margin",
+      "source_defined_alias": "heat_transport.helium_pumping_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "helium_pressure_rise",
+      "calc": "helium_pressure_rise_capability",
+      "rating_binding": "helium_rated_dp_Pa",
+      "demand_binding": "primary_loop.dp_loop",
+      "units": "Pa",
+      "group": "helium",
+      "applicable_binding": "helium_rating_applicable",
+      "supported_binding": "helium_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability__evaluation_defined",
+      "assertion": "helium_pressure_rise_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.helium_pressure_rise_defined",
+        "margin_in": "heat_transport.helium_pressure_rise_margin"
+      },
+      "source_margin_alias": "heat_transport.helium_pressure_rise_margin",
+      "source_defined_alias": "heat_transport.helium_pressure_rise_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "helium_electric",
+      "calc": "helium_electric_capability",
+      "rating_binding": "helium_rated_electric_MW",
+      "demand_binding": "equipment.circulator_electric_MW",
+      "units": "MWe",
+      "group": "helium",
+      "applicable_binding": "helium_rating_applicable",
+      "supported_binding": "helium_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__helium_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__helium_electric_capability__evaluation_defined",
+      "assertion": "helium_electric_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.helium_electric_defined",
+        "margin_in": "heat_transport.helium_electric_margin"
+      },
+      "source_margin_alias": "heat_transport.helium_electric_margin",
+      "source_defined_alias": "heat_transport.helium_electric_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "salt_flow",
+      "calc": "salt_flow_capability",
+      "rating_binding": "equipment_salt_design_flow_kg_s",
+      "demand_binding": "equipment.salt_pump_flow",
+      "units": "kg/s",
+      "group": "salt",
+      "applicable_binding": "salt_rating_applicable",
+      "supported_binding": "salt_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__salt_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__salt_flow_capability__evaluation_defined",
+      "assertion": "salt_flow_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.salt_flow_defined",
+        "margin_in": "heat_transport.salt_flow_margin"
+      },
+      "source_margin_alias": "heat_transport.salt_flow_margin",
+      "source_defined_alias": "heat_transport.salt_flow_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "salt_head",
+      "calc": "salt_head_capability",
+      "rating_binding": "equipment_salt_design_head_m",
+      "demand_binding": "equipment_secondary_head",
+      "units": "m",
+      "group": "salt",
+      "applicable_binding": "salt_rating_applicable",
+      "supported_binding": "salt_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__salt_head_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__salt_head_capability__evaluation_defined",
+      "assertion": "salt_head_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.salt_head_defined",
+        "margin_in": "heat_transport.salt_head_margin"
+      },
+      "source_margin_alias": "heat_transport.salt_head_margin",
+      "source_defined_alias": "heat_transport.salt_head_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "salt_shaft",
+      "calc": "salt_shaft_capability",
+      "rating_binding": "equipment.salt_design_shaft_MW",
+      "demand_binding": "equipment.salt_pump_shaft_MW",
+      "units": "MW",
+      "group": "salt",
+      "applicable_binding": "salt_rating_applicable",
+      "supported_binding": "salt_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__salt_shaft_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__salt_shaft_capability__evaluation_defined",
+      "assertion": "salt_shaft_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.salt_shaft_defined",
+        "margin_in": "heat_transport.salt_shaft_margin"
+      },
+      "source_margin_alias": "heat_transport.salt_shaft_margin",
+      "source_defined_alias": "heat_transport.salt_shaft_defined"
+    },
+    {
+      "owner": "heat_transport",
+      "name": "salt_electric",
+      "calc": "salt_electric_capability",
+      "rating_binding": "equipment.salt_design_electric_MW",
+      "demand_binding": "salt_electric_required",
+      "units": "MWe",
+      "group": "salt",
+      "applicable_binding": "salt_rating_applicable",
+      "supported_binding": "salt_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_transport__salt_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_transport__salt_electric_capability__evaluation_defined",
+      "assertion": "salt_electric_capacity_ok",
+      "formals": {
+        "defined_in": "heat_transport.salt_electric_defined",
+        "margin_in": "heat_transport.salt_electric_margin"
+      },
+      "source_margin_alias": "heat_transport.salt_electric_margin",
+      "source_defined_alias": "heat_transport.salt_electric_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "turbine_gross",
+      "calc": "turbine_gross_capability",
+      "rating_binding": "selected_gross_MWe",
+      "demand_binding": "p_the",
+      "units": "MWe",
+      "group": null,
+      "applicable_binding": "true",
+      "supported_binding": "true",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__turbine_gross_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__turbine_gross_capability__evaluation_defined",
+      "assertion": "turbine_gross_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.turbine_gross_defined",
+        "margin_in": "turbine.turbine_gross_margin"
+      },
+      "source_margin_alias": "turbine.turbine_gross_margin",
+      "source_defined_alias": "turbine.turbine_gross_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "hp_flow",
+      "calc": "hp_flow_capability",
+      "rating_binding": "hp_turbine.rated_flow_kg_s",
+      "demand_binding": "hp_turbine.flow_in_kg_s",
+      "units": "kg/s",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__hp_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__hp_flow_capability__evaluation_defined",
+      "assertion": "hp_flow_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.hp_flow_defined",
+        "margin_in": "turbine.hp_flow_margin"
+      },
+      "source_margin_alias": "turbine.hp_flow_margin",
+      "source_defined_alias": "turbine.hp_flow_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "hp_shaft",
+      "calc": "hp_shaft_capability",
+      "rating_binding": "hp_turbine.rated_shaft_MW",
+      "demand_binding": "hp_turbine.shaft_MW",
+      "units": "MW",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__hp_shaft_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__hp_shaft_capability__evaluation_defined",
+      "assertion": "hp_shaft_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.hp_shaft_defined",
+        "margin_in": "turbine.hp_shaft_margin"
+      },
+      "source_margin_alias": "turbine.hp_shaft_margin",
+      "source_defined_alias": "turbine.hp_shaft_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "lp_flow",
+      "calc": "lp_flow_capability",
+      "rating_binding": "lp_turbine.rated_flow_kg_s",
+      "demand_binding": "lp_turbine.flow_in_kg_s",
+      "units": "kg/s",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__lp_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__lp_flow_capability__evaluation_defined",
+      "assertion": "lp_flow_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.lp_flow_defined",
+        "margin_in": "turbine.lp_flow_margin"
+      },
+      "source_margin_alias": "turbine.lp_flow_margin",
+      "source_defined_alias": "turbine.lp_flow_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "lp_shaft",
+      "calc": "lp_shaft_capability",
+      "rating_binding": "lp_turbine.rated_shaft_MW",
+      "demand_binding": "lp_turbine.shaft_MW",
+      "units": "MW",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__lp_shaft_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__lp_shaft_capability__evaluation_defined",
+      "assertion": "lp_shaft_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.lp_shaft_defined",
+        "margin_in": "turbine.lp_shaft_margin"
+      },
+      "source_margin_alias": "turbine.lp_shaft_margin",
+      "source_defined_alias": "turbine.lp_shaft_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "main_UA",
+      "calc": "main_UA_capability",
+      "rating_binding": "main_steam_generator.installed_UA_MW_K",
+      "demand_binding": "main_UA_MW_K",
+      "units": "MW/K",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "matched_main_UA_available",
+      "margin_output": "stellarator_09__stellaris__turbine__main_UA_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__main_UA_capability__evaluation_defined",
+      "assertion": "main_UA_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.main_UA_defined",
+        "margin_in": "turbine.main_UA_margin"
+      },
+      "source_margin_alias": "turbine.main_UA_margin",
+      "source_defined_alias": "turbine.main_UA_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "reheat_UA",
+      "calc": "reheat_UA_capability",
+      "rating_binding": "reheater.installed_UA_MW_K",
+      "demand_binding": "reheat_UA_MW_K",
+      "units": "MW/K",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "matched_reheat_UA_available",
+      "margin_output": "stellarator_09__stellaris__turbine__reheat_UA_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__reheat_UA_capability__evaluation_defined",
+      "assertion": "reheat_UA_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.reheat_UA_defined",
+        "margin_in": "turbine.reheat_UA_margin"
+      },
+      "source_margin_alias": "turbine.reheat_UA_margin",
+      "source_defined_alias": "turbine.reheat_UA_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "condenser_rejection",
+      "calc": "condenser_rejection_capability",
+      "rating_binding": "condenser.rated_rejection_MW",
+      "demand_binding": "q_condenser_MW",
+      "units": "MWth",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__condenser_rejection_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__condenser_rejection_capability__evaluation_defined",
+      "assertion": "condenser_rejection_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.condenser_rejection_defined",
+        "margin_in": "turbine.condenser_rejection_margin"
+      },
+      "source_margin_alias": "turbine.condenser_rejection_margin",
+      "source_defined_alias": "turbine.condenser_rejection_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "condensate_flow",
+      "calc": "condensate_flow_capability",
+      "rating_binding": "condensate_pump.rated_flow_kg_s",
+      "demand_binding": "condensate_pump.flow_in_kg_s",
+      "units": "kg/s",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__condensate_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__condensate_flow_capability__evaluation_defined",
+      "assertion": "condensate_flow_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.condensate_flow_defined",
+        "margin_in": "turbine.condensate_flow_margin"
+      },
+      "source_margin_alias": "turbine.condensate_flow_margin",
+      "source_defined_alias": "turbine.condensate_flow_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "condensate_pressure_rise",
+      "calc": "condensate_pressure_rise_capability",
+      "rating_binding": "condensate_pump.rated_dp_MPa",
+      "demand_binding": "condensate_pressure_rise_required",
+      "units": "MPa",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability__evaluation_defined",
+      "assertion": "condensate_pressure_rise_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.condensate_pressure_rise_defined",
+        "margin_in": "turbine.condensate_pressure_rise_margin"
+      },
+      "source_margin_alias": "turbine.condensate_pressure_rise_margin",
+      "source_defined_alias": "turbine.condensate_pressure_rise_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "condensate_electric",
+      "calc": "condensate_electric_capability",
+      "rating_binding": "condensate_pump.rated_electric_MW",
+      "demand_binding": "condensate_pump.electric_MW",
+      "units": "MWe",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__condensate_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__condensate_electric_capability__evaluation_defined",
+      "assertion": "condensate_electric_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.condensate_electric_defined",
+        "margin_in": "turbine.condensate_electric_margin"
+      },
+      "source_margin_alias": "turbine.condensate_electric_margin",
+      "source_defined_alias": "turbine.condensate_electric_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "feedwater_flow",
+      "calc": "feedwater_flow_capability",
+      "rating_binding": "feedwater_pump.rated_flow_kg_s",
+      "demand_binding": "feedwater_pump.flow_in_kg_s",
+      "units": "kg/s",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__feedwater_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__feedwater_flow_capability__evaluation_defined",
+      "assertion": "feedwater_flow_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.feedwater_flow_defined",
+        "margin_in": "turbine.feedwater_flow_margin"
+      },
+      "source_margin_alias": "turbine.feedwater_flow_margin",
+      "source_defined_alias": "turbine.feedwater_flow_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "feedwater_pressure_rise",
+      "calc": "feedwater_pressure_rise_capability",
+      "rating_binding": "feedwater_pump.rated_dp_MPa",
+      "demand_binding": "feedwater_pressure_rise_required",
+      "units": "MPa",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability__evaluation_defined",
+      "assertion": "feedwater_pressure_rise_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.feedwater_pressure_rise_defined",
+        "margin_in": "turbine.feedwater_pressure_rise_margin"
+      },
+      "source_margin_alias": "turbine.feedwater_pressure_rise_margin",
+      "source_defined_alias": "turbine.feedwater_pressure_rise_defined"
+    },
+    {
+      "owner": "turbine",
+      "name": "feedwater_electric",
+      "calc": "feedwater_electric_capability",
+      "rating_binding": "feedwater_pump.rated_electric_MW",
+      "demand_binding": "feedwater_pump.electric_MW",
+      "units": "MWe",
+      "group": "steam",
+      "applicable_binding": "steam_rating_applicable",
+      "supported_binding": "steam_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__turbine__feedwater_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__turbine__feedwater_electric_capability__evaluation_defined",
+      "assertion": "feedwater_electric_capacity_ok",
+      "formals": {
+        "defined_in": "turbine.feedwater_electric_defined",
+        "margin_in": "turbine.feedwater_electric_margin"
+      },
+      "source_margin_alias": "turbine.feedwater_electric_margin",
+      "source_defined_alias": "turbine.feedwater_electric_defined"
+    },
+    {
+      "owner": "heat_rejection",
+      "name": "water_rejection",
+      "calc": "water_rejection_capability",
+      "rating_binding": "rated_rejection_MW",
+      "demand_binding": "q_total_rejection_MW",
+      "units": "MWth",
+      "group": "water",
+      "applicable_binding": "water_rating_applicable",
+      "supported_binding": "water_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_rejection__water_rejection_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_rejection__water_rejection_capability__evaluation_defined",
+      "assertion": "water_rejection_capacity_ok",
+      "formals": {
+        "defined_in": "heat_rejection.water_rejection_defined",
+        "margin_in": "heat_rejection.water_rejection_margin"
+      },
+      "source_margin_alias": "heat_rejection.water_rejection_margin",
+      "source_defined_alias": "heat_rejection.water_rejection_defined"
+    },
+    {
+      "owner": "heat_rejection",
+      "name": "water_flow",
+      "calc": "water_flow_capability",
+      "rating_binding": "rated_water_flow_kg_s",
+      "demand_binding": "water_flow_kg_s",
+      "units": "kg/s",
+      "group": "water",
+      "applicable_binding": "water_rating_applicable",
+      "supported_binding": "water_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_rejection__water_flow_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_rejection__water_flow_capability__evaluation_defined",
+      "assertion": "water_flow_capacity_ok",
+      "formals": {
+        "defined_in": "heat_rejection.water_flow_defined",
+        "margin_in": "heat_rejection.water_flow_margin"
+      },
+      "source_margin_alias": "heat_rejection.water_flow_margin",
+      "source_defined_alias": "heat_rejection.water_flow_defined"
+    },
+    {
+      "owner": "heat_rejection",
+      "name": "water_head",
+      "calc": "water_head_capability",
+      "rating_binding": "rated_water_head_m",
+      "demand_binding": "circulating_water_pump.head_m",
+      "units": "m",
+      "group": "water",
+      "applicable_binding": "water_rating_applicable",
+      "supported_binding": "water_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_rejection__water_head_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_rejection__water_head_capability__evaluation_defined",
+      "assertion": "water_head_capacity_ok",
+      "formals": {
+        "defined_in": "heat_rejection.water_head_defined",
+        "margin_in": "heat_rejection.water_head_margin"
+      },
+      "source_margin_alias": "heat_rejection.water_head_margin",
+      "source_defined_alias": "heat_rejection.water_head_defined"
+    },
+    {
+      "owner": "heat_rejection",
+      "name": "water_electric",
+      "calc": "water_electric_capability",
+      "rating_binding": "rated_water_electric_MW",
+      "demand_binding": "p_cooling_pump_electric_MW",
+      "units": "MWe",
+      "group": "water",
+      "applicable_binding": "water_rating_applicable",
+      "supported_binding": "water_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__heat_rejection__water_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__heat_rejection__water_electric_capability__evaluation_defined",
+      "assertion": "water_electric_capacity_ok",
+      "formals": {
+        "defined_in": "heat_rejection.water_electric_defined",
+        "margin_in": "heat_rejection.water_electric_margin"
+      },
+      "source_margin_alias": "heat_rejection.water_electric_margin",
+      "source_defined_alias": "heat_rejection.water_electric_defined"
+    },
+    {
+      "owner": "cryoplant",
+      "name": "cold_stage",
+      "calc": "cold_stage_capability",
+      "rating_binding": "rated_cold_W",
+      "demand_binding": "cold_load_W_required",
+      "units": "W",
+      "group": "cryogenic",
+      "applicable_binding": "cryogenic_rating_applicable",
+      "supported_binding": "cryogenic_rating_supported",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__cryoplant__cold_stage_capability__margin",
+      "defined_output": "stellarator_09__stellaris__cryoplant__cold_stage_capability__evaluation_defined",
+      "assertion": "cold_stage_capacity_ok",
+      "formals": {
+        "defined_in": "cryoplant.cold_stage_defined",
+        "margin_in": "cryoplant.cold_stage_margin"
+      },
+      "source_margin_alias": "cryoplant.cold_stage_margin",
+      "source_defined_alias": "cryoplant.cold_stage_defined"
+    },
+    {
+      "owner": "cryoplant",
+      "name": "intercept_stage",
+      "calc": "intercept_stage_capability",
+      "rating_binding": "rated_intercept_W",
+      "demand_binding": "inventory.q_inventory_shield",
+      "units": "W",
+      "group": "cryogenic",
+      "applicable_binding": "cryogenic_rating_applicable",
+      "supported_binding": "cryogenic_rating_supported",
+      "available_binding": "inventory_enabled",
+      "margin_output": "stellarator_09__stellaris__cryoplant__intercept_stage_capability__margin",
+      "defined_output": "stellarator_09__stellaris__cryoplant__intercept_stage_capability__evaluation_defined",
+      "assertion": "intercept_stage_capacity_ok",
+      "formals": {
+        "defined_in": "cryoplant.intercept_stage_defined",
+        "margin_in": "cryoplant.intercept_stage_margin"
+      },
+      "source_margin_alias": "cryoplant.intercept_stage_margin",
+      "source_defined_alias": "cryoplant.intercept_stage_defined"
+    },
+    {
+      "owner": "cryoplant",
+      "name": "direct_electric",
+      "calc": "direct_electric_capability",
+      "rating_binding": "rated_direct_electric_MW",
+      "demand_binding": "p_cryo",
+      "units": "MWe",
+      "group": null,
+      "applicable_binding": "true",
+      "supported_binding": "true",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__cryoplant__direct_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__cryoplant__direct_electric_capability__evaluation_defined",
+      "assertion": "direct_electric_capacity_ok",
+      "formals": {
+        "defined_in": "cryoplant.direct_electric_defined",
+        "margin_in": "cryoplant.direct_electric_margin"
+      },
+      "source_margin_alias": "cryoplant.direct_electric_margin",
+      "source_defined_alias": "cryoplant.direct_electric_defined"
+    },
+    {
+      "owner": "electric_plant",
+      "name": "electric_gross",
+      "calc": "electric_gross_capability",
+      "rating_binding": "installed_gross_rating_MWe",
+      "demand_binding": "p_et",
+      "units": "MWe",
+      "group": null,
+      "applicable_binding": "true",
+      "supported_binding": "true",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__electric_plant__electric_gross_capability__margin",
+      "defined_output": "stellarator_09__stellaris__electric_plant__electric_gross_capability__evaluation_defined",
+      "assertion": "electric_gross_capacity_ok",
+      "formals": {
+        "defined_in": "electric_plant.electric_gross_defined",
+        "margin_in": "electric_plant.electric_gross_margin"
+      },
+      "source_margin_alias": "electric_plant.electric_gross_margin",
+      "source_defined_alias": "electric_plant.electric_gross_defined"
+    },
+    {
+      "owner": "power_supplies",
+      "name": "magnet_tf_electric",
+      "calc": "magnet_tf_electric_capability",
+      "rating_binding": "rated_tf_MWe",
+      "demand_binding": "p_tf_total",
+      "units": "MWe",
+      "group": null,
+      "applicable_binding": "true",
+      "supported_binding": "true",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__evaluation_defined",
+      "assertion": "magnet_tf_electric_capacity_ok",
+      "formals": {
+        "defined_in": "power_supplies.magnet_tf_electric_defined",
+        "margin_in": "power_supplies.magnet_tf_electric_margin"
+      },
+      "source_margin_alias": "power_supplies.magnet_tf_electric_margin",
+      "source_defined_alias": "power_supplies.magnet_tf_electric_defined"
+    },
+    {
+      "owner": "power_supplies",
+      "name": "magnet_pf_electric",
+      "calc": "magnet_pf_electric_capability",
+      "rating_binding": "rated_pf_MWe",
+      "demand_binding": "p_pf",
+      "units": "MWe",
+      "group": null,
+      "applicable_binding": "true",
+      "supported_binding": "true",
+      "available_binding": "true",
+      "margin_output": "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__margin",
+      "defined_output": "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__evaluation_defined",
+      "assertion": "magnet_pf_electric_capacity_ok",
+      "formals": {
+        "defined_in": "power_supplies.magnet_pf_electric_defined",
+        "margin_in": "power_supplies.magnet_pf_electric_margin"
+      },
+      "source_margin_alias": "power_supplies.magnet_pf_electric_margin",
+      "source_defined_alias": "power_supplies.magnet_pf_electric_defined"
+    }
+  ],
+  "seeds": [
+    {
+      "target": "handwritten/mfe_viability/helium_offered_conditions_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/helium_offered_conditions_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/salt_offered_conditions_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/salt_offered_conditions_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/steam_offered_conditions_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/steam_offered_conditions_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/water_offered_conditions_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/water_offered_conditions_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/cryogenic_offered_conditions_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/cryogenic_offered_conditions_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/offered_capacity_screen_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/offered_capacity_screen_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/cold_load_watts_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/cold_load_watts_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/pump_pressure_rise_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/pump_pressure_rise_impl.py"
+    },
+    {
+      "target": "handwritten/mfe_viability/salt_machine_electric_impl.py",
+      "source": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/seeds/salt_machine_electric_impl.py"
+    }
+  ],
+  "screen_equations": {
+    "margin": "rating-demand if applicable else 0.0",
+    "supported": "applicable and conditions_supported and demand_available",
+    "capacity_ok": "supported and margin >= 0.0",
+    "evaluation_defined": "1.0 if supported else 0.0"
+  },
+  "screen_guards": "Boolean flags; finite nonnegative rating; finite nonnegative active demand; finite resulting margin",
+  "point_state_guards": "Boolean enabled; helium/salt actual mode must be numeric0/1; disabled or mode0 short circuits; active actual and supplied state values finite; fixed eight-ULP numerical identity only",
+  "screen_output_fields": [
+    "margin",
+    "applicable",
+    "supported",
+    "evaluation_defined",
+    "capacity_ok"
+  ],
+  "state_output_fields": [
+    "applicable",
+    "supported",
+    "evaluation_defined"
+  ],
+  "state_identity": "finite a,b and (a == b or abs(a-b) <= 8 * max(math.ulp(a), math.ulp(b))); fixed numerical identity only, no public tolerance",
+  "output_path_note": "Screen margin_output and defined_output are actual native producer keys. Source EXPOSE aliases remain the formal bindings and are separately named source_margin_alias/source_defined_alias; this route does not emit those aliases as numeric channel keys."
+}

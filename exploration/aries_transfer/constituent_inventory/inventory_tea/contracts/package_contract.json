@@ -1,0 +1,45 @@
+{
+  "artifact_hashes": {
+    "IMPLEMENTATION_BACKLOG.md": "8e26fa69e9ecffe9f9d621d854d4df39842010f4340fdd368e6186905ccade02",
+    "__init__.py": "a90385ff51f45570866a8c6a24b965238cec7357ff95fd551b8a61d2227c6acc",
+    "contracts/generation_manifest.json": "c2f44fbf9cfb8d32f44cbee74d25c4613e0cc11580b05e902db1a4599cc252a8",
+    "contracts/model_contract.json": "75cc57f8e7b542d32b41e65a0638b4144474317919f9c3aa35544b5528afd52e",
+    "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
+    "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "handwritten/sector_constituent_inventory/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/sector_constituent_inventory/constituent_inventory_impl.py": "c2cd639adffce8435a5860980c7180aecac735ca7eb6d781d7f646b44ff8c722",
+    "handwritten/sector_constituent_inventory/covered_layer_volume_impl.py": "cd3dff58653954585fd00391d2533ff98222d3b98a3a3cd53de59eca9a314de2",
+    "handwritten/sector_constituent_inventory/inventory_support.py": "9d3ef817453252afda058706b05d3193c1c994b4696d779944073fd81a9d91f7",
+    "handwritten/sector_constituent_inventory/three_constituent_recipe_summary_impl.py": "1cfc932aeb0c14e9a3e9cb37575d1c6ede1cae38b791ed7a7be264f59f85d384",
+    "handwritten/sector_constituent_inventory/three_sector_inventory_sum_impl.py": "08f8709b7ff2d18d859919858493b40bd7642eaddbe437c54d896686af427e67",
+    "inputs/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "inputs/constituent_inventory_params.json": "c2babe0a9d9fc8a64335d5c561fc9d47681fb46abcf4ec27a51dcdb58db6e56e",
+    "modules/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "modules/sector_constituent_inventory/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/sector_constituent_inventory/constituent_inventory.py": "bf7b2594f94be847e6adae8a8fdf581a9574e5868aef6e7dd0f3c11f30edfce8",
+    "modules/sector_constituent_inventory/covered_layer_volume.py": "6b84bb3ff7036459a263394477558fe44acaf7f5059983fb75990b9a143450c3",
+    "modules/sector_constituent_inventory/three_constituent_recipe_summary.py": "7c3484d6a58422395bffea52f2763976fd08d81582cf1f5bdefaafc706151e9d",
+    "modules/sector_constituent_inventory/three_sector_inventory_sum.py": "682a0854b200eb53af2c903e1de9e6e54dbaf303a5dcd48fd9e336f2bb41686e",
+    "pipelines/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "pipelines/pipeline.yaml": "8a4a2549c64cf5be6248fee2c2df269abf1343757c948d34ec3f08686674aa03",
+    "primitives.py": "1bc6be58e5290b102d762227c33f138ecc4f9feaa00fa2f4cfd02f87f5f71998",
+    "schemas/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "schemas/constituent_inventory_output.py": "1c92bf7b4232aab0d886df40ba5b7780dc7fc5d80fa540a3956e26b53253b3b3",
+    "schemas/constituent_inventory_params.py": "57e581c1dd96ff8130e8e553da88269992fb3860467826ff6a61f625da688e79",
+    "schemas/three_constituent_recipe_summary_output.py": "a2bc92010c7649715dda1e74c979105b513fb8c9b39b3200fb88e28cfb32bbd8",
+    "schemas/three_sector_inventory_sum_output.py": "49c4d662f60a4036665bade4f31f51de6eca68ea1e0fa6f2af0ce4cb5b860ea6",
+    "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "tests/test_implementations_runnable.py": "da890bad20eafc09ced65d2be257f4830ff9f87f94f3b99f79b45a3fc29a07dc"
+  },
+  "coverage_policy": {
+    "exclude_globs": [
+      "contracts/package_contract.json",
+      "**/__pycache__/**"
+    ],
+    "runtime_output_globs": []
+  },
+  "executable_fingerprint": "9c5aac7abeab241fb582cac1044a52425d45ee0a9ac09accd33f83f16035602f",
+  "generator_version": "0.1.1",
+  "package_name": "inventory_tea",
+  "runtime_contract_version": "2.0.0"
+}

@@ -1,0 +1,548 @@
+[
+  {
+    "R": 12.0,
+    "candidate_id": "20260911-model-owned-radius:c0000",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 401.5748167296195,
+        "delta_from_baseline": -23.425197642561216
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 23.62204724409449,
+        "delta_from_baseline": -1.3779527559055111
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 9.524999999999999,
+        "delta_from_baseline": 0.5250000000000004
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 117475000000.0,
+        "delta_from_baseline": 6475000000.0
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 26.869491525423726,
+        "delta_from_baseline": 1.9694915254237308
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 24.422370610238204,
+        "delta_from_baseline": -24.657230177688575
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 48.84474122047641,
+        "delta_from_baseline": -49.31446035537715
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334225,
+        "delta_from_baseline": 9.5367431640625e-07
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5108798641.161043,
+        "delta_from_baseline": -292233358.83895683
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 13937187493.655476,
+        "delta_from_baseline": -1018212767.9764385
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 13937187493.655476,
+        "delta_from_baseline": -1018212767.9764385
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.9027777777777778,
+        "delta_from_baseline": -1.1102230246251565e-16
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 195951957.39316806,
+        "delta_from_baseline": -22579642.246319532
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 959.4184195322166,
+        "delta_from_baseline": -54.51351302174601
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 9.076165136190633,
+        "delta_from_baseline": -1.4416764098461599
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 9.60560810246842,
+        "delta_from_baseline": -0.9122334435683737
+      }
+    }
+  },
+  {
+    "R": 12.35,
+    "candidate_id": "20260911-model-owned-radius:c0001",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 413.28741555090005,
+        "delta_from_baseline": -11.712598821280665
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 24.311023622047244,
+        "delta_from_baseline": -0.6889763779527556
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 9.255060728744938,
+        "delta_from_baseline": 0.25506072874494023
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 114145748987.85425,
+        "delta_from_baseline": 3145748987.854248
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 25.84728260869565,
+        "delta_from_baseline": 0.9472826086956552
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 35.818132136583074,
+        "delta_from_baseline": -13.261468651343705
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 71.63626427316615,
+        "delta_from_baseline": -26.52293730268741
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334224,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5254884281.180354,
+        "delta_from_baseline": -146147718.81964588
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 14443942449.154768,
+        "delta_from_baseline": -511457812.47714615
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 14443942449.154768,
+        "delta_from_baseline": -511457812.47714615
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.9027777777777778,
+        "delta_from_baseline": -1.1102230246251565e-16
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 207126945.6507265,
+        "delta_from_baseline": -11404653.988761097
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 988.8991887246139,
+        "delta_from_baseline": -25.03274382934876
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 9.776899452439814,
+        "delta_from_baseline": -0.7409420935969795
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 10.053977574573736,
+        "delta_from_baseline": -0.46386397146305747
+      }
+    }
+  },
+  {
+    "R": 12.7,
+    "candidate_id": "20260911-model-owned-radius:c0002",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 425.0000143721807,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 25.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 8.999999999999998,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 111000000000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 24.899999999999995,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 49.07960078792678,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 98.15920157585356,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334224,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5401032000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 14955400261.631914,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 14955400261.631914,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.9027777777777779,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 218531599.6394876,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 1013.9319325539626,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 10.517841546036793,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 10.517841546036793,
+        "delta_from_baseline": 0.0
+      }
+    }
+  },
+  {
+    "R": 13.0,
+    "candidate_id": "20260911-model-owned-radius:c0003",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 435.03938479042114,
+        "delta_from_baseline": 10.039370418240424
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 25.590551181102363,
+        "delta_from_baseline": 0.5905511811023629
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 8.79230769230769,
+        "delta_from_baseline": -0.20769230769230873
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 108438461538.46153,
+        "delta_from_baseline": -2561538461.5384674
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 24.141624365482222,
+        "delta_from_baseline": -0.7583756345177726
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 61.99506859276107,
+        "delta_from_baseline": 12.915467804834293
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 123.99013718552214,
+        "delta_from_baseline": 25.830935609668586
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334224,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5526347351.027428,
+        "delta_from_baseline": 125315351.02742767
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 15397491376.487814,
+        "delta_from_baseline": 442091114.8558998
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 15397491376.487814,
+        "delta_from_baseline": 442091114.8558998
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.8870571270192608,
+        "delta_from_baseline": -0.01572065075851714
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 228474056.97608194,
+        "delta_from_baseline": 9942457.336594343
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 1031.5374846149014,
+        "delta_from_baseline": 17.60555206093875
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 11.185751128962602,
+        "delta_from_baseline": 0.6679095829258088
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 10.927618410601925,
+        "delta_from_baseline": 0.4097768645651314
+      }
+    }
+  },
+  {
+    "R": 13.35,
+    "candidate_id": "20260911-model-owned-radius:c0004",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 446.75198361170175,
+        "delta_from_baseline": 21.75196923952103
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 26.27952755905512,
+        "delta_from_baseline": 1.2795275590551185
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 8.561797752808989,
+        "delta_from_baseline": -0.4382022471910094
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 105595505617.97752,
+        "delta_from_baseline": -5404494382.022476
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 23.313235294117643,
+        "delta_from_baseline": -1.5867647058823522
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 78.94268724489245,
+        "delta_from_baseline": 29.863086456965675
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 157.8853744897849,
+        "delta_from_baseline": 59.72617291393135
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334225,
+        "delta_from_baseline": 9.5367431640625e-07
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5672598392.264418,
+        "delta_from_baseline": 271566392.26441765
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 15917547294.554585,
+        "delta_from_baseline": 962147032.9226704
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 15917547294.554585,
+        "delta_from_baseline": 962147032.9226704
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.8833333333333333,
+        "delta_from_baseline": -0.019444444444444597
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 250775081.9559909,
+        "delta_from_baseline": 32243482.316503316
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 1047.2162697835017,
+        "delta_from_baseline": 33.28433722953912
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 12.004227483641719,
+        "delta_from_baseline": 1.4863859376049255
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 11.419751988183508,
+        "delta_from_baseline": 0.9019104421467148
+      }
+    }
+  },
+  {
+    "R": 13.7,
+    "candidate_id": "20260911-model-owned-radius:c0005",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 458.4645824329823,
+        "delta_from_baseline": 33.46456806080158
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 26.968503937007874,
+        "delta_from_baseline": 1.968503937007874
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 8.343065693430656,
+        "delta_from_baseline": -0.656934306569342
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 102897810218.9781,
+        "delta_from_baseline": -8102189781.021896
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 22.53981042654028,
+        "delta_from_baseline": -2.3601895734597136
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 97.99186444070517,
+        "delta_from_baseline": 48.91226365277839
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 195.98372888141034,
+        "delta_from_baseline": 97.82452730555678
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334225,
+        "delta_from_baseline": 9.5367431640625e-07
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5818899424.919999,
+        "delta_from_baseline": 417867424.9199991
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 16442201194.482647,
+        "delta_from_baseline": 1486800932.8507328
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 16442201194.482647,
+        "delta_from_baseline": 1486800932.8507328
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.8833333333333334,
+        "delta_from_baseline": -0.019444444444444486
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 263840172.4674194,
+        "delta_from_baseline": 45308572.82793179
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 1057.2568124250265,
+        "delta_from_baseline": 43.3248798710639
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 12.866020751210403,
+        "delta_from_baseline": 2.3481792051736097
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 11.926895148932273,
+        "delta_from_baseline": 1.4090536028954794
+      }
+    }
+  },
+  {
+    "R": 14.0,
+    "candidate_id": "20260911-model-owned-radius:c0006",
+    "channels": {
+      "stellarator_09__stellaris__geom__V": {
+        "value": 468.5039528512229,
+        "delta_from_baseline": 43.503938479042176
+      },
+      "stellarator_09__stellaris__coil_length__c_coil": {
+        "value": 27.559055118110237,
+        "delta_from_baseline": 2.559055118110237
+      },
+      "stellarator_09__stellaris__field_calc__B_axis": {
+        "value": 8.164285714285713,
+        "delta_from_baseline": -0.8357142857142854
+      },
+      "stellarator_09__stellaris__stored_energy__W_mag": {
+        "value": 100692857142.85715,
+        "delta_from_baseline": -10307142857.142853
+      },
+      "stellarator_09__stellaris__peak_field_calc__B_peak": {
+        "value": 21.916589861751145,
+        "delta_from_baseline": -2.98341013824885
+      },
+      "stellarator_09__stellaris__sustain__p_aux_required": {
+        "value": 116.0531121260143,
+        "delta_from_baseline": 66.97351133808752
+      },
+      "stellarator_09__stellaris__operating_heat__p_wallplug": {
+        "value": 232.1062242520286,
+        "delta_from_baseline": 133.94702267617504
+      },
+      "stellarator_09__stellaris__heat__p_wallplug_total": {
+        "value": 100.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__heating_cost__cost": {
+        "value": 264145000.0,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_cost__capital_cost": {
+        "value": 6323469946.334224,
+        "delta_from_baseline": 0.0
+      },
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": {
+        "value": 5944337458.631255,
+        "delta_from_baseline": 543305458.6312551
+      },
+      "stellarator_09__stellaris__total_capital__total_capital": {
+        "value": 16895567357.785126,
+        "delta_from_baseline": 1940167096.1532116
+      },
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+        "value": 16895567357.785126,
+        "delta_from_baseline": 1940167096.1532116
+      },
+      "stellarator_09__stellaris__calendar__availability": {
+        "value": 0.8833333333333334,
+        "delta_from_baseline": -0.019444444444444486
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "value": 275255225.8051201,
+        "delta_from_baseline": 56723626.165632516
+      },
+      "stellarator_09__stellaris__pb__p_net": {
+        "value": 1061.0482801192898,
+        "delta_from_baseline": 47.116347565327146
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak": {
+        "value": 13.640021124159775,
+        "delta_from_baseline": 3.1221795781229815
+      },
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+        "value": 12.373447734059225,
+        "delta_from_baseline": 1.8556061880224313
+      }
+    }
+  }
+]

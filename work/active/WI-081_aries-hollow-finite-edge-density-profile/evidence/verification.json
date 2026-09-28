@@ -1,0 +1,533 @@
+{
+  "claim": "Local density equation and supplied-parameter native transfer only",
+  "fingerprint": "4a8218785686d5f5984d293563fcab4d906155fc18259d2881661c1c7afa6de0",
+  "source_hashes": {
+    "models/library/analyses/radial_density_profile.sysml": "2adf459118a4a6df9a6a0a6461c467860a3ced327c55aaadc0af7c232d1b7632",
+    "models/designs/aries_cs_transfer/density_profile.sysml": "1664d6038efa608c2ef087955caa082b48294c3c7c32ce88e3bf31392892d1a6",
+    "exploration/aries_transfer/density_profile/radial_density_profile_impl.py": "2cf3d393ce2427a84d8f6d4cc04a6154f68d4ffad607cd7ba3be7b3bf171ee8b"
+  },
+  "passed": 13,
+  "refused": 25,
+  "checks": [
+    {
+      "test": "reference_0.0",
+      "status": "passed",
+      "density": 0.6940000000000001,
+      "expected": 0.694,
+      "edge_density": 0.1,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.0
+      }
+    },
+    {
+      "test": "reference_0.25",
+      "status": "passed",
+      "density": 0.7131249634549022,
+      "expected": 0.7131249634549021,
+      "edge_density": 0.1,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.25
+      }
+    },
+    {
+      "test": "reference_0.5",
+      "status": "passed",
+      "density": 0.7703363037109374,
+      "expected": 0.7703363037109374,
+      "edge_density": 0.1,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "reference_0.75",
+      "status": "passed",
+      "density": 0.841856954805553,
+      "expected": 0.8418569548055529,
+      "edge_density": 0.1,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.75
+      }
+    },
+    {
+      "test": "reference_1.0",
+      "status": "passed",
+      "density": 0.1,
+      "expected": 0.10000000000000003,
+      "edge_density": 0.1,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 1.0
+      }
+    },
+    {
+      "test": "amplitude_scaled",
+      "status": "passed",
+      "density": 5.392354125976563,
+      "expected": 5.392354125976562,
+      "edge_density": 0.7000000000000001,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 7.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "physical_unit_conversion_demo",
+      "status": "passed",
+      "density": 7.703363037109374e+19,
+      "expected": 7.703363037109374e+19,
+      "edge_density": 1e+19,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1e+20,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "edge_changed_center",
+      "status": "passed",
+      "density": 0.796,
+      "expected": 0.796,
+      "edge_density": 0.4,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.4,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.0
+      }
+    },
+    {
+      "test": "constant_edge_equals_amplitude",
+      "status": "passed",
+      "density": 1.0,
+      "expected": 1.0,
+      "edge_density": 1.0,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 1.0,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "nonhollow",
+      "status": "passed",
+      "density": 0.9997802734375,
+      "expected": 0.9997802734375,
+      "edge_density": 0.1,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 1.0,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "hollow_zero_center",
+      "status": "passed",
+      "density": 0.0,
+      "expected": 0.0,
+      "edge_density": 0.0,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.0,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.0,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.0
+      }
+    },
+    {
+      "test": "different_exponents",
+      "status": "passed",
+      "density": 0.48125,
+      "expected": 0.48125,
+      "edge_density": 0.2,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.2,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.5,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 2.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 2.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "largest_finite_constant",
+      "status": "passed",
+      "density": 1.7976931348623157e+308,
+      "expected": 1.7976931348623157e+308,
+      "edge_density": 1.7976931348623157e+308,
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.7976931348623157e+308,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 1.0,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_amplitude_0",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_amplitude_-1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": -1,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_edge_ratio_-0.1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": -0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_edge_ratio_1.1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 1.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_rho_-0.1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": -0.1
+      }
+    },
+    {
+      "test": "invalid_rho_1.1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 1.1
+      }
+    },
+    {
+      "test": "invalid_radial_exponent_0",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_radial_exponent_-1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": -1,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_profile_exponent_0",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_profile_exponent_-1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": -1,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_hollowness_-0.1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": -0.1,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_hollowness_1.1",
+      "status": "refused",
+      "error": "density profile outside declared mathematical domain",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 1.1,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_amplitude_nan",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": "nan",
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_amplitude_inf",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": "inf",
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_edge_ratio_nan",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": "nan",
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_edge_ratio_inf",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": "inf",
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_rho_nan",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": "nan"
+      }
+    },
+    {
+      "test": "invalid_rho_inf",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": "inf"
+      }
+    },
+    {
+      "test": "invalid_radial_exponent_nan",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": "nan",
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_radial_exponent_inf",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": "inf",
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_profile_exponent_nan",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": "nan",
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_profile_exponent_inf",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": "inf",
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_hollowness_nan",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": "nan",
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "invalid_hollowness_inf",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.0,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 0.1,
+        "aries_cs_density_profile__plasma_profile__hollowness": "inf",
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    },
+    {
+      "test": "edge_binding_overflow",
+      "status": "refused",
+      "error": "density profile requires finite inputs",
+      "chosen_inputs": {
+        "aries_cs_density_profile__plasma_profile__amplitude": 1.7976931348623157e+308,
+        "aries_cs_density_profile__plasma_profile__edge_ratio": 2.0,
+        "aries_cs_density_profile__plasma_profile__hollowness": 0.66,
+        "aries_cs_density_profile__plasma_profile__profile_exponent": 1.0,
+        "aries_cs_density_profile__plasma_profile__radial_exponent": 12.0,
+        "aries_cs_density_profile__plasma_profile__rho": 0.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,560 @@
+{
+  "study_id": "20260925-aries-flow-scaling-check",
+  "question": "How much of the PbLi and helium shortfall of the revised source-conditioned case at 1600 kg/s is the cross-paper mapping artefact of scaling duties to 2436 MW while holding the primary flows at Raffray's 2365 MW values, and does the declared resized-compressor alternative remove all heat at 1650 kg/s; with the series C3, the round-2 network case and the round-2 1700 kg/s case retained as controls.",
+  "canonical_receipt": "exploration/aries_integrated/studies/20260925-aries-revised-reference-network/canonical-replay-receipt.json",
+  "axes": [
+    {
+      "axis": "recuperator_effectiveness",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__recuperator_effectiveness",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Raffray Table III prints 0.95; the inherited 0.8 is agent assumption A3. Values 0.8 and 0.95.",
+      "missing_response": "No purchased recuperator geometry, area or pressure-loss relation resists the effectiveness.",
+      "declined": false
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Inherited 1400 kg/s is agent assumption A3; 1600 is derived from Lyon 2916 MW over Raffray Fig. 12 cycle temperatures 355 to 707 C at cp 5193 (1595 kg/s); 1500/1700/1800/2000 bracket the response.",
+      "missing_response": "No machine map, purchased flow capability or cycle pressure-loss law responds to cycle flow; compressor rating screen is the only reachable check.",
+      "declined": false
+    },
+    {
+      "axis": "divertor_primary_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__divertor_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Raffray Table V prints 283 kg/s; inherited 500 kg/s is agent assumption A4.",
+      "missing_response": "Divertor hydraulics and MHD are unqualified; the cubic pump proxy is bypassed by the fixed-power mode in every case that changes this flow.",
+      "declined": false
+    },
+    {
+      "axis": "he_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "W/(m2 K)",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Diagnostic tenfold conductance (UA 50 to 500 MW/K) to separate conductance limits from temperature and capacity-rate limits; labelled resized diagnostic, never reference reproduction.",
+      "missing_response": "U has no geometry or pressure-drop qualification.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "W/(m2 K)",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Same diagnostic as he_u.",
+      "missing_response": "Same as he_u.",
+      "declined": false
+    },
+    {
+      "axis": "divertor_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__divertor_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "W/(m2 K)",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Same diagnostic as he_u.",
+      "missing_response": "Same as he_u.",
+      "declined": false
+    },
+    {
+      "axis": "deposited_auxiliary_heat",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__auxiliary_heat",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon reference is an ignited plasma (P_input = 0, p707); inherited 20 MW is assumption A1.",
+      "missing_response": "No plasma sustainment model resists this supplied heat.",
+      "declined": false
+    },
+    {
+      "axis": "cryo_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__cryo",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon p717 itemises 5 MW cryogenic; inherited 10 MW is assumption A5.",
+      "missing_response": "No cryoplant demand model.",
+      "declined": false
+    },
+    {
+      "axis": "control_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__control",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon itemises no control load; folded into the 50 MW balance of plant.",
+      "missing_response": "No subsystem demand model.",
+      "declined": false
+    },
+    {
+      "axis": "other_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__other_electric",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon p717: 50 MW balance of plant.",
+      "missing_response": "No subsystem demand model.",
+      "declined": false
+    },
+    {
+      "axis": "fuel_base_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__fuel_base",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon itemises no fuel-processing load; folded into balance of plant.",
+      "missing_response": "No fuel-processing demand model.",
+      "declined": false
+    },
+    {
+      "axis": "fuel_coefficient",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__fuel_coefficient",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW per atom/s",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Same as fuel_base_load.",
+      "missing_response": "Same as fuel_base_load.",
+      "declined": false
+    },
+    {
+      "axis": "he_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "code",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Mode 1 supplies a fixed pump power instead of the cubic proxy; used to hold or set pump power explicitly.",
+      "missing_response": "Mode switch only.",
+      "declined": false
+    },
+    {
+      "axis": "he_pump_fixed_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__fixed_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon p708: 170 MW blanket helium pumping; Raffray Table II: 156 MW.",
+      "missing_response": "No hydraulic law.",
+      "declined": false
+    },
+    {
+      "axis": "divertor_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__divertor_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "code",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Mode 1 supplies a fixed pump power instead of the cubic proxy.",
+      "missing_response": "Mode switch only.",
+      "declined": false
+    },
+    {
+      "axis": "divertor_pump_fixed_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__divertor_pump__fixed_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Lyon p708 and Raffray Table V: 27 MW divertor helium pumping; inherited 10 MW is assumption A2.",
+      "missing_response": "No hydraulic law.",
+      "declined": false
+    },
+    {
+      "axis": "radiation_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__radiation_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Model meaning: fraction of charged power deposited in the blanket circuits, remainder to the divertor. Inherited 0.25 is assumption A1. Lyon Table IV prints 98.1 MW to the divertor of 487 MW charged power; Raffray Table V implies 66.8 MW of nuclear heating in the divertor at 2365 MW (186 minus 24 friction, 23.6 conducted, 23.6 alpha loss, 48 radiated), 68.8 MW scaled to 2436 MW. Divertor deposition 167 MW gives 1 minus 167/487.2 = 0.657; the nuclear share is carried as charged power because the model has no divertor nuclear-heating term.",
+      "missing_response": "No radiation, scrape-off-layer or neutron transport model resists the partition.",
+      "declined": false
+    },
+    {
+      "axis": "exchange_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__exchange_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Raffray Table II: 111 MW conducted from PbLi to He at 2365 MW fusion, 0.0469 of fusion power; inherited 0.04 is assumption A1.",
+      "missing_response": "No insert-conductance model resists the exchange.",
+      "declined": false
+    },
+    {
+      "axis": "network_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__network_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "code",
+      "role": "source",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Mode 0 is the inherited series arrangement (helium, then divertor, then PbLi in one cycle stream; WI-089). Mode 1 represents Raffray Fig. 12 (p. 741): the blanket-helium exchanger first, then the PbLi and divertor-helium exchangers in parallel on split cycle flow, rejoining before the turbine (WI-092 design, reviewed).",
+      "missing_response": "No branch hydraulic balance, header or pressure-loss law resists the arrangement; the split between the parallel stages is supplied.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_split",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__pbli_split_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Fraction of cycle flow through the PbLi stage in mode 1; no source states it. Raffray duty shares (1444 MW PbLi, 186 MW divertor; Tables II and V) imply about 0.89 for equal branch temperature rises; the design default is 0.85; 0.50 to 0.98 brackets the response. Ignored in mode 0.",
+      "missing_response": "No valve, header or branch hydraulic model responds to the split; a split that starves a branch shows as unmet heat on that branch, never as manufactured transfer.",
+      "declined": false
+    },
+    {
+      "axis": "compressor_rating",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Inherited 1600 MW offered compressor capacity is assumption A6 (WI-089). The separately named resized-compressor alternative sets the rating to 1700 or 1800 MW alongside the same cycle flow; it is a declared hardware change studied for its purpose and never a reference reproduction.",
+      "missing_response": "No compressor map or purchase-cost response; the rating is the scalar offered-capacity screen against the calculated compressor demand.",
+      "declined": false
+    },
+    {
+      "axis": "he_primary_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__he_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Raffray Table II prints 3261 kg/s for the 2365 MW case; the reference-case contract \u00a7 8 scales duties to 2436 MW by 1.030 while the flow was held at 3261; 3359 kg/s is that flow scaled with the duty (contract \u00a7 6a, Q1 review finding 2). A supplied operating flow, never derived from demand.",
+      "missing_response": "No blanket hydraulic or MHD law responds to the flow; the helium pump power is supplied fixed (Lyon 170 MW) in these cases.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_primary_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__pbli_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "Raffray Table II prints 26,860 kg/s; 27,666 kg/s is that flow scaled by 1.030 with the duty (contract \u00a7 6a). A supplied operating flow, never derived from demand.",
+      "missing_response": "No PbLi hydraulic or MHD law responds to the flow; the PbLi pump proxy is 0.01 MW at reference and negligible here.",
+      "declined": false
+    },
+    {
+      "axis": "he_pump_capacity",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__selected_flow_capacity",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "The helium pump offered flow capacity carried along with the scaled flow (3261 \u2192 3359 kg/s) so that the mapping does not trip the pump screen by construction; a declared purchased value of the scaled mapping, stated here rather than sized from demand.",
+      "missing_response": "Scalar capacity screen only; no pump map.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_pump_capacity",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_pump__selected_flow_capacity",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "The PbLi pump offered flow capacity carried along with the scaled flow (26,860 \u2192 27,666 kg/s); same reasoning as he_pump_capacity.",
+      "missing_response": "Scalar capacity screen only; no pump map.",
+      "declined": false
+    }
+  ],
+  "designs": [
+    {
+      "name": "combined-source-thermal",
+      "canonical_base": "nominal-source-assumed",
+      "values": {
+        "recuperator_effectiveness": 0.95,
+        "cycle_flow": 1600.0,
+        "divertor_primary_flow": 283.0,
+        "divertor_pump_mode": 1.0,
+        "divertor_pump_fixed_power": 10.0
+      },
+      "classification": "C1 (composition step, round-1 case retained)"
+    },
+    {
+      "name": "combined-source-thermal-lyon-aux",
+      "base_design": "combined-source-thermal",
+      "values": {
+        "deposited_auxiliary_heat": 0.0,
+        "cryo_load": 5.0,
+        "control_load": 0.0,
+        "other_load": 50.0,
+        "fuel_base_load": 0.0,
+        "fuel_coefficient": 0.0,
+        "he_pump_mode": 1.0,
+        "he_pump_fixed_power": 170.0,
+        "divertor_pump_mode": 1.0,
+        "divertor_pump_fixed_power": 27.0
+      },
+      "classification": "C2 (composition step, round-1 case retained)"
+    },
+    {
+      "name": "combined-c3-partition",
+      "base_design": "combined-source-thermal-lyon-aux",
+      "values": {
+        "radiation_fraction": 0.657,
+        "exchange_fraction": 0.0469
+      },
+      "classification": "C3 series control (round-1 case retained)"
+    },
+    {
+      "name": "network-c3-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85
+      },
+      "classification": "revised source-conditioned case control (round-2 case retained)"
+    },
+    {
+      "name": "network-c3-scaledflows-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "he_primary_flow": 3359.0,
+        "pbli_primary_flow": 27666.0,
+        "divertor_primary_flow": 291.5,
+        "he_pump_capacity": 3359.0,
+        "pbli_pump_capacity": 27666.0
+      },
+      "classification": "C3 + network with the three primary flows and pump capacities scaled by 2436/2365 (mapping correction under test)"
+    },
+    {
+      "name": "network-c3-scaledflows-0.90",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.9,
+        "he_primary_flow": 3359.0,
+        "pbli_primary_flow": 27666.0,
+        "divertor_primary_flow": 291.5,
+        "he_pump_capacity": 3359.0,
+        "pbli_pump_capacity": 27666.0
+      },
+      "classification": "same at split 0.90"
+    },
+    {
+      "name": "network-c3-scaledflows-pbli-only-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "pbli_primary_flow": 27666.0,
+        "pbli_pump_capacity": 27666.0
+      },
+      "classification": "only the PbLi flow and pump capacity scaled (isolates the PbLi cold-end artefact)"
+    },
+    {
+      "name": "network-c3-scaledflows-he-only-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "he_primary_flow": 3359.0,
+        "he_pump_capacity": 3359.0
+      },
+      "classification": "only the helium flow and pump capacity scaled"
+    },
+    {
+      "name": "resized-compressor-1650-network-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "cycle_flow": 1650.0,
+        "compressor_rating": 1650.0
+      },
+      "classification": "declared resized-compressor alternative at 1650 kg/s (threshold bracket between 1600 and 1700); not a reference reproduction"
+    },
+    {
+      "name": "resized-compressor-1650-network-scaledflows-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "he_primary_flow": 3359.0,
+        "pbli_primary_flow": 27666.0,
+        "divertor_primary_flow": 291.5,
+        "he_pump_capacity": 3359.0,
+        "pbli_pump_capacity": 27666.0,
+        "cycle_flow": 1650.0,
+        "compressor_rating": 1650.0
+      },
+      "classification": "same with scaled primary flows"
+    },
+    {
+      "name": "resized-compressor-1700-network-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "cycle_flow": 1700.0,
+        "compressor_rating": 1700.0
+      },
+      "classification": "round-2 best tested steady case (control)"
+    },
+    {
+      "name": "resized-compressor-1700-network-scaledflows-0.85",
+      "base_design": "combined-c3-partition",
+      "values": {
+        "network_mode": 1.0,
+        "pbli_split": 0.85,
+        "he_primary_flow": 3359.0,
+        "pbli_primary_flow": 27666.0,
+        "divertor_primary_flow": 291.5,
+        "he_pump_capacity": 3359.0,
+        "pbli_pump_capacity": 27666.0,
+        "cycle_flow": 1700.0,
+        "compressor_rating": 1700.0
+      },
+      "classification": "same with scaled primary flows"
+    }
+  ]
+}

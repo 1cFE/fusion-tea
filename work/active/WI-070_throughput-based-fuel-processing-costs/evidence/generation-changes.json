@@ -1,0 +1,30 @@
+{
+  "contracts/package_contract.json": {
+    "before": "32d8efe829ce3b5585825a35a657193265494331fb07b8da63ece612d0e26d73",
+    "after": "7cc1d625c3defd754f6a54aa308683c35c3ecb2910047263d5863535546fc994"
+  },
+  "handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py": {
+    "before": "a3957a712abc6ef518ce7d814836928fc58bf78ba0d3a360c862aa710d4c10b4",
+    "after": "37e4d9c600a8ea2f1a2d5683a71e723e5096741f4667841cd5a9fde66cfd6587"
+  },
+  "handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py": {
+    "before": "7fc9924f34d0dbaa09992b280551ec2aecdee10aeeb6bc44eb01e232a809028b",
+    "after": "8fd0a30c75b9f1cfc265904d01b06346d52582df830d111ffd67644893d9a5e5"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "279dd3e4cac8bab1e6cf1cfeb82ab7e7cae49ee83cf241b258a18c73fdf853bb",
+    "after": "3dfc1d4b13a6bb1f366d060bbb57d51e88c75b903fa1770a80a2aeb8f5fdd5b1"
+  },
+  "modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py": {
+    "before": "10e4614025cf413a923a31a27695af7ecdd2c75d293914dadc012d8135bf41a3",
+    "after": "3129022572cc9eea4c184a0bcc601e69f1359c67c50283740903c3daf8dfd387"
+  },
+  "modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py": {
+    "before": "8cef81a43012eda87d61593d87414eb87404d9809ea814c4ddf885e7b35bdb25",
+    "after": "25c2bab43c9afa149914bac24ec1e17bb37b8bf262e5554b81a89c72502d68eb"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "2acb8de936d35a4d7ce12bb8900567ed7a1f55d8109741ee3922ccfb9059acc9",
+    "after": "0f6d4b3934d77e588151d429b24e8bce5295211dbd5e737f4c3900c4e3b2e8bf"
+  }
+}

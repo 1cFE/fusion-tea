@@ -1,0 +1,1601 @@
+{
+  "status": "author source transcription; not independent review or accepted observations",
+  "source_priority": "Subsystem documents before overview; preserve definition conflicts rather than force equality. Lyon TableIII for whole cost accounts; TableVI separate component scopes; Raffray for loop engineering; Lyon for final systems balances.",
+  "sources": {
+    "Najmabadi": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Najmabadi.pdf",
+      "sha256": "5eb7889311beecd9b9be56837ecf82b0a92b8ff99804d01bb3fa5fac4a9b78e7",
+      "printed_page_start": 655
+    },
+    "Ku": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Ku.pdf",
+      "sha256": "8fb35d57ec3563276af13076ee97728f6237630df803bd46639224d5f3e8a7f5",
+      "printed_page_start": 673
+    },
+    "Lyon": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "printed_page_start": 694
+    },
+    "Raffray": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Raffray.pdf",
+      "sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7",
+      "printed_page_start": 725
+    }
+  },
+  "rows": {
+    "C220101": {
+      "raw_value": 59.347,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.1 Blankets, first, and back walls",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Includes first/back walls; candidate blanket boundary must be checked.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "C220102": {
+      "raw_value": 228.627,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.2 Shield + back wall + manifold",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Includes manifold; candidate shield-only subtotal is narrower.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      },
+      "alternative_observations": [
+        {
+          "raw_value": 131.67,
+          "raw_unit": "million 2004 USD",
+          "label": "Shield cost and back wall",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 15,
+            "printed_page": 709,
+            "table_or_section": "Table VI",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+            "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+            "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+            "image_inspected": true
+          },
+          "judgment": "Detailed component boundary differs from Table III whole-account boundary; keep both."
+        }
+      ]
+    },
+    "C220103": {
+      "raw_value": 222.884,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.3 Coils + structure",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Modular and VF coils and modular support; Nb3Sn not model REBCO. Frozen model scope label also has C220101 typo; do not rewrite.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      },
+      "alternative_observations": [
+        {
+          "raw_value": 209.5,
+          "raw_unit": "million 2004 USD",
+          "label": "Coil + structure cost",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 15,
+            "printed_page": 709,
+            "table_or_section": "Table VI",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+            "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+            "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+            "image_inspected": true
+          },
+          "judgment": "Detailed component boundary differs from Table III whole-account boundary; keep both."
+        }
+      ]
+    },
+    "C220104": {
+      "raw_value": 66.427,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.4 Plasma heating",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Installed startup heating cost, not operating sustainment electricity.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "C220105": {
+      "raw_value": 73.126,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.5 Primary structure and support",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Separate from modular-coil structure; verify model allocation.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      },
+      "alternative_observations": [
+        {
+          "raw_value": 61.42,
+          "raw_unit": "million 2004 USD",
+          "label": "Cost of primary structure",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 15,
+            "printed_page": 709,
+            "table_or_section": "Table VI",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+            "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+            "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+            "image_inspected": true
+          },
+          "judgment": "Detailed component boundary differs from Table III whole-account boundary; keep both."
+        }
+      ]
+    },
+    "C220106": {
+      "raw_value": 137.135,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.6 Vacuum system and cryostat",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Broader than model vessel shell; do not compare as vessel-only.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      },
+      "alternative_observations": [
+        {
+          "raw_value": 60.55,
+          "raw_unit": "million 2004 USD",
+          "label": "Total vacuum vessel cost",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 15,
+            "printed_page": 709,
+            "table_or_section": "Table VI",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+            "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+            "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+            "image_inspected": true
+          },
+          "judgment": "Detailed component boundary differs from Table III whole-account boundary; keep both."
+        }
+      ]
+    },
+    "C220107": {
+      "raw_value": 70.624,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.7 Power supplies",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Frozen lineage exception retained; no independent pass credit.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "C220108": {
+      "raw_value": 5.318,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1.3.3 Divertor",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Physical divertor row; impurity control 6.561 is a separate source account.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      },
+      "alternative_observations": [
+        {
+          "raw_value": 5.32,
+          "raw_unit": "million 2004 USD",
+          "label": "Divertor cost",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 15,
+            "printed_page": 709,
+            "table_or_section": "Table VI",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+            "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+            "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+            "image_inspected": true
+          },
+          "judgment": "Detailed component boundary differs from Table III whole-account boundary; keep both."
+        }
+      ]
+    },
+    "coolant": {
+      "raw_value": 474.771,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.2 Main heat transport system",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Primary388.838 plus secondary85.933, intermediate0; model He/salt equipment boundary differs.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "aux_cooling_total": {
+      "raw_value": 3.735,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.3 Auxiliary cooling system",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Do not assume same cryoplant-inclusive boundary as candidate.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "waste": {
+      "raw_value": 6.655,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.4 Radioactive waste treatment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "System correspondence; installation scope not established.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "fuel_handling": {
+      "raw_value": 55.279,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.5 Fuel handling and storage",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Includes injection, processing, storage, atmospheric recovery, water detritiation, blanket recovery; model narrower throughput installation.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "other_rpe": {
+      "raw_value": 60.723,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.6 Other plant equipment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Coarse account correspondence only.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "instrumentation": {
+      "raw_value": 44.558,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.7 Instrumentation and controls",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Coarse account correspondence only.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS21": {
+      "raw_value": 336.133,
+      "raw_unit": "million 2004 USD",
+      "source_label": "21 Structures and site facilities",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Different civil child inventory; no complete scope equality established.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS23": {
+      "raw_value": 314.558,
+      "raw_unit": "million 2004 USD",
+      "source_label": "23 Turbine plant equipment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Brayton versus steam cycle; exchanger installed scope in candidate unresolved.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS24": {
+      "raw_value": 138.764,
+      "raw_unit": "million 2004 USD",
+      "source_label": "24 Electric plant equipment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Coarse account correspondence only.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS25": {
+      "raw_value": 56.086,
+      "raw_unit": "million 2004 USD",
+      "source_label": "27 Heat rejection",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Map title, not number; overview26, Lyon27, model25.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS26": {
+      "raw_value": 70.958,
+      "raw_unit": "million 2004 USD",
+      "source_label": "25 Miscellaneous plant equipment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Map title, not number; source25, model26.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS27": {
+      "raw_value": 151.327,
+      "raw_unit": "million 2004 USD",
+      "source_label": "26 Special materials",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Map title, not number; overview27, Lyon26, model27.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS10": {
+      "raw_value": 12.929,
+      "raw_unit": "million 2004 USD",
+      "source_label": "20 Land and land rights",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Reference land-only excludes model preconstruction.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "reactor_equipment": {
+      "raw_value": 864.7,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22.1 Total core equipment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Child boundaries differ; excludes transport and ancillary reactor plant equipment.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "CAS22": {
+      "raw_value": 1538.817,
+      "raw_unit": "million 2004 USD",
+      "source_label": "22 Reactor plant equipment",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 13,
+        "printed_page": 707,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+        "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+        "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Whole parent; never add its children again.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "money_conversion": {
+        "multiplier_to_USD": 1000000,
+        "currency_year": 2004,
+        "normalization_to_model": "none; model mixed source years"
+      }
+    },
+    "p_net": {
+      "raw_value": 1000,
+      "raw_unit": "MW",
+      "source_label": "Net electric power",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Whole-plant exported electrical power target, not independently predicted source input.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "p_the": {
+      "raw_value": 1253,
+      "raw_unit": "MW",
+      "source_label": "Gross electric power",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Brayton electricity after internally driven cycle compression may differ from steam turbine-generator gross boundary.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "p_et": {
+      "raw_value": 1253,
+      "raw_unit": "MW",
+      "source_label": "Gross electric power",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Same source observation as p_the; not independent evidence twice.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "p_th": {
+      "raw_value": 2916,
+      "raw_unit": "MW",
+      "source_label": "Thermal power",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Whole systems power balance; do not substitute blanket-only thermal duty.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "fusion": {
+      "raw_value": 2436,
+      "raw_unit": "MW",
+      "source_label": "Fusion power",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Final systems reference case; Raffray engineering point differs.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "radiated_total": {
+      "raw_value": 365,
+      "raw_unit": "MW",
+      "source_label": "Radiated power",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Printed total differs from sum of printed radiation components396.28; preserve contradiction.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "target_deposited": {
+      "raw_value": 98.1,
+      "raw_unit": "MW",
+      "source_label": "Power to divertor",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Target boundary requires alpha/SOL interpretation; not automatically same deposited fraction.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "achieved_tbr": {
+      "raw_value": 1.115,
+      "raw_unit": "1",
+      "source_label": "Tritium breeding ratio",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Systems point; engineering summary1.1 is rounded/different point.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "peak_field": {
+      "raw_value": 15.08,
+      "raw_unit": "T",
+      "source_label": "Maximum field on coils",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Nb3Sn reference versus REBCO; same physical unit alone not qualification.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "fit_pack_x": {
+      "raw_value": 0.194,
+      "raw_unit": "m",
+      "source_label": "Coil dimensions first dimension",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Reference pack dimension; orientation matches radial depth but model fit definition requires checking.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "fit_pack_y": {
+      "raw_value": 0.743,
+      "raw_unit": "m",
+      "source_label": "Coil dimensions second dimension",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Reference pack dimension; model fit definition requires checking.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "recirculating_power": {
+      "raw_value": 253,
+      "raw_unit": "MW",
+      "source_label": "Part of gross electrical power required",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 14,
+        "printed_page": 708,
+        "table_or_section": "VII.A prose and Table IV",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+        "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+        "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "253 printed; named rounded loads170+27+55=252. Preserve rounding residual, no repair.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "pump_electric": {
+      "raw_value": 156,
+      "raw_unit": "MW",
+      "source_label": "Blanket He pumping power",
+      "evidence": {
+        "source": "Raffray",
+        "pdf_page_index": 9,
+        "printed_page": 734,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+        "markdown_sha256": "e48fcfaddd1412c36071ddf770661c7e54e6fb2cd7db5937d560eb7bd1fa459e",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+        "image_sha256": "c4684860d5c71ccfe4ad3eeea13271cea40d54841a0b8d3c27d1d429c77f2e0d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Blanket-only engineering point; excludes divertor and candidate secondary salt pump. Lyon final systems blanket170 and divertor27; do not merge points.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "alternative_observations": [
+        {
+          "raw_value": 170,
+          "raw_unit": "MW",
+          "label": "Blanket helium pump",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 14,
+            "printed_page": 708,
+            "table_or_section": "VII.A",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+            "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+            "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+            "image_inspected": true
+          }
+        },
+        {
+          "raw_value": 27,
+          "raw_unit": "MW",
+          "label": "Divertor helium pump",
+          "evidence": {
+            "source": "Lyon",
+            "pdf_page_index": 14,
+            "printed_page": 708,
+            "table_or_section": "VII.A",
+            "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+            "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+            "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+            "image_sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d",
+            "image_inspected": true
+          }
+        }
+      ]
+    },
+    "recovered_heat": {
+      "raw_value": 141,
+      "raw_unit": "MW",
+      "source_label": "Friction power included in thermal power removed by He",
+      "evidence": {
+        "source": "Raffray",
+        "pdf_page_index": 9,
+        "printed_page": 734,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+        "markdown_sha256": "e48fcfaddd1412c36071ddf770661c7e54e6fb2cd7db5937d560eb7bd1fa459e",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+        "image_sha256": "c4684860d5c71ccfe4ad3eeea13271cea40d54841a0b8d3c27d1d429c77f2e0d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Blanket He shaft/friction heat only; not candidate sum of primary and salt-loop recovered heat.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "ihx_duty": {
+      "raw_value": 1192,
+      "raw_unit": "MW",
+      "source_label": "Thermal power removed by He",
+      "evidence": {
+        "source": "Raffray",
+        "pdf_page_index": 9,
+        "printed_page": 734,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+        "markdown_sha256": "e48fcfaddd1412c36071ddf770661c7e54e6fb2cd7db5937d560eb7bd1fa459e",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+        "image_sha256": "c4684860d5c71ccfe4ad3eeea13271cea40d54841a0b8d3c27d1d429c77f2e0d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Includes141 friction and111 conducted from PbLi; blanket He branch only, not full power core.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "loop_flow": {
+      "raw_value": 3261,
+      "raw_unit": "kg/s",
+      "source_label": "Total mass flow rate of blanket He",
+      "evidence": {
+        "source": "Raffray",
+        "pdf_page_index": 9,
+        "printed_page": 734,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+        "markdown_sha256": "e48fcfaddd1412c36071ddf770661c7e54e6fb2cd7db5937d560eb7bd1fa459e",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+        "image_sha256": "c4684860d5c71ccfe4ad3eeea13271cea40d54841a0b8d3c27d1d429c77f2e0d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Engineering blanket branch; does not include divertor or salt loop.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "loop_pressure_drop": {
+      "raw_value": 0.3,
+      "raw_unit": "MPa",
+      "source_label": "Total blanket + heat exchanger He pressure drop",
+      "evidence": {
+        "source": "Raffray",
+        "pdf_page_index": 9,
+        "printed_page": 734,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+        "markdown_sha256": "e48fcfaddd1412c36071ddf770661c7e54e6fb2cd7db5937d560eb7bd1fa459e",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+        "image_sha256": "c4684860d5c71ccfe4ad3eeea13271cea40d54841a0b8d3c27d1d429c77f2e0d",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Includes blanket and HX; same boundary must be demonstrated before comparison.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "turbine__cycle_selection__eta_selected": {
+      "raw_value": 0.43,
+      "raw_unit": "1",
+      "source_label": "Gross efficiency",
+      "evidence": {
+        "source": "Raffray",
+        "pdf_page_index": 12,
+        "printed_page": 737,
+        "table_or_section": "Table III",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-12.md",
+        "markdown_sha256": "d45998e4417568e967a74aeec208d8ae8a85c54949354d99cbdf56b277d0c7ff",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-12.png",
+        "image_sha256": "dac6958ad0b7fcc5a78288d1e8ef8f1ef0dc1fecf182058cee514d2685c67f25",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Helium Brayton efficiency including cycle compressor arrangement; candidate steam-cycle definition differs.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "support_mass": {
+      "raw_value": 3465,
+      "raw_unit": "tonnes",
+      "source_label": "Modular coil structure mass",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 15,
+        "printed_page": 709,
+        "table_or_section": "Table V",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+        "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+        "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Includes strongback1549, cover89.2, intershell1827; model complete EM support scope not established.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "coil_mass_complete": {
+      "raw_value": 4092,
+      "raw_unit": "tonnes",
+      "source_label": "Coil + structure mass",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 15,
+        "printed_page": 709,
+        "table_or_section": "Table V",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+        "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+        "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Modular winding pack627.2 plus modular structure3465; does not provide separately populated total VF mass.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "supports_cost": {
+      "raw_value": 93.54,
+      "raw_unit": "million 2004 USD",
+      "source_label": "Modular coil structure cost",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 15,
+        "printed_page": 709,
+        "table_or_section": "Table VI",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+        "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+        "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Advanced fabrication assumption; model support manufacturing/material basis differs.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "winding_operations": {
+      "raw_value": 5.7,
+      "raw_unit": "million 2004 USD",
+      "source_label": "Modular coil winding cost",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 15,
+        "printed_page": 709,
+        "table_or_section": "Table VI",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+        "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+        "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Nb3Sn winding versus model REBCO operations; no qualification.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "tape_procurement": {
+      "raw_value": 110.3,
+      "raw_unit": "million 2004 USD",
+      "source_label": "Modular coil SC cost",
+      "evidence": {
+        "source": "Lyon",
+        "pdf_page_index": 15,
+        "printed_page": 709,
+        "table_or_section": "Table VI",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+        "markdown_sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+        "image_sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Nb3Sn superconductor is not REBCO tape; technology-incompatible candidate retained as context only.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "lcoe_dcf": {
+      "raw_value": 7.76,
+      "raw_unit": "cent 2004 USD/kWh",
+      "source_label": "Total COE",
+      "evidence": {
+        "source": "Najmabadi",
+        "pdf_page_index": 8,
+        "printed_page": 663,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+        "markdown_sha256": "be69db8eeebf4849ea05da5b21a425c10d30105801b4826c4ea1afc44de48d90",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+        "image_sha256": "7709221fa0727f04a867de2e32c7602c0cebb8d5f00590833c9f6f3e496e7b90",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Supporting context only; published CoE method differs from model DCF. No independent LCOE pass claim.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "unit_conversion_to_USD_MWh": 10
+    },
+    "lcoe_1cfe": {
+      "raw_value": 7.76,
+      "raw_unit": "cent 2004 USD/kWh",
+      "source_label": "Total COE",
+      "evidence": {
+        "source": "Najmabadi",
+        "pdf_page_index": 8,
+        "printed_page": 663,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+        "markdown_sha256": "be69db8eeebf4849ea05da5b21a425c10d30105801b4826c4ea1afc44de48d90",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+        "image_sha256": "7709221fa0727f04a867de2e32c7602c0cebb8d5f00590833c9f6f3e496e7b90",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Same observation as lcoe_dcf; supporting context, not second independent benchmark.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis",
+      "unit_conversion_to_USD_MWh": 10
+    },
+    "CAS2x": {
+      "raw_value": 2620.0,
+      "raw_unit": "million 2004 USD",
+      "source_label": "90 Direct cost (not including contingency)",
+      "evidence": {
+        "source": "Najmabadi",
+        "pdf_page_index": 8,
+        "printed_page": 663,
+        "table_or_section": "Table II",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+        "markdown_sha256": "be69db8eeebf4849ea05da5b21a425c10d30105801b4826c4ea1afc44de48d90",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+        "image_sha256": "7709221fa0727f04a867de2e32c7602c0cebb8d5f00590833c9f6f3e496e7b90",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Source total includes land12.9; candidate CAS2x boundary differs. Not total capital or contingency-inclusive CAS20.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    },
+    "availability": {
+      "raw_value": 85,
+      "raw_unit": "percent",
+      "source_label": "Assumed plant availability",
+      "evidence": {
+        "source": "Najmabadi",
+        "pdf_page_index": 8,
+        "printed_page": 663,
+        "table_or_section": "Table II footnote b",
+        "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+        "markdown_sha256": "be69db8eeebf4849ea05da5b21a425c10d30105801b4826c4ea1afc44de48d90",
+        "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+        "image_sha256": "7709221fa0727f04a867de2e32c7602c0cebb8d5f00590833c9f6f3e496e7b90",
+        "image_inspected": true
+      },
+      "reference_technology": "ARIES-CS N3ARE/KZD; Nb3Sn modular magnets near 4 K; dual He/Pb-17Li ferritic-steel blanket; helium Brayton cycle",
+      "basis": "ARIES-CS reference whole plant",
+      "scope_judgment": "Assumption, not engineering availability demonstration or independent prediction credit.",
+      "formal_comparability": "not established; preserve actual scope/technology/basis"
+    }
+  },
+  "structural_rows": {
+    "subsystems": {
+      "judgment": "Qualitative counterparts exist for plasma, modular magnets, blanket/shield, vessel/vacuum, startup heating, conversion, ancillary plant, buildings. Technology and represented physical scope do not match automatically.",
+      "evidence": [
+        {
+          "source": "Ku",
+          "pdf_page_index": 1,
+          "printed_page": 674,
+          "table_or_section": "I introduction N3ARE/KZD",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Ku/page-01.md",
+          "markdown_sha256": "06445d216d556a08f1733eca4cc6b438f7249fbdb9d0b2f7938c321a9af51671",
+          "image": null,
+          "image_sha256": null,
+          "image_inspected": false
+        },
+        {
+          "source": "Lyon",
+          "pdf_page_index": 13,
+          "printed_page": 707,
+          "table_or_section": "Table III",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+          "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+          "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+          "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+          "image_inspected": true
+        },
+        {
+          "source": "Raffray",
+          "pdf_page_index": 11,
+          "printed_page": 736,
+          "table_or_section": "Figures12-13",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-11.md",
+          "markdown_sha256": "56310412929dd492698f4962657e388dbfe1b0466700442feba4b1f73e721aea",
+          "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-11.png",
+          "image_sha256": "23358f6db9d192a0d305a73a2d4e62488e49e6824d22f6c35d3676cd7d189d55",
+          "image_inspected": true
+        },
+        {
+          "source": "Najmabadi",
+          "pdf_page_index": 14,
+          "printed_page": 669,
+          "table_or_section": "IV.C coils",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-14.md",
+          "markdown_sha256": "5cf01f2138775e8df2f4f8cc380d8931f5469288db60e09e6f78f1ed90457218",
+          "image": null,
+          "image_sha256": null,
+          "image_inspected": false
+        }
+      ]
+    },
+    "radial_order": {
+      "judgment": "Lyon Fig5 shows plasma/SOL/first wall/blanket/back wall/shield/manifolds/vessel/gap/magnet with full and tapered sectors. No unique uniform shell thickness or candidate reflector/hot-shield/structure/cold-shield one-to-one mapping.",
+      "evidence": [
+        {
+          "source": "Lyon",
+          "pdf_page_index": 5,
+          "printed_page": 699,
+          "table_or_section": "Figure5",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-05.md",
+          "markdown_sha256": "da0e5b63863666815943c6978d914aa418ff5280054bea8722afebd0f28a8990",
+          "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-05.png",
+          "image_sha256": "63bb412fcced6b8eea4f8ae95456ac72cd47f3f168ed64c2431d666deb921358",
+          "image_inspected": true
+        }
+      ]
+    },
+    "cas_coverage": {
+      "judgment": "Direct source ledger differs in numbering, parent scope, and allocations. Land20 maps only partly to modelCAS10; source25 misc mapsCAS26; Lyon27 heat mapsCAS25; Lyon26 materials mapsCAS27. Source22.1.10 ECH breakdown0 is not model remote handling C220110; source22.1.9 direct conversion0 is not proof of model C220109 applicability. Lyon total capital fixed1.93 multiplier bundles multiple model indirect/owner/contingency/financing rows and cannot populate them individually.",
+      "evidence": [
+        {
+          "source": "Lyon",
+          "pdf_page_index": 13,
+          "printed_page": 707,
+          "table_or_section": "TableIII and VI.D",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+          "markdown_sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84",
+          "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+          "image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+          "image_inspected": true
+        },
+        {
+          "source": "Najmabadi",
+          "pdf_page_index": 8,
+          "printed_page": 663,
+          "table_or_section": "TableII",
+          "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+          "markdown_sha256": "be69db8eeebf4849ea05da5b21a425c10d30105801b4826c4ea1afc44de48d90",
+          "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+          "image_sha256": "7709221fa0727f04a867de2e32c7602c0cebb8d5f00590833c9f6f3e496e7b90",
+          "image_inspected": true
+        }
+      ]
+    }
+  },
+  "missing_or_unresolved_manifest_rows": [
+    "major_radius",
+    "minor_radius",
+    "thickness_sol",
+    "outer_radius_sol",
+    "thickness_first_wall",
+    "outer_radius_first_wall",
+    "thickness_blanket",
+    "outer_radius_blanket",
+    "thickness_reflector",
+    "outer_radius_reflector",
+    "thickness_hot_shield",
+    "outer_radius_hot_shield",
+    "thickness_structure",
+    "outer_radius_structure",
+    "thickness_vessel_gap",
+    "outer_radius_vessel_gap",
+    "thickness_vessel",
+    "outer_radius_vessel",
+    "thickness_coil",
+    "outer_radius_coil",
+    "thickness_coil_gap",
+    "outer_radius_coil_gap",
+    "thickness_cold_shield",
+    "outer_radius_cold_shield",
+    "radial_wall_area",
+    "radial_shield_vol",
+    "radial_structure_vol",
+    "radial_r_coil_centre",
+    "radial_r_coil",
+    "radial_blanket_vol",
+    "radial_vessel_vol",
+    "mass_copper",
+    "mass_solder",
+    "mass_steel",
+    "mass_helium",
+    "casing_mass",
+    "vol_winding_pack",
+    "vol_cold_total",
+    "fit_required_x",
+    "fit_required_y",
+    "fit_cavity_x",
+    "fit_cavity_y",
+    "fit_exterior_x",
+    "fit_exterior_y",
+    "fit_margin_x",
+    "fit_margin_y",
+    "rec_frac",
+    "q_eng",
+    "source_heat",
+    "operating_wallplug",
+    "operating_coupled",
+    "installed_wallplug",
+    "installed_coupled",
+    "refrigeration",
+    "nonrad_uncaptured",
+    "C220110",
+    "C220111",
+    "CAS28",
+    "CAS29",
+    "CAS30",
+    "CAS40",
+    "CAS50",
+    "CAS60",
+    "powercore",
+    "BOP",
+    "CAS20",
+    "overnight",
+    "total_capital",
+    "non_tape_materials",
+    "winding_procurement",
+    "insulation_stock",
+    "cryo_cost",
+    "aux_cooling",
+    "copper_cost",
+    "solder_cost",
+    "steel_cost",
+    "helium_cost",
+    "manufacturing_remainder",
+    "additional_loop_installed",
+    "CAS71",
+    "CAS72",
+    "CAS70",
+    "CAS80",
+    "annual_total",
+    "CAS90_1cfe",
+    "raw_om",
+    "raw_fuel",
+    "coil_life",
+    "discount_rate",
+    "escalation",
+    "construction",
+    "operating_life",
+    "modules",
+    "outage",
+    "unplanned",
+    "required_tbr",
+    "tbr_margin",
+    "coil_life_margin",
+    "productive_fpy",
+    "target_peak",
+    "constraint_wp_stress_ok",
+    "constraint_cond_strain_ok",
+    "constraint_recirc_ok",
+    "constraint_cycle_domain_ok",
+    "constraint_beta_ok",
+    "constraint_heating_couple_positive_ok",
+    "constraint_divertor_heat_ok",
+    "constraint_heating_source_upper_ok",
+    "constraint_net_positive",
+    "constraint_burn_hold_ok",
+    "constraint_wall_load_ok",
+    "constraint_tbr_ok",
+    "constraint_heating_couple_upper_ok",
+    "constraint_peak_field_ok",
+    "constraint_reference_conductor_current_ok",
+    "constraint_sustainment_ok",
+    "constraint_loop_capacity_ok",
+    "constraint_wp_fit_ok",
+    "constraint_heating_source_positive_ok",
+    "constraint_loop_pressure_ok",
+    "vacuum_pumping_cost",
+    "C220109",
+    "facility_capacity_ok",
+    "facility_outage_ok",
+    "facility_routes_ok",
+    "facility_replacement_ready",
+    "facility_initial_ready",
+    "cooling_water_heat_direction",
+    "matched_main_heat_direction",
+    "matched_reheat_heat_direction",
+    "heat_rejection__cooling_water__active",
+    "heat_rejection__cooling_water__condenser_water_gap_K",
+    "heat_rejection__cooling_water__cooling_approach_ok",
+    "heat_rejection__cooling_water__denominator_kJ_kg",
+    "heat_rejection__cooling_water__p_cooling_pump_electric_MW",
+    "heat_rejection__cooling_water__p_cooling_pump_shaft_MW",
+    "heat_rejection__cooling_water__q_cooling_motor_loss_MW",
+    "heat_rejection__cooling_water__q_total_rejection_MW",
+    "heat_rejection__cooling_water__reference_scenario",
+    "heat_rejection__cooling_water__site_qualified",
+    "heat_rejection__cooling_water__water_energy_residual_MW",
+    "heat_rejection__cooling_water__water_flow_kg_s",
+    "heat_rejection__cooling_water__water_pump_rise_K",
+    "turbine__cycle_selection__legacy_domain_applicable",
+    "turbine__cycle_selection__matched_domain_applicable",
+    "turbine__matched_cycle__active",
+    "turbine__matched_cycle__bleed_fraction",
+    "turbine__matched_cycle__cycle_electric_residual_MW",
+    "turbine__matched_cycle__cycle_shaft_residual_MW",
+    "turbine__matched_cycle__eta_gross",
+    "turbine__matched_cycle__h_condensate_kJ_kg",
+    "turbine__matched_cycle__h_condensate_pumped_kJ_kg",
+    "turbine__matched_cycle__h_feed_kJ_kg",
+    "turbine__matched_cycle__h_heater_kJ_kg",
+    "turbine__matched_cycle__h_hp_kJ_kg",
+    "turbine__matched_cycle__h_lp_kJ_kg",
+    "turbine__matched_cycle__h_main_kJ_kg",
+    "turbine__matched_cycle__h_reheat_kJ_kg",
+    "turbine__matched_cycle__heater_energy_residual_MW",
+    "turbine__matched_cycle__heater_mass_residual_kg_s",
+    "turbine__matched_cycle__installed_sg_capacity_qualified",
+    "turbine__matched_cycle__lp_moisture_fraction",
+    "turbine__matched_cycle__lp_quality",
+    "turbine__matched_cycle__main_UA_MW_K",
+    "turbine__matched_cycle__main_UA_available",
+    "turbine__matched_cycle__main_admission_ok",
+    "turbine__matched_cycle__main_min_gap_K",
+    "turbine__matched_cycle__mdot_bleed_kg_s",
+    "turbine__matched_cycle__mdot_condensate_kg_s",
+    "turbine__matched_cycle__mdot_condensate_pumped_kg_s",
+    "turbine__matched_cycle__mdot_feed_kg_s",
+    "turbine__matched_cycle__mdot_heater_kg_s",
+    "turbine__matched_cycle__mdot_hp_kg_s",
+    "turbine__matched_cycle__mdot_lp_kg_s",
+    "turbine__matched_cycle__mdot_main_kg_s",
+    "turbine__matched_cycle__mdot_reheat_kg_s",
+    "turbine__matched_cycle__p_condensate_MPa",
+    "turbine__matched_cycle__p_condensate_electric_MW",
+    "turbine__matched_cycle__p_condensate_pumped_MPa",
+    "turbine__matched_cycle__p_condensate_shaft_MW",
+    "turbine__matched_cycle__p_cycle_net_before_cooling_MW",
+    "turbine__matched_cycle__p_cycle_pumps_MW",
+    "turbine__matched_cycle__p_feed_MPa",
+    "turbine__matched_cycle__p_feedwater_electric_MW",
+    "turbine__matched_cycle__p_feedwater_shaft_MW",
+    "turbine__matched_cycle__p_gross_MW",
+    "turbine__matched_cycle__p_heater_MPa",
+    "turbine__matched_cycle__p_hp_MPa",
+    "turbine__matched_cycle__p_hp_shaft_MW",
+    "turbine__matched_cycle__p_lp_MPa",
+    "turbine__matched_cycle__p_lp_shaft_MW",
+    "turbine__matched_cycle__p_main_MPa",
+    "turbine__matched_cycle__p_reheat_MPa",
+    "turbine__matched_cycle__q_condenser_MW",
+    "turbine__matched_cycle__q_generator_loss_MW",
+    "turbine__matched_cycle__q_main_MW",
+    "turbine__matched_cycle__q_mechanical_loss_MW",
+    "turbine__matched_cycle__q_pump_motor_loss_MW",
+    "turbine__matched_cycle__q_reheat_MW",
+    "turbine__matched_cycle__q_rejection_before_cooling_MW",
+    "turbine__matched_cycle__reheat_UA_MW_K",
+    "turbine__matched_cycle__reheat_UA_available",
+    "turbine__matched_cycle__reheat_admission_ok",
+    "turbine__matched_cycle__reheat_min_gap_K",
+    "turbine__matched_cycle__s_condensate_kJ_kgK",
+    "turbine__matched_cycle__s_feed_kJ_kgK",
+    "turbine__matched_cycle__s_heater_kJ_kgK",
+    "turbine__matched_cycle__s_hp_kJ_kgK",
+    "turbine__matched_cycle__s_lp_kJ_kgK",
+    "turbine__matched_cycle__s_main_kJ_kgK",
+    "turbine__matched_cycle__s_reheat_kJ_kgK",
+    "turbine__matched_cycle__salt_flow_total_kg_s",
+    "turbine__matched_cycle__salt_heat_residual_MW",
+    "turbine__matched_cycle__salt_main_flow_kg_s",
+    "turbine__matched_cycle__salt_reheat_flow_kg_s",
+    "turbine__matched_cycle__t_condensate_C",
+    "turbine__matched_cycle__t_feed_C",
+    "turbine__matched_cycle__t_heater_C",
+    "turbine__matched_cycle__t_hp_C",
+    "turbine__matched_cycle__t_lp_C",
+    "turbine__matched_cycle__t_main_C",
+    "turbine__matched_cycle__t_reheat_C",
+    "turbine__matched_cycle__turbine_equipment_qualified"
+  ],
+  "missing_policy": "No defensible matched value transcribed here; absence from this file does not assert absence anywhere in PDFs. Steam/salt diagnostic rows have no corresponding ARIES cycle. No fabricated zeros or inferred prices.",
+  "global_limitations": [
+    "All costs retain 2004 USD; model is mixed-year and no conversion is authorized here.",
+    "Physical similarity or raw ratio is not exact scope/technology/basis equality.",
+    "REBCO20K and helium/salt/steam model differ from Nb3Sn4K and dual-coolant helium Brayton ARIES plant.",
+    "No model execution or frozen rule edit performed.",
+    "Raffray printed726 explicitly explains different analysis dates and somewhat different systems parameters."
+  ]
+}

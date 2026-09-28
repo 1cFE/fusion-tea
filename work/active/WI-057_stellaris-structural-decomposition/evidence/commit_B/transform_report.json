@@ -1,0 +1,220 @@
+{
+ "calcs_moved": 44,
+ "inputs": {
+  "plasma": {
+   "B": "magnet.B"
+  },
+  "blanket": {
+   "p_th": "pb.p_th",
+   "p_fus": "plasma.p_fus",
+   "p_coupled": "heating.p_coupled"
+  },
+  "blanket.first_wall": {
+   "p_fus": "plasma.p_fus",
+   "wall_area": "rb.wall_area"
+  },
+  "shield": {
+   "p_th": "pb.p_th"
+  },
+  "structure": {
+   "p_et": "pb.p_et"
+  },
+  "vessel": {
+   "p_et": "pb.p_et"
+  },
+  "magnet": {
+   "r_coil_centre": "rb.r_coil_centre"
+  },
+  "heat_transport": {
+   "q_source": "blanket.q_source",
+   "p_net": "pb.p_net",
+   "p_th": "pb.p_th",
+   "n_mod": "'MFE Power Plant'::n_mod"
+  },
+  "turbine": {
+   "T_out": "heat_transport.T_out",
+   "p_the": "pb.p_the",
+   "n_mod": "'MFE Power Plant'::n_mod"
+  },
+  "electric_plant": {
+   "p_et": "pb.p_et",
+   "n_mod": "'MFE Power Plant'::n_mod"
+  },
+  "power_supplies": {
+   "p_et": "pb.p_et"
+  },
+  "cryoplant": {
+   "q_nuc_cryo": "magnet.winding_pack.q_nuc_cryo",
+   "vol_cold_total": "magnet.vol_cold_total",
+   "aux_per_mw": "'MFE Power Plant'::aux_per_mw",
+   "p_th": "pb.p_th",
+   "n_mod": "'MFE Power Plant'::n_mod"
+  },
+  "divertor": {
+   "p_th": "pb.p_th",
+   "p_alpha_heat": "plasma.p_alpha_heat",
+   "p_coupled": "heating.p_coupled",
+   "p_aux_required": "plasma.p_aux_required",
+   "p_rad": "plasma.p_rad",
+   "R": "plasma.R"
+  },
+  "fuel_cycle": {
+   "p_fus": "plasma.p_fus",
+   "tbr": "blanket.tbr",
+   "n_mod": "'MFE Power Plant'::n_mod",
+   "availability": "calendar.availability",
+   "p_net": "pb.p_net"
+  },
+  "vacuum_pumping": {
+   "exhaust_rate": "fuel_cycle.exhaust_rate",
+   "burn_rate": "fuel_cycle.burn_rate"
+  },
+  "buildings": {
+   "p_fus": "plasma.p_fus",
+   "p_the": "pb.p_the",
+   "p_th": "pb.p_th",
+   "p_et": "pb.p_et"
+  },
+  "heat_rejection": {
+   "p_th": "pb.p_th",
+   "n_mod": "'MFE Power Plant'::n_mod"
+  },
+  "misc_plant": {
+   "p_et": "pb.p_et",
+   "n_mod": "'MFE Power Plant'::n_mod"
+  }
+ },
+ "exposes": {
+  "plasma": {
+   "p_fus": "fusion.p_fus",
+   "p_alpha_heat": "sustain.p_alpha_heat",
+   "p_aux_required": "sustain.p_aux_required",
+   "p_rad": "sustain.p_rad",
+   "beta": "beta_calc.beta"
+  },
+  "blanket": {
+   "q_source": "source_heat.q_source"
+  },
+  "blanket.first_wall": {
+   "wall_load_peak": "wall_peak_calc.wall_load_peak",
+   "wall_load": "wall_load_calc.wall_load",
+   "calibration": "wall_peak_cal.calibration"
+  },
+  "magnet": {
+   "vol_cold_total": "wp_volume.vol_cold_total",
+   "B_peak": "peak_field_calc.B_peak",
+   "sigma_wp": "wp_stress.sigma_wp",
+   "eps_cond": "cond_strain.eps_cond",
+   "capital_cost_1cfe": "magnet_cost.capital_cost"
+  },
+  "heat_transport": {
+   "T_out": "primary_loop.T_out",
+   "q_recovered_total": "primary_loop.q_recovered_total",
+   "p_pump_total": "primary_loop.p_pump_total",
+   "coolant_cost": "coolant.cost",
+   "p_loop_margin": "primary_loop.p_loop_margin",
+   "mdot_loop": "primary_loop.mdot_loop"
+  },
+  "turbine": {
+   "eta_th": "cycle.eta_th",
+   "domain_product": "cycle.domain_product"
+  },
+  "cryoplant": {
+   "p_elec": "cryo_elec.p_elec",
+   "aux_cooling_cost": "aux_cooling.cost",
+   "cryo_cost": "aux_cooling.cryo_cost"
+  },
+  "heating": {
+   "p_coupled": "heat.p_coupled",
+   "p_wallplug_total": "heat.p_wallplug_total"
+  },
+  "divertor": {
+   "q_target_peak": "divheat.q_target_peak"
+  },
+  "fuel_cycle": {
+   "exhaust_rate": "fuel.exhaust_rate",
+   "burn_rate": "fuel.burn_rate",
+   "fuel_handling_cost": "fuel_handling.cost",
+   "annual_fuel": "fuel_calc.annual_fuel"
+  }
+ },
+ "reexposed_on_blanket": {
+  "wall_load_peak": "first_wall.wall_load_peak",
+  "wall_load": "first_wall.wall_load",
+  "calibration": "first_wall.calibration"
+ },
+ "moved_redefinitions": {
+  "blanket": [
+   "__own__ capital_cost"
+  ],
+  "shield": [
+   "__own__ capital_cost"
+  ],
+  "structure": [
+   "__own__ capital_cost"
+  ],
+  "vessel": [
+   "__own__ capital_cost"
+  ],
+  "magnet": [
+   "__sub__ winding_pack",
+   "__sub__ casing",
+   "__sub__ coil",
+   "__own__ capital_cost",
+   "__own__ B"
+  ],
+  "turbine": [
+   "__own__ capital_cost"
+  ],
+  "electric_plant": [
+   "__own__ capital_cost"
+  ],
+  "power_supplies": [
+   "__own__ capital_cost"
+  ],
+  "heating": [
+   "__own__ capital_cost"
+  ],
+  "divertor": [
+   "__own__ capital_cost"
+  ],
+  "buildings": [
+   "__own__ capital_cost"
+  ],
+  "heat_rejection": [
+   "__own__ capital_cost"
+  ],
+  "misc_plant": [
+   "__own__ capital_cost"
+  ]
+ },
+ "imports_added": {
+  "models/library/structure/mfe_plasma.sysml": [
+   "mfe_plasma_scaling",
+   "mfe_plasma_sustainment"
+  ],
+  "models/designs/generic_mfe/mfe_subsystems.sysml": [
+   "mfe_account_costs",
+   "mfe_power_balance",
+   "mfe_power_cycle"
+  ],
+  "models/library/structure/mfe_radial_build_parts.sysml": [
+   "mfe_plasma_scaling"
+  ],
+  "models/library/cost_structure/mfe_power_core.sysml": [
+   "mfe_account_costs",
+   "mfe_divertor_heat",
+   "mfe_heating_chain",
+   "mfe_magnet_cost",
+   "mfe_magnet_field",
+   "mfe_plasma_scaling"
+  ],
+  "models/library/structure/mfe_plant_systems.sysml": [
+   "mfe_account_costs",
+   "mfe_cryo_plant",
+   "mfe_fuel_cycle",
+   "mfe_primary_loop",
+   "mfe_vacuum"
+  ]
+ }
+}

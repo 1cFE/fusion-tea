@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "images_inspected": 6,
+  "candidate_count": 7,
+  "checks": [
+    "image hashes",
+    "source PDF hashes",
+    "four committed image copies byte-exact",
+    "two context extracts byte-exact",
+    "original rows.peak_field15.08T confirmed",
+    "retained latest observation peak_field unavailable confirmed"
+  ],
+  "context_extracts": [
+    {
+      "file": "Lyon-page-01-historical.md",
+      "sha256": "c019e184e5f2fcf79215ecc1a18a45cbbccf2a7cfd6215e3ed65a3dc8110365c",
+      "original_path": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-01.md",
+      "commit": "829539f5eb7fde217d18318d1646a5e47103812c"
+    },
+    {
+      "file": "Raffray-page-01-historical.md",
+      "sha256": "dbde994e649fb1e7c4fdfc8359dcf9249539636597294d4d9f09291d662ee607",
+      "original_path": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-01.md",
+      "commit": "829539f5eb7fde217d18318d1646a5e47103812c"
+    }
+  ],
+  "native_execution": false
+}

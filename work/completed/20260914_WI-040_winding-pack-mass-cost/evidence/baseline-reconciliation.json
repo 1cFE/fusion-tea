@@ -1,0 +1,128 @@
+{
+  "before_fingerprint": "cf6f6bb80202669a95184b4a2e02c2254160534a374fca1be1116750e1cd0b30",
+  "after_fingerprint": "706c7b4b97e4b243b224e34f89c4936610d2683c4179e9a73a1e96173c89ffe1",
+  "unchanged_existing_channels_exact": 142,
+  "changed_existing_channels": {
+    "stellarator_09__stellaris__cas20_capital__cas20_capital": {
+      "before": 11109451347.910416,
+      "after": 6374058678.407939,
+      "oracle": 6374058678.407941
+    },
+    "stellarator_09__stellaris__cas22_capital__cas22_capital": {
+      "before": 8838365796.809175,
+      "after": 4533463369.988742,
+      "oracle": 4533463369.988743
+    },
+    "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": {
+      "before": 10099501225.373106,
+      "after": 5794598798.552671,
+      "oracle": 5794598798.552673
+    },
+    "stellarator_09__stellaris__cas90_1cfe_calc__cas90": {
+      "before": 1545641719.5741608,
+      "after": 904197283.03025,
+      "oracle": 904197283.0302501
+    },
+    "stellarator_09__stellaris__contingency__cost": {
+      "before": 1009950122.5373106,
+      "after": 579459879.8552672,
+      "oracle": 579459879.8552674
+    },
+    "stellarator_09__stellaris__idc__cost": {
+      "before": 4224531491.5086627,
+      "after": 2471342386.99914,
+      "oracle": 2471342386.9991403
+    },
+    "stellarator_09__stellaris__indirect__cost": {
+      "before": 2962520359.4427776,
+      "after": 1699748980.908784,
+      "oracle": 1699748980.9087842
+    },
+    "stellarator_09__stellaris__installation__cost": {
+      "before": 1030266141.6020035,
+      "after": 501593913.74686253,
+      "oracle": 501593913.74686253
+    },
+    "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": {
+      "before": 220.01256408033674,
+      "after": 140.0171159789012,
+      "oracle": 140.01711597890122
+    },
+    "stellarator_09__stellaris__lcoe_calc__lcoe": {
+      "before": 224.26923288439002,
+      "after": 142.50725862880648,
+      "oracle": 142.50725862880654
+    },
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+      "before": 5401032000.0,
+      "after": 1624801801.0347085,
+      "oracle": 1624801801.0347085
+    },
+    "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+      "before": 14955400261.631914,
+      "after": 8748878936.137335,
+      "oracle": 8748878936.137337
+    },
+    "stellarator_09__stellaris__powercore_capital__powercore_capital": {
+      "before": 7192380208.794931,
+      "after": 3416150009.8296394,
+      "oracle": 3416150009.8296394
+    },
+    "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": {
+      "before": 7359043868.585738,
+      "after": 3582813669.620446,
+      "oracle": 3582813669.620446
+    },
+    "stellarator_09__stellaris__supplementary__cost": {
+      "before": 823425194.4947345,
+      "after": 615067917.0366256,
+      "oracle": 615067917.0366256
+    },
+    "stellarator_09__stellaris__total_capital__total_capital": {
+      "before": 14955400261.631914,
+      "after": 8748878936.137335,
+      "oracle": 8748878936.137337
+    }
+  },
+  "new_channels": {
+    "stellarator_09__stellaris__magnet__material_inventory__cost_copper": 4700258.639999999,
+    "stellarator_09__stellaris__magnet__material_inventory__cost_helium": 34774.15261034517,
+    "stellarator_09__stellaris__magnet__material_inventory__cost_solder": 8859919.781807616,
+    "stellarator_09__stellaris__magnet__material_inventory__cost_steel": 2359756.7999999993,
+    "stellarator_09__stellaris__magnet__material_inventory__helium_density": 36.10517755948641,
+    "stellarator_09__stellaris__magnet__material_inventory__mass_copper": 427296.2399999999,
+    "stellarator_09__stellaris__magnet__material_inventory__mass_helium": 394.441843801877,
+    "stellarator_09__stellaris__magnet__material_inventory__mass_solder": 137488.60799999998,
+    "stellarator_09__stellaris__magnet__material_inventory__mass_steel": 393292.7999999999,
+    "stellarator_09__stellaris__magnet__material_inventory__material_cost": 15954709.374417959,
+    "stellarator_09__stellaris__magnet__material_inventory__tape_volume": 12.290400000000004,
+    "stellarator_09__stellaris__magnet__winding_procurement__conductor_length": 321600.0,
+    "stellarator_09__stellaris__magnet__winding_procurement__cost": 1570369801.0347085,
+    "stellarator_09__stellaris__magnet__winding_procurement__tape_cost": 804000000.0,
+    "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": 750415091.6602907,
+    "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": 136.55999999999997
+  },
+  "oracle_channels_checked": 158,
+  "oracle_relative_tolerance": 1e-09,
+  "all_verdicts_unchanged": true,
+  "verdicts": {
+    "beta_ok": "satisfied",
+    "burn_hold_ok": "satisfied",
+    "cond_strain_ok": "satisfied",
+    "cycle_domain_ok": "satisfied",
+    "divertor_heat_ok": "violated",
+    "heating_couple_positive_ok": "satisfied",
+    "heating_couple_upper_ok": "satisfied",
+    "heating_source_positive_ok": "satisfied",
+    "heating_source_upper_ok": "satisfied",
+    "loop_capacity_ok": "satisfied",
+    "loop_pressure_ok": "satisfied",
+    "net_positive": "satisfied",
+    "peak_field_ok": "satisfied",
+    "recirc_ok": "satisfied",
+    "sustainment_ok": "satisfied",
+    "tbr_ok": "satisfied",
+    "wall_load_ok": "satisfied",
+    "wp_stress_ok": "satisfied"
+  }
+}

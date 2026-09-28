@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="6" failures="1" skipped="0" tests="13" time="2.275" timestamp="2026-09-20T15:42:41.876483-07:00" hostname="reid-workstation"><testcase classname="tests.models.test_model_family_spines" name="test_owned_paths_cover_every_canonical_file" time="0.038" /><testcase classname="tests.models.test_model_family_spines" name="test_canonical_files_equal_the_family_twin_byte_for_byte[ife]" time="0.002" /><testcase classname="tests.models.test_model_family_spines" name="test_canonical_files_equal_the_family_twin_byte_for_byte[mfe]" time="0.006" /><testcase classname="tests.models.test_model_family_spines" name="test_shared_files_agree_in_all_three_homes" time="0.001" /><testcase classname="tests.models.test_model_family_spines" name="test_the_layout_mapping_refuses_a_logical_path_collision" time="0.003" /><testcase classname="tests.models.test_model_family_spines" name="test_family_subset_generates_and_live_equals_snapshot[ife]" time="1.502" /><testcase classname="tests.models.test_model_family_spines" name="test_family_subset_generates_and_live_equals_snapshot[mfe]" time="0.025"><failure message="ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py">family = 'mfe'
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13165/test_family_subset_generates_a1')
+
+    @pytest.mark.parametrize("family", sorted(FAMILIES))
+    def test_family_subset_generates_and_live_equals_snapshot(family: str, tmp_path: Path) -&gt; None:
+        """Each family alone: generation (which seals) succeeds, and the v6 snapshot route
+        reproduces the live package exactly."""
+        spec = FAMILIES[family]
+        models = _subset(tmp_path, spec)
+        live = tmp_path / "live"
+&gt;       assert _generate(models, live, spec.package_name), family
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_model_family_spines.py:321: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/test_family_subset_generates_a1/live')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/test_family_subset_generates_a1/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</failure></testcase><testcase classname="tests.models.test_model_family_spines" name="test_ife_census_is_19_entry_points_18_design_attributes" time="0.430"><error message="failed on setup with &quot;ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x7641cb8d18e0&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13165'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -&gt; dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+&gt;           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</error></testcase><testcase classname="tests.models.test_model_family_spines" name="test_mfe_census_matches_current_generated_public_contract" time="0.000"><error message="failed on setup with &quot;ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x7641cb8d18e0&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13165'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -&gt; dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+&gt;           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</error></testcase><testcase classname="tests.models.test_model_family_spines" name="test_ife_gain_mutation_reaches_every_and_only_its_three_consumers" time="0.000"><error message="failed on setup with &quot;ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x7641cb8d18e0&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13165'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -&gt; dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+&gt;           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</error></testcase><testcase classname="tests.models.test_model_family_spines" name="test_ife_beam_energy_mutation_has_one_direct_consumer" time="0.000"><error message="failed on setup with &quot;ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x7641cb8d18e0&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13165'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -&gt; dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+&gt;           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</error></testcase><testcase classname="tests.models.test_model_family_spines" name="test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups" time="0.000"><error message="failed on setup with &quot;ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x7641cb8d18e0&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13165'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -&gt; dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+&gt;           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</error></testcase><testcase classname="tests.models.test_model_family_spines" name="test_mfe_blanket_thickness_mutation_reaches_radial_build_and_breeding" time="0.000"><error message="failed on setup with &quot;ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x7641cb8d18e0&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13165'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -&gt; dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+&gt;           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:131: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/regenerate.py:43: in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-13165/baseline-mfe0/model_copy')}
+GenerationConfig = &lt;class 'sysml_codegen.cli.GenerationConfig'&gt;
+run_codegen = &lt;function run_codegen at 0x7641ca2d32e0&gt;
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '...count_costs/supplied_auxiliary_cooling_cost_impl.py', 'handwritten/mfe_account_costs/supplied_cost_class_impl.py', ...}
+name = 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py'
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+            raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+        path.mkdir(exist_ok=True)
+        for name, digest in expected.items():
+            original = source / name
+            if original.is_symlink() or hashlib.sha256(original.read_bytes()).hexdigest() != digest:
+&gt;               raise ValueError('Missing, symlink or mismatched seed: ' + name)
+E               ValueError: Missing, symlink or mismatched seed: handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:35: ValueError</error></testcase></testsuite></testsuites>

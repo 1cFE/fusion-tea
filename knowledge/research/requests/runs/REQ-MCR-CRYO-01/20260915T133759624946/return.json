@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-MCR-CRYO-01",
+  "run": "knowledge/research/requests/runs/REQ-MCR-CRYO-01/20260915T133759624946",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://cds.cern.ch/record/1026941/files/at-2007-005.pdf",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://trc.nist.gov/cryogenics/materials/G-10%20CR%20Fiberglass%20Epoxy/G10CRFiberglassEpoxy_rev.htm",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://ntrs.nasa.gov/api/citations/20150018118/downloads/20150018118.pdf?attachment=true",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

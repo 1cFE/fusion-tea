@@ -1,0 +1,49 @@
+{
+  "artifact_hashes": {
+    "IMPLEMENTATION_BACKLOG.md": "4913712c24cde17547a9a1d97f806c558aa14cb391953fe64e0eb76b83878148",
+    "__init__.py": "22caa66af9250a3d0e0401c8ced8c6d6a94c849d457efccf0aab2c4f7e858352",
+    "contracts/generation_manifest.json": "089d13bfeec825fa0a4a2d4b9ce19f131403c1b7d4c93fe0f07c41a27232ae3c",
+    "contracts/model_contract.json": "770840d902054c6c77b376963adc34f8216b86dea81cce57d04a2914c0ea801e",
+    "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
+    "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "handwritten/mfe_fuel_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py": "adba98d1e5b334b4bfdbbd5a99eb0b9f850fbfab87c0df3899b88ce31729a505",
+    "handwritten/mfe_viability/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_viability/offered_capacity_screen_impl.py": "0e78d0918c65061623dcf896b60673c95640d528d8b45a312c4b022a8adff8c7",
+    "inputs/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "inputs/fuel_reuse_params.json": "4d8384e432958f6913235f0e02e784f263828ba441b5befbffbe47b40891ce84",
+    "inputs/mfe_fuel_cycle_params.json": "11984bae0376fcd2b957fac33e84dedd5b12201c66bb8ad1b6e4b8aea4d9334e",
+    "modules/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "modules/aries_fuel_reuse/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/aries_fuel_reuse/processingcapacityokconstraintmodule.py": "0d020bcb89988481391f91382b27ce5a3ad82858da724a96bf28b2dafa67d5b9",
+    "modules/constraints/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/constraints/constraintreportaggregatormodule.py": "636fc8bb30d63d34fd4431d6b7bf426e1f6c86d53efaaef5e116eaf362b5e0e5",
+    "modules/constraints/predicates.py": "0d8f8357fb5ab0eb78a2459884817f36f4a33d88ac2ef8f5c438fa6fa9bd0826",
+    "modules/mfe_fuel_cycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_fuel_cycle/fuel_cycle_flows.py": "c72002c36f018ea70908bae7e2f0b7697d3dea8cc0f5dad4adbff1eef1ad4dfb",
+    "modules/mfe_viability/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_viability/offered_capacity_screen.py": "ed5ed3ab41e27620077960e8cf17a11832f981ffea7d2dd9485c88cf5fefbc4d",
+    "pipelines/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "pipelines/pipeline.yaml": "05a18021e965f82be67804b6d820123274083ecbefc171196d7bce07b491033e",
+    "primitives.py": "1bc6be58e5290b102d762227c33f138ecc4f9feaa00fa2f4cfd02f87f5f71998",
+    "schemas/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "schemas/constraint_types.py": "c7910f974bd106e6d58f61bd0ae5ce28a2f63135bf841327a6b76a7a1d21cc49",
+    "schemas/fuel_cycle_flows_output.py": "186628bb6a04b75b63cc60d3548f102faccd7bdad54e1b203c0bcc893794b37e",
+    "schemas/fuel_reuse_params.py": "4be191bcca37f9321a0cf92627f227e85523e2c852759661d2d91998541c27c9",
+    "schemas/mfe_fuel_cycle_params.py": "3256ace7eb177c33dfbc0e5a16ecabf382763e6fb02c57dbc4c978f9f360594c",
+    "schemas/offered_capacity_screen_output.py": "1b976ea21ca71bcfe4088029738e8d3ae1e2f663d1f0db8404672f2c125d188b",
+    "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "tests/test_implementations_runnable.py": "7baf091e53d5fb2ad8a78a519e0e3de72d159dd98dc5d4ebd937b5749a0ede8b"
+  },
+  "coverage_policy": {
+    "exclude_globs": [
+      "contracts/package_contract.json",
+      "**/__pycache__/**"
+    ],
+    "runtime_output_globs": []
+  },
+  "executable_fingerprint": "0950b8c128d20f94a571a8ad20e67bd93f235e086d32835720370f4179f13fcc",
+  "generator_version": "0.1.1",
+  "package_name": "fuel_tea",
+  "runtime_contract_version": "2.0.0"
+}

@@ -1,0 +1,18 @@
+{
+  "within_absolute_same_verdict": {
+    "status": "pass",
+    "actual_worst_relative": 8288.25
+  },
+  "within_absolute_opposite_verdict": {
+    "status": "refused",
+    "reason": "verdict mismatch on case residual-case, constraint balance (balance): the store records satisfied, re-deriving its predicate gives violated"
+  },
+  "outside_absolute": {
+    "status": "refused",
+    "reason": "channel off tolerance on case residual-case, channel residual: store 1.1e-07, oracle 0.0, relative deviation 1.100e+23 (tolerance 1e-09); absolute error 1.100e-07 (declared tolerance 1e-07)"
+  },
+  "undeclared_roundoff": {
+    "status": "refused",
+    "reason": "channel off tolerance on case residual-case, channel residual: store 7.539028956671245e-09, oracle 9.094947017729282e-13, relative deviation 8.288e+03 (tolerance 1e-09); absolute error 7.538e-09 (declared tolerance 0)"
+  }
+}

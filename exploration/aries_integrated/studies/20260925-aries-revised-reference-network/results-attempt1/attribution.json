@@ -1,0 +1,1644 @@
+{
+  "study": "20260925-aries-revised-reference-network",
+  "reference": {
+    "net": 1000.0,
+    "gross": 1253.0,
+    "available": 2916.0,
+    "unmet": 0.0,
+    "turbine_K": 981.15
+  },
+  "budget": {
+    "net": 15.0,
+    "gross": 15.0,
+    "available": 10.0,
+    "unmet": 0.0,
+    "turbine_K": 5.0
+  },
+  "controls": {
+    "nominal-calculated": {
+      "mode": 0.0,
+      "split": 0.85,
+      "net": 423.10679410931664,
+      "gross": 655.3549268222556,
+      "aux": 232.248132712939,
+      "available": 2240.389047240631,
+      "accepted": 2240.389047240631,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 788.6375184556719,
+      "heater_in_K": 480.47693865756867,
+      "he_secondary_out_K": 603.794751941961,
+      "pbli_stream_K": 788.6375184546348,
+      "div_stream_K": 645.6529803885252,
+      "eta": 0.29251835864374615,
+      "compressor_demand": 1372.8509484278607,
+      "residual": -7.539028956671245e-09
+    },
+    "nominal-source-assumed": {
+      "mode": 0.0,
+      "split": 0.85,
+      "net": 796.0052878870191,
+      "gross": 1028.6585302419812,
+      "aux": 232.65324235496212,
+      "available": 2917.8080000000004,
+      "accepted": 2759.0821521101725,
+      "unmet": 158.72584788982817,
+      "he_unmet": 0.0,
+      "pbli_unmet": 158.72584788982817,
+      "div_unmet": 0.0,
+      "turbine_K": 935.7830367485797,
+      "heater_in_K": 556.2773626114908,
+      "he_secondary_out_K": 713.5983496544883,
+      "pbli_stream_K": 935.7830367484021,
+      "div_stream_K": 767.8472011303761,
+      "eta": 0.3728263507685892,
+      "compressor_demand": 1372.8509484278607,
+      "residual": -1.291482476517558e-09
+    },
+    "literal-Lyon-source-input": {
+      "mode": 0.0,
+      "split": 0.85,
+      "net": 807.0166597175527,
+      "gross": 1039.6699020725148,
+      "aux": 232.65324235496212,
+      "available": 2917.8080000000004,
+      "accepted": 2518.8994756643133,
+      "unmet": 398.90852433568705,
+      "he_unmet": 169.8697771389883,
+      "pbli_unmet": 229.03874719669875,
+      "div_unmet": 0.0,
+      "turbine_K": 940.1234020712739,
+      "heater_in_K": 593.6543261627479,
+      "he_secondary_out_K": 727.61009943735,
+      "pbli_stream_K": 940.1234020704688,
+      "div_stream_K": 781.8589509132378,
+      "eta": 0.4127476749735402,
+      "compressor_demand": 1372.8509484278607,
+      "residual": -5.852598405908793e-09
+    }
+  },
+  "series_chain": [
+    {
+      "case": "nominal-source-assumed",
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 796.0052878870191,
+        "gross": 1028.6585302419812,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2759.0821521101725,
+        "unmet": 158.72584788982817,
+        "he_unmet": 0.0,
+        "pbli_unmet": 158.72584788982817,
+        "div_unmet": 0.0,
+        "turbine_K": 935.7830367485797,
+        "heater_in_K": 556.2773626114908,
+        "he_secondary_out_K": 713.5983496544883,
+        "pbli_stream_K": 935.7830367484021,
+        "div_stream_K": 767.8472011303761,
+        "eta": 0.3728263507685892,
+        "compressor_demand": 1372.8509484278607,
+        "residual": -1.291482476517558e-09
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "combined-source-thermal",
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 877.0800089294902,
+        "gross": 1109.7332512844523,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2791.4409143553103,
+        "unmet": 126.36708564469006,
+        "he_unmet": 0.0,
+        "pbli_unmet": 111.70762724123392,
+        "div_unmet": 14.659458403456142,
+        "turbine_K": 913.0622476175765,
+        "heater_in_K": 577.1002658194001,
+        "he_secondary_out_K": 714.7561294820229,
+        "pbli_stream_K": 913.0622476164477,
+        "div_stream_K": 760.4595453298641,
+        "eta": 0.3975485368783984,
+        "compressor_demand": 1568.9725124889837,
+        "residual": -9.37825461733155e-09
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "step_delta": {
+        "net": 81.07472104247108,
+        "gross": 81.07472104247108,
+        "unmet": -32.35876224513811,
+        "accepted": 32.35876224513777,
+        "turbine_K": -22.72078913100313,
+        "eta": 0.024722186109809197
+      },
+      "cumulative_delta_from_original": {
+        "net": 81.07472104247108,
+        "gross": 81.07472104247108,
+        "unmet": -32.35876224513811,
+        "accepted": 32.35876224513777,
+        "turbine_K": -22.72078913100313,
+        "eta": 0.024722186109809197
+      }
+    },
+    {
+      "case": "combined-source-thermal-lyon-aux",
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 859.4942860880103,
+        "gross": 1111.5042860880103,
+        "aux": 252.01,
+        "available": 2925.761846153847,
+        "accepted": 2793.4114968203194,
+        "unmet": 132.35034933352745,
+        "he_unmet": 0.0,
+        "pbli_unmet": 119.60360202001607,
+        "div_unmet": 12.746747313511378,
+        "turbine_K": 913.6730771213232,
+        "heater_in_K": 577.4739272048307,
+        "he_secondary_out_K": 716.6527359562565,
+        "pbli_stream_K": 913.6730771206211,
+        "div_stream_K": 762.0206895339679,
+        "eta": 0.397902094751601,
+        "compressor_demand": 1568.9725124889837,
+        "residual": -5.834635885548778e-09
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "step_delta": {
+        "net": -17.58572284147988,
+        "gross": 1.7710348035579955,
+        "unmet": 5.983263688837383,
+        "accepted": 1.9705824650091017,
+        "turbine_K": 0.610829503746686,
+        "eta": 0.00035355787320257015
+      },
+      "cumulative_delta_from_original": {
+        "net": 63.488998200991205,
+        "gross": 82.84575584602908,
+        "unmet": -26.375498556300727,
+        "accepted": 34.32934471014687,
+        "turbine_K": -22.109959627256444,
+        "eta": 0.025075743983011767
+      }
+    },
+    {
+      "case": "combined-c3-partition",
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 842.7318120722562,
+        "gross": 1094.7418120722562,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2774.760345963052,
+        "unmet": 151.00150019079456,
+        "he_unmet": 0.0,
+        "pbli_unmet": 151.00150019079456,
+        "div_unmet": 0.0,
+        "turbine_K": 907.891703619209,
+        "heater_in_K": 573.9373003404748,
+        "he_secondary_out_K": 724.2078133091161,
+        "pbli_stream_K": 907.8917036192939,
+        "div_stream_K": 747.2447861571808,
+        "eta": 0.39453562671276315,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 7.050857675494626e-10
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "step_delta": {
+        "net": -16.76247401575415,
+        "gross": -16.76247401575415,
+        "unmet": 18.651150857267112,
+        "accepted": -18.651150857267567,
+        "turbine_K": -5.7813735021142065,
+        "eta": -0.003366468038837833
+      },
+      "cumulative_delta_from_original": {
+        "net": 46.726524185237054,
+        "gross": 66.08328183027493,
+        "unmet": -7.724347699033615,
+        "accepted": 15.678193852879303,
+        "turbine_K": -27.89133312937065,
+        "eta": 0.021709275944173934
+      }
+    }
+  ],
+  "network_step_by_position": [
+    {
+      "position": "original",
+      "series_case": "nominal-source-assumed",
+      "network_case": "network-original-0.85",
+      "network_delta": {
+        "net": 29.40879818823123,
+        "gross": 29.40879818823123,
+        "unmet": -40.86255986753332,
+        "accepted": 40.86255986753304,
+        "turbine_K": 11.59210040336336,
+        "eta": 0.005062299640818335
+      },
+      "series": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 796.0052878870191,
+        "gross": 1028.6585302419812,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2759.0821521101725,
+        "unmet": 158.72584788982817,
+        "he_unmet": 0.0,
+        "pbli_unmet": 158.72584788982817,
+        "div_unmet": 0.0,
+        "turbine_K": 935.7830367485797,
+        "heater_in_K": 556.2773626114908,
+        "he_secondary_out_K": 713.5983496544883,
+        "pbli_stream_K": 935.7830367484021,
+        "div_stream_K": 767.8472011303761,
+        "eta": 0.3728263507685892,
+        "compressor_demand": 1372.8509484278607,
+        "residual": -1.291482476517558e-09
+      },
+      "network": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 825.4140860752503,
+        "gross": 1058.0673284302125,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2799.9447119777055,
+        "unmet": 117.86328802229485,
+        "he_unmet": 0.0,
+        "pbli_unmet": 0.0,
+        "div_unmet": 117.86328802229485,
+        "turbine_K": 947.375137151943,
+        "heater_in_K": 562.2489078905136,
+        "he_secondary_out_K": 719.569894933511,
+        "pbli_stream_K": 942.8266319437398,
+        "div_stream_K": 973.1499999995845,
+        "eta": 0.37788865040940756,
+        "compressor_demand": 1372.8509484278607,
+        "residual": 1.261014404008165e-09
+      },
+      "network_all_checks": false,
+      "network_failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "position": "C1",
+      "series_case": "combined-source-thermal",
+      "network_case": "network-c1-0.85",
+      "network_delta": {
+        "net": 39.183307286331,
+        "gross": 39.183307286331,
+        "unmet": -43.5982048406853,
+        "accepted": 43.59820484068541,
+        "turbine_K": 13.514313833237907,
+        "eta": 0.007707443820947568
+      },
+      "series": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 877.0800089294902,
+        "gross": 1109.7332512844523,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2791.4409143553103,
+        "unmet": 126.36708564469006,
+        "he_unmet": 0.0,
+        "pbli_unmet": 111.70762724123392,
+        "div_unmet": 14.659458403456142,
+        "turbine_K": 913.0622476175765,
+        "heater_in_K": 577.1002658194001,
+        "he_secondary_out_K": 714.7561294820229,
+        "pbli_stream_K": 913.0622476164477,
+        "div_stream_K": 760.4595453298641,
+        "eta": 0.3975485368783984,
+        "compressor_demand": 1568.9725124889837,
+        "residual": -9.37825461733155e-09
+      },
+      "network": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 916.2633162158212,
+        "gross": 1148.9165585707833,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2835.0391191959957,
+        "unmet": 82.76888080400477,
+        "he_unmet": 0.0,
+        "pbli_unmet": 0.0,
+        "div_unmet": 82.76888080400477,
+        "turbine_K": 926.5765614508144,
+        "heater_in_K": 585.3673472211617,
+        "he_secondary_out_K": 723.0232108837845,
+        "pbli_stream_K": 918.3728557677346,
+        "div_stream_K": 973.0642269920033,
+        "eta": 0.405255980699346,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 4.6566128730773926e-09
+      },
+      "network_all_checks": false,
+      "network_failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "position": "C2",
+      "series_case": "combined-source-thermal-lyon-aux",
+      "network_case": "network-c2-0.85",
+      "network_delta": {
+        "net": 43.978531678955505,
+        "gross": 43.978531678955505,
+        "unmet": -48.933721141003446,
+        "accepted": 48.93372114100339,
+        "turbine_K": 15.168185643220227,
+        "eta": 0.00862235219638019
+      },
+      "series": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 859.4942860880103,
+        "gross": 1111.5042860880103,
+        "aux": 252.01,
+        "available": 2925.761846153847,
+        "accepted": 2793.4114968203194,
+        "unmet": 132.35034933352745,
+        "he_unmet": 0.0,
+        "pbli_unmet": 119.60360202001607,
+        "div_unmet": 12.746747313511378,
+        "turbine_K": 913.6730771213232,
+        "heater_in_K": 577.4739272048307,
+        "he_secondary_out_K": 716.6527359562565,
+        "pbli_stream_K": 913.6730771206211,
+        "div_stream_K": 762.0206895339679,
+        "eta": 0.397902094751601,
+        "compressor_demand": 1568.9725124889837,
+        "residual": -5.834635885548778e-09
+      },
+      "network": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 903.4728177669658,
+        "gross": 1155.4828177669658,
+        "aux": 252.01,
+        "available": 2925.761846153847,
+        "accepted": 2842.3452179613228,
+        "unmet": 83.416628192524,
+        "he_unmet": 2.028448680648353,
+        "pbli_unmet": 0.0,
+        "div_unmet": 81.38817951187565,
+        "turbine_K": 928.8412627645434,
+        "heater_in_K": 586.7527279620787,
+        "he_secondary_out_K": 725.6874041455466,
+        "pbli_stream_K": 921.0370490294968,
+        "div_stream_K": 973.0651405921449,
+        "eta": 0.4065244469479812,
+        "compressor_demand": 1568.9725124889837,
+        "residual": -5.397168933995999e-09
+      },
+      "network_all_checks": false,
+      "network_failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "position": "C3",
+      "series_case": "combined-c3-partition",
+      "network_case": "network-c3-0.85",
+      "network_delta": {
+        "net": 36.96090036745318,
+        "gross": 36.96090036745318,
+        "unmet": -41.12539283909791,
+        "accepted": 41.12539283909791,
+        "turbine_K": 12.747806188863024,
+        "eta": 0.007363746136479166
+      },
+      "series": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 842.7318120722562,
+        "gross": 1094.7418120722562,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2774.760345963052,
+        "unmet": 151.00150019079456,
+        "he_unmet": 0.0,
+        "pbli_unmet": 151.00150019079456,
+        "div_unmet": 0.0,
+        "turbine_K": 907.891703619209,
+        "heater_in_K": 573.9373003404748,
+        "he_secondary_out_K": 724.2078133091161,
+        "pbli_stream_K": 907.8917036192939,
+        "div_stream_K": 747.2447861571808,
+        "eta": 0.39453562671276315,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 7.050857675494626e-10
+      },
+      "network": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 879.6927124397093,
+        "gross": 1131.7027124397093,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2815.8857388021497,
+        "unmet": 109.87610735169665,
+        "he_unmet": 53.513640626251345,
+        "pbli_unmet": 56.3624667254453,
+        "div_unmet": 0.0,
+        "turbine_K": 920.639509808072,
+        "heater_in_K": 581.735487711114,
+        "he_secondary_out_K": 725.565402684106,
+        "pbli_stream_K": 927.962031244407,
+        "div_stream_K": 879.1452216712039,
+        "eta": 0.4018993728492423,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 2.945398591691628e-09
+      },
+      "network_all_checks": false,
+      "network_failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    }
+  ],
+  "split_sweep_at_c3": [
+    {
+      "case": "network-c3-0.50",
+      "mode": 1.0,
+      "split": 0.5,
+      "net": 757.1525534516661,
+      "gross": 1009.1625534516661,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2679.5386226210885,
+      "unmet": 246.22322353275786,
+      "he_unmet": 0.0,
+      "pbli_unmet": 246.22322353275786,
+      "div_unmet": 0.0,
+      "turbine_K": 878.3754366496278,
+      "heater_in_K": 555.881379431378,
+      "he_secondary_out_K": 706.1518924000193,
+      "pbli_stream_K": 1004.5250352045741,
+      "div_stream_K": 752.2258380961487,
+      "eta": 0.37661802854124077,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 6.094751370255835e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.60",
+      "mode": 1.0,
+      "split": 0.6,
+      "net": 832.775610673883,
+      "gross": 1084.785610673883,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2763.682350309697,
+      "unmet": 162.07949584414928,
+      "he_unmet": 0.0,
+      "pbli_unmet": 162.07949584414928,
+      "div_unmet": 0.0,
+      "turbine_K": 904.4578120055862,
+      "heater_in_K": 571.8366933955017,
+      "he_secondary_out_K": 722.1072063641429,
+      "pbli_stream_K": 987.6299276868873,
+      "div_stream_K": 779.6996384843047,
+      "eta": 0.3925145777163292,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 2.226215656264685e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.70",
+      "mode": 1.0,
+      "split": 0.7,
+      "net": 863.8830391988954,
+      "gross": 1115.8930391988954,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2798.2947435597926,
+      "unmet": 127.46710259405404,
+      "he_unmet": 26.47273037159266,
+      "pbli_unmet": 100.99437222246138,
+      "div_unmet": 0.0,
+      "turbine_K": 915.1867570780378,
+      "heater_in_K": 578.3998873070444,
+      "he_secondary_out_K": 725.4842927304815,
+      "pbli_stream_K": 963.577852016598,
+      "div_stream_K": 802.2742022240304,
+      "eta": 0.3987760909629324,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 6.56291376799345e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.80",
+      "mode": 1.0,
+      "split": 0.8,
+      "net": 876.2755669444246,
+      "gross": 1128.2855669444245,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2812.0835735555047,
+      "unmet": 113.67827259834144,
+      "he_unmet": 47.66894521366066,
+      "pbli_unmet": 66.00932738468077,
+      "div_unmet": 0.0,
+      "turbine_K": 919.4609370985336,
+      "heater_in_K": 581.0145220262942,
+      "he_secondary_out_K": 725.5478713595536,
+      "pbli_stream_K": 939.1429874736915,
+      "div_stream_K": 840.7327355998772,
+      "eta": 0.40122760843763183,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 3.282366378698498e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.85",
+      "mode": 1.0,
+      "split": 0.85,
+      "net": 879.6927124397093,
+      "gross": 1131.7027124397093,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2815.8857388021497,
+      "unmet": 109.87610735169665,
+      "he_unmet": 53.513640626251345,
+      "pbli_unmet": 56.3624667254453,
+      "div_unmet": 0.0,
+      "turbine_K": 920.639509808072,
+      "heater_in_K": 581.735487711114,
+      "he_secondary_out_K": 725.565402684106,
+      "pbli_stream_K": 927.962031244407,
+      "div_stream_K": 879.1452216712039,
+      "eta": 0.4018993728492423,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 2.945398591691628e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.90",
+      "mode": 1.0,
+      "split": 0.9,
+      "net": 882.066962049212,
+      "gross": 1134.076962049212,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2818.5275020322515,
+      "unmet": 107.23434412159463,
+      "he_unmet": 57.574563937869016,
+      "pbli_unmet": 49.659780183725616,
+      "div_unmet": 0.0,
+      "turbine_K": 921.4583879621487,
+      "heater_in_K": 582.2364182386577,
+      "he_secondary_out_K": 725.5775835352081,
+      "pbli_stream_K": 917.6262852886736,
+      "div_stream_K": 955.9473120158551,
+      "eta": 0.4023650509819418,
+      "compressor_demand": 1568.9725124889837,
+      "residual": -6.290065357461572e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.95",
+      "mode": 1.0,
+      "split": 0.95,
+      "net": 852.6856031141263,
+      "gross": 1104.6956031141262,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2785.835659677951,
+      "unmet": 139.9261864758956,
+      "he_unmet": 7.320603718600523,
+      "pbli_unmet": 44.11009010426869,
+      "div_unmet": 88.49549265302639,
+      "turbine_K": 911.3247639014185,
+      "heater_in_K": 576.0373987369155,
+      "he_secondary_out_K": 725.4268454001215,
+      "pbli_stream_K": 908.0708041066459,
+      "div_stream_K": 973.15,
+      "eta": 0.39654011868088146,
+      "compressor_demand": 1568.9725124889837,
+      "residual": -8.708411769475788e-10,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    },
+    {
+      "case": "network-c3-0.98",
+      "mode": 1.0,
+      "split": 0.98,
+      "net": 827.0200257987835,
+      "gross": 1079.0300257987835,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2757.278266894454,
+      "unmet": 168.48357925939234,
+      "he_unmet": 0.0,
+      "pbli_unmet": 18.9930608312377,
+      "div_unmet": 149.49051842815464,
+      "turbine_K": 902.4727120821026,
+      "heater_in_K": 570.6223525965106,
+      "he_secondary_out_K": 720.8928655651519,
+      "pbli_stream_K": 901.0303184511948,
+      "div_stream_K": 973.15,
+      "eta": 0.3913388208779175,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 5.670699465554208e-10,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ]
+    }
+  ],
+  "revised_candidates": [
+    {
+      "case": "network-c3-eps0.8-0.70",
+      "mode": 1.0,
+      "split": 0.7,
+      "net": 759.8859868295101,
+      "gross": 1011.8959868295101,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 879.3181972042817,
+      "heater_in_K": 527.190110579607,
+      "he_secondary_out_K": 677.4606235482482,
+      "pbli_stream_K": 932.9186247036498,
+      "div_stream_K": 754.2505330417972,
+      "eta": 0.3458572638643608,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 6.749587555532344e-09,
+      "all_checks": true,
+      "failed_checks": [],
+      "delta_from_original": {
+        "net": -36.119301057509006,
+        "gross": -16.762543412471132,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -56.464839544298,
+        "eta": -0.026969086904228445
+      },
+      "against_reference": {
+        "net": {
+          "model": 759.8859868295101,
+          "reference": 1000.0,
+          "difference": -240.1140131704899,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1011.8959868295101,
+          "reference": 1253.0,
+          "difference": -241.1040131704899,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 879.3181972042817,
+          "reference": 981.15,
+          "difference": -101.83180279571832,
+          "within_budget": false
+        }
+      }
+    },
+    {
+      "case": "network-c3-eps0.8-0.85",
+      "mode": 1.0,
+      "split": 0.85,
+      "net": 759.8859868295101,
+      "gross": 1011.8959868295101,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 879.3181972042817,
+      "heater_in_K": 527.190110579607,
+      "he_secondary_out_K": 677.4606235482482,
+      "pbli_stream_K": 887.8378009703436,
+      "div_stream_K": 831.0404425353463,
+      "eta": 0.3458572638643608,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 6.749587555532344e-09,
+      "all_checks": true,
+      "failed_checks": [],
+      "delta_from_original": {
+        "net": -36.119301057509006,
+        "gross": -16.762543412471132,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -56.464839544298,
+        "eta": -0.026969086904228445
+      },
+      "against_reference": {
+        "net": {
+          "model": 759.8859868295101,
+          "reference": 1000.0,
+          "difference": -240.1140131704899,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1011.8959868295101,
+          "reference": 1253.0,
+          "difference": -241.1040131704899,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 879.3181972042817,
+          "reference": 981.15,
+          "difference": -101.83180279571832,
+          "within_budget": false
+        }
+      }
+    },
+    {
+      "case": "network-c3-eps0.8-0.95",
+      "mode": 1.0,
+      "split": 0.95,
+      "net": 713.0265661344048,
+      "gross": 965.0365661344048,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2860.6522190456294,
+      "unmet": 65.10962710821717,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 65.10962710821717,
+      "turbine_K": 863.1563935900601,
+      "heater_in_K": 518.8645320636552,
+      "he_secondary_out_K": 669.1350450322965,
+      "pbli_stream_K": 857.3672564099608,
+      "div_stream_K": 973.15,
+      "eta": 0.33734844092874744,
+      "compressor_demand": 1568.9725124889837,
+      "residual": -4.963794708601199e-09,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "delta_from_original": {
+        "net": -82.97872175261432,
+        "gross": -63.621964107576446,
+        "unmet": -93.616220781611,
+        "accepted": 101.57006693545691,
+        "turbine_K": -72.62664315851953,
+        "eta": -0.03547790983984178
+      },
+      "against_reference": {
+        "net": {
+          "model": 713.0265661344048,
+          "reference": 1000.0,
+          "difference": -286.9734338655952,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 965.0365661344048,
+          "reference": 1253.0,
+          "difference": -287.9634338655952,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 65.10962710821717,
+          "reference": 0.0,
+          "difference": 65.10962710821717,
+          "within_budget": false
+        },
+        "turbine_K": {
+          "model": 863.1563935900601,
+          "reference": 981.15,
+          "difference": -117.99360640993984,
+          "within_budget": false
+        }
+      }
+    },
+    {
+      "case": "c3-minus-recuperator",
+      "mode": 0.0,
+      "split": 0.85,
+      "net": 759.8859868295101,
+      "gross": 1011.8959868295101,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 879.3181972042817,
+      "heater_in_K": 527.190110579607,
+      "he_secondary_out_K": 677.4606235482482,
+      "pbli_stream_K": 879.3181972050941,
+      "div_stream_K": 700.4975963963129,
+      "eta": 0.3458572638643608,
+      "compressor_demand": 1568.9725124889837,
+      "residual": 6.749587555532344e-09,
+      "all_checks": true,
+      "failed_checks": [],
+      "delta_from_original": {
+        "net": -36.119301057509006,
+        "gross": -16.762543412471132,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -56.464839544298,
+        "eta": -0.026969086904228445
+      },
+      "against_reference": {
+        "net": {
+          "model": 759.8859868295101,
+          "reference": 1000.0,
+          "difference": -240.1140131704899,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1011.8959868295101,
+          "reference": 1253.0,
+          "difference": -241.1040131704899,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 879.3181972042817,
+          "reference": 981.15,
+          "difference": -101.83180279571832,
+          "within_budget": false
+        }
+      }
+    }
+  ],
+  "flow_bracket_and_resized_alternative": [
+    {
+      "case": "network-c3-1700-0.85",
+      "mode": 1.0,
+      "split": 0.85,
+      "net": 891.0025802289404,
+      "gross": 1143.0125802289404,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 901.350587668063,
+      "heater_in_K": 569.9359179030263,
+      "he_secondary_out_K": 711.3669889323357,
+      "pbli_stream_K": 909.3690382707784,
+      "div_stream_K": 855.9127009201927,
+      "eta": 0.3906717772437712,
+      "compressor_demand": 1667.033294519545,
+      "residual": 1.125727067119442e-09,
+      "compressor_rating": 1600.0,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab"
+      ],
+      "delta_from_original": {
+        "net": 94.99729234192125,
+        "gross": 114.35404998695913,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -34.432449080516676,
+        "eta": 0.017845426475182002
+      }
+    },
+    {
+      "case": "network-c3-1800-0.85",
+      "mode": 1.0,
+      "split": 0.85,
+      "net": 803.5627564943265,
+      "gross": 1055.5727564943265,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 853.9304379406934,
+      "heater_in_K": 540.9276942730764,
+      "he_secondary_out_K": 674.5014835785353,
+      "pbli_stream_K": 861.5034190648423,
+      "div_stream_K": 811.0168782337335,
+      "eta": 0.36078560457063974,
+      "compressor_demand": 1765.0940765501064,
+      "residual": -4.836692824028432e-09,
+      "compressor_rating": 1600.0,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab"
+      ],
+      "delta_from_original": {
+        "net": 7.557468607307442,
+        "gross": 26.914226252345316,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -81.85259880788624,
+        "eta": -0.012040746197949481
+      }
+    },
+    {
+      "case": "resized-compressor-1700-series",
+      "mode": 0.0,
+      "split": 0.85,
+      "net": 855.0410262289606,
+      "gross": 1107.0510262289606,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2885.7483989508264,
+      "unmet": 40.01344720301972,
+      "he_unmet": 0.0,
+      "pbli_unmet": 40.01344720301972,
+      "div_unmet": 0.0,
+      "turbine_K": 889.6770518069518,
+      "heater_in_K": 562.7948915511861,
+      "he_secondary_out_K": 704.2259625804954,
+      "pbli_stream_K": 889.6770518066007,
+      "div_stream_K": 725.9078193786739,
+      "eta": 0.3836270087272515,
+      "compressor_demand": 1667.033294519545,
+      "residual": -3.099330569966696e-09,
+      "compressor_rating": 1700.0,
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "delta_from_original": {
+        "net": 59.03573834194151,
+        "gross": 78.39249598697938,
+        "unmet": -118.71240068680845,
+        "accepted": 126.66624684065391,
+        "turbine_K": -46.10598494162787,
+        "eta": 0.010800657958662252
+      }
+    },
+    {
+      "case": "resized-compressor-1700-network-0.85",
+      "mode": 1.0,
+      "split": 0.85,
+      "net": 891.0025802289404,
+      "gross": 1143.0125802289404,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 901.350587668063,
+      "heater_in_K": 569.9359179030263,
+      "he_secondary_out_K": 711.3669889323357,
+      "pbli_stream_K": 909.3690382707784,
+      "div_stream_K": 855.9127009201927,
+      "eta": 0.3906717772437712,
+      "compressor_demand": 1667.033294519545,
+      "residual": 1.125727067119442e-09,
+      "compressor_rating": 1700.0,
+      "all_checks": true,
+      "failed_checks": [],
+      "delta_from_original": {
+        "net": 94.99729234192125,
+        "gross": 114.35404998695913,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -34.432449080516676,
+        "eta": 0.017845426475182002
+      }
+    },
+    {
+      "case": "resized-compressor-1800-series",
+      "mode": 0.0,
+      "split": 0.85,
+      "net": 803.5627564943265,
+      "gross": 1055.5727564943265,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 853.9304379406934,
+      "heater_in_K": 540.9276942730764,
+      "he_secondary_out_K": 674.5014835785353,
+      "pbli_stream_K": 853.9304379401759,
+      "div_stream_K": 694.978792776815,
+      "eta": 0.36078560457063974,
+      "compressor_demand": 1765.0940765501064,
+      "residual": -4.836692824028432e-09,
+      "compressor_rating": 1800.0,
+      "all_checks": true,
+      "failed_checks": [],
+      "delta_from_original": {
+        "net": 7.557468607307442,
+        "gross": 26.914226252345316,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -81.85259880788624,
+        "eta": -0.012040746197949481
+      }
+    },
+    {
+      "case": "resized-compressor-1800-network-0.85",
+      "mode": 1.0,
+      "split": 0.85,
+      "net": 803.5627564943265,
+      "gross": 1055.5727564943265,
+      "aux": 252.01,
+      "available": 2925.7618461538464,
+      "accepted": 2925.7618461538464,
+      "unmet": 0.0,
+      "he_unmet": 0.0,
+      "pbli_unmet": 0.0,
+      "div_unmet": 0.0,
+      "turbine_K": 853.9304379406934,
+      "heater_in_K": 540.9276942730764,
+      "he_secondary_out_K": 674.5014835785353,
+      "pbli_stream_K": 861.5034190648423,
+      "div_stream_K": 811.0168782337335,
+      "eta": 0.36078560457063974,
+      "compressor_demand": 1765.0940765501064,
+      "residual": -4.836692824028432e-09,
+      "compressor_rating": 1800.0,
+      "all_checks": true,
+      "failed_checks": [],
+      "delta_from_original": {
+        "net": 7.557468607307442,
+        "gross": 26.914226252345316,
+        "unmet": -158.72584788982817,
+        "accepted": 166.67969404367386,
+        "turbine_K": -81.85259880788624,
+        "eta": -0.012040746197949481
+      }
+    }
+  ],
+  "interaction_check": {
+    "corrections_alone_net": 46.726524185237054,
+    "network_alone_at_original_net": 29.40879818823123,
+    "sum_net": 76.13532237346828,
+    "combined_net": 83.68742455269023,
+    "interaction_net": 7.552102179221947,
+    "corrections_alone_unmet": -7.724347699033615,
+    "network_alone_at_original_unmet": -40.86255986753332,
+    "combined_unmet": -48.84974053813153,
+    "interaction_unmet": -0.26283297156459184
+  },
+  "headline_against_reference": {
+    "nominal-source-assumed": {
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 796.0052878870191,
+        "gross": 1028.6585302419812,
+        "aux": 232.65324235496212,
+        "available": 2917.8080000000004,
+        "accepted": 2759.0821521101725,
+        "unmet": 158.72584788982817,
+        "he_unmet": 0.0,
+        "pbli_unmet": 158.72584788982817,
+        "div_unmet": 0.0,
+        "turbine_K": 935.7830367485797,
+        "heater_in_K": 556.2773626114908,
+        "he_secondary_out_K": 713.5983496544883,
+        "pbli_stream_K": 935.7830367484021,
+        "div_stream_K": 767.8472011303761,
+        "eta": 0.3728263507685892,
+        "compressor_demand": 1372.8509484278607,
+        "residual": -1.291482476517558e-09
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "against_reference": {
+        "net": {
+          "model": 796.0052878870191,
+          "reference": 1000.0,
+          "difference": -203.9947121129809,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1028.6585302419812,
+          "reference": 1253.0,
+          "difference": -224.34146975801877,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2917.8080000000004,
+          "reference": 2916.0,
+          "difference": 1.8080000000004475,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 158.72584788982817,
+          "reference": 0.0,
+          "difference": 158.72584788982817,
+          "within_budget": false
+        },
+        "turbine_K": {
+          "model": 935.7830367485797,
+          "reference": 981.15,
+          "difference": -45.366963251420316,
+          "within_budget": false
+        }
+      }
+    },
+    "combined-c3-partition": {
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 842.7318120722562,
+        "gross": 1094.7418120722562,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2774.760345963052,
+        "unmet": 151.00150019079456,
+        "he_unmet": 0.0,
+        "pbli_unmet": 151.00150019079456,
+        "div_unmet": 0.0,
+        "turbine_K": 907.891703619209,
+        "heater_in_K": 573.9373003404748,
+        "he_secondary_out_K": 724.2078133091161,
+        "pbli_stream_K": 907.8917036192939,
+        "div_stream_K": 747.2447861571808,
+        "eta": 0.39453562671276315,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 7.050857675494626e-10
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "against_reference": {
+        "net": {
+          "model": 842.7318120722562,
+          "reference": 1000.0,
+          "difference": -157.26818792774384,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1094.7418120722562,
+          "reference": 1253.0,
+          "difference": -158.25818792774385,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 151.00150019079456,
+          "reference": 0.0,
+          "difference": 151.00150019079456,
+          "within_budget": false
+        },
+        "turbine_K": {
+          "model": 907.891703619209,
+          "reference": 981.15,
+          "difference": -73.25829638079097,
+          "within_budget": false
+        }
+      }
+    },
+    "network-c3-0.85": {
+      "values": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 879.6927124397093,
+        "gross": 1131.7027124397093,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2815.8857388021497,
+        "unmet": 109.87610735169665,
+        "he_unmet": 53.513640626251345,
+        "pbli_unmet": 56.3624667254453,
+        "div_unmet": 0.0,
+        "turbine_K": 920.639509808072,
+        "heater_in_K": 581.735487711114,
+        "he_secondary_out_K": 725.565402684106,
+        "pbli_stream_K": 927.962031244407,
+        "div_stream_K": 879.1452216712039,
+        "eta": 0.4018993728492423,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 2.945398591691628e-09
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "against_reference": {
+        "net": {
+          "model": 879.6927124397093,
+          "reference": 1000.0,
+          "difference": -120.30728756029066,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1131.7027124397093,
+          "reference": 1253.0,
+          "difference": -121.29728756029067,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 109.87610735169665,
+          "reference": 0.0,
+          "difference": 109.87610735169665,
+          "within_budget": false
+        },
+        "turbine_K": {
+          "model": 920.639509808072,
+          "reference": 981.15,
+          "difference": -60.51049019192794,
+          "within_budget": false
+        }
+      }
+    },
+    "network-c3-0.90": {
+      "values": {
+        "mode": 1.0,
+        "split": 0.9,
+        "net": 882.066962049212,
+        "gross": 1134.076962049212,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2818.5275020322515,
+        "unmet": 107.23434412159463,
+        "he_unmet": 57.574563937869016,
+        "pbli_unmet": 49.659780183725616,
+        "div_unmet": 0.0,
+        "turbine_K": 921.4583879621487,
+        "heater_in_K": 582.2364182386577,
+        "he_secondary_out_K": 725.5775835352081,
+        "pbli_stream_K": 917.6262852886736,
+        "div_stream_K": 955.9473120158551,
+        "eta": 0.4023650509819418,
+        "compressor_demand": 1568.9725124889837,
+        "residual": -6.290065357461572e-09
+      },
+      "all_checks": false,
+      "failed_checks": [
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07"
+      ],
+      "against_reference": {
+        "net": {
+          "model": 882.066962049212,
+          "reference": 1000.0,
+          "difference": -117.93303795078805,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1134.076962049212,
+          "reference": 1253.0,
+          "difference": -118.92303795078806,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 107.23434412159463,
+          "reference": 0.0,
+          "difference": 107.23434412159463,
+          "within_budget": false
+        },
+        "turbine_K": {
+          "model": 921.4583879621487,
+          "reference": 981.15,
+          "difference": -59.691612037851314,
+          "within_budget": false
+        }
+      }
+    },
+    "network-c3-eps0.8-0.85": {
+      "values": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 759.8859868295101,
+        "gross": 1011.8959868295101,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2925.7618461538464,
+        "unmet": 0.0,
+        "he_unmet": 0.0,
+        "pbli_unmet": 0.0,
+        "div_unmet": 0.0,
+        "turbine_K": 879.3181972042817,
+        "heater_in_K": 527.190110579607,
+        "he_secondary_out_K": 677.4606235482482,
+        "pbli_stream_K": 887.8378009703436,
+        "div_stream_K": 831.0404425353463,
+        "eta": 0.3458572638643608,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 6.749587555532344e-09
+      },
+      "all_checks": true,
+      "failed_checks": [],
+      "against_reference": {
+        "net": {
+          "model": 759.8859868295101,
+          "reference": 1000.0,
+          "difference": -240.1140131704899,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1011.8959868295101,
+          "reference": 1253.0,
+          "difference": -241.1040131704899,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 879.3181972042817,
+          "reference": 981.15,
+          "difference": -101.83180279571832,
+          "within_budget": false
+        }
+      }
+    },
+    "c3-minus-recuperator": {
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 759.8859868295101,
+        "gross": 1011.8959868295101,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2925.7618461538464,
+        "unmet": 0.0,
+        "he_unmet": 0.0,
+        "pbli_unmet": 0.0,
+        "div_unmet": 0.0,
+        "turbine_K": 879.3181972042817,
+        "heater_in_K": 527.190110579607,
+        "he_secondary_out_K": 677.4606235482482,
+        "pbli_stream_K": 879.3181972050941,
+        "div_stream_K": 700.4975963963129,
+        "eta": 0.3458572638643608,
+        "compressor_demand": 1568.9725124889837,
+        "residual": 6.749587555532344e-09
+      },
+      "all_checks": true,
+      "failed_checks": [],
+      "against_reference": {
+        "net": {
+          "model": 759.8859868295101,
+          "reference": 1000.0,
+          "difference": -240.1140131704899,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1011.8959868295101,
+          "reference": 1253.0,
+          "difference": -241.1040131704899,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 879.3181972042817,
+          "reference": 981.15,
+          "difference": -101.83180279571832,
+          "within_budget": false
+        }
+      }
+    },
+    "resized-compressor-1800-network-0.85": {
+      "values": {
+        "mode": 1.0,
+        "split": 0.85,
+        "net": 803.5627564943265,
+        "gross": 1055.5727564943265,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2925.7618461538464,
+        "unmet": 0.0,
+        "he_unmet": 0.0,
+        "pbli_unmet": 0.0,
+        "div_unmet": 0.0,
+        "turbine_K": 853.9304379406934,
+        "heater_in_K": 540.9276942730764,
+        "he_secondary_out_K": 674.5014835785353,
+        "pbli_stream_K": 861.5034190648423,
+        "div_stream_K": 811.0168782337335,
+        "eta": 0.36078560457063974,
+        "compressor_demand": 1765.0940765501064,
+        "residual": -4.836692824028432e-09
+      },
+      "all_checks": true,
+      "failed_checks": [],
+      "against_reference": {
+        "net": {
+          "model": 803.5627564943265,
+          "reference": 1000.0,
+          "difference": -196.43724350567345,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1055.5727564943265,
+          "reference": 1253.0,
+          "difference": -197.42724350567346,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 853.9304379406934,
+          "reference": 981.15,
+          "difference": -127.21956205930655,
+          "within_budget": false
+        }
+      }
+    },
+    "resized-compressor-1800-series": {
+      "values": {
+        "mode": 0.0,
+        "split": 0.85,
+        "net": 803.5627564943265,
+        "gross": 1055.5727564943265,
+        "aux": 252.01,
+        "available": 2925.7618461538464,
+        "accepted": 2925.7618461538464,
+        "unmet": 0.0,
+        "he_unmet": 0.0,
+        "pbli_unmet": 0.0,
+        "div_unmet": 0.0,
+        "turbine_K": 853.9304379406934,
+        "heater_in_K": 540.9276942730764,
+        "he_secondary_out_K": 674.5014835785353,
+        "pbli_stream_K": 853.9304379401759,
+        "div_stream_K": 694.978792776815,
+        "eta": 0.36078560457063974,
+        "compressor_demand": 1765.0940765501064,
+        "residual": -4.836692824028432e-09
+      },
+      "all_checks": true,
+      "failed_checks": [],
+      "against_reference": {
+        "net": {
+          "model": 803.5627564943265,
+          "reference": 1000.0,
+          "difference": -196.43724350567345,
+          "within_budget": false
+        },
+        "gross": {
+          "model": 1055.5727564943265,
+          "reference": 1253.0,
+          "difference": -197.42724350567346,
+          "within_budget": false
+        },
+        "available": {
+          "model": 2925.7618461538464,
+          "reference": 2916.0,
+          "difference": 9.761846153846363,
+          "within_budget": true
+        },
+        "unmet": {
+          "model": 0.0,
+          "reference": 0.0,
+          "difference": 0.0,
+          "within_budget": true
+        },
+        "turbine_K": {
+          "model": 853.9304379406934,
+          "reference": 981.15,
+          "difference": -127.21956205930655,
+          "within_budget": false
+        }
+      }
+    }
+  },
+  "all_checks_cases": [
+    "c3-minus-recuperator",
+    "network-c3-eps0.8-0.70",
+    "network-c3-eps0.8-0.85",
+    "nominal-calculated",
+    "resized-compressor-1700-network-0.85",
+    "resized-compressor-1800-network-0.85",
+    "resized-compressor-1800-series"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "prepared; waiting for coordinator release",
+  "unique_points": 648,
+  "main": 432,
+  "control": 1,
+  "sensitivity": 215,
+  "aliases": 2,
+  "oracle_exclusions": 0,
+  "preflight": "pass",
+  "control_replay": "pass",
+  "axes_sha256": "f533ca2d4f5f2ae7c56bbbc9ebd68877e77df3d411c589c4ce1f70f3ec87a2c7",
+  "composer_sha256": "607dc4c712cca4145c1b05b1a36e07517154ca6b9a028f233e34da1e0484f9e4",
+  "record_sha256": "059c03ae401ee82d2419dd1f402cea3dbfe7825812c7d74a8eaf8efee8c22b0a"
+}

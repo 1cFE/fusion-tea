@@ -282,7 +282,8 @@ def stock_route_run(tmp_path_factory, stock_simkit_session_path):
     import study_route
 
     out = tmp_path_factory.mktemp("stock_route_run")
-    study_route.run_availability_sweep(out)
+    from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+    study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
     study_route.execute_baseline(out)
     return {
         "dir": out,
@@ -430,7 +431,7 @@ def integration_workspace(stock_simkit_path):
         digests |= _copy_tree_digests(REAL_MODELS, root / "models", root)
         digests |= _copy_file_digest(REAL_SNAPSHOT, root / REAL_SNAPSHOT.name, root)
         digests |= _copy_file_digest(REAL_MANIFEST, root / "studies" / "manifest.json", root)
-        digests |= _copy_file_digest(KNOWN_ANSWER_DECLARATION, root / "studies" / "axes.json", root)
+        digests |= _copy_file_digest(REAL_ROUTE_DIR / "axes.supplied_design.json", root / "studies" / "axes.json", root)
         digests |= _copy_file_digest(REAL_CENSUS, root / "mfe_census.json", root)
 
         for relative, digest in digests.items():
@@ -459,7 +460,7 @@ def integration_workspace(stock_simkit_path):
             source_digests=digests,
             entry_digests=entry_digests,
             repo_clean_over_sources=_repo_clean_over(
-                [REAL_PACKAGE.resolve(), REAL_MODELS, REAL_SNAPSHOT, REAL_MANIFEST, REAL_CENSUS]
+                [REAL_PACKAGE.resolve(), REAL_MODELS, REAL_SNAPSHOT, REAL_MANIFEST, REAL_CENSUS, REAL_ROUTE_DIR / "axes.supplied_design.json"]
             ),
             expected_teax_revision=integrate.teax_revision(
                 Path(os.environ["STOP_PARSER_TEAX_ROOT"])

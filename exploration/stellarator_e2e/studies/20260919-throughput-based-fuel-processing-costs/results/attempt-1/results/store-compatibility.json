@@ -1,0 +1,10 @@
+{
+  "study_id": "20260919-throughput-based-fuel-processing-costs",
+  "executable_fingerprint": "3e3bf467fd98ad927cf12409f1c36807b92e9e8eaa4fd598a2fcd79c00ae698f",
+  "model_contract_fingerprint": "37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f",
+  "study_definition_fingerprint": "5837148e57a2c3a30803a387873a43697a6cadb806bc01fd9e849dfc0929f68a",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "3ba101a92841df76cbf05a0dd6fe1248866bbcfd45ff73d732d01ef3857a0d18"
+}

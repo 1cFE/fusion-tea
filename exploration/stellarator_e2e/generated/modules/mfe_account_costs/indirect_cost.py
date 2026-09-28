@@ -23,9 +23,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:276
+SysML Source: root-0/analyses/mfe_account_costs.sysml:332
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:276
+SysML Source: root-0/analyses/mfe_account_costs.sysml:332
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/indirect_cost_impl.py
@@ -76,9 +76,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:276
+SysML Source: root-0/analyses/mfe_account_costs.sysml:332
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:276
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:332
 
     Calculation Specification:
         reference_construction_time = 6.0

@@ -4,6 +4,41 @@ Historical record of completed work.
 
 ---
 
+## [2026-09-22] - Integrated ARIES equipment and costs (WI-090)
+
+**Type**: Modeling item and goal
+**Duration**: 1 day (2026-09-22)
+
+### Summary
+
+Delivered selected equipment inventory, capability/demand checks and disjoint native capital, annual and replacement costs. Independent review accepts the conditional integration goal after a 64-point thermal/equipment study and a 113-point cost study, with every point numerically verified. The 423.106794 MW case remains the assumed integrated baseline; source failures and scientific limitations are preserved. Baseline overnight capital is 4.350 billion USD2004. The owner authorized formal closure; the financial handoff is ready for prompt 03.
+
+### Deliverables
+
+- Archived item and exact financial interface map: `work/completed/20260922_WI-090_aries-integrated-equipment-and-costs/`.
+- Accepted answer, reviews and learning deltas: `work/orchestration/goals/aries-integrated-equipment-costs/`.
+- Frozen thermal/equipment study `494c329e` and cost study `8d322312` under `exploration/aries_integrated/studies/`.
+
+---
+
+## [2026-09-22] - Integrated ARIES heat and electricity (WI-089)
+
+**Type**: Modeling item and goal
+**Duration**: 1 day (2026-09-22)
+
+### Summary
+
+Delivered and independently reviewed one native plasma/source → heat transport → conversion → net-electricity assembly. The assumed calculated-plasma nominal produces 423.106794 MW net with zero unmet heat; a frozen fourteen-point study retains all adverse source/equipment cases and passes 420 scalar and 140 exact verdict comparisons. The owner closed the goal and WI-089; scientific qualifications and the prompt-02 inventory/cost handoff remain explicit.
+
+### Deliverables
+
+- Native work item: `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/` (spec, design/assumption register, plan, report and evidence).
+- Goal answer and independent reviews: `work/orchestration/goals/aries-integrated-heat-electricity/`.
+- Native assembly/package: `models/designs/aries_cs_integrated/plant.sysml` and `exploration/aries_integrated/`.
+- Frozen study: `exploration/aries_integrated/studies/20260922-integrated-heat-electricity/@8e6fb2f2`.
+
+---
+
 ## [2026-08-30] - Epic: Goal Strategy and Task Harness
 
 **Type**: Epic (GSTH — 6 items)

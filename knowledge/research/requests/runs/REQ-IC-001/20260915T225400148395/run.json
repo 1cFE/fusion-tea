@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-IC-001",
+  "request_key": "6ceb72c5e04e2e5ae35cf723400b27f44279ee20b78cbf6d175fd18937afb92a",
+  "request_path": "knowledge/research/requests/REQ-IC-001.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-15T22:54:00.148540+00:00",
+  "override_reason": null
+}

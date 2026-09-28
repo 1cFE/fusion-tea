@@ -1,0 +1,46 @@
+A
+0D-Power Balance
+A 0D power balance analysis is usually written in integrated quantities, so e.g. in
+terms of the heating or loss power density 𝑝≡⟨𝑝⟩𝑉≡∫𝑉𝑝𝑑𝑉, where 𝑉is the plasma
+volume, usually taken of the confining plasma volume up to a certain ‘core’ radius 𝑟.
+If we adapt this terminology, the power balance is written as
+𝑝loss
+!= 𝑝heat,
+(A.1)
+⇒𝑝rad + 𝑝conf = 𝑓𝛼𝑝𝛼+ 𝑝aux,
+(A.2)
+⇒𝑝Brems + 𝑤
+𝜏𝐸
+= 𝑓𝛼𝐸𝛼𝑛𝐷𝑛𝑇⟨𝜎𝑣⟩𝑇(1 + 𝑝𝛼) .
+(A.3)
+In these equations, 𝑝loss is the volume averaged loss power density, 𝑝heat the heating
+power density, 𝑝rad the loss power density by radiation and 𝑝conf the loss power
+density by lack of confinement. 𝑓𝛼is the quality how good the configuration confines
+fast particles, 𝑝𝛼is heating power density by fusion alpha particles, and 𝑝𝑎𝑢𝑥is the
+auxiliary heating power density. We have used that 𝑝rad ∼𝑝Brems, so the radiation
+power density is dominated by bremstrahlungs effects and that 𝑝conf =
+𝑤
+𝜏𝐸, where 𝑤
+is the energy density in the plasma and 𝜏𝐸is the energy confinement time. 𝐸𝛼is the
+energy carried by fast fusion alpha particles (3.5 MeV), 𝑛𝐷and 𝑛𝑇are densities of
+deuterium and tritium in the plasma respectively. ⟨𝜎𝑣⟩𝑇is the Maxwellian averaged
+fusion reactivity. The left hand side of Equation A.3 represents the loss terms and
+the right hand side of the equation the fusion and the auxiliary heating term. With
+𝐷−𝑇fusion, the charged particle fraction is 1/5th of the total fusion power in good
+approximation. Then, the fusion gain 𝑄can be written as 𝑄≡
+𝑃𝑓𝑢𝑠
+𝑃𝑎𝑢𝑥≃
+5𝑝𝛼
+𝑝𝑎𝑢𝑥.
+Introducing implicit units now, one can write the integrated energy power balance
+as
+𝑎(2𝑓He + 1 + 𝑍𝑓𝑍)𝑛2√
+𝑇+ 𝑏(2 −(𝑍−1)𝑓𝑍−𝑓He)𝑛𝑇
+𝜏𝐸
+=
+𝑐(1 −𝑍𝑓𝑍−2𝑓He)2𝑛2⟨𝜎𝑣⟩𝑇(1 +
+5
+𝑓𝛼𝑄)
+,
+(A.4)
+143

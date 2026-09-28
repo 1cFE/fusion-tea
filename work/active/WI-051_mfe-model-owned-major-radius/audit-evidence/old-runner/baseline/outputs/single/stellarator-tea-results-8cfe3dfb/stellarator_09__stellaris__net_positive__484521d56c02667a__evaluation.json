@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+  "margin": 1013.9319325539626,
+  "observed": {
+    "net_electric": 1013.9319325539626
+  },
+  "status": "satisfied"
+}

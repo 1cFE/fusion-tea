@@ -1,0 +1,17 @@
+{
+  "schema_version": "study-package-identity/v1",
+  "package": {
+    "name": "stellarator_tea",
+    "path": "exploration/stellarator_e2e/generated"
+  },
+  "identity": {
+    "kind": "sealed",
+    "recipe": "effective-executable-fingerprint/v1",
+    "sealed_executable_fingerprint": "a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0",
+    "allowed_modified_files": [],
+    "adapter_sources": [],
+    "adapter_source_digest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "digest": "a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0"
+  },
+  "glue_ledger": []
+}

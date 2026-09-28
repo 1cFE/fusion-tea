@@ -1,0 +1,3350 @@
+{
+  "entering": {
+    "tests.models.test_beta_peak_field::test_volume_averaged_beta_has_the_design_formals_in_order": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_conductor_peak_field_has_the_design_formals": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_conductor_peak_field_limit_compares_two_plain_formals": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_magnet_system_carries_the_two_conductor_facts": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_new_library_definitions_carry_no_concept_value": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_example.TestModelParsing::test_library_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_example.TestModelParsing::test_full_model_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_example.TestModelStructure::test_example_definition_exists": {
+      "outcome": "skipped",
+      "reason": "Customize this test with your actual definition names"
+    },
+    "tests.models.test_example.TestDesignIntegration::test_design_references_resolve": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_types_parse_without_errors": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_units_parse_without_errors": {
+      "outcome": "skipped",
+      "reason": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_materials_parse_without_errors": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_enum_definitions_count": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_reactor_type_variants": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_confinement_type_variants_count": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_all_expected_enums_exist": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_defined": {
+      "outcome": "skipped",
+      "reason": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_count": {
+      "outcome": "skipped",
+      "reason": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_materials_exist": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_material_has_required_attributes": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_all_materials_have_required_attributes": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationIntegration::test_all_foundation_files_parse_together": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_foundation.TestFoundationIntegration::test_foundation_element_counts": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_library_output_contract_and_strict_generation": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_osiris_exact_source_facts_and_computed_bindings": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[baseline]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[beam10]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[eff35]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[rate5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv074_mutation_identities": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[counterexample]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[zero]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[negative_neighbor]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[positive_neighbor]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[roundoff_positive]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_factor_and_shared_real_duration_structure": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_all_inherited_baseline_outputs_and_verdicts": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_real_duration_mutations_reach_factors_and_cost[construction_duration-5.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_real_duration_mutations_reach_factors_and_cost[operational_duration-40.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[5.0-40.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[5.5-40.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[0.25-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[1.0-1.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[20.0-100.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[50.5-200.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_typed_completions_and_repeat_regeneration": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_strict_assertion_rejects_cancellation_and_small_channel_absolute_floor": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_two_events_inside_a_ten_year_horizon": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_horizon_ending_inside_a_prospective_outage_buys_no_terminal_replacement": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_restart_exactly_at_retirement_is_not_strictly_before": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_zero_damage_means_infinite_life_and_no_event": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_zero_outage_still_charges_the_events": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_zero_discount_gives_a_unit_energy_ratio_and_a_plain_average": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_productive_time_is_non_increasing_in_the_unplanned_fraction": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_long_horizon_approaches_the_steady_cycle_limit": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_held_mode_equals_the_retired_chain_by_identity": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad1]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad2]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad3]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad4]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_signed_demand_bounds": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_generic_heating_default_modes": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_heating_efficiency_scalar_consumers": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_stellarator_operating_heat_has_no_public_demand_input": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_reserve_invariance": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_financial_attribution": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_direct_native_parity": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_definition_structure": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_owned_paths_cover_every_canonical_file": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_canonical_files_equal_the_family_twin_byte_for_byte[ife]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_canonical_files_equal_the_family_twin_byte_for_byte[mfe]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_shared_files_agree_in_all_three_homes": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_the_layout_mapping_refuses_a_logical_path_collision": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[ife]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[mfe]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_ife_census_is_19_entry_points_18_design_attributes": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_mfe_census_matches_current_generated_public_contract": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_ife_beam_energy_mutation_has_one_direct_consumer": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceFilesExist::test_power_balance_lives_in_analyses": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceFilesExist::test_mfe_power_balance_sysml_exists": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceParsing::test_library_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceParsing::test_power_balance_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestCalcDefinitionsExist::test_alpha_power_calc_inlined_not_standalone": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestCalcDefinitionsExist::test_power_balance_calc_collapsed_to_mfe": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestCalcDefinitionsExist::test_mfe_power_balance_calc_exists": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestInlinedAlphaHandling::test_alpha_driven_by_p_nrl_input": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestInlinedAlphaHandling::test_fuel_type_inlined_to_dt": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestInlinedAlphaHandling::test_mfe_calc_has_p_alpha": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestMFEPowerBalanceCalcInterface::test_has_all_required_inputs": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestMFEPowerBalanceCalcInterface::test_has_p_net_output": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestMFEPowerBalanceCalcInterface::test_has_intermediate_outputs": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestDocumentation::test_alpha_handling_documented": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestDocumentation::test_mfe_power_balance_calc_has_doc": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_dt_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_dd_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_dhe3_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_pb11_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_neutron_power": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_scientific_q": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_thermal_power": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_thermal_electric_power": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_engineering_q_components": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_net_electric_power": {
+      "outcome": "passed",
+      "reason": ""
+    }
+  },
+  "audit": {
+    "tests.models.test_beta_peak_field::test_volume_averaged_beta_has_the_design_formals_in_order": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_conductor_peak_field_has_the_design_formals": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_conductor_peak_field_limit_compares_two_plain_formals": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_magnet_system_carries_the_two_conductor_facts": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_beta_peak_field::test_new_library_definitions_carry_no_concept_value": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_example.TestModelParsing::test_library_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_example.TestModelParsing::test_full_model_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_example.TestModelStructure::test_example_definition_exists": {
+      "outcome": "skipped",
+      "reason": "Customize this test with your actual definition names"
+    },
+    "tests.models.test_example.TestDesignIntegration::test_design_references_resolve": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_types_parse_without_errors": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_units_parse_without_errors": {
+      "outcome": "skipped",
+      "reason": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_materials_parse_without_errors": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_enum_definitions_count": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_reactor_type_variants": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_confinement_type_variants_count": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_all_expected_enums_exist": {
+      "outcome": "skipped",
+      "reason": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_defined": {
+      "outcome": "skipped",
+      "reason": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_count": {
+      "outcome": "skipped",
+      "reason": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_materials_exist": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_material_has_required_attributes": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_all_materials_have_required_attributes": {
+      "outcome": "skipped",
+      "reason": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationIntegration::test_all_foundation_files_parse_together": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_foundation.TestFoundationIntegration::test_foundation_element_counts": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_library_output_contract_and_strict_generation": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_osiris_exact_source_facts_and_computed_bindings": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[baseline]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[beam10]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[eff35]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv073_sv074_independent_source_and_cashflow_execution[rate5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv074_mutation_identities": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[counterexample]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[zero]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[negative_neighbor]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[positive_neighbor]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_operating_point_repair::test_sv075_strict_boundary_and_named_net_verdict[roundoff_positive]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_factor_and_shared_real_duration_structure": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.0-40.0--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.0-40.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.0-40.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-5.5-40.5--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-5.5-40.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-5.5-40.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-0.25-0.5--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-0.25-0.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-0.25-0.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-1.0-1.0--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-1.0-1.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-1.0-1.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-20.0-100.0--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-20.0-100.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-20.0-100.0--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[baseline-50.5-200.5--0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[zero-50.5-200.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--0.0001]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-16]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5-1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv076_sv077_sv078_full_design_window[negative-50.5-200.5--1e-18]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[0.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[-1e-12]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_positive_neighbor_remains_eligible[0.08]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_sv078_all_inherited_baseline_outputs_and_verdicts": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_real_duration_mutations_reach_factors_and_cost[construction_duration-5.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_real_duration_mutations_reach_factors_and_cost[operational_duration-40.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[5.0-40.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[5.5-40.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[0.25-0.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[1.0-1.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[20.0-100.0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_signed_zero_exact_factor_limits[50.5-200.5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_typed_completions_and_repeat_regeneration": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_ife_zero_discount_repair::test_strict_assertion_rejects_cancellation_and_small_channel_absolute_floor": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_two_events_inside_a_ten_year_horizon": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_horizon_ending_inside_a_prospective_outage_buys_no_terminal_replacement": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_restart_exactly_at_retirement_is_not_strictly_before": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_zero_damage_means_infinite_life_and_no_event": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_zero_outage_still_charges_the_events": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_zero_discount_gives_a_unit_energy_ratio_and_a_plain_average": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_productive_time_is_non_increasing_in_the_unplanned_fraction": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_long_horizon_approaches_the_steady_cycle_limit": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_held_mode_equals_the_retired_chain_by_identity": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad0]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad1]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad2]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad3]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad4]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_lifecycle_calendar::test_invalid_live_inputs_raise_rather_than_floor[bad5]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_binding_documentation_and_source_preservation": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_fresh_destination_acceptance[absent]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_fresh_destination_acceptance[empty]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[visible]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[hidden]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[file]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[symlink]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[dangling_symlink]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[reused]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_seed_inventory_refuses_deviation[missing]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_seed_inventory_refuses_deviation[extra]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_seed_inventory_refuses_deviation[mismatch]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_strict_current_package_load": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[baseline]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[R14]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_independent_radius_ratios_and_fixed_anchors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[coil_length]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[field_calc]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[stored_energy]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[magnet_cost]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-schema]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-cli]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-schema]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-cli]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-schema]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-cli]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-schema]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-cli]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-native]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-helper]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-single]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[valid]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[original_negative]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[equality]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_equal]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_inverted]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_bad_normative_seed_stops_before_generator[missing]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_bad_normative_seed_stops_before_generator[mismatch]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_major_radius::test_extra_seed_stops_before_generator": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_signed_demand_bounds": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_generic_heating_default_modes": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_heating_efficiency_scalar_consumers": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_stellarator_operating_heat_has_no_public_demand_input": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_reserve_invariance": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_financial_attribution": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_direct_native_parity": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_definition_structure": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_owned_paths_cover_every_canonical_file": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_canonical_files_equal_the_family_twin_byte_for_byte[ife]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_canonical_files_equal_the_family_twin_byte_for_byte[mfe]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_shared_files_agree_in_all_three_homes": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_the_layout_mapping_refuses_a_logical_path_collision": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[ife]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[mfe]": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_ife_census_is_19_entry_points_18_design_attributes": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_mfe_census_matches_current_generated_public_contract": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_ife_beam_energy_mutation_has_one_direct_consumer": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_model_family_spines::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceFilesExist::test_power_balance_lives_in_analyses": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceFilesExist::test_mfe_power_balance_sysml_exists": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceParsing::test_library_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestPowerBalanceParsing::test_power_balance_parses_without_errors": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestCalcDefinitionsExist::test_alpha_power_calc_inlined_not_standalone": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestCalcDefinitionsExist::test_power_balance_calc_collapsed_to_mfe": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestCalcDefinitionsExist::test_mfe_power_balance_calc_exists": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestInlinedAlphaHandling::test_alpha_driven_by_p_nrl_input": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestInlinedAlphaHandling::test_fuel_type_inlined_to_dt": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestInlinedAlphaHandling::test_mfe_calc_has_p_alpha": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestMFEPowerBalanceCalcInterface::test_has_all_required_inputs": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestMFEPowerBalanceCalcInterface::test_has_p_net_output": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestMFEPowerBalanceCalcInterface::test_has_intermediate_outputs": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestDocumentation::test_alpha_handling_documented": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestDocumentation::test_mfe_power_balance_calc_has_doc": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_dt_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_dd_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_dhe3_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_alpha_power_pb11_fuel": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_neutron_power": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_scientific_q": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_thermal_power": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_thermal_electric_power": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_engineering_q_components": {
+      "outcome": "passed",
+      "reason": ""
+    },
+    "tests.models.test_power_balance.TestNumericalValidation::test_net_electric_power": {
+      "outcome": "passed",
+      "reason": ""
+    }
+  },
+  "added": [
+    "tests.models.test_mfe_major_radius::test_bad_normative_seed_stops_before_generator[mismatch]",
+    "tests.models.test_mfe_major_radius::test_bad_normative_seed_stops_before_generator[missing]",
+    "tests.models.test_mfe_major_radius::test_binding_documentation_and_source_preservation",
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[R14]",
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[baseline]",
+    "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement",
+    "tests.models.test_mfe_major_radius::test_extra_seed_stops_before_generator",
+    "tests.models.test_mfe_major_radius::test_fresh_destination_acceptance[absent]",
+    "tests.models.test_mfe_major_radius::test_fresh_destination_acceptance[empty]",
+    "tests.models.test_mfe_major_radius::test_independent_radius_ratios_and_fixed_anchors",
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[dangling_symlink]",
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[file]",
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[hidden]",
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[reused]",
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[symlink]",
+    "tests.models.test_mfe_major_radius::test_nonfresh_destination_refusal_without_mutation[visible]",
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[equality]",
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[original_negative]",
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_equal]",
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_inverted]",
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[valid]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-cli]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-helper]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-native]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-schema]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-single]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-cli]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-helper]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-native]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-schema]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-single]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-cli]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-helper]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-native]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-schema]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-single]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-cli]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-helper]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-native]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-schema]",
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-single]",
+    "tests.models.test_mfe_major_radius::test_seed_inventory_refuses_deviation[extra]",
+    "tests.models.test_mfe_major_radius::test_seed_inventory_refuses_deviation[mismatch]",
+    "tests.models.test_mfe_major_radius::test_seed_inventory_refuses_deviation[missing]",
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[coil_length]",
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[field_calc]",
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[magnet_cost]",
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[stored_energy]",
+    "tests.models.test_mfe_major_radius::test_strict_current_package_load",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-helper]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-native]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-single]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-helper]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-native]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-single]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-helper]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-native]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-single]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-helper]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-native]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-single]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-helper]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-native]",
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-single]"
+  ],
+  "removed": [],
+  "changed": [],
+  "audit_counts": {
+    "passed": 428,
+    "skipped": 13
+  }
+}

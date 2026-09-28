@@ -1,0 +1,27 @@
+{
+  "study_route": {
+    "path": "/tmp/aries-r3-execution-20260920/exploration/stellarator_e2e/studies/study_route.py",
+    "sha256": "dc4b2fd10c7c5ac714e294ce6632fa7e5a10a2c939c38da27eb6ea53943045b6"
+  },
+  "oracle_entry": {
+    "path": "/tmp/aries-r3-execution-20260920/exploration/stellarator_e2e/studies/oracle_entry.py",
+    "sha256": "2cdf875bae3f169a0acadc01cd3255980f201695d47e6116aa4d08ac10a4b040"
+  },
+  "exploration.stellarator_e2e.oracle_matched_cycle": {
+    "path": "/tmp/aries-r3-execution-20260920/exploration/stellarator_e2e/oracle_matched_cycle.py",
+    "sha256": "a4d83d08df61265911785396055d8f2447fbed91cd5021bc7731928b801831be"
+  },
+  "scripts.study.verify": {
+    "path": "/tmp/aries-r3-execution-20260920/scripts/study/verify.py",
+    "sha256": "042a47bb8b6b49b6f1addae6faa3cef58b9214535bf7a6a22438aeb0f323ed71"
+  },
+  "models/library/data/matched_steam_properties.json": {
+    "sha256": "62394f5d29b54b511aa3b093bb9a1251fe52ac8d23d50f7da61f272e38628d39"
+  },
+  "exploration/stellarator_e2e/models/data/matched_steam_properties.json": {
+    "sha256": "62394f5d29b54b511aa3b093bb9a1251fe52ac8d23d50f7da61f272e38628d39"
+  },
+  "exploration/stellarator_e2e/oracle_matched_cycle_properties.json": {
+    "sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b"
+  }
+}

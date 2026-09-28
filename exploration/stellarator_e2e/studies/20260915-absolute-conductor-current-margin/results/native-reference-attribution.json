@@ -1,0 +1,6 @@
+{
+  "outcome": "pass",
+  "scalar_comparisons": 212,
+  "predicate_comparisons": 19,
+  "scope": "Captured entering native reference compared with current native reference; old package was not rerun."
+}

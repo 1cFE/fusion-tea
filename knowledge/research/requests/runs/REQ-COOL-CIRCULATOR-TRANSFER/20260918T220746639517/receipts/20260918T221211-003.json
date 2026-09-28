@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/cool-circ-transfer/ga-pcrv.pdf",
+  "slug": "general_atomic_ga8439_reactor_arrangement_studies_for_a",
+  "path": "knowledge/sources/general_atomic_ga8439_reactor_arrangement_studies_for_a/",
+  "source_id": "b8baa2fa5b4098bbc7a5c2a22540927b8939aae3093126aedeb560af0c3b4cfb",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:12:11.980279+00:00"
+}

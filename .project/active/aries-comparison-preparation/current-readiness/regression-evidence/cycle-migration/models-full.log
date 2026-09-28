@@ -1,0 +1,873 @@
+........................................................................ [  3%]
+........................................................................ [  6%]
+........................................................................ [  9%]
+........................................................................ [ 12%]
+........................................................................ [ 15%]
+........................................................................ [ 18%]
+........................................................................ [ 21%]
+...FF......F............................................................ [ 24%]
+........................................................................ [ 27%]
+........................................................................ [ 31%]
+..........s...................................................FF..ssssss [ 34%]
+ssssss.................................................................. [ 37%]
+........................................................................ [ 40%]
+........................................................................ [ 43%]
+........................................................................ [ 46%]
+........................................................................ [ 49%]
+........................................................................ [ 52%]
+........................................................................ [ 55%]
+........................................................................ [ 58%]
+.......................................................................F [ 62%]
+................F....................................................... [ 65%]
+........................................................................ [ 68%]
+........................................................................ [ 71%]
+........................................................................ [ 74%]
+........................................................................ [ 77%]
+.............................................x..F.F.F..........F........ [ 80%]
+........................................................................ [ 83%]
+................F....................................................... [ 86%]
+........................................................................ [ 89%]
+........................................................................ [ 93%]
+........................................................................ [ 96%]
+........................................................................ [ 99%]
+..................                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_all_numeric_channels_and_strict_predicates[cost-only] __________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x703221df0e00>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/modules/mfe_matched_steam_cycle/matched_steam_cycle.py:371: in run
+    s_main_kJ_kgK, reheat_min_gap_K, mdot_heater_kg_s, h_hp_kJ_kg, s_lp_kJ_kgK, p_condensate_pumped_MPa, mdot_main_kg_s, mdot_reheat_kg_s, q_generator_loss_MW, t_feed_C, p_cycle_net_before_cooling_MW, main_UA_available, p_feedwater_electric_MW, q_rejection_before_cooling_MW, p_lp_MPa, lp_quality, h_condensate_pumped_kJ_kg, t_heater_C, p_cycle_pumps_MW, t_condensate_C, salt_reheat_flow_kg_s, s_reheat_kJ_kgK, salt_main_flow_kg_s, p_gross_MW, p_feedwater_shaft_MW, h_main_kJ_kg, t_reheat_C, installed_sg_capacity_qualified, p_hp_shaft_MW, p_main_MPa, t_hp_C, mdot_feed_kg_s, mdot_bleed_kg_s, p_condensate_MPa, salt_heat_residual_MW, p_hp_MPa, active, eta_gross, h_lp_kJ_kg, mdot_condensate_kg_s, h_feed_kJ_kg, heater_energy_residual_MW, lp_moisture_fraction, t_main_C, cycle_electric_residual_MW, p_feed_MPa, main_UA_MW_K, bleed_fraction, p_reheat_MPa, mdot_lp_kg_s, reheat_UA_MW_K, p_lp_shaft_MW, p_heater_MPa, q_main_MW, q_pump_motor_loss_MW, q_mechanical_loss_MW, p_condensate_electric_MW, main_min_gap_K, heater_mass_residual_kg_s, s_hp_kJ_kgK, h_heater_kJ_kg, main_admission_ok, q_condenser_MW, mdot_hp_kg_s, h_condensate_kJ_kg, p_condensate_shaft_MW, turbine_equipment_qualified, h_reheat_kJ_kg, cycle_shaft_residual_MW, reheat_admission_ok, s_heater_kJ_kgK, q_reheat_MW, s_feed_kJ_kgK, salt_flow_total_kg_s, reheat_UA_available, s_condensate_kJ_kgK, mdot_condensate_pumped_kg_s, t_lp_C = run_matched_steam_cycle(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:281: in run_matched_steam_cycle
+    result = calculate({name:getattr(inputs,name+'_in') for name in INPUT_NAMES})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:177: in calculate
+    balance(heat-plant_heat, max(abs(heat),abs(plant_heat)), 'plant and cycle heat join')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+residual = 5.675887361898731, scale = 3306.8890988488924
+name = 'plant and cycle heat join'
+
+    def balance(residual, scale, name):
+        if not math.isfinite(residual) or abs(residual) > max(1e-8, 1e-12 * abs(scale)):
+>           raise ValueError(f'WI-073 {name}: balance residual {residual!r} exceeds arithmetic policy')
+E           ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:75: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x7032381d4fe0>
+changes = {'heat_transport__secondary_energy_mode': 0.0}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize("changes", CASES)
+    def test_all_numeric_channels_and_strict_predicates(evaluate, changes):
+        import oracle_entry
+        from scripts.study.verify import derive_verdict, package_input_values
+    
+>       row = evaluate(changes)
+              ^^^^^^^^^^^^^^^^^
+
+tests/models/test_current_numeric_coverage.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_winding_pack_cost.py:182: in run
+    result = evaluator.evaluate(bridge.build({P + k: v for k, v in (overrides or {}).items()}))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x703221c52210>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+__________ test_all_numeric_channels_and_strict_predicates[disabled] ___________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x703221df0e00>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/modules/mfe_matched_steam_cycle/matched_steam_cycle.py:371: in run
+    s_main_kJ_kgK, reheat_min_gap_K, mdot_heater_kg_s, h_hp_kJ_kg, s_lp_kJ_kgK, p_condensate_pumped_MPa, mdot_main_kg_s, mdot_reheat_kg_s, q_generator_loss_MW, t_feed_C, p_cycle_net_before_cooling_MW, main_UA_available, p_feedwater_electric_MW, q_rejection_before_cooling_MW, p_lp_MPa, lp_quality, h_condensate_pumped_kJ_kg, t_heater_C, p_cycle_pumps_MW, t_condensate_C, salt_reheat_flow_kg_s, s_reheat_kJ_kgK, salt_main_flow_kg_s, p_gross_MW, p_feedwater_shaft_MW, h_main_kJ_kg, t_reheat_C, installed_sg_capacity_qualified, p_hp_shaft_MW, p_main_MPa, t_hp_C, mdot_feed_kg_s, mdot_bleed_kg_s, p_condensate_MPa, salt_heat_residual_MW, p_hp_MPa, active, eta_gross, h_lp_kJ_kg, mdot_condensate_kg_s, h_feed_kJ_kg, heater_energy_residual_MW, lp_moisture_fraction, t_main_C, cycle_electric_residual_MW, p_feed_MPa, main_UA_MW_K, bleed_fraction, p_reheat_MPa, mdot_lp_kg_s, reheat_UA_MW_K, p_lp_shaft_MW, p_heater_MPa, q_main_MW, q_pump_motor_loss_MW, q_mechanical_loss_MW, p_condensate_electric_MW, main_min_gap_K, heater_mass_residual_kg_s, s_hp_kJ_kgK, h_heater_kJ_kg, main_admission_ok, q_condenser_MW, mdot_hp_kg_s, h_condensate_kJ_kg, p_condensate_shaft_MW, turbine_equipment_qualified, h_reheat_kJ_kg, cycle_shaft_residual_MW, reheat_admission_ok, s_heater_kJ_kgK, q_reheat_MW, s_feed_kJ_kgK, salt_flow_total_kg_s, reheat_UA_available, s_condensate_kJ_kgK, mdot_condensate_pumped_kg_s, t_lp_C = run_matched_steam_cycle(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:281: in run_matched_steam_cycle
+    result = calculate({name:getattr(inputs,name+'_in') for name in INPUT_NAMES})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:169: in calculate
+    positive(p[name], name)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = 0.0, name = 'heat_available_MW'
+
+    def positive(value, name):
+        value = finite(value, name)
+        if value <= 0:
+>           raise ValueError(f'WI-073 {name}: positive value required')
+E           ValueError: WI-073 heat_available_MW: positive value required
+
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:69: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x7032381d4fe0>
+changes = {'buildings__facilities_capacity_mode': 0.0, 'buildings__facilities_cost_mode': 0.0, 'buildings__facilities_enabled': False, 'heat_transport__equipment_cost_mode': 0.0, ...}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize("changes", CASES)
+    def test_all_numeric_channels_and_strict_predicates(evaluate, changes):
+        import oracle_entry
+        from scripts.study.verify import derive_verdict, package_input_values
+    
+>       row = evaluate(changes)
+              ^^^^^^^^^^^^^^^^^
+
+tests/models/test_current_numeric_coverage.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_winding_pack_cost.py:182: in run
+    result = evaluator.evaluate(bridge.build({P + k: v for k, v in (overrides or {}).items()}))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('WI-073 heat_available_MW: positive value required')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x703221c503b0>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: WI-073 heat_available_MW: positive value required
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+_______ test_disabled_cooling_with_live_facilities_remains_incompatible ________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x703221df0e00>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/modules/mfe_matched_steam_cycle/matched_steam_cycle.py:371: in run
+    s_main_kJ_kgK, reheat_min_gap_K, mdot_heater_kg_s, h_hp_kJ_kg, s_lp_kJ_kgK, p_condensate_pumped_MPa, mdot_main_kg_s, mdot_reheat_kg_s, q_generator_loss_MW, t_feed_C, p_cycle_net_before_cooling_MW, main_UA_available, p_feedwater_electric_MW, q_rejection_before_cooling_MW, p_lp_MPa, lp_quality, h_condensate_pumped_kJ_kg, t_heater_C, p_cycle_pumps_MW, t_condensate_C, salt_reheat_flow_kg_s, s_reheat_kJ_kgK, salt_main_flow_kg_s, p_gross_MW, p_feedwater_shaft_MW, h_main_kJ_kg, t_reheat_C, installed_sg_capacity_qualified, p_hp_shaft_MW, p_main_MPa, t_hp_C, mdot_feed_kg_s, mdot_bleed_kg_s, p_condensate_MPa, salt_heat_residual_MW, p_hp_MPa, active, eta_gross, h_lp_kJ_kg, mdot_condensate_kg_s, h_feed_kJ_kg, heater_energy_residual_MW, lp_moisture_fraction, t_main_C, cycle_electric_residual_MW, p_feed_MPa, main_UA_MW_K, bleed_fraction, p_reheat_MPa, mdot_lp_kg_s, reheat_UA_MW_K, p_lp_shaft_MW, p_heater_MPa, q_main_MW, q_pump_motor_loss_MW, q_mechanical_loss_MW, p_condensate_electric_MW, main_min_gap_K, heater_mass_residual_kg_s, s_hp_kJ_kgK, h_heater_kJ_kg, main_admission_ok, q_condenser_MW, mdot_hp_kg_s, h_condensate_kJ_kg, p_condensate_shaft_MW, turbine_equipment_qualified, h_reheat_kJ_kg, cycle_shaft_residual_MW, reheat_admission_ok, s_heater_kJ_kgK, q_reheat_MW, s_feed_kJ_kgK, salt_flow_total_kg_s, reheat_UA_available, s_condensate_kJ_kgK, mdot_condensate_pumped_kg_s, t_lp_C = run_matched_steam_cycle(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:281: in run_matched_steam_cycle
+    result = calculate({name:getattr(inputs,name+'_in') for name in INPUT_NAMES})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:169: in calculate
+    positive(p[name], name)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = 0.0, name = 'heat_available_MW'
+
+    def positive(value, name):
+        value = finite(value, name)
+        if value <= 0:
+>           raise ValueError(f'WI-073 {name}: positive value required')
+E           ValueError: WI-073 heat_available_MW: positive value required
+
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:69: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x7032381d4fe0>
+
+    @pytest.mark.codegen_available
+    def test_disabled_cooling_with_live_facilities_remains_incompatible(evaluate):
+        import oracle_entry
+        from simkit.evaluation.failure import EvaluationFailed
+        changes = {"heat_transport__equipment_cost_mode": 0.,
+                   "heat_transport__secondary_energy_mode": 0.,
+                   "heat_transport__equipment_enabled": False}
+        with pytest.raises(EvaluationFailed, match="cooling_helium_count must be positive"):
+>           evaluate(changes)
+
+tests/models/test_current_numeric_coverage.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_winding_pack_cost.py:182: in run
+    result = evaluator.evaluate(bridge.build({P + k: v for k, v in (overrides or {}).items()}))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('WI-073 heat_available_MW: positive value required')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x703221c53bf0>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: WI-073 heat_available_MW: positive value required
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+
+During handling of the above exception, another exception occurred:
+
+evaluate = <function evaluate.<locals>.run at 0x7032381d4fe0>
+
+    @pytest.mark.codegen_available
+    def test_disabled_cooling_with_live_facilities_remains_incompatible(evaluate):
+        import oracle_entry
+        from simkit.evaluation.failure import EvaluationFailed
+        changes = {"heat_transport__equipment_cost_mode": 0.,
+                   "heat_transport__secondary_energy_mode": 0.,
+                   "heat_transport__equipment_enabled": False}
+>       with pytest.raises(EvaluationFailed, match="cooling_helium_count must be positive"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'cooling_helium_count must be positive'
+E         Actual message: 'module_execution: ValueError: WI-073 heat_available_MW: positive value required'
+
+tests/models/test_current_numeric_coverage.py:88: AssertionError
+_ test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14] _
+
+evaluate = <function evaluate.<locals>.run at 0x703221cce160>, case_index = 0
+contingency = 0.1
+
+    @pytest.mark.parametrize('case_index', [0, 1], ids=['default14', 'selected18'])
+    @pytest.mark.parametrize('contingency', [0., .1, .3])
+    def test_native_facility_children_reconcile_to_total_without_calendar_change(
+            evaluate, case_index, contingency):
+        entering = json.loads((ROOT / 'work/orchestration/goals/layout-based-facilities'
+                              '/evidence/entering-replay.json').read_text())['cases'][case_index]
+        # Frozen WI-068 monetary anchor predates throughput costing; replay its legacy selection.
+        point = entering['inputs'] | {P + 'contingency_rate': contingency, P + 'fuel_cycle__processing_enabled': False}
+        old_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 0.})
+        new_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 1.})
+        old, new = old_case.outputs, new_case.outputs
+    
+        # Actual child consumers, not a detached facility total or an oracle result.
+        civil = sum(new[P + f'buildings__{name}__civil__cost_2025']
+                    for name in CIVIL_BUILDINGS)
+        served_volume = new[P + 'buildings__layout__controlled_air_volume']
+        ventilation = 1000. * served_volume ** .8 * (321.9 / 130.7)
+        installed_facilities = civil + ventilation
+        legacy_buildings = old[P + 'buildings__buildings_cost__cost']
+        delta_direct = installed_facilities + 85e6 - legacy_buildings
+        delta_cas20 = (1 + contingency) * delta_direct
+        delta_indirect = (.2 * 8 / 6) * delta_cas20
+        delta_supplementary = (
+            .015 * (delta_cas20 - (1 + contingency) * installed_facilities)
+            + .01 * delta_cas20 + .015 * (delta_cas20 + delta_indirect))
+        new_land = new[P + 'buildings__layout__parcel_area'] / 4046.8564224 * 10000.
+        old_land = old[P + 'precon_cost__cost'] - 16e6
+        expected_capital_change = (new_land - old_land + delta_cas20
+                                   + delta_indirect + delta_supplementary)
+        for name, expected in (
+                ('cas2x_pre_contingency__cas2x_pre_contingency', delta_direct),
+                ('cas20_capital__cas20_capital', delta_cas20),
+                ('indirect__cost', delta_indirect),
+                ('supplementary__cost', delta_supplementary),
+                ('total_capital__total_capital', expected_capital_change)):
+            assert new[P + name] - old[P + name] == pytest.approx(
+                expected, rel=2e-11, abs=1e-5), name
+    
+        physical_prefixes = tuple(P + stem for stem in (
+            'plasma__', 'radial_build__', 'pb__', 'calendar__',
+            'heat_transport__primary_loop__', 'heat_transport__equipment__',
+            'blanket__breeding__', 'divertor__divheat__'))
+        checked = [key for key in old if key.startswith(physical_prefixes)]
+        assert len(checked) > 50
+        for key in checked:
+            assert new[key] == old[key], key
+        assert new_case.responses == old_case.responses
+        assert (new[P + 'lcoe_calc__lcoe'] - old[P + 'lcoe_calc__lcoe']) * expected_capital_change > 0
+        if contingency == .1:
+>           assert old[P + 'total_capital__total_capital'] == pytest.approx(
+                entering['outputs'][P + 'total_capital__total_capital'], rel=1e-12)
+E           assert 17657144649.785084 == 17860732458.743668 ± 0.0178607
+E             
+E             comparison failed
+E             Obtained: 17657144649.785084
+E             Expected: 17860732458.743668 ± 0.0178607
+
+tests/models/test_facility_account_consumers.py:137: AssertionError
+_ test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-selected18] _
+
+evaluate = <function evaluate.<locals>.run at 0x703221cce160>, case_index = 1
+contingency = 0.1
+
+    @pytest.mark.parametrize('case_index', [0, 1], ids=['default14', 'selected18'])
+    @pytest.mark.parametrize('contingency', [0., .1, .3])
+    def test_native_facility_children_reconcile_to_total_without_calendar_change(
+            evaluate, case_index, contingency):
+        entering = json.loads((ROOT / 'work/orchestration/goals/layout-based-facilities'
+                              '/evidence/entering-replay.json').read_text())['cases'][case_index]
+        # Frozen WI-068 monetary anchor predates throughput costing; replay its legacy selection.
+        point = entering['inputs'] | {P + 'contingency_rate': contingency, P + 'fuel_cycle__processing_enabled': False}
+        old_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 0.})
+        new_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 1.})
+        old, new = old_case.outputs, new_case.outputs
+    
+        # Actual child consumers, not a detached facility total or an oracle result.
+        civil = sum(new[P + f'buildings__{name}__civil__cost_2025']
+                    for name in CIVIL_BUILDINGS)
+        served_volume = new[P + 'buildings__layout__controlled_air_volume']
+        ventilation = 1000. * served_volume ** .8 * (321.9 / 130.7)
+        installed_facilities = civil + ventilation
+        legacy_buildings = old[P + 'buildings__buildings_cost__cost']
+        delta_direct = installed_facilities + 85e6 - legacy_buildings
+        delta_cas20 = (1 + contingency) * delta_direct
+        delta_indirect = (.2 * 8 / 6) * delta_cas20
+        delta_supplementary = (
+            .015 * (delta_cas20 - (1 + contingency) * installed_facilities)
+            + .01 * delta_cas20 + .015 * (delta_cas20 + delta_indirect))
+        new_land = new[P + 'buildings__layout__parcel_area'] / 4046.8564224 * 10000.
+        old_land = old[P + 'precon_cost__cost'] - 16e6
+        expected_capital_change = (new_land - old_land + delta_cas20
+                                   + delta_indirect + delta_supplementary)
+        for name, expected in (
+                ('cas2x_pre_contingency__cas2x_pre_contingency', delta_direct),
+                ('cas20_capital__cas20_capital', delta_cas20),
+                ('indirect__cost', delta_indirect),
+                ('supplementary__cost', delta_supplementary),
+                ('total_capital__total_capital', expected_capital_change)):
+            assert new[P + name] - old[P + name] == pytest.approx(
+                expected, rel=2e-11, abs=1e-5), name
+    
+        physical_prefixes = tuple(P + stem for stem in (
+            'plasma__', 'radial_build__', 'pb__', 'calendar__',
+            'heat_transport__primary_loop__', 'heat_transport__equipment__',
+            'blanket__breeding__', 'divertor__divheat__'))
+        checked = [key for key in old if key.startswith(physical_prefixes)]
+        assert len(checked) > 50
+        for key in checked:
+            assert new[key] == old[key], key
+        assert new_case.responses == old_case.responses
+        assert (new[P + 'lcoe_calc__lcoe'] - old[P + 'lcoe_calc__lcoe']) * expected_capital_change > 0
+        if contingency == .1:
+>           assert old[P + 'total_capital__total_capital'] == pytest.approx(
+                entering['outputs'][P + 'total_capital__total_capital'], rel=1e-12)
+E           assert 20716899648.190742 == 20903392371.61906 ± 0.0209034
+E             
+E             comparison failed
+E             Obtained: 20716899648.190742
+E             Expected: 20903392371.61906 ± 0.0209034
+
+tests/models/test_facility_account_consumers.py:137: AssertionError
+_________________ test_actual_native_cost_and_energy_selectors _________________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7032225a36e0>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/modules/mfe_matched_steam_cycle/matched_steam_cycle.py:371: in run
+    s_main_kJ_kgK, reheat_min_gap_K, mdot_heater_kg_s, h_hp_kJ_kg, s_lp_kJ_kgK, p_condensate_pumped_MPa, mdot_main_kg_s, mdot_reheat_kg_s, q_generator_loss_MW, t_feed_C, p_cycle_net_before_cooling_MW, main_UA_available, p_feedwater_electric_MW, q_rejection_before_cooling_MW, p_lp_MPa, lp_quality, h_condensate_pumped_kJ_kg, t_heater_C, p_cycle_pumps_MW, t_condensate_C, salt_reheat_flow_kg_s, s_reheat_kJ_kgK, salt_main_flow_kg_s, p_gross_MW, p_feedwater_shaft_MW, h_main_kJ_kg, t_reheat_C, installed_sg_capacity_qualified, p_hp_shaft_MW, p_main_MPa, t_hp_C, mdot_feed_kg_s, mdot_bleed_kg_s, p_condensate_MPa, salt_heat_residual_MW, p_hp_MPa, active, eta_gross, h_lp_kJ_kg, mdot_condensate_kg_s, h_feed_kJ_kg, heater_energy_residual_MW, lp_moisture_fraction, t_main_C, cycle_electric_residual_MW, p_feed_MPa, main_UA_MW_K, bleed_fraction, p_reheat_MPa, mdot_lp_kg_s, reheat_UA_MW_K, p_lp_shaft_MW, p_heater_MPa, q_main_MW, q_pump_motor_loss_MW, q_mechanical_loss_MW, p_condensate_electric_MW, main_min_gap_K, heater_mass_residual_kg_s, s_hp_kJ_kgK, h_heater_kJ_kg, main_admission_ok, q_condenser_MW, mdot_hp_kg_s, h_condensate_kJ_kg, p_condensate_shaft_MW, turbine_equipment_qualified, h_reheat_kJ_kg, cycle_shaft_residual_MW, reheat_admission_ok, s_heater_kJ_kgK, q_reheat_MW, s_feed_kJ_kgK, salt_flow_total_kg_s, reheat_UA_available, s_condensate_kJ_kgK, mdot_condensate_pumped_kg_s, t_lp_C = run_matched_steam_cycle(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:281: in run_matched_steam_cycle
+    result = calculate({name:getattr(inputs,name+'_in') for name in INPUT_NAMES})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:177: in calculate
+    balance(heat-plant_heat, max(abs(heat),abs(plant_heat)), 'plant and cycle heat join')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+residual = 5.675887361898731, scale = 3306.8890988488924
+name = 'plant and cycle heat join'
+
+    def balance(residual, scale, name):
+        if not math.isfinite(residual) or abs(residual) > max(1e-8, 1e-12 * abs(scale)):
+>           raise ValueError(f'WI-073 {name}: balance residual {residual!r} exceeds arithmetic policy')
+E           ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:75: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x703221f87560>
+
+    def test_actual_native_cost_and_energy_selectors(evaluate):
+>       legacy = evaluate(heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_installed_cooling_equipment.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_installed_cooling_equipment.py:93: in run
+    row = engine.evaluate(bridge.build({P+k:v for k,v in changes.items()}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x7032220da1b0>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+_____ test_matched_direct_delta_and_delivered_shipping_reach_total_capital _____
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7032225a36e0>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/modules/mfe_matched_steam_cycle/matched_steam_cycle.py:371: in run
+    s_main_kJ_kgK, reheat_min_gap_K, mdot_heater_kg_s, h_hp_kJ_kg, s_lp_kJ_kgK, p_condensate_pumped_MPa, mdot_main_kg_s, mdot_reheat_kg_s, q_generator_loss_MW, t_feed_C, p_cycle_net_before_cooling_MW, main_UA_available, p_feedwater_electric_MW, q_rejection_before_cooling_MW, p_lp_MPa, lp_quality, h_condensate_pumped_kJ_kg, t_heater_C, p_cycle_pumps_MW, t_condensate_C, salt_reheat_flow_kg_s, s_reheat_kJ_kgK, salt_main_flow_kg_s, p_gross_MW, p_feedwater_shaft_MW, h_main_kJ_kg, t_reheat_C, installed_sg_capacity_qualified, p_hp_shaft_MW, p_main_MPa, t_hp_C, mdot_feed_kg_s, mdot_bleed_kg_s, p_condensate_MPa, salt_heat_residual_MW, p_hp_MPa, active, eta_gross, h_lp_kJ_kg, mdot_condensate_kg_s, h_feed_kJ_kg, heater_energy_residual_MW, lp_moisture_fraction, t_main_C, cycle_electric_residual_MW, p_feed_MPa, main_UA_MW_K, bleed_fraction, p_reheat_MPa, mdot_lp_kg_s, reheat_UA_MW_K, p_lp_shaft_MW, p_heater_MPa, q_main_MW, q_pump_motor_loss_MW, q_mechanical_loss_MW, p_condensate_electric_MW, main_min_gap_K, heater_mass_residual_kg_s, s_hp_kJ_kgK, h_heater_kJ_kg, main_admission_ok, q_condenser_MW, mdot_hp_kg_s, h_condensate_kJ_kg, p_condensate_shaft_MW, turbine_equipment_qualified, h_reheat_kJ_kg, cycle_shaft_residual_MW, reheat_admission_ok, s_heater_kJ_kgK, q_reheat_MW, s_feed_kJ_kgK, salt_flow_total_kg_s, reheat_UA_available, s_condensate_kJ_kgK, mdot_condensate_pumped_kg_s, t_lp_C = run_matched_steam_cycle(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:281: in run_matched_steam_cycle
+    result = calculate({name:getattr(inputs,name+'_in') for name in INPUT_NAMES})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:177: in calculate
+    balance(heat-plant_heat, max(abs(heat),abs(plant_heat)), 'plant and cycle heat join')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+residual = 5.675887361898731, scale = 3306.8890988488924
+name = 'plant and cycle heat join'
+
+    def balance(residual, scale, name):
+        if not math.isfinite(residual) or abs(residual) > max(1e-8, 1e-12 * abs(scale)):
+>           raise ValueError(f'WI-073 {name}: balance residual {residual!r} exceeds arithmetic policy')
+E           ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+exploration/stellarator_e2e/pkg/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:75: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x703221f87560>
+
+    def test_matched_direct_delta_and_delivered_shipping_reach_total_capital(evaluate):
+>       old = evaluate(heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_installed_cooling_equipment.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_installed_cooling_equipment.py:93: in run
+    row = engine.evaluate(bridge.build({P+k:v for k,v in changes.items()}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x70322144ec90>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+___________________ test_heating_efficiency_scalar_consumers ___________________
+
+native = (PosixPath('/tmp/wi052-operating-regression-omybryck'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...'stellarator_09__stellaris__R_ref_divertor': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-13030/wi050-evidence0'))
+boundaries = {'couple_negative': {'outputs': {'boundary_fixture__allzero__heat__eta_pin_eff': 1.0, 'boundary_fixture__allzero__heat...le_zero': {'error': 'EvaluationFailed', 'message': 'module_execution: ZeroDivisionError: float division by zero'}, ...}
+
+    def test_heating_efficiency_scalar_consumers(native,boundaries):
+        from scripts.study import indicators,verify
+        scratch,_,_,_=native
+        entries=json.loads((scratch/'generated/contracts/model_contract.json').read_text())['constraint_catalog']['concrete_entries']
+        assert {e["constraint_id"] for e in entries} == CURRENT_PREDICATES
+>       assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] not in FACILITY_PREDICATES)==30
+E       assert 36 == 30
+E        +  where 36 = sum(<generator object test_heating_efficiency_scalar_consumers.<locals>.<genexpr> at 0x703222051740>)
+
+tests/models/test_mfe_operating_heating.py:94: AssertionError
+____________________ test_operating_heat_reserve_invariance ____________________
+
+native = (PosixPath('/tmp/wi052-operating-regression-omybryck'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...'stellarator_09__stellaris__R_ref_divertor': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-13030/wi050-evidence0'))
+
+    def test_operating_heat_reserve_invariance(native):
+        _,results,inputs,_=native
+        # Frozen WI-050 checker retains its original eighteen-predicate scope.
+        historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if k not in {WI061_PREDICATE,WI062_PREDICATE} | FACILITY_PREDICATES}) if 'responses' in row else row) for name, row in results.items()}
+        import sys
+        sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
+        import oracle_entry
+        from tests.models.current_mfe_regressions import WI059_REPLAY, WI066_PREDICATE, wi066_evaluation
+        for name, change in load('run_acceptance').CASES.items():
+            if 'responses' not in results[name]:
+                continue
+            channels = oracle_entry.evaluate(WI059_REPLAY | {renamed(P+k): v for k, v in change.items()})
+            assert results[name]['responses'][WI066_PREDICATE] == wi066_evaluation(channels)['status'] == 'violated'
+>       load('check_results').check(historical,inputs)
+
+tests/models/test_mfe_operating_heating.py:162: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+results = {'availability': {'outputs': {'stellarator_09__stellaris__aux_cooling__aux_cost': 3631334.532635693, 'stellarator_09__...03c3f94b878e5b58': 'satisfied', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60': 'satisfied', ...}}, ...}
+inputs = {'stellarator_09__stellaris__E_fus': 2.817e-12, 'stellarator_09__stellaris__G_stock': 0.0, 'stellarator_09__stellaris__R': 12.7, 'stellarator_09__stellaris__R_ref_divertor': 12.7, ...}
+
+    def check(results,inputs):
+        controls={'baseline':{},'reserve':{'p_wallplug_heat':120},'demand':{'f_alpha_fast':.96},'efficiency':{'eta_couple_heat':.8},'availability':{'unplanned_fraction':.10}}
+        financial={}
+        for case,changes in controls.items():
+            financial[case]=check_case(results[case]['outputs'],dict(inputs,**{P+k:v for k,v in changes.items()}))
+        b=results['baseline']['outputs'];r=results['reserve']['outputs']
+        invariants=['operating_heat__','source_heat__','primary_loop__','pb__','calendar__','cas71_calc__','cas80_calc__']
+        for key,value in b.items():
+            if any(key.removeprefix(P).startswith(prefix) for prefix in invariants) or (key.startswith(P+'divheat__') and not key.endswith('p_heat_operating_minus_installed')):
+                assert value==r[key],key
+        assert b[P+'heating_cost__cost']==264145000
+        assert r[P+'heating_cost__cost']==316974000
+        assert results['demand']['outputs'][P+'heating_cost__cost']==264145000
+        assert results['demand']['outputs'][P+'divheat__p_heat_abs']==b[P+'divheat__p_heat_abs']
+        assert results['demand']['outputs'][P+'fusion__p_fus']==b[P+'fusion__p_fus']
+        for k in ['operating_heat__p_coupled','operating_heat__p_wallplug','pb__p_net']:
+            assert b[P+k]==results['availability']['outputs'][P+k]
+        for case in controls:
+            responses=results[case]['responses'];individual={k:v for k,v in responses.items() if k!='headline'}
+>           assert len(individual)==18
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError
+
+work/active/WI-050_mfe-coherent-operating-heating/implementation/check_results.py:93: AssertionError
+___________________ test_operating_heat_direct_native_parity ___________________
+
+native = (PosixPath('/tmp/wi052-operating-regression-omybryck'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...'stellarator_09__stellaris__R_ref_divertor': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-13030/wi050-evidence0'))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70321756d460>
+
+    def test_operating_heat_direct_native_parity(native,monkeypatch):
+        import sys
+        sys.path.insert(0,str(ROOT/'exploration/stellarator_e2e'))
+        import verify_stellaris
+        _,results,_,_=native
+        # Resolve the map without importing run_stellaris's global package loader.
+        import ast
+        tree=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris.py').read_text())
+        assignment=next(n for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='CH' for t in n.targets))
+        channels=eval(compile(ast.Expression(assignment.value),'<channel-map>','eval'),{'P':P})
+        for case in ['baseline','reserve','demand','efficiency','availability']:
+            with monkeypatch.context() as context:
+                context.setattr(verify_stellaris,'IN',verify_stellaris.IN | oracle_local_overrides(WI059_REPLAY | {renamed(P+k):v for k,v in load('run_acceptance').CASES[case].items()}))
+                expected=verify_stellaris.compute()
+            runner=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris_single.py').read_text())
+            verdict_assignment=next(n for n in runner.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='EXPECTED_VERDICTS' for t in n.targets))
+            expected_verdicts=ast.literal_eval(verdict_assignment.value)
+            assert len(expected_verdicts)==20
+            if case in ['baseline','reserve','demand','availability']:
+                actual={key.split('__')[2]:value for key,value in results[case]['responses'].items() if key!='headline'}
+>               assert {k:v for k,v in actual.items() if k not in {cid.split('__')[2] for cid in FACILITY_PREDICATES}}==expected_verdicts
+E               AssertionError: assert {'beta_ok': '...tisfied', ...} == {'beta_ok': '...tisfied', ...}
+E                 
+E                 Omitting 20 identical items, use -vv to show
+E                 Left contains 3 more items:
+E                 {'cooling_water_heat_direction': 'satisfied',
+E                  'matched_main_heat_direction': 'satisfied',
+E                  'matched_reheat_heat_direction': 'satisfied'}
+E                 Use -v to get more diff
+
+tests/models/test_mfe_operating_heating.py:193: AssertionError
+__________ test_mfe_census_matches_current_generated_public_contract ___________
+
+baselines = {'ife': PosixPath('/tmp/pytest-of-reid/pytest-13030/baseline-ife0/package'), 'mfe': PosixPath('/tmp/pytest-of-reid/pytest-13030/baseline-mfe0/package')}
+
+    def test_mfe_census_matches_current_generated_public_contract(baselines) -> None:
+        """Bound to the semantic fingerprint it was derived against: a regenerated model
+        re-derives the fixture from the new package, never patches it to match."""
+        output = baselines["mfe"]
+        expected = json.loads((DATA / "mfe_census.json").read_text())
+        assert _contract(output)["semantic_fingerprint"] == (
+            expected["derived_against_semantic_fingerprint"]
+        ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
+>       assert len(_contract(output)["parameters"]) == expected["entry_points"] == 265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI067_PARAMETERS | WI068_PARAMETERS | WI069_PARAMETERS | WI070_PARAMETERS | WI071_PARAMETERS) - len(WI066_RETIRED | WI069_RETIRED)  # WI-040/038: 17 cost inputs and 2 conductor references.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 511 == ((265 + 227) - 2)
+E        +  where 227 = len((((((((((((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__magnet__casing__assembly_clearance', 'stellarator_09__stellaris__magnet__casing__interior...is__magnet__winding_pack__ground_insulation', 'stellarator_09__stellaris__magnet__winding_pack__internal_build_x', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation', 'stellarator_09__stellaris__magnet__win...is__magnet__winding_pack__material_factor', 'stellarator_09__stellaris__magnet__winding_pack__orientation_factor', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))
+E        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))
+
+tests/models/test_model_family_spines.py:369: AssertionError
+_________________ test_nominal_is_exact_frozen_wi070_estimate __________________
+
+evaluate = <function evaluate.<locals>.run at 0x70322177a2a0>
+
+    @pytest.mark.codegen_available
+    def test_nominal_is_exact_frozen_wi070_estimate(evaluate):
+        old = json.loads((ROOT/'exploration/stellarator_e2e/studies/20260919-throughput-based-fuel-processing-costs/results/baseline_result.json').read_text())
+        row = evaluate()
+>       assert dict(row.outputs) == old['channels']
+E       AssertionError: assert {'stellarator...74106922, ...} == {'stellarator...74106922, ...}
+E         
+E         Omitting 914 identical items, use -vv to show
+E         Differing items:
+E         {'stellarator_09__stellaris__idc__cost': 5014282950.40082} != {'stellarator_09__stellaris__idc__cost': 5061441111.136382}
+E         {'stellarator_09__stellaris__pb__p_et': 1219.9981701764736} != {'stellarator_09__stellaris__pb__p_et': 1360.3105043264716}
+E         {'stellarator_09__stellaris__cas90_1cfe_calc__cas90': 1834590400.7265766} != {'stellarator_09__stellaris__cas90_1cfe_calc__cas90': 1851844295.222991}
+E         {'stellarator_09__stellaris__electric_plant__electric_cost__cost': 105407841.90324733} != {'stellarator_09__stellaris__electric_plant__electric_cost__cost': 117530827.57380715}...
+E         
+E         ...Full output truncated (134 lines hidden), use '-vv' to show
+
+tests/models/test_shared_cooling_fabrication_rate.py:75: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_computed_tritium_breeding.py: 2 warnings
+tests/models/test_conductor_current.py: 10 warnings
+tests/models/test_conductor_grade.py: 3 warnings
+tests/models/test_current_driven_sizing_integration.py: 8 warnings
+tests/models/test_current_numeric_coverage.py: 4 warnings
+tests/models/test_divertor_heat_integration.py: 7 warnings
+tests/models/test_fuel_inventory.py: 1 warning
+tests/models/test_fuel_inventory_oracle.py: 10 warnings
+tests/models/test_fuel_processing_oracle.py: 14 warnings
+tests/models/test_installed_cooling_equipment.py: 3 warnings
+tests/models/test_layout_facilities.py: 8 warnings
+tests/models/test_magnet_manufacturing_integration.py: 12 warnings
+tests/models/test_shared_cooling_fabrication_rate.py: 7 warnings
+tests/models/test_tape_procurement.py: 11 warnings
+tests/models/test_winding_pack_cost.py: 2 warnings
+tests/models/test_winding_pack_fit.py: 11 warnings
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_conductor_current.py: 1 warning
+tests/models/test_current_driven_sizing_integration.py: 1 warning
+tests/models/test_divertor_heat_integration.py: 7 warnings
+tests/models/test_magnet_manufacturing_integration.py: 1 warning
+tests/models/test_winding_pack_fit.py: 1 warning
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_conductor_grade.py::test_reference_preserves_audited_wi040_physics_and_verdicts
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[0]
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[1]
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[2]
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[3]
+tests/models/test_mfe_operating_heating.py::test_operating_heat_signed_demand_bounds
+tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__price_copper-22.0-material_inventory__cost_copper-2.0]
+tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__tape_price_per_m-40.0-winding_procurement__tape_cost-2.0]
+tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__turn_current-25000.0-winding_procurement__winding_fabrication_cost-2.0]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.0-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.0-selected18]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-selected18]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.3-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.3-selected18]
+tests/models/test_fuel_processing_oracle.py::test_all_mapped_native_outputs_at_public_cases[legacy]
+tests/models/test_fuel_processing_oracle.py::test_native_old_to_new_account_identity[0.0]
+tests/models/test_fuel_processing_oracle.py::test_native_old_to_new_account_identity[0.1]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_fuel_inventory.py::test_native_dormant_inventory_preserves_legacy_held_requirement
+tests/models/test_fuel_inventory_oracle.py::test_native_off_reference_inventory_matches_independent_oracle[dormant-held-inventory]
+tests/models/test_fuel_processing_oracle.py::test_all_mapped_native_outputs_at_public_cases[dormant]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_fuel_processing_oracle.py::test_all_mapped_native_outputs_at_public_cases[undeclared]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_mfe_financial_calendar.py: 37 warnings
+  tests/models/test_mfe_financial_calendar.py:112: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('name',CASES)
+
+tests/models/test_mfe_financial_rate_limits.py: 11 warnings
+  tests/models/test_mfe_financial_rate_limits.py:63: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('duration', DURATIONS)
+
+tests/models/test_mfe_financial_rate_limits.py: 31 warnings
+  tests/models/test_mfe_financial_rate_limits.py:97: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('n,t', [(n, t) for n in DURATIONS for t in (8., 8.5)]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_current_numeric_coverage.py::test_all_numeric_channels_and_strict_predicates[cost-only]
+FAILED tests/models/test_current_numeric_coverage.py::test_all_numeric_channels_and_strict_predicates[disabled]
+FAILED tests/models/test_current_numeric_coverage.py::test_disabled_cooling_with_live_facilities_remains_incompatible
+FAILED tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14]
+FAILED tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-selected18]
+FAILED tests/models/test_installed_cooling_equipment.py::test_actual_native_cost_and_energy_selectors
+FAILED tests/models/test_installed_cooling_equipment.py::test_matched_direct_delta_and_delivered_shipping_reach_total_capital
+FAILED tests/models/test_mfe_operating_heating.py::test_heating_efficiency_scalar_consumers
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_reserve_invariance
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_direct_native_parity
+FAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract
+FAILED tests/models/test_shared_cooling_fabrication_rate.py::test_nominal_is_exact_frozen_wi070_estimate
+12 failed, 2296 passed, 13 skipped, 1 xfailed, 225 warnings in 696.14s (0:11:36)

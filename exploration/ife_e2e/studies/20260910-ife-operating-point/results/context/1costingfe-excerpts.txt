@@ -1,0 +1,227 @@
+src/costingfe/layers/physics.py:580-725
+580: def pulsed_thermal_forward(
+581:     p_fus: float,
+582:     fuel: Fuel,
+583:     e_driver_mj: float,
+584:     f_rep: float,
+585:     mn: float,
+586:     eta_th: float,
+587:     eta_pin: float,
+588:     f_rad: float,
+589:     f_sub: float,
+590:     p_pump: float,
+591:     p_trit: float,
+592:     p_house: float,
+593:     p_cryo: float,
+594:     p_target: float,
+595:     p_coils: float = 0.0,
+596:     f_dec: float = 0.0,
+597:     eta_de: float = 0.6,
+598:     dd_f_T: float = DD_F_T_DEFAULT,
+599:     dd_f_He3: float = DD_F_HE3_DEFAULT,
+600:     dhe3_dd_frac: float = 0.131,
+601:     dhe3_f_T: float = 0.5,
+602:     dhe3_f_He3: float = 0.1,
+603:     pb11_f_alpha_n: float = 0.0,
+604:     pb11_f_p_n: float = 0.0,
+605: ) -> PowerTable:
+606:     """Pulsed thermal forward power balance: fusion power -> net electric.
+607: 
+608:     Unified pulsed-confinement balance using per-pulse energy parameters
+609:     (e_driver_mj, f_rep) and a radiation loss fraction (f_rad).  Supports
+610:     partial charged-particle direct capture via f_dec (default 0 = all ash
+611:     thermalises) and eta_de (DEC efficiency).  Mirrors the steady-state
+612:     hybrid formula: fraction f_dec of non-radiated ash is collected at
+613:     eta_de, remaining ash and all radiation thermalise into the blanket.
+614: 
+615:     CRITICAL: All conditionals on float parameters use jnp.where because
+616:     these parameters may be JAX tracers during sensitivity analysis.
+617:     """
+618:     # Average driver power
+619:     p_driver = e_driver_mj * f_rep
+620: 
+621:     # Step 1: Ash/neutron split
+622:     p_ash, p_neutron = ash_neutron_split(
+623:         p_fus,
+624:         fuel,
+625:         dd_f_T,
+626:         dd_f_He3,
+627:         dhe3_dd_frac,
+628:         dhe3_f_T,
+629:         dhe3_f_He3,
+630:         pb11_f_alpha_n,
+631:         pb11_f_p_n,
+632:     )
+633: 
+634:     # Step 2: Radiation and charged-particle split
+635:     p_rad = f_rad * p_ash
+636:     p_charged_net = p_ash - p_rad
+637: 
+638:     # Step 3: Direct charged-particle capture (hybrid mode; f_dec=0 means pure thermal)
+639:     p_direct = f_dec * p_charged_net
+640:     p_dee = eta_de * p_direct
+641:     p_dec_waste = (1.0 - eta_de) * p_direct  # lost; not added to thermal
+642: 
+643:     # Step 4: Thermal power — (1-f_dec) of non-radiated ash + all radiation +
+644:     # driver + pump thermalise. Pump only when thermal conversion is active.
+645:     p_thermal_ash = (1.0 - f_dec) * p_charged_net + p_rad
+646:     pump_term = jnp.where(eta_th > 0, p_pump, 0.0)
+647:     p_th = mn * p_neutron + p_thermal_ash + p_driver + pump_term
+648: 
+649:     # Step 5: Thermal electric and gross
+650:     p_the = eta_th * p_th
+651:     p_et = p_the + p_dee
+652: 
+653:     # Step 6: Wall load from charged particles
+654:     p_wall = p_charged_net
+655: 
+656:     # Step 7: Lost power
+657:     p_loss = p_th - p_the
+658: 
+659:     # Step 8: Subsystem power
+660:     p_sub = f_sub * p_et
+661: 
+662:     # Step 9: Scientific Q
+663:     q_sci = p_fus / p_driver
+664: 
+665:     # Step 10: Recirculating and engineering Q
+666:     p_aux = p_trit + p_house
+667:     recirculating = (
+668:         p_driver / eta_pin
+669:         + jnp.where(eta_th > 0, p_pump, 0.0)
+670:         + p_sub
+671:         + p_aux
+672:         + p_cryo
+673:         + p_target
+674:         + p_coils
+675:     )
+676:     q_eng = p_et / recirculating
+677: 
+678:     # Step 11: Net electric
+679:     rec_frac = 1.0 / q_eng
+680:     p_net = (1.0 - rec_frac) * p_et
+681: 
+682:     # Pulsed-specific fields
+683:     e_stored_mj = e_driver_mj / eta_pin
+684:     f_ch = _charged_particle_fraction(
+685:         fuel,
+686:         dd_f_T,
+687:         dd_f_He3,
+688:         dhe3_dd_frac,
+689:         dhe3_f_T,
+690:         dhe3_f_He3,
+691:         pb11_f_alpha_n,
+692:         pb11_f_p_n,
+693:     )
+694: 
+695:     return PowerTable(
+696:         p_fus=p_fus,
+697:         p_ash=p_ash,
+698:         p_neutron=p_neutron,
+699:         p_rad=p_rad,
+700:         p_wall=p_wall,
+701:         p_dee=p_dee,
+702:         p_dec_waste=p_dec_waste,
+703:         p_th=p_th,
+704:         p_the=p_the,
+705:         p_et=p_et,
+706:         p_loss=p_loss,
+707:         p_net=p_net,
+708:         p_input=0.0,
+709:         p_pump=p_pump,
+710:         p_sub=p_sub,
+711:         p_aux=p_aux,
+712:         p_coils=p_coils,
+713:         p_cool=0.0,
+714:         p_cryo=p_cryo,
+715:         p_target=p_target,
+716:         q_sci=q_sci,
+717:         q_eng=q_eng,
+718:         rec_frac=rec_frac,
+719:         e_driver_mj=e_driver_mj,
+720:         e_stored_mj=e_stored_mj,
+721:         f_rep=f_rep,
+722:         f_ch=f_ch,
+723:     )
+724: 
+725: 
+
+src/costingfe/layers/cas22.py:448-494
+448:     # MFE: per-MW linear costs calibrated to ITER procurement (FOAK→NOAK)
+449:     # Pulsed: concept-specific driver capital (laser, accelerator, mechanical)
+450:     # Concepts whose driver is purely electrical use C220107 instead.
+451:     # See docs/account_justification/CAS22_reactor_components.md
+452:     # -----------------------------------------------------------------------
+453:     if family == ConfinementFamily.STEADY_STATE:
+454:         c220104 = (
+455:             cc.heating_nbi_per_mw * p_nbi
+456:             + cc.heating_icrf_per_mw * p_icrf
+457:             + cc.heating_ecrh_per_mw * p_ecrh
+458:             + cc.heating_lhcd_per_mw * p_lhcd
+459:         )
+460:     else:
+461:         # Lasers, accelerators, and electromagnetic guns: capital is set by
+462:         # per-pulse energy (aperture/diode count, ring charge, coaxial-gun size and
+463:         # peak current), not rep rate, so cost on $/J of E_driver. STAGED_ZPINCH is
+464:         # the sheared-flow coaxial gun + gas injection; its cap bank is in C220107.
+465:         _DRIVER_COST_PER_MJ = {
+466:             ConfinementConcept.LASER_IFE: cc.driver_laser_per_mj,
+467:             ConfinementConcept.HEAVY_ION: cc.driver_heavy_ion_per_mj,
+468:             ConfinementConcept.PLASMA_JET: cc.driver_plasma_jet_per_mj,
+469:             ConfinementConcept.STAGED_ZPINCH: cc.driver_staged_zpinch_per_mj,
+470:         }
+471:         # Pneumatic/mechanical injectors accelerate mass each shot, so average
+472:         # power (throughput) is the defensible basis.
+473:         _DRIVER_COST_PER_MW = {
+474:             ConfinementConcept.MAG_TARGET: cc.driver_mag_target_per_mw,
+475:         }
+476:         # MAGLIF is in neither map: its main driver is electrical (C220107). Only
+477:         # laser preheat lands here, costed per joule of preheat pulse energy, so a
+478:         # magnetized-compression concept with e_preheat_mj=0 pays nothing.
+479:         # For LASER_IFE the per-MJ coefficient is set by the driver architecture
+480:         # (DPSSL/KrF/Nd:Glass). The MagLIF preheat line stays DPSSL-class.
+481:         _LASER_DRIVER_PER_MJ = {
+482:             LaserDriverType.DPSSL: cc.driver_laser_per_mj,
+483:             LaserDriverType.KRF: cc.driver_krf_per_mj,
+484:             LaserDriverType.NDGLASS: cc.driver_ndglass_per_mj,
+485:         }
+486:         if concept == ConfinementConcept.LASER_IFE and laser_driver_type is not None:
+487:             drv_per_mj = _LASER_DRIVER_PER_MJ[laser_driver_type]
+488:         else:
+489:             drv_per_mj = _DRIVER_COST_PER_MJ.get(concept, 0.0)
+490:         c220104 = (
+491:             drv_per_mj * e_driver_mj
+492:             + _DRIVER_COST_PER_MW.get(concept, 0.0) * p_driver
+493:             + cc.laser_preheat_per_mj * e_preheat_mj
+494:         )
+
+src/costingfe/defaults.py:126-135
+126:     # LASER_IFE. KrF 40 leans to the Xcimer/ASPEN large-aperture-optics claim
+127:     # (range 20-200; NRL/Sethian engineering baseline ~200). Nd:Glass 1000 from
+128:     # NIF $3.5-4.2B / 1.1-1.9 MJ UV (~$2000/J facility, driver-only ~half).
+129:     # See docs/account_justification/CAS22_reactor_components.md (C220104).
+130:     driver_krf_per_mj: float = 40.0  # M$/MJ KrF excimer driver hardware
+131:     driver_ndglass_per_mj: float = 1000.0  # M$/MJ flashlamp Nd:Glass driver
+132:     driver_heavy_ion_per_mj: float = 60.0  # M$/MJ beam energy (heavy-ion accelerator)
+133:     driver_plasma_jet_per_mj: float = 4.0  # M$/MJ EM plasma-gun pulse energy
+134:     driver_staged_zpinch_per_mj: float = 1.5  # M$/MJ sheared-flow gun + gas inj.
+135:     driver_mag_target_per_mw: float = 3.0  # M$/MW avg power, pneumatic pistons
+
+src/costingfe/data/defaults/pulsed_heavy_ion.yaml:1-17
+1: # Default engineering parameters for IFE heavy ion beam fusion
+2: q_eng: 4.0               # Engineering gain target (P_et / P_recirc)
+3: 
+4: f_rep: 5.0               # Repetition rate [Hz]
+5: pulsed_conversion: thermal
+6: f_rad: 0.10
+7: eta_pin: 0.25            # Accelerator wall-plug efficiency
+8: mn: 1.1              # Neutron energy multiplier
+9: f_sub: 0.03          # Subsystem power fraction
+10: p_pump: 1.0          # Pumping power [MW]
+11: p_trit: 10.0         # Tritium processing power [MW]
+12: p_house: 4.0         # Housekeeping power [MW]
+13: p_cryo: 0.5          # Cryogenic power [MW]
+14: p_target: 0.8        # Target factory power [MW]
+15: target_unit_cost: 0.62   # $/shot — bottom-up materials+opex / yield, incl. lead hohlraum + extra press/assembly step (capital in CAS22.01.08). Dispose default. See CAS80_target_consumables.md
+16: # Target factory (CAS22.01.08), three-term build-up; design total ~781 M$ at 5 Hz, 3.02 GW_fus. Higher per-Hz than laser: indirect drive adds hohlraum press + assembly + LEH steps. See CAS80_target_consumables.md
+17: target_factory_capex_fixed: 340.0      # M$ — cleanroom + tritium-confinement shell + lead handling + base line

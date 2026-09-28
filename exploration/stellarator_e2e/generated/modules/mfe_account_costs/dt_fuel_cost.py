@@ -24,7 +24,8 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+The annual_raw, burn_correction and annual_fuel SysML expressions
+generate the fuel arithmetic directly.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -33,21 +34,21 @@ physics.py:31 (Q_DT = 17.58 MeV)
 *Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
 
 Inputs:
-    - fuel_recovery_in: fuel_recovery_in parameter
-    - availability_in: availability_in parameter
-    - p_fus: p_fus parameter
-    - mev_to_joules_in: mev_to_joules_in parameter
-    - n_mod_in: n_mod_in parameter
     - burn_fraction_in: burn_fraction_in parameter
     - cost_per_rxn: cost_per_rxn parameter
+    - fuel_recovery_in: fuel_recovery_in parameter
+    - mev_to_joules_in: mev_to_joules_in parameter
+    - availability_in: availability_in parameter
+    - n_mod_in: n_mod_in parameter
+    - p_fus: p_fus parameter
     - q_eff: q_eff parameter
 
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:730
+SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:730
+SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/dt_fuel_cost_impl.py
@@ -63,22 +64,22 @@ class DT_Fuel_CostInput(BaseModel):
     """Input model for DT_Fuel_CostModule.
 
     Attributes:
-        fuel_recovery_in: fuel_recovery_in input
-        availability_in: availability_in input
-        p_fus: p_fus input
-        mev_to_joules_in: mev_to_joules_in input
-        n_mod_in: n_mod_in input
         burn_fraction_in: burn_fraction_in input
         cost_per_rxn: cost_per_rxn input
+        fuel_recovery_in: fuel_recovery_in input
+        mev_to_joules_in: mev_to_joules_in input
+        availability_in: availability_in input
+        n_mod_in: n_mod_in input
+        p_fus: p_fus input
         q_eff: q_eff input
     """
-    fuel_recovery_in: float = Field(..., description="fuel_recovery_in input")
-    availability_in: float = Field(..., description="availability_in input")
-    p_fus: float = Field(..., description="p_fus input")
-    mev_to_joules_in: float = Field(..., description="mev_to_joules_in input")
-    n_mod_in: float = Field(..., description="n_mod_in input")
     burn_fraction_in: float = Field(..., description="burn_fraction_in input")
     cost_per_rxn: float = Field(..., description="cost_per_rxn input")
+    fuel_recovery_in: float = Field(..., description="fuel_recovery_in input")
+    mev_to_joules_in: float = Field(..., description="mev_to_joules_in input")
+    availability_in: float = Field(..., description="availability_in input")
+    n_mod_in: float = Field(..., description="n_mod_in input")
+    p_fus: float = Field(..., description="p_fus input")
     q_eff: float = Field(..., description="q_eff input")
 
 
@@ -107,7 +108,8 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+The annual_raw, burn_correction and annual_fuel SysML expressions
+generate the fuel arithmetic directly.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -116,21 +118,21 @@ physics.py:31 (Q_DT = 17.58 MeV)
 *Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
 
 Inputs:
-    - fuel_recovery_in: fuel_recovery_in parameter
-    - availability_in: availability_in parameter
-    - p_fus: p_fus parameter
-    - mev_to_joules_in: mev_to_joules_in parameter
-    - n_mod_in: n_mod_in parameter
     - burn_fraction_in: burn_fraction_in parameter
     - cost_per_rxn: cost_per_rxn parameter
+    - fuel_recovery_in: fuel_recovery_in parameter
+    - mev_to_joules_in: mev_to_joules_in parameter
+    - availability_in: availability_in parameter
+    - n_mod_in: n_mod_in parameter
+    - p_fus: p_fus parameter
     - q_eff: q_eff parameter
 
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:730
+SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:730
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
     Calculation Specification:
         n_mod_in = 1.0
@@ -161,7 +163,8 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+The annual_raw, burn_correction and annual_fuel SysML expressions
+generate the fuel arithmetic directly.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -179,43 +182,43 @@ physics.py:31 (Q_DT = 17.58 MeV)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, fuel_recovery_in: float, availability_in: float, p_fus: float, mev_to_joules_in: float, n_mod_in: float, burn_fraction_in: float, cost_per_rxn: float, q_eff: float    ) -> DT_Fuel_CostInput:
+        self, burn_fraction_in: float, cost_per_rxn: float, fuel_recovery_in: float, mev_to_joules_in: float, availability_in: float, n_mod_in: float, p_fus: float, q_eff: float    ) -> DT_Fuel_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            fuel_recovery_in: fuel_recovery_in input
-            availability_in: availability_in input
-            p_fus: p_fus input
-            mev_to_joules_in: mev_to_joules_in input
-            n_mod_in: n_mod_in input
             burn_fraction_in: burn_fraction_in input
             cost_per_rxn: cost_per_rxn input
+            fuel_recovery_in: fuel_recovery_in input
+            mev_to_joules_in: mev_to_joules_in input
+            availability_in: availability_in input
+            n_mod_in: n_mod_in input
+            p_fus: p_fus input
             q_eff: q_eff input
 
         Returns:
             Validated input model
         """
-        return DT_Fuel_CostInput(fuel_recovery_in=fuel_recovery_in, availability_in=availability_in, p_fus=p_fus, mev_to_joules_in=mev_to_joules_in, n_mod_in=n_mod_in, burn_fraction_in=burn_fraction_in, cost_per_rxn=cost_per_rxn, q_eff=q_eff)
+        return DT_Fuel_CostInput(burn_fraction_in=burn_fraction_in, cost_per_rxn=cost_per_rxn, fuel_recovery_in=fuel_recovery_in, mev_to_joules_in=mev_to_joules_in, availability_in=availability_in, n_mod_in=n_mod_in, p_fus=p_fus, q_eff=q_eff)
 
     def run(
-        self, fuel_recovery_in: float, availability_in: float, p_fus: float, mev_to_joules_in: float, n_mod_in: float, burn_fraction_in: float, cost_per_rxn: float, q_eff: float    ) -> ModuleResult[Float]:
+        self, burn_fraction_in: float, cost_per_rxn: float, fuel_recovery_in: float, mev_to_joules_in: float, availability_in: float, n_mod_in: float, p_fus: float, q_eff: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            fuel_recovery_in: fuel_recovery_in input
-            availability_in: availability_in input
-            p_fus: p_fus input
-            mev_to_joules_in: mev_to_joules_in input
-            n_mod_in: n_mod_in input
             burn_fraction_in: burn_fraction_in input
             cost_per_rxn: cost_per_rxn input
+            fuel_recovery_in: fuel_recovery_in input
+            mev_to_joules_in: mev_to_joules_in input
+            availability_in: availability_in input
+            n_mod_in: n_mod_in input
+            p_fus: p_fus input
             q_eff: q_eff input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(fuel_recovery_in, availability_in, p_fus, mev_to_joules_in, n_mod_in, burn_fraction_in, cost_per_rxn, q_eff)
+        validated_inputs = self.validate_and_fill_default(burn_fraction_in, cost_per_rxn, fuel_recovery_in, mev_to_joules_in, availability_in, n_mod_in, p_fus, q_eff)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.dt_fuel_cost_impl import (

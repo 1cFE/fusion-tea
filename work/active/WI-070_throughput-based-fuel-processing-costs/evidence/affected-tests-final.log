@@ -1,0 +1,164 @@
+........................................................................ [ 27%]
+........................................................................ [ 54%]
+..............................FF........................................ [ 82%]
+......................F
+=================================== FAILURES ===================================
+_ test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14] _
+
+evaluate = <function evaluate.<locals>.run at 0x7c227888a340>, case_index = 0
+contingency = 0.1
+
+    @pytest.mark.parametrize('case_index', [0, 1], ids=['default14', 'selected18'])
+    @pytest.mark.parametrize('contingency', [0., .1, .3])
+    def test_native_facility_children_reconcile_to_total_without_calendar_change(
+            evaluate, case_index, contingency):
+        entering = json.loads((ROOT / 'work/orchestration/goals/layout-based-facilities'
+                              '/evidence/entering-replay.json').read_text())['cases'][case_index]
+        point = entering['inputs'] | {P + 'contingency_rate': contingency}
+        old_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 0.})
+        new_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 1.})
+        old, new = old_case.outputs, new_case.outputs
+    
+        # Actual child consumers, not a detached facility total or an oracle result.
+        civil = sum(new[P + f'buildings__{name}__civil__cost_2025']
+                    for name in CIVIL_BUILDINGS)
+        served_volume = new[P + 'buildings__layout__controlled_air_volume']
+        ventilation = 1000. * served_volume ** .8 * (321.9 / 130.7)
+        installed_facilities = civil + ventilation
+        legacy_buildings = old[P + 'buildings__buildings_cost__cost']
+        delta_direct = installed_facilities + 85e6 - legacy_buildings
+        delta_cas20 = (1 + contingency) * delta_direct
+        delta_indirect = (.2 * 8 / 6) * delta_cas20
+        delta_supplementary = (
+            .015 * (delta_cas20 - (1 + contingency) * installed_facilities)
+            + .01 * delta_cas20 + .015 * (delta_cas20 + delta_indirect))
+        new_land = new[P + 'buildings__layout__parcel_area'] / 4046.8564224 * 10000.
+        old_land = old[P + 'precon_cost__cost'] - 16e6
+        expected_capital_change = (new_land - old_land + delta_cas20
+                                   + delta_indirect + delta_supplementary)
+        for name, expected in (
+                ('cas2x_pre_contingency__cas2x_pre_contingency', delta_direct),
+                ('cas20_capital__cas20_capital', delta_cas20),
+                ('indirect__cost', delta_indirect),
+                ('supplementary__cost', delta_supplementary),
+                ('total_capital__total_capital', expected_capital_change)):
+            assert new[P + name] - old[P + name] == pytest.approx(
+                expected, rel=2e-11, abs=1e-5), name
+    
+        physical_prefixes = tuple(P + stem for stem in (
+            'plasma__', 'radial_build__', 'pb__', 'calendar__',
+            'heat_transport__primary_loop__', 'heat_transport__equipment__',
+            'blanket__breeding__', 'divertor__divheat__'))
+        checked = [key for key in old if key.startswith(physical_prefixes)]
+        assert len(checked) > 50
+        for key in checked:
+            assert new[key] == old[key], key
+        assert new_case.responses == old_case.responses
+        assert (new[P + 'lcoe_calc__lcoe'] - old[P + 'lcoe_calc__lcoe']) * expected_capital_change > 0
+        if contingency == .1:
+>           assert old[P + 'total_capital__total_capital'] == pytest.approx(
+                entering['outputs'][P + 'total_capital__total_capital'], rel=1e-12)
+E           assert 17719461254.998856 == 17860732458.743668 ± 0.0178607
+E             
+E             comparison failed
+E             Obtained: 17719461254.998856
+E             Expected: 17860732458.743668 ± 0.0178607
+
+tests/models/test_facility_account_consumers.py:136: AssertionError
+_ test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-selected18] _
+
+evaluate = <function evaluate.<locals>.run at 0x7c227888a340>, case_index = 1
+contingency = 0.1
+
+    @pytest.mark.parametrize('case_index', [0, 1], ids=['default14', 'selected18'])
+    @pytest.mark.parametrize('contingency', [0., .1, .3])
+    def test_native_facility_children_reconcile_to_total_without_calendar_change(
+            evaluate, case_index, contingency):
+        entering = json.loads((ROOT / 'work/orchestration/goals/layout-based-facilities'
+                              '/evidence/entering-replay.json').read_text())['cases'][case_index]
+        point = entering['inputs'] | {P + 'contingency_rate': contingency}
+        old_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 0.})
+        new_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 1.})
+        old, new = old_case.outputs, new_case.outputs
+    
+        # Actual child consumers, not a detached facility total or an oracle result.
+        civil = sum(new[P + f'buildings__{name}__civil__cost_2025']
+                    for name in CIVIL_BUILDINGS)
+        served_volume = new[P + 'buildings__layout__controlled_air_volume']
+        ventilation = 1000. * served_volume ** .8 * (321.9 / 130.7)
+        installed_facilities = civil + ventilation
+        legacy_buildings = old[P + 'buildings__buildings_cost__cost']
+        delta_direct = installed_facilities + 85e6 - legacy_buildings
+        delta_cas20 = (1 + contingency) * delta_direct
+        delta_indirect = (.2 * 8 / 6) * delta_cas20
+        delta_supplementary = (
+            .015 * (delta_cas20 - (1 + contingency) * installed_facilities)
+            + .01 * delta_cas20 + .015 * (delta_cas20 + delta_indirect))
+        new_land = new[P + 'buildings__layout__parcel_area'] / 4046.8564224 * 10000.
+        old_land = old[P + 'precon_cost__cost'] - 16e6
+        expected_capital_change = (new_land - old_land + delta_cas20
+                                   + delta_indirect + delta_supplementary)
+        for name, expected in (
+                ('cas2x_pre_contingency__cas2x_pre_contingency', delta_direct),
+                ('cas20_capital__cas20_capital', delta_cas20),
+                ('indirect__cost', delta_indirect),
+                ('supplementary__cost', delta_supplementary),
+                ('total_capital__total_capital', expected_capital_change)):
+            assert new[P + name] - old[P + name] == pytest.approx(
+                expected, rel=2e-11, abs=1e-5), name
+    
+        physical_prefixes = tuple(P + stem for stem in (
+            'plasma__', 'radial_build__', 'pb__', 'calendar__',
+            'heat_transport__primary_loop__', 'heat_transport__equipment__',
+            'blanket__breeding__', 'divertor__divheat__'))
+        checked = [key for key in old if key.startswith(physical_prefixes)]
+        assert len(checked) > 50
+        for key in checked:
+            assert new[key] == old[key], key
+        assert new_case.responses == old_case.responses
+        assert (new[P + 'lcoe_calc__lcoe'] - old[P + 'lcoe_calc__lcoe']) * expected_capital_change > 0
+        if contingency == .1:
+>           assert old[P + 'total_capital__total_capital'] == pytest.approx(
+                entering['outputs'][P + 'total_capital__total_capital'], rel=1e-12)
+E           assert 20761772872.83758 == 20903392371.61906 ± 0.0209034
+E             
+E             comparison failed
+E             Obtained: 20761772872.83758
+E             Expected: 20903392371.61906 ± 0.0209034
+
+tests/models/test_facility_account_consumers.py:136: AssertionError
+____ test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities ____
+
+    def test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities():
+        from exploration.stellarator_e2e.studies import oracle_entry as seam
+    
+        result=seam._compute({'facility_facilities_enabled':False,
+                             'facility_facilities_cost_mode':0.})
+        assert set(seam.ORACLE_OUTPUT_TO_CHANNEL)<=result.keys()
+        assert result['buildings']==result['buildings_legacy']
+        assert result['precon']==result['precon_legacy']
+        unit_margins={'initial_margin_days','readiness_margin_days','capacity_margin_units',
+                      'route_margin_m','outage_margin_days'}
+        fixed={'facility_initial_sector_start_days':-120.,'facility_cooling_initial_handoff_days':-30.}
+        for name,channel in seam.ORACLE_OUTPUT_TO_CHANNEL.items():
+            assert math.isfinite(result[name])
+            if not name.startswith('facility_'):
+                continue
+            expected=fixed.get(name,1. if name.removeprefix('facility_') in unit_margins else 0.)
+            assert result[name]==expected,(name,channel,result[name])
+        assert result['shipping_facility_exclusion']==0
+>       assert result['shipping_remaining_base']==pytest.approx(
+            result['cas20_capital']-result['shipping_cooling_exclusion'])
+E       assert 8054363199.662487 == 8056940290.465065 ± 8.1e+03
+E         
+E         comparison failed
+E         Obtained: 8054363199.662487
+E         Expected: 8056940290.465065 ± 8.1e+03
+
+tests/models/test_facilities_oracle.py:169: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14]
+FAILED tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-selected18]
+FAILED tests/models/test_facilities_oracle.py::test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 3 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+3 failed, 236 passed, 46 warnings in 104.34s (0:01:44)

@@ -1,0 +1,1889 @@
+FFFFFFFFFFFFFFFFFFFFF.....                                               [100%]
+=================================== FAILURES ===================================
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides0-live magnet clearance] _
+
+overrides = {'R': 3.0}, message = 'live magnet clearance'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:578: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:155: in _sustainment
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
+                                              ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+n_He0 = 9.475120467100454e+20
+
+    def state(n_He0):
+        n_fuel = n_e0 - 2.0 * n_He0
+        if n_fuel <= 0.0:
+>           raise RuntimeError("oracle sustainment: non-positive fuel")
+E           RuntimeError: oracle sustainment: non-positive fuel
+
+exploration/stellarator_e2e/verify_stellaris.py:136: RuntimeError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides1-live magnet clearance] _
+
+overrides = {'R': 3.1500000000000004}, message = 'live magnet clearance'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+>       bore_factor = p["R"] / (p["R"] - r_coil_centre)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:554: ZeroDivisionError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides2-reference magnet clearance] _
+
+overrides = {'magnet_R_ref': 3.0}, message = 'reference magnet clearance'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:37: Failed
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides3-reference magnet clearance] _
+
+overrides = {'magnet_R_ref': 3.1500000000000004}
+message = 'reference magnet clearance'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+>       bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:555: ZeroDivisionError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides4-reference magnet clearance] _
+
+overrides = {'magnet_a_coil_ref': 13.0}, message = 'reference magnet clearance'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:37: Failed
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides5-reference magnet clearance] _
+
+overrides = {'magnet_a_coil_ref': 12.7}, message = 'reference magnet clearance'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+>       bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:555: ZeroDivisionError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides6-0 < T_cold < T_amb] _
+
+overrides = {'T_cold_cryo': -1.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:37: Failed
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides7-0 < T_cold < T_amb] _
+
+overrides = {'T_cold_cryo': 0.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+        bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+        bore_norm = bore_factor / bore_factor_ref
+        B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+        # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+        # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+        W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+                 * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
+        # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+        # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+        m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+        # WI-036: the pack sizes itself from the current, and the winding length from
+        # machine scale; both were held inputs before this item.
+        wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+        c_coil = p["magnet_k_coil"] * p["R"]
+        sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+        # WI-036: the conductor's own operand, checked separately from the structure's.
+        eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+        # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+        vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                          * c_coil + p["vol_cold_cryo"])
+    
+        # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+        # ISS04 tau_E, composed radiation, required sustained heating ---
+        sust = _sustainment(p, V, B_axis)
+    
+        # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+        # the fuel peaks are the sustainment chain's computed values) ---
+        if p["sigma_v"] > 0.0:
+            p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+        else:
+            integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+            p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+        p_alpha = (3.52 / 17.58) * p_fus
+        p_neutron = p_fus - p_alpha
+        p_cool = p["p_tfcool"] + p["p_pfcool"]
+        p_aux = p["p_trit"] + p["p_house"]
+        p_coils = p["p_tf"] + p["p_pf"]
+        # Heating power chain (WI-039), written from the WI-039 design's stated
+        # equations rather than from the generated module:
+        #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+        #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+        #   eta_pin_eff      = eta_source * eta_couple
+        #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+        heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+        heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                          + p["p_delivered_direct_heat"])
+        heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                        + p["p_coupled_direct_heat"])
+        heat_wallplug_total = (p["p_wallplug_heat"]
+                               + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+        # Signed sustained operation, with installed capacity retained above.
+        operating_heat_coupled = sust["p_aux_required"]
+        operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+        operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
+        # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+        # primary loop and the temperature-compatible cycle, written from the WI-045
+        # design's stated equations (D1-D5, D9), not from the generated modules.
+        #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+        #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+        #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+        #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+        #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+        #   p_pump_total      = loop_live*p_elec + p_pump_direct
+        #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+        #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+        # In the dormant mode the two totals are the old held scalars to the bit
+        # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+        q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+        loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+        loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+        loop_mdot_loop = loop_mdot / p["n_loops"]
+        loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+        loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+        # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+        # law's domain the compressor ratio's fractional power takes a complex root and
+        # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+        # package records execution_failed there; the oracle now DECLARES it, in the
+        # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+        # study pre-screen as a reason), so a screen classifies the region instead of
+        # crashing. WI-045's expected text stands on either side of these three lines.
+        if loop_p_loop_margin <= 0.0:
+            raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+        loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+        loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+        loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+        loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+        loop_p_elec = loop_w_fluid / p["eta_drive"]
+        loop_q_ihx = q_source + loop_w_fluid
+        loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+        loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+        loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                                  + p["eta_p_direct"] * p["p_pump_direct"])
+        cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+        cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                         - p["b_fit"] - p["delta_eta"])
+        cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+        cycle_margin_low = cycle_T2_C - p["T2_min"]
+        cycle_margin_high = p["T2_max"] - cycle_T2_C
+        cycle_domain_product = cycle_margin_low * cycle_margin_high
+        p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+                + loop_q_recovered_total)
+        p_the = cycle_eta_th * p_th
+        p_et = p_the
+        p_sub = p["f_sub"] * p_et
+        # Cryoplant electrical chain (WI-024) — mirrors the generated
+        # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+        cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+        cop = (p["f_carnot_cryo"] * cop_carnot)
+        p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
+>       p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
+                   ^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:665: ZeroDivisionError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides8-0 < T_cold < T_amb] _
+
+overrides = {'T_cold_cryo': 300.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+        bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+        bore_norm = bore_factor / bore_factor_ref
+        B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+        # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+        # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+        W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+                 * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
+        # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+        # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+        m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+        # WI-036: the pack sizes itself from the current, and the winding length from
+        # machine scale; both were held inputs before this item.
+        wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+        c_coil = p["magnet_k_coil"] * p["R"]
+        sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+        # WI-036: the conductor's own operand, checked separately from the structure's.
+        eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+        # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+        vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                          * c_coil + p["vol_cold_cryo"])
+    
+        # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+        # ISS04 tau_E, composed radiation, required sustained heating ---
+        sust = _sustainment(p, V, B_axis)
+    
+        # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+        # the fuel peaks are the sustainment chain's computed values) ---
+        if p["sigma_v"] > 0.0:
+            p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+        else:
+            integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+            p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+        p_alpha = (3.52 / 17.58) * p_fus
+        p_neutron = p_fus - p_alpha
+        p_cool = p["p_tfcool"] + p["p_pfcool"]
+        p_aux = p["p_trit"] + p["p_house"]
+        p_coils = p["p_tf"] + p["p_pf"]
+        # Heating power chain (WI-039), written from the WI-039 design's stated
+        # equations rather than from the generated module:
+        #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+        #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+        #   eta_pin_eff      = eta_source * eta_couple
+        #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+        heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+        heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                          + p["p_delivered_direct_heat"])
+        heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                        + p["p_coupled_direct_heat"])
+        heat_wallplug_total = (p["p_wallplug_heat"]
+                               + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+        # Signed sustained operation, with installed capacity retained above.
+        operating_heat_coupled = sust["p_aux_required"]
+        operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+        operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
+        # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+        # primary loop and the temperature-compatible cycle, written from the WI-045
+        # design's stated equations (D1-D5, D9), not from the generated modules.
+        #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+        #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+        #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+        #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+        #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+        #   p_pump_total      = loop_live*p_elec + p_pump_direct
+        #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+        #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+        # In the dormant mode the two totals are the old held scalars to the bit
+        # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+        q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+        loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+        loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+        loop_mdot_loop = loop_mdot / p["n_loops"]
+        loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+        loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+        # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+        # law's domain the compressor ratio's fractional power takes a complex root and
+        # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+        # package records execution_failed there; the oracle now DECLARES it, in the
+        # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+        # study pre-screen as a reason), so a screen classifies the region instead of
+        # crashing. WI-045's expected text stands on either side of these three lines.
+        if loop_p_loop_margin <= 0.0:
+            raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+        loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+        loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+        loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+        loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+        loop_p_elec = loop_w_fluid / p["eta_drive"]
+        loop_q_ihx = q_source + loop_w_fluid
+        loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+        loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+        loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                                  + p["eta_p_direct"] * p["p_pump_direct"])
+        cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+        cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                         - p["b_fit"] - p["delta_eta"])
+        cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+        cycle_margin_low = cycle_T2_C - p["T2_min"]
+        cycle_margin_high = p["T2_max"] - cycle_T2_C
+        cycle_domain_product = cycle_margin_low * cycle_margin_high
+        p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+                + loop_q_recovered_total)
+        p_the = cycle_eta_th * p_th
+        p_et = p_the
+        p_sub = p["f_sub"] * p_et
+        # Cryoplant electrical chain (WI-024) — mirrors the generated
+        # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+>       cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:662: ZeroDivisionError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides9-0 < T_cold < T_amb] _
+
+overrides = {'T_cold_cryo': 301.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:37: Failed
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides10-0 < T_cold < T_amb] _
+
+overrides = {'T_amb_cryo': 20.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+        bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+        bore_norm = bore_factor / bore_factor_ref
+        B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+        # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+        # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+        W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+                 * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
+        # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+        # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+        m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+        # WI-036: the pack sizes itself from the current, and the winding length from
+        # machine scale; both were held inputs before this item.
+        wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+        c_coil = p["magnet_k_coil"] * p["R"]
+        sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+        # WI-036: the conductor's own operand, checked separately from the structure's.
+        eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+        # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+        vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                          * c_coil + p["vol_cold_cryo"])
+    
+        # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+        # ISS04 tau_E, composed radiation, required sustained heating ---
+        sust = _sustainment(p, V, B_axis)
+    
+        # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+        # the fuel peaks are the sustainment chain's computed values) ---
+        if p["sigma_v"] > 0.0:
+            p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+        else:
+            integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+            p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+        p_alpha = (3.52 / 17.58) * p_fus
+        p_neutron = p_fus - p_alpha
+        p_cool = p["p_tfcool"] + p["p_pfcool"]
+        p_aux = p["p_trit"] + p["p_house"]
+        p_coils = p["p_tf"] + p["p_pf"]
+        # Heating power chain (WI-039), written from the WI-039 design's stated
+        # equations rather than from the generated module:
+        #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+        #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+        #   eta_pin_eff      = eta_source * eta_couple
+        #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+        heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+        heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                          + p["p_delivered_direct_heat"])
+        heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                        + p["p_coupled_direct_heat"])
+        heat_wallplug_total = (p["p_wallplug_heat"]
+                               + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+        # Signed sustained operation, with installed capacity retained above.
+        operating_heat_coupled = sust["p_aux_required"]
+        operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+        operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
+        # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+        # primary loop and the temperature-compatible cycle, written from the WI-045
+        # design's stated equations (D1-D5, D9), not from the generated modules.
+        #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+        #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+        #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+        #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+        #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+        #   p_pump_total      = loop_live*p_elec + p_pump_direct
+        #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+        #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+        # In the dormant mode the two totals are the old held scalars to the bit
+        # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+        q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+        loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+        loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+        loop_mdot_loop = loop_mdot / p["n_loops"]
+        loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+        loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+        # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+        # law's domain the compressor ratio's fractional power takes a complex root and
+        # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+        # package records execution_failed there; the oracle now DECLARES it, in the
+        # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+        # study pre-screen as a reason), so a screen classifies the region instead of
+        # crashing. WI-045's expected text stands on either side of these three lines.
+        if loop_p_loop_margin <= 0.0:
+            raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+        loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+        loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+        loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+        loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+        loop_p_elec = loop_w_fluid / p["eta_drive"]
+        loop_q_ihx = q_source + loop_w_fluid
+        loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+        loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+        loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                                  + p["eta_p_direct"] * p["p_pump_direct"])
+        cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+        cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                         - p["b_fit"] - p["delta_eta"])
+        cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+        cycle_margin_low = cycle_T2_C - p["T2_min"]
+        cycle_margin_high = p["T2_max"] - cycle_T2_C
+        cycle_domain_product = cycle_margin_low * cycle_margin_high
+        p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+                + loop_q_recovered_total)
+        p_the = cycle_eta_th * p_th
+        p_et = p_the
+        p_sub = p["f_sub"] * p_et
+        # Cryoplant electrical chain (WI-024) — mirrors the generated
+        # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+>       cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:662: ZeroDivisionError
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides11-0 < T_cold < T_amb] _
+
+overrides = {'T_amb_cryo': 19.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:37: Failed
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides12-0 < T_cold < T_amb] _
+
+overrides = {'T_amb_cryo': 0.0}, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:37: Failed
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides13-0 < T_cold < T_amb] _
+
+overrides = {'T_cold_cryo': 0.0, 'p_cryo_direct': 2.0, 'p_fixed_cryo': 0.0, 'q_nuc_cryo': 0.0}
+message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("overrides,message", [
+        ({"R": 3.0}, "live magnet clearance"),
+        ({"R": COIL_RADIUS}, "live magnet clearance"),
+        ({"magnet_R_ref": 3.0}, "reference magnet clearance"),
+        ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
+        ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
+        ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
+        ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
+        ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
+          "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+    ])
+    def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle._compute(overrides)
+
+tests/study/test_domain_consumers.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+        bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+        bore_norm = bore_factor / bore_factor_ref
+        B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+        # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+        # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+        W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+                 * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
+        # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+        # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+        m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+        # WI-036: the pack sizes itself from the current, and the winding length from
+        # machine scale; both were held inputs before this item.
+        wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+        c_coil = p["magnet_k_coil"] * p["R"]
+        sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+        # WI-036: the conductor's own operand, checked separately from the structure's.
+        eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+        # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+        vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                          * c_coil + p["vol_cold_cryo"])
+    
+        # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+        # ISS04 tau_E, composed radiation, required sustained heating ---
+        sust = _sustainment(p, V, B_axis)
+    
+        # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+        # the fuel peaks are the sustainment chain's computed values) ---
+        if p["sigma_v"] > 0.0:
+            p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+        else:
+            integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+            p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+        p_alpha = (3.52 / 17.58) * p_fus
+        p_neutron = p_fus - p_alpha
+        p_cool = p["p_tfcool"] + p["p_pfcool"]
+        p_aux = p["p_trit"] + p["p_house"]
+        p_coils = p["p_tf"] + p["p_pf"]
+        # Heating power chain (WI-039), written from the WI-039 design's stated
+        # equations rather than from the generated module:
+        #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+        #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+        #   eta_pin_eff      = eta_source * eta_couple
+        #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+        heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+        heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                          + p["p_delivered_direct_heat"])
+        heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                        + p["p_coupled_direct_heat"])
+        heat_wallplug_total = (p["p_wallplug_heat"]
+                               + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+        # Signed sustained operation, with installed capacity retained above.
+        operating_heat_coupled = sust["p_aux_required"]
+        operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+        operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
+        # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+        # primary loop and the temperature-compatible cycle, written from the WI-045
+        # design's stated equations (D1-D5, D9), not from the generated modules.
+        #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+        #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+        #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+        #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+        #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+        #   p_pump_total      = loop_live*p_elec + p_pump_direct
+        #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+        #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+        # In the dormant mode the two totals are the old held scalars to the bit
+        # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+        q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+        loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+        loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+        loop_mdot_loop = loop_mdot / p["n_loops"]
+        loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+        loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+        # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+        # law's domain the compressor ratio's fractional power takes a complex root and
+        # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+        # package records execution_failed there; the oracle now DECLARES it, in the
+        # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+        # study pre-screen as a reason), so a screen classifies the region instead of
+        # crashing. WI-045's expected text stands on either side of these three lines.
+        if loop_p_loop_margin <= 0.0:
+            raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+        loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+        loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+        loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+        loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+        loop_p_elec = loop_w_fluid / p["eta_drive"]
+        loop_q_ihx = q_source + loop_w_fluid
+        loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+        loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+        loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                                  + p["eta_p_direct"] * p["p_pump_direct"])
+        cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+        cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                         - p["b_fit"] - p["delta_eta"])
+        cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+        cycle_margin_low = cycle_T2_C - p["T2_min"]
+        cycle_margin_high = p["T2_max"] - cycle_T2_C
+        cycle_domain_product = cycle_margin_low * cycle_margin_high
+        p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+                + loop_q_recovered_total)
+        p_the = cycle_eta_th * p_th
+        p_et = p_the
+        p_sub = p["f_sub"] * p_et
+        # Cryoplant electrical chain (WI-024) — mirrors the generated
+        # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+        cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+        cop = (p["f_carnot_cryo"] * cop_carnot)
+        p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
+>       p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
+                   ^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:665: ZeroDivisionError
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[R-3.0-live magnet clearance] _
+
+suffix = 'R', value = 3.0, message = 'live magnet clearance'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate({oracle.P + suffix: value})
+
+tests/study/test_domain_consumers.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:578: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:155: in _sustainment
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
+                                              ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+n_He0 = 9.475120467100454e+20
+
+    def state(n_He0):
+        n_fuel = n_e0 - 2.0 * n_He0
+        if n_fuel <= 0.0:
+>           raise RuntimeError("oracle sustainment: non-positive fuel")
+E           RuntimeError: oracle sustainment: non-positive fuel
+
+exploration/stellarator_e2e/verify_stellaris.py:136: RuntimeError
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[R-3.1500000000000004-live magnet clearance] _
+
+suffix = 'R', value = 3.1500000000000004, message = 'live magnet clearance'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate({oracle.P + suffix: value})
+
+tests/study/test_domain_consumers.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+>       bore_factor = p["R"] / (p["R"] - r_coil_centre)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:554: ZeroDivisionError
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[magnet__R_ref-3.1500000000000004-reference magnet clearance] _
+
+suffix = 'magnet__R_ref', value = 3.1500000000000004
+message = 'reference magnet clearance'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate({oracle.P + suffix: value})
+
+tests/study/test_domain_consumers.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+>       bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:555: ZeroDivisionError
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[magnet__a_coil_ref-13.0-reference magnet clearance] _
+
+suffix = 'magnet__a_coil_ref', value = 13.0
+message = 'reference magnet clearance'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+>       with pytest.raises(ValueError, match=message):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/study/test_domain_consumers.py:52: Failed
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[T_cold_cryo-0.0-0 < T_cold < T_amb] _
+
+suffix = 'T_cold_cryo', value = 0.0, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate({oracle.P + suffix: value})
+
+tests/study/test_domain_consumers.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+        bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+        bore_norm = bore_factor / bore_factor_ref
+        B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+        # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+        # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+        W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+                 * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
+        # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+        # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+        m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+        # WI-036: the pack sizes itself from the current, and the winding length from
+        # machine scale; both were held inputs before this item.
+        wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+        c_coil = p["magnet_k_coil"] * p["R"]
+        sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+        # WI-036: the conductor's own operand, checked separately from the structure's.
+        eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+        # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+        vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                          * c_coil + p["vol_cold_cryo"])
+    
+        # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+        # ISS04 tau_E, composed radiation, required sustained heating ---
+        sust = _sustainment(p, V, B_axis)
+    
+        # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+        # the fuel peaks are the sustainment chain's computed values) ---
+        if p["sigma_v"] > 0.0:
+            p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+        else:
+            integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+            p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+        p_alpha = (3.52 / 17.58) * p_fus
+        p_neutron = p_fus - p_alpha
+        p_cool = p["p_tfcool"] + p["p_pfcool"]
+        p_aux = p["p_trit"] + p["p_house"]
+        p_coils = p["p_tf"] + p["p_pf"]
+        # Heating power chain (WI-039), written from the WI-039 design's stated
+        # equations rather than from the generated module:
+        #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+        #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+        #   eta_pin_eff      = eta_source * eta_couple
+        #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+        heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+        heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                          + p["p_delivered_direct_heat"])
+        heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                        + p["p_coupled_direct_heat"])
+        heat_wallplug_total = (p["p_wallplug_heat"]
+                               + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+        # Signed sustained operation, with installed capacity retained above.
+        operating_heat_coupled = sust["p_aux_required"]
+        operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+        operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
+        # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+        # primary loop and the temperature-compatible cycle, written from the WI-045
+        # design's stated equations (D1-D5, D9), not from the generated modules.
+        #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+        #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+        #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+        #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+        #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+        #   p_pump_total      = loop_live*p_elec + p_pump_direct
+        #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+        #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+        # In the dormant mode the two totals are the old held scalars to the bit
+        # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+        q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+        loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+        loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+        loop_mdot_loop = loop_mdot / p["n_loops"]
+        loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+        loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+        # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+        # law's domain the compressor ratio's fractional power takes a complex root and
+        # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+        # package records execution_failed there; the oracle now DECLARES it, in the
+        # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+        # study pre-screen as a reason), so a screen classifies the region instead of
+        # crashing. WI-045's expected text stands on either side of these three lines.
+        if loop_p_loop_margin <= 0.0:
+            raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+        loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+        loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+        loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+        loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+        loop_p_elec = loop_w_fluid / p["eta_drive"]
+        loop_q_ihx = q_source + loop_w_fluid
+        loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+        loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+        loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                                  + p["eta_p_direct"] * p["p_pump_direct"])
+        cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+        cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                         - p["b_fit"] - p["delta_eta"])
+        cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+        cycle_margin_low = cycle_T2_C - p["T2_min"]
+        cycle_margin_high = p["T2_max"] - cycle_T2_C
+        cycle_domain_product = cycle_margin_low * cycle_margin_high
+        p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+                + loop_q_recovered_total)
+        p_the = cycle_eta_th * p_th
+        p_et = p_the
+        p_sub = p["f_sub"] * p_et
+        # Cryoplant electrical chain (WI-024) — mirrors the generated
+        # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+        cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+        cop = (p["f_carnot_cryo"] * cop_carnot)
+        p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
+>       p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
+                   ^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:665: ZeroDivisionError
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[T_cold_cryo-300.0-0 < T_cold < T_amb] _
+
+suffix = 'T_cold_cryo', value = 300.0, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate({oracle.P + suffix: value})
+
+tests/study/test_domain_consumers.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def compute():
+        if "magnet_R0" in IN:
+            raise ValueError("retired oracle input magnet_R0; use plant R")
+        p = IN
+        # --- Plasma Geometry ---
+        V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
+        # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
+        vacuum_or = p["a"] + p["vacuum_t"]
+        firstwall_or = vacuum_or + p["firstwall_t"]
+        blanket_or = firstwall_or + p["blanket_t"]
+        reflector_or = blanket_or + p["reflector_t"]
+        ht_shield_or = reflector_or + p["ht_shield_t"]
+        structure_or = ht_shield_or + p["structure_t"]
+        gap1_or = structure_or + p["gap1_t"]
+        vessel_or = gap1_or + p["vessel_t"]
+        coil_or = vessel_or + p["coil_t"]
+        gap2_or = coil_or + p["gap2_t"]
+        lt_shield_or = gap2_or + p["lt_shield_t"]
+        C = p["kappa"] * 2.0 * (p["pi"] ** 2) * p["R"]
+        firstwall_vol = C * ((firstwall_or ** 2) - (vacuum_or ** 2))
+        blanket_layer_vol = C * ((blanket_or ** 2) - (firstwall_or ** 2))
+        reflector_vol = C * ((reflector_or ** 2) - (blanket_or ** 2))
+        ht_shield_vol = C * ((ht_shield_or ** 2) - (reflector_or ** 2))
+        lt_shield_vol = C * ((lt_shield_or ** 2) - (gap2_or ** 2))
+        blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol
+        shield_vol = ht_shield_vol + lt_shield_vol
+        structure_vol = C * ((structure_or ** 2) - (ht_shield_or ** 2))
+        vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
+        wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
+        r_coil = vessel_or
+        # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+        # and the reported aspect ratio.
+        r_coil_centre = vessel_or + p["coil_t"] / 2.0
+        A = p["R"] / p["a"]
+        # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
+        special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
+        # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+        # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+        B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+                  / (p["magnet_two_pi"] * p["R"]))
+        # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+        # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+        # that factor. The printed ratio is the anchor at the reference geometry, the factor
+        # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+        # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+        bore_factor = p["R"] / (p["R"] - r_coil_centre)
+        bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+        bore_norm = bore_factor / bore_factor_ref
+        B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+        # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+        # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+        W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+                 * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
+        # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+        # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+        m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+        # WI-036: the pack sizes itself from the current, and the winding length from
+        # machine scale; both were held inputs before this item.
+        wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+        c_coil = p["magnet_k_coil"] * p["R"]
+        sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+        # WI-036: the conductor's own operand, checked separately from the structure's.
+        eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+        # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+        vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                          * c_coil + p["vol_cold_cryo"])
+    
+        # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+        # ISS04 tau_E, composed radiation, required sustained heating ---
+        sust = _sustainment(p, V, B_axis)
+    
+        # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+        # the fuel peaks are the sustainment chain's computed values) ---
+        if p["sigma_v"] > 0.0:
+            p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+        else:
+            integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+            p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+        p_alpha = (3.52 / 17.58) * p_fus
+        p_neutron = p_fus - p_alpha
+        p_cool = p["p_tfcool"] + p["p_pfcool"]
+        p_aux = p["p_trit"] + p["p_house"]
+        p_coils = p["p_tf"] + p["p_pf"]
+        # Heating power chain (WI-039), written from the WI-039 design's stated
+        # equations rather than from the generated module:
+        #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+        #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+        #   eta_pin_eff      = eta_source * eta_couple
+        #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+        heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+        heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                          + p["p_delivered_direct_heat"])
+        heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                        + p["p_coupled_direct_heat"])
+        heat_wallplug_total = (p["p_wallplug_heat"]
+                               + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+        # Signed sustained operation, with installed capacity retained above.
+        operating_heat_coupled = sust["p_aux_required"]
+        operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+        operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
+        # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+        # primary loop and the temperature-compatible cycle, written from the WI-045
+        # design's stated equations (D1-D5, D9), not from the generated modules.
+        #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+        #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+        #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+        #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+        #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+        #   p_pump_total      = loop_live*p_elec + p_pump_direct
+        #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+        #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+        # In the dormant mode the two totals are the old held scalars to the bit
+        # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+        q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+        loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+        loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+        loop_mdot_loop = loop_mdot / p["n_loops"]
+        loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+        loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+        # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+        # law's domain the compressor ratio's fractional power takes a complex root and
+        # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+        # package records execution_failed there; the oracle now DECLARES it, in the
+        # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+        # study pre-screen as a reason), so a screen classifies the region instead of
+        # crashing. WI-045's expected text stands on either side of these three lines.
+        if loop_p_loop_margin <= 0.0:
+            raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+        loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+        loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+        loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+        loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+        loop_p_elec = loop_w_fluid / p["eta_drive"]
+        loop_q_ihx = q_source + loop_w_fluid
+        loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+        loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+        loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                                  + p["eta_p_direct"] * p["p_pump_direct"])
+        cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+        cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                         - p["b_fit"] - p["delta_eta"])
+        cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+        cycle_margin_low = cycle_T2_C - p["T2_min"]
+        cycle_margin_high = p["T2_max"] - cycle_T2_C
+        cycle_domain_product = cycle_margin_low * cycle_margin_high
+        p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+                + loop_q_recovered_total)
+        p_the = cycle_eta_th * p_th
+        p_et = p_the
+        p_sub = p["f_sub"] * p_et
+        # Cryoplant electrical chain (WI-024) — mirrors the generated
+        # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+>       cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ZeroDivisionError: float division by zero
+
+exploration/stellarator_e2e/verify_stellaris.py:662: ZeroDivisionError
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[T_cold_cryo-301.0-0 < T_cold < T_amb] _
+
+suffix = 'T_cold_cryo', value = 301.0, message = '0 < T_cold < T_amb'
+
+    @pytest.mark.parametrize("suffix,value,message", [
+        ("R", 3.0, "live magnet clearance"),
+        ("R", COIL_RADIUS, "live magnet clearance"),
+        ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
+        ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
+        ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+        ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ])
+    def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate({oracle.P + suffix: value})
+
+tests/study/test_domain_consumers.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+point = {'stellarator_09__stellaris__T_cold_cryo': 301.0}
+
+    def evaluate(point: Mapping[str, float]) -> dict[str, float]:
+        """Recompute a point through the independent oracle. Qualified keys in, channels out.
+    
+        The returned map is keyed by the package's qualified channel names, so a generic
+        tool can compare it to a recorded case's outputs without knowing anything about
+        this package.
+        """
+        result = _compute(_oracle_overrides(point))
+        channels = {}
+        for name, channel in ORACLE_OUTPUT_TO_CHANNEL.items():
+            if name not in result:
+                raise OracleSeamError(
+                    f"oracle returned no output {name!r} declared for channel {channel!r}"
+                )
+>           channels[channel] = float(result[name])
+                                ^^^^^^^^^^^^^^^^^^^
+E           TypeError: float() argument must be a string or a real number, not 'complex'
+
+exploration/stellarator_e2e/studies/oracle_entry.py:517: TypeError
+=========================== short test summary info ============================
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides0-live magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides1-live magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides2-reference magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides3-reference magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides4-reference magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides5-reference magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides6-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides7-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides8-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides9-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides10-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides11-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides12-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides13-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[R-3.0-live magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[R-3.1500000000000004-live magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[magnet__R_ref-3.1500000000000004-reference magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[magnet__a_coil_ref-13.0-reference magnet clearance]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[T_cold_cryo-0.0-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[T_cold_cryo-300.0-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[T_cold_cryo-301.0-0 < T_cold < T_amb]
+21 failed, 5 passed in 18.99s

@@ -1,0 +1,13 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python exploration/ife_e2e/study/prove_catalog_seam.py --output-dir /tmp/wi048-final-catalog'
+
+=== Item 8 catalog-seam proof (representative run; full sweep is Item 13) ===
+schema_version : 3.0.0
+eligible entries carrying a verdict for the viability constraint: 1
+constraint_id  : hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b
+source_form    : definition_typed
+owner_qn       : ife_plant::'IFE Power Plant'
+definition_qn  : fusion_cycle::'Viability Threshold'   <- Item-8 def->usage join, read from the entry
+verdict        : satisfied
+PASS: embedded catalog consumed directly; def->usage join present; >=1 eligible entry.
+
+Exit code: 0

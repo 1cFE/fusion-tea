@@ -1,0 +1,9 @@
+{
+  "exploration/stellarator_e2e/studies/manifest.json": true,
+  "tests/study/test_known_answers.py": true,
+  "tests/study/data/a.expected.json": true,
+  "tests/study/data/availability_direct.expected.json": true,
+  "tests/study/data/R.expected.json": true,
+  "tests/study/data/interest_rate.expected.json": true,
+  "tests/study/data/I_coil.expected.json": true
+}

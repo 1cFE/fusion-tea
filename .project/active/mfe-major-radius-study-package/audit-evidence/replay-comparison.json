@@ -1,0 +1,1358 @@
+{
+  "summary": {
+    "targeted": {
+      "passed": 233
+    },
+    "broad": {
+      "passed": 580,
+      "failure": 97
+    },
+    "identical_historical_failures": 97,
+    "author_current_first_restored": 95,
+    "author_restored_independently_replayed": 95,
+    "restored_nodes_excluded_for_write_safety": [],
+    "all_current_restored": 95
+  },
+  "historical_failure_matches": {
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 1 required positional argument: 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]": {
+      "outcome": "failure",
+      "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+    },
+    "tests.study.test_study_publication_fail_closed::test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating]": {
+      "outcome": "failure",
+      "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+    }
+  },
+  "restored": {
+    "tests.study.test_committed_store::test_the_store_speaks_the_generic_vocabulary": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_fixture_binding": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: package regenerated \u2014 re-derive the expectation files from the new package, never patch them to match\nassert '15ed665c3747...b3489debbd47e' == '8f4912c20870...13772737666cf'\n  \n  - 8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf\n  + 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_known_answer[availability_direct]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_known_answer[interest_rate]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_known_answer[R]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_known_answer[a]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_known_answer[I_coil]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_matches_the_item_1_fixture_contract[availability_direct]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_matches_the_item_1_fixture_contract[interest_rate]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_matches_the_item_1_fixture_contract[R]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_matches_the_item_1_fixture_contract[a]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_matches_the_item_1_fixture_contract[I_coil]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_availability_direct_reaches_no_constraint": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_I_coil_reaches_the_field_constraints_through_calcs": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_r_reaches_net_positive_through_a_computed_operand": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_every_constraint_carries_all_three_identities": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_known_answers::test_current_heating_reachability": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_real_multi_output_values_survive_reopened_store_and_export": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_adding_persisted_column_reuses_store_without_evaluation": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_resume_refuses_a_required_column_absent_from_persisted_evidence[complete]": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_resume_refuses_a_required_column_absent_from_persisted_evidence[partial]": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_execution_failures_remain_recorded_cases[first-fails]": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_execution_failures_remain_recorded_cases[all-fail]": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_numeric_evidence::test_nonfinite_declared_value_is_persisted_and_refused_only_at_export": {
+      "entering": {
+        "outcome": "failure",
+        "message": "simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_operand_bindings::test_every_constraint_operand_resolves": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: assert 246 == 247\n +  where 246 = len({'stellarator_09__stellaris__E_fus': 2.817e-12, 'stellarator_09__stellaris__G_stock': 0.0, 'stellarator_09__stellaris__I_total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...})"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_real_manifest_pin_matches_live_package": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: assert '0e61f1906113...037d101503204' == '609e6cca0a4f...00a27ccedf06d'\n  \n  - 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n  + 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_byte_determinism_across_working_directories": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_two_runs_from_the_same_directory_are_byte_identical": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_the_real_output_validates_against_its_schema": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_not_derivable_is_byte_equal": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_constraint_completeness": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_bounds_is_authoritative_and_axis_varying": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_lists_are_sorted_by_a_stated_key": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_the_report_carries_its_tool_source_digest": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_the_report_carries_the_three_package_fingerprints": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_output_contract::test_the_report_carries_no_timestamp": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_all_six_checks_pass_on_the_real_package": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_the_results_document_validates_against_its_schema": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_the_document_carries_a_digest_for_every_input_it_read": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_the_six_results_map_onto_record_section_9s_five_rows": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_the_sibling_scan_is_advisory_and_can_never_fail": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_gates::test_the_identity_gate_reports_the_recomputed_digest": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[missing_declared_key]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[key_names_a_channel]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[wrong_fingerprint]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[stale_manifest]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_the_wrong_fingerprint_message_names_both_values": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_an_unreadable_input_is_did_not_run_with_its_condition": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_a_baseline_executed_under_another_identity_is_refused": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_a_wrong_headline_is_refused_naming_the_channel": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_preflight_negatives::test_a_differing_baseline_verdict_is_refused_naming_the_constraint": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_provenance::test_every_declared_key_carries_its_provenance": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_provenance::test_provenance_round_trips_from_the_declaration": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_provenance::test_the_tie_key_is_marked_and_the_others_are_not": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_provenance::test_a_tie_key_traces_identically_to_a_fan_out_key": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: axis 'R+tie': declared key 'stellarator_09__stellaris__magnet__R0' is absent from the package inputs\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_provenance::test_entry_type_is_reported_per_declared_key": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_read_set_coverage::test_a_renamed_inputs_file_is_followed_not_guessed": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: axis 'R+tie': declared key 'stellarator_09__stellaris__magnet__R0' is absent from the package inputs\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_subset_flag::test_a_full_run_covers_the_whole_declaration": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_subset_flag::test_a_group_run_is_visibly_narrower": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_subset_flag::test_several_groups_can_be_selected": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_subset_flag::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_subset_flag::test_the_axis_declaration_digest_matches_the_file_bytes": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_valid_empty::test_a_group_with_no_constraint_reach_exits_zero": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_valid_empty::test_the_empty_result_still_carries_the_whole_catalog": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_valid_empty::test_no_constraint_response_is_emitted_even_when_false": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_valid_empty::test_the_document_goes_to_stdout_and_the_summary_to_stderr": {
+      "entering": {
+        "outcome": "failure",
+        "message": "assert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_the_summary_validates_against_its_schema": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_the_summary_is_a_superset_of_the_committed_field_set": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_parity_holds_at_the_committed_order_of_magnitude": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_every_catalog_constraint_is_rederived_with_its_operand_count": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_stratification_covers_every_observed_verdict_combination": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_stratification_is_a_floor_not_a_cap": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_the_derived_seed_reproduces_from_the_recorded_fields": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_an_explicit_seed_is_recorded_as_explicit": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_cas27_is_compared_and_nothing_is_undisclosed": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_the_command_carries_no_absolute_paths": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_the_operand_bindings_digest_is_the_documented_canonicalization": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_a_planted_channel_deviation_fails_naming_case_and_channel": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_a_planted_verdict_mismatch_fails_naming_the_constraint": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_a_missing_operand_bindings_attribute_fails_closed": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_an_unresolvable_binding_fails_naming_the_constraint_and_operand": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_an_empty_result_is_a_broken_input_not_a_clean_pass": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_the_stores_are_never_written": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_stored_operating_controls_preserve_procurement_and_signed_capacity": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_operating_channel_deviation_is_refused[p_coupled]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_operating_channel_deviation_is_refused[p_delivered]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_verify::test_operating_channel_deviation_is_refused[p_wallplug]": {
+      "entering": {
+        "outcome": "error",
+        "message": "failed on setup with \"simkit.study.failures.StudyBridgeDefect: bridge produced an invalid entry model: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel)\""
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_advisory_never_changes_the_trace": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_the_tie_candidate_names_the_key_and_says_it_was_not_added": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_a_declared_tie_earns_no_candidate_warning": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_suffix_siblings_land_in_their_own_named_field": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_suffix_siblings_never_join_the_traced_set": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_the_declared_tie_is_not_a_suffix_sibling": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    },
+    "tests.study.test_warnings::test_a_key_in_two_groups_earns_a_document_warning": {
+      "entering": {
+        "outcome": "failure",
+        "message": "AssertionError: tool exited 1\n  indicator-input fingerprint mismatch: manifest pins 0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204 but indicator-input-fingerprint/v1 over the live package is 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d\n    live per-file digests:\n      contracts/model_contract.json d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2\n      inputs/mfe_account_costs_params.json 5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3\n      inputs/mfe_fuel_cycle_params.json 7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b\n      inputs/mfe_magnet_cost_params.json 0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113\n      inputs/mfe_magnet_field_params.json e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180\n      inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814\n      inputs/mfe_plasma_scaling_params.json d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d\n      inputs/mfe_plasma_sustainment_params.json d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14\n      inputs/mfe_vacuum_params.json 4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902\n      inputs/stellarator_plant_params.json e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4\n      pipelines/pipeline.yaml 84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f\n    re-pin with --print-fingerprint after reviewing the change\n  \nassert 1 == 0"
+      },
+      "current": {
+        "outcome": "passed",
+        "message": ""
+      }
+    }
+  }
+}

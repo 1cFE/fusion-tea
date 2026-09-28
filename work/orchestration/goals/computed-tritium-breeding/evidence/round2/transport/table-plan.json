@@ -1,0 +1,153 @@
+{
+  "status": "frozen before table execution",
+  "requirement_reference": 1.19,
+  "near_requirement_band": 0.02,
+  "standard_error_target_default": 0.002,
+  "standard_error_target_near_requirement": 0.001,
+  "interpolation_conservative_residual_limit": 0.01,
+  "cases": [
+    {
+      "name": "table-node-t0.6",
+      "role": "node",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.6,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5000011,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-node-t0.7",
+      "role": "node",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.7,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5104740,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-node-t0.8",
+      "role": "node",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5209469,
+        "particles": 24000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-node-t0.9",
+      "role": "node",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.9,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5314198,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-node-t1",
+      "role": "node",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 1.0,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5418927,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-withheld-t0.65",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.65,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5523656,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-withheld-t0.75",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.75,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5628385,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-withheld-t0.85",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.85,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5733114,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-withheld-t0.95",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.95,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5837843,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-withheld-t0.625",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.625,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 5942572,
+        "particles": 8000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "table-withheld-t0.925",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.925,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 6047301,
+        "particles": 8000,
+        "batches": 50
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "basis": "Accounting geometry only for unsupported cases; no transport prediction implied. C=2*pi^2*R, kappa=1; firstwall r=1.4 to1.45m; breeder1.45 to1.45+t; reflector1.45+t to1.65+t. Native CAS22 blanket volume sums all three full shells; transport retains whole FW but removes3% breeder and reflector.",
+  "source_copy": "preparation/source-copies/models/library/analyses/mfe_plasma_scaling.sysml",
+  "rows": [
+    {
+      "proposal_id": "thickness-0.6",
+      "costing_aggregate_volume_m3": 777.7593704212441,
+      "gross_breeder_shell_volume_m3": 526.4446987541062,
+      "removed_breeder_volume_m3": 15.793340962623185,
+      "retained_breeder_volume_m3": 510.651357791483,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 215.591638537396,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.65",
+      "costing_aggregate_volume_m3": 834.7908794529385,
+      "gross_breeder_shell_volume_m3": 578.4624487500478,
+      "removed_breeder_volume_m3": 17.353873462501433,
+      "retained_breeder_volume_m3": 561.1085752875463,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 220.60539757314908,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.7",
+      "costing_aggregate_volume_m3": 893.0758282435721,
+      "gross_breeder_shell_volume_m3": 631.7336385049275,
+      "removed_breeder_volume_m3": 18.952009155147824,
+      "retained_breeder_volume_m3": 612.7816293497797,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 225.61915660890236,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.75",
+      "costing_aggregate_volume_m3": 952.6142167931433,
+      "gross_breeder_shell_volume_m3": 686.2582680187459,
+      "removed_breeder_volume_m3": 20.587748040562374,
+      "retained_breeder_volume_m3": 665.6705199781835,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 230.63291564465587,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.8",
+      "costing_aggregate_volume_m3": 1013.4060451016529,
+      "gross_breeder_shell_volume_m3": 742.0363372915023,
+      "removed_breeder_volume_m3": 22.261090118745066,
+      "retained_breeder_volume_m3": 719.7752471727572,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 235.6466746804098,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.825",
+      "costing_aggregate_volume_m3": 1044.2719991655101,
+      "gross_breeder_shell_volume_m3": 770.3954118374821,
+      "removed_breeder_volume_m3": 23.11186235512446,
+      "retained_breeder_volume_m3": 747.2835494823577,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 238.153554198286,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.85",
+      "costing_aggregate_volume_m3": 1075.4513131691015,
+      "gross_breeder_shell_volume_m3": 799.0678463231968,
+      "removed_breeder_volume_m3": 23.972035389695904,
+      "retained_breeder_volume_m3": 775.0958109335008,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 240.6604337161631,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.9",
+      "costing_aggregate_volume_m3": 1138.7500209954876,
+      "gross_breeder_shell_volume_m3": 857.3527951138304,
+      "removed_breeder_volume_m3": 25.72058385341491,
+      "retained_breeder_volume_m3": 831.6322112604155,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 245.67419275191594,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-0.95",
+      "costing_aggregate_volume_m3": 1203.3021685808128,
+      "gross_breeder_shell_volume_m3": 916.8911836634018,
+      "removed_breeder_volume_m3": 27.50673550990205,
+      "retained_breeder_volume_m3": 889.3844481534996,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 250.68795178766922,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "thickness-1",
+      "costing_aggregate_volume_m3": 1269.1077559250757,
+      "gross_breeder_shell_volume_m3": 977.683011971912,
+      "removed_breeder_volume_m3": 29.33049035915736,
+      "retained_breeder_volume_m3": 948.3525216127547,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 255.70171082342273,
+      "defined_transport_scenario": true
+    },
+    {
+      "proposal_id": "undefined-thickness-0.55",
+      "costing_aggregate_volume_m3": 721.9813011484873,
+      "gross_breeder_shell_volume_m3": 475.6803885171032,
+      "removed_breeder_volume_m3": 14.270411655513096,
+      "retained_breeder_volume_m3": 461.4099768615901,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 210.5778795016427,
+      "defined_transport_scenario": false
+    },
+    {
+      "proposal_id": "undefined-thickness-1.05",
+      "costing_aggregate_volume_m3": 1336.1667830282768,
+      "gross_breeder_shell_volume_m3": 1039.72828003936,
+      "removed_breeder_volume_m3": 31.1918484011808,
+      "retained_breeder_volume_m3": 1008.5364316381792,
+      "firstwall_fullshell_volume_m3": 35.723033129743,
+      "reflector_fullshell_volume_m3": 260.7154698591767,
+      "defined_transport_scenario": false
+    },
+    {
+      "proposal_id": "undefined-radius-12.71",
+      "costing_aggregate_volume_m3": 1014.2040026174811,
+      "gross_breeder_shell_volume_m3": 742.6206178720468,
+      "removed_breeder_volume_m3": 22.278618536161403,
+      "retained_breeder_volume_m3": 720.3419993358854,
+      "firstwall_fullshell_volume_m3": 35.75116150228611,
+      "reflector_fullshell_volume_m3": 235.8322232431503,
+      "defined_transport_scenario": false
+    }
+  ]
+}

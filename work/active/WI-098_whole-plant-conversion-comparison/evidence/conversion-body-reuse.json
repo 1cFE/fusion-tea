@@ -1,0 +1,51 @@
+[
+  {
+    "source": "exploration/component_alternatives/bodies/loop_return_control/primary_bypass_control_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/loop_return_control/primary_bypass_control_impl.py",
+    "source_sha256": "03d5fccc1a2ec1fc83b12efe9e2165b454c362e02e576ae6dd34f1e2d0ead711",
+    "target_sha256": "03d5fccc1a2ec1fc83b12efe9e2165b454c362e02e576ae6dd34f1e2d0ead711",
+    "namespace_only": true
+  },
+  {
+    "source": "exploration/component_alternatives/bodies/integrated_heat_electricity/network_heat_driven_closure_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/integrated_heat_electricity/network_heat_driven_closure_impl.py",
+    "source_sha256": "4e5c9afb19bee2f2534c4ef4f92da14039538679b2a7e34b2ea513525a34af06",
+    "target_sha256": "4e5c9afb19bee2f2534c4ef4f92da14039538679b2a7e34b2ea513525a34af06",
+    "namespace_only": true
+  },
+  {
+    "source": "exploration/component_alternatives/bodies/component_alternatives_thermal/conversion_subsystem_ledger_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/component_alternatives_thermal/conversion_subsystem_ledger_impl.py",
+    "source_sha256": "b9d1227938de6757710c1a6dcd7d58ab484b971b0e4333ad9e58672f8918f5bf",
+    "target_sha256": "65a63ee67136fa1e802ef7d9ba7880264493b7e16fb72a808e6c33304c0c31b9",
+    "namespace_only": true
+  },
+  {
+    "source": "exploration/component_alternatives/bodies/component_alternatives_thermal/finite_water_cooler_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/component_alternatives_thermal/finite_water_cooler_impl.py",
+    "source_sha256": "33861fd03e8ab18faf8487016e7bf4730c01fbda59ef56c0465bee1c8833dc5d",
+    "target_sha256": "f363d20ea48b8256cf8cddc061149c2436b0a52d99b2d998bcc69141fbd8481f",
+    "namespace_only": true
+  },
+  {
+    "source": "exploration/component_alternatives/bodies/component_alternatives_thermal/recuperator_installed_capability_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/component_alternatives_thermal/recuperator_installed_capability_impl.py",
+    "source_sha256": "24f0cb61bd29af53e826cd3663e3dc10d1a24430b15dfd3105404828b825be9a",
+    "target_sha256": "24f0cb61bd29af53e826cd3663e3dc10d1a24430b15dfd3105404828b825be9a",
+    "namespace_only": true
+  },
+  {
+    "source": "exploration/component_alternatives/bodies/component_alternatives_thermal/controlled_conversion_boundary_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/component_alternatives_thermal/controlled_conversion_boundary_impl.py",
+    "source_sha256": "848e99240fb49cd151340554f10d9b53e0f8b31ef87d2130be9adce2e21decc0",
+    "target_sha256": "848e99240fb49cd151340554f10d9b53e0f8b31ef87d2130be9adce2e21decc0",
+    "namespace_only": true
+  },
+  {
+    "source": "exploration/component_alternatives/bodies/cooling_equipment_selected_pumps/cooling_equipment_with_selected_salt_pump_count_impl.py",
+    "target": "exploration/whole_plant_conversion/bodies/cooling_equipment_selected_pumps/cooling_equipment_with_selected_salt_pump_count_impl.py",
+    "source_sha256": "493c672c49b57adcc48d4885a40c6c3483727a7b7b175f31d8fffa9684a45e3e",
+    "target_sha256": "fe83bc3f997f580cc60cc0fd411822fce521be46aaffee882eaafec445a13082",
+    "namespace_only": true
+  }
+]

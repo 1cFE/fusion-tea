@@ -1,0 +1,12 @@
+{
+  "status": "research verification assertion failed",
+  "assertion": "energy_residual_MW == 0",
+  "checker_sha256": "29093207b3b755fbcb88541f9173a77934e85ff9d244cb9855012c3a2b7cb83f",
+  "native_model_or_engineering_predicate_changed": false,
+  "case_residuals_MW": {
+    "10": 0.0,
+    "20": 4.547473508864641e-13,
+    "30": 0.0
+  },
+  "disposition": "Require energy closure within1e-14 relative toQSG; preserve computed residuals. This is floating-point summation agreement, not a scientific acceptance change."
+}

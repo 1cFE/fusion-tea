@@ -1,0 +1,25 @@
+HTTP/1.1 206 PARTIAL_CONTENT
+server: nginx
+date: Mon, 21 Sep 2026 03:06:52 GMT
+content-type: application/octet-stream
+content-length: 65557
+content-disposition: attachment; filename=zenodo_repository_auglag.zip
+content-range: bytes 481656882-481722438/481722439
+accept-ranges: bytes
+content-type: application/octet-stream
+content-security-policy: default-src 'self' fonts.googleapis.com *.gstatic.com data: 'unsafe-inline' 'unsafe-eval' blob: zenodo-broker.web.cern.ch zenodo-broker-qa.web.cern.ch maxcdn.bootstrapcdn.com cdnjs.cloudflare.com ajax.googleapis.com webanalytics.web.cern.ch
+x-content-type-options: nosniff
+x-download-options: noopen
+x-permitted-cross-domain-policies: none
+x-frame-options: sameorigin
+x-xss-protection: 1; mode=block
+x-ratelimit-limit: 133
+x-ratelimit-remaining: 131
+x-ratelimit-reset: 1789960019
+retry-after: 6
+strict-transport-security: max-age=31556926; includeSubDomains
+referrer-policy: strict-origin-when-cross-origin
+access-control-allow-origin: *
+access-control-expose-headers: Content-Type, ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+x-source: files-primary
+

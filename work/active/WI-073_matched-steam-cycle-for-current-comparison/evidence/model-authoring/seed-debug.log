@@ -1,0 +1,12 @@
+{'handwritten/mfe_matched_steam_cycle/cooling_water_rejection_impl.py': {'expected': 'dfcc01064652de7894f9cdc7dda3349544551dc5cea881df92bdf8d861f589a3', 'actual': '45214443936f166152c589f048b240dd2dea8312e16b46fdfdf441765038334d'}, 'handwritten/mfe_matched_steam_cycle/cycle_mode_selection_impl.py': {'expected': '0295fac3fc755e3b75e0a456245b53490ffd1503cc2c95d8b894df9cbf7ca09e', 'actual': 'fac8d02e3440c4f36e34e5d6137051eb4292ee3e2ba0a70be748e59fa799816e'}, 'handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py': {'expected': '9c383880fef56c24f2135929552cb5e1bb28348520b1b9f30ffeb19fb9820af7', 'actual': 'cb56795ff3dde4866c9d2ef8f2cb3e72c09ae2fe79becf731d1a0e128381f61b'}}
+Traceback (most recent call last):
+  File "/tmp/wi073_probe_generation.py", line 6, in <module>
+    try:r.seed_and_generate(p,models_path=root/'exploration/stellarator_e2e/models')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/regenerate.py", line 36, in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py", line 43, in seed_and_generate
+    assert all(actual[name] == digest for name, digest in expected.items())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

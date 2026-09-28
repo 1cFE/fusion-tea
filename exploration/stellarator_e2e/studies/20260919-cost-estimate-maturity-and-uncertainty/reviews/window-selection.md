@@ -1,0 +1,3 @@
+# Window selection after oracle scan
+
+Executor check: the complete candidate list ran through the independent oracle after the released baseline/preflight. The finite list combines four reviewed source-interpretation/model-analogy axes at fixed design, with a matched zero-direct-contingency diagnostic and two separately labeled downtime stresses. The source envelope excludes the diagnostic and stress families; none is a probability distribution or a qualified procurement interval. All candidates are retained; no point is removed to improve feasibility. This is a sensitivity study and claims no whole-plant feasible anchor or optimum.

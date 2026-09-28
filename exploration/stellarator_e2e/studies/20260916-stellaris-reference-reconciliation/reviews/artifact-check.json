@@ -1,0 +1,22 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "9a282b7d4989b4ee70b6bc3204baefe20380dd4988b34d0095a84b55d10150d3",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260916-stellaris-reference-reconciliation.db",
+      "sha256": "dc36b9601d98f6f46cf0c2208499864df0a3a5046d432167cd0244b76484e501",
+      "cases": 8,
+      "export_joins": 8,
+      "content_addressed_evidence_checked": 8
+    }
+  ],
+  "snapshot_artifacts_checked": 179,
+  "snapshot_sha256": "5538c7aca0937fa4826cf4bf8bfe8d51c0b19f5c4ac0655906a5802746b470db",
+  "required_retained_files": 185
+}

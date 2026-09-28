@@ -1,0 +1,27 @@
+{
+  "verdict": "PASS",
+  "receipt_files": 247,
+  "fresh_exact": true,
+  "executable_fingerprint": "8a3473de8206c5317dcd271cb68cccb02150bada13641a1be0e89eabd03b5b03",
+  "manifest_identity": true,
+  "census_inputs": 246,
+  "unchanged_python_AST": [
+    "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py",
+    "handwritten/mfe_plasma_scaling/plasma_geometry_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py",
+    "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py",
+    "handwritten/mfe_magnet_field/coil_winding_length_impl.py",
+    "handwritten/mfe_magnet_field/conductor_strain_impl.py",
+    "handwritten/mfe_magnet_cost/magnet_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py",
+    "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py",
+    "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py"
+  ]
+}

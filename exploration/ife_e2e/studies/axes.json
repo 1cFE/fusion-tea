@@ -1,0 +1,15 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "discount_rate",
+      "note": "WI-049 discount-rate continuity question; framing and window belong to the study.",
+      "keys": [
+        {
+          "key": "hif_plant_pkg__hif_plant__discount_rate",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

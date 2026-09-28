@@ -1,0 +1,314 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "exploration/aries_integrated/aries_integrated",
+    "--manifest",
+    "exploration/aries_integrated/studies/manifest.json",
+    "--identity",
+    "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/integration/package_identity.json",
+    "--store",
+    "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/native/20260922-integrated-heat-electricity.db",
+    "--sample-size",
+    "14",
+    "--out",
+    "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/aries_integrated/aries_integrated",
+    "package_name": "aries_integrated",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/aries_integrated/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "1e3d867011d5cd54d3e4780df19e6b75afd180c789f9fbe41a14638732b19e6f"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": ".",
+    "module": "exploration.aries_integrated.studies.oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "74c69f66f842b287e2cba4f6105116a690435b4dc6a51c804078e89fd4a4546a"
+  },
+  "stores": [
+    {
+      "path": "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/native/20260922-integrated-heat-electricity.db",
+      "study_id": "20260922-integrated-heat-electricity",
+      "compatibility": {
+        "digest": "bd2284c88b19e618f34003e3dda13d063ed118145beca7be3bb34ebffcf999b5",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97",
+        "strategy_config": "102b653cd1462cd4f2a0cc618233b7c06fab86c6b452fbf302f26e3725fb4ef1",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "f6f321023063573c436d0278ac3adc7ace86268d7798d3804a190896f62af725",
+        "study_id": "20260922-integrated-heat-electricity"
+      },
+      "cases_total": 14,
+      "cases_completed": 14,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "66d39514d76fda2c",
+        "seed_source": "derived",
+        "sample_size_requested": 14,
+        "strata_observed": 5,
+        "sampled_rows": 14,
+        "sampled_case_ids": [
+          "20260922-integrated-heat-electricity:c0004",
+          "20260922-integrated-heat-electricity:c0012",
+          "20260922-integrated-heat-electricity:c0003",
+          "20260922-integrated-heat-electricity:c0006",
+          "20260922-integrated-heat-electricity:c0008",
+          "20260922-integrated-heat-electricity:c0002",
+          "20260922-integrated-heat-electricity:c0001",
+          "20260922-integrated-heat-electricity:c0010",
+          "20260922-integrated-heat-electricity:c0007",
+          "20260922-integrated-heat-electricity:c0000",
+          "20260922-integrated-heat-electricity:c0005",
+          "20260922-integrated-heat-electricity:c0011",
+          "20260922-integrated-heat-electricity:c0013",
+          "20260922-integrated-heat-electricity:c0009"
+        ]
+      },
+      "worst_channel_rel_dev": 18619.0,
+      "worst_at": {
+        "case_id": "20260922-integrated-heat-electricity:c0011",
+        "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        "value": 4.233697836752981e-09
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+      "objective": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+      "objective": "aries_integrated_plant__fuel__evaluate__exhaust_rate"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+      "objective": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+      "objective": "aries_integrated_plant__he_coolant__evaluate__delivered_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+      "objective": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+      "objective": "aries_integrated_plant__plant_ledger__evaluate__gross_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+      "objective": "aries_integrated_plant__plant_ledger__evaluate__net_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__source__evaluate__selected_power",
+      "objective": "aries_integrated_plant__source__evaluate__selected_power"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+      "source_local_identity": "balances_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+      "source_local_identity": "heat_removal_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 18619.0,
+  "outcome": "pass",
+  "absolute_tolerances": [
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+    }
+  ]
+}

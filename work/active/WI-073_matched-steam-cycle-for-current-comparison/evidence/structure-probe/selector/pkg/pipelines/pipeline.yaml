@@ -1,0 +1,62 @@
+# Generated Pipeline Configuration for probe_selector
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for probe_selector"
+  output_folder: "probe_selector_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      probe_params: ProbeParams ../inputs/probe_params.json
+
+
+  # probe.LegacyModule
+  probe__plant__turbine__legacy:
+    module_type: probe.LegacyModule
+    inputs:
+      x_in: float probe_params.Probe__plant__turbine__raw
+    outputs:
+      root: RootModel[float] Probe__plant__turbine__legacy__gross_out
+
+  # source: computed_attribute (probe.turbine.property_valueModule)
+  probe__plant__turbine__property_value:
+    module_type: probe.turbine.property_valueModule
+    outputs:
+      root: RootModel[float] Probe__plant__turbine__property_value__property_value
+
+  # probe.MatchModule
+  probe__plant__turbine__matched:
+    module_type: probe.MatchModule
+    inputs:
+      property_in: float Probe__plant__turbine__property_value__property_value.root
+      enabled_in: float probe_params.Probe__plant__turbine__enabled
+      legacy_in: float Probe__plant__turbine__legacy__gross_out.root
+    outputs:
+      gross_out: float Probe__plant__turbine__matched__gross_out
+      state_h: float Probe__plant__turbine__matched__state_h
+      pump_out: float Probe__plant__turbine__matched__pump_out
+
+  # probe.SinkModule
+  probe__plant__sink:
+    module_type: probe.SinkModule
+    inputs:
+      value_in: float Probe__plant__turbine__matched__gross_out
+    outputs:
+      root: RootModel[float] Probe__plant__sink__result
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      Probe__plant__turbine__legacy__gross_out: RootModel[float] Probe__plant__turbine__legacy__gross_out.json
+      Probe__plant__turbine__property_value__property_value: RootModel[float] Probe__plant__turbine__property_value__property_value.json
+      Probe__plant__turbine__matched__gross_out: float plant__turbine__gross.json
+      Probe__plant__turbine__matched__state_h: float plant__turbine__state_h.json
+      Probe__plant__turbine__matched__pump_out: float Probe__plant__turbine__matched__pump_out.json
+      Probe__plant__sink__result: RootModel[float] Probe__plant__sink__result.json

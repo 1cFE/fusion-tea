@@ -1,0 +1,8 @@
+{
+  "entering_commit": "a45925ec066c2403c72c2702e323a965e2666a3c",
+  "native_scalars_exact": 212,
+  "prior_predicate_verdicts_exact": 19,
+  "prior_predicate_ir_exact": 19,
+  "new_native_scalar_count": 223,
+  "status": "PASS"
+}

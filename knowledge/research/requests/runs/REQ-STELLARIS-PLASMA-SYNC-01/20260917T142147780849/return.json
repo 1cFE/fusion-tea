@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-STELLARIS-PLASMA-SYNC-01",
+  "run": "knowledge/research/requests/runs/REQ-STELLARIS-PLASMA-SYNC-01/20260917T142147780849",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "on_the_use_of_high_magnetic_field_in_reactor_grade_tokamaks",
+      "path": "knowledge/sources/on_the_use_of_high_magnetic_field_in_reactor_grade_tokamaks/",
+      "source_id": "a598bc99d8324346e99dcde2085f5e7a9c2dbb82f4a2458ab1dc8a85e7d5b9bc",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

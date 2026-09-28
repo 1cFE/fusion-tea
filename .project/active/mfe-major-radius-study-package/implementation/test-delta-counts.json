@@ -1,0 +1,9 @@
+{
+  "unchanged outcome": 330,
+  "restored current execution": 95,
+  "retired current R+tie fixture or replaced radius graph assertion": 4,
+  "new current radius test": 9,
+  "new requirement test: SC-1 mapping coverage blocker": 1,
+  "inherited historical failure; identical per-node failure message": 97,
+  "now reaches existing absent historical-store skip": 1
+}

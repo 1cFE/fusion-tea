@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+  "margin": 7699680.103536234,
+  "observed": {
+    "p_loop_margin_in": 7699680.103536234
+  },
+  "status": "satisfied"
+}

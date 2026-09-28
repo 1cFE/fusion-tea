@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/fuel-step.pdf",
+  "slug": "lord_2024_step_sustained_fuelling_and_tritium_self",
+  "path": "knowledge/sources/lord_2024_step_sustained_fuelling_and_tritium_self/",
+  "source_id": "d51a392bca4dfd952dcf29c6bfc58ab16a29d042e8e88ee9fe5b8e221a46e349",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T14:46:12.458677+00:00"
+}

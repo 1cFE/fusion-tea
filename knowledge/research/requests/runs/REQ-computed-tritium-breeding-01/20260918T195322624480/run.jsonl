@@ -1,0 +1,9 @@
+{"kind": "search", "query": "UKAEA PROCESS HCLL tritium breeding ratio thickness lithium enrichment fit", "at": "2026-09-18T19:53:34.298516+00:00"}
+{"kind": "search", "query": "helium cooled lithium lead blanket parametric neutronics TBR benchmark thickness surrogate -\"ARIES\"", "at": "2026-09-18T19:53:34.357499+00:00"}
+{"kind": "search", "query": "helium cooled lithium lead parametric TBR excluding ARIES", "at": "2026-09-18T19:54:10.967392+00:00"}
+{"kind": "search", "query": "Proof-of-principle parametric stellarator neutronics Serpent2", "at": "2026-09-18T19:54:11.026855+00:00"}
+{"kind": "candidate", "ref": "https://acris.aalto.fi/ws/portalfiles/portal/150683939/Proof-of-principle_of_parametric_stellarator_neutronics_modeling_using_Serpent2.pdf", "triage": "keeper", "note": "Primary published parametric stellarator blanket study; assess DCLL applicability and independent validation rather than assume transfer.", "at": "2026-09-18T19:54:11.086317+00:00"}
+{"kind": "search", "query": "HCLL blanket TBR surrogate dataset parametric model lead lithium -ARIES", "at": "2026-09-18T19:55:02.736441+00:00"}
+{"kind": "search", "query": "helium cooled lead lithium tritium breeding ratio fitting function thickness enrichment -ARIES", "at": "2026-09-18T19:55:02.795259+00:00"}
+{"kind": "candidate", "ref": "https://scientific-publications.ukaea.uk/wp-content/uploads/Shimwell_2019_Nucl._Fusion_59_046019.pdf", "triage": "keeper", "note": "Primary HCLL parametric geometry and TBR enrichment/plate-height interpolation study; assess applicability and benchmark evidence.", "at": "2026-09-18T19:55:36.531593+00:00"}
+{"kind": "candidate", "ref": "https://upcommons.upc.edu/bitstream/handle/2099.1/17426/Neutronic_fusion_final_thesis_Martinez_Arroyo_Javier.pdf", "triage": "keeper", "note": "Repository thesis search identifies HCLL surrogate; inspect through native quarantine registration before relying on applicability.", "at": "2026-09-18T19:56:58.887822+00:00"}

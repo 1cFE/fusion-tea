@@ -1,0 +1,215 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "recuperator_effectiveness",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__recuperator_effectiveness",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Raffray Table III prints 0.95; the inherited 0.8 is agent assumption A3. Values 0.8 and 0.95."
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Inherited 1400 kg/s is agent assumption A3; 1600 is derived from Lyon 2916 MW over Raffray Fig. 12 cycle temperatures 355 to 707 C at cp 5193 (1595 kg/s); 1500/1700/1800/2000 bracket the response."
+    },
+    {
+      "axis": "divertor_primary_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__divertor_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Raffray Table V prints 283 kg/s; inherited 500 kg/s is agent assumption A4."
+    },
+    {
+      "axis": "he_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Diagnostic tenfold conductance (UA 50 to 500 MW/K) to separate conductance limits from temperature and capacity-rate limits; labelled resized diagnostic, never reference reproduction."
+    },
+    {
+      "axis": "pbli_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Same diagnostic as he_u."
+    },
+    {
+      "axis": "divertor_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__divertor_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Same diagnostic as he_u."
+    },
+    {
+      "axis": "deposited_auxiliary_heat",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__auxiliary_heat",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon reference is an ignited plasma (P_input = 0, p707); inherited 20 MW is assumption A1."
+    },
+    {
+      "axis": "cryo_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__cryo",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon p717 itemises 5 MW cryogenic; inherited 10 MW is assumption A5."
+    },
+    {
+      "axis": "control_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__control",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon itemises no control load; folded into the 50 MW balance of plant."
+    },
+    {
+      "axis": "other_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__other_electric",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon p717: 50 MW balance of plant."
+    },
+    {
+      "axis": "fuel_base_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__fuel_base",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon itemises no fuel-processing load; folded into balance of plant."
+    },
+    {
+      "axis": "fuel_coefficient",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__fuel_coefficient",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Same as fuel_base_load."
+    },
+    {
+      "axis": "he_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Mode 1 supplies a fixed pump power instead of the cubic proxy; used to hold or set pump power explicitly."
+    },
+    {
+      "axis": "he_pump_fixed_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__fixed_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon p708: 170 MW blanket helium pumping; Raffray Table II: 156 MW."
+    },
+    {
+      "axis": "divertor_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__divertor_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Mode 1 supplies a fixed pump power instead of the cubic proxy."
+    },
+    {
+      "axis": "divertor_pump_fixed_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__divertor_pump__fixed_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon p708 and Raffray Table V: 27 MW divertor helium pumping; inherited 10 MW is assumption A2."
+    },
+    {
+      "axis": "radiation_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__radiation_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Model meaning: fraction of charged power deposited in the blanket circuits, remainder to the divertor. Inherited 0.25 is assumption A1. Lyon Table IV prints 98.1 MW to the divertor of 487 MW charged power; Raffray Table V implies 66.8 MW of nuclear heating in the divertor at 2365 MW (186 minus 24 friction, 23.6 conducted, 23.6 alpha loss, 48 radiated), 68.8 MW scaled to 2436 MW. Divertor deposition 167 MW gives 1 minus 167/487.2 = 0.657; the nuclear share is carried as charged power because the model has no divertor nuclear-heating term."
+    },
+    {
+      "axis": "exchange_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__exchange_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Raffray Table II: 111 MW conducted from PbLi to He at 2365 MW fusion, 0.0469 of fusion power; inherited 0.04 is assumption A1."
+    },
+    {
+      "axis": "network_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__network_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Mode 0 is the inherited series arrangement (helium, then divertor, then PbLi in one cycle stream; WI-089). Mode 1 represents Raffray Fig. 12 (p. 741): the blanket-helium exchanger first, then the PbLi and divertor-helium exchangers in parallel on split cycle flow, rejoining before the turbine (WI-092 design, reviewed)."
+    },
+    {
+      "axis": "pbli_split",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__pbli_split_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Fraction of cycle flow through the PbLi stage in mode 1; no source states it. Raffray duty shares (1444 MW PbLi, 186 MW divertor; Tables II and V) imply about 0.89 for equal branch temperature rises; the design default is 0.85; 0.50 to 0.98 brackets the response. Ignored in mode 0."
+    },
+    {
+      "axis": "compressor_rating",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Inherited 1600 MW offered compressor capacity is assumption A6 (WI-089). The separately named resized-compressor alternative sets the rating to 1700 or 1800 MW alongside the same cycle flow; it is a declared hardware change studied for its purpose and never a reference reproduction."
+    }
+  ]
+}

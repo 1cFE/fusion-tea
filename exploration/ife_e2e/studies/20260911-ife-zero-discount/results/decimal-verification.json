@@ -1,0 +1,625 @@
+{
+  "outcome": "pass",
+  "cases": [
+    {
+      "case_id": "20260911-ife-zero-discount:c0000",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58253525420.72947,
+          "reference_decimal": "58253525420.729479343934562251180883737345773520117685683663236943920894347298564",
+          "relative_error_or_absolute_at_zero": 1.724293608576488e-16
+        },
+        "discounted_energy": {
+          "actual": 275453385.37331903,
+          "reference_decimal": "275453385.37331913694001598818046050703329930382511551641324362415994560247734230",
+          "relative_error_or_absolute_at_zero": 3.889295875212855e-16
+        },
+        "price": {
+          "actual": 211.48233608303303,
+          "reference_decimal": "211.48233608303298272903158457635719950161758147269388780050712844476869760152029",
+          "relative_error_or_absolute_at_zero": 2.37668905700883e-16
+        },
+        "construction_factor": {
+          "actual": 5.001500350070013,
+          "reference_decimal": "5.0015003500700126021003300495071510011365182023803060387648455985731588560627265",
+          "relative_error_or_absolute_at_zero": 8.646469650943044e-17
+        },
+        "operation_factor": {
+          "actual": 40.10216199470083,
+          "reference_decimal": "40.102161994700834820750068105571033111730865530498614983992079200415707346908910",
+          "relative_error_or_absolute_at_zero": 1.455432625595122e-16
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0001",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111272048.12978,
+          "reference_decimal": "58111272048.129786404376644821296159958107396992552938677958628420860686164198265",
+          "relative_error_or_absolute_at_zero": 4.773610098869919e-17
+        },
+        "discounted_energy": {
+          "actual": 274751726.00454044,
+          "reference_decimal": "274751726.00454052199153322303162165469613378405561175211594734799444546676472710",
+          "relative_error_or_absolute_at_zero": 2.859713538814426e-16
+        },
+        "price": {
+          "actual": 211.5046660240797,
+          "reference_decimal": "211.50466602407966244034594861555274490719941429243791095995883229144284247908515",
+          "relative_error_or_absolute_at_zero": 2.2935926331160187e-16
+        },
+        "construction_factor": {
+          "actual": 5.0000001500000035,
+          "reference_decimal": "5.0000001500000035000000700000012600000210000003300000049500000715000010010000137",
+          "relative_error_or_absolute_at_zero": 5.854276396832193e-18
+        },
+        "operation_factor": {
+          "actual": 40.00001020000162,
+          "reference_decimal": "40.000010200001618000194510019067581589049115774777525376993161307430713365535703",
+          "relative_error_or_absolute_at_zero": 1.1079288655079567e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0002",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257845.23841,
+          "reference_decimal": "58111257845.238407642496922425004122290498541108798460520853985119914000141676831",
+          "relative_error_or_absolute_at_zero": 5.691169373123432e-17
+        },
+        "discounted_energy": {
+          "actual": 274751655.94986326,
+          "reference_decimal": "274751655.94986331008379685133054450747718637779712294966640846103188053274435274",
+          "relative_error_or_absolute_at_zero": 2.003985758053074e-16
+        },
+        "price": {
+          "actual": 211.50466825882413,
+          "reference_decimal": "211.50466825882407642638193841324517582550864532424319644938092355597396227551316",
+          "relative_error_or_absolute_at_zero": 2.313583435192744e-16
+        },
+        "construction_factor": {
+          "actual": 5.000000000015,
+          "reference_decimal": "5.0000000000150000000000350000000000700000000001260000000002100000000003300000000",
+          "relative_error_or_absolute_at_zero": 8.856962785674955e-17
+        },
+        "operation_factor": {
+          "actual": 40.000000001020005,
+          "reference_decimal": "40.000000001020000000016180000000194510000001906758000015890490000115774770000751",
+          "relative_error_or_absolute_at_zero": 1.3533623791204452e-16
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0003",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.83218,
+          "reference_decimal": "58111257843.832180995281890111885380385563647294881352266880348990726673292098956",
+          "relative_error_or_absolute_at_zero": 8.237277894114532e-17
+        },
+        "discounted_energy": {
+          "actual": 274751655.9429272,
+          "reference_decimal": "274751655.94292720452940829682799019717562176290065054525694378129780056038882360",
+          "relative_error_or_absolute_at_zero": 8.301560394958201e-17
+        },
+        "price": {
+          "actual": 211.50466825904533,
+          "reference_decimal": "211.50466825904533826688103260550249066284914166514526123012016411067670717128555",
+          "relative_error_or_absolute_at_zero": 3.187935576244117e-17
+        },
+        "construction_factor": {
+          "actual": 5.00000000000015,
+          "reference_decimal": "5.0000000000001500000000000035000000000000700000000000012600000000000210000000000",
+          "relative_error_or_absolute_at_zero": 2.043058586353224e-17
+        },
+        "operation_factor": {
+          "actual": 40.0000000000102,
+          "reference_decimal": "40.000000000010200000000001618000000000194510000000019067580000001589049000000114",
+          "relative_error_or_absolute_at_zero": 8.48421378354951e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0004",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.81812,
+          "reference_decimal": "58111257843.818118728809961736064760195181386842184072024183272993118918456913985",
+          "relative_error_or_absolute_at_zero": 7.115591234709115e-17
+        },
+        "discounted_energy": {
+          "actual": 274751655.9428578,
+          "reference_decimal": "274751655.94285784347386551142968279901971742990747718636470130971229495572709148",
+          "relative_error_or_absolute_at_zero": 1.5126260215218695e-16
+        },
+        "price": {
+          "actual": 211.5046682590476,
+          "reference_decimal": "211.50466825904755088528604087786935193611392036254252705222587547377026653429287",
+          "relative_error_or_absolute_at_zero": 2.5708991346045617e-16
+        },
+        "construction_factor": {
+          "actual": 5.000000000000002,
+          "reference_decimal": "5.0000000000000015000000000000003500000000000000700000000000000126000000000000022",
+          "relative_error_or_absolute_at_zero": 5.527136788005001e-17
+        },
+        "operation_factor": {
+          "actual": 40.00000000000011,
+          "reference_decimal": "40.000000000000102000000000000161800000000000194510000000000190675800000000158905",
+          "relative_error_or_absolute_at_zero": 1.1453525910037136e-16
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0005",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.81798,
+          "reference_decimal": "58111257843.817978106145242474501285049733803852943267290357738468725911389474898",
+          "relative_error_or_absolute_at_zero": 3.4566762522052436e-18
+        },
+        "discounted_energy": {
+          "actual": 274751655.9428571,
+          "reference_decimal": "274751655.94285714986331008368571439685133054317142990747718636470001309712294956",
+          "relative_error_or_absolute_at_zero": 2.300434990412867e-16
+        },
+        "price": {
+          "actual": 211.50466825904763,
+          "reference_decimal": "211.50466825904757301147009096232606497766143561144051049284709333868856941190530",
+          "relative_error_or_absolute_at_zero": 2.8685533392204563e-16
+        },
+        "construction_factor": {
+          "actual": 5.0,
+          "reference_decimal": "5.0000000000000000150000000000000000350000000000000000700000000000000001260000000",
+          "relative_error_or_absolute_at_zero": 3e-18
+        },
+        "operation_factor": {
+          "actual": 40.0,
+          "reference_decimal": "40.000000000000001020000000000000016180000000000000194510000000000001906758000000",
+          "relative_error_or_absolute_at_zero": 2.5499999999999998e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0006",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.81798,
+          "reference_decimal": "58111257843.817976685714285714285714285714285714285714285714285714285714285714285",
+          "relative_error_or_absolute_at_zero": 2.098662457218613e-17
+        },
+        "discounted_energy": {
+          "actual": 274751655.9428571,
+          "reference_decimal": "274751655.94285714285714285714285714285714285714285714285714285714285714285714286",
+          "relative_error_or_absolute_at_zero": 2.045434990412867e-16
+        },
+        "price": {
+          "actual": 211.50466825904763,
+          "reference_decimal": "211.50466825904757323496689954903792402027813677054455247927491550078745928614945",
+          "relative_error_or_absolute_at_zero": 2.85798634746437e-16
+        },
+        "construction_factor": {
+          "actual": 5.0,
+          "reference_decimal": "5",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "operation_factor": {
+          "actual": 40.0,
+          "reference_decimal": "40",
+          "relative_error_or_absolute_at_zero": 0.0
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0007",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.81798,
+          "reference_decimal": "58111257843.817975265283328954070188364019518138657014309642261531279368760903469",
+          "relative_error_or_absolute_at_zero": 4.5429925396577505e-17
+        },
+        "discounted_energy": {
+          "actual": 274751655.9428571,
+          "reference_decimal": "274751655.94285713585097563060000011113704482888571294966567077815715595426580670",
+          "relative_error_or_absolute_at_zero": 1.790434990412867e-16
+        },
+        "price": {
+          "actual": 211.50466825904763,
+          "reference_decimal": "211.50466825904757345846370813574978656434483912146774689472273182476626330599263",
+          "relative_error_or_absolute_at_zero": 2.8474193557082834e-16
+        },
+        "construction_factor": {
+          "actual": 5.0,
+          "reference_decimal": "4.9999999999999999850000000000000000349999999999999999300000000000000001260000000",
+          "relative_error_or_absolute_at_zero": 3e-18
+        },
+        "operation_factor": {
+          "actual": 40.0,
+          "reference_decimal": "39.999999999999998980000000000000016179999999999999805490000000000001906758000000",
+          "relative_error_or_absolute_at_zero": 2.55e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0008",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.81784,
+          "reference_decimal": "58111257843.817834642618609692955091623752814874917642261531540736204632742188244",
+          "relative_error_or_absolute_at_zero": 1.0210677733485485e-16
+        },
+        "discounted_energy": {
+          "actual": 274751655.9428564,
+          "reference_decimal": "274751655.94285644224042020285825422759114599866395138506387273828372352715347994",
+          "relative_error_or_absolute_at_zero": 2.578243959303948e-16
+        },
+        "price": {
+          "actual": 211.50466825904766,
+          "reference_decimal": "211.50466825904759558464775822024151060445427137007086810626556765809579684609954",
+          "relative_error_or_absolute_at_zero": 3.1450735603241766e-16
+        },
+        "construction_factor": {
+          "actual": 4.999999999999999,
+          "reference_decimal": "4.9999999999999985000000000000003499999999999999300000000000000125999999999999978",
+          "relative_error_or_absolute_at_zero": 1.2236431605997491e-16
+        },
+        "operation_factor": {
+          "actual": 39.9999999999999,
+          "reference_decimal": "39.999999999999898000000000000161799999999999805490000000000190675799999999841095",
+          "relative_error_or_absolute_at_zero": 6.310042483964546e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0009",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257843.80377,
+          "reference_decimal": "58111257843.803772376146685800918523242167809436547271963194863272040692786072787",
+          "relative_error_or_absolute_at_zero": 6.943412529211695e-18
+        },
+        "discounted_energy": {
+          "actual": 274751655.94278705,
+          "reference_decimal": "274751655.94278708118487743968513305431580680852792114525694378127597086818260654",
+          "relative_error_or_absolute_at_zero": 1.0913131947313942e-16
+        },
+        "price": {
+          "actual": 211.50466825904982,
+          "reference_decimal": "211.50466825904980820305276684271835749688904711884584247766593868412939901643810",
+          "relative_error_or_absolute_at_zero": 6.596206986628443e-17
+        },
+        "construction_factor": {
+          "actual": 4.99999999999985,
+          "reference_decimal": "4.9999999999998500000000000034999999999999300000000000012599999999999790000000000",
+          "relative_error_or_absolute_at_zero": 2.0430585864933467e-17
+        },
+        "operation_factor": {
+          "actual": 39.999999999989804,
+          "reference_decimal": "39.999999999989800000000001617999999999805490000000019067579999998410951000000114",
+          "relative_error_or_absolute_at_zero": 9.279354602363198e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0010",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111257842.39754,
+          "reference_decimal": "58111257842.397545728976491328317869309783064171351917848279894345366592695874522",
+          "relative_error_or_absolute_at_zero": 1.4622865679270466e-16
+        },
+        "discounted_energy": {
+          "actual": 274751655.9358509,
+          "reference_decimal": "274751655.93585097563071113704482754966567079125426580659096868182685278988719957",
+          "relative_error_or_absolute_at_zero": 2.0868923127747742e-16
+        },
+        "price": {
+          "actual": 211.50466825927109,
+          "reference_decimal": "211.50466825927107004355536213483186403420005717014489776006515042551253711323883",
+          "relative_error_or_absolute_at_zero": 7.14816317251277e-17
+        },
+        "construction_factor": {
+          "actual": 4.9999999999849996,
+          "reference_decimal": "4.9999999999850000000000349999999999300000000001259999999997900000000003300000000",
+          "relative_error_or_absolute_at_zero": 8.906607008327699e-17
+        },
+        "operation_factor": {
+          "actual": 39.99999999898,
+          "reference_decimal": "39.999999998980000000016179999999805490000001906757999984109510000115774769999249",
+          "relative_error_or_absolute_at_zero": 4.2298637025608076e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0011",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58111243639.51065,
+          "reference_decimal": "58111243639.510651199526982962962075254155690966362784107245735842640220708412265",
+          "relative_error_or_absolute_at_zero": 9.718624531018862e-18
+        },
+        "discounted_energy": {
+          "actual": 274751585.88119596,
+          "reference_decimal": "274751585.88119599113171826865889223286644157783844837163251204540155246980563755",
+          "relative_error_or_absolute_at_zero": 1.044677196156775e-16
+        },
+        "price": {
+          "actual": 211.50467049401584,
+          "reference_decimal": "211.50467049401583417458796966377139430906543209682761238598006312774386697738782",
+          "relative_error_or_absolute_at_zero": 3.0529021630564605e-17
+        },
+        "construction_factor": {
+          "actual": 4.999999850000004,
+          "reference_decimal": "4.9999998500000034999999300000012599999790000003299999950500000714999989990000137",
+          "relative_error_or_absolute_at_zero": 1.523119540467523e-17
+        },
+        "operation_factor": {
+          "actual": 39.99998980000162,
+          "reference_decimal": "39.999989800001617999805490019067578410951115774762474623893161259569289027535589",
+          "relative_error_or_absolute_at_zero": 9.079260832228064e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0012",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 57969438690.682,
+          "reference_decimal": "57969438690.681995016212413118453690033514053652236641217487513824134099233300128",
+          "relative_error_or_absolute_at_zero": 7.228516698239308e-17
+        },
+        "discounted_energy": {
+          "actual": 274052149.2559111,
+          "reference_decimal": "274052149.25591115266893298988278583929582768141897629933113765878311509316798869",
+          "relative_error_or_absolute_at_zero": 1.4901276294201311e-16
+        },
+        "price": {
+          "actual": 211.52703544955554,
+          "reference_decimal": "211.52703544955550614446892510507689546324443627775270418344535247385695708210265",
+          "relative_error_or_absolute_at_zero": 1.644768155102241e-16
+        },
+        "construction_factor": {
+          "actual": 4.998500349930014,
+          "reference_decimal": "4.9985003499300125979003299505071489991364818023796940387551555984268588539375264",
+          "relative_error_or_absolute_at_zero": 2.399842064660546e-16
+        },
+        "operation_factor": {
+          "actual": 39.89816160568052,
+          "reference_decimal": "39.898161605680517010799560526709597606062727342052830195311089297412986452444077",
+          "relative_error_or_absolute_at_zero": 9.587168983900194e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0013",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 13415949859.392103,
+          "reference_decimal": "13415949859.392104691339026249103153652947338118439798725371103239034737664177613",
+          "relative_error_or_absolute_at_zero": 1.1152013925530545e-16
+        },
+        "discounted_energy": {
+          "actual": 55744991.735617585,
+          "reference_decimal": "55744991.735617606790358396147727449600671650783479099564867335853196834412224761",
+          "relative_error_or_absolute_at_zero": 3.8227909929437944e-16
+        },
+        "price": {
+          "actual": 240.66646063955096,
+          "reference_decimal": "240.66646063955089491299066099814714133931112787258964766667376046325505006678372",
+          "relative_error_or_absolute_at_zero": 2.797591222315674e-16
+        },
+        "construction_factor": {
+          "actual": 3.9927100370780857,
+          "reference_decimal": "3.9927100370780854597496520118222245081106177634296465925941258104188702317186947",
+          "relative_error_or_absolute_at_zero": 5.87101244171888e-17
+        },
+        "operation_factor": {
+          "actual": 8.115691466072393,
+          "reference_decimal": "8.1156914660723940083389906975791581071722070048196702511234478701868096076956633",
+          "relative_error_or_absolute_at_zero": 1.104346317441523e-16
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0014",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 53892317983.64836,
+          "reference_decimal": "53892317983.648357496743685170926271205960989804097158322291403527683362002951392",
+          "relative_error_or_absolute_at_zero": 6.882819557797696e-17
+        },
+        "discounted_energy": {
+          "actual": -14506560.369917268,
+          "reference_decimal": "-14506560.369917285867903590541775331512489074908707347341460198317720106445871248",
+          "relative_error_or_absolute_at_zero": 1.2362969057490749e-15
+        },
+        "price": {
+          "actual": 0.0,
+          "reference_decimal": "0",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "construction_factor": {
+          "actual": 5.000000015,
+          "reference_decimal": "5.0000000150000000350000000700000001260000002100000003300000004950000007150000010",
+          "relative_error_or_absolute_at_zero": 6.358542885248978e-17
+        },
+        "operation_factor": {
+          "actual": 40.00000102000002,
+          "reference_decimal": "40.000001020000016180000194510001906758015890490115774770752537659431612858930714",
+          "relative_error_or_absolute_at_zero": 1.0665829743404243e-16
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0015",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 53892316629.53226,
+          "reference_decimal": "53892316629.53226240",
+          "relative_error_or_absolute_at_zero": 9.87139207907933e-17
+        },
+        "discounted_energy": {
+          "actual": -14506559.999999981,
+          "reference_decimal": "-14506560.000000",
+          "relative_error_or_absolute_at_zero": 1.2840019613409085e-15
+        },
+        "price": {
+          "actual": 0.0,
+          "reference_decimal": "0",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "construction_factor": {
+          "actual": 5.0,
+          "reference_decimal": "5",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "operation_factor": {
+          "actual": 40.0,
+          "reference_decimal": "40",
+          "relative_error_or_absolute_at_zero": 0.0
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0016",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 53892315275.41621,
+          "reference_decimal": "53892315275.416210190597787320679063089900910880089094234280051568406795154871202",
+          "relative_error_or_absolute_at_zero": 7.108127543776405e-17
+        },
+        "discounted_energy": {
+          "actual": -14506559.630082706,
+          "reference_decimal": "-14506559.630082725867903449458226051512477549091376627340914361685494266428513632",
+          "relative_error_or_absolute_at_zero": 1.370305843545424e-15
+        },
+        "price": {
+          "actual": 0.0,
+          "reference_decimal": "0",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "construction_factor": {
+          "actual": 4.999999985,
+          "reference_decimal": "4.9999999850000000349999999300000001259999997900000003299999995050000007149999990",
+          "relative_error_or_absolute_at_zero": 7.758542927600236e-17
+        },
+        "operation_factor": {
+          "actual": 39.999998980000015,
+          "reference_decimal": "39.999998980000016179999805490001906757984109510115774769247462349431612811069286",
+          "relative_error_or_absolute_at_zero": 2.747988115444088e-17
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0017",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58729548739.31723,
+          "reference_decimal": "58729548739.317228594378399072421835400740612838397071173384488517206045897580267",
+          "relative_error_or_absolute_at_zero": 2.775827519403703e-17
+        },
+        "discounted_energy": {
+          "actual": 0.0,
+          "reference_decimal": "0E-84",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "price": {
+          "actual": 0.0,
+          "reference_decimal": "0",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "construction_factor": {
+          "actual": 5.000000015,
+          "reference_decimal": "5.0000000150000000350000000700000001260000002100000003300000004950000007150000010",
+          "relative_error_or_absolute_at_zero": 6.358542885248978e-17
+        },
+        "operation_factor": {
+          "actual": 40.00000102000002,
+          "reference_decimal": "40.000001020000016180000194510001906758015890490115774770752537659431612858930714",
+          "relative_error_or_absolute_at_zero": 1.0665829743404243e-16
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0018",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58729547264.0,
+          "reference_decimal": "58729547264.00000",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "discounted_energy": {
+          "actual": 0.0,
+          "reference_decimal": "0.000000",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "price": {
+          "actual": 0.0,
+          "reference_decimal": "0",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "construction_factor": {
+          "actual": 5.0,
+          "reference_decimal": "5",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "operation_factor": {
+          "actual": 40.0,
+          "reference_decimal": "40",
+          "relative_error_or_absolute_at_zero": 0.0
+        }
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0019",
+      "method": "dated_integer_sums",
+      "comparisons": {
+        "discounted_cost": {
+          "actual": 58729545788.682816,
+          "reference_decimal": "58729545788.682818130377837503583669368694737667537165203211947959587809532493435",
+          "relative_error_or_absolute_at_zero": 4.390669109347145e-17
+        },
+        "discounted_energy": {
+          "actual": 0.0,
+          "reference_decimal": "0E-84",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "price": {
+          "actual": 0.0,
+          "reference_decimal": "0",
+          "relative_error_or_absolute_at_zero": 0.0
+        },
+        "construction_factor": {
+          "actual": 4.999999985,
+          "reference_decimal": "4.9999999850000000349999999300000001259999997900000003299999995050000007149999990",
+          "relative_error_or_absolute_at_zero": 7.758542927600236e-17
+        },
+        "operation_factor": {
+          "actual": 39.999998980000015,
+          "reference_decimal": "39.999998980000016179999805490001906757984109510115774769247462349431612811069286",
+          "relative_error_or_absolute_at_zero": 2.747988115444088e-17
+        }
+      }
+    }
+  ]
+}

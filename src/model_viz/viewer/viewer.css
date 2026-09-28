@@ -1,0 +1,35 @@
+html, body { margin: 0; height: 100%; }
+body { display: flex; flex-direction: column; font-family: system-ui, sans-serif; font-size: 14px; color: #222; }
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 1px solid #ccc; background: #f7f7f7; }
+.toolbar label { display: flex; align-items: center; gap: 6px; }
+.search-status { color: #8a4b00; }
+
+.banner { padding: 8px 12px; background: #fdecea; color: #8b1a1a; border-bottom: 1px solid #e0a8a8; white-space: pre-wrap; }
+
+.workspace { flex: 1; display: flex; min-height: 0; }
+.graph-pane { flex: 1; min-width: 0; position: relative; background: #fafafa; }
+.panel { width: 420px; flex: none; overflow-y: auto; border-left: 1px solid #ccc; padding: 12px 14px; box-sizing: border-box; background: #fff; }
+
+.panel h2 { margin: 0 0 4px; font-size: 18px; word-break: break-word; }
+.panel h3 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: #555; }
+.panel ul, .panel ol { margin: 0; padding-left: 18px; }
+.panel li { margin: 4px 0; }
+.panel .placeholder { color: #777; }
+.panel .muted { color: #666; font-size: 12px; }
+.panel .kind { display: inline-block; min-width: 64px; font-size: 11px; color: #555; text-transform: uppercase; }
+.panel .port { font-family: ui-monospace, monospace; font-size: 12px; color: #444; word-break: break-all; }
+
+.formula-text, .doc-text { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 12px; word-break: break-word; }
+.formula-note { display: block; font-size: 11px; color: #666; font-style: italic; }
+
+.warning { display: inline-block; padding: 1px 6px; border-radius: 3px; color: #8a4b00; background: #fff4e0; font-size: 12px; }
+
+.calc-link, .part-link { background: none; border: none; padding: 0; color: #1a5fb4; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font: inherit; }
+
+.part-title { display: flex; align-items: baseline; gap: 10px; }
+.part-toggle { font: inherit; font-size: 12px; padding: 1px 8px; cursor: pointer; }
+.panel h4 { margin: 12px 0 4px; font-size: 13px; font-weight: 600; color: #333; word-break: break-word; }
+.owner-group li { margin: 6px 0; }
+.attr-name { font-family: ui-monospace, monospace; font-size: 12px; font-weight: 600; }
+.value-cell { word-break: break-word; }

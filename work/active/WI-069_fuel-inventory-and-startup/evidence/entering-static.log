@@ -1,0 +1,11 @@
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 38 SysML files
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+{"2": {"success": false, "issue_count": 10}, "6": {"success": false, "issue_count": 1076}}
+Seed inventory: 34 True True

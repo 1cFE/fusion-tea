@@ -1,0 +1,265 @@
+E.......FFFF...F....FFFFF.FF............................................ [ 36%]
+........................................................................ [ 72%]
+.F....................................................                   [100%]
+==================================== ERRORS ====================================
+________ ERROR at setup of test_the_store_speaks_the_generic_vocabulary ________
+tests/study/conftest.py:285: in stock_route_run
+    study_route.run_availability_sweep(out)
+exploration/stellarator_e2e/studies/study_route.py:423: in run_availability_sweep
+    _completed(cases, "availability sweep"), ["availability_direct"],
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:399: in _completed
+    raise RouteError(
+E   study_route.RouteError: availability sweep: 19 of 19 cases did not complete
+=================================== FAILURES ===================================
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides7-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:125: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    oracle._compute(wi059_replay(overrides))
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:913: in _conductor_current
+    raise ValueError('oracle conductor current: invalid ' + key)
+E   ValueError: oracle conductor current: invalid temperature
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:124: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: invalid temperature'
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides8-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:125: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    oracle._compute(wi059_replay(overrides))
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:913: in _conductor_current
+    raise ValueError('oracle conductor current: invalid ' + key)
+E   ValueError: oracle conductor current: invalid temperature
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:124: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: invalid temperature'
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides9-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:125: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    oracle._compute(wi059_replay(overrides))
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:915: in _conductor_current
+    raise ValueError('oracle conductor current: unsupported temperature/construction')
+E   ValueError: oracle conductor current: unsupported temperature/construction
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:124: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: unsupported temperature/construction'
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides10-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:125: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    oracle._compute(wi059_replay(overrides))
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:915: in _conductor_current
+    raise ValueError('oracle conductor current: unsupported temperature/construction')
+E   ValueError: oracle conductor current: unsupported temperature/construction
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:124: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: unsupported temperature/construction'
+_ test_oracle_rejects_invalid_domains_and_restores_parameters[overrides14-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:125: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    oracle._compute(wi059_replay(overrides))
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:913: in _conductor_current
+    raise ValueError('oracle conductor current: invalid ' + key)
+E   ValueError: oracle conductor current: invalid temperature
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:124: in test_oracle_rejects_invalid_domains_and_restores_parameters
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: invalid temperature'
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[cryoplant__T_cold_cryo-0.0-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:141: in test_supported_adapter_inputs_propagate_deliberate_domain_error
+    oracle.evaluate(WI059_REPLAY | {oracle.P + suffix: value})
+exploration/stellarator_e2e/studies/oracle_entry.py:883: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:913: in _conductor_current
+    raise ValueError('oracle conductor current: invalid ' + key)
+E   ValueError: oracle conductor current: invalid temperature
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:140: in test_supported_adapter_inputs_propagate_deliberate_domain_error
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: invalid temperature'
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[cryoplant__T_cold_cryo-300.0-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:141: in test_supported_adapter_inputs_propagate_deliberate_domain_error
+    oracle.evaluate(WI059_REPLAY | {oracle.P + suffix: value})
+exploration/stellarator_e2e/studies/oracle_entry.py:883: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:915: in _conductor_current
+    raise ValueError('oracle conductor current: unsupported temperature/construction')
+E   ValueError: oracle conductor current: unsupported temperature/construction
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:140: in test_supported_adapter_inputs_propagate_deliberate_domain_error
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: unsupported temperature/construction'
+_ test_supported_adapter_inputs_propagate_deliberate_domain_error[cryoplant__T_cold_cryo-301.0-0 < T_cold < T_amb] _
+tests/study/test_domain_consumers.py:141: in test_supported_adapter_inputs_propagate_deliberate_domain_error
+    oracle.evaluate(WI059_REPLAY | {oracle.P + suffix: value})
+exploration/stellarator_e2e/studies/oracle_entry.py:883: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:915: in _conductor_current
+    raise ValueError('oracle conductor current: unsupported temperature/construction')
+E   ValueError: oracle conductor current: unsupported temperature/construction
+
+During handling of the above exception, another exception occurred:
+tests/study/test_domain_consumers.py:140: in test_supported_adapter_inputs_propagate_deliberate_domain_error
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: '0 < T_cold < T_amb'
+E     Actual message: 'oracle conductor current: unsupported temperature/construction'
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row0] ______
+tests/study/test_domain_consumers.py:155: in test_valid_outputs_exactly_preserved_and_physical_identities
+    assert result.keys() == expected.keys() | added
+E   AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E     
+E     Use -v to get more diff
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row1] ______
+tests/study/test_domain_consumers.py:155: in test_valid_outputs_exactly_preserved_and_physical_identities
+    assert result.keys() == expected.keys() | added
+E   AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E     
+E     Use -v to get more diff
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row3] ______
+tests/study/test_domain_consumers.py:155: in test_valid_outputs_exactly_preserved_and_physical_identities
+    assert result.keys() == expected.keys() | added
+E   AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E     
+E     Use -v to get more diff
+______________ test_adapter_contract_and_ambient_limit_preserved _______________
+tests/study/test_domain_consumers.py:184: in test_adapter_contract_and_ambient_limit_preserved
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs
+E   AssertionError: assert {'stellarator...e_limit', ...} == {'stellarator..._direct', ...}
+E     
+E     Omitting 96 identical items, use -vv to show
+E     Left contains 197 more items:
+E     {'stellarator_09__stellaris__blanket__blanket_t': 'blanket_t',
+E      'stellarator_09__stellaris__blanket__first_wall__firstwall_t': 'firstwall_t',
+E      'stellarator_09__stellaris__blanket__first_wall__fluence_limit': 'fluence_limit',
+E      'stellarator_09__stellaris__blanket__first_wall__vacuum_t': 'vacuum_t',...
+E     
+E     ...Full output truncated (197 lines hidden), use '-vv' to show
+_____________________ test_current_rate_route_and_coverage _____________________
+tests/study/test_financial_consumers.py:99: in test_current_rate_route_and_coverage
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS)  # WI-038 adds two explicitly mapped grade inputs.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 490 == (265 + 27)
+E    +  where 490 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})
+E    +  and   27 = len((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}))
+=============================== warnings summary ===============================
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides7-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides8-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides9-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides10-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_oracle_rejects_invalid_domains_and_restores_parameters[overrides14-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[cryoplant__T_cold_cryo-0.0-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[cryoplant__T_cold_cryo-300.0-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_supported_adapter_inputs_propagate_deliberate_domain_error[cryoplant__T_cold_cryo-301.0-0 < T_cold < T_amb]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]
+FAILED tests/study/test_domain_consumers.py::test_adapter_contract_and_ambient_limit_preserved
+FAILED tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+ERROR tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary
+13 failed, 184 passed, 1 warning, 1 error in 72.33s (0:01:12)

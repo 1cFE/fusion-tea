@@ -1,0 +1,644 @@
+{
+ "P0_design": {
+  "R": 12.7,
+  "a": 1.3,
+  "r_coil_centre": 3.1500000000000004,
+  "c_coil_new": 25.0,
+  "ratio": 1.0,
+  "lcoe_calc__lcoe": {
+   "old": 142.50725862880654,
+   "new": 142.50725862880654,
+   "rel": 0.0
+  },
+  "total_capital__total_capital": {
+   "old": 8748878936.137337,
+   "new": 8748878936.137337,
+   "rel": 0.0
+  },
+  "pb__p_net": {
+   "old": 1013.9319325539626,
+   "new": 1013.9319325539626,
+   "rel": 0.0
+  },
+  "pb__rec_frac": {
+   "old": 0.25335045437244624,
+   "new": 0.25335045437244624,
+   "rel": 0.0
+  },
+  "pb__p_th": {
+   "old": 3301.2132114869937,
+   "new": 3301.2132114869937,
+   "rel": 0.0
+  },
+  "magnet__wp_volume__vol_winding_pack": {
+   "old": 136.55999999999997,
+   "new": 136.55999999999997,
+   "rel": 0.0
+  },
+  "magnet__winding_procurement__conductor_length": {
+   "old": 321600.0,
+   "new": 321600.0,
+   "rel": 0.0
+  },
+  "magnet__winding_procurement__tape_cost": {
+   "old": 804000000.0,
+   "new": 804000000.0,
+   "rel": 0.0
+  },
+  "magnet__winding_procurement__winding_fabrication_cost": {
+   "old": 750415091.6602907,
+   "new": 750415091.6602907,
+   "rel": 0.0
+  },
+  "magnet__material_inventory__material_cost": {
+   "old": 15954709.374417959,
+   "new": 15954709.374417959,
+   "rel": 0.0
+  },
+  "magnet__winding_procurement__cost": {
+   "old": 1570369801.0347085,
+   "new": 1570369801.0347085,
+   "rel": 0.0
+  },
+  "magnet__winding_pack_cost__cost": {
+   "old": 5346600000.0,
+   "new": 5346600000.0,
+   "rel": 0.0
+  },
+  "magnet__magnet_structure_cost__cost": {
+   "old": 54432000.0,
+   "new": 54432000.0,
+   "rel": 0.0
+  },
+  "magnet__magnet_capital_rollup__capital_cost": {
+   "old": 1624801801.0347085,
+   "new": 1624801801.0347085,
+   "rel": 0.0
+  },
+  "cryoplant__cryo_elec__p_elec": {
+   "old": 0.8643515999999999,
+   "new": 0.8643515999999999,
+   "rel": 0.0
+  },
+  "cryoplant__aux_cooling__cryo_cost": {
+   "old": 16700459.69057127,
+   "new": 16700459.69057127,
+   "rel": 0.0
+  },
+  "magnet__peak_field_calc__B_peak": {
+   "old": 24.899999999999995,
+   "new": 24.899999999999995,
+   "rel": 0.0
+  },
+  "magnet__wp_stress__sigma_wp": {
+   "old": 650000000.0,
+   "new": 650000000.0,
+   "rel": 0.0
+  },
+  "magnet__stored_energy__W_mag": {
+   "old": 111000000000.0,
+   "new": 111000000000.0,
+   "rel": 0.0
+  },
+  "rb__r_coil_centre": {
+   "old": 3.1500000000000004,
+   "new": 3.1500000000000004,
+   "rel": 0.0
+  }
+ },
+ "P1_a1.4": {
+  "R": 12.7,
+  "a": 1.4,
+  "r_coil_centre": 3.2500000000000004,
+  "c_coil_new": 25.793650793650798,
+  "ratio": 1.0317460317460319,
+  "lcoe_calc__lcoe": {
+   "old": 133.0795555908738,
+   "new": 134.04581676922163,
+   "rel": 0.007260778517463613
+  },
+  "total_capital__total_capital": {
+   "old": 9120750617.726318,
+   "new": 9202889950.383345,
+   "rel": 0.009005764558169944
+  },
+  "pb__p_net": {
+   "old": 1136.8936966572721,
+   "new": 1136.8829235906055,
+   "rel": -9.47587861406127e-06
+  },
+  "pb__rec_frac": {
+   "old": 0.20558953252539955,
+   "new": 0.20559706026255914,
+   "rel": 3.6615371741557554e-05
+  },
+  "pb__p_th": {
+   "old": 3479.0164274300387,
+   "new": 3479.0164274300387,
+   "rel": 0.0
+  },
+  "magnet__wp_volume__vol_winding_pack": {
+   "old": 136.55999999999997,
+   "new": 140.89523809523808,
+   "rel": 0.03174603174603187
+  },
+  "magnet__winding_procurement__conductor_length": {
+   "old": 321600.0,
+   "new": 331809.52380952385,
+   "rel": 0.031746031746031855
+  },
+  "magnet__winding_procurement__tape_cost": {
+   "old": 804000000.0,
+   "new": 829523809.5238096,
+   "rel": 0.03174603174603178
+  },
+  "magnet__winding_procurement__winding_fabrication_cost": {
+   "old": 750415091.6602907,
+   "new": 774237792.9828396,
+   "rel": 0.03174603174603169
+  },
+  "magnet__material_inventory__material_cost": {
+   "old": 15954709.374417959,
+   "new": 16461208.084716944,
+   "rel": 0.0317460317460319
+  },
+  "magnet__winding_procurement__cost": {
+   "old": 1570369801.0347085,
+   "new": 1620222810.591366,
+   "rel": 0.031746031746031834
+  },
+  "magnet__winding_pack_cost__cost": {
+   "old": 5346600000.0,
+   "new": 5516333333.333334,
+   "rel": 0.03174603174603186
+  },
+  "magnet__magnet_structure_cost__cost": {
+   "old": 57151531.28841528,
+   "new": 57151531.28841528,
+   "rel": 0.0
+  },
+  "magnet__magnet_capital_rollup__capital_cost": {
+   "old": 1627521332.3231237,
+   "new": 1677374341.8797812,
+   "rel": 0.030631248000600627
+  },
+  "cryoplant__cryo_elec__p_elec": {
+   "old": 0.8643515999999999,
+   "new": 0.8751246666666667,
+   "rel": 0.012463755104597223
+  },
+  "cryoplant__aux_cooling__cryo_cost": {
+   "old": 16700459.69057127,
+   "new": 16845894.053874668,
+   "rel": 0.00870840479831259
+  },
+  "magnet__peak_field_calc__B_peak": {
+   "old": 25.163492063492054,
+   "new": 25.163492063492054,
+   "rel": 0.0
+  },
+  "magnet__wp_stress__sigma_wp": {
+   "old": 656878306.8783067,
+   "new": 656878306.8783067,
+   "rel": 0.0
+  },
+  "magnet__stored_energy__W_mag": {
+   "old": 118159486016.62889,
+   "new": 118159486016.62889,
+   "rel": 0.0
+  },
+  "rb__r_coil_centre": {
+   "old": 3.2500000000000004,
+   "new": 3.2500000000000004,
+   "rel": 0.0
+  }
+ },
+ "P2_a2.2": {
+  "R": 12.7,
+  "a": 2.2,
+  "r_coil_centre": 4.050000000000001,
+  "c_coil_new": 32.142857142857146,
+  "ratio": 1.2857142857142858,
+  "lcoe_calc__lcoe": {
+   "old": 122.5097968327814,
+   "new": 129.34993388555515,
+   "rel": 0.05583338826453302
+  },
+  "total_capital__total_capital": {
+   "old": 10807920179.263897,
+   "new": 11547148307.665697,
+   "rel": 0.06839689007142051
+  },
+  "pb__p_net": {
+   "old": 1414.8686662916468,
+   "new": 1414.771708691647,
+   "rel": -6.852763250026123e-05
+  },
+  "pb__rec_frac": {
+   "old": 0.15307437611667035,
+   "new": 0.15313241392457902,
+   "rel": 0.00037914776712486556
+  },
+  "pb__p_th": {
+   "old": 4061.1818338558833,
+   "new": 4061.1818338558833,
+   "rel": 0.0
+  },
+  "magnet__wp_volume__vol_winding_pack": {
+   "old": 136.55999999999997,
+   "new": 175.57714285714283,
+   "rel": 0.28571428571428575
+  },
+  "magnet__winding_procurement__conductor_length": {
+   "old": 321600.0,
+   "new": 413485.7142857143,
+   "rel": 0.2857142857142858
+  },
+  "magnet__winding_procurement__tape_cost": {
+   "old": 804000000.0,
+   "new": 1033714285.7142859,
+   "rel": 0.28571428571428586
+  },
+  "magnet__winding_procurement__winding_fabrication_cost": {
+   "old": 750415091.6602907,
+   "new": 964819403.563231,
+   "rel": 0.2857142857142858
+  },
+  "magnet__material_inventory__material_cost": {
+   "old": 15954709.374417959,
+   "new": 20513197.767108805,
+   "rel": 0.2857142857142858
+  },
+  "magnet__winding_procurement__cost": {
+   "old": 1570369801.0347085,
+   "new": 2019046887.0446258,
+   "rel": 0.2857142857142861
+  },
+  "magnet__winding_pack_cost__cost": {
+   "old": 5346600000.0,
+   "new": 6874200000.000001,
+   "rel": 0.28571428571428586
+  },
+  "magnet__magnet_structure_cost__cost": {
+   "old": 80560038.34023371,
+   "new": 80560038.34023371,
+   "rel": 0.0
+  },
+  "magnet__magnet_capital_rollup__capital_cost": {
+   "old": 1650929839.3749423,
+   "new": 2099606925.3848596,
+   "rel": 0.2717723523488985
+  },
+  "cryoplant__cryo_elec__p_elec": {
+   "old": 0.8643515999999999,
+   "new": 0.9613091999999999,
+   "rel": 0.11217379594137385
+  },
+  "cryoplant__aux_cooling__cryo_cost": {
+   "old": 16700459.69057127,
+   "new": 17990750.73682025,
+   "rel": 0.07726081019059919
+  },
+  "magnet__peak_field_calc__B_peak": {
+   "old": 27.4907514450867,
+   "new": 27.4907514450867,
+   "rel": 0.0
+  },
+  "magnet__wp_stress__sigma_wp": {
+   "old": 717630057.8034682,
+   "new": 717630057.8034682,
+   "rel": 0.0
+  },
+  "magnet__stored_energy__W_mag": {
+   "old": 183489795918.36737,
+   "new": 183489795918.36737,
+   "rel": 0.0
+  },
+  "rb__r_coil_centre": {
+   "old": 4.050000000000001,
+   "new": 4.050000000000001,
+   "rel": 0.0
+  }
+ },
+ "P3_R15.7_a1.3": {
+  "R": 15.7,
+  "a": 1.3,
+  "r_coil_centre": 3.1500000000000004,
+  "c_coil_new": 25.0,
+  "ratio": 1.0,
+  "lcoe_calc__lcoe": {
+   "old": 209.51180962087514,
+   "new": 201.02133716867294,
+   "rel": -0.04052503039120441
+  },
+  "total_capital__total_capital": {
+   "old": 11857109969.959507,
+   "new": 11245934296.052652,
+   "rel": -0.05154507931994341
+  },
+  "pb__p_net": {
+   "old": 984.5072729164381,
+   "new": 984.5874347117137,
+   "rel": 8.1423263678089e-05
+  },
+  "pb__rec_frac": {
+   "old": 0.5503327605555327,
+   "new": 0.550296147181328,
+   "rel": -6.652951964503547e-05
+  },
+  "pb__p_th": {
+   "old": 5322.421434283255,
+   "new": 5322.421434283255,
+   "rel": 0.0
+  },
+  "magnet__wp_volume__vol_winding_pack": {
+   "old": 168.8182677165354,
+   "new": 136.55999999999997,
+   "rel": -0.19108280254777063
+  },
+  "magnet__winding_procurement__conductor_length": {
+   "old": 397568.5039370079,
+   "new": 321600.0,
+   "rel": -0.1910828025477708
+  },
+  "magnet__winding_procurement__tape_cost": {
+   "old": 993921259.8425199,
+   "new": 804000000.0,
+   "rel": -0.19108280254777085
+  },
+  "magnet__winding_procurement__winding_fabrication_cost": {
+   "old": 927678499.1390996,
+   "new": 750415091.6602907,
+   "rel": -0.19108280254777074
+  },
+  "magnet__material_inventory__material_cost": {
+   "old": 19723538.36050094,
+   "new": 15954709.374417959,
+   "rel": -0.19108280254777063
+  },
+  "magnet__winding_procurement__cost": {
+   "old": 1941323297.3421204,
+   "new": 1570369801.0347085,
+   "rel": -0.19108280254777088
+  },
+  "magnet__winding_pack_cost__cost": {
+   "old": 6609576377.952758,
+   "new": 5346600000.0,
+   "rel": -0.19108280254777094
+  },
+  "magnet__magnet_structure_cost__cost": {
+   "old": 46133825.16176146,
+   "new": 46133825.16176146,
+   "rel": 0.0
+  },
+  "magnet__magnet_capital_rollup__capital_cost": {
+   "old": 1987457122.503882,
+   "new": 1616503626.19647,
+   "rel": -0.1866472952332522
+  },
+  "cryoplant__cryo_elec__p_elec": {
+   "old": 0.9445133952755904,
+   "new": 0.8643515999999999,
+   "rel": -0.08487099884083793
+  },
+  "cryoplant__aux_cooling__cryo_cost": {
+   "old": 17770138.080513768,
+   "new": 16700459.69057127,
+   "rel": -0.060195277329638544
+  },
+  "magnet__peak_field_calc__B_peak": {
+   "old": 18.947808764940234,
+   "new": 18.947808764940234,
+   "rel": 0.0
+  },
+  "magnet__wp_stress__sigma_wp": {
+   "old": 494621513.94422305,
+   "new": 494621513.94422305,
+   "rel": 0.0
+  },
+  "magnet__stored_energy__W_mag": {
+   "old": 89789808917.19746,
+   "new": 89789808917.19746,
+   "rel": 0.0
+  },
+  "rb__r_coil_centre": {
+   "old": 3.1500000000000004,
+   "new": 3.1500000000000004,
+   "rel": 0.0
+  }
+ },
+ "P4_R15.7_a2.2": {
+  "R": 15.7,
+  "a": 2.2,
+  "r_coil_centre": 4.050000000000001,
+  "c_coil_new": 32.142857142857146,
+  "ratio": 1.2857142857142858,
+  "lcoe_calc__lcoe": {
+   "old": 155.43373936982601,
+   "new": 156.3562362568588,
+   "rel": 0.005934984841597878
+  },
+  "total_capital__total_capital": {
+   "old": 16542763823.636469,
+   "new": 16670815114.12879,
+   "rel": 0.007740622537895393
+  },
+  "pb__p_net": {
+   "old": 1897.683279096625,
+   "new": 1897.6664832919002,
+   "rel": -8.850689105915959e-06
+  },
+  "pb__rec_frac": {
+   "old": 0.40355801297524835,
+   "new": 0.40356329189784507,
+   "rel": 1.308095100825682e-05
+  },
+  "pb__p_th": {
+   "old": 7734.586510579867,
+   "new": 7734.586510579867,
+   "rel": 0.0
+  },
+  "magnet__wp_volume__vol_winding_pack": {
+   "old": 168.8182677165354,
+   "new": 175.57714285714283,
+   "rel": 0.04003639672429494
+  },
+  "magnet__winding_procurement__conductor_length": {
+   "old": 397568.5039370079,
+   "new": 413485.7142857143,
+   "rel": 0.040036396724294786
+  },
+  "magnet__winding_procurement__tape_cost": {
+   "old": 993921259.8425199,
+   "new": 1033714285.7142859,
+   "rel": 0.040036396724294744
+  },
+  "magnet__winding_procurement__winding_fabrication_cost": {
+   "old": 927678499.1390996,
+   "new": 964819403.563231,
+   "rel": 0.040036396724294834
+  },
+  "magnet__material_inventory__material_cost": {
+   "old": 19723538.36050094,
+   "new": 20513197.767108805,
+   "rel": 0.04003639672429499
+  },
+  "magnet__winding_procurement__cost": {
+   "old": 1941323297.3421204,
+   "new": 2019046887.0446258,
+   "rel": 0.040036396724294855
+  },
+  "magnet__winding_pack_cost__cost": {
+   "old": 6609576377.952758,
+   "new": 6874200000.000001,
+   "rel": 0.040036396724294654
+  },
+  "magnet__magnet_structure_cost__cost": {
+   "old": 68278636.16646719,
+   "new": 68278636.16646719,
+   "rel": 0.0
+  },
+  "magnet__magnet_capital_rollup__capital_cost": {
+   "old": 2009601933.5085876,
+   "new": 2087325523.211093,
+   "rel": 0.038676112122765935
+  },
+  "cryoplant__cryo_elec__p_elec": {
+   "old": 0.9445133952755904,
+   "new": 0.9613091999999999,
+   "rel": 0.017782494995223188
+  },
+  "cryoplant__aux_cooling__cryo_cost": {
+   "old": 17770138.080513768,
+   "new": 17990750.73682025,
+   "rel": 0.012414796964824965
+  },
+  "magnet__peak_field_calc__B_peak": {
+   "old": 20.411587982832618,
+   "new": 20.411587982832618,
+   "rel": 0.0
+  },
+  "magnet__wp_stress__sigma_wp": {
+   "old": 532832618.0257512,
+   "new": 532832618.0257512,
+   "rel": 0.0
+  },
+  "magnet__stored_energy__W_mag": {
+   "old": 148428051475.36725,
+   "new": 148428051475.36725,
+   "rel": 0.0
+  },
+  "rb__r_coil_centre": {
+   "old": 4.050000000000001,
+   "new": 4.050000000000001,
+   "rel": 0.0
+  }
+ },
+ "P5_R11.43_a1.3": {
+  "R": 11.43,
+  "a": 1.3,
+  "r_coil_centre": 3.1500000000000004,
+  "c_coil_new": 25.0,
+  "ratio": 1.0,
+  "lcoe_calc__lcoe": {
+   "old": 136.4473444035549,
+   "new": 140.280018085293,
+   "rel": 0.028089030962761975
+  },
+  "total_capital__total_capital": {
+   "old": 7536319184.803284,
+   "new": 7795062889.270231,
+   "rel": 0.03433290152952849
+  },
+  "pb__p_net": {
+   "old": 902.9324699725166,
+   "new": 902.8985348125166,
+   "rel": -3.758327574717563e-05
+  },
+  "pb__rec_frac": {
+   "old": 0.16119479977828904,
+   "new": 0.16122632482542706,
+   "rel": 0.00019557111756322436
+  },
+  "pb__p_th": {
+   "old": 2616.8313577196104,
+   "new": 2616.8313577196104,
+   "rel": 0.0
+  },
+  "magnet__wp_volume__vol_winding_pack": {
+   "old": 122.90399999999997,
+   "new": 136.55999999999997,
+   "rel": 0.11111111111111119
+  },
+  "magnet__winding_procurement__conductor_length": {
+   "old": 289440.0,
+   "new": 321600.0,
+   "rel": 0.1111111111111111
+  },
+  "magnet__winding_procurement__tape_cost": {
+   "old": 723600000.0,
+   "new": 804000000.0,
+   "rel": 0.1111111111111111
+  },
+  "magnet__winding_procurement__winding_fabrication_cost": {
+   "old": 675373582.4942616,
+   "new": 750415091.6602907,
+   "rel": 0.11111111111111115
+  },
+  "magnet__material_inventory__material_cost": {
+   "old": 14359238.43697616,
+   "new": 15954709.374417959,
+   "rel": 0.11111111111111127
+  },
+  "magnet__winding_procurement__cost": {
+   "old": 1413332820.9312377,
+   "new": 1570369801.0347085,
+   "rel": 0.11111111111111108
+  },
+  "magnet__winding_pack_cost__cost": {
+   "old": 4811940000.0,
+   "new": 5346600000.0,
+   "rel": 0.1111111111111111
+  },
+  "magnet__magnet_structure_cost__cost": {
+   "old": 59094237.67719218,
+   "new": 59094237.67719218,
+   "rel": 0.0
+  },
+  "magnet__magnet_capital_rollup__capital_cost": {
+   "old": 1472427058.60843,
+   "new": 1629464038.7119007,
+   "rel": 0.10665178908888312
+  },
+  "cryoplant__cryo_elec__p_elec": {
+   "old": 0.8304164399999999,
+   "new": 0.8643515999999999,
+   "rel": 0.04086523142533157
+  },
+  "cryoplant__aux_cooling__cryo_cost": {
+   "old": 16238737.978485206,
+   "new": 16700459.69057127,
+   "rel": 0.028433349481825645
+  },
+  "magnet__peak_field_calc__B_peak": {
+   "old": 28.71920289855072,
+   "new": 28.71920289855072,
+   "rel": 0.0
+  },
+  "magnet__wp_stress__sigma_wp": {
+   "old": 749698067.6328502,
+   "new": 749698067.6328502,
+   "rel": 0.0
+  },
+  "magnet__stored_energy__W_mag": {
+   "old": 123333333333.33334,
+   "new": 123333333333.33334,
+   "rel": 0.0
+  },
+  "rb__r_coil_centre": {
+   "old": 3.1500000000000004,
+   "new": 3.1500000000000004,
+   "rel": 0.0
+  }
+ }
+}

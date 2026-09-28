@@ -1,0 +1,83 @@
+..........FFF
+=================================== FAILURES ===================================
+_ test_cost_controls_preserve_every_other_physical_output_and_verdict[change0] _
+
+evaluate = <function evaluate.<locals>.run at 0x73663307fe20>
+change = {'fuel_cycle__processing_price_multiplier': 2.0}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('change',[{'fuel_cycle__processing_price_multiplier':2.}, {'fuel_cycle__processing_containment_cpi':96.5},{'fuel_cycle__processing_capacity_margin':1.5}])
+    def test_cost_controls_preserve_every_other_physical_output_and_verdict(evaluate,change):
+        import oracle_entry as entry
+        a=evaluate();b=evaluate(change)
+        # Exact identity for every output outside the declared processing/financial fan-out.
+        financial=('fuel_cycle__processing_cost__','shipping_scope__','cas22_','cas2x_','contingency__','cas20_','indirect__','supplementary__','overnight_','idc__','total_capital__','lcoe')
+        ignored={key for key in a.outputs if any(t in key for t in financial)}
+        # Some generated finance channels are named by their established consumers.
+        economic_names=('cas30_capital','cas50_capital','capital_annualized','annual_capital_charge','capital_cost','coe','cost_of_electricity')
+        ignored|={key for key in a.outputs if any(t in key for t in economic_names)}
+        differing={key for key in a.outputs if a.outputs[key]!=b.outputs[key]}
+>       assert differing<=ignored,differing-ignored
+E       AssertionError: {'stellarator_09__stellaris__cas90_1cfe_calc__cas90'}
+E       assert {'stellarator...capital', ...} <= {'stellarator...capital', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__cas90_1cfe_calc__cas90'
+
+tests/models/test_fuel_processing_oracle.py:47: AssertionError
+_ test_cost_controls_preserve_every_other_physical_output_and_verdict[change1] _
+
+evaluate = <function evaluate.<locals>.run at 0x73663307fe20>
+change = {'fuel_cycle__processing_containment_cpi': 96.5}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('change',[{'fuel_cycle__processing_price_multiplier':2.}, {'fuel_cycle__processing_containment_cpi':96.5},{'fuel_cycle__processing_capacity_margin':1.5}])
+    def test_cost_controls_preserve_every_other_physical_output_and_verdict(evaluate,change):
+        import oracle_entry as entry
+        a=evaluate();b=evaluate(change)
+        # Exact identity for every output outside the declared processing/financial fan-out.
+        financial=('fuel_cycle__processing_cost__','shipping_scope__','cas22_','cas2x_','contingency__','cas20_','indirect__','supplementary__','overnight_','idc__','total_capital__','lcoe')
+        ignored={key for key in a.outputs if any(t in key for t in financial)}
+        # Some generated finance channels are named by their established consumers.
+        economic_names=('cas30_capital','cas50_capital','capital_annualized','annual_capital_charge','capital_cost','coe','cost_of_electricity')
+        ignored|={key for key in a.outputs if any(t in key for t in economic_names)}
+        differing={key for key in a.outputs if a.outputs[key]!=b.outputs[key]}
+>       assert differing<=ignored,differing-ignored
+E       AssertionError: {'stellarator_09__stellaris__cas90_1cfe_calc__cas90'}
+E       assert {'stellarator...capital', ...} <= {'stellarator...capital', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__cas90_1cfe_calc__cas90'
+
+tests/models/test_fuel_processing_oracle.py:47: AssertionError
+_ test_cost_controls_preserve_every_other_physical_output_and_verdict[change2] _
+
+evaluate = <function evaluate.<locals>.run at 0x73663307fe20>
+change = {'fuel_cycle__processing_capacity_margin': 1.5}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('change',[{'fuel_cycle__processing_price_multiplier':2.}, {'fuel_cycle__processing_containment_cpi':96.5},{'fuel_cycle__processing_capacity_margin':1.5}])
+    def test_cost_controls_preserve_every_other_physical_output_and_verdict(evaluate,change):
+        import oracle_entry as entry
+        a=evaluate();b=evaluate(change)
+        # Exact identity for every output outside the declared processing/financial fan-out.
+        financial=('fuel_cycle__processing_cost__','shipping_scope__','cas22_','cas2x_','contingency__','cas20_','indirect__','supplementary__','overnight_','idc__','total_capital__','lcoe')
+        ignored={key for key in a.outputs if any(t in key for t in financial)}
+        # Some generated finance channels are named by their established consumers.
+        economic_names=('cas30_capital','cas50_capital','capital_annualized','annual_capital_charge','capital_cost','coe','cost_of_electricity')
+        ignored|={key for key in a.outputs if any(t in key for t in economic_names)}
+        differing={key for key in a.outputs if a.outputs[key]!=b.outputs[key]}
+>       assert differing<=ignored,differing-ignored
+E       AssertionError: {'stellarator_09__stellaris__cas90_1cfe_calc__cas90'}
+E       assert {'stellarator...ty_kg_s', ...} <= {'stellarator...capital', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__cas90_1cfe_calc__cas90'
+
+tests/models/test_fuel_processing_oracle.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_fuel_processing_oracle.py::test_cost_controls_preserve_every_other_physical_output_and_verdict[change0]
+FAILED tests/models/test_fuel_processing_oracle.py::test_cost_controls_preserve_every_other_physical_output_and_verdict[change1]
+FAILED tests/models/test_fuel_processing_oracle.py::test_cost_controls_preserve_every_other_physical_output_and_verdict[change2]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 3 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+3 failed, 10 passed, 13 warnings in 31.31s

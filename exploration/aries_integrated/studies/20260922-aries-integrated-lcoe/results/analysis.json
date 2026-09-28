@@ -1,0 +1,328 @@
+{
+  "scope": "Native finite-LCOE results; isolated refusals separate. Unequal engineered sensitivity windows, no probability or optimum.",
+  "cases": 64,
+  "attempts": {
+    "committed": 64,
+    "started": 64
+  },
+  "evaluator_reruns": 0,
+  "numeric_outputs_per_case": [
+    546
+  ],
+  "all_scoped_checks_satisfied": 60,
+  "adverse_cases": [
+    {
+      "case": "nominal-source-assumed",
+      "net_mw": 796.0052878870191,
+      "lcoe": 767.4209310802515,
+      "verdicts": {
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07": "violated"
+      }
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "net_mw": 807.0166597175527,
+      "lcoe": 756.9498247890673,
+      "verdicts": {
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07": "violated"
+      }
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "net_mw": 805.9108652992365,
+      "lcoe": 737.8553703208381,
+      "verdicts": {
+        "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535": "violated",
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07": "violated"
+      }
+    },
+    {
+      "case": "he-area-5000.0",
+      "net_mw": 389.19551661815603,
+      "lcoe": 1215.0756889447423,
+      "verdicts": {
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07": "violated"
+      }
+    }
+  ],
+  "axis_ranges": [
+    {
+      "axis": "discount",
+      "arm": "no-credit",
+      "minimum": 1062.967326857354,
+      "maximum": 1212.7693620046334,
+      "cases": [
+        "no-breeding-credit",
+        "discount-0.0-no-credit",
+        "discount-1e-12-no-credit",
+        "discount-0.03-no-credit",
+        "discount-0.08-no-credit",
+        "discount-0.1-no-credit",
+        "zero-rate-zero-construction"
+      ]
+    },
+    {
+      "axis": "discount",
+      "arm": "named-feed",
+      "minimum": 120.24581287694876,
+      "maximum": 270.04784802422813,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "discount-0.0-feed",
+        "discount-1e-12-feed",
+        "discount-0.03-feed",
+        "discount-0.08-feed",
+        "discount-0.1-feed"
+      ]
+    },
+    {
+      "axis": "construction",
+      "arm": "no-credit",
+      "minimum": 1106.7237403618278,
+      "maximum": 1128.9565721540446,
+      "cases": [
+        "no-breeding-credit",
+        "construction-0.0-no-credit",
+        "construction-4.0-no-credit",
+        "construction-10.0-no-credit"
+      ]
+    },
+    {
+      "axis": "construction",
+      "arm": "named-feed",
+      "minimum": 164.00222638142264,
+      "maximum": 186.23505817363932,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "construction-0.0-feed",
+        "construction-4.0-feed",
+        "construction-10.0-feed"
+      ]
+    },
+    {
+      "axis": "terminal",
+      "arm": "no-credit",
+      "minimum": 1118.836550905161,
+      "maximum": 1120.5511483611851,
+      "cases": [
+        "no-breeding-credit",
+        "terminal-0.05",
+        "terminal-0.2"
+      ]
+    },
+    {
+      "axis": "salvage",
+      "arm": "no-credit",
+      "minimum": 1119.0651638992974,
+      "maximum": 1119.636696384639,
+      "cases": [
+        "no-breeding-credit",
+        "salvage-0.0",
+        "salvage-0.05"
+      ]
+    },
+    {
+      "axis": "overhaul_fraction",
+      "arm": "no-credit",
+      "minimum": 1117.8916375587305,
+      "maximum": 1120.9245292222743,
+      "cases": [
+        "no-breeding-credit",
+        "overhaul_fraction-0.0",
+        "overhaul_fraction-0.1"
+      ]
+    },
+    {
+      "axis": "overhaul_date",
+      "arm": "no-credit",
+      "minimum": 1118.8226037531317,
+      "maximum": 1119.8270494143508,
+      "cases": [
+        "no-breeding-credit",
+        "overhaul_date-15.0",
+        "overhaul_date-30.0"
+      ]
+    },
+    {
+      "axis": "life",
+      "arm": "no-credit",
+      "minimum": 1110.088437368707,
+      "maximum": 1155.3210825988904,
+      "cases": [
+        "no-breeding-credit",
+        "life-20.0-no-credit",
+        "life-30.0-no-credit",
+        "life-60.0-no-credit"
+      ]
+    },
+    {
+      "axis": "life",
+      "arm": "named-feed",
+      "minimum": 167.36692338830187,
+      "maximum": 212.59956861848516,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "life-20.0-feed",
+        "life-30.0-feed",
+        "life-60.0-feed"
+      ]
+    },
+    {
+      "axis": "availability",
+      "arm": "no-credit",
+      "minimum": 1106.3824728169177,
+      "maximum": 1171.115874615777,
+      "cases": [
+        "no-breeding-credit",
+        "availability-0.6-no-credit",
+        "availability-0.75-no-credit",
+        "availability-0.95-no-credit"
+      ]
+    },
+    {
+      "axis": "availability",
+      "arm": "named-feed",
+      "minimum": 149.29094173268993,
+      "maximum": 262.89480241339714,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "availability-0.6-feed",
+        "availability-0.75-feed",
+        "availability-0.95-feed"
+      ]
+    },
+    {
+      "axis": "magnet_inventory_price",
+      "arm": "no-credit",
+      "minimum": 1116.0652304813432,
+      "maximum": 1122.7509362996616,
+      "cases": [
+        "no-breeding-credit",
+        "magnet_inventory_price-0.5",
+        "magnet_inventory_price-1.5"
+      ]
+    },
+    {
+      "axis": "unallocated_source_scope_price",
+      "arm": "no-credit",
+      "minimum": 1118.9432453273096,
+      "maximum": 1120.337759516888,
+      "cases": [
+        "no-breeding-credit",
+        "unallocated_source_scope_price-0.5",
+        "unallocated_source_scope_price-2.0"
+      ]
+    },
+    {
+      "axis": "tritium_price",
+      "arm": "no-credit",
+      "minimum": 448.39887189644617,
+      "maximum": 3467.940323619699,
+      "cases": [
+        "no-breeding-credit",
+        "tritium_price-10000000.0",
+        "tritium_price-100000000.0"
+      ]
+    },
+    {
+      "axis": "routine_om",
+      "arm": "no-credit",
+      "minimum": 1108.2985705994874,
+      "maximum": 1141.6271089725321,
+      "cases": [
+        "no-breeding-credit",
+        "routine_om-35000000.0",
+        "routine_om-140000000.0"
+      ]
+    },
+    {
+      "axis": "consumables",
+      "arm": "no-credit",
+      "minimum": 1118.138424785815,
+      "maximum": 1122.582229902221,
+      "cases": [
+        "no-breeding-credit",
+        "consumables-1000000.0",
+        "consumables-15000000.0"
+      ]
+    },
+    {
+      "axis": "replacement_life",
+      "arm": "no-credit",
+      "minimum": 1118.0343029468538,
+      "maximum": 1125.3406628496973,
+      "cases": [
+        "no-breeding-credit",
+        "replacement_life-2.0",
+        "replacement_life-8.0"
+      ]
+    },
+    {
+      "axis": "replacement_factor",
+      "arm": "no-credit",
+      "minimum": 1117.7575201948696,
+      "maximum": 1122.7092097817679,
+      "cases": [
+        "no-breeding-credit",
+        "replacement_factor-0.5",
+        "replacement_factor-2.0"
+      ]
+    },
+    {
+      "axis": "new_feed",
+      "arm": "named-feed",
+      "minimum": 132.23861151341225,
+      "maximum": 652.8085461678775,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "new-feed-50.0",
+        "new-feed-110.0"
+      ]
+    },
+    {
+      "axis": "supply_service",
+      "arm": "named-feed",
+      "minimum": 170.33827638666003,
+      "maximum": 198.90559499212685,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "supply-service-10000000.0",
+        "supply-service-100000000.0"
+      ]
+    },
+    {
+      "axis": "density_amplitude",
+      "arm": "named-feed",
+      "minimum": 176.6865694100971,
+      "maximum": 398.9802724521205,
+      "cases": [
+        "assumed-new-tritium-feed-100",
+        "density-4.5e+20-fixed-feed",
+        "density-5.5e+20-fixed-feed"
+      ]
+    },
+    {
+      "axis": "he_hx_area",
+      "arm": "no-credit",
+      "minimum": 1119.4080833905023,
+      "maximum": 1215.0756889447423,
+      "cases": [
+        "no-breeding-credit",
+        "he-area-5000.0",
+        "he-area-75000.0"
+      ]
+    }
+  ],
+  "range_all_cases": {
+    "min": 120.24581287694876,
+    "max": 3467.940323619699
+  },
+  "baseline_no_credit": 1119.4080833905023,
+  "baseline_feed100": 176.6865694100971,
+  "verification": {
+    "channels_per_case": 364,
+    "predicates_per_case": 14,
+    "scalar_checks": 23296,
+    "predicate_checks": 896
+  }
+}

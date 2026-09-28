@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COOL-R2-ORIGINALS",
+  "request_key": "ba5a3c2504f99c7c9f11f3a938d1b951190162ac23301fdc344a75c47171b258",
+  "request_path": "knowledge/research/requests/REQ-COOL-R2-ORIGINALS.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 20,
+    "max_captures": 6
+  },
+  "opened_at": "2026-09-18T21:56:50.907515+00:00",
+  "override_reason": null
+}

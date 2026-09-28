@@ -1,0 +1,13 @@
+{
+  "attempt": 5,
+  "outcome": "registered",
+  "candidate": "/tmp/fuel-tsta-iss.pdf",
+  "slug": "bartlit_denton_sherman_hydrogen_isotope_distillation_for",
+  "path": "knowledge/sources/bartlit_denton_sherman_hydrogen_isotope_distillation_for/",
+  "source_id": "1f3833667dd103f8a25fa114794a811f0c74ffd2a08aecf0563c0cc08cb0fa81",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T16:11:07.247015+00:00"
+}

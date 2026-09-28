@@ -1,0 +1,7 @@
+RESULT zero True [{'default_value': 0.0, 'entry_type': 'design_attribute', 'param_group': 'probe_params', 'python_type': 'float', 'qualified_name': 'Probe__box__x'}]
+RESULT positive True [{'default_value': 186.0, 'entry_type': 'design_attribute', 'param_group': 'probe_params', 'python_type': 'float', 'qualified_name': 'Probe__box__x'}]
+RESULT equal True []
+RESULT default True []
+RESULT default_assign True []
+RESULT assign True []
+SCRATCH /tmp/wi076-origin-probe-eygbk9fo

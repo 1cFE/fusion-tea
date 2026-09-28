@@ -1,0 +1,16 @@
+# Coupled study replay
+
+Execute in a fresh record/worktree, never in this frozen evidence directory. Original native execution used commit `a396a2e0f5b4df8a5d45d4aa0e93b42ba14d045a`, the unchanged reviewed lifecycle package and the predecessor CANDIDATE. Retain final record-local support/executor sources, configuration, full proposals and manifest. Copy the final reporting script after restoring the execution checkout. Use the licensed .codex-test/run environment and pinned TEAx runtime from integration_return_used.json.
+
+```bash
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.design_support execute --record exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design --integration-return work/orchestration/goals/aries-integrated-lcoe/evidence/integration-attempt1/integration_return.json'
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/native/20260922-aries-integrated-coupled-design.db --sample-size 68 --out exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/verification_summary.json'
+MPLCONFIGDIR=/tmp/aries-design-matplotlib .codex-test/run python -m exploration.aries_integrated.studies.design_reporting --record exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design --out exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/accounting.json --plots-dir exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/plots
+MPLCONFIGDIR=/tmp/aries-design-matplotlib .codex-test/run python exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/analyze_results.py
+```
+
+Before verification copy the exact current preparation/package_identity.json to results/package_identity.json. The reused baseline matches the unchanged package and pinned headline; its provenance is preparation/reused-baseline-provenance.json. Preflight, identity and baseline copies are under results/integration/. Run new indicators/preflight on a fresh record using its own manifest and groups. Record source receipt reuse and reviewed framing remain explicit.
+
+All 68 native maps completed once, with no retry. Reporting reads stored native values and creates paired accounting plus static PNG/PDF exports. Rerun reporting on copied results with new output paths because design_reporting refuses overwrite. analyze_results.py reads results/accounting.json and a read-only immutable SQLite connection; it does not evaluate the model. Do not remove nonempty WAL files or open the frozen store mutably.
+
+Timing is preserved: native launch followed all substantive authorization, scan and mechanical gates but preceded coordinator record.md assembly. No rerun changes that history. Snapshot/archive/freeze are coordinator-owned.

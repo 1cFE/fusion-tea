@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-038-02",
+  "run": "knowledge/research/requests/runs/REQ-038-02/20260903T041654464551",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "hts_potential_and_needs_for_future_accelerator_magnets",
+      "path": "knowledge/sources/hts_potential_and_needs_for_future_accelerator_magnets/",
+      "source_id": "7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://lss.fnal.gov/archive/2022/conf/fermilab-conf-22-172-td.pdf",
+      "reason": "HTTP 403 to automated fetch; likely carries REBCO price-vs-volume history relevant to this request"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

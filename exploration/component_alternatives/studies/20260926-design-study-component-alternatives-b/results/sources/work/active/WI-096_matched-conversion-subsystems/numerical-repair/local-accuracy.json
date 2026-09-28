@@ -1,0 +1,263 @@
+[
+  {
+    "case": "c0035",
+    "exact_inputs": {
+      "ua": 20.0,
+      "water_inlet_C": 25.0,
+      "head": 20.0,
+      "eta_p": 0.8,
+      "eta_motor": 0.95,
+      "flow_rating": 100000.0,
+      "power_rating": 30.0,
+      "duty_rating": 2000.0,
+      "gas_inlet_K": 385.0436081116277,
+      "gas_outlet_K": 308.15,
+      "gas_heat_into_fluid": -698.7898871164447
+    },
+    "checks": {
+      "water_outlet_C": {
+        "native": 27.01701362735672,
+        "decimal": "27.017013627356705870309079901219760594028811234629551318551384412",
+        "absolute_error": 1.4210854715202004e-14,
+        "relative_error": 5.259965039515864e-16
+      },
+      "water_flow": {
+        "native": 85469.85318744798,
+        "decimal": "85469.853187448621283039351374723738897988171251551440146322730094",
+        "absolute_error": 6.402842700481415e-10,
+        "relative_error": 7.49134631884647e-15
+      },
+      "pump_electric": {
+        "native": 22.057182520018067,
+        "decimal": "22.057182520018237418560996188393014580630413147474392908182521081",
+        "absolute_error": 1.7053025658242404e-13,
+        "relative_error": 7.7312801137524e-15
+      }
+    },
+    "flow_margin_relative_error": 4.406591883125539e-14,
+    "iterations": 54.0,
+    "ua_residual": 0.0
+  },
+  {
+    "case": "c0040",
+    "exact_inputs": {
+      "ua": 20.0,
+      "water_inlet_C": 25.0,
+      "head": 20.0,
+      "eta_p": 0.8,
+      "eta_motor": 0.95,
+      "flow_rating": 100000.0,
+      "power_rating": 30.0,
+      "duty_rating": 2000.0,
+      "gas_inlet_K": 387.7596442496997,
+      "gas_outlet_K": 308.15,
+      "gas_heat_into_fluid": -723.4725445302087
+    },
+    "checks": {
+      "water_outlet_C": {
+        "native": 25.20655642814206,
+        "decimal": "25.206556428142024347794746057584564751693500850449689187390024334",
+        "absolute_error": 3.552713678800501e-14,
+        "relative_error": 1.4094403132488361e-15
+      },
+      "water_flow": {
+        "native": 1194473.6243821578,
+        "decimal": "1194473.6243824722812044880733044642886075799630814683967384623549",
+        "absolute_error": 3.1455419957637787e-07,
+        "relative_error": 2.6334126861863393e-13
+      },
+      "pump_electric": {
+        "native": 308.25749390913904,
+        "decimal": "308.25749390922031043352613063345328199667168539349689612829583823",
+        "absolute_error": 8.128608897095546e-11,
+        "relative_error": 2.6369541885295946e-13
+      }
+    },
+    "flow_margin_relative_error": 2.8740226586443023e-13,
+    "iterations": 54.0,
+    "ua_residual": 0.0
+  },
+  {
+    "case": "c0160",
+    "exact_inputs": {
+      "ua": 20.0,
+      "water_inlet_C": 25.0,
+      "head": 20.0,
+      "eta_p": 0.8,
+      "eta_motor": 0.95,
+      "flow_rating": 100000.0,
+      "power_rating": 30.0,
+      "duty_rating": 2000.0,
+      "gas_inlet_K": 385.4764818906615,
+      "gas_outlet_K": 308.15,
+      "gas_heat_into_fluid": -702.7237358018591
+    },
+    "checks": {
+      "water_outlet_C": {
+        "native": 26.73212771657544,
+        "decimal": "26.732127716575436640086162009707265117068416154212528041974414748",
+        "absolute_error": 3.552713678800501e-15,
+        "relative_error": 1.329005201706266e-16
+      },
+      "water_flow": {
+        "native": 100608.7376677085,
+        "decimal": "100608.73766770859842218187927120048077493096812871599085747653020",
+        "absolute_error": 1.0186340659856796e-10,
+        "relative_error": 1.012470775003691e-15
+      },
+      "pump_electric": {
+        "native": 25.96407045392193,
+        "decimal": "25.964070453921961229391840167234689336617809963144017677433479339",
+        "absolute_error": 3.197442310920451e-14,
+        "relative_error": 1.2314873034237458e-15
+      }
+    },
+    "flow_margin_relative_error": 1.6733547470785003e-13,
+    "iterations": 54.0,
+    "ua_residual": 0.0
+  },
+  {
+    "case": "c0206",
+    "exact_inputs": {
+      "ua": 25.0,
+      "water_inlet_C": 25.0,
+      "head": 20.0,
+      "eta_p": 0.8,
+      "eta_motor": 0.95,
+      "flow_rating": 100000.0,
+      "power_rating": 30.0,
+      "duty_rating": 2000.0,
+      "gas_inlet_K": 382.6093972924678,
+      "gas_outlet_K": 308.15,
+      "gas_heat_into_fluid": -870.0022128145173
+    },
+    "checks": {
+      "water_outlet_C": {
+        "native": 25.090556620855164,
+        "decimal": "25.090556620855146510835701377576283352238193942959742167034788564",
+        "absolute_error": 1.7763568394002505e-14,
+        "relative_error": 7.079782510379822e-16
+      },
+      "water_flow": {
+        "native": 7213405.989188083,
+        "decimal": "7213405.9891930043919069740209097375120230043344913583720401413438",
+        "absolute_error": 4.9211084842681885e-06,
+        "relative_error": 6.82217040277631e-13
+      },
+      "pump_electric": {
+        "native": 1861.5617853650344,
+        "decimal": "1861.5617853663046452603822837409072992705367225484126205044066344",
+        "absolute_error": 1.2701093510258943e-09,
+        "relative_error": 6.822815987146897e-13
+      }
+    },
+    "flow_margin_relative_error": 6.918076223604488e-13,
+    "iterations": 55.0,
+    "ua_residual": 0.0
+  },
+  {
+    "case": "c0480",
+    "network_same_tuple_margin_relative_error": 6.04368814385776e-13,
+    "bypass_same_tuple_relative_error": 2.2727817166713558e-13,
+    "network_trace": {
+      "lo": 745.3669714245018,
+      "hi": 745.3669714245019,
+      "residual": -4.547473508864641e-13,
+      "iteration": 53
+    },
+    "controller_trace": {
+      "lo": 0.002416300856467102,
+      "hi": 0.0024163008564671022,
+      "residual": -2.2737367544323206e-13,
+      "f": 0.0024163008564671022,
+      "mid": 0.002416300856467102,
+      "g_mid": 0.0,
+      "g_lo": 1.3186640920775972,
+      "g_hi": -3170.4484255738184
+    }
+  },
+  {
+    "case": "c0481",
+    "network_same_tuple_margin_relative_error": 2.251266751201287e-15,
+    "bypass_same_tuple_relative_error": 6.889153881075239e-15,
+    "network_trace": {
+      "lo": 710.7873364379188,
+      "hi": 710.787336437919,
+      "residual": 0.0,
+      "iteration": 53
+    },
+    "controller_trace": {
+      "lo": 0.30279397827781623,
+      "hi": 0.3027939782778163,
+      "residual": 2.2737367544323206e-13,
+      "f": 0.3027939782778163,
+      "mid": 0.3027939782778163,
+      "g_mid": 1.2278178473934531e-11,
+      "g_lo": 330.6394004540625,
+      "g_hi": -3170.448425055124
+    }
+  },
+  {
+    "case": "c0482",
+    "network_same_tuple_margin_relative_error": 5.573970623546734e-15,
+    "bypass_same_tuple_relative_error": 4.0687866115329155e-15,
+    "network_trace": {
+      "lo": 727.6589141292342,
+      "hi": 727.6589141292343,
+      "residual": 0.0,
+      "iteration": 52
+    },
+    "controller_trace": {
+      "lo": 0.2031382145381902,
+      "hi": 0.20313821453819023,
+      "residual": -1.1368683772161603e-13,
+      "f": 0.20313821453819023,
+      "mid": 0.2031382145381902,
+      "g_mid": 0.0,
+      "g_lo": 169.9621581773281,
+      "g_hi": -3170.448425308198
+    }
+  },
+  {
+    "case": "c0484",
+    "network_same_tuple_margin_relative_error": 6.04368814385776e-13,
+    "bypass_same_tuple_relative_error": 2.2727817166713558e-13,
+    "network_trace": {
+      "lo": 745.3669714245018,
+      "hi": 745.3669714245019,
+      "residual": -4.547473508864641e-13,
+      "iteration": 53
+    },
+    "controller_trace": {
+      "lo": 0.002416300856467102,
+      "hi": 0.0024163008564671022,
+      "residual": -2.2737367544323206e-13,
+      "f": 0.0024163008564671022,
+      "mid": 0.002416300856467102,
+      "g_mid": 0.0,
+      "g_lo": 1.3186640920775972,
+      "g_hi": -3170.4484255738184
+    }
+  },
+  {
+    "case": "c0485",
+    "network_same_tuple_margin_relative_error": 2.251266751201287e-15,
+    "bypass_same_tuple_relative_error": 6.889153881075239e-15,
+    "network_trace": {
+      "lo": 710.7873364379188,
+      "hi": 710.787336437919,
+      "residual": 0.0,
+      "iteration": 53
+    },
+    "controller_trace": {
+      "lo": 0.30279397827781623,
+      "hi": 0.3027939782778163,
+      "residual": 2.2737367544323206e-13,
+      "f": 0.3027939782778163,
+      "mid": 0.3027939782778163,
+      "g_mid": 1.2278178473934531e-11,
+      "g_lo": 330.6394004540625,
+      "g_hi": -3170.448425055124
+    }
+  }
+]

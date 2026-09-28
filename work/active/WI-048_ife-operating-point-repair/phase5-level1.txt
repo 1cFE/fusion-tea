@@ -1,0 +1,27 @@
+COMMAND: .codex-test/run agentic-mbse validate --level=1 /tmp/wi048-check
+
+======================================================================
+SysML Quality Validation
+Models path: /tmp/wi048-check
+Mode: Fail-fast
+Running: Level 1 only
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 11 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 11
+   Errors: 0
+   Warnings: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

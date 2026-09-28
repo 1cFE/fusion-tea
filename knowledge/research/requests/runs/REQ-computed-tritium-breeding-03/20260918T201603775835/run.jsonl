@@ -1,0 +1,9 @@
+{"kind": "search", "query": "OpenMC fusion benchmarks lithium lead tritium production benchmark FNG HCLL", "at": "2026-09-18T20:16:25.552930+00:00"}
+{"kind": "search", "query": "EUROfusion material composition compendium PbLi EUROFER 2MM3A6 density", "at": "2026-09-18T20:16:25.611859+00:00"}
+{"kind": "search", "query": "FNG WCLL experiment benchmark input MCNP github PbLi tritium", "at": "2026-09-18T20:16:25.672554+00:00"}
+{"kind": "search", "query": "lithium lead sphere 14 MeV integral tritium breeding benchmark experiment IAEA", "at": "2026-09-18T20:16:25.731478+00:00"}
+{"kind": "search", "query": "OKTAVIAN TBR six spherical assemblies benchmark IAEA lithium lead geometry tritium", "at": "2026-09-18T20:16:46.202770+00:00"}
+{"kind": "search", "query": "IAEA FENDL OKTAVIAN lithium tritium benchmark input sphere", "at": "2026-09-18T20:16:46.261890+00:00"}
+{"kind": "search", "query": "PbLi density 10520 1.190 temperature EUROFER 7.8 composition", "at": "2026-09-18T20:17:58.150672+00:00"}
+{"kind": "search", "query": "neutronics material maker eurofer lithium lead material density references", "at": "2026-09-18T20:17:58.211868+00:00"}
+{"kind": "candidate", "ref": "https://www-nds.iaea.org/fendl2/validation/benchmarks/jaerim94014/oktavian/tbr/readme.txt", "triage": "keeper", "note": "Unsupported text/plain resolved by transparent mechanical PDF rendering; original bytes, SHA and rendering script retained. Actual report separately registered after migrated landing page capture.", "at": "2026-09-18T20:26:23.469829+00:00"}

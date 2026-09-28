@@ -1,0 +1,49 @@
+.................F
+=================================== FAILURES ===================================
+___________ test_I_coil_reaches_the_field_constraints_through_calcs ____________
+
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    def test_I_coil_reaches_the_field_constraints_through_calcs(report):
+        """WI-035 gave the coil-current lever the field-side constraints (beta_ok,
+        peak_field_ok, wp_stress_ok). WI-037 extends its reach through the ISS04
+        sustainment chain: B feeds tau_E, the ash/fuel state, and p_aux_required,
+        so I_coil now also reaches sustainment_ok and — through the computed fuel —
+        the whole fusion-derived chain (net_positive, recirc_ok, wall_load_ok).
+        This is the structural close of discovery row 20260823-magnet-technology-ab#4
+        ("field is never rewarded"): the field lever finally has a path to fusion
+        power. Computed-vs-bound throughout, with two exceptions: net_positive is
+        computed vs a literal 0, and since WI-039 sustainment_ok is computed vs
+        *computed* — its installed side is the heating chain's coupled power, not the
+        held p_input it used to be."""
+        group = group_by_axis(report, "I_coil")
+        reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
+        # WI-036 adds cond_strain_ok: the winding-pack sizing chain runs off I_coil,
+        # so the conductor's own check is reached by the same lever that reaches the
+        # structure's -- the conductor is not left unchecked by the field sweep.
+        # WI-043 adds burn_hold_ok: the lower half of the sustainment condition reads the
+        # same computed operand, so every lever that reaches sustainment_ok reaches it.
+        # WI-045 (goal plant-closure, 2026-09-08) adds the two loop fences and the cycle
+        # domain fence: the reactor source heat sizes the loop's flow from the fusion power,
+        # so every lever that reaches fusion reaches loop_pressure_ok, loop_capacity_ok and
+        # cycle_domain_ok (the cycle reads the loop's outlet).
+        # WI-047 (goal plant-closure, 2026-09-08) adds divertor_heat_ok: the ledger's absorbed
+        # heating is the sustainment chain's alpha heating plus the coupled heating, so every
+        # lever that reaches the sustainment chain reaches the computed target peak.
+>       assert set(reached) == {
+            "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
+            "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
+            "burn_hold_ok", "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+            "divertor_heat_ok",
+        }
+E       AssertionError: assert {'beta_ok', '...city_ok', ...} == {'beta_ok', '...city_ok', ...}
+E         
+E         Extra items in the left set:
+E         'wp_fit_ok'
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:225: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 17 passed in 0.45s

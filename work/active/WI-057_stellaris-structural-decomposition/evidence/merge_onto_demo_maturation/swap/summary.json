@@ -1,0 +1,59 @@
+{
+ "markup_0_channels_differing_from_entering_pin": [],
+ "markup_0_verdicts": {
+  "beta_ok": "satisfied",
+  "burn_hold_ok": "satisfied",
+  "cond_strain_ok": "satisfied",
+  "cycle_domain_ok": "satisfied",
+  "divertor_heat_ok": "violated",
+  "heating_couple_positive_ok": "satisfied",
+  "heating_couple_upper_ok": "satisfied",
+  "heating_source_positive_ok": "satisfied",
+  "heating_source_upper_ok": "satisfied",
+  "loop_capacity_ok": "satisfied",
+  "loop_pressure_ok": "satisfied",
+  "net_positive": "satisfied",
+  "peak_field_ok": "satisfied",
+  "recirc_ok": "satisfied",
+  "sustainment_ok": "satisfied",
+  "tbr_ok": "satisfied",
+  "wall_load_ok": "satisfied",
+  "wp_stress_ok": "satisfied"
+ },
+ "channels_moving_at_0.1": [
+  "stellarator_09__stellaris__cas20_capital__cas20_capital",
+  "stellarator_09__stellaris__cas22_capital__cas22_capital",
+  "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+  "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+  "stellarator_09__stellaris__contingency__cost",
+  "stellarator_09__stellaris__idc__cost",
+  "stellarator_09__stellaris__indirect__cost",
+  "stellarator_09__stellaris__installation__cost",
+  "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+  "stellarator_09__stellaris__lcoe_calc__lcoe",
+  "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+  "stellarator_09__stellaris__magnet__magnet_structure_cost_ni__cost",
+  "stellarator_09__stellaris__overnight_capital__overnight_capital",
+  "stellarator_09__stellaris__powercore_capital__powercore_capital",
+  "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+  "stellarator_09__stellaris__supplementary__cost",
+  "stellarator_09__stellaris__total_capital__total_capital"
+ ],
+ "structure_cost_ni": [
+  54432000.0,
+  59875200.00000001
+ ],
+ "structure_cost_base_dormant": [
+  54432000.0,
+  54432000.0
+ ],
+ "magnet_capital": [
+  5401032000.0,
+  5406475200.0
+ ],
+ "lcoe": [
+  224.26923288439002,
+  224.3870876641092
+ ],
+ "stencils": "New: 1, Preserved: 77, Regenerated: 0"
+}

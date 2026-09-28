@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/reid/1cfe/fusion-tea/exploration/exchanger_architecture/thermal_requirements/execute_study.py", line 96, in <module>
+    execute(args.record, args.integration_return)
+  File "/home/reid/1cfe/fusion-tea/exploration/exchanger_architecture/thermal_requirements/execute_study.py", line 86, in execute
+    raise route.RouteError("not every declared point completed; stored and exported evidence retained")
+exploration.exchanger_architecture.thermal_requirements.studies.study_route.RouteError: not every declared point completed; stored and exported evidence retained

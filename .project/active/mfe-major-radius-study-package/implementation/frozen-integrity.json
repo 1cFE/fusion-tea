@@ -1,0 +1,22 @@
+{
+  "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-results.json": {
+    "sha256": "65d5e9bb596daca23323c35ffe122e642277767f819a877275e5ff4b8281e589",
+    "matches_frozen_expectation": true,
+    "matches_entering_git": true
+  },
+  "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-inventory.json": {
+    "sha256": "aaf3e6c479f65ee9a27d3ad0ea5b780a2c7086d1174cef54ec7e6b8daeb41dbe",
+    "matches_frozen_expectation": true,
+    "matches_entering_git": true
+  },
+  "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-checks.json": {
+    "sha256": "e65359009445997b5a098d1671ef15ab089943a69b25615fc649fb1c51965f4f",
+    "matches_frozen_expectation": true,
+    "matches_entering_git": true
+  },
+  "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-source-meaning.md": {
+    "sha256": "92110f6a826da0ed3031db2c361565209271fd43bd20c18798d5bb8a297c1c36",
+    "matches_frozen_expectation": true,
+    "matches_entering_git": true
+  }
+}

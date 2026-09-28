@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/regression-evidence/probe.py", line 27, in <module>
+    out['inventory_effect'] = {key: dict(current=base[key], held=oe._compute({'inventory_inventory_enabled':False,'inventory_held_inventory':0.})[key]) for key in ('fuel_tbr_required','fuel_tbr_margin')}
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py", line 842, in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/verify_stellaris.py", line 1371, in compute
+    processing = processing_oracle.calculate({key:p['processing_'+key] for key in PROCESSING_DEFAULTS} | dict(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/oracle_fuel_processing.py", line 45, in calculate
+    raise ValueError('processing oracle: active pricing requires active inventory')
+ValueError: processing oracle: active pricing requires active inventory

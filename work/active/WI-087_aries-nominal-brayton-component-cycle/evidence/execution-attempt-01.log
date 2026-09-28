@@ -1,0 +1,119 @@
+{
+  "cases": [
+    {
+      "case": "nominal",
+      "net_shaft_MW": 831.7901866754725,
+      "heater_MW": 1879.9194429602728,
+      "shaft_efficiency": 0.4424605478656407,
+      "energy_residual_MW": -1.1368683772161603e-13,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      }
+    },
+    {
+      "case": "higher_flow_fixed_hardware",
+      "net_shaft_MW": 998.1482240105668,
+      "heater_MW": 2255.9033315523275,
+      "shaft_efficiency": 0.44246054786564065,
+      "energy_residual_MW": 2.2737367544323206e-13,
+      "capacity_ok": {
+        "compressor": false,
+        "heater": false,
+        "rejection": false
+      }
+    },
+    {
+      "case": "smaller_compressor_rating",
+      "net_shaft_MW": 831.7901866754725,
+      "heater_MW": 1879.9194429602728,
+      "shaft_efficiency": 0.4424605478656407,
+      "energy_residual_MW": -1.1368683772161603e-13,
+      "capacity_ok": {
+        "compressor": false,
+        "heater": true,
+        "rejection": true
+      }
+    },
+    {
+      "case": "smaller_heater_rating",
+      "net_shaft_MW": 831.7901866754725,
+      "heater_MW": 1879.9194429602728,
+      "shaft_efficiency": 0.4424605478656407,
+      "energy_residual_MW": -1.1368683772161603e-13,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": false,
+        "rejection": true
+      }
+    },
+    {
+      "case": "smaller_rejection_rating",
+      "net_shaft_MW": 831.7901866754725,
+      "heater_MW": 1879.9194429602728,
+      "shaft_efficiency": 0.4424605478656407,
+      "energy_residual_MW": -1.1368683772161603e-13,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": false
+      }
+    },
+    {
+      "case": "one_stage_ratio_changed",
+      "net_shaft_MW": 847.3789318239494,
+      "heater_MW": 1937.4989124771325,
+      "shaft_efficiency": 0.4373571135276447,
+      "energy_residual_MW": 0.0,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      }
+    },
+    {
+      "case": "higher_turbine_temperature",
+      "net_shaft_MW": 924.245321449797,
+      "heater_MW": 1980.7343209958808,
+      "shaft_efficiency": 0.4666175123300239,
+      "energy_residual_MW": -3.410605131648481e-13,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      }
+    },
+    {
+      "case": "unsupported_heater",
+      "net_shaft_MW": 831.7901866754725,
+      "heater_MW": 1879.9194429602728,
+      "shaft_efficiency": 0.4424605478656407,
+      "energy_residual_MW": -1.1368683772161603e-13,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": false,
+        "rejection": true
+      }
+    },
+    {
+      "case": "negative_net_shaft",
+      "net_shaft_MW": -688.285561115117,
+      "heater_MW": 435.84748255921255,
+      "shaft_efficiency": -1.5791890251921077,
+      "energy_residual_MW": -1.1368683772161603e-13,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      }
+    }
+  ],
+  "independent_comparisons": 306,
+  "native_refusals": 21,
+  "signed_residuals": [
+    -1.0,
+    1.0
+  ],
+  "all_checks_passed": true
+}

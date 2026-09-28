@@ -1,0 +1,26 @@
+diff --git a/exploration/whole_plant_conversion/oracle_thermal.py b/exploration/whole_plant_conversion/oracle_thermal.py
+index aeb831974..e40d89b5e 100644
+--- a/exploration/whole_plant_conversion/oracle_thermal.py
++++ b/exploration/whole_plant_conversion/oracle_thermal.py
+@@ -160,7 +160,7 @@ def cooler(x: Mapping) -> dict:
+         result['failure_code'] = 2.
+         return result
+     outlet = brentq(lambda t: evaluate(t)[0]-x['ua'], lower, upper,
+-                    xtol=1e-11, rtol=1e-14, maxiter=200)
++                    xtol=math.nextafter(0.0, 1.0), rtol=4*math.ulp(1.0), maxiter=200)
+     required, flow, gap = evaluate(outlet)
+     power = flow*specific_electric/1000
+     result.update(evaluation_defined=1., water_outlet_C=outlet, water_flow=flow,
+diff --git a/exploration/whole_plant_conversion/studies/scan_catalog.py b/exploration/whole_plant_conversion/studies/scan_catalog.py
+index cf695dc09..ce6547c5d 100644
+--- a/exploration/whole_plant_conversion/studies/scan_catalog.py
++++ b/exploration/whole_plant_conversion/studies/scan_catalog.py
+@@ -316,7 +316,7 @@ def extend(integration_path,out):
+     cryo=[]
+     for q in ('2500','2800'):
+         anchor=anchors[q];capacity=scan.cache[anchor['point_id']]['outputs'][P+'cryogenic_demand__evaluate__q_nuc_capacity_W_m3']
+-        for end,offset in [('below',-1e-5),('above',1e-5)]:
++        for end,offset in [('below',-.01),('above',.01)]:
+             chosen={'cryogenic_demand__q_nuc_W_m3':capacity+offset,'cryogenic_demand__extra_cold_W':0.}
+             point=offers.change(anchor['point'],chosen);result=scan.evaluate(point)
+             for branch in ('gas','steam'):

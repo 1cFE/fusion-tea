@@ -1,0 +1,9 @@
+{
+ "request_id":"REQ-computed-tritium-breeding-06",
+ "question":"What authoritative density and composition identify pure tungsten monocarbide WC, distinct from cemented WC cobalt, for the retained helium PbLi reflector scenario?",
+ "consumer":"work/orchestration/goals/computed-tritium-breeding/goal.md",
+ "gap_type":"tungsten_carbide_density",
+ "priority":"P1",
+ "where_to_look":["ATSDR NCBI Bookshelf tungsten physical property table","PubChem tungsten carbide authority sources"],
+ "limits":{"max_searches":2,"max_captures":1}
+}

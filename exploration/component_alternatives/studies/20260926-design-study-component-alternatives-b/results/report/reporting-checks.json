@@ -1,0 +1,35 @@
+{
+  "scope": "Author visual inspection and reporting checks; independent reviewer remains separate",
+  "stock_verification": {
+    "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/results/verification_summary.json",
+    "sha256": "8150abe4c4a1ea5366dc2e9aeece5d0a583d952d1bcdc22e1ebf53cec96f2c01",
+    "outcome": "pass",
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986",
+    "verified_cases": 498,
+    "channels": 872,
+    "predicates": 84,
+    "relative_tolerance": 1e-09
+  },
+  "input_maps_identical": true,
+  "predicate_changed_cases": [],
+  "anchors_unchanged_exact_catalog_minima": true,
+  "visually_inspected": [
+    "matched-output.png",
+    "matched-cost.png",
+    "matched-sensitivity.png"
+  ],
+  "findings": "All three figures readable, no clipping or label overlap. Sensitivity figure includes both opposed quote scenarios. Failed offers and mixed cooler bounds remain visible.",
+  "artifact_sha256": {
+    "analyze-verified.py": "4f54bb10e2a55096f42012cc6e08d40a73c2646e74c161ad88d62d3fe9ba1e0a",
+    "report.md": "664fdd4320dc3f2575c6f91bc2939e81b43bb388240b4305d0c146f74dfd63ab",
+    "matched-study-summary.json": "890211a5a95c7fd7c75aa05d849d4f78549b1835f0b13020d333599e4feeb17d",
+    "plot-data.json": "631ec6b23a39c438e891aacd1f99dd153749fc017588ae5f258ef5d622c38cd4",
+    "plot-data.csv": "429a58c1c0a0ee5e317afa7593a41e56e9d4e69db194b34e8f7b3ee0cc4a30a4",
+    "matched-output.svg": "41e10b713cecfe943066211772bc359adf445b7c09aa3f6d3b9f1f5349f6108b",
+    "matched-output.png": "f8424d866f4adbb04299b5243f5e624dd7ca6ffaf497fd879e37d5301eabbeca",
+    "matched-cost.svg": "9a8ca0f4b04036154e352784e6dbd3239c3f3e5b07cea575cc6940b2661537a6",
+    "matched-cost.png": "052817c0c81bf7e1ede6fdcf0db71cad4366066916e8f7ab34577ea0002c55c8",
+    "matched-sensitivity.svg": "df055cf6bb608f80440f913339e5e835abcc63bd00d6af0ac3b2ea0a503f2dbe",
+    "matched-sensitivity.png": "18e974d9a2359a915297f16f182ed27b316f6e4f89921730bc8811469dcbc75c"
+  }
+}

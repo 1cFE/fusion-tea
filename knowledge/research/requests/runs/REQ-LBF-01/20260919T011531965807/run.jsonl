@@ -1,0 +1,9 @@
+{"kind": "search", "query": "site.ukaea.github.io/PROCESS buildings cost 1990 2014 Kovari", "at": "2026-09-19T01:15:49.007399+00:00"}
+{"kind": "search", "query": "Kovari 2014 PROCESS buildings cost references reactor building", "at": "2026-09-19T01:15:49.164052+00:00"}
+{"kind": "search", "query": "PROCESS TFCX building cost; Kovari cost of a fusion power plant ITER buildings", "at": "2026-09-19T01:17:00.827092+00:00"}
+{"kind": "search", "query": "ETR/ITER systems code ORNL pdf; TFCX buildings cost ORNL", "at": "2026-09-19T01:17:00.955947+00:00"}
+{"kind": "search", "query": "Kovari cost of a fusion power plant ITER buildings (second query of earlier two-query batch)", "at": "2026-09-19T01:18:03.367514+00:00"}
+{"kind": "search", "query": "TFCX buildings cost ORNL (second query of earlier two-query batch)", "at": "2026-09-19T01:18:03.511717+00:00"}
+{"kind": "search", "query": "Kovari 1283 buildings", "at": "2026-09-19T01:18:24.003280+00:00"}
+{"kind": "search", "query": "TETRA reactor maintenance 260", "at": "2026-09-19T01:18:24.157421+00:00"}
+{"kind": "candidate", "ref": "https://engineering.purdue.edu/CMUXE/Publications/AHR/R88ORNL-FEDC-87-7.pdf", "triage": "keeper", "note": "1988 original TETRA report screened before fetch by title/date and inspected after capture. PDF printed pp140-142 checked visually. Original warns against absolute cost; exact cost factors deferred to 1988 Thomson memo. Extraction omits prose; raw PDF is authoritative.", "at": "2026-09-19T01:19:31.634504+00:00"}

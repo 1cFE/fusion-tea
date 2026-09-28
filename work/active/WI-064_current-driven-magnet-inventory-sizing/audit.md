@@ -1,0 +1,11 @@
+# WI-064 acceptance record
+
+[AGENT] Independent source/design and coupled implementation review PASS: work/orchestration/goals/joint-magnet-sizing-feasibility/evidence/source-design-review.md and implementation-review.md. The fresh reviewer independently ran213 component/integration tests,654 coupled scalar comparisons and424 entering-oracle off-design comparisons; checked unchanged20 predicate catalog and25 preserved manual bodies. This acceptance record joins that evidence; it is not coordinator self-certification.
+
+[AGENT] Component suite204passes and native/oracle integration9passes. Current-oracle regression14passes. Shared consumer set166passes with explicit current ABI additions; post-documentation family/known-answer/operand batch51passes plus one stale input-count expectation. The expectation now includes the two named WI064 inputs; final operand file passes17tests. Test totals overlap and are not additive. All observed consumer failures have a final passing receipt. No global full-suite claim.
+
+[AGENT] Source correction regenerated exactly and metadata refreshed. SV-111 passing. Native complete-tree validation L1/L3/L4/L5pass, L2ten inherited placeholder warnings, L6six additional EXPOSE scanner issues (296 total); exact delta retained. The initial single-file validator checked zero files and supplies no evidence. Existing Boolean serialization warnings persist. Native integration CANDIDATE is a separate required goal task before studies.
+
+[AGENT] Implemented optional sizing, required/selected/actual inventory agreement, mode0 reference/off-design preservation, independent allocation-first field feedback and unchanged acceptance predicates satisfy the native item contract. Qualified current performance, space availability, local stress, shape-dependent field/thermal response, integer construction and complete manufacturing cost remain outside the claim. Formal item close/archive remain owner-held.
+
+[AGENT] Subsequent goal evidence is complete: all ten integration gates PASS, frozen native study `02af7123`, final independent review PASS, 75,646 mapped scalar and 6,940 predicate comparisons. See `work/orchestration/goals/joint-magnet-sizing-feasibility/evidence/final-review.md` and `answer.md`. This extends the evidence to bounded joint behavior; it does not enlarge the qualification claim or archive the native item.

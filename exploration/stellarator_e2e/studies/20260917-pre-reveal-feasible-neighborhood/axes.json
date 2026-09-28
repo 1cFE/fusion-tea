@@ -1,0 +1,95 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "plasma__R",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__a",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__n_e0",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__T_i0",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__n_loops",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__n_loops",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "note": "One public design-attribute key, complete fan-out through model bindings; inventory is a labeled scenario.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

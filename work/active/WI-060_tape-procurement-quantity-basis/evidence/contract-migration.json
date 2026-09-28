@@ -1,0 +1,18 @@
+{
+  "predicate_ir_exactly_equal": true,
+  "predicate_count": 18,
+  "added_parameters": [
+    "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m",
+    "stellarator_09__stellaris__magnet__winding_pack__tape_thickness",
+    "stellarator_09__stellaris__magnet__winding_pack__tape_width"
+  ],
+  "removed_parameters": [],
+  "added_outputs": [
+    "stellarator_09__stellaris__magnet__winding_procurement__tape_length"
+  ],
+  "removed_outputs": [
+    "stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective"
+  ],
+  "old_output_count": 214,
+  "new_output_count": 214
+}

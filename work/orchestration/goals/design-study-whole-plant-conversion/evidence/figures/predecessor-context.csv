@@ -1,0 +1,7 @@
+source_MW,branch,predecessor_case,predecessor_boundary,predecessor_availability,predecessor_subsystem_USD2025_MWh,predecessor_subsystem_net_MW,whole_case,whole_status,whole_availability,whole_USD2025_MWh,whole_net_MW
+2500.0,steam,steam-q2500-n10-k4-pump225,conversion subsystem,0.85,33.762225705734934,937.5789564279194,nominal::gas-q2500-m2000-r1.5-ua25-25-25,supported_catalog_minimum,0.8,408.16380453219807,663.969189335543
+2500.0,gas,gas-q2500-m2000-r1.5-ua25-25-25,conversion subsystem,0.85,33.76830899306827,559.493162917646,nominal::gas-q2500-m2000-r1.5-ua25-25-25,supported_catalog_minimum,0.8,875.3125606972828,285.8833958252697
+2800.0,steam,steam-q2800-n11-k4-pump225,conversion subsystem,0.85,32.406186895080005,1060.283449630589,nominal::gas-q2800-m1750-r1.8-ua25-25-25,supported_catalog_minimum,0.8,370.7013723193559,746.6446676715221
+2800.0,gas,gas-q2800-m1750-r1.8-ua25-25-25,conversion subsystem,0.85,36.46626686862868,518.099044055579,nominal::gas-q2800-m1750-r1.8-ua25-25-25,supported_catalog_minimum,0.8,1230.2836229746085,204.4602620965121
+3000.0,steam,steam-q3000-n14-k3-pump250,conversion subsystem,0.85,37.114344747286076,1144.0025314827728,,unsupported,,,
+3000.0,gas,gas-q3000-m2000-r1.65-ua25-25-25,conversion subsystem,0.85,27.668710965213776,682.8340513826384,,unsupported,,,

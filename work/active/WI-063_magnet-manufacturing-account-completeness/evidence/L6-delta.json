@@ -1,0 +1,14 @@
+{
+  "entering_evidence": "work/active/WI-062_absolute-conductor-current-margin/evidence/L6-candidate.json",
+  "entering_count": 285,
+  "candidate_count": 290,
+  "added": [
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::insulation_internal_volume'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::insulation_ground_volume'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::insulation_sheet_area'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::insulation_stock_cost'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::structure_effective_all_in_rate'"
+  ],
+  "removed": [],
+  "normalization": "diagnostic identity excludes source line suffix; entering source is the unchanged WI062 production model before this item"
+}

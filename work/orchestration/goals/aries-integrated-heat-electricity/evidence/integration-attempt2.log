@@ -1,0 +1,13 @@
+[integrate] BLOCKER
+  pass         repo     pinned-packages: tests/test_dependency_provenance.py passed
+  pass         request  teax-revision: teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397
+  pass         request  regeneration: regeneration through aries_integrated rewrote no byte outside handwritten/
+  pass         request  handwritten-preservation: 31 file(s) under handwritten/ are byte-identical
+  did not run  request  census-snapshot: the seam raised an unexpected exception at census-snapshot; it did not judge the package
+  not reached  repo     model-family-spine: the sequence stopped before this gate
+  not reached  request  manifest: the sequence stopped before this gate
+  not reached  request  preflight: the sequence stopped before this gate
+  not reached  request  verification: the sequence stopped before this gate
+  not reached  request  lineage: the sequence stopped before this gate
+[integrate] could_not_run at census-snapshot (scripts/integrate.py, seam-internal-error): the seam raised an unexpected exception at census-snapshot; it did not judge the package
+             evidence: work/orchestration/goals/aries-integrated-heat-electricity/evidence/integration-attempt2/seam_traceback.txt

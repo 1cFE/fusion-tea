@@ -1,0 +1,22 @@
+{
+  "disabled_full_pipeline": "passed; zero property calls",
+  "disabled_wrapper": {
+    "gross_out": 6.0,
+    "state_h": 0.0,
+    "pump_out": 0.0
+  },
+  "active_wrapper": {
+    "gross_out": 40.0,
+    "state_h": 400.0,
+    "pump_out": 2.0
+  },
+  "expected_rejections": {
+    "1.0": "toy property domain",
+    "0.5": "mode must be zero or one"
+  },
+  "entry_points": {
+    "Probe__plant__turbine__enabled": 0.0,
+    "Probe__plant__turbine__raw": 3.0
+  },
+  "state_outputs_are_entries": false
+}

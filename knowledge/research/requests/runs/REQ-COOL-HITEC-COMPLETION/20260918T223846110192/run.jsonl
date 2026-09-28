@@ -1,0 +1,15 @@
+{"kind": "search", "query": "HITEC heat transfer salt technical bulletin Coastal Chemical density viscosity specific heat pdf", "at": "2026-09-18T22:38:53.565983+00:00"}
+{"kind": "search", "query": "HITEC molten salt cost dollars kg inventory NREL", "at": "2026-09-18T22:38:53.636974+00:00"}
+{"kind": "search", "query": "Coastal Chemical HITEC heat transfer salt pdf hitec.pdf", "at": "2026-09-18T22:39:02.623202+00:00"}
+{"kind": "search", "query": "site.coastalchem.com HITEC", "at": "2026-09-18T22:39:02.682411+00:00"}
+{"kind": "search", "query": "\"HITEC\" \"Heat Transfer Salt\" \"pdf\" \"density\"", "at": "2026-09-18T22:39:43.052111+00:00"}
+{"kind": "failure", "ref": "https://bravenewclimate.com/files/msr%20-%20hitec%20heat%20transfer%20salt.pdf", "reason": "HTTP403; seeking alternate original bulletin mirror", "disposition": "closed", "at": "2026-09-18T22:39:43.112703+00:00"}
+{"kind": "failure", "ref": "https://e-archivo.uc3m.es/bitstream/handle/10016/27202/TFG_Maria_Gonzalez_Rodriguez_2016.pdf", "reason": "Broad content-free admissibility screen hit; no source text read, no values taken; avoiding mixed thesis", "disposition": "closed", "at": "2026-09-18T22:40:44.967965+00:00"}
+{"kind": "search", "query": "\"HITEC\" \"0.373\" \"salt\"", "at": "2026-09-18T22:40:45.027409+00:00"}
+{"kind": "search", "query": "\"HITEC\" \"Coastal\" \"pdf\" \"538\"", "at": "2026-09-18T22:40:45.086025+00:00"}
+{"kind": "search", "query": "site.github.com NREL ssc htf_props Hitec", "at": "2026-09-18T22:42:05.104999+00:00"}
+{"kind": "search", "query": "HITEC molten salt pump 500 C maintenance vertical centrifugal manufacturer", "at": "2026-09-18T22:42:05.165196+00:00"}
+{"kind": "candidate", "ref": "https://ntrs.nasa.gov/api/citations/19790025409/downloads/19790025409.pdf", "triage": "keeper", "note": "Pre-fetch1979solar report metadata admissible. Broadhelios screening hit resolved content-free: all139hits are heliostat, zero ARIESCS/Najmabadi/Waganer or standaloneHelios; safe targeted section10.", "at": "2026-09-18T22:43:05.317888+00:00"}
+{"kind": "candidate", "ref": "https://github.com/NREL/ssc/blob/develop/tcs/htf_props.cpp", "triage": "keeper", "note": "Approved fifthcapture retries textplainfailedsource viaHTML. outputmdonlypagechrome, but retainedrawhtmlJSONrawLines hasfull895linecode; propertylines320413501verified.", "at": "2026-09-18T22:48:56.397625+00:00"}
+{"kind": "candidate", "ref": "https://www.osti.gov/servlets/purl/4595737", "triage": "keeper", "note": "1972ORNL original screenedclean and registered; manufacturerpropertyappendixgraphs inspected.", "at": "2026-09-18T22:48:56.457008+00:00"}
+{"kind": "candidate", "ref": "https://inldigitallibrary.inl.gov/sites/sti/sti/Sort_61403.pdf", "triage": "keeper", "note": "2022INL original screenedclean andregistered; saltinventorypricegrade/year distinction verifiedoriginalFigure20.", "at": "2026-09-18T22:48:56.515853+00:00"}

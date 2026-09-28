@@ -1,0 +1,8 @@
+{
+  "outcome": "pass",
+  "command": "PYTHONPATH=.:/home/reid/1cfe/teax/packages/teax-simkit STUDY_REQUIRE_TEAX=1 .codex-test/run python -m pytest tests/study/test_records.py -k 20260915-absolute-conductor-current-margin -q",
+  "passed": 3,
+  "deselected": 58,
+  "scope": "Record closure, same-fingerprint store identity and nine discovery-log joins",
+  "record_editorial_note": "After generated record rendering, headline assumption scope was stated explicitly and table ranges rounded for readability; underlying frozen values are unchanged."
+}

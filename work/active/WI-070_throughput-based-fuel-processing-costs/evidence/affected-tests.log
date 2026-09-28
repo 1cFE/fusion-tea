@@ -1,0 +1,125 @@
+...............FFF...................................................... [ 27%]
+........................................................................ [ 54%]
+......................FF
+=================================== FAILURES ===================================
+__________ test_actual_shipping_and_supplementary_consumers[0.0-0.0] ___________
+
+runtime_paths = None, c = 0.0, cs = 0.0
+
+    @pytest.mark.parametrize('c,cs',[(0.,0.),(.1,.2),(.3,.1)])
+    def test_actual_shipping_and_supplementary_consumers(runtime_paths,c,cs):
+        scope=importlib.import_module('stellarator_tea.modules.mfe_facilities.facility_shipping_scope').Facility_Shipping_ScopeModule()
+        r=scope.run(cas20_in=1e9,cooling_exclusion_in=1e8,facility_exclusion_in=2e8,fuel_installation_in=3e7,contingency_in=c).data.model_dump()
+        assert r['fuel_installation_exclusion']==(1+c)*3e7
+        assert r['remaining_shipping_base']==1e9-3e8-(1+c)*3e7
+        module=importlib.import_module('stellarator_tea.modules.mfe_account_costs.supplementary_cost').Supplementary_CostModule()
+        args=dict(spares_frac=.04,startup_fuel_base=2e7,decom_base=3e7,cas20=1e9,cas23_to_28=1e8,cas30=2e8,p_net=1000.,n_mod_in=1.,delivered_shipping_exclusion_in=1e8,facility_exclusion_in=2e8,contingency_rate_in=cs)
+>       old=module.run(**args).data.cost
+            ^^^^^^^^^^^^^^^^^^
+E       TypeError: Supplementary_CostModule.run() missing 5 required positional arguments: 'ref_net_power', 'shipping_frac', 'tax_frac', 'fuel_installation_exclusion_in', and 'insurance_frac'
+
+tests/models/test_fuel_processing_oracle.py:72: TypeError
+__________ test_actual_shipping_and_supplementary_consumers[0.1-0.2] ___________
+
+runtime_paths = None, c = 0.1, cs = 0.2
+
+    @pytest.mark.parametrize('c,cs',[(0.,0.),(.1,.2),(.3,.1)])
+    def test_actual_shipping_and_supplementary_consumers(runtime_paths,c,cs):
+        scope=importlib.import_module('stellarator_tea.modules.mfe_facilities.facility_shipping_scope').Facility_Shipping_ScopeModule()
+        r=scope.run(cas20_in=1e9,cooling_exclusion_in=1e8,facility_exclusion_in=2e8,fuel_installation_in=3e7,contingency_in=c).data.model_dump()
+        assert r['fuel_installation_exclusion']==(1+c)*3e7
+        assert r['remaining_shipping_base']==1e9-3e8-(1+c)*3e7
+        module=importlib.import_module('stellarator_tea.modules.mfe_account_costs.supplementary_cost').Supplementary_CostModule()
+        args=dict(spares_frac=.04,startup_fuel_base=2e7,decom_base=3e7,cas20=1e9,cas23_to_28=1e8,cas30=2e8,p_net=1000.,n_mod_in=1.,delivered_shipping_exclusion_in=1e8,facility_exclusion_in=2e8,contingency_rate_in=cs)
+>       old=module.run(**args).data.cost
+            ^^^^^^^^^^^^^^^^^^
+E       TypeError: Supplementary_CostModule.run() missing 5 required positional arguments: 'ref_net_power', 'shipping_frac', 'tax_frac', 'fuel_installation_exclusion_in', and 'insurance_frac'
+
+tests/models/test_fuel_processing_oracle.py:72: TypeError
+__________ test_actual_shipping_and_supplementary_consumers[0.3-0.1] ___________
+
+runtime_paths = None, c = 0.3, cs = 0.1
+
+    @pytest.mark.parametrize('c,cs',[(0.,0.),(.1,.2),(.3,.1)])
+    def test_actual_shipping_and_supplementary_consumers(runtime_paths,c,cs):
+        scope=importlib.import_module('stellarator_tea.modules.mfe_facilities.facility_shipping_scope').Facility_Shipping_ScopeModule()
+        r=scope.run(cas20_in=1e9,cooling_exclusion_in=1e8,facility_exclusion_in=2e8,fuel_installation_in=3e7,contingency_in=c).data.model_dump()
+        assert r['fuel_installation_exclusion']==(1+c)*3e7
+        assert r['remaining_shipping_base']==1e9-3e8-(1+c)*3e7
+        module=importlib.import_module('stellarator_tea.modules.mfe_account_costs.supplementary_cost').Supplementary_CostModule()
+        args=dict(spares_frac=.04,startup_fuel_base=2e7,decom_base=3e7,cas20=1e9,cas23_to_28=1e8,cas30=2e8,p_net=1000.,n_mod_in=1.,delivered_shipping_exclusion_in=1e8,facility_exclusion_in=2e8,contingency_rate_in=cs)
+>       old=module.run(**args).data.cost
+            ^^^^^^^^^^^^^^^^^^
+E       TypeError: Supplementary_CostModule.run() missing 5 required positional arguments: 'ref_net_power', 'shipping_frac', 'tax_frac', 'fuel_installation_exclusion_in', and 'insurance_frac'
+
+tests/models/test_fuel_processing_oracle.py:72: TypeError
+_ test_installed_facility_shipping_exclusion_preserves_other_charges[0.0-0.0] __
+
+runtime = None, plant_contingency = 0.0, supplementary_contingency = 0.0
+
+    @pytest.mark.parametrize('plant_contingency', [0., .1, .3])
+    @pytest.mark.parametrize('supplementary_contingency', [0., .2])
+    def test_installed_facility_shipping_exclusion_preserves_other_charges(
+            runtime, plant_contingency, supplementary_contingency):
+        # Civil costs already contain site labor. Remove their entire loaded
+        # contribution to shipping while retaining the old raw cooling subtraction.
+        facility = 200e6
+        other_direct = 800e6
+        cooling_delivered = 100e6
+        cas20 = (1 + plant_contingency) * (facility + other_direct)
+        facility_exclusion = (1 + plant_contingency) * facility
+        module = importlib.import_module(
+            'stellarator_tea.modules.mfe_account_costs.supplementary_cost'
+        ).Supplementary_CostModule()
+        inputs = dict(
+            spares_frac=.04, cas23_to_28=80e6, ref_net_power=1000.,
+            cas30=50e6, shipping_frac=.015, p_net=600., tax_frac=.01,
+            decom_base=20e6, cas20=cas20, n_mod_in=1.,
+            delivered_shipping_exclusion_in=cooling_delivered,
+            facility_exclusion_in=facility_exclusion,
+            insurance_frac=.015, startup_fuel_base=10e6,
+            contingency_rate_in=supplementary_contingency)
+>       actual = module.run(**inputs).data.root
+                 ^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Supplementary_CostModule.run() missing 1 required positional argument: 'fuel_installation_exclusion_in'
+
+tests/models/test_facility_account_consumers.py:59: TypeError
+_ test_installed_facility_shipping_exclusion_preserves_other_charges[0.0-0.1] __
+
+runtime = None, plant_contingency = 0.1, supplementary_contingency = 0.0
+
+    @pytest.mark.parametrize('plant_contingency', [0., .1, .3])
+    @pytest.mark.parametrize('supplementary_contingency', [0., .2])
+    def test_installed_facility_shipping_exclusion_preserves_other_charges(
+            runtime, plant_contingency, supplementary_contingency):
+        # Civil costs already contain site labor. Remove their entire loaded
+        # contribution to shipping while retaining the old raw cooling subtraction.
+        facility = 200e6
+        other_direct = 800e6
+        cooling_delivered = 100e6
+        cas20 = (1 + plant_contingency) * (facility + other_direct)
+        facility_exclusion = (1 + plant_contingency) * facility
+        module = importlib.import_module(
+            'stellarator_tea.modules.mfe_account_costs.supplementary_cost'
+        ).Supplementary_CostModule()
+        inputs = dict(
+            spares_frac=.04, cas23_to_28=80e6, ref_net_power=1000.,
+            cas30=50e6, shipping_frac=.015, p_net=600., tax_frac=.01,
+            decom_base=20e6, cas20=cas20, n_mod_in=1.,
+            delivered_shipping_exclusion_in=cooling_delivered,
+            facility_exclusion_in=facility_exclusion,
+            insurance_frac=.015, startup_fuel_base=10e6,
+            contingency_rate_in=supplementary_contingency)
+>       actual = module.run(**inputs).data.root
+                 ^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Supplementary_CostModule.run() missing 1 required positional argument: 'fuel_installation_exclusion_in'
+
+tests/models/test_facility_account_consumers.py:59: TypeError
+=========================== short test summary info ============================
+FAILED tests/models/test_fuel_processing_oracle.py::test_actual_shipping_and_supplementary_consumers[0.0-0.0]
+FAILED tests/models/test_fuel_processing_oracle.py::test_actual_shipping_and_supplementary_consumers[0.1-0.2]
+FAILED tests/models/test_fuel_processing_oracle.py::test_actual_shipping_and_supplementary_consumers[0.3-0.1]
+FAILED tests/models/test_facility_account_consumers.py::test_installed_facility_shipping_exclusion_preserves_other_charges[0.0-0.0]
+FAILED tests/models/test_facility_account_consumers.py::test_installed_facility_shipping_exclusion_preserves_other_charges[0.0-0.1]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 5 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+5 failed, 163 passed, 32 warnings in 80.58s (0:01:20)

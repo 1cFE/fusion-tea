@@ -1,0 +1,48 @@
+{
+  "artifacts": [
+    {
+      "channel": "Probe__plant__turbine__legacy__gross_out",
+      "produced": true,
+      "relative_path": "Probe__plant__turbine__legacy__gross_out.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "Probe__plant__turbine__property_value__property_value",
+      "produced": true,
+      "relative_path": "Probe__plant__turbine__property_value__property_value.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "Probe__plant__turbine__matched__gross_out",
+      "produced": true,
+      "relative_path": "plant__turbine__gross.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "Probe__plant__turbine__matched__state_h",
+      "produced": true,
+      "relative_path": "plant__turbine__state_h.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "Probe__plant__turbine__matched__pump_out",
+      "produced": true,
+      "relative_path": "Probe__plant__turbine__matched__pump_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "Probe__plant__sink__result",
+      "produced": true,
+      "relative_path": "Probe__plant__sink__result.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/disabled-execution",
+  "metadata": {
+    "output_folder": "probe_selector_results",
+    "run_description": "Generated pipeline for probe_selector"
+  },
+  "run_directory": "probe-selector-results-c4f04a9a",
+  "run_name": "probe-selector-results",
+  "short_id": "c4f04a9a"
+}

@@ -1,0 +1,30 @@
+{
+  "bounds": {
+    "stellarator_09__stellaris__magnet__coil__I_coil": [
+      14000000.0,
+      15400000.0,
+      17000000.0
+    ],
+    "stellarator_09__stellaris__magnet__winding_pack__B_max": [
+      20.0,
+      24.9,
+      27.5,
+      30.0
+    ],
+    "stellarator_09__stellaris__plasma__R": [
+      11.43,
+      12.7,
+      13.97
+    ],
+    "stellarator_09__stellaris__plasma__a": [
+      1.17,
+      1.3,
+      1.43
+    ]
+  },
+  "provenance": "engineered",
+  "rationale": "Retain the complete proposed sensitivity grid; all oracle evaluations are finite. This does not establish continuous feasibility or a qualified engineering boundary.",
+  "refusals": 0,
+  "scanned": 108,
+  "validity_mask": "none: all R > a + 2.25 m"
+}

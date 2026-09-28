@@ -14,7 +14,7 @@ promoted_to: null
 
 ## Decision
 
-A round is one agent's bounded pursuit of one strategy. It ends in a mandatory `RoundResult` — recorded even when the intent was not met — and is then reviewed by a fresh agent who did not do the work. The reviewer returns `PASS | FINDINGS | OWNER_GATE` and never resumes the closed round. After a pass, that fresh agent either recommends the owner-held close or writes the next strategy.
+A round is one agent's bounded pursuit of one strategy. It ends in a written `RoundResult`, even when intent was not met, and a closure coverage record. Under the owner's 2026-09-14 process-simplification request, independent review follows `work/orchestration/GOAL_RUNBOOK.md` § Review scope and evidence reuse; routine closure may be a coordinator check with cited evidence and a reason no additional review is needed. Required independent reviewers are fresh non-authors and return `PASS | FINDINGS | OWNER_GATE`. No review reopens a closed round. The coordinator or reviewer may propose the next strategy; the owner retains the close rule. [AGENT] Trigger selection and coverage reuse implement the owner's request; the historical title and rationale below describe the earlier mechanism.
 
 ## Why
 
@@ -28,9 +28,9 @@ The mandatory result is what makes rounds finite. Without it, a round that went 
 
 - `work/orchestration/GOAL_RUNBOOK.md` § Opening and closing a round, § The fresh review.
 - `work/orchestration/goal-templates/trail.md` — the round result and round review headings.
-- `learnings.md`: the result *proposes* the learning delta; the fresh review accepts or corrects it before append.
+- `learnings.md`: the result proposes the learning delta; closure accepts or corrects it using the required review coverage before append.
 
-Every closed round carries exactly one result and one review, by different agents. The review's scope is the whole round — task scopes, retry classification, touched-finding dispositions, cited-ref liveness, learning delta, carry-forward — which is also where the post-execution audit of finding dispositions lives (see ADR-005).
+Every closed round carries a result and closure coverage record. Account for task scopes, retry classification, touched-finding dispositions, cited-ref liveness, learning delta, and carry-forward. Reuse valid native or checkpoint evidence; independent review covers uncovered triggered risks. Coupled architecture, multiple model families, or failed coverage require substantive independent integration review (see ADR-005).
 
 ## Rejected alternatives
 

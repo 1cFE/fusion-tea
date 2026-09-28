@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "registered",
+  "candidate": "/tmp/oktavian-tbr-rendered.pdf",
+  "slug": "iaea_oktavian_tritium_breeding_benchmark_1994_text_rendering",
+  "path": "knowledge/sources/iaea_oktavian_tritium_breeding_benchmark_1994_text_rendering/",
+  "source_id": "61c8428172731605e0eab86e6b429ae9970ec5e11f9ed3f0fde8aea719b0f36d",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:25:58.812044+00:00"
+}

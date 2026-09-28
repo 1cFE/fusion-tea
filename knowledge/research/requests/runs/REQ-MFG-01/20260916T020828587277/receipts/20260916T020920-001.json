@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://www.cryogenicg10.com/sheets.htm",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9 in position 6015: invalid start byte",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-16T02:09:20.876959+00:00"
+}

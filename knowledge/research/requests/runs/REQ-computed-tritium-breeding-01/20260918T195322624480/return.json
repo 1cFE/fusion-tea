@@ -1,0 +1,28 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-01",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-01/20260918T195322624480",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "proof_of_principle_of_parametric_stellarator_neutronics",
+      "path": "knowledge/sources/proof_of_principle_of_parametric_stellarator_neutronics/",
+      "source_id": "056e87c91c68a236ba34d59a071942a758bdd42908f9d203299f885580d29671",
+      "pre_existing": false
+    },
+    {
+      "slug": "multiphysics_analysis_with_cad_based_parametric_breeding",
+      "path": "knowledge/sources/multiphysics_analysis_with_cad_based_parametric_breeding/",
+      "source_id": "36a35c9c10ff51ac2647c85ea74318658a1556f6fd329d84f0385a8dfdeab0cf",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://acris.aalto.fi/ws/portalfiles/portal/150683939/Proof-of-principle_of_parametric_stellarator_neutronics_modeling_using_Serpent2.pdf",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_captures",
+  "reason": "at least one source is registered and citable"
+}

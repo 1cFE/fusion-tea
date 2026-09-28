@@ -1,0 +1,97 @@
+J. Lion et al.
+Fig. 32. Cross section visualization of the radial build at the 𝜑= 0, 𝜑= 𝜋∕8 and
+𝜑= 𝜋∕4 cross sections (where 𝜑is the cylindrical toroidal angle). The thin green line
+is the first wall, red is the homogenized breeding blanket, blue is the shield, and white
+is the vacuum vessel. Note that the divertor is not included in this visualization.
+and 14% EUROFER97 by volume. This composition accounts for the
+segmentation effect in the structural budget, ensuring the blanket’s
+performance and durability.
+To achieve a tritium breeding ratio (TBR) above 1.05, considered
+sufficient to close the fusion fuel cycle [255], a lithium-6 enrichment
+level of 70 % has been chosen.
+The decision to use a water-cooled breeding blanket simplifies the
+power plant’s primary and secondary cycles, aligning them with those
+of a conventional PWR. The high water content in the blanket has
+a significant thermalization effect, which shifts the neutron spectrum
+toward thermal energies—increasing the reaction rate and improving
+tritium production. Additionally, the high heat capacity of water com-
+pared to gas cooling reduces the need for large cooling ports, which
+helps in optimizing the overall design.
+The first wall, as described earlier, is proposed to be helium-cooled,
+while the breeding blanket utilizes water cooling. This necessitates the
+use of two distinct cooling loops. The choice of helium cooling in
+the first wall is driven by two main considerations. First, the lower
+pressure in the helium loop allows for a thinner first wall, enhancing
+thermal efficiency. Second, helium cooling offers greater resilience
+against critical heat flux events, which are particularly challenging to
+manage in high-pressure water cooling systems.
+For the breeding blanket segmentation, one potential configuration
+is the single module segment (SMS) design [256]. In this configuration,
+each toroidal section of the reactor is split into poloidal segments
+approximately every meter. Each segment is supplied independently to
+ensure modularity and improve detectability of failures within a mod-
+ule. Within each segment, the manifold configuration directs helium
+through back manifolds located behind the neutron shield, routing it ra-
+dially toward the first wall, while the breeding blanket’s water cooling
+system is fed through separate manifolds and distributed poloidally.
+This modular approach reduces the need for complex manifold
+systems at the back of the blanket, thereby creating more space for a
+sufficiently large INS. The simplified geometry of the SMS design not
+only facilitates maintenance but also enhances the overall efficiency of
+neutron shielding and tritium breeding, making it a compelling choice
+for the reactor’s blanket configuration.
+Given the varying plasma-to-coil distance across different poloidal
+and toroidal positions, we implement variable thicknesses for both the
+blanket and the shield. This design strategy enables the optimization of
+TBR while ensuring adequate neutron shielding at the cryogenic coils.
+For instance, the INS thickness at various toroidal angles is shown in
+Fig. 32, with a minimum thickness of 100 mm and a maximum thickness
+of 225 mm. Additionally, the averaged thicknesses for each layer of the
+radial build are illustrated in Fig. 34. To optimize the thickness of
+the INS, we use a simple one-dimensional exponential decay model
+for the fast neutron flux within the radial build, using two material
+fractions for INS and BB. In particular, we vary the shielding thickness,
+using a fixed first wall and outer shield surface, in order to minimize
+Fig. 33. The distribution of the neutron wall load on the first wall of Stellaris operating
+in full power, at 2700 MW fusion power.
+Fig. 34. Averaged component thicknesses and gaps of the radial build. Values are only
+approximate, as large variations in both toroidal and poloidal directions exist.
+the neutron flux variation in a point-by-point fashion. The choices of
+materials for INS and BB are kept constant during this optimization.
+In the following neutronics simulations, we employ the 3D neu-
+tron Monte-Carlo simulation code OpenMC [257,258], integrated with
+DAGMC [259] for efficient particle transport simulations. The CAD-to-
+DAGMC tool [260] was utilized to convert the detailed CAD geometry
+into a meshed representation suitable for the analysis. A comprehen-
+sive three-dimensional (3D) 90-degree reactor model is initialized,
+incorporating multiple material layers, each homogenized into a single
+OpenMC material for simplification. The reactor geometry used in the
+neutronics analysis is depicted in Fig. 31, which illustrates the various
+reactor layers, including the magnets described separately by their
+casings and winding packs. For the particle sources, we employ a
+neutron source function based on the plasma profiles introduced in Sec-
+tion 2.3, utilizing the nuclear reaction rates from [137]. The neutronics
+simulations presented in this section are consistent across both physics
+design Point A and Point B, as defined in Table 5, because the fusion
+power remains constant and the effects of plasma temperature on the
+neutron source distribution are neglected.
+To approximate the neutron source, we use a monoenergetic source
+at 14.06 MeV, with the spatial distribution discretized into 30 radial
+points, 50 poloidal points, and 100 toroidal points. This source is
+then represented as multiple point sources in the OpenMC simulation
+environment. The resulting neutron wall load is shown in Fig. 33, using
+the method proposed in [240].
+We proceed to analyze the chosen breeding blanket and shielding
+concept through five key evaluation steps:
+• Tritium Breeding Ratio Analysis: We assess whether the design
+achieves sufficient tritium breeding using a multi-layer 3D model
+that includes separately homogenized materials for each layer.
+• Power Multiplication: Due to endo- and exothermal nuclear reac-
+tions within the blanket, we estimate to which degree the total
+neutron power is amplified by the blanket, a critical value to
+estimate the commercial viability of a fusion power plant.
+• Neutron Shielding for Superconductor Protection: We evaluate
+the effectiveness of neutron shielding in minimizing fast neutron
+flux into the superconducting coils—ensuring long operational
+Fusion Engineering and Design xxx (xxxx) xxx 
+18 

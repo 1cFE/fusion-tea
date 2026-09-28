@@ -1,0 +1,8 @@
+{
+  "original": "/tmp/pytest-of-reid/pytest-13164/test_wrong_expected_fingerprin0/out",
+  "finding": "The first lineage test stopped at the same stale normative-seed fixture, before reaching its intended lineage assertion. Retained native errors establish the cause; no passing negative-lineage test is claimed.",
+  "sha256": {
+    "integration_return.json": "c1ccc5a4fc0977de2230e9d2ee1d2827dfef817af1e4aad649113a663da99204",
+    "junit/model-family-spine.xml": "ed381cd924905b64e13b4b870edfa6424c6af564f06cdfd2c36cc8dee0cc22f0"
+  }
+}

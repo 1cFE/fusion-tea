@@ -1,0 +1,12 @@
+{
+  "revision": "post-reveal-v1",
+  "archive": ".project/active/aries-comparison-preparation/post-reveal-preparation/package/post-reveal-v1.tar.gz",
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "adoption_record": ".project/active/aries-comparison-preparation/post-reveal-preparation/adoption.json",
+  "adoption_record_sha256": "a1aed12ca2357c3d9abc448e08385aaea590212fb967d8d91c80f8b6afa1de2b",
+  "instructions": ".project/active/aries-comparison-preparation/post-reveal-preparation/adoption.md",
+  "execution_prompt": ".project/active/aries-comparison-preparation/post-reveal-preparation/execution-prompt.md",
+  "comparison_kind": "post_reveal_comparison",
+  "reveal_authorized": false,
+  "reference_execution_authorized": false
+}

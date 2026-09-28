@@ -1,0 +1,20 @@
+{
+  "repo_commit_at_execution": "bd9b9aec5fabda5e9a14d53df84f108d52f7f183",
+  "recorded_at_utc": "2026-09-22T16:47:50.333509+00:00",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.execute_study --record exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty --integration-return work/orchestration/goals/aries-integrated-equipment-costs/evidence/integration-attempt1/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/native/20260922-aries-integrated-cost-uncertainty.db --sample-size 113 --out exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/verification_summary.json'",
+  "execution_invocations": 1,
+  "native_attempts": 113,
+  "completed_points": 113,
+  "proposed_points": 113,
+  "export_failure": "Original execute_study JSON-string equality rejected three int-to-float enum normalizations after all113 native rows completed. No evaluation retry.",
+  "export_recovery_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/export_stored_results.py'",
+  "package_mutations": false,
+  "coordinator_release": "T008 at bd9b9aec; both mechanical export recoveries explicitly authorized",
+  "no_runtime_physical_adapter": true,
+  "mechanical_export_recovery_attempts": 2,
+  "evaluator_reruns": 0,
+  "verification_outcome": "pass",
+  "analysis_command": ".codex-test/run python exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/analyze_results.py",
+  "narrative_command": ".codex-test/run python exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/write_readout.py"
+}

@@ -1,0 +1,307 @@
+{
+  "receipts": "/home/reid/1cfe/fusion-tea/work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-07/cases.json",
+  "receipts_sha256": "8ef94801f1b9e79b72b4b43368bd359fe40d0f75259353f9cb5d42fa7e8ab23e",
+  "oracle_identity": "77ff2136013c728ba226d858f546a3cbb6c4480fe86eff7b8f99e30f8c91106e",
+  "results": {
+    "gas-q2800-m2000-r1.2-ua25-25-20": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.2-ua25-25-25": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.2-ua25-25-40": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.2-ua30-30-50": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.2-ua40-40-60": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.35-ua25-25-20": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.35-ua25-25-25": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.35-ua25-25-40": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.35-ua30-30-50": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.35-ua40-40-60": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.5-ua25-25-20": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.5-ua25-25-25": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.5-ua25-25-40": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.5-ua30-30-50": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.5-ua40-40-60": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.65-ua25-25-20": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.65-ua25-25-25": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.65-ua25-25-40": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.65-ua30-30-50": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.65-ua40-40-60": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.8-ua25-25-20": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.8-ua25-25-25": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.8-ua25-25-40": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.8-ua30-30-50": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "gas-q2800-m2000-r1.8-ua40-40-60": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    }
+  }
+}

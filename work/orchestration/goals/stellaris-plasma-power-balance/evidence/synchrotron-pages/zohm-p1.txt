@@ -1,0 +1,74 @@
+ORIGINAL RESEARCH
+On the Use of High Magnetic Field in Reactor Grade Tokamaks
+Hartmut Zohm1
+Published online: 9 August 2018
+ The Author(s) 2018
+Abstract
+A 0-D model is developed to explore, from the physics point of view, the design options for future reactor grade tokamaks
+at values of the conﬁning magnetic ﬁeld exceeding the present technology. It is found that steady state devices with
+consistent exhaust parameters can indeed be designed at more compact geometry than presently envisaged, but the plasma
+performance, in particular the stability, is still at the upper end of what has been achieved in present day experiments, i.e.
+requires an ‘advanced tokamak’ approach.
+Keywords Fusion power plant  Tokamak  Magnetic conﬁnement
+Introduction
+The performance of magnetically conﬁned fusion plasmas
+usually increases with increasing magnetic ﬁeld B for given
+size, expressed by the torus major radius R. Simple scalings
+[1] show that the fusion power scales as B4R3, and the
+power ampliﬁcation Q increases with 1/(B-3.7R-2.7-const)
+so that conversely, the major radius R can be decreased if
+B is increased according to these relations, keeping the
+plasma performance constant. This has even been inter-
+preted misleadingly as ‘fusion performance not depending
+on size’ [2, 3]. Present designs for next step reactor grade
+experimental devices differ strongly in their assumptions
+about the technically achievable toroidal ﬁeld. Relying
+either on ITER technology (Nb3Sn), the value of Bmax at
+the inner leg of the TF conductor of the order of 12 T [4]),
+or new High Tc (HTSC) superconductors of the REBCO
+type that could allow up to 24 T at the inner leg [5],
+although this value would, using present technology,
+require exceedingly large support structure to withstand the
+forces.
+This contribution aims at analyzing the principal merits
+of high ﬁeld tokamaks (where the term ‘high ﬁeld’ means a
+ﬁeld above the ﬁeld possible using state-of the-art ITER
+technology) and the new challenges arising, e.g. for
+exhaust of power through a poloidal divertor which can be
+more challenging in a compact device. We explicitly leave
+out a discussion of the technological challenges on the
+route to using HTSC in fusion, but remind the reader that
+solving these issues will be a pre-requisite for using high
+ﬁeld tokamaks as FPPs and remains a serious R&D task (at
+present, there is no convincing demonstration of a HTSC
+high ﬁeld solution on the scale needed for a reactor-grade
+device).
+In ‘‘The 0-D Model’’ section, we describe the 0-D model
+used for the analysis, an extension of the model used in [6]
+for application in a wider parameter range. In ‘‘Exploration
+of High Field Solutions’’ section, we discuss suitable ﬁg-
+ures of merit for quantifying the gain that high ﬁeld
+operation may bring and analyze several routes to tokamak
+FPPs for their prospects on the high ﬁeld path. In ‘‘Dis-
+cussion and Conclusions’’ section, a concluding discussion
+is given.
+The 0-D Model
+We use a 0-D model based on the equations presented in
+[6], improved to explore a larger parameter space. This
+required to update the calculation of the fusion power for
+higher temperatures as well as a more detailed radiation
+model,
+including
+separately Bremsstrahlung,
+impurity
+radiation and synchrotron radiation (which speciﬁcally
+becomes important when exploring high ﬁeld solutions).
+& Hartmut Zohm
+zohm@ipp.mpg.de
+1
+Max-Planck-Institut fu¨r Plasmaphysik, 8748 Garching,
+Germany
+123
+Journal of Fusion Energy (2019) 38:3–10
+https://doi.org/10.1007/s10894-018-0177-y
+(0123456789().,-volV)(0123456789().,-volV)

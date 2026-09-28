@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-036-01",
+  "run": "knowledge/research/requests/runs/REQ-036-01/20260903T041654540032",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "in_plane_and_out_of_plane_tf_coil_support_for_the_us_fnsf",
+      "path": "knowledge/sources/in_plane_and_out_of_plane_tf_coil_support_for_the_us_fnsf/",
+      "source_id": "2db022af7ac779858853fa18337ff0800dbed73e4bf0bfcececca3100f61c40b",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

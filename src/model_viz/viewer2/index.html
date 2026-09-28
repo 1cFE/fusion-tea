@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Model viz</title>
+<link rel="stylesheet" href="viewer2.css">
+</head>
+<body data-load-state="empty" data-load-seq="0">
+<header class="toolbar">
+  <label class="file-pick">Snapshot
+    <input type="file" data-role="snapshot-input" accept=".json,application/json">
+  </label>
+  <button type="button" data-action="expand-all">Expand all</button>
+  <button type="button" data-action="collapse-all">Collapse all</button>
+  <button type="button" data-action="fit">Fit</button>
+  <button type="button" data-action="reset-layout">Reset layout</button>
+  <label>Spacing
+    <input type="range" data-role="spacing" min="1" max="3" step="0.25" value="1">
+    <span class="spacing-value" data-role="spacing-value">1&times;</span>
+  </label>
+  <label><span data-role="search-label">Find</span>
+    <input type="search" data-role="search-input" list="find-list" autocomplete="off">
+  </label>
+  <datalist id="find-list" data-role="find-list"></datalist>
+  <span class="search-status" data-role="search-status"></span>
+</header>
+<div class="banner" data-role="error-banner" hidden></div>
+<main class="workspace">
+  <div class="graph-pane" data-role="graph-pane"></div>
+  <aside class="panel" data-role="panel"></aside>
+</main>
+<script src="../viewer/vendor/cytoscape-3.28.1.min.js"></script>
+<script src="../viewer/vendor/dagre-0.8.5.min.js"></script>
+<script src="../viewer/vendor/cytoscape-dagre-2.5.0.js"></script>
+<script src="../viewer/js/model.js"></script>
+<script src="../viewer/js/formula.js"></script>
+<script src="../viewer/js/view.js"></script>
+<script src="../viewer/js/structure.js"></script>
+<script src="../viewer/js/panel.js"></script>
+<script src="../viewer/js/part_panel.js"></script>
+<script src="js/overlay.js"></script>
+<script src="js/reach.js"></script>
+<script src="js/graph2.js"></script>
+<script src="js/panel2.js"></script>
+<script src="js/app2.js"></script>
+</body>
+</html>

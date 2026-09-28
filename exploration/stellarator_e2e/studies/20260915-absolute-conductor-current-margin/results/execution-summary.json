@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-15T23:22:03.085028+00:00",
+  "finished_at_utc": "2026-09-15T23:28:03.713761+00:00",
+  "elapsed_seconds": 360.6287343185395,
+  "cases": 295,
+  "states": {
+    "completed": 295
+  },
+  "store": "results/study/_work/20260915-absolute-conductor-current-margin.db",
+  "repo_revision": "b6004314ac83e73c9727df82612335198a3a6f7a"
+}

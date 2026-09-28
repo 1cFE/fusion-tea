@@ -1,0 +1,15 @@
+{
+  "source_hashes": {
+    "models/library/analyses/mfe_fuel_cycle.sysml": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/designs/aries_cs_transfer/fuel_reuse.sysml": "f97e86073bd80d4f2ba985dbab41de04899dd64b3e3d80e10610e0cdbacee6b0"
+  },
+  "staged_hashes": {
+    "models/library/analyses/mfe_fuel_cycle.sysml": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/designs/aries_cs_transfer/fuel_reuse.sysml": "f97e86073bd80d4f2ba985dbab41de04899dd64b3e3d80e10610e0cdbacee6b0"
+  },
+  "capacity_completion_original": "7b0b52d46613e1e4830de05e8126849de57550b820d2e0b721f715f730c1a8ee",
+  "capacity_completion_copied": "0e78d0918c65061623dcf896b60673c95640d528d8b45a312c4b022a8adff8c7",
+  "capacity_completion_prefix_only": true
+}

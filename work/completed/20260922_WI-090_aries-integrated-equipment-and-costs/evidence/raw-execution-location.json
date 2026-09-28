@@ -1,0 +1,6 @@
+{
+  "raw_development_outputs": "/tmp/aries-equipment-development-raw-bp996xku/native_runs",
+  "durable_complete_cases": "verification.json",
+  "durable_canonical_cases": "baseline-execution.json",
+  "note": "Per-module development files retained in temporary storage; complete inputs, outputs and refusals remain in committed native receipts."
+}

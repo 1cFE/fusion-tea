@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_account_costs/annual_cost_rollup_impl.py
++++ production/handwritten/mfe_account_costs/annual_cost_rollup_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:891
++SysML Source: root-0/analyses/mfe_account_costs.sysml:806
+ 
+ SysML Expressions:
+     cas70 = cas71 + cas72
+@@ -38,7 +38,7 @@
+ economics.py:88-92 (compute_lcoe)
+ *Basis**: 1costingFE CAS70 composition and LCOE annual-cost numerator
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:891
++SysML Source: root-0/analyses/mfe_account_costs.sysml:806
+ 
+ SysML Expressions:
+     cas70 = cas71 + cas72

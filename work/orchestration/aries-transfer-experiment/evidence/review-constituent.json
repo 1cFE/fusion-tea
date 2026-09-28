@@ -1,0 +1,31 @@
+{
+  "fingerprint": "9c5aac7abeab241fb582cac1044a52425d45ee0a9ac09accd33f83f16035602f",
+  "native_edges_checked": 33,
+  "cases": [
+    {
+      "case": "mixed",
+      "actual": {
+        "volume": 0.572222,
+        "known_mass": 4398.66939186,
+        "source_price_subtotal": 116544.43844640601,
+        "unquantified_volume": 0.04577776
+      },
+      "expected": {
+        "volume": 0.572222,
+        "known_mass": 4398.66939186,
+        "source_price_subtotal": 116544.438446406,
+        "unquantified_volume": 0.04577776
+      }
+    },
+    {
+      "case": "invalid_partition",
+      "error": "sector coverages must sum to one within 1e-12"
+    },
+    {
+      "case": "zero_invalid_recipe",
+      "error": "recipe fractions must sum to one within 1e-12"
+    }
+  ],
+  "protected_count": 1383,
+  "changed": []
+}

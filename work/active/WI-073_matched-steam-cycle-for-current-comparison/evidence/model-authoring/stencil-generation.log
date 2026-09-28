@@ -1,0 +1,6 @@
+Model failed exact-route validation: SI_CONSTRAINT_BLOCKED: stellarator_09__stellaris__matched_main_heat_direction: constraint profile blocked execution: block_real_equality_requires_tolerance: numerical equality has no tolerance semantics; rewrite it as a two-inequality tolerance band [mfe_plant.sysml:839]; SI_CONSTRAINT_BLOCKED: stellarator_09__stellaris__matched_reheat_heat_direction: constraint profile blocked execution: block_real_equality_requires_tolerance: numerical equality has no tolerance semantics; rewrite it as a two-inequality tolerance band [mfe_plant.sysml:843]; SI_CONSTRAINT_BLOCKED: stellarator_09__stellaris__cooling_water_heat_direction: constraint profile blocked execution: block_real_equality_requires_tolerance: numerical equality has no tolerance semantics; rewrite it as a two-inequality tolerance band [mfe_plant.sysml:847]
+Traceback (most recent call last):
+  File "/tmp/wi073_structure.py", line 57, in <module>
+    assert run_codegen(GenerationConfig(models_path=MFE.twin,output_path=Path('/tmp/wi073-stencil'),package_name='stellarator_tea',overwrite=True))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

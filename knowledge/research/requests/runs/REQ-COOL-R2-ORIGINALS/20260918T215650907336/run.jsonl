@@ -1,0 +1,24 @@
+{"kind": "search", "query": "\"911105\" \"pdf\" -site:art.inl.gov", "at": "2026-09-18T21:57:01.172447+00:00"}
+{"kind": "search", "query": "\"M-6914-00-04\" -site:art.inl.gov", "at": "2026-09-18T21:57:01.231327+00:00"}
+{"kind": "search", "query": "\"117650\" Stewart repository", "at": "2026-09-18T21:57:01.289776+00:00"}
+{"kind": "search", "query": "\"911120\" steam generator pdf -site:art.inl.gov", "at": "2026-09-18T21:57:01.348478+00:00"}
+{"kind": "search", "query": "\"Economic solution for low carbon process heat\" -site:researchgate.net -site:sciencedirect.com", "at": "2026-09-18T21:57:13.283486+00:00"}
+{"kind": "search", "query": "\"Stewart\" \"NCET\" github", "at": "2026-09-18T21:57:13.342472+00:00"}
+{"kind": "search", "query": "\"High Temperature Process Heat Transfer and Transport Study\" -site:art.inl.gov", "at": "2026-09-18T21:57:13.401308+00:00"}
+{"kind": "search", "query": "\"Independent Evaluation\" \"Dominion\" \"costs\" reactor pdf", "at": "2026-09-18T21:57:13.460482+00:00"}
+{"kind": "search", "query": "site:dspace.mit.edu \"Stewart\" \"cost\" reactor", "at": "2026-09-18T21:57:24.209865+00:00"}
+{"kind": "search", "query": "\"nuclear cost estimating tool\" github", "at": "2026-09-18T21:57:24.268446+00:00"}
+{"kind": "search", "query": "\"NGNP\" \"transport study\" \"General Atomics\"", "at": "2026-09-18T21:57:24.327471+00:00"}
+{"kind": "search", "query": "\"Economic solution for low carbon\" pdf Stewart MIT", "at": "2026-09-18T21:57:24.387381+00:00"}
+{"kind": "search", "query": "\"Stewart\" \"horizontal\" \"osf\"", "at": "2026-09-18T21:58:29.030473+00:00"}
+{"kind": "search", "query": "\"Economic solution\" \"117650\" filetype:pdf", "at": "2026-09-18T21:58:29.120597+00:00"}
+{"kind": "search", "query": "\"NGNP\" \"911105\" archive", "at": "2026-09-18T21:58:29.228361+00:00"}
+{"kind": "search", "query": "\"Dominion\" \"M-6914\" archive", "at": "2026-09-18T21:58:29.327012+00:00"}
+{"kind": "search", "query": "\"Capital Cost Estimation\" \"Stewart\" \"osf.io\"", "at": "2026-09-18T21:58:48.898961+00:00"}
+{"kind": "search", "query": "\"117650\" site:dspace.mit.edu", "at": "2026-09-18T21:58:48.958098+00:00"}
+{"kind": "search", "query": "\"6914-00-04\" pdf -site:art.inl.gov -site:researchgate.net", "at": "2026-09-18T21:58:49.017831+00:00"}
+{"kind": "search", "query": "\"911105\" \"Bolin\" pdf -site:art.inl.gov", "at": "2026-09-18T21:58:49.077318+00:00"}
+{"kind": "candidate", "ref": "https://info.ornl.gov/sites/publications/files/Pub12288.pdf", "triage": "rejected", "note": "Original materials development report, no transferable equipment cost method found.", "at": "2026-09-18T22:03:02.278906+00:00"}
+{"kind": "candidate", "ref": "https://inldigitallibrary.inl.gov/sites/sti/sti/3867694.pdf", "triage": "keeper", "note": "Original GA summary and lifecycle scope; captured full original via local-pdf.", "at": "2026-09-18T22:03:02.420598+00:00"}
+{"kind": "candidate", "ref": "https://47278698.fs1.hubspotusercontent-na2.net/hubfs/47278698/194-ANP-TR%20MIT%20CANES.pdf", "triage": "keeper", "note": "Original water-reactor component cost equations with explicit transfer limits; full PDF captured.", "at": "2026-09-18T22:03:02.539127+00:00"}
+{"kind": "failure", "ref": "https://nift.mit.edu/people/w-robb-stewart/", "reason": "MIT author page unreachable via web and direct original retrieval; no exact Stewart2021 original obtained.", "disposition": "queued", "at": "2026-09-18T22:03:02.612700+00:00"}

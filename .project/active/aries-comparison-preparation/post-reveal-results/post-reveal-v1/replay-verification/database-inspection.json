@@ -1,0 +1,140 @@
+{
+  "attempt_transitions": {
+    "columns": [
+      "transition_seq",
+      "attempt_id",
+      "candidate_id",
+      "proposal_id",
+      "attempt_number",
+      "state"
+    ],
+    "rows": [
+      [
+        1,
+        "adapter-preparation-v1:c0000:a1",
+        "adapter-preparation-v1:c0000",
+        "adapter-preparation-v1:p0000",
+        1,
+        "started"
+      ],
+      [
+        2,
+        "adapter-preparation-v1:c0000:a1",
+        "adapter-preparation-v1:c0000",
+        "adapter-preparation-v1:p0000",
+        1,
+        "execution_failed"
+      ]
+    ]
+  },
+  "cases": {
+    "columns": [
+      "commit_order",
+      "study_id",
+      "candidate_id",
+      "proposal_id",
+      "attempt_id",
+      "state",
+      "inputs_json",
+      "evidence_digest",
+      "failure_json",
+      "assessment_json"
+    ],
+    "rows": [
+      [
+        1,
+        "adapter-preparation-v1",
+        "adapter-preparation-v1:c0000",
+        "adapter-preparation-v1:p0000",
+        "adapter-preparation-v1:c0000:a1",
+        "execution_failed",
+        "{\"stellarator_09__stellaris__plasma__R\":7.75,\"stellarator_09__stellaris__plasma__T_i0\":11.83,\"stellarator_09__stellaris__plasma__a\":1.7}",
+        null,
+        "{\"cause\":\"ValueError: REBCO Conductor Current: B_peak outside 20..32 T; actual=56.61785714285713 T at 20.0 K\",\"module_or_channel\":\"stellarator_09__stellaris__magnet__conductor_current\",\"partial_artifacts\":[],\"phase\":\"module_execution\",\"retryable\":false}",
+        null
+      ]
+    ]
+  },
+  "compatibility": {
+    "columns": [
+      "singleton",
+      "study_id",
+      "executable_fingerprint",
+      "model_contract_fingerprint",
+      "study_definition_fingerprint",
+      "input_schema_version",
+      "evidence_schema_version",
+      "strategy_identity",
+      "strategy_config"
+    ],
+    "rows": [
+      [
+        1,
+        "adapter-preparation-v1",
+        "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+        "6f51a9963348754694563855957d9bf9bfdfb90c61bd9228c9bd8868286fac90",
+        "01f0cad5a29303ab9c60e9de0a87be1d70efd1b1d32852e2b6ac6986c7cc5fc9",
+        "input-v1",
+        "v3",
+        "prepared-list/v1",
+        "0892657d346f38030261b6428fb064b905156d700ae33f097e51013f802e3df5"
+      ]
+    ]
+  },
+  "proposals": {
+    "columns": [
+      "proposal_id",
+      "raw_json",
+      "valid",
+      "reject_reason",
+      "candidate_id"
+    ],
+    "rows": [
+      [
+        "adapter-preparation-v1:p0000",
+        "{\"stellarator_09__stellaris__plasma__R\":7.75,\"stellarator_09__stellaris__plasma__T_i0\":11.83,\"stellarator_09__stellaris__plasma__a\":1.7}",
+        1,
+        null,
+        "adapter-preparation-v1:c0000"
+      ]
+    ]
+  },
+  "runner_lease": {
+    "columns": [
+      "singleton",
+      "lease_id",
+      "pid",
+      "hostname",
+      "acquired_at",
+      "heartbeat_at",
+      "released"
+    ],
+    "rows": [
+      [
+        1,
+        "d9ba8c0eabc740ea9eec9f1a7e4a3884",
+        4,
+        "reid-workstation",
+        1789952094.6753597,
+        1789952094.6753597,
+        1
+      ]
+    ]
+  },
+  "sqlite_sequence": {
+    "columns": [
+      "name",
+      "seq"
+    ],
+    "rows": [
+      [
+        "attempt_transitions",
+        2
+      ],
+      [
+        "cases",
+        1
+      ]
+    ]
+  }
+}

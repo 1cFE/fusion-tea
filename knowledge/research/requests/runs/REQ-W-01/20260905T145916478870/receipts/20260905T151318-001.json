@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/cf4cbd0c-47f2-43ea-be9f-34ba243b7af5/scratchpad/lion_2021_nf_stellarator_process.pdf",
+  "slug": "a_general_stellarator_version_of_the_systems_code_process",
+  "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+  "source_id": "db74f1c6d04aa505a763c9aa8a168f39324ef345aa3fe454d89bea2eabb18793",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-05T15:13:18.297395+00:00"
+}

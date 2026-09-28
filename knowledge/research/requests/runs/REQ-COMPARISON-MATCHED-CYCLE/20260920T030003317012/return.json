@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-COMPARISON-MATCHED-CYCLE",
+  "run": "knowledge/research/requests/runs/REQ-COMPARISON-MATCHED-CYCLE/20260920T030003317012",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "nist_water0_8mpa42to455c_matched_cycle_table",
+      "path": "knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/",
+      "source_id": "89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4",
+      "pre_existing": false
+    },
+    {
+      "slug": "nist_water_saturation20to60c_matched_cycle_table",
+      "path": "knowledge/sources/nist_water_saturation20to60c_matched_cycle_table/",
+      "source_id": "9403fa902e2663a1189793ee9e476db63bae76c1a767e44f64ec2082ba1d0fd6",
+      "pre_existing": false
+    },
+    {
+      "slug": "epa2014_steam_turbine_technology_characterization",
+      "path": "knowledge/sources/epa2014_steam_turbine_technology_characterization/",
+      "source_id": "0e8f91f8f6c9513caabe184bd4558850fe6b434e33352a0016930d50ee26a648",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=0.8&TLow=42&THigh=455&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

@@ -1,0 +1,12 @@
+{
+  "identical": 102,
+  "moved": {},
+  "gone": [],
+  "new": {
+    "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+    "stellarator_09__stellaris__geom__A": 9.769230769230768,
+    "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+    "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0
+  },
+  "verdicts_equal": true
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "independent-check-of-existing-author-evidence",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "136124cdac945a0ede3ecb067876694320652fe8878b392c44634f5d65223910",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "inputs/source_budget_accounting_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "d1aa04e629836d405efab0878fbb3936df94c0343644333212a019d8e8e445b7",
+      "semantic_fingerprint": "1a076482cb5f319094d97547bb35da8531e51b4ea09838bf6a4127869670b004"
+    }
+  },
+  "cases": [
+    {
+      "case": "nominal-source-assumed",
+      "status": "pass",
+      "comparisons": 262,
+      "verdicts": 14,
+      "worst": [
+        1892.3333333333333,
+        "nominal-source-assumed",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        1.291482476517558e-09
+      ]
+    },
+    {
+      "case": "nominal-calculated",
+      "status": "pass",
+      "comparisons": 262,
+      "verdicts": 14,
+      "worst": [
+        8288.25,
+        "nominal-calculated",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        7.539028956671245e-09
+      ]
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "status": "pass",
+      "comparisons": 262,
+      "verdicts": 14,
+      "worst": [
+        12869.0,
+        "literal-Lyon-source-input",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        5.852598405908793e-09
+      ]
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "status": "pass",
+      "comparisons": 262,
+      "verdicts": 14,
+      "worst": [
+        5.1042361830294445e-12,
+        "literal-Raffray-accounting",
+        "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+        216.1152710908649
+      ]
+    }
+  ]
+}

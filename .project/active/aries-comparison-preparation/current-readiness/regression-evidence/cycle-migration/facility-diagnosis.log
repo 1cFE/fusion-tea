@@ -1,0 +1,27 @@
+..F
+=================================== FAILURES ===================================
+_ test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14] _
+tests/models/test_facility_account_consumers.py:137: in test_native_facility_children_reconcile_to_total_without_calendar_change
+    assert old[P + 'total_capital__total_capital'] == pytest.approx(
+E   assert 17657144649.785084 == 17860732458.743668 ± 0.0178607
+E     
+E     comparison failed
+E     Obtained: 17657144649.785084
+E     Expected: 17860732458.743668 ± 0.0178607
+=============================== warnings summary ===============================
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.0-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.0-selected18]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 2 passed, 6 deselected, 3 warnings in 11.72s

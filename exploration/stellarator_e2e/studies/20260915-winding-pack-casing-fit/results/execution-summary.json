@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-15T20:26:55.682443+00:00",
+  "finished_at_utc": "2026-09-15T20:29:16.154663+00:00",
+  "elapsed_seconds": 140.47222039103508,
+  "cases": 116,
+  "states": {
+    "completed": 116
+  },
+  "store": "results/study/_work/20260915-winding-pack-casing-fit.db",
+  "repo_revision": "ac1d675a4ad8204b0d8c759469e9963ccea44978"
+}

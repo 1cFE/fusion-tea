@@ -1,0 +1,42 @@
+[
+  {
+    "case": "lhs-0224",
+    "shells_per_loop": 6,
+    "area_ft2_per_shell": 10448.327908461086,
+    "hx_purchase_CE500_per_loop": 2846858.122959049,
+    "compressor_purchase_CE500_each": 3144271.8654305832,
+    "all_compressors_CE500": 113193787.155501,
+    "all_hx_CE500": 51243446.21326288,
+    "status": "diagnostic unvalidated helium-service transfer and unproven modular HX hydraulics; not installed design"
+  },
+  {
+    "case": "anchor-loops-14",
+    "shells_per_loop": 8,
+    "area_ft2_per_shell": 11137.47063609423,
+    "hx_purchase_CE500_per_loop": 4001272.315602005,
+    "compressor_purchase_CE500_each": 5758536.132577822,
+    "all_compressors_CE500": 161239011.712179,
+    "all_hx_CE500": 56017812.41842807,
+    "status": "diagnostic unvalidated helium-service transfer and unproven modular HX hydraulics; not installed design"
+  },
+  {
+    "case": "r2-forward",
+    "shells_per_loop": 9,
+    "area_ft2_per_shell": 10680.381753713906,
+    "hx_purchase_CE500_per_loop": 4348046.488525271,
+    "compressor_purchase_CE500_each": 6467036.180007425,
+    "all_compressors_CE500": 181077013.0402079,
+    "all_hx_CE500": 60872650.8393538,
+    "status": "diagnostic unvalidated helium-service transfer and unproven modular HX hydraulics; not installed design"
+  },
+  {
+    "case": "r2-table5",
+    "shells_per_loop": 8,
+    "area_ft2_per_shell": 11967.129744093501,
+    "hx_purchase_CE500_per_loop": 4249461.366216651,
+    "compressor_purchase_CE500_each": 6428218.266887105,
+    "all_compressors_CE500": 179990111.47283894,
+    "all_hx_CE500": 59492459.127033114,
+    "status": "diagnostic unvalidated helium-service transfer and unproven modular HX hydraulics; not installed design"
+  }
+]

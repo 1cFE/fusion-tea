@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/breeding-materials-pnnl2021.pdf",
+  "slug": "compendium_of_material_composition_data_for_radiation",
+  "path": "knowledge/sources/compendium_of_material_composition_data_for_radiation/",
+  "source_id": "a34df48e1025cbd9649c8d7a635454ab57af9b0c59b5fb1faaaf4db1057dcb4b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:27:40.850213+00:00"
+}

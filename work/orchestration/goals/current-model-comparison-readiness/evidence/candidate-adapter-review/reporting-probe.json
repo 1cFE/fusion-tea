@@ -1,0 +1,347 @@
+{
+  "adverse_heat_with_all_predicates_pass": {
+    "diagnostics": [
+      {
+        "id": "heat",
+        "channel": "heat",
+        "kind": "physical_screen",
+        "interpretation": "equal_one",
+        "active_input": null,
+        "value": 0.0,
+        "status": "adverse"
+      }
+    ],
+    "adverse_or_missing_diagnostics": [
+      "heat"
+    ],
+    "authored_violations_or_unknowns": [],
+    "unresolved_essential_evidence": [],
+    "engineering_acceptance_withheld": true,
+    "interpretation": "Authored predicates, physical screens, source ranges and unvalidated transfers are distinct. Report-only margins add no acceptance fence."
+  },
+  "fallback_report_keys": [
+    "native_result_sha256",
+    "observations_sha256",
+    "numerical_comparison",
+    "engineering_evidence",
+    "qualification"
+  ],
+  "fallback_numerical_pass": true,
+  "missing_predicate_inventory": {
+    "constraints_complete": false,
+    "engineering_acceptance_withheld": false
+  },
+  "wrong_model_value_refused": "model observation differs from retained native value: prediction",
+  "wrong_predicate_refused": "observation/native predicate results differ",
+  "missing_reference_prediction": {
+    "id": "prediction",
+    "axis": "derived",
+    "formal": true,
+    "role": "derived",
+    "status": "blocked",
+    "issues": [
+      "reference:missing_or_nonfinite_value"
+    ],
+    "ratio": null,
+    "independent_credit": false,
+    "exclusion": null,
+    "model_valid": true,
+    "applicability_evidence": "Artificial evidence",
+    "model": {
+      "raw": {
+        "value": 1,
+        "unit": "MW",
+        "basis": "artificial_basis",
+        "scope": [
+          "artificial_scope"
+        ],
+        "technology": "artificial_technology"
+      },
+      "adjusted": {
+        "value": 1,
+        "unit": "MW",
+        "basis": "artificial_basis"
+      },
+      "conversions": [],
+      "issues": []
+    },
+    "reference": {
+      "raw": {
+        "value": null,
+        "unit": "MW",
+        "basis": "artificial_basis",
+        "scope": [
+          "artificial_scope"
+        ],
+        "technology": "artificial_technology"
+      },
+      "adjusted": null,
+      "conversions": [],
+      "issues": [
+        "missing_or_nonfinite_value"
+      ]
+    },
+    "contains_C220107": false
+  },
+  "supplied_prediction": {
+    "id": "prediction",
+    "axis": "derived",
+    "formal": true,
+    "role": "supplied",
+    "status": "informational_match",
+    "issues": [],
+    "ratio": 1.0,
+    "independent_credit": false,
+    "exclusion": null,
+    "model_valid": true,
+    "applicability_evidence": "Artificial evidence",
+    "model": {
+      "raw": {
+        "value": 1,
+        "unit": "MW",
+        "basis": "artificial_basis",
+        "scope": [
+          "artificial_scope"
+        ],
+        "technology": "artificial_technology"
+      },
+      "adjusted": {
+        "value": 1,
+        "unit": "MW",
+        "basis": "artificial_basis"
+      },
+      "conversions": [],
+      "issues": []
+    },
+    "reference": {
+      "raw": {
+        "value": 1,
+        "unit": "MW",
+        "basis": "artificial_basis",
+        "scope": [
+          "artificial_scope"
+        ],
+        "technology": "artificial_technology"
+      },
+      "adjusted": {
+        "value": 1,
+        "unit": "MW",
+        "basis": "artificial_basis"
+      },
+      "conversions": [],
+      "issues": []
+    },
+    "band": [
+      0.3333333333333333,
+      3
+    ],
+    "contains_C220107": false
+  },
+  "entering_accounts": {
+    "status": "pass",
+    "source_sha256": "5298b7940c4fc0b058ac1fcb6b8cd61374c39f0a54d793c0b83bf8404a8a76f0",
+    "checks": [
+      {
+        "name": "materials",
+        "actual": 15954709.374417959,
+        "expected": 15954709.374417959,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "procurement",
+        "actual": 1497941229.6061373,
+        "expected": 1497941229.6061375,
+        "residual": -2.384185791015625e-07,
+        "passed": true
+      },
+      {
+        "name": "magnet",
+        "actual": 1707443242.2597551,
+        "expected": 1707443242.2597551,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "aux_cooling",
+        "actual": 35116270.129820704,
+        "expected": 35116270.129820704,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "core",
+        "actual": 3500357699.499224,
+        "expected": 3500357699.4992247,
+        "residual": -4.76837158203125e-07,
+        "passed": true
+      },
+      {
+        "name": "equipment",
+        "actual": 3667164572.987823,
+        "expected": 3667164572.987823,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas22",
+        "actual": 10809801971.108973,
+        "expected": 10809801971.108974,
+        "residual": -1.9073486328125e-06,
+        "passed": true
+      },
+      {
+        "name": "bop",
+        "actual": 580934471.49956,
+        "expected": 580934471.4995599,
+        "residual": 1.1920928955078125e-07,
+        "passed": true
+      },
+      {
+        "name": "direct",
+        "actual": 12219310280.608742,
+        "expected": 12219310280.608742,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas20",
+        "actual": 13441241308.669617,
+        "expected": 13441241308.669617,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "overnight",
+        "actual": 17918171013.726093,
+        "expected": 17918171013.726093,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "total",
+        "actual": 17918171013.726093,
+        "expected": 17918171013.726093,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "annual70",
+        "actual": 273360371.15999794,
+        "expected": 273360371.15999794,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "annual_total",
+        "actual": 274152877.1251124,
+        "expected": 274152877.1251124,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "direct_disjoint_23",
+        "actual": 12219310280.608742,
+        "expected": 12219310280.608744,
+        "residual": -1.9073486328125e-06,
+        "passed": true
+      },
+      {
+        "name": "cooling_equipment_children",
+        "actual": 6471347145.807992,
+        "expected": 6471347145.807993,
+        "residual": -9.5367431640625e-07,
+        "passed": true
+      },
+      {
+        "name": "facilities_children",
+        "actual": 799758795.94032,
+        "expected": 799758795.9403197,
+        "residual": 3.5762786865234375e-07,
+        "passed": true
+      },
+      {
+        "name": "fuel_processing_children",
+        "actual": 22786229.403793395,
+        "expected": 22786229.403793395,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas72_selected_replacements",
+        "actual": 193999912.5748553,
+        "expected": 193999912.5748553,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "shipping_cooling_exclusion",
+        "actual": 5222465178.690105,
+        "expected": 5222465178.690105,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "shipping_facility_exclusion",
+        "actual": 786234675.5343521,
+        "expected": 786234675.5343521,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "shipping_fuel_installation_exclusion",
+        "actual": 2577090.802577749,
+        "expected": 2577090.802577749,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "remaining_shipping_base",
+        "actual": 7429964363.642581,
+        "expected": 7429964363.642581,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "supplementary_shipping_and_other_costs",
+        "actual": 834314251.3301528,
+        "expected": 834314251.3301528,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "headline_lcoe",
+        "actual": 271.58431991729486,
+        "expected": 271.5843199172948,
+        "residual": 5.684341886080802e-14,
+        "passed": true
+      },
+      {
+        "name": "comparison_lcoe",
+        "actual": 266.45893056660543,
+        "expected": 266.4589305666054,
+        "residual": 5.684341886080802e-14,
+        "passed": true
+      }
+    ],
+    "annual_energy_mwh": 7978704.890195747,
+    "tolerance": {
+      "relative": 1e-12,
+      "absolute": 1e-05
+    },
+    "limitations": [
+      "Arithmetic consistency does not validate physical applicability or complete installed cost.",
+      "Steam-generator cost inclusion remains unverified; no duplicate allowance added.",
+      "Mixed monetary years remain unresolved."
+    ],
+    "original_source": "work/orchestration/goals/current-model-comparison-readiness/evidence/entering-validation/baseline/baseline_result.json",
+    "original_source_sha256": "3332263abee71cae76abd9b50c5056af198f4bbea0fd48d69b8758b5ab57c644",
+    "meaning": "Existing evidence adaptation; zero new physical evaluations"
+  },
+  "reviewed_hashes": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/compare_candidate.py": "1745ccba3bc7df18e432f25982f51184093bfecb020f4d1f5e0c8fbd79695532",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/diagnostic-inventory.json": "488a505b05564bc1fe3cf90d79ab02752d262ce74cdd9951f2d584e495bb5d6d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py": "a310374429fbfa861db7fe8ecc950abb3335a5705744ad85443af94be3dbfaab",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/account-inventory.json": "44b35193b16f9a3d32b10524956af591006b3a5a0bb0af1f64a03b0d2eb79469"
+  }
+}

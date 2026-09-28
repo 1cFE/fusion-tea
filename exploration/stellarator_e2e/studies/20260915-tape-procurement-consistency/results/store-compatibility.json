@@ -1,0 +1,10 @@
+{
+  "study_id": "20260915-tape-procurement-consistency",
+  "executable_fingerprint": "02463b0d430bc205ee01809086441bc8d736b52c798c28f41689b308cbb226d0",
+  "model_contract_fingerprint": "ef1f4c896cd50cdfcf28872693a042a07254a2f4be5b2a3a35a61b70f4ee3040",
+  "study_definition_fingerprint": "8e658b58c6f60859862e9051a443625f6154866b9e25f40258904130543bed1d",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "c036892ba0c58f306822f253e05bf44adc65449213d7c0597c783c403057ce0b"
+}

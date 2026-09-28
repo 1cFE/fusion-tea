@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://github.com/PedroFranciscoGil/simsopt/blob/a79006b0bc1e6df8ab48de284e3457d39a49b995/examples/3_Advanced/auglag/auglag_stellaris.py",
+  "slug": "author_stellaris_augmented_lagrangian_script_at_a79006b",
+  "path": "knowledge/sources/author_stellaris_augmented_lagrangian_script_at_a79006b/",
+  "source_id": "1a638e56f3d7bf6a45c0c918a335bef855727c3da130e532292a245be1880fcc",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-21T02:52:53.932248+00:00"
+}

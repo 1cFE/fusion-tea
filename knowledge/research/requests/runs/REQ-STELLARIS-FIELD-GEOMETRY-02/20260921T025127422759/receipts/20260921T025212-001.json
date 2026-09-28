@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "holdout_hit",
+  "candidate": "https://arxiv.org/html/2507.12681v3",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "term:aries-cs matched 3x",
+  "rule_id": "term:aries-cs",
+  "captured": false,
+  "at": "2026-09-21T02:52:12.423944+00:00"
+}

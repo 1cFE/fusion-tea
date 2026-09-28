@@ -1,0 +1,86 @@
+[
+  {
+    "copy": "preparation/references/method-research.md",
+    "source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/method-research.md",
+    "commit": "b1effd24",
+    "sha256": "38d42d2178bffccb41b0532aa5b4e8e7178cf5e911cabcbd623277bb5d839ef6"
+  },
+  {
+    "copy": "preparation/references/method-review.md",
+    "source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/method-review.md",
+    "commit": "b1effd24",
+    "sha256": "40f57eb85e4710068a9eb67add05e8062e02cae722b362c3ce64549f064d0408"
+  },
+  {
+    "copy": "preparation/references/uncertainty-register.md",
+    "source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/uncertainty-register.md",
+    "commit": "b1effd24",
+    "sha256": "b9d4eb62a88bc8e7cb089e5e1b420cba0f1ed9622d0192efae3d45120ab4e093"
+  },
+  {
+    "copy": "preparation/references/account-review.md",
+    "source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/account-review.md",
+    "commit": "b1effd24",
+    "sha256": "2a7a1e8514dc2a56897f12ae095f3f30d203eafc68be74f799c119c5a5c80e9b"
+  },
+  {
+    "copy": "preparation/references/owner-prompt.md",
+    "source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/owner-prompt.md",
+    "commit": "b1effd24",
+    "sha256": "e14b99797e2c80441eaab90f5ff17d7a9fa368f1faeb44bcb0a1d59be876abd2"
+  },
+  {
+    "copy": "preparation/references/civil-cost-basis.md",
+    "source": "work/orchestration/goals/layout-based-facilities/evidence/civil-cost-basis.md",
+    "sha256": "e3bef0d2ec1b5a8ee49bd5a6b335e501d38abfe307ec40370395e1e3abde6f91",
+    "kind": "retained existing source review/answer, no new source adoption"
+  },
+  {
+    "copy": "preparation/references/fuel-price-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-price-review.md",
+    "sha256": "2519c49587e4e0f16c9216730d8ba32d22bfeb4d92eac9db8667da660f2a14cf",
+    "kind": "retained existing source review/answer, no new source adoption"
+  },
+  {
+    "copy": "preparation/references/magnet-account-ledger.md",
+    "source": "work/orchestration/goals/magnet-manufacturing-cost-completeness/account-ledger.md",
+    "sha256": "65d3e576ae342cb1e703423b27db856ff41864cd65ad106d2a9f506ccd0da2da",
+    "kind": "retained existing source review/answer, no new source adoption"
+  },
+  {
+    "copy": "preparation/references/cooling-answer.md",
+    "source": "work/orchestration/goals/installed-cooling-equipment-costs/answer.md",
+    "sha256": "5717dc995b08278871aa0347b8c4439b462a9696c9428513e1837484444523cd",
+    "kind": "retained existing source review/answer, no new source adoption"
+  },
+  {
+    "copy": "preparation/references/facilities-answer.md",
+    "source": "work/orchestration/goals/layout-based-facilities/answer.md",
+    "sha256": "0ecb841c340a5e5f64990e2a7bf37c0c67e810c93df7451588771f5b032000b0",
+    "kind": "retained existing source review/answer, no new source adoption"
+  },
+  {
+    "copy": "preparation/references/fuel-answer.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/answer.md",
+    "sha256": "d1c81b8415363de6f2eba230b23c38156954388b62291d0609d3ab0aa425bd53",
+    "kind": "retained existing source review/answer, no new source adoption"
+  },
+  {
+    "copy": "preparation/references/wi071-audit.md",
+    "source": "work/active/WI-071_shared-fabrication-rate-for-estimate-uncertainty/audit.md",
+    "commit": "fe720553",
+    "sha256": "dcfdad5065ba1c4f23a39b9a1e15bdee4b478f2b01387ad8cce415532b10744c"
+  },
+  {
+    "copy": "preparation/references/wi071-implementation.md",
+    "source": "work/active/WI-071_shared-fabrication-rate-for-estimate-uncertainty/implementation.md",
+    "commit": "fe720553",
+    "sha256": "36085a3123b8f6e38f174855ba927d70e31c35f7a0259db7ce4f57645973c8fe"
+  },
+  {
+    "copy": "preparation/references/wi071-spec.md",
+    "source": "work/active/WI-071_shared-fabrication-rate-for-estimate-uncertainty/spec.md",
+    "commit": "fe720553",
+    "sha256": "4a6125b488ffae18aea4283dd88a59773cd36ab08160f28f315513b26be5f5dc"
+  }
+]

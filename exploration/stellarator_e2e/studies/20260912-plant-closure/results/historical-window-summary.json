@@ -1,0 +1,2000 @@
+[
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-fence-p100",
+    "installed_power_MW": 100.0,
+    "historical_feasible_rows": 6,
+    "current_satisfaction_counts": {
+      "old-ten": 4,
+      "round1-fourteen": 2,
+      "current-eighteen": 2
+    },
+    "current_status_counts": {
+      "eligible": 40,
+      "excluded": 127
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c2823",
+      "R": "15.7",
+      "a": "2.2",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "202.16521550623165",
+      "lcoe_1cfe": "198.51391122466734"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c1207",
+        "historical_arm": "arm-fence-p100",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 253.8225627486921,
+        "historical_lcoe_1cfe": 249.02608312875364,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0362",
+        "inputs": {
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+        },
+        "lcoe": 183.71529782440462,
+        "lcoe_1cfe": 180.28150848902376,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ],
+        "cross_revision_lcoe_delta": -70.10726492428748,
+        "cross_revision_lcoe_1cfe_delta": -68.74457463972988
+      },
+      "round1-fourteen": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c0960",
+        "historical_arm": "arm-fence-p100",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 296.25778624433053,
+        "historical_lcoe_1cfe": 290.5789953673549,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -104.49961715668772,
+        "cross_revision_lcoe_1cfe_delta": -102.4522256695729
+      },
+      "current-eighteen": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c0960",
+        "historical_arm": "arm-fence-p100",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 296.25778624433053,
+        "historical_lcoe_1cfe": 290.5789953673549,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -104.49961715668772,
+        "cross_revision_lcoe_1cfe_delta": -102.4522256695729
+      }
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 33,
+        "violated to violated": 7
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 40
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 30,
+        "violated to violated": 1,
+        "satisfied to violated": 9
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 36,
+        "violated to violated": 4
+      },
+      "net_positive": {
+        "satisfied to satisfied": 40
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 23,
+        "violated to violated": 17
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 26,
+        "violated to violated": 14
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 40
+      },
+      "peak_field_ok": {
+        "violated to violated": 18,
+        "satisfied to satisfied": 22
+      },
+      "sustainment_ok": {
+        "violated to violated": 12,
+        "satisfied to satisfied": 28
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-reread-p220",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 4,
+    "current_satisfaction_counts": {
+      "old-ten": 6,
+      "round1-fourteen": 4,
+      "current-eighteen": 4
+    },
+    "current_status_counts": {
+      "eligible": 11
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7683",
+      "R": "12.7",
+      "a": "1.3",
+      "I_coil_A": "15250000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "14.63",
+      "eta_source_heat": "0.6",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "380.149470401778",
+      "lcoe_1cfe": "372.82534720749055"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7683",
+        "historical_arm": "arm-reread-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 380.149470401778,
+        "historical_lcoe_1cfe": 372.82534720749055,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0364",
+        "inputs": {
+          "stellarator_09__stellaris__eta_source_heat": 0.6,
+          "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 230.9379130959244,
+        "lcoe_1cfe": 226.5374043175172,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -149.2115573058536,
+        "cross_revision_lcoe_1cfe_delta": -146.28794288997335
+      },
+      "round1-fourteen": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7650",
+        "historical_arm": "arm-reread-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 453.0336969927045,
+        "historical_lcoe_1cfe": 444.1496619589415,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0119",
+        "inputs": {
+          "stellarator_09__stellaris__eta_source_heat": 0.6,
+          "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+          "stellarator_09__stellaris__n_e0": 4.554e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 256.53337415978604,
+        "lcoe_1cfe": 251.58931540937974,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -196.50032283291847,
+        "cross_revision_lcoe_1cfe_delta": -192.56034654956179
+      },
+      "current-eighteen": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7650",
+        "historical_arm": "arm-reread-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 453.0336969927045,
+        "historical_lcoe_1cfe": 444.1496619589415,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0119",
+        "inputs": {
+          "stellarator_09__stellaris__eta_source_heat": 0.6,
+          "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+          "stellarator_09__stellaris__n_e0": 4.554e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 256.53337415978604,
+        "lcoe_1cfe": 251.58931540937974,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -196.50032283291847,
+        "cross_revision_lcoe_1cfe_delta": -192.56034654956179
+      }
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 11
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 11
+      },
+      "recirc_ok": {
+        "violated to satisfied": 3,
+        "satisfied to satisfied": 7,
+        "satisfied to violated": 1
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 11
+      },
+      "net_positive": {
+        "satisfied to satisfied": 11
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 10,
+        "violated to violated": 1
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 7,
+        "violated to violated": 4
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 11
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 11
+      },
+      "sustainment_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 10
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-search-p220",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 4,
+    "current_satisfaction_counts": {
+      "old-ten": 4,
+      "round1-fourteen": 3,
+      "current-eighteen": 3
+    },
+    "current_status_counts": {
+      "eligible": 17,
+      "excluded": 127
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c6466",
+      "R": "15.7",
+      "a": "2.2",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "218.92139001625773",
+      "lcoe_1cfe": "214.94999147129977"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c4854",
+        "historical_arm": "arm-search-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 292.582578618127,
+        "historical_lcoe_1cfe": 287.0215747767147,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0365",
+        "inputs": {
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 189.13740619857188,
+        "lcoe_1cfe": 185.5864683190078,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ],
+        "cross_revision_lcoe_delta": -103.44517241955512,
+        "cross_revision_lcoe_1cfe_delta": -101.43510645770692
+      },
+      "round1-fourteen": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c4609",
+        "historical_arm": "arm-search-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 354.2841280630518,
+        "historical_lcoe_1cfe": 347.45073003663884,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0130",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 198.00258969214127,
+        "lcoe_1cfe": 194.23627511198842,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -156.28153837091054,
+        "cross_revision_lcoe_1cfe_delta": -153.21445492465043
+      },
+      "current-eighteen": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c4609",
+        "historical_arm": "arm-search-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 354.2841280630518,
+        "historical_lcoe_1cfe": 347.45073003663884,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0130",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 198.00258969214127,
+        "lcoe_1cfe": 194.23627511198842,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -156.28153837091054,
+        "cross_revision_lcoe_1cfe_delta": -153.21445492465043
+      }
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 16,
+        "violated to violated": 1
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 17
+      },
+      "recirc_ok": {
+        "violated to satisfied": 5,
+        "satisfied to satisfied": 6,
+        "satisfied to violated": 6
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 13,
+        "violated to violated": 4
+      },
+      "net_positive": {
+        "satisfied to satisfied": 17
+      },
+      "burn_hold_ok": {
+        "violated to violated": 6,
+        "satisfied to satisfied": 11
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 12,
+        "violated to violated": 5
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 17
+      },
+      "peak_field_ok": {
+        "violated to violated": 3,
+        "satisfied to satisfied": 14
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 14,
+        "violated to violated": 3
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 100.0,
+    "historical_feasible_rows": 13,
+    "current_satisfaction_counts": {
+      "old-ten": 6,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 34,
+      "excluded": 2
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7743",
+      "R": "15.7",
+      "a": "2.7",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "198.93824026980153",
+      "lcoe_1cfe": "195.30953865807714"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7766",
+        "historical_arm": "arm-transect-a",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 218.64196261078314,
+        "historical_lcoe_1cfe": 214.58161114901188,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0263",
+        "inputs": {
+          "stellarator_09__stellaris__R": 14.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.5,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+        },
+        "lcoe": 197.77996233456452,
+        "lcoe_1cfe": 194.14469274230078,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ],
+        "cross_revision_lcoe_delta": -20.862000276218623,
+        "cross_revision_lcoe_1cfe_delta": -20.4369184067111
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 34
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 34
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 20,
+        "satisfied to violated": 14
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 33,
+        "violated to violated": 1
+      },
+      "net_positive": {
+        "satisfied to satisfied": 34
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 24,
+        "violated to violated": 10
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 31,
+        "violated to violated": 3
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 34
+      },
+      "peak_field_ok": {
+        "violated to violated": 11,
+        "satisfied to satisfied": 23
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 24,
+        "violated to violated": 10
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 21,
+    "current_satisfaction_counts": {
+      "old-ten": 10,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 35,
+      "excluded": 2
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7757",
+      "R": "15.7",
+      "a": "2.7",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "214.28587848047079",
+      "lcoe_1cfe": "210.36168014822348"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7775",
+        "historical_arm": "arm-transect-a",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 241.17478185175707,
+        "historical_lcoe_1cfe": 236.67519000153754,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0326",
+        "inputs": {
+          "stellarator_09__stellaris__R": 14.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.5,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 202.28305777537213,
+        "lcoe_1cfe": 198.55049557314834,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ],
+        "cross_revision_lcoe_delta": -38.891724076384946,
+        "cross_revision_lcoe_1cfe_delta": -38.124694428389205
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 35
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 35
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 21,
+        "satisfied to violated": 14
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 34,
+        "violated to violated": 1
+      },
+      "net_positive": {
+        "satisfied to satisfied": 35
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 25,
+        "violated to violated": 10
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 32,
+        "violated to violated": 3
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 35
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 24,
+        "violated to violated": 11
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 32,
+        "violated to violated": 3
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 100.0,
+    "historical_feasible_rows": 1,
+    "current_satisfaction_counts": {
+      "old-ten": 1,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 3
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7700",
+      "R": "14.2",
+      "a": "1.8",
+      "I_coil_A": "14000000.0",
+      "n_e0": "4.048e+20",
+      "T_i0_keV": "16.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "12.0",
+      "lcoe": "285.5170012907752",
+      "lcoe_1cfe": "280.0464641359935"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7700",
+        "historical_arm": "arm-transect-ash",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 285.5170012907752,
+        "historical_lcoe_1cfe": 280.0464641359935,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0367",
+        "inputs": {
+          "stellarator_09__stellaris__R": 14.2,
+          "stellarator_09__stellaris__T_i0": 16.0,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20,
+          "stellarator_09__stellaris__tau_ratio_ash": 12.0
+        },
+        "lcoe": 205.83774130161774,
+        "lcoe_1cfe": 201.93619937401886,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ],
+        "cross_revision_lcoe_delta": -79.67925998915749,
+        "cross_revision_lcoe_1cfe_delta": -78.11026476197466
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 3
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 3
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 3
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 3
+      },
+      "net_positive": {
+        "satisfied to satisfied": 3
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 2,
+        "violated to violated": 1
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 2,
+        "violated to violated": 1
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 3
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 3
+      },
+      "sustainment_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 2
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 2,
+    "current_satisfaction_counts": {
+      "old-ten": 2,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 3
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7705",
+      "R": "14.2",
+      "a": "1.8",
+      "I_coil_A": "14000000.0",
+      "n_e0": "4.554e+20",
+      "T_i0_keV": "14.63",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "12.0",
+      "lcoe": "332.77120072210255",
+      "lcoe_1cfe": "326.35807655392045"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-fixed",
+        "historical_id": "20260907-minor-radius:c7705",
+        "historical_arm": "arm-transect-ash",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 332.77120072210255,
+        "historical_lcoe_1cfe": 326.35807655392045,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0369",
+        "inputs": {
+          "stellarator_09__stellaris__R": 14.2,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__n_e0": 4.554e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__tau_ratio_ash": 12.0
+        },
+        "lcoe": 217.45626188009382,
+        "lcoe_1cfe": 213.31486931800308,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ],
+        "cross_revision_lcoe_delta": -115.31493884200873,
+        "cross_revision_lcoe_1cfe_delta": -113.04320723591738
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 3
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 3
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 3
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 3
+      },
+      "net_positive": {
+        "satisfied to satisfied": 3
+      },
+      "burn_hold_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 2
+      },
+      "wall_load_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 2
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 3
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 3
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 3
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-fence-p100",
+    "installed_power_MW": 100.0,
+    "historical_feasible_rows": 4,
+    "current_satisfaction_counts": {
+      "old-ten": 4,
+      "round1-fourteen": 2,
+      "current-eighteen": 2
+    },
+    "current_status_counts": {
+      "eligible": 33,
+      "excluded": 61
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c2823",
+      "R": "15.7",
+      "a": "2.2",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "202.16521550623165",
+      "lcoe_1cfe": "198.51391122466734"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c2823",
+        "historical_arm": "arm-fence-p100",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 202.16521550623165,
+        "historical_lcoe_1cfe": 198.51391122466734,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0363",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_loops": 27.0
+        },
+        "lcoe": 160.60036483005675,
+        "lcoe_1cfe": 157.72606980697495,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -41.5648506761749,
+        "cross_revision_lcoe_1cfe_delta": -40.78784141769239
+      },
+      "round1-fourteen": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c0960",
+        "historical_arm": "arm-fence-p100",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 296.25778624433053,
+        "historical_lcoe_1cfe": 290.5789953673549,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -104.49961715668772,
+        "cross_revision_lcoe_1cfe_delta": -102.4522256695729
+      },
+      "current-eighteen": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c0960",
+        "historical_arm": "arm-fence-p100",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 296.25778624433053,
+        "historical_lcoe_1cfe": 290.5789953673549,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -104.49961715668772,
+        "cross_revision_lcoe_1cfe_delta": -102.4522256695729
+      }
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 29,
+        "violated to violated": 4
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 33
+      },
+      "recirc_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 28,
+        "satisfied to violated": 4
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 27,
+        "violated to violated": 6
+      },
+      "net_positive": {
+        "satisfied to satisfied": 33
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 18,
+        "violated to violated": 15
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 19,
+        "violated to violated": 14
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 33
+      },
+      "peak_field_ok": {
+        "violated to violated": 13,
+        "satisfied to satisfied": 20
+      },
+      "sustainment_ok": {
+        "violated to violated": 11,
+        "satisfied to satisfied": 22
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-reread-p220",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 4,
+    "current_satisfaction_counts": {
+      "old-ten": 7,
+      "round1-fourteen": 5,
+      "current-eighteen": 5
+    },
+    "current_status_counts": {
+      "eligible": 10
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7683",
+      "R": "12.7",
+      "a": "1.3",
+      "I_coil_A": "15250000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "14.63",
+      "eta_source_heat": "0.6",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "380.149470401778",
+      "lcoe_1cfe": "372.82534720749055"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7683",
+        "historical_arm": "arm-reread-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 380.149470401778,
+        "historical_lcoe_1cfe": 372.82534720749055,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0364",
+        "inputs": {
+          "stellarator_09__stellaris__eta_source_heat": 0.6,
+          "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 230.9379130959244,
+        "lcoe_1cfe": 226.5374043175172,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -149.2115573058536,
+        "cross_revision_lcoe_1cfe_delta": -146.28794288997335
+      },
+      "round1-fourteen": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7650",
+        "historical_arm": "arm-reread-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 453.0336969927045,
+        "historical_lcoe_1cfe": 444.1496619589415,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0145",
+        "inputs": {
+          "stellarator_09__stellaris__eta_source_heat": 0.6,
+          "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+          "stellarator_09__stellaris__n_e0": 4.554e+20,
+          "stellarator_09__stellaris__n_loops": 12.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 264.8963484856248,
+        "lcoe_1cfe": 259.7900588672959,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -188.1373485070797,
+        "cross_revision_lcoe_1cfe_delta": -184.35960309164562
+      },
+      "current-eighteen": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7650",
+        "historical_arm": "arm-reread-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 453.0336969927045,
+        "historical_lcoe_1cfe": 444.1496619589415,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0145",
+        "inputs": {
+          "stellarator_09__stellaris__eta_source_heat": 0.6,
+          "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+          "stellarator_09__stellaris__n_e0": 4.554e+20,
+          "stellarator_09__stellaris__n_loops": 12.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 264.8963484856248,
+        "lcoe_1cfe": 259.7900588672959,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -188.1373485070797,
+        "cross_revision_lcoe_1cfe_delta": -184.35960309164562
+      }
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 10
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 10
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 7,
+        "violated to satisfied": 3
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 10
+      },
+      "net_positive": {
+        "satisfied to satisfied": 10
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 9,
+        "violated to violated": 1
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 7,
+        "violated to violated": 3
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 10
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 10
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 10
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-search-p220",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 2,
+    "current_satisfaction_counts": {
+      "old-ten": 4,
+      "round1-fourteen": 3,
+      "current-eighteen": 3
+    },
+    "current_status_counts": {
+      "eligible": 17,
+      "excluded": 61
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c6466",
+      "R": "15.7",
+      "a": "2.2",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "218.92139001625773",
+      "lcoe_1cfe": "214.94999147129977"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c6466",
+        "historical_arm": "arm-search-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 218.92139001625773,
+        "historical_lcoe_1cfe": 214.94999147129977,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0366",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_loops": 27.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 163.803944808063,
+        "lcoe_1cfe": 160.8604341395717,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -55.11744520819474,
+        "cross_revision_lcoe_1cfe_delta": -54.08955733172806
+      },
+      "round1-fourteen": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c4609",
+        "historical_arm": "arm-search-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 354.2841280630518,
+        "historical_lcoe_1cfe": 347.45073003663884,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0130",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 198.00258969214127,
+        "lcoe_1cfe": 194.23627511198842,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -156.28153837091054,
+        "cross_revision_lcoe_1cfe_delta": -153.21445492465043
+      },
+      "current-eighteen": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c4609",
+        "historical_arm": "arm-search-p220",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 354.2841280630518,
+        "historical_lcoe_1cfe": 347.45073003663884,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0130",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 198.00258969214127,
+        "lcoe_1cfe": 194.23627511198842,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": [],
+        "cross_revision_lcoe_delta": -156.28153837091054,
+        "cross_revision_lcoe_1cfe_delta": -153.21445492465043
+      }
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 16,
+        "violated to violated": 1
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 17
+      },
+      "recirc_ok": {
+        "violated to violated": 4,
+        "satisfied to satisfied": 9,
+        "violated to satisfied": 4
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 15,
+        "violated to violated": 2
+      },
+      "net_positive": {
+        "satisfied to satisfied": 17
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 11,
+        "violated to violated": 6
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 13,
+        "violated to violated": 4
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 17
+      },
+      "peak_field_ok": {
+        "violated to violated": 4,
+        "satisfied to satisfied": 13
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 14,
+        "violated to violated": 3
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 100.0,
+    "historical_feasible_rows": 13,
+    "current_satisfaction_counts": {
+      "old-ten": 13,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 34,
+      "excluded": 2
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7743",
+      "R": "15.7",
+      "a": "2.7",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "198.93824026980153",
+      "lcoe_1cfe": "195.30953865807714"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7740",
+        "historical_arm": "arm-transect-a",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 200.27398040164957,
+        "historical_lcoe_1cfe": 196.6612649504852,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0176",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.4,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_loops": 28.0
+        },
+        "lcoe": 157.5040662785948,
+        "lcoe_1cfe": 154.69062088702148,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -42.769914123054775,
+        "cross_revision_lcoe_1cfe_delta": -41.97064406346371
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 34
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 34
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 33,
+        "satisfied to violated": 1
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 33,
+        "violated to violated": 1
+      },
+      "net_positive": {
+        "satisfied to satisfied": 34
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 24,
+        "violated to violated": 10
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 31,
+        "violated to violated": 3
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 34
+      },
+      "peak_field_ok": {
+        "violated to violated": 11,
+        "satisfied to satisfied": 23
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 24,
+        "violated to violated": 10
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 21,
+    "current_satisfaction_counts": {
+      "old-ten": 21,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 35,
+      "excluded": 2
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7757",
+      "R": "15.7",
+      "a": "2.7",
+      "I_coil_A": "13000000.0",
+      "n_e0": "5.06e+20",
+      "T_i0_keV": "13.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "8.0",
+      "lcoe": "214.28587848047079",
+      "lcoe_1cfe": "210.36168014822348"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7756",
+        "historical_arm": "arm-transect-a",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 215.80871752085272,
+        "historical_lcoe_1cfe": 211.89642990985658,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0180",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.6,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_loops": 29.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 160.53262822891784,
+        "lcoe_1cfe": 157.65392440258233,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -55.27608929193488,
+        "cross_revision_lcoe_1cfe_delta": -54.242505507274245
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 35
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 35
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 34,
+        "satisfied to violated": 1
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 34,
+        "violated to violated": 1
+      },
+      "net_positive": {
+        "satisfied to satisfied": 35
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 25,
+        "violated to violated": 10
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 32,
+        "violated to violated": 3
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 35
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 24,
+        "violated to violated": 11
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 32,
+        "violated to violated": 3
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 100.0,
+    "historical_feasible_rows": 1,
+    "current_satisfaction_counts": {
+      "old-ten": 1,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 3
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7700",
+      "R": "14.2",
+      "a": "1.8",
+      "I_coil_A": "14000000.0",
+      "n_e0": "4.048e+20",
+      "T_i0_keV": "16.0",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "12.0",
+      "lcoe": "285.5170012907752",
+      "lcoe_1cfe": "280.0464641359935"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7700",
+        "historical_arm": "arm-transect-ash",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 285.5170012907752,
+        "historical_lcoe_1cfe": 280.0464641359935,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0368",
+        "inputs": {
+          "stellarator_09__stellaris__R": 14.2,
+          "stellarator_09__stellaris__T_i0": 16.0,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20,
+          "stellarator_09__stellaris__n_loops": 16.0,
+          "stellarator_09__stellaris__tau_ratio_ash": 12.0
+        },
+        "lcoe": 198.76831983162447,
+        "lcoe_1cfe": 195.00145176469874,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -86.74868145915076,
+        "cross_revision_lcoe_1cfe_delta": -85.04501237129477
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 3
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 3
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 3
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 3
+      },
+      "net_positive": {
+        "satisfied to satisfied": 3
+      },
+      "burn_hold_ok": {
+        "satisfied to satisfied": 2,
+        "violated to violated": 1
+      },
+      "wall_load_ok": {
+        "satisfied to satisfied": 2,
+        "violated to violated": 1
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 3
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 3
+      },
+      "sustainment_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 2
+      }
+    }
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 220.0,
+    "historical_feasible_rows": 2,
+    "current_satisfaction_counts": {
+      "old-ten": 2,
+      "round1-fourteen": 0,
+      "current-eighteen": 0
+    },
+    "current_status_counts": {
+      "eligible": 3
+    },
+    "historical_best_ten_predicates": {
+      "case_id": "20260907-minor-radius:c7705",
+      "R": "14.2",
+      "a": "1.8",
+      "I_coil_A": "14000000.0",
+      "n_e0": "4.554e+20",
+      "T_i0_keV": "14.63",
+      "eta_source_heat": "0.5",
+      "tau_ratio_ash": "12.0",
+      "lcoe": "332.77120072210255",
+      "lcoe_1cfe": "326.35807655392045"
+    },
+    "current_best_by_predicate_set": {
+      "old-ten": {
+        "arm_id": "arm-window-sized",
+        "historical_id": "20260907-minor-radius:c7705",
+        "historical_arm": "arm-transect-ash",
+        "historical_excluded": false,
+        "current_status": "eligible",
+        "historical_lcoe": 332.77120072210255,
+        "historical_lcoe_1cfe": 326.35807655392045,
+        "historical_feasible": true,
+        "historical_verdicts": {
+          "wp_stress_ok": "satisfied",
+          "cond_strain_ok": "satisfied",
+          "recirc_ok": "satisfied",
+          "beta_ok": "satisfied",
+          "net_positive": "satisfied",
+          "burn_hold_ok": "satisfied",
+          "wall_load_ok": "satisfied",
+          "tbr_ok": "satisfied",
+          "peak_field_ok": "satisfied",
+          "sustainment_ok": "satisfied"
+        },
+        "candidate_id": "20260912-plant-closure:c0370",
+        "inputs": {
+          "stellarator_09__stellaris__R": 14.2,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__n_e0": 4.554e+20,
+          "stellarator_09__stellaris__n_loops": 16.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__tau_ratio_ash": 12.0
+        },
+        "lcoe": 209.86499374458992,
+        "lcoe_1cfe": 205.86888853001642,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ],
+        "cross_revision_lcoe_delta": -122.90620697751262,
+        "cross_revision_lcoe_1cfe_delta": -120.48918802390403
+      },
+      "round1-fourteen": null,
+      "current-eighteen": null
+    },
+    "old_ten_predicate_transitions": {
+      "wp_stress_ok": {
+        "satisfied to satisfied": 3
+      },
+      "cond_strain_ok": {
+        "satisfied to satisfied": 3
+      },
+      "recirc_ok": {
+        "satisfied to satisfied": 3
+      },
+      "beta_ok": {
+        "satisfied to satisfied": 3
+      },
+      "net_positive": {
+        "satisfied to satisfied": 3
+      },
+      "burn_hold_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 2
+      },
+      "wall_load_ok": {
+        "violated to violated": 1,
+        "satisfied to satisfied": 2
+      },
+      "tbr_ok": {
+        "satisfied to satisfied": 3
+      },
+      "peak_field_ok": {
+        "satisfied to satisfied": 3
+      },
+      "sustainment_ok": {
+        "satisfied to satisfied": 3
+      }
+    }
+  }
+]

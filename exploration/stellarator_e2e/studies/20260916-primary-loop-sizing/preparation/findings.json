@@ -1,0 +1,30 @@
+[
+  {
+    "id": "20260916-primary-loop-sizing#1",
+    "kind": "model",
+    "finding": "The informative entering case needs 16 representative loops to meet the adopted reference-flow screen; fifteen remain insufficient.",
+    "disposition": "Conditional capacity requirement only; representative average loops are not a qualified replication of heterogeneous source circuits.",
+    "home": "work/orchestration/goals/primary-loop-sizing"
+  },
+  {
+    "id": "20260916-primary-loop-sizing#2",
+    "kind": "model",
+    "finding": "Adding representative loops reduces per-loop flow/loss and total pumping demand, while all magnet and divertor heat-account outputs and predicates remain exactly fixed. No sampled case passes all twenty predicates.",
+    "disposition": "Preserve independent subsystem and combined verdicts; no plant-feasibility or global-infeasibility claim.",
+    "home": "work/orchestration/goals/primary-loop-sizing"
+  },
+  {
+    "id": "20260916-primary-loop-sizing#3",
+    "kind": "model",
+    "finding": "Native coolant and capital account changes contain no added-equipment price. Annualized break-even headroom quantifies only the additional equivalent annual cost that removes the inherited-account benefit.",
+    "disposition": "Supplier/equipment quote remains required; the new admitted BoP paper names an internal budget report and omitted large-pipe scope without a transferable installed price.",
+    "home": "work/orchestration/goals/primary-loop-sizing"
+  },
+  {
+    "id": "20260916-primary-loop-sizing#4",
+    "kind": "model",
+    "finding": "Routing, real IB/OB flow allocation, IHX/compressor qualification, drive losses and area enlargement remain unrepresented or unsupported in this diagnostic.",
+    "disposition": "Retain calibrated pressure-loss/unit caveats and nominal-duty comparisons; do not promote averaged-flow allowance to hardware capacity or add a study-local geometry law.",
+    "home": "work/orchestration/goals/primary-loop-sizing"
+  }
+]

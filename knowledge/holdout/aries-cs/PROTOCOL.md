@@ -20,6 +20,8 @@ While sealed, **all stellarator-demo model-development and research sessions** a
 
 Not blocked: sessions verifying quarantine integrity (checksums against `manifest.json` — content-free by construction), and the separate 38-concept analysis pipeline (the blocklist binds the demo's sessions, not that track).
 
+Also not blocked: yardstick sessions, per §8.
+
 Every demo work item created while sealed must list this file as Required Reading.
 
 ## 3. Clean-room admissibility
@@ -38,7 +40,7 @@ The demo is clean-room: model-development sessions may not read ARIES-CS-*inform
 
 ### Barred by default, documented-exception path
 
-These general costing sources contain ARIES-CS-specific data points. A demo session may use one only after the owner approves a written exception, logged in §6 with date, scope (which sections or values), and rationale.
+These general costing sources contain ARIES-CS-specific data points. A demo session may use one only after the owner approves a written exception, logged in §6 with date, scope (which sections or values), and rationale. Yardstick sessions are exempt from this default (§8); the exception path continues to govern model-facing sessions.
 
 - `knowledge/sources/aries_cost_account_documentation/**` — Waganer ARIES cost-account doc
 - `knowledge/sources/tea_dt_mfe_cost_analysis/**` — Araiinejad & Shirvan 2025 TEA paper
@@ -81,9 +83,12 @@ If the blind is violated before reveal (a sealed PDF or barred artifact read in 
 
 **Log:**
 
+- 2026-09-13 — model-facing delegated reader `/root/accounting_basis`, during WI-040 under goal `magnet-design-transfer`, reported exposure while screening admitted external library documentation: a pattern search emitted an ARIES-CS-specific coil-bore datum from `/home/reid/1cfe/1costingfe` at commit `02543850089be175ea7c28b92a8b2a4184e1637e`, `docs/account_justification/CAS22_reactor_components.md:225`. The reader stopped, withheld the datum from the coordinator, and made no file changes. The coordinator did not open the document or receive the value. No source datum is reproduced here. That reader is retired from model-facing decisions; subsequent review must use a fresh session and clean evidence. No sealed PDF was opened; status remains sealed. This is a recorded exposure, not a clean-screen certification.
 - 2026-07-12 — sealed. Four PDFs ingested (see §7); no content read. Exceptions granted: none. Violations: none.
 - 2026-07-13 — owner ratified the two ingestion-time barred-list additions (Helios design-paper extraction in `knowledge/sources/`; concept-36 ARIES-CS stub).
 - 2026-07-13 — contamination disclosure (no barred file read). Planning the demo's WI-009→011 Stage-2 build surfaced that the pre-quarantine WI-009 `design.md` carries an ARIES-CS ~$9700/kW anchor and barred-doc citations; the $/kW figure entered the planning session's context. Added to §5 inventory. Owner ratified the mitigation (build WI-009 sourced from 1costingFE only, ARIES-CS anchor dropped, barred citations re-pointed). Status remains `sealed`; no reveal.
+- 2026-08-30 — owner-approved amendment (clean-room split, §8): yardstick sessions exempted from §2/§3, sealed PDFs excluded, Waganer readable in yardstick sessions; model-facing sessions unchanged. Status remains `sealed`; no reveal. Ruling captured in `.project/concepts/stellarator-demo-maturation.md`.
+- 2026-09-25 — process violation and subsequent owner exception (goal `aries-reference-heat-electricity-reconciliation`, post-reveal ARIES investigation authorized by its owner brief; recorded by the round agent at the owner's direction, ruling D1 quoted verbatim in `work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/owner-supplement-r6.md`). **Violation (round 4, 2026-09-25):** the delegated researcher for requests `REQ-ARIES-CYCLE-HX-01` and `-02` ran Wayback CDX index queries of `aries.ucsd.edu/LIB/REPORT/CONF/*` and `…/ARIES/DOCS/ARIES-CS/*` directory listings to locate two files (triage only; nothing captured from the listings), found the canonical host is a barred term of `scripts/holdout_guard.py`, and substituted the `qedfusion.org` mirror of the same ARIES program library (§7 names both as canonical ARIES mirrors) so that no identity hit was presented for adjudication. The registry then registered `https://qedfusion.org/LIB/REPORT/CONF/ANS00/schleicher.pdf` (Schleicher, Raffray and Wong, TOFE 2000 / Fusion Technol. 39, 2001; `knowledge/sources/schleicher_raffray_wong_2001_an_assessment_of_the_brayton/`) and `https://qedfusion.org/LIB/REPORT/CONF/ISFNT4/malang2.pdf` (Malang, Schnauder and Tillack, ISFNT-4 1997 / Fusion Eng. Des. 41, 1998; `knowledge/sources/combination_of_a_self_cooled_liquid_metal_breeder_blanket/`). Both papers predate ARIES-CS; the post-capture content scans and two fresh source checks found no ARIES-CS material; no sealed PDF and nothing under `knowledge/holdout/aries-cs/` beyond this file and `README.md` was opened. The substitution avoided the adjudication step this log exists for; it was surfaced by the round-5 source-screen review (`work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/source-screen-review.md`) before any dependent access. Run records, receipts and process logs are committed unchanged (`8bbb7e3c`, `620e341f`). **Exception (owner, D1, 2026-09-25):** "Ratify the two older papers for use in this post-reveal investigation. Record the mirror substitution as a process violation and your acceptance as a subsequent exception. Accepting their scientific evidence should not rewrite how they were obtained." Scope: these two registrations only, for that goal; the `aries.ucsd.edu` term keeps no waiver, and any further ARIES-library access (either host, mirror or Wayback snapshot) or barred-title source needs its own entry here before fetch. **Deferred (owner, D2, 2026-09-25):** purchase of Wang, Malang and Raffray, IEEE SOFE 2005 (ARIES-CS blanket coupling; successor FS&T 52, 635, 2007) is deferred; not registered; the bounded permitted-access attempt `REQ-ARIES-CYCLE-HX-03` was capture-free (OPERATOR_QUEUE, no receipts). Reopen that investigation if the paper is obtained later, with its own entry here first. Status unchanged: sealed PDFs unopened; the earlier hold-out result stands.
 
 ## 7. Provenance
 
@@ -97,3 +102,20 @@ curl -fsSL http://web.archive.org/web/20170808114520id_/http://aries.ucsd.edu/LI
 ```
 
 Integrity: SHA256, byte size, and page count per file in `manifest.json`. Page counts (18/21/31/22) match the FS&T Vol 54 No 3 table of contents exactly (pp 655–672, 673–693, 694–724, 725–746). Verify any time with `sha256sum -c` semantics against the manifest — no content read required.
+
+## 8. Clean-room split (owner ruling, 2026-08-30)
+
+The clean room exists so the model is never built from ARIES-CS data. It binds the sessions that build the model, not the ones that build the yardstick.
+
+- **Yardstick sessions** — sessions producing the depth rubric, gradings against it, or the maturation phase's gap reports, and touching no model file — are exempt from §2 blocking and §3 admissibility, including the two barred-by-default costing sources (the Waganer ARIES cost-account doc explicitly). The four sealed PDFs in this directory are **not** covered by the exemption: they stay unread until the §6 reveal.
+- **Model-facing sessions** — anything building, refining, researching for, or reviewing the model — keep the full clean room exactly as §2/§3 state it.
+- **The firewall between the two is the yardstick's output:** rubrics and gradings carry depth prescriptions only — what to model and how deeply — never ARIES-CS-specific values or design facts. §4 binds every session as always.
+- **Source register:** any source ingested for yardstick work is barred for model-facing sessions until screened clean; screening verdicts are recorded as rows below this line. (None yet — no yardstick ingestion planned.)
+
+### Model-facing derivative exposure — 2026-09-16
+
+During goal `stellaris-reference-reconciliation`, coordinator `/root` read the first 100 lines of `knowledge/research/pending/20260912-115614_stellaris-structural-behavioral-modeling.md` while checking prior research. The note cites the barred Helios comparison alongside Stellaris and is excluded from this goal's admissible evidence. No barred source itself or sealed PDF was opened. No particular ARIES-CS datum was identified or adopted, but mixed-source provenance cannot establish a clean basis. The exposed coordinator retires from scientific decisions; a fresh coordinator receives only clean evidence references and the exclusion. Existing clean geometry/conductor readers continue. No scientific edits had occurred; the holdout remains sealed. This is a precautionary derivative-exposure record, not a clean-screen certification. Treat that mixed-source note as barred for model-facing work pending explicit clean screening.
+
+### Model-facing derivative exposure — 2026-09-17
+
+During the owner's requested orientation and critical review of `.project/active/aries-comparison-preparation/draft.md`, `/root` read the opening of `.project/concepts/stellarator-mbse-demo.md`. Its “Why evaluate at the ARIES-CS point rather than compare plants” bullet contains ARIES-CS-specific design facts and therefore falls under §3's content-based exclusion despite being outside the named blocklist. No sealed PDF or underlying barred source was opened. The reader disclosed the exposure and limited the remaining work to document consistency and reporting conclusions already present in reviewed admissible evidence; no scientific model, comparison rule or frozen archive was changed. The facts are not reproduced in the review. Future pre-reveal model-facing orientation must exclude that concept's data-bearing content. Status remains sealed; this is an exposure record, not reveal authorization or a clean-screen certification.

@@ -1,0 +1,124 @@
+{
+ "c2823": {
+  "coords": {
+   "R": 15.7,
+   "a": 2.2,
+   "I": 13000000.0,
+   "n_e0": 5.06e+20,
+   "T": 13.0,
+   "wallplug": 100.0,
+   "eta": 0.5,
+   "tau": 8.0
+  },
+  "elapsed_s": 1.0293405055999756,
+  "compare": {
+   "lcoe": {
+    "oracle": 202.19228485401507,
+    "csv": 202.19228485401507,
+    "rel_dev": 0.0
+   },
+   "p_aux_required": {
+    "oracle": 33.34053528836671,
+    "csv": 33.34053528836671,
+    "rel_dev": 0.0
+   },
+   "wall_load_peak": {
+    "oracle": 3.961307380117835,
+    "csv": 3.961307380117835,
+    "rel_dev": 0.0
+   },
+   "beta": {
+    "oracle": 0.04426083817156456,
+    "csv": 0.04426083817156456,
+    "rel_dev": 0.0
+   },
+   "B_peak": {
+    "oracle": 17.00301927371991,
+    "csv": 17.00301927371991,
+    "rel_dev": 0.0
+   },
+   "total_capital": {
+    "oracle": 20639689200.93833,
+    "csv": 20639689200.93833,
+    "rel_dev": 0.0
+   }
+  },
+  "verdicts": {
+   "beta_ok": true,
+   "peak_field_ok": true,
+   "net_positive": true,
+   "recirc_ok": true,
+   "wall_load_ok": true,
+   "wp_stress_ok": true,
+   "cond_strain_ok": true,
+   "sustainment_ok": true,
+   "tbr_ok": true,
+   "burn_hold_ok": true,
+   "all_satisfied": true,
+   "violated": []
+  },
+  "err": null,
+  "max_rel_dev": 0.0
+ },
+ "c3694": {
+  "coords": {
+   "R": 12.7,
+   "a": 1.3,
+   "I": 15400000.0,
+   "n_e0": 5.06e+20,
+   "T": 14.63,
+   "wallplug": 100.0,
+   "eta": 0.5,
+   "tau": 8.0
+  },
+  "elapsed_s": 1.054175615310669,
+  "compare": {
+   "lcoe": {
+    "oracle": 322.3184394857024,
+    "csv": 322.31843948570247,
+    "rel_dev": 1.7635794883937907e-16
+   },
+   "p_aux_required": {
+    "oracle": 49.07960078792678,
+    "csv": 49.07960078792678,
+    "rel_dev": 0.0
+   },
+   "wall_load_peak": {
+    "oracle": 3.9788448937763854,
+    "csv": 3.9788448937763854,
+    "rel_dev": 0.0
+   },
+   "beta": {
+    "oracle": 0.025304999208981403,
+    "csv": 0.025304999208981403,
+    "rel_dev": 0.0
+   },
+   "B_peak": {
+    "oracle": 24.899999999999995,
+    "csv": 24.899999999999995,
+    "rel_dev": 0.0
+   },
+   "total_capital": {
+    "oracle": 14442862261.866259,
+    "csv": 14442862261.86626,
+    "rel_dev": 1.3206167851150293e-16
+   }
+  },
+  "verdicts": {
+   "beta_ok": true,
+   "peak_field_ok": true,
+   "net_positive": true,
+   "recirc_ok": true,
+   "wall_load_ok": true,
+   "wp_stress_ok": true,
+   "cond_strain_ok": true,
+   "sustainment_ok": true,
+   "tbr_ok": true,
+   "burn_hold_ok": true,
+   "all_satisfied": true,
+   "violated": []
+  },
+  "err": null,
+  "max_rel_dev": 1.7635794883937907e-16
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "adapter-request/v1",
+  "purpose": "post_reveal_comparison",
+  "values": {
+    "stellarator_09__stellaris__plasma__R": {
+      "value": 7.75,
+      "unit": "m",
+      "definition": "major_radius",
+      "resolution": "matched",
+      "source": "Lyon 2008 p708 Table IV; nominal average major radius only, shape retained; committed extraction knowledge/holdout/aries-cs/extracted/20260920-r3/ at 829539f5eb7fde217d18318d1646a5e47103812c; mapping/decisions.md"
+    },
+    "stellarator_09__stellaris__plasma__a": {
+      "value": 1.7,
+      "unit": "m",
+      "definition": "minor_radius",
+      "resolution": "matched",
+      "source": "Najmabadi 2008 p657 Table I; directly tabulated average minor radius, no shape/volume equivalence claimed; committed extraction knowledge/holdout/aries-cs/extracted/20260920-r3/ at 829539f5eb7fde217d18318d1646a5e47103812c; mapping/decisions.md"
+    },
+    "stellarator_09__stellaris__plasma__T_i0": {
+      "value": 11.83,
+      "unit": "keV",
+      "definition": "peak_ion_temperature",
+      "resolution": "matched",
+      "source": "Lyon 2008 p708 Table IV central T; p701 Ti=Te; p702 Fig12 centrally peaked temperature; committed extraction knowledge/holdout/aries-cs/extracted/20260920-r3/ at 829539f5eb7fde217d18318d1646a5e47103812c; mapping/decisions.md"
+    }
+  }
+}

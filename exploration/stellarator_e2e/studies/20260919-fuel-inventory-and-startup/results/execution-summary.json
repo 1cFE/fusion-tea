@@ -1,0 +1,21 @@
+{
+  "cases": 26,
+  "states": {
+    "completed": 26
+  },
+  "store": "results/study/native-study.sqlite",
+  "elapsed_seconds": 34.2038385476917,
+  "runtime_store": "results/study/_work/20260919-fuel-inventory-and-startup.db",
+  "store_copy": {
+    "method": "SQLite backup after FULL WAL checkpoint",
+    "checkpoint_result": [
+      0,
+      0,
+      0
+    ],
+    "integrity_check": "ok",
+    "all_table_rows_equal": true,
+    "source_sha256": "3cad06905019f900aec0b2f75b14c9bba1071bfcaea8a562067b1c1f92781e53",
+    "retained_sha256": "69af465554f942db9b6d1fba2e7a403a9b7fa4ffd76aabfc24d64ff2544d82c0"
+  }
+}

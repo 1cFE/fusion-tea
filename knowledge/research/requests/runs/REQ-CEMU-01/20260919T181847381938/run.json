@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-CEMU-01",
+  "request_key": "02790c283cbe3f3ec129895784b1c9c63e916075cb479e4ddff7e831cd65d3ac",
+  "request_path": "/tmp/REQ-CEMU-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 2,
+    "max_captures": 1
+  },
+  "opened_at": "2026-09-19T18:18:47.382118+00:00",
+  "override_reason": null
+}

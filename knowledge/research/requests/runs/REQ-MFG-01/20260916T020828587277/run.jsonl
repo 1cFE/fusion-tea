@@ -1,0 +1,15 @@
+{"kind": "search", "query": "site.professionalplastics.com G10 FR4 sheet price 0.020", "at": "2026-09-16T02:09:10.899424+00:00"}
+{"kind": "search", "query": "site.iter.org winding double pancake conductor winding speed metres day", "at": "2026-09-16T02:09:10.947112+00:00"}
+{"kind": "search", "query": "site.mcmaster.com G10 FR4 0.020 sheet", "at": "2026-09-16T02:09:10.993477+00:00"}
+{"kind": "search", "query": "site.iter.org \"winding\" \"speed\" \"hour\"", "at": "2026-09-16T02:09:11.039999+00:00"}
+{"kind": "search", "query": "site.professionalplastics.com G10 CR cryogenic insulation sheet density", "at": "2026-09-16T02:09:11.086468+00:00"}
+{"kind": "candidate", "ref": "https://www.cryogenicg10.com/sheets.htm", "triage": "keeper", "note": "Supplier electrical insulation catalog; admissible construction-only scope, no reactor costing; keeper for sheet dimensions and dated catalog prices.", "at": "2026-09-16T02:09:11.132651+00:00"}
+{"kind": "candidate", "ref": "https://www.iter.org/node/20687/z-assembling-iters-largest-components", "triage": "keeper", "note": "ITER primary production article; winding synchronization and processing stages; no reactor comparisons in triage.", "at": "2026-09-16T02:09:11.178947+00:00"}
+{"kind": "candidate", "ref": "https://kmac-distribution.com/plastics/g10-fr4-sheets.htm", "triage": "rejected", "note": "Ordinary G10/FR4 price catalog; prefer explicitly cryogenic-grade supplier for scenario.", "at": "2026-09-16T02:09:11.224252+00:00"}
+{"kind": "search", "query": "site.iter.org \"winding\" \"300\" \"mm\"", "at": "2026-09-16T02:10:29.676057+00:00"}
+{"kind": "search", "query": "site.energy.gov REBCO coil winding manufacturing cost joints labor", "at": "2026-09-16T02:10:29.723339+00:00"}
+{"kind": "search", "query": "site.cryogenicg10.com technical data density", "at": "2026-09-16T02:10:29.770028+00:00"}
+{"kind": "candidate", "ref": "https://kmac-distribution.com/plastics/g10-fr4-sheets.htm", "triage": "keeper", "note": "Reconsidered after cryogenic catalog encoding capture failure; ordinary-grade catalog scenario only, qualification unresolved.", "at": "2026-09-16T02:10:29.819216+00:00"}
+{"kind": "candidate", "ref": "https://www.sciencedirect.com/science/article/abs/pii/S0920379617300327", "triage": "rejected", "note": "Specific ITER two-in-hand machine forward speed alone supplies no labor cost or cross-section law; no transfer to NI plates established.", "at": "2026-09-16T02:10:29.866488+00:00"}
+{"kind": "candidate", "ref": "https://doi.org/10.1109%2FTASC.2024.3356571", "triage": "rejected", "note": "Primary TFMC fabrication article identified as useful follow-up for operation descriptions; search triage has no calibrated transferable cost law; no cost adopted.", "at": "2026-09-16T02:10:29.913407+00:00"}
+{"kind": "candidate", "ref": "https://www.energy.gov/nepa/articles/cx-029416-university-houston-low-cost-high-rate-fabrication-high-performance-uniform", "triage": "rejected", "note": "Tape production project, not purchased-tape coil winding effort.", "at": "2026-09-16T02:10:29.959312+00:00"}

@@ -1,0 +1,11 @@
+# Focused capture review
+
+Independent reviewer boundary_review continues accepted r2 coverage. Entry files: WI-098/design.md section3, configuration.md source/magnet table, implementation author's new48kA capture and original native magnet/cryo equations. Ask author for exact capture path when deposited. Do not repeat the unchanged account review.
+
+Question: the selected local magnet/cryo checks passed, while the recalculated full-plasma point fails other checks. Under the explicitly supplied2500/2800MW source interpretation, does the fixed cryogenic heat input35.5W/m³ support the claimed conservative envelope through fusion2652.563MW? It is reportedly an independent input, so a fixed reference fusion value alone is not a proof. Check its source/provenance, any scaling and the exact scope of captured failures.
+
+Return PASS/FINDINGS/OWNER_GATE for capture interpretation, not final plant readiness. If a changed source assumption is needed, state it and park dependent ranking. Owner permits explicit supplied-source assumptions but known component failures cannot be waived. Budget12 tool calls; broaden only for a named missing uncertainty. Write evidence/capture-boundary-review.md. Upstream agent separately verifies numerical arithmetic and has no independent-design verdict authority.
+
+## Supplemental selected-cryoplant binding check
+
+The independent verifier found that dynamic heating changed demand against fixed captured cryoplant ratings. This supports a fixed-offer heat stress, but it does not exercise the accepted requirement for independently selected insufficient/sufficient capacities through the new assembly. Review the author's forthcoming minimal binding proposal: selected cold/intercept ratings and explicit quote, immutable reference capture, unchanged geometry and cryogenic equations. Confirm that the selected offer owns actual capacity and cost, while captured ratings/quote remain labelled reference evidence. Require declared smaller/default/larger offer tuples and demand-only inventory/price invariance. Scope is this role/binding correction only; six calls should suffice if exact fields and tuples are supplied. Write a separate brief verdict and do not reopen the accepted thermal equations.

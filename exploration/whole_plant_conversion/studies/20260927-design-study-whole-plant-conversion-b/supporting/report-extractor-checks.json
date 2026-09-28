@@ -1,0 +1,244 @@
+{
+  "status": "pass",
+  "scope": "Renderer development checks using copied retained native receipts in temporary synthetic study records; no main-study results or planning-oracle numerical results consumed.",
+  "renderer": "exploration/whole_plant_conversion/studies/report_results.py",
+  "renderer_sha256": "73265e2fce90befdba15064bb80e52d68d152e1bc3872cbc1d66feb1763a9e8f",
+  "native_receipt": "work/active/WI-098_whole-plant-conversion-comparison/evidence/development-final/native/cases.json",
+  "native_receipt_sha256": "e6b1191a41dcf6a861b2b9d86f3d4aaab2a84c27b67c8ec4bb2ec5ad307cbdda",
+  "retained_native_cases": [
+    "whole-baseline2500",
+    "matched2800",
+    "matched3000-failed-source",
+    "cryo-q80",
+    "negative-whole-net",
+    "common-price-only"
+  ],
+  "checks": [
+    {
+      "name": "complete source identity joins",
+      "status": "pass",
+      "detail": "Native complete-map digest matches frozen proposal point_id; membership joins through that identity."
+    },
+    {
+      "name": "supported matched pairs",
+      "status": "pass",
+      "detail": "Retained 2500/2800 MW steam and gas receipts selected; identical common-input digest required."
+    },
+    {
+      "name": "source capacity exclusion",
+      "status": "pass",
+      "detail": "Retained 3000 MW receipt excluded for both branches."
+    },
+    {
+      "name": "cryogenic capacity exclusion",
+      "status": "pass",
+      "detail": "Retained q80 receipt excluded for both branches."
+    },
+    {
+      "name": "nonpositive export exclusion",
+      "status": "pass",
+      "detail": "Retained negative-whole-net receipt excluded for both branches; zero failed LCOE never ranks."
+    },
+    {
+      "name": "native headline preservation",
+      "status": "pass",
+      "detail": "Each selected metric equals its native lcoe_USD2025_MWh output exactly."
+    },
+    {
+      "name": "unequal common assumptions refused",
+      "status": "pass",
+      "detail": "Steam whole-baseline2500 versus gas common-price-only, both original native receipts, raises nominal common-input mismatch."
+    },
+    {
+      "name": "frozen predecessor context",
+      "status": "pass",
+      "detail": "Six selected original receipts yield six boundary-labeled rows; no pure cost-addition inference."
+    },
+    {
+      "name": "artifact writing",
+      "status": "pass",
+      "detail": "JSON/CSV ledger, detailed accounts, mapping, digests, SVG and PNG figures created in /tmp only."
+    },
+    {
+      "name": "cost and power reporting materiality",
+      "status": "pass",
+      "detail": "Continuous gas-minus-steam differences retained; inclusive \u00b15 USD2025/MWh and \u00b15 MW bands are indeterminate; strict ordering separate; unsupported never receives a preference."
+    },
+    {
+      "name": "extension catalog roles",
+      "status": "pass",
+      "detail": "Performance-price, strict crossing and reporting-band catalogs rank; engineering boundary diagnostics remain outside catalog minima."
+    },
+    {
+      "name": "round-1 real-data layout refinement",
+      "status": "pass",
+      "detail": "264 rankings and all matched-pair data unchanged after layout/status refinements; all 2496 native cases and2651 aliases retained. Independent verification status remains unverified."
+    }
+  ],
+  "test_driver": "/tmp/test_wi098_renderer.py",
+  "test_driver_sha256": "93d1f5b0e40d90a2497bf2a7eda933948baa0fe3f29137eca8bdaa7bdaf3eaea",
+  "replay": ".codex-test/run python /tmp/test_wi098_renderer.py",
+  "limits": [
+    "Temporary fixtures assign study membership roles to retained development receipts; they are not the main catalog.",
+    "The unequal-common-input and predecessor checks were separate inline Python calls recorded in the agent tool log.",
+    "This renderer validation is not independent verification of the model equations.",
+    "Final figure/table extraction is tied to the complete stock-verification pass in the replacement record; conditional source and cost qualifications still apply."
+  ],
+  "prior_renderer_revisions": [
+    {
+      "sha256": "7f8db6bbd81ace7c50d1b1ecf916c5216df2faf537fd2c79b8cd3820fc7bfaac",
+      "status": "development fixture checks passed before materiality correction; superseded for reporting labels"
+    },
+    {
+      "sha256": "456759cde64b5177e0e45db6cc79649633de1576af6bfae47ad0b8f12f480224",
+      "status": "round-1 renderer preserved in supporting/report_results-at-execution.py; stock numerical verification failed independently"
+    }
+  ],
+  "materiality_checks": {
+    "status": "pass",
+    "checks": [
+      {
+        "input_gap": -5.000001,
+        "cost_gap_gas_minus_steam_USD2025_MWh": -5.0000009999999975,
+        "strict_cheaper": "gas",
+        "preference": "gas",
+        "net_power_gap_gas_minus_steam_MW": -5.0000009999999975,
+        "strict_higher_net_power": "steam",
+        "power_comparison": "steam"
+      },
+      {
+        "input_gap": -5.0,
+        "cost_gap_gas_minus_steam_USD2025_MWh": -5.0,
+        "strict_cheaper": "gas",
+        "preference": "indeterminate",
+        "net_power_gap_gas_minus_steam_MW": -5.0,
+        "strict_higher_net_power": "steam",
+        "power_comparison": "indeterminate"
+      },
+      {
+        "input_gap": -0.0007,
+        "cost_gap_gas_minus_steam_USD2025_MWh": -0.0006999999999948159,
+        "strict_cheaper": "gas",
+        "preference": "indeterminate",
+        "net_power_gap_gas_minus_steam_MW": -0.0006999999999948159,
+        "strict_higher_net_power": "steam",
+        "power_comparison": "indeterminate"
+      },
+      {
+        "input_gap": 0.0,
+        "cost_gap_gas_minus_steam_USD2025_MWh": 0.0,
+        "strict_cheaper": "equal",
+        "preference": "indeterminate",
+        "net_power_gap_gas_minus_steam_MW": 0.0,
+        "strict_higher_net_power": "equal",
+        "power_comparison": "indeterminate"
+      },
+      {
+        "input_gap": 0.0007,
+        "cost_gap_gas_minus_steam_USD2025_MWh": 0.0006999999999948159,
+        "strict_cheaper": "steam",
+        "preference": "indeterminate",
+        "net_power_gap_gas_minus_steam_MW": 0.0006999999999948159,
+        "strict_higher_net_power": "gas",
+        "power_comparison": "indeterminate"
+      },
+      {
+        "input_gap": 5.0,
+        "cost_gap_gas_minus_steam_USD2025_MWh": 5.0,
+        "strict_cheaper": "steam",
+        "preference": "indeterminate",
+        "net_power_gap_gas_minus_steam_MW": 5.0,
+        "strict_higher_net_power": "gas",
+        "power_comparison": "indeterminate"
+      },
+      {
+        "input_gap": 5.000001,
+        "cost_gap_gas_minus_steam_USD2025_MWh": 5.0000009999999975,
+        "strict_cheaper": "steam",
+        "preference": "steam",
+        "net_power_gap_gas_minus_steam_MW": 5.0000009999999975,
+        "strict_higher_net_power": "gas",
+        "power_comparison": "gas"
+      }
+    ],
+    "unsupported": {
+      "cost_gap_gas_minus_steam_USD2025_MWh": null,
+      "strict_cheaper": null,
+      "preference": "unsupported",
+      "net_power_gap_gas_minus_steam_MW": null,
+      "strict_higher_net_power": null,
+      "power_comparison": "unsupported"
+    },
+    "extension_role_classification": "pass"
+  },
+  "materiality_test_driver_sha256": "9662e4ed8762df9aca8500fd71733c355b4a8fcebbef847637560d5e1a357770",
+  "materiality_test_replay": ".codex-test/run python /tmp/test_wi098_materiality.py",
+  "round_1_rendering": {
+    "status": "draft_unverified",
+    "native_cases": 2496,
+    "membership_aliases": 2651,
+    "ranking_groups": 264,
+    "original_presentation": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/presentation",
+    "failure_disposition": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/presentation/STATUS.md",
+    "refined_layout_test": "/tmp/wi098-renderer-refined-round1",
+    "ranking_and_matched_pairs_unchanged": true,
+    "visual_inspection": "Power/cost readable. Removed empty unsupported 3000 MW numeric axis from sensitivity figures; explicit unsupported title remains. Added readable exact-gap boundary figure. Every new figure declares stock verification unverified."
+  },
+  "final_rendering": {
+    "status": "pass",
+    "record": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b",
+    "presentation": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation",
+    "renderer_sha256": "73265e2fce90befdba15064bb80e52d68d152e1bc3872cbc1d66feb1763a9e8f",
+    "native_cases": 2496,
+    "membership_aliases": 2651,
+    "ranking_groups": 264,
+    "stock_verification": {
+      "status": "pass",
+      "sampled_native_cases": 2496,
+      "native_cases": 2496,
+      "all_native_cases_sampled": true,
+      "receipt": "results/verification_summary.json"
+    },
+    "native_ranking_sha256": "ae481befdf5054944def30d7c3f766f1657595604739f5d157c0ea8be2beabf4",
+    "artifact_hashes_checked": true,
+    "figure_inspection": "All five PNGs visually inspected; all five SVGs parse and have the same figure extents. Labels/legends/captions readable; unsupported3000 explicit; boundary detail retains exact gaps and materiality tags. No renderer correction needed.",
+    "figures": {
+      "economic-boundary-detail.svg": {
+        "sha256": "6420246689084ddd886b7be57900efdd443fda06fae3cf607c9334121b8cee89",
+        "png_dimensions": [
+          2160,
+          810
+        ]
+      },
+      "power-budget.svg": {
+        "sha256": "097b94ecf48a26bffd1a1514e0d33247098cdd3dc4cb6aeacb2097290768345b",
+        "png_dimensions": [
+          1800,
+          900
+        ]
+      },
+      "preference-gap.svg": {
+        "sha256": "1fd768a80bb253b96370938893ce2bb5b426783d371e2d601ee77f4b373b2104",
+        "png_dimensions": [
+          1800,
+          2835
+        ]
+      },
+      "preference-sensitivity.svg": {
+        "sha256": "e5faaf09555a5f3c26bfa9168a96ab928e165a078ea182a2f316f903e9c7c322",
+        "png_dimensions": [
+          1800,
+          2835
+        ]
+      },
+      "whole-cost-contributions.svg": {
+        "sha256": "2826fffb0c3aa5975b7529d3beb24a728a6a19da8f7ddc400c02c363b16f7d0a",
+        "png_dimensions": [
+          1980,
+          990
+        ]
+      }
+    },
+    "side_effects": "Only presentation artifacts and this check receipt written; native results, package and old sealed record unchanged."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://www.indium.com/products/bar-solder/",
+  "slug": "indium_corporation_bar_solder_alloy_properties",
+  "path": "knowledge/sources/indium_corporation_bar_solder_alloy_properties/",
+  "source_id": "cdd7a972a10ca0fabeff8925043b9fa2074c8d5d6c36837ab3e625d89cc5fb08",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:25:47.764696+00:00"
+}

@@ -1,0 +1,218 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea-stored-energy-basis/exploration/stellarator_e2e/generated",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea-stored-energy-basis/exploration/stellarator_e2e/studies/manifest.json",
+    "--identity",
+    "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/7a10773c-4876-4e66-bf5d-a80d6250997f/scratchpad/integration-run-wi042/package_identity.json",
+    "--store",
+    "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/7a10773c-4876-4e66-bf5d-a80d6250997f/scratchpad/integration-run-wi042/_work/stellarator-baseline-point-v1.db",
+    "--out",
+    "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/7a10773c-4876-4e66-bf5d-a80d6250997f/scratchpad/integration-run-wi042/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_e2e/generated",
+    "package_name": "stellarator_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "8ac14fdf3745be9682723902c11a2245f423f2fc6d5bc4726b7fed3b09b5c18e",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "dbd14bfefd251ee3be60f5b038a0ff236cf2ab968088a850b73df168f178dd7d"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "c75cd9bf45be9feddbf0517fc938dfe37cc24ca2b07a639faab85109836c4d20"
+  },
+  "stores": [
+    {
+      "path": "../../../../tmp/claude-1000/-home-reid-1cfe-fusion-tea/7a10773c-4876-4e66-bf5d-a80d6250997f/scratchpad/integration-run-wi042/_work/stellarator-baseline-point-v1.db",
+      "study_id": "stellarator-baseline-point-v1",
+      "compatibility": {
+        "digest": "af5746c4bb2e1c744fa1d981aebcef8c5a00a26afd939553bf42bbad5d9a335f",
+        "evidence_schema_version": "v2",
+        "executable_fingerprint": "8ac14fdf3745be9682723902c11a2245f423f2fc6d5bc4726b7fed3b09b5c18e",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "c37fb58a2b19973d1698aeace5184890107efdf0136d20a502ffe88a0eb956a4",
+        "strategy_config": "dab4f05cf6e3ec8862ec3efc71a789dada27330908137617190781b4ded8f444",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "5a16af0ab80fa729b8ca3a8fe47eeab47053ea24986df24859213e9c3b06909c",
+        "study_id": "stellarator-baseline-point-v1"
+      },
+      "cases_total": 1,
+      "cases_completed": 1,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "afd565213c6428fa",
+        "seed_source": "derived",
+        "sample_size_requested": 12,
+        "strata_observed": 1,
+        "sampled_rows": 1,
+        "sampled_case_ids": [
+          "stellarator-baseline-point-v1:c0000"
+        ]
+      },
+      "worst_channel_rel_dev": 1.7980392726861575e-16,
+      "worst_at": {
+        "case_id": "stellarator-baseline-point-v1:c0000",
+        "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "value": 316.1411417665396
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09__stellaris__beta_calc__beta",
+      "objective": "beta"
+    },
+    {
+      "channel": "stellarator_09__stellaris__cas72_calc__cost",
+      "objective": "cas72"
+    },
+    {
+      "channel": "stellarator_09__stellaris__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "objective": "fuel"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "objective": "lcoe_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+      "objective": "magnet_capital_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "objective": "cas27"
+    },
+    {
+      "channel": "stellarator_09__stellaris__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__wp_stress__sigma_wp",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 1.7980392726861575e-16,
+  "outcome": "pass"
+}

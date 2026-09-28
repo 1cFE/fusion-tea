@@ -1,0 +1,38 @@
+......................F...........s........                              [100%]
+=================================== FAILURES ===================================
+______ test_every_catalog_constraint_is_rederived_with_its_operand_count _______
+tests/study/test_verify.py:101: in test_every_catalog_constraint_is_rederived_with_its_operand_count
+    assert set(rederived) == {
+E   AssertionError: assert {'beta_ok', '...city_ok', ...} == {'beta_ok', '...tive_ok', ...}
+E     
+E     Extra items in the left set:
+E     'facility_outage_ok'
+E     'facility_initial_ready'
+E     'facility_capacity_ok'
+E     'facility_replacement_ready'
+E     'facility_routes_ok'
+E     Use -v to get more diff
+=============================== warnings summary ===============================
+tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+1 failed, 41 passed, 1 skipped, 3 warnings in 181.26s (0:03:01)

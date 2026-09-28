@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://www.ncbi.nlm.nih.gov/books/NBK598740/table/ch4.tab2/",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:32:03.114283+00:00"
+}

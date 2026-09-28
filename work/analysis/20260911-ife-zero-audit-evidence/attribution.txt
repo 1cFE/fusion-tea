@@ -1,0 +1,5 @@
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+L6 matched by file, element, rule, message: 50 retained; 0 new; 0 resolved

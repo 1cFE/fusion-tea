@@ -1,0 +1,287 @@
+{
+  "oracle_source_sha256": {
+    "exploration/exchanger_architecture/thermal_requirements/studies/oracle_entry.py": "cc5d3477836ea7fd49b8063bcc7eafa773b97226d88344a553937065e8241bfc",
+    "exploration/exchanger_architecture/thermal_requirements/studies/thermal_oracle.py": "83ee791150eb345e216d0784717677002873faef626c6da56a328d4fb1eb68e0",
+    "exploration/aries_integrated/studies/oracle_entry.py": "0d711df9eeb0544342a84cca543a7ab4aa637df1eb0e845015a9c6888fad1dbe",
+    "exploration/aries_integrated/studies/equipment_bindings.py": "15bb56c1e58b5cb3522be428bcb1a03529d47ec5c0fb38ba5ed5fac5667c6a75",
+    "exploration/aries_integrated/studies/equipment_oracle.py": "cf20068b6e8d0c3cbb2114c5cacba97d2ea09eb5e7c682d9770e52ed38450fab",
+    "exploration/aries_integrated/studies/lifecycle_bindings.py": "038117c55763d1ee1b12c29cbc6e2a71111015c892f7f324bd4a4b38ff668aa1",
+    "exploration/aries_integrated/studies/lifecycle_oracle.py": "dbdab6b6748e0cd051fa9a42bcd04906f948cdf73f764ad3a096f88bf7d3c5ff"
+  },
+  "absolute_tolerances_before": [
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+      "value": 1.9073486328125e-06,
+      "units": "USD2004",
+      "basis": "Two ULP of the capital magnitude covers cancellation in the subtractive IDC diagnostic; no other financial channel relaxed. Evidence: exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/tiny-rate-tolerance.json"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(new_feed - gross_makeup, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(gross_makeup - new_feed, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(new_feed - gross_makeup, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(gross_makeup - new_feed, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination 1e-8 MW plus roundoff; independent Brent root 1e-11 K. Numerical comparison only, below 1e-6 MW engineering solve contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    }
+  ],
+  "interface_sha256_before": "66f6b06c697e4f8ba2cd4a39eb73c054fc5f9fbabe0a9b2aa0154296dd64a968",
+  "manifest_sha256_before": "348821f79935e4a1eb608df00902fbcd7436450438a5199539dc9d53f41a7db1",
+  "oracle_source_unchanged": true,
+  "absolute_tolerances_unchanged": true,
+  "interface_sha256_after": "3f810675744d11057b06949b29533115638f2e1c1e6f8f6af852fa634412e5d3",
+  "manifest_sha256_after": "ed3943ebeee17d08eedc436e5c17a1201c157f7d010cb3b8606117d2331c3762",
+  "new_fingerprints": {
+    "executable_fingerprint": "668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23",
+    "semantic_fingerprint": "423eebc09f9901ffda8ee77a480d67100919dd7ba4d325e09f8c58f1e704ce31"
+  }
+}

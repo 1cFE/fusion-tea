@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-038-01",
+  "question": "What peak magnetic field can a REBCO HTS fusion-magnet winding pack operate at when cooled to about 20 K, and is a peak-on-winding field near 29-31 T conductor-limited or structure-limited?",
+  "consumer": "WI-038",
+  "gap_type": "unsourced_value",
+  "priority": "P0",
+  "where_to_look": [
+    "IEEE Transactions on Applied Superconductivity",
+    "Superconductor Science and Technology",
+    "Fusion Engineering and Design",
+    "arXiv physics.acc-ph and cond-mat.supr-con",
+    "REBCO tape manufacturer engineering datasheets"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

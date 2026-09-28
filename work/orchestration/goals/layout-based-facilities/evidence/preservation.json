@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "path": ".project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz",
+      "expected": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+      "actual": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+      "unchanged": true
+    },
+    {
+      "path": ".project/active/demo-depth-rubric/rubric.md",
+      "expected": "49d4cb8bbf72a05ce74c72ce5beb202a95c7a651218df45df6ffeb6f87fdd592",
+      "actual": "49d4cb8bbf72a05ce74c72ce5beb202a95c7a651218df45df6ffeb6f87fdd592",
+      "unchanged": true
+    }
+  ],
+  "scope": "Frozen r2 and unchanged grading rubric. No barred material opened, no reveal, merge or push performed during this goal.",
+  "checked_at": "2026-09-19 after committed study and final independent custody review",
+  "historical_study_changes": []
+}

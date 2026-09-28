@@ -1,0 +1,3326 @@
+{
+  "decision_authority": "coordinator instruction after exact point comparison: retain originally declared engineered reporting sample locations; no need to move them by floating-point noise",
+  "original_record": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion",
+  "original_snapshot_sha256": "038545e8b98042063409aa72884c182327b7a87ec7aa5d5a8c6a726ec44de0fb",
+  "original_proposals_sha256": "55782d25a4c7a6818547e9fe1b587deb79bd3d6ef8535b07ec858e14ab6e1217",
+  "original_reporting_plan_sha256": "cff0ee0f0a55b03102b0d42827bb3a1f354334309b4e29a7e1fdd6184f408547",
+  "recomputed_diagnostics": {
+    "case-membership.json": "2346a6f8822428fa8b4a93c283fa4286e8e1c8871c2d97c7d5e05905d9e52158",
+    "original-point-comparison.json": "ad64f851a8456f897209522ba8a2b3fb0eb3e92eea078eddacbd7a3bf1bf2148",
+    "proposed-points.json": "5817ba5d4dafa0ee97c64910bcd6d1a0bdf08c7a879233f764cee617caf93405",
+    "reporting-band-plan.json": "a23750b494b437ba435f655b842d759eb683878229fc0653b7d6debd6896e9b7",
+    "scenario-scan.json": "eec7f809b57a9cbfc16d33dadfb8e3197afc242094ad8ec008a9b4a146f7277b",
+    "summary.json": "59438e63dd6146a14d5d2ab72cf21bc2155d62a6565b42ab4550d3da9702c2f8",
+    "window.json": "502d0ddd94a2cc17b496daae1419c08668aa0bca3589486a7a4a1bb7809896fc"
+  },
+  "restored_complete_points": 56,
+  "restored_aliases": 60,
+  "quote_only_differences": true,
+  "bracket_signs_rechecked": true,
+  "changes": [
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m1750-r1.65-ua25-25-25",
+      "recomputed_point_id": "94edaa16d5f18e506beb21921ff468d30de30bc61761b9d08ced0fca67899bd5",
+      "retained_point_id": "0322d0bad6a11898919f798c94d01737bec7f7a1256c41fb662cc822d8f7a8dd",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-20",
+      "recomputed_point_id": "3eca160096c642b7a9462257c11499bbbb86bd3dddb90ca30875bd0e381d2cc3",
+      "retained_point_id": "2aa200d55ebebdeb9b7d4be56c588d5a54370872b005d2f9db3084fe990cc401",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-25",
+      "recomputed_point_id": "cd816238d3f70afedbd341707693a99523659f2684b3edcd39d0b58289e80765",
+      "retained_point_id": "cf113505e60a6dd2572d72d4a53df6bc88bf0ee52fc4e65b5cd4e57c5100b91b",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+      "recomputed_point_id": "f127eeabcfba618e45ed5d14a7549daf841fc1178bc2adb5c2fbf046b740f641",
+      "retained_point_id": "ac7588fbf846eff520262000ecb3730bb635ae89ac19e27c5fedd34de23d77b2",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.65-ua25-25-25",
+      "recomputed_point_id": "69d01737f1339ca5f7a07a3328f839dea7b9810b85ef5dd78e1eb8e6c980b2ea",
+      "retained_point_id": "285ea7325a5084c142515d53843f36055f51c71f947e06191eb03187d64d2098",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-20",
+      "recomputed_point_id": "281ee2d7ce5f3958264d6ce17dc3b8599cadca404c4b02bc71a06c5d99418b3e",
+      "retained_point_id": "59b7c90c6c9b7508f3fe5a85aed8d86d93ffe26e12766bf85e079c75265d90b0",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-25",
+      "recomputed_point_id": "15ea4a25a01325d9f01ef40c2ee1a34a86e5259d87f7af9b7bf443ee0c6232b3",
+      "retained_point_id": "259199cc7fd6e6c2a77ae01a3e8df5fb5e2983146d1aa9a1ea5d1659432b76a9",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m2250-r1.5-ua25-25-25",
+      "recomputed_point_id": "8dd2bc76c7c434aeecbf57e35e7879fda4fe83e6793150eae1c5a7f0da48c262",
+      "retained_point_id": "539e8267095566ea00a50885efd50a5b55a191a1e8c51369da3783c6d08b9c7f",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n11-k4-pump250",
+      "recomputed_point_id": "c75c80799c70e2be397e607f80994e48e4d9493dbef17cce19b4d12c709fc500",
+      "retained_point_id": "d5e15f01c28659ee4bc1af799dfb234c2bfff4ed0d5c88d63aaab74156f8d49b",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n12-k4-pump225",
+      "recomputed_point_id": "9638a5793eefe426af7c8e5608fe4e3d008c787d1df84410311734dafce3b4b9",
+      "retained_point_id": "f1b239a55d0faa10d5f31ebc020a782894cf251120c4da9b09272f04a59474c5",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n12-k4-pump250",
+      "recomputed_point_id": "e0ab66c0af85a79c2451956fb216aa4338050fd1d74b4a27fcb44d3ed3a3913f",
+      "retained_point_id": "e8dfea70b51f97f9f0c4e364b131604181a39ab7a276e2c6af62ecff09ababdd",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n14-k3-pump250",
+      "recomputed_point_id": "440a127ec77133e8e587b660eab87007b697a76ab4c90b9823dcfa6c03997907",
+      "retained_point_id": "7fbd335f586a60a01af4db1f9a2f3f04c6ac3ebfbc0c1cb368e54c8fb308d090",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n14-k4-pump225",
+      "recomputed_point_id": "641cf766915dc82c153db3203a2709d1be3ee0bb8caa0e6293660c62ec73848d",
+      "retained_point_id": "ffdf2a597d9c96aa626c55bcbb75af165a9de6bdf15b4382efc68c8fd04281b3",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n14-k4-pump250",
+      "recomputed_point_id": "62fab96ca020faf4236d149e7a7294eb29e878b75a4cb52eca8f74058183b153",
+      "retained_point_id": "a1c4a757eba9a5eb16432b4540f3a38b9a439e3f9210abbf753852f9f38da592",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65204390.419852555,
+          "retained": 65204390.41985263
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587817.301834284,
+          "retained": 7587817.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307157370.20418817,
+          "retained": 307157370.2041879
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143906265.07114255,
+          "retained": 143906265.07114246
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412182.698165717,
+          "retained": 12412182.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412182698165717,
+          "retained": 1.2412182698165708
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587817301834284,
+          "retained": 0.7587817301834293
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m1750-r1.65-ua25-25-25",
+      "recomputed_point_id": "736684c46b4965814686481698babe4e0a910048e3df5546da97dd634335ef91",
+      "retained_point_id": "1258731cd7fc89561f06180841ce2a14e8b8585b4597d282f7003509ca55a9cb",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-20",
+      "recomputed_point_id": "d1b512e221fdaa888849d305d875f1f9f8b3ff9968efe7ccaa755ee8d02377ce",
+      "retained_point_id": "96c7ae6111f189a261fc8a7a94560518b994d32dff804626c14b92ee4cde7504",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-25",
+      "recomputed_point_id": "b0c59f263fa0a19b4102ac935f94c0344daf25e72c085bb14efd2fef63b00d1c",
+      "retained_point_id": "b204076874cf319a1488e3d0b63032f3f1b1085bc137f19dba1b0bd1da747d2c",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+      "recomputed_point_id": "d20736f2e5c2e1b970ab8bd268a80cf7a7a050de3510f2986b984e8fe2eb8261",
+      "retained_point_id": "3aab17764a349cea3e9df5754feb48037af547165bb38a43972336ea361c17a3",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.65-ua25-25-25",
+      "recomputed_point_id": "4de56e14f4abfbd12c677deaa407e990b45e881fae699c25876d30bc86be3ebb",
+      "retained_point_id": "d412693088c63b980bd3cd006741df579c8bfe9ae1f278a0681d10e40f1d3b06",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-20",
+      "recomputed_point_id": "78a1f8ccbeed743b70cfab9b24e3940f2e7dd8c0ed1e6d121c622a3cefaf632a",
+      "retained_point_id": "4b36009ba064e66b4c3e26fdf5a8c57ccc89d9e24306133c8454bdbd095d999c",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-25",
+      "recomputed_point_id": "08a102b57304b177fda5dd6dcf8249ff56e3690a0d61ecd6b4333f410a2ca2b2",
+      "retained_point_id": "c497334c6cab0a9bedbb0e41d1af3edfca166d1bc861063c5ef40c71744247a5",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m2250-r1.5-ua25-25-25",
+      "recomputed_point_id": "fe75a4625de5e8a1ac7681dfea2826db66251afeb936285f2a4b7c3d588dbe8e",
+      "retained_point_id": "bfdc4f81f42b9ab260bc69e201317b8f42cbbf3d0794664463617909f5510728",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n11-k4-pump250",
+      "recomputed_point_id": "bbc83824c95a276f8ea16d518b43bf42b1eb8915f73ccae3256378c3d69ee161",
+      "retained_point_id": "f5e6e7189ee0401cd483188065b6b38e8821f9b048b280cf8f514c72b326e15e",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n12-k4-pump225",
+      "recomputed_point_id": "0dcf539cfc80e39cf69da41d433f6e115e54b7f80069298311306a2bc7efe399",
+      "retained_point_id": "eb6b159c977c1f646ab7ff2c166aa36b1b3f15adbe00f3eefeb00c3b65deed72",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n12-k4-pump250",
+      "recomputed_point_id": "602659c82687fba5551681e659e2205e58a173d730f877a70a18d889a4858cb7",
+      "retained_point_id": "136ff14deb54cca2cc9cdc8b1b1f7ee6f5e96dd0bad37b7ae04159e59bb8ecbc",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n14-k3-pump250",
+      "recomputed_point_id": "a8cdd02da7099fe9aabcd728ea5c422e06f3c2f23cdc7bf2f658fbd5ea9506d1",
+      "retained_point_id": "d979e3679f093a3e73d90a6f769d8dcb829095cc82aa759759d2622d97bd5dab",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n14-k4-pump225",
+      "recomputed_point_id": "5807735b50810db9b0b6e986adc5cf04ac5f395f75c29c7ec99f49abc6e007af",
+      "retained_point_id": "9ca682e87c6fc44fa3fc7777c80b18c771ad64087b05e7a3590e775b9f46058a",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n14-k4-pump250",
+      "recomputed_point_id": "c47f248eb6e01292d42a2a983577d9383a8c787bc714547f51dd67b8284f2b37",
+      "retained_point_id": "6acc3b868397de119a0ec2f5126f1a0170187cc5d9116a55e6a1230faf477841",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 65203531.08985256,
+          "retained": 65203531.08985262
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 7587717.301834284,
+          "retained": 7587717.301834293
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 307159844.8484765,
+          "retained": 307159844.8484763
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 143907424.4664606,
+          "retained": 143907424.4664605
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 12412282.698165715,
+          "retained": 12412282.698165707
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.2412282698165715,
+          "retained": 1.2412282698165706
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.7587717301834285,
+          "retained": 0.7587717301834292
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m1750-r1.65-ua25-25-25",
+      "recomputed_point_id": "de53c8cdfe3bba09158d0e691e1fc6f1cd687cab71d122c46c790597279c2b18",
+      "retained_point_id": "89a47109f4e8c8924b1c269a73a8010d3891786436847224eef1e3c29ab95ee2",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-20",
+      "recomputed_point_id": "21f1616afc76edd291f0ac46471b93ef5a9078aa5f4744b20c5acabd302ce2e4",
+      "retained_point_id": "351f22e6059ad48c56795998b56167afbc0f394c4a9a4e1e1f2a6723918fead5",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-25",
+      "recomputed_point_id": "c5b533b2c6d9684b507c68d2084900926f3f0c12bb5fab6617999622887fbc82",
+      "retained_point_id": "87948bbeec75a3358eb80ce06b73fa22199469ba63b044ad40ce8edf121bde9d",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+      "recomputed_point_id": "fd69eeb87e198eeb8f498e027babbbd632066cba58031e394934187158046056",
+      "retained_point_id": "24a7db08c1c32a673d5690ee7556a2f2c002c04b6bcffb1f3859f6c91a2c53a2",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.65-ua25-25-25",
+      "recomputed_point_id": "b9d410591ae3f585288fba247be5bb500aed051e0fab48989907640f42f6f5c9",
+      "retained_point_id": "c8c582d8174f35db12925e8f6a5cc76b16f23a541c4118469adfaa20456815e8",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-20",
+      "recomputed_point_id": "83ce3dee3d6bef30de6c7e7549cc5b0b228eef88ab78a76c17ea80b65d30eab0",
+      "retained_point_id": "c9ab0c297d075369b126eb43fe3071b1cf7646ce209c0f47f9f43aee2863c2da",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-25",
+      "recomputed_point_id": "4854e20b9114740dc3d4213f3a20e6cd63133a24ead7e2f07433781e1a6d6563",
+      "retained_point_id": "1204e1470c450deed08d2957e7dc1e6bd0556a448b2b2ae1a88d7c009015fc21",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m2250-r1.5-ua25-25-25",
+      "recomputed_point_id": "ec9d961d244c66f226f91aef2228bdb18ea4f0c4ac137afbef5db72ec2c45567",
+      "retained_point_id": "108e30ca9f4a3355234140c756ac1b2ef4517729f0af9a8e6db1bf7bb8ec19d5",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n11-k4-pump250",
+      "recomputed_point_id": "4119a48c624fe877bd772a63fd99b410df78b9b8e07b66bd5d91dcacc75a6ea1",
+      "retained_point_id": "644d08eb76dbf6ae41146d9f6de1f56631d63cd7583fd13cf043bbbf5818f294",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n12-k4-pump225",
+      "recomputed_point_id": "288b5b0d47277441052eaeff1a73857113ac37c70a4a4ccfe8e7cb5b027e435e",
+      "retained_point_id": "c11ee3e2fae8719e2054d69caa4d79bd08eeb8dcb1fea379d6afbe5104285740",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n12-k4-pump250",
+      "recomputed_point_id": "c9c04319afde0809c2ce5659372775498400209442ef7946ebe2c2a324aa1eb9",
+      "retained_point_id": "16ea1e3191cf8f5b6e0f02f606c15b1418f8b9383b4b97077d8213ba608a9081",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n14-k3-pump250",
+      "recomputed_point_id": "2b193536322fe2d032fb9a0ecc7a0e1e8d0314fd12d0b80b3e7209bc0da0d1b5",
+      "retained_point_id": "0574384b8746d7ce46efa3f17a7e6dee38a5f40059dac6998cb36389fe8276d1",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n14-k4-pump225",
+      "recomputed_point_id": "7fbd7c2f7d0781990c34b958cfc48a8f467168a09cd8e182fa18e0908fba3c02",
+      "retained_point_id": "28bec988a58592b6eacd3d61bf1ec02d4cc9765f051e9a22bc69629dcf85f300",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n14-k4-pump250",
+      "recomputed_point_id": "fb4f817ff9bdc815fcb543f248f1e43aa4461bca3f091b99b1fa2a8951e7ee49",
+      "retained_point_id": "fdb5b6bb842d56833ab2c0853d0124d83a65261621aa7abdb70ea7c8da17eb61",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58733359.80011283,
+          "retained": 58733359.800112896
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834785.216402642,
+          "retained": 6834785.21640265
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325792235.6960359,
+          "retained": 325792235.69603574
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152636883.81309962,
+          "retained": 152636883.81309953
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165214.783597356,
+          "retained": 13165214.78359735
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165214783597357,
+          "retained": 1.316521478359735
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834785216402642,
+          "retained": 0.683478521640265
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m1750-r1.65-ua25-25-25",
+      "recomputed_point_id": "4aa6c283aa7cac3c63e9a04e5b9318507b9e2779268813fd639d0bba42397bba",
+      "retained_point_id": "1be0f98dacf4fc1e40817047a2f7062f15c2660f62986f43fe7301f1270f18bb",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-20",
+      "recomputed_point_id": "5490ef311f8dbe2a315305884cdb5a92e1ee90d0507bab875d295567dcf97397",
+      "retained_point_id": "0c11ab954a85ae71a912934da0ef2d58ad2acd9163eadd28e1e498801ac43f22",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m1750-r1.8-ua25-25-25",
+      "recomputed_point_id": "d0d1951656d0e1b2f62c25b84a130923d9d6255549e9b7651c4ef16a5655dd0b",
+      "retained_point_id": "583a36183463a70977881c3d16313d19f0b1521186e57c5628a80db826c65d9c",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+      "recomputed_point_id": "cf88bb9dcb7fc9bd93f54102802f285cfd30f17236f8b460406b3e9b53ff5e66",
+      "retained_point_id": "8fa07548ee3fb9f841d62c127d0b00bb384fc65219807d0bc0dc24c944af2ffc",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.65-ua25-25-25",
+      "recomputed_point_id": "df3f70860fd0f3868731e8d18e46034235b0c745c853e563265fcf756265ba34",
+      "retained_point_id": "0e9f4fdde75f222b4fef5760dbc11ef84a2f678e76f697413b86969e5fd1c819",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-20",
+      "recomputed_point_id": "b52fbfdb5eb232f77e5076e094f06665f1a240c0e6cdda9da8a114b2b12dd4e5",
+      "retained_point_id": "4933ef2bff417498906f5122429b8fe41e034750516fd4d10bfcf43b84f0dda9",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.8-ua25-25-25",
+      "recomputed_point_id": "7e0a70887e41f4d52b2b320de59abdb8534e7a11a718be180271f121df22d7df",
+      "retained_point_id": "b184736e80a9420e0e017b36639d67cd4bc572340013127fcd2578002517eab3",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m2250-r1.5-ua25-25-25",
+      "recomputed_point_id": "9ee2938d9cfe9a0910fabae76487fec3529d567751dd53b1cf22fd313c94370a",
+      "retained_point_id": "901698a14d16b404aa075c8bdf341f42eccef3c43f83f27b441375866d9c595d",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n11-k4-pump250",
+      "recomputed_point_id": "c07b04f62f5685dae95268c1e4cb1415a4a18c054958a7afbf81bb61bd120d9c",
+      "retained_point_id": "38bda9e82d7efb53ae1683da50b09d71f601825379f61b98bb4f49ac203c082d",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n12-k4-pump225",
+      "recomputed_point_id": "a2da6feb67b18653103b6cbd8a9efbdf8de2131c68366bac611aeb5ac1ca212e",
+      "retained_point_id": "0c436c2a35ca0e3c00e081c73ec480e9d21f86c7af8e626ba0dfe473470879b7",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n12-k4-pump250",
+      "recomputed_point_id": "60a6e55d42cee8f74396f2802415b17d79c218dd0cd98b56f5aa597a245ca6b4",
+      "retained_point_id": "d863f77ebaf2a35a864ce2528b68b0439862f1b2e45283c98a8cd5e66a004dc8",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n14-k3-pump250",
+      "recomputed_point_id": "d83aac145598228e3510f871063be4e1094b9e7058d2a0cb4e7bb55a5e0d19e6",
+      "retained_point_id": "573f92ee8524426af625b0d223fa0a005bfa6ec397ba924bf6b6a3cc8922c019",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n14-k4-pump225",
+      "recomputed_point_id": "ca74b3ee141e86c2bc79a2490b9ca15399fb7f2844d8c1b04a930816a4a0a024",
+      "retained_point_id": "76f8d97ba8d494b78627145eaefed67e1bdccd97f24511af53fc733ec2f65aea",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    },
+    {
+      "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n14-k4-pump250",
+      "recomputed_point_id": "5fdf5d8c0704fd90af11e49b218de19786761e7f9d237d17a7c8789b8829053d",
+      "retained_point_id": "4196582840e4cbd7a9e0316191f8ccb8f1ffdf53eeedc5665cb045e83993309d",
+      "changed_quote_inputs": {
+        "whole_plant_conversion__plant__compressor_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__conversion_services__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__gas_ledger__capital9": {
+          "recomputed": 58732500.47011283,
+          "retained": 58732500.470112905
+        },
+        "whole_plant_conversion__plant__gas_ledger__controller_capital": {
+          "recomputed": 6834685.216402642,
+          "retained": 6834685.216402652
+        },
+        "whole_plant_conversion__plant__generator_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_duty_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__he_hx__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__heat_rejection_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital3": {
+          "recomputed": 325794710.34032434,
+          "retained": 325794710.3403241
+        },
+        "whole_plant_conversion__plant__steam_ledger__capital4": {
+          "recomputed": 152638043.20841768,
+          "retained": 152638043.2084176
+        },
+        "whole_plant_conversion__plant__steam_ledger__controller_capital": {
+          "recomputed": 13165314.783597358,
+          "retained": 13165314.783597348
+        },
+        "whole_plant_conversion__plant__steam_transport__costscale": {
+          "recomputed": 1.3165314783597357,
+          "retained": 1.3165314783597348
+        },
+        "whole_plant_conversion__plant__turbine_equipment__price_factor": {
+          "recomputed": 0.6834685216402643,
+          "retained": 0.6834685216402652
+        }
+      }
+    }
+  ]
+}

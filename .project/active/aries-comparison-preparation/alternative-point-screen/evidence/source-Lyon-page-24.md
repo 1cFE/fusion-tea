@@ -1,0 +1,18 @@
+Lyon et al. ARIES-CS SYSTEMS STUDIES 
+
+**==> picture [384 x 230] intentionally omitted <==**
+
+Fig. 32. Structure and nominal thicknesses for the LiPb0SiC blanket and shield concept. The first-wall end-of-life fluence limit is 18 MW{yr0m[2] , the overall TBR is 1.1, and the overall energy multiplication is 1.1. 
+
+for other reactor plant equipment, 0.75 ~versus 0.84! for electrical plant equipment, and 0.85 ~versus 0.90! for miscellaneous plant equipment. All other direct cost accounts are unchanged. The ratio of indirect costs to direct costs is 0.87 ~versus 0.93!. The operations and maintenance costs include a factor 0.70 ~versus 0.85! and the decontamination and decommissioning allowance, _CD_ & _D_ , includes 0.25 mills0kW~electric!{h ~in 1992 dollars! versus 0.50 mills0kW~electric!{h for the reference ~LSA � 2! case. 
+
+The SiC0SiC structure is also lighter, resulting in a lower number of blanket modules and a shorter replacement time, which could improve the plant availability, but is more expensive ~$5100kg for SiC versus $1030kg for ferritic steel in year 2004 dollars!. The composition, thickness, and percentage coverage ~discussed in Ref. 11! and the density and cost0kg ~for complex machined shapes in year 2004 dollars! for each component are given in Table VIII. 
+
+The main device parameters are compared with those for the reference LiPb0FS0He blanket and shield in Table VII. The reduction in the peak neutron flux at the wall ~from 5.41 to 3.63 MW0m[2] , due to the lower required _Pfusion_ for the same net _Pelectric_ ! does not allow a smaller ^ _Raxis_ & because the minimum space required between the plasma edge and the center of the coil in the tapered region is the same as for the LiPb0FS0He blanket0shield case. However, the thickness of the blanket and shield is reduced a nominal 42 cm in the fullblanket region compared to that for the reference LiPb0 FS0He blanket and shield in the corresponding region. 
+
+The fusion power required is much less because of the much higher thermal efficiency and elimination of the pumping power, as reflected in the reduced cost for heat transport. Only the 50 MW needed for the balance of plant power and 5 MW for cryogenic cooling enters into the gross electric power. The cost reductions due to LSA � 1 as well as the reduced shield thickness and lower thermal power handling lead to a much reduced CoE ~from 78 to 60 mills0kW~electric!{h!. Although the periodic cost of replacing the first wall, divertor, blankets, and back wall is more for the LiPb0SiC case, fewer replacements are needed, resulting in a lower total cost for the replaced components. There is a very large potential gain if the LiPb0SiC blanket and shield can be assumed, as it was in the ARIES-AT tokamak power plant study.[25] 
+
+The large reduction in the CoE with the LiPb0SiC blanket and shield would allow a larger value for ^ _Raxis_ &, which could ease access constraints, reduce _pn_ , _wall_ ,max and replacement costs, and improve the engineering design. Figure 33 shows the results of varying ^ _Raxis_ & from 7.58 to 9 m. The value of _B_ max hits the 16-T limit at ^ _Raxis_ & � 8 m. All parameters decrease with increasing ^ _Raxis_ & except for ^ _Baxis_ &, ^ _T_ &, and of course the CoE. The lowest values of ^ _Raxis_ & have too high a ^b& value, so a reasonable cutoff value for ^ _Raxis_ & is 7.62 m, where ^b& � 8.1%. The ^ _Raxis_ & value corresponding to the reference ^b& � 6.4% is 7.7 m. The penalty associated with the increasing ^ _Raxis_ & is 8.9 versus 11 mills0kW~electric!{ h{m[�][1] for the reference LiPb0FS0He tapered blanket and shield concept. Even the largest-^ _Raxis_ & ~9-m! case 
+
+FUSION SCIENCE AND TECHNOLOGY VOL. 54 OCT. 2008 
+

@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-20",
+  "approved_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "published_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "byte_equal": true,
+  "preserved_files": {
+    ".project/active/aries-comparison-preparation/package/freeze/r1/SHA256SUMS": "4b966d582715a75a4b58d13db8fbe2877bee4e24b12b2595d209ce4c9c9e14d4",
+    ".project/active/aries-comparison-preparation/package/freeze/r1/freeze-record.json": "d76cda14cbdf46891ffacb3cdfd282e491e8fb5a6a14ff02e7f0c2f05a9541a1",
+    ".project/active/aries-comparison-preparation/package/freeze/r1/comparison-freeze.tar.gz": "fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533",
+    ".project/active/aries-comparison-preparation/package/freeze/r2/SHA256SUMS": "d219611a3de4c049ff2365ca94af01639070deaa352210a6936ede9c59a75057",
+    ".project/active/aries-comparison-preparation/package/freeze/r2/freeze-record.json": "fc7a305bb62af5167472183c89290bb851a508bbca54e3f51ee5e54482dc8700",
+    ".project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21"
+  },
+  "preserved_files_unchanged": true,
+  "revealed_result_register_absent": true,
+  "holdout": "sealed",
+  "review_type": "coordinator byte custody; independent actual-archive review reused"
+}

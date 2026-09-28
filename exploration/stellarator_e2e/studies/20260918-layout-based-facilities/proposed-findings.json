@@ -1,0 +1,65 @@
+[
+  {
+    "id": "20260918-layout-based-facilities#1",
+    "kind": "model",
+    "title": "Construction-price sensitivity has no modeled resistance",
+    "evidence": "indicators.json; preparation/owner-ruling.md; report.md",
+    "finding": "civil_rate_multiplier has no path to an executing predicate. Procurement quotes, regional productivity and project-specific construction scope do not constrain the transferred commodity rates.",
+    "disposition": "Owner authorized sensitivity only (yes run both); retain procurement/transfer uncertainty. No price optimum or physical admissibility claim.",
+    "home": "work/active/WI-068_layout-based-facilities"
+  },
+  {
+    "id": "20260918-layout-based-facilities#2",
+    "kind": "model",
+    "title": "Source-tonne interpretation is unresolved by physical constraints",
+    "evidence": "indicators.json; preparation/civil-cost-basis.md; preparation/owner-ruling.md; report.md",
+    "finding": "tonne_interpretation_kg has no constraint response. The source TN interpretation changes rebar unit prices while physical steel quantity stays fixed; plant predicates cannot determine the archival source-unit convention.",
+    "disposition": "Owner authorized US-short-ton/metric-tonne sensitivity only; resolve the source-unit convention through source evidence, not cost optimization.",
+    "home": "work/active/WI-068_layout-based-facilities"
+  },
+  {
+    "id": "20260918-layout-based-facilities#3",
+    "kind": "model",
+    "title": "Conceptual layout remains unqualified",
+    "evidence": "preparation/layout-capacity-design.md; preparation/integrated-audit.md; results/interpreted-cases.json",
+    "finding": "Ground transport, exterior sector envelope, load paths, shielding/dose, contamination procedure and cooling field outage are not qualified. Conventional equipment envelopes and occupancy allowances remain declared assumptions.",
+    "disposition": "Retain explicit qualification disclosures and provisional provenance; require actual upstream dimensions and engineering qualification before construction/maintenance claims.",
+    "home": "work/orchestration/goals/layout-based-facilities"
+  },
+  {
+    "id": "20260918-layout-based-facilities#4",
+    "kind": "model",
+    "title": "Logistics failures persist under supported stress scenarios",
+    "evidence": "report.md; results/interpreted-cases.json; results/facility-ledger-index.json",
+    "finding": "20 of 48 proposed cases fail at least one facility predicate. Resizing storage cannot repair insufficient service teams, late goods, slow initial delivery, an oversized transported package or the expanded cooling annex overlapping the fixed campus.",
+    "disposition": "Retain every failure and its named margin; no reduction in demanded maintenance and no silent calendar adjustment. These scenarios test assumptions, not a qualified feasibility boundary.",
+    "home": "work/orchestration/goals/layout-based-facilities"
+  },
+  {
+    "id": "20260918-layout-based-facilities#5",
+    "kind": "model",
+    "title": "Priced facility scope is narrower than a complete installed facility",
+    "evidence": "preparation/civil-cost-basis.md; preparation/source-review.md; preparation/facility-design.md; report.md",
+    "finding": "The implementation prices civil concrete/rebar/formwork and a conditional nuclear-ventilation transfer, with retained site allowance. Doors, cranes, carrier/rail hardware and several ordinary services are not independently quantity-priced; retained remote-handling/radwaste allowances do not prove complete coverage.",
+    "disposition": "Report the actual scoped cost and overlaps avoided. Preserve the missing services/handling procurement scope as explicit work, not zero-cost equipment or a complete facility quotation.",
+    "home": "work/active/WI-068_layout-based-facilities"
+  },
+  {
+    "id": "20260918-layout-based-facilities#6",
+    "kind": "process",
+    "title": "Supported fluence override was missing from the oracle entry map",
+    "evidence": "results/oracle-scan-attempt1.json; reviews/oracle-map-repair.md",
+    "finding": "The first scan evaluated 47 cases and refused the supported first-wall fluence-limit override. The public entry mapping was absent although the existing independent calendar equation already supported the operand.",
+    "disposition": "Resolved by mapping repair 3fa479ed and 41 oracle tests; no equation or production-package change. The failed scan is retained and is not treated as final native evidence.",
+    "home": "exploration/stellarator_e2e/studies/oracle_entry.py; tests/models/test_facilities_oracle.py"
+  },
+  {
+    "id": "20260918-layout-based-facilities#7",
+    "kind": "process",
+    "title": "Independent zero-event outage margin missed the inactive-check sentinel",
+    "evidence": "reviews/no-event-verification-repair.md; results/oracle-all-points-before-no-event-repair.json",
+    "finding": "Verification found a scalar mismatch in the no-sector-replacement case: the independent implementation retained the hypothetical required-versus-allowed outage margin while production returned the horizon-length satisfied sentinel for an inactive outage check. Initial demand/readiness remains active.",
+    "disposition": "Resolved by the reviewed oracle conditional repair and explicit contract clarification; 42 oracle tests pass and 842 default outputs remain unchanged. Failed verification is retained. The same 48 native cases were rescanned and reverified; no production model or package identity changed.",
+    "home": "exploration/stellarator_e2e/oracle_facilities.py; work/active/WI-068_layout-based-facilities/evidence/facility-contract.md"
+  }
+]

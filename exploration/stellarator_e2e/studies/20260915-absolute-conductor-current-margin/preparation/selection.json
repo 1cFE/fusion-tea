@@ -1,0 +1,126 @@
+{
+  "status": "Preparation only; no candidate model evaluation",
+  "entering_revision": "a45925ec066c2403c72c2702e323a965e2666a3c",
+  "entering_rows": 117,
+  "anchors": [
+    "reference",
+    "alloc-oldpass1.2-0.5",
+    "alloc-oldpass1.2-0.6",
+    "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+    "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+    "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+    "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+    "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+    "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+    "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+    "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+    "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+    "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+    "m013",
+    "m031",
+    "m049"
+  ],
+  "scenarios": [
+    {
+      "id": "manufacturing-700",
+      "controls": {
+        "material_factor": 0.784
+      },
+      "basis": "Source band containing 72% of thin-substrate production; construction transfer."
+    },
+    {
+      "id": "manufacturing-1000",
+      "controls": {
+        "material_factor": 1.12
+      },
+      "basis": "Same manufacturing band; overlapping lift scatter is not independent."
+    },
+    {
+      "id": "sample-220",
+      "controls": {
+        "material_factor": 1.1
+      },
+      "basis": "Measured 220 A/4 mm specimen scenario transferred to fixed construction."
+    },
+    {
+      "id": "sample-270",
+      "controls": {
+        "material_factor": 1.35
+      },
+      "basis": "Measured 270 A/4 mm specimen scenario transferred to fixed construction."
+    },
+    {
+      "id": "orientation-2",
+      "controls": {
+        "orientation_factor": 2
+      },
+      "basis": "Agent scalar enhancement scenario; no actual tape angle inferred."
+    },
+    {
+      "id": "orientation-3",
+      "controls": {
+        "orientation_factor": 3
+      },
+      "basis": "Agent scalar enhancement scenario; no actual tape angle inferred."
+    },
+    {
+      "id": "cabling_factor-0.8",
+      "controls": {
+        "cabling_factor": 0.8
+      },
+      "basis": "Agent separate mechanism retention scenario."
+    },
+    {
+      "id": "degradation_factor-0.8",
+      "controls": {
+        "degradation_factor": 0.8
+      },
+      "basis": "Agent separate mechanism retention scenario."
+    },
+    {
+      "id": "sharing_factor-0.8",
+      "controls": {
+        "sharing_factor": 0.8
+      },
+      "basis": "Agent separate mechanism retention scenario."
+    },
+    {
+      "id": "orientation-3-combined-0.9",
+      "controls": {
+        "orientation_factor": 3,
+        "cabling_factor": 0.9,
+        "degradation_factor": 0.9,
+        "sharing_factor": 0.9
+      },
+      "basis": "Agent combined retention scenario; allowance remains separate at 0.8."
+    },
+    {
+      "id": "orientation-3-combined-0.8",
+      "controls": {
+        "orientation_factor": 3,
+        "cabling_factor": 0.8,
+        "degradation_factor": 0.8,
+        "sharing_factor": 0.8
+      },
+      "basis": "Agent combined retention scenario; allowance remains separate at 0.8."
+    }
+  ],
+  "maximum_report_rows": 296,
+  "exact_public_keys": "Await WI-062/evidence/interface.json and final integration release",
+  "declined": [
+    {
+      "axis": "material_factor",
+      "values": [
+        0.56,
+        1.568
+      ],
+      "reason": "Central manufacturing band and separate directly measured sample range give bounded distinct interpretations without broad extremes."
+    }
+  ],
+  "optional_reference_turn_repartition": "Selected: factors 0.8 and 1.2; coherent native repartition",
+  "predicate_independence": {
+    "anchor": "m000",
+    "orientation_factor": 3.0,
+    "basis": "Coordinator agent request; current passes while selected field envelope fails, under assumed orientation."
+  }
+}

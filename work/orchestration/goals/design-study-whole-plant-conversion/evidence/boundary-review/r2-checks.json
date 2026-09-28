@@ -1,0 +1,175 @@
+{
+  "status": "design arithmetic checks passed",
+  "synthetic_purchase_note": "Distinct synthetic amounts test membership and response; these are not predicted plant costs. Exact gas aggregate slots include inseparable transport stock.",
+  "reviewed_sha256": {
+    "work/active/WI-098_whole-plant-conversion-comparison/design.md": "f4a879df60eb41bb3f3e6da50a48ce23419cf5ca43c6b6396dd0f561bd694973",
+    "work/active/WI-098_whole-plant-conversion-comparison/configuration.md": "42e615e2aa788bd120fa3a51f91285ee8c651363d75ccf47b11c8c50492533af"
+  },
+  "synthetic_gas_base": {
+    "initial": "682703800.00000",
+    "bases": {
+      "direct": "432000000",
+      "equipment": "307000000",
+      "freight": "253000000",
+      "spares": "294000000",
+      "tax": "392000000"
+    },
+    "overheads": {
+      "contingency": "43200000.0",
+      "indirect": "126720000.00",
+      "freight": "3795000.000",
+      "spares": "5880000.00",
+      "tax": "3920000.00",
+      "insurance": "9028800.00000",
+      "commissioning": "2160000.000"
+    }
+  },
+  "slot3_increment_initial": "1464233.3333333333333333333",
+  "delivered_slot9_increment_initial": "1449233.3333333333333333333",
+  "fuel_scenarios": [
+    {
+      "source": 2500,
+      "tbr": "1.1980739195540366",
+      "extraction": "1",
+      "recovery": ".99",
+      "external_T_kg": 0.0,
+      "D_kg": 75.27515056135476,
+      "Li6_kg": 226.3964809753282
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1980739195540366",
+      "extraction": "1",
+      "recovery": ".98",
+      "external_T_kg": 17.518636565853598,
+      "D_kg": 87.29387207955426,
+      "Li6_kg": 226.3964809753282
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1980739195540366",
+      "extraction": ".9",
+      "recovery": ".99",
+      "external_T_kg": 10.867875087914602,
+      "D_kg": 75.27515056135476,
+      "Li6_kg": 226.3964809753282
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1980739195540366",
+      "extraction": ".9",
+      "recovery": ".98",
+      "external_T_kg": 28.870407206475612,
+      "D_kg": 87.29387207955426,
+      "Li6_kg": 226.3964809753282
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1861455810023918",
+      "extraction": "1",
+      "recovery": ".99",
+      "external_T_kg": 0.6463165414876153,
+      "D_kg": 75.27515056135476,
+      "Li6_kg": 224.1424181600889
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1861455810023918",
+      "extraction": "1",
+      "recovery": ".98",
+      "external_T_kg": 18.648848660048625,
+      "D_kg": 87.29387207955426,
+      "Li6_kg": 224.1424181600889
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1861455810023918",
+      "extraction": ".9",
+      "recovery": ".99",
+      "external_T_kg": 11.885065972690125,
+      "D_kg": 75.27515056135476,
+      "Li6_kg": 224.1424181600889
+    },
+    {
+      "source": 2500,
+      "tbr": "1.1861455810023918",
+      "extraction": ".9",
+      "recovery": ".98",
+      "external_T_kg": 29.887598091251135,
+      "D_kg": 87.29387207955426,
+      "Li6_kg": 224.1424181600889
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1980739195540366",
+      "extraction": "1",
+      "recovery": ".99",
+      "external_T_kg": 0.0,
+      "D_kg": 84.49251593621453,
+      "Li6_kg": 254.1184990539398
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1980739195540366",
+      "extraction": "1",
+      "recovery": ".98",
+      "external_T_kg": 19.629354142501743,
+      "D_kg": 97.98291764031602,
+      "Li6_kg": 254.1184990539398
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1980739195540366",
+      "extraction": ".9",
+      "recovery": ".99",
+      "external_T_kg": 12.16421370808042,
+      "D_kg": 84.49251593621453,
+      "Li6_kg": 254.1184990539398
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1980739195540366",
+      "extraction": ".9",
+      "recovery": ".98",
+      "external_T_kg": 32.371137514628494,
+      "D_kg": 97.98291764031602,
+      "Li6_kg": 254.1184990539398
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1861455810023918",
+      "extraction": "1",
+      "recovery": ".99",
+      "external_T_kg": 0.6910357478052308,
+      "D_kg": 84.49251593621453,
+      "Li6_kg": 251.58842854703855
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1861455810023918",
+      "extraction": "1",
+      "recovery": ".98",
+      "external_T_kg": 20.897959554353303,
+      "D_kg": 97.98291764031602,
+      "Li6_kg": 251.58842854703855
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1861455810023918",
+      "extraction": ".9",
+      "recovery": ".99",
+      "external_T_kg": 13.305958578746823,
+      "D_kg": 84.49251593621453,
+      "Li6_kg": 251.58842854703855
+    },
+    {
+      "source": 2800,
+      "tbr": "1.1861455810023918",
+      "extraction": ".9",
+      "recovery": ".98",
+      "external_T_kg": 33.512882385294894,
+      "D_kg": 97.98291764031602,
+      "Li6_kg": 251.58842854703855
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "capture_failed",
+  "candidate": "https://art.inl.gov/NGNP/Subcontractors%20Documents/General%20Atomics/NGNP%20High%20Temperature%20Process%20Heat%20Transfer%20and%20Transport%20Study.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T21:33:38.805706+00:00"
+}

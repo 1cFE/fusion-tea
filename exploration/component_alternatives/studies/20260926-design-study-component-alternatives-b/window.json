@@ -1,0 +1,48 @@
+{
+  "provenance": "engineered",
+  "selection": "Complete unchanged predecessor input catalog, independently rescanned on the repaired identity; failed checks retained and no choices solved or resized.",
+  "scans": [
+    {
+      "scan": "core",
+      "cases": 375,
+      "evaluated": 375,
+      "satisfying_all_checks": 14,
+      "sha256": "28c28caf9224de193d1aee42bb37422f1fab924ac895ded5f0746f8d78d605e1"
+    },
+    {
+      "scan": "steam",
+      "cases": 72,
+      "evaluated": 72,
+      "satisfying_all_checks": 21,
+      "sha256": "392b74759ed8d0bd150a23c80c43f8ce626901837aabed79f563f928c14b4c5f"
+    },
+    {
+      "scan": "sensitivity",
+      "cases": 54,
+      "evaluated": 54,
+      "satisfying_all_checks": 51,
+      "sha256": "25371cb4fb292edc56abf64c05f008bc25d81b086b5da8eb6b69bcf4879e1333"
+    }
+  ],
+  "refusals": [],
+  "duplicate_aliases": [
+    {
+      "alias": "steam-q2500-n14-k4-pump250",
+      "native_case": "gas-q2500-m2000-r1.5-ua25-25-25",
+      "role": "steam_connector_catalog"
+    },
+    {
+      "alias": "steam-q2800-n14-k4-pump250",
+      "native_case": "gas-q2800-m1750-r1.8-ua25-25-25",
+      "role": "steam_connector_catalog"
+    },
+    {
+      "alias": "steam-q3000-n14-k4-pump250",
+      "native_case": "gas-q3000-m2000-r1.65-ua25-25-25",
+      "role": "steam_connector_catalog"
+    }
+  ],
+  "native_case_count": 498,
+  "bound_claim": "Finite catalog only; no continuous feasible boundary or global optimum established.",
+  "predecessor_snapshot_sha256": "1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641"
+}

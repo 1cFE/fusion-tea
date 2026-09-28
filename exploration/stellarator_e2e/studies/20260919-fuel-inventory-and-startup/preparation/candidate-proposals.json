@@ -1,0 +1,218 @@
+[
+  {
+    "id": "reference",
+    "family": "reference",
+    "point": {},
+    "note": "Authored defaults; not a feasible-plant claim."
+  },
+  {
+    "id": "density-0.9",
+    "family": "power",
+    "point": {
+      "stellarator_09__stellaris__plasma__n_e0": 4.554e+20
+    },
+    "note": "Peak density drives native fusion power; geometry fixed."
+  },
+  {
+    "id": "density-1.1",
+    "family": "power",
+    "point": {
+      "stellarator_09__stellaris__plasma__n_e0": 5.5660000000000007e+20
+    },
+    "note": "Peak density drives native fusion power; geometry fixed."
+  },
+  {
+    "id": "burn-0.025",
+    "family": "burn_fraction",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.025
+    },
+    "note": "Conditional burn sensitivity, not a performance upgrade."
+  },
+  {
+    "id": "burn-0.1",
+    "family": "burn_fraction",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.1
+    },
+    "note": "Conditional burn sensitivity, not a performance upgrade."
+  },
+  {
+    "id": "recovery-0.999",
+    "family": "recovery",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.999
+    },
+    "note": "Conditional recovery; unity is an ideal limit."
+  },
+  {
+    "id": "recovery-1",
+    "family": "recovery",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 1.0
+    },
+    "note": "Conditional recovery; unity is an ideal limit."
+  },
+  {
+    "id": "feed-30min",
+    "family": "feed",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_feed": 1800.0
+    },
+    "note": "Abdou Table2 scenario transfer."
+  },
+  {
+    "id": "processor-1.3h",
+    "family": "processor",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_process": 4680.0
+    },
+    "note": "Combined cleanup and isotope separation; no invented split."
+  },
+  {
+    "id": "processor-5h",
+    "family": "processor",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_process": 18000
+    },
+    "note": "Combined cleanup and isotope separation; no invented split."
+  },
+  {
+    "id": "blanket-0.1d",
+    "family": "blanket",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_blanket": 8640.0
+    },
+    "note": "Source scenario; no helium/PbLi residence qualification."
+  },
+  {
+    "id": "extraction-0d",
+    "family": "extraction",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_extract": 0.0
+    },
+    "note": "Zero is ideal online limit; five days batch scenario."
+  },
+  {
+    "id": "extraction-5d",
+    "family": "extraction",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_extract": 432000.0
+    },
+    "note": "Zero is ideal online limit; five days batch scenario."
+  },
+  {
+    "id": "reserve-0h",
+    "family": "reserve",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_reserve": 0.0
+    },
+    "note": "Interruption policy sensitivity, not required reserve."
+  },
+  {
+    "id": "reserve-6h",
+    "family": "reserve",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_reserve": 21600.0
+    },
+    "note": "Interruption policy sensitivity, not required reserve."
+  },
+  {
+    "id": "reserve-full-disruption",
+    "family": "reserve_fraction",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__reserve_fraction": 1.0
+    },
+    "note": "Full circulating interruption versus reference quarter-stream scenario."
+  },
+  {
+    "id": "buffer-1h",
+    "family": "buffer",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_buffer": 3600.0
+    },
+    "note": "Agent working-storage policy, separate from reserve."
+  },
+  {
+    "id": "extraction-efficiency-0.95",
+    "family": "extraction_efficiency",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__eta_extract": 0.95
+    },
+    "note": "Conditional efficiency; retains permanent loss semantics."
+  },
+  {
+    "id": "deficient-10d-extension",
+    "family": "startup_extension",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__eta_extract": 0.95,
+      "stellarator_09__stellaris__fuel_cycle__startup_extension": 864000.0
+    },
+    "note": "Same deficient operating case followed ten days after both return streams arrive."
+  },
+  {
+    "id": "zero-decay",
+    "family": "decay",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__lambda_T": 0.0
+    },
+    "note": "Ideal mathematical diagnostic, not uncertain tritium half-life."
+  },
+  {
+    "id": "shutdown-4500d",
+    "family": "shutdown",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__shutdown_duration": 388800000.0
+    },
+    "note": "Passive half-life-scale shutdown diagnostic; maintained annual stock policy separate."
+  },
+  {
+    "id": "unplanned-0.1",
+    "family": "calendar",
+    "point": {
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "note": "Live calendar sensitivity; running equipment capacity unchanged."
+  },
+  {
+    "id": "unplanned-0.5",
+    "family": "calendar",
+    "point": {
+      "stellarator_09__stellaris__unplanned_fraction": 0.5
+    },
+    "note": "Live calendar sensitivity; running equipment capacity unchanged."
+  },
+  {
+    "id": "unplanned-0.9",
+    "family": "calendar",
+    "point": {
+      "stellarator_09__stellaris__unplanned_fraction": 0.9
+    },
+    "note": "Live calendar sensitivity; running equipment capacity unchanged."
+  },
+  {
+    "id": "combined-fast",
+    "family": "combined",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_feed": 1200.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_process": 4680.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_blanket": 8640.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_extract": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_reserve": 21600.0
+    },
+    "note": "Agent joint fast-return/six-hour-reserve scenario; not an uncertainty quantile."
+  },
+  {
+    "id": "combined-slow",
+    "family": "combined",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__tau_feed": 1800.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_process": 18000.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_blanket": 86400.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_extract": 432000.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_reserve": 86400.0,
+      "stellarator_09__stellaris__fuel_cycle__tau_buffer": 3600.0
+    },
+    "note": "Agent joint slow-return/one-hour-buffer scenario; not an upper physical bound."
+  }
+]

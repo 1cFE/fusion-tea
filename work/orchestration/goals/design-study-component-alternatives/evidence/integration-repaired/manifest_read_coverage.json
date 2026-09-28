@@ -1,0 +1,10 @@
+{
+  "outcome": "pass",
+  "scope": "static pipeline references and model contract",
+  "paths": [
+    "/home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea/contracts/model_contract.json",
+    "/home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea/inputs/mfe_viability_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea/inputs/plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea/pipelines/pipeline.yaml"
+  ]
+}

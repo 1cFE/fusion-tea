@@ -1,0 +1,116 @@
+{
+  "entering_basis": "9a28d087",
+  "after_evidence": "oracle-after.xml",
+  "failures": [
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides0-cp must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides0-cp must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides1-cp must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides1-cp must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides2-cp must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides2-cp must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides3-cp must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides3-cp must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides4-cp must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides4-cp must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides5-dT_blanket must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides5-dT_blanket must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides6-dT_blanket must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides6-dT_blanket must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides7-dT_blanket must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides7-dT_blanket must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides8-dT_blanket must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides8-dT_blanket must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides9-dT_blanket must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides9-dT_blanket must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides10-cp must be finite and positive-0.0]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides10-cp must be finite and positive-1.0]",
+      "before": "failed",
+      "after": "passed"
+    }
+  ]
+}

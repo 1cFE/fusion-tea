@@ -1,0 +1,11 @@
+# Signed parcel-origin public interface
+
+[AGENT] Independently approved coordinate-interface addendum, 2026-09-20. Review: goal `evidence/implementation-review.md` and reviewer message before implementation. This changes coordinate parameterization only; no layout fit policy or physical qualification is added.
+
+The emitter treats a negative source literal as an expression output, not a public input. A kept scratch probe tested `= -x`, `default -x`, `default := -x` and `:= -x`; none emitted a parameter. Zero and positive literal controls emitted the expected public parameter. Probe source and output are recorded below. The first regenerated contract therefore exposed 595 controls instead of the intended 597: the two absolute parcel origins were not independently supplied through the native route.
+
+The public inputs are now `stellarator_09__stellaris__buildings__parcel_origin_x_offset` and `stellarator_09__stellaris__buildings__parcel_origin_y_offset`, in metres, each with a literal zero default. They may take any finite signed value. Absolute selected origins are identities: x_min=x_offset−186.9046987566545 and y_min=y_offset−256.9046987566545. These fixed constants are coordinate-datum migration values from `selected-design-migration.json`; they do not depend on demand or bounds and cannot resize or recenter a parcel. All original translation freedom is preserved. Width/length remain separately supplied and area/price do not depend on translation.
+
+Absolute origins remain existing calculation inputs and outputs of the generated identity modules. The normative facility seed and its ABI are unchanged. Independent oracle translation uses the same explicit coordinate convention; source-derived absolute datum values are not exposed as extra public choices. The entry mapping admits the two signed offsets and excludes the two absolute-origin keys. Native tests supply ±10 m separately on both axes, assert the actual absolute identity outputs, retain failed fit margins, and assert unchanged parcel area/land price, ventilation and room solids.
+
+The root coordinator owns regeneration and final interface/native evidence. The full materialized MFE parse after this patch has empty diagnostics. Native tests must pass against the regenerated interface before this defect is considered repaired.

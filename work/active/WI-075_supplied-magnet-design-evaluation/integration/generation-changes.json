@@ -1,0 +1,86 @@
+{
+  "contracts/package_contract.json": {
+    "before": "fc3c52d07043af5355cc6a83398b7d12307b92b52b4865ca9164ce0fe66b0a2f",
+    "after": "c39a1e60010382c34d852dcdd2be855fd7d90b1fa4ed43767a61e0c09189db08"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+    "before": "abc294ed8285cb8086ba112bcf313e23c176f04e01a7d012d08e3317bf4ab844",
+    "after": "feb95e970e4ae0bef712de32316dec95a0eb0dac944f0da60d515a94a0d392d8"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+    "before": "3db0c59f6d7be1ff8bc22e1b39e76643f55529474b0844418f4dfacc9d947729",
+    "after": "3937a514b7e85327250ba3a73a1db4fc48090f3be586bb082a6b395583959ffa"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+    "before": "0e69ae6eb1fdf1fd8669ad220cd4ca8b97b4b66dba71db858ee70d81c1ccaec8",
+    "after": "926c9de9e0d6e19fcf0386b354bfc143a3975dbbf0b0948e658095ca0c9323d7"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+    "before": "793547e765c8d91926924a68d63d474cf4dab385ef049ea55f5896a48f358e10",
+    "after": "052353bace3afc2b2c6b2e4edacdb10873159ebc6d597a493cf017952fdaab68"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+    "before": "3078ceb66447b611aae1f9b72a0378fccaaea0cfc77dc622b828a70e60a3fc94",
+    "after": "cb3263f942f99a6a4b10de47756ea8c67a4fa637505345c7de03c891cd600448"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+    "before": "eb9527e7e6629309bf6d2825784fd82c4ca94c0e7bd68a2e6b631b2570eefe3b",
+    "after": "f0f9d7f6986519537417662ce175d8e226183ccf63b9952c74bb7d08266e5551"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+    "before": "c227e2e5650ac552f5c6da1f30ced5a2659f5ff9ff31d057d35fb749d0e4d973",
+    "after": "065596bd7d03f7ed3f4f8f7ddda52f7f8ce001b30a1dad9f0c7cc3d5a9ac6125"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+    "before": "fb172d6d8cfa4cfb672b1e457150885abd0073d82065a8fe580a0a1397822ee2",
+    "after": "f12958a611780d1506f9fc3265d0b5a2326c5078043afa66023cb3bb9585bc82"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+    "before": "74d22449f65cdd9d06eac4cfbf03cd60eaf5b5fef8d14c86fcc83827a3e64d1d",
+    "after": "699ffa62be8a9b5fdb0b41d38776ee5d364f9cf4a3e36c002b375d2f1f0ad87b"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+    "before": "16572acdb1b826388256394d3727af35627dd161eaf0985b0cb5f20d8aafea2f",
+    "after": "20df5e42cbe2632c4c3695c5d462187a3518ce0cc92ad9abc99515a03e34ef50"
+  },
+  "modules/mfe_plant/mfe_power_plant/bop_capital.py": {
+    "before": "8c571840c1251be2308cf7840154a42b9b8782adf93246056fabc1973f345b1f",
+    "after": "fea31f0edb2ce280e4eb390d276e0ec942bbde355d2dd45eca34a5c866796e1f"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas20_capital.py": {
+    "before": "344995a5ecef6989e00a333db1ae65e76c654f747306045891c334a8929779fb",
+    "after": "6637506e30739a327b4fda1506937491d5fe71da042861eb28479142d96de51f"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas22_capital.py": {
+    "before": "507afa0dcbdcd3e91358cf5070590eb88281fc496ee6c8c7004073b3cfe18f3c",
+    "after": "0cc4806dbf34cfd214cd866a89958a3233a7ae0173334b90b0cd681ec2317a8f"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py": {
+    "before": "9d334383f20eaac698c8a9f50cf07845b3d6c3e3f59b865b2e3729aeef0cf27c",
+    "after": "3c9c27f832aafadfb34613b992beeaba93f8c7cad8103fbc424510daf5e23af5"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py": {
+    "before": "29c0b718f9400d2a88f6b8a764373f91f491c0ed0448e9fa7b6e0a7008e92151",
+    "after": "a65b4e28fb00c260e401a7e49ab30b40098676e9fe978e701319e943eebddea6"
+  },
+  "modules/mfe_plant/mfe_power_plant/overnight_capital.py": {
+    "before": "d15c322f26143e0eb0145462011f60b0f897c54f0971db34db724646d71a78ad",
+    "after": "7187d0fa1034586c22fb7279987e3c4a8f3e9d4a639fc47edeea7cef3ebc227d"
+  },
+  "modules/mfe_plant/mfe_power_plant/powercore_capital.py": {
+    "before": "94aa2316c75ff01bcd9cc21c45db1e75ccc0155d597d3b79b703b884225a6971",
+    "after": "a37fa6e860dc59cfc5352e6c379e64e0d6fc71e8c3514ca34e1b490849b12ce8"
+  },
+  "modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py": {
+    "before": "0367fc0890e9d58bbfe5765dcb1a30edbf8b4092b61636e892f7d46bb0d93c4f",
+    "after": "5da1bf015ac57f4e180f31bec2546a4f1be60a2429e7c1243c05e864e8f552e1"
+  },
+  "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": {
+    "before": "bfee9cea063ac1f39af73ab211957e97e193b36faed13d48a7a712b85ab6e368",
+    "after": "475ffa7acce98607d51150f36376c1d57d284c9445a000b5b1c4c2c9ad88d41e"
+  },
+  "modules/mfe_plant/mfe_power_plant/total_capital.py": {
+    "before": "323f72ee8f243f186e5a187ec4ebc31c3f184e9b54441bcb21f26c48b813b0ae",
+    "after": "bf0eefcd7a57f8867bbb13d698f0322e0edaa9bfd5fb53af0ec54093ff77a03e"
+  }
+}

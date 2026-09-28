@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COOL-R2-METHODS",
+  "request_key": "75a7bf5bc9ab8be3e196c31eacea94c9cd3e62a28f93d7f7b88d38d91d58c0aa",
+  "request_path": "knowledge/research/requests/REQ-COOL-R2-METHODS.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 20,
+    "max_captures": 6
+  },
+  "opened_at": "2026-09-18T21:56:45.672948+00:00",
+  "override_reason": null
+}

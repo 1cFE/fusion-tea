@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "reviewer": "/root/plant_reduction_review",
+  "review": "reviews/reduction-review.md",
+  "selected_cases": 371,
+  "disposition": "No corrections required. Preserve incomplete c3343 factorial and distinguish full-oracle coverage from selected native verification."
+}

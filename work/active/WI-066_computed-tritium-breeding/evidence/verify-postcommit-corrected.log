@@ -1,0 +1,10 @@
+......                                                                   [100%]
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_coupled]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+6 passed, 18 deselected, 2 warnings in 36.31s

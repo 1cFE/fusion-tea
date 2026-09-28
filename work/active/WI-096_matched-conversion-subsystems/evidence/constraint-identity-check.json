@@ -1,0 +1,200 @@
+{
+  "status": "pass",
+  "constraint_module_ids": [
+    "component_alternatives__plant__compressor_capacity__capacity_ok__e8c94ef170d28993",
+    "component_alternatives__plant__gas_boundary__added_dp_margin_ok__daebd77c6cb6ed86",
+    "component_alternatives__plant__gas_boundary__bypass_flow_margin_ok__840f5556c962fa45",
+    "component_alternatives__plant__gas_boundary__bypass_fraction_margin_ok__7197bb376c493e60",
+    "component_alternatives__plant__gas_boundary__controller_capacity_ok_ok__3c7a992b7ef572ac",
+    "component_alternatives__plant__gas_boundary__exchanger_flow_margin_ok__586a84274fb7f1fb",
+    "component_alternatives__plant__gas_boundary__pressure_margin_ok__023a9033fbabc01f",
+    "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+    "component_alternatives__plant__gas_boundary__temperature_margin_ok__b9e59d1aa293995e",
+    "component_alternatives__plant__gas_boundary__total_flow_margin_ok__e4fcc2a2f41664a0",
+    "component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8",
+    "component_alternatives__plant__gas_ledger__net_positive__ee25ae39167c9ad3",
+    "component_alternatives__plant__gas_loss_duty_capacity__capacity_requirement__3f4fdc86d64b5036",
+    "component_alternatives__plant__gas_loss_electric_capacity__capacity_requirement__6a158987313c84e0",
+    "component_alternatives__plant__gas_loss_flow_capacity__capacity_requirement__8a2d8de72c5b2880",
+    "component_alternatives__plant__gas_loss_water__cooling_approach_ok_required__6112b029bb4ede08",
+    "component_alternatives__plant__generator_capacity__capacity_ok__ee0395479decdfc2",
+    "component_alternatives__plant__he_capacity__capacity_ok__3993dc4f00da3840",
+    "component_alternatives__plant__recuperator_duty_capacity__capacity_requirement__37716788614d63a8",
+    "component_alternatives__plant__rejection_capacity__capacity_requirement__8eab7ec16a8b759e",
+    "component_alternatives__plant__salt_electric_capacity__capacity_requirement__d0a6e35468ded9cc",
+    "component_alternatives__plant__salt_fill_capacity__capacity_requirement__0d36a52c336754e3",
+    "component_alternatives__plant__salt_flow_capacity__capacity_requirement__1f3f2b5125f26aed",
+    "component_alternatives__plant__salt_shaft_capacity__capacity_requirement__419a029d2df87f3c",
+    "component_alternatives__plant__source_checks__flow_ok__d77445a069dcb805",
+    "component_alternatives__plant__source_checks__pressure_ok__aa0a62a144e9c75d",
+    "component_alternatives__plant__steam_boundary__added_dp_margin_ok__f0c716d635261219",
+    "component_alternatives__plant__steam_boundary__bypass_flow_margin_ok__8f1459a694a0757a",
+    "component_alternatives__plant__steam_boundary__bypass_fraction_margin_ok__32cff09a266a19fc",
+    "component_alternatives__plant__steam_boundary__controller_capacity_ok_ok__d8dd67a24704a1c0",
+    "component_alternatives__plant__steam_boundary__exchanger_flow_margin_ok__b6c20f51b00f7b9c",
+    "component_alternatives__plant__steam_boundary__pressure_margin_ok__177980a50b09bf98",
+    "component_alternatives__plant__steam_boundary__source_adequate_ok__eaa371ee289234f1",
+    "component_alternatives__plant__steam_boundary__temperature_margin_ok__39291a564826dd0f",
+    "component_alternatives__plant__steam_boundary__total_flow_margin_ok__e80a0efbac0d3f57",
+    "component_alternatives__plant__steam_condensate_electric_capacity__capacity_requirement__7f87933904cdde5d",
+    "component_alternatives__plant__steam_condensate_flow_capacity__capacity_requirement__a06233d7139b47ec",
+    "component_alternatives__plant__steam_condensate_pressure_capacity__capacity_requirement__d523b96c0c76de1b",
+    "component_alternatives__plant__steam_condenser_capacity__capacity_requirement__67922fb363412df0",
+    "component_alternatives__plant__steam_conditions__supported_required__92a5d05764f5fff9",
+    "component_alternatives__plant__steam_cycle__main_admission_ok_required__dbbd20ff9c7f4317",
+    "component_alternatives__plant__steam_cycle__main_ua_available_required__6cdb52b3bf9953e0",
+    "component_alternatives__plant__steam_cycle__reheat_admission_ok_required__e88f7416d91d86fd",
+    "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d",
+    "component_alternatives__plant__steam_feed_electric_capacity__capacity_requirement__02f57441b4cf6746",
+    "component_alternatives__plant__steam_feed_flow_capacity__capacity_requirement__f522084f390b88ed",
+    "component_alternatives__plant__steam_feed_pressure_capacity__capacity_requirement__2b0a04222feb552b",
+    "component_alternatives__plant__steam_gross_capacity__capacity_requirement__4252a99565636ed5",
+    "component_alternatives__plant__steam_hp_flow_capacity__capacity_requirement__7d80da68d49ab07e",
+    "component_alternatives__plant__steam_hp_shaft_capacity__capacity_requirement__08512b73f01b2ff4",
+    "component_alternatives__plant__steam_ledger__balance__79e79cd29079c8e8",
+    "component_alternatives__plant__steam_ledger__net_positive__7be67634b73dc5d3",
+    "component_alternatives__plant__steam_lp_flow_capacity__capacity_requirement__704e61a5a8c7bf24",
+    "component_alternatives__plant__steam_lp_shaft_capacity__capacity_requirement__145e6e0999fc7f4f",
+    "component_alternatives__plant__steam_main_ua_capacity__capacity_requirement__c2efdc04c52106da",
+    "component_alternatives__plant__steam_reheat_ua_capacity__capacity_requirement__ff5775187764fbbd",
+    "component_alternatives__plant__steam_rejection_capacity__capacity_requirement__ed5a57ebe998f809",
+    "component_alternatives__plant__steam_transport__design_motor_base_ok_required__34d2455206f46357",
+    "component_alternatives__plant__steam_transport__design_motor_factor_ok_required__4a9e97f942584206",
+    "component_alternatives__plant__steam_transport__design_pump_size_ok_required__39419b9b933c2a99",
+    "component_alternatives__plant__steam_transport__design_pump_type_ok_required__86fcc6e00c250519",
+    "component_alternatives__plant__steam_transport__ihx_capacity_ok_required__a8ade32d723ec9f2",
+    "component_alternatives__plant__steam_transport__motor_base_ok_required__238e695ccdaf5ebf",
+    "component_alternatives__plant__steam_transport__motor_factor_ok_required__eed87936beb69817",
+    "component_alternatives__plant__steam_transport__pump_size_ok_required__b3af0a8e326050b1",
+    "component_alternatives__plant__steam_transport__pump_type_ok_required__a1706d503ff60f4c",
+    "component_alternatives__plant__steam_transport__salt_flow_regime_ok_required__6e2b05d56b7bbfaf",
+    "component_alternatives__plant__steam_transport__salt_head_ok_required__9049eef128641767",
+    "component_alternatives__plant__steam_water__cooling_approach_ok_required__c8a5d75f54ded9d6",
+    "component_alternatives__plant__steam_water_electric_capacity__capacity_requirement__79eb129457bf9d3d",
+    "component_alternatives__plant__steam_water_flow_capacity__capacity_requirement__f3bfd573273dc22e",
+    "component_alternatives__plant__turbine_capacity__capacity_ok__0178c1184c793932",
+    "component_alternatives__plant__water_ic1__duty_margin_ok__ae893105fd8169d4",
+    "component_alternatives__plant__water_ic1__evaluation_defined_ok__49d1611637350e3c",
+    "component_alternatives__plant__water_ic1__flow_margin_ok__2ca46da8d6c9fc06",
+    "component_alternatives__plant__water_ic1__power_margin_ok__ceac76348e0eb2b6",
+    "component_alternatives__plant__water_ic2__duty_margin_ok__8546438198d8a311",
+    "component_alternatives__plant__water_ic2__evaluation_defined_ok__06ab6aea3f7f761b",
+    "component_alternatives__plant__water_ic2__flow_margin_ok__a1238658a4279d69",
+    "component_alternatives__plant__water_ic2__power_margin_ok__9155c8131175c99b",
+    "component_alternatives__plant__water_pre__duty_margin_ok__80af75533d32b208",
+    "component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5",
+    "component_alternatives__plant__water_pre__flow_margin_ok__129a83656acb8a06",
+    "component_alternatives__plant__water_pre__power_margin_ok__d793d504da406d97"
+  ],
+  "old_to_new": {
+    "component_alternatives__plant__steam_cycle__main_UA_available_required__f9837efa3d05f097": "component_alternatives__plant__steam_cycle__main_ua_available_required__6cdb52b3bf9953e0",
+    "component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08": "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d"
+  },
+  "cases": {
+    "baseline": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/baseline.attempt4/result.json"
+    },
+    "bypass-small-offer": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/bypass-small-offer.attempt3/result.json"
+    },
+    "flow2250-fixed-UA": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/flow2250-fixed-UA.attempt3/result.json"
+    },
+    "gas-low-ratio-flow": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/gas-low-ratio-flow.attempt3/result.json"
+    },
+    "pre-UA20-no-root": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/pre-UA20-no-root.attempt3/result.json"
+    },
+    "pre-UA40-no-root": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/pre-UA40-no-root.attempt3/result.json"
+    },
+    "recuperator-UA80": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/recuperator-UA80.attempt3/result.json"
+    },
+    "salt-three-pumps": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/salt-three-pumps.attempt3/result.json"
+    },
+    "salt-two-pumps": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/salt-two-pumps.attempt3/result.json"
+    },
+    "salt225-offer": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/salt225-offer.attempt3/result.json"
+    },
+    "source2800-ihx10": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/source2800-ihx10.attempt3/result.json"
+    },
+    "source3000-ihx12": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/source3000-ihx12.attempt3/result.json"
+    },
+    "source3000-ihx14": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/source3000-ihx14.attempt3/result.json"
+    },
+    "water-duty-insufficient": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/water-duty-insufficient.attempt3/result.json"
+    },
+    "water-flow-insufficient": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/water-flow-insufficient.attempt3/result.json"
+    },
+    "water-power-insufficient": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/water-power-insufficient.attempt3/result.json"
+    },
+    "water-property-refusal": {
+      "status": "same refusal"
+    },
+    "zero-discount": {
+      "status": "pass",
+      "unchanged_scalars": 876,
+      "unchanged_predicate_verdicts": 84,
+      "before": "native_runs/zero-discount.attempt3/result.json"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "status": "AGENT WC density sensitivity",
+  "temperature_basis": "773.15K source-matched PbLi and He; solid densities representative constants, not temperature-qualified laws",
+  "natural_elements": "Expand unspecified isotopes using pinned OpenMC natural-abundance table; export expansion and nuclear-data coverage. No silent missing-isotope renormalization.",
+  "constituents": {
+    "PbLi": {
+      "density_g_cm3": 9.15,
+      "temperature_K": 773.15,
+      "composition_basis": "atomic",
+      "composition": {
+        "Pb": 0.842,
+        "Li6": 0.1106,
+        "Li7": 0.0474
+      },
+      "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+      "pdf_page": [
+        63,
+        64
+      ]
+    },
+    "Eurofer": {
+      "density_g_cm3": 7.8,
+      "temperature_K": 773.15,
+      "composition_basis": "weight",
+      "composition": {
+        "Fe": 0.8927,
+        "C": 0.0011,
+        "Mn": 0.004,
+        "Cr": 0.09,
+        "Ta": 0.0012,
+        "W": 0.011
+      },
+      "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+      "pdf_page": 64
+    },
+    "Eurofer_FW": {
+      "density_g_cm3": 7.78,
+      "temperature_K": 773.15,
+      "composition_basis": "weight",
+      "composition": {
+        "Fe": 0.8927,
+        "C": 0.0011,
+        "Mn": 0.004,
+        "Cr": 0.09,
+        "Ta": 0.0012,
+        "W": 0.011
+      },
+      "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+      "pdf_page": 64
+    },
+    "He": {
+      "density_g_cm3": 0.0056,
+      "temperature_K": 773.15,
+      "composition_basis": "atomic",
+      "composition": {
+        "He4": 1.0
+      },
+      "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+      "pdf_page": 64
+    },
+    "W": {
+      "density_g_cm3": 19.0,
+      "temperature_K": 773.15,
+      "composition_basis": "atomic",
+      "composition": {
+        "W": 1.0
+      },
+      "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+      "pdf_page": 64
+    },
+    "WC": {
+      "density_g_cm3": 14.819999999999999,
+      "temperature_K": 773.15,
+      "composition_basis": "atomic",
+      "composition": {
+        "W": 0.5,
+        "C": 0.5
+      },
+      "source": "knowledge/sources/atsdr_tungsten_physical_and_chemical_properties_table_4_2/",
+      "pdf_page": null,
+      "source_locator": "Table 4-2, tungsten carbide column, density row",
+      "confidence": "Authoritative government compilation citing HSDB2004; measurement temperature and uncertainty unspecified",
+      "density_temperature_basis": "Representative constant; no thermal expansion correction to 773.15K",
+      "material_identity": "Pure stoichiometric WC; no cobalt binder or porosity modeled"
+    },
+    "SS316": {
+      "density_g_cm3": 8.0,
+      "temperature_K": 773.15,
+      "composition_basis": "weight",
+      "composition": {
+        "C": 0.0008,
+        "Mn": 0.02,
+        "P": 0.00045,
+        "S": 0.0003,
+        "Si": 0.01,
+        "Cr": 0.17,
+        "Ni": 0.12,
+        "Mo": 0.025,
+        "Fe": 0.65345
+      },
+      "source": "knowledge/sources/compendium_of_material_composition_data_for_radiation/",
+      "pdf_page": [
+        244,
+        245
+      ]
+    },
+    "B": {
+      "density_g_cm3": 2.37,
+      "temperature_K": 773.15,
+      "composition_basis": "atomic",
+      "composition": {
+        "B10": 0.199,
+        "B11": 0.801
+      },
+      "source": "knowledge/sources/compendium_of_material_composition_data_for_radiation/",
+      "pdf_page": 60
+    }
+  },
+  "mixtures_volume_fractions": {
+    "breeder": {
+      "PbLi": 0.8,
+      "Eurofer": 0.1,
+      "He": 0.1
+    },
+    "first_wall_bulk": {
+      "Eurofer_FW": 0.7,
+      "He": 0.3
+    },
+    "reflector": {
+      "WC": 0.9,
+      "He": 0.1
+    },
+    "ht_shield": {
+      "WC": 0.9,
+      "He": 0.1
+    },
+    "structure": {
+      "SS316": 1.0
+    },
+    "vessel": {
+      "SS316": 0.61,
+      "He": 0.37,
+      "B": 0.02
+    }
+  },
+  "authority": "Mixture selections are AGENT scenarios; breeder/FW/vessel recipes supported by Martinez2012 Table3-2. Enrichment70% is AGENT choice using sourceStellaris isotope scenario.",
+  "nuclear_data_temperature_basis": "600/900K cross-section interpolation at physical 773.15K is independent of density inputs; does not interpolate or qualify solid density at 500C."
+}

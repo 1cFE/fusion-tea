@@ -1,0 +1,14 @@
+{
+  "archive_sha256": "9dc3a17496a019635396c23a2f1e5c92e7f0798c511db6f4cb58a7fb18b309c0",
+  "native_state": "completed",
+  "outputs": 1352,
+  "predicates": 67,
+  "violated": 6,
+  "held_inputs": 704,
+  "report_state": "reported",
+  "rows": 276,
+  "all_independent_credit_false": true,
+  "partial_terminal_interruption_finding": "observations JSONDecodeError / report missing receipt refusal",
+  "baseline_result_sha256": "6581ad1c22a18cebabacc7f410f9599dfeef107ca4944e89c5343b7fbb7d5b1f",
+  "report_sha256": "b0cdf4fed3486e84ba992b3ca790c4ccc6b3fb24bc663206185922d96b29df7d"
+}

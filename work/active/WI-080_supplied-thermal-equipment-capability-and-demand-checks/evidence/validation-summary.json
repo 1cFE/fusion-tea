@@ -1,0 +1,118 @@
+{
+  "basis": "Composite current validation: original full development sweep plus exact failing-node reruns and later-added acceptance cases. Not a claim of one clean initial full-suite invocation.",
+  "initial_model_sweep": {
+    "failed": 83,
+    "passed": 2606,
+    "skipped": 13,
+    "errors": 47
+  },
+  "all_initial_failures_and_errors_accounted_for": 130,
+  "current_collected_models": 2752,
+  "effective_current_result": {
+    "passed": 2738,
+    "skipped": 13,
+    "existing_expected_failure": 1,
+    "unresolved_failures": 0,
+    "unresolved_errors": 0
+  },
+  "failure_dispositions": [
+    {
+      "scope": "61 selected failing nodes",
+      "result": "58 passed; three export-catalog failures subsequently passed after exact34\u219267 update",
+      "receipt": "regression-rerun-selection.json; validation-logs/mr7-r2-regression-rerun.log.gz; validation-logs/mr7-r2-catalog-rerun.log.gz"
+    },
+    {
+      "scope": "coil thermal and facility consumers",
+      "result": "46 passed; explicit selected startup/decom classes and bounded native-versus-independent cost comparisons",
+      "receipt": "../../WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/targeted-validation.json"
+    },
+    {
+      "scope": "two operating-heating binding/inventory checks",
+      "result": "2 passed with exact67 predicate inventory and selected procurement edges",
+      "receipt": "../../WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/targeted-validation.json"
+    },
+    {
+      "scope": "fuel-processing and major-radius consumers",
+      "result": "85 passed; one existing strict xfail after all historical refusal anchors pass. Retirement pairs derive from frozen entering parameter groups. Current diagnostic count follows explicit predicate ledger.",
+      "receipt": "validation-logs/wi079-fuel-radius-rerun.log.gz"
+    },
+    {
+      "scope": "family spine census check",
+      "result": "All13 spine checks passed through successful stock integration; rederived Round2 census replaces current receipt reference only",
+      "receipt": "validation-logs/mr7-r2-route-integration-final.log.gz"
+    }
+  ],
+  "late_added_model_tests": [
+    {
+      "node": "tests/models/test_supplied_equipment_propagation.py::test_fixed_equipment_accepts_changing_requirements_without_resizing",
+      "result": "passed six native cases",
+      "receipt": "propagation-acceptance.json"
+    },
+    {
+      "node": "tests/models/test_supplied_thermal_capability.py::test_native_ihx_selected_circuit_inventory_crosses_area_capacity",
+      "result": "passed12-versus14circuit native margin/cost check",
+      "receipt": "validation-logs/mr7-r2-ihx-test.log.gz"
+    },
+    {
+      "node": "tests/models/test_supplied_residual_costs.py::test_native_legacy_accounts_keep_selected_costs_under_changed_demand",
+      "result": "passed in38cost cases",
+      "receipt": "../../WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/targeted-validation.json"
+    }
+  ],
+  "stock_route": {
+    "initial_current_run": "702 passed,2 failed",
+    "binding_correction": "1 passed after exact producer root suffix fix",
+    "integration_correction": "2 passed after rederived census/current versioned axis declaration migration",
+    "effective_passed": 704
+  },
+  "native_baseline": {
+    "mapped_numeric_outputs": 1352,
+    "predicates_independently_rederived": 67,
+    "satisfied_predicates": 61,
+    "violated_predicates": 6,
+    "unchanged_prior_non_cost_channels_exact": 1095
+  },
+  "warnings": "Generated float-as-Boolean serialization warnings retained; no global suppression. Thirteen pre-existing skips and one historical CLI incompatibility are not current equipment-acceptance skips.",
+  "logs": [
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-model-regressions.log.gz",
+      "uncompressed_sha256": "e97ab75311752bcaacace963609d009157810d46a13f5d007cd97cf315091b1a",
+      "compressed_sha256": "581ef439e0cf0838a5ced5c1d24b4554bb4e7de89f02474ebd2ef11bf5303e57"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-regression-rerun.log.gz",
+      "uncompressed_sha256": "5263f63a0dc7cca80766cbd0b67c0a6fc8e9eeb25aaf4b29b7d914f942d68488",
+      "compressed_sha256": "14aae2b3731b2d568050b64613ebdf5a7751668dc80a85b46135b9f52f9f6506"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-catalog-rerun.log.gz",
+      "uncompressed_sha256": "78534f8b6b384c4837b601e779970be86cf5969f5af5b06e53eab5b7c0bf2bce",
+      "compressed_sha256": "f52f6c1c31c97888ca2855ef86b117ea47fbaf45505242bbf2c4ab5291a650aa"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-route-tests-current.log.gz",
+      "uncompressed_sha256": "624846822abfe5803b1c3e9a8389d9dcde4a6d26b9e0808f31bbefe055dfa555",
+      "compressed_sha256": "f8bce3d36b7f501013a6c316429335725e9081d1149ccaa4699c3563a303cb28"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-route-binding-test.log.gz",
+      "uncompressed_sha256": "3b48e0860dc023141693c4f77181cda5b340fb20a1a3707eedab872d4f8fa2ba",
+      "compressed_sha256": "569f84dd62271eec21e6c365e7873ac29fd6ca7adb413682b320aa0cc453e9e6"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-route-integration-final.log.gz",
+      "uncompressed_sha256": "c34118bfc55892425bca9cb01f39c9f12da0accaa1803e24286675c5bc79584a",
+      "compressed_sha256": "e7780ce1a014b8a31e4d7c4df67e78252d11570c184e722da57995f4d5ce43cb"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/mr7-r2-ihx-test.log.gz",
+      "uncompressed_sha256": "5ed3cd69721256d31551d16e7281ced818ebbdeac698782f4f3b45901e63da35",
+      "compressed_sha256": "c4b3b843a292da31ed22ef28ad26577adb59253af734969f49f34810da370d87"
+    },
+    {
+      "path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-logs/wi079-fuel-radius-rerun.log.gz",
+      "uncompressed_sha256": "9b33efd6a0237da048a9f6dcdd356b192b5735a2621c9262763580b9c3057b05",
+      "compressed_sha256": "922fd448a4d3b721b6940f755b4a381bdc766541c44d042f79d0365446c679e4"
+    }
+  ]
+}

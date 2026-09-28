@@ -1,0 +1,8 @@
+{
+  "adoption_artifacts_unchanged": true,
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "original_attempt_report_replay_receipts_verified": true,
+  "source_hashes_verified": true,
+  "original_r3_branch_commit": "829539f5eb7fde217d18318d1646a5e47103812c",
+  "unrelated_untracked_audit_preserved": true
+}

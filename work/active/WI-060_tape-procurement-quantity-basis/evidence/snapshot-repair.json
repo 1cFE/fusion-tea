@@ -1,0 +1,20 @@
+{
+  "before_sha256": "8fd34febc63115cc078148724021d20054035a9807f8131f014d00072bb73583",
+  "after_sha256": "e11bcb6a0629257d321e30cfd2abb039206c886470c0384b2c00e11d1d305769",
+  "matches_T004_recapture_exactly": true,
+  "authority_unchanged": true,
+  "model_and_package_files_unchanged": 309,
+  "attribute_counts": [
+    435,
+    438
+  ],
+  "added_attributes": [
+    "stellarator_09__stellaris__magnet__tape_length",
+    "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m",
+    "stellarator_09__stellaris__magnet__winding_pack__tape_thickness",
+    "stellarator_09__stellaris__magnet__winding_pack__tape_width"
+  ],
+  "removed_attributes": [
+    "stellarator_09__stellaris__magnet__winding_pack__cost_per_kAm_effective"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "selected-forward": {
+    "state": "completed",
+    "failed_checks": {
+      "divertor_heat_ok": "violated",
+      "reference_conductor_current_ok": "violated",
+      "tbr_ok": "violated",
+      "wp_fit_ok": "violated"
+    },
+    "outputs": 1050,
+    "predicates": 28,
+    "numeric_discrepancies": 0,
+    "account_checks": 53,
+    "accounts": {
+      "overnight": 19061495496.653675,
+      "headline_lcoe": 341.0578646227072,
+      "comparison_lcoe": 334.5426380914747
+    },
+    "store": "native/current-comparison-fixed-point.db",
+    "supplied_inputs": []
+  },
+  "table5-conditioned": {
+    "state": "completed",
+    "failed_checks": {
+      "divertor_heat_ok": "violated",
+      "reference_conductor_current_ok": "violated",
+      "tbr_ok": "violated",
+      "wp_fit_ok": "violated"
+    },
+    "outputs": 1050,
+    "predicates": 28,
+    "numeric_discrepancies": 0,
+    "account_checks": 53,
+    "accounts": {
+      "overnight": 19072332328.66645,
+      "headline_lcoe": 340.979994096299,
+      "comparison_lcoe": 334.4646635051293
+    },
+    "store": "native/current-comparison-fixed-point.db",
+    "supplied_inputs": [
+      "stellarator_09__stellaris__magnet__coil__I_coil",
+      "stellarator_09__stellaris__plasma__R",
+      "stellarator_09__stellaris__plasma__a",
+      "stellarator_09__stellaris__plasma__alpha_T",
+      "stellarator_09__stellaris__plasma__alpha_n",
+      "stellarator_09__stellaris__plasma__f_shape"
+    ]
+  }
+}

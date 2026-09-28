@@ -1,0 +1,197 @@
+# Complete numerical comparison
+
+[INHERITED, REFERENT] Expectations are the immutable T-021 baseline and tied_R14 records at `2f8856b7`, frozen by `freeze.py` before prototype generation. Values below are binary64 round-trip decimal representations in the original channel units; their definitions and units remain in the unchanged library source files. No currency, finance, alpha or source conversion is applied. `../prototype/frozen-results.json` retains complete baseline inputs and `results.json` retains complete executed reports and operands.
+
+[AGENT] Every one of the 158 output channels is covered, including all cost and finance channels. Baseline equality is exact. R14 uses relative and absolute tolerance 1e-9 per channel in its original units. Named verdict IDs/statuses and channel sets are exact. `../prototype/direct-entering.json` freezes 177 raw channels before repaired execution; `direct-production.json` checks those raw channels and the helper’s 158 scalar channels. Metadata differences are reported separately.
+
+| Channel (prefix `stellarator_09__stellaris__`) | Baseline expected = actual | R14 expected | R14 actual |
+|---|---:|---:|---:|
+| `aux_cooling__aux_cost` | 3631334.532635693 | 4509191.143812504 | 4509191.143812504 |
+| `aux_cooling__cost` | 20331794.223206963 | 21676680.469079215 | 21676680.469079215 |
+| `aux_cooling__cryo_cost` | 16700459.69057127 | 17167489.32526671 | 17167489.32526671 |
+| `beta_calc__beta` | 0.025304999208981403 | 0.031479269707979964 | 0.031479269707979964 |
+| `blanket_cost__cost` | 718414154.606785 | 901817433.4766827 | 901817433.4766827 |
+| `bop_capital__bop_capital` | 579937365.6014445 | 720134267.2876617 | 720134267.2876617 |
+| `buildings_cost__cost` | 652383020.902597 | 751884835.1039343 | 751884835.1039343 |
+| `calendar__availability` | 0.9027777777777779 | 0.8833333333333334 | 0.8833333333333334 |
+| `calendar__cas72_annual` | 138187030.54156843 | 192950727.52218693 | 192950727.52218693 |
+| `calendar__coil_life_margin_fpy` | -17.083333333333336 | -16.500000000000004 | -16.500000000000004 |
+| `calendar__dated_energy_ratio` | 1.0051616112988944 | 1.0143339991194789 | 1.0143339991194789 |
+| `calendar__n_replacements` | 5.0 | 6.0 | 6.0 |
+| `calendar__physical_life_fpy` | 4.5239260339489915 | 4.180326620158539 | 4.180326620158539 |
+| `calendar__planned_downtime_yr` | 2.916666666666667 | 3.5000000000000004 | 3.5000000000000004 |
+| `calendar__productive_fpy` | 27.083333333333336 | 26.500000000000004 | 26.500000000000004 |
+| `calendar__replacement_pv` | 1714768553.0167048 | 2394333524.2102356 | 2394333524.2102356 |
+| `calendar__terminal_downtime_yr` | 0.0 | 0.0 | 0.0 |
+| `calendar__unplanned_downtime_yr` | 0.0 | 0.0 | 0.0 |
+| `cas20_capital__cas20_capital` | 11109451347.910416 | 12574489728.019129 | 12574489728.019129 |
+| `cas22_capital__cas22_capital` | 8838365796.809175 | 9928082393.536867 | 9928082393.536867 |
+| `cas23_to_28_capital__cas23_to_28_capital` | 608752407.6613333 | 751387069.5584053 | 751387069.5584053 |
+| `cas2x_pre_contingency__cas2x_pre_contingency` | 10099501225.373106 | 11431354298.199207 | 11431354298.199207 |
+| `cas70_calc__annual_total` | 218531599.6394876 | 275255225.8051201 | 275255225.8051201 |
+| `cas70_calc__cas70` | 217739093.67437315 | 274330153.04369116 | 274330153.04369116 |
+| `cas71_calc__crf` | 0.08058640351111118 | 0.08058640351111118 | 0.08058640351111118 |
+| `cas71_calc__levelized` | 79552063.13280472 | 81379425.52150424 | 81379425.52150424 |
+| `cas80_calc__crf` | 0.08058640351111118 | 0.08058640351111118 | 0.08058640351111118 |
+| `cas80_calc__levelized` | 792505.9651144511 | 925072.7614289339 | 925072.7614289339 |
+| `cas90_1cfe_calc__cas90` | 1545641719.5741622 | 1746158131.9936206 | 1746158131.9936206 |
+| `casing_mass__m_casing` | 63000.0 | 58388.53570801609 | 58388.53570801609 |
+| `coil_length__c_coil` | 25.0 | 27.559055118110237 | 27.559055118110237 |
+| `cond_strain__eps_cond` | 0.0021666666666666666 | 0.001907066052227342 | 0.001907066052227342 |
+| `contingency__cost` | 1009950122.5373106 | 1143135429.8199208 | 1143135429.8199208 |
+| `coolant__cost` | 207627772.78611118 | 220421078.24524197 | 220421078.24524197 |
+| `cryo_elec__p_elec` | 0.8643515999999999 | 0.8990883779527558 | 0.8990883779527558 |
+| `cycle__T2_C` | 480.0 | 480.0 | 480.0 |
+| `cycle__domain_product` | 15552.0 | 15552.0 | 15552.0 |
+| `cycle__eta_fit` | 0.41135655404954075 | 0.41135655404954075 | 0.41135655404954075 |
+| `cycle__eta_th` | 0.41135655404954075 | 0.41135655404954075 | 0.41135655404954075 |
+| `cycle__margin_high` | 162.0 | 162.0 | 162.0 |
+| `cycle__margin_low` | 96.0 | 96.0 | 96.0 |
+| `divertor_cost__cost` | 109015446.43468271 | 121479845.38307358 | 121479845.38307358 |
+| `divheat__f_rad_edge` | 0.8341853143400069 | 0.8465211492542417 | 0.8465211492542417 |
+| `divheat__f_rad_edge_in_range` | 0.1383201756794708 | 0.12992309311951955 | 0.12992309311951955 |
+| `divheat__p_heat_abs` | 553.5706076861472 | 717.8958486399878 | 717.8958486399878 |
+| `divheat__p_heat_operating_minus_installed` | -0.920399212073221 | 66.0531121260143 | 66.0531121260143 |
+| `divheat__p_sep` | 333.8489624623819 | 467.7490384842672 | 467.7490384842672 |
+| `divheat__p_target_nonrad` | 55.3570607686147 | 71.78958486399881 | 71.78958486399881 |
+| `divheat__q_target_margin` | -0.5178415460367933 | -3.640021124159775 | -3.640021124159775 |
+| `divheat__q_target_peak` | 10.517841546036793 | 13.640021124159775 | 13.640021124159775 |
+| `divheat__q_target_peak_area_scaled` | 10.517841546036793 | 12.373447734059225 | 12.373447734059225 |
+| `electric_cost__cost` | 117329099.6903133 | 145692811.41141617 | 145692811.41141617 |
+| `field_calc__B_axis` | 8.999999999999998 | 8.164285714285713 | 8.164285714285713 |
+| `fuel__burn_kg_per_fpy` | 148.74097510492368 | 177.44355055860132 | 177.44355055860132 |
+| `fuel__burn_rate` | 9.417518585656878e+20 | 1.1234819014140356e+21 | 1.1234819014140356e+21 |
+| `fuel__exhaust_rate` | 1.7893285312748067e+22 | 2.1346156126866678e+22 | 2.1346156126866678e+22 |
+| `fuel__inject_rate` | 1.8835037171313755e+22 | 2.2469638028280713e+22 | 2.2469638028280713e+22 |
+| `fuel__loss_rate` | 1.7893285312748084e+20 | 2.1346156126866696e+20 | 2.1346156126866696e+20 |
+| `fuel__tbr_margin` | -0.1160000000000001 | -0.1160000000000001 | -0.1160000000000001 |
+| `fuel__tbr_required` | 1.1900000000000002 | 1.1900000000000002 | 1.1900000000000002 |
+| `fuel_calc__annual_fuel` | 550716.1814915092 | 642837.4816111003 | 642837.4816111003 |
+| `fuel_handling__cost` | 121167851.33791968 | 125082297.0224312 | 125082297.0224312 |
+| `fusion__p_fus` | 2652.5632625175904 | 3164.428921152393 | 3164.428921152393 |
+| `geom__A` | 9.769230769230768 | 10.769230769230768 | 10.769230769230768 |
+| `geom__V` | 425.0000143721807 | 468.5039528512229 | 468.5039528512229 |
+| `heat__eta_pin_eff` | 0.5 | 0.5 | 0.5 |
+| `heat__p_coupled` | 50.0 | 50.0 | 50.0 |
+| `heat__p_delivered` | 50.0 | 50.0 | 50.0 |
+| `heat__p_wallplug_total` | 100.0 | 100.0 | 100.0 |
+| `heat_rejection_cost__cost` | 115740535.19473399 | 143720219.5473331 | 143720219.5473331 |
+| `heating_cost__cost` | 264145000.0 | 264145000.0 | 264145000.0 |
+| `idc__cost` | 4224531491.5086827 | 4772580815.0373745 | 4772580815.0373745 |
+| `inc_cost__cost` | 81829994.18345366 | 94196240.75245166 | 94196240.75245166 |
+| `indirect__cost` | 2962520359.4427776 | 3353197260.8051014 | 3353197260.8051014 |
+| `installation__cost` | 1030266141.6020035 | 1160110398.118831 | 1160110398.118831 |
+| `lcoe_1cfe_calc__lcoe` | 220.0125640803369 | 246.2018206142481 | 246.2018206142481 |
+| `lcoe_calc__lcoe` | 224.26923288439 | 250.89832244487582 | 250.89832244487582 |
+| `magnet_capital_rollup__capital_cost` | 5401032000.0 | 5944337458.631255 | 5944337458.631255 |
+| `magnet_cost__capital_cost` | 6323469946.334224 | 6323469946.334224 | 6323469946.334224 |
+| `magnet_structure_cost__cost` | 54432000.0 | 50447694.851725906 | 50447694.851725906 |
+| `misc_cost__cost` | 71415941.58233306 | 88680381.39035158 | 88680381.39035158 |
+| `om_cost__annual_om` | 55281108.74464231 | 56550951.59908753 | 56550951.59908753 |
+| `operating_heat__p_coupled` | 49.07960078792678 | 116.0531121260143 | 116.0531121260143 |
+| `operating_heat__p_delivered` | 49.07960078792678 | 116.0531121260143 | 116.0531121260143 |
+| `operating_heat__p_wallplug` | 98.15920157585356 | 232.1062242520286 | 232.1062242520286 |
+| `other_rpe__cost` | 11627996.196228182 | 12058296.457559152 | 12058296.457559152 |
+| `overnight_capital__overnight_capital` | 14955400261.631914 | 16895567357.785126 | 16895567357.785126 |
+| `owner__cost` | 41486005.10526891 | 42438965.498768784 | 42438965.498768784 |
+| `pb__p_et` | 1357.9756908601075 | 1686.2593913358353 | 1686.2593913358353 |
+| `pb__p_net` | 1013.9319325539626 | 1061.0482801192898 | 1061.0482801192898 |
+| `pb__p_th` | 3301.2132114869937 | 4099.264676193186 | 4099.264676193186 |
+| `pb__p_the` | 1357.9756908601075 | 1686.2593913358353 | 1686.2593913358353 |
+| `pb__q_eng` | 3.9471016638869605 | 2.6971040038854803 | 2.6971040038854803 |
+| `pb__rec_frac` | 0.25335045437244624 | 0.3707680529039251 | 0.3707680529039251 |
+| `peak_field_calc__B_peak` | 24.899999999999995 | 21.916589861751145 | 21.916589861751145 |
+| `power_supplies_cost__cost` | 92712758.81167144 | 107885275.35950722 | 107885275.35950722 |
+| `powercore_capital__powercore_capital` | 7192380208.794931 | 8100783514.156657 | 8100783514.156657 |
+| `precon_cost__cost` | 18517354.678717773 | 18575179.94531364 | 18575179.94531364 |
+| `primary_loop__T_comp_in` | 561.9353658449644 | 556.6383977846285 | 556.6383977846285 |
+| `primary_loop__T_out` | 773.15 | 773.15 | 773.15 |
+| `primary_loop__capacity_margin` | 10.095227292061736 | -35.34467685529256 | -35.34467685529256 |
+| `primary_loop__dp_loop` | 300319.8964637657 | 440691.363900603 | 440691.363900603 |
+| `primary_loop__mdot` | 3009.7557068000247 | 3645.914364862985 | 3645.914364862985 |
+| `primary_loop__mdot_loop` | 214.98255048571605 | 260.42245463307034 | 260.42245463307034 |
+| `primary_loop__p_elec` | 175.28093440448808 | 312.6180168464892 | 312.6180168464892 |
+| `primary_loop__p_loop_margin` | 7699680.103536234 | 7559308.636099397 | 7559308.636099397 |
+| `primary_loop__p_pump_total` | 175.28093440448808 | 312.6180168464892 | 312.6180168464892 |
+| `primary_loop__q_ihx` | 3301.2132114869937 | 4099.264676193186 | 4099.264676193186 |
+| `primary_loop__q_recovered_total` | 175.28093440448808 | 312.6180168464892 | 312.6180168464892 |
+| `primary_loop__r_comp` | 1.039004204385821 | 1.058297839804567 | 1.058297839804567 |
+| `primary_loop__w_fluid` | 175.28093440448808 | 312.6180168464892 | 312.6180168464892 |
+| `rb__blanket_vol` | 1013.4060451016529 | 1117.1405221593027 | 1117.1405221593027 |
+| `rb__r_coil` | 3.0000000000000004 | 3.0000000000000004 | 3.0000000000000004 |
+| `rb__r_coil_centre` | 3.1500000000000004 | 3.1500000000000004 | 3.1500000000000004 |
+| `rb__shield_vol` | 517.043900562068 | 569.9696541629096 | 569.9696541629096 |
+| `rb__structure_vol` | 204.93740058641953 | 225.91524474093495 | 225.91524474093495 |
+| `rb__vessel_vol` | 147.90589155472523 | 163.04586470599634 | 163.04586470599634 |
+| `rb__wall_area` | 701.9262650054739 | 773.7769850454042 | 773.7769850454042 |
+| `reactor_equipment_subtotal__reactor_equipment_subtotal` | 7359043868.585738 | 8286502843.705935 | 8286502843.705935 |
+| `remote_handling__cost` | 166663659.79080695 | 185719329.54927713 | 185719329.54927713 |
+| `replacement_cost_per_event__replacement_cost_per_event` | 827429601.0414678 | 1023297278.8597562 | 1023297278.8597562 |
+| `shield_cost__cost` | 452063328.57909954 | 567470153.7183208 | 567470153.7183208 |
+| `source_heat__q_source` | 3125.9322770825056 | 3786.646659346696 | 3786.646659346696 |
+| `special_materials_capital__special_materials_capital` | 23815042.059888843 | 26252802.270743616 | 26252802.270743616 |
+| `stored_energy__W_mag` | 111000000000.0 | 100692857142.85715 | 100692857142.85715 |
+| `structure_cost__cost` | 34155617.209747344 | 41956827.788247295 | 41956827.788247295 |
+| `supplementary__cost` | 823425194.4947345 | 906866223.5168123 | 906866223.5168123 |
+| `sustain__T_e0` | 15.400000000000002 | 15.400000000000002 | 15.400000000000002 |
+| `sustain__W_th` | 519.9142139884984 | 586.7129803265815 | 586.7129803265815 |
+| `sustain__alpha_He_eff` | 4.051846993560424 | 4.051846993560424 | 4.051846993560424 |
+| `sustain__alpha_n_e_eff` | 0.595339224411896 | 0.5555050362193561 | 0.5555050362193561 |
+| `sustain__n_D0` | 1.9256443867349644e+20 | 2.0032203710993495e+20 | 2.0032203710993495e+20 |
+| `sustain__n_He0` | 6.043556132650356e+19 | 5.267796289006504e+19 | 5.267796289006504e+19 |
+| `sustain__n_T0` | 1.9256443867349644e+20 | 2.0032203710993495e+20 | 2.0032203710993495e+20 |
+| `sustain__n_bar19` | 37.7766145111016 | 38.39998785770255 | 38.39998785770255 |
+| `sustain__n_e_volav` | 3.171739227978496e+20 | 3.2529627884061976e+20 | 3.2529627884061976e+20 |
+| `sustain__p_alpha_heat` | 504.49100689822046 | 601.8427365139735 | 601.8427365139735 |
+| `sustain__p_aux_required` | 49.07960078792678 | 116.0531121260143 | 116.0531121260143 |
+| `sustain__p_avg` | 815551.6806378263 | 834874.4647808721 | 834874.4647808721 |
+| `sustain__p_brems` | 91.44723357920653 | 104.70924011896037 | 104.70924011896037 |
+| `sustain__p_line` | 114.01183321758131 | 133.17373019137045 | 133.17373019137045 |
+| `sustain__p_rad` | 219.7216452237653 | 250.14681015572054 | 250.14681015572054 |
+| `sustain__p_sync` | 14.262578426977447 | 12.263839845389729 | 12.263839845389729 |
+| `sustain__tau_E` | 1.5573336222276932 | 1.2543328410205072 | 1.2543328410205072 |
+| `total_capital__total_capital` | 14955400261.631914 | 16895567357.785126 | 16895567357.785126 |
+| `turbine_cost__cost` | 275451789.1340642 | 342040854.93856084 | 342040854.93856084 |
+| `vacuum__Q_total` | 78.0137257066115 | 93.06804982232322 | 93.06804982232322 |
+| `vacuum__S_eff_required` | 78.0137257066115 | 93.06804982232322 | 93.06804982232322 |
+| `vacuum__n_molecules` | 1.8835037171313755e+22 | 2.2469638028280713e+22 | 2.2469638028280713e+22 |
+| `vessel_cost__cost` | 120841903.15294513 | 151691519.79957047 | 151691519.79957047 |
+| `wall_load_calc__wall_load` | 3.0224258631282654 | 3.2708523257372066 | 3.2708523257372066 |
+| `wall_peak_cal__calibration` | 1.3164408570995383 | 1.3164408570995383 | 1.3164408570995383 |
+| `wall_peak_calc__wall_load_peak` | 3.9788448937763854 | 4.305883639139506 | 4.305883639139506 |
+| `waste__cost` | 6470377.894514508 | 8034558.765338644 | 8034558.765338644 |
+| `winding_pack_cost__cost` | 5346600000.0 | 5893889763.77953 | 5893889763.77953 |
+| `wp_sizing__wp_side` | 0.35999999999999993 | 0.35999999999999993 | 0.35999999999999993 |
+| `wp_stress__sigma_wp` | 650000000.0 | 572119815.6682026 | 572119815.6682026 |
+| `wp_volume__vol_cold_total` | 136.55999999999997 | 150.53858267716532 | 150.53858267716532 |
+
+## Named verdicts
+
+| Exact constraint ID | Baseline | R14 |
+|---|---|---|
+| `stellarator_09__stellaris__beta_ok__82b78aad420730d5` | satisfied | satisfied |
+| `stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58` | satisfied | satisfied |
+| `stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60` | satisfied | satisfied |
+| `stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3` | satisfied | satisfied |
+| `stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7` | violated | violated |
+| `stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7` | satisfied | satisfied |
+| `stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650` | satisfied | satisfied |
+| `stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5` | satisfied | satisfied |
+| `stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f` | satisfied | satisfied |
+| `stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852` | satisfied | violated |
+| `stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945` | satisfied | satisfied |
+| `stellarator_09__stellaris__net_positive__484521d56c02667a` | satisfied | satisfied |
+| `stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5` | satisfied | satisfied |
+| `stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b` | satisfied | satisfied |
+| `stellarator_09__stellaris__sustainment_ok__77add152ed8eafce` | satisfied | violated |
+| `stellarator_09__stellaris__tbr_ok__2cd198f674d413e4` | satisfied | satisfied |
+| `stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb` | satisfied | violated |
+| `stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0` | satisfied | satisfied |
+
+Both aggregate headlines are `violation`. These are 18 authored assertions plus one aggregate response, not 19 assertions.
+
+## Identity and input contract
+
+Old/new public counts: 247 / 246. Exact removed pair: `['stellarator_plant_params', 'stellarator_09__stellaris__magnet__R0']`. No additions. Full old/new census is `contract-delta.json`.
+
+New semantic identity: `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`. New executable identity: `cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c`. The unchanged constraint catalog fingerprint is `ee23c3202e4cc383ab0a81baa8e7af5dcc43e1a684a4a9d823b1ff8f30bf4cbb`. Baseline raw report, observed operands and margins are exact after serialization; no authored verdict identity changed.

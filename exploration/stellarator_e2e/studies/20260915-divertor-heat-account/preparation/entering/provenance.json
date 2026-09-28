@@ -1,0 +1,6 @@
+{
+  "repository_revision": "f76ec031951d7918fbfec2de23d298830941c121",
+  "oracle_files_verified_against_git": true,
+  "finance_identical_to_current": true,
+  "native_controls_scope": "Five named regular controls and signed-negative control captured before implementation; study attribution otherwise uses isolated entering oracle."
+}

@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-COMPARISON-STEAM-STATES",
+  "run": "knowledge/research/requests/runs/REQ-COMPARISON-STEAM-STATES/20260920T002249289039",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://www.nist.gov/document/nistir5078-tab2pdf",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

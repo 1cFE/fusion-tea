@@ -1,0 +1,10 @@
+{
+  "command": ".codex-test/run agentic-mbse validate exploration/aries_transfer/density_profile/staged_models --complete",
+  "exit_code": 1,
+  "passed_levels": [1, 2, 3, 4, 5],
+  "failed_levels": [6],
+  "diagnostic": "Unsupported operator '.' in aries_cs_density_profile::plasma_profile::density",
+  "source_expression": "density = profile.density",
+  "proposed_disposition": "Scoped EXPOSE diagnostic exception supported by successful generation and 13 actual native output checks; independent review pending",
+  "runtime_domain_evidence": "verification.json: 25 invalid inputs refused through actual TEAx"
+}

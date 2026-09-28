@@ -1,0 +1,102 @@
+{
+  "outcome": "fail",
+  "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+  "candidate_id": "20260926-design-study-component-alternatives:c0206",
+  "reason": "Stock verifier first mismatch annual_energy; retained native evidence unchanged. No tolerance exception requested.",
+  "failed_comparisons": [
+    {
+      "channel": "component_alternatives__plant__water_pre__evaluate__water_flow",
+      "native": 7213405.915089925,
+      "oracle": 7213406.001384442,
+      "absolute_error": 0.0862945169210434,
+      "relative_error": 1.1963074989052496e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__water_pre__evaluate__pump_electric",
+      "native": 1861.561766242542,
+      "oracle": 1861.5617885125455,
+      "absolute_error": 2.2270003455560072e-05,
+      "relative_error": 1.1963075087265624e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__water_pre__evaluate__total_rejection",
+      "native": 2731.5639790570594,
+      "oracle": 2731.564001327875,
+      "absolute_error": 2.227081540695508e-05,
+      "relative_error": 8.15313695601814e-09,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+      "native": -7113405.915089925,
+      "oracle": -7113406.001384442,
+      "absolute_error": 0.0862945169210434,
+      "relative_error": 1.2131251457353676e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__water_pre__evaluate__power_margin",
+      "native": -1831.561766242542,
+      "oracle": -1831.5617885125455,
+      "absolute_error": 2.2270003455560072e-05,
+      "relative_error": 1.2159023842513152e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__gas_ledger__evaluate__annual_energy",
+      "native": -8284329.920145388,
+      "oracle": -8284330.085954271,
+      "absolute_error": 0.16580888349562883,
+      "relative_error": 2.0014760611331836e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__gas_ledger__evaluate__discounted_energy",
+      "native": -127350455.98797517,
+      "oracle": -127350458.53686412,
+      "absolute_error": 2.5488889515399933,
+      "relative_error": 2.0014760691279074e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__gas_ledger__evaluate__electrical_load",
+      "native": 1865.5176491904367,
+      "oracle": 1865.517671460416,
+      "absolute_error": 2.2269979353950475e-05,
+      "relative_error": 1.1937694128899071e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__gas_ledger__evaluate__net_electric",
+      "native": -1112.5879559690288,
+      "oracle": -1112.5879782372108,
+      "absolute_error": 2.2268181965046097e-05,
+      "relative_error": 2.0014760540849903e-08,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__gas_ledger__evaluate__total_rejected",
+      "native": 3782.846371710214,
+      "oracle": 3782.846393981042,
+      "absolute_error": 2.2270828139880905e-05,
+      "relative_error": 5.887320239943244e-09,
+      "declared_absolute_tolerance": 0
+    },
+    {
+      "channel": "component_alternatives__plant__rejection_capacity__evaluate__margin",
+      "native": 1217.153628289786,
+      "oracle": 1217.1536060189578,
+      "absolute_error": 2.2270828139880905e-05,
+      "relative_error": 1.8297466829370988e-08,
+      "declared_absolute_tolerance": 0
+    }
+  ],
+  "failed_predicates": {
+    "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330": "violated",
+    "component_alternatives__plant__gas_ledger__net_positive__ee25ae39167c9ad3": "violated",
+    "component_alternatives__plant__water_pre__flow_margin_ok__129a83656acb8a06": "violated",
+    "component_alternatives__plant__water_pre__power_margin_ok__d793d504da406d97": "violated"
+  }
+}

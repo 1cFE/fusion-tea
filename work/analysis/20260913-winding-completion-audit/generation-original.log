@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260913-winding-completion-audit/generation.py", line 12, in <module>
+    assert g.inventory(fresh)==receipt
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

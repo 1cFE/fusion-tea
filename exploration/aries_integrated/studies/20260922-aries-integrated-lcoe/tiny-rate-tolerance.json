@@ -1,0 +1,17 @@
+{
+  "scope": "Scalar representation check of native financed-capital subtraction; no package evaluation.",
+  "native_expression": "K / exp(-T/2 * log1p(r)) - K",
+  "comparison": "60-digit Decimal K*((1+r)^(T/2)-1)",
+  "k": 4350208470.0,
+  "r": 1e-12,
+  "T": 6.0,
+  "native_float_idc": 0.013051033020019531,
+  "decimal_idc": "0.0130506254100130506254100043502084700",
+  "absolute_error": 4.076100064802357e-07,
+  "ulp_capital": 9.5367431640625e-07,
+  "absolute_tolerance": 1.9073486328125e-06,
+  "channels": [
+    "aries_integrated_plant__lifecycle_accounts__evaluate__idc"
+  ],
+  "reason": "Two ULP of the capital magnitude covers cancellation in the subtractive IDC diagnostic; no other financial channel relaxed."
+}

@@ -80,26 +80,26 @@ EMITTER = E2E / "emit_1cfe_point.py"
 P = "stellarator_09__stellaris__"
 
 CH = dict(
-    V=f"{P}geom__V", p_fus=f"{P}fusion__p_fus", wall_load=f"{P}wall_load_calc__wall_load",
+    V=f"{P}plasma__geom__V", p_fus=f"{P}plasma__fusion__p_fus", wall_load=f"{P}blanket__first_wall__wall_load_calc__wall_load",
     p_th=f"{P}pb__p_th", p_the=f"{P}pb__p_the", p_et=f"{P}pb__p_et",
     q_eng=f"{P}pb__q_eng", rec_frac=f"{P}pb__rec_frac", p_net=f"{P}pb__p_net",
-    magnet=f"{P}magnet_cost__capital_cost", heating=f"{P}heating_cost__cost",
-    divertor=f"{P}divertor_cost__cost", blanket=f"{P}blanket_cost__cost",
-    shield=f"{P}shield_cost__cost", structure=f"{P}structure_cost__cost",
-    vessel=f"{P}vessel_cost__cost", power_supplies=f"{P}power_supplies_cost__cost",
-    turbine=f"{P}turbine_cost__cost", electric=f"{P}electric_cost__cost",
-    heat_rejection=f"{P}heat_rejection_cost__cost", misc=f"{P}misc_cost__cost",
+    magnet=f"{P}magnet__magnet_cost__capital_cost", heating=f"{P}heating__heating_cost__cost",
+    divertor=f"{P}divertor__divertor_cost__cost", blanket=f"{P}blanket__blanket_cost__cost",
+    shield=f"{P}shield__shield_cost__cost", structure=f"{P}structure__structure_cost__cost",
+    vessel=f"{P}vessel__vessel_cost__cost", power_supplies=f"{P}power_supplies__power_supplies_cost__cost",
+    turbine=f"{P}turbine__turbine_cost__cost", electric=f"{P}electric_plant__electric_cost__cost",
+    heat_rejection=f"{P}heat_rejection__heat_rejection_cost__cost", misc=f"{P}misc_plant__misc_cost__cost",
     contingency=f"{P}contingency__cost", indirect=f"{P}indirect__cost",
     lcoe=f"{P}lcoe_calc__lcoe",
     # WI-028 CAS22 tail + CAS40 owner + CAS50 supplementary + CAS60 idc channels
     remote_handling=f"{P}remote_handling__cost", installation=f"{P}installation__cost",
-    coolant=f"{P}coolant__cost", aux_cooling=f"{P}aux_cooling__cost",
-    waste=f"{P}waste__cost", fuel_handling=f"{P}fuel_handling__cost",
+    coolant=f"{P}heat_transport__coolant__cost", aux_cooling=f"{P}cryoplant__aux_cooling__cost",
+    waste=f"{P}waste__cost", fuel_handling=f"{P}fuel_cycle__fuel_handling__cost",
     other_rpe=f"{P}other_rpe__cost", inc=f"{P}inc_cost__cost",
     owner=f"{P}owner__cost", supplementary=f"{P}supplementary__cost",
     idc=f"{P}idc__cost",
     # native capital-rollup aggregation channels (Item 10 + WI-028 D2; no Python glue)
-    buildings=f"{P}buildings_cost__cost", precon=f"{P}precon_cost__cost",
+    buildings=f"{P}buildings__buildings_cost__cost", precon=f"{P}precon_cost__cost",
     powercore_capital=f"{P}powercore_capital__powercore_capital",
     bop_capital=f"{P}bop_capital__bop_capital",
     cas20_capital=f"{P}cas20_capital__cas20_capital",
@@ -109,7 +109,7 @@ CH = dict(
     # The headline `lcoe` channel above stays pointed at the DCF headline.
     cas71=f"{P}cas71_calc__levelized", cas72=f"{P}cas72_calc__cost",
     cas70=f"{P}cas70_calc__cas70", cas80=f"{P}cas80_calc__levelized",
-    annual_fuel=f"{P}fuel_calc__annual_fuel",
+    annual_fuel=f"{P}fuel_cycle__fuel_calc__annual_fuel",
     annual_om_levelized=f"{P}cas70_calc__annual_total",
     cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",
 )
@@ -353,29 +353,29 @@ def set_1cfe_inputs(o):
         # aggregate volumes. Same for shield/structure/vessel volumes and r_coil.
         f"{P}blanket__structure_factor": 1.0,  # liquid_metal (PbLi) -> 1.0
         f"{P}blanket__unit_cost": uc["blanket_unit_cost_dt"] * M,
-        f"{P}blanket_cost__alpha": 0.6, f"{P}blanket_cost__p_th_ref": refs["P_TH_REF"],
+        f"{P}blanket__blanket_cost__alpha": 0.6, f"{P}blanket__blanket_cost__p_th_ref": refs["P_TH_REF"],
         # shield (C220102)
         f"{P}shield__shield_scale": refs["shield_scale_dt"],
         f"{P}shield__unit_cost": uc["shield_unit_cost"] * M,
-        f"{P}shield_cost__alpha": 0.6, f"{P}shield_cost__p_th_ref": refs["P_TH_REF"],
+        f"{P}shield__shield_cost__alpha": 0.6, f"{P}shield__shield_cost__p_th_ref": refs["P_TH_REF"],
         # structure (C220105)
         f"{P}structure__unit_cost": uc["structure_unit_cost"] * M,
-        f"{P}structure_cost__alpha": 0.5,
-        f"{P}structure_cost__p_et_ref": refs["ref_gross_power_mwe"],
+        f"{P}structure__structure_cost__alpha": 0.5,
+        f"{P}structure__structure_cost__p_et_ref": refs["ref_gross_power_mwe"],
         # vessel (C220106_vessel — shell term only)
         f"{P}vessel__unit_cost": uc["vessel_unit_cost"] * M,
-        f"{P}vessel_cost__alpha": 0.6,
-        f"{P}vessel_cost__p_et_ref": refs["ref_gross_power_mwe"],
+        f"{P}vessel__vessel_cost__alpha": 0.6,
+        f"{P}vessel__vessel_cost__p_et_ref": refs["ref_gross_power_mwe"],
         # power supplies (C220107, ARIES-CS-derived base — footnoted)
         f"{P}power_supplies__base": uc["power_supplies_base"] * M,
-        f"{P}power_supplies_cost__alpha": 0.7,
-        f"{P}power_supplies_cost__p_et_ref": refs["ref_gross_power_mwe"],
+        f"{P}power_supplies__power_supplies_cost__alpha": 0.7,
+        f"{P}power_supplies__power_supplies_cost__p_et_ref": refs["ref_gross_power_mwe"],
         # divertor (C220108)
-        f"{P}divertor_cost__alpha": 0.5, f"{P}divertor_cost__p_th_ref": 1000.0,
+        f"{P}divertor__divertor_cost__alpha": 0.5, f"{P}divertor__divertor_cost__p_th_ref": 1000.0,
         # magnet (C220103): B <- b_center (NOT radiation B); r_coil now from rb.
-        f"{P}magnet__B": coil["b_center"], f"{P}magnet__G": coil["G_8pi2"],
-        f"{P}magnet__R0": coil["R0"], f"{P}magnet__coil_markup": coil["coil_markup"],
-        f"{P}magnet__cost_per_kAm": coil["cost_per_kam"],
+        f"{P}magnet__B": coil["b_center"], f"{P}magnet__coil__G": coil["G_8pi2"],
+        f"{P}magnet__R0": coil["R0"], f"{P}magnet__coil__coil_markup": coil["coil_markup"],
+        f"{P}magnet__coil__cost_per_kAm": coil["cost_per_kam"],
         # BOP per-MW rates (M$/MW -> $/MW)
         f"{P}turbine__cost_per_mw": uc["turbine_per_mw"] * M,
         f"{P}electric_plant__cost_per_mw": uc["electric_per_mw"] * M,

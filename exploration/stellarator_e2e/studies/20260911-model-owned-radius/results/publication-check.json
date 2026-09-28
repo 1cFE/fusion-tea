@@ -1,0 +1,2397 @@
+{
+  "outcome": "pass",
+  "evidence_class": "Synthetic damaged copies of actual recorded data; no model execution, no proposal, no store mutation",
+  "checks": [
+    {
+      "check": "absent:stellarator_09__stellaris__aux_cooling__aux_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['aux_cooling__aux_cost (stellarator_09__stellaris__aux_cooling__aux_cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__aux_cooling__aux_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['aux_cooling__aux_cost (stellarator_09__stellaris__aux_cooling__aux_cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__aux_cooling__aux_cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['aux_cooling__aux_cost (stellarator_09__stellaris__aux_cooling__aux_cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__aux_cooling__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['aux_cooling__cost (stellarator_09__stellaris__aux_cooling__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__aux_cooling__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['aux_cooling__cost (stellarator_09__stellaris__aux_cooling__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__aux_cooling__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['aux_cooling__cost (stellarator_09__stellaris__aux_cooling__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__aux_cooling__cryo_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['aux_cooling__cryo_cost (stellarator_09__stellaris__aux_cooling__cryo_cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__aux_cooling__cryo_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['aux_cooling__cryo_cost (stellarator_09__stellaris__aux_cooling__cryo_cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__aux_cooling__cryo_cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['aux_cooling__cryo_cost (stellarator_09__stellaris__aux_cooling__cryo_cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__beta_calc__beta",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['beta_calc__beta (stellarator_09__stellaris__beta_calc__beta)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__beta_calc__beta",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['beta_calc__beta (stellarator_09__stellaris__beta_calc__beta)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__beta_calc__beta",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['beta_calc__beta (stellarator_09__stellaris__beta_calc__beta)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__blanket_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['blanket_cost__cost (stellarator_09__stellaris__blanket_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__blanket_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['blanket_cost__cost (stellarator_09__stellaris__blanket_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__blanket_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['blanket_cost__cost (stellarator_09__stellaris__blanket_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__bop_capital__bop_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['bop_capital__bop_capital (stellarator_09__stellaris__bop_capital__bop_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__bop_capital__bop_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['bop_capital__bop_capital (stellarator_09__stellaris__bop_capital__bop_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__bop_capital__bop_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['bop_capital__bop_capital (stellarator_09__stellaris__bop_capital__bop_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__buildings_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['buildings_cost__cost (stellarator_09__stellaris__buildings_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__buildings_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['buildings_cost__cost (stellarator_09__stellaris__buildings_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__buildings_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['buildings_cost__cost (stellarator_09__stellaris__buildings_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__availability",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__availability (stellarator_09__stellaris__calendar__availability)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__availability",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__availability (stellarator_09__stellaris__calendar__availability)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__availability",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__availability (stellarator_09__stellaris__calendar__availability)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__cas72_annual",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__cas72_annual (stellarator_09__stellaris__calendar__cas72_annual)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__cas72_annual",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__cas72_annual (stellarator_09__stellaris__calendar__cas72_annual)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__cas72_annual",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__cas72_annual (stellarator_09__stellaris__calendar__cas72_annual)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__coil_life_margin_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__coil_life_margin_fpy (stellarator_09__stellaris__calendar__coil_life_margin_fpy)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__coil_life_margin_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__coil_life_margin_fpy (stellarator_09__stellaris__calendar__coil_life_margin_fpy)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__coil_life_margin_fpy",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__coil_life_margin_fpy (stellarator_09__stellaris__calendar__coil_life_margin_fpy)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__dated_energy_ratio",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__dated_energy_ratio (stellarator_09__stellaris__calendar__dated_energy_ratio)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__dated_energy_ratio",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__dated_energy_ratio (stellarator_09__stellaris__calendar__dated_energy_ratio)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__dated_energy_ratio",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__dated_energy_ratio (stellarator_09__stellaris__calendar__dated_energy_ratio)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__n_replacements",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__n_replacements (stellarator_09__stellaris__calendar__n_replacements)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__n_replacements",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__n_replacements (stellarator_09__stellaris__calendar__n_replacements)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__n_replacements",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__n_replacements (stellarator_09__stellaris__calendar__n_replacements)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__physical_life_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__physical_life_fpy (stellarator_09__stellaris__calendar__physical_life_fpy)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__physical_life_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__physical_life_fpy (stellarator_09__stellaris__calendar__physical_life_fpy)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__physical_life_fpy",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__physical_life_fpy (stellarator_09__stellaris__calendar__physical_life_fpy)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__planned_downtime_yr",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__planned_downtime_yr (stellarator_09__stellaris__calendar__planned_downtime_yr)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__planned_downtime_yr",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__planned_downtime_yr (stellarator_09__stellaris__calendar__planned_downtime_yr)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__planned_downtime_yr",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__planned_downtime_yr (stellarator_09__stellaris__calendar__planned_downtime_yr)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__productive_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__productive_fpy (stellarator_09__stellaris__calendar__productive_fpy)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__productive_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__productive_fpy (stellarator_09__stellaris__calendar__productive_fpy)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__productive_fpy",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__productive_fpy (stellarator_09__stellaris__calendar__productive_fpy)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__replacement_pv",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__replacement_pv (stellarator_09__stellaris__calendar__replacement_pv)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__replacement_pv",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__replacement_pv (stellarator_09__stellaris__calendar__replacement_pv)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__replacement_pv",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__replacement_pv (stellarator_09__stellaris__calendar__replacement_pv)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__terminal_downtime_yr",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__terminal_downtime_yr (stellarator_09__stellaris__calendar__terminal_downtime_yr)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__terminal_downtime_yr",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__terminal_downtime_yr (stellarator_09__stellaris__calendar__terminal_downtime_yr)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__terminal_downtime_yr",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__terminal_downtime_yr (stellarator_09__stellaris__calendar__terminal_downtime_yr)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__calendar__unplanned_downtime_yr",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__unplanned_downtime_yr (stellarator_09__stellaris__calendar__unplanned_downtime_yr)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__calendar__unplanned_downtime_yr",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['calendar__unplanned_downtime_yr (stellarator_09__stellaris__calendar__unplanned_downtime_yr)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__calendar__unplanned_downtime_yr",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['calendar__unplanned_downtime_yr (stellarator_09__stellaris__calendar__unplanned_downtime_yr)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas20_capital__cas20_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas20_capital__cas20_capital (stellarator_09__stellaris__cas20_capital__cas20_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas20_capital__cas20_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas20_capital__cas20_capital (stellarator_09__stellaris__cas20_capital__cas20_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas20_capital__cas20_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas20_capital__cas20_capital (stellarator_09__stellaris__cas20_capital__cas20_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas22_capital__cas22_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas22_capital__cas22_capital (stellarator_09__stellaris__cas22_capital__cas22_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas22_capital__cas22_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas22_capital__cas22_capital (stellarator_09__stellaris__cas22_capital__cas22_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas22_capital__cas22_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas22_capital__cas22_capital (stellarator_09__stellaris__cas22_capital__cas22_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas23_to_28_capital__cas23_to_28_capital (stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas23_to_28_capital__cas23_to_28_capital (stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas23_to_28_capital__cas23_to_28_capital (stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas2x_pre_contingency__cas2x_pre_contingency (stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas2x_pre_contingency__cas2x_pre_contingency (stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas2x_pre_contingency__cas2x_pre_contingency (stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas70_calc__annual_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas70_calc__annual_total (stellarator_09__stellaris__cas70_calc__annual_total)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas70_calc__annual_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas70_calc__annual_total (stellarator_09__stellaris__cas70_calc__annual_total)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas70_calc__annual_total",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas70_calc__annual_total (stellarator_09__stellaris__cas70_calc__annual_total)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas70_calc__cas70",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas70_calc__cas70 (stellarator_09__stellaris__cas70_calc__cas70)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas70_calc__cas70",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas70_calc__cas70 (stellarator_09__stellaris__cas70_calc__cas70)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas70_calc__cas70",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas70_calc__cas70 (stellarator_09__stellaris__cas70_calc__cas70)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas71_calc__crf",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas71_calc__crf (stellarator_09__stellaris__cas71_calc__crf)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas71_calc__crf",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas71_calc__crf (stellarator_09__stellaris__cas71_calc__crf)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas71_calc__crf",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas71_calc__crf (stellarator_09__stellaris__cas71_calc__crf)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas71_calc__levelized",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas71_calc__levelized (stellarator_09__stellaris__cas71_calc__levelized)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas71_calc__levelized",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas71_calc__levelized (stellarator_09__stellaris__cas71_calc__levelized)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas71_calc__levelized",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas71_calc__levelized (stellarator_09__stellaris__cas71_calc__levelized)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas80_calc__crf",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas80_calc__crf (stellarator_09__stellaris__cas80_calc__crf)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas80_calc__crf",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas80_calc__crf (stellarator_09__stellaris__cas80_calc__crf)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas80_calc__crf",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas80_calc__crf (stellarator_09__stellaris__cas80_calc__crf)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas80_calc__levelized",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas80_calc__levelized (stellarator_09__stellaris__cas80_calc__levelized)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas80_calc__levelized",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas80_calc__levelized (stellarator_09__stellaris__cas80_calc__levelized)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas80_calc__levelized",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas80_calc__levelized (stellarator_09__stellaris__cas80_calc__levelized)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas90_1cfe_calc__cas90 (stellarator_09__stellaris__cas90_1cfe_calc__cas90)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cas90_1cfe_calc__cas90 (stellarator_09__stellaris__cas90_1cfe_calc__cas90)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cas90_1cfe_calc__cas90 (stellarator_09__stellaris__cas90_1cfe_calc__cas90)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__casing_mass__m_casing",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['casing_mass__m_casing (stellarator_09__stellaris__casing_mass__m_casing)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__casing_mass__m_casing",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['casing_mass__m_casing (stellarator_09__stellaris__casing_mass__m_casing)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__casing_mass__m_casing",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['casing_mass__m_casing (stellarator_09__stellaris__casing_mass__m_casing)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__coil_length__c_coil",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['coil_length__c_coil (stellarator_09__stellaris__coil_length__c_coil)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__coil_length__c_coil",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['coil_length__c_coil (stellarator_09__stellaris__coil_length__c_coil)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__coil_length__c_coil",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['coil_length__c_coil (stellarator_09__stellaris__coil_length__c_coil)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cond_strain__eps_cond",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cond_strain__eps_cond (stellarator_09__stellaris__cond_strain__eps_cond)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cond_strain__eps_cond",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cond_strain__eps_cond (stellarator_09__stellaris__cond_strain__eps_cond)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cond_strain__eps_cond",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cond_strain__eps_cond (stellarator_09__stellaris__cond_strain__eps_cond)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__contingency__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['contingency__cost (stellarator_09__stellaris__contingency__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__contingency__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['contingency__cost (stellarator_09__stellaris__contingency__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__contingency__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['contingency__cost (stellarator_09__stellaris__contingency__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__coolant__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['coolant__cost (stellarator_09__stellaris__coolant__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__coolant__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['coolant__cost (stellarator_09__stellaris__coolant__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__coolant__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['coolant__cost (stellarator_09__stellaris__coolant__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cryo_elec__p_elec",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cryo_elec__p_elec (stellarator_09__stellaris__cryo_elec__p_elec)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cryo_elec__p_elec",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cryo_elec__p_elec (stellarator_09__stellaris__cryo_elec__p_elec)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cryo_elec__p_elec",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cryo_elec__p_elec (stellarator_09__stellaris__cryo_elec__p_elec)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cycle__T2_C",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__T2_C (stellarator_09__stellaris__cycle__T2_C)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cycle__T2_C",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__T2_C (stellarator_09__stellaris__cycle__T2_C)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cycle__T2_C",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cycle__T2_C (stellarator_09__stellaris__cycle__T2_C)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cycle__domain_product",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__domain_product (stellarator_09__stellaris__cycle__domain_product)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cycle__domain_product",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__domain_product (stellarator_09__stellaris__cycle__domain_product)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cycle__domain_product",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cycle__domain_product (stellarator_09__stellaris__cycle__domain_product)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cycle__eta_fit",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__eta_fit (stellarator_09__stellaris__cycle__eta_fit)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cycle__eta_fit",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__eta_fit (stellarator_09__stellaris__cycle__eta_fit)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cycle__eta_fit",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cycle__eta_fit (stellarator_09__stellaris__cycle__eta_fit)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cycle__eta_th",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__eta_th (stellarator_09__stellaris__cycle__eta_th)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cycle__eta_th",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__eta_th (stellarator_09__stellaris__cycle__eta_th)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cycle__eta_th",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cycle__eta_th (stellarator_09__stellaris__cycle__eta_th)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cycle__margin_high",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__margin_high (stellarator_09__stellaris__cycle__margin_high)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cycle__margin_high",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__margin_high (stellarator_09__stellaris__cycle__margin_high)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cycle__margin_high",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cycle__margin_high (stellarator_09__stellaris__cycle__margin_high)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__cycle__margin_low",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__margin_low (stellarator_09__stellaris__cycle__margin_low)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__cycle__margin_low",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['cycle__margin_low (stellarator_09__stellaris__cycle__margin_low)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__cycle__margin_low",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['cycle__margin_low (stellarator_09__stellaris__cycle__margin_low)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divertor_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divertor_cost__cost (stellarator_09__stellaris__divertor_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divertor_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divertor_cost__cost (stellarator_09__stellaris__divertor_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divertor_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divertor_cost__cost (stellarator_09__stellaris__divertor_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__f_rad_edge",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__f_rad_edge (stellarator_09__stellaris__divheat__f_rad_edge)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__f_rad_edge",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__f_rad_edge (stellarator_09__stellaris__divheat__f_rad_edge)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__f_rad_edge",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__f_rad_edge (stellarator_09__stellaris__divheat__f_rad_edge)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__f_rad_edge_in_range",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__f_rad_edge_in_range (stellarator_09__stellaris__divheat__f_rad_edge_in_range)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__f_rad_edge_in_range",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__f_rad_edge_in_range (stellarator_09__stellaris__divheat__f_rad_edge_in_range)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__f_rad_edge_in_range",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__f_rad_edge_in_range (stellarator_09__stellaris__divheat__f_rad_edge_in_range)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__p_heat_abs",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_heat_abs (stellarator_09__stellaris__divheat__p_heat_abs)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__p_heat_abs",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_heat_abs (stellarator_09__stellaris__divheat__p_heat_abs)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__p_heat_abs",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__p_heat_abs (stellarator_09__stellaris__divheat__p_heat_abs)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__p_heat_operating_minus_installed",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_heat_operating_minus_installed (stellarator_09__stellaris__divheat__p_heat_operating_minus_installed)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__p_heat_operating_minus_installed",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_heat_operating_minus_installed (stellarator_09__stellaris__divheat__p_heat_operating_minus_installed)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__p_heat_operating_minus_installed",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__p_heat_operating_minus_installed (stellarator_09__stellaris__divheat__p_heat_operating_minus_installed)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__p_sep",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_sep (stellarator_09__stellaris__divheat__p_sep)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__p_sep",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_sep (stellarator_09__stellaris__divheat__p_sep)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__p_sep",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__p_sep (stellarator_09__stellaris__divheat__p_sep)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__p_target_nonrad",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_target_nonrad (stellarator_09__stellaris__divheat__p_target_nonrad)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__p_target_nonrad",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__p_target_nonrad (stellarator_09__stellaris__divheat__p_target_nonrad)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__p_target_nonrad",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__p_target_nonrad (stellarator_09__stellaris__divheat__p_target_nonrad)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__q_target_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__q_target_margin (stellarator_09__stellaris__divheat__q_target_margin)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__q_target_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__q_target_margin (stellarator_09__stellaris__divheat__q_target_margin)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__q_target_margin",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__q_target_margin (stellarator_09__stellaris__divheat__q_target_margin)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__q_target_peak",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__q_target_peak (stellarator_09__stellaris__divheat__q_target_peak)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__q_target_peak",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__q_target_peak (stellarator_09__stellaris__divheat__q_target_peak)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__q_target_peak",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__q_target_peak (stellarator_09__stellaris__divheat__q_target_peak)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__divheat__q_target_peak_area_scaled",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__q_target_peak_area_scaled (stellarator_09__stellaris__divheat__q_target_peak_area_scaled)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__divheat__q_target_peak_area_scaled",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['divheat__q_target_peak_area_scaled (stellarator_09__stellaris__divheat__q_target_peak_area_scaled)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__divheat__q_target_peak_area_scaled",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['divheat__q_target_peak_area_scaled (stellarator_09__stellaris__divheat__q_target_peak_area_scaled)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__electric_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['electric_cost__cost (stellarator_09__stellaris__electric_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__electric_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['electric_cost__cost (stellarator_09__stellaris__electric_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__electric_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['electric_cost__cost (stellarator_09__stellaris__electric_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__field_calc__B_axis",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['field_calc__B_axis (stellarator_09__stellaris__field_calc__B_axis)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__field_calc__B_axis",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['field_calc__B_axis (stellarator_09__stellaris__field_calc__B_axis)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__field_calc__B_axis",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['field_calc__B_axis (stellarator_09__stellaris__field_calc__B_axis)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__burn_kg_per_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__burn_kg_per_fpy (stellarator_09__stellaris__fuel__burn_kg_per_fpy)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__burn_kg_per_fpy",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__burn_kg_per_fpy (stellarator_09__stellaris__fuel__burn_kg_per_fpy)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__burn_kg_per_fpy",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__burn_kg_per_fpy (stellarator_09__stellaris__fuel__burn_kg_per_fpy)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__burn_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__burn_rate (stellarator_09__stellaris__fuel__burn_rate)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__burn_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__burn_rate (stellarator_09__stellaris__fuel__burn_rate)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__burn_rate",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__burn_rate (stellarator_09__stellaris__fuel__burn_rate)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__exhaust_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__exhaust_rate (stellarator_09__stellaris__fuel__exhaust_rate)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__exhaust_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__exhaust_rate (stellarator_09__stellaris__fuel__exhaust_rate)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__exhaust_rate",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__exhaust_rate (stellarator_09__stellaris__fuel__exhaust_rate)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__inject_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__inject_rate (stellarator_09__stellaris__fuel__inject_rate)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__inject_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__inject_rate (stellarator_09__stellaris__fuel__inject_rate)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__inject_rate",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__inject_rate (stellarator_09__stellaris__fuel__inject_rate)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__loss_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__loss_rate (stellarator_09__stellaris__fuel__loss_rate)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__loss_rate",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__loss_rate (stellarator_09__stellaris__fuel__loss_rate)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__loss_rate",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__loss_rate (stellarator_09__stellaris__fuel__loss_rate)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__tbr_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__tbr_margin (stellarator_09__stellaris__fuel__tbr_margin)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__tbr_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__tbr_margin (stellarator_09__stellaris__fuel__tbr_margin)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__tbr_margin",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__tbr_margin (stellarator_09__stellaris__fuel__tbr_margin)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel__tbr_required",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__tbr_required (stellarator_09__stellaris__fuel__tbr_required)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel__tbr_required",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel__tbr_required (stellarator_09__stellaris__fuel__tbr_required)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel__tbr_required",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel__tbr_required (stellarator_09__stellaris__fuel__tbr_required)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel_calc__annual_fuel (stellarator_09__stellaris__fuel_calc__annual_fuel)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel_calc__annual_fuel (stellarator_09__stellaris__fuel_calc__annual_fuel)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel_calc__annual_fuel (stellarator_09__stellaris__fuel_calc__annual_fuel)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fuel_handling__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel_handling__cost (stellarator_09__stellaris__fuel_handling__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fuel_handling__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fuel_handling__cost (stellarator_09__stellaris__fuel_handling__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fuel_handling__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fuel_handling__cost (stellarator_09__stellaris__fuel_handling__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__fusion__p_fus",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fusion__p_fus (stellarator_09__stellaris__fusion__p_fus)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__fusion__p_fus",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['fusion__p_fus (stellarator_09__stellaris__fusion__p_fus)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__fusion__p_fus",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['fusion__p_fus (stellarator_09__stellaris__fusion__p_fus)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__geom__A",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['geom__A (stellarator_09__stellaris__geom__A)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__geom__A",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['geom__A (stellarator_09__stellaris__geom__A)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__geom__A",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['geom__A (stellarator_09__stellaris__geom__A)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__geom__V",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['geom__V (stellarator_09__stellaris__geom__V)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__geom__V",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['geom__V (stellarator_09__stellaris__geom__V)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__geom__V",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['geom__V (stellarator_09__stellaris__geom__V)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__heat__eta_pin_eff",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__eta_pin_eff (stellarator_09__stellaris__heat__eta_pin_eff)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__heat__eta_pin_eff",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__eta_pin_eff (stellarator_09__stellaris__heat__eta_pin_eff)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__heat__eta_pin_eff",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['heat__eta_pin_eff (stellarator_09__stellaris__heat__eta_pin_eff)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__heat__p_coupled",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__p_coupled (stellarator_09__stellaris__heat__p_coupled)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__heat__p_coupled",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__p_coupled (stellarator_09__stellaris__heat__p_coupled)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__heat__p_coupled",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['heat__p_coupled (stellarator_09__stellaris__heat__p_coupled)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__heat__p_delivered",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__p_delivered (stellarator_09__stellaris__heat__p_delivered)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__heat__p_delivered",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__p_delivered (stellarator_09__stellaris__heat__p_delivered)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__heat__p_delivered",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['heat__p_delivered (stellarator_09__stellaris__heat__p_delivered)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__heat__p_wallplug_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__p_wallplug_total (stellarator_09__stellaris__heat__p_wallplug_total)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__heat__p_wallplug_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat__p_wallplug_total (stellarator_09__stellaris__heat__p_wallplug_total)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__heat__p_wallplug_total",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['heat__p_wallplug_total (stellarator_09__stellaris__heat__p_wallplug_total)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__heat_rejection_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat_rejection_cost__cost (stellarator_09__stellaris__heat_rejection_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__heat_rejection_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heat_rejection_cost__cost (stellarator_09__stellaris__heat_rejection_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__heat_rejection_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['heat_rejection_cost__cost (stellarator_09__stellaris__heat_rejection_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__heating_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heating_cost__cost (stellarator_09__stellaris__heating_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__heating_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['heating_cost__cost (stellarator_09__stellaris__heating_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__heating_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['heating_cost__cost (stellarator_09__stellaris__heating_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__idc__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['idc__cost (stellarator_09__stellaris__idc__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__idc__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['idc__cost (stellarator_09__stellaris__idc__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__idc__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['idc__cost (stellarator_09__stellaris__idc__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__inc_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['inc_cost__cost (stellarator_09__stellaris__inc_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__inc_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['inc_cost__cost (stellarator_09__stellaris__inc_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__inc_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['inc_cost__cost (stellarator_09__stellaris__inc_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__indirect__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['indirect__cost (stellarator_09__stellaris__indirect__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__indirect__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['indirect__cost (stellarator_09__stellaris__indirect__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__indirect__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['indirect__cost (stellarator_09__stellaris__indirect__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__installation__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['installation__cost (stellarator_09__stellaris__installation__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__installation__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['installation__cost (stellarator_09__stellaris__installation__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__installation__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['installation__cost (stellarator_09__stellaris__installation__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['lcoe_1cfe_calc__lcoe (stellarator_09__stellaris__lcoe_1cfe_calc__lcoe)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['lcoe_1cfe_calc__lcoe (stellarator_09__stellaris__lcoe_1cfe_calc__lcoe)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['lcoe_1cfe_calc__lcoe (stellarator_09__stellaris__lcoe_1cfe_calc__lcoe)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__lcoe_calc__lcoe",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['lcoe_calc__lcoe (stellarator_09__stellaris__lcoe_calc__lcoe)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__lcoe_calc__lcoe",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['lcoe_calc__lcoe (stellarator_09__stellaris__lcoe_calc__lcoe)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__lcoe_calc__lcoe",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['lcoe_calc__lcoe (stellarator_09__stellaris__lcoe_calc__lcoe)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['magnet_capital_rollup__capital_cost (stellarator_09__stellaris__magnet_capital_rollup__capital_cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['magnet_capital_rollup__capital_cost (stellarator_09__stellaris__magnet_capital_rollup__capital_cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['magnet_capital_rollup__capital_cost (stellarator_09__stellaris__magnet_capital_rollup__capital_cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__magnet_cost__capital_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['magnet_cost__capital_cost (stellarator_09__stellaris__magnet_cost__capital_cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__magnet_cost__capital_cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['magnet_cost__capital_cost (stellarator_09__stellaris__magnet_cost__capital_cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__magnet_cost__capital_cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['magnet_cost__capital_cost (stellarator_09__stellaris__magnet_cost__capital_cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__magnet_structure_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['magnet_structure_cost__cost (stellarator_09__stellaris__magnet_structure_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__magnet_structure_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['magnet_structure_cost__cost (stellarator_09__stellaris__magnet_structure_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__magnet_structure_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['magnet_structure_cost__cost (stellarator_09__stellaris__magnet_structure_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__misc_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['misc_cost__cost (stellarator_09__stellaris__misc_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__misc_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['misc_cost__cost (stellarator_09__stellaris__misc_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__misc_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['misc_cost__cost (stellarator_09__stellaris__misc_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__om_cost__annual_om",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['om_cost__annual_om (stellarator_09__stellaris__om_cost__annual_om)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__om_cost__annual_om",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['om_cost__annual_om (stellarator_09__stellaris__om_cost__annual_om)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__om_cost__annual_om",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['om_cost__annual_om (stellarator_09__stellaris__om_cost__annual_om)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__operating_heat__p_coupled",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['operating_heat__p_coupled (stellarator_09__stellaris__operating_heat__p_coupled)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__operating_heat__p_coupled",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['operating_heat__p_coupled (stellarator_09__stellaris__operating_heat__p_coupled)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__operating_heat__p_coupled",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['operating_heat__p_coupled (stellarator_09__stellaris__operating_heat__p_coupled)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__operating_heat__p_delivered",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['operating_heat__p_delivered (stellarator_09__stellaris__operating_heat__p_delivered)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__operating_heat__p_delivered",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['operating_heat__p_delivered (stellarator_09__stellaris__operating_heat__p_delivered)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__operating_heat__p_delivered",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['operating_heat__p_delivered (stellarator_09__stellaris__operating_heat__p_delivered)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__operating_heat__p_wallplug",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['operating_heat__p_wallplug (stellarator_09__stellaris__operating_heat__p_wallplug)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__operating_heat__p_wallplug",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['operating_heat__p_wallplug (stellarator_09__stellaris__operating_heat__p_wallplug)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__operating_heat__p_wallplug",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['operating_heat__p_wallplug (stellarator_09__stellaris__operating_heat__p_wallplug)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__other_rpe__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['other_rpe__cost (stellarator_09__stellaris__other_rpe__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__other_rpe__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['other_rpe__cost (stellarator_09__stellaris__other_rpe__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__other_rpe__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['other_rpe__cost (stellarator_09__stellaris__other_rpe__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__overnight_capital__overnight_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['overnight_capital__overnight_capital (stellarator_09__stellaris__overnight_capital__overnight_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__overnight_capital__overnight_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['overnight_capital__overnight_capital (stellarator_09__stellaris__overnight_capital__overnight_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__overnight_capital__overnight_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['overnight_capital__overnight_capital (stellarator_09__stellaris__overnight_capital__overnight_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__owner__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['owner__cost (stellarator_09__stellaris__owner__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__owner__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['owner__cost (stellarator_09__stellaris__owner__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__owner__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['owner__cost (stellarator_09__stellaris__owner__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__pb__p_et",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_et (stellarator_09__stellaris__pb__p_et)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__pb__p_et",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_et (stellarator_09__stellaris__pb__p_et)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__pb__p_et",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['pb__p_et (stellarator_09__stellaris__pb__p_et)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__pb__p_net",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_net (stellarator_09__stellaris__pb__p_net)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__pb__p_net",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_net (stellarator_09__stellaris__pb__p_net)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__pb__p_net",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['pb__p_net (stellarator_09__stellaris__pb__p_net)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__pb__p_th",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_th (stellarator_09__stellaris__pb__p_th)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__pb__p_th",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_th (stellarator_09__stellaris__pb__p_th)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__pb__p_th",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['pb__p_th (stellarator_09__stellaris__pb__p_th)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__pb__p_the",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_the (stellarator_09__stellaris__pb__p_the)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__pb__p_the",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__p_the (stellarator_09__stellaris__pb__p_the)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__pb__p_the",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['pb__p_the (stellarator_09__stellaris__pb__p_the)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__pb__q_eng",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__q_eng (stellarator_09__stellaris__pb__q_eng)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__pb__q_eng",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__q_eng (stellarator_09__stellaris__pb__q_eng)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__pb__q_eng",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['pb__q_eng (stellarator_09__stellaris__pb__q_eng)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__pb__rec_frac",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__rec_frac (stellarator_09__stellaris__pb__rec_frac)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__pb__rec_frac",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['pb__rec_frac (stellarator_09__stellaris__pb__rec_frac)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__pb__rec_frac",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['pb__rec_frac (stellarator_09__stellaris__pb__rec_frac)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__peak_field_calc__B_peak",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['peak_field_calc__B_peak (stellarator_09__stellaris__peak_field_calc__B_peak)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__peak_field_calc__B_peak",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['peak_field_calc__B_peak (stellarator_09__stellaris__peak_field_calc__B_peak)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__peak_field_calc__B_peak",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['peak_field_calc__B_peak (stellarator_09__stellaris__peak_field_calc__B_peak)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__power_supplies_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['power_supplies_cost__cost (stellarator_09__stellaris__power_supplies_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__power_supplies_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['power_supplies_cost__cost (stellarator_09__stellaris__power_supplies_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__power_supplies_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['power_supplies_cost__cost (stellarator_09__stellaris__power_supplies_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__powercore_capital__powercore_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['powercore_capital__powercore_capital (stellarator_09__stellaris__powercore_capital__powercore_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__powercore_capital__powercore_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['powercore_capital__powercore_capital (stellarator_09__stellaris__powercore_capital__powercore_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__powercore_capital__powercore_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['powercore_capital__powercore_capital (stellarator_09__stellaris__powercore_capital__powercore_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__precon_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['precon_cost__cost (stellarator_09__stellaris__precon_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__precon_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['precon_cost__cost (stellarator_09__stellaris__precon_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__precon_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['precon_cost__cost (stellarator_09__stellaris__precon_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__T_comp_in",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__T_comp_in (stellarator_09__stellaris__primary_loop__T_comp_in)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__T_comp_in",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__T_comp_in (stellarator_09__stellaris__primary_loop__T_comp_in)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__T_comp_in",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__T_comp_in (stellarator_09__stellaris__primary_loop__T_comp_in)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__T_out",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__T_out (stellarator_09__stellaris__primary_loop__T_out)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__T_out",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__T_out (stellarator_09__stellaris__primary_loop__T_out)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__T_out",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__T_out (stellarator_09__stellaris__primary_loop__T_out)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__capacity_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__capacity_margin (stellarator_09__stellaris__primary_loop__capacity_margin)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__capacity_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__capacity_margin (stellarator_09__stellaris__primary_loop__capacity_margin)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__capacity_margin",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__capacity_margin (stellarator_09__stellaris__primary_loop__capacity_margin)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__dp_loop",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__dp_loop (stellarator_09__stellaris__primary_loop__dp_loop)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__dp_loop",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__dp_loop (stellarator_09__stellaris__primary_loop__dp_loop)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__dp_loop",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__dp_loop (stellarator_09__stellaris__primary_loop__dp_loop)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__mdot",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__mdot (stellarator_09__stellaris__primary_loop__mdot)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__mdot",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__mdot (stellarator_09__stellaris__primary_loop__mdot)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__mdot",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__mdot (stellarator_09__stellaris__primary_loop__mdot)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__mdot_loop",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__mdot_loop (stellarator_09__stellaris__primary_loop__mdot_loop)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__mdot_loop",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__mdot_loop (stellarator_09__stellaris__primary_loop__mdot_loop)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__mdot_loop",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__mdot_loop (stellarator_09__stellaris__primary_loop__mdot_loop)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__p_elec",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__p_elec (stellarator_09__stellaris__primary_loop__p_elec)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__p_elec",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__p_elec (stellarator_09__stellaris__primary_loop__p_elec)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__p_elec",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__p_elec (stellarator_09__stellaris__primary_loop__p_elec)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__p_loop_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__p_loop_margin (stellarator_09__stellaris__primary_loop__p_loop_margin)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__p_loop_margin",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__p_loop_margin (stellarator_09__stellaris__primary_loop__p_loop_margin)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__p_loop_margin",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__p_loop_margin (stellarator_09__stellaris__primary_loop__p_loop_margin)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__p_pump_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__p_pump_total (stellarator_09__stellaris__primary_loop__p_pump_total)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__p_pump_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__p_pump_total (stellarator_09__stellaris__primary_loop__p_pump_total)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__p_pump_total",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__p_pump_total (stellarator_09__stellaris__primary_loop__p_pump_total)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__q_ihx",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__q_ihx (stellarator_09__stellaris__primary_loop__q_ihx)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__q_ihx",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__q_ihx (stellarator_09__stellaris__primary_loop__q_ihx)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__q_ihx",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__q_ihx (stellarator_09__stellaris__primary_loop__q_ihx)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__q_recovered_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__q_recovered_total (stellarator_09__stellaris__primary_loop__q_recovered_total)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__q_recovered_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__q_recovered_total (stellarator_09__stellaris__primary_loop__q_recovered_total)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__q_recovered_total",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__q_recovered_total (stellarator_09__stellaris__primary_loop__q_recovered_total)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__r_comp",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__r_comp (stellarator_09__stellaris__primary_loop__r_comp)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__r_comp",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__r_comp (stellarator_09__stellaris__primary_loop__r_comp)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__r_comp",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__r_comp (stellarator_09__stellaris__primary_loop__r_comp)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__primary_loop__w_fluid",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__w_fluid (stellarator_09__stellaris__primary_loop__w_fluid)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__primary_loop__w_fluid",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['primary_loop__w_fluid (stellarator_09__stellaris__primary_loop__w_fluid)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__primary_loop__w_fluid",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['primary_loop__w_fluid (stellarator_09__stellaris__primary_loop__w_fluid)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__blanket_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__blanket_vol (stellarator_09__stellaris__rb__blanket_vol)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__blanket_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__blanket_vol (stellarator_09__stellaris__rb__blanket_vol)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__blanket_vol",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__blanket_vol (stellarator_09__stellaris__rb__blanket_vol)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__r_coil",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__r_coil (stellarator_09__stellaris__rb__r_coil)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__r_coil",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__r_coil (stellarator_09__stellaris__rb__r_coil)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__r_coil",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__r_coil (stellarator_09__stellaris__rb__r_coil)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__r_coil_centre",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__r_coil_centre (stellarator_09__stellaris__rb__r_coil_centre)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__r_coil_centre",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__r_coil_centre (stellarator_09__stellaris__rb__r_coil_centre)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__r_coil_centre",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__r_coil_centre (stellarator_09__stellaris__rb__r_coil_centre)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__shield_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__shield_vol (stellarator_09__stellaris__rb__shield_vol)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__shield_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__shield_vol (stellarator_09__stellaris__rb__shield_vol)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__shield_vol",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__shield_vol (stellarator_09__stellaris__rb__shield_vol)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__structure_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__structure_vol (stellarator_09__stellaris__rb__structure_vol)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__structure_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__structure_vol (stellarator_09__stellaris__rb__structure_vol)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__structure_vol",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__structure_vol (stellarator_09__stellaris__rb__structure_vol)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__vessel_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__vessel_vol (stellarator_09__stellaris__rb__vessel_vol)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__vessel_vol",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__vessel_vol (stellarator_09__stellaris__rb__vessel_vol)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__vessel_vol",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__vessel_vol (stellarator_09__stellaris__rb__vessel_vol)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__rb__wall_area",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__wall_area (stellarator_09__stellaris__rb__wall_area)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__rb__wall_area",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['rb__wall_area (stellarator_09__stellaris__rb__wall_area)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__rb__wall_area",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['rb__wall_area (stellarator_09__stellaris__rb__wall_area)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['reactor_equipment_subtotal__reactor_equipment_subtotal (stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['reactor_equipment_subtotal__reactor_equipment_subtotal (stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['reactor_equipment_subtotal__reactor_equipment_subtotal (stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__remote_handling__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['remote_handling__cost (stellarator_09__stellaris__remote_handling__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__remote_handling__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['remote_handling__cost (stellarator_09__stellaris__remote_handling__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__remote_handling__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['remote_handling__cost (stellarator_09__stellaris__remote_handling__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['replacement_cost_per_event__replacement_cost_per_event (stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['replacement_cost_per_event__replacement_cost_per_event (stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['replacement_cost_per_event__replacement_cost_per_event (stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__shield_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['shield_cost__cost (stellarator_09__stellaris__shield_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__shield_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['shield_cost__cost (stellarator_09__stellaris__shield_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__shield_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['shield_cost__cost (stellarator_09__stellaris__shield_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__source_heat__q_source",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['source_heat__q_source (stellarator_09__stellaris__source_heat__q_source)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__source_heat__q_source",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['source_heat__q_source (stellarator_09__stellaris__source_heat__q_source)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__source_heat__q_source",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['source_heat__q_source (stellarator_09__stellaris__source_heat__q_source)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['special_materials_capital__special_materials_capital (stellarator_09__stellaris__special_materials_capital__special_materials_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['special_materials_capital__special_materials_capital (stellarator_09__stellaris__special_materials_capital__special_materials_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['special_materials_capital__special_materials_capital (stellarator_09__stellaris__special_materials_capital__special_materials_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__stored_energy__W_mag",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['stored_energy__W_mag (stellarator_09__stellaris__stored_energy__W_mag)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__stored_energy__W_mag",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['stored_energy__W_mag (stellarator_09__stellaris__stored_energy__W_mag)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__stored_energy__W_mag",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['stored_energy__W_mag (stellarator_09__stellaris__stored_energy__W_mag)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__structure_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['structure_cost__cost (stellarator_09__stellaris__structure_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__structure_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['structure_cost__cost (stellarator_09__stellaris__structure_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__structure_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['structure_cost__cost (stellarator_09__stellaris__structure_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__supplementary__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['supplementary__cost (stellarator_09__stellaris__supplementary__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__supplementary__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['supplementary__cost (stellarator_09__stellaris__supplementary__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__supplementary__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['supplementary__cost (stellarator_09__stellaris__supplementary__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__T_e0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__T_e0 (stellarator_09__stellaris__sustain__T_e0)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__T_e0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__T_e0 (stellarator_09__stellaris__sustain__T_e0)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__T_e0",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__T_e0 (stellarator_09__stellaris__sustain__T_e0)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__W_th",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__W_th (stellarator_09__stellaris__sustain__W_th)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__W_th",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__W_th (stellarator_09__stellaris__sustain__W_th)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__W_th",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__W_th (stellarator_09__stellaris__sustain__W_th)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__alpha_He_eff",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__alpha_He_eff (stellarator_09__stellaris__sustain__alpha_He_eff)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__alpha_He_eff",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__alpha_He_eff (stellarator_09__stellaris__sustain__alpha_He_eff)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__alpha_He_eff",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__alpha_He_eff (stellarator_09__stellaris__sustain__alpha_He_eff)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__alpha_n_e_eff",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__alpha_n_e_eff (stellarator_09__stellaris__sustain__alpha_n_e_eff)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__alpha_n_e_eff",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__alpha_n_e_eff (stellarator_09__stellaris__sustain__alpha_n_e_eff)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__alpha_n_e_eff",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__alpha_n_e_eff (stellarator_09__stellaris__sustain__alpha_n_e_eff)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__n_D0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_D0 (stellarator_09__stellaris__sustain__n_D0)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__n_D0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_D0 (stellarator_09__stellaris__sustain__n_D0)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__n_D0",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__n_D0 (stellarator_09__stellaris__sustain__n_D0)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__n_He0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_He0 (stellarator_09__stellaris__sustain__n_He0)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__n_He0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_He0 (stellarator_09__stellaris__sustain__n_He0)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__n_He0",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__n_He0 (stellarator_09__stellaris__sustain__n_He0)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__n_T0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_T0 (stellarator_09__stellaris__sustain__n_T0)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__n_T0",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_T0 (stellarator_09__stellaris__sustain__n_T0)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__n_T0",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__n_T0 (stellarator_09__stellaris__sustain__n_T0)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__n_bar19",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_bar19 (stellarator_09__stellaris__sustain__n_bar19)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__n_bar19",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_bar19 (stellarator_09__stellaris__sustain__n_bar19)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__n_bar19",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__n_bar19 (stellarator_09__stellaris__sustain__n_bar19)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__n_e_volav",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_e_volav (stellarator_09__stellaris__sustain__n_e_volav)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__n_e_volav",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__n_e_volav (stellarator_09__stellaris__sustain__n_e_volav)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__n_e_volav",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__n_e_volav (stellarator_09__stellaris__sustain__n_e_volav)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_alpha_heat",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_alpha_heat (stellarator_09__stellaris__sustain__p_alpha_heat)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_alpha_heat",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_alpha_heat (stellarator_09__stellaris__sustain__p_alpha_heat)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_alpha_heat",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_alpha_heat (stellarator_09__stellaris__sustain__p_alpha_heat)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_aux_required",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_aux_required (stellarator_09__stellaris__sustain__p_aux_required)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_aux_required",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_aux_required (stellarator_09__stellaris__sustain__p_aux_required)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_aux_required",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_aux_required (stellarator_09__stellaris__sustain__p_aux_required)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_avg",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_avg (stellarator_09__stellaris__sustain__p_avg)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_avg",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_avg (stellarator_09__stellaris__sustain__p_avg)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_avg",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_avg (stellarator_09__stellaris__sustain__p_avg)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_brems",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_brems (stellarator_09__stellaris__sustain__p_brems)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_brems",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_brems (stellarator_09__stellaris__sustain__p_brems)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_brems",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_brems (stellarator_09__stellaris__sustain__p_brems)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_line",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_line (stellarator_09__stellaris__sustain__p_line)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_line",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_line (stellarator_09__stellaris__sustain__p_line)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_line",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_line (stellarator_09__stellaris__sustain__p_line)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_rad",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_rad (stellarator_09__stellaris__sustain__p_rad)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_rad",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_rad (stellarator_09__stellaris__sustain__p_rad)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_rad",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_rad (stellarator_09__stellaris__sustain__p_rad)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__p_sync",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_sync (stellarator_09__stellaris__sustain__p_sync)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__p_sync",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__p_sync (stellarator_09__stellaris__sustain__p_sync)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__p_sync",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__p_sync (stellarator_09__stellaris__sustain__p_sync)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__sustain__tau_E",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__tau_E (stellarator_09__stellaris__sustain__tau_E)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__sustain__tau_E",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['sustain__tau_E (stellarator_09__stellaris__sustain__tau_E)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__sustain__tau_E",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['sustain__tau_E (stellarator_09__stellaris__sustain__tau_E)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__total_capital__total_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['total_capital__total_capital (stellarator_09__stellaris__total_capital__total_capital)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__total_capital__total_capital",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['total_capital__total_capital (stellarator_09__stellaris__total_capital__total_capital)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__total_capital__total_capital",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['total_capital__total_capital (stellarator_09__stellaris__total_capital__total_capital)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__turbine_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['turbine_cost__cost (stellarator_09__stellaris__turbine_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__turbine_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['turbine_cost__cost (stellarator_09__stellaris__turbine_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__turbine_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['turbine_cost__cost (stellarator_09__stellaris__turbine_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__vacuum__Q_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vacuum__Q_total (stellarator_09__stellaris__vacuum__Q_total)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__vacuum__Q_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vacuum__Q_total (stellarator_09__stellaris__vacuum__Q_total)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__vacuum__Q_total",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['vacuum__Q_total (stellarator_09__stellaris__vacuum__Q_total)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__vacuum__S_eff_required",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vacuum__S_eff_required (stellarator_09__stellaris__vacuum__S_eff_required)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__vacuum__S_eff_required",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vacuum__S_eff_required (stellarator_09__stellaris__vacuum__S_eff_required)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__vacuum__S_eff_required",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['vacuum__S_eff_required (stellarator_09__stellaris__vacuum__S_eff_required)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__vacuum__n_molecules",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vacuum__n_molecules (stellarator_09__stellaris__vacuum__n_molecules)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__vacuum__n_molecules",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vacuum__n_molecules (stellarator_09__stellaris__vacuum__n_molecules)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__vacuum__n_molecules",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['vacuum__n_molecules (stellarator_09__stellaris__vacuum__n_molecules)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__vessel_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vessel_cost__cost (stellarator_09__stellaris__vessel_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__vessel_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['vessel_cost__cost (stellarator_09__stellaris__vessel_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__vessel_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['vessel_cost__cost (stellarator_09__stellaris__vessel_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__wall_load_calc__wall_load",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wall_load_calc__wall_load (stellarator_09__stellaris__wall_load_calc__wall_load)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__wall_load_calc__wall_load",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wall_load_calc__wall_load (stellarator_09__stellaris__wall_load_calc__wall_load)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__wall_load_calc__wall_load",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['wall_load_calc__wall_load (stellarator_09__stellaris__wall_load_calc__wall_load)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__wall_peak_cal__calibration",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wall_peak_cal__calibration (stellarator_09__stellaris__wall_peak_cal__calibration)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__wall_peak_cal__calibration",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wall_peak_cal__calibration (stellarator_09__stellaris__wall_peak_cal__calibration)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__wall_peak_cal__calibration",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['wall_peak_cal__calibration (stellarator_09__stellaris__wall_peak_cal__calibration)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wall_peak_calc__wall_load_peak (stellarator_09__stellaris__wall_peak_calc__wall_load_peak)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wall_peak_calc__wall_load_peak (stellarator_09__stellaris__wall_peak_calc__wall_load_peak)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['wall_peak_calc__wall_load_peak (stellarator_09__stellaris__wall_peak_calc__wall_load_peak)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__waste__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['waste__cost (stellarator_09__stellaris__waste__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__waste__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['waste__cost (stellarator_09__stellaris__waste__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__waste__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['waste__cost (stellarator_09__stellaris__waste__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__winding_pack_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['winding_pack_cost__cost (stellarator_09__stellaris__winding_pack_cost__cost)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__winding_pack_cost__cost",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['winding_pack_cost__cost (stellarator_09__stellaris__winding_pack_cost__cost)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__winding_pack_cost__cost",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['winding_pack_cost__cost (stellarator_09__stellaris__winding_pack_cost__cost)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__wp_sizing__wp_side",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wp_sizing__wp_side (stellarator_09__stellaris__wp_sizing__wp_side)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__wp_sizing__wp_side",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wp_sizing__wp_side (stellarator_09__stellaris__wp_sizing__wp_side)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__wp_sizing__wp_side",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['wp_sizing__wp_side (stellarator_09__stellaris__wp_sizing__wp_side)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__wp_stress__sigma_wp",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wp_stress__sigma_wp (stellarator_09__stellaris__wp_stress__sigma_wp)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__wp_stress__sigma_wp",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wp_stress__sigma_wp (stellarator_09__stellaris__wp_stress__sigma_wp)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__wp_stress__sigma_wp",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['wp_stress__sigma_wp (stellarator_09__stellaris__wp_stress__sigma_wp)']"
+    },
+    {
+      "check": "absent:stellarator_09__stellaris__wp_volume__vol_cold_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wp_volume__vol_cold_total (stellarator_09__stellaris__wp_volume__vol_cold_total)']"
+    },
+    {
+      "check": "null:stellarator_09__stellaris__wp_volume__vol_cold_total",
+      "outcome": "pass",
+      "error": "case is missing required result channels: ['wp_volume__vol_cold_total (stellarator_09__stellaris__wp_volume__vol_cold_total)']"
+    },
+    {
+      "check": "nonfinite:stellarator_09__stellaris__wp_volume__vol_cold_total",
+      "outcome": "pass",
+      "error": "case has nonfinite required result channels: ['wp_volume__vol_cold_total (stellarator_09__stellaris__wp_volume__vol_cold_total)']"
+    },
+    {
+      "check": "verdict-missing",
+      "outcome": "pass",
+      "error": "case verdicts do not match the emitted constraint catalog: missing=['stellarator_09__stellaris__beta_ok__82b78aad420730d5'], unexpected=[]"
+    },
+    {
+      "check": "verdict-extra",
+      "outcome": "pass",
+      "error": "case verdicts do not match the emitted constraint catalog: missing=[], unexpected=['not-authored']"
+    },
+    {
+      "check": "execution-failed",
+      "outcome": "pass",
+      "error": "publication check: 1 of 1 cases did not complete"
+    },
+    {
+      "check": "zero-valued channels publish",
+      "outcome": "pass"
+    }
+  ],
+  "count": 478,
+  "actual_points_csv_unchanged": true
+}

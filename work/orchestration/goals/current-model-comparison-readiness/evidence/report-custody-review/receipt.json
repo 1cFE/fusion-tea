@@ -1,0 +1,28 @@
+{
+  "status": "PASS bounded R3 report custody implementation",
+  "suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "196",
+      "time": "6.841",
+      "timestamp": "2026-09-19T19:16:32.987822-07:00",
+      "hostname": "reid-workstation"
+    }
+  ],
+  "sources_and_receipts_sha256": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/compare_candidate.py": "07bba5bf5d9c8b9e147bd726d0a2f65007efec4a2d616b072e5195b64934d561",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/report_custody.py": "549ce8136dd2ca34fd3742745ee95c56d319b3e7677f5bf6d2a01ff6e8880e92",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/candidate_common.py": "7961e831554a1791eee8e08f7a9d790ea8313e66639f65bd4c9472b296c3a561",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py": "c10844cadb7b118163bd979224282fa26b008fd25ea6cb274f214b8bd56ac507",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py": "c5c34256a246086e9662750f7105429c4ba0ca7fb84061d4ecb49e5ef9a49719",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py": "b70c3b507e60fc6c7ec3ad53a172f7f8fa29cb46c1d9f715e899bb432156eb56",
+    "tests/test_candidate_report_custody.py": "4ac6ee5d4dcb81565790895815c83c3f807a34f8c9fbbde2f196f08f6a637e5f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/report-custody-design.md": "a3743306b80833f59a746b00c9448e8515c3674179fb0c5816ba659f210c1221",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/report-custody-review/combined.log": "2259f8fcffe7f72313396f37de73f2d7b488f1f6db6045091103520601a67bdc",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/report-custody-review/combined.xml": "8925ebd544bbd6b2b110d5c051158dd89d6208514420e1f92316b81b4a1a3ee0"
+  },
+  "scope": "Synthetic custody and compatibility only; no actual candidate archive, reveal, adoption, restoration certification or scientific readiness."
+}

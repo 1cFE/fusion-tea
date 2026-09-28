@@ -1,0 +1,52 @@
+{
+  "negative": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ValueError: LOCAL_WINDING_DOMAIN",
+    "sizing_calls": [
+      [
+        -15400000.0,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "sustain_calls": []
+  },
+  "zero": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: SustainmentError: SUSTAIN_ZERO_FIELD_DOMAIN",
+    "sizing_calls": [
+      [
+        0.0,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "sustain_calls": [
+      0.0
+    ]
+  },
+  "nan": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ValueError: LOCAL_WINDING_DOMAIN",
+    "sizing_calls": [
+      [
+        NaN,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "sustain_calls": []
+  },
+  "inf": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ValueError: LOCAL_WINDING_DOMAIN",
+    "sizing_calls": [
+      [
+        Infinity,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "sustain_calls": []
+  }
+}

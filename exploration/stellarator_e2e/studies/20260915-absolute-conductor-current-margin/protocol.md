@@ -1,0 +1,15 @@
+# Absolute-current study protocol
+
+[OWNER] The verbatim scientific request is retained in `preparation/owner-study-intake.txt`. Source quarantine and no merge/push apply throughout. The coordinator supplies the audited candidate and execution release. The entering baseline is the captured revision in `preparation/entering-comparison.json`; those 117 rows are controls on the new package, not new native evaluations of the old one.
+
+[AGENT] Evaluate 296 report rows before physical-coordinate deduplication, capped at 320 unique native points. Their complete definitions are retained in the resolved proposals. All axes are sensitivity-framed. The material band and sample interval are distinct source-informed scenarios; orientation gains and retention factors are engineering assumptions. Do not combine overlapping manufacturing variation and lift scatter as independent uncertainty. No optimizer, automatic resizing or continuous boundary claim is part of this protocol.
+
+[INHERITED: source/interface review] Use the independently reviewed 200 A/4 mm statistical normalization at 20 K, 20 T perpendicular field, transferred to 6 mm width and 56 μm composite thickness. The 20–24 T law is an empirical approximation. Above 24 T and through 32 T is explicitly enabled extrapolation. Complete high-field electric-field criterion and exact specimen construction identity remain unverified. Unit retention is an optimistic ideal assembly. The source and review are copied in preparation/, with original quantitative figure witnesses and the published extraction.
+
+[AGENT] Preserve all entering scalar outputs and nineteen native predicates. Report these separately from the reference-conductor-current predicate and all twenty together. Compare turn current with reference and set-effective assembly capacity; never count series turns as parallel capacity. Apply operating allowance once. Preserve nominal geometry and fit failure. The m000 orientation scenario and nominal reference demonstrate predicate independence without treating orientation assumptions as qualified geometry.
+
+[AGENT] The native prepared-list lifecycle owns every point, case state, qualified predicate and stored output. Declare all contract numeric channels before execution. Sample verification remains required alongside all-point independent-oracle scalar/predicate comparison. Verify unchanged old quantities at entering coordinates and paired performance-only changes. Retain raw native-store joins and every hashed artifact. Coordinator review remains distinct from independent assurance.
+
+## Reproduction environment
+
+The retained scripts run from the repository root with `.codex-test/run`. Native commands additionally require `PYTHONPATH=.:/home/reid/1cfe/teax/packages/teax-simkit` and `STUDY_REQUIRE_TEAX=1`, matching the documented integration producer environment. The sealed executable/semantic identities and TEAx revision are resolved in snapshot.json. Stored evidence can be queried and checked without rerunning cases; `execution/execute.py --export-only` performs that query/export. A frozen study is not overwritten by a fresh execution.

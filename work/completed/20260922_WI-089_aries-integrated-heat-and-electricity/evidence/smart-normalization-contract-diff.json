@@ -1,0 +1,72 @@
+[
+  {
+    "path": "/artifact_hashes/handwritten/dual_circuit_heat_accounting/coolant_branch_heat_impl.py",
+    "before": "f47a6b224695e57687c19a7c9a0dfdb5867354124e99ae5c2f61400021bf0210",
+    "after": "394ecc40cb4ad2ff5f3c011742b59a48532fc2e6162c15eb0ea74311971d1f08"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/fixed_outlet_conditioning_impl.py",
+    "before": "fe9406df04751bf4eff5c528a1b670f7963de2e7aa654b8db65d5a877657a5a6",
+    "after": "8eb3ded7dd91250677f98df2ca7214e55f110f22e7c651a40567cd6b2e6c1dfc"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/fractional_pressure_loss_impl.py",
+    "before": "a156f14c570aa4e5d641ac5ee29516527b4871c20d9af984fcdcd7d8694e9445",
+    "after": "ff8d3d8cf0bb74d384cabd8b9705cf11d3d4ce4326d50ba2f3de9733e0345f3b"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/ideal_gas_compressor_impl.py",
+    "before": "e39dbf16d03b6ab305d7126443d80030f1bb99c29821eacc5d7a212746ae0d3e",
+    "after": "cf1433017835b44a4d54af69a84ba94e37933ece77682bb4a87a3717a56daf3b"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/ideal_gas_expander_impl.py",
+    "before": "ea727617a8b2b566fde783a43560b4dbbd38c7016192f729f9a95548173845bf",
+    "after": "c82fabd340c2b0bba44c6352257fefbff3403bc7f70cc352d1545781f9431918"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/fusion_source_selector_impl.py",
+    "before": "8a0682199662d25348dc4491f9884dd15e44848371384fb686eaf31c02440293",
+    "after": "9c1bc42e374c0859cb51f00d5da5ddb2af6f67da83b50a8598a37516a15a9ca2"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/heat_driven_closure_impl.py",
+    "before": "850f1ae6a5d91b57d7d82d002967860017bec5813b97f21a5cc4de3a7214e62d",
+    "after": "cb14057cce1250f8057a060278dba52481777469c6b94de6774ec39328485bdc"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/integrated_heat_source_impl.py",
+    "before": "1691522f8b0a9e5edb0b96bd2053fe35639654344db1d7eeff1eea98e366edef",
+    "after": "0ecec9f980c5d218286ca7c6997c7b45dad3696401eb6e4a4f915ad261b15141"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/integrated_plant_ledger_impl.py",
+    "before": "a27bcc09f2edbcccc01c7f5b091693500224d4270f3b9c69d679cc1e6c2db904",
+    "after": "834e30a3d002644420701a61df872a5fa3328db11903aa3ae03eae4c4f826074"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/passive_recuperator_impl.py",
+    "before": "ddfcb4dd027c0c6bc7077feefc9eb929d5b943127eb6167ad06d2087fefe9191",
+    "after": "71639eac63218714a13b0f6a979043a5879617caa65cb25f9e48d27b26ad026a"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/plant_electrical_balance_impl.py",
+    "before": "0e8049bcbe8092d0c7792069bfa28289a5d265ae9ac87255da6c7d147e8f11f3",
+    "after": "b85e807063a02d836cacfaaf70cd795701ff3fc22080e651b1da02a2c4fca62b"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/radial_density_profile/radial_density_profile_impl.py",
+    "before": "14eaee78edcbd1b2aa0d88c29d7c1649f6dfd9f3dc82292f41e6183b79e7dfc4",
+    "after": "210644119be42d5d0ef4d591130a8c7d2e12f6de6538205e10475c980c0c99a8"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/supplied_profile_plasma/supplied_profile_plasma_impl.py",
+    "before": "ea3d0a78e3e9f5816eec6281e15addb5a8572d9c09624999e4eb29c0aa387d59",
+    "after": "4a744532411cacb72b56924a43162e7c46529f02dd7e0c17a3132e6de8668e24"
+  },
+  {
+    "path": "/executable_fingerprint",
+    "before": "469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7",
+    "after": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+  "margin": 15552.0,
+  "observed": {
+    "domain_product_in": 15552.0
+  },
+  "status": "satisfied"
+}

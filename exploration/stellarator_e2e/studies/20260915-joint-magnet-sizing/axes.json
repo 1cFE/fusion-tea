@@ -1,0 +1,195 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "magnet__casing__assembly_clearance",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__assembly_clearance",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__wall_thickness",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__wall_thickness",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__B_max",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__cabling_factor",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__cabling_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__degradation_factor",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__degradation_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__fit_aspect_ratio",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__ground_insulation",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__ground_insulation",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__internal_build_y",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__internal_build_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__j_wp",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__j_wp",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__material_factor",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__material_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__orientation_factor",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__orientation_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sharing_factor",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sharing_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sizing_mode",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__R",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__a",
+      "note": "Complete single public attribute group; physical geometry search or separately labeled scenario/control.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

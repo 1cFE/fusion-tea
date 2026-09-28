@@ -1,0 +1,17 @@
+{
+  "source": "Lyon et al., ARIES-CS systems studies, printed pp696,708,709",
+  "checks": [
+    "Visually checked printed p696 winding pack area and width/depth definitions",
+    "Visually checked p708 Table IV coil dimensions and bundled 55 MW plant+cryogenic load",
+    "Visually checked p709 Table V winding-pack mass and Table VI scope; masses do not identify material fractions or volumes"
+  ],
+  "files": {
+    ".project/active/aries-comparison-preparation/post-reveal-preparation/mapping/evidence/lyon-p708.png": "2e2f25ee55f4537160fa5d5ec7906a7981f15ff6a584fa117c79357df2a9ada4",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/source-evidence/retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be",
+    ".project/active/aries-comparison-preparation/final-assessment/evidence/quantity-lyon-p696.png": "22020a3cb2e744b674758c129ca5f0da88049e21f814bacdcdce8dd106afc8e6",
+    ".project/active/aries-comparison-preparation/final-assessment/evidence/quantity-lyon-p696.md": "9b2548c59943d5f91dfc114c709225c9dcfcf382d9c201d78669a74ec8d3ff19",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/source-evidence/retained/knowledge/holdout/aries-cs/08-FST-Lyon.pdf": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067"
+  },
+  "plant_evaluations": 0,
+  "new_reference_inputs": 0
+}

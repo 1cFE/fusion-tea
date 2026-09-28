@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "-c",
+    "import sys,json,hashlib,pathlib,importlib\nr=pathlib.Path.cwd();sys.path.insert(0,str(r/'exploration/stellarator_e2e/studies'))\nnames=['study_route','oracle_entry','exploration.stellarator_e2e.oracle_matched_cycle','scripts.study.verify']\no={}\nfor n in names:\n p=pathlib.Path(importlib.import_module(n).__file__).resolve();assert p.is_relative_to(r),(n,p);o[n]={'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}\nfor n in ['models/library/data/matched_steam_properties.json','exploration/stellarator_e2e/models/data/matched_steam_properties.json','exploration/stellarator_e2e/oracle_matched_cycle_properties.json']:\n p=r/n;o[n]={'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}\nprint(json.dumps(o,indent=2))"
+  ],
+  "cwd": "/tmp/wi073-actual-archive-qvqi6313",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log_sha256": "0df61cd9216ec849b53d01eb12f37763daab93cd44745a8c31efafd55599f86f"
+}

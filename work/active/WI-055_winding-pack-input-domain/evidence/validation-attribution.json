@@ -1,0 +1,68 @@
+[
+  {
+    "level": 1,
+    "before_success": true,
+    "after_success": true,
+    "new_issues": [],
+    "removed_issues": [],
+    "count_issues": 0,
+    "new_warnings": [],
+    "removed_warnings": [],
+    "count_warnings": 0
+  },
+  {
+    "level": 2,
+    "before_success": false,
+    "after_success": false,
+    "new_issues": [],
+    "removed_issues": [],
+    "count_issues": 10,
+    "new_warnings": [],
+    "removed_warnings": [],
+    "count_warnings": 0
+  },
+  {
+    "level": 3,
+    "before_success": true,
+    "after_success": true,
+    "new_issues": [],
+    "removed_issues": [],
+    "count_issues": 0,
+    "new_warnings": [],
+    "removed_warnings": [],
+    "count_warnings": 0
+  },
+  {
+    "level": 4,
+    "before_success": true,
+    "after_success": true,
+    "new_issues": [],
+    "removed_issues": [],
+    "count_issues": 0,
+    "new_warnings": [],
+    "removed_warnings": [],
+    "count_warnings": 0
+  },
+  {
+    "level": 5,
+    "before_success": true,
+    "after_success": true,
+    "new_issues": [],
+    "removed_issues": [],
+    "count_issues": 0,
+    "new_warnings": [],
+    "removed_warnings": [],
+    "count_warnings": 0
+  },
+  {
+    "level": 6,
+    "before_success": false,
+    "after_success": false,
+    "new_issues": [],
+    "removed_issues": [],
+    "count_issues": 279,
+    "new_warnings": [],
+    "removed_warnings": [],
+    "count_warnings": 0
+  }
+]

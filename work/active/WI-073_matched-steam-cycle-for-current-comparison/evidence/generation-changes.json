@@ -1,0 +1,122 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "1c7faf83bc88be63a3efa9c90ebdb98bdbb9a0a77e78a6791b7d4e29cfb80655",
+    "after": "b067b9144902baa46093391bc2c8f1e2ad2f3040b41d58f6771bf77b7d10b5b8"
+  },
+  "contracts/model_contract.json": {
+    "before": "6d111c672b1486b41aacbdc7c0aa6c3bde836cd82503510448d99b03c879f29c",
+    "after": "20d1e59b4cecf0ee22120026f372202d26010517ef875371afe10f8f496b0d00"
+  },
+  "contracts/package_contract.json": {
+    "before": "9c6c440d0d78a7b35ee6f9c25047e419239c8837a8a1b0e92997401485460aac",
+    "after": "5bd63b8187b0b6e1b09a9a09e00d87b19db8f0220224b5cda2be230a23209fc2"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+    "before": "df8d435deb7222089baeeebfb12559524febf2612cb59b291c21d4485e28a966",
+    "after": "abc294ed8285cb8086ba112bcf313e23c176f04e01a7d012d08e3317bf4ab844"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+    "before": "37ad0458ae2d312635dc8756a166d16704c55b572e9491198e09aae534db7913",
+    "after": "3db0c59f6d7be1ff8bc22e1b39e76643f55529474b0844418f4dfacc9d947729"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+    "before": "654993dad08c945b129accdf11d6e64a0c4379cca131f1a89978e9c628c84605",
+    "after": "0e69ae6eb1fdf1fd8669ad220cd4ca8b97b4b66dba71db858ee70d81c1ccaec8"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+    "before": "601b163bd6597c29b0330259e4620370925f40fb2a93988245e2df471b3bd2ce",
+    "after": "793547e765c8d91926924a68d63d474cf4dab385ef049ea55f5896a48f358e10"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+    "before": "632fd9ae0b611160e68f12738561b3758958a9f81096f8c47db44d1d1d5e1f59",
+    "after": "3078ceb66447b611aae1f9b72a0378fccaaea0cfc77dc622b828a70e60a3fc94"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+    "before": "b5c06bfcb088f29821a08bc08df7045384adb3a3bd57186ebf8aee977a41417b",
+    "after": "eb9527e7e6629309bf6d2825784fd82c4ca94c0e7bd68a2e6b631b2570eefe3b"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+    "before": "d03aa25320260c240bc74ea40719fca7f53e361b000a171546dabf19400bcbdf",
+    "after": "c227e2e5650ac552f5c6da1f30ced5a2659f5ff9ff31d057d35fb749d0e4d973"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+    "before": "3a842016830bdd4cbdf956a23542f7678724e6d63e690226e34b0c8cb086cc68",
+    "after": "fb172d6d8cfa4cfb672b1e457150885abd0073d82065a8fe580a0a1397822ee2"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+    "before": "065531ed2329f352fa1c1ff3d36d830552d98b1e0620cf9d89603336add8cd48",
+    "after": "74d22449f65cdd9d06eac4cfbf03cd60eaf5b5fef8d14c86fcc83827a3e64d1d"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+    "before": "037cdadd0a4a6236c64ce1f5df61b18f88ade0dc659c54592fe4889d2a86b3e6",
+    "after": "16572acdb1b826388256394d3727af35627dd161eaf0985b0cb5f20d8aafea2f"
+  },
+  "modules/mfe_matched_steam_cycle/cooling_water_rejection.py": {
+    "before": "33c5d9c5a0e1260adec4ad624b271bd1e2e1ddd1c3c019c681a661a0c74566e7",
+    "after": "77767af44cb6c793d2b486aff8be94a4abedf38091933341bdc091d64a3aaade"
+  },
+  "modules/mfe_matched_steam_cycle/cycle_mode_selection.py": {
+    "before": "4fb6df8a1be7c3b32e204ba19487227a596eb798338b302465f21e1db5b794f1",
+    "after": "d75f44bd96b70895704ded4456e4bbd9a18d3433c14c644f7aadfff35972eb7f"
+  },
+  "modules/mfe_matched_steam_cycle/matched_steam_cycle.py": {
+    "before": "889d4cd5347da41d3fc4b1861ae5c39474f5d9a03d807f75680b0c63db8b18ad",
+    "after": "023809bf70a7fc5394d2c0e6d7dbea96b000382220113d0c6c773abc94cd0c1e"
+  },
+  "modules/mfe_plant/mfe_power_plant/bop_capital.py": {
+    "before": "251609730c0a34d1965c2763ddf924405db425930402c75b6f38b2fb80adacd1",
+    "after": "8c571840c1251be2308cf7840154a42b9b8782adf93246056fabc1973f345b1f"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas20_capital.py": {
+    "before": "0fc7225a383b4cdc02438799f193466b12e5554bb48d9244cc598e9042bdd685",
+    "after": "344995a5ecef6989e00a333db1ae65e76c654f747306045891c334a8929779fb"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas22_capital.py": {
+    "before": "de045388e3a302bcf4d69344da7d926330d3728cdabff696bea803536e6c432a",
+    "after": "507afa0dcbdcd3e91358cf5070590eb88281fc496ee6c8c7004073b3cfe18f3c"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py": {
+    "before": "c7dc592cd5d2fd6578dc4edfd798a6f59765839688ff29c8c14f71a62466ea8f",
+    "after": "9d334383f20eaac698c8a9f50cf07845b3d6c3e3f59b865b2e3729aeef0cf27c"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py": {
+    "before": "5e0d3437805e859d26b5180e72e944f73e2d11366330bfca9ec093c56313ff94",
+    "after": "29c0b718f9400d2a88f6b8a764373f91f491c0ed0448e9fa7b6e0a7008e92151"
+  },
+  "modules/mfe_plant/mfe_power_plant/overnight_capital.py": {
+    "before": "3dc816b11c8364358bf399f7a33fce2692b7a6157417c0f0dc6fa1780ed6ffce",
+    "after": "d15c322f26143e0eb0145462011f60b0f897c54f0971db34db724646d71a78ad"
+  },
+  "modules/mfe_plant/mfe_power_plant/powercore_capital.py": {
+    "before": "b11733b6072ba9810ce93a2dd50232a6ec820789eab03d48ad180224a3684844",
+    "after": "94aa2316c75ff01bcd9cc21c45db1e75ccc0155d597d3b79b703b884225a6971"
+  },
+  "modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py": {
+    "before": "6575b9ce4613fd1dd040661251ad8d67657909e57c6051d899426f51f7ba8378",
+    "after": "0367fc0890e9d58bbfe5765dcb1a30edbf8b4092b61636e892f7d46bb0d93c4f"
+  },
+  "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": {
+    "before": "3f12213c5680c7ddb2950f29c5f9b42e6f653e400d41e7518de4de9f02c6fd12",
+    "after": "bfee9cea063ac1f39af73ab211957e97e193b36faed13d48a7a712b85ab6e368"
+  },
+  "modules/mfe_plant/mfe_power_plant/total_capital.py": {
+    "before": "a732f0dd4612efa330ce1356b793a08ef8fa308bc631d1abfb4e3e95882f3f3c",
+    "after": "323f72ee8f243f186e5a187ec4ebc31c3f184e9b54441bcb21f26c48b813b0ae"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "a7ed00152e2c459ee4080dd0c39d5521ee2c593485633c33e5ec4a68bf30b04b",
+    "after": "3a701e906107b413ebe6c484d6df38cfbf4949cd8d76197f831b13d7893f2af4"
+  },
+  "schemas/cooling_water_rejection_output.py": {
+    "before": "01d75c38dbf63ceed5252082db534b6ea3b314d48d09503cc490d6af4e4b8c09",
+    "after": "96c66e6fae454615821ad36cf92448ee69830ca8a7aab5ba002cb7d3f992d23b"
+  },
+  "schemas/cycle_mode_selection_output.py": {
+    "before": "046767cd509026d45b727159011506abeaa97d46fb012bfd39558eb59195e4aa",
+    "after": "c41308d6e3f11a2dde6eca94fa6f3bca9f3a570790dab29781cd92b9c130e818"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "31f92bc56e37f864d47fe3b3eb9ee85092157837346497d1df17deae79f81ccc",
+    "after": "ea24860923d7631b003213b00d09151be670b1f8bf54410eeef322b77c392445"
+  }
+}

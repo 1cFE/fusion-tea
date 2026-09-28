@@ -1,0 +1,438 @@
+{
+  "status": "Numerical release candidate; independent review and physical acceptance are separate",
+  "fixed_geometry": {
+    "R_in": 12.7,
+    "a_in": 1.3,
+    "kappa_in": 1.0,
+    "vacuum_t_in": 0.1,
+    "firstwall_t_in": 0.05,
+    "reflector_t_in": 0.2,
+    "ht_shield_t_in": 0.2,
+    "structure_t_in": 0.15,
+    "gap1_t_in": 0.1,
+    "vessel_t_in": 0.1
+  },
+  "nodes": [
+    {
+      "thickness_m": 0.6,
+      "tbr_li6": 1.088116480899035,
+      "tbr_li7": 0.0033304339538673773,
+      "std_error": 0.0016243382548869433
+    },
+    {
+      "thickness_m": 0.7,
+      "tbr_li6": 1.1506688439561357,
+      "tbr_li7": 0.003353444871548617,
+      "std_error": 0.0015620714665053248
+    },
+    {
+      "thickness_m": 0.8,
+      "tbr_li6": 1.1947266274106922,
+      "tbr_li7": 0.0033472921433443455,
+      "std_error": 0.0009641692758224518
+    },
+    {
+      "thickness_m": 0.9,
+      "tbr_li6": 1.2276026074272819,
+      "tbr_li7": 0.003356421456190367,
+      "std_error": 0.001830689602313662
+    },
+    {
+      "thickness_m": 1.0,
+      "tbr_li6": 1.2490901192043666,
+      "tbr_li7": 0.0033586608751626874,
+      "std_error": 0.0016469771483325153
+    }
+  ],
+  "interpolation_allowance": 0.01,
+  "statistical_multiplier": 2.0,
+  "domain": {
+    "breeder_thickness_m": [
+      0.6,
+      1.0
+    ],
+    "li6_atom_fraction": 0.7,
+    "extrapolation": false,
+    "interpolation": "piecewise linear",
+    "statistical_variance": "sum of squared interpolation weights times independent node variances"
+  },
+  "scenario": {
+    "id": "hcll-toroidal-single-window-uniform-773K-endfb8",
+    "lithium_atom_fraction_in_PbLi": 0.158,
+    "li6_atom_fraction_within_lithium": 0.7,
+    "source": {
+      "energy_eV": 14060000.0,
+      "spatial": "uniform per physical plasma volume with exact toroidal Jacobian",
+      "angular": "isotropic"
+    },
+    "opening": {
+      "type": "one contiguous toroidal window",
+      "angle_degrees": 10.8,
+      "removed_volume_fraction": 0.03,
+      "voided_layers": [
+        "breeder",
+        "reflector",
+        "ht_shield"
+      ],
+      "retained_layers": [
+        "firstwall",
+        "structure",
+        "vessel"
+      ],
+      "qualification": "declared conceptual opening; not actual port/divertor reconstruction"
+    },
+    "materials": {
+      "status": "Research material scenario with sourced representative densities; not manufactured-blanket qualification",
+      "temperature_basis": "773.15K source-matched PbLi and He; solid densities representative constants, not temperature-qualified laws",
+      "natural_elements": "Expand unspecified isotopes using pinned OpenMC natural-abundance table; export expansion and nuclear-data coverage. No silent missing-isotope renormalization.",
+      "constituents": {
+        "PbLi": {
+          "density_g_cm3": 9.15,
+          "temperature_K": 773.15,
+          "composition_basis": "atomic",
+          "composition": {
+            "Pb": 0.842,
+            "Li6": 0.1106,
+            "Li7": 0.0474
+          },
+          "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+          "pdf_page": [
+            63,
+            64
+          ]
+        },
+        "Eurofer": {
+          "density_g_cm3": 7.8,
+          "temperature_K": 773.15,
+          "composition_basis": "weight",
+          "composition": {
+            "Fe": 0.8927,
+            "C": 0.0011,
+            "Mn": 0.004,
+            "Cr": 0.09,
+            "Ta": 0.0012,
+            "W": 0.011
+          },
+          "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+          "pdf_page": 64
+        },
+        "Eurofer_FW": {
+          "density_g_cm3": 7.78,
+          "temperature_K": 773.15,
+          "composition_basis": "weight",
+          "composition": {
+            "Fe": 0.8927,
+            "C": 0.0011,
+            "Mn": 0.004,
+            "Cr": 0.09,
+            "Ta": 0.0012,
+            "W": 0.011
+          },
+          "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+          "pdf_page": 64
+        },
+        "He": {
+          "density_g_cm3": 0.0056,
+          "temperature_K": 773.15,
+          "composition_basis": "atomic",
+          "composition": {
+            "He4": 1.0
+          },
+          "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+          "pdf_page": 64
+        },
+        "W": {
+          "density_g_cm3": 19.0,
+          "temperature_K": 773.15,
+          "composition_basis": "atomic",
+          "composition": {
+            "W": 1.0
+          },
+          "source": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+          "pdf_page": 64
+        },
+        "WC": {
+          "density_g_cm3": 15.6,
+          "temperature_K": 773.15,
+          "composition_basis": "atomic",
+          "composition": {
+            "W": 0.5,
+            "C": 0.5
+          },
+          "source": "knowledge/sources/atsdr_tungsten_physical_and_chemical_properties_table_4_2/",
+          "pdf_page": null,
+          "source_locator": "Table 4-2, tungsten carbide column, density row",
+          "confidence": "Authoritative government compilation citing HSDB2004; measurement temperature and uncertainty unspecified",
+          "density_temperature_basis": "Representative constant; no thermal expansion correction to 773.15K",
+          "material_identity": "Pure stoichiometric WC; no cobalt binder or porosity modeled"
+        },
+        "SS316": {
+          "density_g_cm3": 8.0,
+          "temperature_K": 773.15,
+          "composition_basis": "weight",
+          "composition": {
+            "C": 0.0008,
+            "Mn": 0.02,
+            "P": 0.00045,
+            "S": 0.0003,
+            "Si": 0.01,
+            "Cr": 0.17,
+            "Ni": 0.12,
+            "Mo": 0.025,
+            "Fe": 0.65345
+          },
+          "source": "knowledge/sources/compendium_of_material_composition_data_for_radiation/",
+          "pdf_page": [
+            244,
+            245
+          ]
+        },
+        "B": {
+          "density_g_cm3": 2.37,
+          "temperature_K": 773.15,
+          "composition_basis": "atomic",
+          "composition": {
+            "B10": 0.199,
+            "B11": 0.801
+          },
+          "source": "knowledge/sources/compendium_of_material_composition_data_for_radiation/",
+          "pdf_page": 60
+        }
+      },
+      "mixtures_volume_fractions": {
+        "breeder": {
+          "PbLi": 0.8,
+          "Eurofer": 0.1,
+          "He": 0.1
+        },
+        "first_wall_bulk": {
+          "Eurofer_FW": 0.7,
+          "He": 0.3
+        },
+        "reflector": {
+          "WC": 0.9,
+          "He": 0.1
+        },
+        "ht_shield": {
+          "WC": 0.9,
+          "He": 0.1
+        },
+        "structure": {
+          "SS316": 1.0
+        },
+        "vessel": {
+          "SS316": 0.61,
+          "He": 0.37,
+          "B": 0.02
+        }
+      },
+      "authority": "Mixture selections are AGENT scenarios; breeder/FW/vessel recipes supported by Martinez2012 Table3-2. Enrichment70% is AGENT choice using sourceStellaris isotope scenario.",
+      "nuclear_data_temperature_basis": "600/900K cross-section interpolation at physical 773.15K is independent of density inputs; does not interpolate or qualify solid density at 500C."
+    },
+    "cross_section_temperature_method": "OpenMC interpolation between bracketing available temperatures at 773.15 K",
+    "geometry": "concentric circular-average finite tori; transmitting outer vessel, exterior void, enclosing 20 m vacuum sphere",
+    "recoverability": "Li6+Li7 tritium production in breeder only; structural production excluded",
+    "cost_convention": "unchanged full-shell cost volumes include the 3% voided inventory; conservative inventory-cost scenario if retained by consumer"
+  },
+  "provenance": {
+    "openmc_version": "0.15.2",
+    "nuclear_data": "ENDF/B-VIII.0 NNDC processed HDF5",
+    "data_repository_commit": "466ab3042f70e60b693fbbd3f6f15f30dba7cd1d",
+    "data_set_sha256": "7a9849206658c98e6d066b596d9264d8431ecb0601a53d39e711d29b772499a0",
+    "data_digest_encoding": "SHA256 of JSON concatenated manifests sorted by nuclide, sorted object keys, compact separators",
+    "evidence_root": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport",
+    "sha256": {
+      "results/table-node-t0.6/result.json": "997191f1159f643066efaab5c54f943771110c7db2dc7a4d4231aedf15b1eb95",
+      "results/table-node-t0.6/manifest.json": "1f32817e719873c26c3ed078d7cfd54f992d6a29a51417e4ea4d12a6dda18d8b",
+      "results/table-node-t0.7/result.json": "8c18328aefa406bc351b3f53878ecdea815148b0882fe02d9b6cb890d6d68c23",
+      "results/table-node-t0.7/manifest.json": "9ac9f05f53e17bd780cfc5f2c4bdabc265f706f74e8205efe94a5fd7ac1ec314",
+      "results/table-node-t0.8/result.json": "00ea14d26160028d3de560649f56e3f66ca924e328998a11f2feb03988699842",
+      "results/table-node-t0.8/manifest.json": "c83d00f0071b67eb55146bb23909782d0ddba37f6f03e463dffeaf69b1cef71e",
+      "results/table-node-t0.9/result.json": "91f0abaab877abd5fd6c8473c887d34a240bf1310bd759061b1df0eda97a732e",
+      "results/table-node-t0.9/manifest.json": "aba72af6603c0f274530fcef59d4e49057393feda96046633b24f7f1f1c4760e",
+      "results/table-node-t1/result.json": "97d99bcaf7dfdfaf1ebfce258df5aec55ef0cc4b83e64ee718592e6cd1a50584",
+      "results/table-node-t1/manifest.json": "0f7f2c3e39d162a8db50bc25913da77eefff3b9d960c62b8481a5114184178d3",
+      "results/table-withheld-t0.65/result.json": "8e63a031a338708f01c39c062474ee60f0b3dec8543747e00668753acd8bf889",
+      "results/table-withheld-t0.65/manifest.json": "08268a224c4299b98e2fca0df4adabb7c45694393ea855a99c63b0b872c337aa",
+      "results/table-withheld-t0.75/result.json": "3f95a454302fa7abb904d01ec421fc3a401e2712d70517b198f7e7fb87b58c8b",
+      "results/table-withheld-t0.75/manifest.json": "bc5df4a7fc584d091c610b1c604ba5e2dbb662089b04189b8e38c7fb990e51b4",
+      "results/table-withheld-t0.75-refine1/result.json": "e7c83189720777e03feb8976ee461fa5fde55c761fb076bc28580ccacee32e07",
+      "results/table-withheld-t0.75-refine1/manifest.json": "9390d9db5ea63da29321ae7324dc8dfecae083f057c9354029daa8b4581d8240",
+      "results/table-withheld-t0.85/result.json": "312e21cb47a2c151e28e111fd8b29303e19ccb491278e695cac3c73069857f5c",
+      "results/table-withheld-t0.85/manifest.json": "5a2c4ed4ca803647cd202625f88cb4516869ca780fc89090b2a8559823083efe",
+      "results/table-withheld-t0.85-refine1/result.json": "a0b4cd1aeac9d3fb2bf857cb69da4811d75ae523265445353a529c464f997eb3",
+      "results/table-withheld-t0.85-refine1/manifest.json": "5b088ee92c27344439d1764a48c46a2da697090f3777cde8326c15c747237ba8",
+      "results/table-withheld-t0.95/result.json": "8752fe21d7eb8d91dfca9172c1305a77b1f685163650e31590c722c7766d623b",
+      "results/table-withheld-t0.95/manifest.json": "ee76916795524282d220309c81a8ca8362d87d40b462e62b0efbf9066d72c38d",
+      "results/table-withheld-t0.625/result.json": "3b0aeb52308f7467d3f1cab08e98119dfdc7d07fe93a7a6272d9180a37ef1ca2",
+      "results/table-withheld-t0.625/manifest.json": "ce35d9490f6d134e7d5e175922523f950af322ccacc109bad4cbe98ee5b7b12d",
+      "results/table-withheld-t0.925/result.json": "1caf2e86f647ffd3bec2494854a8a0fd0e2f937daa8cc64305d91a5828e2dd0a",
+      "results/table-withheld-t0.925/manifest.json": "251f6d54006031cfa79f1bc9e5e57ea92aa16f18fb337fa58908c6f5ef8d1527",
+      "results/table-withheld-t0.925-refine1/result.json": "7f263d2331db92bef627993fd6acfe088eaa001979c6a18d9315a2c9f0182ba7",
+      "results/table-withheld-t0.925-refine1/manifest.json": "a86e97b8dad6779edff1c1b4348895a2765bd7873ec8fda2f79bfba30a8e77c4",
+      "table-plan.json": "11d0e7cbdb6da6b6b6b7b13e76cd0e6919fb7a97c4c340d80ce644858efbeaf3",
+      "table-freeze.md": "9e459e28b3e74188ccaa69edd638e89ae239cc2ac35482656e70e232dff76e48",
+      "table-validation.json": "f33ad2013a0812f0e40b12b570e3c4bb6eb6e03b7f74af1469884c4fb124aa22",
+      "material-cards.json": "4aaa41c2d6d6a9b1723f106148f6aa159d2014bca25fffa2cccbf77584ce5bf3",
+      "data-manifest-extra.json": "528ac830e509e08272978b757946f08d8a33d0850b33a697de4e5ad45654d2d0",
+      "source-verification.json": "91803cf80044ec9f0475a60bd0a51730afa1a6d224476f17a0aea1edafd661e1",
+      "geometry-verification.json": "0e1723dc24e4ad758d3f788c15a444fb91e455a6bc8be7d1b7247be12216f7bc",
+      "opening-verification.json": "c318f5d96aa26620828ed72a3c054c1729b8dff14bb73fe5057f62f2680b81d6",
+      "inventory-verification.json": "4d8e5549921561242373231569540c87b31ca3012e64d8d7e67595489fdc2912",
+      "tally-verification.json": "b13eb567c5511e0ed78bc329e446cb86df9f136cc332c12672be9efed39cb85f",
+      "precision-refinement-plan-results.json": "54b2ffa7658ab454d01faf57c2f219e5bdd06e5c61af5616532d07235b91f665",
+      "precision-refinement-plan.json": "c6a617a03d1429ded42e735f74badc660e9b07ba03b887e189042b737cc47153",
+      "precision-refinement2-plan-results.json": "ca147113ec28a0d82a8b32ea839de89e9db93639a67b55a8f12ec3e0fc2f4245",
+      "precision-refinement2-plan.json": "7d96712152a63267365013ca92f729ac68e88c02ead5acd8f347b4a65d7dbb7d",
+      "precision-refinement3-plan-results.json": "1bc2a69c5877a3606989b44984a2dd1ab00b6552c39f2dcc2715b95508644d22",
+      "precision-refinement3-plan.json": "619afc2326eba6a6a88cef9d0d8857e618b35c380cabf931cd8a3474b415a0f8",
+      "../runtime/data-manifest.json": "9afdddca2bb521a5a8c9d737c4b8b0be22a80bd47f2899b93416524300949e1f",
+      "../runtime/package-manifest.json": "b9f4d0113def71f608c80d3a4fc6639fbc995092cd06e4ba08fd568d221492ac"
+    },
+    "node_aggregation": [
+      {
+        "name": "table-node-t0.6",
+        "role": "node",
+        "thickness_m": 0.6,
+        "histories": 400000,
+        "mean": 1.0914469148529022,
+        "tbr_li6": 1.088116480899035,
+        "tbr_li7": 0.0033304339538673773,
+        "std_error": 0.0016243382548869433,
+        "target": 0.002,
+        "precision_pass": true,
+        "run_paths": [
+          "results/table-node-t0.6/result.json"
+        ]
+      },
+      {
+        "name": "table-node-t0.7",
+        "role": "node",
+        "thickness_m": 0.7,
+        "histories": 400000,
+        "mean": 1.154022288827684,
+        "tbr_li6": 1.1506688439561357,
+        "tbr_li7": 0.003353444871548617,
+        "std_error": 0.0015620714665053248,
+        "target": 0.002,
+        "precision_pass": true,
+        "run_paths": [
+          "results/table-node-t0.7/result.json"
+        ]
+      },
+      {
+        "name": "table-node-t0.8",
+        "role": "node",
+        "thickness_m": 0.8,
+        "histories": 1200000,
+        "mean": 1.1980739195540364,
+        "tbr_li6": 1.1947266274106922,
+        "tbr_li7": 0.0033472921433443455,
+        "std_error": 0.0009641692758224518,
+        "target": 0.001,
+        "precision_pass": true,
+        "run_paths": [
+          "results/table-node-t0.8/result.json"
+        ]
+      },
+      {
+        "name": "table-node-t0.9",
+        "role": "node",
+        "thickness_m": 0.9,
+        "histories": 400000,
+        "mean": 1.2309590288834722,
+        "tbr_li6": 1.2276026074272819,
+        "tbr_li7": 0.003356421456190367,
+        "std_error": 0.001830689602313662,
+        "target": 0.002,
+        "precision_pass": true,
+        "run_paths": [
+          "results/table-node-t0.9/result.json"
+        ]
+      },
+      {
+        "name": "table-node-t1",
+        "role": "node",
+        "thickness_m": 1.0,
+        "histories": 400000,
+        "mean": 1.2524487800795292,
+        "tbr_li6": 1.2490901192043666,
+        "tbr_li7": 0.0033586608751626874,
+        "std_error": 0.0016469771483325153,
+        "target": 0.002,
+        "precision_pass": true,
+        "run_paths": [
+          "results/table-node-t1/result.json"
+        ]
+      }
+    ],
+    "withheld_checks": [
+      {
+        "thickness_m": 0.65,
+        "prediction": 1.1227346018402933,
+        "direct": 1.1230881808317112,
+        "residual": -0.0003535789914179688,
+        "combined_std_error": 0.001960110551751463,
+        "conservative_discrepancy": 0.004273800094920894,
+        "tolerance": 0.01,
+        "passes": true
+      },
+      {
+        "thickness_m": 0.75,
+        "prediction": 1.1760481041908601,
+        "direct": 1.17723541270719,
+        "residual": -0.0011873085163298658,
+        "combined_std_error": 0.0012032918430214844,
+        "conservative_discrepancy": 0.0035938922023728346,
+        "tolerance": 0.01,
+        "passes": true
+      },
+      {
+        "thickness_m": 0.85,
+        "prediction": 1.2145164742187542,
+        "direct": 1.2141094087861615,
+        "residual": 0.00040706543259272365,
+        "combined_std_error": 0.001984369031130663,
+        "conservative_discrepancy": 0.004375803494854049,
+        "tolerance": 0.01,
+        "passes": true
+      },
+      {
+        "thickness_m": 0.95,
+        "prediction": 1.2417039044815006,
+        "direct": 1.2465381156928201,
+        "residual": -0.00483421121131955,
+        "combined_std_error": 0.0022432663206991945,
+        "conservative_discrepancy": 0.009320743852717939,
+        "tolerance": 0.01,
+        "passes": true
+      },
+      {
+        "thickness_m": 0.625,
+        "prediction": 1.1070907583465979,
+        "direct": 1.1107677575241919,
+        "residual": -0.003676999177594009,
+        "combined_std_error": 0.0019148693521818907,
+        "conservative_discrepancy": 0.007506737881957791,
+        "tolerance": 0.01,
+        "passes": true
+      },
+      {
+        "thickness_m": 0.925,
+        "prediction": 1.2363314666824865,
+        "direct": 1.2330735885817572,
+        "residual": 0.0032578781007293056,
+        "combined_std_error": 0.0021616777912664806,
+        "conservative_discrepancy": 0.007581233683262267,
+        "tolerance": 0.01,
+        "passes": true
+      }
+    ]
+  },
+  "limits": [
+    "Numerical lower estimate is not a physical confidence bound.",
+    "Material/source/opening alternatives can change adequacy.",
+    "Shaped-stellarator geometry and actual outer-component backscatter are not validated.",
+    "Experimental benchmark acceptance is recorded independently."
+  ]
+}

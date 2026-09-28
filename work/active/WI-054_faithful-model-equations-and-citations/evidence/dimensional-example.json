@@ -1,0 +1,27 @@
+{
+  "basis": "analytic volume integral; coefficient dimensions independent of native code; 1e-8 relative allows N=200000 trapezoid rounding",
+  "cases": [
+    {
+      "alpha_n": 0.0,
+      "analytic_MW": {
+        "brems": 1.07,
+        "line": 5.0
+      },
+      "native": {
+        "brems_MW": 1.0699999999999994,
+        "line_MW": 5.000000000000002
+      }
+    },
+    {
+      "alpha_n": 1.0,
+      "analytic_MW": {
+        "brems": 0.3566666666666667,
+        "line": 1.6666666666666667
+      },
+      "native": {
+        "brems_MW": 0.356666666662215,
+        "line_MW": 1.6666666666458465
+      }
+    }
+  ]
+}

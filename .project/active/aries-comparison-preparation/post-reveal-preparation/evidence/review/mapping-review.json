@@ -1,0 +1,27 @@
+{
+  "scope": "Independent source/input mapping review only; no numerical reference execution",
+  "status": "PASS with explicit conditional mapping and scientific limits",
+  "checks": [
+    "Directly viewed four retained source page images",
+    "Seven evidence file digests match original Git objects",
+    "Twelve generated input-file identities match",
+    "704 public keys match model contract",
+    "701 held values exactly match generated defaults",
+    "Eight physical definitions agree with tool contract",
+    "Three request selections agree with mapping contract"
+  ],
+  "files": {
+    "mapping/contract.json": "d4c1e7baf3724db59808d561dc1b97c3c530026d2a263c4333923d8a09aa0872",
+    "mapping/decisions.md": "5b1fbb4c35a3f32589e02ee3f27808da5f2c66ee43a03617317649b67f56c201",
+    "mapping/evidence/index.json": "a799441c21b689125e37092e617cfedcda1bb95b1351052fa83be813e5263ad1",
+    "mapping/evidence/lyon-p701.png": "a4bed69ae431d6f2192dd0aa3821f186092d434c439c5e1096f520c5b19f7b01",
+    "mapping/evidence/lyon-p702.png": "14a1455bc4874ab482ed92537064010370ed625c253ec6ec48a7c0097e0d23ee",
+    "mapping/evidence/lyon-p708.png": "2e2f25ee55f4537160fa5d5ec7906a7981f15ff6a584fa117c79357df2a9ada4",
+    "mapping/evidence/najmabadi-p657.png": "d155be592ece6a71ad3bd49a2415b42ffc308d54ba515a86ad1456a7e13ed529",
+    "mapping/evidence/original-independent-input-review.md": "42a4cd1b2de1ed9ce42200dbfc877002afc61e440505ba890788a213916a6984",
+    "mapping/evidence/original-input-records.json": "720972c4e49467d4f84106efa28ea4ca5abba9f656ac4ad71e654386e941ebe8",
+    "mapping/evidence/original-source-input-findings.md": "a2611827e8d21dfc70d44a53e82d7858d7a2b91fb9c7d0a5420df8a65f52cde2",
+    "mapping/held-input-inventory.json": "d122348e74da23c7cc2bac75cfe8495fcb003911ec14c5f96b17605002333999",
+    "mapping/proposed-reference-request.json": "d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560"
+  }
+}

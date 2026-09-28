@@ -1,0 +1,10 @@
+{
+  "original_evidence_hashes": {
+    "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/results/native/20260927-exchanger-thermal-comparison.db": "3974462d81e5c8103139f516d3f0a2e17f2fdc56f94f9ccba106e6d6e61b0d3c",
+    "work/active/WI-097_exchanger-thermal-requirements/evidence/native-controls.json": "8291aeb1da4d7b7fc83fb80cb548fe3aed9c8b5f858957e23b5e90094df9aa46",
+    "work/active/WI-097_exchanger-thermal-requirements/evidence/oracle-native-verification.json": "b670e273a83a5c6ee96c57f71f5280edd597672fafb5af9cfd5ea4bc0b080fab"
+  },
+  "unchanged": true,
+  "new_cases": 20,
+  "fingerprint": "668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23"
+}

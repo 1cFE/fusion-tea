@@ -1,0 +1,23 @@
+{
+  "status": "published",
+  "revision": "r3",
+  "date": "2026-09-20",
+  "owner_authorization": "Adopt and publish the exact candidate identified by SHA256 34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19 in the approval packet. Preserve r2 and carry all stated limitations. Close the current-model-comparison-readiness goal.",
+  "archive": ".project/active/aries-comparison-preparation/package/freeze/r3/comparison-freeze.tar.gz",
+  "archive_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "archive_bytes": 5692124,
+  "file_count": 1047,
+  "index_sha256": "63a000f9df169704494263b72a01d9848536c9bfc8425798b019a998cc10291d",
+  "approved_candidate": ".project/active/aries-comparison-preparation/current-readiness/candidate-archives/20260920-matched-cycle/comparison-freeze.tar.gz",
+  "publication_method": "byte-for-byte copy; archived draft metadata retained; this external record establishes owner adoption",
+  "predecessor_r2_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "independent_review": "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/review.md",
+  "independent_verdict": "PASS",
+  "limitations": "All archived limitations and approval-packet qualifications remain mandatory without amendment.",
+  "holdout": "sealed",
+  "reveal_authorized": false,
+  "goal_status": "closed",
+  "comparison_contract_changed": false,
+  "operating_result_register": ".project/active/aries-comparison-preparation/current-readiness/revealed-results",
+  "operating_result_register_exists": false
+}

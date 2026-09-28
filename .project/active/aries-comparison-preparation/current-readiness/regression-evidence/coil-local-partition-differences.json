@@ -1,0 +1,8 @@
+{
+  "winding_tape_volume": {
+    "historical": 12.290400000000009,
+    "current_independent": 12.290400000000004,
+    "delta": -5.329070518200751e-15,
+    "ulps": -3.0
+  }
+}

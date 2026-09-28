@@ -1,0 +1,2676 @@
+{
+  "snapshot_schema_version": "1",
+  "study_id": "20260911-model-owned-radius",
+  "status": "Finalized executor evidence; reviews dispositioned; six findings registered; parent owns freeze commit",
+  "package": {
+    "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "package_name": "stellarator_tea",
+    "repo_commit": "b065b212d0559aceb0fb739a2d42e09c832ea1aa",
+    "git_clean": true
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3"
+        },
+        {
+          "path": "inputs/mfe_fuel_cycle_params.json",
+          "sha256": "7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b"
+        },
+        {
+          "path": "inputs/mfe_magnet_cost_params.json",
+          "sha256": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113"
+        },
+        {
+          "path": "inputs/mfe_magnet_field_params.json",
+          "sha256": "e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180"
+        },
+        {
+          "path": "inputs/mfe_plant_params.json",
+          "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+        },
+        {
+          "path": "inputs/mfe_plasma_scaling_params.json",
+          "sha256": "d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d"
+        },
+        {
+          "path": "inputs/mfe_plasma_sustainment_params.json",
+          "sha256": "d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14"
+        },
+        {
+          "path": "inputs/mfe_vacuum_params.json",
+          "sha256": "4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902"
+        },
+        {
+          "path": "inputs/stellarator_plant_params.json",
+          "sha256": "e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f"
+        }
+      ]
+    },
+    "recorded_provenance.executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+    "recorded_provenance.semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+  },
+  "manifest": {
+    "path": "context/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "0ad528c8a14fed079c895229172db697639bba44e4462122a9561cd33f1c8b72",
+    "content_used": {
+      "ties": [],
+      "objective_catalog": [
+        {
+          "name": "lcoe",
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+        },
+        {
+          "name": "lcoe_1cfe",
+          "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+          "note": "LCOE variant using the 1costingfe CAS90 rollup."
+        },
+        {
+          "name": "cas72",
+          "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+          "note": "Levelized annual replacement cost -- the lifecycle calendar's output since WI-046 (2026-09-08; the retired cas72_calc__cost channel is gone)."
+        },
+        {
+          "name": "fuel",
+          "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+          "note": "Annual fuel cost."
+        },
+        {
+          "name": "total_capital",
+          "channel": "stellarator_09__stellaris__total_capital__total_capital",
+          "note": "Total capital cost including interest during construction."
+        },
+        {
+          "name": "cas27",
+          "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+          "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+        },
+        {
+          "name": "beta",
+          "channel": "stellarator_09__stellaris__beta_calc__beta",
+          "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+        },
+        {
+          "name": "magnet_capital",
+          "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+          "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+        },
+        {
+          "name": "magnet_capital_1cfe",
+          "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+          "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+        },
+        {
+          "name": "p_aux_required",
+          "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+          "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+        },
+        {
+          "name": "tau_E",
+          "channel": "stellarator_09__stellaris__sustain__tau_E",
+          "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+        },
+        {
+          "name": "operating_heat_coupled",
+          "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+          "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+        },
+        {
+          "name": "operating_heat_delivered",
+          "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+          "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+        },
+        {
+          "name": "operating_heat_wallplug",
+          "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+          "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+        }
+      ],
+      "baseline": {
+        "point": {
+          "stellarator_09__stellaris__R": 12.7,
+          "stellarator_09__stellaris__a": 1.3,
+          "stellarator_09__stellaris__availability_direct": 0.0
+        },
+        "headline": {
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "value": 224.26923288439
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "beta_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "burn_hold_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "cond_strain_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "cycle_domain_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "divertor_heat_ok",
+            "expected": "violated"
+          },
+          {
+            "source_local_identity": "heating_couple_positive_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "heating_couple_upper_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "heating_source_positive_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "heating_source_upper_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "loop_capacity_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "loop_pressure_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "net_positive",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "peak_field_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "recirc_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "sustainment_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "tbr_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "wall_load_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "wp_stress_ok",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "oracle": {
+        "kind": "python_callable",
+        "module": "oracle_entry",
+        "callable": "evaluate",
+        "sys_path": "exploration/stellarator_e2e/studies",
+        "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, whose current live radius operands follow model-owned plant R. ANNEX.md section Current oracle comparison coverage lists the seventeen native channels outside its 141-channel map. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+        "source_digest": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "14a706b41cbbccab6cb761fedc42adce5f17c35b09bed5a3fe3bee06cf52083c",
+          "files": [
+            {
+              "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+              "sha256": "d1e96a65b59728aa5c92827fb2a4ede99a3a33ccf93ba291bf31661928d77df8"
+            },
+            {
+              "path": "exploration/stellarator_e2e/verify_stellaris.py",
+              "sha256": "90951874257194cb36ee790faebd2fd27dfcebbe2317c36e1b9869f7ff2aefff"
+            }
+          ]
+        },
+        "copied_sources": [
+          "context/oracle_entry.py",
+          "context/verify_stellaris.py"
+        ]
+      },
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ]
+    }
+  },
+  "stores": [
+    {
+      "store_id": "radius-native",
+      "path": "results/store/20260911-model-owned-radius.db",
+      "sha256": "7d7b55dc28ae668f1c75c68551dd34f422c11ab57bdc9cf8ddee9d2d06c2f942",
+      "compatibility_tuple": {
+        "study_id": "20260911-model-owned-radius",
+        "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+        "model_contract_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+        "study_definition_fingerprint": "650d3235d8eca3196cace9a0843b9335ca09e094391182f485b02db3dd13392f",
+        "input_schema_version": "input-v1",
+        "evidence_schema_version": "v3",
+        "strategy_identity": "prepared-list/v1",
+        "strategy_config": "fcc4d4b153d0b84bcaaf724ea53805350e861b90d18d4d8c98d08eb9534e5a1d"
+      }
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "radius",
+      "store_id": "radius-native",
+      "effective_executable_fingerprint": {
+        "value": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "Strict native loader; sealed executable identity"
+      },
+      "entry_models": {
+        "mfe_account_costs_params": {
+          "class": "stellarator_tea.schemas.mfe_account_costs_params.MfeAccountCostsParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_account_costs.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__aux_cooling__alpha": {
+                "default": 0.7,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Aux Cooling  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__aux_cooling__p_cryo_ref": {
+                "default": 30.0,
+                "description": "Entry point: p_cryo_ref",
+                "title": "Stellarator 09  Stellaris  Aux Cooling  P Cryo Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__blanket_cost__alpha": {
+                "default": 0.6,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Blanket Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__blanket_cost__p_th_ref": {
+                "default": 2500.0,
+                "description": "Entry point: p_th_ref",
+                "title": "Stellarator 09  Stellaris  Blanket Cost  P Th Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__buildings_cost__n_mod_in": {
+                "default": 1.0,
+                "description": "Entry point: n_mod_in",
+                "title": "Stellarator 09  Stellaris  Buildings Cost  N Mod In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__buildings_cost__p_et_ref": {
+                "default": 1100.0,
+                "description": "Entry point: p_et_ref",
+                "title": "Stellarator 09  Stellaris  Buildings Cost  P Et Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__buildings_cost__p_fus_ref": {
+                "default": 2300.0,
+                "description": "Entry point: p_fus_ref",
+                "title": "Stellarator 09  Stellaris  Buildings Cost  P Fus Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__buildings_cost__p_th_ref": {
+                "default": 2500.0,
+                "description": "Entry point: p_th_ref",
+                "title": "Stellarator 09  Stellaris  Buildings Cost  P Th Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__buildings_cost__p_the_ref": {
+                "default": 1100.0,
+                "description": "Entry point: p_the_ref",
+                "title": "Stellarator 09  Stellaris  Buildings Cost  P The Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coolant__alpha": {
+                "default": 0.55,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Coolant  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coolant__p_th_ref": {
+                "default": 3500.0,
+                "description": "Entry point: p_th_ref",
+                "title": "Stellarator 09  Stellaris  Coolant  P Th Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coolant__ref_net_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_net_power",
+                "title": "Stellarator 09  Stellaris  Coolant  Ref Net Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__divertor_cost__alpha": {
+                "default": 0.5,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Divertor Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__divertor_cost__p_th_ref": {
+                "default": 1000.0,
+                "description": "Entry point: p_th_ref",
+                "title": "Stellarator 09  Stellaris  Divertor Cost  P Th Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fuel_handling__alpha": {
+                "default": 0.7,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Fuel Handling  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fuel_handling__ref_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_power",
+                "title": "Stellarator 09  Stellaris  Fuel Handling  Ref Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__inc_cost__alpha": {
+                "default": 0.65,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Inc Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__inc_cost__ref_power": {
+                "default": 3500.0,
+                "description": "Entry point: ref_power",
+                "title": "Stellarator 09  Stellaris  Inc Cost  Ref Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__indirect__reference_construction_time": {
+                "default": 6.0,
+                "description": "Entry point: reference_construction_time",
+                "title": "Stellarator 09  Stellaris  Indirect  Reference Construction Time",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__om_cost__alpha": {
+                "default": 0.5,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Om Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__om_cost__n_mod_in": {
+                "default": 1.0,
+                "description": "Entry point: n_mod_in",
+                "title": "Stellarator 09  Stellaris  Om Cost  N Mod In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__om_cost__om_direct": {
+                "default": 0.0,
+                "description": "Entry point: om_direct",
+                "title": "Stellarator 09  Stellaris  Om Cost  Om Direct",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__om_cost__ref_net_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_net_power",
+                "title": "Stellarator 09  Stellaris  Om Cost  Ref Net Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__other_rpe__alpha": {
+                "default": 0.8,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Other Rpe  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__other_rpe__ref_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_power",
+                "title": "Stellarator 09  Stellaris  Other Rpe  Ref Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__owner__alpha": {
+                "default": 0.5,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Owner  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__owner__ref_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_power",
+                "title": "Stellarator 09  Stellaris  Owner  Ref Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__power_supplies_cost__alpha": {
+                "default": 0.7,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Power Supplies Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__power_supplies_cost__p_et_ref": {
+                "default": 1100.0,
+                "description": "Entry point: p_et_ref",
+                "title": "Stellarator 09  Stellaris  Power Supplies Cost  P Et Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__precon_cost__land_cost": {
+                "default": 10000.0,
+                "description": "Entry point: land_cost",
+                "title": "Stellarator 09  Stellaris  Precon Cost  Land Cost",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__precon_cost__land_intensity": {
+                "default": 0.25,
+                "description": "Entry point: land_intensity",
+                "title": "Stellarator 09  Stellaris  Precon Cost  Land Intensity",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__precon_cost__n_mod_in": {
+                "default": 1.0,
+                "description": "Entry point: n_mod_in",
+                "title": "Stellarator 09  Stellaris  Precon Cost  N Mod In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__precon_cost__ref_net_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_net_power",
+                "title": "Stellarator 09  Stellaris  Precon Cost  Ref Net Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__remote_handling__alpha": {
+                "default": 0.5,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Remote Handling  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__remote_handling__p_et_ref": {
+                "default": 1100.0,
+                "description": "Entry point: p_et_ref",
+                "title": "Stellarator 09  Stellaris  Remote Handling  P Et Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__shield_cost__alpha": {
+                "default": 0.6,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Shield Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__shield_cost__p_th_ref": {
+                "default": 2500.0,
+                "description": "Entry point: p_th_ref",
+                "title": "Stellarator 09  Stellaris  Shield Cost  P Th Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__structure_cost__alpha": {
+                "default": 0.5,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Structure Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__structure_cost__p_et_ref": {
+                "default": 1100.0,
+                "description": "Entry point: p_et_ref",
+                "title": "Stellarator 09  Stellaris  Structure Cost  P Et Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary__contingency_rate_in": {
+                "default": 0.0,
+                "description": "Entry point: contingency_rate_in",
+                "title": "Stellarator 09  Stellaris  Supplementary  Contingency Rate In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary__insurance_frac": {
+                "default": 0.015,
+                "description": "Entry point: insurance_frac",
+                "title": "Stellarator 09  Stellaris  Supplementary  Insurance Frac",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary__ref_net_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_net_power",
+                "title": "Stellarator 09  Stellaris  Supplementary  Ref Net Power",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary__shipping_frac": {
+                "default": 0.015,
+                "description": "Entry point: shipping_frac",
+                "title": "Stellarator 09  Stellaris  Supplementary  Shipping Frac",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary__tax_frac": {
+                "default": 0.01,
+                "description": "Entry point: tax_frac",
+                "title": "Stellarator 09  Stellaris  Supplementary  Tax Frac",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__vessel_cost__alpha": {
+                "default": 0.6,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Vessel Cost  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__vessel_cost__p_et_ref": {
+                "default": 1100.0,
+                "description": "Entry point: p_et_ref",
+                "title": "Stellarator 09  Stellaris  Vessel Cost  P Et Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__waste__alpha": {
+                "default": 1.0,
+                "description": "Entry point: alpha",
+                "title": "Stellarator 09  Stellaris  Waste  Alpha",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__waste__ref_power": {
+                "default": 1000.0,
+                "description": "Entry point: ref_power",
+                "title": "Stellarator 09  Stellaris  Waste  Ref Power",
+                "type": "number"
+              }
+            },
+            "title": "MfeAccountCostsParams",
+            "type": "object"
+          }
+        },
+        "mfe_fuel_cycle_params": {
+          "class": "stellarator_tea.schemas.mfe_fuel_cycle_params.MfeFuelCycleParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_fuel_cycle.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__fuel__s_per_fpy_in": {
+                "default": 31536000.0,
+                "description": "Entry point: s_per_fpy_in",
+                "title": "Stellarator 09  Stellaris  Fuel  S Per Fpy In",
+                "type": "number"
+              }
+            },
+            "title": "MfeFuelCycleParams",
+            "type": "object"
+          }
+        },
+        "mfe_magnet_cost_params": {
+          "class": "stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_magnet_cost.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__magnet_cost__mu0": {
+                "default": 1.25663706212e-06,
+                "description": "Entry point: mu0",
+                "title": "Stellarator 09  Stellaris  Magnet Cost  Mu0",
+                "type": "number"
+              }
+            },
+            "title": "MfeMagnetCostParams",
+            "type": "object"
+          }
+        },
+        "mfe_magnet_field_params": {
+          "class": "stellarator_tea.schemas.mfe_magnet_field_params.MfeMagnetFieldParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_magnet_field.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__field_calc__mu0": {
+                "default": 1.25663706212e-06,
+                "description": "Entry point: mu0",
+                "title": "Stellarator 09  Stellaris  Field Calc  Mu0",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__field_calc__two_pi": {
+                "default": 6.283185307179586,
+                "description": "Entry point: two_pi",
+                "title": "Stellarator 09  Stellaris  Field Calc  Two Pi",
+                "type": "number"
+              }
+            },
+            "title": "MfeMagnetFieldParams",
+            "type": "object"
+          }
+        },
+        "mfe_plant_params": {
+          "class": "stellarator_tea.schemas.mfe_plant_params.MfePlantParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_plant.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__n_mod": {
+                "default": 1.0,
+                "description": "Entry point: n_mod",
+                "title": "Stellarator 09  Stellaris  N Mod",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__recirc_ok__threshold": {
+                "default": 0.5,
+                "description": "Entry point: threshold",
+                "title": "Stellarator 09  Stellaris  Recirc Ok  Threshold",
+                "type": "number"
+              }
+            },
+            "title": "MfePlantParams",
+            "type": "object"
+          }
+        },
+        "mfe_plasma_scaling_params": {
+          "class": "stellarator_tea.schemas.mfe_plasma_scaling_params.MfePlasmaScalingParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_plasma_scaling.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__beta_calc__mu0": {
+                "default": 1.25663706212e-06,
+                "description": "Entry point: mu0",
+                "title": "Stellarator 09  Stellaris  Beta Calc  Mu0",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__geom__pi": {
+                "default": 3.14159265358979,
+                "description": "Entry point: pi",
+                "title": "Stellarator 09  Stellaris  Geom  Pi",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__rb__pi": {
+                "default": 3.14159265358979,
+                "description": "Entry point: pi",
+                "title": "Stellarator 09  Stellaris  Rb  Pi",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_load_calc__ash_frac_in": {
+                "default": 0.2002,
+                "description": "Entry point: ash_frac_in",
+                "title": "Stellarator 09  Stellaris  Wall Load Calc  Ash Frac In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_cal__ash_frac_in": {
+                "default": 0.2002,
+                "description": "Entry point: ash_frac_in",
+                "title": "Stellarator 09  Stellaris  Wall Peak Cal  Ash Frac In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_cal__pi": {
+                "default": 3.14159265358979,
+                "description": "Entry point: pi",
+                "title": "Stellarator 09  Stellaris  Wall Peak Cal  Pi",
+                "type": "number"
+              }
+            },
+            "title": "MfePlasmaScalingParams",
+            "type": "object"
+          }
+        },
+        "mfe_plasma_sustainment_params": {
+          "class": "stellarator_tea.schemas.mfe_plasma_sustainment_params.MfePlasmaSustainmentParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_plasma_sustainment.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__sustain__R_w_sync_in": {
+                "default": 0.6,
+                "description": "Entry point: R_w_sync_in",
+                "title": "Stellarator 09  Stellaris  Sustain  R W Sync In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__sustain__ash_frac_in": {
+                "default": 0.2002,
+                "description": "Entry point: ash_frac_in",
+                "title": "Stellarator 09  Stellaris  Sustain  Ash Frac In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__sustain__kappa_sync_in": {
+                "default": 1.0,
+                "description": "Entry point: kappa_sync_in",
+                "title": "Stellarator 09  Stellaris  Sustain  Kappa Sync In",
+                "type": "number"
+              }
+            },
+            "title": "MfePlasmaSustainmentParams",
+            "type": "object"
+          }
+        },
+        "mfe_vacuum_params": {
+          "class": "stellarator_tea.schemas.mfe_vacuum_params.MfeVacuumParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from mfe_vacuum.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__vacuum__k_B_in": {
+                "default": 1.380649e-23,
+                "description": "Entry point: k_B_in",
+                "title": "Stellarator 09  Stellaris  Vacuum  K B In",
+                "type": "number"
+              }
+            },
+            "title": "MfeVacuumParams",
+            "type": "object"
+          }
+        },
+        "stellarator_plant_params": {
+          "class": "stellarator_tea.schemas.stellarator_plant_params.StellaratorPlantParams",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters from stellarator_plant.\n\nGenerated from SysML calculation definitions.",
+            "properties": {
+              "stellarator_09__stellaris__E_fus": {
+                "default": 2.817e-12,
+                "description": "Entry point: E_fus",
+                "title": "Stellarator 09  Stellaris  E Fus",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__G_stock": {
+                "default": 0.0,
+                "description": "Entry point: G_stock",
+                "title": "Stellarator 09  Stellaris  G Stock",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__I_total": {
+                "default": 0.0,
+                "description": "Entry point: I_total",
+                "title": "Stellarator 09  Stellaris  I Total",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__R": {
+                "default": 12.7,
+                "description": "Entry point: R",
+                "title": "Stellarator 09  Stellaris  R",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__R_ref_divertor": {
+                "default": 12.7,
+                "description": "Entry point: R_ref_divertor",
+                "title": "Stellarator 09  Stellaris  R Ref Divertor",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T2_max": {
+                "default": 642.0,
+                "description": "Entry point: T2_max",
+                "title": "Stellarator 09  Stellaris  T2 Max",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T2_min": {
+                "default": 384.0,
+                "description": "Entry point: T2_min",
+                "title": "Stellarator 09  Stellaris  T2 Min",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T_amb_cryo": {
+                "default": 300.0,
+                "description": "Entry point: T_amb_cryo",
+                "title": "Stellarator 09  Stellaris  T Amb Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T_cold_cryo": {
+                "default": 20.0,
+                "description": "Entry point: T_cold_cryo",
+                "title": "Stellarator 09  Stellaris  T Cold Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T_gas": {
+                "default": 300.0,
+                "description": "Entry point: T_gas",
+                "title": "Stellarator 09  Stellaris  T Gas",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T_i0": {
+                "default": 14.63,
+                "description": "Entry point: T_i0",
+                "title": "Stellarator 09  Stellaris  T I0",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__T_offset_fit": {
+                "default": 273.0,
+                "description": "Entry point: T_offset_fit",
+                "title": "Stellarator 09  Stellaris  T Offset Fit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__Ti_over_Te": {
+                "default": 0.95,
+                "description": "Entry point: Ti_over_Te",
+                "title": "Stellarator 09  Stellaris  Ti Over Te",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__Z_eff_core": {
+                "default": 1.2,
+                "description": "Entry point: Z_eff_core",
+                "title": "Stellarator 09  Stellaris  Z Eff Core",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__a": {
+                "default": 1.3,
+                "description": "Entry point: a",
+                "title": "Stellarator 09  Stellaris  A",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__a_fit": {
+                "default": 0.1802,
+                "description": "Entry point: a_fit",
+                "title": "Stellarator 09  Stellaris  A Fit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__alpha_T": {
+                "default": 1.19,
+                "description": "Entry point: alpha_T",
+                "title": "Stellarator 09  Stellaris  Alpha T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__alpha_n": {
+                "default": 0.33,
+                "description": "Entry point: alpha_n",
+                "title": "Stellarator 09  Stellaris  Alpha N",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__aux_cryo_base": {
+                "default": 200000000.0,
+                "description": "Entry point: aux_cryo_base",
+                "title": "Stellarator 09  Stellaris  Aux Cryo Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__aux_per_mw": {
+                "default": 1100.0,
+                "description": "Entry point: aux_per_mw",
+                "title": "Stellarator 09  Stellaris  Aux Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__availability_direct": {
+                "default": 0.0,
+                "description": "Entry point: availability_direct",
+                "title": "Stellarator 09  Stellaris  Availability Direct",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__b_fit": {
+                "default": 0.7823,
+                "description": "Entry point: b_fit",
+                "title": "Stellarator 09  Stellaris  B Fit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__beta_limit": {
+                "default": 0.05,
+                "description": "Entry point: beta_limit",
+                "title": "Stellarator 09  Stellaris  Beta Limit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__blanket__structure_factor": {
+                "default": 1.0,
+                "description": "Entry point: structure_factor",
+                "title": "Stellarator 09  Stellaris  Blanket  Structure Factor",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__blanket__unit_cost": {
+                "default": 600000.0,
+                "description": "Entry point: unit_cost",
+                "title": "Stellarator 09  Stellaris  Blanket  Unit Cost",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__blanket_t": {
+                "default": 0.8,
+                "description": "Entry point: blanket_t",
+                "title": "Stellarator 09  Stellaris  Blanket T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__bldg_et_base": {
+                "default": 29000000.0,
+                "description": "Entry point: bldg_et_base",
+                "title": "Stellarator 09  Stellaris  Bldg Et Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__bldg_fixed_base": {
+                "default": 168500000.0,
+                "description": "Entry point: bldg_fixed_base",
+                "title": "Stellarator 09  Stellaris  Bldg Fixed Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__bldg_fus_base": {
+                "default": 288000000.0,
+                "description": "Entry point: bldg_fus_base",
+                "title": "Stellarator 09  Stellaris  Bldg Fus Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__bldg_staff_base": {
+                "default": 9000000.0,
+                "description": "Entry point: bldg_staff_base",
+                "title": "Stellarator 09  Stellaris  Bldg Staff Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__bldg_th_base": {
+                "default": 26000000.0,
+                "description": "Entry point: bldg_th_base",
+                "title": "Stellarator 09  Stellaris  Bldg Th Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__bldg_the_base": {
+                "default": 58000000.0,
+                "description": "Entry point: bldg_the_base",
+                "title": "Stellarator 09  Stellaris  Bldg The Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__burn_fraction": {
+                "default": 0.05,
+                "description": "Entry point: burn_fraction",
+                "title": "Stellarator 09  Stellaris  Burn Fraction",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__cas28_capital": {
+                "default": 5000000.0,
+                "description": "Entry point: cas28_capital",
+                "title": "Stellarator 09  Stellaris  Cas28 Capital",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coil_life_fpy": {
+                "default": 10.0,
+                "description": "Entry point: coil_life_fpy",
+                "title": "Stellarator 09  Stellaris  Coil Life Fpy",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coil_t": {
+                "default": 0.3,
+                "description": "Entry point: coil_t",
+                "title": "Stellarator 09  Stellaris  Coil T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__concept_scale": {
+                "default": 1.0,
+                "description": "Entry point: concept_scale",
+                "title": "Stellarator 09  Stellaris  Concept Scale",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__construction_years": {
+                "default": 8.0,
+                "description": "Entry point: construction_years",
+                "title": "Stellarator 09  Stellaris  Construction Years",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__contingency_rate": {
+                "default": 0.1,
+                "description": "Entry point: contingency_rate",
+                "title": "Stellarator 09  Stellaris  Contingency Rate",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coolant_intermediate_base": {
+                "default": 40600000.0,
+                "description": "Entry point: coolant_intermediate_base",
+                "title": "Stellarator 09  Stellaris  Coolant Intermediate Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__coolant_primary_base": {
+                "default": 166000000.0,
+                "description": "Entry point: coolant_primary_base",
+                "title": "Stellarator 09  Stellaris  Coolant Primary Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__cycle_live": {
+                "default": 1.0,
+                "description": "Entry point: cycle_live",
+                "title": "Stellarator 09  Stellaris  Cycle Live",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__dT_approach": {
+                "default": 20.0,
+                "description": "Entry point: dT_approach",
+                "title": "Stellarator 09  Stellaris  Dt Approach",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__delta_eta": {
+                "default": 0.0,
+                "description": "Entry point: delta_eta",
+                "title": "Stellarator 09  Stellaris  Delta Eta",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__discount_rate": {
+                "default": 0.07,
+                "description": "Entry point: discount_rate",
+                "title": "Stellarator 09  Stellaris  Discount Rate",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__divertor_base": {
+                "default": 60000000.0,
+                "description": "Entry point: divertor_base",
+                "title": "Stellarator 09  Stellaris  Divertor Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__dp_loop_ref": {
+                "default": 329187.1856931558,
+                "description": "Entry point: dp_loop_ref",
+                "title": "Stellarator 09  Stellaris  Dp Loop Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__electric_plant__cost_per_mw": {
+                "default": 86400.0,
+                "description": "Entry point: cost_per_mw",
+                "title": "Stellarator 09  Stellaris  Electric Plant  Cost Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_couple_heat": {
+                "default": 1.0,
+                "description": "Entry point: eta_couple_heat",
+                "title": "Stellarator 09  Stellaris  Eta Couple Heat",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_drive": {
+                "default": 1.0,
+                "description": "Entry point: eta_drive",
+                "title": "Stellarator 09  Stellaris  Eta Drive",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_extract": {
+                "default": 1.0,
+                "description": "Entry point: eta_extract",
+                "title": "Stellarator 09  Stellaris  Eta Extract",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_is": {
+                "default": 0.772796639536644,
+                "description": "Entry point: eta_is",
+                "title": "Stellarator 09  Stellaris  Eta Is",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_p_direct": {
+                "default": 0.0,
+                "description": "Entry point: eta_p_direct",
+                "title": "Stellarator 09  Stellaris  Eta P Direct",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_source_heat": {
+                "default": 0.5,
+                "description": "Entry point: eta_source_heat",
+                "title": "Stellarator 09  Stellaris  Eta Source Heat",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__eta_th_direct": {
+                "default": 0.0,
+                "description": "Entry point: eta_th_direct",
+                "title": "Stellarator 09  Stellaris  Eta Th Direct",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_W_core": {
+                "default": 7.76e-06,
+                "description": "Entry point: f_W_core",
+                "title": "Stellarator 09  Stellaris  F W Core",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_alpha_fast": {
+                "default": 0.95,
+                "description": "Entry point: f_alpha_fast",
+                "title": "Stellarator 09  Stellaris  F Alpha Fast",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_carnot_cryo": {
+                "default": 0.2,
+                "description": "Entry point: f_carnot_cryo",
+                "title": "Stellarator 09  Stellaris  F Carnot Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_loss": {
+                "default": 1.0,
+                "description": "Entry point: f_loss",
+                "title": "Stellarator 09  Stellaris  F Loss",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_rad_total": {
+                "default": 0.9,
+                "description": "Entry point: f_rad_total",
+                "title": "Stellarator 09  Stellaris  F Rad Total",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_ren": {
+                "default": 1.0,
+                "description": "Entry point: f_ren",
+                "title": "Stellarator 09  Stellaris  F Ren",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_shape": {
+                "default": 1.0031567,
+                "description": "Entry point: f_shape",
+                "title": "Stellarator 09  Stellaris  F Shape",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_sub": {
+                "default": 0.03,
+                "description": "Entry point: f_sub",
+                "title": "Stellarator 09  Stellaris  F Sub",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_suppr_ash": {
+                "default": 0.5,
+                "description": "Entry point: f_suppr_ash",
+                "title": "Stellarator 09  Stellaris  F Suppr Ash",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__f_uplift_cryo": {
+                "default": 1.0,
+                "description": "Entry point: f_uplift_cryo",
+                "title": "Stellarator 09  Stellaris  F Uplift Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__firstwall_t": {
+                "default": 0.05,
+                "description": "Entry point: firstwall_t",
+                "title": "Stellarator 09  Stellaris  Firstwall T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fluence_limit": {
+                "default": 18.0,
+                "description": "Entry point: fluence_limit",
+                "title": "Stellarator 09  Stellaris  Fluence Limit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fuel_cost_per_rxn": {
+                "default": 1.7260641119988767e-23,
+                "description": "Entry point: fuel_cost_per_rxn",
+                "title": "Stellarator 09  Stellaris  Fuel Cost Per Rxn",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fuel_handling_base": {
+                "default": 120000000.0,
+                "description": "Entry point: fuel_handling_base",
+                "title": "Stellarator 09  Stellaris  Fuel Handling Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fuel_q_eff": {
+                "default": 17.58,
+                "description": "Entry point: fuel_q_eff",
+                "title": "Stellarator 09  Stellaris  Fuel Q Eff",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__fuel_recovery": {
+                "default": 0.99,
+                "description": "Entry point: fuel_recovery",
+                "title": "Stellarator 09  Stellaris  Fuel Recovery",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__gap1_t": {
+                "default": 0.1,
+                "description": "Entry point: gap1_t",
+                "title": "Stellarator 09  Stellaris  Gap1 T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__gap2_t": {
+                "default": 0.1,
+                "description": "Entry point: gap2_t",
+                "title": "Stellarator 09  Stellaris  Gap2 T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__heat_rejection__cost_per_mw": {
+                "default": 35060.0,
+                "description": "Entry point: cost_per_mw",
+                "title": "Stellarator 09  Stellaris  Heat Rejection  Cost Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__heating_ecrh_per_mw": {
+                "default": 5282900.0,
+                "description": "Entry point: heating_ecrh_per_mw",
+                "title": "Stellarator 09  Stellaris  Heating Ecrh Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__heating_icrf_per_mw": {
+                "default": 0.0,
+                "description": "Entry point: heating_icrf_per_mw",
+                "title": "Stellarator 09  Stellaris  Heating Icrf Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__heating_lhcd_per_mw": {
+                "default": 0.0,
+                "description": "Entry point: heating_lhcd_per_mw",
+                "title": "Stellarator 09  Stellaris  Heating Lhcd Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__heating_nbi_per_mw": {
+                "default": 0.0,
+                "description": "Entry point: heating_nbi_per_mw",
+                "title": "Stellarator 09  Stellaris  Heating Nbi Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__ht_shield_t": {
+                "default": 0.2,
+                "description": "Entry point: ht_shield_t",
+                "title": "Stellarator 09  Stellaris  Ht Shield T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__inc_base": {
+                "default": 85000000.0,
+                "description": "Entry point: inc_base",
+                "title": "Stellarator 09  Stellaris  Inc Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__indirect_fraction": {
+                "default": 0.2,
+                "description": "Entry point: indirect_fraction",
+                "title": "Stellarator 09  Stellaris  Indirect Fraction",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__inflation_rate": {
+                "default": 0.02,
+                "description": "Entry point: inflation_rate",
+                "title": "Stellarator 09  Stellaris  Inflation Rate",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__installation_frac": {
+                "default": 0.14,
+                "description": "Entry point: installation_frac",
+                "title": "Stellarator 09  Stellaris  Installation Frac",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__iota_23": {
+                "default": 0.92,
+                "description": "Entry point: iota_23",
+                "title": "Stellarator 09  Stellaris  Iota 23",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__kappa": {
+                "default": 1.0,
+                "description": "Entry point: kappa",
+                "title": "Stellarator 09  Stellaris  Kappa",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__lambda_T": {
+                "default": 1.782785958230312e-09,
+                "description": "Entry point: lambda_T",
+                "title": "Stellarator 09  Stellaris  Lambda T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__loop_T_in": {
+                "default": 573.15,
+                "description": "Entry point: loop_T_in",
+                "title": "Stellarator 09  Stellaris  Loop T In",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__loop_cp": {
+                "default": 5193.0,
+                "description": "Entry point: loop_cp",
+                "title": "Stellarator 09  Stellaris  Loop Cp",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__loop_dT_blanket": {
+                "default": 200.0,
+                "description": "Entry point: loop_dT_blanket",
+                "title": "Stellarator 09  Stellaris  Loop Dt Blanket",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__loop_gamma": {
+                "default": 1.6666666666666667,
+                "description": "Entry point: loop_gamma",
+                "title": "Stellarator 09  Stellaris  Loop Gamma",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__loop_live": {
+                "default": 1.0,
+                "description": "Entry point: loop_live",
+                "title": "Stellarator 09  Stellaris  Loop Live",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__loop_p": {
+                "default": 8000000.0,
+                "description": "Entry point: loop_p",
+                "title": "Stellarator 09  Stellaris  Loop P",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__lt_shield_t": {
+                "default": 0.15,
+                "description": "Entry point: lt_shield_t",
+                "title": "Stellarator 09  Stellaris  Lt Shield T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__m_T_kg": {
+                "default": 5.008267663228036e-27,
+                "description": "Entry point: m_T_kg",
+                "title": "Stellarator 09  Stellaris  M T Kg",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__B_max": {
+                "default": 24.9,
+                "description": "Entry point: B_max",
+                "title": "Stellarator 09  Stellaris  Magnet  B Max",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__E_wp": {
+                "default": 200000000000.0,
+                "description": "Entry point: E_wp",
+                "title": "Stellarator 09  Stellaris  Magnet  E Wp",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__G": {
+                "default": 78.95683520871486,
+                "description": "Entry point: G",
+                "title": "Stellarator 09  Stellaris  Magnet  G",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__I_coil": {
+                "default": 15400000.0,
+                "description": "Entry point: I_coil",
+                "title": "Stellarator 09  Stellaris  Magnet  I Coil",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__I_ref": {
+                "default": 15400000.0,
+                "description": "Entry point: I_ref",
+                "title": "Stellarator 09  Stellaris  Magnet  I Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__R_ref": {
+                "default": 12.7,
+                "description": "Entry point: R_ref",
+                "title": "Stellarator 09  Stellaris  Magnet  R Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__W_mag_ref": {
+                "default": 111000000000.0,
+                "description": "Entry point: W_mag_ref",
+                "title": "Stellarator 09  Stellaris  Magnet  W Mag Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__a_coil_ref": {
+                "default": 3.1500000000000004,
+                "description": "Entry point: a_coil_ref",
+                "title": "Stellarator 09  Stellaris  Magnet  A Coil Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__coil_markup": {
+                "default": 5.87,
+                "description": "Entry point: coil_markup",
+                "title": "Stellarator 09  Stellaris  Magnet  Coil Markup",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__cost_per_kAm": {
+                "default": 50.0,
+                "description": "Entry point: cost_per_kAm",
+                "title": "Stellarator 09  Stellaris  Magnet  Cost Per Kam",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__eps_cond_allow": {
+                "default": 0.004,
+                "description": "Entry point: eps_cond_allow",
+                "title": "Stellarator 09  Stellaris  Magnet  Eps Cond Allow",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__f_cond": {
+                "default": 0.6666666666666666,
+                "description": "Entry point: f_cond",
+                "title": "Stellarator 09  Stellaris  Magnet  F Cond",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__f_set": {
+                "default": 0.8701298701298701,
+                "description": "Entry point: f_set",
+                "title": "Stellarator 09  Stellaris  Magnet  F Set",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__f_steel_fab": {
+                "default": 3.0,
+                "description": "Entry point: f_steel_fab",
+                "title": "Stellarator 09  Stellaris  Magnet  F Steel Fab",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__f_wp_fab": {
+                "default": 6.65,
+                "description": "Entry point: f_wp_fab",
+                "title": "Stellarator 09  Stellaris  Magnet  F Wp Fab",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__f_wp_vol": {
+                "default": 0.8780864197530865,
+                "description": "Entry point: f_wp_vol",
+                "title": "Stellarator 09  Stellaris  Magnet  F Wp Vol",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__j_wp": {
+                "default": 118.8271604938272,
+                "description": "Entry point: j_wp",
+                "title": "Stellarator 09  Stellaris  Magnet  J Wp",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__k_coil": {
+                "default": 1.968503937007874,
+                "description": "Entry point: k_coil",
+                "title": "Stellarator 09  Stellaris  Magnet  K Coil",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__k_link": {
+                "default": 0.7731331164622419,
+                "description": "Entry point: k_link",
+                "title": "Stellarator 09  Stellaris  Magnet  K Link",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__k_sigma": {
+                "default": 0.6102331403536223,
+                "description": "Entry point: k_sigma",
+                "title": "Stellarator 09  Stellaris  Magnet  K Sigma",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__m_casing_ref": {
+                "default": 63000.0,
+                "description": "Entry point: m_casing_ref",
+                "title": "Stellarator 09  Stellaris  Magnet  M Casing Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__n_coils": {
+                "default": 48.0,
+                "description": "Entry point: n_coils",
+                "title": "Stellarator 09  Stellaris  Magnet  N Coils",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__peak_ratio": {
+                "default": 2.7666666666666666,
+                "description": "Entry point: peak_ratio",
+                "title": "Stellarator 09  Stellaris  Magnet  Peak Ratio",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__sigma_allow": {
+                "default": 800000000.0,
+                "description": "Entry point: sigma_allow",
+                "title": "Stellarator 09  Stellaris  Magnet  Sigma Allow",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__magnet__steel_price": {
+                "default": 6.0,
+                "description": "Entry point: steel_price",
+                "title": "Stellarator 09  Stellaris  Magnet  Steel Price",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__mdot_loop_ref": {
+                "default": 225.07777777777778,
+                "description": "Entry point: mdot_loop_ref",
+                "title": "Stellarator 09  Stellaris  Mdot Loop Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__mev_to_joules": {
+                "default": 1.6021766339999998e-13,
+                "description": "Entry point: mev_to_joules",
+                "title": "Stellarator 09  Stellaris  Mev To Joules",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__misc_plant__cost_per_mw": {
+                "default": 52590.0,
+                "description": "Entry point: cost_per_mw",
+                "title": "Stellarator 09  Stellaris  Misc Plant  Cost Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__mn": {
+                "default": 1.2,
+                "description": "Entry point: mn",
+                "title": "Stellarator 09  Stellaris  Mn",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__n_e": {
+                "default": 3.17e+20,
+                "description": "Entry point: n_e",
+                "title": "Stellarator 09  Stellaris  N E",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__n_e0": {
+                "default": 5.06e+20,
+                "description": "Entry point: n_e0",
+                "title": "Stellarator 09  Stellaris  N E0",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__n_loops": {
+                "default": 14.0,
+                "description": "Entry point: n_loops",
+                "title": "Stellarator 09  Stellaris  N Loops",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__om_annual_ref": {
+                "default": 54900000.0,
+                "description": "Entry point: om_annual_ref",
+                "title": "Stellarator 09  Stellaris  Om Annual Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__operational_years": {
+                "default": 30.0,
+                "description": "Entry point: operational_years",
+                "title": "Stellarator 09  Stellaris  Operational Years",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__other_rpe_base": {
+                "default": 11500000.0,
+                "description": "Entry point: other_rpe_base",
+                "title": "Stellarator 09  Stellaris  Other Rpe Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__outage_years": {
+                "default": 0.5833333333333334,
+                "description": "Entry point: outage_years",
+                "title": "Stellarator 09  Stellaris  Outage Years",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__owner_base": {
+                "default": 41200000.0,
+                "description": "Entry point: owner_base",
+                "title": "Stellarator 09  Stellaris  Owner Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_coupled_direct_heat": {
+                "default": 0.0,
+                "description": "Entry point: p_coupled_direct_heat",
+                "title": "Stellarator 09  Stellaris  P Coupled Direct Heat",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_cryo": {
+                "default": 0.0,
+                "description": "Entry point: p_cryo",
+                "title": "Stellarator 09  Stellaris  P Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_delivered_direct_heat": {
+                "default": 0.0,
+                "description": "Entry point: p_delivered_direct_heat",
+                "title": "Stellarator 09  Stellaris  P Delivered Direct Heat",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_exhaust": {
+                "default": 1.0,
+                "description": "Entry point: p_exhaust",
+                "title": "Stellarator 09  Stellaris  P Exhaust",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_fixed_cryo": {
+                "default": 0.0075,
+                "description": "Entry point: p_fixed_cryo",
+                "title": "Stellarator 09  Stellaris  P Fixed Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_house": {
+                "default": 4.0,
+                "description": "Entry point: p_house",
+                "title": "Stellarator 09  Stellaris  P House",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_icrf": {
+                "default": 0.0,
+                "description": "Entry point: p_icrf",
+                "title": "Stellarator 09  Stellaris  P Icrf",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_lhcd": {
+                "default": 0.0,
+                "description": "Entry point: p_lhcd",
+                "title": "Stellarator 09  Stellaris  P Lhcd",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_nbi": {
+                "default": 0.0,
+                "description": "Entry point: p_nbi",
+                "title": "Stellarator 09  Stellaris  P Nbi",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_nonrad_ref": {
+                "default": 50.0,
+                "description": "Entry point: p_nonrad_ref",
+                "title": "Stellarator 09  Stellaris  P Nonrad Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_pf": {
+                "default": 0.0,
+                "description": "Entry point: p_pf",
+                "title": "Stellarator 09  Stellaris  P Pf",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_pfcool": {
+                "default": 0.0,
+                "description": "Entry point: p_pfcool",
+                "title": "Stellarator 09  Stellaris  P Pfcool",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_pump_direct": {
+                "default": 0.0,
+                "description": "Entry point: p_pump_direct",
+                "title": "Stellarator 09  Stellaris  P Pump Direct",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_tf": {
+                "default": 0.0,
+                "description": "Entry point: p_tf",
+                "title": "Stellarator 09  Stellaris  P Tf",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_tfcool": {
+                "default": 15.0,
+                "description": "Entry point: p_tfcool",
+                "title": "Stellarator 09  Stellaris  P Tfcool",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_trit": {
+                "default": 10.0,
+                "description": "Entry point: p_trit",
+                "title": "Stellarator 09  Stellaris  P Trit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__p_wallplug_heat": {
+                "default": 100.0,
+                "description": "Entry point: p_wallplug_heat",
+                "title": "Stellarator 09  Stellaris  P Wallplug Heat",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__power_supplies__base": {
+                "default": 80000000.0,
+                "description": "Entry point: base",
+                "title": "Stellarator 09  Stellaris  Power Supplies  Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__precon_fixed_base": {
+                "default": 16000000.0,
+                "description": "Entry point: precon_fixed_base",
+                "title": "Stellarator 09  Stellaris  Precon Fixed Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__q_nuc_cryo": {
+                "default": 35.5,
+                "description": "Entry point: q_nuc_cryo",
+                "title": "Stellarator 09  Stellaris  Q Nuc Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__q_target_limit": {
+                "default": 10.0,
+                "description": "Entry point: q_target_limit",
+                "title": "Stellarator 09  Stellaris  Q Target Limit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__q_target_ref": {
+                "default": 9.5,
+                "description": "Entry point: q_target_ref",
+                "title": "Stellarator 09  Stellaris  Q Target Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__reflector_t": {
+                "default": 0.2,
+                "description": "Entry point: reflector_t",
+                "title": "Stellarator 09  Stellaris  Reflector T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__remote_handling_base": {
+                "default": 150000000.0,
+                "description": "Entry point: remote_handling_base",
+                "title": "Stellarator 09  Stellaris  Remote Handling Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__shield__shield_scale": {
+                "default": 1.0,
+                "description": "Entry point: shield_scale",
+                "title": "Stellarator 09  Stellaris  Shield  Shield Scale",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__shield__unit_cost": {
+                "default": 740000.0,
+                "description": "Entry point: unit_cost",
+                "title": "Stellarator 09  Stellaris  Shield  Unit Cost",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__sigma_v": {
+                "default": 0.0,
+                "description": "Entry point: sigma_v",
+                "title": "Stellarator 09  Stellaris  Sigma V",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__structure__unit_cost": {
+                "default": 150000.0,
+                "description": "Entry point: unit_cost",
+                "title": "Stellarator 09  Stellaris  Structure  Unit Cost",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__structure_t": {
+                "default": 0.15,
+                "description": "Entry point: structure_t",
+                "title": "Stellarator 09  Stellaris  Structure T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary_decom_base": {
+                "default": 272000000.0,
+                "description": "Entry point: supplementary_decom_base",
+                "title": "Stellarator 09  Stellaris  Supplementary Decom Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary_spares_frac": {
+                "default": 0.03,
+                "description": "Entry point: supplementary_spares_frac",
+                "title": "Stellarator 09  Stellaris  Supplementary Spares Frac",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__supplementary_startup_base": {
+                "default": 40000000.0,
+                "description": "Entry point: supplementary_startup_base",
+                "title": "Stellarator 09  Stellaris  Supplementary Startup Base",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__t_recycle": {
+                "default": 0.99,
+                "description": "Entry point: t_recycle",
+                "title": "Stellarator 09  Stellaris  T Recycle",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__tau_ratio_ash": {
+                "default": 8.0,
+                "description": "Entry point: tau_ratio_ash",
+                "title": "Stellarator 09  Stellaris  Tau Ratio Ash",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__tbr": {
+                "default": 1.074,
+                "description": "Entry point: tbr",
+                "title": "Stellarator 09  Stellaris  Tbr",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__tbr_floor": {
+                "default": 1.05,
+                "description": "Entry point: tbr_floor",
+                "title": "Stellarator 09  Stellaris  Tbr Floor",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__turbine__cost_per_mw": {
+                "default": 202840.0,
+                "description": "Entry point: cost_per_mw",
+                "title": "Stellarator 09  Stellaris  Turbine  Cost Per Mw",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__unplanned_fraction": {
+                "default": 0.0,
+                "description": "Entry point: unplanned_fraction",
+                "title": "Stellarator 09  Stellaris  Unplanned Fraction",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__vacuum_t": {
+                "default": 0.1,
+                "description": "Entry point: vacuum_t",
+                "title": "Stellarator 09  Stellaris  Vacuum T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__vessel__unit_cost": {
+                "default": 720000.0,
+                "description": "Entry point: unit_cost",
+                "title": "Stellarator 09  Stellaris  Vessel  Unit Cost",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__vessel_t": {
+                "default": 0.1,
+                "description": "Entry point: vessel_t",
+                "title": "Stellarator 09  Stellaris  Vessel T",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__vol_cold_cryo": {
+                "default": 0.0,
+                "description": "Entry point: vol_cold_cryo",
+                "title": "Stellarator 09  Stellaris  Vol Cold Cryo",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_load_limit": {
+                "default": 4.05,
+                "description": "Entry point: wall_load_limit",
+                "title": "Stellarator 09  Stellaris  Wall Load Limit",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_R_ref": {
+                "default": 12.7,
+                "description": "Entry point: wall_peak_R_ref",
+                "title": "Stellarator 09  Stellaris  Wall Peak R Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_a_ref": {
+                "default": 1.3,
+                "description": "Entry point: wall_peak_a_ref",
+                "title": "Stellarator 09  Stellaris  Wall Peak A Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_calibration_direct": {
+                "default": 0.0,
+                "description": "Entry point: wall_peak_calibration_direct",
+                "title": "Stellarator 09  Stellaris  Wall Peak Calibration Direct",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_kappa_ref": {
+                "default": 1.0,
+                "description": "Entry point: wall_peak_kappa_ref",
+                "title": "Stellarator 09  Stellaris  Wall Peak Kappa Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_p_fus_ref": {
+                "default": 2700.0,
+                "description": "Entry point: wall_peak_p_fus_ref",
+                "title": "Stellarator 09  Stellaris  Wall Peak P Fus Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_q_ref": {
+                "default": 4.05,
+                "description": "Entry point: wall_peak_q_ref",
+                "title": "Stellarator 09  Stellaris  Wall Peak Q Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__wall_peak_standoff_ref": {
+                "default": 0.1,
+                "description": "Entry point: wall_peak_standoff_ref",
+                "title": "Stellarator 09  Stellaris  Wall Peak Standoff Ref",
+                "type": "number"
+              },
+              "stellarator_09__stellaris__waste_base": {
+                "default": 1960000.0,
+                "description": "Entry point: waste_base",
+                "title": "Stellarator 09  Stellaris  Waste Base",
+                "type": "number"
+              }
+            },
+            "title": "StellaratorPlantParams",
+            "type": "object"
+          }
+        }
+      },
+      "strategy": "prepared-list/v1",
+      "window": {
+        "bounds": {
+          "R_m": [
+            12.0,
+            12.35,
+            12.7,
+            13.0,
+            13.35,
+            13.7,
+            14.0
+          ]
+        },
+        "provenance": "engineered"
+      },
+      "verification": {
+        "command": ".codex-test/run bash -c 'export PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1; python scripts/study/verify.py --package exploration/stellarator_e2e/generated --manifest exploration/stellarator_e2e/studies/manifest.json --identity /home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260911-model-owned-radius/results/package_identity.json --store /home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260911-model-owned-radius/results/store/20260911-model-owned-radius.db --sample-size 7 --out /home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260911-model-owned-radius/results/verification_summary.json'",
+        "tool_revision": {
+          "path": "scripts/study/verify.py",
+          "source_digest": {
+            "recipe": "tool-source-digest/v1",
+            "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+            "files": [
+              {
+                "path": "scripts/study/common.py",
+                "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+              },
+              {
+                "path": "scripts/study/identity.py",
+                "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+              },
+              {
+                "path": "scripts/study/manifest.py",
+                "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+              },
+              {
+                "path": "scripts/study/schemas/package_identity.v1.schema.json",
+                "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+              },
+              {
+                "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+                "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+              },
+              {
+                "path": "scripts/study/verify.py",
+                "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+              }
+            ]
+          }
+        },
+        "sampling_scheme": "All seven cases, covering all three observed verdict combinations",
+        "tolerance": {
+          "native_generic_relative": 1e-09,
+          "all_141_channels_relative": 1e-09,
+          "frozen_baseline": "exact",
+          "frozen_R14_relative_and_absolute": 1e-09,
+          "analytic_ratios_relative_and_absolute": 1e-09
+        },
+        "summary_sha256": "27b8868d850ecc914d86fc6631601ac4735ec39dbbd6df233c0806d2bf4b1d6a"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "results/all-channel-verification.json",
+          "sha256": "5b852629c55c61e63987c01ed8df62e00fa733820cbbc242a32a65e44c78568b"
+        },
+        {
+          "path": "results/analytic-ratios.json",
+          "sha256": "9ffe81288745cd9b7a74443a86d84dec9c319f6658d87cd7971bbdb212053171"
+        },
+        {
+          "path": "results/baseline-effective-inputs.json",
+          "sha256": "91dab6006bb8af39c6ac5ffb8146e700a5c3e414eb0a7c4e8f9960e85eafb76e"
+        },
+        {
+          "path": "results/baseline-native-evidence.json",
+          "sha256": "5a70ed1ff0e05e7c06c1ae1dda8c251a2c925ef38db5d33b66a62c70159c1196"
+        },
+        {
+          "path": "results/baseline_result.json",
+          "sha256": "732ca60c4cdaf9e93bca2de609279a120bdfedc9ffe798d633029db0ed19f383"
+        },
+        {
+          "path": "results/cases.json",
+          "sha256": "049b56d4fc30cb45b94a5544b37b529217e2646d1eaca140704d20247eabb2b4"
+        },
+        {
+          "path": "results/constraint-catalog.json",
+          "sha256": "0e9c9d3f394f47b22fdb1fec165456f293b83fbc3c82c08d46c1454e7b20ad2d"
+        },
+        {
+          "path": "results/coverage.json",
+          "sha256": "ba61a3e52c5eed89aa6efa929e88a92c7b239090a6e7212bcc96daa4cd28faa1"
+        },
+        {
+          "path": "results/effective-inputs.json",
+          "sha256": "0f5af210a80ba8e89c10ebf822119897c971972fc4b3224ae7329836408d4da7"
+        },
+        {
+          "path": "results/entry-models.json",
+          "sha256": "4263327abee9bfd485c31b550467370eccf9b89a6fc76ec787dd817e449a9310"
+        },
+        {
+          "path": "results/fixed-input-verification.json",
+          "sha256": "b549dac630eed17172b1d91b27d23958aca0f02c3caddc4d362212a8189a4569"
+        },
+        {
+          "path": "results/frozen-control-verification.json",
+          "sha256": "2b518b7a9a310052a9e2be16d8ae98e5995451992edf6a2cd7658ccdd77c064f"
+        },
+        {
+          "path": "results/native-store-path.json",
+          "sha256": "cb8b8208a386e8b5186cfe0bf4805aae3ca90d9095492753bd6d8e90ad3bfb82"
+        },
+        {
+          "path": "results/oracle-window-scan.json",
+          "sha256": "2d84df21c8f5d0e077a4b82d16c97bd70747fc92a5ff6e0e7481e292326f4963"
+        },
+        {
+          "path": "results/package-inputs.json",
+          "sha256": "94e4a246b425a0a40d58f59f5004cb21f9d5f035f652e67078ae25448fc124ff"
+        },
+        {
+          "path": "results/package_identity.json",
+          "sha256": "3b111f92e18185d960d114276e5ce7938e590fa635ac86b161834e279f5a8e80"
+        },
+        {
+          "path": "results/points.csv",
+          "sha256": "fe6e3583e4ac9ef73c2d7aae4cf73e809ed5fd2b24e05abbd6010cf0e8fd5c7a"
+        },
+        {
+          "path": "results/post-run-clean.json",
+          "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+        },
+        {
+          "path": "results/preflight.json",
+          "sha256": "cffe56026d816513bb45c60931174a631a772a9b6a2576cbe98d0b09fabcc4c8"
+        },
+        {
+          "path": "results/publication-check.json",
+          "sha256": "f354b3ab98ada93f736a6ca38d59044edb1719ee589cc7f660b1a66acd03a1e7"
+        },
+        {
+          "path": "results/radius-cost-channels.json",
+          "sha256": "f8e85b64892f344f2d5159aacda1090f74578719c92a2389ef08957440bbc201"
+        },
+        {
+          "path": "results/report-summary.json",
+          "sha256": "2967193c9e8f81eda2786640a9fe64e7a10d3291c92b1cba53ec7dbbf667281b"
+        },
+        {
+          "path": "results/runtime.json",
+          "sha256": "220c5be07abda2162c7be607651f0110279b18ff5e6480ccc847302fc9f6bb83"
+        },
+        {
+          "path": "results/store-compatibility.json",
+          "sha256": "457fee50629b5f484d5702f7ea1f9b74e451a2f19ab1a4187ff32be6baceeb4d"
+        },
+        {
+          "path": "results/store/20260911-model-owned-radius.db",
+          "sha256": "7d7b55dc28ae668f1c75c68551dd34f422c11ab57bdc9cf8ddee9d2d06c2f942"
+        },
+        {
+          "path": "results/store/artifacts/092ec06a55c4aba3d83078e9b07ab5eeeed021e95b6ee601d12568541a1dc08f.json",
+          "sha256": "092ec06a55c4aba3d83078e9b07ab5eeeed021e95b6ee601d12568541a1dc08f"
+        },
+        {
+          "path": "results/store/artifacts/181ddb9bc4cc50d0799dbca6713dd2e815e021a8c234f3d11e97bd3459fab96b.json",
+          "sha256": "181ddb9bc4cc50d0799dbca6713dd2e815e021a8c234f3d11e97bd3459fab96b"
+        },
+        {
+          "path": "results/store/artifacts/1b3a8d3d1508a91469f6ab46b38847e9ac052a2e4aceb8b27c33027f838c5f34.json",
+          "sha256": "1b3a8d3d1508a91469f6ab46b38847e9ac052a2e4aceb8b27c33027f838c5f34"
+        },
+        {
+          "path": "results/store/artifacts/1ca58c291d0b7aae5db7c953906007035be766b4ddf8119e2655751bbeac5fb8.json",
+          "sha256": "1ca58c291d0b7aae5db7c953906007035be766b4ddf8119e2655751bbeac5fb8"
+        },
+        {
+          "path": "results/store/artifacts/501b00215f2d276f53f6ef9d34c6b1832ac874a01935bf21d296ad5d4160c9fb.json",
+          "sha256": "501b00215f2d276f53f6ef9d34c6b1832ac874a01935bf21d296ad5d4160c9fb"
+        },
+        {
+          "path": "results/store/artifacts/600b72d10a38e05aa2470ff66b026dde7e80bb87efd37531788bd6aaac7f9d2a.json",
+          "sha256": "600b72d10a38e05aa2470ff66b026dde7e80bb87efd37531788bd6aaac7f9d2a"
+        },
+        {
+          "path": "results/store/artifacts/d8c8c212f00357cca7830e5e28a69eb43c9a7a9269ae6808354c5e003b6ea8fb.json",
+          "sha256": "d8c8c212f00357cca7830e5e28a69eb43c9a7a9269ae6808354c5e003b6ea8fb"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "27b8868d850ecc914d86fc6631601ac4735ec39dbbd6df233c0806d2bf4b1d6a"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "55509c0ee55e03411acb8d0007554396ace3cfe9e66b27f94c121023c9aa25b9",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+          }
+        ]
+      }
+    }
+  ],
+  "teax": {
+    "revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "era_pin": null,
+    "runtime": "results/runtime.json"
+  },
+  "indicators": {
+    "path": "indicators.json",
+    "sha256": "a9854b0cfc44a210a622e8f2c180d7bc565220d31b368ce50636afe24c8b8230",
+    "output_schema_version": "study-indicators/v1",
+    "axis_declaration": {
+      "path": "axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "digest": "776e4f3b531288c47893c351235dc9dbdbf18251e56248a80905fcc420c155ba",
+      "groups_declared": [
+        "R"
+      ],
+      "subset": false
+    }
+  },
+  "result_artifacts": [
+    {
+      "path": "results/all-channel-verification.json",
+      "sha256": "5b852629c55c61e63987c01ed8df62e00fa733820cbbc242a32a65e44c78568b"
+    },
+    {
+      "path": "results/analytic-ratios.json",
+      "sha256": "9ffe81288745cd9b7a74443a86d84dec9c319f6658d87cd7971bbdb212053171"
+    },
+    {
+      "path": "results/baseline-effective-inputs.json",
+      "sha256": "91dab6006bb8af39c6ac5ffb8146e700a5c3e414eb0a7c4e8f9960e85eafb76e"
+    },
+    {
+      "path": "results/baseline-native-evidence.json",
+      "sha256": "5a70ed1ff0e05e7c06c1ae1dda8c251a2c925ef38db5d33b66a62c70159c1196"
+    },
+    {
+      "path": "results/baseline_result.json",
+      "sha256": "732ca60c4cdaf9e93bca2de609279a120bdfedc9ffe798d633029db0ed19f383"
+    },
+    {
+      "path": "results/cases.json",
+      "sha256": "049b56d4fc30cb45b94a5544b37b529217e2646d1eaca140704d20247eabb2b4"
+    },
+    {
+      "path": "results/constraint-catalog.json",
+      "sha256": "0e9c9d3f394f47b22fdb1fec165456f293b83fbc3c82c08d46c1454e7b20ad2d"
+    },
+    {
+      "path": "results/coverage.json",
+      "sha256": "ba61a3e52c5eed89aa6efa929e88a92c7b239090a6e7212bcc96daa4cd28faa1"
+    },
+    {
+      "path": "results/effective-inputs.json",
+      "sha256": "0f5af210a80ba8e89c10ebf822119897c971972fc4b3224ae7329836408d4da7"
+    },
+    {
+      "path": "results/entry-models.json",
+      "sha256": "4263327abee9bfd485c31b550467370eccf9b89a6fc76ec787dd817e449a9310"
+    },
+    {
+      "path": "results/fixed-input-verification.json",
+      "sha256": "b549dac630eed17172b1d91b27d23958aca0f02c3caddc4d362212a8189a4569"
+    },
+    {
+      "path": "results/frozen-control-verification.json",
+      "sha256": "2b518b7a9a310052a9e2be16d8ae98e5995451992edf6a2cd7658ccdd77c064f"
+    },
+    {
+      "path": "results/native-store-path.json",
+      "sha256": "cb8b8208a386e8b5186cfe0bf4805aae3ca90d9095492753bd6d8e90ad3bfb82"
+    },
+    {
+      "path": "results/oracle-window-scan.json",
+      "sha256": "2d84df21c8f5d0e077a4b82d16c97bd70747fc92a5ff6e0e7481e292326f4963"
+    },
+    {
+      "path": "results/package-inputs.json",
+      "sha256": "94e4a246b425a0a40d58f59f5004cb21f9d5f035f652e67078ae25448fc124ff"
+    },
+    {
+      "path": "results/package_identity.json",
+      "sha256": "3b111f92e18185d960d114276e5ce7938e590fa635ac86b161834e279f5a8e80"
+    },
+    {
+      "path": "results/points.csv",
+      "sha256": "fe6e3583e4ac9ef73c2d7aae4cf73e809ed5fd2b24e05abbd6010cf0e8fd5c7a"
+    },
+    {
+      "path": "results/post-run-clean.json",
+      "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+    },
+    {
+      "path": "results/preflight.json",
+      "sha256": "cffe56026d816513bb45c60931174a631a772a9b6a2576cbe98d0b09fabcc4c8"
+    },
+    {
+      "path": "results/publication-check.json",
+      "sha256": "f354b3ab98ada93f736a6ca38d59044edb1719ee589cc7f660b1a66acd03a1e7"
+    },
+    {
+      "path": "results/radius-cost-channels.json",
+      "sha256": "f8e85b64892f344f2d5159aacda1090f74578719c92a2389ef08957440bbc201"
+    },
+    {
+      "path": "results/report-summary.json",
+      "sha256": "2967193c9e8f81eda2786640a9fe64e7a10d3291c92b1cba53ec7dbbf667281b"
+    },
+    {
+      "path": "results/runtime.json",
+      "sha256": "220c5be07abda2162c7be607651f0110279b18ff5e6480ccc847302fc9f6bb83"
+    },
+    {
+      "path": "results/store-compatibility.json",
+      "sha256": "457fee50629b5f484d5702f7ea1f9b74e451a2f19ab1a4187ff32be6baceeb4d"
+    },
+    {
+      "path": "results/store/20260911-model-owned-radius.db",
+      "sha256": "7d7b55dc28ae668f1c75c68551dd34f422c11ab57bdc9cf8ddee9d2d06c2f942"
+    },
+    {
+      "path": "results/store/artifacts/092ec06a55c4aba3d83078e9b07ab5eeeed021e95b6ee601d12568541a1dc08f.json",
+      "sha256": "092ec06a55c4aba3d83078e9b07ab5eeeed021e95b6ee601d12568541a1dc08f"
+    },
+    {
+      "path": "results/store/artifacts/181ddb9bc4cc50d0799dbca6713dd2e815e021a8c234f3d11e97bd3459fab96b.json",
+      "sha256": "181ddb9bc4cc50d0799dbca6713dd2e815e021a8c234f3d11e97bd3459fab96b"
+    },
+    {
+      "path": "results/store/artifacts/1b3a8d3d1508a91469f6ab46b38847e9ac052a2e4aceb8b27c33027f838c5f34.json",
+      "sha256": "1b3a8d3d1508a91469f6ab46b38847e9ac052a2e4aceb8b27c33027f838c5f34"
+    },
+    {
+      "path": "results/store/artifacts/1ca58c291d0b7aae5db7c953906007035be766b4ddf8119e2655751bbeac5fb8.json",
+      "sha256": "1ca58c291d0b7aae5db7c953906007035be766b4ddf8119e2655751bbeac5fb8"
+    },
+    {
+      "path": "results/store/artifacts/501b00215f2d276f53f6ef9d34c6b1832ac874a01935bf21d296ad5d4160c9fb.json",
+      "sha256": "501b00215f2d276f53f6ef9d34c6b1832ac874a01935bf21d296ad5d4160c9fb"
+    },
+    {
+      "path": "results/store/artifacts/600b72d10a38e05aa2470ff66b026dde7e80bb87efd37531788bd6aaac7f9d2a.json",
+      "sha256": "600b72d10a38e05aa2470ff66b026dde7e80bb87efd37531788bd6aaac7f9d2a"
+    },
+    {
+      "path": "results/store/artifacts/d8c8c212f00357cca7830e5e28a69eb43c9a7a9269ae6808354c5e003b6ea8fb.json",
+      "sha256": "d8c8c212f00357cca7830e5e28a69eb43c9a7a9269ae6808354c5e003b6ea8fb"
+    },
+    {
+      "path": "results/verification_summary.json",
+      "sha256": "27b8868d850ecc914d86fc6631601ac4735ec39dbbd6df233c0806d2bf4b1d6a"
+    }
+  ],
+  "context_artifacts": [
+    {
+      "path": "context/ANNEX.md",
+      "sha256": "bb56f205558990849aea0f09ca2e4996a929249036e7a765f55cae0e07b68f55"
+    },
+    {
+      "path": "context/STUDY_POLICY.md",
+      "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef"
+    },
+    {
+      "path": "context/T-021-assessment.md",
+      "sha256": "8e0acc80a73bbaefebed508b25fce08815a765a88e2ae01b241eecc4944c0611"
+    },
+    {
+      "path": "context/T-021-probe.py",
+      "sha256": "6775b0f09a8b15e03088b6d603be3f9805bfbc17e02668e161ed77a5688ece11"
+    },
+    {
+      "path": "context/WI-051-audit-report.md",
+      "sha256": "c8c50764f1586b1cbeb9fa26f660f957ce7ee2431bded28329d1726dc550d754"
+    },
+    {
+      "path": "context/WI-051-audit.md",
+      "sha256": "bc627a16ccc3c3561129d83edc436353aa3981018a6a86b33f2b22f8dbba1662"
+    },
+    {
+      "path": "context/WI-051-checks.json",
+      "sha256": "d3595a1a2457602fe154fa38a5c1e7b7864af6126926b575769e4cd3a3aab9f1"
+    },
+    {
+      "path": "context/WI-051-numerical-report.md",
+      "sha256": "22f4bdc773f61d64d9ca0beb7e4e51bb05d8ebafd8c3062170cc94606774b34f"
+    },
+    {
+      "path": "context/WI-051-results.json",
+      "sha256": "968af4db8c7c76291add1e7d2f647c53c101755c2a2a2465bd778cdab7fae60b"
+    },
+    {
+      "path": "context/WI-051-schema-refusals.json",
+      "sha256": "39f619e27683c92e14850a0e81eaa914a71982261db8bb22cac3a577993b5f26"
+    },
+    {
+      "path": "context/WI-051-standalone.json",
+      "sha256": "7bbdb2d7f33b37d32c914328ec5f462c891cd88d65f92adb324ce2fca1cc7d9b"
+    },
+    {
+      "path": "context/baseline_result.v1.schema.json",
+      "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+    },
+    {
+      "path": "context/codex-test-setup.md",
+      "sha256": "c0527b5681a6140f8ba697e3701bf58f8443b2769a4beae81b043ed319b058b8"
+    },
+    {
+      "path": "context/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+    },
+    {
+      "path": "context/consumer-audit.md",
+      "sha256": "c08b9245ea45f256f143094c18b482d40fd3f577c72c242d143f1b6e1976f406"
+    },
+    {
+      "path": "context/consumer-handoff.md",
+      "sha256": "e06744a74ec7b6aece29872c90a6fb9f65df3bff87c92ded6a87e273854701b1"
+    },
+    {
+      "path": "context/expectations.json",
+      "sha256": "a16c0731e81230060d6c74d0cc93189445ba7f4c06bb002ab2338fe07b25648a"
+    },
+    {
+      "path": "context/frozen-checks.json",
+      "sha256": "e65359009445997b5a098d1671ef15ab089943a69b25615fc649fb1c51965f4f"
+    },
+    {
+      "path": "context/frozen-inventory.json",
+      "sha256": "aaf3e6c479f65ee9a27d3ad0ea5b780a2c7086d1174cef54ec7e6b8daeb41dbe"
+    },
+    {
+      "path": "context/frozen-results.json",
+      "sha256": "65d5e9bb596daca23323c35ffe122e642277767f819a877275e5ff4b8281e589"
+    },
+    {
+      "path": "context/frozen-source-meaning.md",
+      "sha256": "92110f6a826da0ed3031db2c361565209271fd43bd20c18798d5bb8a297c1c36"
+    },
+    {
+      "path": "context/goal-trail.md",
+      "sha256": "8b27a8b78c492413960f66d8c89117c6b5ba8f288a6c733d4f16a8be5ebe8d7c"
+    },
+    {
+      "path": "context/goal.md",
+      "sha256": "d35b93fc60c7d00bdb031b0f4d3bcc1183b5bc2b48302faab0cd4263083070bd"
+    },
+    {
+      "path": "context/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+    },
+    {
+      "path": "context/indicators.py",
+      "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+    },
+    {
+      "path": "context/integration_return.json",
+      "sha256": "dfc969f2da345fc77bb769615ebaf8e76ddf1e1d6c40bd9e17288f5e543492e1"
+    },
+    {
+      "path": "context/learnings.md",
+      "sha256": "b6b92539d6350ab765635118d40bd3db4f20b51fe7d5aff807447bcf7bc2af37"
+    },
+    {
+      "path": "context/manifest.json",
+      "sha256": "0ad528c8a14fed079c895229172db697639bba44e4462122a9561cd33f1c8b72"
+    },
+    {
+      "path": "context/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+    },
+    {
+      "path": "context/model_contract.json",
+      "sha256": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2"
+    },
+    {
+      "path": "context/oracle_entry.py",
+      "sha256": "d1e96a65b59728aa5c92827fb2a4ede99a3a33ccf93ba291bf31661928d77df8"
+    },
+    {
+      "path": "context/package_contract.json",
+      "sha256": "7afe83954c8b591c7b30c94b64940f9904d9f25ea9cf4fc6da5bbb87f171c9f7"
+    },
+    {
+      "path": "context/pipeline.yaml",
+      "sha256": "84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f"
+    },
+    {
+      "path": "context/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+    },
+    {
+      "path": "context/provenance.json",
+      "sha256": "acea8d02c4537aad7cf08732e06c596d25a2f483f31c6f9ca780bf97a6fee65b"
+    },
+    {
+      "path": "context/record-template.md",
+      "sha256": "fffc66bf3958698a6d6348f646590cdea0ad6512fc1d3d05c7e227912260e9c3"
+    },
+    {
+      "path": "context/runbook.md",
+      "sha256": "850ac4e94249f14b73eff220424ad0fcd350bd5e5a7f7bbb1303db0e8b356ae6"
+    },
+    {
+      "path": "context/stellaris-table2.png",
+      "sha256": "433306f0a4522a08a1889d8c76a3de64b51b73d148e61c33a0261c89b66eae73"
+    },
+    {
+      "path": "context/study_route.py",
+      "sha256": "3601df5f04cb0561a54864b77d6df88cdba466cc2f47f99c3048dff1b7a46d0e"
+    },
+    {
+      "path": "context/verify.py",
+      "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+    },
+    {
+      "path": "context/verify_stellaris.py",
+      "sha256": "90951874257194cb36ee790faebd2fd27dfcebbe2317c36e1b9869f7ff2aefff"
+    }
+  ],
+  "preparation_artifacts": [
+    {
+      "path": "preparation/capture.py",
+      "sha256": "904c9fe9c14fc26423b900b7d3ee74f030497d3512e09713a50f07000ecc2795"
+    },
+    {
+      "path": "preparation/findings.json",
+      "sha256": "95e35da373d01bb7953517e3f32060a8cc00906aba6cbb217f338143802192d5"
+    },
+    {
+      "path": "preparation/intake.md",
+      "sha256": "1d578faaed9229d3114c40d22b5bf7b5f8ddf7a6d9847df8b2ccf31a21480a2f"
+    },
+    {
+      "path": "preparation/open-record.py",
+      "sha256": "d915350f9ba3a4e40463fc3591edb73d5cb14a2839e2aa783bee3226e4ed8b67"
+    },
+    {
+      "path": "preparation/window-freeze.json",
+      "sha256": "b912e8a56759e6e5cdc35ae14ff2383b857aaf4f355460fb70933604af4029c7"
+    }
+  ],
+  "execution_artifacts": [
+    {
+      "path": "execution/baseline-attempt-1.log",
+      "sha256": "53647631776463afa3f377a9702ed81bccc40c4b43be824fec8f05d3c6533180"
+    },
+    {
+      "path": "execution/baseline.py",
+      "sha256": "5396d5b9d1ff153cfdaeacc7a2797435fd47bc22451600813357700b01e9f4d4"
+    },
+    {
+      "path": "execution/capture-support.log",
+      "sha256": "750d9ae078799fee407e71eb38e194a7fc5356299caeccd8a28994482c67e46a"
+    },
+    {
+      "path": "execution/capture-support.py",
+      "sha256": "fc3fe849a39e5fce08fa09b210c89cff4a5d6d8aa78b490ef9fec75e860afc66"
+    },
+    {
+      "path": "execution/commands.md",
+      "sha256": "2c50120e9c7a9881b52e72f18d9146e96e1b85fb35e7fa54269dc87217435ffd"
+    },
+    {
+      "path": "execution/diagnostic-summary.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/diagnostic-summary.py",
+      "sha256": "4e65e4db5703c77d698d3784a895ac5c52d722b0233164ad72e2de9e9f32c674"
+    },
+    {
+      "path": "execution/execute.py",
+      "sha256": "8fb3a84b3ded365a25d1970842ce683854102cee6be2c3c70b1bb06ac4c1f72b"
+    },
+    {
+      "path": "execution/finalize.py",
+      "sha256": "7570626ea50eb7266e29a952297753e9bb91cf709abcdb521d75611b4438e0ab"
+    },
+    {
+      "path": "execution/native-publication-tests.log",
+      "sha256": "c2c6b596f6326dec34c3110029f10ae752a6b80ef7dd9f3d368c2793a9363a31"
+    },
+    {
+      "path": "execution/native-record-tests.log",
+      "sha256": "96ffb612a44e5a8d3932137e60c7921df2a9bf53e8a0fa8b0552a6e333d5172d"
+    },
+    {
+      "path": "execution/native-verification-attempt-1.log",
+      "sha256": "ed1c76a1fb659ee16d70a8fb4a689307813b7f2215885b148ffdd0caf2010f5d"
+    },
+    {
+      "path": "execution/publication-check.log",
+      "sha256": "95e64681575dae4aace9cf7404cdce9ffad3196602161e61131d06366c1dd281"
+    },
+    {
+      "path": "execution/publication-check.py",
+      "sha256": "20d52165d3d250e96d66f2437f0ed52503bc1ceef41505407392ce134008283d"
+    },
+    {
+      "path": "execution/record-validation.log",
+      "sha256": "9a6d48e895df9ffc04d54f71012d7b6d96a945caea7b78cd7c3fc23f294e402a"
+    },
+    {
+      "path": "execution/report-attempt-1.log",
+      "sha256": "ed7fc08fdbf9532a88654bc640775b9490fe57637a87e4c1fa461c0bce796076"
+    },
+    {
+      "path": "execution/report-attempt-2.log",
+      "sha256": "b279529c467ff0b719413c7ee361781ca274dabea89d9b2e644dc16f784cc405"
+    },
+    {
+      "path": "execution/report.py",
+      "sha256": "fbf7148699bbb9aaf257b72fd0bb4ad2f87941a43a85ebd02e70cba410369680"
+    },
+    {
+      "path": "execution/scan-attempt-1.log",
+      "sha256": "0f34239d553bf4d0dc0d1d54b6f422cbf035172e4327f3f32a4c0380e0ed90c6"
+    },
+    {
+      "path": "execution/scan.py",
+      "sha256": "bd7187f579d987b71367408e8ac1ac1dba8feec6d2a5f0d01135549bfd31f10a"
+    },
+    {
+      "path": "execution/study-attempt-1.log",
+      "sha256": "b292de5fa7edea7d913717317e3f9c88bc0285c1005756368d5880148405d5b0"
+    },
+    {
+      "path": "execution/validate-record.py",
+      "sha256": "d7c5e3968df5add56c283b6356e3d54ad52c92ab14a54d9a1b7c8dffdc66ffab"
+    },
+    {
+      "path": "execution/verify-all-attempt-1.log",
+      "sha256": "b1ce017f084ce95d5604048be0be46321812c920c0fafb7e07b59f0a0791b9d5"
+    },
+    {
+      "path": "execution/verify-all.py",
+      "sha256": "a1e5f29a5c3540c7289bce8581f492c4f492c9cd25fd693bd9078cc928026197"
+    }
+  ],
+  "review_artifacts": [
+    {
+      "path": "reviews/final-disposition.md",
+      "sha256": "a8fdd52ff5916f5b3a6c7dc29127788f0c9f131b53ba00e8c505a1c79f49b9eb"
+    },
+    {
+      "path": "reviews/final-review-brief.md",
+      "sha256": "cf8154a9b17f5ef1cf40066ff15f5def2378aa69f7a0f91bbe8b84cee5c477e5"
+    },
+    {
+      "path": "reviews/final-review.md",
+      "sha256": "615b77ab9f0996a1d7171ac1b5ec94c4a5aa15d6e7cd3cb5cf7a6d4e3aaeac28"
+    },
+    {
+      "path": "reviews/pre-execution-brief.md",
+      "sha256": "646fe376fb5175ae9344c43185fd7af1b2e771505eb4a3400939b529b6916753"
+    },
+    {
+      "path": "reviews/pre-execution-disposition.md",
+      "sha256": "d03ccc1aae4369249ccc0366e673660d5fa38cef34f6e50db78e5d10688bcdd5"
+    },
+    {
+      "path": "reviews/pre-execution-review.md",
+      "sha256": "41f7682f28b2d05b5204f95e49d7eae651db8848fb4f39ad7282216c7c6a488f"
+    },
+    {
+      "path": "reviews/provenance.json",
+      "sha256": "932341a957cedacbe494fde94cf27556543b419025f415070961c1e57df131af"
+    }
+  ],
+  "diagnostic_artifacts": [
+    {
+      "path": "diagnostics/README.md",
+      "sha256": "0706b048c17228178e52dc23054b80032e94c6040137d7a58188a77fbc84f488"
+    },
+    {
+      "path": "diagnostics/retained-evidence.json",
+      "sha256": "4e76386f6e4c8632127f0fa0f0815316ddc98b36a3118510ee35afc51610c4ff"
+    }
+  ],
+  "support_artifacts": [
+    {
+      "path": "study.py",
+      "sha256": "01e58a624ed4a382071134d73a2371bdbc36fd37d915277b0065eb97b26c848d"
+    },
+    {
+      "path": "axes.json",
+      "sha256": "776e4f3b531288c47893c351235dc9dbdbf18251e56248a80905fcc420c155ba"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "3838e3d0904adcca799717b1f0a3d5100fdecfebf309ae7c62111b7a627a4f06"
+    }
+  ],
+  "baseline_preparation": "Strict direct evaluation, no store; explicit nil sentinel provenance in baseline_result.json. Ordinary baseline is a real case in the sole store.",
+  "gaps": [
+    "Generated executable package and complete runtime installation are not copied. Re-execution requires the stated sealed package/runtime identities.",
+    "No fresh diagnostic execution; original adverse cases are retained with provenance.",
+    "No independent oracle computation for the 17 disclosed channels, or arbitrary override support for the 147 disclosed inputs.",
+    "Administrator synthesis and parent freeze commit are separate subsequent actions."
+  ],
+  "findings_registration": {
+    "ids": [
+      "20260911-model-owned-radius#1",
+      "20260911-model-owned-radius#2",
+      "20260911-model-owned-radius#3",
+      "20260911-model-owned-radius#4",
+      "20260911-model-owned-radius#5",
+      "20260911-model-owned-radius#6"
+    ],
+    "writer": "native T-026 executor",
+    "status": "six first sightings appended; no goal dispositions",
+    "date": "2026-09-11"
+  }
+}

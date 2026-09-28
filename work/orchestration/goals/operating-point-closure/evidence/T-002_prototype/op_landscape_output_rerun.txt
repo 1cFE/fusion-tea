@@ -1,0 +1,6 @@
+fd=1.00 n19l=38.3 aux_req=  56.3  paux=  0: no burn  paux= 50: no burn
+fd=1.05 n19l=40.3 aux_req=  33.5  paux=  0: no burn  paux= 50: T=19.97 p_fus=  5733 wall= 6.53(lim 4.05) beta= 3.85%(lim 5)
+fd=1.10 n19l=42.2 aux_req=   5.9  paux=  0: no burn  paux= 50: T=21.50 p_fus=  7166 wall= 8.17(lim 4.05) beta= 4.34%(lim 5)
+fd=1.20 n19l=46.0 aux_req= -64.8  paux=  0: T=22.73 p_fus=  9358 wall=10.66(lim 4.05) beta= 5.00%(lim 5)  paux= 50: T=23.79 p_fus= 10065 wall=11.47(lim 4.05) beta= 5.24%(lim 5)
+fd=1.30 n19l=49.8 aux_req=-155.8  paux=  0: T=24.96 p_fus= 12722 wall=14.50(lim 4.05) beta= 5.95%(lim 5)  paux= 50: T=25.63 p_fus= 13232 wall=15.08(lim 4.05) beta= 6.11%(lim 5)
+fd=1.50 n19l=57.5 aux_req=-407.9  paux=  0: T=28.34 p_fus= 20286 wall=23.11(lim 4.05) beta= 7.80%(lim 5)  paux= 50: T=28.72 p_fus= 20646 wall=23.52(lim 4.05) beta= 7.90%(lim 5)

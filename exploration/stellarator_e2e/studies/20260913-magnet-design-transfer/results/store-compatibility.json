@@ -1,0 +1,11 @@
+{
+  "evidence_schema_version": "v3",
+  "executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+  "input_schema_version": "input-v1",
+  "model_contract_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+  "singleton": 1,
+  "strategy_config": "3738b3e0b43801a29d81e808062bbb9435782dd24b9575c2225c68e7605adbda",
+  "strategy_identity": "prepared-grid/v1",
+  "study_definition_fingerprint": "bf366f0e384629348a06385db7e972e10be3945b1a24e87594182af1dd2aa97a",
+  "study_id": "20260913-magnet-design-transfer"
+}

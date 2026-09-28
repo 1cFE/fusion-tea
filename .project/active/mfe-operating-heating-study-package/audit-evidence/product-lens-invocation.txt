@@ -1,0 +1,12 @@
+Fresh independent CLI delegation after both auditor and parent collaboration.spawn_agent calls returned "agent thread limit reached". No release operation is exposed. No author context was forked.
+
+Command:
+timeout 300 codex exec --ephemeral --json --sandbox read-only --cd /home/reid/1cfe/fusion-tea-codex-test --output-last-message /tmp/mfe-package-product-lens.txt - > /tmp/mfe-package-product-lens.jsonl 2> /tmp/mfe-package-product-lens.stderr
+
+stdin (quoted heredoc):
+Read /home/reid/.codex/scripts/product-lens.md and use it as your entire task instruction. Follow its oracle-first protocol.
+SOURCES: README.md, docs/, .project/adr/ (index first), .project/product/INDEX.md if present, owner-verbatim in work/orchestration/goals/fusion-audit-remediation/goal.md.
+WORK: implementation676c7308 current stellarator studies manifest/oracle_entry.py/study_route.py/ANNEX.md, changed tests/study modules/fixtures, and .project/active/mfe-operating-heating-study-package/ artifacts as claims.
+Return only the concise written point, graded findings/falsifiers, fired smells and gate recommendation. Do not modify files or read knowledge/holdout. This is a fresh independent product-lens review; do not spawn another reviewer.
+
+First default-sandbox invocation exited 1 before a thread started: "failed to initialize in-process app-server client: Read-only file system (os error 30)". Same command then ran with approved outer require_escalated access for CLI runtime initialization; inner reviewer retained read-only sandbox. It exited 0. Thread ID: 01a0927f-3a41-7b80-8aa7-a3cc90b24a50. No model/config override or permission broadening for reviewer tools.

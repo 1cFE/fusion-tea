@@ -1,0 +1,147 @@
+# Generated Pipeline Configuration for heat_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for heat_tea"
+  output_folder: "heat_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      dual_blanket_heat_params: DualBlanketHeatParams ../inputs/dual_blanket_heat_params.json
+
+
+  # source: computed_attribute (aries_dual_blanket_heat.inter_coolant_exchange.absent_boundary_exchange_mwModule)
+  aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw:
+    module_type: aries_dual_blanket_heat.inter_coolant_exchange.absent_boundary_exchange_mwModule
+    inputs:
+      transferred_heat_mw: float dual_blanket_heat_params.aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw
+    outputs:
+      root: RootModel[float] aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw__absent_boundary_exchange_mw
+
+  # dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+  aries_dual_blanket_heat__pbli__heat:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      exported_exchange_in: float dual_blanket_heat_params.aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw
+      recovered_friction_in: float dual_blanket_heat_params.aries_dual_blanket_heat__pbli__recovered_friction_mw
+      received_exchange_in: float aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw__absent_boundary_exchange_mw.root
+      deposited_heat_in: float dual_blanket_heat_params.aries_dual_blanket_heat__pbli__deposited_heat_mw
+    outputs:
+      root: RootModel[float] aries_dual_blanket_heat__pbli__heat__delivered_heat
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_dual_blanket_heat__pbli__capacity:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool dual_blanket_heat_params.aries_dual_blanket_heat__pbli__assumed_conditions_supported
+      demand_in: float aries_dual_blanket_heat__pbli__heat__delivered_heat.root
+      applicable_in: bool dual_blanket_heat_params.aries_dual_blanket_heat__pbli__scenario_applicable
+      rating_in: float dual_blanket_heat_params.aries_dual_blanket_heat__pbli__offered_duty_mw
+      demand_available_in: bool dual_blanket_heat_params.aries_dual_blanket_heat__pbli__duty_available
+    outputs:
+      evaluation_defined: float aries_dual_blanket_heat__pbli__capacity__evaluation_defined
+      margin: float aries_dual_blanket_heat__pbli__capacity__margin
+      applicable: bool aries_dual_blanket_heat__pbli__capacity__applicable
+      supported: bool aries_dual_blanket_heat__pbli__capacity__supported
+      capacity_ok: bool aries_dual_blanket_heat__pbli__capacity__capacity_ok
+
+  # dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+  aries_dual_blanket_heat__helium__heat:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      received_exchange_in: float dual_blanket_heat_params.aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw
+      recovered_friction_in: float dual_blanket_heat_params.aries_dual_blanket_heat__helium__recovered_friction_mw
+      exported_exchange_in: float aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw__absent_boundary_exchange_mw.root
+      deposited_heat_in: float dual_blanket_heat_params.aries_dual_blanket_heat__helium__deposited_heat_mw
+    outputs:
+      root: RootModel[float] aries_dual_blanket_heat__helium__heat__delivered_heat
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_dual_blanket_heat__helium__capacity:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      applicable_in: bool dual_blanket_heat_params.aries_dual_blanket_heat__helium__scenario_applicable
+      rating_in: float dual_blanket_heat_params.aries_dual_blanket_heat__helium__offered_duty_mw
+      demand_in: float aries_dual_blanket_heat__helium__heat__delivered_heat.root
+      demand_available_in: bool dual_blanket_heat_params.aries_dual_blanket_heat__helium__duty_available
+      conditions_supported_in: bool dual_blanket_heat_params.aries_dual_blanket_heat__helium__assumed_conditions_supported
+    outputs:
+      evaluation_defined: float aries_dual_blanket_heat__helium__capacity__evaluation_defined
+      margin: float aries_dual_blanket_heat__helium__capacity__margin
+      applicable: bool aries_dual_blanket_heat__helium__capacity__applicable
+      supported: bool aries_dual_blanket_heat__helium__capacity__supported
+      capacity_ok: bool aries_dual_blanket_heat__helium__capacity__capacity_ok
+
+  # dual_circuit_heat_accounting.Dual_Circuit_Heat_LedgerModule
+  aries_dual_blanket_heat__blanket_ledger__energy:
+    module_type: dual_circuit_heat_accounting.Dual_Circuit_Heat_LedgerModule
+    inputs:
+      deposition_1_in: float dual_blanket_heat_params.aries_dual_blanket_heat__helium__deposited_heat_mw
+      friction_1_in: float dual_blanket_heat_params.aries_dual_blanket_heat__helium__recovered_friction_mw
+      duty_2_in: float aries_dual_blanket_heat__pbli__heat__delivered_heat.root
+      duty_1_in: float aries_dual_blanket_heat__helium__heat__delivered_heat.root
+      friction_2_in: float dual_blanket_heat_params.aries_dual_blanket_heat__pbli__recovered_friction_mw
+      deposition_2_in: float dual_blanket_heat_params.aries_dual_blanket_heat__pbli__deposited_heat_mw
+    outputs:
+      friction_total: float aries_dual_blanket_heat__blanket_ledger__energy__friction_total
+      deposited_total: float aries_dual_blanket_heat__blanket_ledger__energy__deposited_total
+      delivered_total: float aries_dual_blanket_heat__blanket_ledger__energy__delivered_total
+      energy_residual: float aries_dual_blanket_heat__blanket_ledger__energy__energy_residual
+
+  # aries_dual_blanket_heat.PbliCapacityOkConstraintModule
+  aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6:
+    module_type: aries_dual_blanket_heat.PbliCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_dual_blanket_heat__pbli__capacity__margin
+      defined_in: float aries_dual_blanket_heat__pbli__capacity__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation
+
+  # aries_dual_blanket_heat.HeliumCapacityOkConstraintModule
+  aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a:
+    module_type: aries_dual_blanket_heat.HeliumCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_dual_blanket_heat__helium__capacity__margin
+      defined_in: float aries_dual_blanket_heat__helium__capacity__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      aries_dual_blanket_heat_pbli_capacity_ok_24d83956889b2fa6: ConstraintEvaluation aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation
+      aries_dual_blanket_heat_helium_capacity_ok_1ebe7a3e536db96a: ConstraintEvaluation aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw__absent_boundary_exchange_mw: RootModel[float] aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw__absent_boundary_exchange_mw.json
+      aries_dual_blanket_heat__pbli__heat__delivered_heat: RootModel[float] pbli__delivered_heat_mw.json
+      aries_dual_blanket_heat__pbli__capacity__evaluation_defined: float pbli__capacity_defined.json
+      aries_dual_blanket_heat__pbli__capacity__margin: float pbli__capacity_margin_mw.json
+      aries_dual_blanket_heat__pbli__capacity__applicable: bool aries_dual_blanket_heat__pbli__capacity__applicable.json
+      aries_dual_blanket_heat__pbli__capacity__supported: bool aries_dual_blanket_heat__pbli__capacity__supported.json
+      aries_dual_blanket_heat__pbli__capacity__capacity_ok: bool aries_dual_blanket_heat__pbli__capacity__capacity_ok.json
+      aries_dual_blanket_heat__helium__heat__delivered_heat: RootModel[float] helium__delivered_heat_mw.json
+      aries_dual_blanket_heat__helium__capacity__evaluation_defined: float helium__capacity_defined.json
+      aries_dual_blanket_heat__helium__capacity__margin: float helium__capacity_margin_mw.json
+      aries_dual_blanket_heat__helium__capacity__applicable: bool aries_dual_blanket_heat__helium__capacity__applicable.json
+      aries_dual_blanket_heat__helium__capacity__supported: bool aries_dual_blanket_heat__helium__capacity__supported.json
+      aries_dual_blanket_heat__helium__capacity__capacity_ok: bool aries_dual_blanket_heat__helium__capacity__capacity_ok.json
+      aries_dual_blanket_heat__blanket_ledger__energy__friction_total: float aries_dual_blanket_heat__blanket_ledger__energy__friction_total.json
+      aries_dual_blanket_heat__blanket_ledger__energy__deposited_total: float aries_dual_blanket_heat__blanket_ledger__energy__deposited_total.json
+      aries_dual_blanket_heat__blanket_ledger__energy__delivered_total: float aries_dual_blanket_heat__blanket_ledger__energy__delivered_total.json
+      aries_dual_blanket_heat__blanket_ledger__energy__energy_residual: float aries_dual_blanket_heat__blanket_ledger__energy__energy_residual.json
+      aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation: ConstraintEvaluation aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation.json
+      aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation: ConstraintEvaluation aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

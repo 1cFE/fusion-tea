@@ -1,0 +1,9 @@
+# Round 2 correction and scope
+
+[AGENT] This record retains the declared plant boundary, all equipment offers, scenario families and reporting bands from the first attempt, sealed at commit 275ba13c with released=false. The native plant package, physics and acceptance tolerances remain unchanged.
+
+Independent 80-digit adjudication identified insufficient stopping precision in the independent cooler root solve. The reviewed correction retains its own water-temperature integral and Brent method, using the smallest positive binary64 absolute stopping tolerance and four machine epsilons for the relative stopping tolerance. Four cryogenic diagnostic points now lie ±0.01 W/m³ from the same capacity threshold, at both supported source loads. Original closer points remain preserved in the failed record.
+
+The original 2496-point regression retains exactly eight known cryogenic discrepancies and no others. All 498 legacy controls pass; development yields 32 evaluated passes and three consistent refusals. Four new native cryogenic points pass stock numerical verification and retain the expected passing lower side and failing upper side. See supporting/numerical-repair-r2-review.md and supporting/numerical-repair-r2-validation/validation-summary.json.
+
+The replacement completed all 2,496 native cases. Stock verification passed every case across 1,192 scalar channels and 125 predicates. Independent final review passed the complete plant boundary, actual reranking, conditional conclusions and presentation. Exact replay comparison confirms 2,492 original cases and four reviewed replacement probes reproduce all native outputs and verdicts. See results/execution-context.json, results/verification_summary.json, results/native-replay-comparison.json and supporting/final-results-review.md. The original failed record remains sealed separately; this replacement is the verified comparison.

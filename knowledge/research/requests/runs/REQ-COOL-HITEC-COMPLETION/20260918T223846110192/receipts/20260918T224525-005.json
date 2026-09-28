@@ -1,0 +1,13 @@
+{
+  "attempt": 5,
+  "outcome": "registered",
+  "candidate": "https://github.com/NREL/ssc/blob/develop/tcs/htf_props.cpp",
+  "slug": "nrel_ssc_heat_transfer_fluid_property_implementation",
+  "path": "knowledge/sources/nrel_ssc_heat_transfer_fluid_property_implementation/",
+  "source_id": "e5355b5fcc0e1e87cb830360f0d30fd32ef74d0522d08aa3b9508b65688f6dfb",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:45:25.339999+00:00"
+}

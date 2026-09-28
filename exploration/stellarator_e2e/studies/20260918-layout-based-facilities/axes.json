@@ -1,0 +1,425 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "blanket__first_wall__fluence_limit",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__blanket__first_wall__fluence_limit",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__civil_rate_multiplier",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__civil_rate_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__component_hold_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__component_hold_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__component_install_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__component_install_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__component_material_fraction",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__component_material_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__component_receipt_lead_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__component_receipt_lead_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__component_remove_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__component_remove_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__conventional_rebar_density",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__conventional_rebar_density",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__conventional_wall",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__conventional_wall",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_aisle_width",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_aisle_width",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_bundle_process_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_bundle_process_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_cross_width",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_cross_width",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_hold_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_hold_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_initial_receipt_lead_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_initial_receipt_lead_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_machine_process_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_machine_process_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_machine_stations",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_machine_stations",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_receipt_lead_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_receipt_lead_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__facilities_capacity_mode",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__facilities_capacity_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__facilities_cost_mode",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__facilities_cost_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__initial_receipt_lead_days",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__initial_receipt_lead_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__nuclear_rebar_density",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__nuclear_rebar_density",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__nuclear_wall",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__nuclear_wall",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__provisional_envelope_scale",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__provisional_envelope_scale",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__sector_service_teams",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__sector_service_teams",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__tonne_interpretation_kg",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_bundle_life",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_bundle_life",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_machine_life",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_machine_life",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__n_loops",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__n_loops",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sizing_mode",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__R",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__T_i0",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__a",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__alpha_T",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__alpha_T",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__alpha_n",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__alpha_n",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__n_e0",
+      "note": "AGENT sensitivity proposal; complete single authored public entry and native fan-out. Coordinated task/rebar scenarios are design scenarios, not physical identity ties. Retained selected18 context is comparison context, not independently searched.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__cooling_field_cycle_days",
+      "note": "Reviewer counterexample; AGENT sensitivity, no optimization.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__cooling_field_cycle_days",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__helium_package_width",
+      "note": "Reviewer counterexample; AGENT sensitivity, no optimization.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__helium_package_width",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__salt_package_length",
+      "note": "Reviewer counterexample; AGENT sensitivity, no optimization.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__salt_package_length",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

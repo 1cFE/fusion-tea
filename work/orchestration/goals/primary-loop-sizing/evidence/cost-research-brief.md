@@ -1,0 +1,7 @@
+# T-001 bounded cost acquisition
+
+Find admissible original evidence for installed cost of replicated EU DEMO/HCPB helium primary loops, helium circulators and heat exchangers at ~8 MPa, 300–500 C, ~225 kg/s per loop. Existing model uses aggregate 1costingFE $166M*(net MW/1000)+$40.6M*(thermal MW/3500)^.55 and cannot price physical loop additions. Do not treat that reference as a quote for 14 loops.
+
+Read knowledge/holdout/aries-cs/PROTOCOL.md before any fetch. No ARIES-CS-informed artifacts, Waganer or Araiinejad cost papers; do not follow them. No nested delegation or recursive project orientation. Follow .claude/commands/research-acquire.md and docs/research_seam_operator_guide.md. Use .codex-test/run for Python. Own a request REQ-LOOP-COST-01 and its native run/receipts only, plus work/orchestration/goals/primary-loop-sizing/evidence/cost-research.md. You are not alone; preserve other edits. Native source registration writes shared registry: coordinate with parent before registration (parent will not register meanwhile).
+
+Create native request with max_searches 4, max_captures 2; consumer primary-loop-sizing/T-001. Search primary institutional engineering sources; log queries/triage/failures and close native run. A bounded negative or queued candidate is valid. No invented prices or insights. Final <=500 words gives registered source or negative/queue path, provenance and what could be priced versus what remains unknown. Source dates/currency/boundaries must be explicit. Parent traces existing cost code in parallel; no model work here.

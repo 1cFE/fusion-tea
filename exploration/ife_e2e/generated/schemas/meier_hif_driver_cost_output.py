@@ -18,11 +18,13 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
 SysML Source: root-0/analyses/hif_economics.sysml:4
     """
-    cost_billions: float = Field(description="cost_billions output")
     gamma: float = Field(description="gamma output")
+    bank_energy_joules: float = Field(description="bank_energy_joules output")
+    cost_billions: float = Field(description="cost_billions output")

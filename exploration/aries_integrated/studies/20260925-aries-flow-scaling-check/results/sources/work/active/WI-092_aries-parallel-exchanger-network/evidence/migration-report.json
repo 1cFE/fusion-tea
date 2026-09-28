@@ -1,0 +1,282 @@
+{
+ "new_public_keys": {
+  "aries_integrated_plant__heat_exchangers__network_mode": 0.0,
+  "aries_integrated_plant__heat_exchangers__pbli_split_fraction": 0.85
+ },
+ "removed_public_keys": [],
+ "mode0_replays": [
+  {
+   "case": "replay-nominal-calculated",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-nominal-source-assumed",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-literal-Lyon-source-input",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-literal-Raffray-accounting",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-recuperator-0.95",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-cycle-flow-1500",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-cycle-flow-1600",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-cycle-flow-1700",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-divertor-flow-283",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-ua-x10",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-lyon-auxiliaries",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-combined-source-thermal",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-combined-source-thermal-lyon-aux",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-combined-plus-ua-x10",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-minus-recuperator",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-minus-cycle-flow",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-minus-divertor-flow",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-cycle-flow-1500",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-cycle-flow-1700",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-cycle-flow-1800",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c2-cycle-flow-2000",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-oat-source-partition",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-combined-c3-partition",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c3-plus-ua-x10",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c3-cycle-flow-1700",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c3-cycle-flow-1800",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  },
+  {
+   "case": "replay-c3-minus-recuperator",
+   "numeric_channels": 546,
+   "worst_relative": 0.0,
+   "exact_count": 546,
+   "mismatches": [],
+   "verdicts_equal": true,
+   "new_channels": 20
+  }
+ ],
+ "added_outputs": [
+  "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out",
+  "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet",
+  "aries_integrated_plant__heat_exchangers__evaluate__network_mode_used",
+  "aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used",
+  "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out"
+ ],
+ "removed_outputs": [],
+ "bound_calc_type_change": {
+  "part": "aries_integrated_plant.heat_exchangers",
+  "from": "'Heat Driven Closure'",
+  "to": "'Network Heat Driven Closure'"
+ },
+ "numeric_outputs_per_point": {
+  "before": 546,
+  "after": 551
+ },
+ "retained_definition": {
+  "'Heat Driven Closure'": "retained in models/library/analyses/integrated_heat_electricity.sysml and exploration/aries_integrated/native_completions/heat_driven_closure_impl.py unchanged; no longer bound by the live assembly, so the generator emits no module/schema for it and the package copy under handwritten/ is orphaned (reverted to the plain source form by the copy step)"
+ },
+ "development_cases": {
+  "total": 40,
+  "evaluated": 37,
+  "refused": [
+   "refuse-split-0",
+   "refuse-split-1",
+   "refuse-mode-2"
+  ]
+ },
+ "repo_head_at_checks": "e204afed7880e68f8fe4d1238f83a8ec309d43e7 (package uncommitted at check time; checkpoint commit follows)"
+}

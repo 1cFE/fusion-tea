@@ -1,0 +1,502 @@
+[
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V2_DYNAMIC_EXPRESSION",
+    "message": "Derived expression references design attributes: ['thermal_power_gw']",
+    "element_name": "hif_plant_pkg::hif_plant::thermal_power_gw",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:168",
+    "suggestion": "Create a calc def in library/:\n\ncalc def ThermalPowerGwCalculation {\n    in thermal_power_gw : Real;\n    out thermal_power_gw : Real = <expression>;\n}\n\nThen use a calc usage in your design file.",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V2_DYNAMIC_EXPRESSION",
+    "message": "Derived expression references design attributes: ['net_electric_power_gw']",
+    "element_name": "hif_plant_pkg::hif_plant::net_electric_power_gw",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:169",
+    "suggestion": "Create a calc def in library/:\n\ncalc def NetElectricPowerGwCalculation {\n    in net_electric_power_gw : Real;\n    out net_electric_power_gw : Real = <expression>;\n}\n\nThen use a calc usage in your design file.",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::lcoe'",
+    "element_name": "ife_plant::'IFE Power Plant'::lcoe",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:147",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::generating'",
+    "element_name": "ife_plant::'IFE Power Plant'::generating",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:148",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::fusion_power'",
+    "element_name": "ife_plant::'IFE Power Plant'::fusion_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:150",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::thermal_power'",
+    "element_name": "ife_plant::'IFE Power Plant'::thermal_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:151",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::gross_electric_power'",
+    "element_name": "ife_plant::'IFE Power Plant'::gross_electric_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:152",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::driver_electric_power'",
+    "element_name": "ife_plant::'IFE Power Plant'::driver_electric_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:153",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::other_parasitic_power'",
+    "element_name": "ife_plant::'IFE Power Plant'::other_parasitic_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:154",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::net_electric_power'",
+    "element_name": "ife_plant::'IFE Power Plant'::net_electric_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:155",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::driver_recirculating_fraction'",
+    "element_name": "ife_plant::'IFE Power Plant'::driver_recirculating_fraction",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:156",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::total_recirculating_fraction'",
+    "element_name": "ife_plant::'IFE Power Plant'::total_recirculating_fraction",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:157",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::recirculating_fraction'",
+    "element_name": "ife_plant::'IFE Power Plant'::recirculating_fraction",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:183",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'hif_driver::'HIF Driver'::driver_cost_billions'",
+    "element_name": "hif_driver::'HIF Driver'::driver_cost_billions",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml:92",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'hif_plant_pkg::hif_plant::thermal_power_gw'",
+    "element_name": "hif_plant_pkg::hif_plant::thermal_power_gw",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:168",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'hif_plant_pkg::hif_plant::net_electric_power_gw'",
+    "element_name": "hif_plant_pkg::hif_plant::net_electric_power_gw",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:169",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "V4_UNSUPPORTED_OPERATOR",
+    "message": "Unsupported operator '.' in attribute 'hif_plant_pkg::hif_plant::meier_coe'",
+    "element_name": "hif_plant_pkg::hif_plant::meier_coe",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:227",
+    "suggestion": "Use calc def for complex calculations requiring this operator",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::availability' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::availability",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:37",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::frequency' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::frequency",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:46",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::gain' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::gain",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:55",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::thermal_efficiency' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::thermal_efficiency",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:66",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::discount_rate' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::discount_rate",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:77",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::plant_cost_constant' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::plant_cost_constant",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:87",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::om_cost_constant' has no value or binding",
+    "element_name": "ife_plant::'IFE Power Plant'::om_cost_constant",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:98",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::lcoe' has expression but codegen cannot extract a numeric default: Feature reference 'price' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::lcoe",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:147",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::generating' has expression but codegen cannot extract a numeric default: Feature reference 'generating' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::generating",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:148",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::fusion_power' has expression but codegen cannot extract a numeric default: Feature reference 'fusion_power' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::fusion_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:150",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::thermal_power' has expression but codegen cannot extract a numeric default: Feature reference 'thermal_power' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::thermal_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:151",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::gross_electric_power' has expression but codegen cannot extract a numeric default: Feature reference 'gross_electric_power' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::gross_electric_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:152",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::driver_electric_power' has expression but codegen cannot extract a numeric default: Feature reference 'driver_electric_power' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::driver_electric_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:153",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::other_parasitic_power' has expression but codegen cannot extract a numeric default: Feature reference 'other_parasitic_power' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::other_parasitic_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:154",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::net_electric_power' has expression but codegen cannot extract a numeric default: Feature reference 'net_electric_power' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::net_electric_power",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:155",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::driver_recirculating_fraction' has expression but codegen cannot extract a numeric default: Feature reference 'driver_recirculating_fraction' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::driver_recirculating_fraction",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:156",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::total_recirculating_fraction' has expression but codegen cannot extract a numeric default: Feature reference 'total_recirculating_fraction' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::total_recirculating_fraction",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:157",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'ife_plant::'IFE Power Plant'::recirculating_fraction' has expression but codegen cannot extract a numeric default: Feature reference 'f_recirc' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "ife_plant::'IFE Power Plant'::recirculating_fraction",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:183",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'IFE Driver'::efficiency' has no value or binding",
+    "element_name": "ife_subsystems::'IFE Driver'::efficiency",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:116",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'IFE Driver'::cost_per_joule' has no value or binding",
+    "element_name": "ife_subsystems::'IFE Driver'::cost_per_joule",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:117",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'IFE Driver'::energy' has no value or binding",
+    "element_name": "ife_subsystems::'IFE Driver'::energy",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:118",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'IFE Driver'::lifetime_shots' has no value or binding",
+    "element_name": "ife_subsystems::'IFE Driver'::lifetime_shots",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:119",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'Target Factory'::cost_per_target' has no value or binding",
+    "element_name": "ife_subsystems::'Target Factory'::cost_per_target",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:137",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'Reaction Chamber'::wall_type' has no value or binding",
+    "element_name": "ife_subsystems::'Reaction Chamber'::wall_type",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:154",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'Reaction Chamber'::blanket_energy_multiple' has no value or binding",
+    "element_name": "ife_subsystems::'Reaction Chamber'::blanket_energy_multiple",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:155",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'ife_subsystems::'Reaction Chamber'::yield_cost_constant' has no value or binding",
+    "element_name": "ife_subsystems::'Reaction Chamber'::yield_cost_constant",
+    "location": "file:exploration/ife_e2e/models/designs/generic_ife/ife_subsystems.sysml:156",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'hif_driver::'HIF Driver'::beam_energy_mj' has no value or binding",
+    "element_name": "hif_driver::'HIF Driver'::beam_energy_mj",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml:28",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'hif_driver::'HIF Driver'::num_chambers' has no value or binding",
+    "element_name": "hif_driver::'HIF Driver'::num_chambers",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml:40",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_INCOMPLETE",
+    "message": "Design attribute 'hif_driver::'HIF Driver'::pulse_rate_ref' has no value or binding",
+    "element_name": "hif_driver::'HIF Driver'::pulse_rate_ref",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml:51",
+    "suggestion": "Add '= <value>' or bind to calc output",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'hif_driver::'HIF Driver'::driver_cost_billions' has expression but codegen cannot extract a numeric default: Feature reference 'cost_billions' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "hif_driver::'HIF Driver'::driver_cost_billions",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml:92",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'hif_plant_pkg::hif_plant::thermal_power_gw' has expression but codegen cannot extract a numeric default: Feature reference 'thermal_power_gw' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "hif_plant_pkg::hif_plant::thermal_power_gw",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:168",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'hif_plant_pkg::hif_plant::net_electric_power_gw' has expression but codegen cannot extract a numeric default: Feature reference 'net_electric_power_gw' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "hif_plant_pkg::hif_plant::net_electric_power_gw",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:169",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  },
+  {
+    "level": 6,
+    "severity": "error",
+    "code": "L6_DESIGN_ATTR_UNEXTRACTABLE",
+    "message": "Design attribute 'hif_plant_pkg::hif_plant::meier_coe' has expression but codegen cannot extract a numeric default: Feature reference 'price' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "element_name": "hif_plant_pkg::hif_plant::meier_coe",
+    "location": "file:exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml:227",
+    "suggestion": "Ensure the attribute value is a literal number or static arithmetic expression (no feature references)",
+    "reason_code": null
+  }
+]

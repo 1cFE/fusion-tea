@@ -1,0 +1,9 @@
+{
+  "python": "3.12.3",
+  "scipy": "1.17.1",
+  "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+  "teax_git_status": "",
+  "teax_identity_basis": "Matches results/integration/integration_return.json toolchain; read-only current checkout confirmation after execution. Original verification summary emitted unrecorded and remains unchanged.",
+  "package_source_commit": "687a57ad",
+  "execution_repo_commit": "a8912fa4cb9356f14dc18bee4eec841792f544a8"
+}

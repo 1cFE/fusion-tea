@@ -1,0 +1,1 @@
+exploration/aries_integrated/aries_integrated/contracts/package_contract.json

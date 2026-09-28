@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/reid/1cfe/fusion-tea-codex-test/.codex-test/run",
+    "sysml-codegen",
+    "generate",
+    "--models",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/models",
+    "--output",
+    "/tmp/wi056-stock-35u5c6da/package",
+    "--package-name",
+    "stellarator_tea",
+    "--overwrite",
+    "--smart-regen",
+    "--preserve-handwritten"
+  ],
+  "moved": {},
+  "contract_delta": {}
+}

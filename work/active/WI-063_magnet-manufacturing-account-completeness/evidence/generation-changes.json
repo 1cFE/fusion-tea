@@ -1,0 +1,86 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "0ad19fae2bb3a17daa2c8e0a9310b057aaab62b4024cc5e7f1d11047ad9db5dc",
+    "after": "a2e3d8c08f67903a027031cee1f300cad9ffe56c1d7b86da63efe3412a7739b4"
+  },
+  "__init__.py": {
+    "before": "51196789a141e0710b26d499784aeb9bfb38e716dc7fd7edeb98fc046734c158",
+    "after": "d5451ed216b31bcf89dad2ecc12df1bf5c881735665dc7a7759a688d88863b1b"
+  },
+  "contracts/generation_manifest.json": {
+    "before": "38e9ab112927b96380bd4cb09adfdfc159be16c2795a3d21ebc58cefcac6f00e",
+    "after": "321475b14dba07235dedaa6bdb615218b8a0d014faed11ec7a643d62fd643d99"
+  },
+  "contracts/model_contract.json": {
+    "before": "a05aed6642d96f59fe2736fd63a387b87e8da7b2046174f6134400692517f897",
+    "after": "b1cbf40649d79abb01002fcbf959824877ea1ed4ab95d946ae7825d641f4c626"
+  },
+  "contracts/package_contract.json": {
+    "before": "bb2a9fabe9a7685419d56f70e9233d18924316f54a2a49231372e29670af522e",
+    "after": "8ef0b72f85bb2290d6f75641ada76a63248dd20014b8d9ce50652bb0db990f1b"
+  },
+  "handwritten/mfe_magnet_cost/magnet_capital_impl.py": {
+    "before": "10c734b2ec7a2d66c2a5e45dad99fe48a2095b748250ebc6dbe3fde3ea738c2e",
+    "after": "cd47eb519402716a0fcda39372d324082e2731d124a67b28d04badf32c03d6d1"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "6ba74a897438e95709f9684332fabac4ad1024967c1ea277967b9bfb7e5fe780",
+    "after": "f1dac16cf500deb31326c7015a45ea27ce65b15f41173aaa1e217e090959b5d9"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "4aaea806b6a3f141fc5ae08a86576f4f7afd928a089c4d8826892f65b4b5d224",
+    "after": "49061d4d0b30678432b2662f1195d1a7873d5a51d524161a716b6bbca8db2a80"
+  },
+  "modules/mfe_magnet_cost/magnet_capital.py": {
+    "before": "fac43c51a6374524e7103f0e85546466d619d6453b1e6faa5850945755d516a9",
+    "after": "d2f997a6d137efcfeaeb87a214ba766a860de297e02e90b1e5f0c0eeb74513dd"
+  },
+  "modules/mfe_magnet_cost/magnet_structure_cost.py": {
+    "before": "129aaf6a78ca4bcc965cbac6224765a5f09094c251c862ab591ca2b4b3238ed1",
+    "after": "31731dfcd97efa0aa2f82fbf99b2c03d31689fe0b4d75776e0e2042b2112814c"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py": {
+    "before": null,
+    "after": "c32a94f93d5c70a71bd5b951293bd277ff61de2d74a8d6a53b251894c2125104"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_material_inventory.py": {
+    "before": "8ee7635f9968a4252101361f1621a61ba708b99b5ebe400b036b4600d47b48ca",
+    "after": "1477d139e40abfec50ca31b3939785723d476b23b6c7dddf888dd162a98e164a"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py": {
+    "before": "2cde551d11bf522cc294e778ff9747c6b640d767629bc9ed249b14965322f454",
+    "after": "c5941565b4c39ca527bfe11ade2029d1457ba86e166be6395fab438bea2aad58"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "1d86bc8b8beae9ec984b0eab76176568381b2b7d51336fcb019d85272f803ffb",
+    "after": "6f67a09f8b58da7ee0355b793b8b50362d29e3e04bd16edcdab7d981a723ee71"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "e0b39943eef5972a6da61ec9e3d4a303df2fedc44d1d7d5e56fe19f635e48a58",
+    "after": "bd93c7f8f540889e0f662c774922f3d3fd71f144dda227d8de50013711f13edb"
+  },
+  "schemas/magnet_structure_cost_output.py": {
+    "before": null,
+    "after": "7c35d60659fd235f08e9b6a979d4f407d72aecee42590b262cde0bf10597aedc"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "0a96cef41a628389e88dce05a53f13c1bcb2a25027798ba00a36e8a3ff7e27a2",
+    "after": "799bc67adfb1823c46389601485f8298be548e9d275b02f27f9906261f1a365e"
+  },
+  "schemas/winding_pack_insulation_inventory_output.py": {
+    "before": null,
+    "after": "4de49fccb703cefab108a2ec421369a52c85e253c786a7202449699943e5c7b4"
+  },
+  "schemas/winding_pack_material_inventory_output.py": {
+    "before": "ba66e9f7f595cd29978e181cf6b4fd30e3e792f7ba04b139e6b355e919790739",
+    "after": "bc5a78926a3c85fb379ecf424a3709f4566404b337dc95b0bd13476267616782"
+  },
+  "schemas/winding_pack_procurement_cost_output.py": {
+    "before": "a19de1797daa6bbe6e0eff297d8a323a1975b94201dc31dad29acd83bdc101f5",
+    "after": "5ca5490dde1d5fb0df8779067e98341c4145fea45723a8a2117f069418fc23b5"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "0eff466516b6876638d6e760a0342039d90571bdb79bab87c65f4d26aedbc6b6",
+    "after": "28c2a862d9f45ed49e8448c7b5f1c6dc587b6d80df90658d5d0af3e25d36bb65"
+  }
+}

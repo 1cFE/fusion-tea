@@ -1,0 +1,89 @@
+[
+ {
+  "k": 0,
+  "case": "ir-f2500-r1.4250",
+  "ratio": 1.425,
+  "net": 620.008,
+  "unmet": 7.775,
+  "bypass": 0.0,
+  "heater_C": 199.61,
+  "nonfuel": 91.57,
+  "pass": false,
+  "failed": [
+   "heat removal",
+   "return temperature"
+  ]
+ },
+ {
+  "k": 1,
+  "case": "ir-boundary-f2500",
+  "ratio": 1.427315,
+  "net": 620.819,
+  "unmet": 0.0,
+  "bypass": 1e-06,
+  "heater_C": 198.9,
+  "nonfuel": 91.45,
+  "pass": true,
+  "failed": []
+ },
+ {
+  "k": 2,
+  "case": "ir-f2500-r1.4300",
+  "ratio": 1.43,
+  "net": 615.602,
+  "unmet": 0.0,
+  "bypass": 0.019398,
+  "heater_C": 197.24,
+  "nonfuel": 92.23,
+  "pass": true,
+  "failed": []
+ },
+ {
+  "k": 3,
+  "case": "ir-f2500-r1.4350",
+  "ratio": 1.435,
+  "net": 605.789,
+  "unmet": 0.0,
+  "bypass": 0.052024,
+  "heater_C": 194.19,
+  "nonfuel": 93.72,
+  "pass": true,
+  "failed": []
+ },
+ {
+  "k": 4,
+  "case": "ir-f2500-r1.4400",
+  "ratio": 1.44,
+  "net": 595.851,
+  "unmet": 0.0,
+  "bypass": 0.080843,
+  "heater_C": 191.18,
+  "nonfuel": 95.28,
+  "pass": true,
+  "failed": []
+ },
+ {
+  "k": 5,
+  "case": "ir-f2500-r1.4450",
+  "ratio": 1.445,
+  "net": 585.793,
+  "unmet": 0.0,
+  "bypass": 0.106534,
+  "heater_C": 188.23,
+  "nonfuel": 96.92,
+  "pass": true,
+  "failed": []
+ },
+ {
+  "k": 6,
+  "case": "ir-f2500-r1.4500",
+  "ratio": 1.45,
+  "net": 575.617,
+  "unmet": 0.0,
+  "bypass": 0.129619,
+  "heater_C": 185.33,
+  "nonfuel": 98.63,
+  "pass": true,
+  "failed": []
+ }
+]

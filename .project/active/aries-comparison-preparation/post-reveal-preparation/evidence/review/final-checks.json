@@ -1,0 +1,22 @@
+{
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "identity_sha256": "a63cf7ae1d497f0f74375ebcbf693f26d8cd1a9cc8c2c3c7d9407f64f8765dff",
+  "native_outputs": 1352,
+  "predicates": 67,
+  "violated_predicates": 6,
+  "held_inputs": 704,
+  "report_rows": 276,
+  "focused_tests": 9,
+  "independent_negative_checks": [
+    "partial terminal 0 suppressed",
+    "partial terminal 1 suppressed",
+    "pre-identity decode refusal reported",
+    "unindexed tool file refused"
+  ],
+  "author_evidence_artifacts_checked": 16,
+  "author_native_values_identical": true,
+  "preserved_file_count": 534,
+  "protected_drift": [],
+  "reference_request_executed": false,
+  "report_sha256": "58ca50a93bcc242c34236b5c8aa608d6148a2e7e27730613fc7f72ca6f6d7ba2"
+}

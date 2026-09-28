@@ -1,0 +1,44 @@
+{
+  "scope": "Current test drivers and interface inventories; frozen historical artifacts unchanged.",
+  "interface": {
+    "parameters": 597,
+    "numeric_channels": 1149,
+    "structured_channels": 35,
+    "predicates": 34
+  },
+  "verification": [
+    {
+      "command": "tests/models/test_model_family_spines.py",
+      "result": "13 passed",
+      "log": "/tmp/mr7-spine-final.log"
+    },
+    {
+      "command": "tests/models/test_mfe_financial_rate_limits.py",
+      "result": "74 passed",
+      "log": "/tmp/mr7-finance.log"
+    },
+    {
+      "command": "tests/models/test_structure_translation.py tests/models/test_wi038_oracle.py tests/models/test_wi040_oracle.py tests/models/test_winding_pack_fit.py::test_entering_baseline_scalars_preserved",
+      "result": "55 passed",
+      "log": "/tmp/mr7-translation-final.log"
+    },
+    {
+      "command": "tests/models/test_mfe_major_radius.py",
+      "result": "63 passed, 1 existing xfailed",
+      "log": "/tmp/mr7-radius2.log"
+    },
+    {
+      "command": "Six-file optional helper/conductor/current-sizing/fit batch",
+      "result": "454 passed; retired fit output assertion subsequently repaired and passed above",
+      "log": "/tmp/mr7-magnet-final2.log"
+    }
+  ],
+  "compatibility": [
+    "Optional grade/current/pack construction helpers generated from canonical definitions into standalone pytest temporary package, outside mandatory live plant.",
+    "Historical radius driver explicitly supplies casing mass63000*(12.7/14)^0.78 for its R14 construction scenario.",
+    "Temporary historical evidence copies project only listed retired output channels and compare all surviving values.",
+    "New predicate coverage projected only for frozen report comparisons; full current predicate checks maintained separately.",
+    "Independent public interface delta is checked exactly against generated parameter/output/predicate identities."
+  ],
+  "remaining": "Coordinator comprehensive current models/study regression and independent review."
+}

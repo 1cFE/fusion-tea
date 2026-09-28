@@ -1,0 +1,175 @@
+{
+  "baseline": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/baseline.attempt3/result.json"
+  },
+  "bypass-small-offer": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/bypass-small-offer.attempt2/result.json"
+  },
+  "flow2250-fixed-UA": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/flow2250-fixed-UA.attempt2/result.json"
+  },
+  "gas-low-ratio-flow": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/gas-low-ratio-flow.attempt2/result.json"
+  },
+  "pre-UA20-no-root": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/pre-UA20-no-root.attempt2/result.json"
+  },
+  "pre-UA40-no-root": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/pre-UA40-no-root.attempt2/result.json"
+  },
+  "recuperator-UA80": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/recuperator-UA80.attempt2/result.json"
+  },
+  "salt-three-pumps": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/salt-three-pumps.attempt2/result.json"
+  },
+  "salt-two-pumps": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/salt-two-pumps.attempt2/result.json"
+  },
+  "salt225-offer": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/salt225-offer.attempt2/result.json"
+  },
+  "source2800-ihx10": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/source2800-ihx10.attempt2/result.json"
+  },
+  "source3000-ihx12": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/source3000-ihx12.attempt2/result.json"
+  },
+  "source3000-ihx14": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/source3000-ihx14.attempt2/result.json"
+  },
+  "water-duty-insufficient": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/water-duty-insufficient.attempt2/result.json"
+  },
+  "water-flow-insufficient": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/water-flow-insufficient.attempt2/result.json"
+  },
+  "water-power-insufficient": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/water-power-insufficient.attempt2/result.json"
+  },
+  "water-property-refusal": {
+    "status": "same refusal"
+  },
+  "zero-discount": {
+    "status": "pass",
+    "unchanged_scalar_channels": 874,
+    "added_magnitude_channels": [
+      "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+    ],
+    "unchanged_predicates": 84,
+    "before": "native_runs/zero-discount.attempt2/result.json"
+  }
+}

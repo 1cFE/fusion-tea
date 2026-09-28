@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_state_ok__4664e5e1ddbb7ac5",
+  "margin": 0.0,
+  "observed": {
+    "defined_in": 1.0
+  },
+  "status": "satisfied"
+}

@@ -1,0 +1,7 @@
+buildings__tonne_interpretation_kg: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=40
+contingency_rate: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=12
+fuel_cycle__processing_containment_cpi: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=14
+heat_transport__equipment_stainless_fabrication_usd2017_per_kg: no_constraint_response=false constraints 8/25 objectives 5/14 modules_fired=97
+magnet__winding_pack__insulation_sheet_price: no_constraint_response=true constraints 0/25 objectives 4/14 modules_fired=18
+unplanned_fraction: no_constraint_response=false constraints 6/25 objectives 5/14 modules_fired=64
+A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds.

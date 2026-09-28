@@ -1,0 +1,15 @@
+{
+  "source_revision": "a17f51f0a395cdf8fbe82d52a79fdce7b7d32c15",
+  "current_revision": "d6dea9fcb54f9e7d352e84ed51b478781e8e8564",
+  "paths": [
+    "models",
+    "exploration/stellarator_e2e/generated",
+    "exploration/stellarator_e2e/studies/oracle_entry.py",
+    "exploration/stellarator_e2e/verify_stellaris.py",
+    "exploration/stellarator_e2e/oracle_finance.py",
+    "exploration/stellarator_e2e/studies/study_route.py",
+    "exploration/stellarator_e2e/studies/manifest.json"
+  ],
+  "diff_empty": true,
+  "integration_reuse": "Same audited numeric source/package/oracle/route/manifest; no new pin promoted; baseline/preflight and current dependency checks still required."
+}

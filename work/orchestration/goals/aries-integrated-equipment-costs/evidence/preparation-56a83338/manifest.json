@@ -1,0 +1,133 @@
+{
+  "schema_version": "preparation-preservation/v1",
+  "package_checkpoint": "56a83338",
+  "source_checkpoint": "ddb30d1d04c67312ae738e28eb7d2b2b3f62691e",
+  "source_checkpoint_note": "Every captured live Python source digest matches this committed source checkpoint; verified by git object reads.",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "c023c3f9fb82d26533dd1c0025bdbc4cf978598cee01b58d59219539f6c3babb",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "524c13a905320a5ca35664bdb035043f3588fca22a772503e8383e88f51a0734",
+      "semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+    }
+  },
+  "files": [
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/axes.json",
+      "copy": "axes.json",
+      "sha256": "1eacbf033b662d7d0fa6989cfde295c6c710fd55f035a26802d24b24374f8ea6"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/axis-plan.json",
+      "copy": "axis-plan.json",
+      "sha256": "cf246fb4b95ce8a2acdea6d0761152530ea3105ba9a5e4990de32d9c645aa7ef"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/canonical-author-receipt.json",
+      "copy": "canonical-author-receipt.json",
+      "sha256": "3e672dc77a553c50f55b0a0b579947c4096111e5cbd37b0427779e6a4f03500e"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/development-canonical-check-before-oracle-local-fix.json",
+      "copy": "development-canonical-check-before-oracle-local-fix.json",
+      "sha256": "1e0e27b5b1957038c70084dc99170245fbd461ce41b2c86b3296372cfbf49623"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/development-canonical-check.json",
+      "copy": "development-canonical-check.json",
+      "sha256": "7dfbd3763726d2bc8155f351c68d5867920c3f374c8926494bd3918c3410a9ec"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/generated-interface-inventory.json",
+      "copy": "generated-interface-inventory.json",
+      "sha256": "fdaccc017c58248f296b2762e263cd1b1292fe4a4584660b4d6725d1b826cab1"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/indicators.json",
+      "copy": "indicators.json",
+      "sha256": "933db241eb68e504149ff5f9ab0392bb48d19fc7a7b6304ada244c0819223513"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/oracle-window-scan.json",
+      "copy": "oracle-window-scan.json",
+      "sha256": "25623aa37eb30856e70791a8ea4a1ba7b4c74cdd96bcd1ba09bb04a965c61df3"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/proposed-points.json",
+      "copy": "proposed-points.json",
+      "sha256": "253ac5795aab781e457bdd73edb1bdadfdb60e86070eae0dafc137ffda781784"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/record.md",
+      "copy": "record.md",
+      "sha256": "e9cd1308c9cf21ca5b0e8338745443ab5fce36d5718da9938f09bf2cb4af654c"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/replay-preparation.md",
+      "copy": "replay-preparation.md",
+      "sha256": "a0937c91cc44fd6f14de43c83a3eb6589d7f24a27aa186899f1f55ef4778458a"
+    }
+  ],
+  "live_python_sources": [
+    {
+      "path": "exploration/aries_integrated/studies/equipment_bindings.py",
+      "sha256": "15bb56c1e58b5cb3522be428bcb1a03529d47ec5c0fb38ba5ed5fac5667c6a75"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/equipment_oracle.py",
+      "sha256": "cf20068b6e8d0c3cbb2114c5cacba97d2ea09eb5e7c682d9770e52ed38450fab"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/equipment_proposals.py",
+      "sha256": "b3188b4f4830e8cbbcff3d1657b827d7a16f7cfd7bb36952943417fdcc19fd4e"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/execute_study.py",
+      "sha256": "7a475bc4e65d7efe1c3ca6927d478cc9e39f669f24231f0e513ddfd96b4f0627"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/interface_data.py",
+      "sha256": "4b9759d61169113c11941232d86f884364cd2359dd53de1eadaa21e2837613a6"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/oracle_entry.py",
+      "sha256": "5eb6620c68bdb5bf294622875671e3c7ddc3eb753e65871c0849cc99b7251b77"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/prepare_equipment_study.py",
+      "sha256": "54d47f70dc2952717ac6ffdb9f4d0397a391356af6ef831a038cf9b5feb74541"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/prepare_metadata.py",
+      "sha256": "4390c4d37c7d3e9cf370b340109a214586ba3a68fa02c91cea381c3318b518c9"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/study_route.py",
+      "sha256": "3c37f2047aa196d7bd0343d05bfd9ea77fd510bace3b226889a9f401d9df06d3"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/test_equipment_proposals.py",
+      "sha256": "96246aef335be85f7ffae6a100c4791863d007764938dc98cb7a13f143b3e1b2"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/test_oracle_entry.py",
+      "sha256": "59cfe3e150a1a96c49944f6749a7beffc2add2d92f0616139e5f7c803f67ff9e"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/test_study_route.py",
+      "sha256": "0d88da1db5f875ed7f964e6af02a410d0e8654f639110eec795c603f50a163af"
+    }
+  ]
+}

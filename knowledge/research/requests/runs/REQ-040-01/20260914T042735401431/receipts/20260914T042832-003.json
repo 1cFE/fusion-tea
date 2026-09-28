@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&ID=C7440597&Type=IsoBar&Digits=5&TLow=10&THigh=50&TInc=5&P=20&RefState=DEF&TUnit=K&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+  "slug": "nist_helium_isobar_20_bar_10_to_50_k",
+  "path": "knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/",
+  "source_id": "0baec1632f913735d06d2e91c7b3fdc7b8afd3c911bce88a8c7c010e50354590",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:28:32.331697+00:00"
+}

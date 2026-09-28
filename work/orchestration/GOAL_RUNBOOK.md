@@ -8,7 +8,7 @@ This runbook states obligations, not decisions. What question is worth asking, w
 
 ## What this is, and what it is not
 
-A goal is a grounded question someone wants answered, pursued in rounds. A round is one agent's bounded attempt at one strategy. Under a strategy the agent runs one bounded task at a time. Each round ends in a mandatory written result and a review by a fresh agent — one whose session did not do the work (§ What "fresh" means).
+A goal is a grounded question someone wants answered, pursued in rounds. A round is one agent's bounded attempt at one strategy. Under a strategy the round agent coordinates bounded tasks. Each round ends in a written result and a record of review coverage: independent review where triggered, or the evidence and reason that further review adds no coverage.
 
 The goal layer decides *what to work on next and what the evidence means*. It does not do the work. The work happens in the native workflows — the coding PM in `.project/`, the modeling PM in `work/`, the research pipeline, the study runbook — and each of those keeps its own stage records exactly as it does today.
 
@@ -16,7 +16,7 @@ So the goal layer **cites, and never restates**. If you find yourself copying a 
 
 Three things this is not:
 
-- **Not a plan.** A strategy carries no future task list. The next task is chosen from the evidence in hand, after the previous one returned.
+- **Not a plan.** A strategy carries no future task list. Tasks are chosen from the evidence in hand; parallel execution follows § Running one task.
 - **Not a control plane.** There are no envelope files, no event ledger, no idempotency keys, and no digests that a procedure compares. That machinery is on a hardening path and is promoted only when a real run demonstrates prose failing, with the failure recorded (ADR-0003).
 - **Not an automation of the owner's judgment.** Merge, push, item close, archive, and every reserved gate stay owner-held.
 
@@ -26,7 +26,7 @@ Three things this is not:
 |---|---|---|
 | `work/orchestration/goals/<goal>/goal.md` | What are we trying to answer, and what would count as answered? | The operator, with an agent, once |
 | `work/orchestration/goals/<goal>/trail.md` | What has happened, and what was decided? | The round agent, append-only |
-| `work/orchestration/goals/<goal>/learnings.md` | What does this run now know? | The round result proposes; the fresh review accepts |
+| `work/orchestration/goals/<goal>/learnings.md` | What does this run now know? | The round result proposes; closure accepts under the review rule below |
 | `work/orchestration/GOAL_RUNBOOK.md` | How do I do the next thing? | This file. One copy |
 | `.project/adr/` | Why is it this way? | Whoever decides, at the time |
 
@@ -36,7 +36,7 @@ Templates for the three goal files are at `work/orchestration/goal-templates/`. 
 
 ## What "fresh" means
 
-Two gates in this runbook require a fresh reviewer, and "fresh" is the word both rest on. It has one definition, and it is the owner's:
+When independent review is triggered, "fresh" has the owner's definition:
 
 > **The critic is never the author's session.** — `[OWNER]`, `.project/concepts/goal-driven-model-development-harness.md:47` (success criterion 5)
 
@@ -45,9 +45,9 @@ That is a *session* boundary, not a work boundary. It is stronger than "someone 
 **Who obtains the reviewer, by path:**
 
 - **A human operator** starts a new session for the reviewer, or asks a second person. Nothing else is needed.
-- **A goal agent cannot start a session.** It has no dispatch, and building one is barred — unattended dispatch is on the hardening path, not in this build (ADR-0003). So when an agent reaches a gate that needs a fresh critic, its move is **to stop and hand back**. It does not review its own work, and it does not wave the gate through.
+- **A goal agent** may spawn a new reviewer subagent with no inherited conversation context. Deposit a self-contained brief and evidence references under `evidence/` before dispatch; no separate commit is required. A fork carrying the author’s conversation, or a resumed authoring agent, does not satisfy freshness. If a required fresh session cannot be obtained, park dependent work and hand back using the handoff below. See ADR-0003’s 2026-09-11 amendment for the independence boundary.
 
-**The agent's handoff, exactly.** Append to `trail.md`:
+**If a fresh session is unavailable, the agent’s handoff is:** Append to `trail.md`:
 
 ```text
 ### Stop — YYYY-MM-DD
@@ -57,11 +57,31 @@ What the owner must see: a fresh session is needed to review <the reading / the 
 The material to review: <paths>. Resume at <this runbook's section>.
 ```
 
-Then stop. The operator starts the fresh session; that session picks up from the handoff entry and writes the checkpoint or review entry as normal. The handoff is a real stop with a real record, which is what makes it the lean answer rather than an omission — nothing proceeds silently, and the trail shows exactly where the gate bound.
+Then stop dependent work. The operator or coordinator obtains the fresh session; that session picks up from the handoff and writes the required review entry. Independent work may continue within the goal's limits.
 
-**An agent may not review a round it authored any part of.** If a fresh session is not available, the round waits.
+**An agent may not independently review work it authored.** The coordinator may record routine closure and reused evidence; label that as a coordinator check, never an independent verdict.
+
+## Review scope and evidence reuse
+
+[AGENT] Process sizing implements the owner's 2026-09-14 request to reduce harness overhead. These triggers replace the former unconditional checkpoint-plus-round-critic sequence. Grounding, scientific decisions reserved to the owner, source quarantine, immutable study evidence, and runtime contracts remain binding.
+
+Any stage can be brief or skipped when its responsibility is already satisfied or does not apply. Record the reason and supporting evidence in the existing task or round entry. The main agent may execute stages directly or delegate scoped work.
+
+| Concrete trigger | Required coverage |
+|---|---|
+| New or reinterpreted equation or source | Focused independent source/math check against original evidence before dependent scientific work |
+| Changed ownership or interfaces, or a new modeling pattern | Focused independent design review before implementation |
+| Shared definition changes | Enumerate consumers and check affected instances; broaden when impact is unknown |
+| Coupled architecture, multiple model families, or failed coverage | Substantive independent integration audit across affected paths |
+| Routine work with none of these triggers | Coordinator records applicable validation and why further review is unnecessary |
+
+A scoped review brief states the exact question, entry files and sections, original evidence, expected checks, and exclusions. Default budget: six tool calls and a 300-word return. Do not recursively load project context. If named evidence is missing or the budget cannot establish coverage, return the specific missing evidence and uncertainty without a passing verdict. The coordinator may broaden the brief and budget for that concrete uncertainty; complex integration work needs substantial coverage, not an artificial six-call pass. Use a fresh self-contained session, never an inherited conversation fork. The same reviewer rechecks the corrective diff.
+
+Reuse verified results when the revision, scope, and environment remain valid; cite what was checked and confirm those conditions. A review can cover native work, study interpretation, and goal dispositions where its evidence supports all three. Closure checks only the remaining coverage and changed evidence. Do not stack an administrator, checkpoint critic, native critic, and round critic over the same claim. An unresolved interpretation that changes scientific meaning goes to the owner's reserved gate; review cannot substitute for that decision.
 
 ## Grounding a goal
+
+For a model-changing goal, read `modeling_project/REQUIREMENTS.md` and carry applicable requirements into its invariants. MR-7 governs design-variable assignment, automatic equipment selection and demand-versus-installed-capacity meaning. Grounding must identify the choices the goal is intended to preserve or investigate, not assume the current input/output split is authoritative. An existing grounded goal needs a dated amendment when a newly surfaced requirement changes its strategy; do not rewrite its historical contract.
 
 **Do:** sit with the operator and write `goal.md` from the template. Everything in it is meant to be stable for the life of the goal, so take the time.
 
@@ -76,6 +96,8 @@ Then stop. The operator starts the fresh session; that session picks up from the
 Revisions to a grounded goal are rare and are written as dated amendments, never by editing what is there.
 
 ## Opening and closing a round
+
+Before a strategy changes a design quantity's role, record its MR-7 justification and affected binding/consumer paths. Treat an automatic sizing policy or removal of a design choice as a modeling/interface decision, not routine arithmetic. Existing authorized choices can proceed; a premise conflict or an unresolved material owner choice stops only dependent work. Depth-target attainment and numerical regression success cannot substitute for the MR-7 assessment. For prospective depth work, also read `.project/active/demo-depth-rubric/application-policy.md`.
 
 **Do:** open a round by writing one strategy revision. Then run tasks under it until the round closes.
 
@@ -100,19 +122,21 @@ A round may close with neither a pin nor a study. An honest empty round is a res
 
 **Is this round open?** Read the headings. A round is open exactly when its `## Round N` section carries a `### Strategy revision` and no `### Round N result`. Nothing else records it, and nothing needs updating to keep it true.
 
-**Who checks it:** the fresh reviewer, after the result is written.
+**Who checks it:** the coordinator records closure coverage after the result; a fresh reviewer checks triggered risks not already covered.
 
 ## Running one task
 
-At most one task is active at a time. A task is one bounded objective, not one native stage — it may carry a work item through spec, design, plan, and implement if that is what the one objective needs.
+A task is one bounded objective and may span several native stages. Tasks may run in parallel when write-conflict risk is low and neither task’s result is likely to invalidate the other’s scope or justification. Record that judgment and file ownership before dispatch. Each task retains its own scope, start, and return; the round agent integrates results sequentially and pauses affected work when new evidence undermines its justification.
 
 **1. Write the scope, before any work.** `### T-00N scope`, six lines: Objective (one question or change), Why now (the connection to the strategy and the triggering evidence), Scope (what is authorized and what is explicitly excluded), Inputs (native refs; cite `goal.md` and state only any *narrower* constraint), Done when (a useful positive or a bounded negative), Stop when (prerequisite, strategy blocker, owner gate, or declared limit).
 
-Scope is a reviewable record, not a technical sandbox. Nothing stops you exceeding it; the fresh reviewer will see that you did. The one bound that actually blocks is an unresolved owner gate.
+Scope is a reviewable record, not a technical sandbox. The coordinator checks scope on return; required independent reviews inspect the relevant scope too. An unresolved owner gate blocks dependent work.
 
 **2. Write the start line, before the first native side effect.** `### T-00N start — YYYY-MM-DD`, one line: the task, the native target, and the artifact you expect. This is written *ahead* of the work so that an interruption leaves a trace of what was in flight.
 
 **3. Do the work through the native workflow.** Routine native stage changes stay in native artifacts and create no goal entries. A spec being written, a plan phase being checked off, a validation running — none of that is a goal event.
+
+For tasks affecting MR-7, include the requirement and intended design choices in every delegated modeling/review brief. At return, inspect the design-role record and applicable behavior-test evidence. Record compliance as compliant, violated or unverified; a modeled component, passing baseline or rubric score alone cannot establish it. Required independent design review covers the actual variable assignment and downstream bindings before dependent implementation; its integration recheck covers the executed behavior.
 
 **4. Write the return.** `### T-00N return — YYYY-MM-DD` with the outcome, one of six:
 
@@ -133,33 +157,33 @@ The return also carries the evidence refs, the goal-level reading of them, and f
 
 **Where:** `trail.md`, under the open round's `## Round N` heading, in the order written.
 
-**Who checks it:** the fresh reviewer, at round end, against every recorded scope.
+**Who checks it:** the coordinator on return, with independent review where § Review scope and evidence reuse requires it.
 
 ## The pre-execution disposition checkpoint
 
-**When:** after a study reading produces proposed dispositions, and **before any semantic follow-up task executes**. Not after. The whole point is to catch a misread before work compounds on it.
+**When:** after a study reading produces proposed dispositions and before dependent follow-up, assess the triggers in § Review scope and evidence reuse. A checkpoint session is needed only for uncovered triggered risks or an explicit reserved gate.
 
-**Do:** hand the reading and its proposed dispositions to a fresh reviewer — a session that did not produce them (§ What "fresh" means). They read both and return a verdict. The author revises and resubmits until it passes or the cap is hit.
+**Do:** cite existing valid review coverage or record why a coordinator check suffices. For uncovered triggered risks, hand a bounded brief, the relevant reading and dispositions, and original evidence to a fresh reviewer. The author revises and the same reviewer checks the diff until it passes or the cap is hit.
 
-**If you are an agent and cannot obtain that session, you do not proceed.** Write the handoff stop from § What "fresh" means and stop there. An unreviewed reading may not authorize a follow-up task, and reviewing your own dispositions does not satisfy this gate.
+**If a required independent review is unavailable, park dependent work.** Write the handoff from § What "fresh" means. A coordinator check cannot discharge triggered independent review or an owner-reserved gate.
 
-**Write:** `### Checkpoint C-00N.rK — YYYY-MM-DD`, naming the reviewer, the reading reviewed, the dispositions reviewed, the verdict, and what the author changed. Each submission is a **new** `rK` entry — `r1`, `r2`, `r3`. Never amend a previous one; the sequence of submissions is the record of the disagreement.
+**Write:** `### Checkpoint C-00N.rK — YYYY-MM-DD`, naming the reviewer, reading, dispositions, verdict, and changes. When no additional review is required, preserve these fields with a reasoned coordinator disposition and valid evidence references; never invent an independent verdict. Each submission is a new `rK` entry — `r1`, `r2`, `r3`. Never amend a previous one.
 
 **Where:** `trail.md`, before the follow-up task's scope.
 
-**Who checks it:** the fresh checkpoint reviewer, and then the round review, which sees the whole sequence.
+**Who checks it:** the assigned reviewer for uncovered risks. Closure cites this coverage without commissioning the same check again.
 
 **The cap stops the work; it does not release it.** If the checkpoint has not passed after the declared number of revisions, write `### Stop — YYYY-MM-DD` of kind `cap`, naming the unresolved dispositions and what the owner has to decide. The round stops there. Hitting the cap never permits execution (ADR-0005).
 
-Routine native stages get no separate goal critics. Their own reviews are native, and the round review reads their evidence rather than repeating it.
+Routine native stages get no separate goal critics. Reuse applicable native validation and review evidence.
 
 ## The fresh review
 
 **When:** after the round result is written, and never before.
 
-**Do:** a fresh agent — one whose session did not do the round's work (§ What "fresh" means) — reads the round end to end and returns `PASS`, `FINDINGS`, or `OWNER_GATE`.
+**Do:** the coordinator checks the list below against the round result and valid evidence already obtained. For uncovered triggered risks, commission a fresh review of those risks with a bounded brief. Broad integration triggers require substantial independent review across the affected paths. Independent reviews return `PASS`, `FINDINGS`, or `OWNER_GATE`; coordinator-only closure records its reason and is not an independent pass.
 
-The round agent's last act is the round result; it does not review it. If no fresh session is available, write the handoff stop from § What "fresh" means. The round stays closed and unreviewed until one is.
+The coordinator may close routine rounds directly. If required independent coverage is unavailable, write the handoff from § What "fresh" means and park dependent work. A closed round is never reopened.
 
 **What it checks:**
 
@@ -172,24 +196,24 @@ The round agent's last act is the round result; it does not review it. If no fre
 - The learning delta — accepted, corrected, or rejected before it is appended to `learnings.md`.
 - The constraints carried forward into the next strategy.
 
-**Write:** `### Round N review — YYYY-MM-DD` with the reviewer, the verdict, the checks, and the recommendation.
+**Write:** `### Round N review — YYYY-MM-DD` with the reviewer and verdict, or `coordinator check; independent review skipped` and its reason; include checks, reused evidence, remaining uncertainty, and the recommendation.
 
 **Where:** `trail.md`, after the round result. The accepted learning delta is appended to `learnings.md` at the same time, and nowhere else.
 
 **The review never resumes the closed round.** If it finds work left undone, that is the next round's, and it says so.
 
-After a pass, the same fresh agent either recommends the owner-held close or writes the next strategy revision — which opens round N+1.
+After coverage is complete, the coordinator or reviewer recommends the owner-held close or writes the next strategy revision, opening round N+1. The owner retains the goal's close rule.
 
-## The two checks are distinct
+## Timing of review coverage
 
-They are easy to confuse and they do different jobs.
+Pre-execution reasoning and post-execution results answer different questions. They do not automatically require different reviewers or sessions.
 
 | | Disposition checkpoint | Round review |
 |---|---|---|
 | **When** | Before any semantic follow-up task executes | After the round closes |
-| **Over what** | One study reading and its proposed dispositions | The whole round |
+| **Over what** | Uncovered triggered risks in one reading and its dispositions | Remaining coverage and changed evidence; affected paths for integration risk |
 | **Asks** | Is this reading right, and do these dispositions follow from it? | Did the round stay inside its scope, classify its retries honestly, land every disposition, and learn the right thing? |
-| **Reviewer** | A fresh non-author, lightweight | A fresh non-author, thorough |
+| **Reviewer** | Fresh non-author when triggered; otherwise coordinator with evidence | Coordinator; independent reviewer only for uncovered triggered risks |
 | **On failure** | Author revises and resubmits, up to the cap; then a recorded stop | `FINDINGS` or `OWNER_GATE`; the round stays closed |
 | **Loops?** | Yes, capped | No |
 
@@ -201,7 +225,7 @@ A task's authority rests on the native artifacts it cited. If one of them change
 
 **Write, if one moved:** `### Stop — YYYY-MM-DD` of kind `external mutation`, naming the ref, what changed, and which task it voids. Then either re-ground the goal or close the round. No further work under that task.
 
-**Who checks it:** the resumer and the fresh reviewer. Nothing else can catch it, and that is deliberate.
+**Who checks it:** the resumer and the coordinator at closure, with independent review where triggered.
 
 **This is a reading, not a machine check.** No goal procedure compares a cited digest against a stored or computed one, and no goal procedure recomputes one — that mechanism is the stale-authority guard on the hardening path, barred until a real run shows this reading failing (ADR-0003, ADR-0006). **Digests are read by people.** A citation digest tells a reader which version was cited; that is its whole job.
 
@@ -209,11 +233,11 @@ A task's authority rests on the native artifacts it cited. If one of them change
 
 ## Resuming an interruption
 
-An invocation with no return is an interruption. You will see it as a `### T-00N start` with no matching `### T-00N return` and no stop.
+On resume, inspect every invocation with no return or stop, including parallel tasks. You will see each as a `### T-00N start` with no matching `### T-00N return` and no stop.
 
 **Do, in this order:**
 
-1. Read `goal.md`, then the trail from the top of the open round. You now know the strategy and the scope that was authorized.
+1. Read `goal.md`, then the trail from the top of the open round. Identify every unfinished task and its authorized scope; establish whether any worker is still running before resuming its work.
 2. **Inspect the native artifacts as truth.** Whatever the trail says was expected, the native artifact says what actually happened. Look at the work item, the study record, the commits.
 3. Walk the round's cited refs for external mutation (§ When a cited artifact moves).
 4. Write either the missing return — if the native evidence shows the task reached an outcome — or `### Stop — YYYY-MM-DD` of kind `interruption`, saying what was in flight and what the native state shows.
@@ -273,9 +297,9 @@ Cited, not restated. Read the record when you want to challenge the rule.
 | Record | What it decides |
 |---|---|
 | [ADR-0001](../../.project/adr/0001-strategy-and-task.md) | One bounded task at a time, under one revisable strategy with no forward task list |
-| [ADR-0002](../../.project/adr/0002-round-boundary.md) | One agent per round; a fresh agent reviews it and authors the next |
+| [ADR-0002](../../.project/adr/0002-round-boundary.md) | Bounded rounds with written results and risk-based closure coverage |
 | [ADR-0003](../../.project/adr/0003-lean-first-persistence.md) | Prose files and native facts first; the hardening path and what promotes it |
 | [ADR-0004](../../.project/adr/0004-finding-disposition.md) | Joined disposition rows, appended, never editing a sighting |
-| [ADR-0005](../../.project/adr/0005-review-topology.md) | One fresh round critic plus the capped pre-execution checkpoint |
+| [ADR-0005](../../.project/adr/0005-review-topology.md) | Required coverage before dependent execution and at closure, with evidence reuse |
 | [ADR-0006](../../.project/adr/0006-goal-evidence-seam.md) | Citing `.project/` by path and digest, while each PM stays natively mutated |
 | [ADR-0007](../../.project/adr/0007-supersession.md) | The task is the authority unit; the finding is the traceability unit |

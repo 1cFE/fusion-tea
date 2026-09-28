@@ -1,0 +1,9 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {"axis":"R","note":"Agent-proposed major-radius sensitivity; single model-owned radius shared by all live consumers.","keys":[{"key":"stellarator_09__stellaris__plasma__R","provenance":"fan_out"}]},
+    {"axis":"a","note":"Agent-proposed plasma minor-radius sensitivity; all live radial-build consumers share this input.","keys":[{"key":"stellarator_09__stellaris__plasma__a","provenance":"fan_out"}]},
+    {"axis":"I_coil","note":"Agent-proposed peak single-coil current sensitivity; field demand and pack sizing are computed.","keys":[{"key":"stellarator_09__stellaris__magnet__coil__I_coil","provenance":"fan_out"}]},
+    {"axis":"B_max","note":"Agent-proposed purchased conductor field envelope, distinct from computed actual peak field; fixed reference density and tape family.","keys":[{"key":"stellarator_09__stellaris__magnet__winding_pack__B_max","provenance":"fan_out"}]}
+  ]
+}

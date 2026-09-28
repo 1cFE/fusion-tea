@@ -1,0 +1,10 @@
+{
+  "authorized_by": "coordinator",
+  "date": "2026-09-15",
+  "candidate_pin": "855a3a3b88c277e169aa3265db273c3d24686a6d762d7bd8437c0fd987c6160f",
+  "semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
+  "executable_fingerprint": "c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be",
+  "integration_return": "work/orchestration/goals/absolute-conductor-current-margin/evidence/T-004_integration/integration_return.json",
+  "preexecution_check": "work/orchestration/goals/absolute-conductor-current-margin/evidence/preexecution-check.md",
+  "scope": "T-003 fixed295unique/296report-row native sensitivity study; source/design and implementation independently reviewed; no domain/sizing/geometry widening."
+}

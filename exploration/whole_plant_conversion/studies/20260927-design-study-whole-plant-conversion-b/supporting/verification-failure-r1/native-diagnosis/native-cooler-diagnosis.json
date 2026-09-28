@@ -1,0 +1,55 @@
+{
+  "case": "gas-favourable::gas-q2500-m2500-r1.8-ua40-40-60",
+  "candidate_id": "20260927-design-study-whole-plant-conversion:c1868",
+  "inputs": {
+    "gas_heat_into_fluid": -53.466386605122175,
+    "duty_rating": 2000.0,
+    "head": 20.0,
+    "eta_p": 0.8,
+    "flow_rating": 100000.0,
+    "eta_motor": 0.95,
+    "power_rating": 30.0,
+    "gas_outlet_K": 308.15,
+    "water_inlet_C": 25.0,
+    "gas_inlet_K": 312.2683428927496,
+    "ua": 60.0
+  },
+  "native_exact_receipt_match": true,
+  "native_outputs": {
+    "evaluation_defined": 1.0,
+    "failure_code": 0.0,
+    "duty": 53.466386605122175,
+    "water_inlet_after_C": 25.06171436763265,
+    "water_outlet_C": 39.11820057461562,
+    "water_flow": 909.9133017969382,
+    "pump_electric": 0.23482108634386692,
+    "total_rejection": 53.70120769146604,
+    "min_gap": 0.00014231813401721638,
+    "required_ua": 59.99999999997155,
+    "ua_residual": -2.845013113983441e-11,
+    "energy_residual": 3.969047313034935e-15,
+    "flow_margin": 99090.08669820306,
+    "power_margin": 29.765178913656133,
+    "duty_margin": 1946.5336133948779,
+    "bracket_low_ua": 4.501026684274192,
+    "bracket_high_ua": 99.05568782124368,
+    "iterations": 52.0
+  },
+  "final_bracket": {
+    "lo": 39.11820057461562,
+    "hi": 39.11820057461563,
+    "width_K": 7.105427357601002e-15,
+    "adjacent_binary64": true,
+    "lo_UA": 59.99999999997155,
+    "hi_UA": 60.00000000023905,
+    "selected": 39.11820057461562
+  },
+  "profile": {
+    "gas_hot_C": 39.11834289274964,
+    "gas_cold_C": 35.0,
+    "water_inlet_after_C": 25.06171436763265,
+    "water_outlet_C": 39.11820057461562
+  },
+  "local_native_UA_derivative_MW_per_K2": 37792.243219314514,
+  "body_sha256": "0aa69c46492edb2db43688832ba16d9c19065928c4a59e22ce5201c69c9376d4"
+}

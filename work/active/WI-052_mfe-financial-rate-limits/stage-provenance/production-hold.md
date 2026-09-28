@@ -1,0 +1,3 @@
+# Owner timing instruction — 2026-09-12
+
+[OWNER-VERBATIM] "Wait for plant-closure before production changes" answers the coordination preference after isolation was prepared. This instruction controls both the original and isolated worktrees. Specification/design/prototype work exists; production financial model and package changes have not started. Continue independent design review and implementation planning only. Do not launch implementation or mutate production/generated family artifacts until the parent establishes that the plant-closure condition is satisfied. The isolated worktree does not override this instruction. No new mathematical or financial interpretation follows.

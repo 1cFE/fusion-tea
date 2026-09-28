@@ -1,0 +1,1493 @@
+diff -ruN exploration/stellarator_e2e/models/analyses/mfe_magnet_cost_variants.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/analyses/mfe_magnet_cost_variants.sysml
+--- exploration/stellarator_e2e/models/analyses/mfe_magnet_cost_variants.sysml	1969-12-31 16:00:00.000000000 -0800
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/analyses/mfe_magnet_cost_variants.sysml	2026-09-13 12:05:53.662173234 -0700
+@@ -0,0 +1,12 @@
++package mfe_magnet_cost_variants {
++    private import ScalarValues::*;
++    // WI-057 prototype: a formula variant for the swap demonstration (not a sourced model).
++    calc def 'Magnet Structure Cost NI' {
++        in n_coils : Real;
++        in m_casing : Real;
++        in steel_price : Real;
++        in f_steel_fab : Real;
++        in f_ins : Real;
++        return cost : Real = n_coils * m_casing * steel_price * f_steel_fab * (1.0 + f_ins);
++    }
++}
+diff -ruN exploration/stellarator_e2e/models/cost_structure/mfe_power_core.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/cost_structure/mfe_power_core.sysml
+--- exploration/stellarator_e2e/models/cost_structure/mfe_power_core.sysml	2026-09-07 19:59:59.364502778 -0700
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/cost_structure/mfe_power_core.sysml	2026-09-13 12:05:53.662080071 -0700
+@@ -2,6 +2,11 @@
+     private import ScalarValues::*;
+     private import cas_hierarchy::'CAS22 Power Core';
+     private import economic_parameter::'CAS Scope';
++    private import mfe_interfaces::*;
++    private import mfe_magnet_field::*;
++    private import mfe_magnet_cost::*;
++    private import mfe_magnet_cost_variants::*;
++    private import mfe_plasma_scaling::'Conductor Peak Field';
+ 
+     // =========================================================================
+     // MFE-divergent CAS22 sub-account TYPES
+@@ -62,42 +67,8 @@
+     // account_name + scope.
+     // =========================================================================
+ 
+-    part def 'Magnet System' :> 'CAS22.1.3 Magnet System' {
+-        doc /*
+-        Concept-agnostic magnet/coil system carrying the coil-cost parameters
+-        for the bilinear toroidal conductor model. All parameters are inputs --
+-        WI-011 binds tokamak/stellarator values. `capital_cost` is populated by
+-        the 'Magnet Coil Cost' calc (mfe_magnet_cost.sysml).
+-
+-        Parameters (all concept-set, MR-WI009-8):
+-          B            -- field at the loop center (axis) [T]
+-          R0           -- major radius [m]
+-          r_coil       -- coil-bore radius [m]
+-          G            -- geometry factor (tokamak 4*pi^2, stellarator 8*pi^2)
+-          coil_markup  -- conductor -> installed magnet manufacturing markup
+-          cost_per_kAm -- conductor cost [$/kA-m], by coil material
+-          peak_ratio   -- peak-on-winding / axis-averaged field ratio at the
+-                          reference geometry (WI-030; bore-normalised since WI-044)
+-          B_max        -- conductor peak-field ceiling [T] (WI-030)
+-
+-        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
+-        **Ref**: cas22.py:427 (total_kAm), cas22.py:440-444 (SC coil cost)
+-        **Basis**: MFE coil conductor-quantity model; parameterized for any MFE concept
+-        */
+-
+-        attribute B : Real;
+-        attribute R0 : Real;
+-        attribute r_coil : Real;
+-        attribute G : Real;
+-        attribute coil_markup : Real;
+-        attribute cost_per_kAm : Real;
+-        // peak-on-winding / axis-averaged field ratio at the reference geometry
+-        // [1] (coil-set geometry fact, WI-030; the eq.-39 bore factor normalised
+-        // at (R_ref, a_coil_ref) multiplies it since WI-044)
+-        attribute peak_ratio : Real;
+-        // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
+-        attribute B_max : Real;
+-
++    // WI-057 prototype: the magnet system decomposed into the physical parts its calcs price.
++    part def 'Modular Coil' {
+         // ------- WI-035 coil-set current, limit, and cost-decomposition -------
+         // parameters (all concept-set; see mfe_magnet_field / mfe_magnet_cost)
+         // number of field coils [1]
+@@ -108,28 +79,47 @@
+         attribute k_link : Real;
+         // set-mean over peak coil current ratio [1]
+         attribute f_set : Real;
++        attribute R0 : Real;
++        attribute G : Real;
+         // typical winding circumference [m]
+         attribute c_coil : Real;
+-        // winding-pack cross-section side, worst coil [m]
+-        attribute wp_side : Real;
++        // coil-shape factor [1] = typical circumference / major radius (WI-036)
++        attribute k_coil : Real;
++        attribute cost_per_kAm : Real;
++        attribute coil_markup : Real;
++        // peak-on-winding / axis-averaged field ratio at the reference geometry
++        // [1] (coil-set geometry fact, WI-030; the eq.-39 bore factor normalised
++        // at (R_ref, a_coil_ref) multiplies it since WI-044)
++        attribute peak_ratio : Real;
++        // reference peak single-coil current [A]
++        attribute I_ref : Real;
++        // reference major radius [m]
++        attribute R_ref : Real;
++        // reference coil-centre minor radius [m] (the radial build's
++        // r_coil_centre at the reference minor radius)
++        attribute a_coil_ref : Real;
++    }
++    part def 'Winding Pack' {
+         // winding-pack current density [A/mm^2] -- the WI-036 sizing lever
+         attribute j_wp : Real;
++        // winding-pack cross-section side, worst coil [m]
++        attribute wp_side : Real;
+         // winding-pack set-distribution factor [1] (WI-036 cold volume)
+         attribute f_wp_vol : Real;
+-        // coil-shape factor [1] = typical circumference / major radius (WI-036)
+-        attribute k_coil : Real;
+         // winding-pack effective elastic modulus [Pa] (WI-036 conductor strain)
+         attribute E_wp : Real;
+         // conductor load-sharing factor [1] (WI-036 conductor strain)
+         attribute f_cond : Real;
+         // conductor strain limit [1] (WI-036)
+         attribute eps_cond_allow : Real;
+-        // stress concentration transfer fact [1] (coil-set structural fact)
+-        attribute k_sigma : Real;
+-        // structural allowable stress [Pa]
+-        attribute sigma_allow : Real;
+         // winding fabrication markup [1]
+         attribute f_wp_fab : Real;
++        // stress concentration transfer fact [1] (coil-set structural fact)
++        attribute k_sigma : Real;
++        // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
++        attribute B_max : Real;
++    }
++    part def 'Coil Casing' {
+         // casing steel mass per coil [kg] -- COMPUTED since WI-044 by
+         // 'Magnet Casing Mass' from the stored energy (the generic plant binds
+         // it by reference, the WI-036 wp_side pattern); m_casing_ref below is
+@@ -142,20 +132,209 @@
+         attribute m_casing_ref : Real;
+         // reference coil-set stored magnetic energy [J] at (I_ref, a_coil_ref, R_ref)
+         attribute W_mag_ref : Real;
+-        // reference peak single-coil current [A]
+-        attribute I_ref : Real;
+-        // reference major radius [m]
+-        attribute R_ref : Real;
+-        // reference coil-centre minor radius [m] (the radial build's
+-        // r_coil_centre at the reference minor radius)
+-        attribute a_coil_ref : Real;
+         // fabricated structural steel price [$/kg]
+         attribute steel_price : Real;
+         // casing fabrication markup [1]
+         attribute f_steel_fab : Real;
++        // structural allowable stress [Pa]
++        attribute sigma_allow : Real;
+     }
++    part def 'Magnet System' :> 'CAS22.1.3 Magnet System' {
++        doc /*
++        Concept-agnostic magnet/coil system carrying the coil-cost parameters
++        for the bilinear toroidal conductor model. All parameters are inputs --
++        WI-011 binds tokamak/stellarator values. `capital_cost` is populated by
++        the 'Magnet Coil Cost' calc (mfe_magnet_cost.sysml).
+ 
++        Parameters (all concept-set, MR-WI009-8):
++          B            -- field at the loop center (axis) [T]
++          R0           -- major radius [m]
++          r_coil       -- coil-bore radius [m]
++          G            -- geometry factor (tokamak 4*pi^2, stellarator 8*pi^2)
++          coil_markup  -- conductor -> installed magnet manufacturing markup
++          cost_per_kAm -- conductor cost [$/kA-m], by coil material
++          peak_ratio   -- peak-on-winding / axis-averaged field ratio at the
++                          reference geometry (WI-030; bore-normalised since WI-044)
++          B_max        -- conductor peak-field ceiling [T] (WI-030)
++
++        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
++        **Ref**: cas22.py:427 (total_kAm), cas22.py:440-444 (SC coil cost)
++        **Basis**: MFE coil conductor-quantity model; parameterized for any MFE concept
++        */
++        // the axis field, an EXPOSE of the definition's own field calc
++        attribute B : Real = field_calc.B_axis;
++        attribute r_coil : Real;
++        // WI-057 prototype EXPOSE: peak_field_calc.B_peak surfaced at the part boundary
++        attribute B_peak : Real = peak_field_calc.B_peak;
++        // WI-057 prototype EXPOSE: wp_stress.sigma_wp surfaced at the part boundary
++        attribute sigma_wp : Real = wp_stress.sigma_wp;
++        // WI-057 prototype EXPOSE: cond_strain.eps_cond surfaced at the part boundary
++        attribute eps_cond : Real = cond_strain.eps_cond;
++        // WI-057 prototype EXPOSE: wp_volume.vol_cold_total surfaced at the part boundary
++        attribute vol_cold_total : Real = wp_volume.vol_cold_total;
++        // WI-057 prototype EXPOSE: magnet_cost.capital_cost surfaced at the part boundary
++        attribute capital_cost_1cfe : Real = magnet_cost.capital_cost;
++        port electric_in : ~'Electric Port';
++        // inputs the plant wires from the radial build (the r_coil pattern)
++        attribute r_coil_centre : Real;
++        // additional cold volume beyond the winding pack [m^3] (review F3: the magnet's, not the cryoplant's)
++        attribute vol_cold_cryo : Real default 0.0;
++        // SWAP SEAM: the structure cost the rollup reads, as a DEFAULT so a variant definition can point it at its own calc
++        attribute structure_cost : Real default magnet_structure_cost.cost;
++        :>> capital_cost = magnet_capital_rollup.capital_cost;
++        // WI-036: the winding-pack side and the winding length are now
++        // COMPUTED too -- the pack is sized by the current it carries and
++        // the length follows machine scale. j_wp and k_coil are the
++        // settable levers that replaced them.
++        part winding_pack : 'Winding Pack' {
++            :>> wp_side = wp_sizing.wp_side;
++        }
++        // WI-044: the casing mass is COMPUTED from the coil set's stored
++        // energy (which sees the coil bore); m_casing_ref is the settable
++        // anchor that replaced the held mass.
++        part casing : 'Coil Casing' {
++            :>> m_casing = casing_mass.m_casing;
++        }
++        part coil : 'Modular Coil' {
++            :>> c_coil = coil_length.c_coil;
++        }
++        // WI-057 prototype: the magnet's own calcs live on the magnet.
++        // Peak field on the winding (WI-030), compared against the conductor
++        // ceiling by peak_field_ok below.
++        // WI-035: axis field derived from the coil-set current (inversion
++        // ruling 2026-08-30); EXPOSEd into magnet.B above, so beta_calc,
++        // peak_field_calc, and magnet_cost read the computed field unchanged.
++        calc field_calc : 'Coil Set Axis Field' {
++            in n_coils = coil.n_coils;
++            in I_coil = coil.I_coil;
++            in k_link = coil.k_link;
++            in R0 = coil.R0;
++        }
++        // WI-044: the peak field sees the coil bore -- the eq.-39 factor
++        // R / (R - a_coil), normalised at the reference geometry so the
++        // printed ratio is reproduced exactly there. a_coil is the radial
++        // build's coil-centre radius (design D1).
++        calc peak_field_calc : 'Conductor Peak Field' {
++            in B_axis_in = field_calc.B_axis;
++            in peak_ratio_in = coil.peak_ratio;
++            in R_in = coil.R0;
++            in a_coil_in = r_coil_centre;
++            in R_ref_in = coil.R_ref;
++            in a_coil_ref_in = coil.a_coil_ref;
++        }
++        // WI-044: stored magnetic energy from the coil-set inductance shape
++        // (thesis eq. 2.82, W = 1/2 L I^2), anchored at the printed reference.
++        calc stored_energy : 'Coil Set Stored Energy' {
++            in I_coil = coil.I_coil;
++            in a_coil = r_coil_centre;
++            in R0 = coil.R0;
++            in W_mag_ref = casing.W_mag_ref;
++            in I_ref = coil.I_ref;
++            in a_coil_ref = coil.a_coil_ref;
++            in R_ref = coil.R_ref;
++        }
++        // WI-044: casing mass from stored energy (Lion 2021 eq. 56), anchored
++        // at the instance's reference mass; feeds 'Magnet Structure Cost'
++        // through casing.m_casing.
++        calc casing_mass : 'Magnet Casing Mass' {
++            in W_mag = stored_energy.W_mag;
++            in W_mag_ref = casing.W_mag_ref;
++            in m_casing_ref = casing.m_casing_ref;
++        }
++        // WI-036: the winding pack is sized by the current it carries, so
++        // wp_side stops being an entry point and becomes a consequence of
++        // coil current and the chosen winding-pack current density.
++        calc wp_sizing : 'Winding Pack Sizing' {
++            in I_coil = coil.I_coil;
++            in j_wp = winding_pack.j_wp;
++        }
++        // WI-036: winding length responds to machine scale through a held
++        // coil-shape factor, instead of resting on a printed constant.
++        calc coil_length : 'Coil Winding Length' {
++            in R0 = coil.R0;
++            in k_coil = coil.k_coil;
++        }
++        // WI-036: a wider winding pack now costs cold mass -- this feeds the
++        // WI-024 cryoplant chain, which already reaches cryoplant capital.
++        calc wp_volume : 'Winding Pack Cold Volume' {
++            in n_coils = coil.n_coils;
++            in wp_side = wp_sizing.wp_side;
++            in c_coil = coil_length.c_coil;
++            in f_wp_vol = winding_pack.f_wp_vol;
++            // WI-036: vol_cold_cryo stays a live settable slot and enters here
++            // as an ADDITIVE term, so modelling the winding-pack chain does not
++            // retire it (the standing [OWNER 2026-08-27] WI-032 ruling bars
++            // retiring the input, not modelling the chain behind it).
++            in vol_extra = vol_cold_cryo;   // the magnet's own extra cold volume (review F3)
++        }
++        // WI-035 stress operand, now consuming the WI-036 computed wp_side.
++        calc wp_stress : 'Winding Pack Stress' {
++            in I_coil = coil.I_coil;
++            in B_peak_in = peak_field_calc.B_peak;
++            in wp_side = wp_sizing.wp_side;
++            in k_sigma = winding_pack.k_sigma;
++        }
++        // WI-036: the conductor's own operand, checked separately from the
++        // structure's -- the second of the two checks every surveyed HTS
++        // fusion design performs.
++        calc cond_strain : 'Conductor Strain' {
++            in sigma_wp = wp_stress.sigma_wp;
++            in E_wp = winding_pack.E_wp;
++            in f_cond = winding_pack.f_cond;
++        }
++        // Magnet (CAS22.1.3). WI-035: 'Magnet Coil Cost' is retained as the
++        // 1cfe-form COMPARISON channel (magnet_capital_1cfe); the rollup reads
++        // the decomposed sub-accounts below.
++        calc magnet_cost : 'Magnet Coil Cost' {
++            in G = coil.G;
++            in B = field_calc.B_axis;   // the formal shares the EXPOSE's name: read the producer (D-5)
++            in R0 = coil.R0;
++            in r_coil = 'Magnet System'::r_coil;   // formal and attribute share a name: owner-qualified
++            in cost_per_kAm = coil.cost_per_kAm;
++            in coil_markup = coil.coil_markup;
++        }
++        // Winding-pack account (real winding length, WI-035 D4).
++        calc winding_pack_cost : 'Winding Pack Cost' {
++            in n_coils = coil.n_coils;
++            in I_coil = coil.I_coil;
++            in f_set = coil.f_set;
++            in c_coil = coil.c_coil;
++            in cost_per_kAm = coil.cost_per_kAm;
++            in f_wp_fab = winding_pack.f_wp_fab;
++        }
++        // Magnet casing-structure account (WI-035 D5; casings only --
++        // inter-coil plates/rings/legs stay CAS22.1.5).
++        calc magnet_structure_cost : 'Magnet Structure Cost' {
++            in n_coils = coil.n_coils;
++            in m_casing = casing.m_casing;   // WI-044: computed (casing_mass)
++            in steel_price = casing.steel_price;
++            in f_steel_fab = casing.f_steel_fab;
++        }
++        // CAS22.1.3 rollup (WI-035 D6): reference-binding envelope.
++        calc magnet_capital_rollup : 'Magnet Capital' {
++            in winding_cost = winding_pack_cost.cost;
++            in structure_cost_in = structure_cost;   // the swap seam: a default-valued EXPOSE a variant may rebind
++        }
++    }
++
++    // WI-057 prototype swap target: a non-insulated HTS variant of the magnet system. Same
++    // interface (every attribute the plant's calcs read), one added coil-set fact, and the
++    // winding pack retyped to a variant that carries the NI concept's own attribute.
++    part def 'NI HTS Magnet System' :> 'Magnet System' {
++        attribute t_charge_h : Real;
++        // an insulation-free winding needs a thicker casing: the variant prices the casing with its own formula
++        attribute f_ins_markup : Real default 0.0;
++        calc magnet_structure_cost_ni : 'Magnet Structure Cost NI' {
++            in n_coils = coil.n_coils;
++            in m_casing = casing.m_casing;
++            in steel_price = casing.steel_price;
++            in f_steel_fab = casing.f_steel_fab;
++            in f_ins = f_ins_markup;
++        }
++        :>> structure_cost = magnet_structure_cost_ni.cost;
++    }
+     part def 'Heating and CD' :> 'CAS22.1.4 Heating and Current Drive' {
++        port electric_in : ~'Electric Port';
+         doc /*
+         Concept-agnostic supplementary heating / current-drive costed component.
+         Carries `capital_cost` (inherited from 'Costed Component'); the per-MW
+diff -ruN exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/designs/generic_mfe/mfe_plant.sysml
+--- exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml	2026-09-08 09:13:46.401343562 -0700
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/designs/generic_mfe/mfe_plant.sysml	2026-09-13 12:05:53.661529743 -0700
+@@ -1,6 +1,8 @@
+ package mfe_plant {
+     private import ScalarValues::*;
+     private import mfe_power_core::*;
++    private import mfe_plasma::*;
++    private import mfe_interfaces::*;
+     private import mfe_subsystems::*;
+     private import mfe_plasma_scaling::*;
+     private import mfe_plasma_sustainment::*;
+@@ -55,22 +57,12 @@
+         // =====================================================================
+ 
+         // MFE-divergent power core (WI-009 mfe_power_core).
++        part plasma : 'Plasma';
+         part magnet : 'Magnet System' {
+-            :>> capital_cost = magnet_capital_rollup.capital_cost;   // WI-035: decomposed rollup
+             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
++            :>> r_coil_centre = rb.r_coil_centre;   // WI-057: the coil-centre radius the magnet's own calcs read
+             // WI-035: the axis field is COMPUTED from the coil-set current
+             // (reference redefinition, WI-021 pattern); B is no longer settable.
+-            :>> B = field_calc.B_axis;
+-            // WI-036: the winding-pack side and the winding length are now
+-            // COMPUTED too -- the pack is sized by the current it carries and
+-            // the length follows machine scale. j_wp and k_coil are the
+-            // settable levers that replaced them.
+-            :>> wp_side = wp_sizing.wp_side;
+-            // WI-044: the casing mass is COMPUTED from the coil set's stored
+-            // energy (which sees the coil bore); m_casing_ref is the settable
+-            // anchor that replaced the held mass.
+-            :>> m_casing = casing_mass.m_casing;
+-            :>> c_coil = coil_length.c_coil;
+         }
+         part heating : 'Heating and CD' {
+             :>> capital_cost = heating_cost.cost;
+@@ -120,6 +112,13 @@
+         part buildings : 'Buildings' {
+             :>> capital_cost = buildings_cost.cost;
+         }
++        // WI-057 prototype: the energy topology the calcs compute, declared.
++        connect plasma.neutron_out to blanket.neutron_in;
++        connect blanket.coolant to turbine.coolant;
++        connect turbine.gross_electric to electric_plant.gross_in;
++        connect electric_plant.recirculating to magnet.electric_in;
++        connect electric_plant.recirculating to heating.electric_in;
++        flow of 'Coolant Stream' from blanket.coolant.hot to turbine.coolant.hot;
+         attribute preconstruction_capital : Real = precon_cost.cost;
+         // CAS27 pass-through
+         attribute special_materials_capital : Real;
+@@ -128,22 +127,12 @@
+         // PHYSICS SPINE  (Plasma Geometry -> DT Fusion Power -> Power Balance)
+         // =====================================================================
+ 
+-        // Plasma geometry inputs (WI-011).
+-        // major radius [m]
+-        attribute R : Real;
+-        // minor radius [m]
+-        attribute a : Real;
+-        // elongation
+-        attribute kappa : Real;
+-        // Shape/packing factor (WI-020). Default 1.0 = pure elongated torus
+-        // (tokamak); a shaped stellarator instance overrides it.
+-        attribute f_shape : Real default 1.0;
+ 
+         calc geom : 'Plasma Geometry' {
+-            in R_in = R;
+-            in a_in = a;
+-            in kappa_in = kappa;
+-            in f_shape_in = f_shape;
++            in R_in = plasma.R;
++            in a_in = plasma.a;
++            in kappa_in = plasma.kappa;
++            in f_shape_in = plasma.f_shape;
+         }
+ 
+         // Radial-build layer thicknesses [m] (WI-021). Generic-plant machinery:
+@@ -165,9 +154,9 @@
+         // first-wall area, coil-bore radius. Replaces the injected material-volume
+         // constants; shares the plant's R/a/kappa with geom.
+         calc rb : 'MFE Radial Build' {
+-            in R_in = R;
+-            in a_in = a;
+-            in kappa_in = kappa;
++            in R_in = plasma.R;
++            in a_in = plasma.a;
++            in kappa_in = plasma.kappa;
+             in vacuum_t_in = vacuum_t;
+             in firstwall_t_in = firstwall_t;
+             in blanket_t_in = blanket_t;
+@@ -181,59 +170,8 @@
+             in lt_shield_t_in = lt_shield_t;
+         }
+ 
+-        // Fusion-power inputs (WI-011 sets density directly for the stellarator;
+-        // no density closure here). WI-022: sigma_v > 0 selects the exact 0D
+-        // bypass; sigma_v = 0 (default) computes the profile integral from the
+-        // five profile inputs below (defaults mirror the calc def -- a 0D/flat
+-        // concept binds sigma_v only and leaves the profile inputs dormant).
+-        // electron density [m^-3]
+-        attribute n_e : Real;
+-        // 0D-effective reactivity [m^3/s]; > 0 = bypass
+-        attribute sigma_v : Real default 0.0;
+-        // per-event D-T fusion energy [J]
+-        attribute E_fus : Real;
+-        // WI-037: n_D0 and n_T0 retired as plant attributes -- the fuel peaks
+-        // are computed by the sustainment chain (quasi-neutrality with the
+-        // converged ash), wired below. The operating-point levers are n_e0
+-        // and T_i0.
+-        // peak ion temperature [keV]
+-        attribute T_i0 : Real default 1.0;
+-        // density profile exponent
+-        attribute alpha_n : Real default 0.0;
+-        // temperature profile exponent
+-        attribute alpha_T : Real default 0.0;
+-
+-        // Operating-point lever (WI-030/WI-037). No default: a plasma without
+-        // its peak density is not a plasma. WI-037: T_e0 and n_He0 retired as
+-        // plant attributes -- both are computed by the sustainment chain below
+-        // (T_e0 from the held ratio, n_He0 from the converged A.5/A.6 ash
+-        // balance). WI-042: the electron density profile exponent retired too
+-        // -- the electron profile is derived inside the chain by
+-        // quasi-neutrality from the fuel profile and the ash on the
+-        // fusion-rate profile (Eq. A.5 pointwise), never bound at a point.
+-        // peak electron density [m^-3] (operating-point lever)
+-        attribute n_e0 : Real;
+-
+-        // Sustainment held facts (WI-037). No defaults for the physics facts:
+-        // a sustainment without its machine and quality facts is not a
+-        // sustainment (the WI-030 no-defaults precedent) -- every MFE concept
+-        // binds them from source.
+-        // rotational transform at s = 2/3 [1]
+-        attribute iota_23 : Real;
+-        // ISS04 renormalization multiplier [1]
+-        attribute f_ren : Real;
+-        // fast-particle (alpha) confinement fraction [1]
+-        attribute f_alpha_fast : Real;
+-        // particle-to-energy confinement time ratio tau_star/tau_E [1]
+-        attribute tau_ratio_ash : Real;
+-        // helium suppression factor [1]
+-        attribute f_suppr_ash : Real;
+-        // core effective charge [1]
+-        attribute Z_eff_core : Real;
+-        // core tungsten fraction n_W/n_e [1]
+-        attribute f_W_core : Real;
+-        // ion-to-electron temperature ratio T_i0/T_e0 [1]
+-        attribute Ti_over_Te : Real;
++
++
+ 
+         // Operating-point sustainment chain (WI-037): line-averaged density,
+         // ISS04 tau_E (closed form), converged ash + quasi-neutral fuel,
+@@ -243,23 +181,23 @@
+         // pressure feeds beta (WI-042: the electron profile and the ash
+         // profile are derived inside from the fuel and temperature profiles).
+         calc sustain : 'Plasma Sustainment' {
+-            in n_e0_in = n_e0;
+-            in T_i0_in = T_i0;
++            in n_e0_in = plasma.n_e0;
++            in T_i0_in = plasma.T_i0;
+             in V = geom.V;
+-            in a_in = a;
+-            in R_in = R;
++            in a_in = plasma.a;
++            in R_in = plasma.R;
+             in B_in = magnet.B;
+-            in alpha_n_in = alpha_n;
+-            in alpha_T_in = alpha_T;
+-            in E_fus_in = E_fus;
+-            in iota_23_in = iota_23;
+-            in f_ren_in = f_ren;
+-            in f_alpha_in = f_alpha_fast;
+-            in tau_ratio_in = tau_ratio_ash;
+-            in f_suppr_in = f_suppr_ash;
+-            in Z_eff_in = Z_eff_core;
+-            in f_W_in = f_W_core;
+-            in r_TiTe_in = Ti_over_Te;
++            in alpha_n_in = plasma.alpha_n;
++            in alpha_T_in = plasma.alpha_T;
++            in E_fus_in = plasma.E_fus;
++            in iota_23_in = plasma.iota_23;
++            in f_ren_in = plasma.f_ren;
++            in f_alpha_in = plasma.f_alpha_fast;
++            in tau_ratio_in = plasma.tau_ratio_ash;
++            in f_suppr_in = plasma.f_suppr_ash;
++            in Z_eff_in = plasma.Z_eff_core;
++            in f_W_in = plasma.f_W_core;
++            in r_TiTe_in = plasma.Ti_over_Te;
+         }
+ 
+         // Volume-averaged beta (WI-030): B enters the physics here, read from
+@@ -271,108 +209,25 @@
+             in B_in = magnet.B;
+         }
+ 
+-        // Peak field on the winding (WI-030), compared against the conductor
+-        // ceiling by peak_field_ok below.
+-        // WI-035: axis field derived from the coil-set current (inversion
+-        // ruling 2026-08-30); EXPOSEd into magnet.B above, so beta_calc,
+-        // peak_field_calc, and magnet_cost read the computed field unchanged.
+-        calc field_calc : 'Coil Set Axis Field' {
+-            in n_coils = magnet.n_coils;
+-            in I_coil = magnet.I_coil;
+-            in k_link = magnet.k_link;
+-            in R0 = magnet.R0;
+-        }
+-
+-        // WI-044: the peak field sees the coil bore -- the eq.-39 factor
+-        // R / (R - a_coil), normalised at the reference geometry so the
+-        // printed ratio is reproduced exactly there. a_coil is the radial
+-        // build's coil-centre radius (design D1).
+-        calc peak_field_calc : 'Conductor Peak Field' {
+-            in B_axis_in = magnet.B;
+-            in peak_ratio_in = magnet.peak_ratio;
+-            in R_in = magnet.R0;
+-            in a_coil_in = rb.r_coil_centre;
+-            in R_ref_in = magnet.R_ref;
+-            in a_coil_ref_in = magnet.a_coil_ref;
+-        }
+-
+-        // WI-044: stored magnetic energy from the coil-set inductance shape
+-        // (thesis eq. 2.82, W = 1/2 L I^2), anchored at the printed reference.
+-        calc stored_energy : 'Coil Set Stored Energy' {
+-            in I_coil = magnet.I_coil;
+-            in a_coil = rb.r_coil_centre;
+-            in R0 = magnet.R0;
+-            in W_mag_ref = magnet.W_mag_ref;
+-            in I_ref = magnet.I_ref;
+-            in a_coil_ref = magnet.a_coil_ref;
+-            in R_ref = magnet.R_ref;
+-        }
+-
+-        // WI-044: casing mass from stored energy (Lion 2021 eq. 56), anchored
+-        // at the instance's reference mass; feeds 'Magnet Structure Cost'
+-        // through magnet.m_casing.
+-        calc casing_mass : 'Magnet Casing Mass' {
+-            in W_mag = stored_energy.W_mag;
+-            in W_mag_ref = magnet.W_mag_ref;
+-            in m_casing_ref = magnet.m_casing_ref;
+-        }
+-
+-        // WI-036: the winding pack is sized by the current it carries, so
+-        // wp_side stops being an entry point and becomes a consequence of
+-        // coil current and the chosen winding-pack current density.
+-        calc wp_sizing : 'Winding Pack Sizing' {
+-            in I_coil = magnet.I_coil;
+-            in j_wp = magnet.j_wp;
+-        }
+-
+-        // WI-036: winding length responds to machine scale through a held
+-        // coil-shape factor, instead of resting on a printed constant.
+-        calc coil_length : 'Coil Winding Length' {
+-            in R0 = magnet.R0;
+-            in k_coil = magnet.k_coil;
+-        }
+-
+-        // WI-036: a wider winding pack now costs cold mass -- this feeds the
+-        // WI-024 cryoplant chain, which already reaches cryoplant capital.
+-        calc wp_volume : 'Winding Pack Cold Volume' {
+-            in n_coils = magnet.n_coils;
+-            in wp_side = wp_sizing.wp_side;
+-            in c_coil = coil_length.c_coil;
+-            in f_wp_vol = magnet.f_wp_vol;
+-            // WI-036: vol_cold_cryo stays a live settable slot and enters here
+-            // as an ADDITIVE term, so modelling the winding-pack chain does not
+-            // retire it (the standing [OWNER 2026-08-27] WI-032 ruling bars
+-            // retiring the input, not modelling the chain behind it).
+-            in vol_extra = vol_cold_cryo;
+-        }
+-
+-        // WI-035 stress operand, now consuming the WI-036 computed wp_side.
+-        calc wp_stress : 'Winding Pack Stress' {
+-            in I_coil = magnet.I_coil;
+-            in B_peak_in = peak_field_calc.B_peak;
+-            in wp_side = wp_sizing.wp_side;
+-            in k_sigma = magnet.k_sigma;
+-        }
+-
+-        // WI-036: the conductor's own operand, checked separately from the
+-        // structure's -- the second of the two checks every surveyed HTS
+-        // fusion design performs.
+-        calc cond_strain : 'Conductor Strain' {
+-            in sigma_wp = wp_stress.sigma_wp;
+-            in E_wp = magnet.E_wp;
+-            in f_cond = magnet.f_cond;
+-        }
++
++
++
++
++
++
++
++
+ 
+         calc fusion : 'DT Fusion Power' {
+-            in n_e_in = n_e;
+-            in sigma_v_in = sigma_v;
+-            in E_fus_in = E_fus;
++            in n_e_in = plasma.n_e;
++            in sigma_v_in = plasma.sigma_v;
++            in E_fus_in = plasma.E_fus;
+             in V = geom.V;
+             in n_D0_in = sustain.n_D0;
+             in n_T0_in = sustain.n_T0;
+-            in T_i0_in = T_i0;
+-            in alpha_n_in = alpha_n;
+-            in alpha_T_in = alpha_T;
++            in T_i0_in = plasma.T_i0;
++            in alpha_n_in = plasma.alpha_n;
++            in alpha_T_in = plasma.alpha_T;
+         }
+ 
+         // ---- Neutron wall load: average, source-anchored calibration, peak (WI-041) ----
+@@ -471,7 +326,6 @@
+         // leaves these unbound; a concept deriving it binds the chain and zeroes
+         // p_cryo.
+         attribute q_nuc_cryo : Real default 0.0;
+-        attribute vol_cold_cryo : Real default 0.0;
+         attribute p_fixed_cryo : Real default 0.0;
+         attribute f_uplift_cryo : Real default 1.0;
+         attribute T_cold_cryo : Real default 20.0;
+@@ -483,7 +337,7 @@
+             // WI-036: the cold volume is now computed from the sized winding
+             // pack, with vol_cold_cryo carried into that calc as an additive
+             // settable term (see the wp_volume usage above).
+-            in vol_cold = wp_volume.vol_cold_total;
++            in vol_cold = magnet.vol_cold_total;
+             in p_fixed = p_fixed_cryo;
+             in f_uplift = f_uplift_cryo;
+             in T_cold = T_cold_cryo;
+@@ -588,42 +442,9 @@
+         // ACCOUNT COST CALCS  (bind subsystem drivers + spine powers -> cost)
+         // =====================================================================
+ 
+-        // Magnet (CAS22.1.3). WI-035: 'Magnet Coil Cost' is retained as the
+-        // 1cfe-form COMPARISON channel (magnet_capital_1cfe); the rollup reads
+-        // the decomposed sub-accounts below.
+-        calc magnet_cost : 'Magnet Coil Cost' {
+-            in G = magnet.G;
+-            in B = magnet.B;
+-            in R0 = magnet.R0;
+-            in r_coil = rb.r_coil;
+-            in cost_per_kAm = magnet.cost_per_kAm;
+-            in coil_markup = magnet.coil_markup;
+-        }
+-
+-        // Winding-pack account (real winding length, WI-035 D4).
+-        calc winding_pack_cost : 'Winding Pack Cost' {
+-            in n_coils = magnet.n_coils;
+-            in I_coil = magnet.I_coil;
+-            in f_set = magnet.f_set;
+-            in c_coil = magnet.c_coil;
+-            in cost_per_kAm = magnet.cost_per_kAm;
+-            in f_wp_fab = magnet.f_wp_fab;
+-        }
+-
+-        // Magnet casing-structure account (WI-035 D5; casings only --
+-        // inter-coil plates/rings/legs stay CAS22.1.5).
+-        calc magnet_structure_cost : 'Magnet Structure Cost' {
+-            in n_coils = magnet.n_coils;
+-            in m_casing = magnet.m_casing;   // WI-044: computed (casing_mass)
+-            in steel_price = magnet.steel_price;
+-            in f_steel_fab = magnet.f_steel_fab;
+-        }
+-
+-        // CAS22.1.3 rollup (WI-035 D6): reference-binding envelope.
+-        calc magnet_capital_rollup : 'Magnet Capital' {
+-            in winding_cost = winding_pack_cost.cost;
+-            in structure_cost_in = magnet_structure_cost.cost;
+-        }
++
++
++
+ 
+         // Blanket (CAS22.1.1).
+         calc blanket_cost : 'Blanket Cost' {
+@@ -1071,7 +892,7 @@
+             in q_target_ref_in = q_target_ref;
+             in p_nonrad_ref_in = p_nonrad_ref;
+             in q_target_limit_in = q_target_limit;
+-            in R_in = R;
++            in R_in = plasma.R;
+             in R_ref_in = R_ref_divertor;
+         }
+ 
+@@ -1209,14 +1030,14 @@
+         // Conductor peak-field limit (WI-030): every MFE instance states its
+         // coil set's peak/axis ratio and its conductor ceiling on the magnet.
+         assert constraint peak_field_ok : 'Conductor Peak Field Limit' {
+-            in B_peak = peak_field_calc.B_peak;
+-            in B_max_in = magnet.B_max;
++            in B_peak = magnet.B_peak;
++            in B_max_in = magnet.winding_pack.B_max;
+         }
+ 
+         // WI-035: computed stress operand vs held sourced allowable (800 MPa).
+         assert constraint wp_stress_ok : 'Winding Pack Stress Limit' {
+-            in sigma_in = wp_stress.sigma_wp;
+-            in sigma_allow_in = magnet.sigma_allow;
++            in sigma_in = magnet.sigma_wp;
++            in sigma_allow_in = magnet.casing.sigma_allow;
+         }
+ 
+         // WI-036: the conductor's own check, distinct from the structure's.
+@@ -1226,8 +1047,8 @@
+         // GPa peak; sigma_allow stays at the source's own 800 MPa design limit
+         // and is not re-categorised to open feasibility (WI-036 MR-6).
+         assert constraint cond_strain_ok : 'Conductor Strain Limit' {
+-            in eps_cond = cond_strain.eps_cond;
+-            in eps_cond_allow_in = magnet.eps_cond_allow;
++            in eps_cond = magnet.eps_cond;
++            in eps_cond_allow_in = magnet.winding_pack.eps_cond_allow;
+         }
+ 
+         // WI-045: the loop's two domain/capacity fences and the cycle's domain fence.
+@@ -1265,7 +1086,7 @@
+         // Per-account CAS breakdown (reads each subsystem's capital_cost, $).
+         attribute magnet_capital : Real = magnet.capital_cost;
+         // WI-035: 1cfe-form comparison channel + the cryoplant sub-account.
+-        attribute magnet_capital_1cfe : Real = magnet_cost.capital_cost;
++        attribute magnet_capital_1cfe : Real = magnet.capital_cost_1cfe;
+         attribute cryoplant_capital : Real = aux_cooling.cryo_cost;
+         attribute heating_capital : Real = heating.capital_cost;
+         attribute divertor_capital : Real = divertor.capital_cost;
+diff -ruN exploration/stellarator_e2e/models/designs/generic_mfe/mfe_subsystems.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/designs/generic_mfe/mfe_subsystems.sysml
+--- exploration/stellarator_e2e/models/designs/generic_mfe/mfe_subsystems.sysml	2026-08-21 16:07:29.010802744 -0700
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/designs/generic_mfe/mfe_subsystems.sysml	2026-09-13 12:05:53.612485810 -0700
+@@ -1,6 +1,7 @@
+ package mfe_subsystems {
+     private import ScalarValues::*;
+     private import cas_hierarchy::*;
++    private import mfe_interfaces::*;
+     private import economic_parameter::'CAS Scope';
+ 
+     // =========================================================================
+@@ -24,6 +25,8 @@
+     // --- Shared power-core sub-accounts (CAS22.1.x, scope = shared) ---
+ 
+     part def 'Blanket' :> 'CAS22 Power Core' {
++        port neutron_in : ~'Neutron Port';
++        port coolant : 'Thermal Port';
+         doc /*
+         CAS22.1.1 First wall + breeding blanket + neutron multiplier.
+         Concept-agnostic shared power-core account. Cost drivers below feed
+@@ -106,6 +109,8 @@
+     // --- Balance-of-plant accounts (CAS23-26, scope = shared) ---
+ 
+     part def 'Turbine Plant' :> 'CAS23 Turbine Plant' {
++        port coolant : ~'Thermal Port';
++        port gross_electric : 'Electric Port';
+         doc /*
+         CAS23 Turbine plant equipment (steam TG, condenser, feedwater). Linear
+         in thermal-electric power; cost driver feeds 'Linear Power Cost' with
+@@ -121,6 +126,9 @@
+     }
+ 
+     part def 'Electric Plant' :> 'CAS24 Electric Plant' {
++        port gross_in : ~'Electric Port';
++        port grid : 'Electric Port';
++        port recirculating : 'Electric Port';
+         doc /*
+         CAS24 Electric plant equipment (switchyard, transformers, cabling).
+         Linear in gross electric; feeds 'Linear Power Cost' with power = p_et.
+diff -ruN exploration/stellarator_e2e/models/designs/stellarator_09/stellarator_plant.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/designs/stellarator_09/stellarator_plant.sysml
+--- exploration/stellarator_e2e/models/designs/stellarator_09/stellarator_plant.sysml	2026-09-08 09:08:40.665182387 -0700
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/designs/stellarator_09/stellarator_plant.sysml	2026-09-13 12:06:02.616411525 -0700
+@@ -1,6 +1,7 @@
+ package stellarator_09 {
+     private import ScalarValues::*;
+     private import mfe_plant::*;
++    private import mfe_power_core::*;
+     private import mfe_plasma_scaling::*;
+     private import mfe_viability::*;
+ 
+@@ -87,7 +88,45 @@
+         // ---------------------------------------------------------------------
+         // MAGNET SUBSYSTEM (CAS22.1.3)
+         // ---------------------------------------------------------------------
+-        part :>> magnet {
++        part :>> magnet : 'NI HTS Magnet System' {
++            :>> t_charge_h = 600.0;
++            :>> f_ins_markup = 0.1;
++            :>> vol_cold_cryo = 0.0 {  // ADDITIONAL cold volume [m^3] beyond the winding pack.
++                doc /*
++                WI-036: the winding-pack cold volume is now COMPUTED IN THE MODEL
++                (mfe_magnet_field 'Winding Pack Cold Volume'), from the sized pack
++                cross-section, the computed winding length and the held set-distribution
++                factor f_wp_vol -- reproducing the 136.56 m^3 this slot previously held
++                as a literal. The arithmetic below was correct; it lived in this doc
++                comment rather than in the model, which is exactly the defect WI-036
++                closes. A wider winding pack now raises cryogenic load and cryoplant
++                capital instead of being free.
++
++                This slot is NOT retired. The plant sums the computed winding-pack
++                volume with this attribute (mfe_plant.sysml, cryo_elec), so it stays a
++                live settable entry point for cold mass beyond the winding pack, and a
++                concept that knows its cold volume directly can bind it and zero
++                f_wp_vol. The standing [OWNER 2026-08-27] WI-032 ruling bars retiring
++                vol_cold_cryo as a settable input; it does not bar modelling the chain
++                behind it -- the same width the owner drew for p_pump ("stays a held
++                settable input -- the ruling bars only the fixed-fraction form, not
++                loop modelling"). Bound to zero here because the winding pack IS the
++                whole of this machine's printed cold mass; any non-zero value would
++                double-count it.
++
++                The retired arithmetic, kept for the record: six unique square winding-pack
++                cross-sections (Table 8 image side lengths 360/360/340/340/320/300 mm)
++                x 8 occurrences each (sec. 2.9: 48 coils = 4 periods x (6 independent
++                + 6 mirrored)) x 25 m typical circumference. Sum of side^2 = 2x0.36^2
++                + 2x0.34^2 + 0.32^2 + 0.30^2 = 0.6828 m^2; x8 x25 = 136.56 m^3.
++                Cross-checks: each side^2 equals turns x (20 mm)^2 exactly (sec. 2.9
++                unit cell; Table 8 turns row); Table 8 no-casing masses (128.7 t x 8
++                = 1029.6 t) imply ~7540 kg/m^3, consistent with the Table 7 material mix.
++                **Source**: stellaris-design-details.md
++                **Ref**: Table 8 image (images/page_022_table_0.png: side lengths, turns, masses); raw.pdf sec. 2.9 (square winding pack; 20 mm x 20 mm unit cell; 25 m typical circumference; 48 = 4 x (6+6) symmetry); Table 7 image (images/page_021_table_0.png: material fractions)
++                **Basis**: additive non-winding-pack cold volume; zero for this machine because the computed winding-pack chain now carries the whole printed cold mass
++                */
++            }
+             doc /*
+             Stellaris HTS modular-coil system.
+ 
+@@ -125,7 +164,6 @@
+             // G = 8*pi^2 stellarator geometry factor (family constant).
+             // Source: costing_constants.yaml coil geometry (stellarator G=8pi^2);
+             //   literal to stay in the codegen envelope (no redef expr drop).
+-            :>> G = 78.95683520871486;
+             // Axis-averaged field [T]: COMPUTED (WI-035, inversion ruling
+             // 2026-08-30). The held ':>> B = 9.0' is retired; the generic plant
+             // EXPOSEs field_calc.B_axis into magnet.B from the coil-set current
+@@ -136,7 +174,6 @@
+             // flip on rounding (WI-035 design D2).
+             // Major radius [m]. Source: stellaris-design-details.md Table 2 /
+             //   line 251 (R ~= 12.7 m).
+-            :>> R0 = 12.7;
+             // Coil-bore radius [m] = radial-build vessel_or. Forward-computed
+             // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
+             // r_coil = 3.00 m falls out of the radial build (was an injected
+@@ -144,10 +181,8 @@
+             // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:57
+             //   (conductor_cost_rebco = 50.0). NOT x1e6 -- already $/kA-m; the
+             //   magnet formula omits the /1e6 M$ conversion and yields $.
+-            :>> cost_per_kAm = 50.0;
+             // Stellarator conductor->installed markup. Source: costing_constants.
+             //   yaml:75 (coil_markup.stellarator = 5.87).
+-            :>> coil_markup = 5.87;
+             // Peak-on-winding / axis-averaged field ratio [1] = 24.9 / 9.0 written
+             // as its IEEE-754 double so that 9.0 * peak_ratio == 24.9 exactly and
+             // peak_field_ok reads margin 0.0 at the design point (2.7667 would
+@@ -160,39 +195,21 @@
+             // there (24.9 minus one ulp, because the computed B_axis is one ulp
+             // under 9.0 -- WI-035 D2, low side) and rises with the coil bore away
+             // from it (a 1.4 on this column already reads 25.16 T, violated).
+-            :>> peak_ratio = 2.7666666666666666 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T; axis av. magnetic field strength 9.0 T) **Basis**: Stellaris coil-set peak/axis field ratio, 24.9/9.0 */
+-            }
+             // Conductor peak-field ceiling [T]. [OWNER 2026-08-21]: the field
+             // Stellaris designs to (Table 2), not 1costingFE's REBCO engineering
+             // ceiling of 23.0 T (defaults.py:611), which the Stellaris winding
+             // exceeds by 1.9 T; the disagreement is disclosed, the design value
+             // is bound (WI-030).
+-            :>> B_max = 24.9 {
+-                doc /* **Source**: stellaris-design-details.md; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T); defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21) **Basis**: Stellaris REBCO design peak field; the HTS arm's ceiling for the Item 6 A/B */
+-            }
+ 
+             // ----------------- WI-035 coil-set current, limit, cost -----------------
+             // Number of toroidal field coils [1].
+-            :>> n_coils = 48.0 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Number of toroidal field coils [1] 48"); raw.pdf sec. 2.9 (48 = 4 periods x (6 independent + 6 mirrored)) **Basis**: Stellaris coil count */
+-            }
+             // Peak single-coil current [A].
+-            :>> I_coil = 15400000.0 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Peak coil current (single coil) [MA] 15.4"); Table 8 image (images/page_022_table_0.png: coil 0, I = 15.4 MA) **Basis**: Stellaris peak coil current -- the WI-035 design lever */
+-            }
+             // Coil-set transfer fact [1], float64 of the printed set: (2*pi*R0*B/mu0)/(n_coils*I_coil)
+             // = 571.4999996889 MA / 739.2 MA at (9.0 T, 12.7 m, 48, 15.4 MA). Decomposes as
+             // set-distribution 643.2/739.2 = 0.870 (Table 8) x axis-linkage 571.5/643.2 = 0.888
+             // (the modular-coil shaping current that does not link the axis, WI-032). No float64
+             // value reproduces 9.0 T exactly; this one gives 9.0 minus one ulp (low side, WI-035 D2).
+-            :>> k_link = 0.7731331164622419 {
+-                doc /* **Source**: stellaris-design-details.md; work/completed/20260827_WI-032_cold-volume-basis/spec.md **Ref**: Table 2 image (page_002_table_0.png: 9.0 T, 15.4 MA, 48 coils, R 12.7 m); Table 8 image (page_022_table_0.png: per-coil ampere-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA x 8) **Basis**: coil-set geometry fact from the printed pair (peak_ratio convention, WI-030) */
+-            }
+             // Set-mean over peak coil current [1] = (8 x 80.4 MA)/(48 x 15.4 MA) = 643.2/739.2.
+-            :>> f_set = 0.8701298701298701 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: per-coil ampere-turns, image-verified -- the iter-01 text table misprints coils 1 and 4) **Basis**: Stellaris coil-set current distribution */
+-            }
+             // Coil-shape factor [1] = typical circumference / major radius
+             // = 25.0 / 12.7 as its IEEE-754 double, so c_coil reproduces the
+             // printed 25 m exactly at R0 = 12.7 m. WI-036 D3: winding length
+@@ -201,9 +218,6 @@
+             // quantity the WI-036 mint record predicted -- "one held constant
+             // traded for a smaller one" -- and it is named here, not buried.
+             // c_coil itself is computed (mfe_plant.sysml, coil_length calc).
+-            :>> k_coil = 1.9685039370078741 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m"; coils approximately 7 x 5 x 10 m); images/page_002_table_0.png (Table 2: major radius 12.7 m) **Basis**: coil circumference over major radius at the printed pair (25.0 / 12.7); the printed circumference is "typical but approximate", the same weak link the pre-WI-036 held value carried */
+-            }
+             // Winding-pack current density [A/mm^2], worst coil (coil 0).
+             // Bound as the float64 of the printed pair (15.4 MA, 360 mm) so
+             // that wp_side reproduces 0.360000 m exactly; the printed j_WP is
+@@ -213,34 +227,19 @@
+             // it carries, so stress grows as sqrt(I_coil * j_wp) rather than
+             // linearly in current, and a wider pack costs cold mass through
+             // the cryo chain. wp_side itself is computed (mfe_plant.sysml).
+-            :>> j_wp = 118.8271604938272 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png, image-verified -- the markdown extraction of this table is garbled: j_WP 119/112/120/112/122/124 A/mm^2; I total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section side 360/360/340/340/320/300 mm, coil 0 the highest-force coil at 174 MN/m) **Basis**: Stellaris worst-coil winding-pack current density; the relation I = j_wp * side^2 closes across all six unique coils to better than 1% (-0.58% .. +0.52%) */
+-            }
+             // Winding-pack set-distribution factor [1] = printed total winding-pack
+             // volume over the worst-coil-uniform reference = 136.56 / (48 * 0.36^2 * 25)
+             // = 136.56 / 155.52. WI-036 D2: the model carries one winding pack while
+             // the machine has six unique cross-sections; this is the same shape as the
+             // f_set coil-current distribution fact, and it moves the six-cross-section
+             // arithmetic out of a doc comment and into model content.
+-            :>> f_wp_vol = 0.8780864197530865 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: cross-section side lengths 360/360/340/340/320/300 mm, image-verified); raw.pdf sec. 2.9 (48 coils = 4 periods x 12, so 8 occurrences of each of six unique coils; typical circumference 25 m) **Basis**: sum over the six unique coils of side^2 x 8 x 25 m = 136.56 m^3, expressed as a distribution factor on the worst coil */
+-            }
+             // Stress concentration fact [1] = float64 of sigma_anchor*wp_side/(I_coil*B_peak)
+             // at the printed worst-coil pair (650e6 Pa x 0.36 m)/(15.4e6 A x 24.9 T); the
+             // printed "<650" bound taken AS the value (conservative). Roundtrip: exactly 650 MPa.
+-            :>> k_sigma = 0.6102331403536223 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: "Peak stress on WP [MPa] <650"); raw.pdf sec. 2.9 structural analysis (peak ~600 MPa) **Basis**: coil-set structural fact from the printed pair (peak_ratio convention) */
+-            }
+             // Structural allowable stress [Pa].
+-            :>> sigma_allow = 800000000.0 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 ("design limit of 800 MPa for cryogenic AISI 316LN", Fig. 49; von Mises as membrane+bending proxy, ASME BPVC VIII-2 / Eurocode framing; yield ~1000 MPa at 20-30 K) **Basis**: Stellaris support-structure design stress limit */
+-            }
+             // ---- WI-036 conductor check: the SECOND of the two checks ----
+             // Winding-pack effective elastic modulus [Pa]. Cryogenic AISI 316LN,
+             // the load-bearing constituent of the pack (radial plates and casing).
+-            :>> E_wp = 200000000000.0 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 (AISI 316LN chosen as the support-structure material; yield ~1000 MPa at the 20-30 K operating range) **Basis**: austenitic stainless elastic modulus at cryogenic temperature, the pack's load-bearing constituent */
+-            }
+             // Conductor load-sharing factor [1] = HTS stack strain over
+             // pack-average strain, from the source's own reported pair:
+             // 0.002 / (600e6 / 200e9) = 2/3. The tape stack sees less strain
+@@ -251,9 +250,6 @@
+             // correcting it needs numbers the source does not print. This is a
+             // composition standing in for an FE result, calibrated from the
+             // source's own numbers rather than assumed (the k_sigma convention).
+-            :>> f_cond = 0.6666666666666666 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf p. 24 (winding-pack peak von Mises "in the range of 600 MPa"; "The peak strain on the HTS stack due to the deformation of the winding pack is below 0.2%, which is within acceptable limits, even when adding strain from bending") **Basis**: stack strain over pack-average strain at the printed pair, both figures taken at their printed bounds */
+-            }
+             // Conductor strain limit [1]. 0.4% -- the strain below which the
+             // registered measurements report no discernible effect on any of
+             // five commercial tapes. SETTABLE and deliberately so: the band
+@@ -263,16 +259,10 @@
+             // binds first (the operand reads 0.217% at the design point and
+             // 0.267% at the 800 MPa stress fence, binding at 1200 MPa); at a
+             // 0.2% choice the conductor would bind first.
+-            :>> eps_cond_allow = 0.004 {
+-                doc /* **Source**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/ **Ref**: output.md:197 ("Remaining below 0.4% strain, there are no discernible differences in the samples' strain dependencies"; irreversible stress limits 740-840 MPa at 4.2 K/19 T); output.md:173 (irreversible strain at 4.2 K/19 T: Bruker 0.70-0.72%, SuNAM 0.67-0.69%, SuperPower 0.66-0.68%, Fujikura 0.55-0.57%, SuperOx 0.45-0.47%; Fujikura and SuperOx fully de-laminate, "indicating an interfacial weakness") **Basis**: axial irreversible strain limit for commercial REBCO coated conductor, taken at the no-discernible-effect bound; measured at 4.2 K and 77 K, which the source states bracket identically -- the 20 K operating point is bracketed, not measured (the one source measuring through 20 K, Pierro et al. 2019, is paywalled and recorded as a queued research gap) */
+-            }
+             // Winding fabrication markup [1] = 3.5 (winding/insulation/cooling/jointing/test)
+             // x 1.9 (documented NCSX non-planar production penalty). Content-mapped: no casing,
+             // cryostat, or quench content (casings are the account below; NI quench protection
+             // is passive, printed sec. 2.9).
+-            :>> f_wp_fab = 6.65 {
+-                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:50 (coil_cu_fab_markup 3.5, content list); :60-72 (stellarator 5.87 = 3.09 x 1.9 NCSX overrun; winding path handled separately) **Basis**: content-mapped fabrication build-up on the conductor base (WI-035 D4) */
+-            }
+             // Reference casing steel mass per coil [kg]: the PRINTED FLOOR of the sec. 2.10
+             // cast-part range (63-200 t) -- a KNOWING LOWER BOUND (f_uplift_cryo pattern): no
+             // total is printed, so the lightest cast part per casing bounds from below; band
+@@ -282,9 +272,6 @@
+             // eq. 56), so it equals this floor at the design point and scales with the
+             // coil bore through the stored energy. The seam is unchanged: the anchor is
+             // still a lower bound, and everything scaled from it inherits that.
+-            :>> m_casing_ref = 63000.0 {
+-                doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30); knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons"); images/lion_2021_nf_stellarator_process.pdf-0012-18.png (eq. 56, the shape the reference is scaled by) **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named; the WI-044 anchor of the casing-mass shape */
+-            }
+             // ---- WI-044 coil-bore anchors: the reference point at which the printed
+             // magnet facts were read. Each sourced shape -- eq. 39 (peak field), eq. 2.82
+             // with W = 1/2 L I^2 (stored energy), eq. 56 (casing mass) -- is normalised
+@@ -306,19 +293,10 @@
+             // printed peak coil current 15.4 MA. Table 8 sums the per-coil energies to
+             // 110.58 GJ; the 0.4 % gap to the rounded headline is disclosed, not
+             // reconciled -- Table 2 is the anchor.
+-            :>> W_mag_ref = 111000000000.0 {
+-                doc /* **Source**: stellaris-design-details.md; knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/ **Ref**: work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p03_table2.png (Table 2 render: "Stored magnetic energy [GJ] 111"); stellaris_p23_table8.png (Table 8 render: total energy 110.58 GJ); images/lion_2023_phd_thesis_stellarator_systems_code_models.pdf-0074-12.png (eq. 2.82, the shape the reference is scaled by) **Basis**: printed coil-set stored energy at the design point; the WI-044 anchor of the inductance shape */
+-            }
+             // Reference peak single-coil current [A]: the current at which the printed
+             // 24.9 T and 111 GJ were read (= I_coil at the design point; I_coil is the
+             // lever, I_ref the anchor).
+-            :>> I_ref = 15400000.0 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: "Peak coil current (single coil) [MA] 15.4") **Basis**: the reference current of the WI-044 stored-energy anchor */
+-            }
+             // Reference major radius [m] (= R0 at the design point; R0 is the lever).
+-            :>> R_ref = 12.7 {
+-                doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: major plasma radius 12.7 m) **Basis**: the reference geometry of the WI-044 anchors */
+-            }
+             // Reference coil-centre minor radius [m] = the radial build's r_coil_centre
+             // at a = 1.3 with the bound thicknesses: 1.3 + 1.70 (the layer stack to
+             // vessel_or) + 0.30 / 2 = 3.15, written as the float64 the executed build
+@@ -329,16 +307,85 @@
+             // the coil centre is 1.50 m (Fig. 34), i.e. a_coil about 2.80 m -- this
+             // model's 1cfe layer stack is 0.35 m thicker, and the anchor absorbs the
+             // offset (only the ratio to this reference enters any shape).
+-            :>> a_coil_ref = 3.1500000000000004 {
+-                doc /* **Source**: stellaris-design-details.md; models/library/analyses/mfe_plasma_scaling.sysml ('MFE Radial Build' r_coil_centre) **Ref**: images/page_002_table_0.png (Table 2: minor plasma radius 1.3 m); work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p04_table3.png (Table 3: coil information "refers to the center filament"), stellaris_p18_fig34.png (Fig. 34: averaged build to the coil centre 1.50 m); the radial-build thicknesses bound below (geometry.py:106-114 layer sum) **Basis**: the executed coil-centre radius at the design minor radius, float64 of the layer sum; the WI-044 reference geometry */
+-            }
+             // Fabricated structural steel price [$/kg].
+-            :>> steel_price = 6.0 {
+-                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: fabricated structural steel rate at the pin */
+-            }
+             // Casing fabrication markup [1].
+-            :>> f_steel_fab = 3.0 {
+-                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:53 (coil_steel_fab_markup = 3.0, "coil-case / inter-coil support fabrication") **Basis**: coil-case fabrication build-up at the pin */
++            part :>> coil {
++                :>> n_coils = 48.0 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Number of toroidal field coils [1] 48"); raw.pdf sec. 2.9 (48 = 4 periods x (6 independent + 6 mirrored)) **Basis**: Stellaris coil count */
++                }
++                :>> I_coil = 15400000.0 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Peak coil current (single coil) [MA] 15.4"); Table 8 image (images/page_022_table_0.png: coil 0, I = 15.4 MA) **Basis**: Stellaris peak coil current -- the WI-035 design lever */
++                }
++                :>> k_link = 0.7731331164622419 {
++                    doc /* **Source**: stellaris-design-details.md; work/completed/20260827_WI-032_cold-volume-basis/spec.md **Ref**: Table 2 image (page_002_table_0.png: 9.0 T, 15.4 MA, 48 coils, R 12.7 m); Table 8 image (page_022_table_0.png: per-coil ampere-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA x 8) **Basis**: coil-set geometry fact from the printed pair (peak_ratio convention, WI-030) */
++                }
++                :>> f_set = 0.8701298701298701 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: per-coil ampere-turns, image-verified -- the iter-01 text table misprints coils 1 and 4) **Basis**: Stellaris coil-set current distribution */
++                }
++                :>> R0 = 12.7;
++                :>> G = 78.95683520871486;
++                :>> k_coil = 1.9685039370078741 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m"; coils approximately 7 x 5 x 10 m); images/page_002_table_0.png (Table 2: major radius 12.7 m) **Basis**: coil circumference over major radius at the printed pair (25.0 / 12.7); the printed circumference is "typical but approximate", the same weak link the pre-WI-036 held value carried */
++                }
++                :>> cost_per_kAm = 50.0;
++                :>> coil_markup = 5.87;
++                :>> peak_ratio = 2.7666666666666666 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T; axis av. magnetic field strength 9.0 T) **Basis**: Stellaris coil-set peak/axis field ratio, 24.9/9.0 */
++                }
++                :>> I_ref = 15400000.0 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: "Peak coil current (single coil) [MA] 15.4") **Basis**: the reference current of the WI-044 stored-energy anchor */
++                }
++                :>> R_ref = 12.7 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: major plasma radius 12.7 m) **Basis**: the reference geometry of the WI-044 anchors */
++                }
++                :>> a_coil_ref = 3.1500000000000004 {
++                    doc /* **Source**: stellaris-design-details.md; models/library/analyses/mfe_plasma_scaling.sysml ('MFE Radial Build' r_coil_centre) **Ref**: images/page_002_table_0.png (Table 2: minor plasma radius 1.3 m); work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p04_table3.png (Table 3: coil information "refers to the center filament"), stellaris_p18_fig34.png (Fig. 34: averaged build to the coil centre 1.50 m); the radial-build thicknesses bound below (geometry.py:106-114 layer sum) **Basis**: the executed coil-centre radius at the design minor radius, float64 of the layer sum; the WI-044 reference geometry */
++                }
++            }
++
++            part :>> winding_pack {
++                :>> j_wp = 118.8271604938272 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png, image-verified -- the markdown extraction of this table is garbled: j_WP 119/112/120/112/122/124 A/mm^2; I total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section side 360/360/340/340/320/300 mm, coil 0 the highest-force coil at 174 MN/m) **Basis**: Stellaris worst-coil winding-pack current density; the relation I = j_wp * side^2 closes across all six unique coils to better than 1% (-0.58% .. +0.52%) */
++                }
++                :>> f_wp_vol = 0.8780864197530865 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: cross-section side lengths 360/360/340/340/320/300 mm, image-verified); raw.pdf sec. 2.9 (48 coils = 4 periods x 12, so 8 occurrences of each of six unique coils; typical circumference 25 m) **Basis**: sum over the six unique coils of side^2 x 8 x 25 m = 136.56 m^3, expressed as a distribution factor on the worst coil */
++                }
++                :>> E_wp = 200000000000.0 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 (AISI 316LN chosen as the support-structure material; yield ~1000 MPa at the 20-30 K operating range) **Basis**: austenitic stainless elastic modulus at cryogenic temperature, the pack's load-bearing constituent */
++                }
++                :>> f_cond = 0.6666666666666666 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf p. 24 (winding-pack peak von Mises "in the range of 600 MPa"; "The peak strain on the HTS stack due to the deformation of the winding pack is below 0.2%, which is within acceptable limits, even when adding strain from bending") **Basis**: stack strain over pack-average strain at the printed pair, both figures taken at their printed bounds */
++                }
++                :>> eps_cond_allow = 0.004 {
++                    doc /* **Source**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/ **Ref**: output.md:197 ("Remaining below 0.4% strain, there are no discernible differences in the samples' strain dependencies"; irreversible stress limits 740-840 MPa at 4.2 K/19 T); output.md:173 (irreversible strain at 4.2 K/19 T: Bruker 0.70-0.72%, SuNAM 0.67-0.69%, SuperPower 0.66-0.68%, Fujikura 0.55-0.57%, SuperOx 0.45-0.47%; Fujikura and SuperOx fully de-laminate, "indicating an interfacial weakness") **Basis**: axial irreversible strain limit for commercial REBCO coated conductor, taken at the no-discernible-effect bound; measured at 4.2 K and 77 K, which the source states bracket identically -- the 20 K operating point is bracketed, not measured (the one source measuring through 20 K, Pierro et al. 2019, is paywalled and recorded as a queued research gap) */
++                }
++                :>> f_wp_fab = 6.65 {
++                    doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:50 (coil_cu_fab_markup 3.5, content list); :60-72 (stellarator 5.87 = 3.09 x 1.9 NCSX overrun; winding path handled separately) **Basis**: content-mapped fabrication build-up on the conductor base (WI-035 D4) */
++                }
++                :>> k_sigma = 0.6102331403536223 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: "Peak stress on WP [MPa] <650"); raw.pdf sec. 2.9 structural analysis (peak ~600 MPa) **Basis**: coil-set structural fact from the printed pair (peak_ratio convention) */
++                }
++                :>> B_max = 24.9 {
++                    doc /* **Source**: stellaris-design-details.md; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T); defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21) **Basis**: Stellaris REBCO design peak field; the HTS arm's ceiling for the Item 6 A/B */
++                }
++            }
++
++            part :>> casing {
++                :>> m_casing_ref = 63000.0 {
++                    doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30); knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons"); images/lion_2021_nf_stellarator_process.pdf-0012-18.png (eq. 56, the shape the reference is scaled by) **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named; the WI-044 anchor of the casing-mass shape */
++                }
++                :>> W_mag_ref = 111000000000.0 {
++                    doc /* **Source**: stellaris-design-details.md; knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/ **Ref**: work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p03_table2.png (Table 2 render: "Stored magnetic energy [GJ] 111"); stellaris_p23_table8.png (Table 8 render: total energy 110.58 GJ); images/lion_2023_phd_thesis_stellarator_systems_code_models.pdf-0074-12.png (eq. 2.82, the shape the reference is scaled by) **Basis**: printed coil-set stored energy at the design point; the WI-044 anchor of the inductance shape */
++                }
++                :>> steel_price = 6.0 {
++                    doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: fabricated structural steel rate at the pin */
++                }
++                :>> f_steel_fab = 3.0 {
++                    doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:53 (coil_steel_fab_markup = 3.0, "coil-case / inter-coil support fabrication") **Basis**: coil-case fabrication build-up at the pin */
++                }
++                :>> sigma_allow = 800000000.0 {
++                    doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 ("design limit of 800 MPa for cryogenic AISI 316LN", Fig. 49; von Mises as membrane+bending proxy, ASME BPVC VIII-2 / Eurocode framing; yield ~1000 MPa at 20-30 K) **Basis**: Stellaris support-structure design stress limit */
++                }
+             }
+         }
+ 
+@@ -347,6 +394,93 @@
+         // Volumes from costingfe.layers.geometry.compute_geometry(STELLARATOR)
+         // at the Stellaris radial build; unit costs are 1costingFE M$ x 1e6.
+         // ---------------------------------------------------------------------
++        part :>> plasma {
++            :>> R = 12.7 {        // major radius [m].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: major plasma radius 12.7 m); prose line 251 **Basis**: Stellaris major radius */
++            }
++            :>> a = 1.3 {         // minor radius [m] (WI-022 errata rebind).
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: minor plasma radius 1.3 m; the extracted text row "a = 1.5" is an extraction artifact) **Basis**: Stellaris plasma minor radius */
++            }
++            :>> kappa = 1.0 {     // elongation. QI stellarator ~ circular average.
++                doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (near-circular avg cross-section); analyst-patch-spec-anchors.md line 30 (elon=1.0) **Basis**: stellarator ~circular average cross-section */
++            }
++            :>> f_shape = 1.0031567 {  // QI shaping correction [1] (WI-022).
++                doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_009_table_0.png (Table 5: plasma volume 425 m^3); images/page_002_table_0.png (Table 2: 428 m^3) **Ref**: printed V = 425 / torus V(R=12.7, a=1.3, kappa=1.0) = 425/423.663 = 1.0031567 **Basis**: residual QI shaping correction (~0.3%) reconciling the circular torus to the printed plasma volume; supersedes the empirical 0.7943 built on garbled extraction rows */
++            }
++            :>> n_e = 3.17e20 {   // vol-avg electron density [m^-3], point A (WI-022 corrected).
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: vol.-av. el. density 3.17e20 m^-3, Point A; the extracted text "3.37" is an extraction artifact) **Basis**: Stellaris operating point A. Reference/handshake-only in profile mode (sigma_v = 0 below): the profile path computes fusion from the peak fuel densities, not n_e. */
++            }
++            :>> sigma_v = 0.0 {  // 0D bypass OFF -> profile-integrated reactivity (WI-022).
++                doc /*
++                sigma_v = 0 selects the profile-integrated path of 'DT Fusion
++                Power': fusion power is computed by integrating the Bosch-Hale
++                reactivity over the source's own profiles (the n_D0/n_T0/T_i0/
++                alpha_n/alpha_T referents below) -- the model's realization of the
++                source's 0.5D volume-integrated power balance (Appendix A). The
++                reactivity physics executes at the handwritten codegen stage
++                (Rung B, owner-ratified) and is guarded bit-exact by the oracle.
++
++                This closes the former "0D gap": pre-WI-022 the injected
++                0D-effective reactivity (5.985e-23 at T_eff ~= 7.9 keV) gave
++                ~2145 MW vs the 2700 MW design point, the visible 0D
++                single-temperature limitation. The profile integral computes
++                ~2748 MW at the printed volume 425 m^3 -- within ~2% of the design
++                point, with every parameter fixed from the source's own figure and
++                tables blind to the power (Decision A: honest physics, not tuned).
++
++                The Anchor A handshake still injects sigma_v > 0, which selects
++                the exact legacy 0D form (0.25*n_e^2*sigma_v*E_fus*V) and
++                reproduces 1costingFE's 0D point unchanged.
++
++                **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py
++                **Ref**: reactivity.py:54-70 (sigv_dt Bosch-Hale D-T, realized in
++                    the handwritten impl); stellaris-design-details.md Appendix A
++                    line 2912 (0.5D volume-integrated power balance); Table 5 image
++                    (images/page_009_table_0.png: fusion power 2700 MW, Point A)
++                **Basis**: profile-integrated reactivity replaces the 0D-effective
++                    constant; sigma_v = 0 disables the bypass on this instance
++                */
++            }
++            :>> E_fus = 2.817e-12 {  // per-event D-T fusion energy [J].
++                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py **Ref**: physics.py:31 (Q_DT = 17.58 MeV x 1.602176634e-13 J/MeV = 2.817e-12 J) **Basis**: D-T fusion Q-value */
++            }
++            :>> T_i0 = 14.63 {    // peak ion temperature [keV] (operating-point lever).
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak ion temperature 14.63 keV, Point A; the extracted text "24.60" is an extraction artifact) **Basis**: Stellaris Point-A peak ion temperature */
++            }
++            :>> alpha_n = 0.33 {  // fuel density profile exponent [1].
++                doc /* **Source**: stellaris-design-details.md Fig. 16 density panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-0.png, digitized fit (prototype/digitize_fig16.py; D and T curves, rms log-residual 0.006) **Basis**: n(rho) = n0*(1-rho^2)^alpha_n (Eq. 3, image-verified) fuel-profile exponent, fixed blind to the fusion power */
++            }
++            :>> alpha_T = 1.19 {  // temperature profile exponent [1].
++                doc /* **Source**: stellaris-design-details.md Fig. 16 temperature panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-1.png, digitized fit (prototype/digitize_fig16.py; all three species, rms log-residual 0.02); corroborated by a/L_T ~= 2.25 at rho=0.6 (line 714) and the rho=0.8 Dirichlet values 4.2/5.2 keV (line 762) **Basis**: T(rho) = T0*(1-rho^2)^alpha_T (Eq. 2, image-verified) exponent, fixed blind to the fusion power */
++            }
++            :>> n_e0 = 5.06e20 {  // peak electron density [m^-3].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. density 5.06e20 m^-3, Point A; the extracted text "4.55" is an extraction artifact) **Basis**: Stellaris Point-A peak electron density */
++            }
++            :>> iota_23 = 0.92 {  // rotational transform at s = 2/3 [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: iter-02 raw PDF p.7 Fig. 11(a) (iota(s) at s = 2/3 on the <beta>_V ~= 3% curve, read 0.92 +/- 0.01 -- the WI-022 figure-digitization precedent), bracketed by raw PDF Table 3 (axis 0.86, edge 0.98; the iter-02 output.md extraction of Table 3 prints axis 0.98 / edge 0.80 and is garbled). The 0.41 ISS04 exponent makes the read tolerance +/-0.45% in tau_E. **Basis**: rotational transform at the ISS04 reference surface */
++            }
++            :>> f_ren = 1.0 {     // ISS04 renormalization multiplier [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_ren 1.0) and Table 5 image (images/page_009_table_0.png: f_ren 1.0, both operating points) **Basis**: Stellaris ISS04 confinement fidelity at the operating points; never a calibration knob */
++            }
++            :>> f_alpha_fast = 0.95 { // fast-particle (alpha) confinement [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_alpha 0.95); raw PDF sec. 2.5 ("conservative value of the fast particle confinement of 95%") **Basis**: alpha heating fraction retained in the core */
++            }
++            :>> tau_ratio_ash = 8.0 { // tau_star/tau_E [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: tau_star/tau_E 8.0); Table 5 image (ratio 8.00, both points) **Basis**: particle-to-energy confinement time ratio for the A.5 helium balance */
++            }
++            :>> f_suppr_ash = 0.5 { // helium suppression factor [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_suppr 0.5); raw PDF appendix A ("choosing a value of f_suppr = 1/2" -- the extracted text "= 12" is an artifact) **Basis**: Eq. A.6 ash suppression (birth vs thermalization displacement) */
++            }
++            :>> Z_eff_core = 1.20 { // core effective charge [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: Vol av. Z_eff (core) 1.20, Point A) **Basis**: Stellaris core Z_eff for bremsstrahlung */
++            }
++            :>> f_W_core = 7.76e-6 { // core tungsten fraction n_W/n_e [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: Rel. tungsten fraction core 7.76e-6, Point A) **Basis**: Stellaris core tungsten content for line radiation (1costingFE W cooling-curve fit, radiation.py:83-96) */
++            }
++            :>> Ti_over_Te = 0.95 { // T_i0/T_e0 [1].
++                doc /* **Source**: stellaris-design-details.md **Ref**: raw PDF sec. 2.5 ("fixed ion-to-electron temperature ratio of 0.95"); cross-check: printed Point-A pair 14.63/15.40 = 0.950 (Table 5 image) **Basis**: Stellaris fixed ion-to-electron temperature ratio */
++            }
++        }
+         part :>> blanket {
+             doc /*
+             HCLL (helium-cooled lithium-lead / PbLi) breeding blanket.
+@@ -525,18 +659,6 @@
+         // text-extraction rows of Tables 2/5; the WI-020 "empirical packing
+         // factor" reconciled one extraction artifact against another. R stays
+         // 12.7 (Table 2 image; magnet R0 consistency).
+-        :>> R = 12.7 {        // major radius [m].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: major plasma radius 12.7 m); prose line 251 **Basis**: Stellaris major radius */
+-        }
+-        :>> a = 1.3 {         // minor radius [m] (WI-022 errata rebind).
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: minor plasma radius 1.3 m; the extracted text row "a = 1.5" is an extraction artifact) **Basis**: Stellaris plasma minor radius */
+-        }
+-        :>> kappa = 1.0 {     // elongation. QI stellarator ~ circular average.
+-            doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (near-circular avg cross-section); analyst-patch-spec-anchors.md line 30 (elon=1.0) **Basis**: stellarator ~circular average cross-section */
+-        }
+-        :>> f_shape = 1.0031567 {  // QI shaping correction [1] (WI-022).
+-            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_009_table_0.png (Table 5: plasma volume 425 m^3); images/page_002_table_0.png (Table 2: 428 m^3) **Ref**: printed V = 425 / torus V(R=12.7, a=1.3, kappa=1.0) = 425/423.663 = 1.0031567 **Basis**: residual QI shaping correction (~0.3%) reconciling the circular torus to the printed plasma volume; supersedes the empirical 0.7943 built on garbled extraction rows */
+-        }
+ 
+         // Radial-build layer thicknesses [m] (WI-021). The Stellaris stellarator
+         // build: blanket_t/ht_shield_t/structure_t/vessel_t from 1costingFE's
+@@ -580,43 +702,6 @@
+         }
+ 
+         // Fusion-power inputs.
+-        :>> n_e = 3.17e20 {   // vol-avg electron density [m^-3], point A (WI-022 corrected).
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: vol.-av. el. density 3.17e20 m^-3, Point A; the extracted text "3.37" is an extraction artifact) **Basis**: Stellaris operating point A. Reference/handshake-only in profile mode (sigma_v = 0 below): the profile path computes fusion from the peak fuel densities, not n_e. */
+-        }
+-        :>> sigma_v = 0.0 {  // 0D bypass OFF -> profile-integrated reactivity (WI-022).
+-            doc /*
+-            sigma_v = 0 selects the profile-integrated path of 'DT Fusion
+-            Power': fusion power is computed by integrating the Bosch-Hale
+-            reactivity over the source's own profiles (the n_D0/n_T0/T_i0/
+-            alpha_n/alpha_T referents below) -- the model's realization of the
+-            source's 0.5D volume-integrated power balance (Appendix A). The
+-            reactivity physics executes at the handwritten codegen stage
+-            (Rung B, owner-ratified) and is guarded bit-exact by the oracle.
+-
+-            This closes the former "0D gap": pre-WI-022 the injected
+-            0D-effective reactivity (5.985e-23 at T_eff ~= 7.9 keV) gave
+-            ~2145 MW vs the 2700 MW design point, the visible 0D
+-            single-temperature limitation. The profile integral computes
+-            ~2748 MW at the printed volume 425 m^3 -- within ~2% of the design
+-            point, with every parameter fixed from the source's own figure and
+-            tables blind to the power (Decision A: honest physics, not tuned).
+-
+-            The Anchor A handshake still injects sigma_v > 0, which selects
+-            the exact legacy 0D form (0.25*n_e^2*sigma_v*E_fus*V) and
+-            reproduces 1costingFE's 0D point unchanged.
+-
+-            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py
+-            **Ref**: reactivity.py:54-70 (sigv_dt Bosch-Hale D-T, realized in
+-                the handwritten impl); stellaris-design-details.md Appendix A
+-                line 2912 (0.5D volume-integrated power balance); Table 5 image
+-                (images/page_009_table_0.png: fusion power 2700 MW, Point A)
+-            **Basis**: profile-integrated reactivity replaces the 0D-effective
+-                constant; sigma_v = 0 disables the bypass on this instance
+-            */
+-        }
+-        :>> E_fus = 2.817e-12 {  // per-event D-T fusion energy [J].
+-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py **Ref**: physics.py:31 (Q_DT = 17.58 MeV x 1.602176634e-13 J/MeV = 2.817e-12 J) **Basis**: D-T fusion Q-value */
+-        }
+ 
+         // Profile referents (WI-022, Decision C): derived from the source's own
+         // primary data, fixed blind to the fusion power. Exponents are digitized
+@@ -634,15 +719,6 @@
+         // chain computes them by quasi-neutrality with the converged A.5/A.6
+         // ash (computed 1.945e20 at this lever point, -0.8% vs the retired
+         // referents; the printed pair remains the cross-check, not an input).
+-        :>> T_i0 = 14.63 {    // peak ion temperature [keV] (operating-point lever).
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak ion temperature 14.63 keV, Point A; the extracted text "24.60" is an extraction artifact) **Basis**: Stellaris Point-A peak ion temperature */
+-        }
+-        :>> alpha_n = 0.33 {  // fuel density profile exponent [1].
+-            doc /* **Source**: stellaris-design-details.md Fig. 16 density panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-0.png, digitized fit (prototype/digitize_fig16.py; D and T curves, rms log-residual 0.006) **Basis**: n(rho) = n0*(1-rho^2)^alpha_n (Eq. 3, image-verified) fuel-profile exponent, fixed blind to the fusion power */
+-        }
+-        :>> alpha_T = 1.19 {  // temperature profile exponent [1].
+-            doc /* **Source**: stellaris-design-details.md Fig. 16 temperature panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-1.png, digitized fit (prototype/digitize_fig16.py; all three species, rms log-residual 0.02); corroborated by a/L_T ~= 2.25 at rho=0.6 (line 714) and the rho=0.8 Dirichlet values 4.2/5.2 keV (line 762) **Basis**: T(rho) = T0*(1-rho^2)^alpha_T (Eq. 2, image-verified) exponent, fixed blind to the fusion power */
+-        }
+ 
+         // Beta and density referents (WI-030; WI-042). The peak electron
+         // density is the operating-point lever, from the Table 5 image. The
+@@ -661,9 +737,6 @@
+         // stored-energy-basis L-002), so the pair is a cross-check with a
+         // stated caveat, not a target. Quasineutrality at the peak:
+         // 2 x 1.96 + 2 x 0.56 = 5.04 ~= 5.06.
+-        :>> n_e0 = 5.06e20 {  // peak electron density [m^-3].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. density 5.06e20 m^-3, Point A; the extracted text "4.55" is an extraction artifact) **Basis**: Stellaris Point-A peak electron density */
+-        }
+         // WI-037 retirement note: the held T_e0 = 15.40 keV and n_He0 =
+         // 0.56e20 (Table 5 image, Point A) retire as entry points -- T_e0 is
+         // computed from the T_i0 lever through the held 0.95 ratio (ratio-exact
+@@ -681,30 +754,6 @@
+         // the raw PDF or page images in goal round 1 (evidence NOTES.md);
+         // the iter-01 AND iter-02 text extractions of these tables are
+         // corrupted -- the raw PDF and images govern.
+-        :>> iota_23 = 0.92 {  // rotational transform at s = 2/3 [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: iter-02 raw PDF p.7 Fig. 11(a) (iota(s) at s = 2/3 on the <beta>_V ~= 3% curve, read 0.92 +/- 0.01 -- the WI-022 figure-digitization precedent), bracketed by raw PDF Table 3 (axis 0.86, edge 0.98; the iter-02 output.md extraction of Table 3 prints axis 0.98 / edge 0.80 and is garbled). The 0.41 ISS04 exponent makes the read tolerance +/-0.45% in tau_E. **Basis**: rotational transform at the ISS04 reference surface */
+-        }
+-        :>> f_ren = 1.0 {     // ISS04 renormalization multiplier [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_ren 1.0) and Table 5 image (images/page_009_table_0.png: f_ren 1.0, both operating points) **Basis**: Stellaris ISS04 confinement fidelity at the operating points; never a calibration knob */
+-        }
+-        :>> f_alpha_fast = 0.95 { // fast-particle (alpha) confinement [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_alpha 0.95); raw PDF sec. 2.5 ("conservative value of the fast particle confinement of 95%") **Basis**: alpha heating fraction retained in the core */
+-        }
+-        :>> tau_ratio_ash = 8.0 { // tau_star/tau_E [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: tau_star/tau_E 8.0); Table 5 image (ratio 8.00, both points) **Basis**: particle-to-energy confinement time ratio for the A.5 helium balance */
+-        }
+-        :>> f_suppr_ash = 0.5 { // helium suppression factor [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_suppr 0.5); raw PDF appendix A ("choosing a value of f_suppr = 1/2" -- the extracted text "= 12" is an artifact) **Basis**: Eq. A.6 ash suppression (birth vs thermalization displacement) */
+-        }
+-        :>> Z_eff_core = 1.20 { // core effective charge [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: Vol av. Z_eff (core) 1.20, Point A) **Basis**: Stellaris core Z_eff for bremsstrahlung */
+-        }
+-        :>> f_W_core = 7.76e-6 { // core tungsten fraction n_W/n_e [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: Rel. tungsten fraction core 7.76e-6, Point A) **Basis**: Stellaris core tungsten content for line radiation (1costingFE W cooling-curve fit, radiation.py:83-96) */
+-        }
+-        :>> Ti_over_Te = 0.95 { // T_i0/T_e0 [1].
+-            doc /* **Source**: stellaris-design-details.md **Ref**: raw PDF sec. 2.5 ("fixed ion-to-electron temperature ratio of 0.95"); cross-check: printed Point-A pair 14.63/15.40 = 0.950 (Table 5 image) **Basis**: Stellaris fixed ion-to-electron temperature ratio */
+-        }
+ 
+         // Power-balance inputs.
+         // Heating power chain (WI-039). The installed wall-plug draw is the
+@@ -1014,42 +1063,6 @@
+         :>> q_nuc_cryo = 35.5 {   // winding-pack mean nuclear heating [W/m^3].
+             doc /* **Source**: stellaris-design-details.md **Ref**: Table 6 image (images/page_020_table_0.png: "Mean cryogenic nuclear heating (winding pack) [W/m^3] 35.5"); sec. 2.8 raw.pdf (magnets at 20 K; EU DEMO ~50 W/m^3 as viability reference) **Basis**: Stellaris winding-pack volumetric nuclear heating at 20 K */
+         }
+-        :>> vol_cold_cryo = 0.0 {  // ADDITIONAL cold volume [m^3] beyond the winding pack.
+-            doc /*
+-            WI-036: the winding-pack cold volume is now COMPUTED IN THE MODEL
+-            (mfe_magnet_field 'Winding Pack Cold Volume'), from the sized pack
+-            cross-section, the computed winding length and the held set-distribution
+-            factor f_wp_vol -- reproducing the 136.56 m^3 this slot previously held
+-            as a literal. The arithmetic below was correct; it lived in this doc
+-            comment rather than in the model, which is exactly the defect WI-036
+-            closes. A wider winding pack now raises cryogenic load and cryoplant
+-            capital instead of being free.
+-
+-            This slot is NOT retired. The plant sums the computed winding-pack
+-            volume with this attribute (mfe_plant.sysml, cryo_elec), so it stays a
+-            live settable entry point for cold mass beyond the winding pack, and a
+-            concept that knows its cold volume directly can bind it and zero
+-            f_wp_vol. The standing [OWNER 2026-08-27] WI-032 ruling bars retiring
+-            vol_cold_cryo as a settable input; it does not bar modelling the chain
+-            behind it -- the same width the owner drew for p_pump ("stays a held
+-            settable input -- the ruling bars only the fixed-fraction form, not
+-            loop modelling"). Bound to zero here because the winding pack IS the
+-            whole of this machine's printed cold mass; any non-zero value would
+-            double-count it.
+-
+-            The retired arithmetic, kept for the record: six unique square winding-pack
+-            cross-sections (Table 8 image side lengths 360/360/340/340/320/300 mm)
+-            x 8 occurrences each (sec. 2.9: 48 coils = 4 periods x (6 independent
+-            + 6 mirrored)) x 25 m typical circumference. Sum of side^2 = 2x0.36^2
+-            + 2x0.34^2 + 0.32^2 + 0.30^2 = 0.6828 m^2; x8 x25 = 136.56 m^3.
+-            Cross-checks: each side^2 equals turns x (20 mm)^2 exactly (sec. 2.9
+-            unit cell; Table 8 turns row); Table 8 no-casing masses (128.7 t x 8
+-            = 1029.6 t) imply ~7540 kg/m^3, consistent with the Table 7 material mix.
+-            **Source**: stellaris-design-details.md
+-            **Ref**: Table 8 image (images/page_022_table_0.png: side lengths, turns, masses); raw.pdf sec. 2.9 (square winding pack; 20 mm x 20 mm unit cell; 25 m typical circumference; 48 = 4 x (6+6) symmetry); Table 7 image (images/page_021_table_0.png: material fractions)
+-            **Basis**: additive non-winding-pack cold volume; zero for this machine because the computed winding-pack chain now carries the whole printed cold mass
+-            */
+-        }
+         :>> p_fixed_cryo = 0.0075 {  // resistive-joint losses [MW] at 20 K.
+             doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW steady-state for the entire coil set, "negligible ... within the cooling capacity of existing cryocooler designs") **Basis**: printed coil-set joint dissipation, counted as heat at 20 K */
+         }
+diff -ruN exploration/stellarator_e2e/models/structure/mfe_interfaces.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/structure/mfe_interfaces.sysml
+--- exploration/stellarator_e2e/models/structure/mfe_interfaces.sysml	1969-12-31 16:00:00.000000000 -0800
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/structure/mfe_interfaces.sysml	2026-09-13 12:05:53.612815235 -0700
+@@ -0,0 +1,24 @@
++package mfe_interfaces {
++    private import ScalarValues::*;
++    // WI-057 prototype: the exchanges the plant's calcs already compute, declared as port types.
++    item def 'Coolant Stream' {
++        attribute T : Real;
++        attribute mdot : Real;
++    }
++    item def 'Electric Power' {
++        attribute p : Real;
++    }
++    item def 'Neutron Power' {
++        attribute p : Real;
++    }
++    port def 'Thermal Port' {
++        out item hot : 'Coolant Stream';
++        in item cold : 'Coolant Stream';
++    }
++    port def 'Electric Port' {
++        out item power : 'Electric Power';
++    }
++    port def 'Neutron Port' {
++        out item neutrons : 'Neutron Power';
++    }
++}
+diff -ruN exploration/stellarator_e2e/models/structure/mfe_plasma.sysml /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/structure/mfe_plasma.sysml
+--- exploration/stellarator_e2e/models/structure/mfe_plasma.sysml	1969-12-31 16:00:00.000000000 -0800
++++ /tmp/claude-1000/-home-reid-1cfe-fusion-tea/85ce5590-a373-4fcf-8c7e-15f96e6c5d96/scratchpad/proto/models/structure/mfe_plasma.sysml	2026-09-13 12:05:53.612783408 -0700
+@@ -0,0 +1,69 @@
++package mfe_plasma {
++    private import ScalarValues::*;
++    private import mfe_interfaces::*;
++    // WI-057 prototype: the plasma as a part owning its geometry, density, temperature and profile facts.
++    part def 'Plasma' {
++        port neutron_out : 'Neutron Port';
++        // Plasma geometry inputs (WI-011).
++        // major radius [m]
++        attribute R : Real;
++        // minor radius [m]
++        attribute a : Real;
++        // elongation
++        attribute kappa : Real;
++        // Shape/packing factor (WI-020). Default 1.0 = pure elongated torus
++        // (tokamak); a shaped stellarator instance overrides it.
++        attribute f_shape : Real default 1.0;
++        // Fusion-power inputs (WI-011 sets density directly for the stellarator;
++        // no density closure here). WI-022: sigma_v > 0 selects the exact 0D
++        // bypass; sigma_v = 0 (default) computes the profile integral from the
++        // five profile inputs below (defaults mirror the calc def -- a 0D/flat
++        // concept binds sigma_v only and leaves the profile inputs dormant).
++        // electron density [m^-3]
++        attribute n_e : Real;
++        // 0D-effective reactivity [m^3/s]; > 0 = bypass
++        attribute sigma_v : Real default 0.0;
++        // per-event D-T fusion energy [J]
++        attribute E_fus : Real;
++        // WI-037: n_D0 and n_T0 retired as plant attributes -- the fuel peaks
++        // are computed by the sustainment chain (quasi-neutrality with the
++        // converged ash), wired below. The operating-point levers are n_e0
++        // and T_i0.
++        // peak ion temperature [keV]
++        attribute T_i0 : Real default 1.0;
++        // density profile exponent
++        attribute alpha_n : Real default 0.0;
++        // temperature profile exponent
++        attribute alpha_T : Real default 0.0;
++        // Operating-point lever (WI-030/WI-037). No default: a plasma without
++        // its peak density is not a plasma. WI-037: T_e0 and n_He0 retired as
++        // plant attributes -- both are computed by the sustainment chain below
++        // (T_e0 from the held ratio, n_He0 from the converged A.5/A.6 ash
++        // balance). WI-042: the electron density profile exponent retired too
++        // -- the electron profile is derived inside the chain by
++        // quasi-neutrality from the fuel profile and the ash on the
++        // fusion-rate profile (Eq. A.5 pointwise), never bound at a point.
++        // peak electron density [m^-3] (operating-point lever)
++        attribute n_e0 : Real;
++        // Sustainment held facts (WI-037). No defaults for the physics facts:
++        // a sustainment without its machine and quality facts is not a
++        // sustainment (the WI-030 no-defaults precedent) -- every MFE concept
++        // binds them from source.
++        // rotational transform at s = 2/3 [1]
++        attribute iota_23 : Real;
++        // ISS04 renormalization multiplier [1]
++        attribute f_ren : Real;
++        // fast-particle (alpha) confinement fraction [1]
++        attribute f_alpha_fast : Real;
++        // particle-to-energy confinement time ratio tau_star/tau_E [1]
++        attribute tau_ratio_ash : Real;
++        // helium suppression factor [1]
++        attribute f_suppr_ash : Real;
++        // core effective charge [1]
++        attribute Z_eff_core : Real;
++        // core tungsten fraction n_W/n_e [1]
++        attribute f_W_core : Real;
++        // ion-to-electron temperature ratio T_i0/T_e0 [1]
++        attribute Ti_over_Te : Real;
++    }
++}

@@ -1,0 +1,68 @@
+{
+  "remaining_parameter_records_exact": 246,
+  "remaining_input_values_exact": 246,
+  "changed_bindings": [
+    {
+      "module": "stellarator_09__stellaris__coil_length",
+      "formal": "R0",
+      "old": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R0",
+      "new": "float stellarator_plant_params.stellarator_09__stellaris__R"
+    },
+    {
+      "module": "stellarator_09__stellaris__field_calc",
+      "formal": "R0",
+      "old": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R0",
+      "new": "float stellarator_plant_params.stellarator_09__stellaris__R"
+    },
+    {
+      "module": "stellarator_09__stellaris__peak_field_calc",
+      "formal": "R_in",
+      "old": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R0",
+      "new": "float stellarator_plant_params.stellarator_09__stellaris__R"
+    },
+    {
+      "module": "stellarator_09__stellaris__magnet_cost",
+      "formal": "R0",
+      "old": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R0",
+      "new": "float stellarator_plant_params.stellarator_09__stellaris__R"
+    },
+    {
+      "module": "stellarator_09__stellaris__stored_energy",
+      "formal": "R0",
+      "old": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R0",
+      "new": "float stellarator_plant_params.stellarator_09__stellaris__R"
+    }
+  ],
+  "fixed_anchor_bindings": [
+    {
+      "module": "stellarator_09__stellaris__wall_peak_cal",
+      "formal": "R_ref",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__wall_peak_R_ref"
+    },
+    {
+      "module": "stellarator_09__stellaris__peak_field_calc",
+      "formal": "R_ref_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R_ref"
+    },
+    {
+      "module": "stellarator_09__stellaris__peak_field_calc",
+      "formal": "a_coil_ref_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__a_coil_ref"
+    },
+    {
+      "module": "stellarator_09__stellaris__divheat",
+      "formal": "R_ref_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__R_ref_divertor"
+    },
+    {
+      "module": "stellarator_09__stellaris__stored_energy",
+      "formal": "R_ref",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R_ref"
+    },
+    {
+      "module": "stellarator_09__stellaris__stored_energy",
+      "formal": "a_coil_ref",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__a_coil_ref"
+    }
+  ]
+}

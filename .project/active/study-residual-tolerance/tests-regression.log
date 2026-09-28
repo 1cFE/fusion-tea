@@ -1,0 +1,152 @@
+...F...........s..F..................................................... [ 94%]
+....                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_every_catalog_constraint_is_rederived_with_its_operand_count _______
+
+summary = {'channels_checked': [{'channel': 'stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak', 'o... '83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23', 'kind': 'sealed', 'matches_preflight': True}, ...}
+
+    def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
+        rederived = {c["source_local_identity"]: c["operands_resolved"]
+                     for c in summary["constraints_rederived"]}
+>       assert set(rederived) == {
+            "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
+            "wp_stress_ok", "wp_fit_ok", "reference_conductor_current_ok",  # additive magnet screens
+            "sustainment_ok",  # WI-037
+            "cond_strain_ok",  # WI-036: the conductor's own check, separate from the structure's
+            "burn_hold_ok",  # WI-043: the lower half of the sustainment condition, p_aux_required >= 0
+            # WI-045 (goal plant-closure, 2026-09-08): the loop's pressure-domain and capacity
+            # fences and the cycle's fit-domain fence, all on computed operands
+            "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+            # WI-047 (goal plant-closure, 2026-09-08): the divertor target peak (computed) against
+            # the adopted threshold -- violated at the baseline by design
+            "divertor_heat_ok",
+            "heating_source_positive_ok", "heating_source_upper_ok",
+            "heating_couple_positive_ok", "heating_couple_upper_ok",
+            "facility_capacity_ok", "facility_outage_ok", "facility_routes_ok",
+            "facility_replacement_ready", "facility_initial_ready",
+            "matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction",
+        }
+E       AssertionError: assert {'beta_ok', '...city_ok', ...} == {'beta_ok', '...heat_ok', ...}
+E         
+E         Extra items in the left set:
+E         'water_electric_capacity_ok'
+E         'main_UA_capacity_ok'
+E         'helium_flow_capacity_ok'
+E         'reheat_UA_capacity_ok'
+E         'condensate_pressure_rise_capacity_ok'...
+E         
+E         ...Full output truncated (35 lines hidden), use '-vv' to show
+
+tests/study/test_verify.py:101: AssertionError
+___ test_stored_operating_controls_preserve_procurement_and_signed_capacity ____
+
+operating_controls = ([CaseView(candidate_id='operating-controls:c0000', state='completed', inputs={'stellarator_09__stellaris__availabilit...'83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23', 'kind': 'sealed', 'matches_preflight': True}, ...})
+
+    def test_stored_operating_controls_preserve_procurement_and_signed_capacity(operating_controls):
+        import study_route
+    
+        cases, summary = operating_controls
+        P = study_route.P
+        baseline = next(
+            c for c in cases
+            if f"{P}heating__p_wallplug_heat" not in c.inputs and f"{P}plasma__f_alpha_fast" not in c.inputs
+        )
+        reserve = next(c for c in cases if c.inputs.get(f"{P}heating__p_wallplug_heat") == 120)
+        demand = next(c for c in cases if c.inputs.get(f"{P}plasma__f_alpha_fast") == .96)
+        for name in ("coupled", "delivered", "wallplug"):
+            channel = study_route.CHANNELS[f"operating_heat_{name}"]
+            assert baseline.outputs[channel] == reserve.outputs[channel]
+            assert demand.outputs[channel] != baseline.outputs[channel]
+            assert channel in {row["channel"] for row in summary["channels_checked"]}
+        assert baseline.outputs[f"{P}heating__heating_cost__cost"] == 264145000
+        assert reserve.outputs[f"{P}heating__heating_cost__cost"] == 316974000
+        assert demand.outputs[f"{P}heating__heating_cost__cost"] == 264145000
+        assert baseline.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
+            -.920399212073221
+        )
+        assert reserve.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
+            -10.920399212073221
+        )
+        verdicts = study_route.short_verdicts(baseline)
+        assert set(baseline.verdicts) == CURRENT_PREDICATES
+>       assert {name for name, status in verdicts.items() if status != "satisfied"} == {
+            "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok", "tbr_ok"
+        }  # WI-066: the baseline now fails calculated breeding adequacy.
+E       AssertionError: assert {'divertor_he..., 'wp_fit_ok'} == {'divertor_he..., 'wp_fit_ok'}
+E         
+E         Extra items in the left set:
+E         'water_electric_capacity_ok'
+E         'facility_occupancy_ok'
+E         Use -v to get more diff
+
+tests/study/test_verify.py:352: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__cold_stage_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__cryogenic_offered_conditions__enabled_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__direct_electric_capability__applicable_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__direct_electric_capability__conditions_supported_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__direct_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__electric_plant__electric_gross_capability__applicable_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__electric_plant__electric_gross_capability__conditions_supported_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__electric_plant__electric_gross_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_rejection__water_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_rejection__water_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_rejection__water_head_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_rejection__water_rejection_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__helium_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__helium_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__helium_pumping_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__salt_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__salt_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__salt_head_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__salt_shaft_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__applicable_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__conditions_supported_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__applicable_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__conditions_supported_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__condensate_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__condensate_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__condensate_pressure_rise_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__condenser_rejection_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__feedwater_electric_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__feedwater_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__hp_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__hp_shaft_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__lp_flow_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__lp_shaft_capability__demand_available_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__turbine_gross_capability__applicable_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__turbine_gross_capability__conditions_supported_in', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__turbine__turbine_gross_capability__demand_available_in', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+FAILED tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+2 failed, 73 passed, 1 skipped, 5 warnings in 180.11s (0:03:00)

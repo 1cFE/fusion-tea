@@ -1,0 +1,303 @@
+[
+  {
+    "axis": "blanket_source_q_source",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "cycle_selected_flow",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "compressor_1_selected_ratio",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "compressor_1_efficiency",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "compressor_2_selected_ratio",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "compressor_2_efficiency",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "compressor_3_selected_ratio",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "compressor_3_efficiency",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "cycle_turbine_efficiency",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "water_ic1_ua",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "water_ic2_ua",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "water_pre_ua",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "recuperator_hardware_ua",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "steam_transport_n_loops",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "steam_transport_salt_pumps_per_circuit",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "steam_transport_selected_salt_design_flow_kg_s",
+    "framing_proposed": "search",
+    "executed": false,
+    "declined": false,
+    "reason": "Test operating and installed-offer choices in the declared discrete catalog."
+  },
+  {
+    "axis": "steam_boundary_bypass_flow_rating",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_ledger_controller_capital",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_ledger_annual_service_fraction",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_ledger_replacement_fraction",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_ledger_common_source_pv",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "gas_boundary_bypass_flow_rating",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "gas_ledger_controller_capital",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "gas_ledger_annual_service_fraction",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "gas_ledger_replacement_fraction",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "gas_ledger_common_source_pv",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "compressor_equipment_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "turbine_equipment_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "generator_equipment_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "he_hx_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "he_duty_equipment_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "conversion_services_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "heat_rejection_equipment_price_factor",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "gas_ledger_capital9",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_ledger_capital3",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_ledger_capital4",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_transport_costscale",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_cycle_eta_hp",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_cycle_eta_lp",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": false,
+    "reason": "Describe a response at matched source conditions; no boundary claim."
+  },
+  {
+    "axis": "steam_cycle_steam_temperature_C",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": true,
+    "reason": "Declared and traced, then declined because the held steam offer does not support the changed condition."
+  },
+  {
+    "axis": "steam_cycle_reheat_temperature_C",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": true,
+    "reason": "Declared and traced, then declined because the held steam offer does not support the changed condition."
+  },
+  {
+    "axis": "steam_cycle_condenser_temperature_C",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": true,
+    "reason": "Declared and traced, then declined because the held steam offer does not support the changed condition."
+  },
+  {
+    "axis": "steam_transport_secondary_head",
+    "framing_proposed": "sensitivity",
+    "executed": false,
+    "declined": true,
+    "reason": "Declared and traced, then declined because the held steam offer does not support the changed condition."
+  }
+]

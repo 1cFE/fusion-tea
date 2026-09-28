@@ -1,0 +1,132 @@
+{
+  "schema_version": "study-baseline-result/v1",
+  "executed_under": {
+    "identity_digest": "8ac14fdf3745be9682723902c11a2245f423f2fc6d5bc4726b7fed3b09b5c18e",
+    "store_id": "stellarator-baseline-point-v1.db",
+    "case_id": "stellarator-baseline-point-v1:c0000"
+  },
+  "point": {
+    "stellarator_09__stellaris__R": 12.7,
+    "stellarator_09__stellaris__a": 1.3,
+    "stellarator_09__stellaris__availability": 0.85,
+    "stellarator_09__stellaris__magnet__R0": 12.7
+  },
+  "channels": {
+    "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+    "stellarator_09__stellaris__blanket_cost__cost": 708331015.9216609,
+    "stellarator_09__stellaris__bop_capital__bop_capital": 480071903.1183673,
+    "stellarator_09__stellaris__buildings_cost__cost": 627992772.9192393,
+    "stellarator_09__stellaris__cas20_capital__cas20_capital": 10796804686.376846,
+    "stellarator_09__stellaris__cas22_capital__cas22_capital": 8678397269.517818,
+    "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 508886945.17825615,
+    "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 9815276987.615314,
+    "stellarator_09__stellaris__cas72_calc__cost": 126649655.78572692,
+    "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1492670879.513313,
+    "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+    "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+    "stellarator_09__stellaris__contingency__cost": 981527698.7615315,
+    "stellarator_09__stellaris__coolant__cost": 157770171.91155195,
+    "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+    "stellarator_09__stellaris__divertor_cost__cost": 107738895.64433303,
+    "stellarator_09__stellaris__electric_cost__cost": 92768495.7202066,
+    "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+    "stellarator_09__stellaris__fuel_calc__annual_fuel": 518520.46626585175,
+    "stellarator_09__stellaris__fuel_handling__cost": 95036262.88760391,
+    "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+    "stellarator_09__stellaris__geom__V": 425.0000143721807,
+    "stellarator_09__stellaris__heat_rejection_cost__cost": 113045804.83088794,
+    "stellarator_09__stellaris__heating_cost__cost": 264145000.0,
+    "stellarator_09__stellaris__idc__cost": 4079752155.434356,
+    "stellarator_09__stellaris__inc_cost__cost": 80586509.79147255,
+    "stellarator_09__stellaris__indirect__cost": 2879147916.367159,
+    "stellarator_09__stellaris__installation__cost": 1020480651.498509,
+    "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 316.1411417665396,
+    "stellarator_09__stellaris__lcoe_calc__lcoe": 322.31843948570247,
+    "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+    "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+    "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+    "stellarator_09__stellaris__misc_cost__cost": 56466379.51302853,
+    "stellarator_09__stellaris__om_cost__annual_om": 46475170.34650845,
+    "stellarator_09__stellaris__other_rpe__cost": 8809183.845010646,
+    "stellarator_09__stellaris__overnight_capital__overnight_capital": 14442862261.86626,
+    "stellarator_09__stellaris__owner__cost": 34877541.31650543,
+    "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+    "stellarator_09__stellaris__power_supplies_cost__cost": 78656722.79425913,
+    "stellarator_09__stellaris__powercore_capital__powercore_capital": 7140950889.385453,
+    "stellarator_09__stellaris__precon_cost__cost": 18116355.66240931,
+    "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7289147510.703635,
+    "stellarator_09__stellaris__remote_handling__cost": 148196621.3181821,
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 816069911.5659939,
+    "stellarator_09__stellaris__shield_cost__cost": 445718496.41329014,
+    "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+    "stellarator_09__stellaris__structure_cost__cost": 30371030.348638207,
+    "stellarator_09__stellaris__supplementary__cost": 713915762.1433415,
+    "stellarator_09__stellaris__total_capital__total_capital": 14442862261.86626,
+    "stellarator_09__stellaris__turbine_cost__cost": 217791223.05424428,
+    "stellarator_09__stellaris__vessel_cost__cost": 104957728.26327178,
+    "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+    "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+    "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+    "stellarator_09__stellaris__waste__cost": 6319731.245537375,
+    "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+    "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+    "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+    "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997
+  },
+  "verdicts": [
+    {
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "definition_qualified_name": "mfe_viability::'Beta Limit'",
+      "source_local_identity": "beta_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+      "source_local_identity": "cond_strain_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+      "source_local_identity": "net_positive",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+      "source_local_identity": "peak_field_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+      "source_local_identity": "recirc_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+      "source_local_identity": "sustainment_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "definition_qualified_name": "mfe_viability::'TBR Floor'",
+      "source_local_identity": "tbr_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+      "source_local_identity": "wall_load_ok",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+      "source_local_identity": "wp_stress_ok",
+      "status": "satisfied"
+    }
+  ]
+}

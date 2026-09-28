@@ -1,0 +1,11 @@
+{
+  "combinations_plasma_chain__plasma_chain__divertor_pump__screen__applicable_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__divertor_pump__screen__conditions_supported_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__divertor_pump__screen__demand_available_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__he_pump__screen__applicable_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__he_pump__screen__conditions_supported_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__he_pump__screen__demand_available_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__pbli_pump__screen__applicable_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__pbli_pump__screen__conditions_supported_in": 1.0,
+  "combinations_plasma_chain__plasma_chain__pbli_pump__screen__demand_available_in": 1.0
+}

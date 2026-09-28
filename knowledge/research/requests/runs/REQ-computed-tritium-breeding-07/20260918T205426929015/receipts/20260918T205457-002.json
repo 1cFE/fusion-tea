@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://docs.openmc.org/en/v0.15.2/usersguide/tallies.html",
+  "slug": "openmc_0_15_2_tally_scores_and_source_normalization",
+  "path": "knowledge/sources/openmc_0_15_2_tally_scores_and_source_normalization/",
+  "source_id": "672e30ffc6e6847901a505e4a979338b6e1f2932448cb3d05e083098d19b58a1",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:54:57.977207+00:00"
+}

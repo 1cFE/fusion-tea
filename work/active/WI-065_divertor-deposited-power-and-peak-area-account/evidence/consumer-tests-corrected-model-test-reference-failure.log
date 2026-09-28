@@ -1,0 +1,109 @@
+............FF.......................................................... [ 54%]
+...........................................................              [100%]
+=================================== FAILURES ===================================
+___ test_signed_burn_failures_keep_entering_equations_and_predicates[False] ____
+
+evaluate = <function evaluate.<locals>.run at 0x76a4b3091e40>, sized = False
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('sized', [False, True])
+    def test_signed_burn_failures_keep_entering_equations_and_predicates(evaluate, sized):
+        import importlib.util
+        import oracle_entry
+        entering_file = ENTERING.with_name('verify_stellaris.py')
+        spec = importlib.util.spec_from_file_location('wi065_frozen_entering', entering_file)
+        entering = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(entering)
+        changes = {'plasma__R': 13.5, 'plasma__a': 1.5, 'magnet__coil__I_coil': 16e6}
+        if sized:
+            changes |= {'magnet__winding_pack__sizing_mode': 1., 'magnet__coil__coil_t': .65, 'magnet__casing__interior_y': .65}
+        point = {P+key: value for key, value in changes.items()}
+        entering.IN.update(oracle_entry._oracle_overrides(point))
+        old = entering.compute()
+        native = evaluate(changes)
+        now = oracle_entry.evaluate(point)
+        for local, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items():
+            if local in old:
+                assert now[channel] == old[local], local
+                assert native.outputs[channel] == pytest.approx(old[local], rel=1e-9, abs=1e-9), local
+        assert output(native, 'divertor__divheat__power_account_valid') == 0.
+        assert next(value for key, value in native.responses.items() if 'burn_hold_ok' in key) == 'violated'
+        # Constraint operand mapping is unchanged. Re-derive every native predicate
+        # from entering scalar values and the current (preserved) bound thresholds.
+        from scripts.study.verify import derive_verdict, package_input_values
+        import study_route
+        params = package_input_values(study_route.PACKAGE_DIR)
+        catalog = study_route._catalog_by_constraint_id(study_route.PACKAGE_DIR)
+        bindings = oracle_entry.operand_bindings()
+        entering_channels = {channel: old[name] for name, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items() if name in old}
+        old_verdicts = {cid: 'satisfied' if derive_verdict(cid, entry, bindings, point, params, entering_channels)[0] else 'violated'
+                        for cid, entry in catalog.items()}
+>       assert dict(native.responses) == old_verdicts
+E       AssertionError: assert {'headline': ...tisfied', ...} == {'stellarator...tisfied', ...}
+E         
+E         Omitting 20 identical items, use -vv to show
+E         Left contains 1 more item:
+E         {'headline': 'violated'}
+E         Use -v to get more diff
+
+tests/models/test_divertor_heat_integration.py:90: AssertionError
+____ test_signed_burn_failures_keep_entering_equations_and_predicates[True] ____
+
+evaluate = <function evaluate.<locals>.run at 0x76a4b3091e40>, sized = True
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('sized', [False, True])
+    def test_signed_burn_failures_keep_entering_equations_and_predicates(evaluate, sized):
+        import importlib.util
+        import oracle_entry
+        entering_file = ENTERING.with_name('verify_stellaris.py')
+        spec = importlib.util.spec_from_file_location('wi065_frozen_entering', entering_file)
+        entering = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(entering)
+        changes = {'plasma__R': 13.5, 'plasma__a': 1.5, 'magnet__coil__I_coil': 16e6}
+        if sized:
+            changes |= {'magnet__winding_pack__sizing_mode': 1., 'magnet__coil__coil_t': .65, 'magnet__casing__interior_y': .65}
+        point = {P+key: value for key, value in changes.items()}
+        entering.IN.update(oracle_entry._oracle_overrides(point))
+        old = entering.compute()
+        native = evaluate(changes)
+        now = oracle_entry.evaluate(point)
+        for local, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items():
+            if local in old:
+                assert now[channel] == old[local], local
+                assert native.outputs[channel] == pytest.approx(old[local], rel=1e-9, abs=1e-9), local
+        assert output(native, 'divertor__divheat__power_account_valid') == 0.
+        assert next(value for key, value in native.responses.items() if 'burn_hold_ok' in key) == 'violated'
+        # Constraint operand mapping is unchanged. Re-derive every native predicate
+        # from entering scalar values and the current (preserved) bound thresholds.
+        from scripts.study.verify import derive_verdict, package_input_values
+        import study_route
+        params = package_input_values(study_route.PACKAGE_DIR)
+        catalog = study_route._catalog_by_constraint_id(study_route.PACKAGE_DIR)
+        bindings = oracle_entry.operand_bindings()
+        entering_channels = {channel: old[name] for name, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items() if name in old}
+        old_verdicts = {cid: 'satisfied' if derive_verdict(cid, entry, bindings, point, params, entering_channels)[0] else 'violated'
+                        for cid, entry in catalog.items()}
+>       assert dict(native.responses) == old_verdicts
+E       AssertionError: assert {'headline': ...tisfied', ...} == {'stellarator...tisfied', ...}
+E         
+E         Omitting 19 identical items, use -vv to show
+E         Differing items:
+E         {'stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0': 'violated'} != {'stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0': 'satisfied'}
+E         Left contains 1 more item:
+E         {'headline': 'violated'}
+E         Use -v to get more diff
+
+tests/models/test_divertor_heat_integration.py:90: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_divertor_heat_integration.py: 14 warnings
+tests/models/test_current_driven_sizing_integration.py: 9 warnings
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_divertor_heat_integration.py::test_signed_burn_failures_keep_entering_equations_and_predicates[False]
+FAILED tests/models/test_divertor_heat_integration.py::test_signed_burn_failures_keep_entering_equations_and_predicates[True]
+2 failed, 129 passed, 23 warnings in 90.02s (0:01:30)

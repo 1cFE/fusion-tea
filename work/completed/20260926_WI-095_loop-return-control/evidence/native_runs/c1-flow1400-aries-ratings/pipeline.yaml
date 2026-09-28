@@ -1,0 +1,1366 @@
+metadata:
+  run_description: Generated pipeline for costed_loop_brayton_tea
+  output_folder: costed_loop_brayton_tea_results
+modules:
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      costed_loop_brayton_params: CostedLoopBraytonParams /home/reid/1cfe/fusion-tea/work/active/WI-095_loop-return-control/evidence/native_runs/c1-flow1400-aries-ratings/costed_loop_brayton_params.json
+      integrated_equipment_costs_params: IntegratedEquipmentCostsParams /home/reid/1cfe/fusion-tea/work/active/WI-095_loop-return-control/evidence/native_runs/c1-flow1400-aries-ratings/integrated_equipment_costs_params.json
+      mfe_account_costs_params: MfeAccountCostsParams /home/reid/1cfe/fusion-tea/work/active/WI-095_loop-return-control/evidence/native_runs/c1-flow1400-aries-ratings/mfe_account_costs_params.json
+      mfe_viability_params: MfeViabilityParams /home/reid/1cfe/fusion-tea/work/active/WI-095_loop-return-control/evidence/native_runs/c1-flow1400-aries-ratings/mfe_viability_params.json
+  costed_loop_brayton__plant__rest_of_plant__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float costed_loop_brayton_params.costed_loop_brayton__plant__rest_of_plant__reference_cost
+      factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__rest_of_plant__price_factor
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__rest_of_plant__estimate__amount
+  costed_loop_brayton__plant__rest_of_plant__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float costed_loop_brayton__plant__rest_of_plant__estimate__amount.root
+      n_mod_in: float costed_loop_brayton_params.costed_loop_brayton__plant__rest_of_plant__selected_quantity
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__rest_of_plant__purchase__cost
+  costed_loop_brayton__plant__generator_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_cost_in: float costed_loop_brayton_params.costed_loop_brayton__plant__generator_equipment__reference_cost
+      price_factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__generator_equipment__price_factor
+      quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__generator_capacity__selected_rating
+      reference_quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__generator_equipment__reference_quantity
+      mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__estimate_mode
+    outputs:
+      purchased_quantity: float costed_loop_brayton__plant__generator_equipment__purchase__purchased_quantity
+      source_budget: float costed_loop_brayton__plant__generator_equipment__purchase__source_budget
+      quantity_ratio: float costed_loop_brayton__plant__generator_equipment__purchase__quantity_ratio
+      capital: float costed_loop_brayton__plant__generator_equipment__purchase__capital
+      extrapolated: float costed_loop_brayton__plant__generator_equipment__purchase__extrapolated
+  costed_loop_brayton__plant__compressor_1__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      gamma_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__gamma
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_1__efficiency
+      ratio_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_1__selected_ratio
+      pressure_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__return_pressure
+      temperature_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__low_temperature
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+    outputs:
+      pressure_out: float costed_loop_brayton__plant__compressor_1__evaluate__pressure_out
+      shaft_demand: float costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand
+      temperature_out: float costed_loop_brayton__plant__compressor_1__evaluate__temperature_out
+  costed_loop_brayton__plant__he_hx__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__estimate_mode
+      price_factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_hx__price_factor
+      reference_cost_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_hx__reference_cost
+      reference_quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_hx__reference_quantity
+      quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_hx__selected_area
+    outputs:
+      purchased_quantity: float costed_loop_brayton__plant__he_hx__purchase__purchased_quantity
+      source_budget: float costed_loop_brayton__plant__he_hx__purchase__source_budget
+      quantity_ratio: float costed_loop_brayton__plant__he_hx__purchase__quantity_ratio
+      capital: float costed_loop_brayton__plant__he_hx__purchase__capital
+      extrapolated: float costed_loop_brayton__plant__he_hx__purchase__extrapolated
+  costed_loop_brayton__plant__he_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      u_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_hx__assumed_u
+      area_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_hx__selected_area
+    outputs:
+      area: float costed_loop_brayton__plant__he_hx__evaluate__area
+      ua: float costed_loop_brayton__plant__he_hx__evaluate__ua
+  costed_loop_brayton__plant__heat_rejection_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__estimate_mode
+      reference_quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_rejection_equipment__reference_quantity
+      reference_cost_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_rejection_equipment__reference_cost
+      price_factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_rejection_equipment__price_factor
+      quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__rejection_capacity__selected_rating
+    outputs:
+      purchased_quantity: float costed_loop_brayton__plant__heat_rejection_equipment__purchase__purchased_quantity
+      source_budget: float costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget
+      quantity_ratio: float costed_loop_brayton__plant__heat_rejection_equipment__purchase__quantity_ratio
+      capital: float costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital
+      extrapolated: float costed_loop_brayton__plant__heat_rejection_equipment__purchase__extrapolated
+  costed_loop_brayton__plant__annual_om__evaluate:
+    module_type: mfe_account_costs.Annual_OM_CostModule
+    inputs:
+      alpha: float mfe_account_costs_params.costed_loop_brayton__plant__annual_om__evaluate__alpha
+      p_net: float mfe_account_costs_params.costed_loop_brayton__plant__annual_om__evaluate__p_net
+      ref_net_power: float mfe_account_costs_params.costed_loop_brayton__plant__annual_om__evaluate__ref_net_power
+      om_direct: float costed_loop_brayton_params.costed_loop_brayton__plant__annual_om__selected_amount
+      om_ref: float mfe_account_costs_params.costed_loop_brayton__plant__annual_om__evaluate__om_ref
+      n_mod_in: float mfe_account_costs_params.costed_loop_brayton__plant__annual_om__evaluate__n_mod_in
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__annual_om__evaluate__annual_om
+  costed_loop_brayton__plant__primary_loop__evaluate:
+    module_type: mfe_primary_loop.Primary_Coolant_LoopModule
+    inputs:
+      T_in_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__loop_T_in
+      eta_drive_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__eta_drive
+      p_pump_direct_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__p_pump_direct
+      eta_is_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__eta_is
+      p_loop_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__loop_p
+      loop_live_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__loop_live
+      mdot_loop_rated_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__mdot_loop_rated
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__loop_cp
+      dp_loop_ref_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__dp_loop_ref
+      f_loss_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__f_loss
+      gamma_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__loop_gamma
+      n_loops_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__n_loops
+      eta_p_direct_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__eta_p_direct
+      q_source_in: float costed_loop_brayton_params.costed_loop_brayton__plant__blanket_source__q_source
+      dT_blanket_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__loop_dT_blanket
+      mdot_loop_ref_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__mdot_loop_ref
+    outputs:
+      p_loop_margin: float costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin
+      q_recovered_total: float costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total
+      p_elec: float costed_loop_brayton__plant__primary_loop__evaluate__p_elec
+      p_pump_total: float costed_loop_brayton__plant__primary_loop__evaluate__p_pump_total
+      T_out: float costed_loop_brayton__plant__primary_loop__evaluate__T_out
+      T_comp_in: float costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in
+      dp_loop: float costed_loop_brayton__plant__primary_loop__evaluate__dp_loop
+      mdot_loop: float costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop
+      w_fluid: float costed_loop_brayton__plant__primary_loop__evaluate__w_fluid
+      capacity_margin: float costed_loop_brayton__plant__primary_loop__evaluate__capacity_margin
+      q_ihx: float costed_loop_brayton__plant__primary_loop__evaluate__q_ihx
+      mdot: float costed_loop_brayton__plant__primary_loop__evaluate__mdot
+      r_comp: float costed_loop_brayton__plant__primary_loop__evaluate__r_comp
+  costed_loop_brayton__plant__he_duty_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_capacity__selected_rating
+      mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__estimate_mode
+      reference_cost_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_duty_equipment__reference_cost
+      reference_quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_duty_equipment__reference_quantity
+      price_factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_duty_equipment__price_factor
+    outputs:
+      purchased_quantity: float costed_loop_brayton__plant__he_duty_equipment__purchase__purchased_quantity
+      source_budget: float costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget
+      quantity_ratio: float costed_loop_brayton__plant__he_duty_equipment__purchase__quantity_ratio
+      capital: float costed_loop_brayton__plant__he_duty_equipment__purchase__capital
+      extrapolated: float costed_loop_brayton__plant__he_duty_equipment__purchase__extrapolated
+  costed_loop_brayton__plant__he_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__he_capacity__demand_available
+      rating_in: float costed_loop_brayton_params.costed_loop_brayton__plant__he_capacity__selected_rating
+      applicable_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__he_capacity__scenario_applicable
+      demand_in: float costed_loop_brayton__plant__primary_loop__evaluate__q_ihx
+      conditions_supported_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__he_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined
+      margin: float costed_loop_brayton__plant__he_capacity__evaluate__margin
+      applicable: bool costed_loop_brayton__plant__he_capacity__evaluate__applicable
+      supported: bool costed_loop_brayton__plant__he_capacity__evaluate__supported
+      capacity_ok: bool costed_loop_brayton__plant__he_capacity__evaluate__capacity_ok
+  costed_loop_brayton__plant__conversion_services__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float costed_loop_brayton_params.costed_loop_brayton__plant__conversion_services__reference_cost
+      factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__conversion_services__price_factor
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__conversion_services__estimate__amount
+  costed_loop_brayton__plant__conversion_services__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float costed_loop_brayton__plant__conversion_services__estimate__amount.root
+      n_mod_in: float costed_loop_brayton_params.costed_loop_brayton__plant__conversion_services__selected_quantity
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__conversion_services__purchase__cost
+  costed_loop_brayton__plant__intercooler_1__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      pressure_in: float costed_loop_brayton__plant__compressor_1__evaluate__pressure_out
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      temperature_in: float costed_loop_brayton__plant__compressor_1__evaluate__temperature_out
+      target_temperature_in: float costed_loop_brayton_params.costed_loop_brayton__plant__intercooler_1__target_temperature
+      heating_role_in: float costed_loop_brayton_params.costed_loop_brayton__plant__intercooler_1__heating_role
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+    outputs:
+      heat_into_fluid: float costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid
+      temperature_out: float costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out
+      pressure_out: float costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out
+  costed_loop_brayton__plant__compressor_2__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_2__efficiency
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      gamma_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__gamma
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      temperature_in: float costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out
+      ratio_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_2__selected_ratio
+      pressure_in: float costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out
+    outputs:
+      pressure_out: float costed_loop_brayton__plant__compressor_2__evaluate__pressure_out
+      shaft_demand: float costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand
+      temperature_out: float costed_loop_brayton__plant__compressor_2__evaluate__temperature_out
+  costed_loop_brayton__plant__intercooler_2__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      pressure_in: float costed_loop_brayton__plant__compressor_2__evaluate__pressure_out
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      temperature_in: float costed_loop_brayton__plant__compressor_2__evaluate__temperature_out
+      target_temperature_in: float costed_loop_brayton_params.costed_loop_brayton__plant__intercooler_2__target_temperature
+      heating_role_in: float costed_loop_brayton_params.costed_loop_brayton__plant__intercooler_2__heating_role
+    outputs:
+      heat_into_fluid: float costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid
+      temperature_out: float costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out
+      pressure_out: float costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out
+  costed_loop_brayton__plant__compressor_3__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_3__efficiency
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      temperature_in: float costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out
+      ratio_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_3__selected_ratio
+      gamma_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__gamma
+      pressure_in: float costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+    outputs:
+      pressure_out: float costed_loop_brayton__plant__compressor_3__evaluate__pressure_out
+      shaft_demand: float costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand
+      temperature_out: float costed_loop_brayton__plant__compressor_3__evaluate__temperature_out
+  costed_loop_brayton__plant__pressure_loss__evaluate:
+    module_type: ideal_gas_brayton_components.Fractional_Pressure_LossModule
+    inputs:
+      loss_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__pressure_loss__loss_fraction
+      pressure_in: float costed_loop_brayton__plant__compressor_3__evaluate__pressure_out
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out
+  costed_loop_brayton__plant__heat_exchangers__evaluate:
+    module_type: integrated_heat_electricity.Network_Heat_Driven_ClosureModule
+    inputs:
+      pbli_split_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_exchangers__pbli_split_fraction
+      divertor_cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__cp
+      pbli_cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__cp
+      he_flow_in: float costed_loop_brayton__plant__primary_loop__evaluate__mdot
+      divertor_available_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__available
+      divertor_flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__dummy_flow
+      he_limit_in: float costed_loop_brayton__plant__primary_loop__evaluate__T_out
+      pbli_flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__dummy_flow
+      he_cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_exchangers__he_cp
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      gamma_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__gamma
+      turbine_pressure_in: float costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out.root
+      pbli_available_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__available
+      he_available_in: float costed_loop_brayton__plant__primary_loop__evaluate__q_ihx
+      network_mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_exchangers__network_mode
+      cold_temperature_in: float costed_loop_brayton__plant__compressor_3__evaluate__temperature_out
+      he_ua_in: float costed_loop_brayton__plant__he_hx__evaluate__ua
+      divertor_limit_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__limit
+      divertor_ua_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__ua
+      turbine_efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__turbine_efficiency
+      pbli_ua_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__ua
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      return_pressure_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__return_pressure
+      pbli_limit_in: float costed_loop_brayton_params.costed_loop_brayton__plant__idle_branches__limit
+      recuperator_effectiveness_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__recuperator_effectiveness
+    outputs:
+      pbli_state_defined: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_state_defined
+      he_hot: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot
+      network_mode_used: float costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used
+      pbli_cold_terminal_difference: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference
+      divertor_hot: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot
+      divertor_hot_bound_margin: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin
+      pbli_stream_out: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out
+      he_hot_bound_margin: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin
+      he_cold_terminal_difference: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference
+      divertor_unmet: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet
+      pbli_secondary_out: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out
+      accepted_heat: float costed_loop_brayton__plant__heat_exchangers__evaluate__accepted_heat
+      divertor_transferred: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_transferred
+      divertor_state_defined: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_state_defined
+      he_state_defined: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_state_defined
+      expansion_factor: float costed_loop_brayton__plant__heat_exchangers__evaluate__expansion_factor
+      pbli_hot: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot
+      pbli_transferred: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_transferred
+      pbli_split_used: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used
+      divertor_hot_terminal_difference: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference
+      he_transferred: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_transferred
+      divertor_stream_out: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out
+      pbli_return: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return
+      he_secondary_in: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in
+      pbli_secondary_in: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in
+      divertor_secondary_in: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in
+      closure_residual: float costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual
+      unmet_heat: float costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat
+      heater_inlet: float costed_loop_brayton__plant__heat_exchangers__evaluate__heater_inlet
+      he_return: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_return
+      he_capability: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_capability
+      pbli_hot_bound_margin: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin
+      turbine_temperature: float costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature
+      pbli_capability: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability
+      he_secondary_out: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out
+      he_unmet: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet
+      divertor_cold_terminal_difference: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference
+      pbli_hot_terminal_difference: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference
+      divertor_capability: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability
+      mixed_outlet: float costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet
+      divertor_return: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return
+      he_hot_terminal_difference: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference
+      divertor_secondary_out: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out
+      iterations: float costed_loop_brayton__plant__heat_exchangers__evaluate__iterations
+      pbli_unmet: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet
+  costed_loop_brayton__plant__turbine__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+    inputs:
+      exit_pressure_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__return_pressure
+      temperature_in: float costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature
+      pressure_in: float costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out.root
+      gamma_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__gamma
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__turbine_efficiency
+    outputs:
+      pressure_out: float costed_loop_brayton__plant__turbine__evaluate__pressure_out
+      shaft_produced: float costed_loop_brayton__plant__turbine__evaluate__shaft_produced
+      temperature_out: float costed_loop_brayton__plant__turbine__evaluate__temperature_out
+  costed_loop_brayton__plant__return_control__evaluate:
+    module_type: loop_return_control.Primary_Bypass_ControlModule
+    inputs:
+      secondary_inlet_in: float costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in
+      tolerance_in: float costed_loop_brayton_params.costed_loop_brayton__plant__return_control__tolerance
+      duty_in: float costed_loop_brayton__plant__primary_loop__evaluate__q_ihx
+      ua_in: float costed_loop_brayton__plant__he_hx__evaluate__ua
+      primary_cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__heat_exchangers__he_cp
+      secondary_cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      required_return_in: float costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in
+      primary_limit_in: float costed_loop_brayton__plant__primary_loop__evaluate__T_out
+      secondary_flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      primary_flow_in: float costed_loop_brayton__plant__primary_loop__evaluate__mdot
+      max_bypass_in: float costed_loop_brayton_params.costed_loop_brayton__plant__return_control__max_bypass
+    outputs:
+      capability_at_solution: float costed_loop_brayton__plant__return_control__evaluate__capability_at_solution
+      return_residual: float costed_loop_brayton__plant__return_control__evaluate__return_residual
+      exchanger_primary_flow: float costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow
+      ntu_at_solution: float costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution
+      exchanger_return: float costed_loop_brayton__plant__return_control__evaluate__exchanger_return
+      feasible: float costed_loop_brayton__plant__return_control__evaluate__feasible
+      effectiveness_at_solution: float costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution
+      return_residual_magnitude: float costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude
+      bypass_fraction: float costed_loop_brayton__plant__return_control__evaluate__bypass_fraction
+      mixed_return: float costed_loop_brayton__plant__return_control__evaluate__mixed_return
+      capability_open: float costed_loop_brayton__plant__return_control__evaluate__capability_open
+  costed_loop_brayton__plant__electrical__evaluate:
+    module_type: integrated_heat_electricity.Plant_Electrical_BalanceModule
+    inputs:
+      turbine_work_in: float costed_loop_brayton__plant__turbine__evaluate__shaft_produced
+      heating_efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__heating_efficiency
+      fuel_base_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__fuel_base
+      other_electric_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__other_electric
+      fuel_coefficient_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__fuel_coefficient
+      auxiliary_heat_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__auxiliary_heat
+      fuel_exhaust_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__fuel_exhaust
+      cryo_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__cryo
+      motor_efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__motor_efficiency
+      pump_recovered_in: float costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total
+      pump_electric_in: float costed_loop_brayton__plant__primary_loop__evaluate__p_elec
+      control_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__control
+      compressor_2_in: float costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand
+      compressor_1_in: float costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand
+      generator_efficiency_in: float costed_loop_brayton_params.costed_loop_brayton__plant__electrical__generator_efficiency
+      compressor_3_in: float costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand
+    outputs:
+      fuel_base_electric: float costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric
+      other_electric_demand: float costed_loop_brayton__plant__electrical__evaluate__other_electric_demand
+      dissipated_auxiliary: float costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary
+      net_electric: float costed_loop_brayton__plant__electrical__evaluate__net_electric
+      generator_loss: float costed_loop_brayton__plant__electrical__evaluate__generator_loss
+      net_shaft: float costed_loop_brayton__plant__electrical__evaluate__net_shaft
+      heating_electric: float costed_loop_brayton__plant__electrical__evaluate__heating_electric
+      cryo_electric: float costed_loop_brayton__plant__electrical__evaluate__cryo_electric
+      fuel_variable_electric: float costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric
+      compressor_demand: float costed_loop_brayton__plant__electrical__evaluate__compressor_demand
+      auxiliary_electric: float costed_loop_brayton__plant__electrical__evaluate__auxiliary_electric
+      gross_electric: float costed_loop_brayton__plant__electrical__evaluate__gross_electric
+      fuel_electric: float costed_loop_brayton__plant__electrical__evaluate__fuel_electric
+      primary_pump_electric: float costed_loop_brayton__plant__electrical__evaluate__primary_pump_electric
+      motor_loss: float costed_loop_brayton__plant__electrical__evaluate__motor_loss
+      shaft_import: float costed_loop_brayton__plant__electrical__evaluate__shaft_import
+      heating_loss: float costed_loop_brayton__plant__electrical__evaluate__heating_loss
+      pump_loss: float costed_loop_brayton__plant__electrical__evaluate__pump_loss
+      control_electric: float costed_loop_brayton__plant__electrical__evaluate__control_electric
+  costed_loop_brayton__plant__generator_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      applicable_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__generator_capacity__scenario_applicable
+      conditions_supported_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__generator_capacity__assumed_supported
+      demand_in: float costed_loop_brayton__plant__electrical__evaluate__gross_electric
+      rating_in: float costed_loop_brayton_params.costed_loop_brayton__plant__generator_capacity__selected_rating
+      demand_available_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__generator_capacity__demand_available
+    outputs:
+      evaluation_defined: float costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined
+      margin: float costed_loop_brayton__plant__generator_capacity__evaluate__margin
+      applicable: bool costed_loop_brayton__plant__generator_capacity__evaluate__applicable
+      supported: bool costed_loop_brayton__plant__generator_capacity__evaluate__supported
+      capacity_ok: bool costed_loop_brayton__plant__generator_capacity__evaluate__capacity_ok
+  costed_loop_brayton__plant__turbine_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float costed_loop_brayton_params.costed_loop_brayton__plant__turbine_capacity__selected_rating
+      demand_available_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__turbine_capacity__demand_available
+      applicable_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__turbine_capacity__scenario_applicable
+      demand_in: float costed_loop_brayton__plant__turbine__evaluate__shaft_produced
+      conditions_supported_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__turbine_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined
+      margin: float costed_loop_brayton__plant__turbine_capacity__evaluate__margin
+      applicable: bool costed_loop_brayton__plant__turbine_capacity__evaluate__applicable
+      supported: bool costed_loop_brayton__plant__turbine_capacity__evaluate__supported
+      capacity_ok: bool costed_loop_brayton__plant__turbine_capacity__evaluate__capacity_ok
+  costed_loop_brayton__plant__recuperator__evaluate:
+    module_type: integrated_heat_electricity.Passive_RecuperatorModule
+    inputs:
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      hot_temperature_in: float costed_loop_brayton__plant__turbine__evaluate__temperature_out
+      cold_temperature_in: float costed_loop_brayton__plant__compressor_3__evaluate__temperature_out
+      effectiveness_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__recuperator_effectiveness
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+    outputs:
+      bypass_active: float costed_loop_brayton__plant__recuperator__evaluate__bypass_active
+      cold_out: float costed_loop_brayton__plant__recuperator__evaluate__cold_out
+      hot_out: float costed_loop_brayton__plant__recuperator__evaluate__hot_out
+      recovered_heat: float costed_loop_brayton__plant__recuperator__evaluate__recovered_heat
+  costed_loop_brayton__plant__precooler__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      cp_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__cp
+      pressure_in: float costed_loop_brayton__plant__turbine__evaluate__pressure_out
+      flow_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__selected_flow
+      heating_role_in: float costed_loop_brayton_params.costed_loop_brayton__plant__precooler__heating_role
+      temperature_in: float costed_loop_brayton__plant__recuperator__evaluate__hot_out
+      target_temperature_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cycle__low_temperature
+    outputs:
+      heat_into_fluid: float costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid
+      temperature_out: float costed_loop_brayton__plant__precooler__evaluate__temperature_out
+      pressure_out: float costed_loop_brayton__plant__precooler__evaluate__pressure_out
+  costed_loop_brayton__plant__rejection_capacity__rejected_heat:
+    module_type: costed_loop_brayton.plant.rejection_capacity.rejected_heatModule
+    inputs:
+      intercooler_1_heat_into_fluid: float costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid
+      intercooler_2_heat_into_fluid: float costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid
+      precooler_heat_into_fluid: float costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat
+  costed_loop_brayton__plant__rejection_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__rejection_capacity__assumed_supported
+      demand_available_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__rejection_capacity__demand_available
+      applicable_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__rejection_capacity__scenario_applicable
+      rating_in: float costed_loop_brayton_params.costed_loop_brayton__plant__rejection_capacity__selected_rating
+      demand_in: float costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat.root
+    outputs:
+      evaluation_defined: float costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined
+      margin: float costed_loop_brayton__plant__rejection_capacity__evaluate__margin
+      applicable: bool costed_loop_brayton__plant__rejection_capacity__evaluate__applicable
+      supported: bool costed_loop_brayton__plant__rejection_capacity__evaluate__supported
+      capacity_ok: bool costed_loop_brayton__plant__rejection_capacity__evaluate__capacity_ok
+  costed_loop_brayton__plant__compressor_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__estimate_mode
+      reference_cost_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_equipment__reference_cost
+      price_factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_equipment__price_factor
+      quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_capacity__selected_rating
+      reference_quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_equipment__reference_quantity
+    outputs:
+      purchased_quantity: float costed_loop_brayton__plant__compressor_equipment__purchase__purchased_quantity
+      source_budget: float costed_loop_brayton__plant__compressor_equipment__purchase__source_budget
+      quantity_ratio: float costed_loop_brayton__plant__compressor_equipment__purchase__quantity_ratio
+      capital: float costed_loop_brayton__plant__compressor_equipment__purchase__capital
+      extrapolated: float costed_loop_brayton__plant__compressor_equipment__purchase__extrapolated
+  costed_loop_brayton__plant__compressor_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float costed_loop_brayton__plant__electrical__evaluate__compressor_demand
+      rating_in: float costed_loop_brayton_params.costed_loop_brayton__plant__compressor_capacity__selected_rating
+      demand_available_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__compressor_capacity__demand_available
+      applicable_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__compressor_capacity__scenario_applicable
+      conditions_supported_in: bool costed_loop_brayton_params.costed_loop_brayton__plant__compressor_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined
+      margin: float costed_loop_brayton__plant__compressor_capacity__evaluate__margin
+      applicable: bool costed_loop_brayton__plant__compressor_capacity__evaluate__applicable
+      supported: bool costed_loop_brayton__plant__compressor_capacity__evaluate__supported
+      capacity_ok: bool costed_loop_brayton__plant__compressor_capacity__evaluate__capacity_ok
+  costed_loop_brayton__plant__turbine_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__turbine_equipment__reference_quantity
+      mode_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__estimate_mode
+      reference_cost_in: float costed_loop_brayton_params.costed_loop_brayton__plant__turbine_equipment__reference_cost
+      price_factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__turbine_equipment__price_factor
+      quantity_in: float costed_loop_brayton_params.costed_loop_brayton__plant__turbine_capacity__selected_rating
+    outputs:
+      purchased_quantity: float costed_loop_brayton__plant__turbine_equipment__purchase__purchased_quantity
+      source_budget: float costed_loop_brayton__plant__turbine_equipment__purchase__source_budget
+      quantity_ratio: float costed_loop_brayton__plant__turbine_equipment__purchase__quantity_ratio
+      capital: float costed_loop_brayton__plant__turbine_equipment__purchase__capital
+      extrapolated: float costed_loop_brayton__plant__turbine_equipment__purchase__extrapolated
+  costed_loop_brayton__plant__priced_equipment__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount6_in: float costed_loop_brayton__plant__he_duty_equipment__purchase__capital
+      amount3_in: float costed_loop_brayton__plant__generator_equipment__purchase__capital
+      amount4_in: float costed_loop_brayton__plant__conversion_services__purchase__cost.root
+      amount8_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__priced_equipment__evaluate__amount8_in
+      amount7_in: float costed_loop_brayton__plant__he_hx__purchase__capital
+      amount5_in: float costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital
+      amount1_in: float costed_loop_brayton__plant__compressor_equipment__purchase__capital
+      amount2_in: float costed_loop_brayton__plant__turbine_equipment__purchase__capital
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__priced_equipment__evaluate__total
+  costed_loop_brayton__plant__fuel_inventory__atoms:
+    module_type: integrated_equipment_costs.Selected_Stock_AtomsModule
+    inputs:
+      atom_mass_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__tritium_atom_kg
+      stock_kg_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__selected_tritium_kg
+    outputs:
+      stock_kg: float costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg
+      atoms: float costed_loop_brayton__plant__fuel_inventory__atoms__atoms
+  costed_loop_brayton__plant__fuel__evaluate:
+    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+    inputs:
+      G_stock_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__dormant_stock_growth_atoms_s
+      mev_to_joules_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__mev_joules
+      q_eff_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__reaction_energy_mev
+      I_total_in: float costed_loop_brayton__plant__fuel_inventory__atoms__atoms
+      tbr_available_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__unused_tbr_placeholder
+      m_T_kg_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__tritium_atom_kg
+      lambda_T_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__decay_constant_s
+      t_recycle_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__exhaust_recovery
+      burn_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__pass_burn_fraction
+      eta_extract_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__assumed_extraction
+      p_fus_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fusion_source__p_fus
+      s_per_fpy_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__seconds_per_year
+    outputs:
+      burn_kg_per_fpy: float costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy
+      inject_rate: float costed_loop_brayton__plant__fuel__evaluate__inject_rate
+      burn_rate: float costed_loop_brayton__plant__fuel__evaluate__burn_rate
+      tbr_margin: float costed_loop_brayton__plant__fuel__evaluate__tbr_margin
+      tbr_required: float costed_loop_brayton__plant__fuel__evaluate__tbr_required
+      loss_rate: float costed_loop_brayton__plant__fuel__evaluate__loss_rate
+      exhaust_rate: float costed_loop_brayton__plant__fuel__evaluate__exhaust_rate
+  costed_loop_brayton__plant__fuel_inventory__deuterium_rate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__deuterium_price
+      amount_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__deuterium_atom_kg
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount
+  costed_loop_brayton__plant__fuel_inventory__deuterium:
+    module_type: mfe_account_costs.DT_Fuel_CostModule
+    inputs:
+      fuel_recovery_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__exhaust_recovery
+      n_mod_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_accounts__one_module
+      burn_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__pass_burn_fraction
+      p_fus: float costed_loop_brayton_params.costed_loop_brayton__plant__fusion_source__p_fus
+      q_eff: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__reaction_energy_mev
+      mev_to_joules_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__mev_joules
+      availability_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__availability
+      cost_per_rxn: float costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount.root
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel
+  costed_loop_brayton__plant__fuel_inventory__annual:
+    module_type: integrated_equipment_costs.Annual_Selected_FuelModule
+    inputs:
+      seconds_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__seconds_per_year
+      burn_in: float costed_loop_brayton__plant__fuel__evaluate__burn_rate
+      availability_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__availability
+      stock_kg_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__selected_tritium_kg
+      exhaust_in: float costed_loop_brayton__plant__fuel__evaluate__exhaust_rate
+      tritium_price_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__tritium_price
+      residence_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__process_residence_s
+      decay_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__decay_constant_s
+      loss_in: float costed_loop_brayton__plant__fuel__evaluate__loss_rate
+      atom_mass_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel__tritium_atom_kg
+      annual_recovery_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__annual_recovery_kg
+    outputs:
+      annual_loss: float costed_loop_brayton__plant__fuel_inventory__annual__annual_loss
+      annual_cost: float costed_loop_brayton__plant__fuel_inventory__annual__annual_cost
+      annual_burn: float costed_loop_brayton__plant__fuel_inventory__annual__annual_burn
+      annual_recovery: float costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery
+      annual_decay: float costed_loop_brayton__plant__fuel_inventory__annual__annual_decay
+      annual_external: float costed_loop_brayton__plant__fuel_inventory__annual__annual_external
+      required_stock: float costed_loop_brayton__plant__fuel_inventory__annual__required_stock
+      breeding_supported: float costed_loop_brayton__plant__fuel_inventory__annual__breeding_supported
+  costed_loop_brayton__plant__fuel_inventory__purchase:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__tritium_price
+      amount_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__selected_tritium_kg
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__fuel_inventory__purchase__amount
+  costed_loop_brayton__plant__direct_cost__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount3_in: float costed_loop_brayton__plant__fuel_inventory__purchase__amount.root
+      amount4_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__direct_cost__evaluate__amount4_in
+      amount1_in: float costed_loop_brayton__plant__rest_of_plant__purchase__cost.root
+      amount2_in: float costed_loop_brayton__plant__priced_equipment__evaluate__total.root
+      amount6_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__direct_cost__evaluate__amount6_in
+      amount7_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__direct_cost__evaluate__amount7_in
+      amount5_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__direct_cost__evaluate__amount5_in
+      amount8_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__direct_cost__evaluate__amount8_in
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__direct_cost__evaluate__total
+  costed_loop_brayton__plant__indirect_cost__evaluate:
+    module_type: mfe_account_costs.Indirect_CostModule
+    inputs:
+      direct_cost: float costed_loop_brayton__plant__direct_cost__evaluate__total.root
+      reference_construction_time: float mfe_account_costs_params.costed_loop_brayton__plant__indirect_cost__evaluate__reference_construction_time
+      indirect_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__indirect_cost__fraction
+      construction_time: float mfe_account_costs_params.costed_loop_brayton__plant__indirect_cost__evaluate__construction_time
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__indirect_cost__evaluate__cost
+  costed_loop_brayton__plant__contingency_basis__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount8_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__contingency_basis__evaluate__amount8_in
+      amount2_in: float costed_loop_brayton__plant__indirect_cost__evaluate__cost.root
+      amount6_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__contingency_basis__evaluate__amount6_in
+      amount3_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__contingency_basis__evaluate__amount3_in
+      amount1_in: float costed_loop_brayton__plant__direct_cost__evaluate__total.root
+      amount5_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__contingency_basis__evaluate__amount5_in
+      amount7_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__contingency_basis__evaluate__amount7_in
+      amount4_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__contingency_basis__evaluate__amount4_in
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__contingency_basis__evaluate__total
+  costed_loop_brayton__plant__contingency__evaluate:
+    module_type: mfe_account_costs.Contingency_CostModule
+    inputs:
+      contingency_rate_in: float costed_loop_brayton_params.costed_loop_brayton__plant__contingency__fraction
+      direct_subtotal: float costed_loop_brayton__plant__contingency_basis__evaluate__total.root
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__contingency__evaluate__cost
+  costed_loop_brayton__plant__owner_commissioning__evaluate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__owner_commissioning__fraction
+      amount_in: float costed_loop_brayton__plant__direct_cost__evaluate__total.root
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__owner_commissioning__evaluate__amount
+  costed_loop_brayton__plant__fuel_inventory__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__selected_tritium_kg
+      demand_available_in: bool mfe_viability_params.costed_loop_brayton__plant__fuel_inventory__screen__demand_available_in
+      applicable_in: bool mfe_viability_params.costed_loop_brayton__plant__fuel_inventory__screen__applicable_in
+      demand_in: float costed_loop_brayton__plant__fuel_inventory__annual__required_stock
+      conditions_supported_in: bool mfe_viability_params.costed_loop_brayton__plant__fuel_inventory__screen__conditions_supported_in
+    outputs:
+      evaluation_defined: float costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined
+      margin: float costed_loop_brayton__plant__fuel_inventory__screen__margin
+      applicable: bool costed_loop_brayton__plant__fuel_inventory__screen__applicable
+      supported: bool costed_loop_brayton__plant__fuel_inventory__screen__supported
+      capacity_ok: bool costed_loop_brayton__plant__fuel_inventory__screen__capacity_ok
+  costed_loop_brayton__plant__replacement_scope__evaluate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__replacement_factor
+      amount_in: float costed_loop_brayton_params.costed_loop_brayton__plant__replacement_scope__selected_event_scope
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__replacement_scope__evaluate__amount
+  costed_loop_brayton__plant__replacement__evaluate:
+    module_type: integrated_equipment_costs.Replacement_EventsModule
+    inputs:
+      plant_years_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__plant_years
+      event_cost_in: float costed_loop_brayton__plant__replacement_scope__evaluate__amount.root
+      availability_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__availability
+      life_fpy_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__replacement_life_fpy
+    outputs:
+      lifetime_total: float costed_loop_brayton__plant__replacement__evaluate__lifetime_total
+      interval_years: float costed_loop_brayton__plant__replacement__evaluate__interval_years
+      event_cost: float costed_loop_brayton__plant__replacement__evaluate__event_cost
+      last_event_year: float costed_loop_brayton__plant__replacement__evaluate__last_event_year
+      annual_reserve: float costed_loop_brayton__plant__replacement__evaluate__annual_reserve
+      first_event_year: float costed_loop_brayton__plant__replacement__evaluate__first_event_year
+      event_count: float costed_loop_brayton__plant__replacement__evaluate__event_count
+  costed_loop_brayton__plant__cost_ledger__evaluate:
+    module_type: integrated_equipment_costs.Equipment_Cost_LedgerModule
+    inputs:
+      replacement_reserve_in: float costed_loop_brayton__plant__replacement__evaluate__annual_reserve
+      tritium_in: float costed_loop_brayton__plant__fuel_inventory__annual__annual_cost
+      deuterium_in: float costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel.root
+      source_core_excess_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__no_source_comparison
+      availability_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__availability
+      source_inclusive_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__no_source_comparison
+      direct_in: float costed_loop_brayton__plant__direct_cost__evaluate__total.root
+      net_power_in: float costed_loop_brayton__plant__electrical__evaluate__net_electric
+      indirect_in: float costed_loop_brayton__plant__indirect_cost__evaluate__cost.root
+      om_in: float costed_loop_brayton__plant__annual_om__evaluate__annual_om.root
+      source_direct_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__no_source_comparison
+      source_reactor_gap_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__no_source_comparison
+      owner_in: float costed_loop_brayton__plant__owner_commissioning__evaluate__amount.root
+      currency_year_in: float integrated_equipment_costs_params.costed_loop_brayton__plant__cost_ledger__evaluate__currency_year_in
+      source_coil_excess_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__no_source_comparison
+      replacement_total_in: float costed_loop_brayton__plant__replacement__evaluate__lifetime_total
+      consumables_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__consumables
+      import_price_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__import_price
+      contingency_in: float costed_loop_brayton__plant__contingency__evaluate__cost.root
+    outputs:
+      annual_operating: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating
+      source_inclusive: float costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive
+      direct: float costed_loop_brayton__plant__cost_ledger__evaluate__direct
+      source_reactor_gap: float costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap
+      direct_difference: float costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference
+      annual_export_mwh: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh
+      source_direct: float costed_loop_brayton__plant__cost_ledger__evaluate__source_direct
+      source_coil_excess: float costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess
+      annual_import_cost: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost
+      annual_replacement_reserve: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_replacement_reserve
+      source_core_excess: float costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess
+      overnight: float costed_loop_brayton__plant__cost_ledger__evaluate__overnight
+      annual_import_mwh: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_mwh
+      lifetime_replacement: float costed_loop_brayton__plant__cost_ledger__evaluate__lifetime_replacement
+      currency_year: float costed_loop_brayton__plant__cost_ledger__evaluate__currency_year
+  costed_loop_brayton__plant__operating_levelization__evaluate:
+    module_type: mfe_account_costs.Levelized_Annual_CostModule
+    inputs:
+      inflation_rate_in: float mfe_account_costs_params.costed_loop_brayton__plant__operating_levelization__evaluate__inflation_rate_in
+      project_time: float mfe_account_costs_params.costed_loop_brayton__plant__operating_levelization__evaluate__project_time
+      interest_rate: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__discount_rate
+      operational_years_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__plant_years
+      annual_cost: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating
+    outputs:
+      levelized: float costed_loop_brayton__plant__operating_levelization__evaluate__levelized
+      crf: float costed_loop_brayton__plant__operating_levelization__evaluate__crf
+  costed_loop_brayton__plant__lifecycle_accounts__evaluate:
+    module_type: integrated_lifecycle_costs.Lifecycle_Cashflow_AccountsModule
+    inputs:
+      terminal_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__terminal_fraction
+      net_power_in: float costed_loop_brayton__plant__electrical__evaluate__net_electric
+      plant_years_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__plant_years
+      other_overhaul_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__other_overhaul_fraction
+      annual_decay_in: float costed_loop_brayton__plant__fuel_inventory__annual__annual_decay
+      annual_burn_in: float costed_loop_brayton__plant__fuel_inventory__annual__annual_burn
+      event_cost_in: float costed_loop_brayton__plant__replacement__evaluate__event_cost
+      discount_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__discount_rate
+      annual_feed_in: float costed_loop_brayton_params.costed_loop_brayton__plant__fuel_inventory__annual_recovery_kg
+      overnight_in: float costed_loop_brayton__plant__cost_ledger__evaluate__overnight
+      deuterium_in: float costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel.root
+      event_count_in: float costed_loop_brayton__plant__replacement__evaluate__event_count
+      om_in: float costed_loop_brayton__plant__annual_om__evaluate__annual_om.root
+      interval_years_in: float costed_loop_brayton__plant__replacement__evaluate__interval_years
+      availability_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__availability
+      tritium_in: float costed_loop_brayton__plant__fuel_inventory__annual__annual_cost
+      construction_years_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__construction_years
+      salvage_fraction_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__salvage_fraction
+      crf_in: float costed_loop_brayton__plant__operating_levelization__evaluate__crf
+      imports_in: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost
+      consumables_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_ledger__consumables
+      annual_operating_in: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating
+      other_overhaul_year_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__other_overhaul_year
+      annual_energy_in: float costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh
+      external_shortfall_in: float costed_loop_brayton__plant__fuel_inventory__annual__annual_external
+      supply_service_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__supply_service_annual
+      annual_loss_in: float costed_loop_brayton__plant__fuel_inventory__annual__annual_loss
+    outputs:
+      real_convention: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__real_convention
+      other_overhaul_cost: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_cost
+      gross_makeup: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_makeup
+      supply_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_lcoe
+      other_overhaul_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_lcoe
+      lcoe_sum: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__lcoe_sum
+      noncapital_annual: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual
+      pv_total_cost: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_total_cost
+      breeding_supported: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__breeding_supported
+      pv_supply: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_supply
+      other_overhaul_occurs: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_occurs
+      curtailed_feed: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed
+      replacement_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__replacement_lcoe
+      gross_terminal: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_terminal
+      salvage_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage_lcoe
+      financial_defined: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__financial_defined
+      idc: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc
+      annual_capital: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_capital
+      pv_replacement: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_replacement
+      supply_supported: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_supported
+      om_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__om_lcoe
+      pv_terminal_gross: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_gross
+      tritium_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__tritium_lcoe
+      capital_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__capital_lcoe
+      annual_energy: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_energy
+      external_shortfall: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall
+      pv_salvage: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_salvage
+      pv_operating: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_operating
+      new_feed: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__new_feed
+      lifetime_energy: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__lifetime_energy
+      financed_capital: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__financed_capital
+      pv_other_overhaul: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_other_overhaul
+      terminal_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__terminal_lcoe
+      currency_year: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__currency_year
+      pv_energy: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_energy
+      salvage: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage
+      deuterium_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__deuterium_lcoe
+      pv_terminal_net: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_net
+      imports_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__imports_lcoe
+      consumables_lcoe: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__consumables_lcoe
+  costed_loop_brayton__plant__lifecycle_price__evaluate:
+    module_type: mfe_lcoe_dcf.LCOE_DCFModule
+    inputs:
+      availability_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__availability
+      net_electric_mw: float costed_loop_brayton__plant__electrical__evaluate__net_electric
+      discount_rate_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__discount_rate
+      operational_years_in: float costed_loop_brayton_params.costed_loop_brayton__plant__cost_schedule__plant_years
+      annual_om_in: float costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual
+      total_capital_in: float costed_loop_brayton__plant__cost_ledger__evaluate__overnight
+      construction_years_in: float costed_loop_brayton_params.costed_loop_brayton__plant__finance__construction_years
+    outputs:
+      root: RootModel[float] costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe
+  costed_loop_brayton__plant__generator_capacity__capacity_ok__866bb648afde20fc:
+    module_type: costed_loop_brayton.PlantGeneratorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float costed_loop_brayton__plant__generator_capacity__evaluate__margin
+      defined_in: float costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__generator_capacity__capacity_ok__866bb648afde20fc__evaluation
+  costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73:
+    module_type: costed_loop_brayton.PlantChecksReturnConditionOkConstraintModule
+    inputs:
+      return_residual_magnitude_in: float costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude
+      tolerance_in: float costed_loop_brayton_params.costed_loop_brayton__plant__return_control__tolerance
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73__evaluation
+  costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8:
+    module_type: costed_loop_brayton.PlantChecksNetPositiveConstraintModule
+    inputs:
+      net_electric: float costed_loop_brayton__plant__electrical__evaluate__net_electric
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8__evaluation
+  costed_loop_brayton__plant__checks__loop_capacity_ok__9c561de0cd1f50b3:
+    module_type: costed_loop_brayton.PlantChecksLoopCapacityOkConstraintModule
+    inputs:
+      mdot_loop_rated_in: float costed_loop_brayton_params.costed_loop_brayton__plant__primary_loop__mdot_loop_rated
+      mdot_loop_in: float costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__checks__loop_capacity_ok__9c561de0cd1f50b3__evaluation
+  costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757:
+    module_type: costed_loop_brayton.PlantChecksBypassWithinLimitConstraintModule
+    inputs:
+      max_bypass_in: float costed_loop_brayton_params.costed_loop_brayton__plant__return_control__max_bypass
+      bypass_fraction_in: float costed_loop_brayton__plant__return_control__evaluate__bypass_fraction
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757__evaluation
+  costed_loop_brayton__plant__checks__heat_removal_ok__177997e14a28cae1:
+    module_type: costed_loop_brayton.PlantChecksHeatRemovalOkConstraintModule
+    inputs:
+      tolerance_in: float costed_loop_brayton_params.costed_loop_brayton__plant__checks__energy_tolerance
+      unmet_in: float costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__checks__heat_removal_ok__177997e14a28cae1__evaluation
+  costed_loop_brayton__plant__turbine_capacity__capacity_ok__583bf29eadcd21ed:
+    module_type: costed_loop_brayton.PlantTurbineCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float costed_loop_brayton__plant__turbine_capacity__evaluate__margin
+      defined_in: float costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__turbine_capacity__capacity_ok__583bf29eadcd21ed__evaluation
+  costed_loop_brayton__plant__rejection_capacity__capacity_ok__839b61a7b3fe128c:
+    module_type: costed_loop_brayton.PlantRejectionCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float costed_loop_brayton__plant__rejection_capacity__evaluate__margin
+      defined_in: float costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__rejection_capacity__capacity_ok__839b61a7b3fe128c__evaluation
+  costed_loop_brayton__plant__he_capacity__capacity_ok__5bc3ff690032908b:
+    module_type: costed_loop_brayton.PlantHeCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float costed_loop_brayton__plant__he_capacity__evaluate__margin
+      defined_in: float costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__he_capacity__capacity_ok__5bc3ff690032908b__evaluation
+  costed_loop_brayton__plant__compressor_capacity__capacity_ok__6e46ae5b5c0061be:
+    module_type: costed_loop_brayton.PlantCompressorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float costed_loop_brayton__plant__compressor_capacity__evaluate__margin
+      defined_in: float costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__compressor_capacity__capacity_ok__6e46ae5b5c0061be__evaluation
+  costed_loop_brayton__plant__fuel_inventory__capacity_ok__9d250853407ea035:
+    module_type: costed_loop_brayton.PlantFuelInventoryCapacityOkConstraintModule
+    inputs:
+      margin_in: float costed_loop_brayton__plant__fuel_inventory__screen__margin
+      defined_in: float costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation costed_loop_brayton__plant__fuel_inventory__capacity_ok__9d250853407ea035__evaluation
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      costed_loop_brayton_plant_generator_capacity_capacity_ok_866bb648afde20fc: ConstraintEvaluation
+        costed_loop_brayton__plant__generator_capacity__capacity_ok__866bb648afde20fc__evaluation
+      costed_loop_brayton_plant_checks_return_condition_ok_53e3282ac7398a73: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73__evaluation
+      costed_loop_brayton_plant_checks_net_positive_987a4d032b5440a8: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8__evaluation
+      costed_loop_brayton_plant_checks_loop_capacity_ok_9c561de0cd1f50b3: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__loop_capacity_ok__9c561de0cd1f50b3__evaluation
+      costed_loop_brayton_plant_checks_bypass_within_limit_b98df08f1f21c757: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757__evaluation
+      costed_loop_brayton_plant_checks_heat_removal_ok_177997e14a28cae1: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__heat_removal_ok__177997e14a28cae1__evaluation
+      costed_loop_brayton_plant_turbine_capacity_capacity_ok_583bf29eadcd21ed: ConstraintEvaluation
+        costed_loop_brayton__plant__turbine_capacity__capacity_ok__583bf29eadcd21ed__evaluation
+      costed_loop_brayton_plant_rejection_capacity_capacity_ok_839b61a7b3fe128c: ConstraintEvaluation
+        costed_loop_brayton__plant__rejection_capacity__capacity_ok__839b61a7b3fe128c__evaluation
+      costed_loop_brayton_plant_he_capacity_capacity_ok_5bc3ff690032908b: ConstraintEvaluation
+        costed_loop_brayton__plant__he_capacity__capacity_ok__5bc3ff690032908b__evaluation
+      costed_loop_brayton_plant_compressor_capacity_capacity_ok_6e46ae5b5c0061be: ConstraintEvaluation
+        costed_loop_brayton__plant__compressor_capacity__capacity_ok__6e46ae5b5c0061be__evaluation
+      costed_loop_brayton_plant_fuel_inventory_capacity_ok_9d250853407ea035: ConstraintEvaluation
+        costed_loop_brayton__plant__fuel_inventory__capacity_ok__9d250853407ea035__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      costed_loop_brayton__plant__rest_of_plant__estimate__amount: RootModel[float]
+        plant__rest_of_plant__supplied_budget.json
+      costed_loop_brayton__plant__rest_of_plant__purchase__cost: RootModel[float]
+        plant__rest_of_plant__capital_cost.json
+      costed_loop_brayton__plant__generator_equipment__purchase__purchased_quantity: float
+        plant__generator_equipment__inventory_quantity.json
+      costed_loop_brayton__plant__generator_equipment__purchase__source_budget: float
+        costed_loop_brayton__plant__generator_equipment__purchase__source_budget.json
+      costed_loop_brayton__plant__generator_equipment__purchase__quantity_ratio: float
+        plant__generator_equipment__quantity_ratio.json
+      costed_loop_brayton__plant__generator_equipment__purchase__capital: float plant__generator_equipment__capital_cost.json
+      costed_loop_brayton__plant__generator_equipment__purchase__extrapolated: float
+        plant__generator_equipment__cost_extrapolated.json
+      costed_loop_brayton__plant__compressor_1__evaluate__pressure_out: float plant__compressor_1__pressure_out.json
+      costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand: float plant__compressor_1__shaft_demand.json
+      costed_loop_brayton__plant__compressor_1__evaluate__temperature_out: float plant__compressor_1__temperature_out.json
+      costed_loop_brayton__plant__he_hx__purchase__purchased_quantity: float plant__he_hx__inventory_quantity.json
+      costed_loop_brayton__plant__he_hx__purchase__source_budget: float costed_loop_brayton__plant__he_hx__purchase__source_budget.json
+      costed_loop_brayton__plant__he_hx__purchase__quantity_ratio: float plant__he_hx__quantity_ratio.json
+      costed_loop_brayton__plant__he_hx__purchase__capital: float plant__he_hx__capital_cost.json
+      costed_loop_brayton__plant__he_hx__purchase__extrapolated: float plant__he_hx__cost_extrapolated.json
+      costed_loop_brayton__plant__he_hx__evaluate__area: float plant__he_hx__area.json
+      costed_loop_brayton__plant__he_hx__evaluate__ua: float plant__he_hx__ua.json
+      costed_loop_brayton__plant__heat_rejection_equipment__purchase__purchased_quantity: float
+        plant__heat_rejection_equipment__inventory_quantity.json
+      costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget: float
+        costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget.json
+      costed_loop_brayton__plant__heat_rejection_equipment__purchase__quantity_ratio: float
+        plant__heat_rejection_equipment__quantity_ratio.json
+      costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital: float
+        plant__heat_rejection_equipment__capital_cost.json
+      costed_loop_brayton__plant__heat_rejection_equipment__purchase__extrapolated: float
+        plant__heat_rejection_equipment__cost_extrapolated.json
+      costed_loop_brayton__plant__annual_om__evaluate__annual_om: RootModel[float]
+        plant__annual_om__amount.json
+      costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin: float costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin.json
+      costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total: float
+        plant__primary_loop__q_recovered_total.json
+      costed_loop_brayton__plant__primary_loop__evaluate__p_elec: float plant__primary_loop__p_elec.json
+      costed_loop_brayton__plant__primary_loop__evaluate__p_pump_total: float plant__primary_loop__p_pump_total.json
+      costed_loop_brayton__plant__primary_loop__evaluate__T_out: float plant__primary_loop__T_out.json
+      costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in: float plant__primary_loop__T_comp_in.json
+      costed_loop_brayton__plant__primary_loop__evaluate__dp_loop: float plant__primary_loop__dp_loop.json
+      costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop: float plant__primary_loop__mdot_loop.json
+      costed_loop_brayton__plant__primary_loop__evaluate__w_fluid: float costed_loop_brayton__plant__primary_loop__evaluate__w_fluid.json
+      costed_loop_brayton__plant__primary_loop__evaluate__capacity_margin: float plant__primary_loop__capacity_margin.json
+      costed_loop_brayton__plant__primary_loop__evaluate__q_ihx: float plant__primary_loop__q_ihx.json
+      costed_loop_brayton__plant__primary_loop__evaluate__mdot: float plant__primary_loop__mdot.json
+      costed_loop_brayton__plant__primary_loop__evaluate__r_comp: float costed_loop_brayton__plant__primary_loop__evaluate__r_comp.json
+      costed_loop_brayton__plant__he_duty_equipment__purchase__purchased_quantity: float
+        plant__he_duty_equipment__inventory_quantity.json
+      costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget: float
+        costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget.json
+      costed_loop_brayton__plant__he_duty_equipment__purchase__quantity_ratio: float
+        plant__he_duty_equipment__quantity_ratio.json
+      costed_loop_brayton__plant__he_duty_equipment__purchase__capital: float plant__he_duty_equipment__capital_cost.json
+      costed_loop_brayton__plant__he_duty_equipment__purchase__extrapolated: float
+        plant__he_duty_equipment__cost_extrapolated.json
+      costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined: float
+        plant__he_capacity__evaluation_defined.json
+      costed_loop_brayton__plant__he_capacity__evaluate__margin: float plant__he_capacity__margin.json
+      costed_loop_brayton__plant__he_capacity__evaluate__applicable: bool costed_loop_brayton__plant__he_capacity__evaluate__applicable.json
+      costed_loop_brayton__plant__he_capacity__evaluate__supported: bool costed_loop_brayton__plant__he_capacity__evaluate__supported.json
+      costed_loop_brayton__plant__he_capacity__evaluate__capacity_ok: bool costed_loop_brayton__plant__he_capacity__evaluate__capacity_ok.json
+      costed_loop_brayton__plant__conversion_services__estimate__amount: RootModel[float]
+        plant__conversion_services__supplied_budget.json
+      costed_loop_brayton__plant__conversion_services__purchase__cost: RootModel[float]
+        plant__conversion_services__capital_cost.json
+      costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid: float
+        plant__intercooler_1__heat_into_fluid.json
+      costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out: float
+        plant__intercooler_1__temperature_out.json
+      costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out: float plant__intercooler_1__pressure_out.json
+      costed_loop_brayton__plant__compressor_2__evaluate__pressure_out: float plant__compressor_2__pressure_out.json
+      costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand: float plant__compressor_2__shaft_demand.json
+      costed_loop_brayton__plant__compressor_2__evaluate__temperature_out: float plant__compressor_2__temperature_out.json
+      costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid: float
+        plant__intercooler_2__heat_into_fluid.json
+      costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out: float
+        plant__intercooler_2__temperature_out.json
+      costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out: float plant__intercooler_2__pressure_out.json
+      costed_loop_brayton__plant__compressor_3__evaluate__pressure_out: float plant__compressor_3__pressure_out.json
+      costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand: float plant__compressor_3__shaft_demand.json
+      costed_loop_brayton__plant__compressor_3__evaluate__temperature_out: float plant__compressor_3__temperature_out.json
+      costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out: RootModel[float]
+        plant__pressure_loss__pressure_out.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_state_defined: float
+        plant__heat_exchangers__pbli_state_defined.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot: float plant__heat_exchangers__he_hot.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot: float costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin: float
+        plant__heat_exchangers__he_hot_bound_margin.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__accepted_heat: float
+        plant__heat_exchangers__accepted_heat.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_transferred: float
+        plant__heat_exchangers__divertor_transferred.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_state_defined: float
+        plant__heat_exchangers__divertor_state_defined.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_state_defined: float
+        plant__heat_exchangers__he_state_defined.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__expansion_factor: float
+        plant__heat_exchangers__expansion_factor.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_transferred: float
+        plant__heat_exchangers__pbli_transferred.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_transferred: float
+        plant__heat_exchangers__he_transferred.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in: float
+        plant__heat_exchangers__he_secondary_in.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual: float
+        plant__heat_exchangers__closure_residual.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat: float plant__heat_exchangers__unmet_heat.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__heater_inlet: float plant__heat_exchangers__heater_inlet.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_return: float plant__heat_exchangers__he_return.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_capability: float
+        plant__heat_exchangers__he_capability.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature: float
+        plant__heat_exchangers__turbine_temperature.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet: float plant__heat_exchangers__he_unmet.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet: float costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out: float
+        costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__iterations: float plant__heat_exchangers__iterations.json
+      costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet: float costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet.json
+      costed_loop_brayton__plant__turbine__evaluate__pressure_out: float plant__turbine__pressure_out.json
+      costed_loop_brayton__plant__turbine__evaluate__shaft_produced: float plant__turbine__shaft_produced.json
+      costed_loop_brayton__plant__turbine__evaluate__temperature_out: float plant__turbine__temperature_out.json
+      costed_loop_brayton__plant__return_control__evaluate__capability_at_solution: float
+        plant__return_control__capability_at_solution.json
+      costed_loop_brayton__plant__return_control__evaluate__return_residual: float
+        plant__return_control__return_residual.json
+      costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow: float
+        plant__return_control__exchanger_primary_flow.json
+      costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution: float
+        costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution.json
+      costed_loop_brayton__plant__return_control__evaluate__exchanger_return: float
+        plant__return_control__exchanger_return.json
+      costed_loop_brayton__plant__return_control__evaluate__feasible: float plant__return_control__feasible.json
+      costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution: float
+        costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution.json
+      costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude: float
+        plant__return_control__return_residual_magnitude.json
+      costed_loop_brayton__plant__return_control__evaluate__bypass_fraction: float
+        plant__return_control__bypass_fraction.json
+      costed_loop_brayton__plant__return_control__evaluate__mixed_return: float plant__return_control__mixed_return.json
+      costed_loop_brayton__plant__return_control__evaluate__capability_open: float
+        plant__return_control__capability_open.json
+      costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric: float
+        costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__other_electric_demand: float
+        costed_loop_brayton__plant__electrical__evaluate__other_electric_demand.json
+      costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary: float
+        costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary.json
+      costed_loop_brayton__plant__electrical__evaluate__net_electric: float plant__electrical__net_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__generator_loss: float costed_loop_brayton__plant__electrical__evaluate__generator_loss.json
+      costed_loop_brayton__plant__electrical__evaluate__net_shaft: float plant__electrical__net_shaft.json
+      costed_loop_brayton__plant__electrical__evaluate__heating_electric: float costed_loop_brayton__plant__electrical__evaluate__heating_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__cryo_electric: float costed_loop_brayton__plant__electrical__evaluate__cryo_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric: float
+        costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__compressor_demand: float plant__electrical__compressor_demand.json
+      costed_loop_brayton__plant__electrical__evaluate__auxiliary_electric: float
+        plant__electrical__auxiliary_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__gross_electric: float plant__electrical__gross_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__fuel_electric: float costed_loop_brayton__plant__electrical__evaluate__fuel_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__primary_pump_electric: float
+        plant__electrical__primary_pump_electric.json
+      costed_loop_brayton__plant__electrical__evaluate__motor_loss: float costed_loop_brayton__plant__electrical__evaluate__motor_loss.json
+      costed_loop_brayton__plant__electrical__evaluate__shaft_import: float plant__electrical__shaft_import.json
+      costed_loop_brayton__plant__electrical__evaluate__heating_loss: float costed_loop_brayton__plant__electrical__evaluate__heating_loss.json
+      costed_loop_brayton__plant__electrical__evaluate__pump_loss: float plant__electrical__pump_loss.json
+      costed_loop_brayton__plant__electrical__evaluate__control_electric: float costed_loop_brayton__plant__electrical__evaluate__control_electric.json
+      costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined: float
+        plant__generator_capacity__evaluation_defined.json
+      costed_loop_brayton__plant__generator_capacity__evaluate__margin: float plant__generator_capacity__margin.json
+      costed_loop_brayton__plant__generator_capacity__evaluate__applicable: bool costed_loop_brayton__plant__generator_capacity__evaluate__applicable.json
+      costed_loop_brayton__plant__generator_capacity__evaluate__supported: bool costed_loop_brayton__plant__generator_capacity__evaluate__supported.json
+      costed_loop_brayton__plant__generator_capacity__evaluate__capacity_ok: bool
+        costed_loop_brayton__plant__generator_capacity__evaluate__capacity_ok.json
+      costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined: float
+        plant__turbine_capacity__evaluation_defined.json
+      costed_loop_brayton__plant__turbine_capacity__evaluate__margin: float plant__turbine_capacity__margin.json
+      costed_loop_brayton__plant__turbine_capacity__evaluate__applicable: bool costed_loop_brayton__plant__turbine_capacity__evaluate__applicable.json
+      costed_loop_brayton__plant__turbine_capacity__evaluate__supported: bool costed_loop_brayton__plant__turbine_capacity__evaluate__supported.json
+      costed_loop_brayton__plant__turbine_capacity__evaluate__capacity_ok: bool costed_loop_brayton__plant__turbine_capacity__evaluate__capacity_ok.json
+      costed_loop_brayton__plant__recuperator__evaluate__bypass_active: float plant__recuperator__bypass_active.json
+      costed_loop_brayton__plant__recuperator__evaluate__cold_out: float plant__recuperator__cold_out.json
+      costed_loop_brayton__plant__recuperator__evaluate__hot_out: float plant__recuperator__hot_out.json
+      costed_loop_brayton__plant__recuperator__evaluate__recovered_heat: float plant__recuperator__recovered_heat.json
+      costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid: float plant__precooler__heat_into_fluid.json
+      costed_loop_brayton__plant__precooler__evaluate__temperature_out: float plant__precooler__temperature_out.json
+      costed_loop_brayton__plant__precooler__evaluate__pressure_out: float plant__precooler__pressure_out.json
+      costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat: RootModel[float]
+        costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat.json
+      costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined: float
+        plant__rejection_capacity__evaluation_defined.json
+      costed_loop_brayton__plant__rejection_capacity__evaluate__margin: float plant__rejection_capacity__margin.json
+      costed_loop_brayton__plant__rejection_capacity__evaluate__applicable: bool costed_loop_brayton__plant__rejection_capacity__evaluate__applicable.json
+      costed_loop_brayton__plant__rejection_capacity__evaluate__supported: bool costed_loop_brayton__plant__rejection_capacity__evaluate__supported.json
+      costed_loop_brayton__plant__rejection_capacity__evaluate__capacity_ok: bool
+        costed_loop_brayton__plant__rejection_capacity__evaluate__capacity_ok.json
+      costed_loop_brayton__plant__compressor_equipment__purchase__purchased_quantity: float
+        plant__compressor_equipment__inventory_quantity.json
+      costed_loop_brayton__plant__compressor_equipment__purchase__source_budget: float
+        costed_loop_brayton__plant__compressor_equipment__purchase__source_budget.json
+      costed_loop_brayton__plant__compressor_equipment__purchase__quantity_ratio: float
+        plant__compressor_equipment__quantity_ratio.json
+      costed_loop_brayton__plant__compressor_equipment__purchase__capital: float plant__compressor_equipment__capital_cost.json
+      costed_loop_brayton__plant__compressor_equipment__purchase__extrapolated: float
+        plant__compressor_equipment__cost_extrapolated.json
+      costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined: float
+        plant__compressor_capacity__evaluation_defined.json
+      costed_loop_brayton__plant__compressor_capacity__evaluate__margin: float plant__compressor_capacity__margin.json
+      costed_loop_brayton__plant__compressor_capacity__evaluate__applicable: bool
+        costed_loop_brayton__plant__compressor_capacity__evaluate__applicable.json
+      costed_loop_brayton__plant__compressor_capacity__evaluate__supported: bool costed_loop_brayton__plant__compressor_capacity__evaluate__supported.json
+      costed_loop_brayton__plant__compressor_capacity__evaluate__capacity_ok: bool
+        costed_loop_brayton__plant__compressor_capacity__evaluate__capacity_ok.json
+      costed_loop_brayton__plant__turbine_equipment__purchase__purchased_quantity: float
+        plant__turbine_equipment__inventory_quantity.json
+      costed_loop_brayton__plant__turbine_equipment__purchase__source_budget: float
+        costed_loop_brayton__plant__turbine_equipment__purchase__source_budget.json
+      costed_loop_brayton__plant__turbine_equipment__purchase__quantity_ratio: float
+        plant__turbine_equipment__quantity_ratio.json
+      costed_loop_brayton__plant__turbine_equipment__purchase__capital: float plant__turbine_equipment__capital_cost.json
+      costed_loop_brayton__plant__turbine_equipment__purchase__extrapolated: float
+        plant__turbine_equipment__cost_extrapolated.json
+      costed_loop_brayton__plant__priced_equipment__evaluate__total: RootModel[float]
+        plant__priced_equipment__total.json
+      costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg: float costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg.json
+      costed_loop_brayton__plant__fuel_inventory__atoms__atoms: float plant__fuel_inventory__selected_tritium_atoms.json
+      costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy: float costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy.json
+      costed_loop_brayton__plant__fuel__evaluate__inject_rate: float plant__fuel__inject_rate.json
+      costed_loop_brayton__plant__fuel__evaluate__burn_rate: float plant__fuel__burn_rate.json
+      costed_loop_brayton__plant__fuel__evaluate__tbr_margin: float costed_loop_brayton__plant__fuel__evaluate__tbr_margin.json
+      costed_loop_brayton__plant__fuel__evaluate__tbr_required: float plant__fuel__tbr_required.json
+      costed_loop_brayton__plant__fuel__evaluate__loss_rate: float plant__fuel__loss_rate.json
+      costed_loop_brayton__plant__fuel__evaluate__exhaust_rate: float plant__fuel__exhaust_rate.json
+      costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount: RootModel[float]
+        plant__fuel_inventory__deuterium_per_reaction.json
+      costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel: RootModel[float]
+        plant__fuel_inventory__annual_deuterium_cost.json
+      costed_loop_brayton__plant__fuel_inventory__annual__annual_loss: float plant__fuel_inventory__annual_loss.json
+      costed_loop_brayton__plant__fuel_inventory__annual__annual_cost: float plant__fuel_inventory__annual_cost.json
+      costed_loop_brayton__plant__fuel_inventory__annual__annual_burn: float plant__fuel_inventory__annual_burn.json
+      costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery: float plant__fuel_inventory__annual_recovery.json
+      costed_loop_brayton__plant__fuel_inventory__annual__annual_decay: float plant__fuel_inventory__annual_decay.json
+      costed_loop_brayton__plant__fuel_inventory__annual__annual_external: float plant__fuel_inventory__annual_external.json
+      costed_loop_brayton__plant__fuel_inventory__annual__required_stock: float plant__fuel_inventory__required_stock.json
+      costed_loop_brayton__plant__fuel_inventory__annual__breeding_supported: float
+        plant__fuel_inventory__breeding_supported.json
+      costed_loop_brayton__plant__fuel_inventory__purchase__amount: RootModel[float]
+        plant__fuel_inventory__capital_cost.json
+      costed_loop_brayton__plant__direct_cost__evaluate__total: RootModel[float] plant__direct_cost__total.json
+      costed_loop_brayton__plant__indirect_cost__evaluate__cost: RootModel[float]
+        plant__indirect_cost__amount.json
+      costed_loop_brayton__plant__contingency_basis__evaluate__total: RootModel[float]
+        plant__contingency_basis__total.json
+      costed_loop_brayton__plant__contingency__evaluate__cost: RootModel[float] plant__contingency__amount.json
+      costed_loop_brayton__plant__owner_commissioning__evaluate__amount: RootModel[float]
+        plant__owner_commissioning__amount.json
+      costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined: float
+        plant__fuel_inventory__evaluation_defined.json
+      costed_loop_brayton__plant__fuel_inventory__screen__margin: float plant__fuel_inventory__margin.json
+      costed_loop_brayton__plant__fuel_inventory__screen__applicable: bool costed_loop_brayton__plant__fuel_inventory__screen__applicable.json
+      costed_loop_brayton__plant__fuel_inventory__screen__supported: bool costed_loop_brayton__plant__fuel_inventory__screen__supported.json
+      costed_loop_brayton__plant__fuel_inventory__screen__capacity_ok: bool costed_loop_brayton__plant__fuel_inventory__screen__capacity_ok.json
+      costed_loop_brayton__plant__replacement_scope__evaluate__amount: RootModel[float]
+        plant__replacement_scope__amount.json
+      costed_loop_brayton__plant__replacement__evaluate__lifetime_total: float plant__replacement__lifetime_total.json
+      costed_loop_brayton__plant__replacement__evaluate__interval_years: float plant__replacement__interval_years.json
+      costed_loop_brayton__plant__replacement__evaluate__event_cost: float plant__replacement__event_cost.json
+      costed_loop_brayton__plant__replacement__evaluate__last_event_year: float plant__replacement__last_event_year.json
+      costed_loop_brayton__plant__replacement__evaluate__annual_reserve: float plant__replacement__annual_reserve.json
+      costed_loop_brayton__plant__replacement__evaluate__first_event_year: float plant__replacement__first_event_year.json
+      costed_loop_brayton__plant__replacement__evaluate__event_count: float plant__replacement__event_count.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating: float plant__cost_ledger__annual_operating.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive: float costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__direct: float plant__cost_ledger__direct.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap: float
+        costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference: float
+        costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh: float
+        plant__cost_ledger__annual_export_mwh.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__source_direct: float costed_loop_brayton__plant__cost_ledger__evaluate__source_direct.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess: float
+        costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost: float
+        plant__cost_ledger__annual_import_cost.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__annual_replacement_reserve: float
+        plant__cost_ledger__annual_replacement_reserve.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess: float
+        costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__overnight: float plant__cost_ledger__overnight.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_mwh: float
+        plant__cost_ledger__annual_import_mwh.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__lifetime_replacement: float
+        plant__cost_ledger__lifetime_replacement.json
+      costed_loop_brayton__plant__cost_ledger__evaluate__currency_year: float plant__cost_ledger__currency_year.json
+      costed_loop_brayton__plant__operating_levelization__evaluate__levelized: float
+        plant__operating_levelization__annual.json
+      costed_loop_brayton__plant__operating_levelization__evaluate__crf: float plant__operating_levelization__factor.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__real_convention: float
+        plant__lifecycle_accounts__real_convention.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_cost: float
+        plant__lifecycle_accounts__other_overhaul_cost.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_makeup: float
+        plant__lifecycle_accounts__gross_makeup.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_lcoe: float
+        plant__lifecycle_accounts__supply_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_lcoe: float
+        plant__lifecycle_accounts__other_overhaul_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__lcoe_sum: float plant__lifecycle_accounts__lcoe_sum.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual: float
+        plant__lifecycle_accounts__noncapital_annual.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_total_cost: float
+        plant__lifecycle_accounts__pv_total_cost.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__breeding_supported: float
+        plant__lifecycle_accounts__breeding_supported.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_supply: float plant__lifecycle_accounts__pv_supply.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_occurs: float
+        plant__lifecycle_accounts__other_overhaul_occurs.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed: float
+        plant__lifecycle_accounts__curtailed_feed.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__replacement_lcoe: float
+        plant__lifecycle_accounts__replacement_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_terminal: float
+        plant__lifecycle_accounts__gross_terminal.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage_lcoe: float
+        plant__lifecycle_accounts__salvage_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__financial_defined: float
+        plant__lifecycle_accounts__financial_defined.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc: float plant__lifecycle_accounts__idc.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_capital: float
+        plant__lifecycle_accounts__annual_capital.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_replacement: float
+        plant__lifecycle_accounts__pv_replacement.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_supported: float
+        plant__lifecycle_accounts__supply_supported.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__om_lcoe: float plant__lifecycle_accounts__om_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_gross: float
+        plant__lifecycle_accounts__pv_terminal_gross.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__tritium_lcoe: float
+        plant__lifecycle_accounts__tritium_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__capital_lcoe: float
+        plant__lifecycle_accounts__capital_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_energy: float
+        plant__lifecycle_accounts__annual_energy.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall: float
+        plant__lifecycle_accounts__external_shortfall.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_salvage: float
+        plant__lifecycle_accounts__pv_salvage.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_operating: float
+        plant__lifecycle_accounts__pv_operating.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__new_feed: float plant__lifecycle_accounts__new_feed.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__lifetime_energy: float
+        plant__lifecycle_accounts__lifetime_energy.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__financed_capital: float
+        plant__lifecycle_accounts__financed_capital.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_other_overhaul: float
+        plant__lifecycle_accounts__pv_other_overhaul.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__terminal_lcoe: float
+        plant__lifecycle_accounts__terminal_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__currency_year: float
+        plant__lifecycle_accounts__currency_year.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_energy: float plant__lifecycle_accounts__pv_energy.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage: float plant__lifecycle_accounts__salvage.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__deuterium_lcoe: float
+        plant__lifecycle_accounts__deuterium_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_net: float
+        plant__lifecycle_accounts__pv_terminal_net.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__imports_lcoe: float
+        plant__lifecycle_accounts__imports_lcoe.json
+      costed_loop_brayton__plant__lifecycle_accounts__evaluate__consumables_lcoe: float
+        plant__lifecycle_accounts__consumables_lcoe.json
+      costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe: RootModel[float]
+        plant__lifecycle_price__lcoe.json
+      costed_loop_brayton__plant__generator_capacity__capacity_ok__866bb648afde20fc__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__generator_capacity__capacity_ok__866bb648afde20fc__evaluation.json
+      costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73__evaluation.json
+      costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8__evaluation.json
+      costed_loop_brayton__plant__checks__loop_capacity_ok__9c561de0cd1f50b3__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__loop_capacity_ok__9c561de0cd1f50b3__evaluation.json
+      costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757__evaluation.json
+      costed_loop_brayton__plant__checks__heat_removal_ok__177997e14a28cae1__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__checks__heat_removal_ok__177997e14a28cae1__evaluation.json
+      costed_loop_brayton__plant__turbine_capacity__capacity_ok__583bf29eadcd21ed__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__turbine_capacity__capacity_ok__583bf29eadcd21ed__evaluation.json
+      costed_loop_brayton__plant__rejection_capacity__capacity_ok__839b61a7b3fe128c__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__rejection_capacity__capacity_ok__839b61a7b3fe128c__evaluation.json
+      costed_loop_brayton__plant__he_capacity__capacity_ok__5bc3ff690032908b__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__he_capacity__capacity_ok__5bc3ff690032908b__evaluation.json
+      costed_loop_brayton__plant__compressor_capacity__capacity_ok__6e46ae5b5c0061be__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__compressor_capacity__capacity_ok__6e46ae5b5c0061be__evaluation.json
+      costed_loop_brayton__plant__fuel_inventory__capacity_ok__9d250853407ea035__evaluation: ConstraintEvaluation
+        costed_loop_brayton__plant__fuel_inventory__capacity_ok__9d250853407ea035__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

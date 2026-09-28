@@ -1,0 +1,1346 @@
+{
+  "policy": {
+    "preserve_all_raw_predicates": true,
+    "filtered_combined_pass": null,
+    "published_reference_qualification": "unresolved",
+    "unknown_is_pass": false
+  },
+  "cases": [
+    {
+      "proposal_id": "legacy-control",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "selected-reserve-control",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "exact-profiles-legacy",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "exact-profiles-selected-reserve",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "table5-conditioned-legacy",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "table5-conditioned-selected-reserve",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "offref-R-plus2pct",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    },
+    {
+      "proposal_id": "offref-a-plus2pct",
+      "raw_all20_satisfied": false,
+      "published_reference_qualification": "unresolved",
+      "predicates": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "source_local_identity": "beta_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced thermal/ash pressure and field convention compared with retained beta limit; source pressure/energy definitions retain uncertainty.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "source_local_identity": "burn_hold_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Signed forward auxiliary demand must stay on driven-operation branch; publication ignition is not forced as input.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "source_local_identity": "cond_strain_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced pack stress-to-strain screen and material transfer; not local source conductor mechanics qualification.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "source_local_identity": "cycle_domain_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium-primary cycle-fit domain pertains to retained alternative, not source separated cooling cycles.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "source_local_identity": "divertor_heat_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Linear source-peak surrogate uses forward absorbed heating rather than separate 500 MW source case; no transferable target/transport geometry is established.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+          "source_local_identity": "heating_couple_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal positive coupling-efficiency domain check; held full coupling is an assumption.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+          "source_local_identity": "heating_couple_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal coupling-efficiency upper bound; no measured device coupling is inferred.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+          "source_local_identity": "heating_source_positive_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency positive-domain check under installed heating chain assumptions.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+          "source_local_identity": "heating_source_upper_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Internal source-efficiency upper bound; passing is not source performance validation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "source_local_identity": "loop_capacity_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Representative fixed helium circuit is an alternative to source water blanket plus separate helium first-wall circuits.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "source_local_identity": "loop_pressure_ok",
+          "applicability": "source_incompatible_scenario",
+          "reason": "Helium circuit pressure-loss screen does not establish source water/helium circuit design.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "source_local_identity": "net_positive",
+          "applicability": "conditional_model_scenario",
+          "reason": "Positive net power in the retained integrated alternative; raw pass alone has no plant qualification meaning.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "source_local_identity": "peak_field_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored reduced field compared with held 24.9 T envelope, distinct from source local field witnesses and absolute-current margin.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "source_local_identity": "recirc_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Forward plant balance under helium/generic geometry and inherited auxiliary loads; not source-specific recirculation qualification.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+          "source_local_identity": "reference_conductor_current_ok",
+          "applicability": "source_unresolved",
+          "reason": "Perpendicular statistical reference at global peak and transferred tape construction do not reproduce local field-angle source calculation.",
+          "evidence": "conductor-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "source_local_identity": "sustainment_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Computed operating heating demand versus installed coupled capacity; source Point-A ignition is a separate prediction.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "source_local_identity": "tbr_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Held 1.074 source water/PbLi neutronics is transferred to generic geometry and helium alternative; no recomputed breeding performance.",
+          "evidence": "source-review.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "source_local_identity": "wall_load_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Anchored neutron peak-load surrogate with retained limit, not a new source 3D neutronics calculation.",
+          "evidence": "execution-design.md",
+          "raw_verdict": "satisfied"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+          "source_local_identity": "wp_fit_ok",
+          "applicability": "source_unresolved",
+          "reason": "Generic 0.30 m global layer is used as local exterior; source minimum cavity, manufactured pack and tolerances are missing.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "violated"
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "source_local_identity": "wp_stress_ok",
+          "applicability": "conditional_model_scenario",
+          "reason": "Reduced anchored electromagnetic/support stress model; source finite-element geometry/contact/load-state qualification is not reproduced.",
+          "evidence": "geometry-research.md",
+          "raw_verdict": "satisfied"
+        }
+      ]
+    }
+  ]
+}

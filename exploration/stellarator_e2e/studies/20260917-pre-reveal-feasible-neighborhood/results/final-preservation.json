@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "scientific_and_comparison_diff_empty": true,
+  "entering_revision": "d6dea9fcb54f9e7d352e84ed51b478781e8e8564",
+  "paths": [
+    "models",
+    "exploration/stellarator_e2e/generated",
+    ".project/active/aries-comparison-preparation/package",
+    "knowledge/holdout/aries-cs/PROTOCOL.md"
+  ],
+  "quarantine": "sealed; only protocol read under holdout; barred and mixed-source files not opened"
+}

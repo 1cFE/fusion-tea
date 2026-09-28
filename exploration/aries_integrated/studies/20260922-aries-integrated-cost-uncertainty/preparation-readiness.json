@@ -1,0 +1,43 @@
+{
+  "stage": "prepared-awaiting-coordinator-execution-release",
+  "cases": 113,
+  "axes": 53,
+  "inputs_per_case": 411,
+  "price_axes": 38,
+  "unresisted_indicator_groups": 48,
+  "oracle_scanned": 113,
+  "oracle_refused": 0,
+  "native_baseline": "preparation/baseline_result.json",
+  "native_preflight": "preparation/preflight_results.json",
+  "baseline_net_MW": 423.10679410931664,
+  "top_level_indicator_warnings": 0,
+  "suffix_advisories": 2,
+  "declared_study_points_executed": 0,
+  "oracle_unchanged": true,
+  "package_unchanged": true,
+  "recovery_window_correction": {
+    "window_kg_per_year": [
+      0,
+      200
+    ],
+    "explicit_scenario_values_kg_per_year": [
+      0,
+      100,
+      200
+    ],
+    "pointmaps_and_groups_identical": true,
+    "evaluation_repeated": false,
+    "applicability": "Existing oracle scan, indicators, native baseline and preflight remain applicable because points, groups, manifest and package are unchanged.",
+    "retained_sha256": {
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/proposed-points.json": "cc4354f061d8c452fb762e1d8c090a92018d8324b4aa40c176cf05e25dcea750",
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/axes.json": "a4b32320a19f472ad9c744fc854d41b27dd5632489384f33b27fe60088b21b7d",
+      "exploration/aries_integrated/studies/axes.json": "a4b32320a19f472ad9c744fc854d41b27dd5632489384f33b27fe60088b21b7d",
+      "exploration/aries_integrated/studies/manifest.json": "6f410fa17fd67b4c78123a48166dae689422b35af1503e49c051e2d702b5a7b8",
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/manifest-prepared.json": "6f410fa17fd67b4c78123a48166dae689422b35af1503e49c051e2d702b5a7b8",
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/indicators.json": "df6ccff26d5e590adc5145bf1187345c3623550914821a4c78de088ef3e9f520",
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/oracle-window-scan.json": "10df82f9c0c65917f192d7957793b33ba1ed63e5cee0215eca1f46f81cae494f",
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/preparation/preflight_results.json": "6b9970fdff1814e96a786c693db212f9875be18e2e5ad066a45cba6e79489bbf",
+      "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/preparation/baseline_result.json": "ffec4148ee97ab694cb99793a9277be042fcd3f85d14d2be1b18002b9dc042bc"
+    }
+  }
+}

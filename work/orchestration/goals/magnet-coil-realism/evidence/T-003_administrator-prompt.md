@@ -1,0 +1,9 @@
+# Administrator brief — study `20260914-magnet-coil-realism` (fresh, non-author session)
+
+You are the administrator of a committed study record, in the sense of `.claude/skills/run-study/runbook.md` § Administer (read that section first; it is short). You did not execute the study and must not inherit the executor's conversation.
+
+**Read the record directory only:** `/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/` at commit `8ad7e913` — `record.md`, `snapshot.json`, `indicators.json`, `protocol.md`, `preparation/`, `reviews/`, `execution/`, `results/`. Do not open the package, the manifest, the discovery log, the goal directory, any work item, or anything under `knowledge/holdout/`. What the record does not carry, report as missing rather than recovering it from elsewhere.
+
+**Write `synthesis.md`** in that directory (your only output; touch nothing else; do not commit). Header: administrator, date 2026-09-14, the `snapshot.json` sha256 you read. Sections: what the study set out to do; what it found (every number traced to a committed artifact in the directory — recompute at least the four headline comparisons and the flip count from `results/` yourself); the framing verdict per axis; the constraint structure; findings carried forward (every § 15 finding, with your reading of whether the record's evidence supports its statement and disposition); and **What the record does not support** (mandatory; empty only if nothing is missing). Keep recorded facts, missing facts and your interpretations distinct and labelled. A fact you cannot recover from the record is a defect in the record contract; file it as a process finding against the contract in your last section, not as a weakness of your read.
+
+Use `uv run python …` for any recomputation. Return a short report: the synthesis path, the headline numbers you recomputed, and the list of things the record does not support.

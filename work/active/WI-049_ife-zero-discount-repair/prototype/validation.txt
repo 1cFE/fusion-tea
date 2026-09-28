@@ -1,0 +1,107 @@
+
+======================================================================
+SysML Quality Validation
+Models path: work/active/WI-049_ife-zero-discount-repair/prototype/models
+Mode: Complete
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 11 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 11
+   Errors: 0
+   Warnings: 0
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 11 SysML files
+
+✅ Level 2: Structural Completeness
+   Unused definitions: 0
+   Unbound inputs: 0
+   Undefined bindings: 0
+   Placeholder bindings: 0
+   Self-named bindings: 0
+   Orphaned elements: 0
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 11 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 6
+   Circular dependencies: 0
+
+============================================================
+Level 4: Constraint Coverage
+============================================================
+Found 11 SysML files
+
+✅ Level 4: Constraint Coverage
+   Total constraints: 2
+   ConstraintUsage: 2
+   ConstraintDefinition: 2
+   Constraint usages assessed (incl. satisfy): 2
+   Admitted numerical: 2
+   Malformed numerical: 0
+   Non-numerical: 0
+   Unassessed (satisfy/require/plain): 0
+   Executable share: 100.0%
+
+============================================================
+Level 5: Traceability & Documentation
+============================================================
+
+✅ Level 5: Traceability & Documentation
+   Total elements: 30
+   Documented: 30
+   Missing docs: 0
+   Coverage: 100.0%
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+❌ Level 6: Architecture & Pipeline Readiness
+   Calc defs checked: 8
+   Calc usages checked: 9
+   Bindings validated: 43
+   Design attrs checked: 50
+   Manifests checked: 0
+   L6_MISSING_QUALIFIED_NAME: 0
+   L6_INVALID_QUALIFIED_NAME: 0
+   L6_CALC_DEF_NO_OUTPUT: 0
+   L6_CALC_DEF_NO_DIRECTION: 0
+   L6_INVALID_BINDING_FORMAT: 0
+   L6_DESIGN_ATTR_INCOMPLETE: 18
+   L6_DESIGN_ATTR_UNEXTRACTABLE: 15
+   L6_ANONYMOUS_RETURN: 0
+   L6_BODY_ASSIGNMENT_IMPL_LOSS: 0
+   V4_STATIC_FUNCTION_INVOCATION: 0
+   L6_CONSTRAINT_MALFORMED_NUMERICAL: 0
+   L6_CONSTRAINT_NON_NUMERICAL: 0
+   L6_CALC_DEF_NO_INSTANTIATION: 0
+   L6_ATTR_REDEF_EXPR_DROPPED: 0
+
+   Issues found: 50
+   - ERROR: Derived expression references design attributes: ['thermal_power_gw'] at file:work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/hif_ife/hif_plant.sysml:168
+   - ERROR: Derived expression references design attributes: ['net_electric_power_gw'] at file:work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/hif_ife/hif_plant.sysml:169
+   - ERROR: Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::lcoe' at file:work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:160
+   - ERROR: Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::generating' at file:work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:161
+   - ERROR: Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::fusion_power' at file:work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:163
+   ... and 45 more
+
+======================================================================
+Summary
+======================================================================
+Checks run: 6
+✅ Passed: 5
+❌ Failed: 1
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

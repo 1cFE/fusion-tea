@@ -1,0 +1,34 @@
+{
+  "outcome": "pass",
+  "scope": "Static JSON and AST checks only; no model imports, baseline, indicators, oracle scans or native evaluations",
+  "package_contract_sha256": "2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5",
+  "counts": {
+    "public_inputs": 299,
+    "native_numeric_outputs": 212,
+    "fit_outputs": 17,
+    "predicates": 19,
+    "axis_groups": 12,
+    "proposal_rows": 117
+  },
+  "fit_predicate": {
+    "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+    "declaration_id": "d35f56db-83a9-5997-a091-1f34630ca569",
+    "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+    "evaluation_channel": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation",
+    "expected_value": true,
+    "is_negated": false,
+    "membership_kind": null,
+    "owner_instance_path": "stellarator_09__stellaris",
+    "owner_qualified_name": "stellarator_09::stellaris",
+    "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"minimum_margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"minimum_margin_in\",\"qualified_name\":\"mfe_winding_pack_fit::'Winding Pack Fits Casing'::minimum_margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+    "predicate_source_key": "definition:mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+    "source_form": "definition_typed",
+    "source_local_identity": "wp_fit_ok",
+    "usage_qualified_name": "stellarator_09::stellaris::wp_fit_ok"
+  },
+  "oracle_mapping_status": "196 expected; dynamic mapping/evaluation deferred to release",
+  "limitations": [
+    "Full fan-out trace, candidate cleanliness and identity gates deferred to release",
+    "First static check exposed omitted qualified predicate prefix; fixed in expected interface before this passing check"
+  ]
+}

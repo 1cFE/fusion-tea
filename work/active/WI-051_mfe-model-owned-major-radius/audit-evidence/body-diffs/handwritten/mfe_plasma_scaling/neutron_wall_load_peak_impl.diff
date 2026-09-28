@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py
++++ production/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:326
++SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:341
+ 
+ SysML Expressions:
+     wall_load_peak = wall_load * calibration_in
+@@ -49,7 +49,7 @@
+ *Ref**: output.md line 88 ("the lifetime of the blanket is determined by the peak loads"); line 302 (the peaking factor q_max / <q> on the first wall)
+ *Basis**: peak = average x source-anchored calibration; MFE-generic
+ 
+-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:326
++SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:341
+ 
+ SysML Expressions:
+     wall_load_peak = wall_load * calibration_in

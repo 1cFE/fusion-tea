@@ -1,0 +1,1041 @@
+[
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-fence-p100",
+    "installed_power_MW": 100.0,
+    "fully_satisfied_scan_rows": 132,
+    "anchor_label": "20260907-minor-radius:c0960",
+    "anchor_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "edges": [
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "low",
+        "value": 11.2,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:R:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "high",
+        "value": 17.2,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:R:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "recirc_ok",
+          "beta_ok",
+          "divertor_heat_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "low",
+        "value": 1.3,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:a:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "high",
+        "value": 2.2,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:a:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "low",
+        "value": 13000000.0,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:magnet__I_coil:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "high",
+        "value": 18000000.0,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:magnet__I_coil:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "wp_stress_ok",
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "low",
+        "value": 3.036e+20,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:n_e0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "high",
+        "value": 5.06e+20,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:n_e0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "low",
+        "value": 13.0,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:T_i0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "high",
+        "value": 18.0,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:T_i0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "low",
+        "value": 0.5,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:eta_source_heat:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "high",
+        "value": 0.5,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:eta_source_heat:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "low",
+        "value": 8.0,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:tau_ratio_ash:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "high",
+        "value": 8.0,
+        "label": "arm-window-fixed:arm-fence-p100:100.0:tau_ratio_ash:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      }
+    ]
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-reread-p220",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 42,
+    "anchor_label": "20260907-minor-radius:c7650",
+    "anchor_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "edges": [
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "low",
+        "value": 12.7,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:R:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "high",
+        "value": 12.7,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:R:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "low",
+        "value": 1.3,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:a:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "high",
+        "value": 1.3,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:a:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "low",
+        "value": 14000000.0,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:magnet__I_coil:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "high",
+        "value": 15250000.0,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:magnet__I_coil:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "low",
+        "value": 4.048e+20,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:n_e0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "high",
+        "value": 5.5660000000000007e+20,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:n_e0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "low",
+        "value": 14.63,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:T_i0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "high",
+        "value": 18.0,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:T_i0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "low",
+        "value": 0.45,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:eta_source_heat:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "high",
+        "value": 0.6,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:eta_source_heat:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "low",
+        "value": 8.0,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:tau_ratio_ash:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "high",
+        "value": 8.0,
+        "label": "arm-window-fixed:arm-reread-p220:220.0:tau_ratio_ash:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      }
+    ]
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-search-p220",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 227,
+    "anchor_label": "20260907-minor-radius:c4609",
+    "anchor_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "edges": [
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "low",
+        "value": 11.2,
+        "label": "arm-window-fixed:arm-search-p220:220.0:R:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "high",
+        "value": 17.2,
+        "label": "arm-window-fixed:arm-search-p220:220.0:R:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "recirc_ok",
+          "beta_ok",
+          "divertor_heat_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "low",
+        "value": 1.3,
+        "label": "arm-window-fixed:arm-search-p220:220.0:a:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "high",
+        "value": 2.2,
+        "label": "arm-window-fixed:arm-search-p220:220.0:a:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "low",
+        "value": 13000000.0,
+        "label": "arm-window-fixed:arm-search-p220:220.0:magnet__I_coil:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "high",
+        "value": 18000000.0,
+        "label": "arm-window-fixed:arm-search-p220:220.0:magnet__I_coil:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "wp_stress_ok",
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "low",
+        "value": 3.036e+20,
+        "label": "arm-window-fixed:arm-search-p220:220.0:n_e0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "high",
+        "value": 5.06e+20,
+        "label": "arm-window-fixed:arm-search-p220:220.0:n_e0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "low",
+        "value": 13.0,
+        "label": "arm-window-fixed:arm-search-p220:220.0:T_i0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "high",
+        "value": 18.0,
+        "label": "arm-window-fixed:arm-search-p220:220.0:T_i0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "low",
+        "value": 0.5,
+        "label": "arm-window-fixed:arm-search-p220:220.0:eta_source_heat:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "high",
+        "value": 0.5,
+        "label": "arm-window-fixed:arm-search-p220:220.0:eta_source_heat:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "low",
+        "value": 8.0,
+        "label": "arm-window-fixed:arm-search-p220:220.0:tau_ratio_ash:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "high",
+        "value": 8.0,
+        "label": "arm-window-fixed:arm-search-p220:220.0:tau_ratio_ash:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      }
+    ]
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 100.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 100.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-fence-p100",
+    "installed_power_MW": 100.0,
+    "fully_satisfied_scan_rows": 132,
+    "anchor_label": "20260907-minor-radius:c0960",
+    "anchor_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "edges": [
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "low",
+        "value": 11.2,
+        "label": "arm-window-sized:arm-fence-p100:100.0:R:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "high",
+        "value": 17.2,
+        "label": "arm-window-sized:arm-fence-p100:100.0:R:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "beta_ok",
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "low",
+        "value": 1.3,
+        "label": "arm-window-sized:arm-fence-p100:100.0:a:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "high",
+        "value": 2.2,
+        "label": "arm-window-sized:arm-fence-p100:100.0:a:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "low",
+        "value": 13000000.0,
+        "label": "arm-window-sized:arm-fence-p100:100.0:magnet__I_coil:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "high",
+        "value": 18000000.0,
+        "label": "arm-window-sized:arm-fence-p100:100.0:magnet__I_coil:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "wp_stress_ok",
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "low",
+        "value": 3.036e+20,
+        "label": "arm-window-sized:arm-fence-p100:100.0:n_e0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "high",
+        "value": 5.06e+20,
+        "label": "arm-window-sized:arm-fence-p100:100.0:n_e0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "low",
+        "value": 13.0,
+        "label": "arm-window-sized:arm-fence-p100:100.0:T_i0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "high",
+        "value": 18.0,
+        "label": "arm-window-sized:arm-fence-p100:100.0:T_i0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "low",
+        "value": 0.5,
+        "label": "arm-window-sized:arm-fence-p100:100.0:eta_source_heat:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "high",
+        "value": 0.5,
+        "label": "arm-window-sized:arm-fence-p100:100.0:eta_source_heat:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "low",
+        "value": 8.0,
+        "label": "arm-window-sized:arm-fence-p100:100.0:tau_ratio_ash:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "high",
+        "value": 8.0,
+        "label": "arm-window-sized:arm-fence-p100:100.0:tau_ratio_ash:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      }
+    ]
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-reread-p220",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 42,
+    "anchor_label": "20260907-minor-radius:c7650",
+    "anchor_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 12.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "edges": [
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "low",
+        "value": 12.7,
+        "label": "arm-window-sized:arm-reread-p220:220.0:R:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "high",
+        "value": 12.7,
+        "label": "arm-window-sized:arm-reread-p220:220.0:R:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "low",
+        "value": 1.3,
+        "label": "arm-window-sized:arm-reread-p220:220.0:a:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "high",
+        "value": 1.3,
+        "label": "arm-window-sized:arm-reread-p220:220.0:a:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "low",
+        "value": 14000000.0,
+        "label": "arm-window-sized:arm-reread-p220:220.0:magnet__I_coil:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "high",
+        "value": 15250000.0,
+        "label": "arm-window-sized:arm-reread-p220:220.0:magnet__I_coil:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "low",
+        "value": 4.048e+20,
+        "label": "arm-window-sized:arm-reread-p220:220.0:n_e0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "high",
+        "value": 5.5660000000000007e+20,
+        "label": "arm-window-sized:arm-reread-p220:220.0:n_e0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "wall_load_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "low",
+        "value": 14.63,
+        "label": "arm-window-sized:arm-reread-p220:220.0:T_i0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "high",
+        "value": 18.0,
+        "label": "arm-window-sized:arm-reread-p220:220.0:T_i0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "wall_load_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "low",
+        "value": 0.45,
+        "label": "arm-window-sized:arm-reread-p220:220.0:eta_source_heat:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "high",
+        "value": 0.6,
+        "label": "arm-window-sized:arm-reread-p220:220.0:eta_source_heat:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "low",
+        "value": 8.0,
+        "label": "arm-window-sized:arm-reread-p220:220.0:tau_ratio_ash:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "high",
+        "value": 8.0,
+        "label": "arm-window-sized:arm-reread-p220:220.0:tau_ratio_ash:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      }
+    ]
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-search-p220",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 224,
+    "anchor_label": "20260907-minor-radius:c4609",
+    "anchor_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "edges": [
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "low",
+        "value": 11.2,
+        "label": "arm-window-sized:arm-search-p220:220.0:R:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__R",
+        "side": "high",
+        "value": 17.2,
+        "label": "arm-window-sized:arm-search-p220:220.0:R:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "beta_ok",
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "low",
+        "value": 1.3,
+        "label": "arm-window-sized:arm-search-p220:220.0:a:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__a",
+        "side": "high",
+        "value": 2.2,
+        "label": "arm-window-sized:arm-search-p220:220.0:a:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "burn_hold_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "low",
+        "value": 13000000.0,
+        "label": "arm-window-sized:arm-search-p220:220.0:magnet__I_coil:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__magnet__I_coil",
+        "side": "high",
+        "value": 18000000.0,
+        "label": "arm-window-sized:arm-search-p220:220.0:magnet__I_coil:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "wp_stress_ok",
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "low",
+        "value": 3.036e+20,
+        "label": "arm-window-sized:arm-search-p220:220.0:n_e0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__n_e0",
+        "side": "high",
+        "value": 5.06e+20,
+        "label": "arm-window-sized:arm-search-p220:220.0:n_e0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "low",
+        "value": 13.0,
+        "label": "arm-window-sized:arm-search-p220:220.0:T_i0:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__T_i0",
+        "side": "high",
+        "value": 18.0,
+        "label": "arm-window-sized:arm-search-p220:220.0:T_i0:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "caught by current predicate at sampled edge",
+        "violations": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "wall_load_ok"
+        ]
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "low",
+        "value": 0.5,
+        "label": "arm-window-sized:arm-search-p220:220.0:eta_source_heat:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__eta_source_heat",
+        "side": "high",
+        "value": 0.5,
+        "label": "arm-window-sized:arm-search-p220:220.0:eta_source_heat:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "low",
+        "value": 8.0,
+        "label": "arm-window-sized:arm-search-p220:220.0:tau_ratio_ash:low",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      },
+      {
+        "axis": "stellarator_09__stellaris__tau_ratio_ash",
+        "side": "high",
+        "value": 8.0,
+        "label": "arm-window-sized:arm-search-p220:220.0:tau_ratio_ash:high",
+        "window_provenance": "engineered inherited actual axis extent",
+        "status": "not caught at sampled edge",
+        "violations": []
+      }
+    ]
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 100.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-a",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 100.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_arm": "arm-transect-ash",
+    "installed_power_MW": 220.0,
+    "fully_satisfied_scan_rows": 0,
+    "status": "no full-current-predicate feasible anchor; no feasible boundary claim",
+    "edges": []
+  }
+]

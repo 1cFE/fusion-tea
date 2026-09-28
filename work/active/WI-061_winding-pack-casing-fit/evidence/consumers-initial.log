@@ -1,0 +1,2749 @@
+.................FFF.................................................... [ 15%]
+........................................................................ [ 30%]
+........................FFF................................FFFF..FFF.F.. [ 45%]
+F......................................FFFFF........F.F................. [ 60%]
+...................F.................................................... [ 75%]
+...................................................................EEEEE [ 90%]
+EEEEEEEEEEEEEEEEEFFFFFFF.....EEEEEEEEEEEEEEEF                            [100%]
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_the_summary_validates_against_its_schema ________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_the_summary_is_a_superset_of_the_committed_field_set __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+___ ERROR at setup of test_parity_holds_at_the_committed_order_of_magnitude ____
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_every_catalog_constraint_is_rederived_with_its_operand_count _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_stratification_covers_every_observed_verdict_combination _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+__________ ERROR at setup of test_stratification_is_a_floor_not_a_cap __________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_the_derived_seed_reproduces_from_the_recorded_fields __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_______ ERROR at setup of test_an_explicit_seed_is_recorded_as_explicit ________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_____ ERROR at setup of test_cas27_is_compared_and_nothing_is_undisclosed ______
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_________ ERROR at setup of test_the_command_carries_no_absolute_paths _________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_the_operand_bindings_digest_is_the_documented_canonicalization _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_a_planted_channel_deviation_fails_naming_case_and_channel _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_a_planted_verdict_mismatch_fails_naming_the_constraint _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+___ ERROR at setup of test_a_missing_operand_bindings_attribute_fails_closed ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_an_unresolvable_binding_fails_naming_the_constraint_and_operand _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_____ ERROR at setup of test_a_store_bound_to_another_identity_is_refused ______
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+__ ERROR at setup of test_an_empty_result_is_a_broken_input_not_a_clean_pass ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_____________ ERROR at setup of test_the_stores_are_never_written ______________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ ERROR at setup of test_stored_operating_controls_preserve_procurement_and_signed_capacity _
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7f7109914380>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated'), pa...llarator_tea', link_root=PosixPath('/tmp/pytest-of-reid/pytest-12803/operating-controls0/_work/pkg_link'), strict=True)
+spec_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:72: in validate
+    self._validate_outputs(module, descriptor)  # Make sure 1:1 mapping for output fields and types between registry and yaml
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7f71097329f0>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__wp_fit', module_type='mfe_winding_pack_fit.Winding_Pack_Cas...nsulated_x', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_winding_pack_fit.Winding_Pack_Casing_FitModule', factory=<function create_registry.<...ss 'float'>, 'pack_y': <class 'float'>, 'required_x': <class 'float'>, 'insulated_x': <class 'float'>}, version='v0.1')
+
+    def _validate_outputs(self, module: PipelineModuleSpec, descriptor: ModuleDescriptor) -> None:
+        expected = set(descriptor.outputs.keys())
+        actual = set(module.outputs.keys())
+        if expected != actual:
+>           raise PipelineValidationError(
+                "Output bindings do not match registry metadata",
+                module=module.key,
+                details={"expected": sorted(expected), "actual": sorted(actual)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Output bindings do not match registry metadata
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:384: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="module")
+    def operating_controls(tmp_path_factory, stock_simkit_session_path):
+        """Stored native baseline, installed reserve and physical demand controls."""
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        out = tmp_path_factory.mktemp("operating-controls")
+        baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
+        P = study_route.P
+        proposals = [baseline, {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
+                     {**baseline, f"{P}plasma__f_alpha_fast": 0.96}]
+>       cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:306: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:223: in run_points
+    prepared = prepare(package_dir, work_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:153: in prepare
+    return PreparedEvaluator(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7f7109914380>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated'), pa...llarator_tea', link_root=PosixPath('/tmp/pytest-of-reid/pytest-12803/operating-controls0/_work/pkg_link'), strict=True)
+spec_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Output bindings do not match registry metadata
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+___ ERROR at setup of test_operating_channel_deviation_is_refused[p_coupled] ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+__ ERROR at setup of test_operating_channel_deviation_is_refused[p_delivered] __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+__ ERROR at setup of test_operating_channel_deviation_is_refused[p_wallplug] ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f7153142bd0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12803'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+>       study_route.run_availability_sweep(out)
+
+tests/study/conftest.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:404: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:357: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:325: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+___________ ERROR at setup of test_known_answer[availability_direct] ___________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+______________ ERROR at setup of test_known_answer[interest_rate] ______________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+____________________ ERROR at setup of test_known_answer[R] ____________________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+____________________ ERROR at setup of test_known_answer[a] ____________________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+_________________ ERROR at setup of test_known_answer[I_coil] __________________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+_ ERROR at setup of test_matches_the_item_1_fixture_contract[availability_direct] _
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+__ ERROR at setup of test_matches_the_item_1_fixture_contract[interest_rate] ___
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+________ ERROR at setup of test_matches_the_item_1_fixture_contract[R] _________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+________ ERROR at setup of test_matches_the_item_1_fixture_contract[a] _________
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+______ ERROR at setup of test_matches_the_item_1_fixture_contract[I_coil] ______
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+_______ ERROR at setup of test_availability_direct_reaches_no_constraint _______
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+__ ERROR at setup of test_I_coil_reaches_the_field_constraints_through_calcs ___
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+___ ERROR at setup of test_r_reaches_net_positive_through_a_computed_operand ___
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+_____ ERROR at setup of test_model_owned_radius_reaches_magnet_and_plasma ______
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+_____ ERROR at setup of test_every_constraint_carries_all_three_identities _____
+
+request = <SubRequest 'report' for <Function test_known_answer[availability_direct]>>
+
+    @pytest.fixture(scope="module")
+    def report(request):
+        package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
+        manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+>       return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/home/reid/1cfe/fusion-tea/tests/study/data/axes.known_answers.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+=================================== FAILURES ===================================
+__________ test_tape_price_preserves_quantity_and_all_predicates[0.0] __________
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d5e5ee0>, price = 0.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('price', [0., 10., 40.])
+    def test_tape_price_preserves_quantity_and_all_predicates(evaluate, price):
+        baseline = evaluate()
+        changed = evaluate({'magnet__winding_pack__tape_price_per_m': price})
+        for suffix in ('tape_length', 'conductor_length', 'winding_fabrication_cost'):
+            assert output(changed, 'magnet__winding_procurement__' + suffix) == output(baseline, 'magnet__winding_procurement__' + suffix)
+        assert output(changed, 'magnet__winding_procurement__tape_cost') == pytest.approx(output(baseline, 'magnet__winding_procurement__tape_cost') * price / 20)
+>       assert len([k for k in baseline.responses if k != 'headline']) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len(['stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804..._stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7', ...])
+
+tests/models/test_tape_procurement.py:67: AssertionError
+_________ test_tape_price_preserves_quantity_and_all_predicates[10.0] __________
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d5e5ee0>, price = 10.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('price', [0., 10., 40.])
+    def test_tape_price_preserves_quantity_and_all_predicates(evaluate, price):
+        baseline = evaluate()
+        changed = evaluate({'magnet__winding_pack__tape_price_per_m': price})
+        for suffix in ('tape_length', 'conductor_length', 'winding_fabrication_cost'):
+            assert output(changed, 'magnet__winding_procurement__' + suffix) == output(baseline, 'magnet__winding_procurement__' + suffix)
+        assert output(changed, 'magnet__winding_procurement__tape_cost') == pytest.approx(output(baseline, 'magnet__winding_procurement__tape_cost') * price / 20)
+>       assert len([k for k in baseline.responses if k != 'headline']) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len(['stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804..._stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7', ...])
+
+tests/models/test_tape_procurement.py:67: AssertionError
+_________ test_tape_price_preserves_quantity_and_all_predicates[40.0] __________
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d5e5ee0>, price = 40.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('price', [0., 10., 40.])
+    def test_tape_price_preserves_quantity_and_all_predicates(evaluate, price):
+        baseline = evaluate()
+        changed = evaluate({'magnet__winding_pack__tape_price_per_m': price})
+        for suffix in ('tape_length', 'conductor_length', 'winding_fabrication_cost'):
+            assert output(changed, 'magnet__winding_procurement__' + suffix) == output(baseline, 'magnet__winding_procurement__' + suffix)
+        assert output(changed, 'magnet__winding_procurement__tape_cost') == pytest.approx(output(baseline, 'magnet__winding_procurement__tape_cost') * price / 20)
+>       assert len([k for k in baseline.responses if k != 'headline']) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len(['stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804..._stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7', ...])
+
+tests/models/test_tape_procurement.py:67: AssertionError
+_ test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__price_copper-22.0-material_inventory__cost_copper-2.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d507ec0>
+key = 'magnet__winding_pack__price_copper', value = 22.0
+component = 'material_inventory__cost_copper', factor = 2.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('key,value,component,factor', [
+        ('magnet__winding_pack__price_copper', 22., 'material_inventory__cost_copper', 2.),
+        ('magnet__winding_pack__tape_price_per_m', 40., 'winding_procurement__tape_cost', 2.),
+        ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
+    ])
+    def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        # Historical accounting isolation: with inventory enabled, turn current also
+        # drives lead heat and direct electrical power (tested by the inventory suite).
+        replay = {name.removeprefix(P): setting for name, setting in WI059_REPLAY.items()}
+        before, after = evaluate(replay), evaluate(replay | {key: value})
+        assert output(after, 'magnet__' + component) == pytest.approx(factor * output(before, 'magnet__' + component))
+        unchanged = ['material_inventory__mass_' + material for material in ('copper', 'solder', 'steel', 'helium')]
+        if key.endswith('price_copper'):
+            unchanged += ['winding_procurement__' + suffix for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost')]
+            unchanged += ['material_inventory__cost_' + material for material in ('solder', 'steel', 'helium')]
+        elif key.endswith('tape_price_per_m'):
+            unchanged += ['winding_procurement__conductor_length', 'winding_procurement__winding_fabrication_cost', 'material_inventory__material_cost']
+        else:
+            unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
+        for suffix in unchanged:
+            assert output(after, 'magnet__' + suffix) == output(before, 'magnet__' + suffix)
+>       assert len([k for k in before.responses if k != 'headline']) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len(['stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804..._stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7', ...])
+
+tests/models/test_winding_pack_cost.py:225: AssertionError
+_ test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__tape_price_per_m-40.0-winding_procurement__tape_cost-2.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d507ec0>
+key = 'magnet__winding_pack__tape_price_per_m', value = 40.0
+component = 'winding_procurement__tape_cost', factor = 2.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('key,value,component,factor', [
+        ('magnet__winding_pack__price_copper', 22., 'material_inventory__cost_copper', 2.),
+        ('magnet__winding_pack__tape_price_per_m', 40., 'winding_procurement__tape_cost', 2.),
+        ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
+    ])
+    def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        # Historical accounting isolation: with inventory enabled, turn current also
+        # drives lead heat and direct electrical power (tested by the inventory suite).
+        replay = {name.removeprefix(P): setting for name, setting in WI059_REPLAY.items()}
+        before, after = evaluate(replay), evaluate(replay | {key: value})
+        assert output(after, 'magnet__' + component) == pytest.approx(factor * output(before, 'magnet__' + component))
+        unchanged = ['material_inventory__mass_' + material for material in ('copper', 'solder', 'steel', 'helium')]
+        if key.endswith('price_copper'):
+            unchanged += ['winding_procurement__' + suffix for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost')]
+            unchanged += ['material_inventory__cost_' + material for material in ('solder', 'steel', 'helium')]
+        elif key.endswith('tape_price_per_m'):
+            unchanged += ['winding_procurement__conductor_length', 'winding_procurement__winding_fabrication_cost', 'material_inventory__material_cost']
+        else:
+            unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
+        for suffix in unchanged:
+            assert output(after, 'magnet__' + suffix) == output(before, 'magnet__' + suffix)
+>       assert len([k for k in before.responses if k != 'headline']) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len(['stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804..._stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7', ...])
+
+tests/models/test_winding_pack_cost.py:225: AssertionError
+_ test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__turn_current-25000.0-winding_procurement__winding_fabrication_cost-2.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d507ec0>
+key = 'magnet__coil__turn_current', value = 25000.0
+component = 'winding_procurement__winding_fabrication_cost', factor = 2.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('key,value,component,factor', [
+        ('magnet__winding_pack__price_copper', 22., 'material_inventory__cost_copper', 2.),
+        ('magnet__winding_pack__tape_price_per_m', 40., 'winding_procurement__tape_cost', 2.),
+        ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
+    ])
+    def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        # Historical accounting isolation: with inventory enabled, turn current also
+        # drives lead heat and direct electrical power (tested by the inventory suite).
+        replay = {name.removeprefix(P): setting for name, setting in WI059_REPLAY.items()}
+        before, after = evaluate(replay), evaluate(replay | {key: value})
+        assert output(after, 'magnet__' + component) == pytest.approx(factor * output(before, 'magnet__' + component))
+        unchanged = ['material_inventory__mass_' + material for material in ('copper', 'solder', 'steel', 'helium')]
+        if key.endswith('price_copper'):
+            unchanged += ['winding_procurement__' + suffix for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost')]
+            unchanged += ['material_inventory__cost_' + material for material in ('solder', 'steel', 'helium')]
+        elif key.endswith('tape_price_per_m'):
+            unchanged += ['winding_procurement__conductor_length', 'winding_procurement__winding_fabrication_cost', 'material_inventory__material_cost']
+        else:
+            unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
+        for suffix in unchanged:
+            assert output(after, 'magnet__' + suffix) == output(before, 'magnet__' + suffix)
+>       assert len([k for k in before.responses if k != 'headline']) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len(['stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804..._stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7', ...])
+
+tests/models/test_winding_pack_cost.py:225: AssertionError
+_________ test_reference_preserves_audited_wi040_physics_and_verdicts __________
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d0ef7e0>
+
+    @pytest.mark.codegen_available
+    def test_reference_preserves_audited_wi040_physics_and_verdicts(evaluate):
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
+        assert len(baseline["channels"]) == 174
+        assert len(baseline["verdicts"]) == 18
+        row = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
+        # WI-060 intentionally changes tape procurement and its declared cost descendants.
+        import oracle_entry
+        from tests.models.current_mfe_regressions import WI040_CHANGED_ECONOMICS
+        changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[key] for key in WI040_CHANGED_ECONOMICS}
+        changed |= {P + 'magnet__winding_procurement__' + suffix for suffix in ('cost', 'tape_cost')}
+        retained = {key: value for key, value in baseline['channels'].items() if key not in changed}
+        assert len(retained) > 150
+        assert {key: row.outputs[key] for key in retained} == retained
+>       assert verdicts(row) == baseline["verdicts"]
+               ^^^^^^^^^^^^^
+
+tests/models/test_conductor_grade.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_conductor_grade.py:115: in verdicts
+    catalog = study_route._export_catalog(ROOT / "exploration/stellarator_e2e/generated")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[27.5] _
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d0ef7e0>, field = 27.5
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize("field", [27.5, 30.])
+    def test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate(evaluate, field):
+        # Freeze reference j, family, price anchor, composition, geometry and 20 K state.
+        before = evaluate()
+        after = evaluate({"magnet__winding_pack__B_max": field})
+        q = (field / 24.9) ** .6
+        assert output(after, "magnet__conductor_grade__quantity_factor") == pytest.approx(q)
+        assert output(after, "magnet__conductor_grade__j_wp_effective") == pytest.approx(118.8271604938272 / q)
+        proportional = ["wp_volume__vol_winding_pack", "material_inventory__tape_volume",
+                        "material_inventory__material_cost", "winding_procurement__tape_cost"]
+        proportional += ["material_inventory__" + kind + material
+                         for kind in ("mass_", "cost_") for material in ("copper", "solder", "steel", "helium")]
+        for suffix in proportional:
+            assert output(after, "magnet__" + suffix) == pytest.approx(q * output(before, "magnet__" + suffix), rel=1e-12)
+        for suffix, factor in (("wp_sizing__wp_side", math.sqrt(q)),
+                               ("wp_stress__sigma_wp", 1 / math.sqrt(q)),
+                               ("cond_strain__eps_cond", 1 / math.sqrt(q))):
+            assert output(after, "magnet__" + suffix) == pytest.approx(factor * output(before, "magnet__" + suffix), rel=1e-12)
+        for suffix in ("field_calc__B_axis", "peak_field_calc__B_peak", "winding_pack_cost__cost",
+                       "magnet_cost__capital_cost", "winding_procurement__conductor_length",
+                       "winding_procurement__winding_fabrication_cost", "material_inventory__helium_density"):
+            assert output(after, "magnet__" + suffix) == output(before, "magnet__" + suffix)
+        # Additive account catches q applied twice to inventory or to the full pack cost.
+        procurement = sum(output(after, "magnet__" + suffix) for suffix in (
+            "winding_procurement__tape_cost", "material_inventory__material_cost",
+            "winding_procurement__winding_fabrication_cost"))
+        assert output(after, "magnet__winding_procurement__cost") == pytest.approx(procurement, rel=1e-14)
+        for suffix in ("cryoplant__cryo_elec__p_elec", "cryoplant__aux_cooling__cryo_cost",
+                       "cryoplant__aux_cooling__cost", "total_capital__total_capital"):
+            assert output(after, suffix) > output(before, suffix)
+>       assert verdicts(after)["peak_field_ok"] == "satisfied"
+               ^^^^^^^^^^^^^^^
+
+tests/models/test_conductor_grade.py:170: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_conductor_grade.py:115: in verdicts
+    catalog = study_route._export_catalog(ROOT / "exploration/stellarator_e2e/generated")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_ test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[30.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d0ef7e0>, field = 30.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize("field", [27.5, 30.])
+    def test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate(evaluate, field):
+        # Freeze reference j, family, price anchor, composition, geometry and 20 K state.
+        before = evaluate()
+        after = evaluate({"magnet__winding_pack__B_max": field})
+        q = (field / 24.9) ** .6
+        assert output(after, "magnet__conductor_grade__quantity_factor") == pytest.approx(q)
+        assert output(after, "magnet__conductor_grade__j_wp_effective") == pytest.approx(118.8271604938272 / q)
+        proportional = ["wp_volume__vol_winding_pack", "material_inventory__tape_volume",
+                        "material_inventory__material_cost", "winding_procurement__tape_cost"]
+        proportional += ["material_inventory__" + kind + material
+                         for kind in ("mass_", "cost_") for material in ("copper", "solder", "steel", "helium")]
+        for suffix in proportional:
+            assert output(after, "magnet__" + suffix) == pytest.approx(q * output(before, "magnet__" + suffix), rel=1e-12)
+        for suffix, factor in (("wp_sizing__wp_side", math.sqrt(q)),
+                               ("wp_stress__sigma_wp", 1 / math.sqrt(q)),
+                               ("cond_strain__eps_cond", 1 / math.sqrt(q))):
+            assert output(after, "magnet__" + suffix) == pytest.approx(factor * output(before, "magnet__" + suffix), rel=1e-12)
+        for suffix in ("field_calc__B_axis", "peak_field_calc__B_peak", "winding_pack_cost__cost",
+                       "magnet_cost__capital_cost", "winding_procurement__conductor_length",
+                       "winding_procurement__winding_fabrication_cost", "material_inventory__helium_density"):
+            assert output(after, "magnet__" + suffix) == output(before, "magnet__" + suffix)
+        # Additive account catches q applied twice to inventory or to the full pack cost.
+        procurement = sum(output(after, "magnet__" + suffix) for suffix in (
+            "winding_procurement__tape_cost", "material_inventory__material_cost",
+            "winding_procurement__winding_fabrication_cost"))
+        assert output(after, "magnet__winding_procurement__cost") == pytest.approx(procurement, rel=1e-14)
+        for suffix in ("cryoplant__cryo_elec__p_elec", "cryoplant__aux_cooling__cryo_cost",
+                       "cryoplant__aux_cooling__cost", "total_capital__total_capital"):
+            assert output(after, suffix) > output(before, suffix)
+>       assert verdicts(after)["peak_field_ok"] == "satisfied"
+               ^^^^^^^^^^^^^^^
+
+tests/models/test_conductor_grade.py:170: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_conductor_grade.py:115: in verdicts
+    catalog = study_route._export_catalog(ROOT / "exploration/stellarator_e2e/generated")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+_____________ test_crossed_operating_current_and_envelope_verdicts _____________
+
+evaluate = <function evaluate.<locals>.run at 0x7f712d0ef7e0>
+
+    @pytest.mark.codegen_available
+    def test_crossed_operating_current_and_envelope_verdicts(evaluate):
+        low_capacity = evaluate({"magnet__winding_pack__B_max": 24.})
+        high_current = evaluate({"magnet__coil__I_coil": 17e6})
+        purchased = evaluate({"magnet__coil__I_coil": 17e6, "magnet__winding_pack__B_max": 30.})
+        reference = evaluate()
+>       assert verdicts(low_capacity)["peak_field_ok"] == "violated"
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_conductor_grade.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_conductor_grade.py:115: in verdicts
+    catalog = study_route._export_catalog(ROOT / "exploration/stellarator_e2e/generated")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 18 catalogued checks, found 19
+
+exploration/stellarator_e2e/studies/study_route.py:260: RouteError
+___________________ test_heating_efficiency_scalar_consumers ___________________
+
+native = (PosixPath('/tmp/wi052-operating-regression-8vp6ua54'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12803/wi050-evidence0'))
+boundaries = {'couple_negative': {'outputs': {'boundary_fixture__allzero__heat__eta_pin_eff': 1.0, 'boundary_fixture__allzero__heat...le_zero': {'error': 'EvaluationFailed', 'message': 'module_execution: ZeroDivisionError: float division by zero'}, ...}
+
+    def test_heating_efficiency_scalar_consumers(native,boundaries):
+        from scripts.study import indicators,verify
+        scratch,_,_,_=native
+        entries=json.loads((scratch/'generated/contracts/model_contract.json').read_text())['constraint_catalog']['concrete_entries']
+>       assert len(entries)==18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len([{'constraint_id': 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'declaration_id': '04c22908-a02e-5b52-...'evaluation_channel': 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation', ...}, ...])
+
+tests/models/test_mfe_operating_heating.py:79: AssertionError
+__________ test_stellarator_operating_heat_has_no_public_demand_input __________
+
+native = (PosixPath('/tmp/wi052-operating-regression-8vp6ua54'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12803/wi050-evidence0'))
+
+    def test_stellarator_operating_heat_has_no_public_demand_input(native):
+        scratch,results,_,_=native
+        contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
+>       assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 299 == (265 + 27)
+E        +  where 299 = len([{'default_value': 0.6, 'entry_type': 'library_default', 'param_group': 'mfe_account_costs_params', 'python_type': 'fl... 2500.0, 'entry_type': 'library_default', 'param_group': 'mfe_account_costs_params', 'python_type': 'float', ...}, ...])
+E        +  and   27 = len((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}))
+
+tests/models/test_mfe_operating_heating.py:123: AssertionError
+____________________ test_operating_heat_reserve_invariance ____________________
+
+native = (PosixPath('/tmp/wi052-operating-regression-8vp6ua54'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12803/wi050-evidence0'))
+
+    def test_operating_heat_reserve_invariance(native):
+        _,results,inputs,_=native
+>       load('check_results').check(results,inputs)
+
+tests/models/test_mfe_operating_heating.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+results = {'availability': {'outputs': {'stellarator_09__stellaris__aux_cooling__aux_cost': 3631334.532635693, 'stellarator_09__...03c3f94b878e5b58': 'satisfied', 'stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60': 'satisfied', ...}}, ...}
+inputs = {'stellarator_09__stellaris__E_fus': 2.817e-12, 'stellarator_09__stellaris__G_stock': 0.0, 'stellarator_09__stellaris__I_total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}
+
+    def check(results,inputs):
+        controls={'baseline':{},'reserve':{'p_wallplug_heat':120},'demand':{'f_alpha_fast':.96},'efficiency':{'eta_couple_heat':.8},'availability':{'unplanned_fraction':.10}}
+        financial={}
+        for case,changes in controls.items():
+            financial[case]=check_case(results[case]['outputs'],dict(inputs,**{P+k:v for k,v in changes.items()}))
+        b=results['baseline']['outputs'];r=results['reserve']['outputs']
+        invariants=['operating_heat__','source_heat__','primary_loop__','pb__','calendar__','cas71_calc__','cas80_calc__']
+        for key,value in b.items():
+            if any(key.removeprefix(P).startswith(prefix) for prefix in invariants) or (key.startswith(P+'divheat__') and not key.endswith('p_heat_operating_minus_installed')):
+                assert value==r[key],key
+        assert b[P+'heating_cost__cost']==264145000
+        assert r[P+'heating_cost__cost']==316974000
+        assert results['demand']['outputs'][P+'heating_cost__cost']==264145000
+        assert results['demand']['outputs'][P+'divheat__p_heat_abs']==b[P+'divheat__p_heat_abs']
+        assert results['demand']['outputs'][P+'fusion__p_fus']==b[P+'fusion__p_fus']
+        for k in ['operating_heat__p_coupled','operating_heat__p_wallplug','pb__p_net']:
+            assert b[P+k]==results['availability']['outputs'][P+k]
+        for case in controls:
+            responses=results[case]['responses'];individual={k:v for k,v in responses.items() if k!='headline'}
+>           assert len(individual)==18
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError
+
+work/active/WI-050_mfe-coherent-operating-heating/implementation/check_results.py:93: AssertionError
+___________________ test_operating_heat_direct_native_parity ___________________
+
+native = (PosixPath('/tmp/wi052-operating-regression-8vp6ua54'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12803/wi050-evidence0'))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f71096c3830>
+
+    def test_operating_heat_direct_native_parity(native,monkeypatch):
+        import sys
+        sys.path.insert(0,str(ROOT/'exploration/stellarator_e2e'))
+        import verify_stellaris
+        _,results,_,_=native
+        # Resolve the map without importing run_stellaris's global package loader.
+        import ast
+        tree=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris.py').read_text())
+        assignment=next(n for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='CH' for t in n.targets))
+        channels=eval(compile(ast.Expression(assignment.value),'<channel-map>','eval'),{'P':P})
+        for case in ['baseline','reserve','demand','efficiency','availability']:
+            with monkeypatch.context() as context:
+                context.setattr(verify_stellaris,'IN',verify_stellaris.IN | WI059_REPLAY_LOCAL | load('run_acceptance').CASES[case])
+                expected=verify_stellaris.compute()
+            runner=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris_single.py').read_text())
+            verdict_assignment=next(n for n in runner.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='EXPECTED_VERDICTS' for t in n.targets))
+            expected_verdicts=ast.literal_eval(verdict_assignment.value)
+            assert len(expected_verdicts)==18
+            if case in ['baseline','reserve','demand','availability']:
+                actual={key.split('__')[2]:value for key,value in results[case]['responses'].items() if key!='headline'}
+>               assert actual==expected_verdicts
+E               AssertionError: assert {'beta_ok': '...tisfied', ...} == {'beta_ok': '...tisfied', ...}
+E                 
+E                 Omitting 18 identical items, use -vv to show
+E                 Left contains 1 more item:
+E                 {'wp_fit_ok': 'violated'}
+E                 Use -v to get more diff
+
+tests/models/test_mfe_operating_heating.py:167: AssertionError
+____________________ test_every_constraint_operand_resolves ____________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+oracle_entry = <module 'oracle_entry' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py'>
+
+    def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
+        entries = catalog_entries(real_package_path)
+>       assert len(entries) == 18
+E       AssertionError: assert 19 == 18
+E        +  where 19 = len([{'constraint_id': 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0', 'declaration_id': '04c22908-a02e-5b52-...'evaluation_channel': 'stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation', ...}, ...])
+
+tests/study/test_operand_bindings.py:95: AssertionError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row0] ______
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['f...ff_required']) == dict_keys(['V...mal_p_drive'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:142: AssertionError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row1] ______
+
+row = {'outputs': {'A': 10.769230769230768, 'B_axis': 8.164285714285713, 'B_peak': 21.916589861751145, 'T_e0': 15.400000000000002, ...}, 'overrides': {'R': 14.0}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['f...ff_required']) == dict_keys(['V...mal_p_drive'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:142: AssertionError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row2] ______
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'T_amb_cryo': 310.0, 'T_cold_cryo': 30.0}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['f...ff_required']) == dict_keys(['V...mal_p_drive'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:142: AssertionError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row3] ______
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'p_cryo_direct': 2.0, 'p_fixed_cryo': 0.0, 'q_nuc_cryo': 0.0}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['f...ff_required']) == dict_keys(['V...mal_p_drive'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:142: AssertionError
+______________ test_adapter_contract_and_ambient_limit_preserved _______________
+
+    def test_adapter_contract_and_ambient_limit_preserved():
+        from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS,
+                                                          WI058_PARAMETERS, WI058_RETIRED)
+        old_inputs = renamed_keys(BEFORE['input_mapping'])
+        # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil; the count stays 118.
+        assert WI058_RETIRED <= old_inputs.keys()
+        old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
+>       assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS} == old_inputs
+E       AssertionError: assert {'stellarator..._direct', ...} == {'stellarator..._direct', ...}
+E         
+E         Omitting 98 identical items, use -vv to show
+E         Left contains 8 more items:
+E         {'stellarator_09__stellaris__magnet__casing__assembly_clearance': 'fit_clearance',
+E          'stellarator_09__stellaris__magnet__casing__interior_y': 'fit_interior_y',
+E          'stellarator_09__stellaris__magnet__casing__wall_thickness': 'fit_wall',
+E          'stellarator_09__stellaris__magnet__coil__coil_t': 'coil_t',...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+tests/study/test_domain_consumers.py:171: AssertionError
+__________________________ test_exact_input_contract ___________________________
+
+    def test_exact_input_contract():
+        from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS, WI058_PARAMETERS, WI058_RETIRED
+        # WI-058 (2026-09-14): k_coil retired from the contract and the seam, c_coil_ref added (the winding
+        # length follows the coil bore); the counts (265 inputs, 118 mapped, 147 unmapped) do not move.
+        added = WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS
+        inputs = {}
+        for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
+            inputs.update(json.loads(path.read_text()))
+>       assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS)
+E       AssertionError: assert 299 == (265 + 27)
+E        +  where 299 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})
+E        +  and   27 = len((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}))
+
+tests/study/test_major_radius.py:53: AssertionError
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_current_radius_controls_m0')
+
+    def check_controls(out):
+        out = Path(out)
+        out.mkdir(parents=True, exist_ok=True)
+        frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
+        frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
+        expectations = json.loads((frozen_dir / "expectations.json").read_text())
+        # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was produced with
+        # the R-form (c_coil = k_coil * R). At a = 1.3 the bore ratio is 1.0, so binding the reference
+        # circumference to k_coil * R reproduces the R-form length exactly and the frozen row stays the exact
+        # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in
+        # tests/models/test_winding_length_bore.py).
+        from tests.models.current_mfe_regressions import K_COIL_RETIRED
+        proposals = [WI059_REPLAY, WI059_REPLAY | {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
+        cases, db = route.run_points("radius-controls", proposals, out / "_work")
+        assert len(cases) == 2 and all(c.state == "completed" for c in cases)
+        comparisons = {}
+        for proposal, name, old_name in zip(proposals, ["baseline", "R14"], ["baseline", "tied_R14"]):
+            case = next(c for c in cases if dict(c.inputs) == proposal)
+            expected = frozen["cases"][old_name]["native"]
+            # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.
+            frozen_outputs = renamed_keys(expected["outputs"])
+            expected_outputs = dict(frozen_outputs)
+            channels = oracle.evaluate(proposal)
+            changed_costs = {oracle.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
+            # Preserve every frozen physical/structured value. Only the named WI-040
+            # accounting descendants and new inventory channels use current expectations.
+            for key in changed_costs | WI040_CHANNELS | WI060_CHANNELS:
+                expected_outputs[key] = channels[key]
+            # Both controls retain the reference envelope: the two retained grade outputs are
+            # known exactly without replacing any frozen physical value.
+            expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {
+                'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272}.items()})
+            expected_outputs.update(wi059_native_additions(frozen_outputs, oracle.vs.IN))
+>           assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError
+
+tests/study/financial_radius_controls.py:55: AssertionError
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__magnet__coil__coil_t] _
+
+key = 'stellarator_09__stellaris__magnet__coil__coil_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        if key in WI059_EXISTING_MAPPED_PARAMETERS:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:138: Failed
+_____ test_zero_efficiency_is_a_recorded_native_execution_failure[source] ______
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7f712d487050>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated'), pa...or_tea', link_root=PosixPath('/tmp/pytest-of-reid/pytest-12803/test_zero_efficiency_is_a_reco0/pkg_link'), strict=True)
+spec_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:72: in validate
+    self._validate_outputs(module, descriptor)  # Make sure 1:1 mapping for output fields and types between registry and yaml
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7f7109947650>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__wp_fit', module_type='mfe_winding_pack_fit.Winding_Pack_Cas...nsulated_x', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_winding_pack_fit.Winding_Pack_Casing_FitModule', factory=<function create_registry.<...ss 'float'>, 'pack_y': <class 'float'>, 'required_x': <class 'float'>, 'insulated_x': <class 'float'>}, version='v0.1')
+
+    def _validate_outputs(self, module: PipelineModuleSpec, descriptor: ModuleDescriptor) -> None:
+        expected = set(descriptor.outputs.keys())
+        actual = set(module.outputs.keys())
+        if expected != actual:
+>           raise PipelineValidationError(
+                "Output bindings do not match registry metadata",
+                module=module.key,
+                details={"expected": sorted(expected), "actual": sorted(actual)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Output bindings do not match registry metadata
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:384: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_zero_efficiency_is_a_reco0')
+stage = 'source'
+
+    @pytest.mark.parametrize("stage", ["source", "couple"])
+    def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_path, tmp_path, stage):
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        point = {f"{study_route.P}heating__eta_{stage}_heat": 0.0}  # WI-057 (2026-09-13): the heating efficiencies live on the heating part
+>       cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:375: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:223: in run_points
+    prepared = prepare(package_dir, work_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:153: in prepare
+    return PreparedEvaluator(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7f712d487050>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated'), pa...or_tea', link_root=PosixPath('/tmp/pytest-of-reid/pytest-12803/test_zero_efficiency_is_a_reco0/pkg_link'), strict=True)
+spec_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Output bindings do not match registry metadata
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+_____ test_zero_efficiency_is_a_recorded_native_execution_failure[couple] ______
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7f710997abd0>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated'), pa...or_tea', link_root=PosixPath('/tmp/pytest-of-reid/pytest-12803/test_zero_efficiency_is_a_reco1/pkg_link'), strict=True)
+spec_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:72: in validate
+    self._validate_outputs(module, descriptor)  # Make sure 1:1 mapping for output fields and types between registry and yaml
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7f710991ef30>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__wp_fit', module_type='mfe_winding_pack_fit.Winding_Pack_Cas...nsulated_x', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_winding_pack_fit.Winding_Pack_Casing_FitModule', factory=<function create_registry.<...ss 'float'>, 'pack_y': <class 'float'>, 'required_x': <class 'float'>, 'insulated_x': <class 'float'>}, version='v0.1')
+
+    def _validate_outputs(self, module: PipelineModuleSpec, descriptor: ModuleDescriptor) -> None:
+        expected = set(descriptor.outputs.keys())
+        actual = set(module.outputs.keys())
+        if expected != actual:
+>           raise PipelineValidationError(
+                "Output bindings do not match registry metadata",
+                module=module.key,
+                details={"expected": sorted(expected), "actual": sorted(actual)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Output bindings do not match registry metadata
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:384: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_zero_efficiency_is_a_reco1')
+stage = 'couple'
+
+    @pytest.mark.parametrize("stage", ["source", "couple"])
+    def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_path, tmp_path, stage):
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        point = {f"{study_route.P}heating__eta_{stage}_heat": 0.0}  # WI-057 (2026-09-13): the heating efficiencies live on the heating part
+>       cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:375: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:223: in run_points
+    prepared = prepare(package_dir, work_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:153: in prepare
+    return PreparedEvaluator(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7f710997abd0>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated'), pa...or_tea', link_root=PosixPath('/tmp/pytest-of-reid/pytest-12803/test_zero_efficiency_is_a_reco1/pkg_link'), strict=True)
+spec_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Output bindings do not match registry metadata
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+_______________ test_a_group_with_no_constraint_reach_exits_zero _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_a_group_with_no_constrain0')
+
+    def test_a_group_with_no_constraint_reach_exits_zero(tmp_path):
+        out_path = tmp_path / "indicators.json"
+        rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS, out=out_path)
+>       assert rc == 0, err
+E       AssertionError: indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/test_valid_empty.py:21: AssertionError
+____________ test_the_empty_result_still_carries_the_whole_catalog _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_the_empty_result_still_ca0')
+
+    def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
+        """Invariant 4 and 5: no_constraint_response is emitted with the full bounds
+        list under this axis, so a reader sees what was checked, not just what was found."""
+        rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
+>       assert rc == 0, err
+E       AssertionError: indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/test_valid_empty.py:41: AssertionError
+____________ test_no_constraint_response_is_emitted_even_when_false ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_no_constraint_response_is0')
+
+    def test_no_constraint_response_is_emitted_even_when_false(tmp_path):
+        rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
+>       assert rc == 0, err
+E       AssertionError: indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/test_valid_empty.py:50: AssertionError
+__________ test_the_document_goes_to_stdout_and_the_summary_to_stderr __________
+
+    def test_the_document_goes_to_stdout_and_the_summary_to_stderr():
+        """The human summary can never contaminate the report."""
+        rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
+>       assert rc == 0
+E       assert 1 == 0
+
+tests/study/test_valid_empty.py:61: AssertionError
+_____________________________ test_fixture_binding _____________________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+
+    def test_fixture_binding(real_package_path):
+        """Fixtures are bound to the fingerprint they were derived against (spec)."""
+        live = manifest.read_semantic_fingerprint(real_package_path)
+>       assert live == EXPECTED_SEMANTIC_FINGERPRINT, (
+            "package regenerated — re-derive the expectation files from the new package, "
+            "never patch them to match"
+        )
+E       AssertionError: package regenerated — re-derive the expectation files from the new package, never patch them to match
+E       assert 'd61aff71c088...278c56ec55386' == 'bf7b8afe4fc9...640514ab104ea'
+E         
+E         - bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea
+E         + d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386
+
+tests/study/test_known_answers.py:150: AssertionError
+______________________ test_current_heating_reachability _______________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+real_manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_current_heating_reachabil0')
+
+    def test_current_heating_reachability(real_package_path, real_manifest_path, tmp_path):
+        """Module reachability distinguishes installed reserve from operating demand."""
+        axes = tmp_path / "heating-axes.json"
+        names = ["p_wallplug_heat", "eta_source_heat", "eta_couple_heat"]
+        axes.write_text(json.dumps({"schema_version": "study-axis-declaration/v1", "groups": [
+            {"axis": name, "keys": [
+                {"key": f"stellarator_09__stellaris__heating__{name}", "provenance": "fan_out"}  # WI-057 (2026-09-13): the key carries its part's path
+            ]}
+            for name in names
+        ]}))
+>       doc = run_tool(real_package_path, real_manifest_path, axes)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_known_answers.py:302: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+groups = PosixPath('/tmp/pytest-of-reid/pytest-12803/test_current_heating_reachabil0/heating-axes.json')
+
+    def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+        """Invoke the CLI and return the parsed report. Raises if the run failed."""
+        rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+>       assert rc == 0, f"tool exited {rc}\n{err}"
+E       AssertionError: tool exited 1
+E         indicator-input fingerprint mismatch: manifest pins cbc560f94c6e0bbd476a447b911e64b766089f009144528966d5cfe64e1fff1e but indicator-input-fingerprint/v1 over the live package is d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735
+E           live per-file digests:
+E             contracts/model_contract.json 2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5
+E             inputs/mfe_account_costs_params.json 8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21
+E             inputs/mfe_cryo_plant_params.json 7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f
+E             inputs/mfe_fuel_cycle_params.json d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009
+E             inputs/mfe_magnet_cost_params.json 6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee
+E             inputs/mfe_magnet_field_params.json 3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6
+E             inputs/mfe_plant_params.json ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814
+E             inputs/mfe_plasma_scaling_params.json 7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86
+E             inputs/mfe_plasma_sustainment_params.json da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc
+E             inputs/mfe_vacuum_params.json 07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240
+E             inputs/stellarator_plant_params.json bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7
+E             pipelines/pipeline.yaml 8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c
+E           re-pin with --print-fingerprint after reviewing the change
+E         
+E       assert 1 == 0
+
+tests/study/conftest.py:121: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_tape_procurement.py: 13 warnings
+tests/models/test_winding_pack_cost.py: 2 warnings
+tests/models/test_conductor_grade.py: 3 warnings
+tests/study/test_verify.py: 1 warning
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_tape_procurement.py::test_tape_price_preserves_quantity_and_all_predicates[0.0]
+FAILED tests/models/test_tape_procurement.py::test_tape_price_preserves_quantity_and_all_predicates[10.0]
+FAILED tests/models/test_tape_procurement.py::test_tape_price_preserves_quantity_and_all_predicates[40.0]
+FAILED tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__price_copper-22.0-material_inventory__cost_copper-2.0]
+FAILED tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__tape_price_per_m-40.0-winding_procurement__tape_cost-2.0]
+FAILED tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__turn_current-25000.0-winding_procurement__winding_fabrication_cost-2.0]
+FAILED tests/models/test_conductor_grade.py::test_reference_preserves_audited_wi040_physics_and_verdicts
+FAILED tests/models/test_conductor_grade.py::test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[27.5]
+FAILED tests/models/test_conductor_grade.py::test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[30.0]
+FAILED tests/models/test_conductor_grade.py::test_crossed_operating_current_and_envelope_verdicts
+FAILED tests/models/test_mfe_operating_heating.py::test_heating_efficiency_scalar_consumers
+FAILED tests/models/test_mfe_operating_heating.py::test_stellarator_operating_heat_has_no_public_demand_input
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_reserve_invariance
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_direct_native_parity
+FAILED tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row2]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]
+FAILED tests/study/test_domain_consumers.py::test_adapter_contract_and_ambient_limit_preserved
+FAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__magnet__coil__coil_t]
+FAILED tests/study/test_verify.py::test_zero_efficiency_is_a_recorded_native_execution_failure[source]
+FAILED tests/study/test_verify.py::test_zero_efficiency_is_a_recorded_native_execution_failure[couple]
+FAILED tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero
+FAILED tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog
+FAILED tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false
+FAILED tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr
+FAILED tests/study/test_known_answers.py::test_fixture_binding - AssertionErr...
+FAILED tests/study/test_known_answers.py::test_current_heating_reachability
+ERROR tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+ERROR tests/study/test_verify.py::test_the_summary_is_a_superset_of_the_committed_field_set
+ERROR tests/study/test_verify.py::test_parity_holds_at_the_committed_order_of_magnitude
+ERROR tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+ERROR tests/study/test_verify.py::test_stratification_covers_every_observed_verdict_combination
+ERROR tests/study/test_verify.py::test_stratification_is_a_floor_not_a_cap - ...
+ERROR tests/study/test_verify.py::test_the_derived_seed_reproduces_from_the_recorded_fields
+ERROR tests/study/test_verify.py::test_an_explicit_seed_is_recorded_as_explicit
+ERROR tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed
+ERROR tests/study/test_verify.py::test_the_command_carries_no_absolute_paths
+ERROR tests/study/test_verify.py::test_the_operand_bindings_digest_is_the_documented_canonicalization
+ERROR tests/study/test_verify.py::test_a_planted_channel_deviation_fails_naming_case_and_channel
+ERROR tests/study/test_verify.py::test_a_planted_verdict_mismatch_fails_naming_the_constraint
+ERROR tests/study/test_verify.py::test_a_missing_operand_bindings_attribute_fails_closed
+ERROR tests/study/test_verify.py::test_an_unresolvable_binding_fails_naming_the_constraint_and_operand
+ERROR tests/study/test_verify.py::test_a_store_bound_to_another_identity_is_refused
+ERROR tests/study/test_verify.py::test_an_empty_result_is_a_broken_input_not_a_clean_pass
+ERROR tests/study/test_verify.py::test_the_stores_are_never_written - study_r...
+ERROR tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+ERROR tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_coupled]
+ERROR tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_delivered]
+ERROR tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_wallplug]
+ERROR tests/study/test_known_answers.py::test_known_answer[availability_direct]
+ERROR tests/study/test_known_answers.py::test_known_answer[interest_rate] - A...
+ERROR tests/study/test_known_answers.py::test_known_answer[R] - AssertionErro...
+ERROR tests/study/test_known_answers.py::test_known_answer[a] - AssertionErro...
+ERROR tests/study/test_known_answers.py::test_known_answer[I_coil] - Assertio...
+ERROR tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]
+ERROR tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]
+ERROR tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]
+ERROR tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]
+ERROR tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]
+ERROR tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint
+ERROR tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs
+ERROR tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand
+ERROR tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma
+ERROR tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities
+31 failed, 409 passed, 19 warnings, 37 errors in 131.19s (0:02:11)

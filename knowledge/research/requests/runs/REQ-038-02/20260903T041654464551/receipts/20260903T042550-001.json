@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://arxiv.org/pdf/2503.23048",
+  "slug": "hts_potential_and_needs_for_future_accelerator_magnets",
+  "path": "knowledge/sources/hts_potential_and_needs_for_future_accelerator_magnets/",
+  "source_id": "7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-03T04:25:50.109317+00:00"
+}

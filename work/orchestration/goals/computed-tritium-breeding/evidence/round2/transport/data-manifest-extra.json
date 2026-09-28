@@ -1,0 +1,86 @@
+[
+  {
+    "nuclide": "Mo100",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo100.h5",
+    "bytes": 7283712,
+    "sha256": "d7bcd5383d1b3b12821137cfa5ca2a471497474879dbe4013569bbe2f4639c1d"
+  },
+  {
+    "nuclide": "Mo92",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo92.h5",
+    "bytes": 7768672,
+    "sha256": "1899ca34ca0d203f282f9ac08d907568128a134f0d79ddd296486f2fbf16188c"
+  },
+  {
+    "nuclide": "Mo94",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo94.h5",
+    "bytes": 8189896,
+    "sha256": "0481996baf8ac89b16fb92a3300c0e49e7b300067919773469caab2803a70721"
+  },
+  {
+    "nuclide": "Mo95",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo95.h5",
+    "bytes": 9401936,
+    "sha256": "fa63d8a903579cba31ab64ebf708daa73012fc13c6e78eb846ccf4a7ed68f035"
+  },
+  {
+    "nuclide": "Mo96",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo96.h5",
+    "bytes": 9016256,
+    "sha256": "9690259b8f4c643382898385da06c4759fa14179579add84b3ae06a8d7958630"
+  },
+  {
+    "nuclide": "Mo97",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo97.h5",
+    "bytes": 9237832,
+    "sha256": "42182849db2ce4aeecb9af68904aea6f88ee447cd20e42c43a7c91aa15ca90b8"
+  },
+  {
+    "nuclide": "Mo98",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mo98.h5",
+    "bytes": 11061056,
+    "sha256": "91c57ee6019429e87592b6ecab6eb249c2d57ca442785a9a251ec17197313b45"
+  },
+  {
+    "nuclide": "P31",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/P31.h5",
+    "bytes": 995024,
+    "sha256": "80c48628435b8a0dbeaf9af280446f3bc1f8de53e2a59bd7ee4d100dde61c6f9"
+  },
+  {
+    "nuclide": "S32",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/S32.h5",
+    "bytes": 4679856,
+    "sha256": "2654aee4ed1541bf033cb5360c2c118385f7789fe3f918297481c7357352ec9e"
+  },
+  {
+    "nuclide": "S33",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/S33.h5",
+    "bytes": 2110904,
+    "sha256": "3a9f60f0ba220a5fcb14b7f84b602595293804fcb704bd37ea7c6e7d0c1c8470"
+  },
+  {
+    "nuclide": "S34",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/S34.h5",
+    "bytes": 1313096,
+    "sha256": "2eff36de6113015c9d0e0ed38ba4bca3e44e8d34735db211fb13c5c0b46a0e0f"
+  },
+  {
+    "nuclide": "S36",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/S36.h5",
+    "bytes": 894184,
+    "sha256": "ffde3b123b8ee05f8b39518f05b1077267551cd000ab5916d7260b26192fb876"
+  },
+  {
+    "nuclide": "Ta180",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ta180.h5",
+    "bytes": 8484440,
+    "sha256": "356265e8afa796502b5156cb86e465de40abe4db0b160ea97add0b69aa774e87"
+  },
+  {
+    "nuclide": "Ta181",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ta181.h5",
+    "bytes": 14336720,
+    "sha256": "d169ead8d91f95e85eed7af0eaee3e96b4ff4afed6892643f9e7b60760d0c4e7"
+  }
+]

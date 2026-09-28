@@ -1,0 +1,222 @@
+{
+  "scope": "Isolated frozen f76 entering oracle at matched points with only new capture input removed; not old-native reexecution. Original native controls retained separately.",
+  "existing_outputs_and_predicates_preserved": true,
+  "cases": [
+    {
+      "proposal_id": "reference",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "reference--low-profile",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "reference--radiation-0.88",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "reference--radiation-0.92",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "reference--radius--0.2",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "reference--radius-+0.2",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "current-sized-reference",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "current-sized-reference--low-profile",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "current-sized-reference--radiation-0.88",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "current-sized-reference--radiation-0.92",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference--low-profile",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference--radiation-0.88",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference--radiation-0.92",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--low-profile",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--radiation-0.88",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--radiation-0.92",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--radius--0.2",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--radius-+0.2",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--low-profile",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--radiation-0.88",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--radiation-0.92",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--radius--0.2",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--radius-+0.2",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    },
+    {
+      "proposal_id": "signed-negative-burn-control",
+      "entering_outcome": "evaluated",
+      "scope": "Frozen entering oracle, same coordinates and source peak/radiation, only capture input removed.",
+      "scalar_comparisons": 218,
+      "changed_channels": {},
+      "predicate_flips": {}
+    }
+  ]
+}

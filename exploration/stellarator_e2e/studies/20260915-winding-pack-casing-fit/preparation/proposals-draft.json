@@ -1,0 +1,1325 @@
+[
+  {
+    "id": "m000",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m001",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m002",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m003",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m004",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m005",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m006",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m007",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m008",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m009",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m010",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m011",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m012",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m013",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m014",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m015",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m016",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m017",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m018",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m019",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m020",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m021",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m022",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m023",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m024",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m025",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m026",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m027",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m028",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m029",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m030",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m031",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m032",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m033",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m034",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m035",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m036",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m037",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m038",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m039",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m040",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m041",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m042",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m043",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m044",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m045",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m046",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m047",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m048",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m049",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m050",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m051",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m052",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m053",
+    "arm": "density-envelope-length-current",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m054",
+    "arm": "major-radius",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m055",
+    "arm": "major-radius",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m056",
+    "arm": "major-radius",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m057",
+    "arm": "major-radius",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m058",
+    "arm": "major-radius",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "m059",
+    "arm": "major-radius",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "family": "original-nominal"
+  },
+  {
+    "id": "baseline",
+    "arm": "baseline",
+    "family": "original-nominal",
+    "point": {},
+    "use_exact_manifest_baseline": true
+  },
+  {
+    "id": "alloc-reference-0.4",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-reference-0.5",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-reference-0.6",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass0.8-0.4",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass0.8-0.5",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass0.8-0.6",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass1.0-0.4",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass1.0-0.5",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass1.0-0.6",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass1.2-0.4",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass1.2-0.5",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "alloc-oldpass1.2-0.6",
+    "arm": "radial-allocation",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+    },
+    "family": "allocation-nominal-geometry"
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-fit_aspect_ratio-0.8",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 0.8
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-fit_aspect_ratio-1.25",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.25
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-interior_y-0.35",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.35
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-interior_y-0.45",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.45
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-wall_thickness-0.015",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.015
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-wall_thickness-0.035",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.035
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-ground_insulation-0.0",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-ground_insulation-0.005",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.005
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-assembly_clearance-0.0",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-assembly_clearance-0.004",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.004
+    }
+  },
+  {
+    "id": "geometry-alloc-reference-0.5-internal_build_y-0.0",
+    "arm": "internal_build_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-reference-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-fit_aspect_ratio-0.8",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 0.8
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-fit_aspect_ratio-1.25",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.25
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-interior_y-0.35",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.35
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-interior_y-0.45",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.45
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-wall_thickness-0.015",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.015
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-wall_thickness-0.035",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.035
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-ground_insulation-0.0",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-ground_insulation-0.005",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.005
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-assembly_clearance-0.0",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-assembly_clearance-0.004",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.004
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass0.8-0.5-internal_build_y-0.0",
+    "arm": "internal_build_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass0.8-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-fit_aspect_ratio-0.8",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 0.8
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-fit_aspect_ratio-1.25",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.25
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.35",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.35
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.45
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-wall_thickness-0.015",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.015
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-wall_thickness-0.035",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.035
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-ground_insulation-0.0",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-ground_insulation-0.005",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.005
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-assembly_clearance-0.0",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-assembly_clearance-0.004",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.004
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.0-0.5-internal_build_y-0.0",
+    "arm": "internal_build_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.0-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-0.8",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 0.8
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+    "arm": "fit_aspect_ratio",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.25
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.35",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.35
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+    "arm": "interior_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.45
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.015
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+    "arm": "wall_thickness",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.035
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+    "arm": "ground_insulation",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.005
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.0
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+    "arm": "assembly_clearance",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.004
+    }
+  },
+  {
+    "id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+    "arm": "internal_build_y",
+    "family": "geometry-at-allocation-0.5",
+    "anchor_id": "alloc-oldpass1.2-0.5",
+    "point": {
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+      "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.0
+    }
+  }
+]

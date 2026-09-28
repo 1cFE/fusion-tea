@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/tmp/wi073-actual-archive-qvqi6313/.project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py",
+    "--root",
+    "/tmp/wi073-actual-archive-qvqi6313",
+    "--native-result",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward/native-result.json",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward-accounts.json"
+  ],
+  "cwd": "/tmp/wi073-actual-archive-qvqi6313",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COMPARISON-MATCHED-CYCLE",
+  "request_key": "075f97cea5f28ccb88264bf3c386f8addd2c1242cb952dbce4e8ac97a68e64f5",
+  "request_path": "knowledge/research/requests/REQ-COMPARISON-MATCHED-CYCLE.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 4
+  },
+  "opened_at": "2026-09-20T03:00:03.317184+00:00",
+  "override_reason": null
+}

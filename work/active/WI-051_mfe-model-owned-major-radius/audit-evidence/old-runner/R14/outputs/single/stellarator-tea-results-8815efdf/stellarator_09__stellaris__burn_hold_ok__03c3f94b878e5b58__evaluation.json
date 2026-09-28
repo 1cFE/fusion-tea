@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+  "margin": 116.0531121260143,
+  "observed": {
+    "p_aux_required_in": 116.0531121260143
+  },
+  "status": "satisfied"
+}

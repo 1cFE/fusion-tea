@@ -1,0 +1,10 @@
+{
+  "files": {
+    "native-result.json": "76e5cf2791a4acb65bbd91cef5875b365f56bcdbf30437a12062b9bf79ca63b3",
+    "native/artifacts/5e99f3024079114d9fb89061c86fd846c8a61255622c0e6ceb7c131f1a85fa14.json": "5e99f3024079114d9fb89061c86fd846c8a61255622c0e6ceb7c131f1a85fa14",
+    "native/current-comparison-fixed-point.db": "5dae99a0c406821af562a81f6fc64e99d1eefecb4dd29b19fa46b2358199843a",
+    "request.json": "368a0a80de765a708b46e77631e52de6b091ecf295a538f0d016ab232ff473dc",
+    "request.raw.json": "368a0a80de765a708b46e77631e52de6b091ecf295a538f0d016ab232ff473dc"
+  },
+  "result_directory": "table5-conditioned"
+}

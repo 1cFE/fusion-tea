@@ -1,0 +1,9 @@
+{
+  "status": "two_byte_identical_builds",
+  "archive": ".project/active/aries-comparison-preparation/current-readiness/candidate-archives/20260920-matched-cycle/comparison-freeze.tar.gz",
+  "repeat": ".project/active/aries-comparison-preparation/current-readiness/candidate-archives/20260920-matched-cycle-repeat/comparison-freeze.tar.gz",
+  "sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "archive_bytes": 5692124,
+  "members": 1047,
+  "base_revision": "5fc805015609d8cdc47f00b2f6e16866af6233a2"
+}

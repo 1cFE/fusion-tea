@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-051_assessment/verify.py", line 6, in <module>
+    from tests.study.test_records import _ids_in_log, _ids_in_record
+ModuleNotFoundError: No module named 'tests'

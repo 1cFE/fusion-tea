@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-STELLARIS-IC-01",
+  "request_key": "c6e15354471d260cd18502b51907d3b9d183c1be62d3d4f093097250e59dd900",
+  "request_path": "/tmp/REQ-STELLARIS-IC-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 3,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-17T04:54:36.514783+00:00",
+  "override_reason": null
+}

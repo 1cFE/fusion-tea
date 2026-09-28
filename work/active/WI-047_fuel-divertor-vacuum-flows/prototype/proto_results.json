@@ -1,0 +1,206 @@
+{
+ "P0_design_point": {
+  "inputs": {
+   "p_fus": 2652.5632625175904,
+   "p_alpha_heat": 504.49100689822046,
+   "p_rad": 219.7216452237653,
+   "p_aux_required": 49.07960078792678,
+   "p_coupled": 50.0
+  },
+  "fuel": {
+   "burn_rate": 9.417518585656878e+20,
+   "inject_rate": 1.8835037171313755e+22,
+   "exhaust_rate": 1.7893285312748067e+22,
+   "loss_rate": 1.7893285312748084e+20,
+   "tbr_required": 1.1900000000000002,
+   "tbr_margin": -0.1160000000000001,
+   "burn_kg_per_fpy": 148.74097510492368
+  },
+  "divheat_pessimistic": {
+   "p_heat_abs": 554.4910068982205,
+   "p_sep": 334.7693616744551,
+   "f_rad_edge": 0.8343662621559043,
+   "f_rad_edge_in_range": 0.1381992027318891,
+   "p_target_nonrad": 55.449100689822046,
+   "q_target_peak": 10.53532913106619,
+   "q_target_peak_area_scaled": 10.53532913106619,
+   "q_target_margin": -0.5353291310661898,
+   "p_heat_operating_minus_installed": -0.920399212073221,
+   "divertor_heat_ok": "violated"
+  },
+  "divheat_low_case": {
+   "p_heat_abs": 554.4910068982205,
+   "p_sep": 334.7693616744551,
+   "f_rad_edge": 0.8343662621559043,
+   "f_rad_edge_in_range": 0.1381992027318891,
+   "p_target_nonrad": 55.449100689822046,
+   "q_target_peak": 5.544910068982205,
+   "q_target_peak_area_scaled": 5.544910068982205,
+   "q_target_margin": 4.455089931017795,
+   "p_heat_operating_minus_installed": -0.920399212073221,
+   "divertor_heat_ok": "satisfied"
+  },
+  "vacuum": {
+   "Q_total": 78.0137257066115,
+   "S_eff_required": 78.0137257066115,
+   "n_molecules_per_s": 1.8835037171313755e+22
+  },
+  "operating_basis_check": {
+   "p_heat_abs": 553.5706076861472,
+   "p_sep": 333.8489624623819,
+   "f_rad_edge": 0.8341853143400069,
+   "f_rad_edge_in_range": 0.1383201756794708,
+   "p_target_nonrad": 55.3570607686147,
+   "q_target_peak": 10.517841546036793,
+   "q_target_peak_area_scaled": 10.517841546036793,
+   "q_target_margin": -0.5178415460367933,
+   "p_heat_operating_minus_installed": 0.0,
+   "divertor_heat_ok": "violated"
+  },
+  "p_fus_reconstructed_MW": 2652.5632625175904
+ },
+ "source_case": {
+  "p_target_nonrad": 50.0,
+  "q_peak_pessimistic": 9.5,
+  "q_peak_low": 5.0,
+  "f_rad_edge_with_zero_core": 0.9,
+  "doubled_load_peak": 19.0
+ },
+ "t_recycle_transect": {
+  "threshold": 0.9961052631578947,
+  "rows": {
+   "0.990000": {
+    "tbr_required": 1.1900000000000002,
+    "tbr_margin": -0.1160000000000001
+   },
+   "0.992000": {
+    "tbr_required": 1.1520000000000001,
+    "tbr_margin": -0.07800000000000007
+   },
+   "0.994000": {
+    "tbr_required": 1.114,
+    "tbr_margin": -0.040000000000000036
+   },
+   "0.996000": {
+    "tbr_required": 1.076,
+    "tbr_margin": -0.0020000000000000018
+   },
+   "0.996100": {
+    "tbr_required": 1.0741000000000003,
+    "tbr_margin": -0.00010000000000021103
+   },
+   "0.996105": {
+    "tbr_required": 1.0740000000000005,
+    "tbr_margin": -4.440892098500626e-16
+   },
+   "0.997000": {
+    "tbr_required": 1.057,
+    "tbr_margin": 0.017000000000000126
+   },
+   "0.998000": {
+    "tbr_required": 1.038,
+    "tbr_margin": 0.03600000000000003
+   },
+   "0.999000": {
+    "tbr_required": 1.019,
+    "tbr_margin": 0.05500000000000016
+   },
+   "1.000000": {
+    "tbr_required": 1.0,
+    "tbr_margin": 0.07400000000000007
+   }
+  },
+  "identity_1p19": 1.1900000000000002
+ },
+ "lossless_check": {
+  "0.01": {
+   "loss": 0.0,
+   "tbr_required": 1.0,
+   "inject": 9.417518585656877e+22
+  },
+  "0.05": {
+   "loss": 0.0,
+   "tbr_required": 1.0,
+   "inject": 1.8835037171313755e+22
+  },
+  "0.2": {
+   "loss": 0.0,
+   "tbr_required": 1.0,
+   "inject": 4.708759292828439e+21
+  }
+ },
+ "P3_c2823": {
+  "name": "c2823 (R 15.7, a 2.2, 13 MA, 13 keV, n 5.06e20, 100 MW)",
+  "p_fus": 5363.434926736221,
+  "R": 15.7,
+  "p_alpha_heat": 1020.0716887159617,
+  "p_heat_abs": 1070.0716887159617,
+  "p_target_nonrad": 107.00716887159615,
+  "q_target_peak_pessimistic": 20.331362085603267,
+  "q_target_peak_low": 10.700716887159615,
+  "p_heat_operating_minus_installed": -16.65946471163329,
+  "fuel": {
+   "burn_rate": 1.9042052198807694e+21,
+   "inject_rate": 3.8084104397615385e+22,
+   "exhaust_rate": 3.6179899177734618e+22,
+   "loss_rate": 3.617989917773465e+20,
+   "tbr_required": 1.1900000000000002,
+   "tbr_margin": -0.1160000000000001,
+   "burn_kg_per_fpy": 300.75156064605267
+  },
+  "q_target_peak_area_scaled": 16.446388438672706,
+  "divertor_heat_ok": "violated",
+  "note": "p_rad (core radiation) is not a column of the committed CSV, so p_sep and f_rad_edge are read at execution; the peak needs only p_fus and p_coupled",
+  "vacuum": {
+   "Q_total": 157.74234195738987,
+   "S_eff_required": 157.74234195738987,
+   "n_molecules_per_s": 3.8084104397615385e+22
+  }
+ },
+ "P4_c3598_highest_heating_feasible": {
+  "name": "c3598 (R 17.2, a 2.2, 14 MA, 13 keV, 100 MW; the highest-p_fus ten-verdict feasible point at 100 MW)",
+  "p_fus": 5973.4561207478655,
+  "R": 17.2,
+  "p_alpha_heat": 1136.0916196050364,
+  "p_heat_abs": 1186.0916196050364,
+  "p_target_nonrad": 118.60916196050357,
+  "q_target_peak_pessimistic": 22.53574077249568,
+  "q_target_peak_low": 11.860916196050358,
+  "p_heat_operating_minus_installed": -8.753791607409084,
+  "fuel": {
+   "burn_rate": 2.120783878472184e+21,
+   "inject_rate": 4.241567756944368e+22,
+   "exhaust_rate": 4.02948936909715e+22,
+   "loss_rate": 4.0294893690971534e+20,
+   "tbr_required": 1.1900000000000002,
+   "tbr_margin": -0.1160000000000001,
+   "burn_kg_per_fpy": 334.95815187579154
+  },
+  "q_target_peak_area_scaled": 16.639762082017157,
+  "divertor_heat_ok": "violated",
+  "note": "p_rad (core radiation) is not a column of the committed CSV, so p_sep and f_rad_edge are read at execution; the peak needs only p_fus and p_coupled",
+  "vacuum": {
+   "Q_total": 175.68348846172455,
+   "S_eff_required": 175.68348846172455,
+   "n_molecules_per_s": 4.241567756944368e+22
+  }
+ },
+ "p_heat_abs_at_limit": {
+  "pessimistic": 526.3157894736844,
+  "low": 1000.0000000000002
+ },
+ "vacuum_checks": {
+  "atoms_per_s": 3.672832248406182e+22,
+  "molecules_per_s": 1.8835037171313755e+22,
+  "ratio": 1.95,
+  "doubled": 2.0
+ },
+ "constants": {
+  "E_fus_J": 2.8166265225719994e-12,
+  "lambda_T": 1.782785958230312e-09,
+  "m_T_kg": 5.008267663228036e-27,
+  "s_per_fpy": 31536000.0,
+  "k_B": 1.380649e-23,
+  "u_kg": 1.66053906892e-27
+ }
+}

@@ -1,0 +1,5598 @@
+{
+  "constraints": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": true,
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": true,
+    "stellarator_09__stellaris__cold_stage_capacity_ok__93eb65dcc5b55e0b": true,
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": true,
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f": true,
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade": true,
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894": true,
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29": true,
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328": true,
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": true,
+    "stellarator_09__stellaris__direct_electric_capacity_ok__5acaaed766dc1371": true,
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": false,
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1": true,
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9": true,
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98": true,
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f": true,
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86": true,
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad": false,
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722": true,
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539": true,
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938": true,
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b": true,
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912": true,
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314": true,
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458": true,
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a": true,
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": true,
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": true,
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": true,
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": true,
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da": true,
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72": true,
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a": true,
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640": true,
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4": true,
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2": true,
+    "stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061": true,
+    "stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085": true,
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": true,
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": true,
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d": true,
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5": true,
+    "stellarator_09__stellaris__magnet_pf_electric_capacity_ok__8a8fdad77b158738": true,
+    "stellarator_09__stellaris__magnet_tf_electric_capacity_ok__23bdb2b2b84fef80": true,
+    "stellarator_09__stellaris__main_UA_capacity_ok__86518fe643367961": true,
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87": true,
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444": true,
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": true,
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": true,
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": true,
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0": false,
+    "stellarator_09__stellaris__reheat_UA_capacity_ok__e377a2da71f404d0": true,
+    "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda": true,
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b": true,
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1": true,
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d": true,
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0": true,
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": true,
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": false,
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4": true,
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": true,
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d": false,
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb": true,
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7": true,
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2": true,
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339": false,
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": true
+  },
+  "execution_status": "completed",
+  "extrapolations": [],
+  "notes": "Unfilled post-reveal worksheet. Add source page/table, definition and correspondence evidence; do not overwrite model values.",
+  "quantities": {
+    "BOP": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "BOP modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 532971506.3170662
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220101": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220102 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 719155016.1966425
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220102": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220103 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 452529516.99448603
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220103": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220101 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 1707443242.2597551
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220104": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220106 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 264145000.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220105": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220104 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 32373952.820015125
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220106": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220105 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 113317730.12762633
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220107": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "C220107 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 86013482.74180616
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220108": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "divertor_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 109109123.15593052
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220109": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "Steady-state account C220109: no separately priced producer; reference applicability unresolved"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220110": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "remote_handling modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 157969959.25281796
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "C220111": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "installation modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 509887983.2968712
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS10": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS10 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 16901536.908759248
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS20": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS20 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 13355393666.76395
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS21": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS21 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 799758795.94032
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS22": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS22 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 10779721625.468134
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS23": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS23 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 247464428.83859593
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS24": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS24 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 105407841.90324733
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS25": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS25 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 115939531.80564217
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS26": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS26 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 64159703.76958075
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS27": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS27 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 23815042.059888843
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS28": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS28 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 5000000.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS29": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS29 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 1214126696.9785411
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS2x": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS2x modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 12141266969.78541
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS30": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS30 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 3561438311.1370535
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS40": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS40 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 37985982.20350555
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS50": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS50 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 779542094.1813809
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS60": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS60 modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 5014293318.407453
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "CAS70": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS70 annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 266846562.18804568
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "CAS71": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS71 annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 72846649.61319037
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "CAS72": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS72 annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 193999912.5748553
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "CAS80": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS80 annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 792505.9651144512
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "CAS90_1cfe": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "CAS90_1cfe annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 1834594194.0995538
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "achieved_tbr": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "achieved tbr"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.1980739195540366
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "additional_loop_installed": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "Additional-loop installed equipment, layout and qualification cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "annual_total": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "annual_total annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 267639068.15316013
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "aux_cooling": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "aux_cooling modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 3637578.0087337815
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "aux_cooling_total": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "aux_cooling_total modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 35116270.129820704
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "availability": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "availability"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.9027777777777779
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "cas_coverage": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "B-2 CAS20/22x and CAS10/40/50/60/70/80 correspondence"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "casing_mass": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Per-coil casing floor mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": 63000.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "coil_life": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "coil life"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "FPY",
+        "value": 10.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "FPY",
+        "value": null
+      }
+    },
+    "coil_life_margin": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "coil life margin"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "FPY",
+        "value": -17.083333333333336
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "FPY",
+        "value": null
+      }
+    },
+    "coil_mass_complete": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Complete manufactured coil-set mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "constraint_beta_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "beta_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_burn_hold_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "burn_hold_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_cond_strain_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "cond_strain_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_cycle_domain_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "cycle_domain_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_divertor_heat_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "divertor_heat_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_heating_couple_positive_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "heating_couple_positive_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_heating_couple_upper_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "heating_couple_upper_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_heating_source_positive_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "heating_source_positive_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_heating_source_upper_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "heating_source_upper_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_loop_capacity_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "loop_capacity_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_loop_pressure_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "loop_pressure_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_net_positive": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "net_positive authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_peak_field_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "peak_field_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_recirc_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "recirc_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_reference_conductor_current_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "reference_conductor_current_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_sustainment_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "sustainment_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_tbr_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "tbr_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_wall_load_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "wall_load_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_wp_fit_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "wp_fit_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "constraint_wp_stress_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "wp_stress_ok authored predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "construction": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "construction"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "year",
+        "value": 8.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "year",
+        "value": null
+      }
+    },
+    "coolant": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "coolant modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 6471347145.807992
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "cooling_water_heat_direction": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "copper_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "copper_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 4700258.639999999
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "cryo_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "cryo_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 31478692.121086925
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "discount_rate": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "discount rate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.07
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "escalation": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "escalation"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.02
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "facility_capacity_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "facility_initial_ready": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "facility_outage_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "facility_replacement_ready": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "facility_routes_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "fit_cavity_x": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit cavity x"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.25
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_cavity_y": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit cavity y"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.4
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_exterior_x": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit exterior x"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.3
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_exterior_y": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit exterior y"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.45
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_margin_x": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit margin x"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": -0.11999999999999994
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_margin_y": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit margin y"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.021000000000000074
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_pack_x": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit pack x"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.35999999999999993
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_pack_y": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit pack y"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.36899999999999994
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_required_x": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit required x"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.36999999999999994
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fit_required_y": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding-pack fit required y"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.37899999999999995
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "fuel_handling": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "fuel_handling modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 22811717.720117148
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "fusion": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "fusion"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 2652.5632625175904
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__active": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__condenser_water_gap_K": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "K",
+        "value": 7.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "K",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__cooling_approach_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__denominator_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 41.54657026315789
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__p_cooling_pump_electric_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 13.02318006356215
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__p_cooling_pump_shaft_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 12.372021060384041
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__q_cooling_motor_loss_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.6511590031781083
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__q_total_rejection_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 2109.621069383624
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__reference_scenario": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__site_qualified": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__water_energy_residual_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 4.547473508864641e-13
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__water_flow_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 50463.801850311946
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "heat_rejection__cooling_water__water_pump_rise_K": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "K",
+        "value": 0.06173231891055762
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "K",
+        "value": null
+      }
+    },
+    "helium_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "helium_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 34774.15261034517
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "ihx_duty": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "ihx duty"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 3301.2132114869937
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "installed_coupled": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "installed coupled"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 50.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "installed_wallplug": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "installed wallplug"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 100.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "instrumentation": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "instrumentation modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 81921417.18593018
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "insulation_stock": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "insulation_stock modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 421131.9672639345
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "lcoe_1cfe": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "lcoe_1cfe supporting LCOE"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/MWh",
+        "value": 312.71135268520896
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/MWh",
+        "value": null
+      }
+    },
+    "lcoe_dcf": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "lcoe_dcf supporting LCOE"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/MWh",
+        "value": 318.7377471541504
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/MWh",
+        "value": null
+      }
+    },
+    "loop_flow": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "loop flow"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 214.98255048571605
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "loop_pressure_drop": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "loop pressure drop"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "Pa",
+        "value": 300319.8964637657
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "Pa",
+        "value": null
+      }
+    },
+    "major_radius": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "major radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 12.7
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "manufacturing_remainder": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "Unpriced factory and ground-insulation remainder"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "mass_copper": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding pack external copper mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": 427296.2399999999
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "mass_helium": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding pack external helium mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": 394.441843801877
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "mass_solder": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding pack external solder mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": 137488.60799999998
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "mass_steel": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Winding pack external steel mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": 393292.7999999999
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "matched_main_heat_direction": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "matched_reheat_heat_direction": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Authored engineering predicate"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "minor_radius": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 1.3
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "modules": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "modules"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "non_tape_materials": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "non_tape_materials modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 15954709.374417959
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "nonrad_uncaptured": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "nonrad uncaptured"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.5535706076861473
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "operating_coupled": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "operating coupled"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 49.07960078792678
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "operating_life": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "operating life"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "year",
+        "value": 30.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "year",
+        "value": null
+      }
+    },
+    "operating_wallplug": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "operating wallplug"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 98.15920157585356
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "other_rpe": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "other_rpe modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 10098565.14458109
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "outage": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "outage"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "year",
+        "value": 0.5833333333333334
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "year",
+        "value": null
+      }
+    },
+    "outer_radius_blanket": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "blanket outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 2.25
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_coil": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "coil outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 3.3000000000000003
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_coil_gap": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "coil_gap outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 3.4
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_cold_shield": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "cold_shield outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 3.5500000000000003
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_first_wall": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "first_wall outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 1.45
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_hot_shield": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "hot_shield outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 2.65
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_reflector": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "reflector outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 2.45
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_sol": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "sol outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 1.4000000000000001
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_structure": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "structure outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 2.8000000000000003
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_vessel": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vessel outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 3.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "outer_radius_vessel_gap": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vessel_gap outer minor radius"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 2.9
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "overnight": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "overnight modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 17751261591.194653
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "p_et": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "p et"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 1219.9981701764736
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "p_net": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "p net"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 850.0653006674999
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "p_th": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "p th"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 3306.8890988488924
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "p_the": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "p the"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 1219.9981701764736
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "peak_field": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "peak field"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "T",
+        "value": 24.899999999999995
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "T",
+        "value": null
+      }
+    },
+    "powercore": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "powercore modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 3484087064.2962613
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "productive_fpy": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "productive fpy"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "FPY",
+        "value": 27.083333333333336
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "FPY",
+        "value": null
+      }
+    },
+    "pump_electric": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "pump electric"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 175.28093440448808
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "q_eng": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "q eng"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 3.297890700536626
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "radial_blanket_vol": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "blanket vol"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m3",
+        "value": 1013.4060451016529
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m3",
+        "value": null
+      }
+    },
+    "radial_order": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "B-2 radial layer correspondence"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "radial_r_coil": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "r coil"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 3.0000000000000004
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "radial_r_coil_centre": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "r coil centre"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 3.1500000000000004
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "radial_shield_vol": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "shield vol"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m3",
+        "value": 517.043900562068
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m3",
+        "value": null
+      }
+    },
+    "radial_structure_vol": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "structure vol"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m3",
+        "value": 204.93740058641953
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m3",
+        "value": null
+      }
+    },
+    "radial_vessel_vol": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vessel vol"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m3",
+        "value": 147.90589155472523
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m3",
+        "value": null
+      }
+    },
+    "radial_wall_area": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "wall area"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m2",
+        "value": 701.9262650054739
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m2",
+        "value": null
+      }
+    },
+    "radiated_total": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "radiated total"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 498.21354691753254
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "raw_fuel": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "raw_fuel annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 550716.1814915092
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "raw_om": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "raw_om annual cost"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD/year",
+        "value": 50617243.27603046
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD/year",
+        "value": null
+      }
+    },
+    "reactor_equipment": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "reactor_equipment modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 3642057023.5490794
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "rec_frac": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "rec frac"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.30322411832426166
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "recirculating_power": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Total recirculating electric demand"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 369.9328695089738
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "recovered_heat": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "recovered heat"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 175.28093440448808
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "refrigeration": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "refrigeration"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 2.137762109226717
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "required_tbr": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "required tbr"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.1916699222592924
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "solder_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "solder_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 8859919.781807616
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "source_heat": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "source heat"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 3125.9322770825056
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "steel_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "steel_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 2359756.7999999993
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "subsystems": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "B-2 subsystem correspondence: plasma, magnets, blanket/shield, vessel, heating, power conversion, BOP and buildings"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "support_mass": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Complete modeled electromagnetic support mass"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg",
+        "value": 11615604.482575215
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg",
+        "value": null
+      }
+    },
+    "supports_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "supports_cost modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 209080880.68635386
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "tape_procurement": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "tape_procurement modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 731571428.5714288
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "target_deposited": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "target deposited"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 54.803490160928554
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "target_peak": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "target peak"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW/m2",
+        "value": 10.517841546036793
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW/m2",
+        "value": null
+      }
+    },
+    "tbr_margin": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "tbr margin"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.006403997294744279
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "thickness_blanket": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "blanket radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.8
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_coil": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "coil radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.3
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_coil_gap": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "coil_gap radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_cold_shield": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "cold_shield radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.15
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_first_wall": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "first_wall radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.05
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_hot_shield": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "hot_shield radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.2
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_reflector": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "reflector radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.2
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_sol": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "sol radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_structure": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "structure radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.15
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_vessel": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vessel radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "thickness_vessel_gap": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vessel_gap radial thickness"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m",
+        "value": 0.1
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m",
+        "value": null
+      }
+    },
+    "total_capital": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "total_capital modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 17751261591.194653
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "turbine__cycle_selection__eta_selected": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.3689262426735591
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__cycle_selection__legacy_domain_applicable": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__cycle_selection__matched_domain_applicable": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__active": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__bleed_fraction": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.20500966665692555
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__cycle_electric_residual_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 4.547473508864641e-13
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__cycle_shaft_residual_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__eta_gross": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.3689262426735591
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_condensate_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 175.89327
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_condensate_pumped_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 176.89159778430147
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_feed_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 728.3884893
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_heater_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 720.8637
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_hp_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 2830.288928194147
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_lp_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 2511.792422476057
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_main_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 3287.7317
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__h_reheat_kJ_kg": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/kg",
+        "value": 3363.213668490404
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/kg",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__heater_energy_residual_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 1.1641532182693482e-13
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__heater_mass_residual_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__installed_sg_capacity_qualified": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__lp_moisture_fraction": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.027190644596582714
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__lp_quality": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.9728093554034173
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__main_UA_MW_K": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW/K",
+        "value": 41.07437838721364
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW/K",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__main_UA_available": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__main_admission_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__main_min_gap_K": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "K",
+        "value": 20.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "K",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_bleed_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 227.268262019725
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_condensate_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 881.3051322292799
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_condensate_pumped_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 881.3051322292799
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_feed_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 1108.5733942490049
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_heater_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 1108.5733942490049
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_hp_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 1108.5733942490049
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_lp_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 881.3051322292799
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_main_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 1108.5733942490049
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__mdot_reheat_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 881.3051322292799
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_condensate_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 0.0082095634
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_condensate_electric_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.9261383157389033
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_condensate_pumped_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 0.8
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_condensate_shaft_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.879831399951958
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_cycle_net_before_cooling_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 1210.29120952883
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_cycle_pumps_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 9.70696064764374
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_feed_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 6.2
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_feedwater_electric_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 8.780822331904837
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_feedwater_shaft_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 8.341781215309595
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_gross_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 1219.9981701764736
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_heater_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 0.8
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_hp_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 0.8
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_hp_shaft_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 507.1088862154872
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_lp_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 0.0082095634
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_lp_shaft_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 750.3619138014925
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_main_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 6.2
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__p_reheat_MPa": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MPa",
+        "value": 0.8
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MPa",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_condenser_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 2058.639911447174
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_generator_loss_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 24.897921840336267
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_main_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 2837.219790133845
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_mechanical_loss_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 12.574708000169721
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_pump_motor_loss_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.4853480323821877
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_reheat_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 469.66930871504735
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__q_rejection_before_cooling_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 2096.597889320062
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__reheat_UA_MW_K": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW/K",
+        "value": 11.18676341684029
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW/K",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__reheat_UA_available": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__reheat_admission_ok": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 1.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__reheat_min_gap_K": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "K",
+        "value": 20.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "K",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_condensate_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 0.5990114
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_feed_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 2.0490573695799004
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_heater_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 2.0456512
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_hp_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 6.797557321733462
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_lp_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 8.01103489567639
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_main_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 6.6866472
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__s_reheat_kJ_kgK": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kJ/(kg K)",
+        "value": 7.710852878282219
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kJ/(kg K)",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__salt_flow_total_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 10852.114436183412
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__salt_heat_residual_MW": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "MW",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "MW",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__salt_main_flow_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 9310.815368393974
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__salt_reheat_flow_kg_s": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "kg/s",
+        "value": 1541.2990677894368
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "kg/s",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_condensate_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 42.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_feed_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 171.45500475761446
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_heater_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 170.40649
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_hp_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 195.90861756356085
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_lp_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 42.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_main_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 445.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__t_reheat_C": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "degC",
+        "value": 445.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "degC",
+        "value": null
+      }
+    },
+    "turbine__matched_cycle__turbine_equipment_qualified": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "Bounded WI-073 matched-cycle scenario"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "unplanned": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "unplanned"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "1",
+        "value": 0.0
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "1",
+        "value": null
+      }
+    },
+    "vacuum_pumping_cost": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "Vacuum gas-load pumping installed cost; vessel-shell account excludes this"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": null
+      },
+      "model_valid": false,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "vol_cold_total": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vol cold total"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m3",
+        "value": 136.55999999999997
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m3",
+        "value": null
+      }
+    },
+    "vol_winding_pack": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_current_model",
+        "scope": [
+          "vol winding pack"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "m3",
+        "value": 136.55999999999997
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "m3",
+        "value": null
+      }
+    },
+    "waste": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "waste modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 6481502.633743829
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "winding_operations": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "winding_operations modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 750415091.6602907
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    },
+    "winding_procurement": {
+      "applicability_evidence": "",
+      "model": {
+        "basis": "single_module_mixed_year_USD",
+        "scope": [
+          "winding_procurement modeled capital account"
+        ],
+        "technology": "Stellaris-shaped D-T stellarator; 20 K REBCO; helium primary loop",
+        "unit": "USD",
+        "value": 1497941229.6061373
+      },
+      "model_valid": true,
+      "reference": {
+        "basis": "unresolved",
+        "scope": [],
+        "technology": "unresolved",
+        "unit": "USD",
+        "value": null
+      }
+    }
+  },
+  "run_kind": "conditioned",
+  "schema_version": 1
+}

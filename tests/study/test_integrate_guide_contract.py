@@ -26,7 +26,7 @@ def test_guide_enumerates_every_condition_slug():
     body = guide()
     missing = [slug for slug in integrate.CONDITIONS if slug not in body]
     assert missing == [], "a caller reading these slugs has nowhere to look them up"
-    assert len(integrate.CONDITIONS) == 14
+    assert len(integrate.CONDITIONS) == 15
 
 
 def test_guide_lists_every_environment_variable_the_seam_requires():

@@ -1,16 +1,22 @@
 """DE-RISK 1 (review L1): the package can publish every predicate operand's binding.
 
 The design's earlier bet was that a generic tool could resolve a predicate operand
-to a package key by name. That bet is false on this package: of the eleven
-``feature_ref`` operands across the six catalog constraints, ``net_positive``'s
+to a package key by name. That bet is false on this package: of the thirteen
+``feature_ref`` operands across the eight catalog constraints (WI-035 added
+wp_stress_ok), ``net_positive``'s
 ``net_electric`` matches no parameter and no channel at all, and the three that
 could be name-matched use three different composition rules. So D12 moved the
 obligation to the package: it *publishes* the bindings, and ``verify.py`` consumes
 them as data and fails closed on anything unresolved.
 
 This test proves the publication is possible and correct against the real contract,
-before anything consumes it. It resolves all six constraints — no sampling.
+before anything consumes it. It resolves all eight constraints — no sampling.
 """
+from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS, WI064_PARAMETERS, CURRENT_PREDICATES, CURRENT_PARAMETERS, FACILITY_PREDICATES
+
+from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
+
+from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS
 
 import json
 import sys
@@ -22,12 +28,36 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 STUDIES = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
 
 BASELINE_POINT = {
-    "stellarator_09__stellaris__R": 12.7,
-    "stellarator_09__stellaris__magnet__R0": 12.7,
-    "stellarator_09__stellaris__a": 1.3,
-    "stellarator_09__stellaris__availability": 0.85,
+    "stellarator_09__stellaris__plasma__R": 12.7,
+    "stellarator_09__stellaris__plasma__a": 1.3,
+    # WI-046: availability retired as an entry key; availability_direct 0.0 = the live calendar
+    "stellarator_09__stellaris__availability_direct": 0.0,
 }
-PINNED_LCOE = 333.0670332813743  # p_pump 195 MW pin (WI-033; GSTH Item 6, 2026-08-29)
+# WI-041 pin (source-anchored wall-load fence; goal wall-and-heating round 2, 2026-09-04):
+# the CAS72 lifetime operand moved from the circular-torus average to the peak (4.088
+# MW/m^2), so the core is replaced 5 times instead of 4 and CAS72 rose 95,898,253 ->
+# 131,494,480 $/yr; +35,596,226 / (8760 h x 743.910232 MW x 0.85) = +6.426 $/MWh on
+# the WI-037 pin 307.08712042841586. Re-pinned from the executed baseline after the
+# oracle read bit-exact (run_stellaris_single.py), never before.
+# WI-042 (goal stored-energy-basis round 2, 2026-09-05): the manifest's pinned headline
+# after the helium ash moved to the source's own profile rule (W 551.4 -> 519.9 MJ; the
+# re-closed fixed point takes p_fus 2725.4 -> 2652.6 MW and LCOE 313.513412 -> 322.318439);
+# was 313.5134115016116 at WI-041 and 307.08712042841586 at WI-039.
+# WI-045 (goal plant-closure round 1, 2026-09-08): the three held plant multipliers
+# (p_pump 195 MW, eta_p 0.5, eta_th 0.333) became computed producers -- the representative
+# helium loop (175.44 MW draw, all fluid work recovered) and the Kovari 2016 helium-Rankine
+# fit (0.41136) -- so the headline moved by design: 322.318439 -> 237.252800 at the held
+# availability 0.85. Re-pinned from the executed baseline after the oracle read bit-exact
+# (run_stellaris_single.py); the compatibility proposal (loop_live 0, cycle_live 0, the
+# three directs at the held values) reproduces 322.31843948570247 bit-for-bit.
+# WI-046 (goal plant-closure round 1, 2026-09-08): the lifecycle calendar produces
+# availability and CAS72 -- availability 0.85 -> 0.9027777777777779 (five dated events,
+# the first at 4.52 yr), CAS72 128,437,178.45 -> 138,213,460.01 $/yr, so the headline
+# moved 237.252800 -> 224.609525; predicted before regeneration (plan section
+# Predictions) and re-pinned from the executed baseline after the oracle read bit-exact
+# on every channel, the eleven calendar channels included. The held mode
+# (availability_direct 0.85) reproduces WI-045's 237.2528002420958 bit-for-bit.
+PINNED_LCOE = 144.74743129583516  # WI-063 native/oracle agreement, item evidence/repin.log.
 
 
 @pytest.fixture
@@ -65,11 +95,13 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 6, f"expected the six viability constraints, found {len(entries)}"
+    assert {entry['constraint_id'] for entry in entries} == CURRENT_PREDICATES
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
 
+    assert set(bindings) == {entry["constraint_id"] for entry in entries}
+    assert set(inputs) == CURRENT_PARAMETERS  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]
@@ -86,7 +118,9 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 11, f"expected eleven feature_ref operands across the six, found {resolved}"
+    assert resolved == 41  # Original 35 plus two bound operands in each of three WI-073 predicates.
+    for cid in FACILITY_PREDICATES:
+        assert len(bindings[cid]) == 1
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(
@@ -116,7 +150,8 @@ def test_the_bindings_are_a_copy_a_caller_cannot_corrupt(oracle_entry):
 
 
 def test_the_shim_reproduces_the_pinned_headline(oracle_entry):
-    lcoe = oracle_entry.evaluate(BASELINE_POINT)["stellarator_09__stellaris__lcoe_calc__lcoe"]
+    from tests.models.current_mfe_regressions import POST_WI065_REPLAY
+    lcoe = oracle_entry.evaluate(BASELINE_POINT | POST_WI065_REPLAY)["stellarator_09__stellaris__lcoe_calc__lcoe"]
     assert abs(lcoe - PINNED_LCOE) / PINNED_LCOE < 1e-9, lcoe
 
 
@@ -144,3 +179,26 @@ def test_an_unmapped_oracle_output_fails_closed_naming_the_channel(oracle_entry,
     with pytest.raises(oracle_entry.OracleSeamError) as exc:
         oracle_entry.evaluate(BASELINE_POINT)
     assert "no_such_output" in str(exc.value) and "pkg__nowhere" in str(exc.value)
+
+
+@pytest.mark.parametrize("stage", ["source", "couple"])
+@pytest.mark.parametrize("value", [-0.5, 0.0, 1.0, 1.01])
+def test_scalar_efficiency_domains_use_current_input_bindings(
+    real_package_path, oracle_entry, stage, value
+):
+    from scripts.study.verify import derive_verdict
+
+    entries = catalog_entries(real_package_path)
+    point = {f"stellarator_09__stellaris__heating__eta_{stage}_heat": value}  # WI-057 (2026-09-13): the key carries its part's path
+    for entry in entries:
+        name = entry["source_local_identity"]
+        if name.startswith(f"heating_{stage}_"):
+            expected = value > 0 if "positive" in name else value <= 1
+            assert derive_verdict(entry["constraint_id"], entry, oracle_entry.operand_bindings(),
+                                  point, package_inputs(real_package_path), {}) == (expected, 1)
+
+
+@pytest.mark.parametrize("stage", ["source", "couple"])
+def test_zero_efficiency_fails_in_the_independent_oracle(oracle_entry, stage):
+    with pytest.raises(ZeroDivisionError):
+        oracle_entry.evaluate({f"stellarator_09__stellaris__heating__eta_{stage}_heat": 0})  # WI-057 (2026-09-13): the key carries its part's path

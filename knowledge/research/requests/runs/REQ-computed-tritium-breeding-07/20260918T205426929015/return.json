@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-07",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-07/20260918T205426929015",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "openmc_endf_b_viii_0_nndc_processed_hdf5_dataset_pinned",
+      "path": "knowledge/sources/openmc_endf_b_viii_0_nndc_processed_hdf5_dataset_pinned/",
+      "source_id": "734119a776d7ae81783a2b2c80ef1b203eea9d9da942ed3a030283c1c75cdee9",
+      "pre_existing": false
+    },
+    {
+      "slug": "openmc_0_15_2_tally_scores_and_source_normalization",
+      "path": "knowledge/sources/openmc_0_15_2_tally_scores_and_source_normalization/",
+      "source_id": "672e30ffc6e6847901a505e4a979338b6e1f2932448cb3d05e083098d19b58a1",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

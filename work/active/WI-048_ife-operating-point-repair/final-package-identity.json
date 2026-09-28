@@ -1,0 +1,27 @@
+{
+  "head": "d953f12c72d7311e446741b0c8f47d307a7b6d11",
+  "python": "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+  "versions": {
+    "agentic-mbse": "0.1.3",
+    "sysml-codegen": "0.1.1",
+    "syside": "0.8.4"
+  },
+  "package_contract_fields": {
+    "coverage_policy": {
+      "exclude_globs": [
+        "contracts/package_contract.json",
+        "**/__pycache__/**"
+      ],
+      "runtime_output_globs": []
+    },
+    "executable_fingerprint": "930738720555969d2ddb283fb73c8a31173a3851d5c94e3acb9c3cff92e0fefd",
+    "generator_version": "0.1.1",
+    "package_name": "ife_tea",
+    "runtime_contract_version": "2.0.0"
+  },
+  "loaded_fingerprint": "930738720555969d2ddb283fb73c8a31173a3851d5c94e3acb9c3cff92e0fefd",
+  "semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+  "entry_points": 19,
+  "typed_quotient_sha256": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377",
+  "no_backup_artifacts": true
+}

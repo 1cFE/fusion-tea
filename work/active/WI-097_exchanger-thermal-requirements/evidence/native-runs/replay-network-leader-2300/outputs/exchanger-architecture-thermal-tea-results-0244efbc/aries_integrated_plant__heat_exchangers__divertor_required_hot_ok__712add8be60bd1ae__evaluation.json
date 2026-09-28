@@ -1,0 +1,9 @@
+{
+  "actual_value": false,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_required_hot_ok__712add8be60bd1ae",
+  "margin": -17.040053918736817,
+  "observed": {
+    "margin_in": -17.040053918736817
+  },
+  "status": "violated"
+}

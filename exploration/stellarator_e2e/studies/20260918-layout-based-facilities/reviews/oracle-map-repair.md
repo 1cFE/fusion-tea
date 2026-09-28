@@ -1,0 +1,3 @@
+# Oracle override mapping repair
+
+[AGENT] Scan attempt1 refused the supported first-wall fluence-limit input. The independent oracle author added its public-key mapping to the existing `fluence_limit` operand; no equation or production package changed. The native input has default18 and fans out to calendar `fluence_limit_in` and facility `calendar_fluence_in`. The existing oracle calendar already feeds both. Forty-one oracle tests pass, including default override parity and180 yielding no recurring sector events while preserving initial demand. All prior324 mappings and842 internal default outputs remain unchanged. The original scan and captured mapper are retained as attempt1 evidence; the refreshed mapper is captured for the retry.

@@ -1,0 +1,10 @@
+{
+  "study_id": "20260916-primary-loop-sizing",
+  "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+  "model_contract_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "study_definition_fingerprint": "88af128bd9102780528994905444cee77a15f39aed594b0ac914eea44cdb0347",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "9fe612760171ce2bd95620658f693d79412eb95468071d60ce4f759ac88168f0"
+}

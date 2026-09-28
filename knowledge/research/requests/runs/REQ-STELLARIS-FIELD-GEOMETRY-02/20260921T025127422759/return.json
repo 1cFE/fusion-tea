@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-STELLARIS-FIELD-GEOMETRY-02",
+  "run": "knowledge/research/requests/runs/REQ-STELLARIS-FIELD-GEOMETRY-02/20260921T025127422759",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "author_stellaris_augmented_lagrangian_script_at_a79006b",
+      "path": "knowledge/sources/author_stellaris_augmented_lagrangian_script_at_a79006b/",
+      "source_id": "1a638e56f3d7bf6a45c0c918a335bef855727c3da130e532292a245be1880fcc",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://arxiv.org/html/2507.12681v3",
+      "reason": "term:aries-cs matched 3x"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

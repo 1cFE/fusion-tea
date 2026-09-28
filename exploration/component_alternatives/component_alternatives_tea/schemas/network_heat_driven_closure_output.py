@@ -1,0 +1,55 @@
+from pydantic import Field
+from simkit.config.schema import MultiOutput
+
+class Network_Heat_Driven_ClosureOutput(MultiOutput):
+    """Multi-output container for Network_Heat_Driven_Closure.
+
+*Source**: work/active/WI-092_aries-parallel-exchanger-network/design.md. **Reference**: generic network heat-driven closure; network mode 0 copies the reviewed 'Heat Driven Closure' equations line for line (that definition is retained in this file, unbound by the live assembly), mode 1 evaluates the published series-then-parallel exchanger network (Raffray Fig. 12) with a supplied cycle-flow split that is an operating choice, never a sizing rule. MW/K/MPa/kg/s/J per kg K as documented; mode and split are dimensionless; 0 < split < 1 in both modes. **Last Updated**: 2026-09-25.
+
+SysML Source: root-0/integrated_heat_electricity.sysml:112
+    """
+    pbli_state_defined: float = Field(description="pbli_state_defined output")
+    he_hot: float = Field(description="he_hot output")
+    network_mode_used: float = Field(description="network_mode_used output")
+    pbli_cold_terminal_difference: float = Field(description="pbli_cold_terminal_difference output")
+    divertor_hot: float = Field(description="divertor_hot output")
+    divertor_hot_bound_margin: float = Field(description="divertor_hot_bound_margin output")
+    pbli_stream_out: float = Field(description="pbli_stream_out output")
+    he_hot_bound_margin: float = Field(description="he_hot_bound_margin output")
+    he_cold_terminal_difference: float = Field(description="he_cold_terminal_difference output")
+    divertor_unmet: float = Field(description="divertor_unmet output")
+    pbli_secondary_out: float = Field(description="pbli_secondary_out output")
+    accepted_heat: float = Field(description="accepted_heat output")
+    divertor_transferred: float = Field(description="divertor_transferred output")
+    divertor_state_defined: float = Field(description="divertor_state_defined output")
+    he_state_defined: float = Field(description="he_state_defined output")
+    expansion_factor: float = Field(description="expansion_factor output")
+    pbli_hot: float = Field(description="pbli_hot output")
+    pbli_transferred: float = Field(description="pbli_transferred output")
+    pbli_split_used: float = Field(description="pbli_split_used output")
+    divertor_hot_terminal_difference: float = Field(description="divertor_hot_terminal_difference output")
+    he_transferred: float = Field(description="he_transferred output")
+    divertor_stream_out: float = Field(description="divertor_stream_out output")
+    pbli_return: float = Field(description="pbli_return output")
+    he_secondary_in: float = Field(description="he_secondary_in output")
+    pbli_secondary_in: float = Field(description="pbli_secondary_in output")
+    divertor_secondary_in: float = Field(description="divertor_secondary_in output")
+    closure_residual: float = Field(description="closure_residual output")
+    unmet_heat: float = Field(description="unmet_heat output")
+    heater_inlet: float = Field(description="heater_inlet output")
+    he_return: float = Field(description="he_return output")
+    he_capability: float = Field(description="he_capability output")
+    pbli_hot_bound_margin: float = Field(description="pbli_hot_bound_margin output")
+    turbine_temperature: float = Field(description="turbine_temperature output")
+    pbli_capability: float = Field(description="pbli_capability output")
+    he_secondary_out: float = Field(description="he_secondary_out output")
+    he_unmet: float = Field(description="he_unmet output")
+    divertor_cold_terminal_difference: float = Field(description="divertor_cold_terminal_difference output")
+    pbli_hot_terminal_difference: float = Field(description="pbli_hot_terminal_difference output")
+    divertor_capability: float = Field(description="divertor_capability output")
+    mixed_outlet: float = Field(description="mixed_outlet output")
+    divertor_return: float = Field(description="divertor_return output")
+    he_hot_terminal_difference: float = Field(description="he_hot_terminal_difference output")
+    divertor_secondary_out: float = Field(description="divertor_secondary_out output")
+    iterations: float = Field(description="iterations output")
+    pbli_unmet: float = Field(description="pbli_unmet output")

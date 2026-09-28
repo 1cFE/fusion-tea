@@ -1,0 +1,202 @@
+{
+  "schema_version": "integration-seam-return/v1",
+  "tool": {
+    "path": "scripts/integrate.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "1aa085461236a4c449b73e318b56908400b375d354c3b990705c090e933c1513",
+      "files": [
+        {
+          "path": "scripts/integrate.py",
+          "sha256": "f4d3c9056111aa3844a3cfb8008488f56002d66863e05b4bb407f4bdd79b5f87"
+        },
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/integrate.py",
+    "--audited-work",
+    "work/active/WI-060_tape-procurement-quantity-basis@8fa7665c",
+    "--models-root",
+    "exploration/stellarator_e2e/models",
+    "--package",
+    "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--groups",
+    "tests/study/data/axes.known_answers.json",
+    "--census-file",
+    "tests/models/data/mfe_census.json",
+    "--expected-semantic-fingerprint",
+    "ef1f4c896cd50cdfcf28872693a042a07254a2f4be5b2a3a35a61b70f4ee3040",
+    "--expected-executable-fingerprint",
+    "02463b0d430bc205ee01809086441bc8d736b52c798c28f41689b308cbb226d0",
+    "--expected-teax-revision",
+    "8d877460ac4f6f264561d916e40c1708adb13397",
+    "--route-sys-path",
+    "exploration/stellarator_e2e/studies",
+    "--route-module",
+    "study_route",
+    "--route-callable",
+    "execute_baseline",
+    "--out-dir",
+    "work/orchestration/goals/tape-procurement-consistency/evidence/T-004_integration"
+  ],
+  "request": {
+    "audited_work": [
+      {
+        "path": "work/active/WI-060_tape-procurement-quantity-basis",
+        "commit": "8fa7665c"
+      }
+    ],
+    "models_root": "exploration/stellarator_e2e/models",
+    "package": [
+      "exploration/stellarator_e2e/generated"
+    ],
+    "manifest": [
+      "exploration/stellarator_e2e/studies/manifest.json"
+    ],
+    "groups": "tests/study/data/axes.known_answers.json",
+    "census": "tests/models/data/mfe_census.json",
+    "expected": {
+      "semantic_fingerprint": "ef1f4c896cd50cdfcf28872693a042a07254a2f4be5b2a3a35a61b70f4ee3040",
+      "executable_fingerprint": "02463b0d430bc205ee01809086441bc8d736b52c798c28f41689b308cbb226d0",
+      "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397"
+    }
+  },
+  "class": "BLOCKER",
+  "exit_code": 1,
+  "candidate": null,
+  "blocker": {
+    "gate": "census-snapshot",
+    "producer": "sysml_codegen.snapshot.capture",
+    "scope": "request",
+    "mode": "refused",
+    "condition": "snapshot-drift",
+    "detail": "the snapshot recaptured from exploration/stellarator_e2e/models is not the tracked exploration/stellarator_e2e/stellarator.snapshot.json. The snapshot pins the toolchain as well as the model, so check the toolchain pin gate's result before reading this as model drift",
+    "expected": null,
+    "actual": null,
+    "evidence": [
+      "work/orchestration/goals/tape-procurement-consistency/evidence/T-004_integration/recaptured.snapshot.json"
+    ]
+  },
+  "gates": [
+    {
+      "gate": "pinned-packages",
+      "producer": "tests/test_dependency_provenance.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the pinned package revisions and installed wheel artifacts",
+      "detail": "tests/test_dependency_provenance.py passed",
+      "evidence": [
+        "work/orchestration/goals/tape-procurement-consistency/evidence/T-004_integration/junit/pinned-packages.xml"
+      ]
+    },
+    {
+      "gate": "teax-revision",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the teax checkout's revision against the expected one",
+      "detail": "teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397",
+      "evidence": []
+    },
+    {
+      "gate": "regeneration",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "regeneration in place moves no package byte",
+      "detail": "regeneration through stellarator_tea rewrote no byte outside handwritten/",
+      "evidence": []
+    },
+    {
+      "gate": "handwritten-preservation",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the handwritten implementations survive regeneration byte for byte",
+      "detail": "101 file(s) under handwritten/ are byte-identical",
+      "evidence": []
+    },
+    {
+      "gate": "census-snapshot",
+      "producer": "sysml_codegen.snapshot.capture",
+      "scope": "request",
+      "status": "fail",
+      "checked": "the recaptured snapshot and the re-derived entry-point census",
+      "detail": "the snapshot recaptured from exploration/stellarator_e2e/models is not the tracked exploration/stellarator_e2e/stellarator.snapshot.json. The snapshot pins the toolchain as well as the model, so check the toolchain pin gate's result before reading this as model drift",
+      "evidence": [
+        "work/orchestration/goals/tape-procurement-consistency/evidence/T-004_integration/recaptured.snapshot.json"
+      ]
+    },
+    {
+      "gate": "model-family-spine",
+      "producer": "tests/models/test_model_family_spines.py",
+      "scope": "repo",
+      "status": "not reached",
+      "checked": "the canonical tree, the family twins and the tracked census",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "manifest",
+      "producer": "scripts/study/manifest.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the manifest's schema, package identity and recomputed pin",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "preflight",
+      "producer": "scripts/study/preflight.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the six mechanical gates a study passes",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "verification",
+      "producer": "scripts/study/verify.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "oracle parity and re-derived verdicts over an executed store",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "lineage",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the live fingerprints against the lineage the request named",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    }
+  ],
+  "toolchain": {
+    "agentic_mbse": "0.1.3",
+    "sysml_codegen": "0.1.1",
+    "costingfe": "0.1.0",
+    "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "teax_module_path": "/home/reid/1cfe/teax/packages/teax-simkit/simkit"
+  }
+}

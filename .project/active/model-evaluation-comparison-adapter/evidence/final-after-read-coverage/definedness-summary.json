@@ -1,0 +1,69 @@
+{
+  "achieved_tbr": {
+    "applicability": "active",
+    "defined_when": {
+      "stellarator_09__stellaris__blanket__breeding__defined_flag": 0.0
+    },
+    "definedness": "undefined",
+    "id": "achieved_tbr",
+    "independent_prediction_credit": false,
+    "producers": [
+      "stellarator_09__stellaris__blanket__breeding__tbr_mean"
+    ],
+    "raw_value": 0.0,
+    "role": "calculated",
+    "status": "undefined_prediction",
+    "unit": "1",
+    "value": null
+  },
+  "raw_fuel": {
+    "applicability": "active",
+    "defined_when": {},
+    "definedness": "defined",
+    "id": "raw_fuel",
+    "independent_prediction_credit": false,
+    "producers": [
+      "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel"
+    ],
+    "raw_value": 542663.3252621221,
+    "role": "calculated",
+    "status": "mapped",
+    "unit": "USD/year",
+    "value": 542663.3252621221
+  },
+  "required_tbr": {
+    "applicability": "active",
+    "defined_when": {
+      "stellarator_09__stellaris__fuel_cycle__inventory__defined_flag": 0.0
+    },
+    "definedness": "undefined",
+    "id": "required_tbr",
+    "independent_prediction_credit": false,
+    "producers": [
+      "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required"
+    ],
+    "raw_value": 1.19130083751997,
+    "role": "calculated",
+    "status": "undefined_prediction",
+    "unit": "1",
+    "value": null
+  },
+  "tbr_margin": {
+    "applicability": "active",
+    "defined_when": {
+      "stellarator_09__stellaris__blanket__breeding__defined_flag": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__inventory__defined_flag": 0.0
+    },
+    "definedness": "undefined",
+    "id": "tbr_margin",
+    "independent_prediction_credit": false,
+    "producers": [
+      "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin"
+    ],
+    "raw_value": -1.19130083751997,
+    "role": "calculated",
+    "status": "undefined_prediction",
+    "unit": "1",
+    "value": null
+  }
+}

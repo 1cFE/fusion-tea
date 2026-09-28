@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_owned_paths_cover_every_canonical_file __________________
+
+    def test_owned_paths_cover_every_canonical_file() -> None:
+        """D8: the union of the families' owned paths is exactly the canonical tree."""
+        owned = {path for family in FAMILIES.values() for path in family.owned}
+>       assert owned == set(canonical_files()), sorted(owned ^ set(canonical_files()))
+E       AssertionError: ['analyses/dual_circuit_heat_accounting.sysml', 'analyses/ideal_gas_brayton_components.sysml', 'analyses/radial_densit...constituent_inventory.sysml', 'analyses/source_budget_accounting.sysml', 'analyses/supplied_profile_plasma.sysml', ...]
+E       assert {'analyses/fu...e.sysml', ...} == {'analyses/du...s.sysml', ...}
+E         
+E         Extra items in the right set:
+E         'analyses/supplied_profile_plasma.sysml'
+E         'designs/aries_cs_transfer/plasma_fuel.sysml'
+E         'designs/aries_cs_transfer/constituent_inventory.sysml'
+E         'designs/aries_cs_transfer/dual_blanket_heat.sysml'
+E         'designs/aries_cs_transfer/plasma_integration.sysml'...
+E         
+E         ...Full output truncated (10 lines hidden), use '-vv' to show
+
+tests/models/test_model_family_spines.py:269: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_model_family_spines.py::test_owned_paths_cover_every_canonical_file
+1 failed in 0.14s

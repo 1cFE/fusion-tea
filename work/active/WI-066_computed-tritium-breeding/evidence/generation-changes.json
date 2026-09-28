@@ -1,0 +1,94 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "d3a3193ccddc479d6f27069ba6683686c5d943c0bc4c2f62b40788af1f3f4533",
+    "after": "53e20433d22553847a99811cd130af4342e86b33f788b63a9a61faa6ff4c9516"
+  },
+  "__init__.py": {
+    "before": "bfec9c63b175325b6ecf9bb36f7b8b59ac41d029ee0c2d65bd9720fae7f0bd11",
+    "after": "ee3cc4f7e60783ada98ce02364e8e9042033a61d0e192964a57f6f2b841c060d"
+  },
+  "contracts/generation_manifest.json": {
+    "before": "e72e7168902021655d3cb261e9b3f39fd1f7e83da0477990a0829d37654a150b",
+    "after": "7e1162b8a334f71c5986f4ad3caae584e653a48b165c73c79d4132e4a7150018"
+  },
+  "contracts/model_contract.json": {
+    "before": "580aa74eee17a82e5c8a96e0e11aa33049d7048172600db28aacef60db2c5e5c",
+    "after": "0f0df46c918eb9e315b824a70d8e21a032fae15c9c0d6e7af0d54c0a12d50a5e"
+  },
+  "contracts/package_contract.json": {
+    "before": "394700170ae465358c7e308e0d6bc19db814ed2fb1f69dc7b625013d59179ea2",
+    "after": "60f5dba4d0a7b7f7330d7a828850d82f7429d23fdd916b3eb2178a9a3b9442f7"
+  },
+  "handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py": {
+    "before": "13f81a31bfa6017627366375853453eb10fbac42d8a7b9f8ae574900e833ed3d",
+    "after": "a2ead12987dad79549e75476c71483786ba2a3423d64f09efd575fcdc1f8d7ec"
+  },
+  "handwritten/mfe_tritium_breeding/__init__.py": {
+    "before": null,
+    "after": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "133fa5664ab999e2824cbedbf88707ddc074bdefed0f13f96b7044d3e8af0828",
+    "after": "3ef7daf1f0e8099d11bbf72da9c65f99d54d62107631522fdd935ac32799493b"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207",
+    "after": "fb644d7006e8937023a4b1222f1d39757468744c2058174f3648e57062f8195e"
+  },
+  "modules/constraints/constraintreportaggregatormodule.py": {
+    "before": "52605002ef556262b66eda7bb0cf51b7c7cef683fc1785b527c887c79b8a22fa",
+    "after": "25cd3d0acf4ad17b46f8ce8b3967be3bf00f8d1169cc5fc137b8c53d5c5437ed"
+  },
+  "modules/constraints/predicates.py": {
+    "before": "edd712ed172aeedec63ec7e736dd7bdace134760f1aa8c6d2f2b6dbba53dc19a",
+    "after": "ed08f2ce77c3d9c48c4ea4fcac363006bb950f04063c58eb245e3ed8a0823b1e"
+  },
+  "modules/mfe_fuel_cycle/fuel_cycle_flows.py": {
+    "before": "054bbb62775473fdc1282146f5d5f401cf094608b3a79ae78a0135cce8723e67",
+    "after": "74dfd4213713150e1f44e487a4ef21a9bad510978819c256168f5c7b715ab169"
+  },
+  "modules/mfe_tritium_breeding/__init__.py": {
+    "before": null,
+    "after": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1"
+  },
+  "modules/mfe_tritium_breeding/blanket_tritium_breeding.py": {
+    "before": null,
+    "after": "a5add937d4c87be3182b9ba471eb367a21c5cc933f0896e99f03f55c47601b37"
+  },
+  "modules/mfe_tritium_breeding/tritium_breeding_adequacy.py": {
+    "before": null,
+    "after": "b68597afc025eeba4918683dc5cc4429dde3f9f07a1248d52d70b784e7ba8856"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "80a3f49a1c3a4f7210a254b07579a5ab2c02e249daf24d18820f5d62fee5c9fa",
+    "after": "7dd8d621a81a06c6e8e2b0e017779ad81eccaa82ff70eba469be3a611ce236d9"
+  },
+  "modules/stellarator_09/stellaristbrokconstraintmodule.py": {
+    "before": "3f3bec824ab92938e032930e8212f9c6f5b889bd131e7dc02f39f06772dba7f0",
+    "after": "f2c6c79e46329dda7bca2a27720e58e5b373271e7592fcfca3029487256b762a"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "df7a42ce2c9d0c572655bd52107103143791c323088e30b00dac91df8e78f2d1",
+    "after": "2370b9912226053abb4769866683c2b7b964d197bff8a455f0f0aa536d764992"
+  },
+  "schemas/blanket_tritium_breeding_output.py": {
+    "before": null,
+    "after": "ff4b3c9d60d34c16be960eccebd786a363b542fd132c93c2c550cba27a78a5ed"
+  },
+  "schemas/fuel_cycle_flows_output.py": {
+    "before": "4882306119acff2ec8db8d178dabdc0979fd5665be4a98177dcace2b06c63df9",
+    "after": "882ad96446b56caf80dd9c4051e0241a6602bab55c35f7b3605f62ebb1533ca9"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "998f01f297b70cfc0208ec20f5b8bf7f4b5c30226690081e10aa7214cb287a2e",
+    "after": "453cf3bb5bcf5da92229bfb3dff99eb39ba87c011b6668141edd0b204d7f4fa5"
+  },
+  "schemas/tritium_breeding_adequacy_output.py": {
+    "before": null,
+    "after": "ef30d3d7c4364eedcd4b72370000057e8ea57e51efc02385c85b33ec8944b465"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "cc9ab717a831d7128440def1d95444f39121a45de91fe6f4ef2b26467f7dcb40",
+    "after": "5edf084dc3daa1b9610a91c0959a127545c5d656a961a18046824e5cfeb7680b"
+  }
+}

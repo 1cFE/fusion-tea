@@ -1,0 +1,16 @@
+{
+  "record_sections": 17,
+  "findings": 59,
+  "finding_kinds": [
+    "model",
+    "process"
+  ],
+  "prior_discovery_log_sha256": "48ada5b2d6dd4acc43e4bef1ec8b429b90c076db5e324bbb8ba28e6a0b10ec62",
+  "prior_discovery_log_bytes": 14559,
+  "prior_discovery_log_prefix_unchanged": true,
+  "frozen_thermal_record_diff_empty": true,
+  "generated_package_clean": true,
+  "persistent_native_hashes_still_equal_post_verification": 114,
+  "verification": "pass",
+  "snapshot_written": false
+}

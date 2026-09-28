@@ -1,0 +1,43 @@
+{
+  "scope": "Separate paired source cases, not injected all-plant outputs",
+  "cases": [
+    {
+      "case": "high-temperature",
+      "supplied": {
+        "input_power_MW": 500,
+        "radiation_fraction": 0.9,
+        "capture_fraction": 0.99,
+        "peak_MW_m2": 9.5,
+        "temperature_eV": 200,
+        "diffusion_m2_s": 1
+      },
+      "derived": {
+        "nonradiated_power_MW": 49.999999999999986,
+        "deposited_power_MW": 49.499999999999986,
+        "uncaptured_power_MW": 0.5000000000000003,
+        "peak_equivalent_area_m2": 5.210526315789473
+      },
+      "evidence": "preparation/source-review.md, original Stellaris p15",
+      "claim": "Accounting consistency only. Supplied peak is not predicted or validated; equivalent area is not measured wetted geometry."
+    },
+    {
+      "case": "low-temperature",
+      "supplied": {
+        "input_power_MW": 500,
+        "radiation_fraction": 0.9,
+        "capture_fraction": 0.97,
+        "peak_MW_m2": 5.0,
+        "temperature_eV": 100,
+        "diffusion_m2_s": 3
+      },
+      "derived": {
+        "nonradiated_power_MW": 49.999999999999986,
+        "deposited_power_MW": 48.499999999999986,
+        "uncaptured_power_MW": 1.5000000000000009,
+        "peak_equivalent_area_m2": 9.699999999999998
+      },
+      "evidence": "preparation/source-review.md, original Stellaris p15",
+      "claim": "Accounting consistency only. Supplied peak is not predicted or validated; equivalent area is not measured wetted geometry."
+    }
+  ]
+}

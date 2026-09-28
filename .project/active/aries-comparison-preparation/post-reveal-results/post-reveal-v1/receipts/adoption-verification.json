@@ -1,0 +1,17 @@
+{
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/adoption.md": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/execution-prompt.md": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/mapping/contract.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/mapping/decisions.md": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/mapping/proposed-reference-request.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/mapping/held-input-inventory.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/package/reproduce.md": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/package/freeze-record.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/package/restoration-receipt.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/evidence/integrated-review.md": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/evidence/review/final-restoration.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/evidence/review/final-checks.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/evidence/coordinator-verification.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/evidence/preservation-before.json": true,
+  ".project/active/aries-comparison-preparation/post-reveal-preparation/evidence/preservation-after.json": true
+}

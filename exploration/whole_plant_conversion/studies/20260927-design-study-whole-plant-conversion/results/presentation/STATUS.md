@@ -1,0 +1,5 @@
+# Unverified draft extraction
+
+This presentation preserves the first native round, whose stock independent verification failed. Its tables and plots are extracted native results, not a verified final comparison. The coordinator reported case `c2438` cold-capacity margin as native `0.003072599989536684` W versus oracle `0.0030725999968126416` W, with relative difference `2.368e-9` and absolute difference `7.276e-12` W against the unchanged zero absolute tolerance for that channel. The original failed verification remains authoritative evidence; this note does not waive it.
+
+The executed renderer is preserved at `../../supporting/report_results-at-execution.py` relative to this presentation directory. Original presentation data and figures remain unchanged. Inspection found that the unsupported 3000 MW sensitivity column auto-scaled close to zero; the replacement renderer will use an explicit unsupported status box and a separate readable economic-boundary detail figure. The replacement record is `20260927-design-study-whole-plant-conversion-b`.

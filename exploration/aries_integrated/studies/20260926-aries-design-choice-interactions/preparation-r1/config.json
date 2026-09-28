@@ -1,0 +1,621 @@
+{
+ "study_id": "20260926-aries-design-choice-interactions",
+ "question": "On the unchanged WI-092 ARIES package: (B1) does the preferred recuperator effectiveness depend on the heat-source temperature level, and does that dependence survive a lower turbine efficiency; (B2) does more blanket-helium flow buy net electricity or lower LCOE once the pump-power law and the pump capacity screen are counted, and does the answer depend on recuperation; (B3) does a change in the plasma density profile change which equipment check binds, and does the exchanger arrangement change that. Every case is a named full point composed on a sealed base; nothing is optimized; no rating is changed from demand; the reading reports main effects, the difference-of-differences interaction, ranking reversals and the limiting check per case.",
+ "axes": [
+  {
+   "axis": "recuperation",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__cycle__recuperator_effectiveness",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "1",
+   "role": "operating",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "A3 nominal 0.8 (WI-089); source-supported 0.95 (reconciliation goal L-002/L-004); 0.5 a low-recovery counterfactual inside the closure domain [0,1].",
+   "missing_response": "The recuperator has no purchase, rating or screen (economics goal L-003); only the thermal closure and the downstream ratings respond.",
+   "declined": false
+  },
+  {
+   "axis": "he_limit",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__heat_exchangers__he_limit",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "K",
+   "role": "source",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "Source-supported blanket-helium outlet 729.15 K (reference-case contract \u00a7 2), shifted \u221260/0/+60 K with the other two limits as one temperature-level scenario at unchanged duty.",
+   "missing_response": "No blanket thermal-hydraulic model links the outlet temperature to duty and flow; coolant and material limits are not checked; the branch return temperature is computed.",
+   "declined": false
+  },
+  {
+   "axis": "divertor_limit",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__heat_exchangers__divertor_limit",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "K",
+   "role": "source",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "Source-supported divertor-helium outlet 973.15 K, shifted with the level scenario.",
+   "missing_response": "As he_limit.",
+   "declined": false
+  },
+  {
+   "axis": "pbli_limit",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__heat_exchangers__pbli_limit",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "K",
+   "role": "source",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "Source-supported PbLi outlet 1011.15 K, shifted with the level scenario.",
+   "missing_response": "As he_limit.",
+   "declined": false
+  },
+  {
+   "axis": "he_flow",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__heat_exchangers__he_flow",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "kg/s",
+   "role": "operating",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "Raffray blanket-helium flow 3261 kg/s; \u00b120 % window (2600, 3900) with the selected pump capacity held at 3261 so the flow screen can fail.",
+   "missing_response": "No hydraulic or pressure-drop model; the cubic pump proxy and the pump capacity screen are the only responses.",
+   "declined": false
+  },
+  {
+   "axis": "he_pump_mode",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__he_pump__pump_mode",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "1",
+   "role": "assumed",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "E3 (WI-090): mode 0 cubic proxy from 156 MW at 3261 kg/s; mode 1 fixed 156 MW source power.",
+   "missing_response": "No pump map; the two laws bracket the pump-power response to flow.",
+   "declined": false
+  },
+  {
+   "axis": "density_amplitude",
+   "keys": [
+    {
+     "key": "aries_cs_plasma_integration__plasma__amplitude",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "m^-3",
+   "role": "operating",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "WI-083 reference amplitude 5.0e20; \u00b120 % as in the design-studies goal density cases.",
+   "missing_response": "Fixed-hardware source-demand change; no confinement or transport qualification.",
+   "declined": false
+  },
+  {
+   "axis": "hollowness",
+   "keys": [
+    {
+     "key": "aries_cs_plasma_integration__plasma__hollowness",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "1",
+   "role": "operating",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "WI-081 reference hollowness 0.66; 0.30 a flatter-profile counterfactual inside the profile domain.",
+   "missing_response": "As density_amplitude.",
+   "declined": false
+  },
+  {
+   "axis": "network_mode",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__heat_exchangers__network_mode",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "1",
+   "role": "operating",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "WI-092 N1: 0 series (reviewed), 1 published series-then-parallel with the supplied split 0.85.",
+   "missing_response": "The split is a stand-in for the unmodelled branch hydraulic balance.",
+   "declined": false
+  },
+  {
+   "axis": "turbine_efficiency",
+   "keys": [
+    {
+     "key": "aries_integrated_plant__cycle__turbine_efficiency",
+     "provenance": "fan_out"
+    }
+   ],
+   "units": "1",
+   "role": "assumed",
+   "framing": "sensitivity",
+   "window_provenance": "engineered",
+   "basis": "A3 0.93 (WI-089); 0.90 as the declared assumption change for the B1 explanation.",
+   "missing_response": "No turbine map.",
+   "declined": false
+  }
+ ],
+ "designs": [
+  {
+   "name": "N-control",
+   "classification": "control: the sealed nominal-calculated point, verbatim",
+   "canonical_base": "nominal-calculated",
+   "values": {}
+  },
+  {
+   "name": "A-control",
+   "classification": "control: the sealed 891 MW alternative, verbatim",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {}
+  },
+  {
+   "name": "b1-N-rec0.5-lvl-60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.5-lvl+0",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 729.15,
+    "divertor_limit": 973.15,
+    "pbli_limit": 1011.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.5-lvl+60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.8-lvl-60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.8,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.8-lvl+60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.8,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.95-lvl-60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.95-lvl+0",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 729.15,
+    "divertor_limit": 973.15,
+    "pbli_limit": 1011.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.95-lvl+60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.5-lvl-60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.5-lvl+0",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 729.15,
+    "divertor_limit": 973.15,
+    "pbli_limit": 1011.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.5-lvl+60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.8-lvl-60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.8,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.8-lvl+0",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.8,
+    "he_limit": 729.15,
+    "divertor_limit": 973.15,
+    "pbli_limit": 1011.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.8-lvl+60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.8,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.95-lvl-60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15
+   }
+  },
+  {
+   "name": "b1-A-rec0.95-lvl+60",
+   "classification": "B1 recuperation \u00d7 source temperature level on the A base",
+   "canonical_base": "resized-compressor-1700-network-scaledflows-0.85",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15
+   }
+  },
+  {
+   "name": "b1-N-rec0.5-lvl-60-eta0.90",
+   "classification": "B1 corner with the turbine-efficiency assumption changed",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15,
+    "turbine_efficiency": 0.9
+   }
+  },
+  {
+   "name": "b1-N-rec0.5-lvl+60-eta0.90",
+   "classification": "B1 corner with the turbine-efficiency assumption changed",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.5,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15,
+    "turbine_efficiency": 0.9
+   }
+  },
+  {
+   "name": "b1-N-rec0.95-lvl-60-eta0.90",
+   "classification": "B1 corner with the turbine-efficiency assumption changed",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 669.15,
+    "divertor_limit": 913.15,
+    "pbli_limit": 951.15,
+    "turbine_efficiency": 0.9
+   }
+  },
+  {
+   "name": "b1-N-rec0.95-lvl+60-eta0.90",
+   "classification": "B1 corner with the turbine-efficiency assumption changed",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "recuperation": 0.95,
+    "he_limit": 789.15,
+    "divertor_limit": 1033.15,
+    "pbli_limit": 1071.15,
+    "turbine_efficiency": 0.9
+   }
+  },
+  {
+   "name": "b2-N-flow2600-pump0-rec0.8",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 2600.0,
+    "he_pump_mode": 0.0,
+    "recuperation": 0.8
+   }
+  },
+  {
+   "name": "b2-N-flow2600-pump0-rec0.95",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 2600.0,
+    "he_pump_mode": 0.0,
+    "recuperation": 0.95
+   }
+  },
+  {
+   "name": "b2-N-flow2600-pump1-rec0.8",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 2600.0,
+    "he_pump_mode": 1.0,
+    "recuperation": 0.8
+   }
+  },
+  {
+   "name": "b2-N-flow2600-pump1-rec0.95",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 2600.0,
+    "he_pump_mode": 1.0,
+    "recuperation": 0.95
+   }
+  },
+  {
+   "name": "b2-N-flow3261-pump1-rec0.8",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 3261.0,
+    "he_pump_mode": 1.0,
+    "recuperation": 0.8
+   }
+  },
+  {
+   "name": "b2-N-flow3261-pump1-rec0.95",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 3261.0,
+    "he_pump_mode": 1.0,
+    "recuperation": 0.95
+   }
+  },
+  {
+   "name": "b2-N-flow3900-pump0-rec0.8",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 3900.0,
+    "he_pump_mode": 0.0,
+    "recuperation": 0.8
+   }
+  },
+  {
+   "name": "b2-N-flow3900-pump0-rec0.95",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 3900.0,
+    "he_pump_mode": 0.0,
+    "recuperation": 0.95
+   }
+  },
+  {
+   "name": "b2-N-flow3900-pump1-rec0.8",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 3900.0,
+    "he_pump_mode": 1.0,
+    "recuperation": 0.8
+   }
+  },
+  {
+   "name": "b2-N-flow3900-pump1-rec0.95",
+   "classification": "B2 helium flow \u00d7 pump law \u00d7 recuperation on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "he_flow": 3900.0,
+    "he_pump_mode": 1.0,
+    "recuperation": 0.95
+   }
+  },
+  {
+   "name": "b3-N-amp4e20-hol0.66-net0",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 4e+20,
+    "hollowness": 0.66,
+    "network_mode": 0.0
+   }
+  },
+  {
+   "name": "b3-N-amp4e20-hol0.66-net1",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 4e+20,
+    "hollowness": 0.66,
+    "network_mode": 1.0
+   }
+  },
+  {
+   "name": "b3-N-amp4e20-hol0.3-net0",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 4e+20,
+    "hollowness": 0.3,
+    "network_mode": 0.0
+   }
+  },
+  {
+   "name": "b3-N-amp4e20-hol0.3-net1",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 4e+20,
+    "hollowness": 0.3,
+    "network_mode": 1.0
+   }
+  },
+  {
+   "name": "b3-N-amp5e20-hol0.66-net1",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 5e+20,
+    "hollowness": 0.66,
+    "network_mode": 1.0
+   }
+  },
+  {
+   "name": "b3-N-amp5e20-hol0.3-net0",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 5e+20,
+    "hollowness": 0.3,
+    "network_mode": 0.0
+   }
+  },
+  {
+   "name": "b3-N-amp5e20-hol0.3-net1",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 5e+20,
+    "hollowness": 0.3,
+    "network_mode": 1.0
+   }
+  },
+  {
+   "name": "b3-N-amp6e20-hol0.66-net0",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 6e+20,
+    "hollowness": 0.66,
+    "network_mode": 0.0
+   }
+  },
+  {
+   "name": "b3-N-amp6e20-hol0.66-net1",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 6e+20,
+    "hollowness": 0.66,
+    "network_mode": 1.0
+   }
+  },
+  {
+   "name": "b3-N-amp6e20-hol0.3-net0",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 6e+20,
+    "hollowness": 0.3,
+    "network_mode": 0.0
+   }
+  },
+  {
+   "name": "b3-N-amp6e20-hol0.3-net1",
+   "classification": "B3 density amplitude \u00d7 hollowness \u00d7 exchanger arrangement on the N base",
+   "canonical_base": "nominal-calculated",
+   "values": {
+    "density_amplitude": 6e+20,
+    "hollowness": 0.3,
+    "network_mode": 1.0
+   }
+  }
+ ],
+ "aliases": {
+  "b1-N-rec0.8-lvl+0": "N-control",
+  "b1-A-rec0.95-lvl+0": "A-control",
+  "b2-N-flow3261-pump0-rec0.8": "N-control",
+  "b2-N-flow3261-pump0-rec0.95": "b1-N-rec0.95-lvl+0",
+  "b3-N-amp5e20-hol0.66-net0": "N-control"
+ }
+}

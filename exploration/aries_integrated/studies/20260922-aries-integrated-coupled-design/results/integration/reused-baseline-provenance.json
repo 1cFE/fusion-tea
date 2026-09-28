@@ -1,0 +1,9 @@
+{
+  "source": "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/studies/20260922-aries-integrated-local-response/preparation",
+  "source_commit": "a396a2e0f5b4df8a5d45d4aa0e93b42ba14d045a",
+  "scope": "Exact unchanged package, manifest baseline and environment; coordinator initial replay exact546/14. Reuse does not rerun baseline.",
+  "sha256": {
+    "package_identity.json": "31effd098b5798ed31886c7b7853c3d77962dd7e9cfb2c077c292c4118e0e69c",
+    "baseline_result.json": "a5114fdfc1b1e97ab624cf0a6a28fe4e74084129bb496dad0e7d6784e7a38830"
+  }
+}

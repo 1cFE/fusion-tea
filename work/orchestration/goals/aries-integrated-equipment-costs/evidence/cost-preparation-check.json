@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "full_maps": 113,
+  "inputs": 411,
+  "axes": 53,
+  "coverage": "All noncanonical changed inputs are declared and within windows; canonical source controls retain their separate complete configurations.",
+  "sha256": {
+    "proposed-points.json": "cc4354f061d8c452fb762e1d8c090a92018d8324b4aa40c176cf05e25dcea750",
+    "axis-plan.json": "640e02688ab5a781b7bc26da2637b2c725f5553aebf91c2d31f249a21b670dbc",
+    "indicators.json": "df6ccff26d5e590adc5145bf1187345c3623550914821a4c78de088ef3e9f520",
+    "preparation-readiness.json": "5b0de2e1fc1e1454316f6b9c1acd91481881834e522a960ede18756ef7328d83",
+    "preparation/preflight_results.json": "6b9970fdff1814e96a786c693db212f9875be18e2e5ad066a45cba6e79489bbf"
+  }
+}

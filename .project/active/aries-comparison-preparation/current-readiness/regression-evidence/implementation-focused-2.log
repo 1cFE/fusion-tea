@@ -1,0 +1,188 @@
+..............................F...............F............F.........F.F [ 26%]
+.......................F...............F...............FF......F......F. [ 53%]
+......F...........................................F...........F........F [ 79%]
+F...F....................................FF............                  [100%]
+=================================== FAILURES ===================================
+_____ test_legacy_replay_preserves_entering_physics_and_non_tape_accounts ______
+tests/models/test_coil_thermal_inventory.py:65: in test_legacy_replay_preserves_entering_physics_and_non_tape_accounts
+    assert_local_partition('coil-thermal-local-0', actual, entering['outputs'])
+tests/models/current_mfe_regressions.py:576: in assert_local_partition
+    assert set(actual) == set(historical) | set(part['added_local_names']) | WI072_LOCALS
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+___________ test_study_route_preserves_the_authored_boolean_control ____________
+tests/models/test_coil_thermal_inventory.py:143: in test_study_route_preserves_the_authored_boolean_control
+    assert route.validate_proposal({route.P+'plasma__R':False}) is None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:128: in validate_proposal
+    raise RouteError(f"{key}: finite numeric value required; Boolean values are not numeric controls")
+E   exploration.stellarator_e2e.studies.study_route.RouteError: stellarator_09__stellaris__plasma__R: finite numeric value required; Boolean values are not numeric controls
+____ test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore _____
+tests/models/test_winding_length_bore.py:89: in test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore
+    other = _point(oracle, R, 1.3)
+            ^^^^^^^^^^^^^^^^^^^^^^
+tests/models/test_winding_length_bore.py:60: in _point
+    return oracle.evaluate(point)
+           ^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:883: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:870: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1078: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:921: in _conductor_current
+    raise ValueError('oracle conductor current: unsupported field')
+E   ValueError: oracle conductor current: unsupported field
+__________________________ test_exact_input_contract ___________________________
+tests/study/test_major_radius.py:56: in test_exact_input_contract
+    assert set(current) == (set(entering)-{OLD}-ALL_RETIRED_PARAMETERS) | added
+E   AssertionError: assert {'stellarator...k_R_ref', ...} == {'stellarator...fus_ref', ...}
+E     
+E     Extra items in the left set:
+E     'stellarator_09__stellaris__blanket__reflector_t'
+E     'stellarator_09__stellaris__vessel__vessel_t'
+E     'stellarator_09__stellaris__structure__structure_t'
+E     'stellarator_09__stellaris__tbr_floor'
+E     'stellarator_09__stellaris__vessel__gap1_t'...
+E     
+E     ...Full output truncated (8 lines hidden), use '-vv' to show
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+tests/study/test_major_radius.py:85: in test_current_radius_controls_match_frozen_model_and_independent_oracle
+    results = controls.check_controls(tmp_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/financial_radius_controls.py:57: in check_controls
+    assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__blanket_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__firstwall_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__fluence_limit] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__gap1_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__ht_shield_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__plasma__kappa] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__reflector_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__structure_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__vacuum_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__vessel_t] _
+tests/study/test_major_radius.py:136: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_____________________ test_adapter_coverage_remains_exact ______________________
+tests/study/test_winding_consumers.py:101: in test_adapter_coverage_remains_exact
+    assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == (set(old_inputs)-ALL_RETIRED_PARAMETERS) | added
+E   AssertionError: assert {'stellarator...k_R_ref', ...} == {'stellarator...fus_ref', ...}
+E     
+E     Extra items in the left set:
+E     'stellarator_09__stellaris__blanket__reflector_t'
+E     'stellarator_09__stellaris__vessel__vessel_t'
+E     'stellarator_09__stellaris__structure__structure_t'
+E     'stellarator_09__stellaris__tbr_floor'
+E     'stellarator_09__stellaris__vessel__gap1_t'...
+E     
+E     ...Full output truncated (8 lines hidden), use '-vv' to show
+_______ test_current_native_winding_route_agrees_with_independent_oracle _______
+tests/study/test_winding_consumers.py:129: in test_current_native_winding_route_agrees_with_independent_oracle
+    assert {key for key, value in route.short_verdicts(case).items() if value == 'violated'} == {'divertor_heat_ok', 'wp_fit_ok', 'reference_conductor_current_ok'}
+E   AssertionError: assert {'divertor_he..., 'wp_fit_ok'} == {'divertor_he..., 'wp_fit_ok'}
+E     
+E     Extra items in the left set:
+E     'tbr_ok'
+E     Use -v to get more diff
+=============================== warnings summary ===============================
+tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[reference]
+tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[r-12.7-1.35-1.62e+07]
+tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[r-13.1-1.45-1.54e+07]
+tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[current-sized-reference]
+tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[allocated-current-sized-reference]
+tests/models/test_divertor_heat_integration.py::test_signed_burn_failures_keep_entering_equations_and_predicates[False]
+tests/models/test_divertor_heat_integration.py::test_signed_burn_failures_keep_entering_equations_and_predicates[True]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_divertor_heat_integration.py::test_coupled_account_and_independent_oracle[profile0-0]
+tests/models/test_divertor_heat_integration.py::test_coupled_account_and_independent_oracle[profile0-1]
+tests/models/test_divertor_heat_integration.py::test_coupled_account_and_independent_oracle[profile0-2]
+tests/models/test_divertor_heat_integration.py::test_coupled_account_and_independent_oracle[profile1-0]
+tests/models/test_divertor_heat_integration.py::test_coupled_account_and_independent_oracle[profile1-1]
+tests/models/test_divertor_heat_integration.py::test_coupled_account_and_independent_oracle[profile1-2]
+tests/models/test_divertor_heat_integration.py::test_paired_transport_does_not_create_or_remove_plant_heat
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_coil_thermal_inventory.py::test_legacy_replay_preserves_entering_physics_and_non_tape_accounts
+FAILED tests/models/test_coil_thermal_inventory.py::test_study_route_preserves_the_authored_boolean_control
+FAILED tests/models/test_winding_length_bore.py::test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore
+FAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__blanket_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__firstwall_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__fluence_limit]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__gap1_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__ht_shield_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__plasma__kappa]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__reflector_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__structure_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__vacuum_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__vessel_t]
+FAILED tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact
+FAILED tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+19 failed, 252 passed, 16 warnings in 105.53s (0:01:45)

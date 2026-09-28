@@ -1,0 +1,62 @@
+[
+  {
+    "label": "invalid_matched_mode",
+    "inputs": {
+      "stellarator_09__stellaris__turbine__matched_cycle_enabled": 0.5
+    },
+    "native_refusal": "module_execution: ValueError: WI-073 matched enabled: mode must be exactly zero or one",
+    "oracle_refusal": "mode must be exactly 0 or 1"
+  },
+  {
+    "label": "invalid_cooling_mode",
+    "inputs": {
+      "stellarator_09__stellaris__heat_rejection__cooling_water_enabled": -1.0
+    },
+    "native_refusal": "module_execution: ValueError: WI-073 cooling-water enabled: mode must be exactly zero or one",
+    "oracle_refusal": "mode must be exactly 0 or 1"
+  },
+  {
+    "label": "cooling_without_cycle",
+    "inputs": {
+      "stellarator_09__stellaris__turbine__matched_cycle_enabled": 0.0
+    },
+    "native_refusal": "module_execution: ValueError: WI-073 cooling water: enabled cooling requires matched cycle enabled",
+    "oracle_refusal": "cooling requires active matched cycle"
+  },
+  {
+    "label": "wrong_pressure",
+    "inputs": {
+      "stellarator_09__stellaris__turbine__main_steam_generator__pressure_MPa": 6.3
+    },
+    "native_refusal": "module_execution: ValueError: WI-073 pressure domain: main/extraction must equal 6.2/0.8 MPa",
+    "oracle_refusal": "fixed pressure table supports 6.2/0.8 MPa only"
+  },
+  {
+    "label": "outside_table",
+    "inputs": {
+      "stellarator_09__stellaris__turbine__condenser__temperature_C": 60.00001
+    },
+    "native_refusal": "module_execution: ValueError: WI-073 condenser: temperature outside 20..60 C",
+    "oracle_refusal": "t=60.00001 outside [20.0, 60.0]"
+  },
+  {
+    "label": "missing_secondary_heat",
+    "inputs": {
+      "stellarator_09__stellaris__heat_transport__secondary_energy_mode": 0.0
+    },
+    "native_gross_MW": 1217.9041863782102,
+    "state_gross_MW": 1219.9981701764736,
+    "gross_heat_boundary_difference_MW": -2.09398379826348,
+    "oracle_evaluated": true
+  },
+  {
+    "label": "missing_primary_heat",
+    "inputs": {
+      "stellarator_09__stellaris__heat_transport__loop_live": 0.0
+    },
+    "native_gross_MW": 1155.3324336343153,
+    "state_gross_MW": 1219.9981701764736,
+    "gross_heat_boundary_difference_MW": -64.66573654215836,
+    "oracle_evaluated": true
+  }
+]

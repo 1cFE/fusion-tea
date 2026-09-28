@@ -1,0 +1,195 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "discount",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__discount_rate",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "construction",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__construction_years",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "terminal",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__terminal_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "salvage",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__salvage_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "overhaul_fraction",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__other_overhaul_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "overhaul_date",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__other_overhaul_year",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "life",
+      "note": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__plant_years",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "availability",
+      "note": "Supplied availability has no outage/reliability response; no additional downtime charge.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__availability",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet_inventory_price",
+      "note": "Supplied price factor has no calibrated market or equipment-quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__magnet_inventory__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "unallocated_source_scope_price",
+      "note": "Supplied price factor has no calibrated market or equipment-quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__unallocated_source_scope__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "tritium_price",
+      "note": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "routine_om",
+      "note": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__annual_om__selected_amount",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "consumables",
+      "note": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_ledger__consumables",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "replacement_life",
+      "note": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_life_fpy",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "replacement_factor",
+      "note": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "new_feed",
+      "note": "Net extracted breeder feed has no qualified capability or extraction-cost model; internal exhaust recycling is already accounted.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__annual_recovery_kg",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "supply_service",
+      "note": "Incremental assumed extraction/service cost has no price-versus-capability relationship.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__supply_service_annual",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "density_amplitude",
+      "note": "Fixed-hardware source-demand change does not qualify confinement.",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "he_hx_area",
+      "note": "Selected area has linear provisional price response; hydraulic/geometric qualification absent.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "attempt_directory": "selected-forward-accounts.json.attempt-prkza5co",
+  "inputs": [
+    {
+      "source": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward/native-result.json",
+      "sha256": "41df504e27e836c186ab73dc5d6742a8ed98a60bb1473cf0ea9e22df7b9189f2",
+      "retained": "input-0.raw"
+    },
+    {
+      "source": "/tmp/wi073-actual-archive-qvqi6313/.project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json",
+      "sha256": "d253a273a944611ee5b49f5994029b061b26e6c753c7fd6c7d3373a0d702373e",
+      "retained": "input-1.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward-accounts.json",
+  "output_sha256": "1e5acfa054abbb4c5cb83ccf11ee2f68c2beed4434d09b7f19b7d7851d573c9a",
+  "state": "completed"
+}

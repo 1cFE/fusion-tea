@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/fuel-jaeri-iss.pdf",
+  "slug": "iwai_yamanishi_nishi_jaeri_tech_2000_002_iter_cryogenic",
+  "path": "knowledge/sources/iwai_yamanishi_nishi_jaeri_tech_2000_002_iter_cryogenic/",
+  "source_id": "d595c231355e8a0365f1ff5e170b539776f55fb0aeb0c4116b444f33a999d61d",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T16:19:29.053994+00:00"
+}

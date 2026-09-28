@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-salt-cost.pdf",
+  "slug": "inl_2022_thermal_storage_coupling_for_advanced_nuclear",
+  "path": "knowledge/sources/inl_2022_thermal_storage_coupling_for_advanced_nuclear/",
+  "source_id": "a1ad92aa282d21d41da30b68dede8c46577eca76552e18408a0e49308b2755bd",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:41:20.928717+00:00"
+}

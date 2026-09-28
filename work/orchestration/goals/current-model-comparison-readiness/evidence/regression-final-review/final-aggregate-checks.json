@@ -1,0 +1,78 @@
+{
+  "authority": "Independent reviewer recomputed XML/node joins and current source hashes; retained source stability evidence is bounded to recorded sources.",
+  "receipt_counts": {
+    "implementation-full.xml": {
+      "passed": 3353,
+      "skipped": 13,
+      "xfailed": 1,
+      "error": 39,
+      "failure": 48
+    },
+    "final-relevant.xml": {
+      "passed": 1374,
+      "xfailed": 2,
+      "skipped": 1
+    },
+    "cli-marker-final.xml": {
+      "passed": 68,
+      "xfailed": 2
+    }
+  },
+  "current_nodes": 3466,
+  "effective_counts": {
+    "passed": 3450,
+    "skipped": 14,
+    "xfailed": 2
+  },
+  "receipt_join_errors": [],
+  "original_failed_or_error_count": 87,
+  "disposition_count": 87,
+  "uncovered_original_failures_errors": [],
+  "unexpected_dispositions": [],
+  "renamed_alias_errors": [],
+  "renamed_count": 8,
+  "genuinely_added_node_count": 12,
+  "reused_node_count": 2089,
+  "reused_file_count": 59,
+  "reused_file_git_diffs": [],
+  "reused_file_hash_mismatches": 0,
+  "reused_stock_fixture_users": [],
+  "only_recorded_cli_source_delta": true,
+  "source_stability_receipt": {
+    "tests/models/test_coil_thermal_inventory.py": true,
+    "tests/models/test_conductor_current.py": true,
+    "tests/models/test_conductor_grade.py": true,
+    "tests/models/test_current_driven_sizing_integration.py": true,
+    "tests/models/test_current_numeric_coverage.py": true,
+    "tests/models/test_divertor_heat_integration.py": true,
+    "tests/models/test_magnet_manufacturing_integration.py": true,
+    "tests/models/test_mfe_major_radius.py": true,
+    "tests/models/test_mfe_operating_heating.py": true,
+    "tests/models/test_structure_translation.py": true,
+    "tests/models/test_tape_procurement.py": true,
+    "tests/models/test_winding_length_bore.py": true,
+    "tests/models/test_winding_pack_cost.py": true,
+    "tests/models/test_winding_pack_fit.py": true,
+    "tests/study/test_committed_store.py": true,
+    "tests/study/test_domain_consumers.py": true,
+    "tests/study/test_financial_consumers.py": true,
+    "tests/study/test_known_answers.py": true,
+    "tests/study/test_major_radius.py": true,
+    "tests/study/test_mechanical_failures.py": true,
+    "tests/study/test_native_publication.py": true,
+    "tests/study/test_operand_bindings.py": true,
+    "tests/study/test_output_contract.py": true,
+    "tests/study/test_preflight_gates.py": true,
+    "tests/study/test_preflight_negatives.py": true,
+    "tests/study/test_primary_loop_consumers.py": true,
+    "tests/study/test_records.py": true,
+    "tests/study/test_single_point_gate.py": true,
+    "tests/study/test_stock_route.py": true,
+    "tests/study/test_valid_empty.py": true,
+    "tests/study/test_verify.py": true,
+    "tests/study/test_winding_consumers.py": true,
+    "tests/models/current_mfe_regressions.py": true,
+    "tests/study/conftest.py": true,
+    "exploration/stellarator_e2e/studies/study_route.py": true
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "outcome": "pass",
+  "cases": 1277,
+  "exact_input_maps": true,
+  "identical_constraint_catalog_and_predicate_ir": true,
+  "completed_before": 1275,
+  "recovered_cases": [
+    "case-00621",
+    "case-01085"
+  ],
+  "completed_after": 1277,
+  "verdict_changes_on_completed_cases": [],
+  "legacy_cases_all_outputs_exact": [
+    "case-01275",
+    "case-01276"
+  ],
+  "verified_channel_tolerance_violations": [],
+  "changed_channels_maxima": {
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability": {
+      "case": "case-00606",
+      "maximum_absolute_difference": 9.208633855450898e-12,
+      "relative_at_this_case": 2.2098810694446424e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_capability": {
+      "case": "case-00142",
+      "maximum_absolute_difference": 4.547473508864641e-13,
+      "relative_at_this_case": 3.129012085350518e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 1.0186340659856796e-10,
+      "relative_at_this_case": 1.1361770766899626e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 1.1186784831807017e-10,
+      "relative_at_this_case": 3.67602183812014e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 2.660739109544398e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__closure_residual": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 0.0007394262052647146
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.0231815394945443e-12,
+      "relative_at_this_case": 1.1622539015237588e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability": {
+      "case": "case-00310",
+      "maximum_absolute_difference": 7.73070496506989e-12,
+      "relative_at_this_case": 5.7045441072128206e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 5.78995246911755e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 3.813437413028781e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 2.074116776923454e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 3.883658604291215e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 2.0947168640532548e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hx_return": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.849942614358893e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_mixed_return": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.849942614358893e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_return": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.849942614358893e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.0256678793594948e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.0256678793594948e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.5105014349831779e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 1.3642420526593924e-12,
+      "relative_at_this_case": 1.5105014349831779e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 5.78995246911755e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 1.0048868199234732e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 7.755995607649627e-14
+    },
+    "aries_integrated_plant__plant_ledger__evaluate__cycle_residual": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 0.0007394262052647146
+    },
+    "aries_integrated_plant__plant_ledger__evaluate__plant_residual": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 0.0007394262052647146
+    },
+    "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 0.0007394262052647146
+    },
+    "aries_integrated_plant__plant_ledger__evaluate__thermal_efficiency": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 9.43689570931383e-16,
+      "relative_at_this_case": 2.7244044039399905e-15
+    },
+    "aries_integrated_plant__plant_ledger__evaluate__unmatched_source_heat": {
+      "case": "case-01157",
+      "maximum_absolute_difference": 6.821210263296962e-12,
+      "relative_at_this_case": 7.755995607649627e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred": {
+      "case": "case-00826",
+      "maximum_absolute_difference": 1.7053025658242404e-13,
+      "relative_at_this_case": 5.607984380326678e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet": {
+      "case": "case-00826",
+      "maximum_absolute_difference": 1.7053025658242404e-13,
+      "relative_at_this_case": 7.320913561584899e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 1.9383605831535533e-10,
+      "relative_at_this_case": 2.196502477389571e-12
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 1.9383605831535533e-10,
+      "relative_at_this_case": 1.877390564353193e-12
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.6117265294275194e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.130792628441587e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hx_return": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 1.9383605831535533e-10,
+      "relative_at_this_case": 2.620003687798483e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_mixed_return": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.3270812731736653e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_return": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.3270812731736653e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.0808542989077186e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.0808542989077186e-14
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.3341925069617423e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out": {
+      "case": "case-00018",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.3341925069617423e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_active_flow": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 2.2737367544323206e-10,
+      "relative_at_this_case": 8.672637289725634e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 4.547473508864641e-13,
+      "relative_at_this_case": 9.56049030343892e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin": {
+      "case": "case-00599",
+      "maximum_absolute_difference": 4.547473508864641e-13,
+      "relative_at_this_case": 8.672637289725634e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_transferred": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 2.2490319707887206e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_unmet": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 2.9071987932936187e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.5968412494261068e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 3.807845578538451e-15
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 7.892042564323447e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.5968412494261068e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in": {
+      "case": "case-00730",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.5968412494261068e-16
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_active_flow": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 3.708464646479115e-10,
+      "relative_at_this_case": 3.046779491585651e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 1.8139166834655058e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 4.320099833421409e-11,
+      "relative_at_this_case": 3.801992452530119e-12
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 4.320099833421409e-11,
+      "relative_at_this_case": 1.0444427279189828e-12
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 1.1368683772161603e-13,
+      "relative_at_this_case": 3.045845469669163e-13
+    },
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hx_return": {
+      "case": "case-00760",
+      "maximum_absolute_difference": 4.320099833421409e-11,
+      "relative_at_this_case": 7.575777554684451e-14
+    }
+  },
+  "interpretation": "Stable numerical evaluation changes some controlled floating-point results. All previously completed predicates are exact; independently verified channels retain the unchanged tolerance. All current maps separately pass complete independent verification. Unchecked algorithm diagnostics are disclosed in changed_channels_maxima."
+}

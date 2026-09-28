@@ -1,0 +1,52 @@
+# WI-050 production verification
+
+[AGENT] Phases 1–5 are implemented and verified within the accepted checker limitation. Fresh independent model audit is pending. This report does not certify the current study package or close WI-050.
+
+## Executed evidence
+
+- `.codex-test/run python implementation/run_acceptance.py` stages the canonical MFE family and preserves four normative manual implementations. The actual repository-relative command, UTC timestamp, expectation digest and source hashes are recorded in `execution-start.json`; temporary model/package paths are recorded in `scratch.txt`. `results.json` retains outputs, individual responses and reports for baseline, reserve, demand, coupling, availability and invalid source-efficiency cases.
+- `.codex-test/run python implementation/boundaries.py` generated and executed positive/equality/zero/insufficient/negative demand, chain/direct/mixed/all-zero defaults, and both efficiency stages at one/negative/zero/over-one. `boundary-results.json` and `boundaries.log` retain the cases. The focused tests regenerate the fixture in their own temporary directory; native tests have no skip fallback.
+- `.codex-test/run python implementation/consumers.py` executed the actual indicator parser and scalar verifier on the isolated generated contract. `consumer-results.json` records exact IDs/bindings: 18 assertions, 28 feature occurrences, 247 public inputs. `test_heating_efficiency_scalar_consumers` additionally executes the actual `verify.check_case` positive path, planted verdict mismatch and channel deviation rejection, plus missing-binding rejection. These use a local case fixture and do not prepare study metadata.
+- `.codex-test/run python implementation/check_results.py` independently checks source, every loop stage, net-power and divertor conservation, explicit CRF/IDC/headline/comparison formulas, growing annuities and discounted calendar events. `baseline-attribution.json` retains all 155 common historical scalars: 72 changed and 83 unchanged. `baseline-attribution.md` and `cost-operand-coverage.json` cover all 50 identified cost, annual, calendar and financial modules, including reactor-equipment subtotal, raw fuel and IDC.
+- `.codex-test/run python implementation/ship_generated.py` generated the shipped package using the same native configuration after isolated acceptance, checked isolated/shipped execution equality, preserved the four normative manual implementations and proved a regeneration fixed point. `shipped-verification.json`, before/after hash files and the native captured `instance_graph_snapshot.json` retain the evidence. The current `stellarator.snapshot.json` was refreshed from that native capture. Family tests independently regenerate live and snapshot packages and compare every byte.
+- `.codex-test/run python implementation/run_direct.py` ran the revised direct runner against the explicitly named isolated package. All anchors, 18 verdicts, direct/native channel comparisons and calendar guards passed; see `direct-runner-command.json` and `direct-runner.log`.
+- `.codex-test/run python -m pytest tests/models/ -v`: **364 passed, 13 skipped**, versus entering **355 passed, 13 skipped**. Nine new WI-050 tests account for the increase. The last strengthening of actual verifier mismatch checks was then rerun with `.codex-test/run python -m pytest tests/models/test_mfe_operating_heating.py -q`: **9 passed**. Results are in `tests-models.log` and `focused-final.log`.
+- `.codex-test/run python -m pytest tests/test_dependency_provenance.py -q`: **3 passed** (`dependency-provenance.log`). No installation or dependency mutation occurred.
+
+Commands abbreviated with `implementation/` above resolve beneath `work/active/WI-050_mfe-coherent-operating-heating/`. Every Python/model invocation used `.codex-test/run`. The complete shell/native arguments for generated runs and validation are retained in their command JSON/log files.
+
+## Requirement and verification mapping
+
+| Requirement | Verification | Actual tests / evidence |
+|---|---|---|
+| MR-WI050-1 | SV-079 | Signed-demand component test; source/consumer binding test; independent conversions in `check_results.py` |
+| MR-WI050-2 | SV-079 | `test_operating_heat_signed_demand_bounds`, `test_generic_heating_default_modes`, `test_heating_efficiency_scalar_consumers`; zero-division errors retained separately from violated positivity |
+| MR-WI050-3 | SV-081 | `test_stellarator_operating_heat_has_no_public_demand_input`, `test_operating_heat_financial_attribution`; independent source/loop/net/divertor equations and unchanged loop bindings |
+| MR-WI050-4 | SV-080 | `test_operating_heat_reserve_invariance`; installed procurement 264145000→316974000 dollars; operating invariants exact; demand procurement fixed |
+| MR-WI050-5 | SV-082 | `test_operating_heat_complete_cost_operand_classification`; both approved design tables, all 50 module operand records and complete scalar attribution |
+| MR-WI050-6 | SV-082 | Explicit finance equations, replacement-event PV and growing-annuity checks; finance/lifecycle definitions and bindings byte-preserved; availability-only online invariance |
+| MR-WI050-7 | SV-079/080/081 | Four generic modes; direct/native parity; exact public census, owned twins, family isolation, live/snapshot equality and regeneration fixed point |
+| MR-WI050-8 | SV-082 | Complete T-015 bridge with independent numerator/energy contributions, disclosed verdicts/failures/skips. Fresh independent audit remains Phase 6, owned by the parent |
+| MR-WI050-9 | SV-079/081 | Definition placement test, Source/Ref/Basis/units, held-efficiency documentation, native trace additions and `preservation.json` |
+
+Numeric comparisons use relative 1e-9 and absolute 1e-9 in documented units. Census, identities, verdicts, zero outputs, bindings and preserved bytes are exact. The legacy runner's printed anchors retain its established looser presentation tolerance; the independent production checks and direct/native tests use the required 1e-9 tolerance.
+
+## Findings and explicit limits
+
+The first production attempt failed a new independent diagnostic assertion: `preserve_handwritten=True` retained an old `AUTO_IMPLEMENTED` divertor body, which subtracted operating heat despite the corrected installed-capacity source operand. `attempt-1-preserved-auto-body/` retains that failed revision, original expectation hash and stale body. Parent approved deleting only this confirmed autogenerated file and invoking native generation again. It generated the correct body without manual arithmetic repair. The four genuine manual implementations stayed byte-identical. Correct baseline/reserve diagnostic values are -0.920399212073221 and -10.920399212073221 MW. This explains 72 production changes versus the prototype's 73; no historic/prototype evidence was modified.
+
+`expectations-citation-correction.json` records a post-first-execution source-path-only correction from nonexistent `mfe_lifecycle_calendar.sysml` to `mfe_lifecycle.sysml`. The original expectation hash remains retained; equations, controls and tolerances did not change.
+
+Early focused-test failures were fixture mistakes: generated `.root` scalar encoding, the aggregate response value `violated` versus report headline `violation`, verifier exception name and direct-oracle alias mapping. They are retained in `focused-tests.log`, `phases-1-3-tests.log` and `test-fixture-correction.log`; final focused and full model checks pass. These were not accepted model regressions.
+
+Native validation ran Levels 1–3 for each phase, retained as `phase-N-level-M.log`. Library/design staging was integrated before those phase checkpoints so the required new diagnostic formal always had a complete caller. `validation-complete.log` reports Levels 1, 3, 4 and 5 passing; Level 2 remains failing with exactly ten inherited findings. Level 6 remains failing with exactly 227 inherited plus two accepted introduced generic-default checker findings. `validation_diff.py` materializes entering sources directly from revision 546218a5 and compares exact diagnostic text, not only counts, against production; `validation-diff.json` matches the approved revised-prototype differential. There is no all-levels-pass claim. Native generation and execution separately prove the accepted generic exposure.
+
+The 13 inherited skips are unchanged: the example definition test is an intentional template placeholder; twelve foundation tests depend on absent optional legacy `types.sysml`, `units.sysml` and `materials.sysml` fixtures. Exact skipped test IDs are listed in `tests-models.log`. No WI-050 test skipped.
+
+The baseline and reserve remain divertor-violating; the coupling=0.8 control also violates installed capacity. Negative efficiencies have violated domain assertions, and zero efficiency rejects native evaluation with ZeroDivisionError. These diagnostic executions do not establish feasible operating points.
+
+`trace_commands.py` and `trace-commands.log` retain native trace operations for changed wiring/diagnostic elements. The three new definition rows were added through native `trace-element` calls before that script; their exact element/file/source and assumption fields are in the seven-row matrix diff. An attempted existing Divertor Heat Ledger row addition was rejected as duplicate; its existing source row was preserved and the changed diagnostic attribute was recorded separately. MR-WI050 IDs are in assumptions because the native Requirement field accepts registered PR IDs; no PR was invented. Native CSV output retains the existing CRLF convention, checked with `git -c core.whitespace=cr-at-eol diff --check`.
+
+Only SV-079–082 were updated through native `update-validation` after evidence passed (`validation-row-commands.log`). There is no direct caller of Divertor Heat Ledger in `test_power_balance.py`; its existing tests passed unchanged. `tests/model_families.py` ownership mapping required no edit. IFE/shared sources, original prototypes/reviews, historical goals/analysis/studies and all current study source/metadata/tests are unchanged (`preservation.json`).
+
+The current study manifest, oracle, route and four dependent test modules are explicitly deferred to a separately certified native coding task. They were not run against stale metadata or temporarily retargeted. The actual scalar parser/verifier checks above are complete. See `package-consumer-handoff.md` for the remaining package-consumer boundary.

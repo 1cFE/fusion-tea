@@ -1,0 +1,1720 @@
+{
+  "provenance": "engineered",
+  "selection": "retained finite hardware catalog re-read from newly passing whole-plant anchors",
+  "edges": [
+    {
+      "case": "edge-q2500-gas-flow-lower",
+      "branch": "gas",
+      "axis": "flow",
+      "end": "lower",
+      "chosen": {
+        "cycle__selected_flow": 1500.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "4d390492f19dc48834eeadc3d397a3ed870a7fe80c0ce0cdd7c534e22b710f5a",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_boundary__source_adequate_ok__665dcdd55c247bde",
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2",
+        "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108",
+        "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-flow-upper",
+      "branch": "gas",
+      "axis": "flow",
+      "end": "upper",
+      "chosen": {
+        "cycle__selected_flow": 2500.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "ce6f964821218ebe944653301b958b8bac3d69e0153d183a09a35e3dea49379d",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2",
+        "whole_plant_conversion__plant__gas_whole__economic_defined_ok__5a084f6c1d99295a",
+        "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108",
+        "whole_plant_conversion__plant__gas_operating__annual_net_grid_mwh_ok__1220a0098a3e5f94",
+        "whole_plant_conversion__plant__gas_operating__net_export_mw_ok__58d3569ea9297329",
+        "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-stage_ratio-lower",
+      "branch": "gas",
+      "axis": "stage_ratio",
+      "end": "lower",
+      "chosen": {
+        "compressor_1__selected_ratio": 1.2,
+        "compressor_2__selected_ratio": 1.2,
+        "compressor_3__selected_ratio": 1.2
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "665fd6d6ba68cedae6cccb1e0108054b97cb729ab5d493934106ebc9482c15f4",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_boundary__source_adequate_ok__665dcdd55c247bde"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-stage_ratio-upper",
+      "branch": "gas",
+      "axis": "stage_ratio",
+      "end": "upper",
+      "chosen": {
+        "compressor_1__selected_ratio": 1.8,
+        "compressor_2__selected_ratio": 1.8,
+        "compressor_3__selected_ratio": 1.8
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "7711908699749ed8d79f4bdf33d33ae2e66fceb90c22e8a4085ecbea2b0980e8",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_whole__economic_defined_ok__5a084f6c1d99295a",
+        "whole_plant_conversion__plant__gas_operating__annual_net_grid_mwh_ok__1220a0098a3e5f94",
+        "whole_plant_conversion__plant__gas_operating__net_export_mw_ok__58d3569ea9297329"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-service_offer-lower",
+      "branch": "gas",
+      "axis": "service_offer",
+      "end": "lower",
+      "chosen": {
+        "recuperator_hardware__ua": 60.0,
+        "conversion_services__price_factor": 1.0,
+        "water_ic1__ua": 25.0,
+        "water_ic2__ua": 25.0,
+        "water_pre__ua": 20.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "ac4c3e6d7ee600b1a28e46c3d72797e6088433e46d6762db3f45bc27e70ca1e1",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-service_offer-upper",
+      "branch": "gas",
+      "axis": "service_offer",
+      "end": "upper",
+      "chosen": {
+        "recuperator_hardware__ua": 80.0,
+        "conversion_services__price_factor": 1.5,
+        "water_ic1__ua": 40.0,
+        "water_ic2__ua": 40.0,
+        "water_pre__ua": 60.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "1acce6b997515d2d9a7b0e890282e7725597eddeadba33b1597ef3055a4c50b3",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2",
+        "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108",
+        "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-source-lower",
+      "branch": "gas",
+      "axis": "source",
+      "end": "lower",
+      "chosen": {
+        "source_basis__q_source_MW": 2500.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-gas-source-upper",
+      "branch": "gas",
+      "axis": "source",
+      "end": "upper",
+      "chosen": {
+        "source_basis__q_source_MW": 3000.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "35838b1fb0f26bf7e195a00ae7c7d2ef6bbf6fcd40ce320f1a67e09d1452a67f",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_boundary__source_adequate_ok__665dcdd55c247bde",
+        "whole_plant_conversion__plant__source_basis__divertor_margin_ok__77e857f8e82a3790",
+        "whole_plant_conversion__plant__primary_offer__pressure_margin_pa_ok__76becfa8174fdcbd"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-circuits-lower",
+      "branch": "steam",
+      "axis": "circuits",
+      "end": "lower",
+      "chosen": {
+        "steam_transport__n_loops": 10.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-circuits-upper",
+      "branch": "steam",
+      "axis": "circuits",
+      "end": "upper",
+      "chosen": {
+        "steam_transport__n_loops": 14.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "27e682a89e8afee10a795e7d8614a8292f22e2cec8645f86d7261f4855d4dbf9",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-pumps_per_circuit-lower",
+      "branch": "steam",
+      "axis": "pumps_per_circuit",
+      "end": "lower",
+      "chosen": {
+        "steam_transport__salt_pumps_per_circuit": 2.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "91a378df4f09f01236f3f0bf1d59d7caad82fafa772387dc855d3d6fcc7ae32d",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__salt_shaft_capacity__capacity_requirement__b2367d578fc2f1ec",
+        "whole_plant_conversion__plant__salt_flow_capacity__capacity_requirement__dd3ff75af1205c2a",
+        "whole_plant_conversion__plant__steam_transport__motor_factor_ok_required__c7270c7cda57bab6",
+        "whole_plant_conversion__plant__steam_transport__pump_type_ok_required__ddc3748fb76b74c1",
+        "whole_plant_conversion__plant__salt_electric_capacity__capacity_requirement__98e5361921299b30"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-pumps_per_circuit-upper",
+      "branch": "steam",
+      "axis": "pumps_per_circuit",
+      "end": "upper",
+      "chosen": {
+        "steam_transport__salt_pumps_per_circuit": 4.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-pump_design_flow-lower",
+      "branch": "steam",
+      "axis": "pump_design_flow",
+      "end": "lower",
+      "chosen": {
+        "steam_transport__selected_salt_design_flow_kg_s": 225.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-pump_design_flow-upper",
+      "branch": "steam",
+      "axis": "pump_design_flow",
+      "end": "upper",
+      "chosen": {
+        "steam_transport__selected_salt_design_flow_kg_s": 250.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "b7264fe66b532df60db66159b67a793f4684cea08547bc172ea87cd796fd1130",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-source-lower",
+      "branch": "steam",
+      "axis": "source",
+      "end": "lower",
+      "chosen": {
+        "source_basis__q_source_MW": 2500.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2500-steam-source-upper",
+      "branch": "steam",
+      "axis": "source",
+      "end": "upper",
+      "chosen": {
+        "source_basis__q_source_MW": 3000.0
+      },
+      "anchor_source_MW": 2500.0,
+      "anchor": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+      "anchor_supported": true,
+      "point_id": "35838b1fb0f26bf7e195a00ae7c7d2ef6bbf6fcd40ce320f1a67e09d1452a67f",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__steam_lp_flow_capacity__capacity_requirement__a3fe0741c9ecff1c",
+        "whole_plant_conversion__plant__salt_shaft_capacity__capacity_requirement__b2367d578fc2f1ec",
+        "whole_plant_conversion__plant__steam_condenser_capacity__capacity_requirement__21565c442e22d191",
+        "whole_plant_conversion__plant__steam_conditions__supported_required__f55a3b19d079007e",
+        "whole_plant_conversion__plant__salt_flow_capacity__capacity_requirement__dd3ff75af1205c2a",
+        "whole_plant_conversion__plant__source_basis__divertor_margin_ok__77e857f8e82a3790",
+        "whole_plant_conversion__plant__steam_condensate_electric_capacity__capacity_requirement__b4edc0272db0ccfd",
+        "whole_plant_conversion__plant__steam_feed_electric_capacity__capacity_requirement__b9644c9b953bc0ac",
+        "whole_plant_conversion__plant__steam_hp_shaft_capacity__capacity_requirement__a3fe202eb6d52755",
+        "whole_plant_conversion__plant__steam_feed_pressure_capacity__capacity_requirement__5e891902fcc36704",
+        "whole_plant_conversion__plant__steam_condensate_flow_capacity__capacity_requirement__9f500cb802e73b3a",
+        "whole_plant_conversion__plant__steam_reheat_ua_capacity__capacity_requirement__14e2137308151f37",
+        "whole_plant_conversion__plant__steam_transport__ihx_capacity_ok_required__98f15d4abb4b4604",
+        "whole_plant_conversion__plant__steam_lp_shaft_capacity__capacity_requirement__5eb83cc804af4b97",
+        "whole_plant_conversion__plant__steam_condensate_pressure_capacity__capacity_requirement__81d8ff0ab723193e",
+        "whole_plant_conversion__plant__steam_gross_capacity__capacity_requirement__9cde1cfefe9e4edb",
+        "whole_plant_conversion__plant__steam_hp_flow_capacity__capacity_requirement__5cc6b8ef933d65f8",
+        "whole_plant_conversion__plant__primary_offer__pressure_margin_pa_ok__76becfa8174fdcbd",
+        "whole_plant_conversion__plant__steam_feed_flow_capacity__capacity_requirement__5d9d76d0749190a1",
+        "whole_plant_conversion__plant__salt_electric_capacity__capacity_requirement__98e5361921299b30",
+        "whole_plant_conversion__plant__steam_boundary__source_adequate_ok__d29edbaf0da24311",
+        "whole_plant_conversion__plant__steam_main_ua_capacity__capacity_requirement__7df245597c1c6a96"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-flow-lower",
+      "branch": "gas",
+      "axis": "flow",
+      "end": "lower",
+      "chosen": {
+        "cycle__selected_flow": 1500.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "8e00f66a44679aace14c838e9cab7b92bab61b14890f6d0826f0d06f09afa1fd",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_boundary__source_adequate_ok__665dcdd55c247bde",
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2",
+        "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108",
+        "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-flow-upper",
+      "branch": "gas",
+      "axis": "flow",
+      "end": "upper",
+      "chosen": {
+        "cycle__selected_flow": 2500.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "41e0e89ff4d8f4388b10e97b69170852ee30c038a0d27752ce1d4a0b16b87efa",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2",
+        "whole_plant_conversion__plant__gas_whole__economic_defined_ok__5a084f6c1d99295a",
+        "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108",
+        "whole_plant_conversion__plant__gas_operating__annual_net_grid_mwh_ok__1220a0098a3e5f94",
+        "whole_plant_conversion__plant__gas_operating__net_export_mw_ok__58d3569ea9297329",
+        "whole_plant_conversion__plant__compressor_capacity__capacity_ok__add1463eda59a898",
+        "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-stage_ratio-lower",
+      "branch": "gas",
+      "axis": "stage_ratio",
+      "end": "lower",
+      "chosen": {
+        "compressor_1__selected_ratio": 1.2,
+        "compressor_2__selected_ratio": 1.2,
+        "compressor_3__selected_ratio": 1.2
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "973f0c431cb2a0917418dbf22db809d8a2196198c8116d9d948fc026a8d1cf83",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__gas_boundary__source_adequate_ok__665dcdd55c247bde"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-stage_ratio-upper",
+      "branch": "gas",
+      "axis": "stage_ratio",
+      "end": "upper",
+      "chosen": {
+        "compressor_1__selected_ratio": 1.8,
+        "compressor_2__selected_ratio": 1.8,
+        "compressor_3__selected_ratio": 1.8
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-service_offer-lower",
+      "branch": "gas",
+      "axis": "service_offer",
+      "end": "lower",
+      "chosen": {
+        "recuperator_hardware__ua": 60.0,
+        "conversion_services__price_factor": 1.0,
+        "water_ic1__ua": 25.0,
+        "water_ic2__ua": 25.0,
+        "water_pre__ua": 20.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "b8dfb2b12a434cbe209fccc5a429b76dd915042e1a825439039a285ac631c383",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-service_offer-upper",
+      "branch": "gas",
+      "axis": "service_offer",
+      "end": "upper",
+      "chosen": {
+        "recuperator_hardware__ua": 80.0,
+        "conversion_services__price_factor": 1.5,
+        "water_ic1__ua": 40.0,
+        "water_ic2__ua": 40.0,
+        "water_pre__ua": 60.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "f1c7073a601f8859ba61a6d31c71a34ac88b4889c59fe79a7431ec233c2179e9",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0",
+        "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2",
+        "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108",
+        "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-source-lower",
+      "branch": "gas",
+      "axis": "source",
+      "end": "lower",
+      "chosen": {
+        "source_basis__q_source_MW": 2500.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "950fd89597b7444eda48c975af49e02f1f21286e2a2cd66328035851f2b6fd2a",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-gas-source-upper",
+      "branch": "gas",
+      "axis": "source",
+      "end": "upper",
+      "chosen": {
+        "source_basis__q_source_MW": 3000.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "8f924ac43948939761b67c3123b40a13b3bb1005f79159738bef0b77d0f1d67d",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__source_basis__divertor_margin_ok__77e857f8e82a3790",
+        "whole_plant_conversion__plant__primary_offer__pressure_margin_pa_ok__76becfa8174fdcbd"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-circuits-lower",
+      "branch": "steam",
+      "axis": "circuits",
+      "end": "lower",
+      "chosen": {
+        "steam_transport__n_loops": 10.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "fb16e432d5808ed5fe08c2013c7125683ce26898f1ea0e2e70540d8de548a779",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__steam_lp_flow_capacity__capacity_requirement__a3fe0741c9ecff1c",
+        "whole_plant_conversion__plant__salt_shaft_capacity__capacity_requirement__b2367d578fc2f1ec",
+        "whole_plant_conversion__plant__steam_condenser_capacity__capacity_requirement__21565c442e22d191",
+        "whole_plant_conversion__plant__steam_conditions__supported_required__f55a3b19d079007e",
+        "whole_plant_conversion__plant__salt_flow_capacity__capacity_requirement__dd3ff75af1205c2a",
+        "whole_plant_conversion__plant__steam_condensate_electric_capacity__capacity_requirement__b4edc0272db0ccfd",
+        "whole_plant_conversion__plant__steam_feed_electric_capacity__capacity_requirement__b9644c9b953bc0ac",
+        "whole_plant_conversion__plant__steam_hp_shaft_capacity__capacity_requirement__a3fe202eb6d52755",
+        "whole_plant_conversion__plant__steam_feed_pressure_capacity__capacity_requirement__5e891902fcc36704",
+        "whole_plant_conversion__plant__steam_condensate_flow_capacity__capacity_requirement__9f500cb802e73b3a",
+        "whole_plant_conversion__plant__steam_reheat_ua_capacity__capacity_requirement__14e2137308151f37",
+        "whole_plant_conversion__plant__steam_transport__ihx_capacity_ok_required__98f15d4abb4b4604",
+        "whole_plant_conversion__plant__steam_lp_shaft_capacity__capacity_requirement__5eb83cc804af4b97",
+        "whole_plant_conversion__plant__steam_condensate_pressure_capacity__capacity_requirement__81d8ff0ab723193e",
+        "whole_plant_conversion__plant__steam_gross_capacity__capacity_requirement__9cde1cfefe9e4edb",
+        "whole_plant_conversion__plant__steam_hp_flow_capacity__capacity_requirement__5cc6b8ef933d65f8",
+        "whole_plant_conversion__plant__steam_feed_flow_capacity__capacity_requirement__5d9d76d0749190a1",
+        "whole_plant_conversion__plant__salt_electric_capacity__capacity_requirement__98e5361921299b30",
+        "whole_plant_conversion__plant__steam_boundary__source_adequate_ok__d29edbaf0da24311",
+        "whole_plant_conversion__plant__steam_main_ua_capacity__capacity_requirement__7df245597c1c6a96"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-circuits-upper",
+      "branch": "steam",
+      "axis": "circuits",
+      "end": "upper",
+      "chosen": {
+        "steam_transport__n_loops": 14.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "cf3423824ef9cfa8513fddd412083cdb16295e4ede32180bcb9d867a40afb264",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-pumps_per_circuit-lower",
+      "branch": "steam",
+      "axis": "pumps_per_circuit",
+      "end": "lower",
+      "chosen": {
+        "steam_transport__salt_pumps_per_circuit": 2.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "1906db28158cc6ea243e86882d99e925a5c410b67fae9b3cf43dde64a0ccbebf",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__salt_shaft_capacity__capacity_requirement__b2367d578fc2f1ec",
+        "whole_plant_conversion__plant__salt_flow_capacity__capacity_requirement__dd3ff75af1205c2a",
+        "whole_plant_conversion__plant__steam_transport__motor_factor_ok_required__c7270c7cda57bab6",
+        "whole_plant_conversion__plant__steam_transport__pump_type_ok_required__ddc3748fb76b74c1",
+        "whole_plant_conversion__plant__salt_electric_capacity__capacity_requirement__98e5361921299b30"
+      ],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-pumps_per_circuit-upper",
+      "branch": "steam",
+      "axis": "pumps_per_circuit",
+      "end": "upper",
+      "chosen": {
+        "steam_transport__salt_pumps_per_circuit": 4.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-pump_design_flow-lower",
+      "branch": "steam",
+      "axis": "pump_design_flow",
+      "end": "lower",
+      "chosen": {
+        "steam_transport__selected_salt_design_flow_kg_s": 225.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-pump_design_flow-upper",
+      "branch": "steam",
+      "axis": "pump_design_flow",
+      "end": "upper",
+      "chosen": {
+        "steam_transport__selected_salt_design_flow_kg_s": 250.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "46fa194ee78fabdb5e1201487ea2c924b4a422fe02d3c41b610bf4ad6f85c1c1",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-source-lower",
+      "branch": "steam",
+      "axis": "source",
+      "end": "lower",
+      "chosen": {
+        "source_basis__q_source_MW": 2500.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "950fd89597b7444eda48c975af49e02f1f21286e2a2cd66328035851f2b6fd2a",
+      "status": "not_caught",
+      "failed_predicates": [],
+      "oracle_status": "evaluated"
+    },
+    {
+      "case": "edge-q2800-steam-source-upper",
+      "branch": "steam",
+      "axis": "source",
+      "end": "upper",
+      "chosen": {
+        "source_basis__q_source_MW": 3000.0
+      },
+      "anchor_source_MW": 2800.0,
+      "anchor": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+      "anchor_supported": true,
+      "point_id": "8f924ac43948939761b67c3123b40a13b3bb1005f79159738bef0b77d0f1d67d",
+      "status": "caught",
+      "failed_predicates": [
+        "whole_plant_conversion__plant__steam_lp_flow_capacity__capacity_requirement__a3fe0741c9ecff1c",
+        "whole_plant_conversion__plant__salt_shaft_capacity__capacity_requirement__b2367d578fc2f1ec",
+        "whole_plant_conversion__plant__steam_condenser_capacity__capacity_requirement__21565c442e22d191",
+        "whole_plant_conversion__plant__steam_conditions__supported_required__f55a3b19d079007e",
+        "whole_plant_conversion__plant__salt_flow_capacity__capacity_requirement__dd3ff75af1205c2a",
+        "whole_plant_conversion__plant__source_basis__divertor_margin_ok__77e857f8e82a3790",
+        "whole_plant_conversion__plant__steam_condensate_electric_capacity__capacity_requirement__b4edc0272db0ccfd",
+        "whole_plant_conversion__plant__steam_feed_electric_capacity__capacity_requirement__b9644c9b953bc0ac",
+        "whole_plant_conversion__plant__steam_hp_shaft_capacity__capacity_requirement__a3fe202eb6d52755",
+        "whole_plant_conversion__plant__steam_feed_pressure_capacity__capacity_requirement__5e891902fcc36704",
+        "whole_plant_conversion__plant__steam_condensate_flow_capacity__capacity_requirement__9f500cb802e73b3a",
+        "whole_plant_conversion__plant__steam_reheat_ua_capacity__capacity_requirement__14e2137308151f37",
+        "whole_plant_conversion__plant__steam_transport__ihx_capacity_ok_required__98f15d4abb4b4604",
+        "whole_plant_conversion__plant__steam_lp_shaft_capacity__capacity_requirement__5eb83cc804af4b97",
+        "whole_plant_conversion__plant__steam_condensate_pressure_capacity__capacity_requirement__81d8ff0ab723193e",
+        "whole_plant_conversion__plant__steam_gross_capacity__capacity_requirement__9cde1cfefe9e4edb",
+        "whole_plant_conversion__plant__steam_hp_flow_capacity__capacity_requirement__5cc6b8ef933d65f8",
+        "whole_plant_conversion__plant__primary_offer__pressure_margin_pa_ok__76becfa8174fdcbd",
+        "whole_plant_conversion__plant__steam_feed_flow_capacity__capacity_requirement__5d9d76d0749190a1",
+        "whole_plant_conversion__plant__salt_electric_capacity__capacity_requirement__98e5361921299b30",
+        "whole_plant_conversion__plant__steam_boundary__source_adequate_ok__d29edbaf0da24311",
+        "whole_plant_conversion__plant__steam_main_ua_capacity__capacity_requirement__7df245597c1c6a96"
+      ],
+      "oracle_status": "evaluated"
+    }
+  ],
+  "source3000": "shared source failures retained; no passing anchor at3000 claimed",
+  "bound_claim": "A not_caught endpoint is an open edge of this finite catalog, not a continuous feasible bound or global optimum. No automatic extension or equipment sizing.",
+  "declared_finite_window": {
+    "source_MW": [
+      2500.0,
+      2800.0,
+      3000.0
+    ],
+    "supported_scenario_sources_MW": [
+      2500.0,
+      2800.0
+    ],
+    "gas": {
+      "flow_kg_s": [
+        1500.0,
+        1750.0,
+        2000.0,
+        2250.0,
+        2500.0
+      ],
+      "coordinated_stage_pressure_ratios": [
+        1.2,
+        1.35,
+        1.5,
+        1.65,
+        1.8
+      ],
+      "service_offers": [
+        {
+          "name": "25-25-20",
+          "ua": [
+            25.0,
+            25.0,
+            20.0
+          ],
+          "recuperator_ua": 60.0,
+          "quote_factor": 1.0
+        },
+        {
+          "name": "25-25-25",
+          "ua": [
+            25.0,
+            25.0,
+            25.0
+          ],
+          "recuperator_ua": 60.0,
+          "quote_factor": 1.0
+        },
+        {
+          "name": "25-25-40",
+          "ua": [
+            25.0,
+            25.0,
+            40.0
+          ],
+          "recuperator_ua": 60.0,
+          "quote_factor": 1.0
+        },
+        {
+          "name": "30-30-50",
+          "ua": [
+            30.0,
+            30.0,
+            50.0
+          ],
+          "recuperator_ua": 60.0,
+          "quote_factor": 1.25
+        },
+        {
+          "name": "40-40-60",
+          "ua": [
+            40.0,
+            40.0,
+            60.0
+          ],
+          "recuperator_ua": 80.0,
+          "quote_factor": 1.5
+        }
+      ]
+    },
+    "steam": {
+      "circuits": [
+        10,
+        11,
+        12,
+        14
+      ],
+      "pumps_per_circuit": [
+        2,
+        3,
+        4
+      ],
+      "pump_design_flow_kg_s": [
+        225,
+        250
+      ]
+    },
+    "common_scenarios": [
+      {
+        "scenario": "common-quotes-x0.5",
+        "family": "common_capital",
+        "choices": {
+          "auxiliary_rejection_account__price_factor": 0.5,
+          "blanket_account__price_factor": 0.5,
+          "cryoplant_account__price_factor": 0.5,
+          "digital_twin_account__price_factor": 0.5,
+          "divertor_account__price_factor": 0.5,
+          "facilities_account__price_factor": 0.5,
+          "fuel_processing_account__price_factor": 0.5,
+          "heating_account__price_factor": 0.5,
+          "installation_account__price_factor": 0.5,
+          "land_account__price_factor": 0.5,
+          "magnet_account__price_factor": 0.5,
+          "miscellaneous_account__price_factor": 0.5,
+          "other_reactor_account__price_factor": 0.5,
+          "owner_account__price_factor": 0.5,
+          "pbl_initial_account__price_factor": 0.5,
+          "power_supplies_account__price_factor": 0.5,
+          "primary_circulators_account__price_factor": 0.5,
+          "primary_helium_account__price_factor": 0.5,
+          "primary_pipes_account__price_factor": 0.5,
+          "primary_spares_account__price_factor": 0.5,
+          "reactor_controls_account__price_factor": 0.5,
+          "remote_handling_account__price_factor": 0.5,
+          "shared_electrical_account__price_factor": 0.5,
+          "shield_account__price_factor": 0.5,
+          "source_installation_allowance_account__price_factor": 0.5,
+          "structure_account__price_factor": 0.5,
+          "vessel_account__price_factor": 0.5,
+          "waste_account__price_factor": 0.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "primary_piping-quote-x0.5",
+        "family": "primary_piping",
+        "choices": {
+          "primary_pipes_account__price_factor": 0.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "auxiliary_rejection-quote-x0.5",
+        "family": "auxiliary_rejection",
+        "choices": {
+          "auxiliary_rejection_account__price_factor": 0.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "common-quotes-x1.5",
+        "family": "common_capital",
+        "choices": {
+          "auxiliary_rejection_account__price_factor": 1.5,
+          "blanket_account__price_factor": 1.5,
+          "cryoplant_account__price_factor": 1.5,
+          "digital_twin_account__price_factor": 1.5,
+          "divertor_account__price_factor": 1.5,
+          "facilities_account__price_factor": 1.5,
+          "fuel_processing_account__price_factor": 1.5,
+          "heating_account__price_factor": 1.5,
+          "installation_account__price_factor": 1.5,
+          "land_account__price_factor": 1.5,
+          "magnet_account__price_factor": 1.5,
+          "miscellaneous_account__price_factor": 1.5,
+          "other_reactor_account__price_factor": 1.5,
+          "owner_account__price_factor": 1.5,
+          "pbl_initial_account__price_factor": 1.5,
+          "power_supplies_account__price_factor": 1.5,
+          "primary_circulators_account__price_factor": 1.5,
+          "primary_helium_account__price_factor": 1.5,
+          "primary_pipes_account__price_factor": 1.5,
+          "primary_spares_account__price_factor": 1.5,
+          "reactor_controls_account__price_factor": 1.5,
+          "remote_handling_account__price_factor": 1.5,
+          "shared_electrical_account__price_factor": 1.5,
+          "shield_account__price_factor": 1.5,
+          "source_installation_allowance_account__price_factor": 1.5,
+          "structure_account__price_factor": 1.5,
+          "vessel_account__price_factor": 1.5,
+          "waste_account__price_factor": 1.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "primary_piping-quote-x1.5",
+        "family": "primary_piping",
+        "choices": {
+          "primary_pipes_account__price_factor": 1.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "auxiliary_rejection-quote-x1.5",
+        "family": "auxiliary_rejection",
+        "choices": {
+          "auxiliary_rejection_account__price_factor": 1.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "source-installation-0",
+        "family": "source_installation",
+        "choices": {
+          "source_installation_allowance_account__quote_USD2025": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "source-installation-1e+09",
+        "family": "source_installation",
+        "choices": {
+          "source_installation_allowance_account__quote_USD2025": 1000000000.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "contingency_rate-0",
+        "family": "overheads",
+        "choices": {
+          "finance__contingency_rate": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "contingency_rate-0.2",
+        "family": "overheads",
+        "choices": {
+          "finance__contingency_rate": 0.2
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "indirect_rate-0.1",
+        "family": "overheads",
+        "choices": {
+          "finance__indirect_rate": 0.1
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "indirect_rate-0.3",
+        "family": "overheads",
+        "choices": {
+          "finance__indirect_rate": 0.3
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "supplementary-rates-x0",
+        "family": "overheads",
+        "choices": {
+          "finance__freight_rate": 0.0,
+          "finance__general_spares_rate": 0.0,
+          "finance__tax_rate": 0.0,
+          "finance__insurance_rate": 0.0,
+          "finance__commissioning_rate": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "supplementary-rates-x2",
+        "family": "overheads",
+        "choices": {
+          "finance__freight_rate": 0.03,
+          "finance__general_spares_rate": 0.04,
+          "finance__tax_rate": 0.02,
+          "finance__insurance_rate": 0.03,
+          "finance__commissioning_rate": 0.01
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "discount-0",
+        "family": "finance",
+        "choices": {
+          "finance__rate": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "discount-0.1",
+        "family": "finance",
+        "choices": {
+          "finance__rate": 0.1
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "availability-0.65",
+        "family": "availability",
+        "choices": {
+          "finance__availability": 0.65
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "availability-0.9",
+        "family": "availability",
+        "choices": {
+          "finance__availability": 0.9
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "magnet-life-8-FPY",
+        "family": "replacement",
+        "choices": {
+          "steam_whole__magnet_life": 8.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "magnet-life-12-FPY",
+        "family": "replacement",
+        "choices": {
+          "steam_whole__magnet_life": 12.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "routine-allocation-0.5",
+        "family": "service",
+        "choices": {
+          "steam_whole__routine_fraction": 0.5
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "routine-allocation-1",
+        "family": "service",
+        "choices": {
+          "steam_whole__routine_fraction": 1.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "import-price-0",
+        "family": "imports",
+        "choices": {
+          "steam_operating__import_price": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "import-price-150",
+        "family": "imports",
+        "choices": {
+          "steam_operating__import_price": 150.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-mean-T-price-x0",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1980739195540366,
+          "fuel_accounts__tritium_price": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-mean-T-price-x0.333333",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1980739195540366,
+          "fuel_accounts__tritium_price": 17040762.308099523
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-mean-T-price-x3.33333",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1980739195540366,
+          "fuel_accounts__tritium_price": 170407623.08099523
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-lower-T-price-x0",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1861455810023918,
+          "fuel_accounts__tritium_price": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-lower-T-price-x0.333333",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1861455810023918,
+          "fuel_accounts__tritium_price": 17040762.308099523
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-lower-T-price-x1",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1861455810023918,
+          "fuel_accounts__tritium_price": 51122286.92429857
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-model-lower-T-price-x3.33333",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.1861455810023918,
+          "fuel_accounts__tritium_price": 170407623.08099523
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-paper-reference-T-price-x0",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.074,
+          "fuel_accounts__tritium_price": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-paper-reference-T-price-x0.333333",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.074,
+          "fuel_accounts__tritium_price": 17040762.308099523
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-paper-reference-T-price-x1",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.074,
+          "fuel_accounts__tritium_price": 51122286.92429857
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "TBR-paper-reference-T-price-x3.33333",
+        "family": "fuel",
+        "choices": {
+          "fuel_accounts__tbr": 1.074,
+          "fuel_accounts__tritium_price": 170407623.08099523
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "heating-efficiency-0.4",
+        "family": "source_load",
+        "choices": {
+          "source_basis__heating_source_efficiency": 0.4
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "heating-efficiency-0.6",
+        "family": "source_load",
+        "choices": {
+          "source_basis__heating_source_efficiency": 0.6
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "primary-drive-efficiency-0.9",
+        "family": "source_load",
+        "choices": {
+          "primary_loop__eta_drive": 0.9
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "residual-load-0-MW",
+        "family": "source_load",
+        "choices": {
+          "steam_operating__residual_MW": 0.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "residual-load-20-MW",
+        "family": "source_load",
+        "choices": {
+          "steam_operating__residual_MW": 20.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "nuclear-heating-50-W-m3",
+        "family": "cryogenic_heat",
+        "choices": {
+          "cryogenic_demand__q_nuc_W_m3": 50.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "nuclear-heating-80-W-m3",
+        "family": "cryogenic_heat",
+        "choices": {
+          "cryogenic_demand__q_nuc_W_m3": 80.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "extra-cold-10000-W",
+        "family": "cryogenic_heat",
+        "choices": {
+          "cryogenic_demand__extra_cold_W": 10000.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      },
+      {
+        "scenario": "extra-cold-13000-W",
+        "family": "cryogenic_heat",
+        "choices": {
+          "cryogenic_demand__extra_cold_W": 13000.0
+        },
+        "framing": "sensitivity",
+        "range_authority": "engineered stress, not an uncertainty interval"
+      }
+    ],
+    "price_service_scenarios": [
+      {
+        "case": "sensitivity-q2500-gas-quote-x0.5",
+        "baseline_choices": {
+          "compressor_equipment__price_factor": 0.5,
+          "turbine_equipment__price_factor": 0.5,
+          "generator_equipment__price_factor": 0.5,
+          "he_hx__price_factor": 0.5,
+          "he_duty_equipment__price_factor": 0.5,
+          "conversion_services__price_factor": 0.5,
+          "heat_rejection_equipment__price_factor": 0.5,
+          "gas_ledger__capital9": 42966500.0,
+          "gas_ledger__controller_capital": 5000000.0
+        }
+      },
+      {
+        "case": "sensitivity-q2500-gas-quote-x1.5",
+        "baseline_choices": {
+          "compressor_equipment__price_factor": 1.5,
+          "turbine_equipment__price_factor": 1.5,
+          "generator_equipment__price_factor": 1.5,
+          "he_hx__price_factor": 1.5,
+          "he_duty_equipment__price_factor": 1.5,
+          "conversion_services__price_factor": 1.5,
+          "heat_rejection_equipment__price_factor": 1.5,
+          "gas_ledger__capital9": 128899500.0,
+          "gas_ledger__controller_capital": 15000000.0
+        }
+      },
+      {
+        "case": "sensitivity-q2500-steam-quote-x0.5",
+        "baseline_choices": {
+          "steam_ledger__capital3": 123732214.41929796,
+          "steam_ledger__capital4": 57969765.90282109,
+          "steam_ledger__controller_capital": 5000000.0,
+          "steam_transport__costscale": 0.5
+        }
+      },
+      {
+        "case": "sensitivity-q2500-steam-quote-x1.5",
+        "baseline_choices": {
+          "steam_ledger__capital3": 371196643.2578939,
+          "steam_ledger__capital4": 173909297.70846325,
+          "steam_ledger__controller_capital": 15000000.0,
+          "steam_transport__costscale": 1.5
+        }
+      },
+      {
+        "case": "sensitivity-q2500-gas-quote-x0.5-steam-x1.5",
+        "baseline_choices": {
+          "compressor_equipment__price_factor": 0.5,
+          "turbine_equipment__price_factor": 0.5,
+          "generator_equipment__price_factor": 0.5,
+          "he_hx__price_factor": 0.5,
+          "he_duty_equipment__price_factor": 0.5,
+          "conversion_services__price_factor": 0.5,
+          "heat_rejection_equipment__price_factor": 0.5,
+          "gas_ledger__capital9": 42966500.0,
+          "gas_ledger__controller_capital": 5000000.0,
+          "steam_ledger__capital3": 371196643.2578939,
+          "steam_ledger__capital4": 173909297.70846325,
+          "steam_ledger__controller_capital": 15000000.0,
+          "steam_transport__costscale": 1.5
+        }
+      },
+      {
+        "case": "sensitivity-q2500-gas-quote-x1.5-steam-x0.5",
+        "baseline_choices": {
+          "compressor_equipment__price_factor": 1.5,
+          "turbine_equipment__price_factor": 1.5,
+          "generator_equipment__price_factor": 1.5,
+          "he_hx__price_factor": 1.5,
+          "he_duty_equipment__price_factor": 1.5,
+          "conversion_services__price_factor": 1.5,
+          "heat_rejection_equipment__price_factor": 1.5,
+          "gas_ledger__capital9": 128899500.0,
+          "gas_ledger__controller_capital": 15000000.0,
+          "steam_ledger__capital3": 123732214.41929796,
+          "steam_ledger__capital4": 57969765.90282109,
+          "steam_ledger__controller_capital": 5000000.0,
+          "steam_transport__costscale": 0.5
+        }
+      },
+      {
+        "case": "sensitivity-q2500-recurring-x0.5",
+        "baseline_choices": {
+          "gas_ledger__annual_service_fraction": 0.01,
+          "gas_ledger__replacement_fraction": 0.1,
+          "steam_ledger__annual_service_fraction": 0.01,
+          "steam_ledger__replacement_fraction": 0.1
+        }
+      },
+      {
+        "case": "sensitivity-q2500-recurring-x1.5",
+        "baseline_choices": {
+          "gas_ledger__annual_service_fraction": 0.03,
+          "gas_ledger__replacement_fraction": 0.30000000000000004,
+          "steam_ledger__annual_service_fraction": 0.03,
+          "steam_ledger__replacement_fraction": 0.30000000000000004
+        }
+      }
+    ],
+    "price_application": "each multiplier applies to that offer own selected quote; baseline choices above identify inputs, all exact per-offer values are in proposed-points aliases and complete points",
+    "joint_efficiency_scenarios": [
+      {
+        "scenario": "gas-favourable",
+        "family": "joint_efficiency",
+        "choices": {
+          "compressor_1__efficiency": 0.92,
+          "compressor_2__efficiency": 0.92,
+          "compressor_3__efficiency": 0.92,
+          "cycle__turbine_efficiency": 0.9600000000000001,
+          "steam_cycle__eta_hp": 0.87,
+          "steam_cycle__eta_lp": 0.87
+        },
+        "framing": "sensitivity",
+        "range_authority": "hypothetical performance, no new hardware qualification"
+      },
+      {
+        "scenario": "steam-favourable",
+        "family": "joint_efficiency",
+        "choices": {
+          "compressor_1__efficiency": 0.86,
+          "compressor_2__efficiency": 0.86,
+          "compressor_3__efficiency": 0.86,
+          "cycle__turbine_efficiency": 0.9,
+          "steam_cycle__eta_hp": 0.93,
+          "steam_cycle__eta_lp": 0.93
+        },
+        "framing": "sensitivity",
+        "range_authority": "hypothetical performance, no new hardware qualification"
+      }
+    ],
+    "performance_price_interactions": [
+      {
+        "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+        "performance": "gas-favourable",
+        "gas_quote_factor": 0.5,
+        "steam_quote_factor": 1.5,
+        "admitted_aliases": 40,
+        "eligibility_basis": "full performance catalog; positive price changes preserve physical eligibility"
+      },
+      {
+        "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+        "performance": "steam-favourable",
+        "gas_quote_factor": 1.5,
+        "steam_quote_factor": 0.5,
+        "admitted_aliases": 22,
+        "eligibility_basis": "full performance catalog; positive price changes preserve physical eligibility"
+      }
+    ],
+    "economic_brackets": [
+      {
+        "performance": "gas-favourable",
+        "source_MW": 2500.0,
+        "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+        "gas_endpoint": 0.5,
+        "steam_endpoint": 1.5,
+        "t_domain": [
+          0.0,
+          1.0
+        ],
+        "endpoint_gaps": [
+          83.39126450559024,
+          10.033584646572592
+        ],
+        "endpoint_best": [
+          {
+            "gas": 509.3879066019891,
+            "steam": 425.99664209639883
+          },
+          {
+            "gas": 477.2058669247667,
+            "steam": 467.17228227819413
+          }
+        ],
+        "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+        "disposition": "no crossing in declared positive quote path"
+      },
+      {
+        "performance": "gas-favourable",
+        "source_MW": 2800.0,
+        "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+        "gas_endpoint": 0.5,
+        "steam_endpoint": 1.5,
+        "t_domain": [
+          0.0,
+          1.0
+        ],
+        "endpoint_gaps": [
+          37.03359783511752,
+          -29.36463534420278
+        ],
+        "endpoint_best": [
+          {
+            "gas": 424.0264258334736,
+            "steam": 386.99282799835606
+          },
+          {
+            "gas": 397.3765128271898,
+            "steam": 426.7411481713926
+          }
+        ],
+        "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+        "disposition": "crossing bracket proposed",
+        "oracle_bracket_t": [
+          0.5577392713928223,
+          0.5577592713928222
+        ],
+        "bracket_results": [
+          {
+            "t": 0.5577392713928223,
+            "gap": 0.0006956399127489021,
+            "best": {
+              "gas": 409.1627227706668,
+              "steam": 409.16202713075404
+            },
+            "scenario": "economic-bracket-gas-favourable-q2800-lower"
+          },
+          {
+            "t": 0.5577592713928222,
+            "gap": -0.0006323247508248642,
+            "best": {
+              "gas": 409.16218977240663,
+              "steam": 409.16282209715746
+            },
+            "scenario": "economic-bracket-gas-favourable-q2800-upper"
+          }
+        ]
+      },
+      {
+        "performance": "steam-favourable",
+        "source_MW": 2500.0,
+        "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+        "gas_endpoint": 1.5,
+        "steam_endpoint": 0.5,
+        "t_domain": [
+          0.0,
+          1.0
+        ],
+        "endpoint_gaps": [
+          886.3308455592146,
+          1004.9690503365354
+        ],
+        "endpoint_best": [
+          {
+            "gas": 1278.245587991866,
+            "steam": 391.91474243265134
+          },
+          {
+            "gas": 1359.0024133833463,
+            "steam": 354.0333630468109
+          }
+        ],
+        "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+        "disposition": "no crossing in declared positive quote path"
+      },
+      {
+        "performance": "steam-favourable",
+        "source_MW": 2800.0,
+        "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+        "gas_endpoint": 1.5,
+        "steam_endpoint": 0.5,
+        "t_domain": [
+          0.0,
+          1.0
+        ],
+        "endpoint_gaps": [
+          3063.769704954185,
+          3315.2435110119
+        ],
+        "endpoint_best": [
+          {
+            "gas": 3419.633493208042,
+            "steam": 355.86378825385736
+          },
+          {
+            "gas": 3634.5562658353288,
+            "steam": 319.31275482342875
+          }
+        ],
+        "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+        "disposition": "no crossing in declared positive quote path"
+      }
+    ],
+    "cryogenic_brackets": [
+      {
+        "source_MW": 2500.0,
+        "end": "below",
+        "threshold_W_m3": 75.43260142820313,
+        "chosen": {
+          "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+          "cryogenic_demand__extra_cold_W": 0.0
+        },
+        "point_id": "178c062bdd312982bf80e21ef6baf2bf203a1c0b2be2071115275d9771d70c16",
+        "failed": {
+          "steam": [],
+          "gas": []
+        }
+      },
+      {
+        "source_MW": 2500.0,
+        "end": "above",
+        "threshold_W_m3": 75.43260142820313,
+        "chosen": {
+          "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+          "cryogenic_demand__extra_cold_W": 0.0
+        },
+        "point_id": "573420a1c11cf2dd6a238e6dd4ac9f9f115e8e2d9fa7ff7589b64f3e6a4177cf",
+        "failed": {
+          "steam": [
+            "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+          ],
+          "gas": [
+            "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+          ]
+        }
+      },
+      {
+        "source_MW": 2800.0,
+        "end": "below",
+        "threshold_W_m3": 75.43260142820313,
+        "chosen": {
+          "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+          "cryogenic_demand__extra_cold_W": 0.0
+        },
+        "point_id": "cd1780c897de5c8118e4353712e6092c4ffa59be45dfa434c80ef547da52c7e5",
+        "failed": {
+          "steam": [],
+          "gas": []
+        }
+      },
+      {
+        "source_MW": 2800.0,
+        "end": "above",
+        "threshold_W_m3": 75.43260142820313,
+        "chosen": {
+          "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+          "cryogenic_demand__extra_cold_W": 0.0
+        },
+        "point_id": "aa2978513ba74e3a0faca18629baff71c19e07c7574d9037c6ceec7c73f95d85",
+        "failed": {
+          "steam": [
+            "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+          ],
+          "gas": [
+            "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+          ]
+        }
+      }
+    ],
+    "reporting_materiality": {
+      "materiality_band_USD2025_MWh": 5.0,
+      "interpretation": "strict zero crossing is algebraic; absolute gas-minus-steam gap at most five is reporting-indeterminate",
+      "brackets": [
+        {
+          "target_gap_USD2025_MWh": 5.0,
+          "source_MW": 2800.0,
+          "performance": "gas-favourable",
+          "path": "gas factor=1-0.5t; steam factor=1+0.5t",
+          "bracket": [
+            {
+              "scenario": "reporting-band-gap+5-q2800-lower",
+              "t": 0.4824365396331414,
+              "gap_USD2025_MWh": 5.000663982331957,
+              "best": {
+                "gas": 411.1695340211979,
+                "steam": 406.1688700388659
+              }
+            },
+            {
+              "scenario": "reporting-band-gap+5-q2800-upper",
+              "t": 0.48245653963314145,
+              "gap_USD2025_MWh": 4.999336017668384,
+              "best": {
+                "gas": 411.1690010229377,
+                "steam": 406.16966500526934
+              }
+            }
+          ]
+        },
+        {
+          "target_gap_USD2025_MWh": -5.0,
+          "source_MW": 2800.0,
+          "performance": "gas-favourable",
+          "path": "gas factor=1-0.5t; steam factor=1+0.5t",
+          "bracket": [
+            {
+              "scenario": "reporting-band-gap-5-q2800-lower",
+              "t": 0.6330429567194699,
+              "gap_USD2025_MWh": -4.999336017668213,
+              "best": {
+                "gas": 407.155886107659,
+                "steam": 412.1552221253272
+              }
+            },
+            {
+              "scenario": "reporting-band-gap-5-q2800-upper",
+              "t": 0.6330629567194698,
+              "gap_USD2025_MWh": -5.000663982331787,
+              "best": {
+                "gas": 407.155353109399,
+                "steam": 412.1560170917308
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "held_efficiency_diagnostics": [
+      {
+        "case": "sensitivity-q2500-gas-eta-0.03",
+        "baseline_choices": {
+          "compressor_1__efficiency": 0.86,
+          "compressor_2__efficiency": 0.86,
+          "compressor_3__efficiency": 0.86,
+          "cycle__turbine_efficiency": 0.9
+        }
+      },
+      {
+        "case": "sensitivity-q2500-gas-eta+0.03",
+        "baseline_choices": {
+          "compressor_1__efficiency": 0.92,
+          "compressor_2__efficiency": 0.92,
+          "compressor_3__efficiency": 0.92,
+          "cycle__turbine_efficiency": 0.9600000000000001
+        }
+      },
+      {
+        "case": "sensitivity-q2500-steam-eta-0.03",
+        "baseline_choices": {
+          "steam_cycle__eta_hp": 0.87,
+          "steam_cycle__eta_lp": 0.87
+        }
+      },
+      {
+        "case": "sensitivity-q2500-steam-eta+0.03",
+        "baseline_choices": {
+          "steam_cycle__eta_hp": 0.93,
+          "steam_cycle__eta_lp": 0.93
+        }
+      }
+    ],
+    "adverse_controllers": [
+      {
+        "case": "controller-q2500-gas-500",
+        "baseline_choices": {
+          "gas_boundary__bypass_flow_rating": 500.0,
+          "gas_ledger__controller_capital": 8000000.0
+        }
+      },
+      {
+        "case": "controller-q2500-steam-500",
+        "baseline_choices": {
+          "steam_boundary__bypass_flow_rating": 500.0,
+          "steam_ledger__controller_capital": 8000000.0
+        }
+      }
+    ]
+  },
+  "candidate_count": 2496,
+  "alias_count": 2651,
+  "native_evaluation_budget": 3000,
+  "remaining_budget": 504,
+  "admission_evidence": [
+    "admission-audit.json",
+    "interaction-admission-audit.json"
+  ],
+  "comparison_band_USD2025_MWh": 5.0,
+  "comparison_band_kind": "reporting materiality, not a physical constraint",
+  "exact_points": "proposed-points.json",
+  "scope": "conditional supplied-source and supplied-demand economics within finite hardware offers; source/plasma and nuclear transport qualification remain zero"
+}

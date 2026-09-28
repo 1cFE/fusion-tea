@@ -1,0 +1,10 @@
+{
+  "outcome": "pass",
+  "snapshot_sha256": "af668e7ac5f57041787b6e5d5c08aa3ccf5bc2de006062e681daf9323e547455",
+  "artifact_digests_checked": 213,
+  "study_files": 215,
+  "missing_digest_files": [],
+  "store_integrity": "ok; unchanged after prior immutable read",
+  "record_contract_tests": "3 passed; initial missing arm_id failure retained and schema-only repaired before commit",
+  "scope": "Coordinator custody check; substantive independent review separately retained."
+}

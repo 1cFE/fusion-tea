@@ -1,0 +1,18 @@
+{
+  "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": "d910b83372e0e990b0504831c0b8370741b043e1c38b8c012011a3ddd8ea2f26",
+  "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py": "30aee9ecd9820a24929de992e70a8c47d65bcd07895633930946d11b86527308",
+  "handwritten/mfe_account_costs/levelized_annual_cost_impl.py": "50ca3b893cf8a9e004c8f410893de0aa05b83955cebcac5d621ee49094b48f76",
+  "handwritten/mfe_account_costs/idc_closed_form_cost_impl.py": "05baa9921178f5111155d2424a61fd341c3e30965d9a6c26918cf4835022ba0d",
+  "handwritten/mfe_account_costs/financial_factors.py": "cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee87027a",
+  "handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py": "e81dd70e400f6c82a8ab38feecaf122cc2ce39a1c56f9bb471eda09524cf3783",
+  "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": "f2f72f4adaac88b5972c55c98d8fef012279301e6d885b13a2b37e8ec22ea953",
+  "handwritten/mfe_lifecycle/lifecycle_calendar_impl.py": "c9158621c67af5e66619393ec19bb938df19ee7dc92ce242e343d33b7c369d63",
+  "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": "ed5872f52003434c873cbd60e17b580427c861f97a088e5dd6c14bcebca5db11",
+  "handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py": "29dcfeb07a9022954d8a593740687e1e6676a52ae7885e528319e685147c927d",
+  "handwritten/mfe_magnet_field/winding_pack_sizing_impl.py": "3637b96536d48d6bd817fe69007ba61e62e742bdd213774856dffbbf4774dc5f",
+  "handwritten/mfe_magnet_field/winding_pack_stress_impl.py": "e9cfc2dca2d399b368795758fa6a3619c16f17f70c7698b36922fbc4611ee3f2",
+  "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": "2433fa6272e125bf426e389cfd772aa4dce5a88bc8be98bff4379e2edb6a45e7",
+  "handwritten/mfe_winding_pack_cost/winding_pack_material_inventory_impl.py": "a89fa44e8e766d62cfedf71df21f75eda688aedee898b459c9a5a54c47775955",
+  "handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py": "31f84bf84288e95b0de013aa2a1aafa8478a37e421b090305f732fb666d58a1d",
+  "handwritten/mfe_conductor_grade/conductor_field_capability_impl.py": "47ce8e53c285ca0c1e50595d324f3e2ad54cdc44a65e21e8ad6d43c164c86515"
+}

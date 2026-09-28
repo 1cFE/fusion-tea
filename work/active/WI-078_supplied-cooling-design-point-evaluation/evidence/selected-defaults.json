@@ -1,0 +1,15 @@
+{
+  "baseline": "work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json",
+  "sha256": "5d9bde989895a72fe61bdd4b8db9e31c685e98175c089d3f679a2e6a953f79e1",
+  "selected_inputs": {
+    "helium_design_shaft_MW": 6.26003337158886,
+    "helium_design_suction_Pa": 7699680.103536234,
+    "salt_design_flow_kg_s": 387.575515577979,
+    "salt_design_head_m": 40.0,
+    "salt_design_eta_p": 0.75,
+    "salt_design_eta_motor": 0.95,
+    "helium_purchased_mass_kg": 16607.698111227022,
+    "salt_purchased_mass_kg": 1608750.9823889225
+  },
+  "mdot_loop_rated": 225.07777777777778
+}

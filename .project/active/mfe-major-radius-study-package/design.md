@@ -1,0 +1,11 @@
+# Study consumer migration design
+
+[AGENT] Use the audited plant R as the single operational radius throughout the current oracle and study route. Keep library component formals and fixed references unchanged. Remove the obsolete current adapter mapping and tie/proposal injection; validate retired submissions before any existing filtering so equal or zero values cannot be silently accepted.
+
+Reuse the existing package-owned oracle seam, flat input adapter, current route, native metadata producers and graph fixture process. The prior bounded migration at `.project/active/mfe-operating-heating-study-package/` provides the established caller pattern, not new authority for physical equations. Inspect actual current function boundaries before changing them. Map the old independent operating alias to removal/refusal, never to an equality special case or compatibility fallback.
+
+Verification has two independent anchors: the audited generated model at `641c1051` and the pre-repair coordinated controls frozen from `2f8856b7`. Current baseline and R-only14 execution must agree with those controls, and the repaired independent oracle must agree on every channel it declares. Preserve all existing strict publication/constraint gates. The model's eighteen authored verdicts and aggregate report have different roles; do not count the aggregate as another authored constraint.
+
+Refresh identities only through installed native APIs. Source semantic fingerprint is `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; the audited executable fingerprint is `cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c`. Re-derive them from the actual package rather than assigning these strings as proof. A refreshed manifest is preparation, not pin promotion. Retain exact before/after protected manifests and per-node test outcomes, including meaningful failures.
+
+This item changes current consumers only. The model's fixed-target heat constraint, radius-scaled reported alternative, invalid-geometry failures and unresolved negative-peak component behavior retain their existing meanings. Independent audit decides whether the scope is satisfied; author tests do not certify completion.

@@ -1,0 +1,879 @@
+{
+  "study_id": "20260925-aries-reconciled-alternative-economics",
+  "question": "For the exact 891 MW modeled alternative (resized-compressor-1700-network-scaledflows-0.85) under no-breeding-credit and assumed-new-tritium-feed-100: net generation, annual electricity, overnight and financed capital, annual operating cost including fuel, replacement and terminal cashflows, LCOE contributions and total; the differences from the 423 MW baseline, the unscaled control and the separately labelled source-conditioned branch; an aligned-convention ladder toward the published ARIES economics with every substitution labelled; and which declared uncertainties change the comparison materially. No case is tuned toward the published 77.6 USD2004/MWh. The ladder is reported one-at-a-time from each step's named base, cumulatively in the stated order L3 \u2192 L4 \u2192 L5 \u2192 L6, and combined; the residual is reported at every swept discount rate and no rate is designated as the published one.",
+  "axes": [
+    {
+      "axis": "source_net_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source_finance__net_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "source",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Lyon Table IV prints 1000 MW net (the branch default); 891.0016527219543 is this case's own net, so the branch then substitutes the source capital scope alone.",
+      "missing_response": "The source-conditioned branch substitutes a supplied denominator and already-financed capital; nothing physical responds.",
+      "declined": false
+    },
+    {
+      "axis": "annual_om",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__annual_om__selected_amount",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E7/F8 allowance 70 M [35, 140]; 80,893,344 is target-derived from Lyon's 14 % of CoE (source-boundary), labelled diagnostic.",
+      "missing_response": "Fixed allowance; no staffing or maintenance model responds.",
+      "declined": false
+    },
+    {
+      "axis": "plant_years",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__plant_years",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "calendar years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "F3 40 [30, 60]; 47 = 40 full-power years / 0.85 rounded to the integer the model requires.",
+      "missing_response": "Financial assumption; no financing, liability or service-life evidence responds; no engineering optimum.",
+      "declined": false
+    },
+    {
+      "axis": "replacement_life",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_life_fpy",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "full-power years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E8 5 [2, 8]; 3.7673466400138413 = 5 x 1468.361/1948.8 (fluence-scaled applicability point); 2.907407 = source cadence 15.7/5.4 (E8).",
+      "missing_response": "Selected life; no damage or fluence model responds.",
+      "declined": false
+    },
+    {
+      "axis": "replacement_factor",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E8 1 [0.5, 2]; 1.038330309484732 = 75,000,000 / 72,231,350 (source event price over the selected scope).",
+      "missing_response": "Event price factor; no procurement model.",
+      "declined": false
+    },
+    {
+      "axis": "new_feed",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__annual_recovery_kg",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/calendar year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "F7: 0 (no credit), 100 (named scenario), 50, 150; 138.7304019114013 equals this case's gross makeup (purchase floor / self-sufficiency diagnostic).",
+      "missing_response": "Net extracted breeder feed has no qualified capability or extraction-cost model; exhaust recycling is already credited.",
+      "declined": false
+    },
+    {
+      "axis": "supply_service",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__supply_service_annual",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "F7: 0 or 30 M (named scenario); 10 M and 100 M.",
+      "missing_response": "Incremental assumed service cost has no price-versus-capability relation.",
+      "declined": false
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "USD2004/kg",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E6 30 M [10 M, 100 M].",
+      "missing_response": "Assumed price; no market model.",
+      "declined": false
+    },
+    {
+      "axis": "availability",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__availability",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E7/F3 0.85 [0.75, 0.95].",
+      "missing_response": "Supplied availability has no outage or reliability response.",
+      "declined": false
+    },
+    {
+      "axis": "discount",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__discount_rate",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "real/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "F1 0.05 [0, 0.10]; the source rate is not printed.",
+      "missing_response": "Financial assumption; no financing, liability or service-life evidence responds; no engineering optimum.",
+      "declined": false
+    },
+    {
+      "axis": "construction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__construction_years",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "calendar years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "F2 6 [0, 10].",
+      "missing_response": "Financial assumption; no financing, liability or service-life evidence responds; no engineering optimum.",
+      "declined": false
+    },
+    {
+      "axis": "terminal",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__terminal_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "F4 0.10 [0.05, 0.20]; the source 0.5 mills/kWh (1992 $) is unconvertible.",
+      "missing_response": "Financial assumption; no financing, liability or service-life evidence responds; no engineering optimum.",
+      "declined": false
+    },
+    {
+      "axis": "compressor_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E4 [0.5, 1.5] on the changed equipment.",
+      "missing_response": "Supplied price factor has no calibrated market or equipment-quality response.",
+      "declined": false
+    },
+    {
+      "axis": "cycle_side_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__turbine_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__generator_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__electrical_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__heat_rejection_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "E4 [0.5, 1.5] applied jointly to the cycle-side allowances sized for the 1253 MW gross source plant, plus a 2.0 corner; the corner designs set the compressor, conversion-services and secondary-transport factors to the same value.",
+      "missing_response": "Fixed source-scope allowances; no response to gross power or flow.",
+      "declined": false
+    },
+    {
+      "axis": "conversion_services_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__conversion_services__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "[ASSUMED] recuperator bound: NTU 4 -> 19 (x 4.75) with capacity rate x 1.214 gives a UA-proportional x 5.8; factors 2, 4, 6 on the whole 62.912 M allowance.",
+      "missing_response": "The 0.95 recuperator has no purchase, rating or screen (audit item 1).",
+      "declined": false
+    },
+    {
+      "axis": "secondary_transport_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__secondary_transport__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Flow-proportional proxy 1700/1400 = 1.214 and the E4 upper bound 1.5.",
+      "missing_response": "Fixed allowance; no response to cycle flow (audit item 2).",
+      "declined": false
+    },
+    {
+      "axis": "pbli_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "code",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "0 cubic proxy (baseline); 1 declared fixed power.",
+      "missing_response": "Mode switch; no hydraulic model.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_pump_fixed_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_pump__fixed_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "[ASSUMED] order-of-magnitude bound 10 and 30 MW for PbLi MHD pumping that E3 leaves unmodelled; the baseline 0.01 MW is a placeholder.",
+      "missing_response": "No PbLi hydraulic or MHD model; no heat recovery (pbli_recovery 0).",
+      "declined": false
+    },
+    {
+      "axis": "compressor_rating",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "1700 (the declared alternative); 1600 adverse control (screen fails by 67.033 MW).",
+      "missing_response": "Scalar screen and linear cost; no compressor map.",
+      "declined": false
+    },
+    {
+      "axis": "he_pump_capacity",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__selected_flow_capacity",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "3359 (declared mapping value); 3261 adverse control (screen fails by 98 kg/s).",
+      "missing_response": "Scalar screen and linear cost; no pump map.",
+      "declined": false
+    },
+    {
+      "axis": "estimate_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_accounts__estimate_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "code",
+      "role": "accounting",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "0 selected-quantity estimates; 1 fixed source budgets (the disclosed nonresponse).",
+      "missing_response": "Mode switch; not a hardware-cost law.",
+      "declined": false
+    }
+  ],
+  "designs": [
+    {
+      "name": "alt-canonical-no-credit",
+      "classification": "the canonical 891 MW alternative, no-breeding-credit (verbatim sealed inputs; control)",
+      "canonical_base": "resized-compressor-1700-network-scaledflows-0.85"
+    },
+    {
+      "name": "alt-unscaled-no-credit",
+      "classification": "the unscaled-mapping control, no-breeding-credit (verbatim sealed inputs)",
+      "canonical_base": "resized-compressor-1700-network-0.85"
+    },
+    {
+      "name": "baseline-no-credit",
+      "classification": "the assumed 423 MW integrated baseline, no-breeding-credit (verbatim sealed inputs)",
+      "canonical_base": "nominal-calculated"
+    },
+    {
+      "name": "original-source-assumed-no-credit",
+      "classification": "the original failing source-conditioned case, retained adverse control (verbatim sealed inputs; heat removal fails)",
+      "canonical_base": "nominal-source-assumed"
+    },
+    {
+      "name": "alt-canonical-feed100",
+      "classification": "the alternative under assumed-new-tritium-feed-100 (100 kg/year new usable feed, 30 MUSD/year service)",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "new_feed": 100.0,
+        "supply_service": 30000000.0
+      }
+    },
+    {
+      "name": "alt-unscaled-feed100",
+      "classification": "the unscaled control under feed100",
+      "base_design": "alt-unscaled-no-credit",
+      "values": {
+        "new_feed": 100.0,
+        "supply_service": 30000000.0
+      }
+    },
+    {
+      "name": "baseline-feed100",
+      "classification": "the 423 MW baseline under feed100",
+      "base_design": "baseline-no-credit",
+      "values": {
+        "new_feed": 100.0,
+        "supply_service": 30000000.0
+      }
+    },
+    {
+      "name": "diag-L1-source-capital-at-our-net-no-credit",
+      "classification": "DIAGNOSTIC ladder L1: the source-conditioned branch read at our net (capital scope substituted only), no-credit",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "source_net_power": 891.0016527219543
+      }
+    },
+    {
+      "name": "diag-L1-source-capital-at-our-net-feed100",
+      "classification": "DIAGNOSTIC ladder L1: same, feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "source_net_power": 891.0016527219543
+      }
+    },
+    {
+      "name": "diag-L3-om-source-derived-feed100",
+      "classification": "DIAGNOSTIC ladder L3: O&M 80,893,344 (target-derived from 14 % of the published CoE), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "annual_om": 80893344.0
+      }
+    },
+    {
+      "name": "diag-L4-life-47y-feed100",
+      "classification": "DIAGNOSTIC ladder L4: 47 calendar years (40 full-power years at 0.85), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "plant_years": 47.0
+      }
+    },
+    {
+      "name": "diag-L5-source-cadence-40y-feed100",
+      "classification": "DIAGNOSTIC ladder L5: source replacement cadence 2.907407 FPY at the source event price (11 events in 40 years), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "replacement_life": 2.907407,
+        "replacement_factor": 1.038330309484732
+      }
+    },
+    {
+      "name": "diag-L5-source-cadence-47y-feed100",
+      "classification": "DIAGNOSTIC ladder L4+L5: source cadence over 47 years (13 events, the source count), feed100",
+      "base_design": "diag-L4-life-47y-feed100",
+      "values": {
+        "replacement_life": 2.907407,
+        "replacement_factor": 1.038330309484732
+      }
+    },
+    {
+      "name": "diag-L34-cumulative-om-life47-feed100",
+      "classification": "DIAGNOSTIC ladder cumulative C2: L3 + L4 (target-derived O&M, then 47 calendar years), feed100",
+      "base_design": "diag-L3-om-source-derived-feed100",
+      "values": {
+        "plant_years": 47.0
+      }
+    },
+    {
+      "name": "diag-L345-cumulative-om-life47-cadence-feed100",
+      "classification": "DIAGNOSTIC ladder cumulative C3: L3 + L4 + L5 (then the source cadence and event price; 13 events), feed100",
+      "base_design": "diag-L34-cumulative-om-life47-feed100",
+      "values": {
+        "replacement_life": 2.907407,
+        "replacement_factor": 1.038330309484732
+      }
+    },
+    {
+      "name": "diag-L6-fuel-self-sufficient",
+      "classification": "DIAGNOSTIC ladder L6: new feed equal to gross makeup at no charge (self-sufficient tritium as the source fuel description implies; capability unsupported)",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "new_feed": 138.7304019114013,
+        "supply_service": 0.0
+      }
+    },
+    {
+      "name": "diag-L7-aligned-combined-at-1000",
+      "classification": "DIAGNOSTIC ladder L7 = cumulative C4: L3 + L4 + L5 + L6 combined on our capital and our net (the branch reads at the sealed default 1000 MW; L2 is read from the alt-canonical-* cases' own branch channel, no separate design)",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "annual_om": 80893344.0,
+        "plant_years": 47.0,
+        "replacement_life": 2.907407,
+        "replacement_factor": 1.038330309484732,
+        "new_feed": 138.7304019114013,
+        "supply_service": 0.0
+      }
+    },
+    {
+      "name": "diag-L7-aligned-combined-at-our-net",
+      "classification": "DIAGNOSTIC ladder L7: same with the branch read at our net",
+      "base_design": "diag-L7-aligned-combined-at-1000",
+      "values": {
+        "source_net_power": 891.0016527219543
+      }
+    },
+    {
+      "name": "diag-L8-aligned-discount-0.00",
+      "classification": "DIAGNOSTIC ladder L8: L7 at real discount rate 0.00",
+      "base_design": "diag-L7-aligned-combined-at-1000",
+      "values": {
+        "discount": 0.0
+      }
+    },
+    {
+      "name": "diag-L8-aligned-discount-0.03",
+      "classification": "DIAGNOSTIC ladder L8: L7 at real discount rate 0.03",
+      "base_design": "diag-L7-aligned-combined-at-1000",
+      "values": {
+        "discount": 0.03
+      }
+    },
+    {
+      "name": "diag-L8-aligned-discount-0.08",
+      "classification": "DIAGNOSTIC ladder L8: L7 at real discount rate 0.08",
+      "base_design": "diag-L7-aligned-combined-at-1000",
+      "values": {
+        "discount": 0.08
+      }
+    },
+    {
+      "name": "diag-L8-aligned-discount-0.10",
+      "classification": "DIAGNOSTIC ladder L8: L7 at real discount rate 0.10",
+      "base_design": "diag-L7-aligned-combined-at-1000",
+      "values": {
+        "discount": 0.1
+      }
+    },
+    {
+      "name": "sens-compressor-price-0.5",
+      "classification": "sensitivity: compressor price factor (E4), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "compressor_price": 0.5
+      }
+    },
+    {
+      "name": "sens-compressor-price-1.5",
+      "classification": "sensitivity: compressor price factor (E4), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "compressor_price": 1.5
+      }
+    },
+    {
+      "name": "sens-cycle-side-0.5",
+      "classification": "sensitivity: correlated cycle-side price factor (compressor, turbine, generator, electrical, rejection, conversion services, secondary transport), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "cycle_side_price": 0.5,
+        "compressor_price": 0.5,
+        "conversion_services_price": 0.5,
+        "secondary_transport_price": 0.5
+      }
+    },
+    {
+      "name": "sens-cycle-side-1.5",
+      "classification": "sensitivity: correlated cycle-side price factor (compressor, turbine, generator, electrical, rejection, conversion services, secondary transport), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "cycle_side_price": 1.5,
+        "compressor_price": 1.5,
+        "conversion_services_price": 1.5,
+        "secondary_transport_price": 1.5
+      }
+    },
+    {
+      "name": "sens-cycle-side-2.0",
+      "classification": "sensitivity: correlated cycle-side price factor (compressor, turbine, generator, electrical, rejection, conversion services, secondary transport), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "cycle_side_price": 2.0,
+        "compressor_price": 2.0,
+        "conversion_services_price": 2.0,
+        "secondary_transport_price": 2.0
+      }
+    },
+    {
+      "name": "sens-conversion-services-2",
+      "classification": "sensitivity: conversion-services factor bounding the unpurchased 0.95 recuperator, feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "conversion_services_price": 2.0
+      }
+    },
+    {
+      "name": "sens-conversion-services-4",
+      "classification": "sensitivity: conversion-services factor bounding the unpurchased 0.95 recuperator, feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "conversion_services_price": 4.0
+      }
+    },
+    {
+      "name": "sens-conversion-services-6",
+      "classification": "sensitivity: conversion-services factor bounding the unpurchased 0.95 recuperator, feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "conversion_services_price": 6.0
+      }
+    },
+    {
+      "name": "sens-secondary-transport-1.214",
+      "classification": "sensitivity: secondary-transport factor bounding the cycle-side transport at 1700 kg/s, feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "secondary_transport_price": 1.214
+      }
+    },
+    {
+      "name": "sens-secondary-transport-1.5",
+      "classification": "sensitivity: secondary-transport factor bounding the cycle-side transport at 1700 kg/s, feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "secondary_transport_price": 1.5
+      }
+    },
+    {
+      "name": "sens-tritium-price-1e+07-feed100",
+      "classification": "sensitivity: tritium price (E6), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "tritium_price": 10000000.0
+      }
+    },
+    {
+      "name": "sens-tritium-price-1e+07-no-credit",
+      "classification": "sensitivity: tritium price (E6), no-credit",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "tritium_price": 10000000.0
+      }
+    },
+    {
+      "name": "sens-tritium-price-1e+08-feed100",
+      "classification": "sensitivity: tritium price (E6), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "tritium_price": 100000000.0
+      }
+    },
+    {
+      "name": "sens-tritium-price-1e+08-no-credit",
+      "classification": "sensitivity: tritium price (E6), no-credit",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "tritium_price": 100000000.0
+      }
+    },
+    {
+      "name": "sens-feed-50-service30m",
+      "classification": "sensitivity: new feed at the 30 MUSD/year service (F7)",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "new_feed": 50.0
+      }
+    },
+    {
+      "name": "sens-feed-makeup-service30m",
+      "classification": "sensitivity: new feed at the 30 MUSD/year service (F7)",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "new_feed": 138.7304019114013
+      }
+    },
+    {
+      "name": "sens-feed-150-service30m",
+      "classification": "sensitivity: new feed at the 30 MUSD/year service (F7)",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "new_feed": 150.0
+      }
+    },
+    {
+      "name": "sens-service-1e+07-feed100",
+      "classification": "sensitivity: service charge at 100 kg/year (F7)",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "supply_service": 10000000.0
+      }
+    },
+    {
+      "name": "sens-service-1e+08-feed100",
+      "classification": "sensitivity: service charge at 100 kg/year (F7)",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "supply_service": 100000000.0
+      }
+    },
+    {
+      "name": "sens-availability-0.75-feed100",
+      "classification": "sensitivity: availability (E7/F3), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "availability": 0.75
+      }
+    },
+    {
+      "name": "sens-availability-0.75-no-credit",
+      "classification": "sensitivity: availability (E7/F3), no-credit",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "availability": 0.75
+      }
+    },
+    {
+      "name": "sens-availability-0.95-feed100",
+      "classification": "sensitivity: availability (E7/F3), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "availability": 0.95
+      }
+    },
+    {
+      "name": "sens-availability-0.95-no-credit",
+      "classification": "sensitivity: availability (E7/F3), no-credit",
+      "base_design": "alt-canonical-no-credit",
+      "values": {
+        "availability": 0.95
+      }
+    },
+    {
+      "name": "sens-discount-0.03-feed100",
+      "classification": "sensitivity: real discount rate (F1), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "discount": 0.03
+      }
+    },
+    {
+      "name": "sens-discount-0.08-feed100",
+      "classification": "sensitivity: real discount rate (F1), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "discount": 0.08
+      }
+    },
+    {
+      "name": "sens-discount-0.10-feed100",
+      "classification": "sensitivity: real discount rate (F1), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "discount": 0.1
+      }
+    },
+    {
+      "name": "sens-construction-0y-feed100",
+      "classification": "sensitivity: construction duration (F2), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "construction": 0.0
+      }
+    },
+    {
+      "name": "sens-construction-10y-feed100",
+      "classification": "sensitivity: construction duration (F2), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "construction": 10.0
+      }
+    },
+    {
+      "name": "sens-terminal-0.05-feed100",
+      "classification": "sensitivity: terminal fraction (F4), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "terminal": 0.05
+      }
+    },
+    {
+      "name": "sens-terminal-0.2-feed100",
+      "classification": "sensitivity: terminal fraction (F4), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "terminal": 0.2
+      }
+    },
+    {
+      "name": "sens-plant-years-30-feed100",
+      "classification": "sensitivity: calendar life (F3), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "plant_years": 30.0
+      }
+    },
+    {
+      "name": "sens-plant-years-60-feed100",
+      "classification": "sensitivity: calendar life (F3), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "plant_years": 60.0
+      }
+    },
+    {
+      "name": "sens-om-35e6-feed100",
+      "classification": "sensitivity: annual O&M (E7/F8), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "annual_om": 35000000.0
+      }
+    },
+    {
+      "name": "sens-om-140e6-feed100",
+      "classification": "sensitivity: annual O&M (E7/F8), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "annual_om": 140000000.0
+      }
+    },
+    {
+      "name": "sens-replacement-life-2-feed100",
+      "classification": "sensitivity: replacement life (E8; 3.767 FPY is the baseline life fluence-scaled to this configuration), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "replacement_life": 2.0
+      }
+    },
+    {
+      "name": "sens-replacement-life-fluence-3.767-feed100",
+      "classification": "sensitivity: replacement life (E8; 3.767 FPY is the baseline life fluence-scaled to this configuration), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "replacement_life": 3.7673466400138413
+      }
+    },
+    {
+      "name": "sens-replacement-life-8-feed100",
+      "classification": "sensitivity: replacement life (E8; 3.767 FPY is the baseline life fluence-scaled to this configuration), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "replacement_life": 8.0
+      }
+    },
+    {
+      "name": "sens-pbli-pump-10MW-feed100",
+      "classification": "sensitivity: PbLi pumping as a declared fixed power (unmodelled MHD bound), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "pbli_pump_mode": 1.0,
+        "pbli_pump_fixed_power": 10.0
+      }
+    },
+    {
+      "name": "sens-pbli-pump-30MW-feed100",
+      "classification": "sensitivity: PbLi pumping as a declared fixed power (unmodelled MHD bound), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "pbli_pump_mode": 1.0,
+        "pbli_pump_fixed_power": 30.0
+      }
+    },
+    {
+      "name": "adverse-compressor-rating-1600-feed100",
+      "classification": "ADVERSE control: the inherited 1600 MW rating against the 1667 MW demand (screen fails), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "compressor_rating": 1600.0
+      }
+    },
+    {
+      "name": "adverse-he-pump-capacity-3261-feed100",
+      "classification": "ADVERSE control: He pump capacity below the 3359 kg/s operating flow (screen fails), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "he_pump_capacity": 3261.0
+      }
+    },
+    {
+      "name": "diag-estimate-mode-1-feed100",
+      "classification": "DIAGNOSTIC: fixed-budget estimate mode (every purchase at its reference amount; the disclosed nonresponse), feed100",
+      "base_design": "alt-canonical-feed100",
+      "values": {
+        "estimate_mode": 1.0
+      }
+    }
+  ]
+}

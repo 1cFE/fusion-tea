@@ -1,0 +1,8 @@
+usage: agentic-mbse pm update-validation [-h] --status STATUS SV-XXX
+
+positional arguments:
+  SV-XXX           Verification ID (e.g. SV-001)
+
+options:
+  -h, --help       show this help message and exit
+  --status STATUS  New status (passing, failing, pending)

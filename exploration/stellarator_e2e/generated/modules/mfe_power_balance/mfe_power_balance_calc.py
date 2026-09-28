@@ -2,6 +2,9 @@
 
 TEAx module for MFE_Power_Balance_Calc calculation.
 
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE
@@ -25,6 +28,16 @@ with p_wall = p_ash + p_input_eff - p_rad at f_dec = 0
 Charged-particle power reaches the wall as radiation or as transport;
 both are recovered thermally, so no radiation model is needed here.
 
+WI-045 (goal plant-closure): the recovered term arrives as
+q_recovered_in from 'Primary Coolant Loop' (the loop's fluid work when
+the loop is live; eta_p_direct * p_pump_direct when it is dormant) at
+the position eta_p * p_pump occupied, and the pump draw arrives as
+p_pump_total_in (loop_live * p_elec + p_pump_direct) at the position
+p_pump occupied. In the dormant mode both are the old held scalars to
+the bit, so this calc's sums are unchanged in every operand and
+position; the credit's meaning is unchanged. The reactor's source heat
+without the credit is published by 'Reactor Source Heat' below.
+
 Validity conditions (documented regime, WI-019 MR-WI019-4):
   1. f_dec = 0 -- no direct energy conversion (standing WI-009
      deviation, out of scope).
@@ -44,19 +57,21 @@ this calc stays flat and codegen-safe (no nested calc invocation).
 *Basis**: Steady-state MFE power flow; tokamak/stellarator-generic
 
 Inputs:
+    - p_cycle_pumps_in: p_cycle_pumps_in parameter
+    - p_cooling_water_in: p_cooling_water_in parameter
     - p_tfcool_in: p_tfcool_in parameter
     - p_cryo: p_cryo parameter
     - p_nrl: p_nrl parameter
     - f_sub_in: f_sub_in parameter
     - p_pfcool_in: p_pfcool_in parameter
-    - eta_p_in: eta_p_in parameter
     - p_pf_in: p_pf_in parameter
+    - p_wallplug_in: p_wallplug_in parameter
+    - p_pump_total_in: p_pump_total_in parameter
     - p_house_in: p_house_in parameter
     - mn_in: mn_in parameter
+    - q_recovered_in: q_recovered_in parameter
     - eta_th_in: eta_th_in parameter
     - p_tf_in: p_tf_in parameter
-    - eta_pin_in: eta_pin_in parameter
-    - p_pump_in: p_pump_in parameter
     - p_input_in: p_input_in parameter
     - p_trit_in: p_trit_in parameter
 
@@ -87,35 +102,39 @@ class MFE_Power_Balance_CalcInput(BaseModel):
     """Input model for MFE_Power_Balance_CalcModule.
 
     Attributes:
+        p_cycle_pumps_in: p_cycle_pumps_in input
+        p_cooling_water_in: p_cooling_water_in input
         p_tfcool_in: p_tfcool_in input
         p_cryo: p_cryo input
         p_nrl: p_nrl input
         f_sub_in: f_sub_in input
         p_pfcool_in: p_pfcool_in input
-        eta_p_in: eta_p_in input
         p_pf_in: p_pf_in input
+        p_wallplug_in: p_wallplug_in input
+        p_pump_total_in: p_pump_total_in input
         p_house_in: p_house_in input
         mn_in: mn_in input
+        q_recovered_in: q_recovered_in input
         eta_th_in: eta_th_in input
         p_tf_in: p_tf_in input
-        eta_pin_in: eta_pin_in input
-        p_pump_in: p_pump_in input
         p_input_in: p_input_in input
         p_trit_in: p_trit_in input
     """
+    p_cycle_pumps_in: float = Field(..., description="p_cycle_pumps_in input")
+    p_cooling_water_in: float = Field(..., description="p_cooling_water_in input")
     p_tfcool_in: float = Field(..., description="p_tfcool_in input")
     p_cryo: float = Field(..., description="p_cryo input")
     p_nrl: float = Field(..., description="p_nrl input")
     f_sub_in: float = Field(..., description="f_sub_in input")
     p_pfcool_in: float = Field(..., description="p_pfcool_in input")
-    eta_p_in: float = Field(..., description="eta_p_in input")
     p_pf_in: float = Field(..., description="p_pf_in input")
+    p_wallplug_in: float = Field(..., description="p_wallplug_in input")
+    p_pump_total_in: float = Field(..., description="p_pump_total_in input")
     p_house_in: float = Field(..., description="p_house_in input")
     mn_in: float = Field(..., description="mn_in input")
+    q_recovered_in: float = Field(..., description="q_recovered_in input")
     eta_th_in: float = Field(..., description="eta_th_in input")
     p_tf_in: float = Field(..., description="p_tf_in input")
-    eta_pin_in: float = Field(..., description="eta_pin_in input")
-    p_pump_in: float = Field(..., description="p_pump_in input")
     p_input_in: float = Field(..., description="p_input_in input")
     p_trit_in: float = Field(..., description="p_trit_in input")
 
@@ -123,6 +142,9 @@ class MFE_Power_Balance_CalcInput(BaseModel):
 class MFE_Power_Balance_CalcModule(ModuleBase[MFE_Power_Balance_CalcInput, MFE_Power_Balance_CalcOutput]):
     """TEAx module for MFE_Power_Balance_Calc calculation.
 
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE
@@ -145,6 +167,16 @@ with p_wall = p_ash + p_input_eff - p_rad at f_dec = 0
   p_th = mn*p_neutron + p_alpha + p_input + eta_p*p_pump.
 Charged-particle power reaches the wall as radiation or as transport;
 both are recovered thermally, so no radiation model is needed here.
+
+WI-045 (goal plant-closure): the recovered term arrives as
+q_recovered_in from 'Primary Coolant Loop' (the loop's fluid work when
+the loop is live; eta_p_direct * p_pump_direct when it is dormant) at
+the position eta_p * p_pump occupied, and the pump draw arrives as
+p_pump_total_in (loop_live * p_elec + p_pump_direct) at the position
+p_pump occupied. In the dormant mode both are the old held scalars to
+the bit, so this calc's sums are unchanged in every operand and
+position; the credit's meaning is unchanged. The reactor's source heat
+without the credit is published by 'Reactor Source Heat' below.
 
 Validity conditions (documented regime, WI-019 MR-WI019-4):
   1. f_dec = 0 -- no direct energy conversion (standing WI-009
@@ -165,19 +197,21 @@ this calc stays flat and codegen-safe (no nested calc invocation).
 *Basis**: Steady-state MFE power flow; tokamak/stellarator-generic
 
 Inputs:
+    - p_cycle_pumps_in: p_cycle_pumps_in parameter
+    - p_cooling_water_in: p_cooling_water_in parameter
     - p_tfcool_in: p_tfcool_in parameter
     - p_cryo: p_cryo parameter
     - p_nrl: p_nrl parameter
     - f_sub_in: f_sub_in parameter
     - p_pfcool_in: p_pfcool_in parameter
-    - eta_p_in: eta_p_in parameter
     - p_pf_in: p_pf_in parameter
+    - p_wallplug_in: p_wallplug_in parameter
+    - p_pump_total_in: p_pump_total_in parameter
     - p_house_in: p_house_in parameter
     - mn_in: mn_in parameter
+    - q_recovered_in: q_recovered_in parameter
     - eta_th_in: eta_th_in parameter
     - p_tf_in: p_tf_in parameter
-    - eta_pin_in: eta_pin_in parameter
-    - p_pump_in: p_pump_in parameter
     - p_input_in: p_input_in parameter
     - p_trit_in: p_trit_in parameter
 
@@ -194,21 +228,27 @@ SysML Source: root-0/analyses/mfe_power_balance.sysml:4
     SysML Source: root-0/analyses/mfe_power_balance.sysml:4
 
     Calculation Specification:
+        p_wallplug_in = 0.0
+        p_cycle_pumps_in = 0.0
+        p_cooling_water_in = 0.0
         p_alpha = 3.52 / 17.58 * p_nrl
         p_neutron = p_nrl - p_alpha
         p_cool = p_tfcool_in + p_pfcool_in
         p_aux = p_trit_in + p_house_in
         p_coils = p_tf_in + p_pf_in
-        p_th = mn_in * p_neutron + p_alpha + p_input_in + eta_p_in * p_pump_in
+        p_th = mn_in * p_neutron + p_alpha + p_input_in + q_recovered_in
         p_the = eta_th_in * p_th
         p_et = p_the
         p_sub = f_sub_in * p_et
-        recirculating = p_coils + p_pump_in + p_sub + p_aux + p_cool + p_cryo + p_input_in / eta_pin_in
+        recirculating = p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo + p_wallplug_in + p_cycle_pumps_in + p_cooling_water_in
         q_eng = p_et / recirculating
         rec_frac = 1.0 / q_eng
         p_net = (1.0 - rec_frac) * p_et
         
 Documentation:
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE
@@ -231,6 +271,16 @@ with p_wall = p_ash + p_input_eff - p_rad at f_dec = 0
   p_th = mn*p_neutron + p_alpha + p_input + eta_p*p_pump.
 Charged-particle power reaches the wall as radiation or as transport;
 both are recovered thermally, so no radiation model is needed here.
+
+WI-045 (goal plant-closure): the recovered term arrives as
+q_recovered_in from 'Primary Coolant Loop' (the loop's fluid work when
+the loop is live; eta_p_direct * p_pump_direct when it is dormant) at
+the position eta_p * p_pump occupied, and the pump draw arrives as
+p_pump_total_in (loop_live * p_elec + p_pump_direct) at the position
+p_pump occupied. In the dormant mode both are the old held scalars to
+the bit, so this calc's sums are unchanged in every operand and
+position; the credit's meaning is unchanged. The reactor's source heat
+without the credit is published by 'Reactor Source Heat' below.
 
 Validity conditions (documented regime, WI-019 MR-WI019-4):
   1. f_dec = 0 -- no direct energy conversion (standing WI-009
@@ -261,49 +311,53 @@ this calc stays flat and codegen-safe (no nested calc invocation).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_tfcool_in: float, p_cryo: float, p_nrl: float, f_sub_in: float, p_pfcool_in: float, eta_p_in: float, p_pf_in: float, p_house_in: float, mn_in: float, eta_th_in: float, p_tf_in: float, eta_pin_in: float, p_pump_in: float, p_input_in: float, p_trit_in: float    ) -> MFE_Power_Balance_CalcInput:
+        self, p_cycle_pumps_in: float, p_cooling_water_in: float, p_tfcool_in: float, p_cryo: float, p_nrl: float, f_sub_in: float, p_pfcool_in: float, p_pf_in: float, p_wallplug_in: float, p_pump_total_in: float, p_house_in: float, mn_in: float, q_recovered_in: float, eta_th_in: float, p_tf_in: float, p_input_in: float, p_trit_in: float    ) -> MFE_Power_Balance_CalcInput:
         """Validate inputs and fill defaults.
 
         Args:
+            p_cycle_pumps_in: p_cycle_pumps_in input
+            p_cooling_water_in: p_cooling_water_in input
             p_tfcool_in: p_tfcool_in input
             p_cryo: p_cryo input
             p_nrl: p_nrl input
             f_sub_in: f_sub_in input
             p_pfcool_in: p_pfcool_in input
-            eta_p_in: eta_p_in input
             p_pf_in: p_pf_in input
+            p_wallplug_in: p_wallplug_in input
+            p_pump_total_in: p_pump_total_in input
             p_house_in: p_house_in input
             mn_in: mn_in input
+            q_recovered_in: q_recovered_in input
             eta_th_in: eta_th_in input
             p_tf_in: p_tf_in input
-            eta_pin_in: eta_pin_in input
-            p_pump_in: p_pump_in input
             p_input_in: p_input_in input
             p_trit_in: p_trit_in input
 
         Returns:
             Validated input model
         """
-        return MFE_Power_Balance_CalcInput(p_tfcool_in=p_tfcool_in, p_cryo=p_cryo, p_nrl=p_nrl, f_sub_in=f_sub_in, p_pfcool_in=p_pfcool_in, eta_p_in=eta_p_in, p_pf_in=p_pf_in, p_house_in=p_house_in, mn_in=mn_in, eta_th_in=eta_th_in, p_tf_in=p_tf_in, eta_pin_in=eta_pin_in, p_pump_in=p_pump_in, p_input_in=p_input_in, p_trit_in=p_trit_in)
+        return MFE_Power_Balance_CalcInput(p_cycle_pumps_in=p_cycle_pumps_in, p_cooling_water_in=p_cooling_water_in, p_tfcool_in=p_tfcool_in, p_cryo=p_cryo, p_nrl=p_nrl, f_sub_in=f_sub_in, p_pfcool_in=p_pfcool_in, p_pf_in=p_pf_in, p_wallplug_in=p_wallplug_in, p_pump_total_in=p_pump_total_in, p_house_in=p_house_in, mn_in=mn_in, q_recovered_in=q_recovered_in, eta_th_in=eta_th_in, p_tf_in=p_tf_in, p_input_in=p_input_in, p_trit_in=p_trit_in)
 
     def run(
-        self, p_tfcool_in: float, p_cryo: float, p_nrl: float, f_sub_in: float, p_pfcool_in: float, eta_p_in: float, p_pf_in: float, p_house_in: float, mn_in: float, eta_th_in: float, p_tf_in: float, eta_pin_in: float, p_pump_in: float, p_input_in: float, p_trit_in: float    ) -> ModuleResult[MFE_Power_Balance_CalcOutput]:
+        self, p_cycle_pumps_in: float, p_cooling_water_in: float, p_tfcool_in: float, p_cryo: float, p_nrl: float, f_sub_in: float, p_pfcool_in: float, p_pf_in: float, p_wallplug_in: float, p_pump_total_in: float, p_house_in: float, mn_in: float, q_recovered_in: float, eta_th_in: float, p_tf_in: float, p_input_in: float, p_trit_in: float    ) -> ModuleResult[MFE_Power_Balance_CalcOutput]:
         """Execute calculation.
 
         Args:
+            p_cycle_pumps_in: p_cycle_pumps_in input
+            p_cooling_water_in: p_cooling_water_in input
             p_tfcool_in: p_tfcool_in input
             p_cryo: p_cryo input
             p_nrl: p_nrl input
             f_sub_in: f_sub_in input
             p_pfcool_in: p_pfcool_in input
-            eta_p_in: eta_p_in input
             p_pf_in: p_pf_in input
+            p_wallplug_in: p_wallplug_in input
+            p_pump_total_in: p_pump_total_in input
             p_house_in: p_house_in input
             mn_in: mn_in input
+            q_recovered_in: q_recovered_in input
             eta_th_in: eta_th_in input
             p_tf_in: p_tf_in input
-            eta_pin_in: eta_pin_in input
-            p_pump_in: p_pump_in input
             p_input_in: p_input_in input
             p_trit_in: p_trit_in input
 
@@ -311,7 +365,7 @@ this calc stays flat and codegen-safe (no nested calc invocation).
             Module result with MFE_Power_Balance_CalcOutput (p_the, p_et, q_eng, p_th, p_net, rec_frac)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_tfcool_in, p_cryo, p_nrl, f_sub_in, p_pfcool_in, eta_p_in, p_pf_in, p_house_in, mn_in, eta_th_in, p_tf_in, eta_pin_in, p_pump_in, p_input_in, p_trit_in)
+        validated_inputs = self.validate_and_fill_default(p_cycle_pumps_in, p_cooling_water_in, p_tfcool_in, p_cryo, p_nrl, f_sub_in, p_pfcool_in, p_pf_in, p_wallplug_in, p_pump_total_in, p_house_in, mn_in, q_recovered_in, eta_th_in, p_tf_in, p_input_in, p_trit_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_power_balance.mfe_power_balance_calc_impl import (

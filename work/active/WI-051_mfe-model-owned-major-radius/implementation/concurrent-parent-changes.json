@@ -1,0 +1,71 @@
+{
+  "commits": [
+    "2a55615b5ff665f0acde1bccef9db394ec1224fe",
+    "4fc0530259b4ab31c409aea6654484e508895b4f"
+  ],
+  "changed": {
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-2.md": {
+      "before": null,
+      "after": {
+        "sha256": "7fecd560c3bea1a62c3e008ab2a309bf587dfe216cd9bcdf941c03c8484dad6a"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-1.md": {
+      "before": null,
+      "after": {
+        "sha256": "fe2a5bfb23a10fda144c9ac0a593ade01eda18c3f8a68d7e116cba73736151e6"
+      }
+    },
+    "work/orchestration/goals/fusion-audit-remediation/trail.md": {
+      "before": {
+        "sha256": "43bb8642b5afb916995390cea6bb0586c20bd65f959229fbaf71e3b8fb9ed7ce"
+      },
+      "after": {
+        "sha256": "0b4b2481e3ba2b94b2c76bfe7f908ff3dc08eb7140e0e1f84066fc202fd93e3e"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-0.md": {
+      "before": null,
+      "after": {
+        "sha256": "50fccee17d54d264ca8d9688c4cf025a4f09fd24ffc7d5a9ccb04992e55db214"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-3.md": {
+      "before": null,
+      "after": {
+        "sha256": "046698ebd2e4c88e3e0d659ea043fea9f7dc87ffa3b1cbb45257fdb33cb4df31"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-3.png": {
+      "before": null,
+      "after": {
+        "sha256": "72daaaa11211d20fe1fbd2d18ac29fff4c6eb4821a50006960074a6b3d9e3d7d"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-4.md": {
+      "before": null,
+      "after": {
+        "sha256": "578db9f535e8dfe46c9d249a4281d8480aec12c0b044089d76233a415c60e0d8"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/README.md": {
+      "before": null,
+      "after": {
+        "sha256": "1cab2455139c3be2f160c519cea0796519cdf053658fd26c5b0f2b3d9331c0b0"
+      }
+    },
+    "knowledge/research/pending/20260911-170548_step-divertor-exhaust-proxy.md": {
+      "before": null,
+      "after": {
+        "sha256": "c82bfa94814b2d77aa087fe844af5dc98899aab71487f66c5346f0c2969e7a43"
+      }
+    },
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-2.png": {
+      "before": null,
+      "after": {
+        "sha256": "375194704195f86c79dcde2bd74d714f21a051c650b7b664aa9113d5fe071ae7"
+      }
+    }
+  },
+  "verified_against_git_objects": true
+}

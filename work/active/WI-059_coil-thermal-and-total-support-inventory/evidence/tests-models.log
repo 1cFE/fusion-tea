@@ -1,0 +1,103 @@
+........................................................................ [  7%]
+...F.....s.ssssssssssss................................................. [ 15%]
+........................................................................ [ 23%]
+........................................................................ [ 30%]
+........................................................................ [ 38%]
+........................................................................ [ 46%]
+........................................................................ [ 53%]
+........................................................................ [ 61%]
+........................................................................ [ 69%]
+........................................................................ [ 76%]
+........................................................................ [ 84%]
+........................................................................ [ 92%]
+.............................................F.......................... [ 99%]
+...                                                                      [100%]
+=================================== FAILURES ===================================
+_______ test_reference_preserves_every_audited_wi040_channel_and_verdict _______
+
+evaluate = <function evaluate.<locals>.run at 0x78def02313a0>
+
+    @pytest.mark.codegen_available
+    def test_reference_preserves_every_audited_wi040_channel_and_verdict(evaluate):
+        baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
+        assert len(baseline["channels"]) == 174
+        assert len(baseline["verdicts"]) == 18
+        row = evaluate()
+>       assert {key: row.outputs[key] for key in baseline["channels"]} == baseline["channels"]
+E       AssertionError: assert {'stellarator...37763854, ...} == {'stellarator...37763854, ...}
+E         
+E         Omitting 142 identical items, use -vv to show
+E         Differing items:
+E         {'stellarator_09__stellaris__cas70_calc__cas70': 217687149.51060474} != {'stellarator_09__stellaris__cas70_calc__cas70': 217739093.67437327}
+E         {'stellarator_09__stellaris__magnet__magnet_structure_cost__cost': 209080880.68635386} != {'stellarator_09__stellaris__magnet__magnet_structure_cost__cost': 54432000.0}
+E         {'stellarator_09__stellaris__cryoplant__cryo_elec__p_elec': 1.5353731658103897} != {'stellarator_09__stellaris__cryoplant__cryo_elec__p_elec': 0.8643515999999999}
+E         {'stellarator_09__stellaris__installation__co...
+E         
+E         ...Full output truncated (30 lines hidden), use '-vv' to show
+
+tests/models/test_conductor_grade.py:137: AssertionError
+_ test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__turn_current-25000.0-winding_procurement__winding_fabrication_cost-2.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x78dedf7f16c0>
+key = 'magnet__coil__turn_current', value = 25000.0
+component = 'winding_procurement__winding_fabrication_cost', factor = 2.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('key,value,component,factor', [
+        ('magnet__winding_pack__price_copper', 22., 'material_inventory__cost_copper', 2.),
+        ('magnet__coil__cost_per_kAm', 100., 'winding_procurement__tape_cost', 2.),
+        ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
+    ])
+    def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
+        before, after = evaluate(), evaluate({key: value})
+        assert output(after, 'magnet__' + component) == pytest.approx(factor * output(before, 'magnet__' + component))
+        unchanged = ['material_inventory__mass_' + material for material in ('copper', 'solder', 'steel', 'helium')]
+        if key.endswith('price_copper'):
+            unchanged += ['winding_procurement__' + suffix for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost')]
+            unchanged += ['material_inventory__cost_' + material for material in ('solder', 'steel', 'helium')]
+        elif key.endswith('cost_per_kAm'):
+            unchanged += ['winding_procurement__conductor_length', 'winding_procurement__winding_fabrication_cost', 'material_inventory__material_cost']
+        else:
+            unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
+        for suffix in unchanged:
+            assert output(after, 'magnet__' + suffix) == output(before, 'magnet__' + suffix)
+        assert len([k for k in before.responses if k != 'headline']) == 18
+        assert before.responses == after.responses
+        # Explicit physical owners/calculations, not all channels with an economic name filtered out.
+        physical = ('plasma__', 'magnet__field_calc__', 'magnet__peak_field_calc__',
+                    'magnet__wp_sizing__', 'magnet__wp_stress__', 'magnet__wp_volume__',
+                    'cryoplant__', 'primary_loop__', 'operating_heat__')
+        keys = [k for k in before.outputs if k.startswith(tuple(P + prefix for prefix in physical))]
+        assert len(keys) > 20
+>       assert {k: before.outputs[k] for k in keys} == {k: after.outputs[k] for k in keys}
+E       AssertionError: assert {'stellarator...36871985, ...} == {'stellarator...14389169, ...}
+E         
+E         Omitting 38 identical items, use -vv to show
+E         Differing items:
+E         {'stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost': 31478692.121086925} != {'stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost': 25539878.32040579}
+E         {'stellarator_09__stellaris__cryoplant__inventory__q_lead_shield': 34038.26477289934} != {'stellarator_09__stellaris__cryoplant__inventory__q_lead_shield': 17019.13238644967}
+E         {'stellarator_09__stellaris__cryoplant__cryo_elec__p_elec': 1.5353731658103897} != {'stellarator_09__stellaris__cryoplant__cryo_elec__p_elec': 1.2298559800724185}
+E         {'stellar...
+E         
+E         ...Full output truncated (9 lines hidden), use '-vv' to show
+
+tests/models/test_winding_pack_cost.py:228: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_conductor_grade.py::test_reference_preserves_every_audited_wi040_channel_and_verdict
+tests/models/test_conductor_grade.py::test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[27.5]
+tests/models/test_conductor_grade.py::test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[30.0]
+tests/models/test_conductor_grade.py::test_crossed_operating_current_and_envelope_verdicts
+tests/models/test_winding_pack_cost.py::test_extra_cold_volume_does_not_purchase_winding_material
+tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__winding_pack__price_copper-22.0-material_inventory__cost_copper-2.0]
+tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__cost_per_kAm-100.0-winding_procurement__tape_cost-2.0]
+tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__turn_current-25000.0-winding_procurement__winding_fabrication_cost-2.0]
+tests/models/test_winding_pack_cost.py::test_public_pack_volume_scales_materials_without_rebuying_tape
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_conductor_grade.py::test_reference_preserves_every_audited_wi040_channel_and_verdict
+FAILED tests/models/test_winding_pack_cost.py::test_accounting_levers_preserve_physics_and_operating_verdicts[magnet__coil__turn_current-25000.0-winding_procurement__winding_fabrication_cost-2.0]
+2 failed, 924 passed, 13 skipped, 9 warnings in 129.80s (0:02:09)

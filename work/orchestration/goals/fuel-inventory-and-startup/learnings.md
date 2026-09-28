@@ -1,0 +1,14 @@
+# Learnings: Fuel inventory and startup
+
+Accepted claims will be appended after round review.
+
+## Round 1 accepted — 2026-09-19
+
+[AGENT] Accepted by fresh non-author reviewer `fuel_final_grade` against the Round 1 result and committed study `3529f6c8`; review: `evidence/final-review-and-grade.md`. These are conditional findings from the study, not owner-originated settled requirements.
+
+1. **Represented inventory is useful within its stated boundary.** Residence scenarios and density-profile integration support a forward stock calculation. They do not establish reactor-specific helium/PbLi residence, wall retention, permeation, detritiation, bypass, equipment reliability or obtainable external supply. Reserve and buffer settings remain explicit policies. Study finding `20260919-fuel-inventory-and-startup#1`; `report.md` source/scenario account and WI-069 `design.md`.
+2. **Initial supply differs from maintained stock.** Reference working inventory is 2.380405 kg T, reserve is 2.037548 kg and their sum is 4.417953 kg. Conservative initial supply is 4.400124 kg for the specified two-day delayed-return startup, including prefill and reserve once. Internally bred stock is not purchased again. At 95% extraction efficiency, extending startup coverage ten days raises supply to 4.629065 kg while the 7.208091 kg/year shortfall remains. Finding `#2`; committed `results/points.csv` and verified event accounting.
+3. **Running capacity and annual demand have separate consumers.** Reference exhaust processing requires 7.742681 kg T/day or 12.911794 kg D+T/day whenever operating. Changing the live downtime input leaves this capacity unchanged; productive time changes annual throughput, while maintained-stock decay remains 0.248386 kg T/year. Finding `#3`; `evidence/throughput-interface.md` supplies named costing outputs without claiming an equipment price.
+4. **A verified fuel calculation does not establish a feasible plant.** The selected finite scenarios span 1.091–10.531 kg T held and 1.087–10.515 kg conservative startup supply. These are neither confidence limits nor physical bounds. All 26 cases retain failed whole-plant predicates; 23 fail the conservative breeding screen. Source uncertainty and continuing makeup remain visible. Finding `#4`; committed `results/summary.json`, all predicate outcomes and the unchanged P2/P3 rubric distinction.
+
+Evidence common to these claims: `exploration/stellarator_e2e/studies/20260919-fuel-inventory-and-startup/@3529f6c8`; native candidate `956444b5`; all 23,556 mapped scalar and 650 predicate comparisons pass. All 70 new outputs are mapped; the 906 mapped scalars comprise 892 numeric quantities and 14 Boolean flags, with 22 inherited numeric outputs outside the map. Static L2/L6 failures and unrun native manifest read-set coverage remain limitations. Formal goal closure remains owner-held.

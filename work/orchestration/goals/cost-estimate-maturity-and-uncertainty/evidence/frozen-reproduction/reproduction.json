@@ -1,0 +1,8 @@
+{
+  "cases": 74,
+  "native_scalar_comparisons": 70744,
+  "predicates_equal": true,
+  "store": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/frozen-reproduction/native/20260919-cost-estimate-maturity-and-uncertainty.db",
+  "fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236",
+  "scope": "Frozen native-to-native reproduction, not independent physical validation."
+}

@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:22
+SysML Source: root-0/analyses/mfe_account_costs.sysml:72
 
 SysML Expressions:
     p_th_ref = 2500.0
@@ -45,7 +45,7 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
 *Ref**: cas22.py:252-254 (c220101), cas22.py:223 (P_TH_REF=2500)
 *Basis**: Volume-based blanket cost with thermal-intensity power law
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:22
+SysML Source: root-0/analyses/mfe_account_costs.sysml:72
 
 SysML Expressions:
     p_th_ref = 2500.0

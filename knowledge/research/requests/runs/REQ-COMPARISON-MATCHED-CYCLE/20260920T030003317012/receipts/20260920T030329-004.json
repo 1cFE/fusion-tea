@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "registered",
+  "candidate": "https://www.epa.gov/sites/default/files/2015-07/documents/catalog_of_chp_technologies_section_4._technology_characterization_-_steam_turbines.pdf",
+  "slug": "epa2014_steam_turbine_technology_characterization",
+  "path": "knowledge/sources/epa2014_steam_turbine_technology_characterization/",
+  "source_id": "0e8f91f8f6c9513caabe184bd4558850fe6b434e33352a0016930d50ee26a648",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-20T03:03:29.171184+00:00"
+}

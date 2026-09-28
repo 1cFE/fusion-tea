@@ -1,0 +1,14 @@
+{
+  "network": "B.7 Rn_9_0 (example)",
+  "reference_raw": 1.135285378841514,
+  "reference_corrected": 1.1165440664619646,
+  "printed_module_raw": 1.13509,
+  "raw_difference": 0.00019537884151410445,
+  "printed_module_corrected": 1.11635116861,
+  "weight_count": 253
+}
+{"changed_input_index": 9, "value": 0.7, "TBR": 1.0828576244889223}
+{"changed_input_index": 9, "value": 0.8, "TBR": 1.1113864481405142}
+{"changed_input_index": 4, "value": 35, "TBR": 1.1053023248757545}
+{"changed_input_index": 4, "value": 55, "TBR": 1.1583014259458506}
+Expected domain rejection: Input 4=80 outside published normalization range [30.004,59.9976]

@@ -1,0 +1,2321 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="69" failures="1" skipped="1" tests="146" time="47.334" timestamp="2026-09-19T21:06:38.396348-07:00" hostname="reid-workstation"><testcase classname="tests.study.test_known_answers" name="test_fixture_binding" time="0.030" /><testcase classname="tests.study.test_known_answers" name="test_expectation_files_record_their_fingerprint[availability_direct]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_expectation_files_record_their_fingerprint[interest_rate]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_expectation_files_record_their_fingerprint[R]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_expectation_files_record_their_fingerprint[a]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_expectation_files_record_their_fingerprint[I_coil]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_known_answer[availability_direct]" time="0.751" /><testcase classname="tests.study.test_known_answers" name="test_known_answer[interest_rate]" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_known_answer[R]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_known_answer[a]" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_known_answer[I_coil]" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_matches_the_item_1_fixture_contract[availability_direct]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_matches_the_item_1_fixture_contract[interest_rate]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_matches_the_item_1_fixture_contract[R]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_matches_the_item_1_fixture_contract[a]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_matches_the_item_1_fixture_contract[I_coil]" time="0.001" /><testcase classname="tests.study.test_known_answers" name="test_availability_direct_reaches_no_constraint" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_I_coil_reaches_the_field_constraints_through_calcs" time="0.001"><failure message="AssertionError: assert {'beta_ok', '...heat_ok', ...} == {'beta_ok', '...city_ok', ...}&#10;  &#10;  Extra items in the left set:&#10;  'cooling_water_heat_direction'&#10;  'matched_reheat_heat_direction'&#10;  'matched_main_heat_direction'&#10;  Use -v to get more diff">report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    def test_I_coil_reaches_the_field_constraints_through_calcs(report):
+        """WI-035 gave the coil-current lever the field-side constraints (beta_ok,
+        peak_field_ok, wp_stress_ok). WI-037 extends its reach through the ISS04
+        sustainment chain: B feeds tau_E, the ash/fuel state, and p_aux_required,
+        so I_coil now also reaches sustainment_ok and — through the computed fuel —
+        the whole fusion-derived chain (net_positive, recirc_ok, wall_load_ok).
+        This is the structural close of discovery row 20260823-magnet-technology-ab#4
+        ("field is never rewarded"): the field lever finally has a path to fusion
+        power. Computed-vs-bound throughout, with two exceptions: net_positive is
+        computed vs a literal 0, and since WI-039 sustainment_ok is computed vs
+        *computed* — its installed side is the heating chain's coupled power, not the
+        held p_input it used to be."""
+        group = group_by_axis(report, "I_coil")
+        reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
+        # WI-036 adds cond_strain_ok: the winding-pack sizing chain runs off I_coil,
+        # so the conductor's own check is reached by the same lever that reaches the
+        # structure's -- the conductor is not left unchecked by the field sweep.
+        # WI-043 adds burn_hold_ok: the lower half of the sustainment condition reads the
+        # same computed operand, so every lever that reaches sustainment_ok reaches it.
+        # WI-045 (goal plant-closure, 2026-09-08) adds the two loop fences and the cycle
+        # domain fence: the reactor source heat sizes the loop's flow from the fusion power,
+        # so every lever that reaches fusion reaches loop_pressure_ok, loop_capacity_ok and
+        # cycle_domain_ok (the cycle reads the loop's outlet).
+        # WI-047 (goal plant-closure, 2026-09-08) adds divertor_heat_ok: the ledger's absorbed
+        # heating is the sustainment chain's alpha heating plus the coupled heating, so every
+        # lever that reaches the sustainment chain reaches the computed target peak.
+&gt;       assert set(reached) == {
+            "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
+            "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
+            "burn_hold_ok", "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+            "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok",
+            "tbr_ok", "facility_capacity_ok", "facility_outage_ok", "facility_routes_ok",
+            "facility_replacement_ready", "facility_initial_ready",
+        }
+E       AssertionError: assert {'beta_ok', '...heat_ok', ...} == {'beta_ok', '...city_ok', ...}
+E         
+E         Extra items in the left set:
+E         'cooling_water_heat_direction'
+E         'matched_reheat_heat_direction'
+E         'matched_main_heat_direction'
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:240: AssertionError</failure></testcase><testcase classname="tests.study.test_known_answers" name="test_r_reaches_net_positive_through_a_computed_operand" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_model_owned_radius_reaches_magnet_and_plasma" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_every_constraint_carries_all_three_identities" time="0.000" /><testcase classname="tests.study.test_known_answers" name="test_current_heating_reachability" time="0.741" /><testcase classname="tests.study.test_known_answers" name="test_current_availability_has_structural_breeding_and_facility_paths" time="0.000" /><testcase classname="tests.study.test_verify" name="test_the_summary_validates_against_its_schema" time="23.918"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_the_summary_is_a_superset_of_the_committed_field_set" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_parity_holds_at_the_committed_order_of_magnitude" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_every_catalog_constraint_is_rederived_with_its_operand_count" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_stratification_covers_every_observed_verdict_combination" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_stratification_is_a_floor_not_a_cap" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_the_derived_seed_reproduces_from_the_recorded_fields" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_an_explicit_seed_is_recorded_as_explicit" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_cas27_is_compared_and_nothing_is_undisclosed" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_the_command_carries_no_absolute_paths" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_the_operand_bindings_digest_is_the_documented_canonicalization" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_a_planted_channel_deviation_fails_naming_case_and_channel" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_a_planted_verdict_mismatch_fails_naming_the_constraint" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_a_missing_operand_bindings_attribute_fails_closed" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_an_unresolvable_binding_fails_naming_the_constraint_and_operand" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_a_store_bound_to_another_identity_is_refused" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_an_empty_result_is_a_broken_input_not_a_clean_pass" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_the_stores_are_never_written" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_stored_operating_controls_preserve_procurement_and_signed_capacity" time="8.067"><error message="failed on setup with &quot;scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated&#10;M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md&#10; M exploration/stellarator_e2e/generated/__init__.py&#10; M exploration/stellarator_e2e/generated/contracts/generation_manifest.json&#10; M exploration/stellarator_e2e/generated/contracts/model_contract.json&#10; M exploration/stellarator_e2e/generated/contracts/package_contract.json&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py&#10; M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py&#10; M exploration/stellarator_e2e/generated/inputs/mfe_plant_systems_params.json&#10; M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json&#10; M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py&#10; M exploration/stellarator_e2e/generated/modules/constraints/predicates.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_power_balance/mfe_power_balance_calc.py&#10; M exploration/stellarator_e2e/generated/modules/mfe_power_balance/reactor_source_heat.py&#10; M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py&#10; M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py&#10; M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py&#10; M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml&#10; M exploration/stellarator_e2e/generated/schemas/mfe_plant_systems_params.py&#10; M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py&#10; M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py&#10;?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/__init__.py&#10;?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cooling_water_rejection_impl.py&#10;?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cycle_mode_selection_impl.py&#10;?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py&#10;?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/__init__.py&#10;?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cooling_water_rejection.py&#10;?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cycle_mode_selection.py&#10;?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/matched_steam_cycle.py&#10;?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellariscoolingwaterheatdirectionconstraintmodule.py&#10;?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedmainheatdirectionconstraintmodule.py&#10;?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedreheatheatdirectionconstraintmodule.py&#10;?? exploration/stellarator_e2e/generated/schemas/cooling_water_rejection_output.py&#10;?? exploration/stellarator_e2e/generated/schemas/cycle_mode_selection_output.py&#10;?? exploration/stellarator_e2e/generated/schemas/matched_steam_cycle_output.py&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="module")
+    def operating_controls(tmp_path_factory, stock_simkit_session_path):
+        """Stored native baseline, installed reserve and physical demand controls."""
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        out = tmp_path_factory.mktemp("operating-controls")
+        baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
+        P = study_route.P
+        proposals = [baseline, {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
+                     {**baseline, f"{P}plasma__f_alpha_fast": 0.96}]
+        cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
+        assert len(cases) == 3 and all(case.state == "completed" for case in cases)
+        ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
+&gt;       summary = verify.build_summary(PACKAGE, MANIFEST, ident, [db], 3, None, [])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:499: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+
+    def assert_tree_clean(tree: Path | str) -&gt; None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+&gt;           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E           M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E            M exploration/stellarator_e2e/generated/__init__.py
+E            M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E            M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E            M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E            M exploration/stellarator_e2e/generated/inputs/mfe_plant_systems_params.json
+E            M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E            M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E            M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_power_balance/mfe_power_balance_calc.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_power_balance/reactor_source_heat.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E            M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/stellarator_e2e/generated/schemas/mfe_plant_systems_params.py
+E            M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E            M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/__init__.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cooling_water_rejection_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cycle_mode_selection_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/__init__.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cooling_water_rejection.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cycle_mode_selection.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/matched_steam_cycle.py
+E           ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellariscoolingwaterheatdirectionconstraintmodule.py
+E           ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedmainheatdirectionconstraintmodule.py
+E           ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedreheatheatdirectionconstraintmodule.py
+E           ?? exploration/stellarator_e2e/generated/schemas/cooling_water_rejection_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/cycle_mode_selection_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/matched_steam_cycle_output.py
+
+scripts/study/common.py:81: ToolError</error></testcase><testcase classname="tests.study.test_verify" name="test_operating_channel_deviation_is_refused[p_coupled]" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_operating_channel_deviation_is_refused[p_delivered]" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_operating_channel_deviation_is_refused[p_wallplug]" time="0.000"><error message="failed on setup with &quot;study_route.RouteError: expected exactly 25 catalogued checks, found 28&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+&gt;       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -&gt; dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+&gt;           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError</error></testcase><testcase classname="tests.study.test_verify" name="test_zero_efficiency_is_a_recorded_native_execution_failure[source]" time="0.510" /><testcase classname="tests.study.test_verify" name="test_zero_efficiency_is_a_recorded_native_execution_failure[couple]" time="0.545" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[False-0.0--1.0-True]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[False-1.0-1.0-True]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[False-1.0-0.0-False]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[False-1.0--1.0-False]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[True-0.0--1.0-True]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[True-1.0-1.0-True]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[True-1.0-0.0-False]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_exact_active_heat_direction_disjunction[True-1.0--1.0-False]" time="0.001" /><testcase classname="tests.study.test_verify" name="test_true_disjunction_cannot_hide_missing_or_invalid_evidence[missing]" time="0.000" /><testcase classname="tests.study.test_verify" name="test_true_disjunction_cannot_hide_missing_or_invalid_evidence[nonfinite]" time="0.000" /><testcase classname="tests.study.test_verify" name="test_true_disjunction_cannot_hide_missing_or_invalid_evidence[unsupported]" time="0.000" /><testcase classname="tests.study.test_verify" name="test_true_disjunction_cannot_hide_missing_or_invalid_evidence[wrong_arity]" time="0.000" /><testcase classname="tests.study.test_operand_bindings" name="test_every_constraint_operand_resolves" time="0.975" /><testcase classname="tests.study.test_operand_bindings" name="test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly" time="0.969" /><testcase classname="tests.study.test_operand_bindings" name="test_the_bindings_are_a_copy_a_caller_cannot_corrupt" time="0.000" /><testcase classname="tests.study.test_operand_bindings" name="test_the_shim_reproduces_the_pinned_headline" time="0.953" /><testcase classname="tests.study.test_operand_bindings" name="test_an_undeclared_entry_key_fails_closed_naming_the_key" time="0.000" /><testcase classname="tests.study.test_operand_bindings" name="test_keys_that_disagree_about_one_oracle_input_fail_closed" time="0.000" /><testcase classname="tests.study.test_operand_bindings" name="test_an_unmapped_oracle_output_fails_closed_naming_the_channel" time="0.979" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[-0.5-source]" time="0.004" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[-0.5-couple]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[0.0-source]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[0.0-couple]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[1.0-source]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[1.0-couple]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[1.01-source]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_scalar_efficiency_domains_use_current_input_bindings[1.01-couple]" time="0.003" /><testcase classname="tests.study.test_operand_bindings" name="test_zero_efficiency_fails_in_the_independent_oracle[source]" time="0.966" /><testcase classname="tests.study.test_operand_bindings" name="test_zero_efficiency_fails_in_the_independent_oracle[couple]" time="0.973" /><testcase classname="tests.study.test_single_point_gate" name="test_command_status_covers_each_accumulated_gate_family[green]" time="0.121" /><testcase classname="tests.study.test_single_point_gate" name="test_command_status_covers_each_accumulated_gate_family[anchor-failure]" time="0.001" /><testcase classname="tests.study.test_single_point_gate" name="test_command_status_covers_each_accumulated_gate_family[oracle-failure]" time="0.001" /><testcase classname="tests.study.test_single_point_gate" name="test_command_status_covers_each_accumulated_gate_family[identity-failure]" time="0.001" /><testcase classname="tests.study.test_single_point_gate" name="test_command_status_covers_each_accumulated_gate_family[guard-failure]" time="0.001" /><testcase classname="tests.study.test_single_point_gate" name="test_green_single_point_command_exits_zero" time="4.128"><skipped type="pytest.xfail" message="Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker" /></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_binding_documentation_and_source_preservation" time="0.430" /><testcase classname="tests.models.test_mfe_major_radius" name="test_fresh_destination_acceptance[absent]" time="0.021" /><testcase classname="tests.models.test_mfe_major_radius" name="test_fresh_destination_acceptance[empty]" time="0.003" /><testcase classname="tests.models.test_mfe_major_radius" name="test_nonfresh_destination_refusal_without_mutation[visible]" time="0.001" /><testcase classname="tests.models.test_mfe_major_radius" name="test_nonfresh_destination_refusal_without_mutation[hidden]" time="0.001" /><testcase classname="tests.models.test_mfe_major_radius" name="test_nonfresh_destination_refusal_without_mutation[file]" time="0.001" /><testcase classname="tests.models.test_mfe_major_radius" name="test_nonfresh_destination_refusal_without_mutation[symlink]" time="0.001" /><testcase classname="tests.models.test_mfe_major_radius" name="test_nonfresh_destination_refusal_without_mutation[dangling_symlink]" time="0.001" /><testcase classname="tests.models.test_mfe_major_radius" name="test_nonfresh_destination_refusal_without_mutation[reused]" time="0.001" /><testcase classname="tests.models.test_mfe_major_radius" name="test_seed_inventory_refuses_deviation[missing]" time="0.002" /><testcase classname="tests.models.test_mfe_major_radius" name="test_seed_inventory_refuses_deviation[extra]" time="0.002" /><testcase classname="tests.models.test_mfe_major_radius" name="test_seed_inventory_refuses_deviation[mismatch]" time="0.002" /><testcase classname="tests.models.test_mfe_major_radius" name="test_current_contract_edges_and_fresh_package_agreement" time="0.276" /><testcase classname="tests.models.test_mfe_major_radius" name="test_strict_current_package_load" time="0.121" /><testcase classname="tests.models.test_mfe_major_radius" name="test_complete_native_and_direct_parity[baseline]" time="0.063"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_complete_native_and_direct_parity[R14]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_independent_radius_ratios_and_fixed_anchors" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_standalone_radius_formals[field_calc]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_standalone_radius_formals[stored_energy]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_standalone_radius_formals[magnet_cost]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[alone-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[alone-schema]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[alone-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[alone-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[alone-cli]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[equal-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[equal-schema]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[equal-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[equal-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[equal-cli]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[conflicting-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[conflicting-schema]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[conflicting-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[conflicting-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[conflicting-cli]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[zero-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[zero-schema]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[zero-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[zero-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_retired_radius_refused[zero-cli]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[R4-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[R4-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[R4-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[coil-centre-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[coil-centre-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[coil-centre-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[R3-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[R3-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[R3-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[zero-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[zero-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[zero-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[negative-native]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[negative-helper]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_unified_invalid_radius_failure[negative-single]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_peak_component_preserves_valid_and_rejects_invalid_domains[valid]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_peak_component_preserves_valid_and_rejects_invalid_domains[original_negative]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_peak_component_preserves_valid_and_rejects_invalid_domains[equality]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_equal]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_inverted]" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase><testcase classname="tests.models.test_mfe_major_radius" name="test_bad_normative_seed_stops_before_generator[missing]" time="0.002" /><testcase classname="tests.models.test_mfe_major_radius" name="test_bad_normative_seed_stops_before_generator[mismatch]" time="0.002" /><testcase classname="tests.models.test_mfe_major_radius" name="test_extra_seed_stops_before_generator" time="0.005" /><testcase classname="tests.models.test_mfe_major_radius" name="test_historical_cli_baseline_success" time="0.000"><error message="failed on setup with &quot;TypeError: cannot unpack non-iterable NoneType object&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x79b401183b90&gt;, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13025'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def acceptance(tmp_path_factory):
+        from tests.models.current_mfe_regressions import radius_acceptance
+&gt;       return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_major_radius.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+destination = PosixPath('/tmp/pytest-of-reid/pytest-13025/wi0510/acceptance')
+historical = PosixPath('/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation')
+
+    def radius_acceptance(destination, historical):
+        destination = Path(destination)
+        destination.mkdir()
+        drivers = destination / 'drivers'
+        drivers.mkdir()
+        ledger = json.loads((FINANCE_EVIDENCE / 'scalar-ledger.json').read_text())['live_ordinary']
+        finance = {row['name'] for row in ledger if row['classification'] == 'changed finance'}
+        generation = current_generation()
+        before = generation.inventory(generation.PACKAGE)
+        # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
+        forward, _ = structure_ledger()
+&gt;       translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+        ^^^^^^^^^^^^^^^^^^^
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/models/current_mfe_regressions.py:465: TypeError</error></testcase></testsuite></testsuites>

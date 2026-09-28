@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-STELLARIS-FIELD-GEOMETRY-02",
+  "question": "Does the concrete author dataset Zenodo 18497939 contain an identifiable published-baseline or alternative Stellaris centreline/current set and finite winding-pack data, as established by its author paper and isolated Stellaris members?",
+  "consumer": ".project/active/aries-comparison-preparation/field-qualification/spec.md",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["https://arxiv.org/html/2507.12681", "https://zenodo.org/records/18497939/preview/zenodo_repository_auglag.zip?include_deleted=0", "isolated Stellaris-named members or dedicated author scripts; no unrelated comparison folders"],
+  "limits": {"max_searches": 1, "max_captures": 3}
+}

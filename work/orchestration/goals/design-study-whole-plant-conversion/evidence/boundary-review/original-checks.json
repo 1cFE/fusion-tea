@@ -1,0 +1,48 @@
+{
+  "baseline_sha256": "195f8eb4bbc8889175b726b8ed8eb08d502d12aaa78b6f35b7016cec0e60358c",
+  "baseline_failed_constraints": {
+    "headline": "violated",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad": "violated",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d": "violated",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "violated",
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0": "violated",
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339": "violated"
+  },
+  "selected_native_outputs": {
+    "blanket__breeding__tbr_lower": 1.1861455810023918,
+    "magnet__conductor_current__field_extrapolated": 1.0,
+    "magnet__conductor_current__allowable_current": 23717.40381194687,
+    "magnet__conductor_current__margin_current": -26282.59618805313,
+    "calendar__coil_life_margin_fpy": -17.083333333333336,
+    "fuel_cycle__inventory__startup_conservative_kg": 4.400124215703401,
+    "buildings__layout__occupancy_area_margin_m2": -4.547473508864641e-13
+  },
+  "source_checks": [
+    {
+      "source_MW": 2500.0,
+      "fusion_MW": 2112.151824244802,
+      "divertor_peak_MW_m2": 8.582492953609256,
+      "tritium_burn_kg_FPY": 118.43771122998443
+    },
+    {
+      "source_MW": 2800.0,
+      "fusion_MW": 2370.7826598666143,
+      "divertor_peak_MW_m2": 9.517083927520591,
+      "tritium_burn_kg_FPY": 132.94028811528864
+    },
+    {
+      "source_MW": 3000.0,
+      "fusion_MW": 2543.203216947823,
+      "divertor_peak_MW_m2": 10.140144576794818,
+      "tritium_burn_kg_FPY": 142.60867270549147
+    }
+  ],
+  "retained_cpi_rows": [
+    "2004 188.9 2.7%",
+    "2024 313.7 2.9%",
+    "2025 321.9 2.6%",
+    "2026* 334.4 3.9%"
+  ],
+  "limitations": "Arithmetic checks on retained sources; no model execution or physical qualification. Divertor uses existing rounded0.2002 plasma alpha convention; source inversion uses3.52/17.58."
+}

@@ -1,0 +1,18 @@
+{
+  "reason": "Predeclared default precision refinement: withheld.925 initialSE.00202454 exceeds.002; add independent200k and retain400k; fixedhistorycountweighting.",
+  "cases": [
+    {
+      "name": "table-withheld-t0.925-refine1",
+      "role": "withheld",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.925,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 9200023,
+        "particles": 4000,
+        "batches": 50
+      }
+    }
+  ]
+}

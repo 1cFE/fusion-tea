@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://qedfusion.org/LIB/REPORT/CONF/ANS00/schleicher.pdf",
+  "slug": "schleicher_raffray_wong_2001_an_assessment_of_the_brayton",
+  "path": "knowledge/sources/schleicher_raffray_wong_2001_an_assessment_of_the_brayton/",
+  "source_id": "392f145d292c8912af4c9ac5998764fe67b6b7f97acea01762111439dfa9ad9a",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-25T20:36:52.791498+00:00"
+}

@@ -1,0 +1,1220 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 8,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 18/24 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 9,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 27/28 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 10,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 21/28 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 11,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/19 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 12,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 13,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 14,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 15,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 16,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 17,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 18,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 19,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 20,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 21,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 22,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 23,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 24,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 25,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 26,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 3"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 27,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 6"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 28,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 29,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 30,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 31,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 32,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 93"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 33,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 34,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 35,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 36,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 37,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 38,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 10"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 39,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 40,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 41,
+    "action": "strip_broken",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 3",
+      "TABLE: <br> artifacts in 1/15 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 42,
+    "action": "keep",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement chars (\ufffd): 19"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 43,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 44,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 45,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 46,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 12"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 47,
+    "action": "keep",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement chars (\ufffd): 54"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 48,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 49,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 50,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 51,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 49/51 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 52,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 19/21 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 53,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 54,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 55,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/14 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 56,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 13"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 57,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 58,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 59,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 4"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 60,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/12 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 61,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 62,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 28/33 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 63,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 64,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 49/51 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 65,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 66,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement char (\ufffd): 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 67,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 68,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 19/21 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 69,
+    "action": "strip_broken",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 13",
+      "TABLE: <br> artifacts in 8/9 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 70,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 71,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 72,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 73,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 74,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 75,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 76,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 77,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 78,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 79,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 80,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 81,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 82,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 83,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/49 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 84,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 85,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 86,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 87,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 88,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 89,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 90,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 91,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 92,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 93,
+    "action": "strip_broken",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement chars (\ufffd): 40",
+      "TABLE: <br> artifacts in 8/11 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 94,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 95,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 96,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 8/9 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 97,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 98,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 99,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 100,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 101,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 102,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 103,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 104,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 105,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 106,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 107,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 108,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 18/26 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 109,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 27/28 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 110,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 21/28 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 111,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/19 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 112,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/36 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 113,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 114,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/34 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 115,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 116,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 15/25 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 117,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/11 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 118,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 191"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 119,
+    "action": "keep",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 78"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 120,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 121,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 122,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 123,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 124,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 49/50 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 125,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 4/24 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 126,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 23/36 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 127,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 28/33 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 128,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 28/33 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 129,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 16/17 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 130,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/47 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 131,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 132,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 133,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 20/21 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 134,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 135,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 136,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 137,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 138,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 139,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 140,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 141,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 142,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 143,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 144,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 145,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 146,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 147,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 148,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 149,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 150,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 151,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 152,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 153,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 154,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 155,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 156,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 157,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 158,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 159,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 160,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 161,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 162,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 163,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 164,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 165,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 166,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 167,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 168,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 169,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 170,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 171,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 172,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 173,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 174,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]

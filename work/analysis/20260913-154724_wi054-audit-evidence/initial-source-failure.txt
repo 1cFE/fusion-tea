@@ -1,0 +1,11 @@
+Examined revision: fe48a83a; native production: 4ca1f299.
+Command: .codex-test/run python -m pytest tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation -q --tb=short
+Exit: 1
+______________ test_binding_documentation_and_source_preservation ______________
+tests/models/test_mfe_major_radius.py:43: in test_binding_documentation_and_source_preservation
+    assert (models/p).read_bytes()==(H/'entering-models'/p).read_bytes()
+E   AssertionError: assert b'package mfe...;\n    }\n}\n' == b'package mfe...;\n    }\n}\n'
+E     At index 8983 diff: b'c' != b'a'
+1 failed in 0.35s
+
+Inspection: first failure is mfe_magnet_cost.sysml's corrected work/completed citation. The same historical byte logic also rejects the newly changed scaling and sustainment comments. Routed to coordinator for separately owned current-consumer repair; native auditor made no test or production repair.

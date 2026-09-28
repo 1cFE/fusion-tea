@@ -1,0 +1,44 @@
+Datafile format version: 1.4.
+Sample description: SuperOx YBCO 2G HTS Wire, 2.5 cm length, 4 mm width, laser patterned to a 1 mm x 5 mm bridge.
+Internal sample designation: SOX021. Manufacturer sample designation: #477-R (420-763).
+Data collection date: 20-28 January 2021.
+
+The data files comprise columnar data of the following quantities:
+
+Temperature (K) The stable sample temperature at the start of the measurement.
+Field (T)       The magnitude of the applied magnetic field at the sample.
+Angle (°)       The angle of the sample normal with respect to the applied field direction.
+Ic/w (A/cm)	The critical current of the sample, scaled up from the sample width to a full cm width.
+Ic (A)          The critical current of the sample, obtained from a power law fit to the measured IV curve.
+n               The n-value, or exponent of the power law fit to the measured IV curve.
+V0 (µV)         An arbitrary offset voltage originating in the voltage amplifier.
+V1 (µV/A)       A linear voltage component providing an improved fit to the experimental data.
+Hall field (T)  The magnitude of the applied magnetic field at the sample determined from orthogonal Hall sensors.
+Hall angle (°)  The angle of the sample with respect to the applied field determined from orthogonal Hall sensors.
+Set temperature (K)	The setpoint temperature of the measurement, useful for sorting/filtering the data.
+Set field (T)	The setpoint field of the measurement, useful for sorting/filtering the data.
+Set angle (°)	The setpoint angle of the measurement, useful for sorting/filtering the data.
+
+The Field entry provides the best estimate of the field magnitude, while the Hall angle provides the best estimate of the field direction, allowing for flux pinning and Lorentz force stresses on the sample rod.
+
+The underlying current-voltage (IV) characteristics have been fit according to the equation:
+
+V = V0 + V1.I + Vc.(I/Ic)^n
+
+where the voltage criterion Vc = 0.5 µV for a voltage tap spacing of 5 mm.
+
+Data contained in the summary data files is duplicated to provide the most convenient access. The data is provided in xlsx (Excel 2007) format to allow for multiple pages of data within a single file. The following files are provided:
+
+IV curves.zip                  A zipped folder containing all the individual IV curve data files.
+All data.xlsx                  A single data file containing all the measured data points.
+
+0T temperature dependence.xlsx The self field Ic values as a function of temperature.
+
+0° field dependences.xlsx      Ic values at different temperatures as a function of field applied perpendicular to the sample.
+90° field dependences.xlsx     Ic values at different temperatures as a function of field applied parallel to the sample.
+
+Minimum Ic field dependences.xlsx     Minimum Ic values across all field angles at different temperatures as a function of applied field.
+Maximum Ic field dependences.xlsx     Maximum Ic values across all field angles at different temperatures as a function of applied field.
+
+nnK angle dependences.xlsx     Ic values at different fields as a function of applied field angle.
+n.nT angle dependences.xlsx    Ic values at different temperatures as a function of applied field angle.

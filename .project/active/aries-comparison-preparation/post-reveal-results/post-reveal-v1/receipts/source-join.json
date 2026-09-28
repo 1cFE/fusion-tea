@@ -1,0 +1,10 @@
+{
+  "schema_version": "command-receipt/v1",
+  "receipt_kind": "retrospective_transcription_of_tool_result",
+  "cwd": "/home/reid/1cfe/fusion-tea",
+  "command": "/home/reid/1cfe/fusion-tea/.venv/bin/python .project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/build-observations.py --template .project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/observations-template.json --output .project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/observations.json --mapping-output .project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/source-evidence/observation-map.json",
+  "exit_code": 0,
+  "captured_combined_output": "Retained 276 rows and native fields; populated 52 contextual numerical reference candidates.\n",
+  "tool_chunk_id": "04d68f",
+  "note": "Recorded from the original exec_command tool return after execution; no builder rerun and no observations mutation. The tool returned combined output rather than separate stdout/stderr streams."
+}

@@ -1,0 +1,12 @@
+{"kind": "search", "query": "site.osti.gov NGNP helium circulator intermediate heat exchanger cost estimate", "at": "2026-09-18T21:31:23.476128+00:00"}
+{"kind": "search", "query": "site.inl.gov HTGR process heat heat exchanger cost piping circulator capital cost", "at": "2026-09-18T21:31:23.523071+00:00"}
+{"kind": "search", "query": "helium heat transport piping circulator cost General Atomics 911105 2007", "at": "2026-09-18T21:31:23.569312+00:00"}
+{"kind": "search", "query": "helium heat exchanger cost correlation installed PCHE NGNP capital 2011 Varrin", "at": "2026-09-18T21:31:23.615552+00:00"}
+{"kind": "search", "query": "\"911105\" \"pdf\" NGNP heat transport; \"Independent Evaluation of Costs\" \"Varrin\" pdf", "at": "2026-09-18T21:31:23.661728+00:00"}
+{"kind": "search", "query": "\"NGNP High Temperature Process Heat Transfer and Transport Study\" -site:art.inl.gov; \"Independent Evaluation\" \"Major Capital\" HTGR -site:art.inl.gov", "at": "2026-09-18T21:31:23.708415+00:00"}
+{"kind": "search", "query": "\"911105\" NGNP helium filetype:pdf site:inl.gov", "at": "2026-09-18T21:34:13.732811+00:00"}
+{"kind": "search", "query": "\"NGNP\" \"Heat Transfer and Transport Study\" site:osti.gov", "at": "2026-09-18T21:34:13.779762+00:00"}
+{"kind": "search", "query": "OSTI API: NGNP High Temperature Process Heat Transfer Transport; rows=10", "at": "2026-09-18T21:34:13.826654+00:00"}
+{"kind": "candidate", "ref": "https://inldigitallibrary.inl.gov/sites/sti/sti/Sort_26712.pdf", "triage": "keeper", "note": "Registered original installed-cost method; low-temperature LWR applicability only.", "at": "2026-09-18T21:34:13.873133+00:00"}
+{"kind": "candidate", "ref": "https://art.inl.gov/NGNP/Subcontractors%20Documents/General%20Atomics/NGNP%20High%20Temperature%20Process%20Heat%20Transfer%20and%20Transport%20Study.pdf", "triage": "keeper", "note": "Relevant original helium transport cost study; cached triage only; direct HTTPS and HTTP404, screenshot cache miss, archive429; native capture failed.", "at": "2026-09-18T21:34:13.920724+00:00"}
+{"kind": "candidate", "ref": "https://art.inl.gov/NGNP/INL%20Documents/Year%202011/Independent%20Evaluation%20of%20Costs%20of%20Major%20Capital%20Items%20for%20High%20Temperature%20Gas%20Cooled%20Reactors.pdf", "triage": "keeper", "note": "Relevant independent contractor capital-cost study; direct original404; native capture failed.", "at": "2026-09-18T21:34:13.967596+00:00"}

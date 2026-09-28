@@ -1,0 +1,23 @@
+Attempt 1: native execute_study invocation at bd9b9aec. All 113 native rows completed before export failed.
+Traceback (most recent call last):
+  File "exploration/aries_integrated/studies/execute_study.py", line 73, in <module>
+    execute(args.record, args.integration_return)
+  File "exploration/aries_integrated/studies/execute_study.py", line 45, in execute
+    raise route.RouteError("stored point differs from every complete declared proposal")
+exploration.aries_integrated.studies.study_route.RouteError: stored point differs from every complete declared proposal
+
+Export-only recovery attempt 1: no evaluator invocation, no exports written.
+Traceback (most recent call last):
+  File "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/export_stored_results.py", line 30, in <module>
+    assert all(sha(R/p)==digest for p,digest in before.items())
+  File "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/export_stored_results.py", line 30, in <genexpr>
+    assert all(sha(R/p)==digest for p,digest in before.items())
+  File "exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/export_stored_results.py", line 10, in <lambda>
+    sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/reid/1cfe/fusion-tea/exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/native/20260922-aries-integrated-cost-uncertainty.db-shm'
+
+Tracebacks retained from tool output; leading filesystem prefixes abbreviated in frame filenames only. SQLite -shm and -wal are transient runtime sidecars rather than immutable native evidence artifacts. Recovery must protect the persistent .db and native evidence files, preserve input maps, and run no evaluator.

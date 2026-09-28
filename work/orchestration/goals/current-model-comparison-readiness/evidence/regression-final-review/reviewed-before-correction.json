@@ -1,0 +1,30 @@
+{
+  "reviewed_files_sha256": {
+    "exploration/stellarator_e2e/studies/study_route.py": "4d24ce746300dd5e41dea3e3c51eb789f3bc2e3cfeb15fd1ac928122bcff483e",
+    "tests/models/current_mfe_regressions.py": "176f45b24033a3a6846ae4e5b37cc66a9b481cbff2f7ab393cf405c9ddfcb941",
+    "tests/models/test_coil_thermal_inventory.py": "c02469969df42586e301054560f07f37a0323f681b867343cbe6a10b8084d64d",
+    "tests/models/test_conductor_current.py": "d2a9ebd2705f22b2a3fb8a5f0643aef442b15a47a87efb54e37fd7c7813396ab",
+    "tests/models/test_conductor_grade.py": "27cbf2f7255bc2988cb852def212dd814bc2ef04a9721fb393333c5ccb14b8bf",
+    "tests/models/test_current_driven_sizing_integration.py": "311adbf3624e2d8304795cb1649f5a9ebeaa66e6fc349370663f1329be435335",
+    "tests/models/test_divertor_heat_integration.py": "bbd79cba6f84e263bd2deff35270b03161cf5683067c1da1a2643ba85e208dc9",
+    "tests/models/test_magnet_manufacturing_integration.py": "46dbab5a545fcb4b03c32dd8fc0963ee637a9a45f864d9cd380155c3d17d15e9",
+    "tests/models/test_mfe_major_radius.py": "ac52d77778a0941f920a665983995ebef556a7f63d9c2703281bfb147c419afc",
+    "tests/models/test_mfe_operating_heating.py": "6cf7e3e8991d457bdba35888180e3e0a294e95ff3c0bc4323e146b281cece40e",
+    "tests/models/test_structure_translation.py": "4f44ca0a0402fcfac9e9bb087954af77f4c216f86efe2d5cb803311d44f5a8b1",
+    "tests/models/test_tape_procurement.py": "7e1fbade64e0800fcf91edd93c9ec0529aaab3eb5d2aa3149cefab9675a48928",
+    "tests/models/test_winding_length_bore.py": "8c7b62ba677d909e7c7f5257b03cd7a909cb95808f3b140620c911eb9b6bcd77",
+    "tests/models/test_winding_pack_cost.py": "ac45975aaf49b7e856263c3dfd1cc2118516aa97348fb52463e789d6a7ba2d26",
+    "tests/models/test_winding_pack_fit.py": "a348a7e861583efbbdf0f1090b3d822a4fbb0406a9f4ebcc5edbb9bb73fdb6fb",
+    "tests/study/financial_radius_controls.py": "e9438040253f2014f14d103454810b0937004ffe2bbc5b99c7a17003c731b318",
+    "tests/study/test_major_radius.py": "92a71cf7b29f6a5ecc28166c8dd3dea09ba930ceb7046f97227e441984dc4358",
+    "tests/study/test_stock_route.py": "924e265de6d16a1cd39860df94a8871bb048e1492483573fe4808f5788a8dba2",
+    "tests/study/test_winding_consumers.py": "1960ad426d9ee412a6d4f36fab4b1d92f9f3838d58046218cc572b722ff5c572"
+  },
+  "phase": "Reviewed scope before approved financial historical absolute-tolerance restoration",
+  "evidence_sha256": {
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/regression-final-review/static-checks.json": "c671ce02cc5ed1d124c8a2e09dc41c8ba16de0c983dd469404461e8c0d2d808b",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/regression-final-review/partition-checks.json": "ac6215f69936b5bfb9536ffafae29da7d4c77aa2cba3b583af0f2fbf91246da7",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/regression-final-review/focused.log": "e1ddd2f99bb0b8ac21d6c26bee3857a24a9cf391e9d8dc12289e0c017e7c7d8a",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/regression-final-review/focused.xml": "e51ac222aa846a25995c5467fb6636c5e5cd27945323d615784f030e3d5a30a0"
+  }
+}

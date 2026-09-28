@@ -1,0 +1,17 @@
+.........                                                                [100%]
+=============================== warnings summary ===============================
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes0]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes1]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes2]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes3]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes4]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes5]
+tests/models/test_current_driven_sizing_integration.py::test_every_entering_native_output_and_predicate_preserved
+tests/models/test_current_driven_sizing_integration.py::test_grade_is_not_applied_twice_and_multiplier_is_physical
+tests/models/test_current_driven_sizing_integration.py::test_radial_allocation_propagates_existing_feedback
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+9 passed, 9 warnings in 21.29s

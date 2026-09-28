@@ -1,0 +1,7 @@
+# Round 1 remaining review brief
+
+Use the existing independent source/design, integrated behavior, MR-7, preservation, tooling and corrective packaging reviews as valid bounded coverage. You are the same non-author reviewer; do not repeat those broad checks. After the coordinator supplies the committed study and writes the round result, review remaining claims against that record and original native evidence.
+
+Check that all fourteen declared points, all ten full predicate identities, fixed-hardware demand changes, independent rating pairs and conversion/interface perturbations survived execution and reporting. Verify the new numerical reading and its qualification, verdict-stratified independent verification, actual source/runtime snapshots and immutable store/result identities. Audit every study finding and joined discovery disposition. Check goal/strategy fidelity, task scopes and honest retry/prerequisite classification, including the separate metadata correction. Read cited native records for out-of-task mutation; do not invent a new stale-authority mechanism.
+
+Assess the proposed learning delta in the round result. State PASS, FINDINGS or OWNER_GATE with concrete evidence and any remaining uncertainty in `evidence/round-review.md`. Do not edit the committed study, model or goal status. If a concrete coverage gap appears, name it so the coordinator can broaden this bounded review; do not recursively repeat earlier reviews. Formal goal/item closure remains owner-held.

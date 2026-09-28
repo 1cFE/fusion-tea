@@ -1,0 +1,98 @@
+J. Lion et al.
+lifetimes for the device, as fast neutron fluences are measured
+to significantly degrade the performance of superconducting coils
+after 3 × 1022 m−2 [261]. The neutron fluence on the copper
+stabilizer should also be considered as the conductivity has been
+shown to reduce with neutron irradiation by 5% after a neutron
+fluence of 1.5 × 1023 m−2 [262]. One strategy to potentially address
+a conductivity decrease would be to make the copper stabilizer
+thicker to accommodate the anticipated decrease in conductivity.
+• Neutron Shielding for Cryogenic Area Protection: We determine
+whether the neutron shielding sufficiently reduces nuclear heat-
+ing in the cryogenic regions to acceptable levels, ensuring the
+integrity of the cryogenic components.
+• Lifetime Estimation of Key Components: We estimate the opera-
+tional lifetime of the main components of the machine, consider-
+ing the neutron flux and the resulting material degradation over
+time.
+Safety and activation calculations, as well as structural and thermal
+simulations, fall outside the scope of this analysis.
+Tritium breeding ratio analysis. We performed a neutronics simulation
+using 15 × 106 particles per batch over 5 batches, tallying TBR, nuclear
+heating, and neutron flux. Periodic boundary conditions were applied
+at the 𝜑= 0 and 𝜑= 𝜋∕2 surfaces, where 𝜑represents the toroidal
+angle. No particle loss was observed during the simulation, ensuring
+accurate results.
+The simulation was focused solely on neutron transport, with the
+nuclear heating tally assuming that secondary gamma power is de-
+posited locally. The computed TBR, accounting for the remote main-
+tenance solution discussed in Section 2.11 and a conceptual divertor
+model, is 1.1070 ± 0.0002. After considering a 3% reduction due to the
+heating ports, the final TBR stands at 1.074, which includes margins to
+account for uncertainties and potential incomplete models.
+Power multiplication. Using the same 3D neutronic simulation that was
+employed for the TBR calculation, we also tallied the power multiplica-
+tion within the blanket, which primarily results from exothermal (Li-6,
+n) reactions. From this analysis, we obtained a power multiplication
+factor of 1.2. The initial 2160 MW of neutron power produced by
+the reactor is thus amplified within the blanket to a nuclear power of
+approximately 2611 MW. This thermal power is what can be extracted
+from the blanket and shield systems, contributing to the overall energy
+balance of the power plant. Corresponding simulation results are shown
+in Fig. 37.
+Neutron shielding for superconductor protection. To ensure sufficient sta-
+tistical accuracy in the estimation of fast neutron fluxes in the volume
+of the superconducting magnets, we performed a dedicated simulation
+with a total of 2.5 × 109 Monte Carlo particles.
+The resulting fast neutron flux (𝐸𝑛> 0.1 MeV) at the magnets is
+illustrated in Fig. 36. The average fast neutron flux is estimated to
+be 1.8 × 1013 1∕m2∕s. As the statistics of the Monte Carlo simulation
+even at 2.5 × 109 launched particles is particularly low, and assuming
+local shielding can be used in severely loaded sections, we consider
+the 99th quantile for the lifetime estimation of the coils due to fast
+neutron flux, which is about 9.5 × 1013 1∕m2∕s. Estimating the allowable
+fluence for ReBCO superconductors (from degradation of the critical
+current density in the superconductor by fission neutrons [261]) as
+3 × 1022 1∕m2, the magnet system would have a lifetime of approximately
+10 full power years at a fusion power of 2700 MW.
+Additionally, the neutron spectra at the coils are presented in
+Fig. 35, providing further insight into the distribution of neutron energy
+levels impacting the superconducting magnets.
+Fig. 35. Neutron flux per unit lethargy, as obtained from OpenMC with the set-
+up described in the text. The spectra describe the winding pack of all six coils
+independently at full power.
+Fig. 36. Fast neutron flux, as obtained from OpenMC with the set-up described in
+the text. The figure shows the unstructured mesh tally on the magnet. The maximum
+neutron flux is 7.27 × 1013 1∕m2∕s∕GWf (neutron flux normalized by GW fusion power),
+and the mean value is 6.6 × 1012 1∕m2∕s∕GWf.
+Neutron shielding for cryogenic area protection. For the nuclear heating
+at the winding pack, we obtain an average value of 35.5 W∕m3. This
+heat load will need to be managed by the cryo-plant of Stellaris and
+is in the order of the EU DEMO target, which is about 50 W∕m3 peak
+nuclear heating [263].
+However, it is important to note that the EU DEMO requirement is
+designed for a 4 K cryogenic environment, whereas the magnets in Stel-
+laris are anticipated to be cooled to 20 K. Operating at this higher tem-
+perature offers an increase in efficiency of the cryogenic plant. Overall,
+maintaining an average nuclear heating below 50 W∕m3 is considered
+an applicable reference for ensuring viable power plant efficiency,
+considering the parasitic power consumption by the cryo-plant.
+It should also be noted that local differences in nuclear heating
+power density can lead to local temperature variations within the
+winding pack, which again can affect quench behavior. However, these
+temperature differences are highly dependent on the detailed cooling
+design within the winding pack and a respective analysis is left for
+further studies.
+Lifetime estimation of key components. To estimate the operational life-
+time of key reactor components, we calculate the Displacements-Per-
+Atom (DPA) in regions experiencing the highest neutron flux, specifi-
+cally the first wall and the divertor.
+Neutron damage was tallied using OpenMC via the ‘444 Microscopic
+Cross-Section Type (MT) reaction’ for iron isotopes in the first wall and
+copper isotopes in the divertor. DPA values were evaluated using two
+models: the NRT model [264] and the more recently developed ARC
+model [265].
+The ARC model, which has shown good agreement with molecular
+dynamics simulations, particularly at higher energies [266], provides
+Fusion Engineering and Design xxx (xxxx) xxx 
+19 

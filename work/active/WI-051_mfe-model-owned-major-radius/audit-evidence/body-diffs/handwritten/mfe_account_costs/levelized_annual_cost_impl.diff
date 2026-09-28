@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_account_costs/levelized_annual_cost_impl.py
++++ production/handwritten/mfe_account_costs/levelized_annual_cost_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:670
++SysML Source: root-0/analyses/mfe_account_costs.sysml:672
+ 
+ SysML Expressions:
+     disc_pow_n = (1.0 + interest_rate) ** operational_years_in
+@@ -73,7 +73,7 @@
+ costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
+ *Basis**: Growing-annuity present value annuitized by the capital recovery factor
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:670
++SysML Source: root-0/analyses/mfe_account_costs.sysml:672
+ 
+ SysML Expressions:
+     disc_pow_n = (1.0 + interest_rate) ** operational_years_in

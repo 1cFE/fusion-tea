@@ -1,0 +1,34 @@
+{
+  "before_fingerprint": "706c7b4b97e4b243b224e34f89c4936610d2683c4179e9a73a1e96173c89ffe1",
+  "after_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+  "unchanged_existing_channels_exact": 174,
+  "changed_existing_channels": {},
+  "new_channels": {
+    "stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective": 50.0,
+    "stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective": 118.8271604938272,
+    "stellarator_09__stellaris__magnet__conductor_grade__quantity_factor": 1.0
+  },
+  "oracle_channels_checked": 161,
+  "oracle_mismatches": {},
+  "all_verdicts_unchanged": true,
+  "verdicts": {
+    "beta_ok": "satisfied",
+    "burn_hold_ok": "satisfied",
+    "cond_strain_ok": "satisfied",
+    "cycle_domain_ok": "satisfied",
+    "divertor_heat_ok": "violated",
+    "heating_couple_positive_ok": "satisfied",
+    "heating_couple_upper_ok": "satisfied",
+    "heating_source_positive_ok": "satisfied",
+    "heating_source_upper_ok": "satisfied",
+    "loop_capacity_ok": "satisfied",
+    "loop_pressure_ok": "satisfied",
+    "net_positive": "satisfied",
+    "peak_field_ok": "satisfied",
+    "recirc_ok": "satisfied",
+    "sustainment_ok": "satisfied",
+    "tbr_ok": "satisfied",
+    "wall_load_ok": "satisfied",
+    "wp_stress_ok": "satisfied"
+  }
+}

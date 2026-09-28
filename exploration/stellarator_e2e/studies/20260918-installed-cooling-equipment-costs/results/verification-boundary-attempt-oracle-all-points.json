@@ -1,0 +1,126 @@
+{
+  "outcome": "fail",
+  "scalar_comparisons": 12206,
+  "predicate_comparisons": 680,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-09,
+  "strict_relative_misses": [
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0006",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -3.3306690738754696e-16,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0006",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -2.1827872842550278e-11,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0007",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -3.3306690738754696e-16,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0007",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -2.1827872842550278e-11,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0008",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -3.3306690738754696e-16,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0008",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -2.1827872842550278e-11,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0009",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -5.551115123125783e-16,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0009",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -3.637978807091713e-11,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0010",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -5.551115123125783e-16,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0010",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -3.637978807091713e-11,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0011",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -5.551115123125783e-16,
+      "oracle": 0.0
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0011",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -3.637978807091713e-11,
+      "oracle": 0.0
+    }
+  ],
+  "failures": [
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0006",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "native": "violated",
+      "oracle": "satisfied",
+      "from_native_operands": "violated"
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0007",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "native": "violated",
+      "oracle": "satisfied",
+      "from_native_operands": "violated"
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0008",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "native": "violated",
+      "oracle": "satisfied",
+      "from_native_operands": "violated"
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0009",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "native": "violated",
+      "oracle": "satisfied",
+      "from_native_operands": "violated"
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0010",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "native": "violated",
+      "oracle": "satisfied",
+      "from_native_operands": "violated"
+    },
+    {
+      "case": "20260918-installed-cooling-equipment-costs:c0011",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "native": "violated",
+      "oracle": "satisfied",
+      "from_native_operands": "violated"
+    }
+  ],
+  "limits": "Transport table data shared; this verifies independent implementation, not physical accuracy.Channels outside the captured oracle map remain native evidence only."
+}

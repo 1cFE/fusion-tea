@@ -1,0 +1,76 @@
+{
+  "package": "exploration/aries_integrated/aries_integrated",
+  "store": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/8c6487aa-f921-4972-87a9-e6b02e552ee4/scratchpad/replay/aries-alternative-replay-entry.db",
+  "tolerances": {
+    "relative_nonzero": 1e-12,
+    "absolute_exact_zero": 1e-12,
+    "absolute_unmet_heat_mw": 1e-07
+  },
+  "cases": {
+    "resized-compressor-1700-network-scaledflows-0.85": {
+      "sealed_source": "exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/results/cases.json",
+      "sealed_candidate_id": "20260925-aries-flow-scaling-check:c0011",
+      "replay_candidate_id": "aries-alternative-replay-entry:c0000",
+      "sealed_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "replay_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "state": "completed",
+      "channels_compared": 551,
+      "extra_replay_channels": [],
+      "worst_relative_nonzero": 0.0,
+      "worst_absolute": 0.0,
+      "failures": [],
+      "verdicts_compared": 14,
+      "verdict_differences": {},
+      "passed": true
+    },
+    "resized-compressor-1700-network-0.85": {
+      "sealed_source": "exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/results/cases.json",
+      "sealed_candidate_id": "20260925-aries-flow-scaling-check:c0010",
+      "replay_candidate_id": "aries-alternative-replay-entry:c0001",
+      "sealed_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "replay_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "state": "completed",
+      "channels_compared": 551,
+      "extra_replay_channels": [],
+      "worst_relative_nonzero": 0.0,
+      "worst_absolute": 0.0,
+      "failures": [],
+      "verdicts_compared": 14,
+      "verdict_differences": {},
+      "passed": true
+    },
+    "nominal-calculated": {
+      "sealed_source": "exploration/aries_integrated/studies/20260925-aries-revised-reference-network/results/cases.json",
+      "sealed_candidate_id": "20260925-aries-revised-reference-network:c0000",
+      "replay_candidate_id": "aries-alternative-replay-entry:c0002",
+      "sealed_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "replay_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "state": "completed",
+      "channels_compared": 551,
+      "extra_replay_channels": [],
+      "worst_relative_nonzero": 0.0,
+      "worst_absolute": 0.0,
+      "failures": [],
+      "verdicts_compared": 14,
+      "verdict_differences": {},
+      "passed": true
+    },
+    "nominal-source-assumed": {
+      "sealed_source": "exploration/aries_integrated/studies/20260925-aries-revised-reference-network/results/cases.json",
+      "sealed_candidate_id": "20260925-aries-revised-reference-network:c0001",
+      "replay_candidate_id": "aries-alternative-replay-entry:c0003",
+      "sealed_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "replay_executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "state": "completed",
+      "channels_compared": 551,
+      "extra_replay_channels": [],
+      "worst_relative_nonzero": 0.0,
+      "worst_absolute": 0.0,
+      "failures": [],
+      "verdicts_compared": 14,
+      "verdict_differences": {},
+      "passed": true
+    }
+  },
+  "passed": true
+}

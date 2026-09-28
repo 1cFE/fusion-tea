@@ -1,0 +1,138 @@
+---
+Status: complete
+Created: 2026-09-14
+Auditor: fresh non-author session (brief: evidence/audit-prompt.md)
+Item: WI-058 Coil winding length from the coil bore
+Commits audited: A c8ea5a86, B 6e8eafa2, C 87b3d637, D 12ef0515 (HEAD of feat/integrated at audit time)
+---
+
+# WI-058 Audit — fresh, non-author
+
+## Verdict: PASS WITH FINDINGS
+
+0 blocking, 2 should-fix, 2 low, 4 notes. Every number the item claims reproduced on my own runs: the design-point identity (0 of 177 channels differ, 18 verdicts equal, LCOE 142.50725862880648, `c_coil` 25.0), the off-design response (P2 scales the whole winding chain by exactly `4.050000000000001 / 3.1500000000000004`; P3 equals P0 to the double), the oracle parity, `tests/models` 893 / 13, `tests/model_viz` 14 / 50 with the identical failing set, the census and manifest re-pin, the five re-derived fixtures, and the `tests/study` run of record (§ 8). Nothing was tuned: the models diff is the calc, the one attribute/binding swap, and comments.
+
+The findings are about what the artifacts say, not what the numbers do:
+
+- **F1 (should-fix, model text).** The calc doc, the spec and the design state that the retired R-form and the bore form "coincide under uniform scaling (R and a together at fixed aspect ratio)". In this build they do not: the coil-centre radius is `a` plus a fixed layer stack, so scaling R and a together does not scale the bore proportionally. At R 15.7 with `a` at the design aspect ratio (1.607 m) the bore form gives 27.44 m and the R-form 30.91 m. The exact equivalence the tests rely on is a different one (fixed bore at `a` 1.3 with the reference scaled to `k_coil × R`), and that one holds to the double. See § 1.
+- **F2 (should-fix, artifact consistency).** Spec MR-WI058-7, design D7 and plan phase 4 describe the WI-051 R14 replay restatement as `WI058_R14_RESTATED` (frozen R14 winding-descendant values replaced by the current oracle's; the `coil_length__c_coil` ratio restated to 1.0). The code does something else: it binds `c_coil_ref = k_coil × 14` (`K_COIL_RETIRED`) so the frozen R-form rows stay exact, and keeps the 14/12.7 ratio. `WI058_R14_RESTATED` exists nowhere in the code. The plan's phase-4 bullet asserts both routes in one sentence. The implemented route is a derived identity, not a patch (§ 5), but the spec and design were not amended to match it.
+- **F3 (low).** The plan's Predictions table ("the exact `prototype/proto_results.json` values") disagrees with the JSON in 21 cells, worst 3.7e-12 relative on P2 LCOE and a $3.6 difference on P1 procurement. The plan's disclaimer covers "a truncated trailing digit"; these are not truncations. The JSON is what the execution matched (≤ 5.5e-16), and the design's rounded table is consistent with the JSON. See § 3.
+- **F4 (low).** SV-104's expectation says "0.0 relative deviation on 21 channels at 6 points". The evidence shows LCOE and total capital at 1.4e-16 to 5.5e-16 at four of the six points; the magnet channels are exactly 0.0. The tolerance column does disclose "executed max 5.5e-16". SV-103 says the peak field, stress, strain, stored energy, casing mass and `p_th` are "unmoved" without saying "by the length": at P2 they do move with the bore for WI-044's reasons. See § 7.
+
+Notes (no action implied): N1 the plan and design place "the new WI-058 test" in `tests/models/test_mfe_major_radius.py`; it lives in `tests/models/test_winding_length_bore.py` (four tests). N2 the brief's point-8 premise ("WI-057's landing recorded 20 red cases in one class") does not match the repo record — WI-057's plan recorded 86 in `tests/study/test_study_publication_fail_closed.py`, repaired in `4a238ca3` before this item; the item's run of record and my own run both have 0 failures. N3 the committed `prototype/proto.py` writes to the author's session scratchpad path and needs the entering oracle (`magnet_k_coil`), so it cannot be re-run on the current tree; I checked its outputs by executing the same points through the current route and oracle instead. N4 the design's research finding cites "the thesis (L643–645)" without naming the file; it is `knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/output.md`, and those lines do repeat the prescription.
+
+Environment for every command below: `set -a; source ~/1cfe/agentic-mbse/.env; source .venv/integration.env; set +a`; `PYTHONPATH=$HOME/1cfe/teax/packages/teax-simkit:$PWD/exploration/stellarator_e2e/pkg` for the route, the single runner and the oracle; `PYTHONPATH` unset for the batteries. Always `uv run python`. Nothing under `knowledge/holdout/` was read. Nothing was repaired or committed.
+
+---
+
+## 1. The form and its sources
+
+**Read.** `models/library/analyses/mfe_magnet_field.sysml` L142–205 ('Coil Winding Length'); `models/designs/stellarator_09/stellarator_plant.sysml` L184–199 (`c_coil_ref = 25.0` and its comment) and L469–472 (disclosure (iv)); `knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md` L1862; `knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/output.md` L118–120 and L621.
+
+**Seen.**
+- The calc is `c_coil = c_coil_ref * (a_coil / a_coil_ref)` with formals `a_coil`, `c_coil_ref`, `a_coil_ref`, no defaults, no `R0`. The instance binds `c_coil_ref = 25.0` with the § 2.9 sentence quoted verbatim.
+- L1862 reads exactly "The coils have an approximate size of 7 × 5 × 10 m, with a typical circumference of 25 m" — the quote is accurate. It states a size and a circumference at one point and nothing about scaling.
+- L118 reads "extrapolations of the reference point C in … the major overall size of the machine (coil and plasma size), the minor plasma radius a at constant coil radius, and the total magnetic field strength on axis"; L120 "the coil number and the coil shapes are considered fixed by stellarator-Process and only the overall size of the coils is scaled". L621 (§ 3.10) "the minimal distance between two central coil filaments d_min(C) … scales linearly with the major radius and is subject to the constraint". All three cites are accurate.
+- The implied shape factor 25 / (2π × 3.1500000000000004) = 1.2631344689832962 and `1.968503937007874 × 12.7 == 25.0` both check (`uv run python -c`).
+
+**Judgement.**
+- "The coil's size is its bore under this radial build; R does not enter; the coil–coil clearance is not checked" is a reasoned agent inference, not a source statement, and the text is honest about that: it says PROCESS scales the coil with the *machine* and holds `a` at constant coil radius, that this build cannot express that case, and that the clearance is "disclosed, not modelled". No source gives circumference ∝ bore radius; the doc claims only "a coil of fixed shape scaled to its bore", which is geometry. Supported and honestly disclosed. One thing a reader should keep in view: PROCESS's literal prescription (coil size ∝ overall machine size, `a` decoupled) is closer to the retired R-form than to the bore form; the design says so ("the case this build cannot express") but the calc doc's "here the coil's size IS its bore" is a consequence of this build's coupling, not of PROCESS.
+- **The "coincide under uniform scaling" claim is wrong for this model (F1).** The design (§ Research findings, "Under uniform scaling … `a_coil / a_coil_ref = R / R_ref` and the two forms coincide"), the spec (§ Why this item exists, last sentence) and the calc doc ("The two readings coincide under uniform scaling (R and a together at fixed aspect ratio) and differ exactly when the aspect ratio changes") all assert it. It requires the layer stack to scale with R, and the build holds it fixed (`r_coil_centre = vessel_or + coil_t/2`, `vessel_or = a + stack`, `verify_stellaris.py` L662). Through the oracle at the design aspect ratio:
+
+  | R | a | r_coil_centre | bore ratio | R ratio | bore-form c | R-form c |
+  |---|---|---|---|---|---|---|
+  | 11.43 | 1.170 | 3.020 | 0.9587 | 0.9000 | 23.97 m | 22.50 m |
+  | 15.7 | 1.607 | 3.457 | 1.0975 | 1.2362 | 27.44 m | 30.91 m |
+
+  So a fixed-aspect-ratio scan in this model does change the winding chain relative to the old form (by −11 % at R 15.7). The sentence is true only of an idealised scaling of every layer, which neither PROCESS (fixed `d_blanket`, `d_shield`) nor this build does. The equivalence the restated tests actually use — at fixed `a` 1.3 the bore ratio is exactly 1.0, so `c_coil_ref = k_coil × R` reproduces `k_coil × R` — is a different identity and is exact (`test_uniform_scaling_equivalence_with_the_retired_r_form` passes; my own oracle runs at R 11.43 / 12.7 / 15.7, `a` 1.3 all give `conductor_length` 321600.0). The restatement is unaffected; the model text and the two artifacts should stop claiming the fixed-aspect-ratio coincidence, or say what "uniform" has to include.
+
+## 2. The design-point identity
+
+**Ran.** `study_route.execute_baseline(<scratchpad>/baseline)` (script `repro.py`, from `exploration/stellarator_e2e/studies`); diffed every channel and verdict against `evidence/baseline_before/baseline_result.json` and `evidence/baseline_after/baseline_result.json`. `uv run python exploration/stellarator_e2e/run_stellaris_single.py`.
+
+**Seen.** My identity digest `e11e4c17b11681ac98b754e1ecbd60452fc11c758ef2d9ce72cfc57d4e740cad`; the before-record's `8ff5bb7c…`. Channels 177 vs 177, differing `[]`, added `[]`, removed `[]`; verdicts 18 vs 18, diffs `{}`; the one violated verdict `divertor_heat_ok`. LCOE `142.50725862880648`, `magnet__coil_length__c_coil` `25.0`. Identical again against the committed after-record. The single runner printed the 18 verdicts, ANCHORS GREEN, oracle parity, GUARD-LIVE SPOT-CHECK: PASS, exit 0.
+
+**Matches the claim.** Yes, exactly.
+
+## 3. The off-design predictions
+
+**Ran.** P0 (12.7, 1.3), P2 (12.7, 2.2), P3 (15.7, 1.3) through `study_route.run_points` with `proposal_for(R, a, 0.0)` and through `oracle_entry.evaluate`; compared 16 chain channels and 7 "unmoved" channels to `prototype/proto_results.json` (`["new"]`), to `evidence/offdesign_points/results.json`, and to the oracle (`repro.py`).
+
+**Seen.**
+- P2: `c_coil` 32.142857142857146, procurement 2019046887.0446258, `p_cryo` 0.9613091999999999, LCOE 129.34993388555515. Versus the prototype max 0.0 relative over 19; versus the oracle 0.0 over 21; versus the committed results 0.0 over 23. The P2/P0 ratio on `c_coil`, `vol_winding_pack`, `vol_cold_total`, `conductor_length`, `tape_cost`, `winding_fabrication_cost`, `material_cost`, `winding_pack_cost` equals `4.050000000000001 / 3.1500000000000004 = 1.2857142857142858` to the double; `winding_procurement__cost` at 1.285714285714286 (one ulp, a sum of three scaled terms).
+- P3: `c_coil` 25.0, procurement 1570369801.0347085, `p_cryo` 0.8643515999999999, LCOE 201.02133716867291; every winding-chain channel and `cryo_elec__p_elec` equal P0 to the double; `B_peak`, `sigma_wp`, `eps_cond`, `W_mag`, `m_casing`, `p_th` differ from P0 (R enters the field chain), `r_coil_centre` equal. Versus the prototype max 1.4e-16 (LCOE), versus the oracle 1.4e-16, versus the committed results 0.0.
+- P0: versus the prototype 3.99e-16 (the prototype ran through the oracle; its P0 LCOE is 142.50725862880654, the package's 142.50725862880648).
+- At all three points `B_peak`, `sigma_wp`, `W_mag`, `p_th`, `r_coil_centre` equal both the prototype's `old` and `new` values — the length change does not move them.
+- The oracle: `verify_stellaris.py` L700 `c_coil = p["magnet_c_coil_ref"] * (r_coil_centre / p["magnet_a_coil_ref"])`, after `r_coil_centre` at L662; `IN` carries `magnet_c_coil_ref = 25.0` and no `magnet_k_coil`; `oracle_entry.py` maps `magnet__coil__c_coil_ref`. Independently: the oracle at (11.43, 1.3), (12.7, 1.3), (15.7, 1.3) gives `conductor_length` 321600.0 each and `r_coil_centre` 3.1500000000000004; at (12.7, 2.2) 413485.7142857143 with `r_coil_centre` 4.050000000000001. The oracle does not publish `c_coil` as a channel (it reaches the seam through the descendants).
+
+**Matches the claim.** Yes. **F3**: the plan's Predictions table is not the JSON. Cell-by-cell (`re` over the table, `float(cell) != json`): 21 of 60 cells differ; at the ulp level for most, but P1 `winding_procurement__cost` 1620222810.5877566 (table) vs 1620222810.591366 (JSON, and = 1570369801.0347085 × 1.0317460317460319), P1 magnet capital 2.15e-12, P2 LCOE 129.34993388603897 vs 129.34993388555515 (3.7e-12), P3 LCOE 3.4e-13, P4 LCOE 3.3e-12, P5 LCOE 4.8e-12. The execution matched the JSON, so the prediction of record is intact; the table's claim to carry "the exact … values" is not.
+
+## 4. Nothing tuned
+
+**Ran.** `git diff c8ea5a86~1 6e8eafa2 -- models/` (207 lines, five files); filtered to non-comment lines. Also `git diff --stat 6e8eafa2 HEAD -- models/ exploration/stellarator_e2e/ tests/models/` (empty) and `git status` on those paths (clean).
+
+**Seen.** The only code lines: `in attribute R0 / k_coil` → `in attribute a_coil / c_coil_ref / a_coil_ref`; `out attribute c_coil : Real = k_coil * R0` → `= c_coil_ref * (a_coil / a_coil_ref)`; `in R0 = coil.R0; in k_coil = coil.k_coil` → `in a_coil = r_coil_centre; in c_coil_ref = coil.c_coil_ref; in a_coil_ref = coil.a_coil_ref`; `attribute k_coil : Real` → `attribute c_coil_ref : Real`; `:>> k_coil = 1.9685039370078741 {` → `:>> c_coil_ref = 25.0 {`. Everything else is doc/comment text (the calc doc, the 'Modular Coil' part doc line, the `mfe_plant.sysml` WI-036 note, the `mfe_power_core.sysml` WI-036 note, the WI-044 disclosure clause (iv)). No anchor, exponent, transport fact, fence or price moved. Twins byte-identical (`cmp` on all five; `diff -rq` shows only the expected tree-shape differences). The receipts in `evidence/model-hashes.json` equal the current sha256 of the seven files.
+
+**Matches the claim.** Yes.
+
+**Validation.** `uv run agentic-mbse validate models --complete` on the current tree: Level 1 pass, Level 2 the 10 pre-existing literal-binding warnings, Levels 3–5 pass, Level 6 the 263-issue pre-existing residue, 425 bindings validated, exit 1 (as before this item). My log is identical to `prototype/validate_complete.txt` after stripping line numbers and timestamps; that log differs from `validate_complete_before.txt` only in paths and `Bindings validated 424 → 425` (the calc's third formal), as the plan states.
+
+## 5. The consumers
+
+**Read.** `tests/models/current_mfe_regressions.py` (`K_COIL_RETIRED`, `WI058_PARAMETERS`, `WI058_RETIRED`, `RECEIPT_EVIDENCE`, the `restate_wi040_radius_costs` R14 override, the `translate_frozen_radius_evidence` edge/contract-delta adaptation, the `radius_acceptance` text rewrites for native/standalone/direct), `tests/models/test_mfe_major_radius.py`, `tests/models/test_structure_translation.py`, `tests/study/test_domain_consumers.py`, `tests/study/test_known_answers.py`, `tests/model_viz/viewer_harness.py`, `tests/models/test_winding_length_bore.py`, and commit C's four study-test restatements (`financial_radius_controls.py`, `test_major_radius.py`, `test_primary_loop_consumers.py`, `test_winding_consumers.py`).
+
+**Ran.** `uv run python -m pytest tests/models -q` → **893 passed, 13 skipped in 121 s**. `uv run python -m pytest tests/model_viz -q` → **14 failed, 50 passed in 34 s**; the 14 names equal, line for line, the FAILED lines of both `evidence/tests_model_viz_entry_hashfixed.txt` and `evidence/tests_model_viz_after.txt` (`diff` of the sorted sets empty). `git show 01771279:…stellarator.snapshot.json | sha256sum` = `c723b8cb…` while `01771279:tests/model_viz/viewer_harness.py` pins `8e79aa4e…` — the entering mismatch the item describes is real.
+
+**Judgement — faithful restatement or patch-to-match.**
+- The pattern everywhere is one derived identity: at the frozen rows' `a` 1.3 the bore ratio is exactly 1.0, so binding `c_coil_ref = 1.968503937007874 × R` makes the bore form emit exactly `k_coil × R`. `1.9685039370078741 == 1.968503937007874` is `True`. The frozen R14 rows and the oracle-consumer rows therefore stay exact expectations for the whole plant without any value being edited. No expectation was retyped; every change is a set-difference on `WI058_RETIRED` / `WI058_PARAMETERS` or the override. That is a restatement by identity, not a patch.
+- The cost of the route, which the comments state: the replays no longer exercise the shipped model's winding chain at R 14 (they run it at an off-default `c_coil_ref`), and the frozen `coil_length__c_coil` ratio 14/12.7 is now satisfied by construction and tests nothing about the model. The bore response and R-invariance are carried instead by `test_winding_length_bore.py` (formals, design-point identity, bore scaling over seven channels, R-invariance at 11.43 and 15.7, the uniform-scaling identity) — all four pass in my run, and the item's off-design evidence executes the same through the package.
+- **F2**: the artifacts describe a different route. Spec MR-WI058-7: "the `coil_length__c_coil` ratio at R 14 restated to 1.0; the frozen R 14 expectations for the winding-length descendants replaced by the current oracle's values, the set declared explicitly". Design D7: `WI058_R14_RESTATED` "the oracle names of the 44-channel list less those already restated by WI-040"; test_domain_consumers "the R 14 control row's … winding-length descendants are checked by identity (the winding chain from the new length; the cryoplant from the new cold volume; `p_net` shifted …)". None of that is in the code (`grep -rn WI058_R14_RESTATED` hits only design.md and plan.md). The plan's phase-4 bullet says the replays bind `c_coil_ref = k_coil × R` *and* that `WI058_R14_RESTATED` was declared. The implemented route is arguably the better one (nothing frozen is replaced), but a spec requirement and a design decision now describe work that was not done, and the plan contradicts itself.
+- N1: the plan and design D7 say `test_mfe_major_radius.py` gains "a WI-058 test" asserting the formals and the response; that file only drops `coil_length` from the `R0` parametrisation and re-points the two receipts; the tests are in `test_winding_length_bore.py`.
+- The 14 `tests/model_viz` failures: I did not reconstruct the entering snapshot with the hash corrected myself (that means swapping working-tree files); I verified that the failing set in the item's hash-fixed entry log is identical to the after log and to my own run, and that the entering pin/snapshot mismatch existed at `01771279`. The failures assert pre-WI-058 literals (`rows == 158` against 177 outputs, `11 == 8`), consistent with the "inherited" reading.
+
+## 6. The re-pin
+
+**Ran.** Census: `entry_points` field 265, counted 265, `k_coil` absent, `c_coil_ref` present, bound to `8eb332b9c73e1b80a5d7629e4de3532c739c280bbc889f45cb7bf3672269959d`; commit B's census diff is exactly −`magnet__coil__k_coil` +`magnet__coil__c_coil_ref`. Manifest: executable `e11e4c17…`, semantic `8eb332b9…`, equal to `evidence/baseline_after/package_identity.json` and to my own `execute_baseline` identity document. `uv run python scripts/study/indicators.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --groups tests/study/data/axes.known_answers.json --out <scratchpad>/indicators_report.json` (the `test_known_answers` invocation, rc 0).
+
+**Seen.** My report's `group` for each of `availability_direct`, `interest_rate`, `R`, `a`, `I_coil` equals the committed `*.expected.json` `group` and the `evidence/indicators_report.json` group (Python `==`). Against the pre-B fixtures (`git show 6e8eafa2~1:…`): only `a` changed, `trace_size` `{modules_fired: 82, channels_tainted: 160}` → `{88, 180}`; `R` 89/181, `I_coil` 86/171, `availability_direct` 6/18, `interest_rate` 9/22 unchanged; no reachable-constraint or objective list changed on any axis. The report's semantic fingerprint `8eb332b9…`, recorded executable `e11e4c17…`.
+
+**Matches the claim.** Yes. The plan's explanation of why `R`'s counts did not fall (module-level reach through `rb`) is consistent with the tool's own banner ("never means the axis responds").
+
+## 7. The evidence records
+
+**Read.** `modeling_project/VALIDATION_MATRIX.md` L128–130 (SV-102, SV-103, SV-104); `data/traceability_matrix.csv` L125–126.
+
+**Seen.** SV-102 states the baseline identity exactly as § 2 reproduces it. SV-103 states the bore response and R-invariance with the P2 numbers (`×1.2857142857142858`, 2019046887.04, 0.9613092 MW, LCOE 129.349933886) and the tolerance "≤ 1e-9 against the predictions (executed max 5.5e-16); exact for the R-invariance" — all reproduced. The two trace rows cite the § 2.9 sentence, L118–120, L621 and the WI-044 bore, and say the clearance is not checked and per-coil circumferences are unprinted — no more than the evidence supports.
+
+**F4.** SV-104's expectation "0.0 relative deviation on 21 channels at 6 points" overstates: `results.json` `vs_oracle` has nonzero deviations at P0 (`lcoe` 3.99e-16, `total_capital` 2.18e-16), P1 (`lcoe` 2.12e-16), P3 (`lcoe` 1.41e-16), P4 (`lcoe` 5.45e-16); P2 and P5 are all 0.0; every magnet and cryoplant channel is 0.0 at every point. Spec MR-WI058-5's "0.0 relative on every magnet channel" is accurate; SV-104's "21 channels" is not. SV-103's "peak field, stress, strain, stored energy, casing mass and p_th unmoved" needs "by the length": at P2 all of them differ from P0 (WI-044's bore coupling), and the evidence only shows they equal the prototype's before-and-after values.
+
+## 8. The `tests/study` run of record
+
+**Read.** `evidence/tests_study_run_of_record.txt` (969 passed, 1 skipped in 1030 s, EXIT=0, commit D) and `evidence/tests_study_first_run.txt` (4 failed / 965 passed / 1 skipped: `test_major_radius.py::test_exact_input_contract`, `::test_current_radius_controls_match_frozen_model_and_independent_oracle`, `test_primary_loop_consumers.py::test_adapter_coverage_remains_exact`, `test_winding_consumers.py::test_adapter_coverage_remains_exact` — each on the retired key in a frozen JSON mapping; each restated in commit C by the same set-difference or the same `c_coil_ref = K_COIL_RETIRED × 14` binding, no value edited).
+
+**Ran.** `rm -rf .integration_workspace; uv run python -m pytest tests/study -q` detached, alone (after `tests/models` and `tests/model_viz` had finished).
+
+**Seen.** **969 passed, 1 skipped in 1036 s (17:16), EXIT=0**, 0 failed, 0 errors (started 07:59:46, finished 08:17:03 on the tree at HEAD `12ef0515` with the working-tree changes under `.project/` only). This equals the run of record (969 / 1 / 0, 1030 s). The failing set is empty, so there is no set to compare to a pre-existing fail-closed set; see N2 below for why empty is the right expectation on this branch. The four first-run failures the plan lists are the only deltas between the first run and the run of record, and commit C's diff to those four tests contains no edited value.
+
+**On the "pre-existing fail-closed set" (N2).** The brief expects the failing set to equal WI-057's landing set. WI-057's own plan (`work/active/WI-057_stellaris-structural-decomposition/plan.md` § Deviations) recorded 86 failures/errors in `tests/study/test_study_publication_fail_closed.py`, not 20; that file was repaired in `4a238ca3` ("the publication fixtures read the frozen records under their own key dialect … 112 publication and record tests green"), which precedes WI-058's commit A. So an empty failing set is the correct expectation on this branch, and the item's statement "no pre-existing fail-closed case appeared in this run" is consistent with the repo history.
+
+---
+
+## Limits of what I could check
+
+- I did not re-run `prototype/proto.py`: it needs the entering oracle (`magnet_k_coil` in `IN`) and writes to the author's scratchpad. I executed P0, P2, P3 through the current route and oracle and compared to its JSON instead (§ 3). P1, P4, P5 I compared only through the committed `results.json` (`vs_prediction` ≤ 5.5e-16), not by my own execution.
+- I did not restore the entering snapshot with the hash corrected to reproduce the 14 `tests/model_viz` failures at entry; I checked the evidence logs' failing sets against each other and against my own run on the current tree, and the entering pin/snapshot mismatch in git.
+- The Zotero/holdout material was not touched; `knowledge/holdout/` was not read.
+- The uncommitted working-tree changes at audit time are all under `.project/` (CURRENT_WORK.md, memories, two `.project/active/` items) and do not touch any path this audit ran against.
+
+## Re-check — 2026-09-14 (after commit E `aea4025e`)
+
+**Scope.** `git show aea4025e --stat`: five files — `modeling_project/VALIDATION_MATRIX.md` (4 lines), `spec.md`, `design.md`, `plan.md`, and this `audit.md` (deposited). `git show aea4025e --stat -- models/ exploration/ tests/ data/` is empty; `git status` shows only the pre-existing `.project/` changes. Nothing under `models/`, the package, the oracle, the fixtures or any test moved. Verified against each finding:
+
+- **F1 — holds.** Spec § Why this item exists and design § Research findings now say "The `R`-form and the bore-form coincide only when the bore scales with `R`", give the R 15.7 / `a` 1.607 numbers (27.44 m vs 30.91 m), and state the identity that does hold (fixed bore, `c_coil_ref = k_coil × R`). The plan's phase-4 bullet calls it "the fixed-bore identity; not a uniform-scaling equivalence". The calc-doc sentence in `mfe_magnet_field.sysml` and the 'Magnet System' comment in `mfe_power_core.sysml` still carry the wrong wording; the design's § Audit repairs records this as a carried correction with the reason (a doc edit moves the semantic fingerprint and the pin) and names the test comments that repeat the phrase. Their assertions are the fixed-bore identity and are right, as I found. Carried, disclosed, not hidden.
+- **F2 — holds.** Spec MR-WI058-7, design D7 (`current_mfe_regressions.py`, `test_domain_consumers.py` bullets) and plan phase 4 now describe the route as built (`c_coil_ref = K_COIL_RETIRED × 14`; frozen rows exact; the 14/12.7 ratio still holds) and state its limit in the same sentence (the replays exercise the retired length at R 14; the ratio row tests nothing about the form; the bore response and `R`-invariance carried by `test_winding_length_bore.py` and SV-103). `WI058_R14_RESTATED` now appears only as a decision record ("was not built — audit F2").
+- **F3 — holds.** Re-ran the cell-by-cell comparison of the plan's Predictions table against `prototype/proto_results.json`: 6 rows, 0 mismatched cells (was 21). The table's disclaimer now says every cell is the JSON's `repr`.
+- **F4 — holds.** SV-104's expectation reads "every magnet and cryoplant channel at 0.0 relative deviation at all 6 points; LCOE and total capital within 5.5e-16 (nonzero at P0, P1, P3, P4; 0.0 at P2, P5); 21 channels compared per point" — exactly what `results.json` shows. SV-103 reads "unmoved by the length (the field-chain channels respond to the bore and R for their own reasons, WI-044)". Both rows have 10 pipes and status `passing`; SV-102 and the trace rows are untouched.
+- **N1 — holds.** Design D7 and plan phase 4 now place the four tests in `tests/models/test_winding_length_bore.py` and describe `test_mfe_major_radius.py` as "the parametrisation and the two receipts; nothing else".
+
+**Final verdict: PASS.** The repairs are text-only, say what the evidence supports, and change no number. What remains is the carried correction the design records: the "uniform scaling" sentence in the two model comments and in four test comments/one test name, to be corrected at the next regeneration or test-touching commit. Not committed by this audit.

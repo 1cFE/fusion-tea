@@ -1,0 +1,69 @@
+{
+  "materiality_band_USD2025_MWh": 5.0,
+  "interpretation": "strict zero crossing is algebraic; absolute gas-minus-steam gap at most five is reporting-indeterminate",
+  "brackets": [
+    {
+      "target_gap_USD2025_MWh": 5.0,
+      "source_MW": 2800.0,
+      "performance": "gas-favourable",
+      "path": "gas factor=1-0.5t; steam factor=1+0.5t",
+      "bracket": [
+        {
+          "scenario": "reporting-band-gap+5-q2800-lower",
+          "t": 0.4824365396331414,
+          "gap_USD2025_MWh": 5.000663982332071,
+          "best": {
+            "gas": 411.169534021198,
+            "steam": 406.1688700388659
+          }
+        },
+        {
+          "scenario": "reporting-band-gap+5-q2800-upper",
+          "t": 0.48245653963314145,
+          "gap_USD2025_MWh": 4.999336017668497,
+          "best": {
+            "gas": 411.16900102293783,
+            "steam": 406.16966500526934
+          }
+        }
+      ]
+    },
+    {
+      "target_gap_USD2025_MWh": -5.0,
+      "source_MW": 2800.0,
+      "performance": "gas-favourable",
+      "path": "gas factor=1-0.5t; steam factor=1+0.5t",
+      "bracket": [
+        {
+          "scenario": "reporting-band-gap-5-q2800-lower",
+          "t": 0.6330429567194699,
+          "gap_USD2025_MWh": -4.999336017668156,
+          "best": {
+            "gas": 407.15588610765906,
+            "steam": 412.1552221253272
+          }
+        },
+        {
+          "scenario": "reporting-band-gap-5-q2800-upper",
+          "t": 0.6330629567194698,
+          "gap_USD2025_MWh": -5.00066398233173,
+          "best": {
+            "gas": 407.1553531093991,
+            "steam": 412.1560170917308
+          }
+        }
+      ]
+    }
+  ],
+  "sample_location_selection": {
+    "decision_authority": "coordinator instruction after exact point comparison: retain originally declared engineered reporting sample locations; no need to move them by floating-point noise",
+    "original_record": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion",
+    "original_snapshot_sha256": "038545e8b98042063409aa72884c182327b7a87ec7aa5d5a8c6a726ec44de0fb",
+    "original_proposals_sha256": "55782d25a4c7a6818547e9fe1b587deb79bd3d6ef8535b07ec858e14ab6e1217",
+    "original_reporting_plan_sha256": "cff0ee0f0a55b03102b0d42827bb3a1f354334309b4e29a7e1fdd6184f408547",
+    "restored_complete_points": 56,
+    "restored_aliases": 60,
+    "quote_only_differences": true,
+    "bracket_signs_rechecked": true
+  }
+}

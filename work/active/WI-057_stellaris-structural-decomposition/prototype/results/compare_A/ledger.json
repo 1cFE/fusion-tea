@@ -1,0 +1,1731 @@
+[
+ {
+  "old": "stellarator_09__stellaris__E_fus",
+  "new": "stellarator_09__stellaris__plasma__E_fus",
+  "moved": true,
+  "default_before": 2.817e-12,
+  "default_after": 2.817e-12
+ },
+ {
+  "old": "stellarator_09__stellaris__G_stock",
+  "new": "stellarator_09__stellaris__G_stock",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__I_total",
+  "new": "stellarator_09__stellaris__I_total",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__R",
+  "new": "stellarator_09__stellaris__plasma__R",
+  "moved": true,
+  "default_before": 12.7,
+  "default_after": 12.7
+ },
+ {
+  "old": "stellarator_09__stellaris__R_ref_divertor",
+  "new": "stellarator_09__stellaris__R_ref_divertor",
+  "moved": false,
+  "default_before": 12.7,
+  "default_after": 12.7
+ },
+ {
+  "old": "stellarator_09__stellaris__T2_max",
+  "new": "stellarator_09__stellaris__T2_max",
+  "moved": false,
+  "default_before": 642.0,
+  "default_after": 642.0
+ },
+ {
+  "old": "stellarator_09__stellaris__T2_min",
+  "new": "stellarator_09__stellaris__T2_min",
+  "moved": false,
+  "default_before": 384.0,
+  "default_after": 384.0
+ },
+ {
+  "old": "stellarator_09__stellaris__T_amb_cryo",
+  "new": "stellarator_09__stellaris__T_amb_cryo",
+  "moved": false,
+  "default_before": 300.0,
+  "default_after": 300.0
+ },
+ {
+  "old": "stellarator_09__stellaris__T_cold_cryo",
+  "new": "stellarator_09__stellaris__T_cold_cryo",
+  "moved": false,
+  "default_before": 20.0,
+  "default_after": 20.0
+ },
+ {
+  "old": "stellarator_09__stellaris__T_gas",
+  "new": "stellarator_09__stellaris__T_gas",
+  "moved": false,
+  "default_before": 300.0,
+  "default_after": 300.0
+ },
+ {
+  "old": "stellarator_09__stellaris__T_i0",
+  "new": "stellarator_09__stellaris__plasma__T_i0",
+  "moved": true,
+  "default_before": 14.63,
+  "default_after": 14.63
+ },
+ {
+  "old": "stellarator_09__stellaris__T_offset_fit",
+  "new": "stellarator_09__stellaris__T_offset_fit",
+  "moved": false,
+  "default_before": 273.0,
+  "default_after": 273.0
+ },
+ {
+  "old": "stellarator_09__stellaris__Ti_over_Te",
+  "new": "stellarator_09__stellaris__plasma__Ti_over_Te",
+  "moved": true,
+  "default_before": 0.95,
+  "default_after": 0.95
+ },
+ {
+  "old": "stellarator_09__stellaris__Z_eff_core",
+  "new": "stellarator_09__stellaris__plasma__Z_eff_core",
+  "moved": true,
+  "default_before": 1.2,
+  "default_after": 1.2
+ },
+ {
+  "old": "stellarator_09__stellaris__a",
+  "new": "stellarator_09__stellaris__plasma__a",
+  "moved": true,
+  "default_before": 1.3,
+  "default_after": 1.3
+ },
+ {
+  "old": "stellarator_09__stellaris__a_fit",
+  "new": "stellarator_09__stellaris__a_fit",
+  "moved": false,
+  "default_before": 0.1802,
+  "default_after": 0.1802
+ },
+ {
+  "old": "stellarator_09__stellaris__alpha_T",
+  "new": "stellarator_09__stellaris__plasma__alpha_T",
+  "moved": true,
+  "default_before": 1.19,
+  "default_after": 1.19
+ },
+ {
+  "old": "stellarator_09__stellaris__alpha_n",
+  "new": "stellarator_09__stellaris__plasma__alpha_n",
+  "moved": true,
+  "default_before": 0.33,
+  "default_after": 0.33
+ },
+ {
+  "old": "stellarator_09__stellaris__aux_cooling__alpha",
+  "new": "stellarator_09__stellaris__aux_cooling__alpha",
+  "moved": false,
+  "default_before": 0.7,
+  "default_after": 0.7
+ },
+ {
+  "old": "stellarator_09__stellaris__aux_cooling__p_cryo_ref",
+  "new": "stellarator_09__stellaris__aux_cooling__p_cryo_ref",
+  "moved": false,
+  "default_before": 30.0,
+  "default_after": 30.0
+ },
+ {
+  "old": "stellarator_09__stellaris__aux_cryo_base",
+  "new": "stellarator_09__stellaris__aux_cryo_base",
+  "moved": false,
+  "default_before": 200000000.0,
+  "default_after": 200000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__aux_per_mw",
+  "new": "stellarator_09__stellaris__aux_per_mw",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__availability_direct",
+  "new": "stellarator_09__stellaris__availability_direct",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__b_fit",
+  "new": "stellarator_09__stellaris__b_fit",
+  "moved": false,
+  "default_before": 0.7823,
+  "default_after": 0.7823
+ },
+ {
+  "old": "stellarator_09__stellaris__beta_calc__mu0",
+  "new": "stellarator_09__stellaris__beta_calc__mu0",
+  "moved": false,
+  "default_before": 1.25663706212e-06,
+  "default_after": 1.25663706212e-06
+ },
+ {
+  "old": "stellarator_09__stellaris__beta_limit",
+  "new": "stellarator_09__stellaris__beta_limit",
+  "moved": false,
+  "default_before": 0.05,
+  "default_after": 0.05
+ },
+ {
+  "old": "stellarator_09__stellaris__blanket__structure_factor",
+  "new": "stellarator_09__stellaris__blanket__structure_factor",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__blanket__unit_cost",
+  "new": "stellarator_09__stellaris__blanket__unit_cost",
+  "moved": false,
+  "default_before": 600000.0,
+  "default_after": 600000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__blanket_cost__alpha",
+  "new": "stellarator_09__stellaris__blanket_cost__alpha",
+  "moved": false,
+  "default_before": 0.6,
+  "default_after": 0.6
+ },
+ {
+  "old": "stellarator_09__stellaris__blanket_cost__p_th_ref",
+  "new": "stellarator_09__stellaris__blanket_cost__p_th_ref",
+  "moved": false,
+  "default_before": 2500.0,
+  "default_after": 2500.0
+ },
+ {
+  "old": "stellarator_09__stellaris__blanket_t",
+  "new": "stellarator_09__stellaris__blanket_t",
+  "moved": false,
+  "default_before": 0.8,
+  "default_after": 0.8
+ },
+ {
+  "old": "stellarator_09__stellaris__bldg_et_base",
+  "new": "stellarator_09__stellaris__bldg_et_base",
+  "moved": false,
+  "default_before": 29000000.0,
+  "default_after": 29000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__bldg_fixed_base",
+  "new": "stellarator_09__stellaris__bldg_fixed_base",
+  "moved": false,
+  "default_before": 168500000.0,
+  "default_after": 168500000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__bldg_fus_base",
+  "new": "stellarator_09__stellaris__bldg_fus_base",
+  "moved": false,
+  "default_before": 288000000.0,
+  "default_after": 288000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__bldg_staff_base",
+  "new": "stellarator_09__stellaris__bldg_staff_base",
+  "moved": false,
+  "default_before": 9000000.0,
+  "default_after": 9000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__bldg_th_base",
+  "new": "stellarator_09__stellaris__bldg_th_base",
+  "moved": false,
+  "default_before": 26000000.0,
+  "default_after": 26000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__bldg_the_base",
+  "new": "stellarator_09__stellaris__bldg_the_base",
+  "moved": false,
+  "default_before": 58000000.0,
+  "default_after": 58000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__buildings_cost__n_mod_in",
+  "new": "stellarator_09__stellaris__buildings_cost__n_mod_in",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__buildings_cost__p_et_ref",
+  "new": "stellarator_09__stellaris__buildings_cost__p_et_ref",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__buildings_cost__p_fus_ref",
+  "new": "stellarator_09__stellaris__buildings_cost__p_fus_ref",
+  "moved": false,
+  "default_before": 2300.0,
+  "default_after": 2300.0
+ },
+ {
+  "old": "stellarator_09__stellaris__buildings_cost__p_th_ref",
+  "new": "stellarator_09__stellaris__buildings_cost__p_th_ref",
+  "moved": false,
+  "default_before": 2500.0,
+  "default_after": 2500.0
+ },
+ {
+  "old": "stellarator_09__stellaris__buildings_cost__p_the_ref",
+  "new": "stellarator_09__stellaris__buildings_cost__p_the_ref",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__burn_fraction",
+  "new": "stellarator_09__stellaris__burn_fraction",
+  "moved": false,
+  "default_before": 0.05,
+  "default_after": 0.05
+ },
+ {
+  "old": "stellarator_09__stellaris__cas28_capital",
+  "new": "stellarator_09__stellaris__cas28_capital",
+  "moved": false,
+  "default_before": 5000000.0,
+  "default_after": 5000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__coil_life_fpy",
+  "new": "stellarator_09__stellaris__coil_life_fpy",
+  "moved": false,
+  "default_before": 10.0,
+  "default_after": 10.0
+ },
+ {
+  "old": "stellarator_09__stellaris__coil_t",
+  "new": "stellarator_09__stellaris__coil_t",
+  "moved": false,
+  "default_before": 0.3,
+  "default_after": 0.3
+ },
+ {
+  "old": "stellarator_09__stellaris__concept_scale",
+  "new": "stellarator_09__stellaris__concept_scale",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__construction_years",
+  "new": "stellarator_09__stellaris__construction_years",
+  "moved": false,
+  "default_before": 8.0,
+  "default_after": 8.0
+ },
+ {
+  "old": "stellarator_09__stellaris__contingency_rate",
+  "new": "stellarator_09__stellaris__contingency_rate",
+  "moved": false,
+  "default_before": 0.1,
+  "default_after": 0.1
+ },
+ {
+  "old": "stellarator_09__stellaris__coolant__alpha",
+  "new": "stellarator_09__stellaris__coolant__alpha",
+  "moved": false,
+  "default_before": 0.55,
+  "default_after": 0.55
+ },
+ {
+  "old": "stellarator_09__stellaris__coolant__p_th_ref",
+  "new": "stellarator_09__stellaris__coolant__p_th_ref",
+  "moved": false,
+  "default_before": 3500.0,
+  "default_after": 3500.0
+ },
+ {
+  "old": "stellarator_09__stellaris__coolant__ref_net_power",
+  "new": "stellarator_09__stellaris__coolant__ref_net_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__coolant_intermediate_base",
+  "new": "stellarator_09__stellaris__coolant_intermediate_base",
+  "moved": false,
+  "default_before": 40600000.0,
+  "default_after": 40600000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__coolant_primary_base",
+  "new": "stellarator_09__stellaris__coolant_primary_base",
+  "moved": false,
+  "default_before": 166000000.0,
+  "default_after": 166000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__cycle_live",
+  "new": "stellarator_09__stellaris__cycle_live",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__dT_approach",
+  "new": "stellarator_09__stellaris__dT_approach",
+  "moved": false,
+  "default_before": 20.0,
+  "default_after": 20.0
+ },
+ {
+  "old": "stellarator_09__stellaris__delta_eta",
+  "new": "stellarator_09__stellaris__delta_eta",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__discount_rate",
+  "new": "stellarator_09__stellaris__discount_rate",
+  "moved": false,
+  "default_before": 0.07,
+  "default_after": 0.07
+ },
+ {
+  "old": "stellarator_09__stellaris__divertor_base",
+  "new": "stellarator_09__stellaris__divertor_base",
+  "moved": false,
+  "default_before": 60000000.0,
+  "default_after": 60000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__divertor_cost__alpha",
+  "new": "stellarator_09__stellaris__divertor_cost__alpha",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__divertor_cost__p_th_ref",
+  "new": "stellarator_09__stellaris__divertor_cost__p_th_ref",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__dp_loop_ref",
+  "new": "stellarator_09__stellaris__dp_loop_ref",
+  "moved": false,
+  "default_before": 329187.1856931558,
+  "default_after": 329187.1856931558
+ },
+ {
+  "old": "stellarator_09__stellaris__electric_plant__cost_per_mw",
+  "new": "stellarator_09__stellaris__electric_plant__cost_per_mw",
+  "moved": false,
+  "default_before": 86400.0,
+  "default_after": 86400.0
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_couple_heat",
+  "new": "stellarator_09__stellaris__eta_couple_heat",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_drive",
+  "new": "stellarator_09__stellaris__eta_drive",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_extract",
+  "new": "stellarator_09__stellaris__eta_extract",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_is",
+  "new": "stellarator_09__stellaris__eta_is",
+  "moved": false,
+  "default_before": 0.772796639536644,
+  "default_after": 0.772796639536644
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_p_direct",
+  "new": "stellarator_09__stellaris__eta_p_direct",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_source_heat",
+  "new": "stellarator_09__stellaris__eta_source_heat",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__eta_th_direct",
+  "new": "stellarator_09__stellaris__eta_th_direct",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__f_W_core",
+  "new": "stellarator_09__stellaris__plasma__f_W_core",
+  "moved": true,
+  "default_before": 7.76e-06,
+  "default_after": 7.76e-06
+ },
+ {
+  "old": "stellarator_09__stellaris__f_alpha_fast",
+  "new": "stellarator_09__stellaris__plasma__f_alpha_fast",
+  "moved": true,
+  "default_before": 0.95,
+  "default_after": 0.95
+ },
+ {
+  "old": "stellarator_09__stellaris__f_carnot_cryo",
+  "new": "stellarator_09__stellaris__f_carnot_cryo",
+  "moved": false,
+  "default_before": 0.2,
+  "default_after": 0.2
+ },
+ {
+  "old": "stellarator_09__stellaris__f_loss",
+  "new": "stellarator_09__stellaris__f_loss",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__f_rad_total",
+  "new": "stellarator_09__stellaris__f_rad_total",
+  "moved": false,
+  "default_before": 0.9,
+  "default_after": 0.9
+ },
+ {
+  "old": "stellarator_09__stellaris__f_ren",
+  "new": "stellarator_09__stellaris__plasma__f_ren",
+  "moved": true,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__f_shape",
+  "new": "stellarator_09__stellaris__plasma__f_shape",
+  "moved": true,
+  "default_before": 1.0031567,
+  "default_after": 1.0031567
+ },
+ {
+  "old": "stellarator_09__stellaris__f_sub",
+  "new": "stellarator_09__stellaris__f_sub",
+  "moved": false,
+  "default_before": 0.03,
+  "default_after": 0.03
+ },
+ {
+  "old": "stellarator_09__stellaris__f_suppr_ash",
+  "new": "stellarator_09__stellaris__plasma__f_suppr_ash",
+  "moved": true,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__f_uplift_cryo",
+  "new": "stellarator_09__stellaris__f_uplift_cryo",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__field_calc__mu0",
+  "new": "stellarator_09__stellaris__field_calc__mu0",
+  "moved": false,
+  "default_before": 1.25663706212e-06,
+  "default_after": 1.25663706212e-06
+ },
+ {
+  "old": "stellarator_09__stellaris__field_calc__two_pi",
+  "new": "stellarator_09__stellaris__field_calc__two_pi",
+  "moved": false,
+  "default_before": 6.283185307179586,
+  "default_after": 6.283185307179586
+ },
+ {
+  "old": "stellarator_09__stellaris__firstwall_t",
+  "new": "stellarator_09__stellaris__firstwall_t",
+  "moved": false,
+  "default_before": 0.05,
+  "default_after": 0.05
+ },
+ {
+  "old": "stellarator_09__stellaris__fluence_limit",
+  "new": "stellarator_09__stellaris__fluence_limit",
+  "moved": false,
+  "default_before": 18.0,
+  "default_after": 18.0
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel__s_per_fpy_in",
+  "new": "stellarator_09__stellaris__fuel__s_per_fpy_in",
+  "moved": false,
+  "default_before": 31536000.0,
+  "default_after": 31536000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel_cost_per_rxn",
+  "new": "stellarator_09__stellaris__fuel_cost_per_rxn",
+  "moved": false,
+  "default_before": 1.7260641119988767e-23,
+  "default_after": 1.7260641119988767e-23
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel_handling__alpha",
+  "new": "stellarator_09__stellaris__fuel_handling__alpha",
+  "moved": false,
+  "default_before": 0.7,
+  "default_after": 0.7
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel_handling__ref_power",
+  "new": "stellarator_09__stellaris__fuel_handling__ref_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel_handling_base",
+  "new": "stellarator_09__stellaris__fuel_handling_base",
+  "moved": false,
+  "default_before": 120000000.0,
+  "default_after": 120000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel_q_eff",
+  "new": "stellarator_09__stellaris__fuel_q_eff",
+  "moved": false,
+  "default_before": 17.58,
+  "default_after": 17.58
+ },
+ {
+  "old": "stellarator_09__stellaris__fuel_recovery",
+  "new": "stellarator_09__stellaris__fuel_recovery",
+  "moved": false,
+  "default_before": 0.99,
+  "default_after": 0.99
+ },
+ {
+  "old": "stellarator_09__stellaris__gap1_t",
+  "new": "stellarator_09__stellaris__gap1_t",
+  "moved": false,
+  "default_before": 0.1,
+  "default_after": 0.1
+ },
+ {
+  "old": "stellarator_09__stellaris__gap2_t",
+  "new": "stellarator_09__stellaris__gap2_t",
+  "moved": false,
+  "default_before": 0.1,
+  "default_after": 0.1
+ },
+ {
+  "old": "stellarator_09__stellaris__geom__pi",
+  "new": "stellarator_09__stellaris__geom__pi",
+  "moved": false,
+  "default_before": 3.14159265358979,
+  "default_after": 3.14159265358979
+ },
+ {
+  "old": "stellarator_09__stellaris__heat_rejection__cost_per_mw",
+  "new": "stellarator_09__stellaris__heat_rejection__cost_per_mw",
+  "moved": false,
+  "default_before": 35060.0,
+  "default_after": 35060.0
+ },
+ {
+  "old": "stellarator_09__stellaris__heating_ecrh_per_mw",
+  "new": "stellarator_09__stellaris__heating_ecrh_per_mw",
+  "moved": false,
+  "default_before": 5282900.0,
+  "default_after": 5282900.0
+ },
+ {
+  "old": "stellarator_09__stellaris__heating_icrf_per_mw",
+  "new": "stellarator_09__stellaris__heating_icrf_per_mw",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__heating_lhcd_per_mw",
+  "new": "stellarator_09__stellaris__heating_lhcd_per_mw",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__heating_nbi_per_mw",
+  "new": "stellarator_09__stellaris__heating_nbi_per_mw",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__ht_shield_t",
+  "new": "stellarator_09__stellaris__ht_shield_t",
+  "moved": false,
+  "default_before": 0.2,
+  "default_after": 0.2
+ },
+ {
+  "old": "stellarator_09__stellaris__inc_base",
+  "new": "stellarator_09__stellaris__inc_base",
+  "moved": false,
+  "default_before": 85000000.0,
+  "default_after": 85000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__inc_cost__alpha",
+  "new": "stellarator_09__stellaris__inc_cost__alpha",
+  "moved": false,
+  "default_before": 0.65,
+  "default_after": 0.65
+ },
+ {
+  "old": "stellarator_09__stellaris__inc_cost__ref_power",
+  "new": "stellarator_09__stellaris__inc_cost__ref_power",
+  "moved": false,
+  "default_before": 3500.0,
+  "default_after": 3500.0
+ },
+ {
+  "old": "stellarator_09__stellaris__indirect__reference_construction_time",
+  "new": "stellarator_09__stellaris__indirect__reference_construction_time",
+  "moved": false,
+  "default_before": 6.0,
+  "default_after": 6.0
+ },
+ {
+  "old": "stellarator_09__stellaris__indirect_fraction",
+  "new": "stellarator_09__stellaris__indirect_fraction",
+  "moved": false,
+  "default_before": 0.2,
+  "default_after": 0.2
+ },
+ {
+  "old": "stellarator_09__stellaris__inflation_rate",
+  "new": "stellarator_09__stellaris__inflation_rate",
+  "moved": false,
+  "default_before": 0.02,
+  "default_after": 0.02
+ },
+ {
+  "old": "stellarator_09__stellaris__installation_frac",
+  "new": "stellarator_09__stellaris__installation_frac",
+  "moved": false,
+  "default_before": 0.14,
+  "default_after": 0.14
+ },
+ {
+  "old": "stellarator_09__stellaris__iota_23",
+  "new": "stellarator_09__stellaris__plasma__iota_23",
+  "moved": true,
+  "default_before": 0.92,
+  "default_after": 0.92
+ },
+ {
+  "old": "stellarator_09__stellaris__kappa",
+  "new": "stellarator_09__stellaris__plasma__kappa",
+  "moved": true,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__lambda_T",
+  "new": "stellarator_09__stellaris__lambda_T",
+  "moved": false,
+  "default_before": 1.782785958230312e-09,
+  "default_after": 1.782785958230312e-09
+ },
+ {
+  "old": "stellarator_09__stellaris__loop_T_in",
+  "new": "stellarator_09__stellaris__loop_T_in",
+  "moved": false,
+  "default_before": 573.15,
+  "default_after": 573.15
+ },
+ {
+  "old": "stellarator_09__stellaris__loop_cp",
+  "new": "stellarator_09__stellaris__loop_cp",
+  "moved": false,
+  "default_before": 5193.0,
+  "default_after": 5193.0
+ },
+ {
+  "old": "stellarator_09__stellaris__loop_dT_blanket",
+  "new": "stellarator_09__stellaris__loop_dT_blanket",
+  "moved": false,
+  "default_before": 200.0,
+  "default_after": 200.0
+ },
+ {
+  "old": "stellarator_09__stellaris__loop_gamma",
+  "new": "stellarator_09__stellaris__loop_gamma",
+  "moved": false,
+  "default_before": 1.6666666666666667,
+  "default_after": 1.6666666666666667
+ },
+ {
+  "old": "stellarator_09__stellaris__loop_live",
+  "new": "stellarator_09__stellaris__loop_live",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__loop_p",
+  "new": "stellarator_09__stellaris__loop_p",
+  "moved": false,
+  "default_before": 8000000.0,
+  "default_after": 8000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__lt_shield_t",
+  "new": "stellarator_09__stellaris__lt_shield_t",
+  "moved": false,
+  "default_before": 0.15,
+  "default_after": 0.15
+ },
+ {
+  "old": "stellarator_09__stellaris__m_T_kg",
+  "new": "stellarator_09__stellaris__m_T_kg",
+  "moved": false,
+  "default_before": 5.008267663228036e-27,
+  "default_after": 5.008267663228036e-27
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__B_max",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+  "moved": true,
+  "default_before": 24.9,
+  "default_after": 24.9
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__E_wp",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__E_wp",
+  "moved": true,
+  "default_before": 200000000000.0,
+  "default_after": 200000000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__G",
+  "new": "stellarator_09__stellaris__magnet__coil__G",
+  "moved": true,
+  "default_before": 78.95683520871486,
+  "default_after": 78.95683520871486
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__I_coil",
+  "new": "stellarator_09__stellaris__magnet__coil__I_coil",
+  "moved": true,
+  "default_before": 15400000.0,
+  "default_after": 15400000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__I_ref",
+  "new": "stellarator_09__stellaris__magnet__coil__I_ref",
+  "moved": true,
+  "default_before": 15400000.0,
+  "default_after": 15400000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__R0",
+  "new": "stellarator_09__stellaris__magnet__coil__R0",
+  "moved": true,
+  "default_before": 12.7,
+  "default_after": 12.7
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__R_ref",
+  "new": "stellarator_09__stellaris__magnet__coil__R_ref",
+  "moved": true,
+  "default_before": 12.7,
+  "default_after": 12.7
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__W_mag_ref",
+  "new": "stellarator_09__stellaris__magnet__casing__W_mag_ref",
+  "moved": true,
+  "default_before": 111000000000.0,
+  "default_after": 111000000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__a_coil_ref",
+  "new": "stellarator_09__stellaris__magnet__coil__a_coil_ref",
+  "moved": true,
+  "default_before": 3.1500000000000004,
+  "default_after": 3.1500000000000004
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__coil_markup",
+  "new": "stellarator_09__stellaris__magnet__coil__coil_markup",
+  "moved": true,
+  "default_before": 5.87,
+  "default_after": 5.87
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__cost_per_kAm",
+  "new": "stellarator_09__stellaris__magnet__coil__cost_per_kAm",
+  "moved": true,
+  "default_before": 50.0,
+  "default_after": 50.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__eps_cond_allow",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+  "moved": true,
+  "default_before": 0.004,
+  "default_after": 0.004
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__f_cond",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__f_cond",
+  "moved": true,
+  "default_before": 0.6666666666666666,
+  "default_after": 0.6666666666666666
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__f_set",
+  "new": "stellarator_09__stellaris__magnet__coil__f_set",
+  "moved": true,
+  "default_before": 0.8701298701298701,
+  "default_after": 0.8701298701298701
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__f_steel_fab",
+  "new": "stellarator_09__stellaris__magnet__casing__f_steel_fab",
+  "moved": true,
+  "default_before": 3.0,
+  "default_after": 3.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__f_wp_fab",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__f_wp_fab",
+  "moved": true,
+  "default_before": 6.65,
+  "default_after": 6.65
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__f_wp_vol",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__f_wp_vol",
+  "moved": true,
+  "default_before": 0.8780864197530865,
+  "default_after": 0.8780864197530865
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__j_wp",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__j_wp",
+  "moved": true,
+  "default_before": 118.8271604938272,
+  "default_after": 118.8271604938272
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__k_coil",
+  "new": "stellarator_09__stellaris__magnet__coil__k_coil",
+  "moved": true,
+  "default_before": 1.968503937007874,
+  "default_after": 1.968503937007874
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__k_link",
+  "new": "stellarator_09__stellaris__magnet__coil__k_link",
+  "moved": true,
+  "default_before": 0.7731331164622419,
+  "default_after": 0.7731331164622419
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__k_sigma",
+  "new": "stellarator_09__stellaris__magnet__winding_pack__k_sigma",
+  "moved": true,
+  "default_before": 0.6102331403536223,
+  "default_after": 0.6102331403536223
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__m_casing_ref",
+  "new": "stellarator_09__stellaris__magnet__casing__m_casing_ref",
+  "moved": true,
+  "default_before": 63000.0,
+  "default_after": 63000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__n_coils",
+  "new": "stellarator_09__stellaris__magnet__coil__n_coils",
+  "moved": true,
+  "default_before": 48.0,
+  "default_after": 48.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__peak_ratio",
+  "new": "stellarator_09__stellaris__magnet__coil__peak_ratio",
+  "moved": true,
+  "default_before": 2.7666666666666666,
+  "default_after": 2.7666666666666666
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__sigma_allow",
+  "new": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+  "moved": true,
+  "default_before": 800000000.0,
+  "default_after": 800000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet__steel_price",
+  "new": "stellarator_09__stellaris__magnet__casing__steel_price",
+  "moved": true,
+  "default_before": 6.0,
+  "default_after": 6.0
+ },
+ {
+  "old": "stellarator_09__stellaris__magnet_cost__mu0",
+  "new": "stellarator_09__stellaris__magnet_cost__mu0",
+  "moved": false,
+  "default_before": 1.25663706212e-06,
+  "default_after": 1.25663706212e-06
+ },
+ {
+  "old": "stellarator_09__stellaris__mdot_loop_ref",
+  "new": "stellarator_09__stellaris__mdot_loop_ref",
+  "moved": false,
+  "default_before": 225.07777777777778,
+  "default_after": 225.07777777777778
+ },
+ {
+  "old": "stellarator_09__stellaris__mev_to_joules",
+  "new": "stellarator_09__stellaris__mev_to_joules",
+  "moved": false,
+  "default_before": 1.6021766339999998e-13,
+  "default_after": 1.6021766339999998e-13
+ },
+ {
+  "old": "stellarator_09__stellaris__misc_plant__cost_per_mw",
+  "new": "stellarator_09__stellaris__misc_plant__cost_per_mw",
+  "moved": false,
+  "default_before": 52590.0,
+  "default_after": 52590.0
+ },
+ {
+  "old": "stellarator_09__stellaris__mn",
+  "new": "stellarator_09__stellaris__mn",
+  "moved": false,
+  "default_before": 1.2,
+  "default_after": 1.2
+ },
+ {
+  "old": "stellarator_09__stellaris__n_e",
+  "new": "stellarator_09__stellaris__plasma__n_e",
+  "moved": true,
+  "default_before": 3.17e+20,
+  "default_after": 3.17e+20
+ },
+ {
+  "old": "stellarator_09__stellaris__n_e0",
+  "new": "stellarator_09__stellaris__plasma__n_e0",
+  "moved": true,
+  "default_before": 5.06e+20,
+  "default_after": 5.06e+20
+ },
+ {
+  "old": "stellarator_09__stellaris__n_loops",
+  "new": "stellarator_09__stellaris__n_loops",
+  "moved": false,
+  "default_before": 14.0,
+  "default_after": 14.0
+ },
+ {
+  "old": "stellarator_09__stellaris__n_mod",
+  "new": "stellarator_09__stellaris__n_mod",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__om_annual_ref",
+  "new": "stellarator_09__stellaris__om_annual_ref",
+  "moved": false,
+  "default_before": 54900000.0,
+  "default_after": 54900000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__om_cost__alpha",
+  "new": "stellarator_09__stellaris__om_cost__alpha",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__om_cost__n_mod_in",
+  "new": "stellarator_09__stellaris__om_cost__n_mod_in",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__om_cost__om_direct",
+  "new": "stellarator_09__stellaris__om_cost__om_direct",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__om_cost__ref_net_power",
+  "new": "stellarator_09__stellaris__om_cost__ref_net_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__operational_years",
+  "new": "stellarator_09__stellaris__operational_years",
+  "moved": false,
+  "default_before": 30.0,
+  "default_after": 30.0
+ },
+ {
+  "old": "stellarator_09__stellaris__other_rpe__alpha",
+  "new": "stellarator_09__stellaris__other_rpe__alpha",
+  "moved": false,
+  "default_before": 0.8,
+  "default_after": 0.8
+ },
+ {
+  "old": "stellarator_09__stellaris__other_rpe__ref_power",
+  "new": "stellarator_09__stellaris__other_rpe__ref_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__other_rpe_base",
+  "new": "stellarator_09__stellaris__other_rpe_base",
+  "moved": false,
+  "default_before": 11500000.0,
+  "default_after": 11500000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__outage_years",
+  "new": "stellarator_09__stellaris__outage_years",
+  "moved": false,
+  "default_before": 0.5833333333333334,
+  "default_after": 0.5833333333333334
+ },
+ {
+  "old": "stellarator_09__stellaris__owner__alpha",
+  "new": "stellarator_09__stellaris__owner__alpha",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__owner__ref_power",
+  "new": "stellarator_09__stellaris__owner__ref_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__owner_base",
+  "new": "stellarator_09__stellaris__owner_base",
+  "moved": false,
+  "default_before": 41200000.0,
+  "default_after": 41200000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_coupled_direct_heat",
+  "new": "stellarator_09__stellaris__p_coupled_direct_heat",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_cryo",
+  "new": "stellarator_09__stellaris__p_cryo",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_delivered_direct_heat",
+  "new": "stellarator_09__stellaris__p_delivered_direct_heat",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_exhaust",
+  "new": "stellarator_09__stellaris__p_exhaust",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_fixed_cryo",
+  "new": "stellarator_09__stellaris__p_fixed_cryo",
+  "moved": false,
+  "default_before": 0.0075,
+  "default_after": 0.0075
+ },
+ {
+  "old": "stellarator_09__stellaris__p_house",
+  "new": "stellarator_09__stellaris__p_house",
+  "moved": false,
+  "default_before": 4.0,
+  "default_after": 4.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_icrf",
+  "new": "stellarator_09__stellaris__p_icrf",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_lhcd",
+  "new": "stellarator_09__stellaris__p_lhcd",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_nbi",
+  "new": "stellarator_09__stellaris__p_nbi",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_nonrad_ref",
+  "new": "stellarator_09__stellaris__p_nonrad_ref",
+  "moved": false,
+  "default_before": 50.0,
+  "default_after": 50.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_pf",
+  "new": "stellarator_09__stellaris__p_pf",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_pfcool",
+  "new": "stellarator_09__stellaris__p_pfcool",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_pump_direct",
+  "new": "stellarator_09__stellaris__p_pump_direct",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_tf",
+  "new": "stellarator_09__stellaris__p_tf",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_tfcool",
+  "new": "stellarator_09__stellaris__p_tfcool",
+  "moved": false,
+  "default_before": 15.0,
+  "default_after": 15.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_trit",
+  "new": "stellarator_09__stellaris__p_trit",
+  "moved": false,
+  "default_before": 10.0,
+  "default_after": 10.0
+ },
+ {
+  "old": "stellarator_09__stellaris__p_wallplug_heat",
+  "new": "stellarator_09__stellaris__p_wallplug_heat",
+  "moved": false,
+  "default_before": 100.0,
+  "default_after": 100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__power_supplies__base",
+  "new": "stellarator_09__stellaris__power_supplies__base",
+  "moved": false,
+  "default_before": 80000000.0,
+  "default_after": 80000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__power_supplies_cost__alpha",
+  "new": "stellarator_09__stellaris__power_supplies_cost__alpha",
+  "moved": false,
+  "default_before": 0.7,
+  "default_after": 0.7
+ },
+ {
+  "old": "stellarator_09__stellaris__power_supplies_cost__p_et_ref",
+  "new": "stellarator_09__stellaris__power_supplies_cost__p_et_ref",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__precon_cost__land_cost",
+  "new": "stellarator_09__stellaris__precon_cost__land_cost",
+  "moved": false,
+  "default_before": 10000.0,
+  "default_after": 10000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__precon_cost__land_intensity",
+  "new": "stellarator_09__stellaris__precon_cost__land_intensity",
+  "moved": false,
+  "default_before": 0.25,
+  "default_after": 0.25
+ },
+ {
+  "old": "stellarator_09__stellaris__precon_cost__n_mod_in",
+  "new": "stellarator_09__stellaris__precon_cost__n_mod_in",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__precon_cost__ref_net_power",
+  "new": "stellarator_09__stellaris__precon_cost__ref_net_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__precon_fixed_base",
+  "new": "stellarator_09__stellaris__precon_fixed_base",
+  "moved": false,
+  "default_before": 16000000.0,
+  "default_after": 16000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__q_nuc_cryo",
+  "new": "stellarator_09__stellaris__q_nuc_cryo",
+  "moved": false,
+  "default_before": 35.5,
+  "default_after": 35.5
+ },
+ {
+  "old": "stellarator_09__stellaris__q_target_limit",
+  "new": "stellarator_09__stellaris__q_target_limit",
+  "moved": false,
+  "default_before": 10.0,
+  "default_after": 10.0
+ },
+ {
+  "old": "stellarator_09__stellaris__q_target_ref",
+  "new": "stellarator_09__stellaris__q_target_ref",
+  "moved": false,
+  "default_before": 9.5,
+  "default_after": 9.5
+ },
+ {
+  "old": "stellarator_09__stellaris__rb__pi",
+  "new": "stellarator_09__stellaris__rb__pi",
+  "moved": false,
+  "default_before": 3.14159265358979,
+  "default_after": 3.14159265358979
+ },
+ {
+  "old": "stellarator_09__stellaris__recirc_ok__threshold",
+  "new": "stellarator_09__stellaris__recirc_ok__threshold",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__reflector_t",
+  "new": "stellarator_09__stellaris__reflector_t",
+  "moved": false,
+  "default_before": 0.2,
+  "default_after": 0.2
+ },
+ {
+  "old": "stellarator_09__stellaris__remote_handling__alpha",
+  "new": "stellarator_09__stellaris__remote_handling__alpha",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__remote_handling__p_et_ref",
+  "new": "stellarator_09__stellaris__remote_handling__p_et_ref",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__remote_handling_base",
+  "new": "stellarator_09__stellaris__remote_handling_base",
+  "moved": false,
+  "default_before": 150000000.0,
+  "default_after": 150000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__shield__shield_scale",
+  "new": "stellarator_09__stellaris__shield__shield_scale",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__shield__unit_cost",
+  "new": "stellarator_09__stellaris__shield__unit_cost",
+  "moved": false,
+  "default_before": 740000.0,
+  "default_after": 740000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__shield_cost__alpha",
+  "new": "stellarator_09__stellaris__shield_cost__alpha",
+  "moved": false,
+  "default_before": 0.6,
+  "default_after": 0.6
+ },
+ {
+  "old": "stellarator_09__stellaris__shield_cost__p_th_ref",
+  "new": "stellarator_09__stellaris__shield_cost__p_th_ref",
+  "moved": false,
+  "default_before": 2500.0,
+  "default_after": 2500.0
+ },
+ {
+  "old": "stellarator_09__stellaris__sigma_v",
+  "new": "stellarator_09__stellaris__plasma__sigma_v",
+  "moved": true,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__structure__unit_cost",
+  "new": "stellarator_09__stellaris__structure__unit_cost",
+  "moved": false,
+  "default_before": 150000.0,
+  "default_after": 150000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__structure_cost__alpha",
+  "new": "stellarator_09__stellaris__structure_cost__alpha",
+  "moved": false,
+  "default_before": 0.5,
+  "default_after": 0.5
+ },
+ {
+  "old": "stellarator_09__stellaris__structure_cost__p_et_ref",
+  "new": "stellarator_09__stellaris__structure_cost__p_et_ref",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__structure_t",
+  "new": "stellarator_09__stellaris__structure_t",
+  "moved": false,
+  "default_before": 0.15,
+  "default_after": 0.15
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary__contingency_rate_in",
+  "new": "stellarator_09__stellaris__supplementary__contingency_rate_in",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary__insurance_frac",
+  "new": "stellarator_09__stellaris__supplementary__insurance_frac",
+  "moved": false,
+  "default_before": 0.015,
+  "default_after": 0.015
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary__ref_net_power",
+  "new": "stellarator_09__stellaris__supplementary__ref_net_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary__shipping_frac",
+  "new": "stellarator_09__stellaris__supplementary__shipping_frac",
+  "moved": false,
+  "default_before": 0.015,
+  "default_after": 0.015
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary__tax_frac",
+  "new": "stellarator_09__stellaris__supplementary__tax_frac",
+  "moved": false,
+  "default_before": 0.01,
+  "default_after": 0.01
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary_decom_base",
+  "new": "stellarator_09__stellaris__supplementary_decom_base",
+  "moved": false,
+  "default_before": 272000000.0,
+  "default_after": 272000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary_spares_frac",
+  "new": "stellarator_09__stellaris__supplementary_spares_frac",
+  "moved": false,
+  "default_before": 0.03,
+  "default_after": 0.03
+ },
+ {
+  "old": "stellarator_09__stellaris__supplementary_startup_base",
+  "new": "stellarator_09__stellaris__supplementary_startup_base",
+  "moved": false,
+  "default_before": 40000000.0,
+  "default_after": 40000000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__sustain__R_w_sync_in",
+  "new": "stellarator_09__stellaris__sustain__R_w_sync_in",
+  "moved": false,
+  "default_before": 0.6,
+  "default_after": 0.6
+ },
+ {
+  "old": "stellarator_09__stellaris__sustain__ash_frac_in",
+  "new": "stellarator_09__stellaris__sustain__ash_frac_in",
+  "moved": false,
+  "default_before": 0.2002,
+  "default_after": 0.2002
+ },
+ {
+  "old": "stellarator_09__stellaris__sustain__kappa_sync_in",
+  "new": "stellarator_09__stellaris__sustain__kappa_sync_in",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__t_recycle",
+  "new": "stellarator_09__stellaris__t_recycle",
+  "moved": false,
+  "default_before": 0.99,
+  "default_after": 0.99
+ },
+ {
+  "old": "stellarator_09__stellaris__tau_ratio_ash",
+  "new": "stellarator_09__stellaris__plasma__tau_ratio_ash",
+  "moved": true,
+  "default_before": 8.0,
+  "default_after": 8.0
+ },
+ {
+  "old": "stellarator_09__stellaris__tbr",
+  "new": "stellarator_09__stellaris__tbr",
+  "moved": false,
+  "default_before": 1.074,
+  "default_after": 1.074
+ },
+ {
+  "old": "stellarator_09__stellaris__tbr_floor",
+  "new": "stellarator_09__stellaris__tbr_floor",
+  "moved": false,
+  "default_before": 1.05,
+  "default_after": 1.05
+ },
+ {
+  "old": "stellarator_09__stellaris__turbine__cost_per_mw",
+  "new": "stellarator_09__stellaris__turbine__cost_per_mw",
+  "moved": false,
+  "default_before": 202840.0,
+  "default_after": 202840.0
+ },
+ {
+  "old": "stellarator_09__stellaris__unplanned_fraction",
+  "new": "stellarator_09__stellaris__unplanned_fraction",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__vacuum__k_B_in",
+  "new": "stellarator_09__stellaris__vacuum__k_B_in",
+  "moved": false,
+  "default_before": 1.380649e-23,
+  "default_after": 1.380649e-23
+ },
+ {
+  "old": "stellarator_09__stellaris__vacuum_t",
+  "new": "stellarator_09__stellaris__vacuum_t",
+  "moved": false,
+  "default_before": 0.1,
+  "default_after": 0.1
+ },
+ {
+  "old": "stellarator_09__stellaris__vessel__unit_cost",
+  "new": "stellarator_09__stellaris__vessel__unit_cost",
+  "moved": false,
+  "default_before": 720000.0,
+  "default_after": 720000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__vessel_cost__alpha",
+  "new": "stellarator_09__stellaris__vessel_cost__alpha",
+  "moved": false,
+  "default_before": 0.6,
+  "default_after": 0.6
+ },
+ {
+  "old": "stellarator_09__stellaris__vessel_cost__p_et_ref",
+  "new": "stellarator_09__stellaris__vessel_cost__p_et_ref",
+  "moved": false,
+  "default_before": 1100.0,
+  "default_after": 1100.0
+ },
+ {
+  "old": "stellarator_09__stellaris__vessel_t",
+  "new": "stellarator_09__stellaris__vessel_t",
+  "moved": false,
+  "default_before": 0.1,
+  "default_after": 0.1
+ },
+ {
+  "old": "stellarator_09__stellaris__vol_cold_cryo",
+  "new": "stellarator_09__stellaris__vol_cold_cryo",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_load_calc__ash_frac_in",
+  "new": "stellarator_09__stellaris__wall_load_calc__ash_frac_in",
+  "moved": false,
+  "default_before": 0.2002,
+  "default_after": 0.2002
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_load_limit",
+  "new": "stellarator_09__stellaris__wall_load_limit",
+  "moved": false,
+  "default_before": 4.05,
+  "default_after": 4.05
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_R_ref",
+  "new": "stellarator_09__stellaris__wall_peak_R_ref",
+  "moved": false,
+  "default_before": 12.7,
+  "default_after": 12.7
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_a_ref",
+  "new": "stellarator_09__stellaris__wall_peak_a_ref",
+  "moved": false,
+  "default_before": 1.3,
+  "default_after": 1.3
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_cal__ash_frac_in",
+  "new": "stellarator_09__stellaris__wall_peak_cal__ash_frac_in",
+  "moved": false,
+  "default_before": 0.2002,
+  "default_after": 0.2002
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_cal__pi",
+  "new": "stellarator_09__stellaris__wall_peak_cal__pi",
+  "moved": false,
+  "default_before": 3.14159265358979,
+  "default_after": 3.14159265358979
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_calibration_direct",
+  "new": "stellarator_09__stellaris__wall_peak_calibration_direct",
+  "moved": false,
+  "default_before": 0.0,
+  "default_after": 0.0
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_kappa_ref",
+  "new": "stellarator_09__stellaris__wall_peak_kappa_ref",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_p_fus_ref",
+  "new": "stellarator_09__stellaris__wall_peak_p_fus_ref",
+  "moved": false,
+  "default_before": 2700.0,
+  "default_after": 2700.0
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_q_ref",
+  "new": "stellarator_09__stellaris__wall_peak_q_ref",
+  "moved": false,
+  "default_before": 4.05,
+  "default_after": 4.05
+ },
+ {
+  "old": "stellarator_09__stellaris__wall_peak_standoff_ref",
+  "new": "stellarator_09__stellaris__wall_peak_standoff_ref",
+  "moved": false,
+  "default_before": 0.1,
+  "default_after": 0.1
+ },
+ {
+  "old": "stellarator_09__stellaris__waste__alpha",
+  "new": "stellarator_09__stellaris__waste__alpha",
+  "moved": false,
+  "default_before": 1.0,
+  "default_after": 1.0
+ },
+ {
+  "old": "stellarator_09__stellaris__waste__ref_power",
+  "new": "stellarator_09__stellaris__waste__ref_power",
+  "moved": false,
+  "default_before": 1000.0,
+  "default_after": 1000.0
+ },
+ {
+  "old": "stellarator_09__stellaris__waste_base",
+  "new": "stellarator_09__stellaris__waste_base",
+  "moved": false,
+  "default_before": 1960000.0,
+  "default_after": 1960000.0
+ }
+]

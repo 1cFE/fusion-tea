@@ -1,0 +1,7 @@
+{"kind": "search", "query": "site:ukaea.github.io/PROCESS \"1.348\"", "at": "2026-09-15T14:01:08.288200+00:00"}
+{"kind": "search", "query": "site:iter.org coil cases stainless steel tonnes contract million", "at": "2026-09-15T14:01:08.347137+00:00"}
+{"kind": "search", "query": "\"PROCESS\" \"stellarator\" \"1.348\"", "at": "2026-09-15T14:01:08.405927+00:00"}
+{"kind": "search", "query": "\"ITER\" \"coil cases\" \"million\" contract steel", "at": "2026-09-15T14:01:08.464592+00:00"}
+{"kind": "candidate", "ref": "https://scientific-publications.ukaea.uk/wp-content/uploads/LION_2021_NUCL-_FUSION_61_126021.PDF", "triage": "rejected", "note": "Already admitted journal source; original local Eq56 image checked. No additional unit declaration found in admitted section; acquisition unnecessary.", "at": "2026-09-15T14:01:40.111128+00:00"}
+{"kind": "candidate", "ref": "https://www.iter.org/node/20687/europe-signs-final-contract-toroidal-field-coils", "triage": "rejected", "note": "Triage rejected: contract covers winding-pack cold tests and insertion, not fabricated316LN coil-case supply; cannot derive requested material rate.", "at": "2026-09-15T14:01:40.169977+00:00"}
+{"kind": "candidate", "ref": "https://www.iter.org/fr/node/20687/first-toroidal-field-coil-case-target-japan?untranslated=1", "triage": "rejected", "note": "Triage rejected: material mass but no matching procurement cost; cannot establish fabricated316LN rate.", "at": "2026-09-15T14:01:40.228699+00:00"}

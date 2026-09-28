@@ -1,0 +1,7 @@
+{
+  "repo_commit_at_execution": "855f51c245076f764f6ece24f15d713167f2a625",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260922-aries-integrated-local-response/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-local-response/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-local-response/results/native/20260922-aries-integrated-local-response.db --sample-size 24 --out exploration/aries_integrated/studies/20260922-aries-integrated-local-response/results/verification_summary.json'",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.design_support execute --record exploration/aries_integrated/studies/20260922-aries-integrated-local-response --integration-return work/orchestration/goals/aries-integrated-lcoe/evidence/integration-attempt1/integration_return.json'",
+  "preparation_baseline": "Fresh T-001 replay reused without changed baseline, manifest, package or environment; all546scalar/14predicate exact comparison in goal evidence.",
+  "attempts": "24 started/committed; no retries expected, checked in review."
+}

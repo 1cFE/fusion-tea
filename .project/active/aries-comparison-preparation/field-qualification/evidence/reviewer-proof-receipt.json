@@ -1,0 +1,9 @@
+{
+  "reviewer": "independent field_science_review",
+  "method": "runpy import and run(); exact equality to retained author JSON; source and script hashes independently recomputed by run()",
+  "checks": 8,
+  "exact_record_equality": true,
+  "author_script_sha256": "f12b2ed0eb999ee8a4037d8141eac0111867dbde19bf732bd007fce91f6f1c17",
+  "author_result_sha256": "bc0c1a1dc314fe66e26ef401f46c971bb732147a3624af9800ca2f301e0504b1",
+  "plant_execution": false
+}

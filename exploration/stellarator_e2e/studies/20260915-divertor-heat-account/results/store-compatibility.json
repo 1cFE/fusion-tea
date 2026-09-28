@@ -1,0 +1,10 @@
+{
+  "study_id": "20260915-divertor-heat-account",
+  "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+  "model_contract_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "study_definition_fingerprint": "9f4169c0b28730f587c92d9d87c392e383065aba35b3b217e1259548fbfe5cfe",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "3b9d4cc2429127c4d1ca2f778d4b2f90d3b06128f28f09c3af94d433691e64fd"
+}

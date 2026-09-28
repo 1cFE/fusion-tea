@@ -1,0 +1,233 @@
+{
+  "baseline": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 55.13324544000002,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 17857142.857142854,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9845222400000001,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.07932541665675098,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2301149999.9999995,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 55744991.73561758,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.8712317857142856,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2000999999.9999998,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.07932541665675098,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 82142857.14285712,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 871231785.7142856,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 13415949859.392101,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 82142857.14285712,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.3011499999999994,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 1035517499.9999998,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.15865083331350197,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.7722641595500556,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 240.66646063955096,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.397919111176602,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.06868791398571428,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.38396485956295606,
+      "hif_plant_pkg__hif_plant__meier_price__price": 5.589991561584082,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 1.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "beam10": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 43.526246400000005,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 35714285.71428571,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 1.5545088,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.07932541665675098,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 4602299999.999999,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 111489983.47123516,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 1.7424635714285712,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 4001999999.9999995,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.07932541665675098,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 164285714.28571424,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 1742463571.4285712,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 15824593776.431168,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 164285714.28571424,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 4.602299999999999,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 2071034999.9999995,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.15865083331350197,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 1.0846024415961866,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 141.93735870912542,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 5.012573572121021,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.13737582797142855,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.5664208136496754,
+      "hif_plant_pkg__hif_plant__meier_price__price": 4.123147587270446,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 1.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "eff35": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 68.9165568,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 14285714.285714287,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9845222400000001,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.0634603333254008,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2301149999.9999995,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 57847326.828368776,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.9040889285714283,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2000999999.9999998,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.06346033332540081,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 65714285.71428572,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 904088928.5714283,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 13485758275.224812,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 65714285.71428572,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.3011499999999994,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 1035517499.9999998,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.12692066665080162,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.7722641595500556,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 233.1267322902688,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.397919111176602,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.0712783711285714,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.38396485956295606,
+      "hif_plant_pkg__hif_plant__meier_price__price": 5.386835494183265,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 1.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "rate5": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 55.32800000000002,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 17857142.857142854,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9880000000000001,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.07932541665675098,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2501250000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 60592382.32132347,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.9469910714285714,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2175000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.07932541665675097,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 89285714.28571427,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 946991071.4285715,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 14517484641.243689,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 89285714.28571427,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.50125,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 1125562500.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.15865083331350194,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.8044699838819757,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 239.59257063465458,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.463220070504016,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.07466077607142857,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.39134386796695386,
+      "hif_plant_pkg__hif_plant__meier_price__price": 5.2416260392545615,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 1.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "negative": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 19.6904448,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 50000000.0,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9845222400000001,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.5555555555555556,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 1380000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": -2943269.1298516737,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": -0.045999999999999944,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2300000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.5555555555555555,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 229999999.99999997,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": -45999999.99999994,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 11467455101.262554,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 229999999.99999997,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 1.38,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 414000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 1.111111111111111,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.6011095350954107,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 0.0,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 0.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.084706148424602,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": -0.003626639999999995,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.34857179477198,
+      "hif_plant_pkg__hif_plant__meier_price__price": 0.0,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 0.0
+    },
+    "responses": {
+      "headline": "violated",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "violated",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "zero": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 19.76,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 50000000.0,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9880000000000001,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.5,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2500000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 0.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2500000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.5,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 250000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 0.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 12505763186.83505,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 250000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.5,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 500000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 1.0,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.8042729621234113,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 0.0,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 0.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.462859520685843,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.0,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.39130312583750027,
+      "hif_plant_pkg__hif_plant__meier_price__price": 0.0,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 0.0
+    },
+    "responses": {
+      "headline": "violated",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "violated",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "positive": {
+    "outputs": {
+      "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 19.6904448,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 50000000.0,
+      "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9845222400000001,
+      "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.47619047619047616,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2300000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 1471634.5649258425,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.02300000000000006,
+      "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2300000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.4761904761904761,
+      "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 229999999.99999997,
+      "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 23000000.00000006,
+      "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 11614052774.511244,
+      "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 229999999.99999997,
+      "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.3,
+      "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 483000000.0,
+      "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.9523809523809522,
+      "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.7720750252804878,
+      "hif_plant_pkg__hif_plant__hawker_price__price": 7891.940738084316,
+      "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+      "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.3975729954632934,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.0018133200000000045,
+      "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.38392574848735217,
+      "hif_plant_pkg__hif_plant__meier_price__price": 211.7253151607831,
+      "hif_plant_pkg__hif_plant__meier_price__generating": 1.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  }
+}

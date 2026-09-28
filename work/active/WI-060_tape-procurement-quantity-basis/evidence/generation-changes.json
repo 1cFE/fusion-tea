@@ -1,0 +1,14 @@
+{
+  "contracts/package_contract.json": {
+    "before": "6f4e19e21704b5501b18174c382dd2d83f5d96a12b23697352baf46a23e2b1f2",
+    "after": "2c0c95841a8256cf9ba6323bb539dab29b49ff5be5cc6fa06667f09126cc937d"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "bc87e3eb26e654d1f64270b0a84f272865c4790aa75a6ab03d36732e5f0e9bd5",
+    "after": "212638d1159019105e781e0aeda37bd99c465fb806276906a7b3b882ade5f474"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "1b26ae86dbb8796f7b5217ad7a02899a8d564d1ae341f371356daf214be9d16f",
+    "after": "779f125db67419e2d9b783fa1e6eeb2f598dd6665b31ec0894c2db6302014ab3"
+  }
+}

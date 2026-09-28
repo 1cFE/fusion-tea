@@ -1,0 +1,34 @@
+{
+  "provenance": "engineered",
+  "source_conditioned_axes": {
+    "fabrication": [
+      240.0,
+      310.0,
+      360.0
+    ],
+    "tonne": [
+      907.18474,
+      1000.0
+    ],
+    "containment": [
+      65.2,
+      82.4,
+      96.5
+    ],
+    "sheet": [
+      61.67720668774671,
+      0.0
+    ]
+  },
+  "contingency_diagnostic": [
+    0.1,
+    0.0
+  ],
+  "downtime_stress_only": [
+    0.05,
+    0.1
+  ],
+  "unique_candidates": 74,
+  "headline_population": "36 source-envelope cases only",
+  "selection": "Full finite combinations; no sampling, seed, convergence or feasible-boundary claim."
+}

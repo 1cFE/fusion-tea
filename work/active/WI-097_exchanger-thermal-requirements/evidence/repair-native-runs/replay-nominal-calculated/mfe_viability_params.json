@@ -1,0 +1,14 @@
+{
+  "aries_integrated_plant__divertor_pump__screen__applicable_in": 1.0,
+  "aries_integrated_plant__divertor_pump__screen__conditions_supported_in": 1.0,
+  "aries_integrated_plant__divertor_pump__screen__demand_available_in": 1.0,
+  "aries_integrated_plant__fuel_inventory__screen__applicable_in": 1.0,
+  "aries_integrated_plant__fuel_inventory__screen__conditions_supported_in": 1.0,
+  "aries_integrated_plant__fuel_inventory__screen__demand_available_in": 1.0,
+  "aries_integrated_plant__he_pump__screen__applicable_in": 1.0,
+  "aries_integrated_plant__he_pump__screen__conditions_supported_in": 1.0,
+  "aries_integrated_plant__he_pump__screen__demand_available_in": 1.0,
+  "aries_integrated_plant__pbli_pump__screen__applicable_in": 1.0,
+  "aries_integrated_plant__pbli_pump__screen__conditions_supported_in": 1.0,
+  "aries_integrated_plant__pbli_pump__screen__demand_available_in": 1.0
+}

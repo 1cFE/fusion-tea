@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <cross_sections>/home/reid/1cfe/fusion-tea/.codex-test/breeding-transport/data/cross_sections.xml</cross_sections>
+    <material id="5" name="W" temperature="773.15">
+      <density units="g/cm3" value="19.0"/>
+      <nuclide ao="0.0012" name="W180"/>
+      <nuclide ao="0.265" name="W182"/>
+      <nuclide ao="0.1431" name="W183"/>
+      <nuclide ao="0.3064" name="W184"/>
+      <nuclide ao="0.2843" name="W186"/>
+    </material>
+    <material id="7" name="SS316" temperature="773.15">
+      <density units="g/cm3" value="8.0"/>
+      <nuclide name="C12" wo="0.0007904054760685493"/>
+      <nuclide name="C13" wo="9.59452393145078e-06"/>
+      <nuclide name="Mn55" wo="0.02"/>
+      <nuclide name="P31" wo="0.00045"/>
+      <nuclide name="S32" wo="0.0002843058324248275"/>
+      <nuclide name="S33" wo="2.309645813262106e-06"/>
+      <nuclide name="S34" wo="1.3335457202628067e-05"/>
+      <nuclide name="S36" wo="4.906455928226109e-08"/>
+      <nuclide name="Si28" wo="0.009187351728283676"/>
+      <nuclide name="Si29" wo="0.0004831750292786396"/>
+      <nuclide name="Si30" wo="0.0003294732424376843"/>
+      <nuclide name="Cr50" wo="0.007095267258621131"/>
+      <nuclide name="Cr52" wo="0.14228891599728805"/>
+      <nuclide name="Cr53" wo="0.01644509759174781"/>
+      <nuclide name="Cr54" wo="0.004170719152343043"/>
+      <nuclide name="Ni58" wo="0.08063724635590787"/>
+      <nuclide name="Ni60" wo="0.03213115547907547"/>
+      <nuclide name="Ni61" wo="0.0014200309023560526"/>
+      <nuclide name="Ni62" wo="0.0046017867641846046"/>
+      <nuclide name="Ni64" wo="0.0012097804984760037"/>
+      <nuclide name="Mo92" wo="0.003507972845098637"/>
+      <nuclide name="Mo94" wo="0.0022478295951575073"/>
+      <nuclide name="Mo95" wo="0.0039251160972576206"/>
+      <nuclide name="Mo96" wo="0.00416633408784015"/>
+      <nuclide name="Mo97" wo="0.0024193988768826087"/>
+      <nuclide name="Mo98" wo="0.00619684308908685"/>
+      <nuclide name="Mo100" wo="0.002536505408676627"/>
+      <nuclide name="Fe54" wo="0.03689090020627794"/>
+      <nuclide name="Fe56" wo="0.6005305398100508"/>
+      <nuclide name="Fe57" wo="0.014116928706056912"/>
+      <nuclide name="Fe58" wo="0.0019116312776143163"/>
+    </material>
+    <material id="9" name="breeder" temperature="773.15">
+      <density units="g/cm3" value="8.10056"/>
+      <nuclide ao="0.008804050042713495" name="Pb204"/>
+      <nuclide ao="0.15155543287813947" name="Pb206"/>
+      <nuclide ao="0.13897821853140588" name="Pb207"/>
+      <nuclide ao="0.3295230158844194" name="Pb208"/>
+      <nuclide ao="0.08260331987819074" name="Li6"/>
+      <nuclide ao="0.035401422804938895" name="Li7"/>
+      <nuclide ao="0.013048015609864228" name="Fe54"/>
+      <nuclide ao="0.20482594084986863" name="Fe56"/>
+      <nuclide ao="0.004730324221950778" name="Fe57"/>
+      <nuclide ao="0.0006295193159934495" name="Fe58"/>
+      <nuclide ao="0.0012647690288213078" name="C12"/>
+      <nuclide ao="1.4168065126756654e-05" name="C13"/>
+      <nuclide ao="0.0010167791586172177" name="Mn55"/>
+      <nuclide ao="0.0010502703292722942" name="Cr50"/>
+      <nuclide ao="0.02025341786407279" name="Cr52"/>
+      <nuclide ao="0.0022965750053891977" name="Cr53"/>
+      <nuclide ao="0.0005716661285912487" name="Cr54"/>
+      <nuclide ao="1.1122709325623777e-08" name="Ta180"/>
+      <nuclide ao="9.260094494782486e-05" name="Ta181"/>
+      <nuclide ao="1.0026966073236562e-06" name="W180"/>
+      <nuclide ao="0.00022142883411730747" name="W182"/>
+      <nuclide ao="0.00011957157042334606" name="W183"/>
+      <nuclide ao="0.00025602186706997365" name="W184"/>
+      <nuclide ao="0.00023755553788509624" name="W186"/>
+      <nuclide ao="0.0025049018288640745" name="He4"/>
+    </material>
+    <material id="10" name="first_wall_bulk" temperature="773.15">
+      <density units="g/cm3" value="5.447679999999998"/>
+      <nuclide ao="0.051838332747523294" name="Fe54"/>
+      <nuclide ao="0.8137509637153556" name="Fe56"/>
+      <nuclide ao="0.018793058527288603" name="Fe57"/>
+      <nuclide ao="0.0025010110923527067" name="Fe58"/>
+      <nuclide ao="0.005024788421868164" name="C12"/>
+      <nuclide ao="5.628816644533696e-05" name="C13"/>
+      <nuclide ao="0.004039551908207332" name="Mn55"/>
+      <nuclide ao="0.004172608650353581" name="Cr50"/>
+      <nuclide ao="0.08046460441990251" name="Cr52"/>
+      <nuclide ao="0.00912404022715981" name="Cr53"/>
+      <nuclide ao="0.00227116673373676" name="Cr54"/>
+      <nuclide ao="4.418930236715632e-08" name="Ta180"/>
+      <nuclide ao="0.0003678933824474772" name="Ta181"/>
+      <nuclide ao="3.98360347882794e-06" name="W180"/>
+      <nuclide ao="0.0008797124349078369" name="W182"/>
+      <nuclide ao="0.0004750447148502321" name="W183"/>
+      <nuclide ao="0.001017146754927401" name="W184"/>
+      <nuclide ao="0.000943782057525653" name="W186"/>
+      <nuclide ao="0.004275978252366741" name="He4"/>
+    </material>
+    <material id="11" name="reflector" temperature="773.15">
+      <density units="g/cm3" value="14.04056"/>
+      <nuclide ao="0.0005994150671263658" name="W180"/>
+      <nuclide ao="0.13237082732373914" name="W182"/>
+      <nuclide ao="0.07148024675481914" name="W183"/>
+      <nuclide ao="0.15305064713959876" name="W184"/>
+      <nuclide ao="0.14201141965335484" name="W186"/>
+      <nuclide ao="0.4939789558439501" name="C12"/>
+      <nuclide ao="0.005533600094688234" name="C13"/>
+      <nuclide ao="0.0009748881227234222" name="He4"/>
+    </material>
+    <material id="12" name="ht_shield" temperature="773.15">
+      <density units="g/cm3" value="14.04056"/>
+      <nuclide ao="0.0005994150671263658" name="W180"/>
+      <nuclide ao="0.13237082732373914" name="W182"/>
+      <nuclide ao="0.07148024675481914" name="W183"/>
+      <nuclide ao="0.15305064713959876" name="W184"/>
+      <nuclide ao="0.14201141965335484" name="W186"/>
+      <nuclide ao="0.4939789558439501" name="C12"/>
+      <nuclide ao="0.005533600094688234" name="C13"/>
+      <nuclide ao="0.0009748881227234222" name="He4"/>
+    </material>
+    <material id="14" name="vessel" temperature="773.15">
+      <density units="g/cm3" value="4.929471999999999"/>
+      <nuclide ao="0.003450206285355468" name="C12"/>
+      <nuclide ao="3.864954488743084e-05" name="C13"/>
+      <nuclide ao="0.01906923092443906" name="Mn55"/>
+      <nuclide ao="0.0007610179919462972" name="P31"/>
+      <nuclide ao="0.0004657912926019652" name="S32"/>
+      <nuclide ao="3.6693031099943607e-06" name="S33"/>
+      <nuclide ao="2.0564398023888708e-05" name="S34"/>
+      <nuclide ao="7.145606238058178e-08" name="S36"/>
+      <nuclide ao="0.017201515391988578" name="Si28"/>
+      <nuclide ao="0.0008734438721151933" name="Si29"/>
+      <nuclide ao="0.0005757781037246518" name="Si30"/>
+      <nuclide ao="0.007441218317843129" name="Cr50"/>
+      <nuclide ao="0.14349648829315492" name="Cr52"/>
+      <nuclide ao="0.016271349882123726" name="Cr53"/>
+      <nuclide ao="0.004050283388193097" name="Cr54"/>
+      <nuclide ao="0.07290687508897789" name="Ni58"/>
+      <nuclide ao="0.028083597757033233" name="Ni60"/>
+      <nuclide ao="0.0012207745492806797" name="Ni61"/>
+      <nuclide ao="0.0038923634523735685" name="Ni62"/>
+      <nuclide ao="0.0009912702191544847" name="Ni64"/>
+      <nuclide ao="0.0019993319743781966" name="Mo92"/>
+      <nuclide ao="0.0012538646220637921" name="Mo94"/>
+      <nuclide ao="0.0021663865403307473" name="Mo95"/>
+      <nuclide ao="0.002275572531149407" name="Mo96"/>
+      <nuclide ao="0.001307775205030506" name="Mo97"/>
+      <nuclide ao="0.003315432611208625" name="Mo98"/>
+      <nuclide ao="0.001329885368171285" name="Mo100"/>
+      <nuclide ao="0.03582513478957047" name="Fe54"/>
+      <nuclide ao="0.5623780012801112" name="Fe56"/>
+      <nuclide ao="0.012987760584961481" name="Fe57"/>
+      <nuclide ao="0.0017284325082393285" name="Fe58"/>
+      <nuclide ao="0.005556531139669066" name="He4"/>
+      <nuclide ao="0.00936528453521251" name="B10"/>
+      <nuclide ao="0.03769644679751367" name="B11"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="1" material="void" name="plasma" region="-1" universe="1" volume="423662638.5211618"/>
+    <cell id="2" material="void" name="plasma_gap" region="1 -2" universe="1" volume="67685746.98267087"/>
+    <cell id="3" material="5" name="armor" region="2 -3" universe="1" volume="1404855.2818180863"/>
+    <cell id="4" material="10" name="first_wall" region="3 -4" universe="1" volume="34318177.84792486"/>
+    <cell id="5" material="9" name="breeder" region="4 -5 (-12 | 13)" universe="1" volume="860356350.1361862"/>
+    <cell id="6" material="11" name="reflector" region="5 -6 (-12 | 13)" universe="1" volume="240735640.10169944"/>
+    <cell id="7" material="12" name="ht_shield" region="6 -7 (-12 | 13)" universe="1" volume="260189025.16042265"/>
+    <cell id="8" material="7" name="structure" region="7 -8" universe="1" volume="214338198.77845725"/>
+    <cell id="9" material="void" name="assembly_gap" region="8 -9" universe="1" volume="149159331.3136636"/>
+    <cell id="10" material="14" name="vessel" region="9 -10" universe="1" volume="154173090.34941736"/>
+    <cell id="11" material="void" name="exterior_void" region="10 -11" universe="1"/>
+    <cell id="12" material="void" name="breeder_opening_void" region="4 -5 12 -13" universe="1"/>
+    <cell id="13" material="void" name="reflector_opening_void" region="5 -6 12 -13" universe="1"/>
+    <cell id="14" material="void" name="ht_shield_opening_void" region="6 -7 12 -13" universe="1"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 130.0 130.0" id="1" name="plasma_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 140.0 140.0" id="2" name="plasma_gap_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 140.20000000000002 140.20000000000002" id="3" name="armor_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 145.00000000000003 145.00000000000003" id="4" name="first_wall_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 237.5 237.5" id="5" name="breeder_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 257.5 257.5" id="6" name="reflector_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 277.50000000000006 277.50000000000006" id="7" name="ht_shield_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 292.5 292.5" id="8" name="structure_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 302.50000000000006 302.50000000000006" id="9" name="assembly_gap_outer" type="z-torus"/>
+    <surface coeffs="0.0 0.0 0.0 1270.0 312.50000000000006 312.50000000000006" id="10" name="vessel_outer" type="z-torus"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 0.0 2000.0" id="11" name="convex_outer_vacuum" type="sphere"/>
+    <surface coeffs="0.09410831331851433 0.99556196460308 0 0" id="12" type="plane"/>
+    <surface coeffs="-0.09410831331851433 0.99556196460308 0 0" id="13" type="plane"/>
+  </geometry>
+  <settings>
+    <run_mode>fixed source</run_mode>
+    <particles>4000</particles>
+    <batches>50</batches>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space origin="0.0 0.0 0.0" type="cylindrical">
+        <r parameters="1140.0 1400.0 1" type="powerlaw"/>
+        <phi parameters="0 6.283185307179586" type="uniform"/>
+        <z parameters="-130 130" type="uniform"/>
+      </space>
+      <angle type="isotropic"/>
+      <energy type="discrete">
+        <parameters>14060000.0 1.0</parameters>
+      </energy>
+      <constraints>
+        <domain_type>cell</domain_type>
+        <domain_ids>1</domain_ids>
+        <rejection_strategy>resample</rejection_strategy>
+      </constraints>
+    </source>
+    <output>
+      <summary>false</summary>
+      <tallies>false</tallies>
+    </output>
+    <state_point>
+      <batches>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</batches>
+    </state_point>
+    <source_point>
+      <write>false</write>
+    </source_point>
+    <seed>9200023</seed>
+    <temperature_method>interpolation</temperature_method>
+    <temperature_range>250.0 1200.0</temperature_range>
+  </settings>
+  <tallies>
+    <filter id="1" type="cell">
+      <bins>5</bins>
+    </filter>
+    <tally id="1" name="recoverable_lithium_components">
+      <filters>1</filters>
+      <nuclides>Li6 Li7</nuclides>
+      <scores>(n,Xt)</scores>
+    </tally>
+    <tally id="2" name="all_material_tritium">
+      <scores>(n,Xt)</scores>
+    </tally>
+    <tally id="3" name="all_breeder_tritium">
+      <filters>1</filters>
+      <scores>(n,Xt)</scores>
+    </tally>
+    <tally id="4" name="neutron_diagnostics">
+      <scores>absorption nu-scatter scatter</scores>
+    </tally>
+  </tallies>
+</model>

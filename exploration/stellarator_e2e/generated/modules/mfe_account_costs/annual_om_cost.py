@@ -3,7 +3,9 @@
 TEAx module for Annual_OM_Cost calculation.
 
 CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-concept input) scaled by sqrt of plant-total net electric. CAS71
+concept input) scaled by sqrt of a supplied staffing procurement class.
+WI-079: p_net is a selected net-MWe class, never operating power; staffing
+expenditure stays fixed when the same supplied design changes output. CAS71
 inflation levelization and CAS72 scheduled replacement are documented
 Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
 om_direct is an additive direct term for concepts that specify O&M
@@ -26,9 +28,9 @@ Inputs:
 Outputs:
     - annual_om: annual_om result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:403
+SysML Source: root-0/analyses/mfe_account_costs.sysml:459
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:403
+SysML Source: root-0/analyses/mfe_account_costs.sysml:459
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/annual_om_cost_impl.py
@@ -63,7 +65,9 @@ class Annual_OM_CostModule(ModuleBase[Annual_OM_CostInput, Float]):
     """TEAx module for Annual_OM_Cost calculation.
 
 CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-concept input) scaled by sqrt of plant-total net electric. CAS71
+concept input) scaled by sqrt of a supplied staffing procurement class.
+WI-079: p_net is a selected net-MWe class, never operating power; staffing
+expenditure stays fixed when the same supplied design changes output. CAS71
 inflation levelization and CAS72 scheduled replacement are documented
 Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
 om_direct is an additive direct term for concepts that specify O&M
@@ -86,9 +90,9 @@ Inputs:
 Outputs:
     - annual_om: annual_om result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:403
+SysML Source: root-0/analyses/mfe_account_costs.sysml:459
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:403
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:459
 
     Calculation Specification:
         n_mod_in = 1.0
@@ -99,7 +103,9 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:403
         
 Documentation:
 CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-concept input) scaled by sqrt of plant-total net electric. CAS71
+concept input) scaled by sqrt of a supplied staffing procurement class.
+WI-079: p_net is a selected net-MWe class, never operating power; staffing
+expenditure stays fixed when the same supplied design changes output. CAS71
 inflation levelization and CAS72 scheduled replacement are documented
 Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
 om_direct is an additive direct term for concepts that specify O&M

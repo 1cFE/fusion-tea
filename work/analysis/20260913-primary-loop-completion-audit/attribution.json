@@ -1,0 +1,49 @@
+{
+  "same_scope_canonical_levels": [
+    {
+      "level": 1,
+      "success": true,
+      "issues": 0
+    },
+    {
+      "level": 2,
+      "success": false,
+      "issues": 10
+    },
+    {
+      "level": 3,
+      "success": true,
+      "issues": 0
+    },
+    {
+      "level": 4,
+      "success": true,
+      "issues": 0
+    },
+    {
+      "level": 5,
+      "success": true,
+      "issues": 0
+    },
+    {
+      "level": 6,
+      "success": false,
+      "issues": 279
+    }
+  ],
+  "original_model_suite": {
+    "passed": 652,
+    "skipped": 13,
+    "failed": 1
+  },
+  "changed_existing_nodes": {
+    "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification": [
+      "passed",
+      "failed"
+    ]
+  },
+  "targeted_retry": {
+    "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification": "passed"
+  },
+  "inherited_skips": 13
+}

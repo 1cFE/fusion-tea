@@ -1,0 +1,7 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python exploration/ife_e2e/study/run_viability_study.py --output-dir /tmp/wi048-final-study-grid --limit 2'
+
+4 cases carry a verdict for 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b' (of 4 grid points)
+wrote /tmp/wi048-final-study-grid/acceptance_table.csv: 4 rows, 0 non-boundary mismatch(es), 0 boundary row(s) flagged
+ACCEPTANCE: 100% agreement (modulo flagged boundary rows)
+
+Exit code: 0

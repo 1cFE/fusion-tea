@@ -1,0 +1,10 @@
+{
+  "archive_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "artifact_joins": 12,
+  "corrected_followup": "joins original identity; original bytes unchanged",
+  "first_identity_sha256": "f29e8a2e9afdf6bfc344d8fc6fc6c83061caba01f05b95f212182f4e64f7153f",
+  "publication_ready": false,
+  "scope": "Synthetic empty observations against actual restored blind diagnostic; disposable register only, no reveal or adoption",
+  "second_forward": "refused; original bytes unchanged",
+  "status": "pass"
+}

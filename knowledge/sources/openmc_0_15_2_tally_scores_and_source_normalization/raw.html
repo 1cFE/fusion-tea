@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. Specifying Tallies &mdash; OpenMC Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.openmc.org/en/stable/usersguide/tallies.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/katex.min.js"></script>
+        <script src="../_static/auto-render.min.js"></script>
+        <script src="../_static/katex_autorenderer.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Geometry Visualization" href="plots.html" />
+    <link rel="prev" title="7. Execution Settings" href="settings.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="openmc" /><meta name="readthedocs-version-slug" content="v0.15.2" /><meta name="readthedocs-resolver-filename" content="/usersguide/tallies.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenMC
+            <img src="../_static/openmc_logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.15.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickinstall.html">Quick Install Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openmc-dev/openmc/wiki/Example-Jupyter-Notebooks">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/index.html">Theory and Methodology</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User’s Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="beginners.html">1. A Beginner’s Guide to OpenMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">2. Installation and Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">3. Data Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">4. Basics of Using OpenMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html">5. Material Compositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">6. Defining Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">7. Execution Settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8. Specifying Tallies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filters">8.1. Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scores">8.2. Scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normalization-of-tally-results">8.3. Normalization of Tally Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">9. Geometry Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depletion.html">10. Depletion and Transmutation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decay_sources.html">11. Decay Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">12. Executables and Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">13. Data Processing and Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">14. Running in Parallel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume.html">15. Stochastic Volume Calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variance_reduction.html">16. Variance Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random_ray.html">17. Random Ray Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshoot.html">18. Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/index.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pythonapi/index.html">Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C/C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io_formats/index.html">File Format Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License Agreement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">User’s Guide</a> &raquo;</li>
+      <li><span class="section-number">8. </span>Specifying Tallies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/usersguide/tallies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="specifying-tallies">
+<span id="usersguide-tallies"></span><h1><span class="section-number">8. </span>Specifying Tallies<a class="headerlink" href="#specifying-tallies" title="Permalink to this heading">¶</a></h1>
+<p>In order to obtain estimates of physical quantities in your simulation, you need
+to create one or more tallies using the <a class="reference internal" href="../pythonapi/generated/openmc.Tally.html#openmc.Tally" title="openmc.Tally"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmc.Tally</span></code></a> class. As
+explained in detail in the <a class="reference internal" href="../methods/tallies.html#methods-tallies"><span class="std std-ref">theory manual</span></a>, tallies
+provide estimates of a scoring function times the flux integrated over some
+region of phase space, as in:</p>
+<div class="math">
+\[X = \underbrace{\int d\mathbf{r} \int d\mathbf{\Omega} \int
+dE}_{\text{filters}} \underbrace{f(\mathbf{r}, \mathbf{\Omega},
+E)}_{\text{scores}} \psi (\mathbf{r}, \mathbf{\Omega}, E)\]</div>
+<p>Thus, to specify a tally, we need to specify what regions of phase space should
+be included when deciding whether to score an event as well as what the scoring
+function (<span class="math">\(f\)</span> in the above equation) should be used. The regions of phase
+space are generally called <em>filters</em> and the scoring functions are simply
+called <em>scores</em>.</p>
+<p>The only cases when filters do not correspond directly with the regions of
+phase space are when expansion functions are applied in the integrand, such as
+for Legendre expansions of the scattering kernel.</p>
+<section id="filters">
+<h2><span class="section-number">8.1. </span>Filters<a class="headerlink" href="#filters" title="Permalink to this heading">¶</a></h2>
+<p>To specify the regions of phase space, one must create a
+<a class="reference internal" href="../pythonapi/generated/openmc.Filter.html#openmc.Filter" title="openmc.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmc.Filter</span></code></a>. Since <a class="reference internal" href="../pythonapi/generated/openmc.Filter.html#openmc.Filter" title="openmc.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmc.Filter</span></code></a> is an abstract class, you
+actually need to instantiate one of its sub-classes (for a full listing, see
+<a class="reference internal" href="../pythonapi/base.html#pythonapi-tallies"><span class="std std-ref">Constructing Tallies</span></a>). For example, to indicate that events that occur in a
+given cell should score to the tally, we would create a
+<a class="reference internal" href="../pythonapi/generated/openmc.CellFilter.html#openmc.CellFilter" title="openmc.CellFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmc.CellFilter</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell_filter</span> <span class="o">=</span> <span class="n">openmc</span><span class="o">.</span><span class="n">CellFilter</span><span class="p">([</span><span class="n">fuel</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">moderator</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">reflector</span><span class="o">.</span><span class="n">id</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Another commonly used filter is <a class="reference internal" href="../pythonapi/generated/openmc.EnergyFilter.html#openmc.EnergyFilter" title="openmc.EnergyFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmc.EnergyFilter</span></code></a>, which specifies
+multiple energy bins over which events should be scored. Thus, if we wanted to
+tally events where the incident particle has an energy in the ranges [0 eV, 4
+eV] and [4 eV, 1 MeV], we would do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">energy_filter</span> <span class="o">=</span> <span class="n">openmc</span><span class="o">.</span><span class="n">EnergyFilter</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">1.0e6</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Energies are specified in eV and need to be monotonically increasing.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>An energy bin between zero and the lowest energy specified is not
+included by default as it is in MCNP.</p>
+</div>
+<p>Once you have created a filter, it should be assigned to a <a class="reference internal" href="../pythonapi/generated/openmc.Tally.html#openmc.Tally" title="openmc.Tally"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmc.Tally</span></code></a>
+instance through the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Tally.filters</span></code> attribute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tally</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell_filter</span><span class="p">)</span>
+<span class="n">tally</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">energy_filter</span><span class="p">)</span>
+
+<span class="c1"># This is equivalent</span>
+<span class="n">tally</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="n">cell_filter</span><span class="p">,</span> <span class="n">energy_filter</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are actually not required to assign any filters to a tally. If you
+create a tally with no filters, all events will score to the
+tally. This can be useful if you want to know, for example, a reaction
+rate over your entire model.</p>
+</div>
+</section>
+<section id="scores">
+<span id="usersguide-scores"></span><h2><span class="section-number">8.2. </span>Scores<a class="headerlink" href="#scores" title="Permalink to this heading">¶</a></h2>
+<p>To specify the scoring functions, a list of strings needs to be given to the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">Tally.scores</span></code> attribute. You can score the flux (‘flux’), or a reaction
+rate (‘total’, ‘fission’, etc.). For example, to tally the elastic scattering
+rate and the fission neutron production, you’d assign:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tally</span><span class="o">.</span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;elastic&#39;</span><span class="p">,</span> <span class="s1">&#39;nu-fission&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>With no further specification, you will get the total elastic scattering rate
+and the total fission neutron production. If you want reaction rates for a
+particular nuclide or set of nuclides, you can set the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Tally.nuclides</span></code>
+attribute to a list of strings indicating which nuclides. The nuclide names
+should follow the same <a class="reference internal" href="materials.html#usersguide-naming"><span class="std std-ref">naming convention</span></a> as that used
+for material specification. If we wanted the reaction rates only for U235 and
+U238 (separately), we’d set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tally</span><span class="o">.</span><span class="n">nuclides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U235&#39;</span><span class="p">,</span> <span class="s1">&#39;U238&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can also list ‘all’ as a nuclide which will give you a separate reaction
+rate for every nuclide in the model.</p>
+<p>The following tables show all valid scores:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text"><strong>Flux scores: units are particle-cm per source particle.</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Score</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>flux</p></td>
+<td><p>Total flux.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text"><strong>Reaction scores: units are reactions per source particle.</strong></span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Score</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>absorption</p></td>
+<td><p>Total absorption rate. For incident neutrons, this
+accounts for all reactions that do not produce
+secondary neutrons as well as fission. For incident
+photons, this includes photoelectric and pair
+production.</p></td>
+</tr>
+<tr class="row-odd"><td><p>elastic</p></td>
+<td><p>Elastic scattering reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>fission</p></td>
+<td><p>Total fission reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>scatter</p></td>
+<td><p>Total scattering rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>total</p></td>
+<td><p>Total reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,2nd)</p></td>
+<td><p>(n,2nd) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,2n)</p></td>
+<td><p>(n,2n) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,3n)</p></td>
+<td><p>(n,3n) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,na)</p></td>
+<td><p>(n,n<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,n3a)</p></td>
+<td><p>(n,n3<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,2na)</p></td>
+<td><p>(n,2n<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,3na)</p></td>
+<td><p>(n,3n<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,np)</p></td>
+<td><p>(n,np) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,n2a)</p></td>
+<td><p>(n,n2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,2n2a)</p></td>
+<td><p>(n,2n2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,nd)</p></td>
+<td><p>(n,nd) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,nt)</p></td>
+<td><p>(n,nt) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,n3He)</p></td>
+<td><p>(n,n<sup>3</sup>He) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,nd2a)</p></td>
+<td><p>(n,nd2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,nt2a)</p></td>
+<td><p>(n,nt2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,4n)</p></td>
+<td><p>(n,4n) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,2np)</p></td>
+<td><p>(n,2np) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,3np)</p></td>
+<td><p>(n,3np) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,n2p)</p></td>
+<td><p>(n,n2p) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,n*X*)</p></td>
+<td><p>Level inelastic scattering reaction rate. The <em>X</em>
+indicates what which inelastic level, e.g., (n,n3)
+is third-level inelastic scattering.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,nc)</p></td>
+<td><p>Continuum level inelastic scattering reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,gamma)</p></td>
+<td><p>Radiative capture reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,p)</p></td>
+<td><p>(n,p) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,d)</p></td>
+<td><p>(n,d) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,t)</p></td>
+<td><p>(n,t) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,3He)</p></td>
+<td><p>(n,<sup>3</sup>He) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,a)</p></td>
+<td><p>(n,<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,2a)</p></td>
+<td><p>(n,2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,3a)</p></td>
+<td><p>(n,3<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,2p)</p></td>
+<td><p>(n,2p) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,pa)</p></td>
+<td><p>(n,p<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,t2a)</p></td>
+<td><p>(n,t2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,d2a)</p></td>
+<td><p>(n,d2<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,pd)</p></td>
+<td><p>(n,pd) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>(n,pt)</p></td>
+<td><p>(n,pt) reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>(n,da)</p></td>
+<td><p>(n,d<span class="math">\(\alpha\)</span>) reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>coherent-scatter</p></td>
+<td><p>Coherent (Rayleigh) scattering reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>incoherent-scatter</p></td>
+<td><p>Incoherent (Compton) scattering reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>photoelectric</p></td>
+<td><p>Photoelectric absorption reaction rate.</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-production</p></td>
+<td><p>Pair production reaction rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Arbitrary integer</em></p></td>
+<td><p>An arbitrary integer is interpreted to mean the
+reaction rate for a reaction with a given ENDF MT
+number.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text"><strong>Particle production scores: units are particles produced per
+       source particles.</strong></span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Score</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>delayed-nu-fission</p></td>
+<td><p>Total production of delayed neutrons due to
+fission.</p></td>
+</tr>
+<tr class="row-odd"><td><p>prompt-nu-fission</p></td>
+<td><p>Total production of prompt neutrons due to
+fission.</p></td>
+</tr>
+<tr class="row-even"><td><p>nu-fission</p></td>
+<td><p>Total production of neutrons due to fission.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nu-scatter</p></td>
+<td><p>This score is similar in functionality to the
+<code class="docutils literal notranslate"><span class="pre">scatter</span></code> score except the total production of
+neutrons due to scattering is scored vice simply
+the scattering rate. This accounts for
+multiplicity from (n,2n), (n,3n), and (n,4n)
+reactions.</p></td>
+</tr>
+<tr class="row-even"><td><p>H1-production</p></td>
+<td><p>Total production of H1.</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2-production</p></td>
+<td><p>Total production of H2 (deuterium).</p></td>
+</tr>
+<tr class="row-even"><td><p>H3-production</p></td>
+<td><p>Total production of H3 (tritium).</p></td>
+</tr>
+<tr class="row-odd"><td><p>He3-production</p></td>
+<td><p>Total production of He3.</p></td>
+</tr>
+<tr class="row-even"><td><p>He4-production</p></td>
+<td><p>Total production of He4 (alpha particles).</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text"><strong>Miscellaneous scores: units are indicated for each.</strong></span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Score</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>current</p></td>
+<td><p>Used in combination with a meshsurface filter:
+Partial currents on the boundaries of each cell in
+a mesh. It may not be used in conjunction with any
+other score. Only energy and mesh filters may be
+used.
+Used in combination with a surface filter:
+Net currents on any surface previously defined in
+the geometry. It may be used along with any other
+filter, except meshsurface filters.
+Surfaces can alternatively be defined with cell
+from and cell filters thereby resulting in tallying
+partial currents.
+Units are particles per source particle.</p></td>
+</tr>
+<tr class="row-odd"><td><p>events</p></td>
+<td><p>Number of scoring events. Units are events per
+source particle.</p></td>
+</tr>
+<tr class="row-even"><td><p>inverse-velocity</p></td>
+<td><p>The flux-weighted inverse velocity where the
+velocity is in units of centimeters per second.</p></td>
+</tr>
+<tr class="row-odd"><td><p>heating</p></td>
+<td><p>Total nuclear heating in units of eV per source
+particle. For neutrons, this corresponds to MT=301
+produced by NJOY’s HEATR module while for photons,
+this is tallied from direct photon energy
+deposition. See <a class="reference internal" href="../methods/energy_deposition.html#methods-heating"><span class="std std-ref">Heating and Energy Deposition</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>heating-local</p></td>
+<td><p>Total nuclear heating in units of eV per source
+particle assuming energy from secondary photons is
+deposited locally. Note that this score should only
+be used for incident neutrons. See
+<a class="reference internal" href="../methods/energy_deposition.html#methods-heating"><span class="std std-ref">Heating and Energy Deposition</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>kappa-fission</p></td>
+<td><p>The recoverable energy production rate due to
+fission. The recoverable energy is defined as the
+fission product kinetic energy, prompt and delayed
+neutron kinetic energies, prompt and delayed
+<span class="math">\(\gamma\)</span>-ray total energies, and the total
+energy released by the delayed <span class="math">\(\beta\)</span>
+particles. The neutrino energy does not contribute
+to this response. The prompt and delayed
+<span class="math">\(\gamma\)</span>-rays are assumed to deposit their
+energy locally. Units are eV per source particle.</p></td>
+</tr>
+<tr class="row-even"><td><p>fission-q-prompt</p></td>
+<td><p>The prompt fission energy production rate. This
+energy comes in the form of fission fragment
+nuclei, prompt neutrons, and prompt
+<span class="math">\(\gamma\)</span>-rays. This value depends on the
+incident energy and it requires that the nuclear
+data library contains the optional fission energy
+release data. Energy is assumed to be deposited
+locally. Units are eV per source particle.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fission-q-recoverable</p></td>
+<td><p>The recoverable fission energy production rate.
+This energy comes in the form of fission fragment
+nuclei, prompt and delayed neutrons, prompt and
+delayed <span class="math">\(\gamma\)</span>-rays, and delayed
+<span class="math">\(\beta\)</span>-rays. This tally differs from the
+kappa-fission tally in that it is dependent on
+incident neutron energy and it requires that the
+nuclear data library contains the optional fission
+energy release data. Energy is assumed to be
+deposited locally. Units are eV per source
+paticle.</p></td>
+</tr>
+<tr class="row-even"><td><p>decay-rate</p></td>
+<td><p>The delayed-nu-fission-weighted decay rate where
+the decay rate is in units of inverse seconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p>damage-energy</p></td>
+<td><p>Damage energy production in units of eV per source
+particle. This corresponds to MT=444 produced by
+NJOY’s HEATR module.</p></td>
+</tr>
+<tr class="row-even"><td><p>pulse-height</p></td>
+<td><p>The energy deposited by an entire photon’s history
+(including its progeny). Units are eV per source
+particle. Note that this score can only be combined
+with a cell filter and an energy filter.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="normalization-of-tally-results">
+<span id="usersguide-tally-normalization"></span><h2><span class="section-number">8.3. </span>Normalization of Tally Results<a class="headerlink" href="#normalization-of-tally-results" title="Permalink to this heading">¶</a></h2>
+<p>As described in <a class="reference internal" href="#usersguide-scores"><span class="std std-ref">Scores</span></a>, all tally scores are normalized per
+source particle simulated. However, for analysis of a given system, we usually
+want tally scores in a more natural unit. For example, neutron flux is often
+reported in units of particles/cm<sup>2</sup>-s. For a fixed source simulation,
+it is usually straightforward to convert units if the source rate is known. For
+example, if the system being modeled includes a source that is emitting 10<sup>4</sup> neutrons per second, the tally results just need to be multipled by 10<sup>4</sup>. This can either be done manually or using the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">openmc.SourceBase.strength</span></code> attribute.</p>
+<p>For a <span class="math">\(k\)</span>-eigenvalue calculation, normalizing tally results is not as
+simple because the source rate is not actually known. Instead, we typically know
+the system power, <span class="math">\(P\)</span>, which represents how much energy is deposited per
+unit time. Most of this energy originates from fission, but a small percentage
+also results from other reactions (e.g., photons emitted from <span class="math">\((n,\gamma)\)</span>
+reactions). The most rigorous method to normalize tally results is to run a
+coupled neutron-photon calculation and tally the <code class="docutils literal notranslate"><span class="pre">heating</span></code> score over the
+entire system. This score provides the heating rate in units of [eV/source],
+which we’ll denote <span class="math">\(H\)</span>. Then, calculate the heating rate in J/source as</p>
+<div class="math">
+\[H' = 1.602\times10^{-19} \left [ \frac{\text{J}}{\text{eV}} \right ] \cdot H
+\left [\frac{\text{eV}}{\text{source}} \right ].\]</div>
+<p>Dividing the power by the observed heating rate then gives us a normalization
+factor that can be applied to other tallies:</p>
+<div class="math">
+\[f = \frac{P}{H'} = \frac{[\text{J}/\text{s}]}{[\text{J}/\text{source}]} =
+\left [ \frac{\text{source}}{\text{s}} \right ].\]</div>
+<p>Multiplying by the normalization factor and dividing by volume, we can then get
+the flux in typical units:</p>
+<div class="math">
+\[\phi' = \frac{f\phi}{V} =
+\frac{[\text{source}/\text{s}][\text{particle-cm}/\text{source}]}
+{[\text{cm}^3]} = \left [\frac{\text{particle}}{\text{cm}^2\cdot\text{s}}
+\right ]\]</div>
+<p>There are several slight variations on this procedure:</p>
+<ul class="simple">
+<li><p>Run a neutron-only calculation and estimate the total heating using the
+<code class="docutils literal notranslate"><span class="pre">heating-local</span></code> score (this requires that your nuclear data has local
+heating data available, such as in the official data library at
+<a class="reference external" href="https://openmc.org">https://openmc.org</a>. See <a class="reference internal" href="../methods/energy_deposition.html#methods-heating"><span class="std std-ref">Heating and Energy Deposition</span></a> for more information.)</p></li>
+<li><p>Run a neutron-only calculation and use the <code class="docutils literal notranslate"><span class="pre">kappa-fission</span></code> or
+<code class="docutils literal notranslate"><span class="pre">fission-q-recoverable</span></code> scores along with an estimate of the extra heating
+due to neutron capture reactions.</p></li>
+<li><p>Calculate the overall fission rate and then used a fixed Q value to estimate
+the heating rate.</p></li>
+</ul>
+<p>Note that the only difference between these and the above procedures is in how
+<span class="math">\(H'\)</span> is estimated.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="settings.html" class="btn btn-neutral float-left" title="7. Execution Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plots.html" class="btn btn-neutral float-right" title="9. Geometry Visualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2011-2025, Massachusetts Institute of Technology, UChicago Argonne LLC, and OpenMC contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30411614-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</body>
+</html>

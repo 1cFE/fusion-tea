@@ -1,0 +1,9 @@
+{
+  "salt_return_C": 269.6647299145299,
+  "pinch_fraction_lower_bound_62bar_20K": 0.14369279072432056,
+  "eta445": 0.40277981634249005,
+  "eta480": 0.41135655404954075,
+  "relative_gross_change_fixed_heat": -0.02084988709336999,
+  "ideal_salt_heat_exergy_fraction_at_42C_sink": 0.5040809111334559,
+  "qualification": "Exergy ceiling is necessary only, not an attainable Rankine efficiency; no water-property solution."
+}

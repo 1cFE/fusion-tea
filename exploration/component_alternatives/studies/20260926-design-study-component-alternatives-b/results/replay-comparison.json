@@ -1,0 +1,3800 @@
+{
+  "cases": 498,
+  "all_inputs_identical": true,
+  "all_output_identities_identical": true,
+  "constraint_catalog_identical": true,
+  "absolute_tolerances_identical": true,
+  "relative_tolerance": 1e-09,
+  "old_snapshot_sha256": "1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641",
+  "old_executable": [
+    "14dddcfe3b0af047b18064f7c284b6739a633f20777558b304c37f6637a372a3"
+  ],
+  "new_executable": [
+    "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  ],
+  "case_correspondence": [
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0000",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0000",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0001",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0001",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0002",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0002",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0003",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0003",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0004",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0004",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0005",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0005",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0006",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0006",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0007",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0007",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0008",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0008",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0009",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0009",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0010",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0010",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0011",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0011",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0012",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0012",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0013",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0013",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0014",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0014",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0015",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0015",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0016",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0016",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0017",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0017",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0018",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0018",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0019",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0019",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0020",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0020",
+      "changed_numeric_channels": 80
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0021",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0021",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0022",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0022",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0023",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0023",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0024",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0024",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0025",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0025",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0026",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0026",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0027",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0027",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0028",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0028",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0029",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0029",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0030",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0030",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0031",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0031",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0032",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0032",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0033",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0033",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0034",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0034",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0035",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0035",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0036",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0036",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0037",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0037",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0038",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0038",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0039",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0039",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0040",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0040",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0041",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0041",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0042",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0042",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0043",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0043",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0044",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0044",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0045",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0045",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0046",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0046",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0047",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0047",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0048",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0048",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0049",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0049",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0050",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0050",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0051",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0051",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0052",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0052",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0053",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0053",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0054",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0054",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0055",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0055",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0056",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0056",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0057",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0057",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0058",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0058",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0059",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0059",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0060",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0060",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0061",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0061",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0062",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0062",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0063",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0063",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0064",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0064",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0065",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0065",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0066",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0066",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0067",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0067",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0068",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0068",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0069",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0069",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0070",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0070",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0071",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0071",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0072",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0072",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0073",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0073",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0074",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0074",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0075",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0075",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0076",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0076",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0077",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0077",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0078",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0078",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0079",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0079",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0080",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0080",
+      "changed_numeric_channels": 111
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0081",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0081",
+      "changed_numeric_channels": 121
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0082",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0082",
+      "changed_numeric_channels": 111
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0083",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0083",
+      "changed_numeric_channels": 111
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0084",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0084",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0085",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0085",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0086",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0086",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0087",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0087",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0088",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0088",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0089",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0089",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0090",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0090",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0091",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0091",
+      "changed_numeric_channels": 80
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0092",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0092",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0093",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0093",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0094",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0094",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0095",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0095",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0096",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0096",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0097",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0097",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0098",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0098",
+      "changed_numeric_channels": 102
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0099",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0099",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0100",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0100",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0101",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0101",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0102",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0102",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0103",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0103",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0104",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0104",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0105",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0105",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0106",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0106",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0107",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0107",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0108",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0108",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0109",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0109",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0110",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0110",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0111",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0111",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0112",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0112",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0113",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0113",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0114",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0114",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0115",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0115",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0116",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0116",
+      "changed_numeric_channels": 80
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0117",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0117",
+      "changed_numeric_channels": 80
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0118",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0118",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0119",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0119",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0120",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0120",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0121",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0121",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0122",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0122",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0123",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0123",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0124",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0124",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0125",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0125",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0126",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0126",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0127",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0127",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0128",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0128",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0129",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0129",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0130",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0130",
+      "changed_numeric_channels": 97
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0131",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0131",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0132",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0132",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0133",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0133",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0134",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0134",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0135",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0135",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0136",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0136",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0137",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0137",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0138",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0138",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0139",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0139",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0140",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0140",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0141",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0141",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0142",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0142",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0143",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0143",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0144",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0144",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0145",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0145",
+      "changed_numeric_channels": 97
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0146",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0146",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0147",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0147",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0148",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0148",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0149",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0149",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0150",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0150",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0151",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0151",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0152",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0152",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0153",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0153",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0154",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0154",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0155",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0155",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0156",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0156",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0157",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0157",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0158",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0158",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0159",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0159",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0160",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0160",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0161",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0161",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0162",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0162",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0163",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0163",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0164",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0164",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0165",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0165",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0166",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0166",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0167",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0167",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0168",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0168",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0169",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0169",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0170",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0170",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0171",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0171",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0172",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0172",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0173",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0173",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0174",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0174",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0175",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0175",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0176",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0176",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0177",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0177",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0178",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0178",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0179",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0179",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0180",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0180",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0181",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0181",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0182",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0182",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0183",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0183",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0184",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0184",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0185",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0185",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0186",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0186",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0187",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0187",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0188",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0188",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0189",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0189",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0190",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0190",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0191",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0191",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0192",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0192",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0193",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0193",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0194",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0194",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0195",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0195",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0196",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0196",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0197",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0197",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0198",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0198",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0199",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0199",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0200",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0200",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0201",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0201",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0202",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0202",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0203",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0203",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0204",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0204",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0205",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0205",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0206",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0206",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0207",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0207",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0208",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0208",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0209",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0209",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0210",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0210",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0211",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0211",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0212",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0212",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0213",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0213",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0214",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0214",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0215",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0215",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0216",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0216",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0217",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0217",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0218",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0218",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0219",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0219",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0220",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0220",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0221",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0221",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0222",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0222",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0223",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0223",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0224",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0224",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0225",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0225",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0226",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0226",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0227",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0227",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0228",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0228",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0229",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0229",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0230",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0230",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0231",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0231",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0232",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0232",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0233",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0233",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0234",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0234",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0235",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0235",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0236",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0236",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0237",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0237",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0238",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0238",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0239",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0239",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0240",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0240",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0241",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0241",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0242",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0242",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0243",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0243",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0244",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0244",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0245",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0245",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0246",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0246",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0247",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0247",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0248",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0248",
+      "changed_numeric_channels": 82
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0249",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0249",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0250",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0250",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0251",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0251",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0252",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0252",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0253",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0253",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0254",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0254",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0255",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0255",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0256",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0256",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0257",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0257",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0258",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0258",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0259",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0259",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0260",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0260",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0261",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0261",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0262",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0262",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0263",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0263",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0264",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0264",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0265",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0265",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0266",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0266",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0267",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0267",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0268",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0268",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0269",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0269",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0270",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0270",
+      "changed_numeric_channels": 98
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0271",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0271",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0272",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0272",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0273",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0273",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0274",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0274",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0275",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0275",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0276",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0276",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0277",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0277",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0278",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0278",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0279",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0279",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0280",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0280",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0281",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0281",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0282",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0282",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0283",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0283",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0284",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0284",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0285",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0285",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0286",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0286",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0287",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0287",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0288",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0288",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0289",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0289",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0290",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0290",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0291",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0291",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0292",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0292",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0293",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0293",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0294",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0294",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0295",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0295",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0296",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0296",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0297",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0297",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0298",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0298",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0299",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0299",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0300",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0300",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0301",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0301",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0302",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0302",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0303",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0303",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0304",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0304",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0305",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0305",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0306",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0306",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0307",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0307",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0308",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0308",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0309",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0309",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0310",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0310",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0311",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0311",
+      "changed_numeric_channels": 118
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0312",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0312",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0313",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0313",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0314",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0314",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0315",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0315",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0316",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0316",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0317",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0317",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0318",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0318",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0319",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0319",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0320",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0320",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0321",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0321",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0322",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0322",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0323",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0323",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0324",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0324",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0325",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0325",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0326",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0326",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0327",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0327",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0328",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0328",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0329",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0329",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0330",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0330",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0331",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0331",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0332",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0332",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0333",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0333",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0334",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0334",
+      "changed_numeric_channels": 87
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0335",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0335",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0336",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0336",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0337",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0337",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0338",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0338",
+      "changed_numeric_channels": 110
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0339",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0339",
+      "changed_numeric_channels": 88
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0340",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0340",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0341",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0341",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0342",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0342",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0343",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0343",
+      "changed_numeric_channels": 111
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0344",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0344",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0345",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0345",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0346",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0346",
+      "changed_numeric_channels": 81
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0347",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0347",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0348",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0348",
+      "changed_numeric_channels": 91
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0349",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0349",
+      "changed_numeric_channels": 71
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0350",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0350",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0351",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0351",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0352",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0352",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0353",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0353",
+      "changed_numeric_channels": 108
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0354",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0354",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0355",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0355",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0356",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0356",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0357",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0357",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0358",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0358",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0359",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0359",
+      "changed_numeric_channels": 107
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0360",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0360",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0361",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0361",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0362",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0362",
+      "changed_numeric_channels": 89
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0363",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0363",
+      "changed_numeric_channels": 109
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0364",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0364",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0365",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0365",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0366",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0366",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0367",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0367",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0368",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0368",
+      "changed_numeric_channels": 90
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0369",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0369",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-20",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0370",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0370",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-25",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0371",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0371",
+      "changed_numeric_channels": 80
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-40",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0372",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0372",
+      "changed_numeric_channels": 80
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua30-30-50",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0373",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0373",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua40-40-60",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0374",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0374",
+      "changed_numeric_channels": 70
+    },
+    {
+      "case": "steam-q2500-n10-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0375",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0375",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n10-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0376",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0376",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n10-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0377",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0377",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n10-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0378",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0378",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n10-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0379",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0379",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n10-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0380",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0380",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n11-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0381",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0381",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n11-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0382",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0382",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n11-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0383",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0383",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n11-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0384",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0384",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n11-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0385",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0385",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n11-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0386",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0386",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n12-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0387",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0387",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n12-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0388",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0388",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n12-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0389",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0389",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n12-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0390",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0390",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n12-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0391",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0391",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n12-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0392",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0392",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n14-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0393",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0393",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n14-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0394",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0394",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n14-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0395",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0395",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n14-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0396",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0396",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2500-n14-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0397",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0397",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "steam-q2800-n10-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0398",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0398",
+      "changed_numeric_channels": 84
+    },
+    {
+      "case": "steam-q2800-n10-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0399",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0399",
+      "changed_numeric_channels": 84
+    },
+    {
+      "case": "steam-q2800-n10-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0400",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0400",
+      "changed_numeric_channels": 84
+    },
+    {
+      "case": "steam-q2800-n10-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0401",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0401",
+      "changed_numeric_channels": 84
+    },
+    {
+      "case": "steam-q2800-n10-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0402",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0402",
+      "changed_numeric_channels": 84
+    },
+    {
+      "case": "steam-q2800-n10-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0403",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0403",
+      "changed_numeric_channels": 84
+    },
+    {
+      "case": "steam-q2800-n11-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0404",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0404",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n11-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0405",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0405",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n11-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0406",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0406",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n11-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0407",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0407",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n11-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0408",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0408",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n11-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0409",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0409",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n12-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0410",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0410",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n12-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0411",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0411",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n12-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0412",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0412",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n12-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0413",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0413",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n12-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0414",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0414",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n12-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0415",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0415",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n14-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0416",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0416",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n14-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0417",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0417",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n14-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0418",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0418",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n14-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0419",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0419",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q2800-n14-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0420",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0420",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "steam-q3000-n10-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0421",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0421",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n10-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0422",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0422",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n10-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0423",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0423",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n10-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0424",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0424",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n10-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0425",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0425",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n10-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0426",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0426",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n11-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0427",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0427",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n11-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0428",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0428",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n11-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0429",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0429",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n11-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0430",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0430",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n11-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0431",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0431",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n11-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0432",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0432",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n12-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0433",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0433",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n12-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0434",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0434",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n12-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0435",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0435",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n12-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0436",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0436",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n12-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0437",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0437",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n12-k4-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0438",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0438",
+      "changed_numeric_channels": 101
+    },
+    {
+      "case": "steam-q3000-n14-k2-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0439",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0439",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "steam-q3000-n14-k2-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0440",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0440",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "steam-q3000-n14-k3-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0441",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0441",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "steam-q3000-n14-k3-pump250",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0442",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0442",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "steam-q3000-n14-k4-pump225",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0443",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0443",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0444",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0444",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "sensitivity-q2500-gas-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0445",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0445",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-steam-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0446",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0446",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-steam-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0447",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0447",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-both-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0448",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0448",
+      "changed_numeric_channels": 119
+    },
+    {
+      "case": "sensitivity-q2500-both-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0449",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0449",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0450",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0450",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0451",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0451",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-steam-quote-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0452",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0452",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-steam-quote-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0453",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0453",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x0.5-steam-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0454",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0454",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x1.5-steam-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0455",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0455",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-recurring-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0456",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0456",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-recurring-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0457",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0457",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-common-source-pv-5e+08",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0458",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0458",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2500-common-source-pv-2e+09",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0459",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0459",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "controller-q2500-gas-500",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0460",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0460",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "controller-q2500-steam-500",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0461",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0461",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0462",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0462",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-gas-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0463",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0463",
+      "changed_numeric_channels": 99
+    },
+    {
+      "case": "sensitivity-q2800-steam-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0464",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0464",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-steam-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0465",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0465",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-both-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0466",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0466",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-both-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0467",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0467",
+      "changed_numeric_channels": 99
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0468",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0468",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0469",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0469",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-steam-quote-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0470",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0470",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-steam-quote-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0471",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0471",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x0.5-steam-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0472",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0472",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x1.5-steam-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0473",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0473",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-recurring-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0474",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0474",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-recurring-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0475",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0475",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-common-source-pv-5e+08",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0476",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0476",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q2800-common-source-pv-2e+09",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0477",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0477",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "controller-q2800-gas-500",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0478",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0478",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "controller-q2800-steam-500",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0479",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0479",
+      "changed_numeric_channels": 100
+    },
+    {
+      "case": "sensitivity-q3000-gas-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0480",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0480",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-gas-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0481",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0481",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q3000-steam-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0482",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0482",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-steam-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0483",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0483",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-both-eta-0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0484",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0484",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-both-eta+0.03",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0485",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0485",
+      "changed_numeric_channels": 120
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0486",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0486",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0487",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0487",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-steam-quote-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0488",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0488",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-steam-quote-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0489",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0489",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x0.5-steam-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0490",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0490",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x1.5-steam-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0491",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0491",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-recurring-x0.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0492",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0492",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-recurring-x1.5",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0493",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0493",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-common-source-pv-5e+08",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0494",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0494",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "sensitivity-q3000-common-source-pv-2e+09",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0495",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0495",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "controller-q3000-gas-500",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0496",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0496",
+      "changed_numeric_channels": 117
+    },
+    {
+      "case": "controller-q3000-steam-500",
+      "old_candidate_id": "20260926-design-study-component-alternatives:c0497",
+      "new_candidate_id": "20260926-design-study-component-alternatives-b:c0497",
+      "changed_numeric_channels": 117
+    }
+  ],
+  "predicate_changes": [],
+  "maximum_absolute_changes_by_channel": {
+    "component_alternatives__plant__electrical__evaluate__generator_loss": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 10.38151133084547,
+      "after": 10.381511331001084,
+      "absolute_change": 1.5561418820198014e-10
+    },
+    "component_alternatives__plant__electrical__evaluate__gross_electric": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 508.69405521142755,
+      "after": 508.69405521905264,
+      "absolute_change": 7.625089892826509e-09
+    },
+    "component_alternatives__plant__electrical__evaluate__net_electric": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 508.69405521142755,
+      "after": 508.69405521905264,
+      "absolute_change": 7.625089892826509e-09
+    },
+    "component_alternatives__plant__electrical__evaluate__net_shaft": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 519.075566542273,
+      "after": 519.0755665500537,
+      "absolute_change": 7.780727173667401e-09
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__actual_heat": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 2052.6297282301257,
+      "after": 2052.629728236104,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__raw_heat_residual": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": -1117.8187023393643,
+      "after": -1117.8187023333862,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__raw_return_residual": {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "before": 105.44210064726008,
+      "after": 105.44210064678782,
+      "absolute_change": 4.72255123895593e-10
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__steam_heat": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 2052.6297282301257,
+      "after": 2052.629728236104,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__unremoved_heat": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 1117.8187023393643,
+      "after": 1117.8187023333862,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__annual_energy": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": -8284329.920145388,
+      "after": -8284330.0859542675,
+      "absolute_change": 0.16580887977033854
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual": {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-25",
+      "before": -9.67588675848674e-09,
+      "after": 9.094947017729282e-13,
+      "absolute_change": 9.676796253188513e-09
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude": {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-25",
+      "before": 9.67588675848674e-09,
+      "after": 9.094947017729282e-13,
+      "absolute_change": 9.674977263784967e-09
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__cost_per_net_MWh": {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-20",
+      "before": 119.56031712546974,
+      "after": 119.56031727930412,
+      "absolute_change": 1.538343781248841e-07
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__discounted_energy": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": -127350455.98797517,
+      "after": -127350458.53686404,
+      "absolute_change": 2.5488888770341873
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__electrical_load": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": 1865.5176491904367,
+      "after": 1865.5176714604158,
+      "absolute_change": 2.22699791265768e-05
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__energy_residual": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-25",
+      "before": 9.427822078578174e-09,
+      "after": -9.094947017729282e-13,
+      "absolute_change": 9.428731573279947e-09
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__gross_electric": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 508.69405521142755,
+      "after": 508.69405521905264,
+      "absolute_change": 7.625089892826509e-09
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__net_electric": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": -1112.5879559690288,
+      "after": -1112.5879782372103,
+      "absolute_change": 2.2268181510298746e-05
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__total_rejected": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": 3782.846371710214,
+      "after": 3782.8463939810417,
+      "absolute_change": 2.2270827685133554e-05
+    },
+    "component_alternatives__plant__gas_ledger__evaluate__unremoved_heat": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 1117.8187023393643,
+      "after": 1117.8187023333862,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__gas_loss_duty_capacity__evaluate__margin": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 89.51848866915455,
+      "after": 89.51848866899891,
+      "absolute_change": 1.5563728084089234e-10
+    },
+    "component_alternatives__plant__gas_loss_electric_capacity__evaluate__margin": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 0.9348932811126048,
+      "after": 0.9348932811116382,
+      "absolute_change": 9.666711875411238e-13
+    },
+    "component_alternatives__plant__gas_loss_flow_capacity__evaluate__margin": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 2747.716568071562,
+      "after": 2747.716568067816,
+      "absolute_change": 3.746208676602691e-09
+    },
+    "component_alternatives__plant__gas_loss_water__evaluate__p_cooling_pump_electric_MW": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 0.06510671888739514,
+      "after": 0.06510671888836189,
+      "absolute_change": 9.667544542679707e-13
+    },
+    "component_alternatives__plant__gas_loss_water__evaluate__p_cooling_pump_shaft_MW": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 0.06185138294302537,
+      "after": 0.061851382943943795,
+      "absolute_change": 9.184250582272568e-13
+    },
+    "component_alternatives__plant__gas_loss_water__evaluate__q_cooling_motor_loss_MW": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 0.003255335944369768,
+      "after": 0.0032553359444180974,
+      "absolute_change": 4.8329396040713846e-14
+    },
+    "component_alternatives__plant__gas_loss_water__evaluate__q_total_rejection_MW": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 10.546618049732851,
+      "after": 10.546618049889455,
+      "absolute_change": 1.5660361896152608e-10
+    },
+    "component_alternatives__plant__gas_loss_water__evaluate__water_flow_kg_s": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 252.28343192843786,
+      "after": 252.283431932184,
+      "absolute_change": 3.7461234114744e-09
+    },
+    "component_alternatives__plant__gas_losses__evaluate__generator_loss": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 10.381511330845456,
+      "after": 10.381511331001093,
+      "absolute_change": 1.5563728084089234e-10
+    },
+    "component_alternatives__plant__gas_losses__evaluate__rejection_load": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 10.481511330845455,
+      "after": 10.481511331001093,
+      "absolute_change": 1.5563728084089234e-10
+    },
+    "component_alternatives__plant__generator_capacity__evaluate__margin": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 3091.3059447885726,
+      "after": 3091.3059447809474,
+      "absolute_change": 7.62520357966423e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__accepted_heat": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 2052.6297282301257,
+      "after": 2052.629728236104,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__closure_residual": {
+      "case": "gas-q2500-m1750-r1.5-ua40-40-60",
+      "before": 9.897121344693005e-09,
+      "after": -4.547473508864641e-13,
+      "absolute_change": 9.897576092043892e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__divertor_secondary_in": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__divertor_secondary_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__divertor_stream_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_capability": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 2940.813699614788,
+      "after": 2940.8136996255853,
+      "absolute_change": 1.0797066352097318e-08
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_cold_terminal_difference": {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-20",
+      "before": 108.47108796944826,
+      "after": 108.47108796910027,
+      "absolute_change": 3.4799541026586667e-10
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_hot_terminal_difference": {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-20",
+      "before": 38.93824628950904,
+      "after": 38.93824628960226,
+      "absolute_change": 9.322320693172514e-11
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_return": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 527.8753004796615,
+      "after": 527.875300478482,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_secondary_in": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 451.9116596636746,
+      "after": 451.91165966249514,
+      "absolute_change": 1.1794440979429055e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_secondary_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_transferred": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 2052.6297282301257,
+      "after": 2052.629728236104,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_unmet": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 1117.8187023393643,
+      "after": 1117.8187023333862,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__heater_inlet": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 451.9116596636746,
+      "after": 451.91165966249514,
+      "absolute_change": 1.1794440979429055e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__iterations": {
+      "case": "gas-q3000-m1500-r1.8-ua40-40-60",
+      "before": 30.0,
+      "after": 53.0,
+      "absolute_change": 23.0
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__mixed_outlet": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__pbli_secondary_in": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__pbli_secondary_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__pbli_stream_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799901786,
+      "after": 702.0968799889991,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__turbine_temperature": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 702.0968799910843,
+      "after": 702.0968799889991,
+      "absolute_change": 2.0851302906521596e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__unmet_heat": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 1117.8187023393643,
+      "after": 1117.8187023333862,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__precooler__evaluate__heat_into_fluid": {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "before": -849.2094673558835,
+      "after": -849.2094673609439,
+      "absolute_change": 5.060428520664573e-09
+    },
+    "component_alternatives__plant__recuperator__evaluate__cold_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 451.9116596636746,
+      "after": 451.91165966249514,
+      "absolute_change": 1.1794440979429055e-09
+    },
+    "component_alternatives__plant__recuperator__evaluate__hot_out": {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "before": 401.59551372516665,
+      "after": 401.5955137257235,
+      "absolute_change": 5.568381311604753e-10
+    },
+    "component_alternatives__plant__recuperator__evaluate__recovered_heat": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 837.8395441098324,
+      "after": 837.8395440975831,
+      "absolute_change": 1.224930201715324e-08
+    },
+    "component_alternatives__plant__recuperator_duty_capacity__evaluate__margin": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 3162.1604558901677,
+      "after": 3162.1604559024167,
+      "absolute_change": 1.2249074643477798e-08
+    },
+    "component_alternatives__plant__rejection_capacity__evaluate__margin": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": 1217.153628289786,
+      "after": 1217.1536060189583,
+      "absolute_change": 2.2270827685133554e-05
+    },
+    "component_alternatives__plant__return_control__evaluate__capability_at_solution": {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "before": 2052.6297282301257,
+      "after": 2052.629728236104,
+      "absolute_change": 5.978108674753457e-09
+    },
+    "component_alternatives__plant__return_control__evaluate__capability_open": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 2940.813699614788,
+      "after": 2940.8136996255853,
+      "absolute_change": 1.0797066352097318e-08
+    },
+    "component_alternatives__plant__return_control__evaluate__exchanger_return": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 548.3830240278278,
+      "after": 548.3830240253471,
+      "absolute_change": 2.4806467990856618e-09
+    },
+    "component_alternatives__plant__return_control__evaluate__mixed_return": {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "before": 670.7182047823744,
+      "after": 670.7182047819022,
+      "absolute_change": 4.72255123895593e-10
+    },
+    "component_alternatives__plant__return_control__evaluate__return_residual": {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "before": 105.44210064726008,
+      "after": 105.44210064678782,
+      "absolute_change": 4.72255123895593e-10
+    },
+    "component_alternatives__plant__return_control__evaluate__return_residual_magnitude": {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "before": 105.44210064726008,
+      "after": 105.44210064678782,
+      "absolute_change": 4.72255123895593e-10
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__bypass_flow": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 11.730025921379365,
+      "after": 11.730025922814093,
+      "absolute_change": 1.4347278920467943e-09
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__bypass_flow_margin": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 1988.2699740786206,
+      "after": 1988.269974077186,
+      "absolute_change": 1.4347278920467943e-09
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__bypass_fraction_margin": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 0.49564899824216263,
+      "after": 0.4956489982416305,
+      "absolute_change": 5.321298957028375e-13
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__duty_correction": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": -8.62200977280736e-10,
+      "after": 0.0,
+      "absolute_change": 8.62200977280736e-10
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__exchanger_flow_margin": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 1315.7931878701565,
+      "after": 1315.7931878715913,
+      "absolute_change": 1.4347278920467943e-09
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__raw_heat_residual": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 8.62200977280736e-10,
+      "after": 0.0,
+      "absolute_change": 8.62200977280736e-10
+    },
+    "component_alternatives__plant__steam_boundary__evaluate__raw_return_residual": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": -6.161826604511589e-11,
+      "after": 0.0,
+      "absolute_change": 6.161826604511589e-11
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__bypass_fraction": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 0.0043510017578373885,
+      "after": 0.0043510017583695,
+      "absolute_change": 5.321116811063398e-13
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__capability_at_solution": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 2938.4527131786235,
+      "after": 2938.4527131777613,
+      "absolute_change": 8.62200977280736e-10
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__effectiveness_at_solution": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 0.9165508688447903,
+      "after": 0.9165508688450112,
+      "absolute_change": 2.2093438190040615e-13
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__exchanger_primary_flow": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 2684.2068121298435,
+      "after": 2684.2068121284087,
+      "absolute_change": 1.4347278920467943e-09
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__exchanger_return": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 562.3433001656982,
+      "after": 562.3433001656474,
+      "absolute_change": 5.0818016461562365e-11
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__mixed_return": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 563.2605204872411,
+      "after": 563.2605204873028,
+      "absolute_change": 6.161826604511589e-11
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__ntu_at_solution": {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-20",
+      "before": 10.597950053671306,
+      "after": 10.597950053675639,
+      "absolute_change": 4.332534331297211e-12
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__return_residual": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": -6.161826604511589e-11,
+      "after": 0.0,
+      "absolute_change": 6.161826604511589e-11
+    },
+    "component_alternatives__plant__steam_return_control__evaluate__return_residual_magnitude": {
+      "case": "steam-q2800-n11-k2-pump225",
+      "before": 6.161826604511589e-11,
+      "after": 0.0,
+      "absolute_change": 6.161826604511589e-11
+    },
+    "component_alternatives__plant__turbine__evaluate__shaft_produced": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 2911.659796240059,
+      "after": 2911.65979624784,
+      "absolute_change": 7.780727173667401e-09
+    },
+    "component_alternatives__plant__turbine__evaluate__temperature_out": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 465.8756520655051,
+      "after": 465.87565206412154,
+      "absolute_change": 1.383568815072067e-09
+    },
+    "component_alternatives__plant__turbine_capacity__evaluate__margin": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "before": 4088.340203759941,
+      "after": 4088.34020375216,
+      "absolute_change": 7.780727173667401e-09
+    },
+    "component_alternatives__plant__water_ic1__evaluate__energy_residual": {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-20",
+      "before": -2.1094237467877974e-13,
+      "after": -5.861977570020827e-14,
+      "absolute_change": 1.5232259897857148e-13
+    },
+    "component_alternatives__plant__water_ic1__evaluate__flow_margin": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 54765.57802519712,
+      "after": 54765.57802108748,
+      "absolute_change": 4.1096427594311535e-06
+    },
+    "component_alternatives__plant__water_ic1__evaluate__iterations": {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-20",
+      "before": 24.0,
+      "after": 53.0,
+      "absolute_change": 29.0
+    },
+    "component_alternatives__plant__water_ic1__evaluate__min_gap": {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "before": 6.613005747467916,
+      "after": 6.613005747420431,
+      "absolute_change": 4.7485571030847495e-11
+    },
+    "component_alternatives__plant__water_ic1__evaluate__power_margin": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 18.32636462475788,
+      "after": 18.326364623697305,
+      "absolute_change": 1.0605738509639195e-09
+    },
+    "component_alternatives__plant__water_ic1__evaluate__pump_electric": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 11.673635375242121,
+      "after": 11.673635376302695,
+      "absolute_change": 1.0605738509639195e-09
+    },
+    "component_alternatives__plant__water_ic1__evaluate__required_ua": {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "before": 24.999999999906514,
+      "after": 25.0,
+      "absolute_change": 9.348610774395638e-11
+    },
+    "component_alternatives__plant__water_ic1__evaluate__total_rejection": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 964.8089256991796,
+      "after": 964.8089257002401,
+      "absolute_change": 1.060584509104956e-09
+    },
+    "component_alternatives__plant__water_ic1__evaluate__ua_residual": {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "before": -9.348610774395638e-11,
+      "after": 0.0,
+      "absolute_change": 9.348610774395638e-11
+    },
+    "component_alternatives__plant__water_ic1__evaluate__water_flow": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 45234.42197480288,
+      "after": 45234.42197891252,
+      "absolute_change": 4.1096427594311535e-06
+    },
+    "component_alternatives__plant__water_ic1__evaluate__water_outlet_C": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 30.101509735881116,
+      "after": 30.101509735423168,
+      "absolute_change": 4.5794834591106337e-10
+    },
+    "component_alternatives__plant__water_ic2__evaluate__energy_residual": {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-20",
+      "before": -2.1094237467877974e-13,
+      "after": -5.861977570020827e-14,
+      "absolute_change": 1.5232259897857148e-13
+    },
+    "component_alternatives__plant__water_ic2__evaluate__flow_margin": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 54765.57802519712,
+      "after": 54765.57802108748,
+      "absolute_change": 4.1096427594311535e-06
+    },
+    "component_alternatives__plant__water_ic2__evaluate__iterations": {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-20",
+      "before": 24.0,
+      "after": 53.0,
+      "absolute_change": 29.0
+    },
+    "component_alternatives__plant__water_ic2__evaluate__min_gap": {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "before": 6.613005747467916,
+      "after": 6.613005747420431,
+      "absolute_change": 4.7485571030847495e-11
+    },
+    "component_alternatives__plant__water_ic2__evaluate__power_margin": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 18.32636462475788,
+      "after": 18.326364623697305,
+      "absolute_change": 1.0605738509639195e-09
+    },
+    "component_alternatives__plant__water_ic2__evaluate__pump_electric": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 11.673635375242121,
+      "after": 11.673635376302695,
+      "absolute_change": 1.0605738509639195e-09
+    },
+    "component_alternatives__plant__water_ic2__evaluate__required_ua": {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "before": 24.999999999906514,
+      "after": 25.0,
+      "absolute_change": 9.348610774395638e-11
+    },
+    "component_alternatives__plant__water_ic2__evaluate__total_rejection": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 964.8089256991796,
+      "after": 964.8089257002401,
+      "absolute_change": 1.060584509104956e-09
+    },
+    "component_alternatives__plant__water_ic2__evaluate__ua_residual": {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "before": -9.348610774395638e-11,
+      "after": 0.0,
+      "absolute_change": 9.348610774395638e-11
+    },
+    "component_alternatives__plant__water_ic2__evaluate__water_flow": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 45234.42197480288,
+      "after": 45234.42197891252,
+      "absolute_change": 4.1096427594311535e-06
+    },
+    "component_alternatives__plant__water_ic2__evaluate__water_outlet_C": {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "before": 30.101509735881116,
+      "after": 30.101509735423168,
+      "absolute_change": 4.5794834591106337e-10
+    },
+    "component_alternatives__plant__water_pre__evaluate__bracket_high_ua": {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-20",
+      "before": 352.15323019538965,
+      "after": 352.1532302007545,
+      "absolute_change": 5.3648250286642e-09
+    },
+    "component_alternatives__plant__water_pre__evaluate__bracket_low_ua": {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-20",
+      "before": 11.749066579670414,
+      "after": 11.749066579783213,
+      "absolute_change": 1.127986593019159e-10
+    },
+    "component_alternatives__plant__water_pre__evaluate__duty": {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "before": 849.2094673558835,
+      "after": 849.2094673609439,
+      "absolute_change": 5.060428520664573e-09
+    },
+    "component_alternatives__plant__water_pre__evaluate__duty_margin": {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "before": 1150.7905326441164,
+      "after": 1150.790532639056,
+      "absolute_change": 5.060428520664573e-09
+    },
+    "component_alternatives__plant__water_pre__evaluate__energy_residual": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": -1.77351466845721e-11,
+      "after": -1.750777300912887e-11,
+      "absolute_change": 2.2737367544323206e-13
+    },
+    "component_alternatives__plant__water_pre__evaluate__flow_margin": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": -7113405.915089925,
+      "after": -7113406.001384442,
+      "absolute_change": 0.0862945169210434
+    },
+    "component_alternatives__plant__water_pre__evaluate__iterations": {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-20",
+      "before": 33.0,
+      "after": 55.0,
+      "absolute_change": 22.0
+    },
+    "component_alternatives__plant__water_pre__evaluate__power_margin": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": -1831.561766242542,
+      "after": -1831.5617885125455,
+      "absolute_change": 2.2270003455560072e-05
+    },
+    "component_alternatives__plant__water_pre__evaluate__pump_electric": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": 1861.561766242542,
+      "after": 1861.5617885125455,
+      "absolute_change": 2.2270003455560072e-05
+    },
+    "component_alternatives__plant__water_pre__evaluate__required_ua": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-25",
+      "before": 25.00000000009971,
+      "after": 25.0,
+      "absolute_change": 9.971046210921486e-11
+    },
+    "component_alternatives__plant__water_pre__evaluate__total_rejection": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": 2731.5639790570594,
+      "after": 2731.564001327875,
+      "absolute_change": 2.227081540695508e-05
+    },
+    "component_alternatives__plant__water_pre__evaluate__ua_residual": {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-25",
+      "before": 9.971046210921486e-11,
+      "after": 0.0,
+      "absolute_change": 9.971046210921486e-11
+    },
+    "component_alternatives__plant__water_pre__evaluate__water_flow": {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "before": 7213405.915089925,
+      "after": 7213406.001384442,
+      "absolute_change": 0.0862945169210434
+    },
+    "component_alternatives__plant__water_pre__evaluate__water_outlet_C": {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "before": 47.09336566252958,
+      "after": 47.093365661936815,
+      "absolute_change": 5.92763171880506e-10
+    },
+    "component_alternatives__plant__gas_loss_water__evaluate__water_energy_residual_MW": {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-20",
+      "before": -3.552713678800501e-15,
+      "after": 1.7763568394002505e-15,
+      "absolute_change": 5.329070518200751e-15
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__bypass_flow": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 172.25294839910157,
+      "after": 172.25294842969197,
+      "absolute_change": 3.0590399546781555e-08
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__bypass_flow_margin": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 1827.7470516008984,
+      "after": 1827.747051570308,
+      "absolute_change": 3.0590399546781555e-08
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__bypass_fraction_margin": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 0.44036602926423096,
+      "after": 0.4403660292536407,
+      "absolute_change": 1.0590250898445674e-11
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__duty_correction": {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-20",
+      "before": -9.5815266831778e-10,
+      "after": 0.0,
+      "absolute_change": 9.5815266831778e-10
+    },
+    "component_alternatives__plant__gas_boundary__evaluate__exchanger_flow_margin": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 1283.7491933442202,
+      "after": 1283.7491933748106,
+      "absolute_change": 3.0590399546781555e-08
+    },
+    "component_alternatives__plant__return_control__evaluate__bypass_fraction": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 0.05963397073576904,
+      "after": 0.05963397074635929,
+      "absolute_change": 1.0590250898445674e-11
+    },
+    "component_alternatives__plant__return_control__evaluate__effectiveness_at_solution": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 0.8859046332861246,
+      "after": 0.8859046332888797,
+      "absolute_change": 2.7551294579097885e-12
+    },
+    "component_alternatives__plant__return_control__evaluate__exchanger_primary_flow": {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "before": 2716.25080665578,
+      "after": 2716.2508066251894,
+      "absolute_change": 3.0590399546781555e-08
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_hot": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 735.7491963445472,
+      "after": 735.7491963433677,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__heat_exchangers__evaluate__he_hot_bound_margin": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 37.40080365545282,
+      "after": 37.40080365663232,
+      "absolute_change": 1.1795009413617663e-09
+    },
+    "component_alternatives__plant__return_control__evaluate__ntu_at_solution": {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "before": 5.476137980847402,
+      "after": 5.476137980884368,
+      "absolute_change": 3.696598582791921e-11
+    },
+    "component_alternatives__plant__water_pre__evaluate__min_gap": {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-20",
+      "before": 9.065312432700608,
+      "after": 9.065312432988172,
+      "absolute_change": 2.8756375058947015e-10
+    }
+  }
+}

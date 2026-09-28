@@ -1,0 +1,10 @@
+{
+  "study_id": "20260918-layout-based-facilities",
+  "executable_fingerprint": "21d2bda3596ab0df38356bac9e404680ca6a836099a89dc0a2e8f6f73edb9208",
+  "model_contract_fingerprint": "a913cbcf04a82403d8a7c51e13fc09718596d3dc1557b06c7b583481476cdc4d",
+  "study_definition_fingerprint": "7e1141ee15f471666735e88adb3967edb72bdaf735ec15d1d4f22e938630658d",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "551eea3fc59e882b7c4e4b8be799af4097953a7c9a71e9917dc6b384257d3c10"
+}

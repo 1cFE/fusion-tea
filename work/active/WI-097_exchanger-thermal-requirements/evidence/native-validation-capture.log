@@ -1,0 +1,70 @@
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 17 SysML files
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 18 SysML files
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+{
+  "2": {
+    "baseline_count": 105,
+    "current_count": 105,
+    "added": [],
+    "removed": []
+  },
+  "6": {
+    "baseline_count": 498,
+    "current_count": 535,
+    "added": [
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::control_mode_used' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_required_hot' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_required_hot_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_hx_return' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_mixed_return' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_active_flow' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_bypass_fraction' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_capability_at_solution' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_return_residual' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_return_residual_magnitude' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_hot_approach_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_cold_approach_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::he_control_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_required_hot' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_required_hot_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_hx_return' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_mixed_return' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_active_flow' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_bypass_fraction' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_capability_at_solution' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_return_residual' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_return_residual_magnitude' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_hot_approach_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_cold_approach_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_control_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_required_hot' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_required_hot_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_hx_return' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_mixed_return' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_active_flow' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_bypass_fraction' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_capability_at_solution' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_return_residual' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_return_residual_magnitude' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_hot_approach_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_cold_approach_margin' at file:MODELS/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_control_margin' at file:MODELS/plant.sysml:LINE"
+    ],
+    "removed": []
+  }
+}

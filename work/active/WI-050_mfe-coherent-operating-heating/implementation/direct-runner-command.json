@@ -1,0 +1,9 @@
+{
+  "command": [
+    ".codex-test/run",
+    "python",
+    "/tmp/wi050-implementation-ccj8kjq5/direct-consumer/run_stellaris_single.py"
+  ],
+  "package": "/tmp/wi050-implementation-ccj8kjq5/generated",
+  "exit": 0
+}

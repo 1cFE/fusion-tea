@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-07",
+  "question": "What exact processed nuclear data authority and tritium product tally semantics support the isolated OpenMC0.15.2 runtime?",
+  "consumer": "work/orchestration/goals/computed-tritium-breeding/goal.md",
+  "gap_type": "runtime_nuclear_data_and_tally_authority",
+  "priority": "P1",
+  "where_to_look": [
+    "https://github.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/tree/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d",
+    "https://docs.openmc.org/en/v0.15.2/usersguide/tallies.html"
+  ],
+  "limits": {
+    "max_searches": 0,
+    "max_captures": 2
+  }
+}

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="868.68pt" height="863.28pt" viewBox="0 0 868.68 863.28" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-20T08:03:57.492679</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 863.28 
+L 868.68 863.28 
+L 868.68 0 
+L 0 0 
+z
+" style="fill: #f7f9fc"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 40.113 351.8064 
+L 828.567 351.8064 
+Q 843.633 351.8064 843.633 336.8376 
+L 843.633 110.6424 
+Q 843.633 95.6736 828.567 95.6736 
+L 40.113 95.6736 
+Q 25.047 95.6736 25.047 110.6424 
+L 25.047 336.8376 
+Q 25.047 351.8064 40.113 351.8064 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #ffffff; stroke: #2463a5; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 40.113 692.7624 
+L 422.622 692.7624 
+Q 437.688 692.7624 437.688 677.7936 
+L 437.688 405.8604 
+Q 437.688 390.8916 422.622 390.8916 
+L 40.113 390.8916 
+Q 25.047 390.8916 25.047 405.8604 
+L 25.047 677.7936 
+Q 25.047 692.7624 40.113 692.7624 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #ffffff; stroke: #087e83; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 487.908 692.7624 
+L 828.567 692.7624 
+Q 843.633 692.7624 843.633 677.7936 
+L 843.633 405.8604 
+Q 843.633 390.8916 828.567 390.8916 
+L 487.908 390.8916 
+Q 472.842 390.8916 472.842 405.8604 
+L 472.842 677.7936 
+Q 472.842 692.7624 487.908 692.7624 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #ffffff; stroke: #2463a5; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 40.113 838.2924 
+L 828.567 838.2924 
+Q 843.633 838.2924 843.633 823.3236 
+L 843.633 746.8164 
+Q 843.633 731.8476 828.567 731.8476 
+L 40.113 731.8476 
+Q 25.047 731.8476 25.047 746.8164 
+L 25.047 823.3236 
+Q 25.047 838.2924 40.113 838.2924 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #ffffff; stroke: #2463a5; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 660.33 357.13465 
+Q 660.33 371.763977 660.33 384.604451 
+" clip-path="url(#p4bdf595d44)" style="fill: none; stroke: #2463a5; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 663.73 377.804451 
+L 660.33 384.604451 
+L 656.93 377.804451 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #2463a5; stroke: #2463a5; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 440.523501 523.116 
+Q 455.26316 523.116 468.213965 523.116 
+" clip-path="url(#p4bdf595d44)" style="fill: none; stroke: #087e83; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 461.413965 519.716 
+L 468.213965 523.116 
+L 461.413965 526.516 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #087e83; stroke: #087e83; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 660.33 698.09065 
+Q 660.33 712.719977 660.33 725.560451 
+" clip-path="url(#p4bdf595d44)" style="fill: none; stroke: #2463a5; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 663.73 718.760451 
+L 660.33 725.560451 
+L 656.93 718.760451 
+z
+" clip-path="url(#p4bdf595d44)" style="fill: #2463a5; stroke: #2463a5; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #152b40" x="32.58" y="39.1248" transform="rotate(-0 32.58 39.1248)">The equation, the plant inputs, and the calculated field</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #52677a" x="32.58" y="69.0624" transform="rotate(-0 32.58 69.0624)">Actual SysML excerpts • imports, documentation, and other members omitted; empty braces held documentation</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2463a5" x="57.69" y="154.615969" transform="rotate(-0 57.69 154.615969)">CALCULATION DEFINITION — the mathematical relationship</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 178.714844)">calc def 'Coil Set Axis Field' {</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 193.357814)">    in attribute n_coils : Real;</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 208.328972)">    in attribute I_coil : Real;</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 223.30013)">    in attribute k_link : Real;</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 238.271287)">    in attribute R0 : Real;</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 252.914258)">    in attribute mu0 : Real default 1.25663706212e-6;</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 267.557228)">    in attribute two_pi : Real default 6.283185307179586;</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 282.528386)"/>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 297.171356)">    out attribute B_axis : Real = mu0 * k_link * n_coils * I_coil / (two_pi * R0);</text>
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 312.142514)">}</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e83" x="57.69" y="449.074125" transform="rotate(-0 57.69 449.074125)">PLANT USAGE — supplies the coil values</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 469.535225)">part stellaris : 'MFE Power Plant' {</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 482.440894)">    part :&gt;&gt; magnet {</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 495.418062)">        part :&gt;&gt; coil {</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 508.323731)">            :&gt;&gt; n_coils = 48.0 {}</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 521.51865)">            :&gt;&gt; I_coil = 15400000.0 {}</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 534.713569)">            :&gt;&gt; k_link = 0.7731331164622419 {}</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 547.908487)">        }</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 560.814156)">    }</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(57.69 573.719825)">}</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #52677a" x="57.69" y="617.580759" transform="rotate(-0 57.69 617.580759)">Inherited coil binding from 'MFE Power Plant':</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11.5px; font-family: 'DejaVu Sans Mono'; text-anchor: start; fill: #152b40" x="57.69" y="640.854897" transform="rotate(-0 57.69 640.854897)">:&gt;&gt; R0 = plasma.R {}</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2463a5" x="505.485" y="449.074125" transform="rotate(-0 505.485 449.074125)">CALCULATION USAGE — selects those values</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(505.485 469.535225)">calc field_calc : 'Coil Set Axis Field' {</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(505.485 482.730144)">    in n_coils = coil.n_coils;</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(505.485 495.925062)">    in I_coil = coil.I_coil;</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(505.485 509.119981)">    in k_link = coil.k_link;</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(505.485 522.3149)">    in R0 = coil.R0;</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans Mono'; fill: #152b40" transform="translate(505.485 535.220569)">}</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.8px; font-family: 'DejaVu Sans'; fill: #52677a" transform="translate(505.485 584.544713)">Owned by 'Magnet System'.</text>
+    <text style="font-size: 10.8px; font-family: 'DejaVu Sans'; fill: #52677a" transform="translate(505.485 599.920875)">mu0 and two_pi retain their defaults.</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2463a5" x="57.69" y="790.789969" transform="rotate(-0 57.69 790.789969)">COMPONENT ATTRIBUTE — exposes the result inside 'Magnet System'</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11.8px; font-family: 'DejaVu Sans Mono'; text-anchor: start; fill: #152b40" x="57.69" y="809.899244" transform="rotate(-0 57.69 809.899244)">attribute B : Real = field_calc.B_axis;</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4bdf595d44">
+   <rect x="15.84" y="15.84" width="837" height="831.6"/>
+  </clipPath>
+ </defs>
+</svg>

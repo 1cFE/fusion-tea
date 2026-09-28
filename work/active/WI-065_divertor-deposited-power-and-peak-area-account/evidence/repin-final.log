@@ -1,0 +1,29 @@
+/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+{
+  "indicator_inputs": {
+    "recipe": "indicator-input-fingerprint/v1",
+    "digest": "6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551",
+    "files": [
+      "contracts/model_contract.json",
+      "inputs/mfe_account_costs_params.json",
+      "inputs/mfe_cryo_plant_params.json",
+      "inputs/mfe_fuel_cycle_params.json",
+      "inputs/mfe_magnet_cost_params.json",
+      "inputs/mfe_magnet_field_params.json",
+      "inputs/mfe_plant_params.json",
+      "inputs/mfe_plasma_scaling_params.json",
+      "inputs/mfe_plasma_sustainment_params.json",
+      "inputs/mfe_vacuum_params.json",
+      "inputs/stellarator_plant_params.json",
+      "pipelines/pipeline.yaml"
+    ]
+  },
+  "recorded_provenance": {
+    "semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+    "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14"
+  }
+}
+native entries 313 headline 144.74743129583516
+captured tracked structural snapshot exploration/stellarator_e2e/stellarator.snapshot.json

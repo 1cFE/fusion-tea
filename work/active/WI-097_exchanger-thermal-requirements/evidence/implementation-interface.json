@@ -1,0 +1,172 @@
+{
+  "new_inputs": {
+    "control_mode": 0.0,
+    "return_tolerance": 1e-06,
+    "he_required_return": 659.15,
+    "he_hot_approach": 30.0,
+    "he_cold_approach": 30.0,
+    "he_max_bypass": 1.0,
+    "pbli_required_return": 724.15,
+    "pbli_hot_approach": 30.0,
+    "pbli_cold_approach": 30.0,
+    "pbli_max_bypass": 1.0,
+    "divertor_required_return": 846.15,
+    "divertor_hot_approach": 30.0,
+    "divertor_cold_approach": 30.0,
+    "divertor_max_bypass": 1.0
+  },
+  "new_outputs": [
+    "control_mode_used",
+    "he_required_hot",
+    "he_required_hot_margin",
+    "he_hx_return",
+    "he_mixed_return",
+    "he_active_flow",
+    "he_bypass_fraction",
+    "he_capability_at_solution",
+    "he_return_residual",
+    "he_return_residual_magnitude",
+    "he_hot_approach_margin",
+    "he_cold_approach_margin",
+    "he_control_margin",
+    "pbli_required_hot",
+    "pbli_required_hot_margin",
+    "pbli_hx_return",
+    "pbli_mixed_return",
+    "pbli_active_flow",
+    "pbli_bypass_fraction",
+    "pbli_capability_at_solution",
+    "pbli_return_residual",
+    "pbli_return_residual_magnitude",
+    "pbli_hot_approach_margin",
+    "pbli_cold_approach_margin",
+    "pbli_control_margin",
+    "divertor_required_hot",
+    "divertor_required_hot_margin",
+    "divertor_hx_return",
+    "divertor_mixed_return",
+    "divertor_active_flow",
+    "divertor_bypass_fraction",
+    "divertor_capability_at_solution",
+    "divertor_return_residual",
+    "divertor_return_residual_magnitude",
+    "divertor_hot_approach_margin",
+    "divertor_cold_approach_margin",
+    "divertor_control_margin"
+  ],
+  "new_constraints": {
+    "he_state_ok": {
+      "defined_in": "he_state_defined"
+    },
+    "he_return_ok": {
+      "residual_magnitude_in": "he_return_residual_magnitude",
+      "tolerance_in": "return_tolerance"
+    },
+    "he_hot_cap_ok": {
+      "margin_in": "he_hot_bound_margin"
+    },
+    "he_required_hot_ok": {
+      "margin_in": "he_required_hot_margin"
+    },
+    "he_hot_approach_ok": {
+      "margin_in": "he_hot_approach_margin"
+    },
+    "he_cold_approach_ok": {
+      "margin_in": "he_cold_approach_margin"
+    },
+    "he_control_ok": {
+      "margin_in": "he_control_margin"
+    },
+    "pbli_state_ok": {
+      "defined_in": "pbli_state_defined"
+    },
+    "pbli_return_ok": {
+      "residual_magnitude_in": "pbli_return_residual_magnitude",
+      "tolerance_in": "return_tolerance"
+    },
+    "pbli_hot_cap_ok": {
+      "margin_in": "pbli_hot_bound_margin"
+    },
+    "pbli_required_hot_ok": {
+      "margin_in": "pbli_required_hot_margin"
+    },
+    "pbli_hot_approach_ok": {
+      "margin_in": "pbli_hot_approach_margin"
+    },
+    "pbli_cold_approach_ok": {
+      "margin_in": "pbli_cold_approach_margin"
+    },
+    "pbli_control_ok": {
+      "margin_in": "pbli_control_margin"
+    },
+    "divertor_state_ok": {
+      "defined_in": "divertor_state_defined"
+    },
+    "divertor_return_ok": {
+      "residual_magnitude_in": "divertor_return_residual_magnitude",
+      "tolerance_in": "return_tolerance"
+    },
+    "divertor_hot_cap_ok": {
+      "margin_in": "divertor_hot_bound_margin"
+    },
+    "divertor_required_hot_ok": {
+      "margin_in": "divertor_required_hot_margin"
+    },
+    "divertor_hot_approach_ok": {
+      "margin_in": "divertor_hot_approach_margin"
+    },
+    "divertor_cold_approach_ok": {
+      "margin_in": "divertor_cold_approach_margin"
+    },
+    "divertor_control_ok": {
+      "margin_in": "divertor_control_margin"
+    }
+  },
+  "legacy_output_fields": [
+    "turbine_temperature",
+    "heater_inlet",
+    "expansion_factor",
+    "accepted_heat",
+    "unmet_heat",
+    "closure_residual",
+    "iterations",
+    "he_transferred",
+    "he_unmet",
+    "he_capability",
+    "he_hot",
+    "he_return",
+    "he_state_defined",
+    "he_hot_terminal_difference",
+    "he_cold_terminal_difference",
+    "he_hot_bound_margin",
+    "he_secondary_in",
+    "he_secondary_out",
+    "divertor_transferred",
+    "divertor_unmet",
+    "divertor_capability",
+    "divertor_hot",
+    "divertor_return",
+    "divertor_state_defined",
+    "divertor_hot_terminal_difference",
+    "divertor_cold_terminal_difference",
+    "divertor_hot_bound_margin",
+    "divertor_secondary_in",
+    "divertor_secondary_out",
+    "pbli_transferred",
+    "pbli_unmet",
+    "pbli_capability",
+    "pbli_hot",
+    "pbli_return",
+    "pbli_state_defined",
+    "pbli_hot_terminal_difference",
+    "pbli_cold_terminal_difference",
+    "pbli_hot_bound_margin",
+    "pbli_secondary_in",
+    "pbli_secondary_out",
+    "pbli_stream_out",
+    "divertor_stream_out",
+    "mixed_outlet",
+    "network_mode_used",
+    "pbli_split_used"
+  ]
+}

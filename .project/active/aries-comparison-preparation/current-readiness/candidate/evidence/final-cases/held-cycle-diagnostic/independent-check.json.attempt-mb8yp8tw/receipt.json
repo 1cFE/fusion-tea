@@ -1,0 +1,14 @@
+{
+  "attempt_directory": "independent-check.json.attempt-mb8yp8tw",
+  "inputs": [
+    {
+      "source": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/native-result.json",
+      "sha256": "d92755fbf92956d7ec211622dea6d92cb30de5f95ecbc36937555dada70e742f",
+      "retained": "input-0.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/independent-check.json",
+  "output_sha256": "85868bc29f829962d2d57dc764148e1a2965c1610f9d1eaa59b362f1f5efde88",
+  "state": "completed"
+}

@@ -1,0 +1,51 @@
+{
+  "K20_77_W_per_m": 307.43674000843714,
+  "K77_300_W_per_m": 2704.7130656896497,
+  "scenarios": [
+    {
+      "case": "low",
+      "area_cold_m2": 3360.0,
+      "area_warm_m2": 4032.0,
+      "lead_cold_W": 6983.249959725057,
+      "lead_warm_W": 27230.611818319474,
+      "radiation_cold_W": 133.340689123769,
+      "radiation_warm_W": 1882.659310876231,
+      "support_cold_W": 147.56963520404983,
+      "support_warm_W": 1150.692636326982,
+      "total_cold_W": 7264.160284052876,
+      "total_warm_W": 30263.963765522687,
+      "direct_W": 34213.861778044535,
+      "increment_electrical_MW": 0.6653666196101033
+    },
+    {
+      "case": "nominal",
+      "area_cold_m2": 3360.0,
+      "area_warm_m2": 4032.0,
+      "lead_cold_W": 8729.062449656321,
+      "lead_warm_W": 34038.26477289934,
+      "radiation_cold_W": 333.35172280942254,
+      "radiation_warm_W": 3698.6482771905776,
+      "support_cold_W": 590.2785408161993,
+      "support_warm_W": 4602.770545307928,
+      "total_cold_W": 9652.692713281944,
+      "total_warm_W": 42339.683595397844,
+      "direct_W": 42767.32722255566,
+      "increment_electrical_MW": 1.3315564302544813
+    },
+    {
+      "case": "high",
+      "area_cold_m2": 3360.0,
+      "area_warm_m2": 4032.0,
+      "lead_cold_W": 10474.874939587586,
+      "lead_warm_W": 40845.91772747921,
+      "radiation_cold_W": 666.7034456188451,
+      "radiation_warm_W": 7397.296554381155,
+      "support_cold_W": 2361.1141632647973,
+      "support_warm_W": 18411.08218123171,
+      "total_cold_W": 13502.692548471228,
+      "total_warm_W": 66654.29646309208,
+      "direct_W": 51320.792667066795,
+      "increment_electrical_MW": 2.5984905483832152
+    }
+  ]
+}

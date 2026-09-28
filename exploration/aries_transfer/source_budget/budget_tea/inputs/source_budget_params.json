@@ -1,0 +1,16 @@
+{
+  "aries_source_budget__budget_period__selected_availability": 0.85,
+  "aries_source_budget__budget_period__selected_mode": 0.0,
+  "aries_source_budget__budget_period__selected_net_power": 1000.0,
+  "aries_source_budget__budget_period__selected_period": 40.0,
+  "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+  "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+  "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+  "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+  "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+  "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+  "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+  "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+  "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+  "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+}

@@ -1,0 +1,27 @@
+{
+  "repo_commit_at_execution": "14fa680ffcf86087f19143dd78e4d0118b2491ae",
+  "recorded_utc": "2026-09-27T03:36:51.695530+00:00",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python exploration/exchanger_architecture/execute_study.py --record exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture --integration-return work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/integration-attempt2/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/aries_integrated/aries_integrated --manifest exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture/manifest.json --identity exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture/preparation/package_identity.json --store exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture/results/native/20260926-design-study-exchanger-architecture.db --sample-size 648 --out exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture/results/verification_summary.json'",
+  "candidate_count": 648,
+  "main": 432,
+  "control": 1,
+  "sensitivity": 215,
+  "aliases": 2,
+  "proposal_sha256": "259b2ae07fdcdaecd55861c6cb31f93bc067ad2a5a1b79c82f3e09751de65bdd",
+  "coordinator_release": "2026-09-26 T003 after T002 completion; comparison-execution-release.md conditions completed",
+  "source_mode": {
+    "supplied": 0,
+    "calculated": 1
+  },
+  "baseline_pressure_loss": 0.045,
+  "source_control_MW": 1835.4512830147435,
+  "main_results_status": "execution underway; interpretation withheld until verification",
+  "route": "stock strict ARIES PreparedEvaluator and StudyRunner; predecessor exporter reused unchanged",
+  "glue_ledger": [],
+  "oracle_limit": "364 independently rederived channels and14 predicates; additional native exchanger terminal/hot/return states not independently verified",
+  "reporting_command": ".codex-test/run python work/orchestration/goals/design-study-exchanger-architecture/evidence/render-results.py --verification exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture/results/verification_summary.json --out /tmp/exchanger-architecture-figures",
+  "pre_execution_review": "reviews/comparison-execution-release.md; coordinator T-002 release after stated conditions",
+  "post_execution_review": "reviews/final-review.md: PASS, all numerical and economic evidence covered; seal check follows",
+  "delivery_replay": "results/delivery-replay-comparison.json: all648 input/output/verdict/state/executable fields exact in fresh store"
+}

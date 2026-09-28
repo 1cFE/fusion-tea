@@ -1,0 +1,154 @@
+{
+  "main": {
+    "transcription_rows_checked": 571,
+    "h_u_pv_display_precision_max_fraction": 0.9165154302636785
+  },
+  "extraction": {
+    "transcription_rows_checked": 603,
+    "h_u_pv_display_precision_max_fraction": 0.8919611546914257
+  },
+  "saturation": {
+    "transcription_rows_checked": 162,
+    "h_u_pv_display_precision_max_fraction": 0.9187017723305357
+  },
+  "pump_approximation": {
+    "baseline": {
+      "feed_ideal_vdp_kJ_kg": 6.01983144,
+      "feed_ideal_table_hs_kJ_kg": 6.011095415194177,
+      "feed_relative_difference": 0.0014533166091059702,
+      "condensate_ideal_vdp_kJ_kg": 0.7986622274411642,
+      "condensate_ideal_table_hs_kJ_kg": 0.7986291392168425,
+      "condensate_relative_difference": 4.143127604150365e-05
+    },
+    "condenser40": {
+      "feed_ideal_vdp_kJ_kg": 6.01983144,
+      "feed_ideal_table_hs_kJ_kg": 6.011095415194177,
+      "feed_relative_difference": 0.0014533166091059702,
+      "condensate_table_hs_unavailable": "s=0.57240174 outside [0.59869146, 2.0456512]"
+    },
+    "condenser50": {
+      "feed_ideal_vdp_kJ_kg": 6.01983144,
+      "feed_ideal_table_hs_kJ_kg": 6.011095415194177,
+      "feed_relative_difference": 0.0014533166091059702,
+      "condensate_ideal_vdp_kJ_kg": 0.7972176627968783,
+      "condensate_ideal_table_hs_kJ_kg": 0.7977737099920148,
+      "condensate_relative_difference": -0.0006969986453201349
+    },
+    "steam435": {
+      "feed_ideal_vdp_kJ_kg": 6.01983144,
+      "feed_ideal_table_hs_kJ_kg": 6.011095415194177,
+      "feed_relative_difference": 0.0014533166091059702,
+      "condensate_ideal_vdp_kJ_kg": 0.7986622274411642,
+      "condensate_ideal_table_hs_kJ_kg": 0.7986291392168425,
+      "condensate_relative_difference": 4.143127604150365e-05
+    }
+  },
+  "interpolation_inverse_max_delta_C": {
+    "main_liquid": 2.842170943040401e-14,
+    "main_vapor": 1.1368683772161603e-13,
+    "extraction_liquid": 1.4210854715202004e-14,
+    "extraction_vapor": 1.1368683772161603e-13,
+    "saturation_liquid": 3.552713678800501e-15,
+    "saturation_vapor": 1.2789769243681803e-13
+  },
+  "balance_cases_checked": [
+    "baseline",
+    "condenser40",
+    "condenser50",
+    "steam435"
+  ],
+  "balance_absolute_tolerance": 1e-08,
+  "contract_numeric_count": 71,
+  "contract_boolean_count": 7,
+  "conditional_cooling_numeric_count": 9,
+  "conditional_cooling_boolean_count": 4,
+  "matched_refusals": [
+    {
+      "case": "wrong_main_pressure",
+      "reason": "fixed pressure table supports 6.2/0.8 MPa only"
+    },
+    {
+      "case": "wrong_extraction_pressure",
+      "reason": "fixed pressure table supports 6.2/0.8 MPa only"
+    },
+    {
+      "case": "invalid_mode",
+      "reason": "mode must be exactly 0 or 1"
+    },
+    {
+      "case": "nonfinite",
+      "reason": "nonfinite active input"
+    },
+    {
+      "case": "zero_eta",
+      "reason": "efficiency outside (0,1]: eta_hp"
+    },
+    {
+      "case": "overunity_eta",
+      "reason": "efficiency outside (0,1]: eta_lp"
+    },
+    {
+      "case": "zero_heat",
+      "reason": "matched heat differs from source plus selected recovered heat"
+    },
+    {
+      "case": "doubled_count",
+      "reason": "inconsistent salt heat boundary"
+    },
+    {
+      "case": "inconsistent_selected_recovery",
+      "reason": "matched heat differs from source plus selected recovered heat"
+    },
+    {
+      "case": "cold_condenser",
+      "reason": "t=19.999999 outside [20.0, 60.0]"
+    },
+    {
+      "case": "hot_condenser",
+      "reason": "t=60.000001 outside [20.0, 60.0]"
+    },
+    {
+      "case": "hot_main",
+      "reason": "t=455.000001 outside [277.73289, 455.0]"
+    },
+    {
+      "case": "hot_reheat",
+      "reason": "t=455.000001 outside [170.40649, 455.0]"
+    },
+    {
+      "case": "main_saturation",
+      "reason": "main steam must be superheated"
+    },
+    {
+      "case": "reheat_saturation",
+      "reason": "reheated steam must be superheated"
+    },
+    {
+      "case": "cooling_inactive_cycle",
+      "reason": "cooling requires active matched cycle"
+    },
+    {
+      "case": "cooling_negative_denominator",
+      "reason": "nonpositive cooling water heat capacity after pump heating"
+    },
+    {
+      "case": "cooling_water_order",
+      "reason": "invalid cooling water temperature order or head"
+    },
+    {
+      "case": "cooling_water_domain",
+      "reason": "t=19 outside [20.0, 60.0]"
+    },
+    {
+      "case": "cooling_negative_head",
+      "reason": "invalid cooling water temperature order or head"
+    },
+    {
+      "case": "cooling_invalid_mode",
+      "reason": "mode must be exactly 0 or 1"
+    }
+  ],
+  "disabled_without_property_access": true,
+  "zero_gap_retained_with_unavailable_UA": true,
+  "nondefault18_circuit_identity": true
+}

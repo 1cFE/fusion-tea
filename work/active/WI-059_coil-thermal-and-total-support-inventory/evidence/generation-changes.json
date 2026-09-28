@@ -1,0 +1,206 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "4b8f98778ef77a62ba8898676d95a9e723ca7507d4e36df4ba29885f01ba625a",
+    "after": "90b8bc8d23ce5b0afc6a71578eb309692762b84eff292abfb204dce5a72ee239"
+  },
+  "contracts/package_contract.json": {
+    "before": "327b991b5ecfa54f62f2647091d6a7c01a8a97b85a9604646b23ba4e81b8abe3",
+    "after": "17517e3922c024e43ee85a117b4d4b9fe65af2f6ddb5108992e37b32c0dc0596"
+  },
+  "handwritten/mfe_account_costs/annual_cost_rollup_impl.py": {
+    "before": "a3748d44d540f898b1eee4dcf900eda9fbd66615c40626d0422c34d5d307f919",
+    "after": "f595386cb1986df142a9cbad27a78396c68fe84ef43f465a1d364136426db3fb"
+  },
+  "handwritten/mfe_account_costs/annual_om_cost_impl.py": {
+    "before": "b788c3c009bccc2bf014a7e1358374d935874ab8fcd52fe45845a216ae7aa46c",
+    "after": "ef65d78addc1c98fbf83f20a4a9cc30ed3c3d89e9362b7b8ad892fc900d36f44"
+  },
+  "handwritten/mfe_account_costs/aux_cooling_cost_impl.py": {
+    "before": "8e7d32b7a7cb6bce704945212f396a46a46dd1f3b9eb0038b95a8d8ae246d9d7",
+    "after": "99bb7dfaebf57229b69e2f22d93c72eee76156c284620f171d1269675bd4e880"
+  },
+  "handwritten/mfe_account_costs/buildings_cost_impl.py": {
+    "before": "4e544e0bc275181b04666401683d32da9351bbaff5abcd944a69efe190ee15ad",
+    "after": "7667fb6456d4d16a38c878cdc70167665c930d46056e45ffad64eee44b71ecf3"
+  },
+  "handwritten/mfe_account_costs/contingency_cost_impl.py": {
+    "before": "50ea9a1456bb993ee7dfd8a84fafbdf2a01c10bfe9960b9d6912d4bc589e4676",
+    "after": "3d21af7b08fb74a3e4645c1712393c99ed6d213500781839cf9e2f45ffae57a3"
+  },
+  "handwritten/mfe_account_costs/coolant_cost_impl.py": {
+    "before": "1230009e6c39c7b7bd51050e330e3ac70c3720bfa0561acc2c521f55849eab60",
+    "after": "0081a054a8441065f55da7a50b14d62521b1342e4a12c93ad37d2cac079472ac"
+  },
+  "handwritten/mfe_account_costs/divertor_cost_impl.py": {
+    "before": "5b3def767f4a860dccbd46c51edc6641f12c2e9bee43ce0ef08a1c975b5d399b",
+    "after": "ba440494d275915e7f37ffa2ac334fa828b36d7a7ddb79bc7edad7374f76383d"
+  },
+  "handwritten/mfe_account_costs/dt_fuel_cost_impl.py": {
+    "before": "0c8ee9478a09c96c3e44f002814bc56c5d1432831ba4d1522f0b61c957838de6",
+    "after": "037f64bc137dd74e31dabc58244f9aedc7e42dd6d29558984b282bab322d75a9"
+  },
+  "handwritten/mfe_account_costs/heating_cost_impl.py": {
+    "before": "6c7f0e764d1ee810b4c8e89d0d09464bba679a4bacdd0d5de1ac11082a7e002f",
+    "after": "93211436d8b47684c542e502465b1c4ffc7239cf63b60fe05c7f71bc9dacaf34"
+  },
+  "handwritten/mfe_account_costs/indirect_cost_impl.py": {
+    "before": "3a3fc147b9db6e308fd656943f5a51594f2621ef2b844cb9293226bfd6c29576",
+    "after": "20e3dc60132f32fdfe8995c9c08a4c9c77148497a9821d334c7d1e5b0ca1f6ee"
+  },
+  "handwritten/mfe_account_costs/installation_labor_cost_impl.py": {
+    "before": "0cbb5b08a70a13ab536b358a66cd69a3b37c4a2baadd74336d89e59e68726a27",
+    "after": "561e94bb5c5b181a1cf4d7bb75bfc1c23155fbead4fd1b93f34c9e5a0f98f7f3"
+  },
+  "handwritten/mfe_account_costs/linear_power_cost_impl.py": {
+    "before": "4315b88d49d0f4f269e99303a5881b61ca38e833416b534e25314709db214c8a",
+    "after": "e068d0d101937f84b86e7bc1edbca56e14fad411366821357b6b2921bb2b2506"
+  },
+  "handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py": {
+    "before": "3ebd3b8deaf4658f1c65ab409ae7bf26157b2de6a9788de7225e729162ff7042",
+    "after": "0bdda737968776cda09a0c534cb8c7e841675f77511e40ce390af2da6a007d21"
+  },
+  "handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py": {
+    "before": "948d53460666ab3e33e14a897cecb67c379cdd2f6962afecfaf768feff27acfc",
+    "after": "ae42cd2be178082224cf1e1535aaaf5f9bcd6dcb38696d45fb74440fdb8f7718"
+  },
+  "handwritten/mfe_account_costs/plant_power_law_cost_impl.py": {
+    "before": "fe629649c9f4c3e34357b2e771bbd0a77cc35ade131ef3de18cd6f2cc818883e",
+    "after": "5b7e2a39ba6ff4560627aa3fb3f40c5e8b43c2ee6e058bec3cc4c9ead2969099"
+  },
+  "handwritten/mfe_account_costs/power_supplies_cost_impl.py": {
+    "before": "079ed198beed85d0bf2afec6c2d60f57eea2e6e7a1c9b44d938f793dcd834669",
+    "after": "0e33dbea231cb6311e33f882b75b9657cf4bb8c9c573db1343fbdb6820e951f5"
+  },
+  "handwritten/mfe_account_costs/preconstruction_cost_impl.py": {
+    "before": "49a1cf382aff8342613fd4701506d411bb37a619965b8f3888f7bf43b64622ea",
+    "after": "ea69390c730fb39f36865e15966b0683166a76c8495cf637f74b591a3d66d8cd"
+  },
+  "handwritten/mfe_account_costs/remote_handling_cost_impl.py": {
+    "before": "8661b792382ba0e112400e1b7fe324f47630e68ce6f8ee94379cf11bbec93c00",
+    "after": "3fb951f3e4d2db9a2b8bae9e8677a40c46c2129dadcd6075ad131c57cf233a4c"
+  },
+  "handwritten/mfe_account_costs/supplementary_cost_impl.py": {
+    "before": "6d5c9afc3ce3227545623721e391e4f24da0993154df0ffa32e8e5cc83eaa890",
+    "after": "67f413055c73228746db5f10ad051433381b6183559ab6086892517ee0afd91c"
+  },
+  "handwritten/mfe_account_costs/vessel_cost_impl.py": {
+    "before": "8eb9238bb642bf91c1c7c27817ba7ec2895b6cc6ef6fcf71ab4dad7674acdee4",
+    "after": "8f2270fbb4ec2e904b0fbd498a27becedf0e52fba9699b179723da518631c21e"
+  },
+  "handwritten/mfe_cryo_inventory/electrical_power_sum_impl.py": {
+    "before": "e22637053daab2ae1b7e68cb2ae269d5b76482a45c410a55c34cfa4a53776bcc",
+    "after": "c4bcd3ea518477bb3e49b0e76ee9f247eee8dce563b9a5baa4eb715307f00823"
+  },
+  "handwritten/mfe_magnet_cost/magnet_capital_impl.py": {
+    "before": "c41a796d0f15311cff88bcb14c096ee91dc18a3240d85c6290b5903faf8b71df",
+    "after": "10c734b2ec7a2d66c2a5e45dad99fe48a2095b748250ebc6dbe3fde3ea738c2e"
+  },
+  "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py": {
+    "before": "95720d9456d07ed282acb28aebc3f1afd0de0435977cea8a204a4e3d7acbc382",
+    "after": "d3ecb7e519de56e813e04ebb325e2f696f90c69b517680169437bf7a90da3204"
+  },
+  "handwritten/mfe_magnet_field/coil_winding_length_impl.py": {
+    "before": "7272675e46f9327649fe6e04509e0c3a853a1b66aef350fc098c9371e07995aa",
+    "after": "09d1f5ee1efd6d08651d58b8c811693c7781c1aeb9f67de054bfa0e782cc145c"
+  },
+  "handwritten/mfe_magnet_field/conductor_strain_impl.py": {
+    "before": "ea33688c8496d88afd615606300d9440f7c53e304914a33bc7a156f9f4c6cf77",
+    "after": "4c6fea0ed5dfe5cb80422df08785aba8ec2836d5b6540199211f28ef08323659"
+  },
+  "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py": {
+    "before": "1f922fb3a4fbc8258161cc5a629624dcabd045cbe7caf114c475fdfa6cf4d062",
+    "after": "4e57bb768fbe3237f46d5b5960cc1f27c3f7ea011cebf9dc0c6df4ee084a126d"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+    "before": "7da158ec547a7ac6ae1511d1c6e88907a5af2bc2dc6c3f9129c9f1b77d2674de",
+    "after": "e14ee1340e0e8df2cd2b691029e72d99b46f701728aa940c74382c0fc884f537"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+    "before": "187c1f3880a5f4bd445c0a2f581fa77347573603f93ac6ab042013c8e031d17b",
+    "after": "a3308fe62f0e02808b60f764e38f36741c172f4335cf81159ff148268c6e598d"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+    "before": "8ef9c8da961286f4c4f8b75a59b3ac792864d1b508eb5d8c99c801e83acc4de1",
+    "after": "9c42ef65d5fe0d8455916b3459773f1e76edbe91f1ad1b9251cf097bd8f9a974"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+    "before": "35f077d3ae9062cabaf325fe27a07e97e2b4ccbe527c532160faec50e81528ca",
+    "after": "918e45641a6c252a638d0987c34ca6506b10f7177b6258a438d0fbec83157d4b"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+    "before": "c196494ac7f763f85f34eebf2ba46322d20acf02d0fc4729989db6e570817889",
+    "after": "fe98f597b1ccc2112c71b5e516d37128aaa3be11d06f966b66914564876d5ff9"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+    "before": "dd207e00547e6c1ff9eb0784f254d771238637839795b865fdf7ea5c17362d4b",
+    "after": "53e43b2f7e08dd977366aa24ebfbaa2e46fbcee3c6906cee07686deba4afc779"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+    "before": "ca101a1a956759856cb4ba13d0252edf2bee73831bc2df0035357a18c0a5177c",
+    "after": "af07489125913f438320c4c24d27cd122437cf0bd30c7936669124d74d1fb306"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+    "before": "28cd635a280a834efaec69fd530ba0c841bfaba2866dbdeec5a49e42c50d6e45",
+    "after": "2eac469a8b04863829e60c56f0a57bc0266762c0c0808e935062b89b64d40125"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+    "before": "999c6eafbeec0979c7bed3172004409eed78c35a65bad025de417e2a7ad90ee3",
+    "after": "9fc0414b9bfcb11eb36826dd04a546de085dd963e1d870fd7c71a3e9407addec"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+    "before": "7f26f85697229f89a1a160136947b5ea686e5074ac8027d51bd0b4a758e1eb48",
+    "after": "730892edc5dfcff4bac50fa5f63d80ed3d08f70bee3a03fa895d82fbcb771fdc"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "39dfc6fbb263e567c9fdb3771e4944eeea87e3ab34da00430f39081d2345c1f9",
+    "after": "d0ab1d90bf18213888e2b3fd87fb2fd4f397c57786c0ca0df49571bafc806f61"
+  },
+  "modules/mfe_cryo_inventory/coil_thermal_inventory.py": {
+    "before": "bc22839a7911b10ff871522275b8f5cb05c08faf4562f94e70c53d760e4708ca",
+    "after": "ea68791c6950f08fb6be07633d82bd2c19ff71092911414b6a67d47428a64ce0"
+  },
+  "modules/mfe_cryo_inventory/cold_load_sum.py": {
+    "before": "77a6bf86347587ca0dcd199163cb32204b36e017a674ebe3499716818878b23f",
+    "after": "efb4f89a1d188df395299dcbc88848e892ef82018835193bbf310bacde7ccdaf"
+  },
+  "modules/mfe_cryo_inventory/electrical_power_sum.py": {
+    "before": "1b7e205cc5babace0eab250ca820136f5b324edfc6f9de68dac89a01cf35c46b",
+    "after": "a190cd7c8ad15ad8608220476e8e920d182255ce0c3cb297d30f7db563c1cc9b"
+  },
+  "modules/mfe_cryo_inventory/intercept_electrical_power.py": {
+    "before": "cc9a9c8c823dad4c5b0fcdbed4c7895e3cae274df7d04cfd00adf6b6b2a082f0",
+    "after": "fbd480fc4d4840f1855797bc0598453f47e458e1b50eea05d8a964002126e244"
+  },
+  "modules/mfe_magnet_field/coil_set_stored_energy.py": {
+    "before": "4d45867a41ffde305daa34605756820a17782164fd6dbe9b5e3c7dfef08ee73b",
+    "after": "373746593a22b1d5943df8b5f037542abd4e578423ba6b9a727e4bbe14482a84"
+  },
+  "modules/mfe_magnet_field/coil_winding_length.py": {
+    "before": "89b27aac34bf75cec39fde86f32787a860b7738b3dbdaad8ea622a6caded6635",
+    "after": "d204862d1ab87812054c27d7ffcbb6926c287a2fc34c1690ca98d7b194bce73a"
+  },
+  "modules/mfe_magnet_field/conductor_strain.py": {
+    "before": "0646b676fba55f9deb5ee658c49ffc781207b9bceacdb86acddf74aff5b98af7",
+    "after": "6f13eac34a2d0e608e6efbe45524cf0142a4df903c4872b7610907513ec17ec5"
+  },
+  "modules/mfe_magnet_field/winding_pack_cold_volume.py": {
+    "before": "22cd780ec5bb99badd11bbbc01864910a96d41b7c2b6f288f5ab756231f1aafb",
+    "after": "8cabd831dde7ae5ab5d757e64c4ed0755476982039d0fd82b235fc44eadc9624"
+  },
+  "schemas/coil_thermal_inventory_output.py": {
+    "before": "8218c64270dba68547b8d728afd7c7983a12521b3237d92ab47fc1241dcebd0c",
+    "after": "6f1d6519b43bc2864ee3b4d3e9f7b493d9a2620b63b00f661d510e84bff6a1e1"
+  },
+  "schemas/cold_load_sum_output.py": {
+    "before": "d0b20fa161019fa2b85b73f83837e824212c3beeef2b7795480bded136a31a49",
+    "after": "c09677b4ad3e8c61d06d051c366d408cd70c411296657104b9192a89293de0e6"
+  },
+  "schemas/winding_pack_cold_volume_output.py": {
+    "before": "c312b4e82fa7bf1c5d8bba097b360b4255b56df25d6720cd3a51046006c5406f",
+    "after": "9cd0863b5a494448bb0af77b539314a4211127a2ed0c0e7284d8963fa3884589"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "31b94034f0ff1ce0effe44a475d0b872981a9a01626301dd44fedc6748c4c211",
+    "after": "8321e7338598261bf61865461081a60cfb25f42a15260bbdbece32e77909e49e"
+  }
+}

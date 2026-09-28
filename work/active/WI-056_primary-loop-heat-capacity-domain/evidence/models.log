@@ -1,0 +1,76 @@
+.......s.ssssssssssss................................................... [ 10%]
+........................................................................ [ 21%]
+........................................................................ [ 32%]
+........................................................................ [ 43%]
+........................................................................ [ 54%]
+........................................................................ [ 64%]
+........................................................................ [ 75%]
+....................................F................................... [ 86%]
+........................................................................ [ 97%]
+..................                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_operating_heat_complete_cost_operand_classification ___________
+
+native = (PosixPath('/tmp/wi052-operating-regression-ib7ggmw9'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12344/wi050-evidence0'))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x725912ce63f0>
+
+    def test_operating_heat_complete_cost_operand_classification(native,monkeypatch):
+        import sys
+        sys.path.insert(0,str(ROOT/'exploration/stellarator_e2e'))
+        import verify_stellaris
+        scratch,results,_,_=native
+        mapping={
+            'heating_cost__cost':'heating','blanket_cost__cost':'blanket','shield_cost__cost':'shield',
+            'structure_cost__cost':'structure','vessel_cost__cost':'vessel','power_supplies_cost__cost':'power_supplies',
+            'divertor_cost__cost':'divertor','turbine_cost__cost':'turbine','electric_cost__cost':'electric',
+            'heat_rejection_cost__cost':'heat_rejection','misc_cost__cost':'misc','buildings_cost__cost':'buildings',
+            'precon_cost__cost':'precon','om_cost__annual_om':'annual_om_unlevelized',
+            'remote_handling__cost':'remote_handling','coolant__cost':'coolant','aux_cooling__cost':'aux_cooling',
+            'waste__cost':'waste','fuel_handling__cost':'fuel_handling','other_rpe__cost':'other_rpe',
+            'inc_cost__cost':'inc','owner__cost':'owner','supplementary__cost':'supplementary',
+            'installation__cost':'installation','powercore_capital__powercore_capital':'powercore_capital',
+            'bop_capital__bop_capital':'bop_capital','cas22_capital__cas22_capital':'cas22_capital',
+            'special_materials_capital__special_materials_capital':'special_materials',
+            'cas23_to_28_capital__cas23_to_28_capital':'cas23_to_28_capital',
+            'cas2x_pre_contingency__cas2x_pre_contingency':'cas2x_pre_contingency',
+            'contingency__cost':'contingency_capital','cas20_capital__cas20_capital':'cas20_capital',
+            'indirect__cost':'indirect_capital','overnight_capital__overnight_capital':'overnight_capital',
+            'total_capital__total_capital':'total_capital','idc__cost':'idc_capital'}
+        for case in ['baseline','reserve','demand','availability']:
+            with monkeypatch.context() as context:
+                context.setattr(verify_stellaris,'IN',dict(verify_stellaris.IN,**load('run_acceptance').CASES[case]))
+                direct=verify_stellaris.compute()
+            for channel,key in mapping.items():
+                assert results[case]['outputs'][P+channel]==pytest.approx(direct[key],rel=1e-9,abs=1e-9),(case,channel)
+        old=yaml.safe_load(subprocess.check_output(['git','show','546218a5:exploration/stellarator_e2e/generated/pipelines/pipeline.yaml'],cwd=ROOT))['modules']
+        current=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
+        for channel in mapping:
+            module=P+channel.rsplit('__',1)[0]
+            assert current[module]['inputs']==old[module]['inputs'],module
+        # WI-052 owns the three finance definitions; WI-050's unrelated loop stays frozen.
+        for name in ['mfe_primary_loop.sysml']:
+            path='models/library/analyses/'+name
+>           assert (ROOT/path).read_bytes()==subprocess.check_output(['git','show','546218a5:'+path],cwd=ROOT)
+E           assert b"package mfe...;\n    }\n}\n" == b"package mfe...;\n    }\n}\n"
+E             
+E             At index 3253 diff: b'I' != b'C'
+E             Use -v to get more diff
+
+tests/models/test_mfe_operating_heating.py:200: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_mfe_financial_calendar.py: 37 warnings
+  tests/models/test_mfe_financial_calendar.py:112: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('name',CASES)
+
+tests/models/test_mfe_financial_rate_limits.py: 11 warnings
+  tests/models/test_mfe_financial_rate_limits.py:62: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('duration', DURATIONS)
+
+tests/models/test_mfe_financial_rate_limits.py: 31 warnings
+  tests/models/test_mfe_financial_rate_limits.py:96: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('n,t', [(n, t) for n in DURATIONS for t in (8., 8.5)]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_complete_cost_operand_classification
+1 failed, 652 passed, 13 skipped, 79 warnings in 82.07s (0:01:22)

@@ -1,0 +1,3502 @@
+{
+  "stellarator_09__stellaris__blanket__source_heat__q_source": {
+    "baseline": 3125.9322770825056,
+    "delta": 0.0,
+    "offer": 3125.9322770825056
+  },
+  "stellarator_09__stellaris__buildings__administration__civil__cost_2018": {
+    "baseline": 5634342.209388552,
+    "delta": 0.0,
+    "offer": 5634342.209388552
+  },
+  "stellarator_09__stellaris__buildings__administration__civil__cost_2025": {
+    "baseline": 7222997.83832009,
+    "delta": 0.0,
+    "offer": 7222997.83832009
+  },
+  "stellarator_09__stellaris__buildings__administration__civil__sub_cost_2018": {
+    "baseline": 927945.0488220555,
+    "delta": 0.0,
+    "offer": 927945.0488220555
+  },
+  "stellarator_09__stellaris__buildings__administration__civil__super_cost_2018": {
+    "baseline": 4706397.160566497,
+    "delta": 0.0,
+    "offer": 4706397.160566497
+  },
+  "stellarator_09__stellaris__buildings__buildings_cost__cost": {
+    "baseline": 641007660.5539031,
+    "delta": 0.0,
+    "offer": 641007660.5539031
+  },
+  "stellarator_09__stellaris__buildings__civil_rollup__civil_capital": {
+    "baseline": 614376866.3119471,
+    "delta": 0.0,
+    "offer": 614376866.3119471
+  },
+  "stellarator_09__stellaris__buildings__control__civil__cost_2018": {
+    "baseline": 1508080.330707875,
+    "delta": 0.0,
+    "offer": 1508080.330707875
+  },
+  "stellarator_09__stellaris__buildings__control__civil__cost_2025": {
+    "baseline": 1933297.7238345875,
+    "delta": 0.0,
+    "offer": 1933297.7238345875
+  },
+  "stellarator_09__stellaris__buildings__control__civil__sub_cost_2018": {
+    "baseline": 191499.62771783525,
+    "delta": 0.0,
+    "offer": 191499.62771783525
+  },
+  "stellarator_09__stellaris__buildings__control__civil__super_cost_2018": {
+    "baseline": 1316580.7029900397,
+    "delta": 0.0,
+    "offer": 1316580.7029900397
+  },
+  "stellarator_09__stellaris__buildings__cooling_annex__civil__cost_2018": {
+    "baseline": 52188789.04319997,
+    "delta": 0.0,
+    "offer": 52188789.04319997
+  },
+  "stellarator_09__stellaris__buildings__cooling_annex__civil__cost_2025": {
+    "baseline": 66903907.578678094,
+    "delta": 0.0,
+    "offer": 66903907.578678094
+  },
+  "stellarator_09__stellaris__buildings__cooling_annex__civil__sub_cost_2018": {
+    "baseline": 5728125.093023846,
+    "delta": 0.0,
+    "offer": 5728125.093023846
+  },
+  "stellarator_09__stellaris__buildings__cooling_annex__civil__super_cost_2018": {
+    "baseline": 46460663.95017613,
+    "delta": 0.0,
+    "offer": 46460663.95017613
+  },
+  "stellarator_09__stellaris__buildings__cooling_hall__civil__cost_2018": {
+    "baseline": 19495782.261604287,
+    "delta": 0.0,
+    "offer": 19495782.261604287
+  },
+  "stellarator_09__stellaris__buildings__cooling_hall__civil__cost_2025": {
+    "baseline": 24992800.916011225,
+    "delta": 0.0,
+    "offer": 24992800.916011225
+  },
+  "stellarator_09__stellaris__buildings__cooling_hall__civil__sub_cost_2018": {
+    "baseline": 3023359.0806272486,
+    "delta": 0.0,
+    "offer": 3023359.0806272486
+  },
+  "stellarator_09__stellaris__buildings__cooling_hall__civil__super_cost_2018": {
+    "baseline": 16472423.180977037,
+    "delta": 0.0,
+    "offer": 16472423.180977037
+  },
+  "stellarator_09__stellaris__buildings__cooling_initial_handoff_days__cooling_initial_handoff_days": {
+    "baseline": -30.0,
+    "delta": 0.0,
+    "offer": -30.0
+  },
+  "stellarator_09__stellaris__buildings__cooling_link__civil__cost_2018": {
+    "baseline": 558811.6888865512,
+    "delta": 0.0,
+    "offer": 558811.6888865512
+  },
+  "stellarator_09__stellaris__buildings__cooling_link__civil__cost_2025": {
+    "baseline": 716373.8855140613,
+    "delta": 0.0,
+    "offer": 716373.8855140613
+  },
+  "stellarator_09__stellaris__buildings__cooling_link__civil__sub_cost_2018": {
+    "baseline": 59994.57236010789,
+    "delta": 0.0,
+    "offer": 59994.57236010789
+  },
+  "stellarator_09__stellaris__buildings__cooling_link__civil__super_cost_2018": {
+    "baseline": 498817.11652644334,
+    "delta": 0.0,
+    "offer": 498817.11652644334
+  },
+  "stellarator_09__stellaris__buildings__cryo_coldbox__civil__cost_2018": {
+    "baseline": 2391106.997075613,
+    "delta": 0.0,
+    "offer": 2391106.997075613
+  },
+  "stellarator_09__stellaris__buildings__cryo_coldbox__civil__cost_2025": {
+    "baseline": 3065302.04045655,
+    "delta": 0.0,
+    "offer": 3065302.04045655
+  },
+  "stellarator_09__stellaris__buildings__cryo_coldbox__civil__sub_cost_2018": {
+    "baseline": 129607.67642170517,
+    "delta": 0.0,
+    "offer": 129607.67642170517
+  },
+  "stellarator_09__stellaris__buildings__cryo_coldbox__civil__super_cost_2018": {
+    "baseline": 2261499.320653908,
+    "delta": 0.0,
+    "offer": 2261499.320653908
+  },
+  "stellarator_09__stellaris__buildings__cryo_compressors__civil__cost_2018": {
+    "baseline": 2699529.4021168174,
+    "delta": 0.0,
+    "offer": 2699529.4021168174
+  },
+  "stellarator_09__stellaris__buildings__cryo_compressors__civil__cost_2025": {
+    "baseline": 3460687.0352106867,
+    "delta": 0.0,
+    "offer": 3460687.0352106867
+  },
+  "stellarator_09__stellaris__buildings__cryo_compressors__civil__sub_cost_2018": {
+    "baseline": 179459.19565078284,
+    "delta": 0.0,
+    "offer": 179459.19565078284
+  },
+  "stellarator_09__stellaris__buildings__cryo_compressors__civil__super_cost_2018": {
+    "baseline": 2520070.2064660345,
+    "delta": 0.0,
+    "offer": 2520070.2064660345
+  },
+  "stellarator_09__stellaris__buildings__electrical_building__civil__cost_2018": {
+    "baseline": 1371989.643980557,
+    "delta": 0.0,
+    "offer": 1371989.643980557
+  },
+  "stellarator_09__stellaris__buildings__electrical_building__civil__cost_2025": {
+    "baseline": 1758834.9916262098,
+    "delta": 0.0,
+    "offer": 1758834.9916262098
+  },
+  "stellarator_09__stellaris__buildings__electrical_building__civil__sub_cost_2018": {
+    "baseline": 85326.36913528755,
+    "delta": 0.0,
+    "offer": 85326.36913528755
+  },
+  "stellarator_09__stellaris__buildings__electrical_building__civil__super_cost_2018": {
+    "baseline": 1286663.2748452695,
+    "delta": 0.0,
+    "offer": 1286663.2748452695
+  },
+  "stellarator_09__stellaris__buildings__facility_accounts__cost": {
+    "baseline": 799758795.94032,
+    "delta": 0.0,
+    "offer": 799758795.94032
+  },
+  "stellarator_09__stellaris__buildings__facility_accounts__installed_facility_capital": {
+    "baseline": 714758795.94032,
+    "delta": 0.0,
+    "offer": 714758795.94032
+  },
+  "stellarator_09__stellaris__buildings__facility_accounts__layout_buildings_capital": {
+    "baseline": 799758795.94032,
+    "delta": 0.0,
+    "offer": 799758795.94032
+  },
+  "stellarator_09__stellaris__buildings__facility_land__cost": {
+    "baseline": 901536.9087592476,
+    "delta": 0.0,
+    "offer": 901536.9087592476
+  },
+  "stellarator_09__stellaris__buildings__fuel_building__civil__cost_2018": {
+    "baseline": 9383304.495650994,
+    "delta": 0.0,
+    "offer": 9383304.495650994
+  },
+  "stellarator_09__stellaris__buildings__fuel_building__civil__cost_2025": {
+    "baseline": 12029015.201712683,
+    "delta": 0.0,
+    "offer": 12029015.201712683
+  },
+  "stellarator_09__stellaris__buildings__fuel_building__civil__sub_cost_2018": {
+    "baseline": 1319222.5896733885,
+    "delta": 0.0,
+    "offer": 1319222.5896733885
+  },
+  "stellarator_09__stellaris__buildings__fuel_building__civil__super_cost_2018": {
+    "baseline": 8064081.905977606,
+    "delta": 0.0,
+    "offer": 8064081.905977606
+  },
+  "stellarator_09__stellaris__buildings__initial_sector_start_days__initial_sector_start_days": {
+    "baseline": -120.0,
+    "delta": 0.0,
+    "offer": -120.0
+  },
+  "stellarator_09__stellaris__buildings__layout__active": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_air_volume": {
+    "baseline": 12479.999999999998,
+    "delta": 0.0,
+    "offer": 12479.999999999998
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_clear_area": {
+    "baseline": 3119.9999999999995,
+    "delta": 0.0,
+    "offer": 3119.9999999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_clear_height": {
+    "baseline": 4.0,
+    "delta": 0.0,
+    "offer": 4.0
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_clear_length": {
+    "baseline": 78.99367063252599,
+    "delta": 0.0,
+    "offer": 78.99367063252599
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_clear_width": {
+    "baseline": 39.496835316262995,
+    "delta": 0.0,
+    "offer": 39.496835316262995
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_gross_area": {
+    "baseline": 3191.4543035692727,
+    "delta": 0.0,
+    "offer": 3191.4543035692727
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_required_area": {
+    "baseline": 3120.0,
+    "delta": 0.0,
+    "offer": 3120.0
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_required_height": {
+    "baseline": 4.0,
+    "delta": 0.0,
+    "offer": 4.0
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_sub_concrete": {
+    "baseline": 957.4362910707817,
+    "delta": 0.0,
+    "offer": 957.4362910707817
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_sub_formwork": {
+    "baseline": 71.81430356927339,
+    "delta": 0.0,
+    "offer": 71.81430356927339
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_sub_rebar": {
+    "baseline": 95743.62910707817,
+    "delta": 0.0,
+    "offer": 95743.62910707817
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_super_concrete": {
+    "baseline": 924.1080749909468,
+    "delta": 0.0,
+    "offer": 924.1080749909468
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_super_formwork": {
+    "baseline": 5073.324297560139,
+    "delta": 0.0,
+    "offer": 5073.324297560139
+  },
+  "stellarator_09__stellaris__buildings__layout__administration_super_rebar": {
+    "baseline": 92410.80749909468,
+    "delta": 0.0,
+    "offer": 92410.80749909468
+  },
+  "stellarator_09__stellaris__buildings__layout__blanket_packages_per_sector": {
+    "baseline": 32.0,
+    "delta": 0.0,
+    "offer": 32.0
+  },
+  "stellarator_09__stellaris__buildings__layout__blanket_packages_required_per_sector": {
+    "baseline": 32.0,
+    "delta": 0.0,
+    "offer": 32.0
+  },
+  "stellarator_09__stellaris__buildings__layout__calendar_event_count": {
+    "baseline": 5.0,
+    "delta": 0.0,
+    "offer": 5.0
+  },
+  "stellarator_09__stellaris__buildings__layout__calendar_first_event_year": {
+    "baseline": 4.5239260339489915,
+    "delta": 0.0,
+    "offer": 4.5239260339489915
+  },
+  "stellarator_09__stellaris__buildings__layout__calendar_last_event_year": {
+    "baseline": 24.95296350307829,
+    "delta": 0.0,
+    "offer": 24.95296350307829
+  },
+  "stellarator_09__stellaris__buildings__layout__capacity_margin_units": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__clean_positions_allocated": {
+    "baseline": 36.0,
+    "delta": 0.0,
+    "offer": 36.0
+  },
+  "stellarator_09__stellaris__buildings__layout__contamination_procedure_qualified": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__control_air_volume": {
+    "baseline": 2340.0000000000005,
+    "delta": 0.0,
+    "offer": 2340.0000000000005
+  },
+  "stellarator_09__stellaris__buildings__layout__control_clear_area": {
+    "baseline": 585.0000000000001,
+    "delta": 0.0,
+    "offer": 585.0000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__control_clear_height": {
+    "baseline": 4.0,
+    "delta": 0.0,
+    "offer": 4.0
+  },
+  "stellarator_09__stellaris__buildings__layout__control_clear_length": {
+    "baseline": 34.20526275297414,
+    "delta": 0.0,
+    "offer": 34.20526275297414
+  },
+  "stellarator_09__stellaris__buildings__layout__control_clear_width": {
+    "baseline": 17.10263137648707,
+    "delta": 0.0,
+    "offer": 17.10263137648707
+  },
+  "stellarator_09__stellaris__buildings__layout__control_gross_area": {
+    "baseline": 616.1447364776769,
+    "delta": 0.0,
+    "offer": 616.1447364776769
+  },
+  "stellarator_09__stellaris__buildings__layout__control_required_area": {
+    "baseline": 585.0,
+    "delta": 0.0,
+    "offer": 585.0
+  },
+  "stellarator_09__stellaris__buildings__layout__control_required_height": {
+    "baseline": 4.0,
+    "delta": 0.0,
+    "offer": 4.0
+  },
+  "stellarator_09__stellaris__buildings__layout__control_sub_concrete": {
+    "baseline": 184.84342094330307,
+    "delta": 0.0,
+    "offer": 184.84342094330307
+  },
+  "stellarator_09__stellaris__buildings__layout__control_sub_formwork": {
+    "baseline": 31.50473647767673,
+    "delta": 0.0,
+    "offer": 31.50473647767673
+  },
+  "stellarator_09__stellaris__buildings__layout__control_sub_rebar": {
+    "baseline": 18484.342094330306,
+    "delta": 0.0,
+    "offer": 18484.342094330306
+  },
+  "stellarator_09__stellaris__buildings__layout__control_super_concrete": {
+    "baseline": 247.8078932062422,
+    "delta": 0.0,
+    "offer": 247.8078932062422
+  },
+  "stellarator_09__stellaris__buildings__layout__control_super_formwork": {
+    "baseline": 1436.529463723164,
+    "delta": 0.0,
+    "offer": 1436.529463723164
+  },
+  "stellarator_09__stellaris__buildings__layout__control_super_rebar": {
+    "baseline": 24780.78932062422,
+    "delta": 0.0,
+    "offer": 24780.78932062422
+  },
+  "stellarator_09__stellaris__buildings__layout__controlled_air_volume": {
+    "baseline": 579112.165581098,
+    "delta": 0.0,
+    "offer": 579112.165581098
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_air_volume": {
+    "baseline": 177491.69999999998,
+    "delta": 0.0,
+    "offer": 177491.69999999998
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_area": {
+    "baseline": 19721.3,
+    "delta": 0.0,
+    "offer": 19721.3
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_length": {
+    "baseline": 67.7,
+    "delta": 0.0,
+    "offer": 67.7
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_width": {
+    "baseline": 296.2,
+    "delta": 0.0,
+    "offer": 296.2
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_gross_area": {
+    "baseline": 20271.44,
+    "delta": 0.0,
+    "offer": 20271.44
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_required_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_required_length": {
+    "baseline": 67.7,
+    "delta": 0.0,
+    "offer": 67.7
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_required_width": {
+    "baseline": 296.2,
+    "delta": 0.0,
+    "offer": 296.2
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_sub_concrete": {
+    "baseline": 6081.432,
+    "delta": 0.0,
+    "offer": 6081.432
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_sub_formwork": {
+    "baseline": 219.06,
+    "delta": 0.0,
+    "offer": 219.06
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_sub_rebar": {
+    "baseline": 608143.2,
+    "delta": 0.0,
+    "offer": 608143.2
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_super_concrete": {
+    "baseline": 8686.948000000015,
+    "delta": 0.0,
+    "offer": 8686.948000000015
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_super_formwork": {
+    "baseline": 50787.140000000014,
+    "delta": 0.0,
+    "offer": 50787.140000000014
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_annex_super_rebar": {
+    "baseline": 868694.8000000014,
+    "delta": 0.0,
+    "offer": 868694.8000000014
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_bundle_queue_peak": {
+    "baseline": 12.0,
+    "delta": 0.0,
+    "offer": 12.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_carrier_moves": {
+    "baseline": 448.0,
+    "delta": 0.0,
+    "offer": 448.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_clean_bundle_allocated": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_clean_bundle_required": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_clean_helium_allocated": {
+    "baseline": 29.0,
+    "delta": 0.0,
+    "offer": 29.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_clean_helium_required": {
+    "baseline": 29.0,
+    "delta": 0.0,
+    "offer": 29.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_clean_salt_allocated": {
+    "baseline": 29.0,
+    "delta": 0.0,
+    "offer": 29.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_clean_salt_required": {
+    "baseline": 29.0,
+    "delta": 0.0,
+    "offer": 29.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_dirty_bundle_allocated": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_dirty_bundle_required": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_dirty_helium_allocated": {
+    "baseline": 28.0,
+    "delta": 0.0,
+    "offer": 28.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_dirty_helium_required": {
+    "baseline": 28.0,
+    "delta": 0.0,
+    "offer": 28.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_dirty_salt_allocated": {
+    "baseline": 28.0,
+    "delta": 0.0,
+    "offer": 28.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_dirty_salt_required": {
+    "baseline": 28.0,
+    "delta": 0.0,
+    "offer": 28.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_air_volume": {
+    "baseline": 94968.72,
+    "delta": 0.0,
+    "offer": 94968.72
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_area": {
+    "baseline": 10552.08,
+    "delta": 0.0,
+    "offer": 10552.08
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_length": {
+    "baseline": 92.39999999999999,
+    "delta": 0.0,
+    "offer": 92.39999999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_width": {
+    "baseline": 114.2,
+    "delta": 0.0,
+    "offer": 114.2
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_gross_area": {
+    "baseline": 10676.399999999998,
+    "delta": 0.0,
+    "offer": 10676.399999999998
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_required_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_required_length": {
+    "baseline": 92.39999999999999,
+    "delta": 0.0,
+    "offer": 92.39999999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_required_width": {
+    "baseline": 114.2,
+    "delta": 0.0,
+    "offer": 114.2
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_sub_concrete": {
+    "baseline": 3202.919999999999,
+    "delta": 0.0,
+    "offer": 3202.919999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_sub_formwork": {
+    "baseline": 124.67999999999998,
+    "delta": 0.0,
+    "offer": 124.67999999999998
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_sub_rebar": {
+    "baseline": 320291.99999999994,
+    "delta": 0.0,
+    "offer": 320291.99999999994
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_super_concrete": {
+    "baseline": 3208.2599999999948,
+    "delta": 0.0,
+    "offer": 3208.2599999999948
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_super_formwork": {
+    "baseline": 17798.899999999994,
+    "delta": 0.0,
+    "offer": 17798.899999999994
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_hall_super_rebar": {
+    "baseline": 320825.9999999995,
+    "delta": 0.0,
+    "offer": 320825.9999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_helium_queue_peak": {
+    "baseline": 22.0,
+    "delta": 0.0,
+    "offer": 22.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_initial_ready_margin_days": {
+    "baseline": 16.00000000000005,
+    "delta": 0.0,
+    "offer": 16.00000000000005
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_jobs_after_shutdown": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_last_release_year": {
+    "baseline": 21.172758384668075,
+    "delta": 0.0,
+    "offer": 21.172758384668075
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_air_volume": {
+    "baseline": 1530.0,
+    "delta": 0.0,
+    "offer": 1530.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_clear_area": {
+    "baseline": 170.0,
+    "delta": 0.0,
+    "offer": 170.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_clear_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_clear_length": {
+    "baseline": 10.0,
+    "delta": 0.0,
+    "offer": 10.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_clear_width": {
+    "baseline": 17.0,
+    "delta": 0.0,
+    "offer": 17.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_gross_area": {
+    "baseline": 176.0,
+    "delta": 0.0,
+    "offer": 176.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_required_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_required_length": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_required_width": {
+    "baseline": 17.0,
+    "delta": 0.0,
+    "offer": 17.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_sub_concrete": {
+    "baseline": 52.8,
+    "delta": 0.0,
+    "offer": 52.8
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_sub_formwork": {
+    "baseline": 16.56,
+    "delta": 0.0,
+    "offer": 16.56
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_sub_rebar": {
+    "baseline": 5280.0,
+    "delta": 0.0,
+    "offer": 5280.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_super_concrete": {
+    "baseline": 89.20000000000007,
+    "delta": 0.0,
+    "offer": 89.20000000000007
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_super_formwork": {
+    "baseline": 551.8399999999999,
+    "delta": 0.0,
+    "offer": 551.8399999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_link_super_rebar": {
+    "baseline": 8920.000000000007,
+    "delta": 0.0,
+    "offer": 8920.000000000007
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_outage_basis_resolved": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_replacement_ready_margin_days": {
+    "baseline": 76.0,
+    "delta": 0.0,
+    "offer": 76.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cooling_salt_queue_peak": {
+    "baseline": 28.0,
+    "delta": 0.0,
+    "offer": 28.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cost_mode": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_air_volume": {
+    "baseline": 4992.0,
+    "delta": 0.0,
+    "offer": 4992.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_area": {
+    "baseline": 384.0,
+    "delta": 0.0,
+    "offer": 384.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_height": {
+    "baseline": 13.0,
+    "delta": 0.0,
+    "offer": 13.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_width": {
+    "baseline": 16.0,
+    "delta": 0.0,
+    "offer": 16.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_gross_area": {
+    "baseline": 408.36000000000007,
+    "delta": 0.0,
+    "offer": 408.36000000000007
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_required_height": {
+    "baseline": 13.0,
+    "delta": 0.0,
+    "offer": 13.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_required_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_required_width": {
+    "baseline": 16.0,
+    "delta": 0.0,
+    "offer": 16.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_sub_concrete": {
+    "baseline": 122.50800000000001,
+    "delta": 0.0,
+    "offer": 122.50800000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_sub_formwork": {
+    "baseline": 24.720000000000002,
+    "delta": 0.0,
+    "offer": 24.720000000000002
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_sub_rebar": {
+    "baseline": 12250.800000000001,
+    "delta": 0.0,
+    "offer": 12250.800000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_super_concrete": {
+    "baseline": 398.3520000000004,
+    "delta": 0.0,
+    "offer": 398.3520000000004
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_super_formwork": {
+    "baseline": 2511.68,
+    "delta": 0.0,
+    "offer": 2511.68
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_coldbox_super_rebar": {
+    "baseline": 39835.20000000004,
+    "delta": 0.0,
+    "offer": 39835.20000000004
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_air_volume": {
+    "baseline": 5984.0,
+    "delta": 0.0,
+    "offer": 5984.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_area": {
+    "baseline": 544.0,
+    "delta": 0.0,
+    "offer": 544.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_length": {
+    "baseline": 34.0,
+    "delta": 0.0,
+    "offer": 34.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_width": {
+    "baseline": 16.0,
+    "delta": 0.0,
+    "offer": 16.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_gross_area": {
+    "baseline": 574.3600000000001,
+    "delta": 0.0,
+    "offer": 574.3600000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_required_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_required_length": {
+    "baseline": 34.0,
+    "delta": 0.0,
+    "offer": 34.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_required_width": {
+    "baseline": 16.0,
+    "delta": 0.0,
+    "offer": 16.0
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_concrete": {
+    "baseline": 172.30800000000002,
+    "delta": 0.0,
+    "offer": 172.30800000000002
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_formwork": {
+    "baseline": 30.72,
+    "delta": 0.0,
+    "offer": 30.72
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_rebar": {
+    "baseline": 17230.800000000003,
+    "delta": 0.0,
+    "offer": 17230.800000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_concrete": {
+    "baseline": 448.83199999999977,
+    "delta": 0.0,
+    "offer": 448.83199999999977
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_formwork": {
+    "baseline": 2790.880000000001,
+    "delta": 0.0,
+    "offer": 2790.880000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_rebar": {
+    "baseline": 44883.199999999975,
+    "delta": 0.0,
+    "offer": 44883.199999999975
+  },
+  "stellarator_09__stellaris__buildings__layout__dirty_buffer_positions_allocated": {
+    "baseline": 18.0,
+    "delta": 0.0,
+    "offer": 18.0
+  },
+  "stellarator_09__stellaris__buildings__layout__dirty_buffer_required": {
+    "baseline": 18.0,
+    "delta": 0.0,
+    "offer": 18.0
+  },
+  "stellarator_09__stellaris__buildings__layout__dirty_store_positions_allocated": {
+    "baseline": 36.0,
+    "delta": 0.0,
+    "offer": 36.0
+  },
+  "stellarator_09__stellaris__buildings__layout__dirty_store_required": {
+    "baseline": 36.0,
+    "delta": 0.0,
+    "offer": 36.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_air_volume": {
+    "baseline": 2160.0,
+    "delta": 0.0,
+    "offer": 2160.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_clear_area": {
+    "baseline": 240.0,
+    "delta": 0.0,
+    "offer": 240.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_clear_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_clear_length": {
+    "baseline": 20.0,
+    "delta": 0.0,
+    "offer": 20.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_clear_width": {
+    "baseline": 12.0,
+    "delta": 0.0,
+    "offer": 12.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_gross_area": {
+    "baseline": 259.56,
+    "delta": 0.0,
+    "offer": 259.56
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_required_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_required_length": {
+    "baseline": 20.0,
+    "delta": 0.0,
+    "offer": 20.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_required_width": {
+    "baseline": 12.0,
+    "delta": 0.0,
+    "offer": 12.0
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_sub_concrete": {
+    "baseline": 77.868,
+    "delta": 0.0,
+    "offer": 77.868
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_sub_formwork": {
+    "baseline": 19.92,
+    "delta": 0.0,
+    "offer": 19.92
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_sub_rebar": {
+    "baseline": 7786.799999999999,
+    "delta": 0.0,
+    "offer": 7786.799999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_super_concrete": {
+    "baseline": 227.95200000000023,
+    "delta": 0.0,
+    "offer": 227.95200000000023
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_super_formwork": {
+    "baseline": 1426.8799999999999,
+    "delta": 0.0,
+    "offer": 1426.8799999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__electrical_building_super_rebar": {
+    "baseline": 22795.200000000023,
+    "delta": 0.0,
+    "offer": 22795.200000000023
+  },
+  "stellarator_09__stellaris__buildings__layout__exterior_envelope_qualified": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_air_volume": {
+    "baseline": 8976.0,
+    "delta": 0.0,
+    "offer": 8976.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_clear_area": {
+    "baseline": 816.0,
+    "delta": 0.0,
+    "offer": 816.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_clear_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_clear_length": {
+    "baseline": 34.0,
+    "delta": 0.0,
+    "offer": 34.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_clear_width": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_gross_area": {
+    "baseline": 1064.0,
+    "delta": 0.0,
+    "offer": 1064.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_required_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_required_length": {
+    "baseline": 34.0,
+    "delta": 0.0,
+    "offer": 34.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_required_width": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_sub_concrete": {
+    "baseline": 1064.0,
+    "delta": 0.0,
+    "offer": 1064.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_sub_formwork": {
+    "baseline": 132.0,
+    "delta": 0.0,
+    "offer": 132.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_sub_rebar": {
+    "baseline": 159600.0,
+    "delta": 0.0,
+    "offer": 159600.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_super_concrete": {
+    "baseline": 3792.0,
+    "delta": 0.0,
+    "offer": 3792.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_super_formwork": {
+    "baseline": 3676.0,
+    "delta": 0.0,
+    "offer": 3676.0
+  },
+  "stellarator_09__stellaris__buildings__layout__fuel_building_super_rebar": {
+    "baseline": 568800.0,
+    "delta": 0.0,
+    "offer": 568800.0
+  },
+  "stellarator_09__stellaris__buildings__layout__geometry_fit_margin_m": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__initial_clean_required": {
+    "baseline": 36.0,
+    "delta": 0.0,
+    "offer": 36.0
+  },
+  "stellarator_09__stellaris__buildings__layout__initial_margin_days": {
+    "baseline": 16.00000000000005,
+    "delta": 0.0,
+    "offer": 16.00000000000005
+  },
+  "stellarator_09__stellaris__buildings__layout__initial_ready_margin_days": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_air_volume": {
+    "baseline": 5016.0,
+    "delta": 0.0,
+    "offer": 5016.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_area": {
+    "baseline": 456.0,
+    "delta": 0.0,
+    "offer": 456.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_width": {
+    "baseline": 19.0,
+    "delta": 0.0,
+    "offer": 19.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_gross_area": {
+    "baseline": 482.1600000000001,
+    "delta": 0.0,
+    "offer": 482.1600000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_required_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_required_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_required_width": {
+    "baseline": 19.0,
+    "delta": 0.0,
+    "offer": 19.0
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_sub_concrete": {
+    "baseline": 144.64800000000002,
+    "delta": 0.0,
+    "offer": 144.64800000000002
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_sub_formwork": {
+    "baseline": 26.52,
+    "delta": 0.0,
+    "offer": 26.52
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_sub_rebar": {
+    "baseline": 14464.800000000003,
+    "delta": 0.0,
+    "offer": 14464.800000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_super_concrete": {
+    "baseline": 384.19200000000035,
+    "delta": 0.0,
+    "offer": 384.19200000000035
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_super_formwork": {
+    "baseline": 2392.0799999999995,
+    "delta": 0.0,
+    "offer": 2392.0799999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__maintenance_shop_super_rebar": {
+    "baseline": 38419.20000000003,
+    "delta": 0.0,
+    "offer": 38419.20000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__material_capacity_volume": {
+    "baseline": 1024.0,
+    "delta": 0.0,
+    "offer": 1024.0
+  },
+  "stellarator_09__stellaris__buildings__layout__occupancy_area_margin_m2": {
+    "baseline": -4.547473508864641e-13,
+    "delta": 0.0,
+    "offer": -4.547473508864641e-13
+  },
+  "stellarator_09__stellaris__buildings__layout__outage_allowed_days": {
+    "baseline": 213.0625,
+    "delta": 0.0,
+    "offer": 213.0625
+  },
+  "stellarator_09__stellaris__buildings__layout__outage_margin_days": {
+    "baseline": 33.0625,
+    "delta": 0.0,
+    "offer": 33.0625
+  },
+  "stellarator_09__stellaris__buildings__layout__outage_required_days": {
+    "baseline": 180.0,
+    "delta": 0.0,
+    "offer": 180.0
+  },
+  "stellarator_09__stellaris__buildings__layout__packages_per_sector": {
+    "baseline": 36.0,
+    "delta": 0.0,
+    "offer": 36.0
+  },
+  "stellarator_09__stellaris__buildings__layout__parcel_area": {
+    "baseline": 364839.0429243004,
+    "delta": 0.0,
+    "offer": 364839.0429243004
+  },
+  "stellarator_09__stellaris__buildings__layout__parcel_fit_margin_m": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_air_volume": {
+    "baseline": 3696.0,
+    "delta": 0.0,
+    "offer": 3696.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_area": {
+    "baseline": 336.0,
+    "delta": 0.0,
+    "offer": 336.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_width": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_gross_area": {
+    "baseline": 359.16,
+    "delta": 0.0,
+    "offer": 359.16
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_required_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_required_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_required_width": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_sub_concrete": {
+    "baseline": 107.748,
+    "delta": 0.0,
+    "offer": 107.748
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_sub_formwork": {
+    "baseline": 23.52,
+    "delta": 0.0,
+    "offer": 23.52
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_sub_rebar": {
+    "baseline": 10774.800000000001,
+    "delta": 0.0,
+    "offer": 10774.800000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_super_concrete": {
+    "baseline": 326.59200000000027,
+    "delta": 0.0,
+    "offer": 326.59200000000027
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_super_formwork": {
+    "baseline": 2050.0799999999995,
+    "delta": 0.0,
+    "offer": 2050.0799999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__power_supply_building_super_rebar": {
+    "baseline": 32659.200000000026,
+    "delta": 0.0,
+    "offer": 32659.200000000026
+  },
+  "stellarator_09__stellaris__buildings__layout__provisional_room_count": {
+    "baseline": 13.0,
+    "delta": 0.0,
+    "offer": 13.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_air_volume": {
+    "baseline": 10608.0,
+    "delta": 0.0,
+    "offer": 10608.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_area": {
+    "baseline": 816.0,
+    "delta": 0.0,
+    "offer": 816.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_height": {
+    "baseline": 13.0,
+    "delta": 0.0,
+    "offer": 13.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_length": {
+    "baseline": 34.0,
+    "delta": 0.0,
+    "offer": 34.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_width": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_gross_area": {
+    "baseline": 851.1600000000001,
+    "delta": 0.0,
+    "offer": 851.1600000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_required_height": {
+    "baseline": 13.0,
+    "delta": 0.0,
+    "offer": 13.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_required_length": {
+    "baseline": 34.0,
+    "delta": 0.0,
+    "offer": 34.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_required_width": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_concrete": {
+    "baseline": 255.348,
+    "delta": 0.0,
+    "offer": 255.348
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_formwork": {
+    "baseline": 35.52,
+    "delta": 0.0,
+    "offer": 35.52
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_rebar": {
+    "baseline": 25534.800000000003,
+    "delta": 0.0,
+    "offer": 25534.800000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_concrete": {
+    "baseline": 627.3119999999994,
+    "delta": 0.0,
+    "offer": 627.3119999999994
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_formwork": {
+    "baseline": 3886.880000000001,
+    "delta": 0.0,
+    "offer": 3886.880000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_rebar": {
+    "baseline": 62731.199999999946,
+    "delta": 0.0,
+    "offer": 62731.199999999946
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_air_volume": {
+    "baseline": 157858.36329002513,
+    "delta": 0.0,
+    "offer": 157858.36329002513
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_area": {
+    "baseline": 11195.62860212944,
+    "delta": 0.0,
+    "offer": 11195.62860212944
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_length": {
+    "baseline": 105.809397513309,
+    "delta": 0.0,
+    "offer": 105.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_width": {
+    "baseline": 105.809397513309,
+    "delta": 0.0,
+    "offer": 105.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_gross_area": {
+    "baseline": 12058.103782235912,
+    "delta": 0.0,
+    "offer": 12058.103782235912
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_required_length": {
+    "baseline": 77.0,
+    "delta": 0.0,
+    "offer": 77.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_required_width": {
+    "baseline": 77.0,
+    "delta": 0.0,
+    "offer": 77.0
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_sub_concrete": {
+    "baseline": 12058.103782235912,
+    "delta": 0.0,
+    "offer": 12058.103782235912
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_sub_formwork": {
+    "baseline": 439.237590053236,
+    "delta": 0.0,
+    "offer": 439.237590053236
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_sub_rebar": {
+    "baseline": 1808715.5673353868,
+    "delta": 0.0,
+    "offer": 1808715.5673353868
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_super_concrete": {
+    "baseline": 19954.103782235914,
+    "delta": 0.0,
+    "offer": 19954.103782235914
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_super_formwork": {
+    "baseline": 20058.941372289148,
+    "delta": 0.0,
+    "offer": 20058.941372289148
+  },
+  "stellarator_09__stellaris__buildings__layout__reactor_hall_super_rebar": {
+    "baseline": 2993115.567335387,
+    "delta": 0.0,
+    "offer": 2993115.567335387
+  },
+  "stellarator_09__stellaris__buildings__layout__readiness_margin_days": {
+    "baseline": 54.0,
+    "delta": 0.0,
+    "offer": 54.0
+  },
+  "stellarator_09__stellaris__buildings__layout__replacement_ready_margin_days": {
+    "baseline": 54.0,
+    "delta": 0.0,
+    "offer": 54.0
+  },
+  "stellarator_09__stellaris__buildings__layout__required_parcel_x_max": {
+    "baseline": 635.1577563615014,
+    "delta": 0.0,
+    "offer": 635.1577563615014
+  },
+  "stellarator_09__stellaris__buildings__layout__required_parcel_x_min": {
+    "baseline": -186.9046987566545,
+    "delta": 0.0,
+    "offer": -186.9046987566545
+  },
+  "stellarator_09__stellaris__buildings__layout__required_parcel_y_max": {
+    "baseline": 186.9046987566545,
+    "delta": 0.0,
+    "offer": 186.9046987566545
+  },
+  "stellarator_09__stellaris__buildings__layout__required_parcel_y_min": {
+    "baseline": -256.9046987566545,
+    "delta": 0.0,
+    "offer": -256.9046987566545
+  },
+  "stellarator_09__stellaris__buildings__layout__route_margin_m": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_height": {
+    "baseline": 11.100000000000001,
+    "delta": 0.0,
+    "offer": 11.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_length": {
+    "baseline": 18.25,
+    "delta": 0.0,
+    "offer": 18.25
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_air_volume": {
+    "baseline": 5331.125049376568,
+    "delta": 0.0,
+    "offer": 5331.125049376568
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_area": {
+    "baseline": 378.0939751330899,
+    "delta": 0.0,
+    "offer": 378.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_length": {
+    "baseline": 10.0,
+    "delta": 0.0,
+    "offer": 10.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_gross_area": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_required_length": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_required_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_sub_concrete": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_sub_formwork": {
+    "baseline": 103.61879502661797,
+    "delta": 0.0,
+    "offer": 103.61879502661797
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_sub_rebar": {
+    "baseline": 62714.096269963484,
+    "delta": 0.0,
+    "offer": 62714.096269963484
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_super_concrete": {
+    "baseline": 982.0939751330899,
+    "delta": 0.0,
+    "offer": 982.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_super_formwork": {
+    "baseline": 1158.512770159708,
+    "delta": 0.0,
+    "offer": 1158.512770159708
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_east_super_rebar": {
+    "baseline": 147314.09626996348,
+    "delta": 0.0,
+    "offer": 147314.09626996348
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_air_volume": {
+    "baseline": 5331.125049376568,
+    "delta": 0.0,
+    "offer": 5331.125049376568
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_area": {
+    "baseline": 378.0939751330899,
+    "delta": 0.0,
+    "offer": 378.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_length": {
+    "baseline": 10.0,
+    "delta": 0.0,
+    "offer": 10.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_gross_area": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_required_length": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_required_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_sub_concrete": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_sub_formwork": {
+    "baseline": 103.61879502661797,
+    "delta": 0.0,
+    "offer": 103.61879502661797
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_sub_rebar": {
+    "baseline": 62714.096269963484,
+    "delta": 0.0,
+    "offer": 62714.096269963484
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_super_concrete": {
+    "baseline": 982.0939751330899,
+    "delta": 0.0,
+    "offer": 982.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_super_formwork": {
+    "baseline": 1158.512770159708,
+    "delta": 0.0,
+    "offer": 1158.512770159708
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_north_super_rebar": {
+    "baseline": 147314.09626996348,
+    "delta": 0.0,
+    "offer": 147314.09626996348
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_air_volume": {
+    "baseline": 5331.125049376568,
+    "delta": 0.0,
+    "offer": 5331.125049376568
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_area": {
+    "baseline": 378.0939751330899,
+    "delta": 0.0,
+    "offer": 378.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_length": {
+    "baseline": 10.0,
+    "delta": 0.0,
+    "offer": 10.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_gross_area": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_required_length": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_required_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_sub_concrete": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_sub_formwork": {
+    "baseline": 103.61879502661797,
+    "delta": 0.0,
+    "offer": 103.61879502661797
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_sub_rebar": {
+    "baseline": 62714.096269963484,
+    "delta": 0.0,
+    "offer": 62714.096269963484
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_super_concrete": {
+    "baseline": 982.0939751330899,
+    "delta": 0.0,
+    "offer": 982.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_super_formwork": {
+    "baseline": 1158.512770159708,
+    "delta": 0.0,
+    "offer": 1158.512770159708
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_south_super_rebar": {
+    "baseline": 147314.09626996348,
+    "delta": 0.0,
+    "offer": 147314.09626996348
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_air_volume": {
+    "baseline": 5331.125049376568,
+    "delta": 0.0,
+    "offer": 5331.125049376568
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_area": {
+    "baseline": 378.0939751330899,
+    "delta": 0.0,
+    "offer": 378.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_length": {
+    "baseline": 10.0,
+    "delta": 0.0,
+    "offer": 10.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_gross_area": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_required_length": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_required_width": {
+    "baseline": 37.80939751330899,
+    "delta": 0.0,
+    "offer": 37.80939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_sub_concrete": {
+    "baseline": 418.0939751330899,
+    "delta": 0.0,
+    "offer": 418.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_sub_formwork": {
+    "baseline": 103.61879502661797,
+    "delta": 0.0,
+    "offer": 103.61879502661797
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_sub_rebar": {
+    "baseline": 62714.096269963484,
+    "delta": 0.0,
+    "offer": 62714.096269963484
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_super_concrete": {
+    "baseline": 982.0939751330899,
+    "delta": 0.0,
+    "offer": 982.0939751330899
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_super_formwork": {
+    "baseline": 1158.512770159708,
+    "delta": 0.0,
+    "offer": 1158.512770159708
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_link_west_super_rebar": {
+    "baseline": 147314.09626996348,
+    "delta": 0.0,
+    "offer": 147314.09626996348
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_load_qualified": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_width": {
+    "baseline": 25.809397513308987,
+    "delta": 0.0,
+    "offer": 25.809397513308987
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_air_volume": {
+    "baseline": 138966.72552339165,
+    "delta": 0.0,
+    "offer": 138966.72552339165
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_area": {
+    "baseline": 9855.796136410754,
+    "delta": 0.0,
+    "offer": 9855.796136410754
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_gross_area": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_required_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_required_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_sub_concrete": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_sub_formwork": {
+    "baseline": 423.618795026618,
+    "delta": 0.0,
+    "offer": 423.618795026618
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_sub_rebar": {
+    "baseline": 1679855.0589695985,
+    "delta": 0.0,
+    "offer": 1679855.0589695985
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_super_concrete": {
+    "baseline": 28640.458736339308,
+    "delta": 0.0,
+    "offer": 28640.458736339308
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_super_formwork": {
+    "baseline": 27392.058736339306,
+    "delta": 0.0,
+    "offer": 27392.058736339306
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_east_super_rebar": {
+    "baseline": 4296068.810450896,
+    "delta": 0.0,
+    "offer": 4296068.810450896
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_air_volume": {
+    "baseline": 138966.72552339165,
+    "delta": 0.0,
+    "offer": 138966.72552339165
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_area": {
+    "baseline": 9855.796136410754,
+    "delta": 0.0,
+    "offer": 9855.796136410754
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_gross_area": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_required_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_required_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_concrete": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_formwork": {
+    "baseline": 423.618795026618,
+    "delta": 0.0,
+    "offer": 423.618795026618
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_rebar": {
+    "baseline": 1679855.0589695985,
+    "delta": 0.0,
+    "offer": 1679855.0589695985
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_super_concrete": {
+    "baseline": 28640.458736339308,
+    "delta": 0.0,
+    "offer": 28640.458736339308
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_super_formwork": {
+    "baseline": 27392.058736339306,
+    "delta": 0.0,
+    "offer": 27392.058736339306
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_north_super_rebar": {
+    "baseline": 4296068.810450896,
+    "delta": 0.0,
+    "offer": 4296068.810450896
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_air_volume": {
+    "baseline": 138966.72552339165,
+    "delta": 0.0,
+    "offer": 138966.72552339165
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_area": {
+    "baseline": 9855.796136410754,
+    "delta": 0.0,
+    "offer": 9855.796136410754
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_gross_area": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_required_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_required_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_concrete": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_formwork": {
+    "baseline": 423.618795026618,
+    "delta": 0.0,
+    "offer": 423.618795026618
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_rebar": {
+    "baseline": 1679855.0589695985,
+    "delta": 0.0,
+    "offer": 1679855.0589695985
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_super_concrete": {
+    "baseline": 28640.458736339308,
+    "delta": 0.0,
+    "offer": 28640.458736339308
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_super_formwork": {
+    "baseline": 27392.058736339306,
+    "delta": 0.0,
+    "offer": 27392.058736339306
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_south_super_rebar": {
+    "baseline": 4296068.810450896,
+    "delta": 0.0,
+    "offer": 4296068.810450896
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_air_volume": {
+    "baseline": 138966.72552339165,
+    "delta": 0.0,
+    "offer": 138966.72552339165
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_area": {
+    "baseline": 9855.796136410754,
+    "delta": 0.0,
+    "offer": 9855.796136410754
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_gross_area": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_required_height": {
+    "baseline": 14.100000000000001,
+    "delta": 0.0,
+    "offer": 14.100000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_required_length": {
+    "baseline": 106.0,
+    "delta": 0.0,
+    "offer": 106.0
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_required_width": {
+    "baseline": 97.809397513309,
+    "delta": 0.0,
+    "offer": 97.809397513309
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_concrete": {
+    "baseline": 11199.03372646399,
+    "delta": 0.0,
+    "offer": 11199.03372646399
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_formwork": {
+    "baseline": 423.618795026618,
+    "delta": 0.0,
+    "offer": 423.618795026618
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_rebar": {
+    "baseline": 1679855.0589695985,
+    "delta": 0.0,
+    "offer": 1679855.0589695985
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_concrete": {
+    "baseline": 28640.458736339308,
+    "delta": 0.0,
+    "offer": 28640.458736339308
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_formwork": {
+    "baseline": 27392.058736339306,
+    "delta": 0.0,
+    "offer": 27392.058736339306
+  },
+  "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_rebar": {
+    "baseline": 4296068.810450896,
+    "delta": 0.0,
+    "offer": 4296068.810450896
+  },
+  "stellarator_09__stellaris__buildings__layout__security_air_volume": {
+    "baseline": 624.0000000000001,
+    "delta": 0.0,
+    "offer": 624.0000000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__security_clear_area": {
+    "baseline": 156.00000000000003,
+    "delta": 0.0,
+    "offer": 156.00000000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__security_clear_height": {
+    "baseline": 4.0,
+    "delta": 0.0,
+    "offer": 4.0
+  },
+  "stellarator_09__stellaris__buildings__layout__security_clear_length": {
+    "baseline": 17.663521732655695,
+    "delta": 0.0,
+    "offer": 17.663521732655695
+  },
+  "stellarator_09__stellaris__buildings__layout__security_clear_width": {
+    "baseline": 8.831760866327848,
+    "delta": 0.0,
+    "offer": 8.831760866327848
+  },
+  "stellarator_09__stellaris__buildings__layout__security_gross_area": {
+    "baseline": 172.25716955939018,
+    "delta": 0.0,
+    "offer": 172.25716955939018
+  },
+  "stellarator_09__stellaris__buildings__layout__security_required_area": {
+    "baseline": 156.0,
+    "delta": 0.0,
+    "offer": 156.0
+  },
+  "stellarator_09__stellaris__buildings__layout__security_required_height": {
+    "baseline": 4.0,
+    "delta": 0.0,
+    "offer": 4.0
+  },
+  "stellarator_09__stellaris__buildings__layout__security_sub_concrete": {
+    "baseline": 51.677150867817055,
+    "delta": 0.0,
+    "offer": 51.677150867817055
+  },
+  "stellarator_09__stellaris__buildings__layout__security_sub_formwork": {
+    "baseline": 16.617169559390128,
+    "delta": 0.0,
+    "offer": 16.617169559390128
+  },
+  "stellarator_09__stellaris__buildings__layout__security_sub_rebar": {
+    "baseline": 5167.715086781705,
+    "delta": 0.0,
+    "offer": 5167.715086781705
+  },
+  "stellarator_09__stellaris__buildings__layout__security_super_concrete": {
+    "baseline": 99.48011214943861,
+    "delta": 0.0,
+    "offer": 99.48011214943861
+  },
+  "stellarator_09__stellaris__buildings__layout__security_super_formwork": {
+    "baseline": 600.60263462333,
+    "delta": 0.0,
+    "offer": 600.60263462333
+  },
+  "stellarator_09__stellaris__buildings__layout__security_super_rebar": {
+    "baseline": 9948.011214943861,
+    "delta": 0.0,
+    "offer": 9948.011214943861
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_air_volume": {
+    "baseline": 5016.0,
+    "delta": 0.0,
+    "offer": 5016.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_clear_area": {
+    "baseline": 456.0,
+    "delta": 0.0,
+    "offer": 456.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_clear_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_clear_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_clear_width": {
+    "baseline": 19.0,
+    "delta": 0.0,
+    "offer": 19.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_gross_area": {
+    "baseline": 482.1600000000001,
+    "delta": 0.0,
+    "offer": 482.1600000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_required_height": {
+    "baseline": 11.0,
+    "delta": 0.0,
+    "offer": 11.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_required_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_required_width": {
+    "baseline": 19.0,
+    "delta": 0.0,
+    "offer": 19.0
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_sub_concrete": {
+    "baseline": 144.64800000000002,
+    "delta": 0.0,
+    "offer": 144.64800000000002
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_sub_formwork": {
+    "baseline": 26.52,
+    "delta": 0.0,
+    "offer": 26.52
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_sub_rebar": {
+    "baseline": 14464.800000000003,
+    "delta": 0.0,
+    "offer": 14464.800000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_super_concrete": {
+    "baseline": 384.19200000000035,
+    "delta": 0.0,
+    "offer": 384.19200000000035
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_super_formwork": {
+    "baseline": 2392.0799999999995,
+    "delta": 0.0,
+    "offer": 2392.0799999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__service_water_building_super_rebar": {
+    "baseline": 38419.20000000003,
+    "delta": 0.0,
+    "offer": 38419.20000000003
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_air_volume": {
+    "baseline": 3024.0,
+    "delta": 0.0,
+    "offer": 3024.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_clear_area": {
+    "baseline": 336.0,
+    "delta": 0.0,
+    "offer": 336.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_clear_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_clear_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_clear_width": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_gross_area": {
+    "baseline": 359.16,
+    "delta": 0.0,
+    "offer": 359.16
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_required_height": {
+    "baseline": 9.0,
+    "delta": 0.0,
+    "offer": 9.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_required_length": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_required_width": {
+    "baseline": 14.0,
+    "delta": 0.0,
+    "offer": 14.0
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_sub_concrete": {
+    "baseline": 107.748,
+    "delta": 0.0,
+    "offer": 107.748
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_sub_formwork": {
+    "baseline": 23.52,
+    "delta": 0.0,
+    "offer": 23.52
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_sub_rebar": {
+    "baseline": 10774.800000000001,
+    "delta": 0.0,
+    "offer": 10774.800000000001
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_super_concrete": {
+    "baseline": 280.2720000000002,
+    "delta": 0.0,
+    "offer": 280.2720000000002
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_super_formwork": {
+    "baseline": 1741.28,
+    "delta": 0.0,
+    "offer": 1741.28
+  },
+  "stellarator_09__stellaris__buildings__layout__site_services_building_super_rebar": {
+    "baseline": 28027.200000000023,
+    "delta": 0.0,
+    "offer": 28027.200000000023
+  },
+  "stellarator_09__stellaris__buildings__layout__total_air_volume": {
+    "baseline": 1101604.185581098,
+    "delta": 0.0,
+    "offer": 1101604.185581098
+  },
+  "stellarator_09__stellaris__buildings__layout__total_clear_area": {
+    "baseline": 92355.56904830481,
+    "delta": 0.0,
+    "offer": 92355.56904830481
+  },
+  "stellarator_09__stellaris__buildings__layout__total_gross_area": {
+    "baseline": 100059.55079823057,
+    "delta": 0.0,
+    "offer": 100059.55079823057
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_air_volume": {
+    "baseline": 27648.0,
+    "delta": 0.0,
+    "offer": 27648.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_area": {
+    "baseline": 1536.0,
+    "delta": 0.0,
+    "offer": 1536.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_height": {
+    "baseline": 18.0,
+    "delta": 0.0,
+    "offer": 18.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_length": {
+    "baseline": 64.0,
+    "delta": 0.0,
+    "offer": 64.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_width": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_gross_area": {
+    "baseline": 1589.1599999999999,
+    "delta": 0.0,
+    "offer": 1589.1599999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_required_height": {
+    "baseline": 18.0,
+    "delta": 0.0,
+    "offer": 18.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_required_length": {
+    "baseline": 64.0,
+    "delta": 0.0,
+    "offer": 64.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_required_width": {
+    "baseline": 24.0,
+    "delta": 0.0,
+    "offer": 24.0
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_sub_concrete": {
+    "baseline": 476.74799999999993,
+    "delta": 0.0,
+    "offer": 476.74799999999993
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_sub_formwork": {
+    "baseline": 53.51999999999999,
+    "delta": 0.0,
+    "offer": 53.51999999999999
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_sub_rebar": {
+    "baseline": 47674.799999999996,
+    "delta": 0.0,
+    "offer": 47674.799999999996
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_super_concrete": {
+    "baseline": 1274.7119999999995,
+    "delta": 0.0,
+    "offer": 1274.7119999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_super_formwork": {
+    "baseline": 7950.880000000002,
+    "delta": 0.0,
+    "offer": 7950.880000000002
+  },
+  "stellarator_09__stellaris__buildings__layout__turbine_hall_super_rebar": {
+    "baseline": 127471.19999999995,
+    "delta": 0.0,
+    "offer": 127471.19999999995
+  },
+  "stellarator_09__stellaris__buildings__layout__unused_material_capacity": {
+    "baseline": 10.593954898347079,
+    "delta": 0.0,
+    "offer": 10.593954898347079
+  },
+  "stellarator_09__stellaris__buildings__legacy_cost_fusion_class_MW_guard__value": {
+    "baseline": 2652.5632625175904,
+    "delta": 0.0,
+    "offer": 2652.5632625175904
+  },
+  "stellarator_09__stellaris__buildings__legacy_cost_gross_class_MWe_guard__value": {
+    "baseline": 1219.9981701764736,
+    "delta": 0.0,
+    "offer": 1219.9981701764736
+  },
+  "stellarator_09__stellaris__buildings__legacy_cost_thermal_class_MW_guard__value": {
+    "baseline": 3306.8890988488924,
+    "delta": 0.0,
+    "offer": 3306.8890988488924
+  },
+  "stellarator_09__stellaris__buildings__legacy_cost_thermal_electric_class_MWe_guard__value": {
+    "baseline": 1219.9981701764736,
+    "delta": 0.0,
+    "offer": 1219.9981701764736
+  },
+  "stellarator_09__stellaris__buildings__maintenance_shop__civil__cost_2018": {
+    "baseline": 2310546.016424101,
+    "delta": 0.0,
+    "offer": 2310546.016424101
+  },
+  "stellarator_09__stellaris__buildings__maintenance_shop__civil__cost_2025": {
+    "baseline": 2962026.13575037,
+    "delta": 0.0,
+    "offer": 2962026.13575037
+  },
+  "stellarator_09__stellaris__buildings__maintenance_shop__civil__sub_cost_2018": {
+    "baseline": 151163.27004516168,
+    "delta": 0.0,
+    "offer": 151163.27004516168
+  },
+  "stellarator_09__stellaris__buildings__maintenance_shop__civil__super_cost_2018": {
+    "baseline": 2159382.746378939,
+    "delta": 0.0,
+    "offer": 2159382.746378939
+  },
+  "stellarator_09__stellaris__buildings__power_supply_building__civil__cost_2018": {
+    "baseline": 1962794.525618307,
+    "delta": 0.0,
+    "offer": 1962794.525618307
+  },
+  "stellarator_09__stellaris__buildings__power_supply_building__civil__cost_2025": {
+    "baseline": 2516222.8506433014,
+    "delta": 0.0,
+    "offer": 2516222.8506433014
+  },
+  "stellarator_09__stellaris__buildings__power_supply_building__civil__sub_cost_2018": {
+    "baseline": 115237.28067273417,
+    "delta": 0.0,
+    "offer": 115237.28067273417
+  },
+  "stellarator_09__stellaris__buildings__power_supply_building__civil__super_cost_2018": {
+    "baseline": 1847557.244945573,
+    "delta": 0.0,
+    "offer": 1847557.244945573
+  },
+  "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__cost_2018": {
+    "baseline": 3771234.377583116,
+    "delta": 0.0,
+    "offer": 3771234.377583116
+  },
+  "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__cost_2025": {
+    "baseline": 4834569.279745141,
+    "delta": 0.0,
+    "offer": 4834569.279745141
+  },
+  "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__sub_cost_2018": {
+    "baseline": 258941.23816244412,
+    "delta": 0.0,
+    "offer": 258941.23816244412
+  },
+  "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__super_cost_2018": {
+    "baseline": 3512293.139420672,
+    "delta": 0.0,
+    "offer": 3512293.139420672
+  },
+  "stellarator_09__stellaris__buildings__reactor_hall__civil__cost_2018": {
+    "baseline": 57157773.60541892,
+    "delta": 0.0,
+    "offer": 57157773.60541892
+  },
+  "stellarator_09__stellaris__buildings__reactor_hall__civil__cost_2025": {
+    "baseline": 73273943.940997,
+    "delta": 0.0,
+    "offer": 73273943.940997
+  },
+  "stellarator_09__stellaris__buildings__reactor_hall__civil__sub_cost_2018": {
+    "baseline": 14210707.006279273,
+    "delta": 0.0,
+    "offer": 14210707.006279273
+  },
+  "stellarator_09__stellaris__buildings__reactor_hall__civil__super_cost_2018": {
+    "baseline": 42947066.599139646,
+    "delta": 0.0,
+    "offer": 42947066.599139646
+  },
+  "stellarator_09__stellaris__buildings__sector_link_east__civil__cost_2018": {
+    "baseline": 2791100.8747984404,
+    "delta": 0.0,
+    "offer": 2791100.8747984404
+  },
+  "stellarator_09__stellaris__buildings__sector_link_east__civil__cost_2025": {
+    "baseline": 3578077.9434393384,
+    "delta": 0.0,
+    "offer": 3578077.9434393384
+  },
+  "stellarator_09__stellaris__buildings__sector_link_east__civil__sub_cost_2018": {
+    "baseline": 554612.4093742946,
+    "delta": 0.0,
+    "offer": 554612.4093742946
+  },
+  "stellarator_09__stellaris__buildings__sector_link_east__civil__super_cost_2018": {
+    "baseline": 2236488.465424146,
+    "delta": 0.0,
+    "offer": 2236488.465424146
+  },
+  "stellarator_09__stellaris__buildings__sector_link_north__civil__cost_2018": {
+    "baseline": 2791100.8747984404,
+    "delta": 0.0,
+    "offer": 2791100.8747984404
+  },
+  "stellarator_09__stellaris__buildings__sector_link_north__civil__cost_2025": {
+    "baseline": 3578077.9434393384,
+    "delta": 0.0,
+    "offer": 3578077.9434393384
+  },
+  "stellarator_09__stellaris__buildings__sector_link_north__civil__sub_cost_2018": {
+    "baseline": 554612.4093742946,
+    "delta": 0.0,
+    "offer": 554612.4093742946
+  },
+  "stellarator_09__stellaris__buildings__sector_link_north__civil__super_cost_2018": {
+    "baseline": 2236488.465424146,
+    "delta": 0.0,
+    "offer": 2236488.465424146
+  },
+  "stellarator_09__stellaris__buildings__sector_link_south__civil__cost_2018": {
+    "baseline": 2791100.8747984404,
+    "delta": 0.0,
+    "offer": 2791100.8747984404
+  },
+  "stellarator_09__stellaris__buildings__sector_link_south__civil__cost_2025": {
+    "baseline": 3578077.9434393384,
+    "delta": 0.0,
+    "offer": 3578077.9434393384
+  },
+  "stellarator_09__stellaris__buildings__sector_link_south__civil__sub_cost_2018": {
+    "baseline": 554612.4093742946,
+    "delta": 0.0,
+    "offer": 554612.4093742946
+  },
+  "stellarator_09__stellaris__buildings__sector_link_south__civil__super_cost_2018": {
+    "baseline": 2236488.465424146,
+    "delta": 0.0,
+    "offer": 2236488.465424146
+  },
+  "stellarator_09__stellaris__buildings__sector_link_west__civil__cost_2018": {
+    "baseline": 2791100.8747984404,
+    "delta": 0.0,
+    "offer": 2791100.8747984404
+  },
+  "stellarator_09__stellaris__buildings__sector_link_west__civil__cost_2025": {
+    "baseline": 3578077.9434393384,
+    "delta": 0.0,
+    "offer": 3578077.9434393384
+  },
+  "stellarator_09__stellaris__buildings__sector_link_west__civil__sub_cost_2018": {
+    "baseline": 554612.4093742946,
+    "delta": 0.0,
+    "offer": 554612.4093742946
+  },
+  "stellarator_09__stellaris__buildings__sector_link_west__civil__super_cost_2018": {
+    "baseline": 2236488.465424146,
+    "delta": 0.0,
+    "offer": 2236488.465424146
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_east__civil__cost_2018": {
+    "baseline": 73849369.80289228,
+    "delta": 0.0,
+    "offer": 73849369.80289228
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_east__civil__cost_2025": {
+    "baseline": 94671892.23238161,
+    "delta": 0.0,
+    "offer": 94671892.23238161
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_east__civil__sub_cost_2018": {
+    "baseline": 13209249.953750659,
+    "delta": 0.0,
+    "offer": 13209249.953750659
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_east__civil__super_cost_2018": {
+    "baseline": 60640119.84914163,
+    "delta": 0.0,
+    "offer": 60640119.84914163
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_north__civil__cost_2018": {
+    "baseline": 73849369.80289228,
+    "delta": 0.0,
+    "offer": 73849369.80289228
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_north__civil__cost_2025": {
+    "baseline": 94671892.23238161,
+    "delta": 0.0,
+    "offer": 94671892.23238161
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_north__civil__sub_cost_2018": {
+    "baseline": 13209249.953750659,
+    "delta": 0.0,
+    "offer": 13209249.953750659
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_north__civil__super_cost_2018": {
+    "baseline": 60640119.84914163,
+    "delta": 0.0,
+    "offer": 60640119.84914163
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_south__civil__cost_2018": {
+    "baseline": 73849369.80289228,
+    "delta": 0.0,
+    "offer": 73849369.80289228
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_south__civil__cost_2025": {
+    "baseline": 94671892.23238161,
+    "delta": 0.0,
+    "offer": 94671892.23238161
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_south__civil__sub_cost_2018": {
+    "baseline": 13209249.953750659,
+    "delta": 0.0,
+    "offer": 13209249.953750659
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_south__civil__super_cost_2018": {
+    "baseline": 60640119.84914163,
+    "delta": 0.0,
+    "offer": 60640119.84914163
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_west__civil__cost_2018": {
+    "baseline": 73849369.80289228,
+    "delta": 0.0,
+    "offer": 73849369.80289228
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_west__civil__cost_2025": {
+    "baseline": 94671892.23238161,
+    "delta": 0.0,
+    "offer": 94671892.23238161
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_west__civil__sub_cost_2018": {
+    "baseline": 13209249.953750659,
+    "delta": 0.0,
+    "offer": 13209249.953750659
+  },
+  "stellarator_09__stellaris__buildings__sector_wing_west__civil__super_cost_2018": {
+    "baseline": 60640119.84914163,
+    "delta": 0.0,
+    "offer": 60640119.84914163
+  },
+  "stellarator_09__stellaris__buildings__security__civil__cost_2018": {
+    "baseline": 604677.7848753905,
+    "delta": 0.0,
+    "offer": 604677.7848753905
+  },
+  "stellarator_09__stellaris__buildings__security__civil__cost_2025": {
+    "baseline": 775172.3574328482,
+    "delta": 0.0,
+    "offer": 775172.3574328482
+  },
+  "stellarator_09__stellaris__buildings__security__civil__sub_cost_2018": {
+    "baseline": 59005.29657235184,
+    "delta": 0.0,
+    "offer": 59005.29657235184
+  },
+  "stellarator_09__stellaris__buildings__security__civil__super_cost_2018": {
+    "baseline": 545672.4883030386,
+    "delta": 0.0,
+    "offer": 545672.4883030386
+  },
+  "stellarator_09__stellaris__buildings__selected_parcel_x_min__selected_parcel_x_min": {
+    "baseline": -186.9046987566545,
+    "delta": 0.0,
+    "offer": -186.9046987566545
+  },
+  "stellarator_09__stellaris__buildings__selected_parcel_y_min__selected_parcel_y_min": {
+    "baseline": -256.9046987566545,
+    "delta": 0.0,
+    "offer": -256.9046987566545
+  },
+  "stellarator_09__stellaris__buildings__service_water_building__civil__cost_2018": {
+    "baseline": 2310546.016424101,
+    "delta": 0.0,
+    "offer": 2310546.016424101
+  },
+  "stellarator_09__stellaris__buildings__service_water_building__civil__cost_2025": {
+    "baseline": 2962026.13575037,
+    "delta": 0.0,
+    "offer": 2962026.13575037
+  },
+  "stellarator_09__stellaris__buildings__service_water_building__civil__sub_cost_2018": {
+    "baseline": 151163.27004516168,
+    "delta": 0.0,
+    "offer": 151163.27004516168
+  },
+  "stellarator_09__stellaris__buildings__service_water_building__civil__super_cost_2018": {
+    "baseline": 2159382.746378939,
+    "delta": 0.0,
+    "offer": 2159382.746378939
+  },
+  "stellarator_09__stellaris__buildings__site_allowance__cost": {
+    "baseline": 85000000.0,
+    "delta": 0.0,
+    "offer": 85000000.0
+  },
+  "stellarator_09__stellaris__buildings__site_services_building__civil__cost_2018": {
+    "baseline": 1687829.5408840575,
+    "delta": 0.0,
+    "offer": 1687829.5408840575
+  },
+  "stellarator_09__stellaris__buildings__site_services_building__civil__cost_2025": {
+    "baseline": 2163728.909639897,
+    "delta": 0.0,
+    "offer": 2163728.909639897
+  },
+  "stellarator_09__stellaris__buildings__site_services_building__civil__sub_cost_2018": {
+    "baseline": 115237.28067273417,
+    "delta": 0.0,
+    "offer": 115237.28067273417
+  },
+  "stellarator_09__stellaris__buildings__site_services_building__civil__super_cost_2018": {
+    "baseline": 1572592.2602113234,
+    "delta": 0.0,
+    "offer": 1572592.2602113234
+  },
+  "stellarator_09__stellaris__buildings__turbine_hall__civil__cost_2018": {
+    "baseline": 7649289.790310726,
+    "delta": 0.0,
+    "offer": 7649289.790310726
+  },
+  "stellarator_09__stellaris__buildings__turbine_hall__civil__cost_2025": {
+    "baseline": 9806078.787339794,
+    "delta": 0.0,
+    "offer": 9806078.787339794
+  },
+  "stellarator_09__stellaris__buildings__turbine_hall__civil__sub_cost_2018": {
+    "baseline": 474497.17439700896,
+    "delta": 0.0,
+    "offer": 474497.17439700896
+  },
+  "stellarator_09__stellaris__buildings__turbine_hall__civil__super_cost_2018": {
+    "baseline": 7174792.615913716,
+    "delta": 0.0,
+    "offer": 7174792.615913716
+  },
+  "stellarator_09__stellaris__buildings__ventilation__cost_1990": {
+    "baseline": 40757745.27004764,
+    "delta": 0.0,
+    "offer": 40757745.27004764
+  },
+  "stellarator_09__stellaris__buildings__ventilation__cost_2025": {
+    "baseline": 100381929.62837288,
+    "delta": 0.0,
+    "offer": 100381929.62837288
+  },
+  "stellarator_09__stellaris__calendar__availability": {
+    "baseline": 0.9027777777777779,
+    "delta": 0.0,
+    "offer": 0.9027777777777779
+  },
+  "stellarator_09__stellaris__calendar__cas72_annual": {
+    "baseline": 138326404.7807058,
+    "delta": 0.0,
+    "offer": 138326404.7807058
+  },
+  "stellarator_09__stellaris__calendar__coil_life_margin_fpy": {
+    "baseline": -17.083333333333336,
+    "delta": 0.0,
+    "offer": -17.083333333333336
+  },
+  "stellarator_09__stellaris__calendar__dated_energy_ratio": {
+    "baseline": 1.0051616112988937,
+    "delta": 0.0,
+    "offer": 1.0051616112988937
+  },
+  "stellarator_09__stellaris__calendar__n_replacements": {
+    "baseline": 5.0,
+    "delta": 0.0,
+    "offer": 5.0
+  },
+  "stellarator_09__stellaris__calendar__physical_life_fpy": {
+    "baseline": 4.5239260339489915,
+    "delta": 0.0,
+    "offer": 4.5239260339489915
+  },
+  "stellarator_09__stellaris__calendar__planned_downtime_yr": {
+    "baseline": 2.916666666666667,
+    "delta": 0.0,
+    "offer": 2.916666666666667
+  },
+  "stellarator_09__stellaris__calendar__productive_fpy": {
+    "baseline": 27.083333333333336,
+    "delta": 0.0,
+    "offer": 27.083333333333336
+  },
+  "stellarator_09__stellaris__calendar__replacement_pv": {
+    "baseline": 1716498053.6900802,
+    "delta": 0.0,
+    "offer": 1716498053.6900802
+  },
+  "stellarator_09__stellaris__calendar__terminal_downtime_yr": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__calendar__unplanned_downtime_yr": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__cryoplant__aux_cooling__aux_cost": {
+    "baseline": 3637578.0087337815,
+    "delta": 0.0,
+    "offer": 3637578.0087337815
+  },
+  "stellarator_09__stellaris__cryoplant__aux_cooling__cost": {
+    "baseline": 35116270.129820704,
+    "delta": 0.0,
+    "offer": 35116270.129820704
+  },
+  "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost": {
+    "baseline": 31478692.121086925,
+    "delta": 0.0,
+    "offer": 31478692.121086925
+  },
+  "stellarator_09__stellaris__cryoplant__aux_cost_thermal_class_MW_guard__value": {
+    "baseline": 3306.8890988488924,
+    "delta": 0.0,
+    "offer": 3306.8890988488924
+  },
+  "stellarator_09__stellaris__cryoplant__cold_load_W_demand_conversion__demand": {
+    "baseline": 21933.902368719853,
+    "delta": 6145.5690144367145,
+    "offer": 28079.471383156568
+  },
+  "stellarator_09__stellaris__cryoplant__cold_load__p_cold": {
+    "baseline": 0.02193390236871985,
+    "delta": 0.006145569014436716,
+    "offer": 0.028079471383156567
+  },
+  "stellarator_09__stellaris__cryoplant__cold_load__q_structure_nuclear": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability__applicable": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability__capacity_ok": {
+    "baseline": 1.0,
+    "delta": -1.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability__evaluation_defined": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability__margin": {
+    "baseline": 0.0,
+    "delta": -6145.5690144367145,
+    "offer": -6145.5690144367145
+  },
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability__supported": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__cryo_elec__p_elec": {
+    "baseline": 1.5353731658103897,
+    "delta": 0.43018983101057007,
+    "offer": 1.9655629968209598
+  },
+  "stellarator_09__stellaris__cryoplant__cryogenic_offered_conditions__applicable": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__cryogenic_offered_conditions__evaluation_defined": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__cryogenic_offered_conditions__supported": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__direct_electric_capability__applicable": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__direct_electric_capability__capacity_ok": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__direct_electric_capability__evaluation_defined": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__direct_electric_capability__margin": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__cryoplant__direct_electric_capability__supported": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability__applicable": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability__capacity_ok": {
+    "baseline": 1.0,
+    "delta": -1.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability__evaluation_defined": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability__margin": {
+    "baseline": 0.0,
+    "delta": -951.0809855632906,
+    "offer": -951.0809855632906
+  },
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability__supported": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__area_cold": {
+    "baseline": 2687.9999999999995,
+    "delta": 864.0000000000005,
+    "offer": 3552.0
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__area_shield": {
+    "baseline": 3225.5999999999995,
+    "delta": 1036.8000000000002,
+    "offer": 4262.4
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__p_drive": {
+    "baseline": 0.050267327222555655,
+    "delta": 0.0,
+    "offer": 0.050267327222555655
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_inventory_cold": {
+    "baseline": 9586.022368719854,
+    "delta": 85.71901443670868,
+    "offer": 9671.741383156563
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_inventory_shield": {
+    "baseline": 41599.953939961626,
+    "delta": 951.0809855632906,
+    "offer": 42551.03492552492
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_lead_cold": {
+    "baseline": 8729.062449656321,
+    "delta": 0.0,
+    "offer": 8729.062449656321
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_lead_shield": {
+    "baseline": 34038.26477289934,
+    "delta": 0.0,
+    "offer": 34038.26477289934
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_rad_cold": {
+    "baseline": 266.68137824753796,
+    "delta": 85.71901443670873,
+    "offer": 352.4003926842467
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_rad_shield": {
+    "baseline": 2958.9186217524616,
+    "delta": 951.0809855632915,
+    "offer": 3909.999607315753
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_support_cold": {
+    "baseline": 590.2785408159937,
+    "delta": 0.0,
+    "offer": 590.2785408159937
+  },
+  "stellarator_09__stellaris__cryoplant__inventory__q_support_shield": {
+    "baseline": 4602.770545309823,
+    "delta": 0.0,
+    "offer": 4602.770545309823
+  },
+  "stellarator_09__stellaris__cryoplant__refrigeration_sum__total": {
+    "baseline": 2.137762109226717,
+    "delta": 0.4439619777495709,
+    "offer": 2.581724086976288
+  },
+  "stellarator_09__stellaris__cryoplant__shield_elec__p_elec": {
+    "baseline": 0.6023889434163274,
+    "delta": 0.013772146739000846,
+    "offer": 0.6161610901553283
+  },
+  "stellarator_09__stellaris__installation__cost": {
+    "baseline": 509887983.2968712,
+    "delta": 130890772.2347945,
+    "offer": 640778755.5316657
+  },
+  "stellarator_09__stellaris__magnet__coil_length__c_coil": {
+    "baseline": 25.0,
+    "delta": 0.0,
+    "offer": 25.0
+  },
+  "stellarator_09__stellaris__magnet__cond_strain__eps_cond": {
+    "baseline": 0.0021666666666666666,
+    "delta": -0.0007222222222222226,
+    "offer": 0.001444444444444444
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__allowable_current": {
+    "baseline": 23717.40381194687,
+    "delta": 29646.754764933623,
+    "offer": 53364.158576880494
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__critical_current_reference": {
+    "baseline": 29646.754764933587,
+    "delta": 37058.44345616702,
+    "offer": 66705.19822110061
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__critical_current_set": {
+    "baseline": 29917.84748747087,
+    "delta": 37397.30935933864,
+    "offer": 67315.1568468095
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__field_extrapolated": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__margin_current": {
+    "baseline": -26282.59618805313,
+    "delta": 29646.754764933623,
+    "offer": 3364.1585768804944
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__margin_fraction": {
+    "baseline": -0.8865252334174663,
+    "delta": 0.936958463009704,
+    "offer": 0.05043322959223773
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_reference": {
+    "baseline": 1.6865252334174663,
+    "delta": -0.936958463009704,
+    "offer": 0.7495667704077623
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_set": {
+    "baseline": 1.6712432276733553,
+    "delta": -0.9284684598185313,
+    "offer": 0.742774767854824
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_reference": {
+    "baseline": 112.70871985157702,
+    "delta": 140.88589981447143,
+    "offer": 253.59461966604843
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_set": {
+    "baseline": 113.7393390191898,
+    "delta": 142.1741737739874,
+    "offer": 255.9135127931772
+  },
+  "stellarator_09__stellaris__magnet__conductor_current__tape_critical_current": {
+    "baseline": 263.0386965975177,
+    "delta": 0.0,
+    "offer": 263.0386965975177
+  },
+  "stellarator_09__stellaris__magnet__field_calc__B_axis": {
+    "baseline": 8.999999999999998,
+    "delta": 0.0,
+    "offer": 8.999999999999998
+  },
+  "stellarator_09__stellaris__magnet__insulation_inventory__ground_volume": {
+    "baseline": 4.951799999999999,
+    "delta": 5.2263906414933565,
+    "offer": 10.178190641493355
+  },
+  "stellarator_09__stellaris__magnet__insulation_inventory__internal_volume": {
+    "baseline": 3.4139999999999997,
+    "delta": 4.267500000000004,
+    "offer": 7.681500000000003
+  },
+  "stellarator_09__stellaris__magnet__insulation_inventory__sheet_area": {
+    "baseline": 6827.999999999999,
+    "delta": 8535.000000000007,
+    "offer": 15363.000000000005
+  },
+  "stellarator_09__stellaris__magnet__insulation_inventory__stock_cost": {
+    "baseline": 421131.9672639345,
+    "delta": 526414.9590799185,
+    "offer": 947546.926343853
+  },
+  "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+    "baseline": 1707443242.2597551,
+    "delta": 934934087.3913894,
+    "offer": 2642377329.6511445
+  },
+  "stellarator_09__stellaris__magnet__magnet_cost__capital_cost": {
+    "baseline": 6323469946.334224,
+    "delta": 0.0,
+    "offer": 6323469946.334224
+  },
+  "stellarator_09__stellaris__magnet__magnet_structure_cost__cost": {
+    "baseline": 209080880.68635386,
+    "delta": 0.0,
+    "offer": 209080880.68635386
+  },
+  "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate": {
+    "baseline": 18.0,
+    "delta": 0.0,
+    "offer": 18.0
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__cost_copper": {
+    "baseline": 4700258.639999999,
+    "delta": 5875323.3000000045,
+    "offer": 10575581.940000003
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__cost_helium": {
+    "baseline": 34774.15261034517,
+    "delta": 43467.69076293152,
+    "offer": 78241.84337327669
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__cost_solder": {
+    "baseline": 8859919.781807616,
+    "delta": 11074899.727259528,
+    "offer": 19934819.509067144
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__cost_steel": {
+    "baseline": 2359756.7999999993,
+    "delta": 2949696.0000000023,
+    "offer": 5309452.800000002
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__helium_density": {
+    "baseline": 36.10517755948641,
+    "delta": 0.0,
+    "offer": 36.10517755948641
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__mass_copper": {
+    "baseline": 427296.2399999999,
+    "delta": 534120.3000000004,
+    "offer": 961416.5400000003
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__mass_helium": {
+    "baseline": 394.441843801877,
+    "delta": 493.0523047523469,
+    "offer": 887.4941485542239
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__mass_solder": {
+    "baseline": 137488.60799999998,
+    "delta": 171860.7600000001,
+    "offer": 309349.3680000001
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__mass_steel": {
+    "baseline": 393292.7999999999,
+    "delta": 491616.0000000004,
+    "offer": 884908.8000000003
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__material_cost": {
+    "baseline": 15954709.374417959,
+    "delta": 19943386.718022466,
+    "offer": 35898096.09244043
+  },
+  "stellarator_09__stellaris__magnet__material_inventory__tape_volume": {
+    "baseline": 12.290400000000004,
+    "delta": 15.363000000000019,
+    "offer": 27.653400000000023
+  },
+  "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": {
+    "baseline": 24.899999999999995,
+    "delta": 0.0,
+    "offer": 24.899999999999995
+  },
+  "stellarator_09__stellaris__magnet__stored_energy__W_mag": {
+    "baseline": 111000000000.0,
+    "delta": 0.0,
+    "offer": 111000000000.0
+  },
+  "stellarator_09__stellaris__magnet__winding_pack_cost__cost": {
+    "baseline": 5346600000.0,
+    "delta": 0.0,
+    "offer": 5346600000.0
+  },
+  "stellarator_09__stellaris__magnet__winding_procurement__conductor_length": {
+    "baseline": 321600.0,
+    "delta": 0.0,
+    "offer": 321600.0
+  },
+  "stellarator_09__stellaris__magnet__winding_procurement__cost": {
+    "baseline": 1497941229.6061373,
+    "delta": 934407672.4323096,
+    "offer": 2432348902.038447
+  },
+  "stellarator_09__stellaris__magnet__winding_procurement__tape_cost": {
+    "baseline": 731571428.5714288,
+    "delta": 914464285.714287,
+    "offer": 1646035714.2857158
+  },
+  "stellarator_09__stellaris__magnet__winding_procurement__tape_length": {
+    "baseline": 36578571.42857144,
+    "delta": 45723214.28571435,
+    "offer": 82301785.71428579
+  },
+  "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": {
+    "baseline": 750415091.6602907,
+    "delta": 0.0,
+    "offer": 750415091.6602907
+  },
+  "stellarator_09__stellaris__magnet__winding_state__I_coil": {
+    "baseline": 15400000.0,
+    "delta": 0.0,
+    "offer": 15400000.0
+  },
+  "stellarator_09__stellaris__magnet__winding_state__j_wp_effective": {
+    "baseline": 118.82716049382721,
+    "delta": -66.01508916323735,
+    "offer": 52.81207133058985
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__cavity_x": {
+    "baseline": 0.25,
+    "delta": 0.0,
+    "offer": 0.25
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__cavity_y": {
+    "baseline": 0.4,
+    "delta": 0.9,
+    "offer": 1.3
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__exterior_x": {
+    "baseline": 0.3,
+    "delta": 0.0,
+    "offer": 0.3
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__exterior_y": {
+    "baseline": 0.45,
+    "delta": 0.9000000000000001,
+    "offer": 1.35
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__insulated_x": {
+    "baseline": 0.36599999999999994,
+    "delta": -0.12461945704880356,
+    "offer": 0.24138054295119638
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__insulated_y": {
+    "baseline": 0.37499999999999994,
+    "delta": 0.9008160869735595,
+    "offer": 1.2758160869735595
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__internal_x": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__internal_y": {
+    "baseline": 0.009,
+    "delta": 0.02197112407252584,
+    "offer": 0.030971124072525842
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__margin_x": {
+    "baseline": -0.11999999999999994,
+    "delta": 0.12461945704880356,
+    "offer": 0.004619457048803621
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__margin_y": {
+    "baseline": 0.021000000000000074,
+    "delta": -0.00081608697355956,
+    "offer": 0.020183913026440514
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__minimum_margin": {
+    "baseline": -0.11999999999999994,
+    "delta": 0.12461945704880356,
+    "offer": 0.004619457048803621
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__nominal_x": {
+    "baseline": 0.35999999999999993,
+    "delta": -0.12461945704880356,
+    "offer": 0.23538054295119637
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__nominal_y": {
+    "baseline": 0.35999999999999993,
+    "delta": 0.8788449629010338,
+    "offer": 1.2388449629010336
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__pack_x": {
+    "baseline": 0.35999999999999993,
+    "delta": -0.12461945704880356,
+    "offer": 0.23538054295119637
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__pack_y": {
+    "baseline": 0.36899999999999994,
+    "delta": 0.9008160869735595,
+    "offer": 1.2698160869735595
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__required_x": {
+    "baseline": 0.36999999999999994,
+    "delta": -0.12461945704880356,
+    "offer": 0.24538054295119638
+  },
+  "stellarator_09__stellaris__magnet__wp_fit__required_y": {
+    "baseline": 0.37899999999999995,
+    "delta": 0.9008160869735595,
+    "offer": 1.2798160869735595
+  },
+  "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": {
+    "baseline": 650000000.0,
+    "delta": -216666666.6666668,
+    "offer": 433333333.3333332
+  },
+  "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total": {
+    "baseline": 136.55999999999997,
+    "delta": 170.70000000000013,
+    "offer": 307.2600000000001
+  },
+  "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": {
+    "baseline": 136.55999999999997,
+    "delta": 170.70000000000013,
+    "offer": 307.2600000000001
+  },
+  "stellarator_09__stellaris__operating_heat__p_coupled": {
+    "baseline": 49.07960078792678,
+    "delta": 0.0,
+    "offer": 49.07960078792678
+  },
+  "stellarator_09__stellaris__operating_heat__p_delivered": {
+    "baseline": 49.07960078792678,
+    "delta": 0.0,
+    "offer": 49.07960078792678
+  },
+  "stellarator_09__stellaris__operating_heat__p_wallplug": {
+    "baseline": 98.15920157585356,
+    "delta": 0.0,
+    "offer": 98.15920157585356
+  },
+  "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+    "baseline": 17751261591.194653,
+    "delta": 1536635227.6183891,
+    "offer": 19287896818.81304
+  },
+  "stellarator_09__stellaris__pb__p_et": {
+    "baseline": 1219.9981701764736,
+    "delta": 0.0,
+    "offer": 1219.9981701764736
+  },
+  "stellarator_09__stellaris__pb__p_net": {
+    "baseline": 850.0653006674999,
+    "delta": -0.4439619777494954,
+    "offer": 849.6213386897504
+  },
+  "stellarator_09__stellaris__pb__p_th": {
+    "baseline": 3306.8890988488924,
+    "delta": 0.0,
+    "offer": 3306.8890988488924
+  },
+  "stellarator_09__stellaris__pb__p_the": {
+    "baseline": 1219.9981701764736,
+    "delta": 0.0,
+    "offer": 1219.9981701764736
+  },
+  "stellarator_09__stellaris__pb__q_eng": {
+    "baseline": 3.297890700536626,
+    "delta": -0.003953103848140405,
+    "offer": 3.2939375966884854
+  },
+  "stellarator_09__stellaris__pb__rec_frac": {
+    "baseline": 0.30322411832426166,
+    "delta": 0.00036390380625356267,
+    "offer": 0.3035880221305152
+  },
+  "stellarator_09__stellaris__plasma__fusion__p_fus": {
+    "baseline": 2652.5632625175904,
+    "delta": 0.0,
+    "offer": 2652.5632625175904
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__applicable": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__capacity_ok": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__evaluation_defined": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__margin": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__supported": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__applicable": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__capacity_ok": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__evaluation_defined": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__margin": {
+    "baseline": 0.0,
+    "delta": 0.0,
+    "offer": 0.0
+  },
+  "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__supported": {
+    "baseline": 1.0,
+    "delta": 0.0,
+    "offer": 1.0
+  },
+  "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost": {
+    "baseline": 86013482.74180616,
+    "delta": 0.0,
+    "offer": 86013482.74180616
+  },
+  "stellarator_09__stellaris__power_supplies__tf_power__total": {
+    "baseline": 0.050267327222555655,
+    "delta": 0.0,
+    "offer": 0.050267327222555655
+  },
+  "stellarator_09__stellaris__rb__blanket_vol": {
+    "baseline": 1013.4060451016529,
+    "delta": 0.0,
+    "offer": 1013.4060451016529
+  },
+  "stellarator_09__stellaris__rb__outer_radius": {
+    "baseline": 3.5500000000000003,
+    "delta": 0.0,
+    "offer": 3.5500000000000003
+  },
+  "stellarator_09__stellaris__rb__r_coil": {
+    "baseline": 3.0000000000000004,
+    "delta": 0.0,
+    "offer": 3.0000000000000004
+  },
+  "stellarator_09__stellaris__rb__r_coil_centre": {
+    "baseline": 3.1500000000000004,
+    "delta": 0.0,
+    "offer": 3.1500000000000004
+  },
+  "stellarator_09__stellaris__rb__shield_vol": {
+    "baseline": 517.043900562068,
+    "delta": 0.0,
+    "offer": 517.043900562068
+  },
+  "stellarator_09__stellaris__rb__structure_vol": {
+    "baseline": 204.93740058641953,
+    "delta": 0.0,
+    "offer": 204.93740058641953
+  },
+  "stellarator_09__stellaris__rb__vessel_vol": {
+    "baseline": 147.90589155472523,
+    "delta": 0.0,
+    "offer": 147.90589155472523
+  },
+  "stellarator_09__stellaris__rb__wall_area": {
+    "baseline": 701.9262650054739,
+    "delta": 0.0,
+    "offer": 701.9262650054739
+  }
+}

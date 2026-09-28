@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "duplicate",
+  "candidate": "/tmp/fuel-tetra.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": "23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754",
+  "triage": "keeper",
+  "reason": "same bytes already registered (source_id 23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754)",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T16:10:56.204153+00:00"
+}

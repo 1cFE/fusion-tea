@@ -1,0 +1,13 @@
+{
+  "execution_commit": "a396a2e0f5b4df8a5d45d4aa0e93b42ba14d045a",
+  "scope": "68 complete native maps, every physical/source candidate paired; no package/model changes",
+  "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.design_support execute --record exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design --integration-return work/orchestration/goals/aries-integrated-lcoe/evidence/integration-attempt1/integration_return.json'",
+  "route": "stock StudyRunner + PreparedListStrategy via unchanged predecessor full-numeric-map exporter",
+  "baseline": "preparation/reused-baseline-provenance.json",
+  "reporting": "design_reporting.py; native output selection and presentation arithmetic only",
+  "record_timing": "Native execution launched after T-004/trail/checkpoint/config/intake/scan/preflight existed, before coordinator record.md was created. Preserved original timing; no rerun.",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/native/20260922-aries-integrated-coupled-design.db --sample-size 68 --out exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/verification_summary.json'",
+  "reporting_command": "MPLCONFIGDIR=/tmp/aries-design-matplotlib .codex-test/run python -m exploration.aries_integrated.studies.design_reporting --record exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design --out exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/results/accounting.json --plots-dir exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/plots",
+  "interpretation_command": "MPLCONFIGDIR=/tmp/aries-design-matplotlib .codex-test/run python exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/analyze_results.py",
+  "repo_commit_at_execution": "a396a2e0f5b4df8a5d45d4aa0e93b42ba14d045a"
+}

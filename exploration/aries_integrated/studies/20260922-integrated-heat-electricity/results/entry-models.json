@@ -1,0 +1,5 @@
+{
+  "mfe_plasma_scaling_params": "aries_integrated.schemas.mfe_plasma_scaling_params.MfePlasmaScalingParams",
+  "plant_params": "aries_integrated.schemas.plant_params.PlantParams",
+  "plasma_integration_params": "aries_integrated.schemas.plasma_integration_params.PlasmaIntegrationParams"
+}

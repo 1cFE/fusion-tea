@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-06",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-06/20260918T203242321808",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "atsdr_tungsten_physical_and_chemical_properties_table_4_2",
+      "path": "knowledge/sources/atsdr_tungsten_physical_and_chemical_properties_table_4_2/",
+      "source_id": "7a3c2d9d1e16d87ef04b6cf28bac696055a524e4204c83fe3f8935e0926b56ed",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

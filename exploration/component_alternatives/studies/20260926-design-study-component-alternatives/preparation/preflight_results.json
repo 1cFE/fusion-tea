@@ -1,0 +1,107 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/component_alternatives/component_alternatives_tea",
+    "manifest": "exploration/component_alternatives/studies/manifest.json",
+    "axis_declaration": "exploration/component_alternatives/studies/axes.json",
+    "identity_document": "work/orchestration/goals/design-study-component-alternatives/evidence/integration/package_identity.json",
+    "baseline_result": "work/orchestration/goals/design-study-component-alternatives/evidence/integration/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "4caab4414f234c510467e138818b82121cc23736f5d59162927e7d184d933aca",
+    "baseline_result": "baa3d1881f3c3bc3ab2268b3a3b5c0ea8c6619c69c4301c6ad13b17932630d04",
+    "identity_document": "fc4b772fe006d9ddab14c8907d63827e72e0d47c9aa4a66eb10d2a14a93c98a9",
+    "manifest": "03391bfa73a8c4039ae16ac62c6419b8abbe0c19c04e9917af98e6ea6a98b9a0"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "43 declared keys across 43 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 12",
+      "warnings": [
+        "water_ic1_ua: undeclared suffix-sibling component_alternatives__plant__idle_branches__ua",
+        "water_ic2_ua: undeclared suffix-sibling component_alternatives__plant__idle_branches__ua",
+        "water_pre_ua: undeclared suffix-sibling component_alternatives__plant__idle_branches__ua",
+        "recuperator_hardware_ua: undeclared suffix-sibling component_alternatives__plant__idle_branches__ua",
+        "steam_transport_n_loops: undeclared suffix-sibling component_alternatives__plant__primary_loop__n_loops",
+        "steam_boundary_bypass_flow_rating: undeclared suffix-sibling component_alternatives__plant__gas_losses__bypass_flow_rating",
+        "steam_boundary_bypass_flow_rating: undeclared suffix-sibling component_alternatives__plant__steam_losses__bypass_flow_rating",
+        "gas_boundary_bypass_flow_rating: undeclared suffix-sibling component_alternatives__plant__gas_losses__bypass_flow_rating",
+        "gas_boundary_bypass_flow_rating: undeclared suffix-sibling component_alternatives__plant__steam_losses__bypass_flow_rating",
+        "gas_ledger_capital9: undeclared suffix-sibling component_alternatives__plant__steam_ledger__capital9",
+        "steam_cycle_condenser_temperature_C: undeclared suffix-sibling component_alternatives__plant__gas_loss_water__condenser_temperature_C",
+        "steam_cycle_condenser_temperature_C: undeclared suffix-sibling component_alternatives__plant__steam_water__condenser_temperature_C"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest 14dddcfe3b0af047b18064f7c284b6739a633f20777558b304c37f6637a372a3 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "component_alternatives__plant__gas_ledger__evaluate__cost_per_net_MWh reproduces at relative deviation 0.000e+00; 36/36 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

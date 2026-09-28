@@ -29,22 +29,17 @@ policy.
 
 - **User** — sets the intent, and rules on any axis the model turns out not to resist.
   That ruling happens before any point runs.
-- **Executor** — works through the runbook and commits the record. Writes everything in
-  the record directory except the synthesis.
-- **Administrator** — reads a committed record and writes the synthesis. Reads nothing
-  outside the record directory, and reports a missing fact as missing rather than
-  recovering it from elsewhere.
+- **Executor** — works through the applicable runbook obligations and commits the record. May write an executor synthesis grounded only in the committed record; label its authorship honestly.
+- **Administrator** — optional separate reader of a committed record, used when the owner requests a cold-record reading or independent coverage needs it. Reads only the record directory and reports missing facts instead of recovering them elsewhere.
 
-One session takes one role at a time. The record is the only seam between them.
+The main agent may execute and synthesize directly. A separate administrator is not an automatic step. A claimed independent reading requires a fresh non-author session with no inherited conversation. Both kinds of synthesis cite only the committed record and preserve its evidence. Review scope follows `work/orchestration/GOAL_RUNBOOK.md` § Review scope and evidence reuse: original evidence, bounded briefs, and no duplicate assurance.
 
-## Pick the mode — ask, do not guess
+## Pick the mode
 
 - **execute** — there is an intent and no record yet. Ends with a committed record.
 - **administer** — there is a committed record and no synthesis. Ends with `synthesis.md`.
 
-If the request does not make the mode obvious, ask which one before doing anything else.
-A study executed when a synthesis was wanted wastes a run; a synthesis attempted on a
-directory that is not a record produces a confident account of nothing.
+Infer the mode from the request and existing record. Ask only when genuine ambiguity would change the work. Executing and then synthesizing in the same session is allowed; a separate session is needed only for an independent reading.
 
 ## Capture the intake
 

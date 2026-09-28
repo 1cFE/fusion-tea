@@ -1,0 +1,14 @@
+{
+  "attempt_directory": "selected-forward-independent.json.attempt-xk_85prc",
+  "inputs": [
+    {
+      "source": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward/native-result.json",
+      "sha256": "41df504e27e836c186ab73dc5d6742a8ed98a60bb1473cf0ea9e22df7b9189f2",
+      "retained": "input-0.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward-independent.json",
+  "output_sha256": "78634d58871447c39faa5eaddb8416392c68f81d77867881c8d135458600cdec",
+  "state": "completed"
+}

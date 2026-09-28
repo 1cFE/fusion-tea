@@ -1,0 +1,23 @@
+	Command being timed: "/home/reid/1cfe/fusion-tea/work/orchestration/goals/computed-tritium-breeding/evidence/round2/runtime/run /home/reid/1cfe/fusion-tea/work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/plant_transport.py --cards /home/reid/1cfe/fusion-tea/work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json --name diagnostic-boundary30 --thickness 0.8 --enrichment 0.7 --seed 428917 --openings none --boundary-radius 30.0"
+	User time (seconds): 108.54
+	System time (seconds): 0.85
+	Percent of CPU this job got: 176%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:01.95
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 766296
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 16
+	Minor (reclaiming a frame) page faults: 223558
+	Voluntary context switches: 352
+	Involuntary context switches: 2579
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 3344
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

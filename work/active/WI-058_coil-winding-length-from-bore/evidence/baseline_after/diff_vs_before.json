@@ -1,0 +1,14 @@
+{
+  "executable_before": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+  "executable_after": "e11e4c17b11681ac98b754e1ecbd60452fc11c758ef2d9ce72cfc57d4e740cad",
+  "channels_before": 177,
+  "channels_after": 177,
+  "differing_channels": {},
+  "added": [],
+  "removed": [],
+  "verdicts_before": 18,
+  "verdicts_after": 18,
+  "verdict_diffs": {},
+  "lcoe_after": 142.50725862880648,
+  "c_coil_after": 25.0
+}

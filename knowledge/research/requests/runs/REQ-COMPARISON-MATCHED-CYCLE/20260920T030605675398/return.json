@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-COMPARISON-MATCHED-CYCLE",
+  "run": "knowledge/research/requests/runs/REQ-COMPARISON-MATCHED-CYCLE/20260920T030605675398",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "nist_water_temperature_grid_saturation_20to60c_corrected",
+      "path": "knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/",
+      "source_id": "02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

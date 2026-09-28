@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+  "margin": 0.002092933947772658,
+  "observed": {
+    "eps_cond": 0.001907066052227342,
+    "eps_cond_allow_in": 0.004
+  },
+  "status": "satisfied"
+}

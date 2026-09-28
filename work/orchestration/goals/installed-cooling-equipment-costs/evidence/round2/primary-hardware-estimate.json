@@ -1,0 +1,259 @@
+{
+  "status": "conditional primary candidate, not integrated or a complete installed estimate",
+  "source_years": "BNL December1978 quote; ORNL installation factor1987; ANL fabrication2017",
+  "normalization": {
+    "annual_CPI": {
+      "1978": 65.2,
+      "2006": 201.6,
+      "2017": 245.1,
+      "2025": 321.9
+    },
+    "meaning": "general purchasing-power comparison only"
+  },
+  "HX_variants": {
+    "nominal": {
+      "mass": {
+        "tubes_kg": 113985.90962723177,
+        "shell_kg": 222173.43246187008,
+        "heads_kg": 58173.91836407339,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 10000.0,
+        "total_kg": 481541.041507798
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 149277722.8674174,
+      "site_labor_USD_2017_each": 3582665.3488180176,
+      "site_material_USD_2017_each": 298555.4457348348,
+      "component_installed_USD_2025_CPI_proxy_each": 201149995.77636975
+    },
+    "tube_wall_1mm": {
+      "mass": {
+        "tubes_kg": 78155.58095998227,
+        "shell_kg": 222173.43246187008,
+        "heads_kg": 58173.91836407339,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 10000.0,
+        "total_kg": 445710.7128405485
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 138170320.98057002,
+      "site_labor_USD_2017_each": 3316087.7035336806,
+      "site_material_USD_2017_each": 276340.64196114003,
+      "component_installed_USD_2025_CPI_proxy_each": 186182900.8896788
+    },
+    "tube_wall_2mm": {
+      "mass": {
+        "tubes_kg": 147651.2637526535,
+        "shell_kg": 222173.43246187008,
+        "heads_kg": 58173.91836407339,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 10000.0,
+        "total_kg": 515206.39563321974
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 159713982.6462981,
+      "site_labor_USD_2017_each": 3833135.5835111546,
+      "site_material_USD_2017_each": 319427.9652925962,
+      "component_installed_USD_2025_CPI_proxy_each": 215212734.4765536
+    },
+    "shell_wall_100mm": {
+      "mass": {
+        "tubes_kg": 113985.90962723177,
+        "shell_kg": 107819.45987120172,
+        "heads_kg": 27377.932778483857,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 10000.0,
+        "total_kg": 336391.0833315401
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 104281235.83277744,
+      "site_labor_USD_2017_each": 2502749.6599866585,
+      "site_material_USD_2017_each": 208562.47166555488,
+      "component_installed_USD_2025_CPI_proxy_each": 140517752.71215793
+    },
+    "shell_wall_300mm": {
+      "mass": {
+        "tubes_kg": 113985.90962723177,
+        "shell_kg": 343061.9177720053,
+        "heads_kg": 92589.01868659841,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 10000.0,
+        "total_kg": 636844.6271404582
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 197421834.41354203,
+      "site_labor_USD_2017_each": 4738124.025925009,
+      "site_material_USD_2017_each": 394843.66882708407,
+      "component_installed_USD_2025_CPI_proxy_each": 266023626.26952213
+    },
+    "accessories_5t": {
+      "mass": {
+        "tubes_kg": 113985.90962723177,
+        "shell_kg": 222173.43246187008,
+        "heads_kg": 58173.91836407339,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 5000.0,
+        "total_kg": 476541.041507798
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 147727722.8674174,
+      "site_labor_USD_2017_each": 3545465.3488180176,
+      "site_material_USD_2017_each": 295455.4457348348,
+      "component_installed_USD_2025_CPI_proxy_each": 199061388.79962555
+    },
+    "accessories_20t": {
+      "mass": {
+        "tubes_kg": 113985.90962723177,
+        "shell_kg": 222173.43246187008,
+        "heads_kg": 58173.91836407339,
+        "gross_unperforated_tubesheets_kg": 77207.78105462276,
+        "assumed_nozzles_baffles_supports_kg": 20000.0,
+        "total_kg": 491541.041507798
+      },
+      "bundle_footprint_m2": 7.293324858448274,
+      "shell_bore_area_m2": 8.042477193189871,
+      "packing_fits": true,
+      "pressure_qualification": "not established",
+      "factory_delivered_USD_2017_each": 152377722.8674174,
+      "site_labor_USD_2017_each": 3657065.3488180176,
+      "site_material_USD_2017_each": 304755.4457348348,
+      "component_installed_USD_2025_CPI_proxy_each": 205327209.72985813
+    }
+  },
+  "cases": [
+    {
+      "case": "lhs-0224",
+      "circuits": 18,
+      "active_circulators": 36,
+      "assumed_uninstalled_spares": 1,
+      "BNL_machine_motor_USD_late1978_each": 1642222.6267367215,
+      "BNL_supply_USD_late1978_each_assumed_ratio": 328444.5253473443,
+      "active_vendor_hardware_USD_late1978": 70944017.47502637,
+      "source_analogy_procurement_driver_USD_late1978_unassigned": 10996322.708629087,
+      "assembly_USD_late1978_analogy": 22123891.849586975,
+      "one_design_engineering_USD_late1978": 130000,
+      "one_uninstalled_spare_USD_late1978": 1970667.1520840658,
+      "active_hardware_assembly_one_design_one_spare_USD_2025_proxy_excluding_procurement": 469858355.3351057,
+      "HX_factory_USD_2017": 2686999011.613513,
+      "HX_component_installed_USD_2025_proxy": 3620699923.9746556,
+      "main_pipe_fittings_field_labor_USD_2025_proxy": 2480412474.7567883,
+      "complete_primary_USD": null,
+      "complete_intermediate_USD": null,
+      "plant_total_USD": null,
+      "LCOE_USD_per_MWh": null,
+      "unresolved": [
+        "procurement ownership versus CAS30",
+        "target-specific circulator seals, isolation valves, bearing/control accessories beyond source package",
+        "primary branches, valves, supports, insulation",
+        "replacement removal and maintenance scope",
+        "secondary architecture and accounting",
+        "mechanical design and source-transfer uncertainty"
+      ]
+    },
+    {
+      "case": "anchor-loops-14",
+      "circuits": 14,
+      "active_circulators": 28,
+      "assumed_uninstalled_spares": 1,
+      "BNL_machine_motor_USD_late1978_each": 1942306.4581193076,
+      "BNL_supply_USD_late1978_each_assumed_ratio": 388461.2916238615,
+      "active_vendor_hardware_USD_late1978": 65261496.99280874,
+      "source_analogy_procurement_driver_USD_late1978_unassigned": 10115532.033885354,
+      "assembly_USD_late1978_analogy": 20351797.837207407,
+      "one_design_engineering_USD_late1978": 130000,
+      "one_uninstalled_spare_USD_late1978": 2330767.749743169,
+      "active_hardware_assembly_one_design_one_spare_USD_2025_proxy_excluding_procurement": 434831913.25804466,
+      "HX_factory_USD_2017": 2089888120.1438437,
+      "HX_component_installed_USD_2025_proxy": 2816099940.8691764,
+      "main_pipe_fittings_field_labor_USD_2025_proxy": 1929209702.5886128,
+      "complete_primary_USD": null,
+      "complete_intermediate_USD": null,
+      "plant_total_USD": null,
+      "LCOE_USD_per_MWh": null,
+      "unresolved": [
+        "procurement ownership versus CAS30",
+        "target-specific circulator seals, isolation valves, bearing/control accessories beyond source package",
+        "primary branches, valves, supports, insulation",
+        "replacement removal and maintenance scope",
+        "secondary architecture and accounting",
+        "mechanical design and source-transfer uncertainty"
+      ]
+    },
+    {
+      "case": "r2-forward",
+      "circuits": 14,
+      "active_circulators": 28,
+      "assumed_uninstalled_spares": 1,
+      "BNL_machine_motor_USD_late1978_each": 2005439.8630183188,
+      "BNL_supply_USD_late1978_each_assumed_ratio": 401087.9726036638,
+      "active_vendor_hardware_USD_late1978": 67382779.39741552,
+      "source_analogy_procurement_driver_USD_late1978_unassigned": 10444330.806599405,
+      "assembly_USD_late1978_analogy": 21013319.75508403,
+      "one_design_engineering_USD_late1978": 130000,
+      "one_uninstalled_spare_USD_late1978": 2406527.835621983,
+      "active_hardware_assembly_one_design_one_spare_USD_2025_proxy_excluding_procurement": 448944978.9490233,
+      "HX_factory_USD_2017": 2089888120.1438437,
+      "HX_component_installed_USD_2025_proxy": 2816099940.8691764,
+      "main_pipe_fittings_field_labor_USD_2025_proxy": 1929209702.5886128,
+      "complete_primary_USD": null,
+      "complete_intermediate_USD": null,
+      "plant_total_USD": null,
+      "LCOE_USD_per_MWh": null,
+      "unresolved": [
+        "procurement ownership versus CAS30",
+        "target-specific circulator seals, isolation valves, bearing/control accessories beyond source package",
+        "primary branches, valves, supports, insulation",
+        "replacement removal and maintenance scope",
+        "secondary architecture and accounting",
+        "mechanical design and source-transfer uncertainty"
+      ]
+    },
+    {
+      "case": "r2-table5",
+      "circuits": 14,
+      "active_circulators": 28,
+      "assumed_uninstalled_spares": 1,
+      "BNL_machine_motor_USD_late1978_each": 2002120.8762728034,
+      "BNL_supply_USD_late1978_each_assumed_ratio": 400424.17525456066,
+      "active_vendor_hardware_USD_late1978": 67271261.44276619,
+      "source_analogy_procurement_driver_USD_late1978_unassigned": 10427045.52362876,
+      "assembly_USD_late1978_analogy": 20978542.880926635,
+      "one_design_engineering_USD_late1978": 130000,
+      "one_uninstalled_spare_USD_late1978": 2402545.051527364,
+      "active_hardware_assembly_one_design_one_spare_USD_2025_proxy_excluding_procurement": 448203040.8571069,
+      "HX_factory_USD_2017": 2089888120.1438437,
+      "HX_component_installed_USD_2025_proxy": 2816099940.8691764,
+      "main_pipe_fittings_field_labor_USD_2025_proxy": 1929209702.5886128,
+      "complete_primary_USD": null,
+      "complete_intermediate_USD": null,
+      "plant_total_USD": null,
+      "LCOE_USD_per_MWh": null,
+      "unresolved": [
+        "procurement ownership versus CAS30",
+        "target-specific circulator seals, isolation valves, bearing/control accessories beyond source package",
+        "primary branches, valves, supports, insulation",
+        "replacement removal and maintenance scope",
+        "secondary architecture and accounting",
+        "mechanical design and source-transfer uncertainty"
+      ]
+    }
+  ]
+}

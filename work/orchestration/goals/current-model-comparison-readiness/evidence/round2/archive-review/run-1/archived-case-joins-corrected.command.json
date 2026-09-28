@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/check_stores_and_custody.py",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/state.json",
+    "stores"
+  ],
+  "cwd": "/tmp/wi073-actual-archive-qvqi6313",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log_sha256": "a3e2365f8ad757b3b37afcf8eb8ec7ea25ca702faec6499a6d3374a07a37e4cd"
+}

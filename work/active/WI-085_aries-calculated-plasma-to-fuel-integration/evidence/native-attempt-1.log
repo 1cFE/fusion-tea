@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "cases": 6,
+  "exact_flow_checks": 35,
+  "actual_fuel_load_binding": "float aries_cs_plasma_integration__plasma__integration__fusion_power_MW",
+  "nominal_fusion_MW": 1835.4512830147435,
+  "nominal_exhaust_atoms_s": 1.2381327129390006e+22,
+  "raised_fusion_MW": 4129.765386783165,
+  "raised_exhaust_atoms_s": 2.7857986041127463e+22,
+  "fixed_rating_atoms_s": 2e+22
+}

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/output.md": "b0bfb0c0dc24645945121f5ffbb27d0d2059fb804a5f44910cbb5b66f9d765c0",
+    "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/images/lion_2021_nf_stellarator_process.pdf-0009-19.png": "36c93e8d3f131d08dcb458781e21729cf5f7b8e199dcff8c56b5ba3bee1a7556",
+    "work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p03_table2.png": "3f858c2e5c7ec6108be36718fc61378ad9670ae755dec03868ff0e76f305243d",
+    "work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p23_table8.png": "e0ddbc3c9582aa9a3acdcdc5018097c4305994ee275d40957b851ec672a56dfc",
+    "work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p04_table3.png": "586353695ce46ef6de4a7809fcccc4c4fb83144b72a397979ee660f8817be4f6",
+    "work/completed/20260901_WI-035_magnet-closure/design.md": "63a96f4fa647d985f377e453766a2344a7a2c4f083bc0900234375e638b66a8d",
+    "work/completed/20260908_WI-044_magnet-chain-sees-coil-bore/design.md": "c98c3105f320d3b87b719e9fe8e867ba466f31d205b37b33e3a2ef82a36960fc",
+    "modeling_project/VALIDATION_MATRIX.md": "db990e3cab2e7c6b44600fade71cac254aa0ae1ec0971b6b4acc472633b49b23",
+    ".project/active/aries-comparison-preparation/post-reveal-investigation/source-review/images/Lyon-page-03.png": "039988f9783603a276c172f06ab0b929e8b0a350270c45aaa50d004c8ce9a6b1"
+  },
+  "direct_image_inspection": [
+    "Lion2021 Eq39",
+    "Stellaris Tables2,3,8",
+    "Lyon2008 p697 TableI"
+  ],
+  "text_inspection": "Lion2021 section2 and section3.5 surrounding Eq39; WI035/WI044 design rationale; applicable SV records",
+  "limits": "Lion2021 original full PDF unavailable in registered source directory; existing primary equation image and extracted surrounding prose examined. No new source values fitted into model."
+}

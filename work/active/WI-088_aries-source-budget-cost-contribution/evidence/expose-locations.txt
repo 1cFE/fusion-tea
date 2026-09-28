@@ -1,0 +1,14 @@
+models/designs/aries_cs_transfer/source_budget.sysml:51:attribute direct_total : Real = total.direct_total;
+models/designs/aries_cs_transfer/source_budget.sysml:52:attribute inclusive_capital : Real = total.inclusive_capital;
+models/designs/aries_cs_transfer/source_budget.sysml:53:attribute inclusive_addition : Real = total.inclusive_addition;
+models/designs/aries_cs_transfer/source_budget.sysml:73:attribute annual_capital : Real = period.annual_capital;
+models/designs/aries_cs_transfer/source_budget.sysml:74:attribute annual_replacement : Real = period.annual_replacement;
+models/designs/aries_cs_transfer/source_budget.sysml:75:attribute partial_annual_cost : Real = period.partial_annual_cost;
+models/designs/aries_cs_transfer/source_budget.sysml:76:attribute comparison_period : Real = period.comparison_period;
+models/designs/aries_cs_transfer/source_budget.sysml:77:attribute annual_energy : Real = period.annual_energy;
+models/designs/aries_cs_transfer/source_budget.sysml:78:attribute lifetime_energy : Real = period.lifetime_energy;
+models/designs/aries_cs_transfer/source_budget.sysml:79:attribute validated_net_power : Real = period.validated_net_power;
+models/designs/aries_cs_transfer/source_budget.sysml:80:attribute validated_availability : Real = period.validated_availability;
+models/designs/aries_cs_transfer/source_budget.sysml:81:attribute module_count : Real = period.module_count;
+models/designs/aries_cs_transfer/source_budget.sysml:82:attribute excluded_annual_channel : Real = period.excluded_annual_channel;
+models/designs/aries_cs_transfer/source_budget.sysml:94:attribute partial_capital_replacement_cost_per_mwh : Real = cost_per_energy.lcoe;

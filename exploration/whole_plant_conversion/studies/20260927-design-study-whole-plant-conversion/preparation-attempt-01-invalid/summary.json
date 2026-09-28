@@ -1,0 +1,24 @@
+{
+  "kind": "independent oracle planning scan; no native ranking",
+  "status": "requires_refusal_review",
+  "unique_complete_points": 1986,
+  "alias_count": 2127,
+  "duplicate_aliases": 141,
+  "reserved_threshold_points": 100,
+  "remaining_total_budget": 1014,
+  "nominal_catalog": {
+    "gas": 375,
+    "steam": 72
+  },
+  "common_scenarios": 44,
+  "price_service_scenarios": 8,
+  "joint_efficiency_scenarios": 2,
+  "oracle_evaluations": 2854,
+  "oracle_refusals": 223,
+  "predicate_membership": {
+    "steam": 59,
+    "gas": 43,
+    "shared": 23
+  },
+  "native_required": true
+}

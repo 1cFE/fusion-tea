@@ -1,0 +1,13 @@
+scan 64 unique cases; 3 oracle-feasible; anchor m031
+j_wp low not caught 
+j_wp high not caught 
+B_max low caught wp_stress_ok,peak_field_ok
+B_max high not caught 
+a low not caught 
+a high caught burn_hold_ok,peak_field_ok
+R low caught wp_stress_ok,burn_hold_ok,peak_field_ok
+R high caught divertor_heat_ok,sustainment_ok,loop_capacity_ok
+I_coil low caught divertor_heat_ok
+I_coil high not caught 
+tape_price_per_m low not caught 
+tape_price_per_m high not caught 

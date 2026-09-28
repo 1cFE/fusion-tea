@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/breeding-materials-king2021.pdf",
+  "slug": "high_temperature_zirconium_alloys_for_fusion_energy",
+  "path": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+  "source_id": "39b05af195768acec864478bc3a968102553968bf1b4caa106c717ca6fc41a54",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:23:00.241529+00:00"
+}

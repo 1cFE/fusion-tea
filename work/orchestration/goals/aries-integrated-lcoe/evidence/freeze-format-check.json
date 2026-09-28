@@ -1,0 +1,6 @@
+{
+  "commit": "3f521955",
+  "git_diff_check_exit": 2,
+  "only_findings": "65 producer CSV CRLF line endings retained; no frozen bytes changed",
+  "csv_records": 65
+}

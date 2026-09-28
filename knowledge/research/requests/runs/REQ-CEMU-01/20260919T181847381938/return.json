@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-CEMU-01",
+  "run": "knowledge/research/requests/runs/REQ-CEMU-01/20260919T181847381938",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://web.aacei.org/docs/default-source/toc/toc_18r-97.pdf",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

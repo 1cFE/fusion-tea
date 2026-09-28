@@ -1,0 +1,12 @@
+{
+  "entering_commit": "0e3bf944",
+  "python_ast_without_docstrings_equal": {
+    "exploration/stellarator_e2e/generated/modules/mfe_conductor_grade/conductor_field_capability.py": true,
+    "exploration/stellarator_e2e/generated/schemas/conductor_field_capability_output.py": true
+  },
+  "model_tokens_without_comments_equal": {
+    "models/library/analyses/mfe_conductor_grade.sysml": true,
+    "models/designs/stellarator_09/stellarator_plant.sysml": true
+  },
+  "semantic_fingerprint_unchanged": true
+}

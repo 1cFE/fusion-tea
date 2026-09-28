@@ -1,0 +1,646 @@
+{
+  "outcome": "pass",
+  "cases": [
+    {
+      "proposal_id": "m000",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 40089915.63321096,
+      "tape_cost": 801798312.6642191,
+      "pack_volume_m3": 149.6690183639875,
+      "reference_coil_tape_loading_A": 404.76605602019185,
+      "set_effective_tape_loading_A": 401.0983746416052
+    },
+    {
+      "proposal_id": "m001",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 44255101.67302508,
+      "tape_cost": 885102033.4605016,
+      "pack_volume_m3": 165.21904624596021,
+      "reference_coil_tape_loading_A": 404.76605602019185,
+      "set_effective_tape_loading_A": 401.0983746416052
+    },
+    {
+      "proposal_id": "m002",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 45180698.570761554,
+      "tape_cost": 903613971.4152311,
+      "pack_volume_m3": 168.67460799750972,
+      "reference_coil_tape_loading_A": 404.76605602019185,
+      "set_effective_tape_loading_A": 401.0983746416052
+    },
+    {
+      "proposal_id": "m003",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 49874797.123567946,
+      "tape_cost": 997495942.4713589,
+      "pack_volume_m3": 186.19924259465358,
+      "reference_coil_tape_loading_A": 404.76605602019185,
+      "set_effective_tape_loading_A": 401.0983746416052
+    },
+    {
+      "proposal_id": "m004",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 50271481.50831214,
+      "tape_cost": 1005429630.1662428,
+      "pack_volume_m3": 187.68019763103192,
+      "reference_coil_tape_loading_A": 404.76605602019185,
+      "set_effective_tape_loading_A": 401.0983746416052
+    },
+    {
+      "proposal_id": "m005",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 55494492.574110806,
+      "tape_cost": 1109889851.4822161,
+      "pack_volume_m3": 207.17943894334692,
+      "reference_coil_tape_loading_A": 404.76605602019185,
+      "set_effective_tape_loading_A": 401.0983746416052
+    },
+    {
+      "proposal_id": "m006",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 45723214.2857143,
+      "tape_cost": 914464285.714286,
+      "pack_volume_m3": 170.69999999999996,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m007",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 50473678.1076067,
+      "tape_cost": 1009473562.1521341,
+      "pack_volume_m3": 188.43506493506493,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m008",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 51529336.734693885,
+      "tape_cost": 1030586734.6938777,
+      "pack_volume_m3": 192.37619047619043,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m009",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 56883034.05777898,
+      "tape_cost": 1137660681.1555796,
+      "pack_volume_m3": 212.36332714904142,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m010",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 57335459.183673486,
+      "tape_cost": 1146709183.6734698,
+      "pack_volume_m3": 214.0523809523809,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m011",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 63292390.00795126,
+      "tape_cost": 1265847800.1590252,
+      "pack_volume_m3": 236.29158936301792,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m012",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 51131660.626618154,
+      "tape_cost": 1022633212.532363,
+      "pack_volume_m3": 190.89153300604104,
+      "reference_coil_tape_loading_A": 317.35791167692963,
+      "set_effective_tape_loading_A": 314.4822562564895
+    },
+    {
+      "proposal_id": "m013",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 56444040.95146161,
+      "tape_cost": 1128880819.0292323,
+      "pack_volume_m3": 210.72441955212327,
+      "reference_coil_tape_loading_A": 317.35791167692963,
+      "set_effective_tape_loading_A": 314.4822562564895
+    },
+    {
+      "proposal_id": "m014",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 57624569.91253792,
+      "tape_cost": 1152491398.2507584,
+      "pack_volume_m3": 215.1317276734748,
+      "reference_coil_tape_loading_A": 317.35791167692963,
+      "set_effective_tape_loading_A": 314.4822562564895
+    },
+    {
+      "proposal_id": "m015",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 63611538.215139285,
+      "tape_cost": 1272230764.3027856,
+      "pack_volume_m3": 237.48307600318654,
+      "reference_coil_tape_loading_A": 317.35791167692963,
+      "set_effective_tape_loading_A": 314.4822562564895
+    },
+    {
+      "proposal_id": "m016",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 64117479.19845769,
+      "tape_cost": 1282349583.969154,
+      "pack_volume_m3": 239.3719223409086,
+      "reference_coil_tape_loading_A": 317.35791167692963,
+      "set_effective_tape_loading_A": 314.4822562564895
+    },
+    {
+      "proposal_id": "m017",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 70779035.47881694,
+      "tape_cost": 1415580709.5763388,
+      "pack_volume_m3": 264.2417324542498,
+      "reference_coil_tape_loading_A": 317.35791167692963,
+      "set_effective_tape_loading_A": 314.4822562564895
+    },
+    {
+      "proposal_id": "m018",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 32071932.506568767,
+      "tape_cost": 641438650.1313753,
+      "pack_volume_m3": 119.73521469119,
+      "reference_coil_tape_loading_A": 505.9575700252398,
+      "set_effective_tape_loading_A": 501.3729683020065
+    },
+    {
+      "proposal_id": "m019",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 35404081.33842006,
+      "tape_cost": 708081626.7684013,
+      "pack_volume_m3": 132.17523699676818,
+      "reference_coil_tape_loading_A": 505.9575700252398,
+      "set_effective_tape_loading_A": 501.3729683020065
+    },
+    {
+      "proposal_id": "m020",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 36144558.85660924,
+      "tape_cost": 722891177.1321847,
+      "pack_volume_m3": 134.93968639800778,
+      "reference_coil_tape_loading_A": 505.9575700252398,
+      "set_effective_tape_loading_A": 501.3729683020065
+    },
+    {
+      "proposal_id": "m021",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 39899837.69885436,
+      "tape_cost": 797996753.9770871,
+      "pack_volume_m3": 148.95939407572286,
+      "reference_coil_tape_loading_A": 505.9575700252398,
+      "set_effective_tape_loading_A": 501.3729683020065
+    },
+    {
+      "proposal_id": "m022",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 40217185.20664972,
+      "tape_cost": 804343704.1329944,
+      "pack_volume_m3": 150.14415810482555,
+      "reference_coil_tape_loading_A": 505.9575700252398,
+      "set_effective_tape_loading_A": 501.3729683020065
+    },
+    {
+      "proposal_id": "m023",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 44395594.05928864,
+      "tape_cost": 887911881.1857729,
+      "pack_volume_m3": 165.74355115467753,
+      "reference_coil_tape_loading_A": 505.9575700252398,
+      "set_effective_tape_loading_A": 501.3729683020065
+    },
+    {
+      "proposal_id": "m024",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 36578571.42857144,
+      "tape_cost": 731571428.5714288,
+      "pack_volume_m3": 136.55999999999997,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m025",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 40378942.48608535,
+      "tape_cost": 807578849.721707,
+      "pack_volume_m3": 150.7480519480519,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m026",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 41223469.38775511,
+      "tape_cost": 824469387.7551022,
+      "pack_volume_m3": 153.90095238095233,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m027",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 45506427.24622318,
+      "tape_cost": 910128544.9244636,
+      "pack_volume_m3": 169.89066171923312,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m028",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 45868367.34693878,
+      "tape_cost": 917367346.9387757,
+      "pack_volume_m3": 171.24190476190472,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m029",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 50633912.00636099,
+      "tape_cost": 1012678240.1272199,
+      "pack_volume_m3": 189.0332714904143,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m030",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 40905328.501294546,
+      "tape_cost": 818106570.025891,
+      "pack_volume_m3": 152.7132264048329,
+      "reference_coil_tape_loading_A": 396.69738959616205,
+      "set_effective_tape_loading_A": 393.1028203206119
+    },
+    {
+      "proposal_id": "m031",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 45155232.7611693,
+      "tape_cost": 903104655.223386,
+      "pack_volume_m3": 168.57953564169864,
+      "reference_coil_tape_loading_A": 396.69738959616205,
+      "set_effective_tape_loading_A": 393.1028203206119
+    },
+    {
+      "proposal_id": "m032",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 46099655.93003037,
+      "tape_cost": 921993118.6006074,
+      "pack_volume_m3": 172.10538213877996,
+      "reference_coil_tape_loading_A": 396.69738959616205,
+      "set_effective_tape_loading_A": 393.1028203206119
+    },
+    {
+      "proposal_id": "m033",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 50889230.57211142,
+      "tape_cost": 1017784611.4422284,
+      "pack_volume_m3": 189.98646080254923,
+      "reference_coil_tape_loading_A": 396.69738959616205,
+      "set_effective_tape_loading_A": 393.1028203206119
+    },
+    {
+      "proposal_id": "m034",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 51293983.358766176,
+      "tape_cost": 1025879667.1753235,
+      "pack_volume_m3": 191.49753787272698,
+      "reference_coil_tape_loading_A": 396.69738959616205,
+      "set_effective_tape_loading_A": 393.1028203206119
+    },
+    {
+      "proposal_id": "m035",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 56623228.383053556,
+      "tape_cost": 1132464567.661071,
+      "pack_volume_m3": 211.39338596339985,
+      "reference_coil_tape_loading_A": 396.69738959616205,
+      "set_effective_tape_loading_A": 393.1028203206119
+    },
+    {
+      "proposal_id": "m036",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 26726610.42214064,
+      "tape_cost": 534532208.4428128,
+      "pack_volume_m3": 99.77934557599167,
+      "reference_coil_tape_loading_A": 607.1490840302877,
+      "set_effective_tape_loading_A": 601.6475619624076
+    },
+    {
+      "proposal_id": "m037",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 29503401.115350056,
+      "tape_cost": 590068022.3070011,
+      "pack_volume_m3": 110.14603083064016,
+      "reference_coil_tape_loading_A": 607.1490840302877,
+      "set_effective_tape_loading_A": 601.6475619624076
+    },
+    {
+      "proposal_id": "m038",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 30120465.71384104,
+      "tape_cost": 602409314.2768208,
+      "pack_volume_m3": 112.44973866500649,
+      "reference_coil_tape_loading_A": 607.1490840302877,
+      "set_effective_tape_loading_A": 601.6475619624076
+    },
+    {
+      "proposal_id": "m039",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 33249864.7490453,
+      "tape_cost": 664997294.980906,
+      "pack_volume_m3": 124.13282839643574,
+      "reference_coil_tape_loading_A": 607.1490840302877,
+      "set_effective_tape_loading_A": 601.6475619624076
+    },
+    {
+      "proposal_id": "m040",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 33514321.005541436,
+      "tape_cost": 670286420.1108288,
+      "pack_volume_m3": 125.1201317540213,
+      "reference_coil_tape_loading_A": 607.1490840302877,
+      "set_effective_tape_loading_A": 601.6475619624076
+    },
+    {
+      "proposal_id": "m041",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 0.8767956553250589,
+      "tape_metres": 36996328.38274055,
+      "tape_cost": 739926567.654811,
+      "pack_volume_m3": 138.1196259622313,
+      "reference_coil_tape_loading_A": 607.1490840302877,
+      "set_effective_tape_loading_A": 601.6475619624076
+    },
+    {
+      "proposal_id": "m042",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 30482142.857142866,
+      "tape_cost": 609642857.1428573,
+      "pack_volume_m3": 113.79999999999998,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m043",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 33649118.73840446,
+      "tape_cost": 672982374.7680892,
+      "pack_volume_m3": 125.62337662337659,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m044",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 34352891.1564626,
+      "tape_cost": 687057823.1292521,
+      "pack_volume_m3": 128.25079365079364,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m045",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 37922022.70518598,
+      "tape_cost": 758440454.1037196,
+      "pack_volume_m3": 141.57555143269425,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m046",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 38223639.45578233,
+      "tape_cost": 764472789.1156466,
+      "pack_volume_m3": 142.7015873015873,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m047",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 42194926.6719675,
+      "tape_cost": 843898533.43935,
+      "pack_volume_m3": 157.5277262420119,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m048",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 34087773.75107878,
+      "tape_cost": 681755475.0215756,
+      "pack_volume_m3": 127.26102200402738,
+      "reference_coil_tape_loading_A": 476.0368675153944,
+      "set_effective_tape_loading_A": 471.7233843847342
+    },
+    {
+      "proposal_id": "m049",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 37629360.63430774,
+      "tape_cost": 752587212.6861548,
+      "pack_volume_m3": 140.48294636808217,
+      "reference_coil_tape_loading_A": 476.0368675153944,
+      "set_effective_tape_loading_A": 471.7233843847342
+    },
+    {
+      "proposal_id": "m050",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 38416379.94169196,
+      "tape_cost": 768327598.8338392,
+      "pack_volume_m3": 143.42115178231657,
+      "reference_coil_tape_loading_A": 476.0368675153944,
+      "set_effective_tape_loading_A": 471.7233843847342
+    },
+    {
+      "proposal_id": "m051",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 42407692.14342618,
+      "tape_cost": 848153842.8685236,
+      "pack_volume_m3": 158.322050668791,
+      "reference_coil_tape_loading_A": 476.0368675153944,
+      "set_effective_tape_loading_A": 471.7233843847342
+    },
+    {
+      "proposal_id": "m052",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 42744986.13230513,
+      "tape_cost": 854899722.6461027,
+      "pack_volume_m3": 159.58128156060576,
+      "reference_coil_tape_loading_A": 476.0368675153944,
+      "set_effective_tape_loading_A": 471.7233843847342
+    },
+    {
+      "proposal_id": "m053",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.1182866608438262,
+      "tape_metres": 47186023.652544625,
+      "tape_cost": 943720473.0508925,
+      "pack_volume_m3": 176.16115496949985,
+      "reference_coil_tape_loading_A": 476.0368675153944,
+      "set_effective_tape_loading_A": 471.7233843847342
+    },
+    {
+      "proposal_id": "m054",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 51529336.734693885,
+      "tape_cost": 1030586734.6938777,
+      "pack_volume_m3": 192.37619047619043,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m055",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 41223469.38775511,
+      "tape_cost": 824469387.7551022,
+      "pack_volume_m3": 153.90095238095233,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m056",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 34352891.1564626,
+      "tape_cost": 687057823.1292521,
+      "pack_volume_m3": 128.25079365079364,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "m057",
+      "j_ratio": 0.8,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 51529336.734693885,
+      "tape_cost": 1030586734.6938777,
+      "pack_volume_m3": 192.37619047619043,
+      "reference_coil_tape_loading_A": 354.89711934156355,
+      "set_effective_tape_loading_A": 351.6813122437021
+    },
+    {
+      "proposal_id": "m058",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 41223469.38775511,
+      "tape_cost": 824469387.7551022,
+      "pack_volume_m3": 153.90095238095233,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "m059",
+      "j_ratio": 1.2,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 34352891.1564626,
+      "tape_cost": 687057823.1292521,
+      "pack_volume_m3": 128.25079365079364,
+      "reference_coil_tape_loading_A": 532.3456790123453,
+      "set_effective_tape_loading_A": 527.5219683655531
+    },
+    {
+      "proposal_id": "price-a1.3-10",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 36578571.42857144,
+      "tape_cost": 365785714.2857144,
+      "pack_volume_m3": 136.55999999999997,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "price-a1.3-40",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 36578571.42857144,
+      "tape_cost": 1463142857.1428576,
+      "pack_volume_m3": 136.55999999999997,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "price-a1.7-10",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 41223469.38775511,
+      "tape_cost": 412234693.8775511,
+      "pack_volume_m3": 153.90095238095233,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    },
+    {
+      "proposal_id": "price-a1.7-40",
+      "j_ratio": 1.0,
+      "envelope_quantity_factor": 1.0,
+      "tape_metres": 41223469.38775511,
+      "tape_cost": 1648938775.5102043,
+      "pack_volume_m3": 153.90095238095233,
+      "reference_coil_tape_loading_A": 443.62139917695447,
+      "set_effective_tape_loading_A": 439.60164030462767
+    }
+  ],
+  "scope": "Arithmetic inventory identities; no absolute critical-current margin or integer tape-count qualification"
+}

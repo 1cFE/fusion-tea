@@ -1,0 +1,350 @@
+FFFFFFFFFFFFFFFFFFFFFF                                                   [100%]
+=================================== FAILURES ===================================
+_ test_invalid_public_denominators_are_deliberate[overrides0-cp must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:641: in compute
+    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_denominators_are_deliberate[overrides0-cp must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:641: in compute
+    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_denominators_are_deliberate[overrides1-cp must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:654: in compute
+    raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+E   RuntimeError: oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)
+_ test_invalid_public_denominators_are_deliberate[overrides1-cp must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:654: in compute
+    raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+E   RuntimeError: oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)
+_ test_invalid_public_denominators_are_deliberate[overrides2-cp must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'cp must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides2-cp must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'cp must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides3-cp must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'cp must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides3-cp must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'cp must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides4-cp must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'cp must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides4-cp must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'cp must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides5-dT_blanket must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:641: in compute
+    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_denominators_are_deliberate[overrides5-dT_blanket must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:641: in compute
+    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_denominators_are_deliberate[overrides6-dT_blanket must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:654: in compute
+    raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+E   RuntimeError: oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)
+_ test_invalid_public_denominators_are_deliberate[overrides6-dT_blanket must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:654: in compute
+    raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+E   RuntimeError: oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)
+_ test_invalid_public_denominators_are_deliberate[overrides7-dT_blanket must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'dT_blanket must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides7-dT_blanket must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:822: in compute
+    cal = _oracle_lifecycle_calendar(
+exploration/stellarator_e2e/verify_stellaris.py:458: in _oracle_lifecycle_calendar
+    raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+E   ValueError: oracle calendar: non-finite input C=nan
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'dT_blanket must be finite and positive'
+E     Actual message: 'oracle calendar: non-finite input C=nan'
+_ test_invalid_public_denominators_are_deliberate[overrides8-dT_blanket must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_invalid_public_denominators_are_deliberate[overrides8-dT_blanket must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_invalid_public_denominators_are_deliberate[overrides9-dT_blanket must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:666: in compute
+    cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ValueError: math domain error
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'dT_blanket must be finite and positive'
+E     Actual message: 'math domain error'
+_ test_invalid_public_denominators_are_deliberate[overrides9-dT_blanket must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:29: in test_invalid_public_denominators_are_deliberate
+    oracle.evaluate(point)
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:666: in compute
+    cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ValueError: math domain error
+
+During handling of the above exception, another exception occurred:
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'dT_blanket must be finite and positive'
+E     Actual message: 'math domain error'
+_ test_invalid_public_denominators_are_deliberate[overrides10-cp must be finite and positive-0.0] _
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_invalid_public_denominators_are_deliberate[overrides10-cp must be finite and positive-1.0] _
+tests/study/test_primary_loop_consumers.py:28: in test_invalid_public_denominators_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+=========================== short test summary info ============================
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides0-cp must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides0-cp must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides1-cp must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides1-cp must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides2-cp must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides2-cp must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides3-cp must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides3-cp must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides4-cp must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides4-cp must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides5-dT_blanket must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides5-dT_blanket must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides6-dT_blanket must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides6-dT_blanket must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides7-dT_blanket must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides7-dT_blanket must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides8-dT_blanket must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides8-dT_blanket must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides9-dT_blanket must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides9-dT_blanket must be finite and positive-1.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides10-cp must be finite and positive-0.0]
+FAILED tests/study/test_primary_loop_consumers.py::test_invalid_public_denominators_are_deliberate[overrides10-cp must be finite and positive-1.0]
+22 failed, 31 deselected in 24.83s

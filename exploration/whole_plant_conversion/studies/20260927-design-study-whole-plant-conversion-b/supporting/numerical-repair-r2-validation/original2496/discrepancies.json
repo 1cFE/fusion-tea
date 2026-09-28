@@ -1,0 +1,112 @@
+{
+  "summary": {
+    "kind": "forensic scan using unchanged stock comparison and predicate rules; no acceptance waiver",
+    "cases": 2496,
+    "evaluated": 2496,
+    "wanted_channels": 1192,
+    "scalar_comparisons": 2975232,
+    "predicate_comparisons": 312000,
+    "off_tolerance_comparisons": 8,
+    "off_tolerance_cases": 4,
+    "off_tolerance_channels": {
+      "whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W": 4,
+      "whole_plant_conversion__plant__cryogenic_demand__evaluate__extra_cold_capacity_W": 4
+    },
+    "predicate_mismatches": 0,
+    "evaluation_errors": 0,
+    "inputs_unchanged": true,
+    "relative_tolerance": 1e-09
+  },
+  "scalar_failures": [
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2436",
+      "case": "cryo-capacity-q2500-below-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W",
+      "native": 0.003072599989536684,
+      "oracle": 0.0030725999968126416,
+      "absolute_error": 7.275957614183426e-12,
+      "relative_deviation": 2.3680132857290675e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2436",
+      "case": "cryo-capacity-q2500-below-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__extra_cold_capacity_W",
+      "native": 0.003072599989536684,
+      "oracle": 0.0030726000004506204,
+      "absolute_error": 1.0913936421275139e-11,
+      "relative_deviation": 3.5520199243879863e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2437",
+      "case": "cryo-capacity-q2500-above-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W",
+      "native": -0.003072600011364557,
+      "oracle": -0.0030725999968126416,
+      "absolute_error": 1.4551915228366852e-11,
+      "relative_deviation": 4.736026571458135e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2437",
+      "case": "cryo-capacity-q2500-above-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__extra_cold_capacity_W",
+      "native": -0.003072600011364557,
+      "oracle": -0.0030726000004506204,
+      "absolute_error": 1.0913936421275139e-11,
+      "relative_deviation": 3.5520199243879863e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2438",
+      "case": "cryo-capacity-q2800-below-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W",
+      "native": 0.003072599989536684,
+      "oracle": 0.0030725999968126416,
+      "absolute_error": 7.275957614183426e-12,
+      "relative_deviation": 2.3680132857290675e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2438",
+      "case": "cryo-capacity-q2800-below-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__extra_cold_capacity_W",
+      "native": 0.003072599989536684,
+      "oracle": 0.0030726000004506204,
+      "absolute_error": 1.0913936421275139e-11,
+      "relative_deviation": 3.5520199243879863e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2439",
+      "case": "cryo-capacity-q2800-above-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W",
+      "native": -0.003072600011364557,
+      "oracle": -0.0030725999968126416,
+      "absolute_error": 1.4551915228366852e-11,
+      "relative_deviation": 4.736026571458135e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    },
+    {
+      "candidate_id": "20260927-design-study-whole-plant-conversion:c2439",
+      "case": "cryo-capacity-q2800-above-gas",
+      "channel": "whole_plant_conversion__plant__cryogenic_demand__evaluate__extra_cold_capacity_W",
+      "native": -0.003072600011364557,
+      "oracle": -0.0030726000004506204,
+      "absolute_error": 1.0913936421275139e-11,
+      "relative_deviation": 3.5520199243879863e-09,
+      "relative_tolerance": 1e-09,
+      "declared_absolute_tolerance": 0.0
+    }
+  ],
+  "predicate_mismatches": [],
+  "errors": []
+}

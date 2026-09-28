@@ -1,0 +1,14 @@
+{
+  "frozen": true,
+  "unique_native_proposals": 371,
+  "correlation_rows": 903,
+  "excluded_correlations": 408,
+  "digests": {
+    "reduced-proposals.json": "95eed14f26a42b3c4bef8e576e68ad9677f3099a4241955fd514ede147e6d5c7",
+    "reduced-correlation.json": "e5482290d932610befe7d82cb23cac06fdf54ba201d6fd459b23987975afd012",
+    "oracle-scan.json": "602be214ee25bcce5a0da93c3f99ba32132c38da734409656b17fb47dbafd657",
+    "window-edges.json": "40f14012f94b842cca55322f582f1ddd2155708b19138ab1ea527e79b9e87e30"
+  },
+  "provenance": "engineered risk-selected subset of completed full oracle scan; owner-directed reduction",
+  "original_freeze": "preparation/window-freeze.json"
+}

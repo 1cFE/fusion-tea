@@ -1,0 +1,74 @@
+{
+  "20260912-plant-closure:c0113": {
+    "plant_closure_pin": {
+      "model_contract_semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+      "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+      "repo_commit": "4cd5e6081fc7683b32bd936fc40d3e7d858067f7",
+      "from": "20260912-plant-closure/snapshot.json"
+    },
+    "committed_lcoe": 191.7581690876428,
+    "committed_lcoe_1cfe": 188.12676969778198,
+    "committed_full_satisfied": "True",
+    "current_candidate_id": "20260914-magnet-coil-realism:c0013",
+    "current_lcoe": 132.28839107543124,
+    "current_feasible_18": true,
+    "current_verdicts": {
+      "beta_ok": "satisfied",
+      "burn_hold_ok": "satisfied",
+      "cond_strain_ok": "satisfied",
+      "cycle_domain_ok": "satisfied",
+      "divertor_heat_ok": "satisfied",
+      "heating_couple_positive_ok": "satisfied",
+      "heating_couple_upper_ok": "satisfied",
+      "heating_source_positive_ok": "satisfied",
+      "heating_source_upper_ok": "satisfied",
+      "loop_capacity_ok": "satisfied",
+      "loop_pressure_ok": "satisfied",
+      "net_positive": "satisfied",
+      "peak_field_ok": "satisfied",
+      "recirc_ok": "satisfied",
+      "sustainment_ok": "satisfied",
+      "tbr_ok": "satisfied",
+      "wall_load_ok": "satisfied",
+      "wp_stress_ok": "satisfied"
+    },
+    "entering_pin_oracle_lcoe": 128.95962139186952,
+    "note": "Committed values are at a different package (pre-WI-057/040/038); attribute nothing to WI-058."
+  },
+  "20260912-plant-closure:c0130": {
+    "plant_closure_pin": {
+      "model_contract_semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+      "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+      "repo_commit": "4cd5e6081fc7683b32bd936fc40d3e7d858067f7",
+      "from": "20260912-plant-closure/snapshot.json"
+    },
+    "committed_lcoe": 198.00258969214127,
+    "committed_lcoe_1cfe": 194.23627511198842,
+    "committed_full_satisfied": "True",
+    "current_candidate_id": "20260914-magnet-coil-realism:c0014",
+    "current_lcoe": 138.5330199132009,
+    "current_feasible_18": true,
+    "current_verdicts": {
+      "beta_ok": "satisfied",
+      "burn_hold_ok": "satisfied",
+      "cond_strain_ok": "satisfied",
+      "cycle_domain_ok": "satisfied",
+      "divertor_heat_ok": "satisfied",
+      "heating_couple_positive_ok": "satisfied",
+      "heating_couple_upper_ok": "satisfied",
+      "heating_source_positive_ok": "satisfied",
+      "heating_source_upper_ok": "satisfied",
+      "loop_capacity_ok": "satisfied",
+      "loop_pressure_ok": "satisfied",
+      "net_positive": "satisfied",
+      "peak_field_ok": "satisfied",
+      "recirc_ok": "satisfied",
+      "sustainment_ok": "satisfied",
+      "tbr_ok": "satisfied",
+      "wall_load_ok": "satisfied",
+      "wp_stress_ok": "satisfied"
+    },
+    "entering_pin_oracle_lcoe": 135.20404199636806,
+    "note": "Committed values are at a different package (pre-WI-057/040/038); attribute nothing to WI-058."
+  }
+}

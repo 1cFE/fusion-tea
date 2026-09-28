@@ -1,0 +1,18 @@
+{
+  "added": [
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_length'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_parallel_tapes_set'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_parallel_tapes_reference'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_tape_critical_current'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_critical_current_reference'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_critical_current_set'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_operating_fraction_reference'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_operating_fraction_set'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_allowable_current'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_margin_fraction'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_margin_current'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::conductor_field_extrapolated'"
+  ],
+  "removed": [],
+  "normalization": "compare diagnostic text excluding path and line suffix; preserve full raw issues separately"
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://www.nature.com/articles/s41598-021-81559-z.pdf",
+  "slug": "development_and_large_volume_production_of_extremely_high",
+  "path": "knowledge/sources/development_and_large_volume_production_of_extremely_high/",
+  "source_id": "2925a09fba687fbcf37d86bada14da7a0925e63a207b932650311de475f97f9b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-03T04:24:37.476667+00:00"
+}

@@ -1,0 +1,40 @@
+{
+  "failure": "JSON serialized equality rejected int-versus-float normalization after all native evaluations completed",
+  "invocations": 1,
+  "stored_rows": 113,
+  "issues": [
+    {
+      "case": "fixed-budget-nominal",
+      "numeric_equal": true,
+      "different_types": {
+        "aries_integrated_plant__cost_accounts__estimate_mode": [
+          "float",
+          "int",
+          1
+        ]
+      }
+    },
+    {
+      "case": "adequate-area-mode-0",
+      "numeric_equal": true,
+      "different_types": {
+        "aries_integrated_plant__cost_accounts__estimate_mode": [
+          "float",
+          "int",
+          0
+        ]
+      }
+    },
+    {
+      "case": "adequate-area-mode-1",
+      "numeric_equal": true,
+      "different_types": {
+        "aries_integrated_plant__cost_accounts__estimate_mode": [
+          "float",
+          "int",
+          1
+        ]
+      }
+    }
+  ]
+}

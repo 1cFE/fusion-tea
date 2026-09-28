@@ -1,0 +1,4 @@
+_backup/
+_work/pkg_link/
+_work/*.db-shm
+_work/*.db-wal

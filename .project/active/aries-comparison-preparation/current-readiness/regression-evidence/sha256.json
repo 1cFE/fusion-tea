@@ -1,0 +1,23 @@
+{
+  "head": "9e07184f1301ad0d4ebdba5ae9bbe5fa97f1f1ef",
+  "files": {
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/consumer-rerun.log": "05d9144e0c9bc8cfec034463ca4b287a31a8005c36c1d96fd7be201b8bd563df",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/model-rerun.log": "006956600d16fbe5aa9b4b21bb690f097aa732696cf74342721079a994a74f0c",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/commands.md": "ef1b002796fadcb5069824347d5aa5986339d99c57bb2e2d18d14ddd2479ff66",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/radius-native.log": "1377269c75993a2ff7a3e4b3f5202d7c788944f11af16aafdf1d028fb0a70855",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/probe.json": "f2d9008649305f2c5814539f448948600695aa22313735118fd8737fd44fdb21",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/radius-heating-rerun.log": "e7e17445c646994056e5d0f7d6cc061f797eb4942b4d15578911b2ebbdaa2b86",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/probe.stderr": "68bbf6b7b357bd707ef31c960421026df86cfb0ea68bebabb27c28b2f5bd025a",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/probe-incomplete-controls.stderr": "d221634193f393b5e1f4a8d4d1f49d2daa94df9cbd01485f8f2f20c3dd0f71df",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/probe.py": "ae5089173021134f4d429f59479f1d265ee0af94c6477d3edc6bca6ca9f3aca4",
+    "tests/models/current_mfe_regressions.py": "a8e5bc767cc2d9cd7512d46cd8699f3e46d64b5b68e61ecafa78a0a9725c5356",
+    "exploration/stellarator_e2e/studies/study_route.py": "fd98dc4480e5346d4560392b99ed8d6be3c4dc7a5af3d58739d5cabf8864fa35",
+    "exploration/stellarator_e2e/studies/oracle_entry.py": "d718be2040de50750244da1cd20566c44702afc33605f5bad0ab8b4fc3070628",
+    "exploration/stellarator_e2e/verify_stellaris.py": "c7f023b1d7060ddb98aa8acfb3d6f7aa71a558bd408473c7a1982dfb51d47e8d",
+    "exploration/stellarator_e2e/generated/contracts/model_contract.json": "b7fdb93770c90b9ae78805295160bc36312565721366c2eb9e3ce68bdee4d2e9",
+    "work/analysis/20260919-201643_stellarator-integrated-depth-reassessment.evidence/model-tests.log": "ccdba9e8769e25a15a721684fcb85dc40dac0792c1eaba6e8377f9d0a149fc6d",
+    "work/analysis/20260919-201643_stellarator-integrated-depth-reassessment.evidence/consumer-tests.log": "c2b2d8c105b435d3071e9bec57b368441f5775125cd1975233d484ce257b7428",
+    "work/analysis/20260919-201643_stellarator-integrated-depth-reassessment.evidence/failure-triage-cooling.md": "46c5f5a02c4b02e0c64e0d652ca91bd778786f9ef3a04bdd37e02a862fe8c286",
+    "work/analysis/20260919-201643_stellarator-integrated-depth-reassessment.evidence/failure-triage-radius.md": "26530bd97390eeed1ec8aeadea9102b02414ba2412502c80b2cdb17a77e73998"
+  }
+}

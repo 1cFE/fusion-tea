@@ -1,0 +1,350 @@
+{
+  "sources": {
+    "models/library/analyses/integrated_lifecycle_costs.sysml": "b0b282ffdf04e23342e0d74459737463c5039c84aaab677ae7dc0ecb66ea8fe6",
+    "models/library/analyses/mfe_lcoe_dcf.sysml": "4ca6c46646074f81671efbf02fe6229759e3fbcdfb136371ea3ffe8ad0e6f960",
+    "models/library/analyses/integrated_heat_electricity.sysml": "0a34724ddf07a7976867a3a07e204d435defef7eac2a2e978f8f7cac9cbf5db5",
+    "models/library/analyses/integrated_equipment_costs.sysml": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f",
+    "models/library/structure/integrated_equipment_parts.sysml": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47",
+    "models/library/foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
+    "models/library/analyses/mfe_account_costs.sysml": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48",
+    "models/library/analyses/source_budget_accounting.sysml": "0bedd48e099d566496302e5ccd334c9e8c0a22cdb2f4988104d844e67fd3c087",
+    "models/library/analyses/radial_density_profile.sysml": "2adf459118a4a6df9a6a0a6461c467860a3ced327c55aaadc0af7c232d1b7632",
+    "models/library/analyses/supplied_profile_plasma.sysml": "085ae001e7f97f5906bf3992226446953fbce29acaf9e25ee543a9eae861d49a",
+    "models/library/analyses/mfe_plasma_scaling.sysml": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+    "models/library/analyses/mfe_fuel_cycle.sysml": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
+    "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
+    "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
+    "models/designs/aries_cs_integrated/plant.sysml": "4246f44b460d0886f55ae8440484cf58e0dfa9a7679f106cd979cf56ec1925fc"
+  },
+  "staged": {
+    "models/library/analyses/integrated_lifecycle_costs.sysml": "b0b282ffdf04e23342e0d74459737463c5039c84aaab677ae7dc0ecb66ea8fe6",
+    "models/library/analyses/mfe_lcoe_dcf.sysml": "4ca6c46646074f81671efbf02fe6229759e3fbcdfb136371ea3ffe8ad0e6f960",
+    "models/library/analyses/integrated_heat_electricity.sysml": "0a34724ddf07a7976867a3a07e204d435defef7eac2a2e978f8f7cac9cbf5db5",
+    "models/library/analyses/integrated_equipment_costs.sysml": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f",
+    "models/library/structure/integrated_equipment_parts.sysml": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47",
+    "models/library/foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
+    "models/library/analyses/mfe_account_costs.sysml": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48",
+    "models/library/analyses/source_budget_accounting.sysml": "0bedd48e099d566496302e5ccd334c9e8c0a22cdb2f4988104d844e67fd3c087",
+    "models/library/analyses/radial_density_profile.sysml": "2adf459118a4a6df9a6a0a6461c467860a3ced327c55aaadc0af7c232d1b7632",
+    "models/library/analyses/supplied_profile_plasma.sysml": "085ae001e7f97f5906bf3992226446953fbce29acaf9e25ee543a9eae861d49a",
+    "models/library/analyses/mfe_plasma_scaling.sysml": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+    "models/library/analyses/mfe_fuel_cycle.sysml": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
+    "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
+    "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
+    "models/designs/aries_cs_integrated/plant.sysml": "4246f44b460d0886f55ae8440484cf58e0dfa9a7679f106cd979cf56ec1925fc"
+  },
+  "completions": [
+    {
+      "source": "exploration/aries_transfer/plasma_integration/supplied_profile_plasma_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/supplied_profile_plasma/supplied_profile_plasma_impl.py",
+      "source_sha256": "8e07eaaf91416fb9db3489478253dddb1af182e6f40104c8ae68339bab58b0b7",
+      "target_sha256": "4a744532411cacb72b56924a43162e7c46529f02dd7e0c17a3132e6de8668e24",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/density_profile/radial_density_profile_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/radial_density_profile/radial_density_profile_impl.py",
+      "source_sha256": "2cf3d393ce2427a84d8f6d4cc04a6154f68d4ffad607cd7ba3be7b3bf171ee8b",
+      "target_sha256": "210644119be42d5d0ef4d591130a8c7d2e12f6de6538205e10475c980c0c99a8",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/stellarator_e2e/generated/handwritten/mfe_viability/offered_capacity_screen_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/mfe_viability/offered_capacity_screen_impl.py",
+      "source_sha256": "7b0b52d46613e1e4830de05e8126849de57550b820d2e0b721f715f730c1a8ee",
+      "target_sha256": "8f51b6f085e7bdca2536f6b08c133330e944421ef3a2910cf1cefd4213642d86",
+      "prefix_only": true,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/nominal_brayton/native_completions/ideal_gas_compressor_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/ideal_gas_brayton_components/ideal_gas_compressor_impl.py",
+      "source_sha256": "3c9df1ee5225e29f63e69b4296d043334ad2ce2866d4b60e643129890d398228",
+      "target_sha256": "cf1433017835b44a4d54af69a84ba94e37933ece77682bb4a87a3717a56daf3b",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/nominal_brayton/native_completions/ideal_gas_expander_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/ideal_gas_brayton_components/ideal_gas_expander_impl.py",
+      "source_sha256": "f1df7e5c85ccb7d9193e1de77541da5b26f2506165a3251858c9e03bbba02dad",
+      "target_sha256": "c82fabd340c2b0bba44c6352257fefbff3403bc7f70cc352d1545781f9431918",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/nominal_brayton/native_completions/fixed_outlet_conditioning_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/ideal_gas_brayton_components/fixed_outlet_conditioning_impl.py",
+      "source_sha256": "25a159f17462db774b8a30ba1b134dadc3e329c4e9675cdae0726dc46e05b81a",
+      "target_sha256": "8eb3ded7dd91250677f98df2ca7214e55f110f22e7c651a40567cd6b2e6c1dfc",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/nominal_brayton/native_completions/fractional_pressure_loss_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/ideal_gas_brayton_components/fractional_pressure_loss_impl.py",
+      "source_sha256": "a156f14c570aa4e5d641ac5ee29516527b4871c20d9af984fcdcd7d8694e9445",
+      "target_sha256": "ff8d3d8cf0bb74d384cabd8b9705cf11d3d4ce4326d50ba2f3de9733e0345f3b",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/dual_blanket_heat/native_completions/coolant_branch_heat_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/dual_circuit_heat_accounting/coolant_branch_heat_impl.py",
+      "source_sha256": "f47a6b224695e57687c19a7c9a0dfdb5867354124e99ae5c2f61400021bf0210",
+      "target_sha256": "394ecc40cb4ad2ff5f3c011742b59a48532fc2e6162c15eb0ea74311971d1f08",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/dual_blanket_heat/native_completions/dual_circuit_heat_ledger_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/dual_circuit_heat_accounting/dual_circuit_heat_ledger_impl.py",
+      "source_sha256": "ee0c9377b5090cc71ab0df772d8fa10d5929b79f5328866528bc89aa396b2fec",
+      "target_sha256": "ee0c9377b5090cc71ab0df772d8fa10d5929b79f5328866528bc89aa396b2fec",
+      "prefix_only": true,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/plant_electrical_balance_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/plant_electrical_balance_impl.py",
+      "source_sha256": "0e8049bcbe8092d0c7792069bfa28289a5d265ae9ac87255da6c7d147e8f11f3",
+      "target_sha256": "b85e807063a02d836cacfaaf70cd795701ff3fc22080e651b1da02a2c4fca62b",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/common.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/common.py",
+      "source_sha256": "cb9beceb7d7e5331728191c5f3a276b2f24d47ca6c35a9ec5795a8441b916668",
+      "target_sha256": "cb9beceb7d7e5331728191c5f3a276b2f24d47ca6c35a9ec5795a8441b916668",
+      "prefix_only": false,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/heat_driven_closure_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/heat_driven_closure_impl.py",
+      "source_sha256": "850f1ae6a5d91b57d7d82d002967860017bec5813b97f21a5cc4de3a7214e62d",
+      "target_sha256": "cb14057cce1250f8057a060278dba52481777469c6b94de6774ec39328485bdc",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/passive_recuperator_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/passive_recuperator_impl.py",
+      "source_sha256": "ddfcb4dd027c0c6bc7077feefc9eb929d5b943127eb6167ad06d2087fefe9191",
+      "target_sha256": "71639eac63218714a13b0f6a979043a5879617caa65cb25f9e48d27b26ad026a",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/integrated_plant_ledger_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/integrated_plant_ledger_impl.py",
+      "source_sha256": "a27bcc09f2edbcccc01c7f5b091693500224d4270f3b9c69d679cc1e6c2db904",
+      "target_sha256": "834e30a3d002644420701a61df872a5fa3328db11903aa3ae03eae4c4f826074",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/fusion_source_selector_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/fusion_source_selector_impl.py",
+      "source_sha256": "8a0682199662d25348dc4491f9884dd15e44848371384fb686eaf31c02440293",
+      "target_sha256": "9c1bc42e374c0859cb51f00d5da5ddb2af6f67da83b50a8598a37516a15a9ca2",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/integrated_heat_source_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/integrated_heat_source_impl.py",
+      "source_sha256": "1691522f8b0a9e5edb0b96bd2053fe35639654344db1d7eeff1eea98e366edef",
+      "target_sha256": "0ecec9f980c5d218286ca7c6997c7b45dad3696401eb6e4a4f915ad261b15141",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/selected_flow_pump_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/selected_flow_pump_impl.py",
+      "source_sha256": "1778f4b22cd89019bd2af2960ad98d4f2e2b5780cf913dee84880cc55c690607",
+      "target_sha256": "6ab1e3088b5f8055523f96dab989bb552f8d32eef0a7c0b11f208a441102ef6e",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/replacement_events_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/replacement_events_impl.py",
+      "source_sha256": "e342c3f44f75729dbe0679bd2ed3cae687305b8a657a6b04113a7e7667187800",
+      "target_sha256": "59a0b4a0680ccaade2d7c5b4c6feb5dee2b94a876340c41f0d827072be340ff4",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/exchanger_area_conductance_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/exchanger_area_conductance_impl.py",
+      "source_sha256": "b5354c989a335008b8a5013149666d2a421b0b2517d1b16242b1a5018eccb65a",
+      "target_sha256": "38b6e2ef98c897c872e492f7cebdfe3b2dec05b8d64c61a3424aaf3a28b2cb58",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/common.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/common.py",
+      "source_sha256": "f02abd8f871088f5b5ba7cd26e81ae31e00cb012ad213d4c860b34af1949cf3e",
+      "target_sha256": "f02abd8f871088f5b5ba7cd26e81ae31e00cb012ad213d4c860b34af1949cf3e",
+      "prefix_only": false,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/annual_selected_fuel_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/annual_selected_fuel_impl.py",
+      "source_sha256": "f1f11037da6c3dfb675b2b4198ef9d9c710a30be9fb695d23285816c0a47c2b9",
+      "target_sha256": "157e7c2b4f17add4347e427942c51a17813d863ece607d1e77d033f79a564079",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/eight_amount_sum_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/eight_amount_sum_impl.py",
+      "source_sha256": "bac0577a60285f056fa1d508e2a91c20e1c449160c2c8ed19e1787c4b14b6f31",
+      "target_sha256": "4de2d051d2677b7d23c01e18879b58e652c000d300f362edd0fcb9465162e833",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/selected_inventory_purchase_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/selected_inventory_purchase_impl.py",
+      "source_sha256": "9fcb34a154037808a890d3548f5ffcc404a8e5e0a59a7bae239e2bd53b08386c",
+      "target_sha256": "f74501190029c559a14315351ca8910be388ab16f0dbd1acfacea794dcae542f",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/scaled_amount_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/scaled_amount_impl.py",
+      "source_sha256": "4eed77a562286c130c4a648e0b47fe41287bf71f8f4be70e8a04b3ce91dbfd37",
+      "target_sha256": "b3df21319dea454b19f3e41d8ecccfa3212e43af44007bff36ac4cd4a9819d6d",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/equipment_cost_ledger_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/equipment_cost_ledger_impl.py",
+      "source_sha256": "e51755eeb62b3c0dc3ba89f78ffafdaa345ca48fee39ff3ab1363015afa6f22b",
+      "target_sha256": "6da7362951ee585f37b77f70d25a8966dacb6c378ad10c5d44110fc525f8a38e",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/comparison_difference_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/comparison_difference_impl.py",
+      "source_sha256": "b5d2f666322a7bc22a5ec13b740886678560338a9a0b8e7b2f6864144d65cf5c",
+      "target_sha256": "5ec6d89b9a7b39f56e48ff393518f5a4c0067260c225f617e37fc4d857ba4abd",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/equipment/selected_stock_atoms_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/selected_stock_atoms_impl.py",
+      "source_sha256": "969142d55869b763c2f4c1c54e11ef783fc965c4e7cf6f7e5570a0afb141931c",
+      "target_sha256": "71d2d281f251fc35e4fb3a922ccae7dd2b280e055cfe1db699330dbd2ae700f8",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/lifecycle/lifecycle_cashflow_accounts_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_lifecycle_costs/lifecycle_cashflow_accounts_impl.py",
+      "source_sha256": "0e4b7352297a69750e2438661631c8c234546e76326a61272505b60d2a43aa18",
+      "target_sha256": "f29ef5f1ac32b702ed57dcf41f9f3956162e986ebd3847b2a0fef1977fd04520",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_integrated/native_completions/lifecycle/already_financed_duration_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_lifecycle_costs/already_financed_duration_impl.py",
+      "source_sha256": "3626d81ff510a5be515675bb3b9f281496f7a9d4417071962ee84bf60139f773",
+      "target_sha256": "fe9a8b00ccc36a75365996f634a1bc426aa1ee960ed3c6656108efdaf3292f5e",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/levelized_annual_cost_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/mfe_account_costs/levelized_annual_cost_impl.py",
+      "source_sha256": "50ca3b893cf8a9e004c8f410893de0aa05b83955cebcac5d621ee49094b48f76",
+      "target_sha256": "879f6bfb7fdefabfeb94797dae5865e0e69fc99a27dc7377654fc4ad2624c0d6",
+      "prefix_only": true,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/financial_factors.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/mfe_account_costs/financial_factors.py",
+      "source_sha256": "cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee87027a",
+      "target_sha256": "cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee87027a",
+      "prefix_only": true,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/stellarator_e2e/generated/handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py",
+      "source_sha256": "29dcfeb07a9022954d8a593740687e1e6676a52ae7885e528319e685147c927d",
+      "target_sha256": "25708f409e7f72c3737c3ec90188c9c8bc342e9d153e862edb757e580973d886",
+      "prefix_only": true,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/aries_transfer/source_budget/native_completions/disjoint_capital_budget_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/source_budget_accounting/disjoint_capital_budget_impl.py",
+      "source_sha256": "f42d91c299788c3bfe07a631b0a0f7a9eaab10d4d6894afeba60a86a8ab1c4e1",
+      "target_sha256": "0666ab5bc4745ba766ff5f58325e97ae43e31c2878c4a474416e02a137bd4396",
+      "prefix_only": false,
+      "typed_adapter": true,
+      "reviewed_body_ast_unchanged": true
+    },
+    {
+      "source": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/supplied_purchase_cost_impl.py",
+      "target": "exploration/aries_integrated/aries_integrated/handwritten/mfe_account_costs/supplied_purchase_cost_impl.py",
+      "source_sha256": "7c529586b3e4460331ef0f07a8d8877281b38efb8d862e0a9cc59eeb7eab7e4b",
+      "target_sha256": "7c529586b3e4460331ef0f07a8d8877281b38efb8d862e0a9cc59eeb7eab7e4b",
+      "prefix_only": true,
+      "typed_adapter": false,
+      "reviewed_body_ast_unchanged": true
+    }
+  ],
+  "fixed_point": true,
+  "reactivity_ast_sha256": "294f8385bc916b18cf99c59365a0f2b2e81c51c104bb321496a815fba72fb0c6"
+}

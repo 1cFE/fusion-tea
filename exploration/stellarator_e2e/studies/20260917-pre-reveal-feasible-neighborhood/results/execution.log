@@ -1,0 +1,6 @@
+required native numeric channels 242
+baseline/preflight passed; beginning 334 native cases
+/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+EXECUTE COMPLETE 334 native cases; 336 coordinate-joined report rows

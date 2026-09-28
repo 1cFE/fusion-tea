@@ -1,0 +1,2 @@
+{"kind": "search", "query": "site.nist.gov water saturation temperature pressure 6 MPa 275 steam table", "at": "2026-09-20T00:23:07.152465+00:00"}
+{"kind": "candidate", "ref": "https://www.nist.gov/document/nistir5078-tab2pdf", "triage": "keeper", "note": "Official primary saturation table to check NASA pressure and boiling-temperature compatibility only.", "at": "2026-09-20T00:23:33.162084+00:00"}

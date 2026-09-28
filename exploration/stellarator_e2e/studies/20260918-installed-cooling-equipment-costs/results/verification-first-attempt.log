@@ -1,0 +1,1 @@
+Study local coverage assertion refused because native outputs also contain Boolean diagnostics beyond required numeric channels. No comparison failure or model change. Corrected assertion from equality to required numeric subset, preserving all native output fields.

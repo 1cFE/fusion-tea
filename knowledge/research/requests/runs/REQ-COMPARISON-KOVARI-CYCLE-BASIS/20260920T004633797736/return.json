@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-COMPARISON-KOVARI-CYCLE-BASIS",
+  "run": "knowledge/research/requests/runs/REQ-COMPARISON-KOVARI-CYCLE-BASIS/20260920T004633797736",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "dostal_driscoll_hejzlar2004_mit_anp_tr100_cycle_report",
+      "path": "knowledge/sources/dostal_driscoll_hejzlar2004_mit_anp_tr100_cycle_report/",
+      "source_id": "80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://user.efda.org/?uid=2M4XFP",
+      "reason": "Original document endpoint connection timed out after30s, HTTP000, curl28; four targeted searches found bibliography citations but no accessible original Porton report."
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

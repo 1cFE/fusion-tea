@@ -1,0 +1,12 @@
+{
+  "preparation/r2-selected-mode-native-result.json": {
+    "source": ".project/active/aries-comparison-preparation/package/selected-mode/native-result.json",
+    "revision": "9c8874c97fd75039b9fe516fe06a0427ac559120",
+    "sha256": "6afd7fa0cd95602f328a71641b3bf44422ba585a6009a200f1c07fcddda2a4ad"
+  },
+  "preparation/r2-table5-conditioned-native-result.json": {
+    "source": ".project/active/aries-comparison-preparation/package/table5-conditioned/native-result.json",
+    "revision": "9c8874c97fd75039b9fe516fe06a0427ac559120",
+    "sha256": "31f3d0f693fbf07984b8f4252a6636193170545848d4a6093d6810ba79f26bd1"
+  }
+}

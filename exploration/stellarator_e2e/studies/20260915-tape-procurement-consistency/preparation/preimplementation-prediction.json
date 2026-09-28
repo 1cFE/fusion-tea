@@ -1,0 +1,10 @@
+{
+  "basis": "preimplementation prediction from frozen entering physical inventory, explicit $20/m of6mm\u00d756um full composite tape; no old-total tuning",
+  "tape_volume_m3": 12.290400000000009,
+  "tape_length_m": 36578571.428571455,
+  "entering_tape_cost_USD": 804000000.0,
+  "predicted_tape_cost_USD": 731571428.5714291,
+  "predicted_delta_USD": -72428571.42857087,
+  "density_0.8_quantity_cost_ratio": 1.25,
+  "density_1.2_quantity_cost_ratio": 0.8333333333333334
+}

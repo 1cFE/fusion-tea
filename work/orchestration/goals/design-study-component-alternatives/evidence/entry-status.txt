@@ -1,0 +1,33 @@
+ M docs/write-up/harness.html
+ M docs/write-up/write-up.css
+ M src/model_viz/README.md
+ M src/model_viz/viewer/index.html
+ M src/model_viz/viewer/js/app.js
+ M src/model_viz/viewer/js/graph.js
+ M src/model_viz/viewer/js/model.js
+ M src/model_viz/viewer/js/panel.js
+ M src/model_viz/viewer/js/view.js
+ M src/model_viz/viewer/viewer.css
+ M tests/model_viz/test_navigation.py
+ M tests/model_viz/viewer_harness.py
+ M tests/model_viz/viewer_snapshots.py
+?? .project/active/model-viz-evolution/
+?? docs/write-up/html-work/stellaris-evolution.review.md
+?? docs/write-up/html-work/sysml-codegen-model-evaluation.review-3.md
+?? docs/write-up/stellaris-evolution.html
+?? src/model_viz/evolution/
+?? src/model_viz/export.py
+?? src/model_viz/viewer/js/part_panel.js
+?? src/model_viz/viewer/js/structure.js
+?? src/model_viz/viewer2/
+?? tests/model_viz/part_panel_dom.py
+?? tests/model_viz/structure_oracle.py
+?? tests/model_viz/test_export.py
+?? tests/model_viz/test_part_panel.py
+?? tests/model_viz/test_structure_layout.py
+?? tests/model_viz/test_structure_pure.py
+?? tests/model_viz/test_structure_view.py
+?? tests/model_viz/test_view_switch.py
+?? tests/model_viz_evolution/
+?? tests/model_viz_v2/
+?? work/orchestration/goals/design-study-component-alternatives/

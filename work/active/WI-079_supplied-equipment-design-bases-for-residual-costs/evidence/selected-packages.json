@@ -1,0 +1,287 @@
+{
+  "capture": {
+    "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+    "native_capture": "work/active/WI-075_supplied-magnet-design-evaluation/integration/baseline.json",
+    "native_capture_sha256": "31b07cf19ebc75ef6600952703f9f16a674284d9a378b90477f965475e79e5c3",
+    "independent_capture": "work/orchestration/goals/preserve-model-design-choices/evidence/round2/entering-oracle.json",
+    "independent_capture_sha256": "06dc4986bb28ec7652150dfb8eae40c0d6d2eaf4d46aeb0be5a7bac4f437afd7",
+    "policy": "One-time entering design capture; literal independent inputs thereafter. Assumed estimates, not vendor quotations. Current one-module scope.",
+    "inputs": {
+      "turbine__purchase_cost_per_module": {
+        "oracle_key": "selected_turbine_purchase_cost_per_module",
+        "default": 247464428.83859593,
+        "native_channel": "stellarator_09__stellaris__turbine__turbine_cost__cost",
+        "entering_oracle_key": "turbine",
+        "units": "dollars/module",
+        "role": "supplied package assumption"
+      },
+      "heat_rejection__purchase_cost_per_module": {
+        "oracle_key": "selected_heat_rejection_purchase_cost_per_module",
+        "default": 115939531.80564217,
+        "native_channel": "stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost",
+        "entering_oracle_key": "heat_rejection",
+        "units": "dollars/module",
+        "role": "supplied package assumption"
+      },
+      "power_supplies__purchase_cost_per_module": {
+        "oracle_key": "selected_power_supplies_purchase_cost_per_module",
+        "default": 86013482.74180616,
+        "native_channel": "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost",
+        "entering_oracle_key": "power_supplies",
+        "units": "dollars/module",
+        "role": "supplied package assumption"
+      },
+      "divertor__purchase_cost_per_module": {
+        "oracle_key": "selected_divertor_purchase_cost_per_module",
+        "default": 109109123.15593052,
+        "native_channel": "stellarator_09__stellaris__divertor__divertor_cost__cost",
+        "entering_oracle_key": "divertor",
+        "units": "dollars/module",
+        "role": "supplied package assumption"
+      },
+      "cryoplant__purchase_cost_per_module": {
+        "oracle_key": "selected_cryoplant_purchase_cost_per_module",
+        "default": 31478692.121086925,
+        "native_channel": "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost",
+        "entering_oracle_key": "cryo_cost",
+        "units": "dollars/module",
+        "role": "supplied package assumption"
+      },
+      "blanket__cost_thermal_class_MW": {
+        "oracle_key": "selected_blanket_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "shield__cost_thermal_class_MW": {
+        "oracle_key": "selected_shield_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "structure__cost_gross_class_MWe": {
+        "oracle_key": "selected_structure_cost_gross_class_MWe",
+        "default": 1219.9981701764736,
+        "native_channel": "stellarator_09__stellaris__pb__p_et",
+        "entering_oracle_key": "p_et",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "vessel__cost_gross_class_MWe": {
+        "oracle_key": "selected_vessel_cost_gross_class_MWe",
+        "default": 1219.9981701764736,
+        "native_channel": "stellarator_09__stellaris__pb__p_et",
+        "entering_oracle_key": "p_et",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "misc_plant__cost_gross_class_MWe": {
+        "oracle_key": "selected_misc_plant_cost_gross_class_MWe",
+        "default": 1219.9981701764736,
+        "native_channel": "stellarator_09__stellaris__pb__p_et",
+        "entering_oracle_key": "p_et",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "remote_handling_cost_gross_class_MWe": {
+        "oracle_key": "selected_remote_handling_cost_gross_class_MWe",
+        "default": 1219.9981701764736,
+        "native_channel": "stellarator_09__stellaris__pb__p_et",
+        "entering_oracle_key": "p_et",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "cryoplant__aux_cost_thermal_class_MW": {
+        "oracle_key": "selected_cryoplant_aux_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "waste_cost_thermal_class_MW": {
+        "oracle_key": "selected_waste_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "other_rpe_cost_net_class_MWe": {
+        "oracle_key": "selected_other_rpe_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "inc_cost_thermal_class_MW": {
+        "oracle_key": "selected_inc_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "owner_cost_net_class_MWe": {
+        "oracle_key": "selected_owner_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "startup_cost_net_class_MWe": {
+        "oracle_key": "selected_startup_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "decom_cost_net_class_MWe": {
+        "oracle_key": "selected_decom_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "om_staffing_net_class_MWe": {
+        "oracle_key": "selected_om_staffing_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "buildings__legacy_cost_fusion_class_MW": {
+        "oracle_key": "selected_buildings_legacy_cost_fusion_class_MW",
+        "default": 2652.5632625175904,
+        "native_channel": "stellarator_09__stellaris__plasma__fusion__p_fus",
+        "entering_oracle_key": "p_fus",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "buildings__legacy_cost_gross_class_MWe": {
+        "oracle_key": "selected_buildings_legacy_cost_gross_class_MWe",
+        "default": 1219.9981701764736,
+        "native_channel": "stellarator_09__stellaris__pb__p_et",
+        "entering_oracle_key": "p_et",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "buildings__legacy_cost_thermal_electric_class_MWe": {
+        "oracle_key": "selected_buildings_legacy_cost_thermal_electric_class_MWe",
+        "default": 1219.9981701764736,
+        "native_channel": "stellarator_09__stellaris__pb__p_the",
+        "entering_oracle_key": "p_the",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "buildings__legacy_cost_thermal_class_MW": {
+        "oracle_key": "selected_buildings_legacy_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "precon_legacy_cost_net_class_MWe": {
+        "oracle_key": "selected_precon_legacy_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "heat_transport__legacy_cost_net_class_MWe": {
+        "oracle_key": "selected_heat_transport_legacy_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      },
+      "heat_transport__legacy_cost_thermal_class_MW": {
+        "oracle_key": "selected_heat_transport_legacy_cost_thermal_class_MW",
+        "default": 3306.8890988488924,
+        "native_channel": "stellarator_09__stellaris__pb__p_th",
+        "entering_oracle_key": "p_th",
+        "units": "MW/module",
+        "role": "selected procurement class; not capability"
+      },
+      "fuel_cycle__legacy_cost_net_class_MWe": {
+        "oracle_key": "selected_fuel_cycle_legacy_cost_net_class_MWe",
+        "default": 850.0653006674999,
+        "native_channel": "stellarator_09__stellaris__pb__p_net",
+        "entering_oracle_key": "p_net",
+        "units": "MWe/module",
+        "role": "selected procurement class; not capability"
+      }
+    }
+  },
+  "packages": {
+    "turbine": {
+      "amount": 247464428.83859593,
+      "units": "dollars per supplied one-module package",
+      "provenance": "assumed entering model estimate, not vendor quotation",
+      "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+      "native_channel": "stellarator_09__stellaris__turbine__turbine_cost__cost",
+      "currency_basis": "Inherited nominal account dollar convention; no new escalation or price year claim",
+      "scope": "Aggregate turbine conversion account including represented child equipment; child ratings do not add separate capital.",
+      "specification": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/design.md; public fields owned by turbine",
+      "conditions": "Point-condition assumptions owned by companion specification; no off-design qualification. Replacement specification with held amount is a hypothetical offered design, not a marginal price prediction."
+    },
+    "heat_rejection": {
+      "amount": 115939531.80564217,
+      "units": "dollars per supplied one-module package",
+      "provenance": "assumed entering model estimate, not vendor quotation",
+      "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+      "native_channel": "stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost",
+      "currency_basis": "Inherited nominal account dollar convention; no new escalation or price year claim",
+      "scope": "Aggregate heat-rejection package; original estimate used total thermal MW, not rejected duty. Pump ratings do not add separate capital.",
+      "specification": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/design.md; public fields owned by heat_rejection",
+      "conditions": "Point-condition assumptions owned by companion specification; no off-design qualification. Replacement specification with held amount is a hypothetical offered design, not a marginal price prediction."
+    },
+    "cryoplant": {
+      "amount": 31478692.121086925,
+      "units": "dollars per supplied one-module package",
+      "provenance": "assumed entering model estimate, not vendor quotation",
+      "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+      "native_channel": "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost",
+      "currency_basis": "Inherited nominal account dollar convention; no new escalation or price year claim",
+      "scope": "Cryogenic refrigeration package only; excludes separately costed auxiliary-cooling allowance. Original estimate used electrical MW.",
+      "specification": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/design.md; public fields owned by cryoplant",
+      "conditions": "Point-condition assumptions owned by companion specification; no off-design qualification. Replacement specification with held amount is a hypothetical offered design, not a marginal price prediction."
+    },
+    "power_supplies": {
+      "amount": 86013482.74180616,
+      "units": "dollars per supplied one-module package",
+      "provenance": "assumed entering model estimate, not vendor quotation",
+      "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+      "native_channel": "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost",
+      "currency_basis": "Inherited nominal account dollar convention; no new escalation or price year claim",
+      "scope": "Aggregate magnet power-supply/switchgear allowance, no new converter current/voltage capability qualification.",
+      "specification": "models/designs/stellarator_09/stellarator_plant.sysml, part power_supplies; fields copied below",
+      "conditions": "Point-condition assumptions owned by companion specification; no off-design qualification. Replacement specification with held amount is a hypothetical offered design, not a marginal price prediction.",
+      "entering_specification_text": "        part :>> power_supplies {\n            doc /*\n            base: costing_constants.yaml:96 (power_supplies_base = 80.0 M$ at 1 GWe) x 1e6.\n            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml\n            **Ref**: costing_constants.yaml:96\n            **Basis**: power-scaled power-supply cost\n            */\n            :>> base = 80000000.0;\n            :>> p_tf = 0.0 {\n                doc /* **Source**: WI-059 D3: direct legacy allowance zero; computed lead/joint power enters separately through p_tf_extra and p_tf_total **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */\n            }\n            :>> p_pf = 0.0 {\n                doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: line 249 (modular coils, minimized plasma current) **Basis**: stellarator has no separate poloidal-field coil set */\n            }\n        }\n\n        // ---------------------------------------------------------------------\n        // BALANCE OF PLANT (CAS23-26) -- per-MW rates ($/MW), Rankine steam cycle\n        // ---------------------------------------------------------------------\n"
+    },
+    "divertor": {
+      "amount": 109109123.15593052,
+      "units": "dollars per supplied one-module package",
+      "provenance": "assumed entering model estimate, not vendor quotation",
+      "checkpoint": "53a0366ad0c406daf65c305dd76f6b3e3aeeacd6",
+      "native_channel": "stellarator_09__stellaris__divertor__divertor_cost__cost",
+      "currency_basis": "Inherited nominal account dollar convention; no new escalation or price year claim",
+      "scope": "Fixed-profile reference-geometry divertor package; price also supplies lifecycle replacement unit cost.",
+      "specification": "models/designs/stellarator_09/stellarator_plant.sysml, part divertor; fields copied below",
+      "conditions": "Point-condition assumptions owned by companion specification; no off-design qualification. Replacement specification with held amount is a hypothetical offered design, not a marginal price prediction.",
+      "entering_specification_text": "        part :>> divertor {\n            :>> target_capture_fraction = 0.99 {\n                doc /* Reference-profile capture paired with q_target_ref 9.5 MW/m^2 at p_nonrad_ref 50 MW; not an independent mitigation lever.\n                **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md\n                **Ref**: section 2.6, page 15; 200 eV and 1 m^2/s transport case.\n                **Basis**: simulated aggregate target capture for the selected source profile. */\n            }\n            // Divertor (CAS22.1.8) driver.\n            :>> divertor_base = 60000000.0 {  // divertor cost at 1 GWth [$].\n                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:97 (divertor_base = 60.0 M$) x 1e6 **Basis**: power-scaled divertor cost */\n            }\n            :>> f_rad_total = 0.9 {  // total radiated fraction of the absorbed heating [1].\n                doc /* \"we assume that 90% of the net heating power in the plasma core is radiated before reaching the divertor region\" -- a TOTAL fraction (core plus edge); the first-wall cooling case on the same page assumes 100 % and is a different load case, never summed with this one. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: lines 1219-1222; page render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p15_divertor.png **Basis**: Stellaris section 2.6 operating assumption */\n            }\n            :>> q_target_ref = 9.5 {  // the pessimistic transport case's peak target flux [MW/m^2].\n                doc /* The (T_LCFS 200 eV, chi_perp 1 m^2/s) case: 99 % captured, peak 9.5 MW/m^2 at 50 MW non-radiated. The low case (100 eV, 3 m^2/s; 97 %; 5 MW/m^2 at the same 50 MW) is a study arm on this same attribute, not a second binding; the two are a paired assumption/result set and are never mixed. Fixed target geometry and transport: the peak is scaled in load only. **Source**: stellaris-design-details.md **Ref**: lines 1223-1240; the render stellaris_p15_divertor.png **Basis**: Stellaris section 2.6, the most pessimistic printed case */\n            }\n            :>> p_nonrad_ref = 50.0 {  // the source case's non-radiated load [MW].\n                doc /* \"for a total of 500 MW of heating power, the divertor must be capable of handling 50 MW\". **Source**: stellaris-design-details.md **Ref**: lines 1221-1222; the render **Basis**: Stellaris section 2.6 */\n            }\n            :>> q_target_limit = 10.0 {  // adopted steady-state target-flux threshold [MW/m^2].\n                doc /* \"a commonly applied threshold for steady-state heat fluxes in divertor designs\" -- an adopted threshold, not an irradiated-component lifetime or an erosion limit. **Source**: stellaris-design-details.md **Ref**: lines 1243-1246; the render **Basis**: Stellaris section 2.6 */\n            }\n            :>> R_ref_divertor = 12.7 {  // the source case's major radius [m] -- the R-scaled SHADOW only.\n                doc /* The shadow q_target_peak_area_scaled = q_target_peak x R_ref / R publishes what a target whose wetted length grows with R would read; no source supports the scaling (retrieval target: new transport / geometry cases), so nothing asserts on it. Named apart from magnet.R_ref (WI-044), a different chain's anchor. **Source**: stellaris-design-details.md **Ref**: Table 2 image (R 12.7) **Basis**: the source geometry of the divertor case */\n            }\n        }\n"
+    }
+  }
+}

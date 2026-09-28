@@ -1,0 +1,19 @@
+{
+  "attempt_directory": "account-check.json.attempt-6xjegpb6",
+  "inputs": [
+    {
+      "source": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/native-result.json",
+      "sha256": "bc6feb19c87b777b5d0659eff0ead8f563beb39f145707f94d111c2b13f87bb4",
+      "retained": "input-0.raw"
+    },
+    {
+      "source": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json",
+      "sha256": "d253a273a944611ee5b49f5994029b061b26e6c753c7fd6c7d3373a0d702373e",
+      "retained": "input-1.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/account-check.json",
+  "output_sha256": "17faa4035fc0ba294d26cf771f582fba1d97714f0a120a6db89201ced641bb02",
+  "state": "completed"
+}

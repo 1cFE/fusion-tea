@@ -1,0 +1,143 @@
+..FFF.FFFF                                                               [100%]
+=================================== FAILURES ===================================
+_____ test_output_admission_cannot_survive_old_content_replacement[rename] _____
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_output_admission_cannot_s0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x7559772a4b80>, write=<function observed_route.<locals>.write at 0x7559772a4c20>)
+replacement = 'rename'
+
+    @pytest.mark.parametrize('replacement', ['rename', 'replace', 'hardlink', 'symlink'])
+    def test_output_admission_cannot_survive_old_content_replacement(observed_route, replacement):
+        (observed_route.out / 'old.json').write_text('old untracked content')
+        moves = {
+            'rename': '(out / "old.json").rename(out / "temp.json")',
+            'replace': '(out / "old.json").replace(out / "temp.json")',
+            'hardlink': 'os.link(out / "old.json", out / "temp.json")',
+            'symlink': '(out / "temp.json").symlink_to(out / "old.json")',
+        }
+        done, receipt = observed_route.run('''(out / "temp.json").write_text("new")
+    (out / "temp.json").rename(out / "final.json")
+    ''' + moves[replacement] + '\nassert (out / "temp.json").read_text() == "old untracked content"')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_output_admission_cannot_s0/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:285: AssertionError
+____ test_output_admission_cannot_survive_old_content_replacement[replace] _____
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_output_admission_cannot_s1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x7559771ac4a0>, write=<function observed_route.<locals>.write at 0x7559771ac400>)
+replacement = 'replace'
+
+    @pytest.mark.parametrize('replacement', ['rename', 'replace', 'hardlink', 'symlink'])
+    def test_output_admission_cannot_survive_old_content_replacement(observed_route, replacement):
+        (observed_route.out / 'old.json').write_text('old untracked content')
+        moves = {
+            'rename': '(out / "old.json").rename(out / "temp.json")',
+            'replace': '(out / "old.json").replace(out / "temp.json")',
+            'hardlink': 'os.link(out / "old.json", out / "temp.json")',
+            'symlink': '(out / "temp.json").symlink_to(out / "old.json")',
+        }
+        done, receipt = observed_route.run('''(out / "temp.json").write_text("new")
+    (out / "temp.json").rename(out / "final.json")
+    ''' + moves[replacement] + '\nassert (out / "temp.json").read_text() == "old untracked content"')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_output_admission_cannot_s1/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:285: AssertionError
+____ test_output_admission_cannot_survive_old_content_replacement[hardlink] ____
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_output_admission_cannot_s2/package'), route=PosixPa...ction observed_route.<locals>.run at 0x755977087ba0>, write=<function observed_route.<locals>.write at 0x755977087b00>)
+replacement = 'hardlink'
+
+    @pytest.mark.parametrize('replacement', ['rename', 'replace', 'hardlink', 'symlink'])
+    def test_output_admission_cannot_survive_old_content_replacement(observed_route, replacement):
+        (observed_route.out / 'old.json').write_text('old untracked content')
+        moves = {
+            'rename': '(out / "old.json").rename(out / "temp.json")',
+            'replace': '(out / "old.json").replace(out / "temp.json")',
+            'hardlink': 'os.link(out / "old.json", out / "temp.json")',
+            'symlink': '(out / "temp.json").symlink_to(out / "old.json")',
+        }
+        done, receipt = observed_route.run('''(out / "temp.json").write_text("new")
+    (out / "temp.json").rename(out / "final.json")
+    ''' + moves[replacement] + '\nassert (out / "temp.json").read_text() == "old untracked content"')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_output_admission_cannot_s2/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:285: AssertionError
+____________ test_replacement_revokes_current_destination_admission ____________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_replacement_revokes_curre0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x755976f8b7e0>, write=<function observed_route.<locals>.write at 0x755976f8b2e0>)
+
+    def test_replacement_revokes_current_destination_admission(observed_route):
+        (observed_route.out / 'old.json').write_text('old untracked content')
+        done, receipt = observed_route.run('''(out / "new.json").write_text("new")
+    (out / "old.json").replace(out / "new.json")
+    assert (out / "new.json").read_text() == "old untracked content"''')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_replacement_revokes_curre0/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:294: AssertionError
+______ test_unlink_revokes_admission_before_old_file_replacement[rename] _______
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_unlink_revokes_admission_0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x755976eaab60>, write=<function observed_route.<locals>.write at 0x755976eaaac0>)
+replacement = 'rename'
+
+    @pytest.mark.parametrize('replacement', ['rename', 'hardlink'])
+    def test_unlink_revokes_admission_before_old_file_replacement(observed_route, replacement):
+        (observed_route.out / 'old.json').write_text('old')
+        move = '(out / "old.json").rename(out / "new.json")' if replacement == 'rename' else 'os.link(out / "old.json", out / "new.json")'
+        done, receipt = observed_route.run('''(out / "new.json").write_text("new")
+    (out / "new.json").unlink()
+    ''' + move + '\n(out / "new.json").read_text()')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_unlink_revokes_admission_0/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:305: AssertionError
+_____ test_unlink_revokes_admission_before_old_file_replacement[hardlink] ______
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_unlink_revokes_admission_1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x755976ea82c0>, write=<function observed_route.<locals>.write at 0x755976ea8220>)
+replacement = 'hardlink'
+
+    @pytest.mark.parametrize('replacement', ['rename', 'hardlink'])
+    def test_unlink_revokes_admission_before_old_file_replacement(observed_route, replacement):
+        (observed_route.out / 'old.json').write_text('old')
+        move = '(out / "old.json").rename(out / "new.json")' if replacement == 'rename' else 'os.link(out / "old.json", out / "new.json")'
+        done, receipt = observed_route.run('''(out / "new.json").write_text("new")
+    (out / "new.json").unlink()
+    ''' + move + '\n(out / "new.json").read_text()')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_unlink_revokes_admission_1/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:305: AssertionError
+_______________ test_directory_move_revokes_descendant_admission _______________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13158/test_directory_move_revokes_de0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x755976e70040>, write=<function observed_route.<locals>.write at 0x755977267ec0>)
+
+    def test_directory_move_revokes_descendant_admission(observed_route):
+        old = observed_route.out / 'old_dir'
+        old.mkdir()
+        (old / 'file.json').write_text('old')
+        done, receipt = observed_route.run('''(out / "new_dir").mkdir()
+    (out / "new_dir/file.json").write_text("new")
+    (out / "new_dir").rename(out / "moved_dir")
+    (out / "old_dir").rename(out / "new_dir")
+    (out / "new_dir/file.json").read_text()''')
+>       assert done.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...eid/pytest-13158/test_directory_move_revokes_de0/manifest.json', 'test-token'], returncode=0, stdout='{}\n', stderr='').returncode
+
+tests/study/test_read_coverage.py:318: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_read_coverage.py::test_output_admission_cannot_survive_old_content_replacement[rename]
+FAILED tests/study/test_read_coverage.py::test_output_admission_cannot_survive_old_content_replacement[replace]
+FAILED tests/study/test_read_coverage.py::test_output_admission_cannot_survive_old_content_replacement[hardlink]
+FAILED tests/study/test_read_coverage.py::test_replacement_revokes_current_destination_admission
+FAILED tests/study/test_read_coverage.py::test_unlink_revokes_admission_before_old_file_replacement[rename]
+FAILED tests/study/test_read_coverage.py::test_unlink_revokes_admission_before_old_file_replacement[hardlink]
+FAILED tests/study/test_read_coverage.py::test_directory_move_revokes_descendant_admission
+7 failed, 3 passed, 29 deselected in 5.41s

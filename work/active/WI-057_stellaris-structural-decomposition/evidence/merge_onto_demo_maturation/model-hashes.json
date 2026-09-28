@@ -1,0 +1,11 @@
+{
+  "cost_structure/mfe_power_core.sysml": "27949b71631ddc3ff1481c69e604421e0120daffc3817a41ded1b5bfe5435ea6",
+  "designs/generic_mfe/mfe_plant.sysml": "f281fc11d5b84d984faddbdd4389de7d62a29cd0d41dd05002b0d8a6fd061a6d",
+  "designs/generic_mfe/mfe_subsystems.sysml": "6c1d8a56259979918d763fca7b1e465418f6d88916638ce8a2b18a4cab7e9a72",
+  "designs/stellarator_09/stellarator_plant.sysml": "ffa8a1143950f9935a845974665a2777df129e832f659fc68e772b4c2bd875d6",
+  "structure/mfe_interfaces.sysml": "fd021c850db555302ec8d4f5b22e17f995cf151876aa8ef7bf122e2d0a8cbb77",
+  "structure/mfe_plasma.sysml": "6b7e4020b387c22bfde8383838b55d1fcc9aee71bf39e1534e8cb918e5470f67",
+  "structure/mfe_magnet_parts.sysml": "f8d04a4ac6e39b1e82d8850444fa5caf04c795e6446b5a72e02ece23e4ead874",
+  "structure/mfe_radial_build_parts.sysml": "aa52d4a9001e71a113d5d343eeae6d79092eb117e39abde5a0800e23f39f39ac",
+  "structure/mfe_plant_systems.sysml": "0b5a3e4229f2aa1590de60ab75bb58614baeaabd50280aff3a207214e398de4b"
+}

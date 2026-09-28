@@ -1,0 +1,176 @@
+# Checkpoint C-001 — goal `stored-energy-basis`, round 1
+
+Deposited verbatim by the round agent. r1 below; later submissions are appended as sections, never edited in place.
+
+## r1 — 2026-09-05 (fresh reviewer's return, verbatim)
+
+# Checkpoint C-001.r1 — goal `stored-energy-basis`, round 1 (fresh reviewer, 2026-09-05)
+
+**Reviewer:** fresh session spawned from `evidence/round1_C-001_checkpoint_prompt.md`; no context inherited; not the author of the reading or the dispositions. Worked from the worktree `/home/reid/1cfe/fusion-tea-stored-energy-basis` at `dfc9eca7` (branch `goal/stored-energy-basis`, base `1928925b`) and, for the `wall-and-heating` review, from the primary checkout at `e0f66f7a` on `feat/demo-maturation`. Nothing under `knowledge/holdout/` opened; `knowledge/research/requests/runs/REQ-W-01/` not opened. No file edited; no state-changing git command. Recount scripts in the scratchpad, not deposited. `w_counterfactual.py parity 60` was run with the primary checkout's interpreter (its parity path writes nothing; `git status` of the goal directory clean afterwards).
+
+**Read:** `GOAL_RUNBOOK.md` §§ What "fresh" means, The pre-execution disposition checkpoint, The two checks are distinct, The discovery log; ADR-0004; `goal.md`; `trail.md`; `NOTES.md` §§ 1–9 with all five data files and the two scripts; the record's §§ 3, 4, 15 and `results/points.csv`, `oracle_operands.csv`; round 1's `20260903-wall-and-heating/results/points.csv`; every `20260904-wall-and-heating#n` row in `DISCOVERY_LOG.md` in both checkouts; `wall-and-heating/evidence/round2_review.md`, its `learnings.md` L-009 as landed, and its trail § Round 2 review and § Goal close.
+
+## Verdict: `REVISE`
+
+The reading is right. Every number in `NOTES.md` §§ 3, 5, 7 and in the five rows reproduces from the data, the record columns in the CSV are the committed record's to the last digit, sixty points re-evaluated unmodified reproduce the record, and the constant-scale caveat is stated where it belongs. The dispositions do not yet follow from it, for one reason outside the author's control and three inside it: the `wall-and-heating` goal was closed by the owner on 2026-09-05 (`e0f66f7a`) and its log gained four rows the proposed file does not see, so every "current state" and two named actors are stale or dead; row `#1` carries a wrong denominator and a robustness claim in a direction the counterfactual never tested; row `#2` uses "driven" against the record's definition; and `#8` needs a row by the file's own rule for `#7`.
+
+## 1. Recounts (from `window_counterfactual.csv`, `baseline_counterfactual.json`, `attribution_arithmetic.json`, `points.csv`)
+
+Flips, record → forced, over the 6,250 evaluated rows: `sustainment_ok` violated→satisfied **1,128** (573 / 367 / 188 by arm); satisfied→violated **21** (11 / 10 / 0); `wall_load_ok` violated→satisfied **384** (180 / 179 / 25); `recirc_ok` satisfied→violated **211** (68 / 118 / 25); `beta_ok` violated→satisfied **20** (10 / 10 / 0). Field, stress and strain: zero flips. All as stated.
+
+Per arm, feasible / ignited / driven, record → forced: `arm-fence-p100` **458 / 787 / 257 → 776 / 1,282 / 332**; `arm-search-p220` 598 / 787 / 400 → 793 / 1,282 / 390; `arm-reread-p220` 24 / 0 / 24 → 58 / 51 / 58; `arm-transect-ash` 0 / 8 / 0 → 0 / 9 / 0. The forced flags are internally consistent (ignited ⇔ `p_aux_required` < 0; driven ⇔ feasible and not ignited; feasible ⇔ all exported verdicts satisfied; 0 inconsistencies).
+
+Design geometry at 100 MW under the forced W: **six** driven points at R 12.7, a 1.3, none feasible in the record — `c0625` **315.090** (I 15 MA, T 16 keV, n 0.9×; 31.41 MW; peak 4.012), `c0621` 319.821, **`c2973` 332.585** (the pinned baseline; 37.47 MW; peak 3.861), `c0629` 340.114, `c0620` 386.307, `c0624` 389.877. Forced driven `a` values at 100 MW: 1.3 (10), 1.5 (58), 1.7 (71), 1.8 (75), 2.0 (60), 2.2 (58); the record's: 1.5–2.2 only.
+
+Cheapest driven at 100 MW: record `c1721` 212.460; forced **`c1676` 212.314** (R 14.2, a 2.2, I 13 MA, T 14.63, n 0.9×; 40.02 MW; peak 3.716; not feasible in the record at 60.39 MW). `c1721` forced: **226.507**, 5.94 MW, still driven. `c0821` forced 275.877, still driven. At 220 MW: `c4639` 219.448 → `c4660` 229.712.
+
+Driven points lost: **347 = 305 ignited + 40 `recirc_ok` + 2 `sustainment_ok`** — but over **three** arms: 152 at 100 MW (147 + 5), 180 in the 220 search arm (158 + 20 + 2), **15 in the re-read arm (all `recirc_ok`)**. The two search arms alone: **332 of 657** (305 + 25 + 2). The record's driven total is 681, not 657. Driven points gained: 446 (227 / 170 / 49).
+
+Re-read arm: **24 → 58** driven, all 58 at (12.7, 1.3); cheapest forced `c5944` **371.702** against the record's 378.556. **25** wall verdicts flip violated→satisfied; joined to round 1's `points.csv` on (I, T, n, η), all 360 arm points match and all 25 were `satisfied` in round 1, so they are among the honest fence's flipped set (142 of the predecessor's 152 flipped points sit inside the 360-row arm; the other 10 are among the 24 predecessor points the arm does not carry).
+
+Transect, design column (`c6308`, τ*/τ_E = 6): record **+44.4 MW**, peak **4.54**, wall violated → forced **−12.2 MW**, peak **4.326**, wall still violated. (`c6309`, τ = 12): **158.4 → 109.0 MW**, wall satisfied in both, not feasible in either. No transect row feasible in either state; ignited 8 → 9.
+
+Closure edge: **61** error rows, **28** at 100 MW, **33** at 220; 55 `non-positive fuel`, 6 a `TypeError` on a non-real value. The CSV carries only `case_id`, `arm_id` and `error` for these rows (the script's exception branch returns no inputs and no record columns), so "none was feasible in the record" is checkable only by joining to `points.csv` by case id. Joined: **0 feasible, 0 ignited, 0 driven** in the record; 36 had `sustainment_ok` violated, 59 had the wall satisfied; R 11.2 (48) / 12.7 (13), a 2.0–2.2 (55 of 61), I 16–18 MA (51 of 61) — the same corner as the record's 65 excluded proposals, moved inward.
+
+Baseline: `p_aux_required` **90.605 → 37.469 MW**; wall peak **4.088 → 3.861**; `p_fus` 2,725.4 → 2,574.0 (**−5.55 %**); τ_E 1.4499 → 1.6811 s; W/τ_E 380.33 → 298.41 MW; W_th 551.444 × 0.915142 = 504.65 applied, **501.667 realized** (0.9097); every verdict satisfied under the forced W. Across the window the realized ratio W_forced / W_record (from `oracle_operands.csv`) is 0.9084–0.9128, median 0.9092.
+
+Record columns in the CSV against `points.csv` by case id, all 6,250 evaluated rows: every verdict, `feasible` / `ignited` / `feasible_driven`, `p_aux_required` and LCOE identical (worst relative deviation 0.0); every input identical. Parity: **60 points, 0 mismatches.**
+
+Attribution, recomputed independently from the printed peaks with the ρ dρ volume average 1/(1+α): model family **551.33** (+9.3 %); caption's exponents on every species **574.65** (+13.9 %); ions at the electron exponent 525.97 (+4.2 %), 524.09 at α_T 1.2; figure-consistent α_He 1 / 2 / 3: **558.58 / 539.14 / 527.19**; exponent sum for the printed W 1.904; β 2.76 % at 9.0 T over 425 m³ → ⟨p⟩ 889,517 Pa → **567.07 MJ**, reconciling field 8.49 T; model β 2.683 %; printed pair through A.3: 513.5 − 228.9 − 345.65 = **−61.04 MW**, balancing τ_E 1.773 s; fast alphas 11.8 MJ; ⟨n_e⟩/n_e0 0.6265 → α_ne 0.596. All match the JSON.
+
+Design column under the forced W, wall peak over R 11.2 → 17.2: 3.521 → 4.916 (record 3.752 → 5.102) — rises with R, as `#7`'s row says.
+
+**Numbers I could not reproduce: none.** Precision points: (i) "347 of the record's 657 driven points" (row `#1`; also `goal.md` § Question's "347 of the record's 257 + 400") mixes a three-arm numerator with a two-arm denominator; (ii) `NOTES.md` § 5 places the 347 under "what moves at the printed 100 MW" though it spans both levels and the re-read arm; (iii) `NOTES.md` § 7 item 1's "every reading reproduces the printed fusion power" is contradicted by its own third row (−8.5 %), which item 3 acknowledges; (iv) the 61 error rows are blank except for id, arm and error.
+
+## 2. Sign claims against location claims
+
+- `#1`: "'never at the design's minor radius' is not [robust]" — sign claim, supported (a 9 % W cut opens the column). The six points and their prices are the counterfactual's data, stated under the forced W — acceptable. **"The region's existence at the printed level is robust to W" is not supported.** The counterfactual tested one direction, W down. The reading's own § 7 puts plausible readings of the paper at 524–575 MJ and the β-implied value at 567, above the model's 551; a W increase shrinks the driven set (the sign is the same mechanism run backwards), and the region's existence at, say, 567 MJ was never evaluated. State the direction.
+- `#2`: "the flip points move with W", "location is W-sensitive" — sign claims, supported. The wall and `p_aux` numbers are data.
+- `#4`: "grows with any W decrease" — direction stated, supported (787 → 1,282 is the largest single move in the study).
+- `#6`: "the survivor count is W-conditional"; "the peak moves through fusion power, not through the fence" — supported (p_rad unchanged, p_fus −5.6 % at the baseline; the fence's operand and bound untouched).
+- `#7`: "the field chain does not read W" (zero flips) and "the peak still rises with R" — supported.
+- No row states a boundary location as fact. The intro's "the counterfactual is a sensitivity, not a correction" is a conclusion conditional on T-001 (below).
+
+## 3. Per-row rulings
+
+**The state of the log has moved.** At `e0f66f7a` (`feat/demo-maturation`, primary checkout; not an ancestor of this worktree's `dfc9eca7`), `DISCOVERY_LOG.md` carries four rows dated 2026-09-05 after line 134: `#6` (F4 disposition: discharged, WI-041 at `cb355321`, confirmed by the reviewer's recount), `#8` (F4 disposition: `declared seam` recorded; responsible: the next strategy author if a geometry goal is grounded, otherwise standing), `#1` (**close row**: `model fix — closed [OWNER 2026-09-05]`, "the four conditions stand as disclosed facts", "Row final for this goal"), `#6` (close row: WI-041 closed and archived, "Row final for this goal"). The `wall-and-heating` trail § Goal close records the owner's "great, close it." on the review's close packet, which contains no W item; L-009 landed at `a11db053` with four conditions in its Scope line. So the proposed file's "Current state (newest row, `8906d4e7`)" is stale for `#1`, `#6`, `#8`, and the three routes the trail's amendment named for the fifth condition (the owner's (b) ruling, L-009's landing, a thirteenth constraint) have all closed without it.
+
+**`#1` — `REVISE`.** Class: **`declared seam` is right**, conditionally. `model fix` would assert the model's W is wrong; the reading shows the model's 551 sits inside the band the paper's own parametrization and printed peaks give (524–575), the printed β implies 567, and the printed pair does not close the paper's own balance — the target is not established, so a fix has nothing to aim at. The ash shape (§ 7 item 2) is real but is about 2 of the 9 points, is this goal's own finding (not `#1`'s; its home is this goal's learnings or a candidate item through the modelling PM), and its change is a reserved gate. `research` would make REQ-W-01 the finding's next act; REQ-W-01 decides the goal's premise, not `#1`'s disposition — whatever it returns, the W-sensitivity of the a-1.3 negative is a property of the model's closure and stays disclosed. `declared seam` matches the substance (nothing fixed, nothing tuned, basis owner-ruled) and is the class the record itself used for `#1`'s fourth condition. **Condition:** a T-001 return under which 504.65 MJ follows from the paper's own profiles and peaks turns the +9.2 % into a model error and this row into `model fix` on the W basis; the row must say so and be resubmitted if that happens before landing (T-001 is running while this checkpoint is taken). What must change: the current state, both named actors (the (b) ruling was made on 2026-09-05 on four conditions and the record shows no sign the fifth was before the owner; L-009 landed without it), "added beside the four" (this goal cannot add to the record, L-009 or the close packet; the row in the shared log is the only place the condition lands), the 347 / 657 denominator, and the robustness sentence. The concrete next reference (`NOTES.md` §§ 5, 8 at `3687d2f6`; this goal's round-1 result) is present and right.
+
+**`#2` — `REVISE`, wording only.** Class `research`, status open, routing unchanged: correct. "goes from driven at +44.4 MW required (wall 4.54, violated)" breaks the record's definition, which `goal.md` § Invariants binds ("driven" = feasible and not ignited; `c6308` is wall-violated in both states). Say "not ignited (+44.4 MW required; wall 4.54, violated)". Actor line: the `wall-and-heating` close has happened (ruling 4 carried `#2`–`#5` as written, nothing minted); say so.
+
+**`#4` — `PASS` on substance,** same actor sentence as `#2`. Class, status, routing unchanged as claimed; the 787 → 1,282 and 305 numbers hold.
+
+**`#6` — `REVISE`, current state only.** Substance (discharged, unchanged; the peak moves through `p_fus`; 24 → 58; 371.70; 25 flip back) holds — the 25 are all among round 1's satisfied points. Cite the F4 row and the close row at `e0f66f7a` as the current state; "none owed beyond this row" stands.
+
+**`#7` — `PASS`.** Current state unchanged at `e0f66f7a`; the row changes nothing and says so; both of its factual claims verified.
+
+**`#3`, `#5` — no row: sound.** The reading re-measures neither `a`'s pricing nor the lifetime chain's charge.
+
+**`#8` — no row: not sound.** The file's own rule for `#7` ("row written so the touched set is complete") and the round-2 review's constraint 7 ("every id the round's evidence touches gets an appended row, including … those that declare in the sighting") both require a row, and the reading touches `#8` harder than `#7`: 61 points the record closed fall off the closure's validity edge under a 9 % W cut, from the same corner as the 65 excluded proposals and moved inward. Class `declared seam`, unchanged; status standing; responsible unchanged from the F4 row; next reference `NOTES.md` § 5 at `3687d2f6` plus the ANNEX § Validity masks candidate. The row should state that the 61 are joinable to the record only by case id.
+
+## 4. The target
+
+The arithmetic table reproduces independently to the last digit (§ 1). What the evidence supports: on the paper's own parametrization with the printed peaks, no exponent set gives W within 4 % of 504.65 while keeping fusion power within 2 % of 2,700; the printed β at the axis field implies 567; the printed pair does not close A.3. What it cannot rule out, and § 7 item 6 says so: a different volume element (a stellarator's V(ρ) is not ∝ ρ²), a different volume-average definition, or profiles other than Fig. 16 in the 0.5-D code. Row `#1`'s "not shown to be the right target" is the right weight. The intro's "a sensitivity, not a correction" is right only until T-001 returns; tie it to that return. `goal.md`'s "every reading reproduces the printed fusion power" overstates (not the rows' text; noted for the round result).
+
+## 5. Reserved gates
+
+Nothing here tunes W, re-rules the inherited invariants, decides the basis, or writes in the other goal's directory. The rows restate "W is never tuned" and route the basis to (c). One gate-adjacent fact must be surfaced, not resolved: the owner's (b) close ruling on `wall-and-heating` was made without the fifth condition in front of them. The `#1` row is the place to say so plainly and route it to the owner at this goal's (c) ruling and to the geometry goal if one is grounded (review close packet 5(c); `wall-and-heating` close ruling 4).
+
+## Required changes
+
+1. **Re-base every "current state" and actor on `DISCOVERY_LOG.md` at `e0f66f7a`** (lines 135–138: the F4 rows under `#6` and `#8`; the close rows under `#1` and `#6`) and on `wall-and-heating/trail.md` § Goal close — 2026-09-05. Remove "the owner, at the `wall-and-heating` close (the (b) ruling)" and "the `wall-and-heating` round agent when L-009 lands" as actors everywhere; they are past events. State in the file's intro that the branch lands these rows after a rebase onto `feat/demo-maturation` at or after `e0f66f7a`.
+2. **`#1`:** (a) responsible: the owner at this goal's § Answered when (c), via the round-1 result; the next goal that inherits `#1`'s conditions (the geometry question, if grounded); (b) one sentence surfacing that the (b) ruling of 2026-09-05 was made on four conditions, the fifth post-dates it and the record shows no sign it was before the owner — surfaced, not re-ruled; (c) replace "added beside the four" with "recorded here beside the four the record states"; (d) replace "347 of the record's 657 driven points" with "332 of the 657 driven points in the two search arms (305 ignite, 25 fail `recirc_ok`, 2 fail `sustainment_ok`), and 15 of the re-read arm's 24 (all `recirc_ok`): 347 of 681 in all"; (e) replace "The region's existence at the printed level is robust to W" with a direction-stated claim: the driven set grows as W falls (257 → 332 at 100 MW); a W above the model's 551 MJ was not evaluated, and the reading's own § 7 puts plausible readings up to 567–575, so the region's existence under a W increase is untested; (f) add the class condition: if REQ-W-01 (T-001) returns a definition under which 504.65 MJ follows from the paper's own profiles and peaks, the +9.2 % becomes a model error, this row's class becomes `model fix` on the W basis, and the row is resubmitted before landing; (g) cite the ash-shape candidate only as this goal's own finding, surfaced and deferred, homed in this goal's learnings or a candidate item — not as `#1`'s disposition.
+3. **`#2`:** "driven at +44.4 MW required" → "not ignited (+44.4 MW required)"; actor line per change 1.
+4. **`#4`:** actor line per change 1.
+5. **`#6`:** current state per change 1 (the F4 row and the close row); optionally note that 142 of the predecessor's 152 flipped points sit in the 360-row arm and all 25 flip-backs are among them.
+6. **`#8`:** write a row — `declared seam`, unchanged; status standing; responsible: unchanged from the 2026-09-05 F4 row (the next strategy author if a geometry goal is grounded, otherwise standing); content: 61 evaluated points (28 at 100 MW, 33 at 220; 55 non-positive fuel, 6 non-real) fall off the closure's validity edge under the forced W, none feasible, ignited or driven in the record, at R 11.2–12.7, a mostly 2.0–2.2, I mostly 16–18 MA — the edge moves inward with W; the 61 carry only `case_id`, `arm_id` and `error` in the CSV and join to `points.csv` by id. Next reference: `NOTES.md` § 5 at `3687d2f6`; ANNEX § Validity masks (candidate). Move `#8` out of "Rows not touched".
+7. **Intro paragraph:** tie "a sensitivity, not a correction" to T-001's return; carry the corrected 347 / 681 (or 332 / 657) wherever the number appears.
+
+Not required for this checkpoint, noted for the round result: `goal.md` § Question's "347 of the record's 257 + 400 driven points" and "every reading reproduces the printed fusion power" carry the same two imprecisions; the round agent should not repeat them.
+
+## r2 — 2026-09-05 (the same fresh reviewer, resumed with the r2 resubmission; verbatim)
+
+# Checkpoint C-001.r2 — goal `stored-energy-basis`, round 1 (same fresh reviewer, 2026-09-05)
+
+**Reviewer:** the C-001.r1 session, resumed with the r2 resubmission. Worked from the worktree at `498a329e` (merge `ea6d5256` on top; primary checkout unchanged at `e0f66f7a`). Nothing under `knowledge/holdout/` opened. No file edited; no state-changing git. The seam's run directory was read only after its return was committed at `d4059ef1` (`return.json` only).
+
+**Read:** `round1_proposed_dispositions.md` § Revision r2 and § r2 addendum; `trail.md` § T-001 return, § T-002 scope/start; `attribution_sourced_definition.py/.json/_output.txt`; `baseline_counterfactual_518.3.json`; `window_summary_518.3.json`; the diff of `w_counterfactual.py` since `3687d2f6`; `SOURCE_INDEX.md` blocks for the two registered sources; the Stellaris extraction at lines 703–725 and 761 (the profile and ash-rule sentences); `DISCOVERY_LOG.md` at `e0f66f7a`.
+
+## Verdict: `REVISE` — one row, exact text below; everything else passes
+
+`#2`, `#4`, `#6`, `#7`, `#8` as written in r2: **PASS**. The `#1` row to land (the addendum's) is right in class and in direction; it needs four exact insertions and one sentence replaced, all in that row, because as written it states a boundary location as a robust fact ("survives the paper's own rules") where the data show a 0.03 MW/m² / 1.4 MW margin, and its concrete next reference has no shas.
+
+## 1. Recounts
+
+**The 518.3 window** (`window_counterfactual_518.3.csv`, scale 518.3 / 551.444 = 0.939896): 6,311 rows, ids equal to `points.csv`; **35** error rows (16 at 100 MW, 19 at 220; 32 non-positive fuel, 3 non-real), all among the 504.65 run's 61, none feasible, ignited or driven in the record. Record columns identical to `points.csv` for every evaluated row (verdicts, flags, `p_aux`, LCOE, inputs; worst deviation 0.0). Flips: `sustainment_ok` v→s **890** (429 / 276 / 185), s→v **18** (9 / 9 / 0); `wall_load_ok` v→s **273** (128 / 127 / 18); `recirc_ok` s→v **145** (46 / 82 / 17); `beta_ok` v→s **14** (7 / 7 / 0). Forced flags internally consistent (0 inconsistencies). Per arm, record → forced: 100 MW **458 / 787 / 257 → 689 / 1,152 / 314**, forced driven `a` values 1.5–2.2 only, **0 at R 12.7, a 1.3**, cheapest driven **`c1676` 208.718** (44.02 MW; peak 3.809); 220 search 598 / 787 / 400 → **743 / 1,152 / 395**, **5** design-geometry driven (cheapest `c3572` 365.51), cheapest driven `c4660` 224.986; re-read 24 / 0 / 24 → **58 / 12 / 58**, all 58 at (12.7, 1.3), cheapest **`c6112` 365.955**; transect 0 / 8 / 0 → 0 / 8 / 0. Driven lost 282 (132 / 138 / 12), gained 368. `c1721` 222.044, still driven; `c0821` 269.959, driven. Realized W ratio across the window 0.9350–0.9383.
+
+**The 518.3 baseline** (`baseline_counterfactual_518.3.json`): `p_aux_required` 90.605 → **51.377 MW** (violated by 1.38 MW); wall peak 4.088 → **3.930** (satisfied); `p_fus` 2,725.4 → 2,619.9; LCOE 313.5 → 326.49; τ_E 1.4499 → 1.6078; realized W_th **516.17 MJ** (the ash re-closes; the scale targets 518.3).
+
+**The design column at 518.3, 100 MW — the margin that matters:** of the six points that open at 504.65, `c0625` fails **only the wall, by 0.029 MW/m²** (peak 4.079 against 4.05; 49.84 MW required, under 50); `c2973` fails **only sustainment, by 1.38 MW** (peak 3.930); the other four fail sustainment by 9.5–13.6 MW. 101 design-column rows, 8 ignited.
+
+**The sourced arithmetic**, reproduced independently with a Bosch–Hale D-T reactivity (not the oracle's `_sigv_dt`): paper rules (1.2 / 0.35, T_i/T_e 0.95, A.5 ash pointwise, quasi-neutral electrons) **518.3 MJ**, β 2.52 %, p_fus 2,711, ⟨n_e⟩ 3.16, n_e0 5.04; model family 551.3; model exponents with the A.5 ash 524.5; sourced rules with the ash at 0.35 573.4; A.5 ash effective exponent **4.12**. Decomposition in points of 504.65: 5.3 (ash shape) + 1.2 (exponents and the 0.95 ratio) + 2.7 (the paper's) = 9.2. Matches `attribution_sourced_definition.json` to the digit.
+
+**The source claim behind the class.** The Stellaris extraction (line 713) states the ash rule in the paper's own words: "Helium ash profiles are obtained using a fixed ratio of particle-to-energy confinement time … a helium suppression factor f_eff heuristically reducing the amplitude of the resulting helium ash profile"; T_i/T_e 0.95 and the Eq. (2)–(3) profile forms are also the paper's own. The thermal-only, effective-radius definition of W is the **sister code's** (Lion 2021 Eqs. 8–11; Lion 2023 Eqs. 2.10–2.12), and both registrations' caveat lines say it is not settled that the printed 504.65 is that W (Stellaris adds a fast-particle pressure model the sister code lacks). Applying A.5 pointwise is a reading, corroborated by Fig. 16's ash curve and by reproducing the printed n_e0 and ⟨n_e⟩.
+
+**Numbers I could not reproduce: none.**
+
+## 2. The class of `#1` — ruling: `model fix` — open, not minted, owner-gated
+
+r1 ruled `declared seam` because the target was not established: no reading of the paper reached 504.65, so a fix had nothing to aim at. T-001 changed the basis of that ruling without triggering its literal condition. The printed number still follows from nothing (518.3 is the nearest any sourced rule gets), but the paper's **own stated ash rule** — a profile from the fixed τ*/τ_E ratio, peaked at an effective exponent of about 4 — is now registered and reproduced, and the model gives the ash the fuel's exponent 0.33 instead. That is a sourced discrepancy in the model's W-form worth about five points on the same peaks, independent of 504.65, with a concrete increment (the A.5 ash shape with electrons by quasi-neutrality). A finding with a sourced rule to aim at and a nameable increment is `model fix` under ADR-0004; leaving it `declared seam` would give `#1`'s W-condition no consumer, which is the loss ADR-0004 exists to stop. `research` is wrong for the same reason as in r1: REQ-W-01 has returned; what remains queued (the author query) bears on the 2.7 residual points and the β row, not on the ash-shape gap.
+
+The reserved gates hold under this class: the row mints nothing, changes nothing under `models/`, names the increment as a candidate through the modelling PM, and routes the ruling to § Answered when (c); the WI-032 precedent (ADR-0004) makes a reasoned "keep the present family" an acceptable close of an open `model fix` row. The candidate's target is the rule, never the printed number — the row already says so, and the split in provenance (the ash rule is Stellaris's own; the volume element and thermal-only definition are the sister code's) must be in the row because the `model fix` case rests on the first, stronger half. The ash-shape candidate is still this goal's own finding for its home (learnings, a candidate item); routing `#1` to it is the WI-032 pattern, not a new id.
+
+## 3. Direction and location in the addendum's `#1` row
+
+Direction: honest. Two scales, both W down, named as such; the untested upward direction named with the β-implied 567. Location: **not yet honest.** "The record's 'never at the design's minor radius at 100 MW' survives the paper's own rules and fails only at the printed number" states a boundary location as a fact. The data: at 518.3 the column is closed by 0.03 MW/m² on one point and 1.4 MW on another; at 504.65 it opens; the flip lies inside the 2.7 % between the sourced and the printed value, inside the reach of the constant-scale assumption (`NOTES.md` § 6, which the T-002 scope says travels with the second scale). The honest sentence is that the a-1.3 verdict at 100 MW is not decidable at this pin from W's basis alone. The same phrase is in the `498a329e` commit message; that is not the row and is not mine to rule on.
+
+## 4. Per-row rulings
+
+- **`#1` (addendum row): `REVISE`** — class right (§ 2); numbers right at both scales (§ 1); the five exact changes below.
+- **`#2`: `PASS`** — "not ignited (+44.4 MW required; wall 4.54, violated)"; actor line re-based. Optional, not required: at 518.3 `c6308` reads +2.7 MW (not ignited by 2.7 MW) and `c6309` 121.9 MW, which shows the knife-edge's location moving inside the sourced-vs-printed band.
+- **`#4`: `PASS`** — unchanged in class and routing; actor line re-based. (At 518.3 the ignited set is 1,152 per level; optional.)
+- **`#6`: `PASS`** — current state re-based on the F4 and close rows; the 25 flip-backs and the 142-of-152 note verified in r1. (At 518.3: 24 → 58, cheapest `c6112` 365.96, 18 wall flips; optional.)
+- **`#7`: `PASS`** — unchanged; both claims verified.
+- **`#8`: `PASS`** — the 61-point row with the join note; class, status and actor unchanged from the 2026-09-05 row. (At 518.3: 35, a subset of the 61; optional.)
+- **`#3`, `#5` — no row: sound.**
+
+## Required changes (r3), all in the addendum's `#1` row
+
+1. **Replace** the sentence "— so the record's 'never at the design's minor radius at 100 MW' survives the paper's own rules and fails only at the printed number." **with:** "— so the record's 'never at the design's minor radius at 100 MW' holds at the sourced scale by a margin of 0.03 MW/m² on the wall (`c0625`: peak 4.079 against 4.05, 49.8 MW required) and 1.4 MW on sustainment (`c2973`), and fails at the printed scale; the flip lies inside the 2.7 % between the paper's own rules and its printed number, so which side of it the design column sits on is not decidable at this pin from W's basis alone."
+2. **After** "at the sourced 518.3 (scale 0.940)" **insert:** "realized 516.2 MJ at the baseline as the ash re-closes; a second constant-scale, one-direction counterfactual under the same caveat as `NOTES.md` § 6".
+3. **Replace** "REQ-W-01 (`stored-energy-basis` T-001) sourced the definition of W in the same author's systems code — thermal, from the imposed profiles, over the effective-radius element (…)" **with:** "REQ-W-01 (`stored-energy-basis` T-001) registered the same author's systems code (…, both at `d4059ef1`), whose W is thermal, from the imposed profiles, over the effective-radius element — the sister code's definition, which the registrations' caveat lines say is not settled to be the printed 504.65; the profile rules applied with it — Eqs. (2)–(3) with α_T 1.2 / α_n 0.35, T_i/T_e 0.95, and 'helium ash profiles obtained using a fixed ratio of particle-to-energy confinement time' (Appendix A's A.5 balance applied pointwise, corroborated by Fig. 16's ash curve and by reproducing the printed n_e0 5.04 / ⟨n_e⟩ 3.16) — are the Stellaris paper's own (p. 8–9, Appendix A);". Keep the rest of the sentence ("applied with the paper's own rules it reproduces …") as is.
+4. **Replace** "W is never tuned and the printed 504.65 is not a target." **with:** "W is never tuned; no admissible source reproduces the printed 504.65, so the candidate's target is the paper's stated ash rule, not the printed number."
+5. **After** the class label "`model fix` — **open, not minted, owner-gated: the helium-ash profile shape; W-sensitivity disclosed.**" **insert:** "(The `wall-and-heating` close row stands as that goal's final state; this row re-opens the finding on this goal's evidence.)"
+6. **Reference column:** replace "`attribution_sourced_definition.json` and `baseline_counterfactual_518.3.json` (T-002 commit)" with "`attribution_sourced_definition.py/.json` and `baseline_counterfactual_518.3.json` at `5cc30ac0`; `window_summary_518.3.json` and `window_counterfactual_518.3.csv` at `498a329e`".
+
+Nothing else needs to change for r3 to pass. The optional second-scale additions to `#2`, `#4`, `#6`, `#8` are not conditions of the pass.
+
+## r3 — 2026-09-05 (the same fresh reviewer, resumed with the r3 resubmission; verbatim)
+
+# Checkpoint C-001.r3 — goal `stored-energy-basis`, round 1 (same fresh reviewer, 2026-09-05)
+
+**Reviewer:** the C-001.r1/r2 session, resumed with the r3 resubmission. Worktree at `fd1e398e`; primary checkout unchanged at `e0f66f7a`. Nothing under `knowledge/holdout/` opened. No file edited; no state-changing git.
+
+**What I checked:** `round1_proposed_dispositions.md` § Revision r3 in full; `git diff 498a329e fd1e398e` on that file (12 insertions, **0 deletions** — r1, r2 and the addendum untouched; the `#2`, `#4`, `#6`, `#7`, `#8` rows are byte-identical to the r2 text I passed); a sentence-level diff of the r3 `#1` row against the addendum's row (the only differences are the six changes; nothing else moved); the row's column separators (exactly one ` | `, so it lands as a valid `Disposition | Home` pair); the four cited shas (`3687d2f6`, `5cc30ac0`, `498a329e`, `d4059ef1`) resolve and carry the files named. Every number in the new sentences was recounted in r2 and stands: `c0625` peak 4.079 against 4.05 at 49.84 MW; `c2973` 51.38 MW (1.38 short); realized 516.17 MJ at the baseline; n_e0 5.04 / ⟨n_e⟩ 3.16; the 2.7 % between 518.3 and 504.65.
+
+## Verdict: `PASS`
+
+The reading is right and the dispositions follow from it. The rows may be appended after the branch is rebased onto `feat/demo-maturation` at or after `e0f66f7a`, and the T-002 return and round result may cite them.
+
+## Per-change confirmation
+
+1. **Applied.** The "survives the paper's own rules" sentence is replaced by the margin statement verbatim as required: 0.03 MW/m² on the wall at `c0625` (49.8 MW required), 1.4 MW on sustainment at `c2973`, fails at the printed scale, the flip inside the 2.7 %, not decidable at this pin from W's basis alone. Location is no longer claimed as fact.
+2. **Applied.** After "(scale 0.940": the realized 516.2 MJ at the baseline and the second constant-scale, one-direction caveat tied to `NOTES.md` § 6.
+3. **Applied.** The provenance split is in the row: the thermal, effective-radius W is the sister code's definition, not settled to be the printed 504.65; the profile forms, T_i/T_e 0.95 and the ash-from-τ*/τ_E rule are the Stellaris paper's own, with A.5 applied pointwise named as the reading and its corroboration (Fig. 16, the reproduced n_e0 and ⟨n_e⟩) stated. The rest of the sentence is unchanged.
+4. **Applied.** "W is never tuned; no admissible source reproduces the printed 504.65, so the candidate's target is the paper's stated ash rule, not the printed number."
+5. **Applied.** The finality of the `wall-and-heating` close row and this row's re-opening on this goal's evidence, immediately after the class label.
+6. **Applied.** The reference column carries `attribution_sourced_definition.py/.json` and `baseline_counterfactual_518.3.json` at `5cc30ac0`, and `window_summary_518.3.json` / `window_counterfactual_518.3.csv` at `498a329e`, beside `NOTES.md` §§ 5, 8 at `3687d2f6` and the trail sections.
+
+## Per-row rulings
+
+- **`#1` (r3 row): `PASS`.** Class `model fix` — open, not minted, owner-gated, as ruled in r2; status, responsible actor (the owner at § Answered when (c); the geometry goal if grounded) and concrete next reference present; direction honest at both scales with the upward direction named as untested; the (b)-ruling fact surfaced, not re-ruled; nothing tuned, nothing minted, no basis decided, no write in the other goal's directory.
+- **`#2`, `#4`, `#6`, `#7`, `#8`: `PASS`**, unchanged from r2. Not taking the optional second-scale additions is fine; the rows are true as written at the 504.65 scale they cite.
+- **`#3`, `#5`: no row, sound.**
+
+ADR-0004 checklist: every row names a class from the set, a status, a responsible actor and a concrete next reference; no touched row returns `unrouted`; rows that change nothing say so; no sighting row is edited; no id is minted; the `wall-and-heating` close rows stand as that goal's final state.

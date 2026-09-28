@@ -1,0 +1,131 @@
+.......................................................................F [ 16%]
+........................................................................ [ 33%]
+..............................................F......................... [ 50%]
+........................................................................ [ 66%]
+........................................................................ [ 83%]
+.......................................F..............................F  [100%]
+=================================== FAILURES ===================================
+___________ test_operating_heat_complete_cost_operand_classification ___________
+
+native = (PosixPath('/tmp/wi052-operating-regression-13dbbf6j'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12761/wi050-evidence0'))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7b5a9e71ad50>
+
+    def test_operating_heat_complete_cost_operand_classification(native,monkeypatch):
+        import sys
+        sys.path.insert(0,str(ROOT/'exploration/stellarator_e2e'))
+        import verify_stellaris
+        scratch,results,_,_=native
+        mapping={
+            'heating_cost__cost':'heating','blanket_cost__cost':'blanket','shield_cost__cost':'shield',
+            'structure_cost__cost':'structure','vessel_cost__cost':'vessel','power_supplies_cost__cost':'power_supplies',
+            'divertor_cost__cost':'divertor','turbine_cost__cost':'turbine','electric_cost__cost':'electric',
+            'heat_rejection_cost__cost':'heat_rejection','misc_cost__cost':'misc','buildings_cost__cost':'buildings',
+            'precon_cost__cost':'precon','om_cost__annual_om':'annual_om_unlevelized',
+            'remote_handling__cost':'remote_handling','coolant__cost':'coolant','aux_cooling__cost':'aux_cooling',
+            'waste__cost':'waste','fuel_handling__cost':'fuel_handling','other_rpe__cost':'other_rpe',
+            'inc_cost__cost':'inc','owner__cost':'owner','supplementary__cost':'supplementary',
+            'installation__cost':'installation','powercore_capital__powercore_capital':'powercore_capital',
+            'bop_capital__bop_capital':'bop_capital','cas22_capital__cas22_capital':'cas22_capital',
+            'special_materials_capital__special_materials_capital':'special_materials',
+            'cas23_to_28_capital__cas23_to_28_capital':'cas23_to_28_capital',
+            'cas2x_pre_contingency__cas2x_pre_contingency':'cas2x_pre_contingency',
+            'contingency__cost':'contingency_capital','cas20_capital__cas20_capital':'cas20_capital',
+            'indirect__cost':'indirect_capital','overnight_capital__overnight_capital':'overnight_capital',
+            'total_capital__total_capital':'total_capital','idc__cost':'idc_capital'}
+        for case in ['baseline','reserve','demand','availability']:
+            with monkeypatch.context() as context:
+                context.setattr(verify_stellaris,'IN',verify_stellaris.IN | WI059_REPLAY_LOCAL | load('run_acceptance').CASES[case])
+                direct=verify_stellaris.compute()
+            for channel,key in mapping.items():
+                assert results[case]['outputs'][P+channel]==pytest.approx(direct[key],rel=1e-9,abs=1e-9),(case,channel)
+        old=yaml.safe_load(subprocess.check_output(['git','show','546218a5:exploration/stellarator_e2e/generated/pipelines/pipeline.yaml'],cwd=ROOT))['modules']
+        current=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
+        # WI-057: compare the historical (flat-named) module inputs through the rename ledger.
+        for channel in mapping:
+            module=P+channel.rsplit('__',1)[0]
+>           assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']=={k:renamed_ref(v) for k,v in old[module]['inputs'].items()},module
+E           AssertionError: stellarator_09__stellaris__structure_cost
+E           assert {'alpha': 'fl...raction', ...} == {'alpha': 'fl...ure_vol', ...}
+E             
+E             Omitting 5 identical items, use -vv to show
+E             Left contains 1 more item:
+E             {'residual_fraction': 'float '
+E                                   'stellarator_plant_params.stellarator_09__stellaris__structure__residual_fraction'}
+E             Use -v to get more diff
+
+tests/models/test_mfe_operating_heating.py:217: AssertionError
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12761/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-reid/pytest-12761/test_current_radius_controls_m0')
+
+    def check_controls(out):
+        out = Path(out)
+        out.mkdir(parents=True, exist_ok=True)
+        frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
+        frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
+        expectations = json.loads((frozen_dir / "expectations.json").read_text())
+        # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was produced with
+        # the R-form (c_coil = k_coil * R). At a = 1.3 the bore ratio is 1.0, so binding the reference
+        # circumference to k_coil * R reproduces the R-form length exactly and the frozen row stays the exact
+        # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in
+        # tests/models/test_winding_length_bore.py).
+        from tests.models.current_mfe_regressions import K_COIL_RETIRED
+        proposals = [WI059_REPLAY, WI059_REPLAY | {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
+        cases, db = route.run_points("radius-controls", proposals, out / "_work")
+>       assert len(cases) == 2 and all(c.state == "completed" for c in cases)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests/study/financial_radius_controls.py:36: AssertionError
+_______ test_current_native_primary_route_agrees_with_independent_oracle _______
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12761/test_current_native_primary_ro0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_native_primary_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):
+        import study_route as route
+        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
+        cases, _ = route.run_points('primary-loop-consumer-controls', points, tmp_path)
+>       assert len(cases) == len(points)
+E       AssertionError: assert 0 == 4
+E        +  where 0 = len([])
+E        +  and   4 = len([{'stellarator_09__stellaris__cryoplant__inventory_enabled': False, 'stellarator_09__stellaris__cryoplant__joint_drive..._09__stellaris__cryoplant__q_nuc_structure': 0.0, 'stellarator_09__stellaris__heat_transport__eta_p_direct': 0.8, ...}])
+
+tests/study/test_primary_loop_consumers.py:106: AssertionError
+_______ test_current_native_winding_route_agrees_with_independent_oracle _______
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12761/test_current_native_winding_ro0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):
+        import study_route as route
+        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
+        cases, _ = route.run_points('winding-consumer-controls', points, tmp_path)
+>       assert len(cases) == len(points)
+E       AssertionError: assert 0 == 3
+E        +  where 0 = len([])
+E        +  and   3 = len([{'stellarator_09__stellaris__cryoplant__inventory_enabled': False, 'stellarator_09__stellaris__cryoplant__joint_drive...stellarator_09__stellaris__cryoplant__q_nuc_structure': 0.0, 'stellarator_09__stellaris__magnet__c_support': 0.0, ...}])
+
+tests/study/test_winding_consumers.py:115: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_complete_cost_operand_classification
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle
+FAILED tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+4 failed, 427 passed in 93.84s (0:01:33)

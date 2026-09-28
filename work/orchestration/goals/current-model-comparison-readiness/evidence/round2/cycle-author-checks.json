@@ -1,0 +1,42 @@
+{
+  "authority": "author self-consistency, not independent verification",
+  "prototype_sha256": "2c1af0e3d050602f1a49ee75c73e638e312b76f42a2abefd43f5930dc3c1ace5",
+  "checks": {
+    "no_reheat_baseline": "energy/mixing/domain/positive heat approach checks passed",
+    "reheat_baseline": "energy/mixing/domain/positive heat approach checks passed",
+    "no_reheat_eta85": "energy/mixing/domain/positive heat approach checks passed",
+    "reheat_cold40": "energy/mixing/domain/positive heat approach checks passed",
+    "reheat_warm50": "energy/mixing/domain/positive heat approach checks passed",
+    "reheat_steam435": "energy/mixing/domain/positive heat approach checks passed"
+  },
+  "coarse_grid_reconstruction_error": {
+    "main_liquid": {
+      "h": 0.002499999999827196,
+      "s": 2.3000000002326715e-06
+    },
+    "main_vapor": {
+      "h": 0.011299999999664578,
+      "s": 2.2550000000620685e-05
+    },
+    "bleed_liquid": {
+      "h": 0.0008518273078834682,
+      "s": 9.811614246624245e-06
+    },
+    "bleed_vapor": {
+      "h": 0.004600000000209548,
+      "s": 1.3250000000297746e-05
+    },
+    "condenser_liquid": {
+      "h": 8.300000000360797e-05,
+      "s": 6.350000000043821e-06
+    },
+    "condenser_vapor": {
+      "h": 0.0003500000002532033,
+      "s": 2.455000000090024e-05
+    }
+  },
+  "refusals": {
+    "steam_above_source": "Property domain: T=460 outside (277.73289, 455.0)",
+    "condenser_below_source": "Property domain: T=10 outside (20.0, 60.0)"
+  }
+}

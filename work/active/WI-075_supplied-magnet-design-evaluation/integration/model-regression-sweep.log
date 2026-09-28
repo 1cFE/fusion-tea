@@ -1,0 +1,166 @@
+........................................................................ [  2%]
+........................................................................ [  5%]
+........................................................................ [  8%]
+........................................................................ [ 11%]
+........................................................................ [ 14%]
+........................................................................ [ 17%]
+........................................................................ [ 20%]
+........................................................................ [ 23%]
+........................................................................ [ 26%]
+........................................................................ [ 29%]
+...........s..................F....................................sssss [ 32%]
+sssssss................................................................. [ 35%]
+........................................................................ [ 38%]
+........................................................................ [ 40%]
+........................................................................ [ 43%]
+........................................................................ [ 46%]
+........................................................................ [ 49%]
+........................................................................ [ 52%]
+........................................................................ [ 55%]
+........................................................................ [ 58%]
+........................................................................ [ 61%]
+........................................................................ [ 64%]
+........................................................................ [ 67%]
+........................................................................ [ 70%]
+........................................................................ [ 73%]
+..............................................x..F.F.F.F................ [ 76%]
+........................................................................ [ 79%]
+........................................................................ [ 81%]
+........................................................................ [ 84%]
+........................................................................ [ 87%]
+........................................................................ [ 90%]
+........................................................................ [ 93%]
+........................................................................ [ 96%]
+........................................................................ [ 99%]
+...........                                                              [100%]
+=================================== FAILURES ===================================
+____ test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities ____
+tests/models/test_facilities_oracle.py:165: in test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities
+    assert result[name]==expected,(name,channel,result[name])
+E   AssertionError: ('facility_selected_parcel_x_min', 'stellarator_09__stellaris__buildings__selected_parcel_x_min__selected_parcel_x_min', -186.9046987566545)
+E   assert -186.9046987566545 == 0.0
+___________________ test_heating_efficiency_scalar_consumers ___________________
+tests/models/test_mfe_operating_heating.py:94: in test_heating_efficiency_scalar_consumers
+    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] not in FACILITY_PREDICATES | WI073_PREDICATES)==30
+E   assert 39 == 30
+E    +  where 39 = sum(<generator object test_heating_efficiency_scalar_consumers.<locals>.<genexpr> at 0x7227550d8b40>)
+____________________ test_operating_heat_reserve_invariance ____________________
+tests/models/test_mfe_operating_heating.py:163: in test_operating_heat_reserve_invariance
+    load('check_results').check(historical,inputs)
+work/active/WI-050_mfe-coherent-operating-heating/implementation/check_results.py:93: in check
+    assert len(individual)==18
+           ^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+___________________ test_operating_heat_direct_native_parity ___________________
+tests/models/test_mfe_operating_heating.py:194: in test_operating_heat_direct_native_parity
+    assert {k:v for k,v in actual.items() if k not in {cid.split('__')[2] for cid in FACILITY_PREDICATES | WI073_PREDICATES}}==expected_verdicts
+E   AssertionError: assert {'beta_ok': '...tisfied', ...} == {'beta_ok': '...tisfied', ...}
+E     
+E     Omitting 20 identical items, use -vv to show
+E     Left contains 6 more items:
+E     {'facility_geometry_ok': 'satisfied',
+E      'facility_material_capacity_ok': 'satisfied',
+E      'facility_occupancy_ok': 'satisfied',
+E      'facility_parcel_ok': 'satisfied',...
+E     
+E     ...Full output truncated (3 lines hidden), use '-vv' to show
+___________ test_operating_heat_complete_cost_operand_classification ___________
+tests/models/test_mfe_operating_heating.py:266: in test_operating_heat_complete_cost_operand_classification
+    assert current[renamed_module('primary_loop')]['inputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
+E   AssertionError: assert {'T_in_in': '...oop_ref', ...} == {'T_in_in': '...oop_ref', ...}
+E     
+E     Omitting 15 identical items, use -vv to show
+E     Left contains 1 more item:
+E     {'mdot_loop_rated_in': 'float '
+E                            'stellarator_plant_params.stellarator_09__stellaris__heat_transport__mdot_loop_rated'}
+E     Use -v to get more diff
+=============================== warnings summary ===============================
+tests/models/test_computed_tritium_breeding.py: 2 warnings
+tests/models/test_conductor_current.py: 10 warnings
+tests/models/test_conductor_grade.py: 4 warnings
+tests/models/test_current_driven_sizing_integration.py: 8 warnings
+tests/models/test_current_numeric_coverage.py: 5 warnings
+tests/models/test_divertor_heat_integration.py: 14 warnings
+tests/models/test_facility_account_consumers.py: 6 warnings
+tests/models/test_fuel_inventory.py: 1 warning
+tests/models/test_fuel_inventory_oracle.py: 10 warnings
+tests/models/test_fuel_processing_oracle.py: 14 warnings
+tests/models/test_installed_cooling_equipment.py: 7 warnings
+tests/models/test_layout_facilities.py: 8 warnings
+tests/models/test_magnet_manufacturing_integration.py: 12 warnings
+tests/models/test_shared_cooling_fabrication_rate.py: 7 warnings
+tests/models/test_supplied_cooling_design.py: 6 warnings
+tests/models/test_supplied_design_native.py: 11 warnings
+tests/models/test_supplied_facility_design.py: 16 warnings
+tests/models/test_tape_procurement.py: 11 warnings
+tests/models/test_winding_pack_cost.py: 4 warnings
+tests/models/test_winding_pack_fit.py: 11 warnings
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_conductor_current.py::test_prior_native_reference_preserved
+tests/models/test_magnet_manufacturing_integration.py::test_zero_charge_preserves_every_entering_output_and_predicate
+tests/models/test_winding_pack_fit.py::test_entering_baseline_scalars_preserved
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_current_numeric_coverage.py::test_all_numeric_channels_and_strict_predicates[disabled]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_fuel_inventory.py::test_native_dormant_inventory_preserves_legacy_held_requirement
+tests/models/test_fuel_inventory_oracle.py::test_native_off_reference_inventory_matches_independent_oracle[dormant-held-inventory]
+tests/models/test_fuel_processing_oracle.py::test_all_mapped_native_outputs_at_public_cases[dormant]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_fuel_processing_oracle.py::test_all_mapped_native_outputs_at_public_cases[undeclared]
+tests/models/test_supplied_design_native.py::test_processor_price_domain_is_distinct_from_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_fuel_processing_oracle.py::test_all_mapped_native_outputs_at_public_cases[legacy]
+tests/models/test_fuel_processing_oracle.py::test_native_old_to_new_account_identity[0.0]
+tests/models/test_fuel_processing_oracle.py::test_native_old_to_new_account_identity[0.1]
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_mfe_operating_heating.py::test_operating_heat_signed_demand_bounds
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_facilities_oracle.py::test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities
+FAILED tests/models/test_mfe_operating_heating.py::test_heating_efficiency_scalar_consumers
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_reserve_invariance
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_direct_native_parity
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_complete_cost_operand_classification
+5 failed, 2440 passed, 13 skipped, 1 xfailed, 180 warnings in 787.80s (0:13:07)

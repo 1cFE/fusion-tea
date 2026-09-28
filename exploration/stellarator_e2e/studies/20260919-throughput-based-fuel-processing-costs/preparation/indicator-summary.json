@@ -1,0 +1,70 @@
+[
+  {
+    "axis": "fuel_cycle__burn_fraction",
+    "indicator": "constraints_reachable",
+    "constraints": [
+      "tbr_ok"
+    ]
+  },
+  {
+    "axis": "fuel_cycle__processing_capacity_margin",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "fuel_cycle__processing_containment_cpi",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "fuel_cycle__processing_enabled",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "fuel_cycle__processing_price_multiplier",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "fuel_cycle__t_recycle",
+    "indicator": "constraints_reachable",
+    "constraints": [
+      "tbr_ok"
+    ]
+  },
+  {
+    "axis": "plasma__n_e0",
+    "indicator": "constraints_reachable",
+    "constraints": [
+      "beta_ok",
+      "burn_hold_ok",
+      "cycle_domain_ok",
+      "divertor_heat_ok",
+      "facility_capacity_ok",
+      "facility_initial_ready",
+      "facility_outage_ok",
+      "facility_replacement_ready",
+      "facility_routes_ok",
+      "loop_capacity_ok",
+      "loop_pressure_ok",
+      "net_positive",
+      "recirc_ok",
+      "sustainment_ok",
+      "tbr_ok",
+      "wall_load_ok"
+    ]
+  },
+  {
+    "axis": "unplanned_fraction",
+    "indicator": "constraints_reachable",
+    "constraints": [
+      "facility_capacity_ok",
+      "facility_initial_ready",
+      "facility_outage_ok",
+      "facility_replacement_ready",
+      "facility_routes_ok",
+      "tbr_ok"
+    ]
+  }
+]

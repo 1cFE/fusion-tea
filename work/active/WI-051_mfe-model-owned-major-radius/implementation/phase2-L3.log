@@ -1,0 +1,25 @@
+
+======================================================================
+SysML Quality Validation
+Models path: /home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/models
+Mode: Fail-fast
+Running: Level 3 only
+======================================================================
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 23 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 5
+   Circular dependencies: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

@@ -1,0 +1,42 @@
+digraph G {
+graph [rankdir=TB, bgcolor="#f7f9fc", pad="0.3", nodesep="0.5", ranksep="0.48", splines=polyline, fontname="DejaVu Sans", fontsize=23, fontcolor="#152b40", labelloc=t, label="How magnet calculations depend on one another
+ "];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#2463a5", fontcolor="#152b40", fontname="DejaVu Sans", fontsize=17, margin="0.2,0.12", penwidth=1.3];
+edge [color="#708498", arrowsize=0.75, penwidth=1.3];
+radial_build [label="Radial build\nCoil position",color="#2463a5",fillcolor="white"];
+field_calc [label="Axis field",color="#2463a5",fillcolor="white"];
+coil_length [label="Coil length",color="#2463a5",fillcolor="white"];
+peak_field_calc [label="Peak conductor\nfield",color="#2463a5",fillcolor="white"];
+current_sizing [label="Current-driven\npack sizing",color="#2463a5",fillcolor="white"];
+wp_sizing [label="Winding-pack\nside length",color="#2463a5",fillcolor="white"];
+wp_fit [label="Pack / casing\nfit margins",color="#2463a5",fillcolor="white"];
+wp_volume [label="Winding-pack\nvolume",color="#2463a5",fillcolor="white"];
+material_inventory [label="Material\ninventory",color="#2463a5",fillcolor="white"];
+winding_procurement [label="Winding quantities\nand cost",color="#087e83",fillcolor="#e8f5f2"];
+conductor_current [label="Conductor\ncurrent margin",color="#2463a5",fillcolor="white"];
+peak_field_ok [label="CHECK\nField limit",color="#b75f1c",fillcolor="#fff4e7"];
+reference_conductor_current_ok [label="CHECK\nCurrent margin",color="#b75f1c",fillcolor="#fff4e7"];
+wp_fit_ok [label="CHECK\nPack fits casing",color="#b75f1c",fillcolor="#fff4e7"];
+radial_build -> coil_length;
+field_calc -> peak_field_calc;
+radial_build -> peak_field_calc;
+peak_field_calc -> current_sizing;
+current_sizing -> wp_sizing;
+wp_sizing -> wp_fit;
+coil_length -> wp_volume;
+wp_sizing -> wp_volume;
+wp_volume -> material_inventory;
+material_inventory -> winding_procurement;
+coil_length -> winding_procurement;
+winding_procurement -> conductor_current [label="Tape + conductor lengths", fontname="DejaVu Sans", fontsize=11, fontcolor="#52677a"];
+peak_field_calc -> conductor_current;
+peak_field_calc -> peak_field_ok;
+conductor_current -> reference_conductor_current_ok;
+wp_fit -> wp_fit_ok;
+{rank=same; radial_build; field_calc;}
+{rank=same; wp_fit; wp_volume;}
+legend [shape=plaintext, fontsize=12, fontcolor="#52677a", label="Each arrow is an actual output-to-input binding.
+Secondary inputs and other plant branches are omitted.
+Amber boxes assess values; they do not resize the design."];
+reference_conductor_current_ok -> legend [style=invis];
+}

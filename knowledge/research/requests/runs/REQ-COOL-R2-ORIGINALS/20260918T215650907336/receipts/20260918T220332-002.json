@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/cool-r2-originals/ngnp.pdf",
+  "slug": "inl_ngnp_pre_conceptual_design_report_revision1_2007",
+  "path": "knowledge/sources/inl_ngnp_pre_conceptual_design_report_revision1_2007/",
+  "source_id": "6745eb812feaca31c967cf0047bce964135fdac2cc712a01a77a81ecbd9d7734",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:03:32.151062+00:00"
+}

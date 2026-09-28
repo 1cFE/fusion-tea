@@ -1,0 +1,195 @@
+{
+  "passed": true,
+  "checkpoint": "56a83338",
+  "fingerprint": "524c13a905320a5ca35664bdb035043f3588fca22a772503e8383e88f51a0734",
+  "cases": 66,
+  "checks": [
+    {
+      "label": "source_reconciliation__reactor_gap_calc__difference",
+      "actual": 28396000.0,
+      "expected": 28396000.0
+    },
+    {
+      "label": "source_reconciliation__core_excess_calc__difference",
+      "actual": 31000.0,
+      "expected": 31000.0
+    },
+    {
+      "label": "source_reconciliation__coil_excess_calc__difference",
+      "actual": 5287000.0,
+      "expected": 5287000.0
+    },
+    {
+      "label": "source_reconciliation__fuel_gap_calc__difference",
+      "actual": 1000.0,
+      "expected": 1000.0
+    },
+    {
+      "label": "known_dry_inventory__evaluate__total",
+      "actual": 15021700.0,
+      "expected": 15021700
+    },
+    {
+      "label": "inventory_comparison__evaluate__difference",
+      "actual": 1333700.0,
+      "expected": 1333700.0
+    },
+    {
+      "label": "lipb_comparison__evaluate__difference",
+      "actual": -334000.0,
+      "expected": -334000.0
+    },
+    {
+      "label": "source_replacement_comparison__evaluate__difference",
+      "actual": 9000000.0,
+      "expected": 9000000.0
+    },
+    {
+      "label": "source_replacement_comparison__mass__amount",
+      "actual": 10946000.0,
+      "expected": 10946000
+    },
+    {
+      "label": "cost_ledger__evaluate__direct",
+      "actual": 2919603000.0,
+      "expected": 2919603000.0
+    },
+    {
+      "label": "cost_ledger__evaluate__overnight",
+      "actual": 4350208470.0,
+      "expected": 4350208470.0
+    },
+    {
+      "label": "u_low purchase",
+      "actual": 58325700.00000001,
+      "expected": 58325700.00000001
+    },
+    {
+      "label": "u_high purchase",
+      "actual": 58325700.00000001,
+      "expected": 58325700.00000001
+    },
+    {
+      "label": "area_low purchase",
+      "actual": 5832570.000000001,
+      "expected": 5832570.000000001
+    },
+    {
+      "label": "area_low UA",
+      "actual": 5.0,
+      "expected": 5.0
+    },
+    {
+      "label": "area_high purchase",
+      "actual": 87488550.00000001,
+      "expected": 87488550.00000001
+    },
+    {
+      "label": "area_high UA",
+      "actual": 75.0,
+      "expected": 75.0
+    },
+    {
+      "label": "stock_low quantity",
+      "actual": 0.01,
+      "expected": 0.01
+    },
+    {
+      "label": "stock_low cost",
+      "actual": 300000.0,
+      "expected": 300000.0
+    },
+    {
+      "label": "stock_low requirement",
+      "actual": 0.062009000289971965,
+      "expected": 0.062009000289971965
+    },
+    {
+      "label": "stock_low no heat change",
+      "actual": 423.10679410931664,
+      "expected": 423.10679410931664
+    },
+    {
+      "label": "stock_high quantity",
+      "actual": 1.0,
+      "expected": 1.0
+    },
+    {
+      "label": "stock_high cost",
+      "actual": 30000000.0,
+      "expected": 30000000.0
+    },
+    {
+      "label": "stock_high requirement",
+      "actual": 0.062009000289971965,
+      "expected": 0.062009000289971965
+    },
+    {
+      "label": "stock_high no heat change",
+      "actual": 423.10679410931664,
+      "expected": 423.10679410931664
+    },
+    {
+      "label": "source parent propagation",
+      "actual": 38396000.0,
+      "expected": 38396000
+    },
+    {
+      "label": "source parent leaves selected purchases",
+      "actual": 2919603000.0,
+      "expected": 2919603000.0
+    }
+  ],
+  "bindings": [
+    {
+      "owner": "fuel",
+      "calc": "evaluate",
+      "input": "I_total_in",
+      "channel": "aries_integrated_plant__fuel_inventory__atoms__atoms"
+    },
+    {
+      "owner": "fuel_inventory",
+      "calc": "annual",
+      "input": "stock_kg_in",
+      "channel": "plant_params.aries_integrated_plant__fuel_inventory__selected_tritium_kg"
+    },
+    {
+      "owner": "fuel_inventory",
+      "calc": "annual",
+      "input": "decay_in",
+      "channel": "plant_params.aries_integrated_plant__fuel__decay_constant_s"
+    },
+    {
+      "owner": "he_hx",
+      "calc": "purchase",
+      "input": "quantity_in",
+      "channel": "plant_params.aries_integrated_plant__he_hx__selected_area"
+    },
+    {
+      "owner": "he_hx",
+      "calc": "evaluate",
+      "input": "area_in",
+      "channel": "plant_params.aries_integrated_plant__he_hx__selected_area"
+    },
+    {
+      "owner": "he_pump",
+      "calc": "purchase",
+      "input": "quantity_in",
+      "channel": "plant_params.aries_integrated_plant__he_pump__selected_flow_capacity"
+    },
+    {
+      "owner": "he_pump",
+      "calc": "evaluate",
+      "input": "flow_in",
+      "channel": "plant_params.aries_integrated_plant__heat_exchangers__he_flow"
+    },
+    {
+      "owner": "cost_ledger",
+      "calc": "evaluate",
+      "input": "source_reactor_gap_in",
+      "channel": "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference.root"
+    }
+  ],
+  "verification_sha256": "64cd4e9a5efb0238d5a9b473179fbccc1a57ccab7aa3c85fe34da2202dc0920b",
+  "pipeline_sha256": "0b17077113461b1fba2c49e036d24cc0edb88acd468b348632aa63f7bed44854"
+}

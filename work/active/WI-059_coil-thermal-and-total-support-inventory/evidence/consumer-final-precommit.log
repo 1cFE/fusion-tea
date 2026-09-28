@@ -1,0 +1,146 @@
+.F..                                                                     [100%]
+=================================== FAILURES ===================================
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12763/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/study/financial_radius_controls.py:95: in check_controls
+    summary = verify.build_summary(
+scripts/study/verify.py:481: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def assert_tree_clean(tree: Path | str) -> None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+>           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E           M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E            M exploration/stellarator_e2e/generated/__init__.py
+E            M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E            M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E            M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/annual_cost_rollup_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/annual_om_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/aux_cooling_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/buildings_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/contingency_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/coolant_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/divertor_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/dt_fuel_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/heating_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/indirect_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/installation_labor_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/linear_power_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/plant_power_law_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/power_supplies_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/preconstruction_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/remote_handling_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/structure_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/supplementary_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/vessel_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/coil_winding_length_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/conductor_strain_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E            M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/annual_cost_rollup.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/annual_om_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/aux_cooling_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/buildings_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/contingency_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/coolant_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/divertor_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/dt_fuel_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/heating_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/idc_closed_form_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/indirect_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/installation_labor_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/levelized_annual_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/linear_power_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/n_1cfe_form_capital_charge.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/n_1cfe_form_lcoe.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/plant_power_law_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/power_supplies_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/preconstruction_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/remote_handling_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/structure_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/supplementary_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_account_costs/vessel_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_field/coil_set_stored_energy.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_field/coil_winding_length.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_field/conductor_strain.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_field/winding_pack_cold_volume.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E            M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/stellarator_e2e/generated/schemas/annual_cost_rollup_output.py
+E            M exploration/stellarator_e2e/generated/schemas/aux_cooling_cost_output.py
+E            M exploration/stellarator_e2e/generated/schemas/levelized_annual_cost_output.py
+E            M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_cold_volume_output.py
+E            M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/__init__.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/coil_thermal_inventory_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/cold_load_sum_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/electrical_power_sum_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/intercept_electrical_power_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_support_mass_impl.py
+E           ?? exploration/stellarator_e2e/generated/inputs/mfe_cryo_plant_params.json
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/__init__.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/coil_thermal_inventory.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/cold_load_sum.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/electrical_power_sum.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/intercept_electrical_power.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_support_mass.py
+E           ?? exploration/stellarator_e2e/generated/schemas/coil_thermal_inventory_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/cold_load_sum_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/mfe_cryo_plant_params.py
+E           ?? exploration/stellarator_e2e/generated/schemas/structure_cost_output.py
+
+scripts/study/common.py:81: ToolError
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+1 failed, 3 passed in 42.13s

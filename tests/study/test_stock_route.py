@@ -6,7 +6,7 @@ The package is sealed at runtime contract ``2.0.0`` by the pinned codegen; stock
 the sealed executable fingerprint itself (design D3, invariant I5), and the five values the
 era adapter used to inject must arrive from model source (invariant I6, bet B2):
 
-* g1 -- the four BOP ``power`` inputs are wired to power-balance outputs;
+* g1 -- current BOP prices read supplied package amounts or guarded design classes;
 * g2 -- ``cas28_capital`` (5.0 M$) and the replacement-schedule ``n_mod`` (1.0) are
   shipped entry-point inputs;
 * g3 -- ``special_materials_capital`` (CAS27) is produced in-package and consumed by both
@@ -147,12 +147,75 @@ def test_formerly_injected_values_come_from_model_source(real_package_path) -> N
             producer[0]
         )
 
-    # g1: every BOP power input reads a power-balance output, not a shipped input.
-    bop_power_sources = {
-        name: module["inputs"]["power"].split()[-1]
-        for name, module in modules.items()
-        if isinstance((module.get("inputs") or {}).get("power"), str)
-    }
-    assert bop_power_sources, "no module binds a `power` input"
-    for name, source in bop_power_sources.items():
-        assert "__pb__" in source, (name, source)
+    # WI-079: procurement consumes selected specifications, independently of operation.
+    for owner, calc in (("turbine", "turbine_cost"), ("heat_rejection", "heat_rejection_cost")):
+        assert _wired_input(modules, "__"+owner+"__"+calc, "purchase_cost_in").endswith("__"+owner+"__purchase_cost_per_module")
+    assert _wired_input(modules, "__electric_plant__electric_cost", "power").endswith("__electric_plant__installed_gross_rating_MWe")
+    assert _wired_input(modules, "__misc_plant__misc_cost", "power").endswith("__misc_plant__cost_gross_class_MWe_guard__value.root")
+
+
+import pytest
+from exploration.stellarator_e2e.studies import study_route as route
+
+
+@pytest.mark.parametrize('key', sorted(route.BOOLEAN_KEYS))
+@pytest.mark.parametrize('value', [True, False, 0, 1, 0.0, 1.0])
+def test_all_declared_boolean_values_normalize(key, value, real_package_path):
+    route.assert_boolean_declarations(real_package_path)
+    result = route.validate_proposal({key: value})
+    assert result[key] is bool(value)
+
+
+@pytest.mark.parametrize('key', sorted(route.BOOLEAN_KEYS))
+@pytest.mark.parametrize('value', [2, -1, float('nan'), float('inf'), '0', 'true', None, [], {}])
+def test_invalid_boolean_proposals_are_deliberate_refusals(key, value):
+    with pytest.raises(route.RouteError, match=key + ': Boolean'):
+        route.validate_proposal({key: value})
+
+
+@pytest.mark.parametrize('suffix', ['plasma__R', 'magnet__coil__reference_turns', 'magnet__winding_pack__tape_price_per_m'])
+@pytest.mark.parametrize('value', [True, False])
+def test_boolean_numeric_controls_refuse(suffix, value):
+    with pytest.raises(route.RouteError, match='finite numeric'):
+        route.validate_proposal({route.P + suffix: value})
+
+
+def test_invalid_batch_executes_nothing(tmp_path, stock_simkit_path, monkeypatch):
+    def forbidden(*args, **kwargs):
+        pytest.fail('preparation must not run for a mixed invalid batch')
+    monkeypatch.setattr(route, 'prepare', forbidden)
+    out = tmp_path / 'not-created'
+    with pytest.raises(route.RouteError, match='Boolean'):
+        route.run_points('mixed', [{route.P+'plasma__R': 12.7}, {next(iter(route.BOOLEAN_KEYS)): 2}], out)
+    assert not out.exists()
+
+
+def test_all_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit_path):
+    from simkit.study.bridge import CandidateBridge
+    points = []
+    for key in sorted(route.BOOLEAN_KEYS):
+        for value in (False, True):
+            point = {key: value, route.P+'plasma__R': 12.7 + len(points)*.001}
+            if not value:
+                if key == route.P+'heat_transport__equipment_enabled':
+                    point.update({route.P+'turbine__matched_cycle_enabled':0., route.P+'heat_rejection__cooling_water_enabled':0., route.P+'heat_transport__equipment_cost_mode':0., route.P+'heat_transport__secondary_energy_mode':0.,
+                                  route.P+'buildings__facilities_enabled':False, route.P+'buildings__facilities_cost_mode':0.})
+                if key == route.P+'buildings__facilities_enabled':
+                    point.update({route.P+'buildings__facilities_cost_mode':0.})
+                if key in {route.P+'fuel_cycle__inventory_enabled', route.P+'fuel_cycle__processing_source_conditions'}:
+                    point[route.P+'fuel_cycle__processing_enabled'] = False
+            points.append(route.validate_proposal(point))
+    prepared = route.prepare(route.PACKAGE_DIR, tmp_path/'bridge')
+    bridge = CandidateBridge(prepared.entry_models)
+    for point in points:
+        typed = bridge.build(point)
+        fields = {k:v for model in typed.values() for k,v in model.model_dump().items()}
+        for key in point.keys() & route.BOOLEAN_KEYS:
+            assert fields[key] is point[key]
+    cases, _ = route.run_points('boolean-transport', points, tmp_path/'native')
+    assert len(cases) == len(points) == 2 * len(route.BOOLEAN_KEYS)
+    assert all(case.state == 'completed' for case in cases)
+    for point in points:
+        case = next(case for case in cases if dict(case.inputs) == point)
+        for key in point.keys() & route.BOOLEAN_KEYS:
+            assert case.inputs[key] is point[key]

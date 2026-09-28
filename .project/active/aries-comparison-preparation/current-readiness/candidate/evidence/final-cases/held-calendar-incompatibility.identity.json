@@ -1,0 +1,9 @@
+{
+  "files": {
+    "native-result.json": "23a911549ceb352b46b451c091a8167398646711949fe209c8f47c43334a7cfa",
+    "native/current-comparison-fixed-point.db": "73ccda371a835ed2872589709c8722f44d2eeb14878fdf476722b859f4e7d58f",
+    "request.json": "a5ad0258f4ab717252786cf266faf225b51e931d67e5bb022e82cecfca36a38d",
+    "request.raw.json": "a5ad0258f4ab717252786cf266faf225b51e931d67e5bb022e82cecfca36a38d"
+  },
+  "result_directory": "held-calendar-incompatibility"
+}

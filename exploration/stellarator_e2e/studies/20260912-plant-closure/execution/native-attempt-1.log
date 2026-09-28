@@ -1,0 +1,38 @@
+Starting native lifecycle 15191 unique proposals
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260912-plant-closure/execution/execute.py", line 25, in <module>
+    cases,db=study.run()
+             ^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260912-plant-closure/study.py", line 15, in run
+    return route.run_points(H.name, proposals(), H/'results/store', required_channels=channels())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/study_route.py", line 228, in run_points
+    StudyRunner(store, study, _RequiredOutputsEvaluator(prepared, required_channels)).run()
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/study/runner.py", line 65, in run
+    self._evaluate_candidate(candidate_id, proposal_id, canonical)
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/study/runner.py", line 75, in _evaluate_candidate
+    self._run_attempt(
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/study/runner.py", line 100, in _run_attempt
+    evidence = self.evaluator.evaluate(typed_inputs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/study_route.py", line 190, in evaluate
+    evidence = self.prepared.evaluate(typed_inputs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py", line 173, in evaluate
+    result = self._executor.run(self._graph, context, persist_outputs=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 147, in run
+    self._execute_module(module_key, module_spec, context)
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 213, in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260912-plant-closure/results/store/pkg_link/stellarator_tea/modules/mfe_plasma_sustainment/plasma_sustainment.py", line 685, in run
+    n_bar19, n_T0, W_th, p_avg, p_brems, n_He0, n_D0, alpha_n_e_eff, p_aux_required, p_rad, p_alpha_heat, tau_E, p_sync, p_line, n_e_volav, alpha_He_eff, T_e0 = run_plasma_sustainment(validated_inputs)
+                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260912-plant-closure/results/store/pkg_link/stellarator_tea/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py", line 174, in run_plasma_sustainment
+    I_line_fuel = _trapz_rho(lambda u, rho: u ** alpha_n)             # chord average of the fuel shape
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260912-plant-closure/results/store/pkg_link/stellarator_tea/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py", line 103, in _trapz_rho
+    acc += v if 0 < i < n else 0.5 * v
+    ^^^
+KeyboardInterrupt

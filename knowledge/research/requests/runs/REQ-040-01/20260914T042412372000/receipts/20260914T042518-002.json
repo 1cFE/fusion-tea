@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "capture_failed",
+  "candidate": "https://www.rotometals.com/aim-sn63pb37-solder-bar-1/",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:25:18.881104+00:00"
+}

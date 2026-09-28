@@ -1,0 +1,23 @@
+model family, printed peaks                  W =  551.33 MJ  ( +9.3 % vs printed 504.65)  alpha_n_e 0.596 / alpha_n 0.33 / alpha_T 1.19 -- the bound exponents on the printed peaks
+caption exponents on every species 0.35/1.2  W =  574.65 MJ  (+13.9 % vs printed 504.65)  a NAIVE reading: the caption's alpha_n is the ion density's (Eq. 3); the figure's electron curve digitizes at 0.62 (WI-022), as quasi-neutrality with a peaked ash requires
+model family, ions at the electron exponent  W =  525.97 MJ  ( +4.2 % vs printed 504.65)  alpha_n := alpha_n_e = 0.596 for the fuel and ash too (quasi-neutral shapes)
+  same, alpha_T 1.2 exactly                  W =  524.09 MJ  ( +3.9 % vs printed 504.65)  
+figure-consistent, ash peaked alpha_He 1     W =  558.58 MJ  (+10.7 % vs printed 504.65)  fuel 0.33 / He 1 / T 1.19, electrons by quasi-neutrality; <n_e> 3.51e20 (printed 3.17), effective alpha_n_e 0.443
+figure-consistent, ash peaked alpha_He 2     W =  539.14 MJ  ( +6.8 % vs printed 504.65)  fuel 0.33 / He 2 / T 1.19, electrons by quasi-neutrality; <n_e> 3.32e20 (printed 3.17), effective alpha_n_e 0.524
+figure-consistent, ash peaked alpha_He 3     W =  527.19 MJ  ( +4.5 % vs printed 504.65)  fuel 0.33 / He 3 / T 1.19, electrons by quasi-neutrality; <n_e> 3.23e20 (printed 3.17), effective alpha_n_e 0.568
+exponent sum (alpha_n + alpha_T) the printed W needs, all species one shape: 1.904  (paper's 1.55; model's electron 1.786 / ion 1.52)
+printed beta 2.76 % at B0 9.0, V 425  ->  <p> 889,517 Pa  ->  W 567.1 MJ (+12.4 % vs printed W)
+  the printed W and printed beta agree only if beta is referenced to B = 8.49 T (not the axis 9.0)
+  model beta at baseline (same <p> as its W, B 9.0): 2.683 %  vs printed 2.76 %
+printed <n_e>/n_e0 = 0.6265 -> alpha_n_e 0.596 as a volume average (the model's back-computation); the paper's alpha_n 0.35 would give 0.741
+model family, ion charge density vs electron density along rho (printed peaks):
+  rho 0.50: n_e 4.263e+20  ion charge 4.584e+20  excess +7.5 %
+  rho 0.70: n_e 3.387e+20  ion charge 4.036e+20  excess +19.1 %
+  rho 0.80: n_e 2.752e+20  ion charge 3.598e+20  excess +30.7 %
+  rho 0.90: n_e 1.881e+20  ion charge 2.914e+20  excess +54.9 %
+  rho 0.95: n_e 1.264e+20  ion charge 2.338e+20  excess +85.0 %
+p_fus at the printed peaks, exponents model 0.33/1.19     :  2748.1 MW  ( +1.8 % vs printed 2700)
+p_fus at the printed peaks, exponents paper 0.35/1.2      :  2710.5 MW  ( +0.4 % vs printed 2700)
+p_fus at the printed peaks, exponents ions at 0.596/1.19  :  2471.7 MW  ( -8.5 % vs printed 2700)
+printed pair through A.3 at p_aux = 0: f_a P_a 513.5 - p_rad 228.9 - W/tau_E 345.7 = -61.0 MW (tau_E that would balance the printed W: 1.773 s vs printed 1.46)
+fast-alpha stored energy, order of magnitude (P_alpha x tau_sd / 2): 11.8 MJ = 2.3 % of the printed W

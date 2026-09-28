@@ -1,0 +1,15 @@
+# Final facilities study and R9.S review
+
+[AGENT] Bounded brief for the continuing independent non-author reviewer. Start only when the coordinator supplies verified native results and the final study/answer paths. Reuse the valid original-source, conceptual-design, 25-wall-union and actual account/repair coverage in WI-068/review.md and audit.md. Their final reviewed executable is `21d2bda3596ab0df38356bac9e404680ca6a836099a89dc0a2e8f6f73edb9208`; native integration accepted that exact package in all ten gates. Do not repeat unaffected assurance.
+
+## Questions
+
+- Does the executed study demonstrate actual facility size/cost response to equipment dimensions and maintenance demand? Inspect current14 and selected18 cost-only pairs, fixed/resized storage cases, processing/crew and initial/readiness/route failures, and owner-approved civil price/ton sensitivities. Keep all adverse existing plant predicates visible.
+- Do the matched account deltas, exported child quantities/costs and unchanged physical/calendar controls support the report? Check numerical/source/verification scope and actual qualified predicate identities. The independent oracle verifies software, not physical assumptions shared by both implementations.
+- Does the record retain the owner ruling and source limitations honestly, including provisional envelopes, fixed clearances/task times, load/shielding/contamination qualifications, cooling field-outage gaps, incomplete services/equipment pricing and mixed monetary bases? A rate sensitivity is neither a confidence interval nor an optimization.
+- Against the unchanged `.project/active/demo-depth-rubric/rubric.md` revision `dc0f0b6dc6512b29e1307da647f3a508a1f5356d`, assign a fresh R9.S grade from the actual model and executed study. Exact target: “Building set sized by volume/function from layout drivers, incl. hot cell and remote-handling facilities.” Say explicitly whether S3 is supported and why, with evidence. No ARIES/holdout sources may be opened; the rubric itself is admissible.
+- Review the proposed study finding dispositions, goal answer and learning delta for scope fidelity. Identify any requirement still unmet or any conclusion broader than its evidence. Formal closure and archival remain owner-held.
+
+## Ownership and return
+
+You own only `work/orchestration/goals/layout-based-facilities/evidence/final-review-and-grade.md` and, if useful, the study's `reviews/final-review.md`. The coordinator owns record/report corrections, snapshot/freeze, goal answer/trail/learnings and discovery rows. You are not alone in the workspace; do not revert or edit others' files. Use up to18 focused calls initially, expanding for a concrete uncertainty and naming it. A 500–900 word review plus compact findings is appropriate. Return PASS/FINDINGS/OWNER_GATE, exact grade, requirement coverage and claim limits. Frozen artifact digest verification can be a bounded final recheck after the substantive review; do not require a separate reviewer simply to repeat the same checks.

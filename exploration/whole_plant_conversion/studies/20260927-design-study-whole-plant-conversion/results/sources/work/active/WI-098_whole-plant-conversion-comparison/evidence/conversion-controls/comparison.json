@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "cases": 498,
+  "channels_per_case": 872,
+  "predicates_per_case": 84,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance_source": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/manifest.json",
+  "largest_relative_difference": [
+    0.0,
+    "",
+    ""
+  ],
+  "failures": [],
+  "scope": "Inherited conversion channels and predicates only; excludes four solver iteration diagnostics and new whole-plant outputs."
+}

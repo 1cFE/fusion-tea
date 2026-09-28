@@ -1,0 +1,7 @@
+# Bounded inventory assignment
+
+Read modeling_project/REQUIREMENTS.md MR-7 and evidence/owner-prompt.md in this goal directory. Owner intent: “As soon as you start introducing ‘sizing’, then you are basically pre-defining which design parameters are ‘free’ and which are ‘derived’. this is explicitly what we wanted to avoid.”
+
+Inventory only; no production edits. Record all public design quantities in assigned subsystem: units, physical relation, present roles/policy, actual binding paths, generated inputs, downstream costs and study consumers, proposed supported choices, compliant/violated/unverified evidence. Distinguish operating closure, identity, policy, cost proxy and installed equipment. Proposals remain agent-grade. Use code as primary evidence, not just keyword matches. Identify missing scientific choices explicitly. No new equations or defaults selected using reference agreement.
+
+Branch fix/modeling-intent-after-reveal. Post-reveal repair; never open reference papers, numerical observations or original reference request, holdout data, or later evidence commits. Do not recursively orient through historical trails. Runtime only .codex-test/run; read .project/codex-test-setup.md and .agentic-mbse/codex.md before Python. Scratch /tmp. You are not alone: preserve others' changes. No commits, registry edits or nested delegation. Budget 18 tool calls, expand only by reporting concrete uncertainty; return findings in owned evidence file and a concise summary.

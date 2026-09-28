@@ -1,0 +1,64 @@
+{
+  "scope": "Equation probe, no new native scenario execution or scientific qualification.",
+  "capture_candidate": "wi098-reviewed-magnet-capture:c0001",
+  "capture_input_sha256": "4a80b3efd4e376e6eb23d8c73d2c87d17f1d1a2891390b955e15157f89e5e437",
+  "scenarios": [
+    {
+      "q_W_m3": 35.5,
+      "extra_W": 0,
+      "cold_W": 27730.308885170314,
+      "intercept_W": 41189.504334608944,
+      "refrigeration_MW": 2.5375670418721685,
+      "cold_margin_W": 12269.691114829686,
+      "intercept_margin_W": 18810.495665391056,
+      "refrigerator_heat_to_sink_MW": 2.6064868550919478,
+      "q_limit_W_m3": 75.43260142820309
+    },
+    {
+      "q_W_m3": 50,
+      "extra_W": 0,
+      "cold_W": 32185.57888517032,
+      "intercept_W": 41189.504334608944,
+      "refrigeration_MW": 2.849435941872169,
+      "cold_margin_W": 7814.421114829682,
+      "intercept_margin_W": 18810.495665391056,
+      "refrigerator_heat_to_sink_MW": 2.9228110250919483,
+      "q_limit_W_m3": 75.43260142820309
+    },
+    {
+      "q_W_m3": 80,
+      "extra_W": 0,
+      "cold_W": 41403.37888517032,
+      "intercept_W": 41189.504334608944,
+      "refrigeration_MW": 3.494681941872169,
+      "cold_margin_W": -1403.3788851703212,
+      "intercept_margin_W": 18810.495665391056,
+      "refrigerator_heat_to_sink_MW": 3.577274825091948,
+      "q_limit_W_m3": 75.43260142820309
+    },
+    {
+      "q_W_m3": 35.5,
+      "extra_W": 10000,
+      "cold_W": 37730.308885170314,
+      "intercept_W": 41189.504334608944,
+      "refrigeration_MW": 3.2375670418721683,
+      "cold_margin_W": 2269.691114829686,
+      "intercept_margin_W": 18810.495665391056,
+      "refrigerator_heat_to_sink_MW": 3.3164868550919477,
+      "q_limit_W_m3": 42.88687468212486
+    },
+    {
+      "q_W_m3": 35.5,
+      "extra_W": 13000,
+      "cold_W": 40730.308885170314,
+      "intercept_W": 41189.504334608944,
+      "refrigeration_MW": 3.4475670418721682,
+      "cold_margin_W": -730.3088851703142,
+      "intercept_margin_W": 18810.495665391056,
+      "refrigerator_heat_to_sink_MW": 3.5294868550919474,
+      "q_limit_W_m3": 33.12315665830139
+    }
+  ],
+  "coil_drive_already_in_extracted_heat_MW": 0.04855663413365344,
+  "fixed_quote_USD2025": 62957384.24217385
+}

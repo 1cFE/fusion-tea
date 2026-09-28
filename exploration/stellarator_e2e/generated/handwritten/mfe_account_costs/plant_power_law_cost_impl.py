@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:449
+SysML Source: root-0/analyses/mfe_account_costs.sysml:507
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -16,7 +16,7 @@ Generic plant power-law account:
 Plant-wide account, linear-or-power-law in plant-total driving power.
 Covers C220400 waste (base 1.96, ref 1000, a=1.0), C220500 fuel
 handling (fuel base, ref 1000, a=0.7), C220600 other (11.5, ref 1000,
-a=0.8), C220700 I&C (85.0, ref 3500, a=0.65), and CAS40 owner (owner
+a=0.8), C220700 I&C (85.0, ref 3500, a=0.65; WI-070 allocates distinct plasma/central supervisory functions here, excluding C220500 package-local controls; inherited coefficient is an uncalibrated residual allowance, not a historical price decomposition), and CAS40 owner (owner
 base, ref 1000, a=0.5). base/ref_power/alpha are per-account concept
 inputs (MR-3, bound at the instance).
 
@@ -40,7 +40,7 @@ Generic plant power-law account:
 Plant-wide account, linear-or-power-law in plant-total driving power.
 Covers C220400 waste (base 1.96, ref 1000, a=1.0), C220500 fuel
 handling (fuel base, ref 1000, a=0.7), C220600 other (11.5, ref 1000,
-a=0.8), C220700 I&C (85.0, ref 3500, a=0.65), and CAS40 owner (owner
+a=0.8), C220700 I&C (85.0, ref 3500, a=0.65; WI-070 allocates distinct plasma/central supervisory functions here, excluding C220500 package-local controls; inherited coefficient is an uncalibrated residual allowance, not a historical price decomposition), and CAS40 owner (owner
 base, ref 1000, a=0.5). base/ref_power/alpha are per-account concept
 inputs (MR-3, bound at the instance).
 
@@ -48,7 +48,7 @@ inputs (MR-3, bound at the instance).
 *Ref**: cas22.py:702 (waste), :718 (fuel), :724 (other), :731 (I&C); costs.py:256 (CAS40 owner)
 *Basis**: Plant-total power-law account cost
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:449
+SysML Source: root-0/analyses/mfe_account_costs.sysml:507
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -62,7 +62,7 @@ Generic plant power-law account:
 Plant-wide account, linear-or-power-law in plant-total driving power.
 Covers C220400 waste (base 1.96, ref 1000, a=1.0), C220500 fuel
 handling (fuel base, ref 1000, a=0.7), C220600 other (11.5, ref 1000,
-a=0.8), C220700 I&C (85.0, ref 3500, a=0.65), and CAS40 owner (owner
+a=0.8), C220700 I&C (85.0, ref 3500, a=0.65; WI-070 allocates distinct plasma/central supervisory functions here, excluding C220500 package-local controls; inherited coefficient is an uncalibrated residual allowance, not a historical price decomposition), and CAS40 owner (owner
 base, ref 1000, a=0.5). base/ref_power/alpha are per-account concept
 inputs (MR-3, bound at the instance).
 

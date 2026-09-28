@@ -1,0 +1,11 @@
+{
+  "singleton": 1,
+  "study_id": "20260911-operating-heating",
+  "executable_fingerprint": "a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0",
+  "model_contract_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf",
+  "study_definition_fingerprint": "19bb65a5721cfd91aa0eb742321dfa2e9ca424edb1dc9392cc29f9120bf8f8a6",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "a938149f0097a4952e6cd6498daa516fb3119ac70d22c49cd956f1329b41b02f"
+}

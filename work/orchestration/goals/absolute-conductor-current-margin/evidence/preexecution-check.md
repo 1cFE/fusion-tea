@@ -1,0 +1,13 @@
+# Coordinator study preexecution check
+
+2026-09-15. This is a coordinator check, not an independent verdict. Independent source/math/interface coverage is reused from `source-design-review.md`, and implementation coverage from `implementation-review.md` at2f4c2efc. Reviewed fingerprints remain f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8 / c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be, unchanged after documentation checkpointf380b225.
+
+[AGENT] Accept the study's `reviews/window-selection.md` and `preparation/selection.json`:296report rows,295unique coordinates, all117entering aliases preserved, explicit source-informed material alternatives and engineered orientation/retention scenarios. Every declared axis has constraints_reachable; no claim follows about monotonicity or numerical response until execution. All axes remain sensitivity-framed under the owner's autonomous engineering delegation.
+
+[AGENT] All295proposed points completed the final oracle scan. The extra low-major-radius endpoint combined with the orientation3 conditional feasible anchor is outside the hard field domain at32.09058T. Retain it as unsupported-domain evidence without a predicate verdict or physical-boundary claim. Do not widen the domain or alter the native sample.35other endpoint diagnostics completed. Geometry is held at each entering coordinate; existing enlarged-cavity scenarios remain separately labeled, while nominal geometry remains0.30m and fails fit.
+
+[AGENT] The material scenarios represent alternative evidence interpretations, not compounded independent random uncertainty. Orientation gains2/3 are assumed scalar gains, not measured angles. The combined retention products specify separate hypothetical cabling, degradation and current-sharing mechanisms; they are not three independently measured losses or an additional operating allowance. Allowable fraction0.8 is applied once. Neither scenario assumptions nor preliminary passes confer qualification or price/performance evidence.
+
+[AGENT] Preserve the field-envelope/current-margin counterexample and turn-current repartition controls. Compare all nineteen entering predicates separately from reference-current and combined feasibility; preserve the source-normalization and reference-only scope at each result. No new source equation or unreviewed binding is introduced by this sample, so a second preexecution source critic would duplicate current coverage. Independent final review will inspect actual results and remaining claims after freeze.
+
+Native execution remains blocked until T-004 returns CANDIDATE and the coordinator deposits the execution release. This check alone is not permission to execute an unintegrated package.

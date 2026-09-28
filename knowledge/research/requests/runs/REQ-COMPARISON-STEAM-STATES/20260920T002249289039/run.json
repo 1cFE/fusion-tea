@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COMPARISON-STEAM-STATES",
+  "request_key": "ac82802214d1a0ee667b413044049f96804c04d6a183878677a0cfac20d9c5c7",
+  "request_path": "knowledge/research/requests/REQ-COMPARISON-STEAM-STATES.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 2,
+    "max_captures": 1
+  },
+  "opened_at": "2026-09-20T00:22:49.289204+00:00",
+  "override_reason": null
+}

@@ -1,0 +1,59 @@
+{
+  "base_balance": {
+    "design_margin": 0.1499999999999999,
+    "decay_rate": 0.0,
+    "fuel_margin": 0.010000000000000009,
+    "extracted_supply_rate": 120.0,
+    "recycle_loss_rate": 19.0,
+    "defined_flag": 1.0,
+    "required_tbr": 1.19,
+    "balance_rate": 1.0,
+    "extraction_loss_rate": 0.0,
+    "stock_growth_rate": 0.0,
+    "numerical_margin": 0.0050000000000001155,
+    "production_rate": 120.0
+  },
+  "extraction_separate": {
+    "design_margin": 0.1499999999999999,
+    "decay_rate": 0.0,
+    "fuel_margin": -0.05263157894736836,
+    "extracted_supply_rate": 114.0,
+    "recycle_loss_rate": 19.0,
+    "defined_flag": 1.0,
+    "required_tbr": 1.2526315789473683,
+    "balance_rate": -5.0,
+    "extraction_loss_rate": 6.000000000000005,
+    "stock_growth_rate": 0.0,
+    "numerical_margin": -0.057631578947368256,
+    "production_rate": 120.0
+  },
+  "inventory_and_growth_separate": {
+    "design_margin": 0.1499999999999999,
+    "decay_rate": 1.0,
+    "fuel_margin": -0.020000000000000018,
+    "extracted_supply_rate": 120.0,
+    "recycle_loss_rate": 19.0,
+    "defined_flag": 1.0,
+    "required_tbr": 1.22,
+    "balance_rate": -2.0,
+    "extraction_loss_rate": 0.0,
+    "stock_growth_rate": 2.0,
+    "numerical_margin": -0.02499999999999991,
+    "production_rate": 120.0
+  },
+  "invalid_cases": 9,
+  "undefined_carrier": {
+    "design_margin": 0.0,
+    "decay_rate": 0.0,
+    "fuel_margin": 0.0,
+    "extracted_supply_rate": 0.0,
+    "recycle_loss_rate": 19.0,
+    "defined_flag": 0.0,
+    "required_tbr": 1.19,
+    "balance_rate": 0.0,
+    "extraction_loss_rate": 0.0,
+    "stock_growth_rate": 0.0,
+    "numerical_margin": 0.0,
+    "production_rate": 0.0
+  }
+}

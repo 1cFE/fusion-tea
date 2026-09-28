@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-hitec-ornl.pdf",
+  "slug": "ornl_tm3777_heat_transfer_salt_for_high_temperature_steam",
+  "path": "knowledge/sources/ornl_tm3777_heat_transfer_salt_for_high_temperature_steam/",
+  "source_id": "1f402caae10c2ef9a59189a9cc7257375ee7a439814059ad67a8181d705ea98d",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:41:47.114781+00:00"
+}

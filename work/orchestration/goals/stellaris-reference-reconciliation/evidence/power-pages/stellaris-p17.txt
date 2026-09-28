@@ -1,0 +1,92 @@
+J. Lion et al.
+Fig. 29. Visualization of the calculated first wall heat loads, distinguished by source.
+The left-hand half shows the received core radiation, the right-hand half the received
+edge radiation. Strong deviations in the toroidal and poloidal direction are observed.
+The total power at the wall is the sum of both sources and its values span the range
+0.18 MW m−2 to 0.77 MW m−2.
+Fig. 30. Simulated temperature in a toroidal segment of the first wall, using the meth-
+ods and parameters described in the text. With the current design, peak temperatures
+are simulated to stay below 500 ◦C and peak in the central module.
+the first wall differ by only about 2%. The volume integral is carried
+out in VMEC coordinates [241], and the Jacobian determinant √𝑔is
+obtained directly from the VMEC code.
+In the second step, we solve the heat equation as a Finite Element
+problem within a small toroidal section of the first wall. To obtain a
+conservative estimate, we select a section that includes the geometry
+points with the highest anticipated radiation load; the volumetric neu-
+tron load does not show significant enough variability to affect the
+results if we changed section. For simplicity, the analysis omits the
+divertor plates, recognizing that they could potentially shield some of
+the heat loads on the first wall. We also assume that all radiation is
+absorbed in the first layer of the wall, which we model as a Neumann
+boundary condition in the Finite Element analysis. Any reflection or
+black-body radiation effects of the first wall are neglected.
+The method employed for this calculation is detailed in Appendix B.
+The power loading on the first wall, distinguished by source is shown in
+Fig. 29. The resulting temperature distribution for this design is shown
+in Fig. 30. With the given assumptions, the steady-state temperature
+remains below 500 ◦C—a design limit typically imposed for EURO-
+FER97 steels [238]. We conclude that a helium-cooled first wall can be
+designed to withstand the heat fluxes anticipated for the high power
+density design point proposed in this study. We note that evaluating
+thermal stresses due to temperature asymmetries is beyond the scope
+of this study, and warrants further investigation.
+2.8. Lithium blanket & neutron shield
+In this section, we explore a potential breeding blanket and shield
+design for Stellaris. Research on stellarator breeding blankets in the
+Fig. 31. The geometry used in the neutronics simulations. Light green is the first wall,
+orange is the homogenized breeding blanket, blue is the neutron shield, gray is the
+vacuum vessel and green are the divertor modules. Coils are shown in turquoise. The
+brown section shows the sector interface that will be introduced in Section 2.11.
+literature addresses a range of topics, from balance of plant con-
+siderations [242] to detailed neutronics analyses [64,243–248] and
+evaluations of structural capabilities [249,250].
+Previous investigations into stellarator breeding blanket concepts
+have primarily focused on dual-cooled lithium-lead and helium-cooled
+pebble bed designs as potential breeders. These concepts aim to opti-
+mize both tritium breeding and structural integrity, balancing neutron
+economy with effective heat transfer and material endurance.
+However, prior reactor studies for stellarators have consistently
+highlighted a critical challenge: the close proximity of the optimized
+stellarator coils to the plasma. This proximity has been shown to be
+insufficient to provide adequate neutron shielding, posing a significant
+risk to the integrity and longevity of the coils in realistic reactor
+settings [52,64]. Furthermore, the limited distance between the plasma
+and the coils has been identified as the primary constraint on overall
+machine size, directly influencing the feasibility of achieving a viable
+reactor configuration [12]. The Stellaris concept strategically addresses
+this challenge. By ensuring that the coils are positioned farther away
+from the plasma in relative terms, this design provides greater space
+for tritium breeding and neutron shielding, allowing the overall reactor
+size to be reduced. The blanket concept itself was chosen from different
+available options and finally adapted to match a set of requirements
+that is in line with the overall machine design.
+In the current breeding blanket design, the primary tritium breeding
+material is a liquid lead-lithium (PbLi) eutectic alloy with 16 atomic
+percent lithium. This material serves a dual role as a neutron multiplier
+and tritium carrier. The liquid breeding material allows for drainage
+to ease remote maintenance operations. The breeding zone is actively
+cooled using water at pressurized water reactor (PWR) conditions,
+ensuring efficient thermal management. EUROFER97, a low-activation
+steel known for its structural integrity under fusion-relevant conditions,
+is selected as the structural material for the blanket [251]. The nuclear
+data cross sections for the materials are derived from the ENDF/B-VIII.0
+library [252], with interpolations adjusted for material temperature.
+To further enhance neutron management, an In-vessel Neutron Shield
+(INS) composed primarily of tungsten-carbide (WC) is incorporated.
+This material not only serves as a neutron shield, but also functions as
+a neutron reflector, effectively increasing the backscatter to the blanket
+and boosting the tritium breeding ratio (TBR).
+The Vacuum Vessel (VV) design is modeled after the EU DEMO
+project [253], utilizing SS316LN as the structural material. The design
+includes a neutron shield in the bulk cooling region, with a thickness
+reduced from the originally proposed 60 mm to 50 mm. Boron-carbide
+(BC) is chosen for the shield due to its superior absorption cross section
+in the thermal neutron range compared to WC.
+Active cooling is essential for maintaining the structural integrity
+of the breeding blanket, as the chosen structural material, EUROFER97,
+has a maximum operating temperature limit of 550 ◦C [254]. The breed-
+ing blanket’s composition is optimized for both thermal management
+and tritium breeding, consisting of 73.5% PbLi eutectic, 12.5% water,
+Fusion Engineering and Design xxx (xxxx) xxx 
+17 

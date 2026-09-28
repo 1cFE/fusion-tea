@@ -1,0 +1,65 @@
+{
+ "schema_version": "study-axis-declaration/v1",
+ "groups": [
+  {
+   "axis": "a",
+   "note": "Swept: plasma minor radius; the coil bore follows it through the radial build and, since WI-058, so does the winding length. Sensitivity-framed.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__plasma__a",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "R",
+   "note": "Swept: model-owned major radius shared by every live consumer (WI-051/057). Sensitivity-framed; the winding length no longer reads it.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__plasma__R",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "I_coil",
+   "note": "Matched-window coordinate (three values), not swept as its own transect; declared so its indicators are traced.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "B_max",
+   "note": "Matched-window coordinate (four selected envelopes), not swept as its own transect; declared so its indicators are traced.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "n_e0",
+   "note": "Column coordinate only (4.048e20 on the cheap column, the committed c0113/c0130 value); declined as a swept axis; declared so its indicators are traced.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__plasma__n_e0",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "p_wallplug_heat",
+   "note": "Column coordinate only (100 and 220 MW); declined as a swept axis; declared so its indicators are traced.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__heating__p_wallplug_heat",
+     "provenance": "fan_out"
+    }
+   ]
+  }
+ ]
+}

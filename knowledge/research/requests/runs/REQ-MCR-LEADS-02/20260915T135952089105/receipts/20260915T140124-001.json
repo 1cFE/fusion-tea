@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/T005-ballarino.pdf",
+  "slug": "current_leads_links_and_buses_ballarino",
+  "path": "knowledge/sources/current_leads_links_and_buses_ballarino/",
+  "source_id": "f9898abb8682c2a1d43ac74ace26311de0a6877a1d2595f8d6117cedf9f30233",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T14:01:24.093594+00:00"
+}

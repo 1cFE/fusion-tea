@@ -1,0 +1,344 @@
+FFF.F..FF.F.F......F.........FF.FFF.............................         [100%]
+=================================== FAILURES ===================================
+_______________________________ test_calc_nodes ________________________________
+
+fixture_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+
+    def test_calc_nodes(fixture_page):
+        fixture_page.click("[data-action=expand-all]")
+>       assert calc_node_count(fixture_page) == 77  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 80 == 77
+E        +  where 80 = calc_node_count(<Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>)
+
+tests/model_viz/test_graph_edges.py:55: AssertionError
+______________________________ test_source_groups ______________________________
+
+fixture_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+
+    def test_source_groups(fixture_page):
+        snap = load_fixture()
+        drawn = containers(fixture_page)
+>       assert len(drawn) == 17
+E       AssertionError: assert 19 == 17
+E        +  where 19 = len([{'collapsed': True, 'count': 8, 'kind': 'analysis', 'path': 'root-0/analyses/mfe_plasma_scaling.sysml'}, {'collapsed'...t.sysml'}, {'collapsed': True, 'count': 2, 'kind': 'analysis', 'path': 'root-0/analyses/mfe_heating_chain.sysml'}, ...])
+
+tests/model_viz/test_graph_edges.py:65: AssertionError
+___________________________ test_all_expanded_edges ____________________________
+
+fixture_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+
+    def test_all_expanded_edges(fixture_page):
+        snap = load_fixture()
+        fixture_page.click("[data-action=expand-all]")
+        got = displayed_edges(fixture_page)
+        assert got == expected_edges(snap, collapsed_paths=set())
+>       assert len(got) == 142  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       assert 147 == 142
+E        +  where 147 = len([('["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb81...rrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null]]"],["slot","8b8a1422-6888-594a-88a4-b0bd79fc1ce3"]]'), ...])
+
+tests/model_viz/test_graph_edges.py:82: AssertionError
+___________________________ test_all_collapsed_edges ___________________________
+
+fixture_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+
+    def test_all_collapsed_edges(fixture_page):
+        snap = load_fixture()
+        fixture_page.click("[data-action=expand-all]")
+        fixture_page.click("[data-action=collapse-all]")
+        got = displayed_edges(fixture_page)
+        assert got == expected_edges(snap, collapsed_paths=set(group_paths(snap)))
+>       assert len(got) == 36  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 40 == 36
+E        +  where 40 = len([('group:root-0/analyses/mfe_account_costs.sysml', 'group:root-0/analyses/mfe_lcoe_dcf.sysml'), ('group:root-0/analyse...nt_costs.sysml'), ('group:root-0/analyses/mfe_cryo_plant.sysml', 'group:root-0/analyses/mfe_power_balance.sysml'), ...])
+
+tests/model_viz/test_graph_edges.py:119: AssertionError
+___________ test_no_calc_output_reaches_a_calc_through_an_attribute ____________
+
+fixture_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json')
+
+    def test_no_calc_output_reaches_a_calc_through_an_attribute(fixture_path):
+        """Fixture premise behind I4 (design § Non-Goals): only producer bindings become edges.
+    
+        If a calc output fed an attribute that another calc reads as a parameter, the viewer would
+        draw no edge for that dependency: the consumer's input record is a `node` edge to the
+        attribute, not a `producer` edge to the calc. In the snapshot, an attribute fed by a calc is
+        an alias whose `alias_target` is a producer binding. So the premise holds when no parameter
+        input targets an alias attribute. A regenerated fixture that breaks this needs a follow-on
+        item, not a silent change to the edge rule.
+        """
+        snap = load_fixture()
+        attrs = {a["node_id"]: a for a in snap["instance_graph"]["graph"]["attrs"]}
+        calc_fed = {
+            node_id
+            for node_id, a in attrs.items()
+            if a["is_alias"] and (a["alias_target"] or {}).get("kind") == "producer"
+        }
+        assert len(calc_fed) > 0, "the snapshot does record calc-fed attributes, as aliases"
+        parameter_targets = [
+            inp["edge"]["target"]
+            for calc in calcs(snap)
+            for inp in calc["inputs"]
+            if inp["edge"] is not None and inp["edge"]["kind"] == "node"
+        ]
+>       assert len(parameter_targets) == 236  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 261 == 236
+E        +  where 261 = len(['["attribute",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb8192e...0\\",null],[\\"bf623d9e-c249-5d9b-860f-c336ac4681f2\\",null]]"],["slot","d637a4ba-d8c5-597f-a1aa-aa78f144ad3f"]]', ...])
+
+tests/model_viz/test_graph_edges.py:188: AssertionError
+__________________________ test_unresolvable_producer __________________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12628/test_unresolvable_producer0')
+
+    def test_unresolvable_producer(viewer_page, tmp_path):
+        fixture = load_fixture()
+        snap, removed = vs.remove_most_consumed_calc(fixture)
+        consumers = vs.consumers_of(fixture, removed)
+        assert len({c for c, _ in consumers}) > 1
+        path = vs.write(snap, tmp_path / "removed.json")
+        assert load_snapshot(viewer_page, path) == "ready"
+        viewer_page.click("[data-action=expand-all]")
+>       assert calc_node_count(viewer_page) == 76  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 79 == 76
+E        +  where 79 = calc_node_count(<Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>)
+
+tests/model_viz/test_guards.py:24: AssertionError
+_______________________ test_overlay_occurrence_grouping _______________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12628/test_overlay_occurrence_groupi0')
+
+    def test_overlay_occurrence_grouping(viewer_page, tmp_path):
+        snap, expected, (twin_a, twin_b) = vs.overlay(load_fixture())
+        path = vs.write(snap, tmp_path / "overlay.json")
+        assert load_snapshot(viewer_page, path) == "ready"
+        viewer_page.select_option("[data-role=mode-select]", label="Occurrence")
+        collapsed = viewer_page.evaluate(
+            "() => window.modelVizApp.cy.nodes('[kind=\"container\"]').map(n => n.data('collapsed'))"
+        )
+        assert collapsed == [True], "switching mode collapses everything; only the root is visible"
+        viewer_page.click("[data-action=expand-all]")
+    
+        chains = viewer_page.evaluate(_PARENT_CHAINS_JS)
+        assert set(chains) == {c["node_id"] for c in calcs(snap)}
+        containers_by_occurrence: dict[str, set[str]] = {}
+        for node_id, info in chains.items():
+            assert info["hasBothFields"], node_id
+            assert info["occurrence"] == expected[node_id]
+            assert all(link["mode"] == "occurrence" for link in info["chain"])
+            assert [link["occurrence"] for link in info["chain"]] == vs.occurrence_chain(
+                snap, expected[node_id]
+            ), node_id
+            for link in info["chain"]:
+                containers_by_occurrence.setdefault(link["occurrence"], set()).add(link["id"])
+    
+        # One container per occurrence id; the two same-segment siblings stay separate.
+        assert all(len(ids) == 1 for ids in containers_by_occurrence.values())
+        assert containers_by_occurrence[twin_a] != containers_by_occurrence[twin_b]
+        labels = viewer_page.evaluate(
+            """([a, b]) => window.modelVizApp.cy.nodes('[kind="container"]')
+                 .filter(n => n.data('occurrence_id') === a || n.data('occurrence_id') === b)
+                 .map(n => n.data('label'))""",
+            [twin_a, twin_b],
+        )
+        assert labels == ["twin", "twin"]
+    
+        split = [n for n, c in chains.items() if c["occurrence"] in (twin_a, twin_b)]
+        split_files = {next(c["source_file"] for c in calcs(snap) if c["node_id"] == n) for n in split}
+        assert split_files == {vs.OVERLAY_SPLIT_FILE}
+        assert {chains[n]["occurrence"] for n in split} == {twin_a, twin_b}
+        assert len({chains[n]["sourceGroup"] for n in split}) == 1
+    
+        viewer_page.select_option("[data-role=mode-select]", label="Source file")
+        groups = viewer_page.evaluate(
+            """() => window.modelVizApp.cy.nodes('[kind="container"]').map(n =>
+                 [n.data('mode'), n.data('group_path'), n.data('collapsed')])"""
+        )
+>       assert len(groups) == 17
+E       AssertionError: assert 19 == 17
+E        +  where 19 = len([['source', 'root-0/analyses/mfe_plasma_scaling.sysml', True], ['source', 'root-0/analyses/mfe_power_balance.sysml', T...root-0/analyses/mfe_plasma_sustainment.sysml', True], ['source', 'root-0/analyses/mfe_heating_chain.sysml', True], ...])
+
+tests/model_viz/test_guards.py:138: AssertionError
+________________________ test_fixture_loads_via_picker _________________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+fixture_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json')
+
+    def test_fixture_loads_via_picker(viewer_page, fixture_path):
+        assert viewer_page.get_attribute("body", "data-load-state") == "empty"
+        assert (
+            viewer_page.evaluate("() => document.querySelector('[data-role=snapshot-input]').type")
+            == "file"
+        )
+        assert load_snapshot(viewer_page, fixture_path) == "ready"
+        viewer_page.click("[data-action=expand-all]")
+>       assert calc_node_count(viewer_page) == 77  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 80 == 77
+E        +  where 80 = calc_node_count(<Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>)
+
+tests/model_viz/test_loading.py:28: AssertionError
+_______________________ test_second_load_replaces_first ________________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+fixture_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12628/test_second_load_replaces_firs0')
+
+    def test_second_load_replaces_first(viewer_page, fixture_path, tmp_path):
+        original = load_fixture()
+        names = {c["display_name"] for c in calcs(original)}
+        assert load_snapshot(viewer_page, fixture_path) == "ready"
+        show_calc(viewer_page, calcs(original)[0]["node_id"])
+        assert panel_node_id(viewer_page) is not None
+    
+        path = vs.write(vs.renamed(original), tmp_path / "renamed.json")
+        assert load_snapshot(viewer_page, path) == "ready"
+        assert panel_node_id(viewer_page) is None, "the panel starts empty after a reload"
+        viewer_page.click("[data-action=expand-all]")
+        labels = viewer_page.evaluate(
+            "() => window.modelVizApp.cy.nodes('[kind=\"calc\"]').map(n => n.data('label'))"
+        )
+>       assert len(labels) == 77  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 80 == 77
+E        +  where 80 = len(['renamed_wall_peak_calc', 'renamed_wall_load_calc', 'renamed_wall_peak_cal', 'renamed_source_heat', 'renamed_blanket_cost', 'renamed_cycle', ...])
+
+tests/model_viz/test_loading.py:89: AssertionError
+________________________ test_formula_entries_verbatim _________________________
+
+panels = {'["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb819...s**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)"}], ...}, ...}
+
+    def test_formula_entries_verbatim(panels):
+        with_text = [c for c in calcs(load_fixture()) if c["calc_expressions"]]
+>       assert len(with_text) == 66  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 69 == 66
+E        +  where 69 = len([{'aggregation_reference_ordinals': [], 'auto_impl_context': {'execution_steps': [], 'output_count': 1, 'output_expres...def_name': 'Power Cycle Efficiency', 'calc_def_qualified_name': "mfe_power_cycle::'Power Cycle Efficiency'", ...}, ...])
+
+tests/model_viz/test_panel.py:68: AssertionError
+______________________________ test_calendar_note ______________________________
+
+panels = {'["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb819...s**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)"}], ...}, ...}
+
+    def test_calendar_note(panels):
+        calendar = calc_by_name(load_fixture(), "calendar")
+        dump = panels[calendar["node_id"]]
+        assert [e["repeat"] for e in dump["formulaEntries"]] == [True]
+        assert "No formula lines recorded for this calc." in dump["sectionText"]["formula"]
+        assert dump["docText"] == calendar["doc_comment"]
+        # WI-057 (2026-09-13): on feat/demo-maturation several handwritten calcs carry a doc-only expression
+        # list like the calendar (the remediation's WI-053..WI-055 domain work), so their panels show the same note.
+        def doc_only(c):
+            return len(c["calc_expressions"]) == 1 and c["calc_expressions"][0].startswith("See documentation:")
+        doc_only_calcs = [c for c in calcs(load_fixture()) if c["calc_expressions"] and doc_only(c)]
+        assert calendar["node_id"] in {c["node_id"] for c in doc_only_calcs}
+>       assert len(doc_only_calcs) == 8  # WI-057: calendar, cas71_calc, cas80_calc, idc, lcoe_calc, peak_field_calc, wp_sizing, wp_stress
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 11 == 8
+E        +  where 11 = len([{'aggregation_reference_ordinals': [], 'auto_impl_context': None, 'calc_def_name': 'Winding Pack Procurement Cost', '...calc_def_name': 'Winding Pack Stress', 'calc_def_qualified_name': "mfe_magnet_field::'Winding Pack Stress'", ...}, ...])
+
+tests/model_viz/test_panel.py:92: AssertionError
+_________________________ test_input_kinds_and_totals __________________________
+
+panels = {'["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb819...s**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)"}], ...}, ...}
+
+    def test_input_kinds_and_totals(panels):
+        snap = load_fixture()
+        attrs = {a["node_id"]: a for a in snap["instance_graph"]["graph"]["attrs"]}
+        totals = Counter()
+        for calc in calcs(snap):
+            rows = panels[calc["node_id"]]["inputs"]
+            assert [(r["name"], r["kind"]) for r in rows] == [
+                (i["name"], edge_kind(i)) for i in calc["inputs"]
+            ], calc["display_name"]
+            for row, inp in zip(rows, calc["inputs"]):
+                totals[row["kind"]] += 1
+                assert row["kind"] in row["text"]
+                if row["kind"] == "literal":
+                    assert float(row["value"]) == inp["edge"]["value"]
+                if row["kind"] == "default":
+                    assert float(row["value"]) == inp["metadata"]["default_value"]
+                if row["kind"] == "parameter":
+                    attr = attrs[inp["edge"]["target"]]
+                    assert attr["display_name"] in row["text"]
+                    if attr["value"] is None:
+                        assert "no value in snapshot" in row["text"] and row["hasWarning"]
+                    else:
+                        assert str(attr["value"]) == row["value"] or float(row["value"]) == float(
+                            attr["value"]
+                        )
+>       assert totals == {"producer": 152, "parameter": 236, "literal": 10, "default": 52}  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert Counter({'par...literal': 10}) == {'default': 5...roducer': 152}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'producer': 157} != {'producer': 152}
+E         {'parameter': 261} != {'parameter': 236}
+E         Use -v to get more diff
+
+tests/model_viz/test_panel.py:148: AssertionError
+________________________ test_bindings_both_directions _________________________
+
+panels = {'["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb819...s**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)"}], ...}, ...}
+
+    def test_bindings_both_directions(panels):
+        snap = load_fixture()
+        want = Counter(producer_bindings(snap))
+>       assert sum(want.values()) == 152  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 157 == 152
+E        +  where 157 = sum(dict_values([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ..., 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
+E        +    where dict_values([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ..., 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) = <built-in method values of Counter object at 0x7a4588735b80>()
+E        +      where <built-in method values of Counter object at 0x7a4588735b80> = Counter({('["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d...c586\\",null]]"],["declaration","91076a5f-9604-5ca0-b8ef-5acd2cb7e011"]]', 'd6e159d1-7c22-522f-9279-89efb2097aa7'): 1}).values
+
+tests/model_viz/test_panel.py:170: AssertionError
+____________________________ test_output_consumers _____________________________
+
+panels = {'["calculation",["occurrence","[[\\"c1525587-d089-52bf-979d-256b64fec586\\",null],[\\"1a295f92-a923-5c88-b7d6-96eb819...s**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)"}], ...}, ...}
+
+    def test_output_consumers(panels):
+        snap = load_fixture()
+        consumers = Counter()
+        for consumer, name, producer, output in producer_bindings(snap):
+            consumers[(producer, output)] += 1
+        rows = 0
+        no_consumer = 0
+        for calc in calcs(snap):
+            dump = panels[calc["node_id"]]
+            assert [(o["outputId"], o["name"]) for o in dump["outputs"]] == [
+                (o["port"]["output"], o["name"]) for o in calc["outputs"]
+            ]
+            for output in dump["outputs"]:
+                rows += 1
+                assert not output["undeclared"]
+                expected = consumers[(calc["node_id"], output["outputId"])]
+                assert len(output["consumers"]) == expected
+                assert output["noConsumer"] is (expected == 0)
+                no_consumer += expected == 0
+>       assert rows == 158  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^
+E       assert 177 == 158
+
+tests/model_viz/test_panel.py:205: AssertionError
+=========================== short test summary info ============================
+FAILED tests/model_viz/test_graph_edges.py::test_calc_nodes - AssertionError:...
+FAILED tests/model_viz/test_graph_edges.py::test_source_groups - AssertionErr...
+FAILED tests/model_viz/test_graph_edges.py::test_all_expanded_edges - assert ...
+FAILED tests/model_viz/test_graph_edges.py::test_all_collapsed_edges - Assert...
+FAILED tests/model_viz/test_graph_edges.py::test_no_calc_output_reaches_a_calc_through_an_attribute
+FAILED tests/model_viz/test_guards.py::test_unresolvable_producer - Assertion...
+FAILED tests/model_viz/test_guards.py::test_overlay_occurrence_grouping - Ass...
+FAILED tests/model_viz/test_loading.py::test_fixture_loads_via_picker - Asser...
+FAILED tests/model_viz/test_loading.py::test_second_load_replaces_first - Ass...
+FAILED tests/model_viz/test_panel.py::test_formula_entries_verbatim - assert ...
+FAILED tests/model_viz/test_panel.py::test_calendar_note - assert 11 == 8
+FAILED tests/model_viz/test_panel.py::test_input_kinds_and_totals - Assertion...
+FAILED tests/model_viz/test_panel.py::test_bindings_both_directions - assert ...
+FAILED tests/model_viz/test_panel.py::test_output_consumers - assert 177 == 158
+14 failed, 50 passed in 32.96s

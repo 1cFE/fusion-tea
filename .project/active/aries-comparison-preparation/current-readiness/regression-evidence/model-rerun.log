@@ -1,0 +1,133 @@
+FFFFF.......FF.......................................................... [ 53%]
+..................FFFFFFFF.F.................F.................          [100%]
+=================================== FAILURES ===================================
+___________ test_entering_values_and_predicates_preserved[reference] ___________
+tests/models/test_divertor_heat_integration.py:17: in test_entering_values_and_predicates_preserved
+    assert row.outputs[key] == value, key
+E   AssertionError: stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+E   assert 0.006403997294744279 == -0.1160000000000001
+_____ test_entering_values_and_predicates_preserved[r-12.7-1.35-1.62e+07] ______
+tests/models/test_divertor_heat_integration.py:17: in test_entering_values_and_predicates_preserved
+    assert row.outputs[key] == value, key
+E   AssertionError: stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+E   assert -1.191300842660733 == -0.1160000000000001
+_____ test_entering_values_and_predicates_preserved[r-13.1-1.45-1.54e+07] ______
+tests/models/test_divertor_heat_integration.py:17: in test_entering_values_and_predicates_preserved
+    assert row.outputs[key] == value, key
+E   AssertionError: stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+E   assert -1.1913008432528962 == -0.1160000000000001
+____ test_entering_values_and_predicates_preserved[current-sized-reference] ____
+tests/models/test_divertor_heat_integration.py:17: in test_entering_values_and_predicates_preserved
+    assert row.outputs[key] == value, key
+E   AssertionError: stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+E   assert 0.006403997294744279 == -0.1160000000000001
+_ test_entering_values_and_predicates_preserved[allocated-current-sized-reference] _
+tests/models/test_divertor_heat_integration.py:17: in test_entering_values_and_predicates_preserved
+    assert row.outputs[key] == value, key
+E   AssertionError: stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+E   assert 0.006403997294744279 == -0.1160000000000001
+___ test_signed_burn_failures_keep_entering_equations_and_predicates[False] ____
+tests/models/test_divertor_heat_integration.py:76: in test_signed_burn_failures_keep_entering_equations_and_predicates
+    assert now[channel] == old[local], local
+E   AssertionError: sizing_required_conductor_area
+E   assert 0.0008750625467004353 == 0.0008750625467004352
+____ test_signed_burn_failures_keep_entering_equations_and_predicates[True] ____
+tests/models/test_divertor_heat_integration.py:76: in test_signed_burn_failures_keep_entering_equations_and_predicates
+    assert now[channel] == old[local], local
+E   AssertionError: sizing_required_conductor_area
+E   assert 0.0008842416733114316 == 0.0008842416733114318
+_____________________ test_public_native_oracle[changes0] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes1] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes2] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes3] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes4] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes5] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes6] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+_____________________ test_public_native_oracle[changes7] ______________________
+tests/models/test_conductor_current.py:72: in test_public_native_oracle
+    assert len(row.responses)==21
+E   AssertionError: assert 26 == 21
+E    +  where 26 = len(mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}))
+E    +    where mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0': 'satisfied', 'stell...k__5905ab54f5e8a945': 'satisfied', 'stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f': 'satisfied'}) = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...e, 'status': 'satisfied', 'margin': 16.00000000000005, 'observed': mappingproxy({'margin_in': 16.00000000000005})}))})).responses
+____________________ test_prior_native_reference_preserved _____________________
+tests/models/test_conductor_current.py:87: in test_prior_native_reference_preserved
+    if isinstance(value,(float,int)):assert row.outputs[key]==value,key
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+E   assert 0.006403997294744279 == -0.1160000000000001
+_____ test_legacy_replay_preserves_entering_physics_and_non_tape_accounts ______
+tests/models/test_coil_thermal_inventory.py:72: in test_legacy_replay_preserves_entering_physics_and_non_tape_accounts
+    assert actual[key] == pytest.approx(value, rel=1e-12, abs=1e-12), key
+E   AssertionError: p_th
+E   assert 3306.8890988488924 == 3301.2132114869937 ± 3.3e-09
+E     
+E     comparison failed
+E     Obtained: 3306.8890988488924
+E     Expected: 3301.2132114869937 ± 3.3e-09
+=============================== warnings summary ===============================
+tests/models/test_divertor_heat_integration.py: 14 warnings
+tests/models/test_conductor_current.py: 11 warnings
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[reference]
+FAILED tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[r-12.7-1.35-1.62e+07]
+FAILED tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[r-13.1-1.45-1.54e+07]
+FAILED tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[current-sized-reference]
+FAILED tests/models/test_divertor_heat_integration.py::test_entering_values_and_predicates_preserved[allocated-current-sized-reference]
+FAILED tests/models/test_divertor_heat_integration.py::test_signed_burn_failures_keep_entering_equations_and_predicates[False]
+FAILED tests/models/test_divertor_heat_integration.py::test_signed_burn_failures_keep_entering_equations_and_predicates[True]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes0]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes1]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes2]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes3]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes4]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes5]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes6]
+FAILED tests/models/test_conductor_current.py::test_public_native_oracle[changes7]
+FAILED tests/models/test_conductor_current.py::test_prior_native_reference_preserved
+FAILED tests/models/test_coil_thermal_inventory.py::test_legacy_replay_preserves_entering_physics_and_non_tape_accounts
+17 failed, 118 passed, 25 warnings in 59.88s

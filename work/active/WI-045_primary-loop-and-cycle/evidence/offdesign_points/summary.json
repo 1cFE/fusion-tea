@@ -1,0 +1,409 @@
+{
+ "summary": {
+  "P1_design_a1.4": {
+   "state": "completed",
+   "q_source": 3317.267553799019,
+   "mdot_loop": 228.1414234683378,
+   "dp_loop": 338209.6364963469,
+   "p_elec": 209.66570510819685,
+   "capacity_margin": -3.0636456905600085,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "domain_product": 15552.0,
+   "p_th": 3526.933258907216,
+   "p_net": 1067.7722416861886,
+   "rec_frac": 0.26402516671983356,
+   "lcoe": 231.32525675570017,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "violated",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "violated",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "source_heat__q_source": 0.0,
+    "primary_loop__mdot": 0.0,
+    "primary_loop__T_out": 0.0,
+    "primary_loop__mdot_loop": 0.0,
+    "primary_loop__dp_loop": 0.0,
+    "primary_loop__p_loop_margin": 0.0,
+    "primary_loop__r_comp": 0.0,
+    "primary_loop__T_comp_in": 0.0,
+    "primary_loop__w_fluid": 0.0,
+    "primary_loop__p_elec": 0.0,
+    "primary_loop__q_ihx": 0.0,
+    "primary_loop__capacity_margin": 0.0,
+    "primary_loop__p_pump_total": 0.0,
+    "primary_loop__q_recovered_total": 0.0,
+    "cycle__T2_C": 0.0,
+    "cycle__eta_fit": 0.0,
+    "cycle__eta_th": 0.0,
+    "cycle__margin_low": 0.0,
+    "cycle__margin_high": 0.0,
+    "cycle__domain_product": 0.0,
+    "lcoe_calc__lcoe": 0.0
+   },
+   "oracle_reldev_max": 0.0
+  },
+  "P3_c2823_14loops": {
+   "state": "completed",
+   "q_source": 6271.340445165246,
+   "mdot_loop": 431.30453393065153,
+   "dp_loop": 1208775.7277886579,
+   "p_elec": 1447.9729180478694,
+   "capacity_margin": -206.22675615287375,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "domain_product": 15552.0,
+   "p_th": 7719.313363213116,
+   "p_net": 1502.2763876461277,
+   "rec_frac": 0.5269002172397199,
+   "lcoe": 250.52954946775412,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "violated",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "violated",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "source_heat__q_source": 0.0,
+    "primary_loop__mdot": 0.0,
+    "primary_loop__T_out": 0.0,
+    "primary_loop__mdot_loop": 0.0,
+    "primary_loop__dp_loop": 0.0,
+    "primary_loop__p_loop_margin": 0.0,
+    "primary_loop__r_comp": 0.0,
+    "primary_loop__T_comp_in": 0.0,
+    "primary_loop__w_fluid": 0.0,
+    "primary_loop__p_elec": 0.0,
+    "primary_loop__q_ihx": 0.0,
+    "primary_loop__capacity_margin": 0.0,
+    "primary_loop__p_pump_total": 0.0,
+    "primary_loop__q_recovered_total": 0.0,
+    "cycle__T2_C": 0.0,
+    "cycle__eta_fit": 0.0,
+    "cycle__eta_th": 0.0,
+    "cycle__margin_low": 0.0,
+    "cycle__margin_high": 0.0,
+    "cycle__domain_product": 0.0,
+    "lcoe_calc__lcoe": 0.0
+   },
+   "oracle_reldev_max": 0.0
+  },
+  "P4_c2823_resized": {
+   "state": "completed",
+   "q_source": 6271.340445165246,
+   "mdot_loop": 223.63938796404156,
+   "dp_loop": 324993.1997895433,
+   "p_elec": 380.7670505420672,
+   "capacity_margin": 1.4383898137362223,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "domain_product": 15552.0,
+   "p_th": 6652.107495707313,
+   "p_net": 2143.6501908768514,
+   "rec_frac": 0.21661322229463523,
+   "lcoe": 171.23178310298275,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "source_heat__q_source": 0.0,
+    "primary_loop__mdot": 0.0,
+    "primary_loop__T_out": 0.0,
+    "primary_loop__mdot_loop": 0.0,
+    "primary_loop__dp_loop": 0.0,
+    "primary_loop__p_loop_margin": 0.0,
+    "primary_loop__r_comp": 0.0,
+    "primary_loop__T_comp_in": 0.0,
+    "primary_loop__w_fluid": 0.0,
+    "primary_loop__p_elec": 0.0,
+    "primary_loop__q_ihx": 0.0,
+    "primary_loop__capacity_margin": 0.0,
+    "primary_loop__p_pump_total": 0.0,
+    "primary_loop__q_recovered_total": 0.0,
+    "cycle__T2_C": 0.0,
+    "cycle__eta_fit": 0.0,
+    "cycle__eta_th": 0.0,
+    "cycle__margin_low": 0.0,
+    "cycle__margin_high": 0.0,
+    "cycle__domain_product": 0.0,
+    "lcoe_calc__lcoe": 0.0
+   },
+   "oracle_reldev_max": 0.0
+  },
+  "synthetic_T_hot_350C": {
+   "state": "completed",
+   "q_source": 3126.852676294579,
+   "mdot_loop": 215.04584992810234,
+   "dp_loop": 300496.77482532675,
+   "p_elec": 129.52276548610013,
+   "capacity_margin": 10.03192784967544,
+   "eta_fit": 0.3713254788502389,
+   "eta_th": 0.3713254788502389,
+   "domain_product": -16848.0,
+   "p_th": 3256.375441780679,
+   "p_net": 913.5127980422079,
+   "rec_frac": 0.24451574881049679,
+   "lcoe": 258.6279468577619,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "violated",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "source_heat__q_source": 0.0,
+    "primary_loop__mdot": 0.0,
+    "primary_loop__T_out": 0.0,
+    "primary_loop__mdot_loop": 0.0,
+    "primary_loop__dp_loop": 0.0,
+    "primary_loop__p_loop_margin": 0.0,
+    "primary_loop__r_comp": 0.0,
+    "primary_loop__T_comp_in": 0.0,
+    "primary_loop__w_fluid": 0.0,
+    "primary_loop__p_elec": 0.0,
+    "primary_loop__q_ihx": 0.0,
+    "primary_loop__capacity_margin": 0.0,
+    "primary_loop__p_pump_total": 0.0,
+    "primary_loop__q_recovered_total": 0.0,
+    "cycle__T2_C": 0.0,
+    "cycle__eta_fit": 0.0,
+    "cycle__eta_th": 0.0,
+    "cycle__margin_low": 0.0,
+    "cycle__margin_high": 0.0,
+    "cycle__domain_product": 0.0,
+    "lcoe_calc__lcoe": 0.0
+   },
+   "oracle_reldev_max": 0.0
+  },
+  "synthetic_n_loops_7": {
+   "state": "completed",
+   "q_source": 3126.852676294579,
+   "mdot_loop": 430.0916998562047,
+   "dp_loop": 1201987.099301307,
+   "p_elec": 717.7666412961582,
+   "capacity_margin": -205.0139220784269,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "domain_product": 15552.0,
+   "p_th": 3844.6193175907374,
+   "p_net": 686.4330805967718,
+   "rec_frac": 0.5659633129515843,
+   "lcoe": 354.07577267899944,
+   "verdicts": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "violated",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "violated",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+   },
+   "oracle_reldev": {
+    "source_heat__q_source": 0.0,
+    "primary_loop__mdot": 0.0,
+    "primary_loop__T_out": 0.0,
+    "primary_loop__mdot_loop": 0.0,
+    "primary_loop__dp_loop": 0.0,
+    "primary_loop__p_loop_margin": 0.0,
+    "primary_loop__r_comp": 0.0,
+    "primary_loop__T_comp_in": 0.0,
+    "primary_loop__w_fluid": 0.0,
+    "primary_loop__p_elec": 0.0,
+    "primary_loop__q_ihx": 0.0,
+    "primary_loop__capacity_margin": 0.0,
+    "primary_loop__p_pump_total": 0.0,
+    "primary_loop__q_recovered_total": 0.0,
+    "cycle__T2_C": 0.0,
+    "cycle__eta_fit": 0.0,
+    "cycle__eta_th": 0.0,
+    "cycle__margin_low": 0.0,
+    "cycle__margin_high": 0.0,
+    "cycle__domain_product": 0.0,
+    "lcoe_calc__lcoe": 3.210805327386324e-16
+   },
+   "oracle_reldev_max": 3.210805327386324e-16
+  }
+ },
+ "vs_predictions": {
+  "P1_design_a1.4": {
+   "p_elec": {
+    "executed": 209.66570510819685,
+    "predicted": 209.66570510819685,
+    "reldev": 0.0
+   },
+   "mdot_loop": {
+    "executed": 228.1414234683378,
+    "predicted": 228.1414234683378,
+    "reldev": 0.0
+   },
+   "dp_loop": {
+    "executed": 338209.6364963469,
+    "predicted": 338209.6364963469,
+    "reldev": 0.0
+   },
+   "eta_th": {
+    "executed": 0.41135655404954075,
+    "predicted": 0.41135655404954075,
+    "reldev": 0.0
+   },
+   "p_net": {
+    "executed": 1067.7722416861886,
+    "predicted": 1067.7722416861886,
+    "reldev": 0.0
+   },
+   "rec_frac": {
+    "executed": 0.26402516671983356,
+    "predicted": 0.26402516671983356,
+    "reldev": 0.0
+   },
+   "lcoe": {
+    "executed": 231.32525675570017,
+    "predicted": 231.32525675570017,
+    "reldev": 0.0
+   }
+  },
+  "P3_c2823_14loops": {
+   "p_elec": {
+    "executed": 1447.9729180478694,
+    "predicted": 1447.9729180478694,
+    "reldev": 0.0
+   },
+   "mdot_loop": {
+    "executed": 431.30453393065153,
+    "predicted": 431.30453393065153,
+    "reldev": 0.0
+   },
+   "dp_loop": {
+    "executed": 1208775.7277886579,
+    "predicted": 1208775.7277886579,
+    "reldev": 0.0
+   },
+   "eta_th": {
+    "executed": 0.41135655404954075,
+    "predicted": 0.41135655404954075,
+    "reldev": 0.0
+   },
+   "p_net": {
+    "executed": 1502.2763876461277,
+    "predicted": 1502.2763876461277,
+    "reldev": 0.0
+   },
+   "rec_frac": {
+    "executed": 0.5269002172397199,
+    "predicted": 0.5269002172397199,
+    "reldev": 0.0
+   },
+   "lcoe": {
+    "executed": 250.52954946775412,
+    "predicted": 250.52954946775412,
+    "reldev": 0.0
+   }
+  },
+  "P4_c2823_resized": {
+   "p_elec": {
+    "executed": 380.7670505420672,
+    "predicted": 380.7670505420672,
+    "reldev": 0.0
+   },
+   "mdot_loop": {
+    "executed": 223.63938796404156,
+    "predicted": 223.63938796404156,
+    "reldev": 0.0
+   },
+   "dp_loop": {
+    "executed": 324993.1997895433,
+    "predicted": 324993.1997895433,
+    "reldev": 0.0
+   },
+   "eta_th": {
+    "executed": 0.41135655404954075,
+    "predicted": 0.41135655404954075,
+    "reldev": 0.0
+   },
+   "p_net": {
+    "executed": 2143.6501908768514,
+    "predicted": 2143.6501908768514,
+    "reldev": 0.0
+   },
+   "rec_frac": {
+    "executed": 0.21661322229463523,
+    "predicted": 0.21661322229463523,
+    "reldev": 0.0
+   },
+   "lcoe": {
+    "executed": 171.23178310298275,
+    "predicted": 171.23178310298275,
+    "reldev": 0.0
+   }
+  }
+ },
+ "synthetic": {
+  "synthetic_T_hot_350C": {
+   "eta_fit": [
+    0.3713254788502389,
+    0.3713254788502389
+   ],
+   "domain_product": [
+    -16848.0,
+    -16848.0
+   ]
+  },
+  "synthetic_n_loops_7": {
+   "p_elec": [
+    717.7666412961582,
+    717.7666412961582
+   ],
+   "capacity_margin": [
+    -205.0139220784269,
+    -205.0139220784269
+   ]
+  }
+ }
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "canonical": "models/library/analyses/mfe_cooling_equipment.sysml",
+    "twin": "exploration/stellarator_e2e/models/analyses/mfe_cooling_equipment.sysml",
+    "equal": true,
+    "sha256": "9500a4766c057718b93625d6f8e9579a8588a053d1adeaad19a26099756c8bde"
+  },
+  {
+    "canonical": "models/library/analyses/mfe_primary_loop.sysml",
+    "twin": "exploration/stellarator_e2e/models/analyses/mfe_primary_loop.sysml",
+    "equal": true,
+    "sha256": "2345c72e049d6040fe91f8725ad08f3661d2ab5d2e25e29a4639defd6f1b3e3f"
+  },
+  {
+    "canonical": "models/library/structure/mfe_plant_systems.sysml",
+    "twin": "exploration/stellarator_e2e/models/structure/mfe_plant_systems.sysml",
+    "scope": "    part def 'Primary Heat Transport'",
+    "equal": true,
+    "sha256": "9b79add5ab19f0e24d6f9e72f4d478267707d744064717e317c7726f4e0a1bca"
+  }
+]

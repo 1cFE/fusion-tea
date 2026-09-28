@@ -1,0 +1,2469 @@
+........................................................................ [ 14%]
+........................................................................ [ 28%]
+........................................................................ [ 42%]
+........................................................................ [ 56%]
+........................................................................ [ 70%]
+.......................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 84%]
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.....FFFFFF..........................s... [ 98%]
+.......                                                                  [100%]
+=================================== FAILURES ===================================
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco30')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco31')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco32')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco33')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco34')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco35')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco36')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco37')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco38')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco39')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco40')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco41')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco42')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco43')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco44')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco45')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco46')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco47')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco48')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf] _
+
+local_study = <module '20260901-sustainment-fence' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco49')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco50')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco51')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco52')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco53')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco54')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco55')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco56')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco57')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco58')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco59')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco60')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco61')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco62')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco63')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco64')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco65')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco66')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco67')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco68')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco69')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco70')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco71')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco72')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco73')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco74')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco75')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco76')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco77')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco78')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco79')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco80')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco81')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco82')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco83')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco84')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco85')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco86')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco87')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco88')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco89')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco90')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco91')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco92')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco93')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco94')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco95')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco96')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco97')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco98')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco99')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco100')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = None, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco101')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = nan, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco102')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco103')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = -inf, bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco104')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = 'absent', bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco105')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = None, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco106')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = nan, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco107')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco108')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+bad_value = -inf, bad_index = 1
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_refuses_inco109')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+        with pytest.raises(local_study.route.RouteError, match=channel):
+>           local_study.export(cases, output)
+E           TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:147: TypeError
+_ test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers] _
+
+local_study = <module '20260903-priced-levers' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_preserves_al5')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+_ test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating] _
+
+local_study = <module '20260903-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_preserves_al6')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 1 required positional argument: 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+_ test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating] _
+
+local_study = <module '20260904-wall-and-heating' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_preserves_al7')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+_ test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis] _
+
+local_study = <module '20260905-stored-energy-basis' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_preserves_al8')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+_ test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control] _
+
+local_study = <module '20260907-burn-control' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-burn-control/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_preserves_al9')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+_ test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12149/test_local_export_preserves_al10')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+=========================== short test summary info ============================
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]
+86 failed, 424 passed, 1 skipped in 724.71s (0:12:04)

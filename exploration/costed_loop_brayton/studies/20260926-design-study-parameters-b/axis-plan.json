@@ -1,0 +1,908 @@
+{
+  "study_id": "20260926-design-study-parameters-b",
+  "question": "On the WI-095 package (the WI-094 costed C-1 assembly with the loop return requirement enforced by an explicit primary-side bypass control): which of the round-1 leading operating points satisfy the completed loop model and with what bypass fraction (arrangement B); where the exactly matched settings lie at each flow (arrangement A, the bypass fraction at a tiny target); and how the performance and cost comparison reads on cases that satisfy the completed model. No point is optimized inside the model; the boundary ratio is a study-level root solve on the package-owned oracle with the ratio then a chosen input of the executed case.",
+  "axes": [
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "operating",
+      "framing": "search",
+      "window_provenance": "engineered",
+      "basis": "C-1 design flow 2,500 kg/s (WI-093); window 2,000-4,000 kg/s (-20 % / +60 %) fixed by the 54-point screen (contract \u00a7 8 a, \u00a7 11).",
+      "missing_response": "No off-design machine map: the compressors and turbine keep fixed isentropic efficiencies at every flow (S1 tests uniform offsets); the loop sits upstream and its rated flow is unchanged.",
+      "declined": false
+    },
+    {
+      "axis": "stage_ratio",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_1__selected_ratio",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_2__selected_ratio",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_3__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "1",
+      "role": "operating",
+      "framing": "search",
+      "window_provenance": "engineered",
+      "basis": "C-1 equal-stage ratio 1.5183 (the ARIES designer's choice); window 1.20-1.80 refined to 0.025 between 1.30 and 1.50 where the screen located the heat-removal boundary (contract \u00a7 11).",
+      "missing_response": "One value applied to three independent chosen inputs: a declared equal-stage scenario, not a physical tie (annex \u00a7 Declared ties); no off-design map (S1).",
+      "declined": false
+    },
+    {
+      "axis": "compressor_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "equipment",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "I-R baseline 3,200 MW (WI-093 re-selection); I-A 1,600 MW, the ARIES-selected rating (WI-090 E4 reference).",
+      "missing_response": "A violated screen keeps its booked price; nothing is resized from a demand (MR-7).",
+      "declined": false
+    },
+    {
+      "axis": "turbine_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__turbine_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "equipment",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "I-R 7,000 MW; I-A 3,500 MW (ARIES-selected).",
+      "missing_response": "As compressor_rating.",
+      "declined": false
+    },
+    {
+      "axis": "generator_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__generator_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "equipment",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "I-R 3,600 MW; I-A 1,800 MW (ARIES-selected).",
+      "missing_response": "As compressor_rating.",
+      "declined": false
+    },
+    {
+      "axis": "rejection_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__rejection_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "equipment",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "I-R 5,000 MW; I-A 2,500 MW (ARIES-selected).",
+      "missing_response": "As compressor_rating; heat-rejection pumping is not in the balance (contract \u00a7 8 c).",
+      "declined": false
+    },
+    {
+      "axis": "he_duty_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__he_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "equipment",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "I-R 3,500 MW; I-A 1,500 MW (ARIES-selected).",
+      "missing_response": "As compressor_rating.",
+      "declined": false
+    },
+    {
+      "axis": "compressor_efficiency",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_1__efficiency",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_2__efficiency",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_3__efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "1",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 0.89; 0.85 / 0.92 span the WI-090 range (contract S1). One value applied to the three stages.",
+      "missing_response": "A uniform offset; it cannot test a penalty that grows with distance from the design point (contract \u00a7 8 a).",
+      "declined": false
+    },
+    {
+      "axis": "turbine_efficiency",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__cycle__turbine_efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "1",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 0.93; 0.90 / 0.95 (contract S1).",
+      "missing_response": "As compressor_efficiency.",
+      "declined": false
+    },
+    {
+      "axis": "aux_heat",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__auxiliary_heat",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW coupled",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES register 20 MW coupled at 0.5 wall-plug efficiency (40 MW electric); x0.5 / x1.5 with the rest of the register; the labelled Stellaris-equivalent register uses 50 MW coupled (100 MW wall-plug, baseline.json).",
+      "missing_response": "A constant of the sweep: it moves absolute net and the net-positive edge, not the ranking (contract \u00a7 6, S2).",
+      "declined": false
+    },
+    {
+      "axis": "aux_cryo",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__cryo",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 10 MW; x0.5 / x1.5; Stellaris-equivalent 2.14 MW (cryogenic and shield, baseline.json).",
+      "missing_response": "As aux_heat.",
+      "declined": false
+    },
+    {
+      "axis": "aux_fuel_base",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__fuel_base",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 5 MW; x0.5 / x1.5; 0 in the labelled Stellaris-equivalent register (no counterpart named in the contract).",
+      "missing_response": "As aux_heat.",
+      "declined": false
+    },
+    {
+      "axis": "aux_control",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__control",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 5 MW; x0.5 / x1.5; 0 in the labelled Stellaris-equivalent register.",
+      "missing_response": "As aux_heat.",
+      "declined": false
+    },
+    {
+      "axis": "aux_other",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__other_electric",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 5 MW; x0.5 / x1.5; the Stellaris-equivalent register puts its cooling-water pumping 13.02 MW here (baseline.json), the bound on the omitted heat-rejection pumping.",
+      "missing_response": "As aux_heat.",
+      "declined": false
+    },
+    {
+      "axis": "fuel_exhaust_term",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__fuel_exhaust",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "atoms/s",
+      "role": "convention",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "0 as in C-1 (so the controls replay bit-exactly); the wired case sets it to the fuel chain's stored exhaust rate 1.7893e22 atoms/s, about 1.79 MW at the balance's 1e-22 MW per atom/s (contract \u00a7 3, S2).",
+      "missing_response": "A disclosed constant omission of the main block.",
+      "declined": false
+    },
+    {
+      "axis": "pump_law_dp_ref",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__primary_loop__dp_loop_ref",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "Pa",
+      "role": "assumption",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Stellaris 329,187.19 Pa reference loop pressure drop; x0.5 / x2 (contract S3). It moves the loop pump electricity and the friction heat delivered together.",
+      "missing_response": "The loop pump law is the Stellaris relation with its constants, not a hydraulic model (contract \u00a7 8 g).",
+      "declined": false
+    },
+    {
+      "axis": "equipment_price_factor",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__turbine_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__generator_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__heat_rejection_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__he_duty_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__he_hx__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__conversion_services__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "1",
+      "role": "price",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES E4 reference prices at x1; x0.5 / x1.5 on the seven priced items of the inventory (contract S4).",
+      "missing_response": "Prices decide the USD/MWh value of a net gain and the I-R against I-A comparison, not the operating ranking.",
+      "declined": false
+    },
+    {
+      "axis": "rest_of_plant_price_factor",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__rest_of_plant__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "1",
+      "role": "price",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "The rest-of-plant constant 2,158,230,133.33 USD2004 at x1 ([ASSUMED], contract \u00a7 6); x0.5 / x2 (S4).",
+      "missing_response": "As equipment_price_factor.",
+      "declined": false
+    },
+    {
+      "axis": "tritium_feed",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__fuel_inventory__annual_recovery_kg",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/year",
+      "role": "convention",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "0 under the no-credit convention; 100 kg/year is the ARIES E6 named-feed scenario (contract S5).",
+      "missing_response": "Breeding is unsupported: the feed is an assumption, not a calculated capability (contract \u00a7 8 f).",
+      "declined": false
+    },
+    {
+      "axis": "supply_service",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__finance__supply_service_annual",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "USD2004/year",
+      "role": "convention",
+      "framing": "sensitivity",
+      "window_provenance": "sourced",
+      "basis": "0; 30 MUSD/year with the named feed (ARIES E6 convention, contract S5).",
+      "missing_response": "As tritium_feed.",
+      "declined": false
+    },
+    {
+      "axis": "exchanger_area",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m2",
+      "role": "equipment",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "ARIES 50,000 m2 (UA 50 MW/K at the assumed 1,000 W/m2K); 75,000 m2 is the one declared priced hardware alternative (ratio 1.5, 87,488,550 USD2004 through the same purchase law; contract \u00a7 5, S6).",
+      "missing_response": "A labelled alternative inventory, never a point-by-point resize (MR-7).",
+      "declined": false
+    }
+  ],
+  "grid_axes": {
+    "flow_axis": "cycle_flow",
+    "ratio_axis": "stage_ratio"
+  },
+  "inventories": {
+    "ir": {
+      "label": "I-R, the re-selected inventory (WI-093 case inputs; the manifest baseline)",
+      "values": {}
+    },
+    "ia": {
+      "label": "I-A, the ARIES-selected inventory (recorded alternative)",
+      "values": {
+        "compressor_rating": 1600.0,
+        "turbine_rating": 3500.0,
+        "generator_rating": 1800.0,
+        "rejection_rating": 2500.0,
+        "he_duty_rating": 1500.0
+      }
+    }
+  },
+  "designs": [
+    {
+      "name": "ir-f2500-r1.5183",
+      "arm": "leading",
+      "classification": "the starting configuration (C-1 design point) on I-R",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.5182944859378311
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5183",
+      "arm": "leading",
+      "classification": "best passing band (round 1)",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.5182944859378311
+      }
+    },
+    {
+      "name": "ir-f2750-r1.3750",
+      "arm": "leading",
+      "classification": "best passing band (round 1)",
+      "values": {
+        "cycle_flow": 2750.0,
+        "stage_ratio": 1.375
+      }
+    },
+    {
+      "name": "ir-f3000-r1.3250",
+      "arm": "leading",
+      "classification": "third passing point (round 1)",
+      "values": {
+        "cycle_flow": 3000.0,
+        "stage_ratio": 1.325
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4500",
+      "arm": "leading",
+      "classification": "the screen's best passing point at the design flow (round 1)",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.45
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4250",
+      "arm": "leading",
+      "classification": "the electricity-only best (round 1): heat removal fails; expected infeasible",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.425
+      }
+    },
+    {
+      "name": "s6-hx75000-f2500-r1.4000",
+      "arm": "leading",
+      "classification": "S6: the 75,000 m2 exchanger alternative at its round-1 best passing point",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.4,
+        "exchanger_area": 75000.0
+      }
+    },
+    {
+      "name": "ia-f2500-r1.5183",
+      "arm": "leading",
+      "classification": "the starting configuration on the ARIES-selected inventory I-A (failed selection, for the record)",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.5182944859378311,
+        "compressor_rating": 1600.0,
+        "turbine_rating": 3500.0,
+        "generator_rating": 1800.0,
+        "rejection_rating": 2500.0,
+        "he_duty_rating": 1500.0
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4300",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.43
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4350",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.435
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4400",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.44
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4450",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.445
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5050",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.505
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5100",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.51
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5150",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.515
+      }
+    }
+  ],
+  "boundary": {
+    "inventory": "ir",
+    "target_bypass_fraction": 1e-06,
+    "flows": [
+      2000.0,
+      2250.0,
+      2500.0,
+      2750.0,
+      3000.0,
+      3250.0,
+      3500.0,
+      4000.0
+    ],
+    "brackets": {
+      "2000": [
+        1.6,
+        1.7
+      ],
+      "2250": [
+        1.5,
+        1.5182944859378311
+      ],
+      "2500": [
+        1.425,
+        1.45
+      ],
+      "2750": [
+        1.35,
+        1.375
+      ],
+      "3000": [
+        1.3,
+        1.325
+      ],
+      "3250": [
+        1.25,
+        1.3
+      ],
+      "3500": [
+        1.2,
+        1.25
+      ],
+      "4000": [
+        1.2,
+        1.25
+      ]
+    },
+    "provenance": "brackets are the round-1 grid's last failing and first passing ratio at each flow (record 20260926-design-study-parameters, readout section 3); at 4,000 kg/s the first grid ratio 1.20 already passes, so the boundary lies below the declared window and is reported, not solved",
+    "note": "the target 1e-6 is a root-finding target just inside the feasible side (the bypass fraction is continuous and zero at the boundary), not a physical allowance"
+  },
+  "expanded_designs": [
+    {
+      "name": "ir-f2500-r1.5183",
+      "arm": "leading",
+      "classification": "the starting configuration (C-1 design point) on I-R",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.5182944859378311
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5183",
+      "arm": "leading",
+      "classification": "best passing band (round 1)",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.5182944859378311
+      }
+    },
+    {
+      "name": "ir-f2750-r1.3750",
+      "arm": "leading",
+      "classification": "best passing band (round 1)",
+      "values": {
+        "cycle_flow": 2750.0,
+        "stage_ratio": 1.375
+      }
+    },
+    {
+      "name": "ir-f3000-r1.3250",
+      "arm": "leading",
+      "classification": "third passing point (round 1)",
+      "values": {
+        "cycle_flow": 3000.0,
+        "stage_ratio": 1.325
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4500",
+      "arm": "leading",
+      "classification": "the screen's best passing point at the design flow (round 1)",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.45
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4250",
+      "arm": "leading",
+      "classification": "the electricity-only best (round 1): heat removal fails; expected infeasible",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.425
+      }
+    },
+    {
+      "name": "s6-hx75000-f2500-r1.4000",
+      "arm": "leading",
+      "classification": "S6: the 75,000 m2 exchanger alternative at its round-1 best passing point",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.4,
+        "exchanger_area": 75000.0
+      }
+    },
+    {
+      "name": "ia-f2500-r1.5183",
+      "arm": "leading",
+      "classification": "the starting configuration on the ARIES-selected inventory I-A (failed selection, for the record)",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.5182944859378311,
+        "compressor_rating": 1600.0,
+        "turbine_rating": 3500.0,
+        "generator_rating": 1800.0,
+        "rejection_rating": 2500.0,
+        "he_duty_rating": 1500.0
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4300",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.43
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4350",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.435
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4400",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.44
+      }
+    },
+    {
+      "name": "ir-f2500-r1.4450",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.445
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5050",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.505
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5100",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.51
+      }
+    },
+    {
+      "name": "ir-f2250-r1.5150",
+      "arm": "ladder",
+      "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.515
+      }
+    },
+    {
+      "name": "ir-boundary-f2000",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 2000.0,
+        "stage_ratio": 1.6511421971954405
+      }
+    },
+    {
+      "name": "ir-boundary-f2250",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.5169134372098814
+      }
+    },
+    {
+      "name": "ir-boundary-f2500",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.427314826752991
+      }
+    },
+    {
+      "name": "ir-boundary-f2750",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 2750.0,
+        "stage_ratio": 1.3628644277341664
+      }
+    },
+    {
+      "name": "ir-boundary-f3000",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 3000.0,
+        "stage_ratio": 1.3140269530937074
+      }
+    },
+    {
+      "name": "ir-boundary-f3250",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 3250.0,
+        "stage_ratio": 1.275580954551697
+      }
+    },
+    {
+      "name": "ir-boundary-f3500",
+      "arm": "boundary",
+      "classification": "arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle",
+      "values": {
+        "cycle_flow": 3500.0,
+        "stage_ratio": 1.244424132909626
+      }
+    }
+  ],
+  "anchors": {
+    "rule": "none",
+    "points": {}
+  },
+  "boundary_solve": [
+    {
+      "flow": 2000.0,
+      "bracket": [
+        1.6,
+        1.7
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.6511421971954405,
+      "bypass_fraction_by_oracle": 1.0002586350310594e-06,
+      "net_by_oracle": 535.2205569180843,
+      "iterations_interval": 9.313239068831081e-11
+    },
+    {
+      "flow": 2250.0,
+      "bracket": [
+        1.5,
+        1.5182944859378311
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.5169134372098814,
+      "bypass_fraction_by_oracle": 1.0001967893913388e-06,
+      "net_by_oracle": 600.1648590481848,
+      "iterations_interval": 6.815215058963986e-11
+    },
+    {
+      "flow": 2500.0,
+      "bracket": [
+        1.425,
+        1.45
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.427314826752991,
+      "bypass_fraction_by_oracle": 1.0000730981118977e-06,
+      "net_by_oracle": 620.8190529643422,
+      "iterations_interval": 9.313216864370588e-11
+    },
+    {
+      "flow": 2750.0,
+      "bracket": [
+        1.35,
+        1.375
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.3628644277341664,
+      "bypass_fraction_by_oracle": 1.0003459465224296e-06,
+      "net_by_oracle": 617.939807733591,
+      "iterations_interval": 9.313216864370588e-11
+    },
+    {
+      "flow": 3000.0,
+      "bracket": [
+        1.3,
+        1.325
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.3140269530937074,
+      "bypass_fraction_by_oracle": 1.0005869626183994e-06,
+      "net_by_oracle": 601.5980396153443,
+      "iterations_interval": 9.313239068831081e-11
+    },
+    {
+      "flow": 3250.0,
+      "bracket": [
+        1.25,
+        1.3
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.275580954551697,
+      "bypass_fraction_by_oracle": 1.000224074232392e-06,
+      "net_by_oracle": 577.1376193361235,
+      "iterations_interval": 9.313216864370588e-11
+    },
+    {
+      "flow": 3500.0,
+      "bracket": [
+        1.2,
+        1.25
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "solved",
+      "ratio": 1.244424132909626,
+      "bypass_fraction_by_oracle": 1.0005223884945735e-06,
+      "net_by_oracle": 547.5819905118665,
+      "iterations_interval": 9.313239068831081e-11
+    },
+    {
+      "flow": 4000.0,
+      "bracket": [
+        1.2,
+        1.25
+      ],
+      "target_bypass_fraction": 1e-06,
+      "outcome": "boundary below the bracket (window edge); lower end already feasible with f=2.701e-02"
+    }
+  ],
+  "refused_by_oracle_scan": {}
+}

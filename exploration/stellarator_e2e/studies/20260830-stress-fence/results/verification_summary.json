@@ -1,0 +1,215 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--identity",
+    "exploration/stellarator_e2e/studies/20260830-stress-fence/results/package_identity.json",
+    "--store",
+    "exploration/stellarator_e2e/studies/_work/20260830-stress-fence/20260830-stress-fence.db",
+    "--out",
+    "exploration/stellarator_e2e/studies/20260830-stress-fence/results/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_e2e/generated",
+    "package_name": "stellarator_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "d5293415c33a6e2f2b9219e09343f97c2372070f69e012b3397574ec319df180"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "4d186c705b7ec462823998ee1fbc6cdb2a587a63fea964c6f8edff215f2f7500"
+  },
+  "stores": [
+    {
+      "path": "exploration/stellarator_e2e/studies/_work/20260830-stress-fence/20260830-stress-fence.db",
+      "study_id": "20260830-stress-fence",
+      "compatibility": {
+        "digest": "e002323160b97b55937743b4842cb1ee24a44e2909a9d48b90bf01ec161595ed",
+        "evidence_schema_version": "v2",
+        "executable_fingerprint": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4",
+        "strategy_config": "87f88d10968368cebafb57ac834af71b2ca2a845731a7e81a0c5fe99eeeea0a6",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "1eac1c758d5b4bbf89b1656ca74e77ead70f6aab60bc122ad66665a624cda035",
+        "study_id": "20260830-stress-fence"
+      },
+      "cases_total": 1634,
+      "cases_completed": 1634,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "6e32b477175ecb15",
+        "seed_source": "derived",
+        "sample_size_requested": 12,
+        "strata_observed": 9,
+        "sampled_rows": 12,
+        "sampled_case_ids": [
+          "20260830-stress-fence:c0343",
+          "20260830-stress-fence:c0205",
+          "20260830-stress-fence:c0314",
+          "20260830-stress-fence:c0072",
+          "20260830-stress-fence:c1042",
+          "20260830-stress-fence:c1403",
+          "20260830-stress-fence:c1111",
+          "20260830-stress-fence:c0871",
+          "20260830-stress-fence:c1621",
+          "20260830-stress-fence:c0023",
+          "20260830-stress-fence:c1426",
+          "20260830-stress-fence:c0240"
+        ]
+      },
+      "worst_channel_rel_dev": 4.3721309684801114e-16,
+      "worst_at": {
+        "case_id": "20260830-stress-fence:c1111",
+        "channel": "stellarator_09__stellaris__total_capital__total_capital",
+        "value": 17450059447.5609
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09__stellaris__beta_calc__beta",
+      "objective": "beta"
+    },
+    {
+      "channel": "stellarator_09__stellaris__cas72_calc__cost",
+      "objective": "cas72"
+    },
+    {
+      "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "objective": "fuel"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "objective": "lcoe_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+      "objective": "magnet_capital_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "objective": "cas27"
+    },
+    {
+      "channel": "stellarator_09__stellaris__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__wall_load_calc__wall_load",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__wp_stress__sigma_wp",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 4.3721309684801114e-16,
+  "outcome": "pass"
+}

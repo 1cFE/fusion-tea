@@ -1,0 +1,137 @@
+[
+  {
+    "path": "/artifact_hashes/handwritten/backup/coolant_branch_heat_impl_20260922_064949.py",
+    "before": null,
+    "after": "f47a6b224695e57687c19a7c9a0dfdb5867354124e99ae5c2f61400021bf0210"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/fixed_outlet_conditioning_impl_20260922_064949.py",
+    "before": null,
+    "after": "fe9406df04751bf4eff5c528a1b670f7963de2e7aa654b8db65d5a877657a5a6"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/fractional_pressure_loss_impl_20260922_064949.py",
+    "before": null,
+    "after": "a156f14c570aa4e5d641ac5ee29516527b4871c20d9af984fcdcd7d8694e9445"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/fusion_source_selector_impl_20260922_064949.py",
+    "before": null,
+    "after": "8a0682199662d25348dc4491f9884dd15e44848371384fb686eaf31c02440293"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/heat_driven_closure_impl_20260922_064949.py",
+    "before": null,
+    "after": "850f1ae6a5d91b57d7d82d002967860017bec5813b97f21a5cc4de3a7214e62d"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/ideal_gas_compressor_impl_20260922_064949.py",
+    "before": null,
+    "after": "e39dbf16d03b6ab305d7126443d80030f1bb99c29821eacc5d7a212746ae0d3e"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/ideal_gas_expander_impl_20260922_064949.py",
+    "before": null,
+    "after": "ea727617a8b2b566fde783a43560b4dbbd38c7016192f729f9a95548173845bf"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/integrated_heat_source_impl_20260922_064949.py",
+    "before": null,
+    "after": "1691522f8b0a9e5edb0b96bd2053fe35639654344db1d7eeff1eea98e366edef"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/integrated_plant_ledger_impl_20260922_064949.py",
+    "before": null,
+    "after": "a27bcc09f2edbcccc01c7f5b091693500224d4270f3b9c69d679cc1e6c2db904"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/passive_recuperator_impl_20260922_064949.py",
+    "before": null,
+    "after": "ddfcb4dd027c0c6bc7077feefc9eb929d5b943127eb6167ad06d2087fefe9191"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/plant_electrical_balance_impl_20260922_064949.py",
+    "before": null,
+    "after": "0e8049bcbe8092d0c7792069bfa28289a5d265ae9ac87255da6c7d147e8f11f3"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/radial_density_profile_impl_20260922_064949.py",
+    "before": null,
+    "after": "14eaee78edcbd1b2aa0d88c29d7c1649f6dfd9f3dc82292f41e6183b79e7dfc4"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/backup/supplied_profile_plasma_impl_20260922_064949.py",
+    "before": null,
+    "after": "ea3d0a78e3e9f5816eec6281e15addb5a8572d9c09624999e4eb29c0aa387d59"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/dual_circuit_heat_accounting/coolant_branch_heat_impl.py",
+    "before": "f47a6b224695e57687c19a7c9a0dfdb5867354124e99ae5c2f61400021bf0210",
+    "after": "e4c83b8fb8c37dfa044d33f61b04fd18f9fc3b3877be0e95ed32f91e288bb104"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/fixed_outlet_conditioning_impl.py",
+    "before": "fe9406df04751bf4eff5c528a1b670f7963de2e7aa654b8db65d5a877657a5a6",
+    "after": "0f3285bf73f8332e7dfb17c171c9240d15378901a0b6bb2f028d0463ea7f44f8"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/fractional_pressure_loss_impl.py",
+    "before": "a156f14c570aa4e5d641ac5ee29516527b4871c20d9af984fcdcd7d8694e9445",
+    "after": "96ff5098c2eb5e2519106c94b09557c5ab9e83443c831b033d24aecec482ba21"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/ideal_gas_compressor_impl.py",
+    "before": "e39dbf16d03b6ab305d7126443d80030f1bb99c29821eacc5d7a212746ae0d3e",
+    "after": "4308ef1982ed594fbb35707ef158c8801e6aebe7063dfb09c3492717b11d4df1"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/ideal_gas_brayton_components/ideal_gas_expander_impl.py",
+    "before": "ea727617a8b2b566fde783a43560b4dbbd38c7016192f729f9a95548173845bf",
+    "after": "c81880bdae220151bfc0eccb848f3753d2213661a0c8723daa0b3863122c1a97"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/fusion_source_selector_impl.py",
+    "before": "8a0682199662d25348dc4491f9884dd15e44848371384fb686eaf31c02440293",
+    "after": "bdf2020c2a9da08ab69c0b39d1c43704266b7d8678eb4e5ceb6f543200e1f738"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/heat_driven_closure_impl.py",
+    "before": "850f1ae6a5d91b57d7d82d002967860017bec5813b97f21a5cc4de3a7214e62d",
+    "after": "e81f467b06fc164dcaec78488d6e586fd80e6837c83d952e8e959ebfc252ff00"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/integrated_heat_source_impl.py",
+    "before": "1691522f8b0a9e5edb0b96bd2053fe35639654344db1d7eeff1eea98e366edef",
+    "after": "549075c7f584bac29c8672d367f4830af5363372c4ae1b1291ca9137933a3f25"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/integrated_plant_ledger_impl.py",
+    "before": "a27bcc09f2edbcccc01c7f5b091693500224d4270f3b9c69d679cc1e6c2db904",
+    "after": "4cac9f866cc3e2bff81c8af7f60d8b0e51e68d0495e218efd8e79c6a1c99392e"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/passive_recuperator_impl.py",
+    "before": "ddfcb4dd027c0c6bc7077feefc9eb929d5b943127eb6167ad06d2087fefe9191",
+    "after": "9e659f3dfcf2f11f8d00b8eed12f969cfd09492c066012c405740707e17412b6"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/integrated_heat_electricity/plant_electrical_balance_impl.py",
+    "before": "0e8049bcbe8092d0c7792069bfa28289a5d265ae9ac87255da6c7d147e8f11f3",
+    "after": "ab0f71ea93f15d54984945725848c450b66e89fd47c42ff0ae103a19018533b1"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/radial_density_profile/radial_density_profile_impl.py",
+    "before": "14eaee78edcbd1b2aa0d88c29d7c1649f6dfd9f3dc82292f41e6183b79e7dfc4",
+    "after": "c194372c86cf0cca5af257071258605437389aa4747af35d010968c9969bb8f8"
+  },
+  {
+    "path": "/artifact_hashes/handwritten/supplied_profile_plasma/supplied_profile_plasma_impl.py",
+    "before": "ea3d0a78e3e9f5816eec6281e15addb5a8572d9c09624999e4eb29c0aa387d59",
+    "after": "9cd8017f23ec791986d42c5ab84b21c8f8f79068e25e1c1bfb661e7be1116930"
+  },
+  {
+    "path": "/executable_fingerprint",
+    "before": "469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7",
+    "after": "b5a21903ba619654f547fa350ddde13753a24edd0ac614153f6467bd620824dc"
+  }
+]

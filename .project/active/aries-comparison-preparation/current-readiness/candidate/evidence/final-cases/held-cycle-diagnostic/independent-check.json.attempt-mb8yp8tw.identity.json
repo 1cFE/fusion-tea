@@ -1,0 +1,8 @@
+{
+  "files": {
+    "input-0.raw": "d92755fbf92956d7ec211622dea6d92cb30de5f95ecbc36937555dada70e742f",
+    "produced.raw.json": "85868bc29f829962d2d57dc764148e1a2965c1610f9d1eaa59b362f1f5efde88",
+    "receipt.json": "01ccabf32ef0222af83d5483960d809177e6942ed9447fc36548a10d13efd7f8"
+  },
+  "result_directory": "independent-check.json.attempt-mb8yp8tw"
+}

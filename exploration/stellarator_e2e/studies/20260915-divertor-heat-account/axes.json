@@ -1,0 +1,219 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "divertor__f_rad_total",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__divertor__f_rad_total",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "divertor__p_nonrad_ref",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__divertor__p_nonrad_ref",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__assembly_clearance",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__assembly_clearance",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__wall_thickness",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__wall_thickness",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__cabling_factor",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__cabling_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__degradation_factor",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__degradation_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__fit_aspect_ratio",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__ground_insulation",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__ground_insulation",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__internal_build_y",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__internal_build_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__j_wp",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__j_wp",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__material_factor",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__material_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__orientation_factor",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__orientation_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sharing_factor",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sharing_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sizing_mode",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__R",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__a",
+      "note": "Complete public-attribute group; diagnostic context control or sensitivity. Acceptance limits remain held.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "paired-source-profile",
+      "note": "Coordinator-declared source-case tie: q_ref=9.5/capture=.99 or q_ref=5/capture=.97, both at Nref=50. Distinct transport cases on the same proposed target arrangement; not one physical scalar identity or a continuous free design axis.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__divertor__q_target_ref",
+          "provenance": "tie"
+        },
+        {
+          "key": "stellarator_09__stellaris__divertor__target_capture_fraction",
+          "provenance": "tie"
+        }
+      ]
+    }
+  ]
+}

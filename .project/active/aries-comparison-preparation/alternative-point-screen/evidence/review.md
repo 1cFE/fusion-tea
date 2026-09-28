@@ -1,0 +1,11 @@
+# Independent alternative-point screen review
+
+[AGENT] **PASS for the bounded applicability screen.** None of the 17 inventoried table entries supports a whole-plant prediction under the frozen breeding response. This verdict does not certify plant physics, engineering feasibility, or numerical LCOE accuracy.
+
+[AGENT] Reviewed the final combined report, source/domain/economic screens, source-point inventory and joined records. Independently inspected Lyon printed pp716–722 images: Tables VII and IX distinguish axis and peak fields; Table X supplies axis fields only. All 17 recorded radii differ from 12.7 m. Repeated designs remain separate table occurrences. SiC material/coolant changes and source inconsistencies remain explicit; missing complete winding specifications are distinguished from available nominal dimensions.
+
+[AGENT] Inspected frozen implementation excerpts and fixed-geometry values. Breeding requires exact equality at all ten fixed coordinates, including R=12.7 m and a=1.3 m. The radius mismatch alone establishes undefined breeding regardless of missing source inputs. Undefined numerical carriers do not demonstrate a physical breeding deficit. A numerical LCOE might still be emitted by other calculations; the report correctly withholds a supported whole-plant result and states that alternative execution was not performed.
+
+[AGENT] One interim defect was repaired: Table X was mislabeled as a beta scan. The final script consumes the source inventory directly and preserves net-electric power labels. Reporting-only replay reproduced domain JSON and joined JSON/CSV exactly. Independent hashing confirmed all 1,350 protected files unchanged. [Exact checks and reviewed artifact identities](review-checks.json).
+
+[AGENT] MR-7 is compliant within this static screen: supplied choices, domains and original runs remain unchanged. Existing breeding validation does not extend to these geometries; no validation-matrix status was changed. Narrower accounting or material checks remain useful only with matched meanings and inputs. The finance discussion correctly distinguishes capital including construction financing from overnight capital. No model function or plant scenario was executed during review. No unresolved finding defeats this bounded conclusion.

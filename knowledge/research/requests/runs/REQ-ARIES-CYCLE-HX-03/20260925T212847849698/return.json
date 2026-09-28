@@ -1,0 +1,19 @@
+{
+  "request_id": "REQ-ARIES-CYCLE-HX-03",
+  "run": "knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-03/20260925T212847849698",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://www.tandfonline.com/doi/abs/10.13182/FST07-6",
+      "reason": "paywalled (2007 journal successor: Wang, Malang, El-Guebaly, Raffray, 'Integration of the Modular Dual Coolant Pb-17Li Blanket Concept in the ARIES-CS Power Plant', FS&T 52(3):635-639, Oct 2007; Crossref shows no licence and only the VoR link; OpenAlex oa_status=closed, no repository full text; T&F landing page returned HTTP 403 bot challenge to automated triage; not purchased, not fetched)"
+    },
+    {
+      "candidate": "https://ieeexplore.ieee.org/document/4018989",
+      "reason": "paywalled (SOFE 2005 paper: Wang, Malang, Raffray, El-Guebaly, 'Modular Dual Coolant Pb-17Li Blanket Design for ARIES-CS Compact Stellarator Power Plant', 21st IEEE/NPSS SOFE 2005, DOI 10.1109/FUSION.2005.252955; IEEE record flags isOpenAccess=false, isFreeDocument=false, no author-manuscript link; OpenAlex oa_status=closed, no repository full text; Semantic Scholar openAccessPdf status CLOSED; not purchased, PDF not fetched)"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

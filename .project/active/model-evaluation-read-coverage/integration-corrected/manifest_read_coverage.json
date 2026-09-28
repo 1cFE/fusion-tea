@@ -1,0 +1,20 @@
+{
+  "outcome": "pass",
+  "scope": "static pipeline references and model contract",
+  "paths": [
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/contracts/model_contract.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_account_costs_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_cryo_plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_fuel_cycle_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_magnet_cost_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_magnet_field_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_plant_systems_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_plasma_scaling_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_plasma_sustainment_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_vacuum_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/mfe_viability_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/pipelines/pipeline.yaml"
+  ]
+}

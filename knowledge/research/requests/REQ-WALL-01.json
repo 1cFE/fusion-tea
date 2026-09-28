@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-WALL-01",
+  "question": "What is the peak-to-average neutron wall load ratio (first-wall peaking factor) for a quasi-isodynamic or helical-axis stellarator reactor, and on what geometry is it defined?",
+  "consumer": "20260903-priced-levers#1",
+  "gap_type": "unsourced_value",
+  "priority": "P0",
+  "where_to_look": [
+    "Fusion Engineering and Design",
+    "Nuclear Fusion stellarator reactor studies",
+    "Journal of Fusion Energy",
+    "HELIAS and W7-X reactor extrapolation neutronics studies",
+    "stellarator first-wall neutron loading distribution papers"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

@@ -1,0 +1,86 @@
+{
+  "mfe": {
+    "before": {
+      "indicator_inputs": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+        "files": [
+          "contracts/model_contract.json",
+          "inputs/mfe_account_costs_params.json",
+          "inputs/mfe_fuel_cycle_params.json",
+          "inputs/mfe_magnet_cost_params.json",
+          "inputs/mfe_magnet_field_params.json",
+          "inputs/mfe_plant_params.json",
+          "inputs/mfe_plasma_scaling_params.json",
+          "inputs/mfe_plasma_sustainment_params.json",
+          "inputs/mfe_vacuum_params.json",
+          "inputs/stellarator_plant_params.json",
+          "pipelines/pipeline.yaml"
+        ]
+      },
+      "recorded_provenance": {
+        "executable_fingerprint": "3ab3ef8d253cc630db655e34b25a6c30694d493b429aa2859e32e8af931ba56b",
+        "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+      }
+    },
+    "after": {
+      "indicator_inputs": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+        "files": [
+          "contracts/model_contract.json",
+          "inputs/mfe_account_costs_params.json",
+          "inputs/mfe_fuel_cycle_params.json",
+          "inputs/mfe_magnet_cost_params.json",
+          "inputs/mfe_magnet_field_params.json",
+          "inputs/mfe_plant_params.json",
+          "inputs/mfe_plasma_scaling_params.json",
+          "inputs/mfe_plasma_sustainment_params.json",
+          "inputs/mfe_vacuum_params.json",
+          "inputs/stellarator_plant_params.json",
+          "pipelines/pipeline.yaml"
+        ]
+      },
+      "recorded_provenance": {
+        "executable_fingerprint": "3ab3ef8d253cc630db655e34b25a6c30694d493b429aa2859e32e8af931ba56b",
+        "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+      }
+    }
+  },
+  "ife": {
+    "before": {
+      "indicator_inputs": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "8e859f0d05c4dcd8dee695779326caad6040172246f0b638a3e851ffa57e47d3",
+        "files": [
+          "contracts/model_contract.json",
+          "inputs/hif_driver_params.json",
+          "inputs/hif_plant_params.json",
+          "inputs/ife_plant_params.json",
+          "pipelines/pipeline.yaml"
+        ]
+      },
+      "recorded_provenance": {
+        "executable_fingerprint": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+        "semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
+      }
+    },
+    "after": {
+      "indicator_inputs": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "8e859f0d05c4dcd8dee695779326caad6040172246f0b638a3e851ffa57e47d3",
+        "files": [
+          "contracts/model_contract.json",
+          "inputs/hif_driver_params.json",
+          "inputs/hif_plant_params.json",
+          "inputs/ife_plant_params.json",
+          "pipelines/pipeline.yaml"
+        ]
+      },
+      "recorded_provenance": {
+        "executable_fingerprint": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+        "semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
+      }
+    }
+  }
+}

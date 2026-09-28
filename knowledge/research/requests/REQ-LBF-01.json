@@ -1,0 +1,16 @@
+{
+  "request_id": "REQ-LBF-01",
+  "question": "What original admissible engineering source supports volume/function building and maintenance-facility unit costs, and what currency/year, construction, shielding, services, equipment and installation scope do those rates cover? Trace UKAEA PROCESS 1990 and Kovari 2014 methods rather than adopt mixed undocumented defaults.",
+  "consumer": "work/orchestration/goals/layout-based-facilities/goal.md",
+  "gap_type": "source_basis",
+  "priority": "P1",
+  "where_to_look": [
+    "UKAEA PROCESS original buildings and cost implementations",
+    "Kovari 2014 PROCESS primary paper and cited building-cost basis",
+    "admissible nuclear or fusion facility construction estimates excluding ARIES-CS-informed material"
+  ],
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 4
+  }
+}

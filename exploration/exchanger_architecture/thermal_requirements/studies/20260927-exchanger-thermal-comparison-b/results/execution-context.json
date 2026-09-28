@@ -1,0 +1,7 @@
+{
+  "repo_commit_at_execution": "0c60dc4a68e8c315fa8bb9405b36f4a70281b108",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/exchanger_architecture/thermal_requirements/exchanger_architecture_thermal_tea --manifest exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/manifest.json --identity exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/preparation/package_identity.json --store exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/results/native/20260927-exchanger-thermal-comparison-b.db --sample-size 1277 --out exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/results/verification_summary.json'",
+  "authority": "Owner delegation retained in owner-supplement-r3.md; T-008 released after Round4 ten-gate integration and independent exact-map/edge recheck.",
+  "historical_plan_note": "axis-plan.json is the byte-preserved original pre-execution plan; native_execution_authorized:false records its preparation phase. Actual execution release is T-008 and this receipt.",
+  "package_git_clean": true
+}

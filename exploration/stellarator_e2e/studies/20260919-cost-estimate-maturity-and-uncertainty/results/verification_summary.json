@@ -1,0 +1,457 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "8bb5408b5fc2fa4696d3afd32082f3ec40aba9e45e3f2edea010808ae35abfac",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "4933add70d7a67238eeb323cb8df6a83ec580a621c88b69e060a1d455b298818"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json",
+    "--identity",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/package_identity.json",
+    "--store",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/study/run-1/20260919-cost-estimate-maturity-and-uncertainty.db",
+    "--sample-size",
+    "74",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_e2e/generated",
+    "package_name": "stellarator_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "e4f76a7daf6ab95a1cf1415dd96325db856c3090d24b7f9bd6df272e06994a95"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "664afa563f167c4cc4ea66ab28fb84f4dfbcda0378a3d3260182d8504b2d8389"
+  },
+  "stores": [
+    {
+      "path": "exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/study/run-1/20260919-cost-estimate-maturity-and-uncertainty.db",
+      "study_id": "20260919-cost-estimate-maturity-and-uncertainty",
+      "compatibility": {
+        "digest": "f52562afd555b6b74d1a64a0e189f94eafcff015272b2dc667f22f1564c3151a",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
+        "strategy_config": "7f794d975175fdf2f03ba7ff7c7282606b4021a9a2f312e33766ffbefdf9038b",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "4c0656afd2f8791c0c550c7c81299987120316116a847524e4889b5893a3d8c0",
+        "study_id": "20260919-cost-estimate-maturity-and-uncertainty"
+      },
+      "cases_total": 74,
+      "cases_completed": 74,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "8061d785bac0c066",
+        "seed_source": "derived",
+        "sample_size_requested": 74,
+        "strata_observed": 1,
+        "sampled_rows": 74,
+        "sampled_case_ids": [
+          "20260919-cost-estimate-maturity-and-uncertainty:c0028",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0066",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0072",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0005",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0065",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0018",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0038",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0051",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0021",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0057",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0053",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0001",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0041",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0061",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0019",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0048",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0056",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0026",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0000",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0009",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0052",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0003",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0006",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0046",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0071",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0002",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0043",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0015",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0027",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0039",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0040",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0047",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0062",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0044",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0024",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0069",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0060",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0042",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0025",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0011",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0073",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0054",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0012",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0014",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0037",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0063",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0055",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0058",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0016",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0030",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0050",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0064",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0036",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0023",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0035",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0031",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0029",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0013",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0022",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0017",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0059",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0020",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0045",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0033",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0067",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0007",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0008",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0010",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0004",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0032",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0070",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0049",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0068",
+          "20260919-cost-estimate-maturity-and-uncertainty:c0034"
+        ]
+      },
+      "worst_channel_rel_dev": 6.497178289047788e-16,
+      "worst_at": {
+        "case_id": "20260919-cost-estimate-maturity-and-uncertainty:c0061",
+        "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "value": 262.468180794553
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__breeding_adequacy__defined_flag",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__buildings__layout__capacity_margin_units",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__buildings__layout__initial_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__buildings__layout__outage_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__buildings__layout__readiness_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__buildings__layout__route_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+      "objective": "cas72"
+    },
+    {
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
+      "objective": "fuel"
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__heating__heat__p_coupled",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "objective": "lcoe_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+      "objective": "magnet_capital_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "objective": "operating_heat_coupled"
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "objective": "operating_heat_delivered"
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "objective": "operating_heat_wallplug"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_net",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__rec_frac",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
+      "objective": "beta"
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "objective": "p_aux_required"
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
+      "objective": "tau_E"
+    },
+    {
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "objective": "cas27"
+    },
+    {
+      "channel": "stellarator_09__stellaris__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__cycle__domain_product",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+      "source_local_identity": "burn_hold_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+      "source_local_identity": "cycle_domain_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "source_local_identity": "divertor_heat_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+      "source_local_identity": "facility_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+      "source_local_identity": "facility_initial_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+      "source_local_identity": "facility_outage_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+      "source_local_identity": "facility_replacement_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+      "source_local_identity": "facility_routes_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+      "source_local_identity": "heating_couple_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+      "source_local_identity": "heating_couple_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+      "source_local_identity": "heating_source_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+      "source_local_identity": "heating_source_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+      "source_local_identity": "loop_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+      "source_local_identity": "loop_pressure_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "source_local_identity": "reference_conductor_current_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+      "source_local_identity": "wp_fit_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 6.497178289047788e-16,
+  "outcome": "pass"
+}

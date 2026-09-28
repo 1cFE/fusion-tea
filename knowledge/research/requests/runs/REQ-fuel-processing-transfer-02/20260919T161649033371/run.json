@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-fuel-processing-transfer-02",
+  "request_key": "055c81e0f75f780a122e50fd2daa33f972eb549b0f28ce66609692d40c833c47",
+  "request_path": "knowledge/research/requests/REQ-fuel-processing-transfer-02.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-19T16:16:49.033554+00:00",
+  "override_reason": null
+}

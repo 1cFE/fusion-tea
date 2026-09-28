@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/fuel-tsta.pdf",
+  "slug": "bartlit_1983_subsystem_cost_data_for_the_tritium_systems",
+  "path": "knowledge/sources/bartlit_1983_subsystem_cost_data_for_the_tritium_systems/",
+  "source_id": "9c70185c020dd5e3bca0163811d58ecc7d76258a95ac84753dfa839c5b33ebad",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T16:07:55.188506+00:00"
+}

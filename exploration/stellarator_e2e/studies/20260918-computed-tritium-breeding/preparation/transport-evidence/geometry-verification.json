@@ -1,0 +1,77 @@
+{
+  "candidate_samples": 2000000,
+  "layers": [
+    {
+      "name": "plasma",
+      "analytic_cm3": 423662638.5211618,
+      "sampled_cm3": 422876038.23363286,
+      "standard_error_cm3": 719708.3253463599,
+      "standardized_residual": -1.0929431546458497
+    },
+    {
+      "name": "plasma_gap",
+      "analytic_cm3": 67685746.98267087,
+      "sampled_cm3": 68194368.26246266,
+      "standard_error_cm3": 309232.6004735851,
+      "standardized_residual": 1.644785443102834
+    },
+    {
+      "name": "armor",
+      "analytic_cm3": 1404855.2818180863,
+      "sampled_cm3": 1386064.3955785097,
+      "standard_error_cm3": 44608.2259891194,
+      "standardized_residual": -0.42124262561259423
+    },
+    {
+      "name": "first_wall",
+      "analytic_cm3": 34318177.84792486,
+      "sampled_cm3": 34321252.57238185,
+      "standard_error_cm3": 220698.6225128091,
+      "standardized_residual": 0.013931779102109356
+    },
+    {
+      "name": "breeder",
+      "analytic_cm3": 742036337.2915021,
+      "sampled_cm3": 743460524.0735717,
+      "standard_error_cm3": 889658.6197747428,
+      "standardized_residual": 1.6008239007791112
+    },
+    {
+      "name": "reflector",
+      "analytic_cm3": 235646674.6804098,
+      "sampled_cm3": 235605093.19744465,
+      "standard_error_cm3": 557362.7500623853,
+      "standardized_residual": -0.07460398629166973
+    },
+    {
+      "name": "ht_shield",
+      "analytic_cm3": 255701710.82342318,
+      "sampled_cm3": 254132393.3410376,
+      "standard_error_cm3": 576825.7185847504,
+      "standardized_residual": -2.7206094177560547
+    },
+    {
+      "name": "structure",
+      "analytic_cm3": 204937400.58641994,
+      "sampled_cm3": 205049914.0397849,
+      "standard_error_cm3": 522970.2408041886,
+      "standardized_residual": 0.21514312782301465
+    },
+    {
+      "name": "assembly_gap",
+      "analytic_cm3": 142892132.51897177,
+      "sampled_cm3": 143077754.0277327,
+      "standard_error_cm3": 441896.06258433906,
+      "standardized_residual": 0.4200569420676879
+    },
+    {
+      "name": "vessel",
+      "analytic_cm3": 147905891.55472553,
+      "sampled_cm3": 148611957.25691822,
+      "standard_error_cm3": 449904.40237689705,
+      "standardized_residual": 1.5693682890464442
+    }
+  ],
+  "csg_ownership": "PASS",
+  "central_hole_void": "PASS"
+}

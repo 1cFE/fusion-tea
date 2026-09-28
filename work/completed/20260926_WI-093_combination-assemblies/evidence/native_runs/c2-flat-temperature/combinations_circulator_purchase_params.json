@@ -1,0 +1,11 @@
+{
+  "combinations_circulator_purchase__circulator_purchase__circulator_capacity__assumed_supported": 1.0,
+  "combinations_circulator_purchase__circulator_purchase__circulator_capacity__demand": 6.26003337158886,
+  "combinations_circulator_purchase__circulator_purchase__circulator_capacity__demand_available": 1.0,
+  "combinations_circulator_purchase__circulator_purchase__circulator_capacity__scenario_applicable": 1.0,
+  "combinations_circulator_purchase__circulator_purchase__circulator_equipment__estimate_mode": 0.0,
+  "combinations_circulator_purchase__circulator_purchase__circulator_equipment__price_factor": 1.0,
+  "combinations_circulator_purchase__circulator_purchase__circulator_equipment__reference_cost": 442174444.74911624,
+  "combinations_circulator_purchase__circulator_purchase__circulator_equipment__reference_quantity": 6.26003337158886,
+  "combinations_circulator_purchase__circulator_purchase__circulator_equipment__selected_rating": 8.0
+}

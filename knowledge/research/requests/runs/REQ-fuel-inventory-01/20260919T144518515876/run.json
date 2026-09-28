@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-fuel-inventory-01",
+  "request_key": "a1f1ec278b8953020d90eca0801b762673d01e4759b599a2dbd999a35ce06b71",
+  "request_path": "knowledge/research/requests/REQ-fuel-inventory-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-19T14:45:18.516054+00:00",
+  "override_reason": null
+}

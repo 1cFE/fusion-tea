@@ -1,0 +1,26 @@
+{
+  "status": "published",
+  "owner_authorization": "2026-09-17: thanks, please close the goal; with replacement-freeze",
+  "archive": ".project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz",
+  "archive_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "file_count": 1498,
+  "archive_bytes": 27470925,
+  "index_sha256": "d219611a3de4c049ff2365ca94af01639070deaa352210a6936ede9c59a75057",
+  "identical_builds": [
+    ".project/active/aries-comparison-preparation/package/freeze/r2-build-c/comparison-freeze.tar.gz",
+    ".project/active/aries-comparison-preparation/package/freeze/r2-build-d/comparison-freeze.tar.gz"
+  ],
+  "independent_review": ".project/active/aries-comparison-preparation/replacement-r2/evidence/final-review.md",
+  "independent_verdict": "PASS",
+  "tests_passed": 97,
+  "accounting_checks": 1022,
+  "passthrough_checks": 219,
+  "native_cases": 2,
+  "per_case_oracle_scalar_agreement": "224/226; two near-zero current-boundary margins retained",
+  "per_case_oracle_predicate_agreement": "19/20; exact-current-boundary sign retained",
+  "per_case_native_operand_agreement": "20/20",
+  "r1_sha256_unchanged": "fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533",
+  "holdout": "sealed",
+  "reveal_authorized": false,
+  "remaining_approval_for_replacement": null
+}

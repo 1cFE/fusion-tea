@@ -1,0 +1,80 @@
+{
+  "outcome": "PASS",
+  "scope": "read-only named JSON; no model/oracle execution or store access",
+  "cases": [
+    {
+      "R": 12.0,
+      "lcoe": 219.8604904631552,
+      "lcoe_1cfe": 215.6682352728755,
+      "violated": [
+        "peak_field_ok"
+      ]
+    },
+    {
+      "R": 12.35,
+      "lcoe": 221.57975682168168,
+      "lcoe_1cfe": 217.36459405520128,
+      "violated": [
+        "peak_field_ok"
+      ]
+    },
+    {
+      "R": 12.7,
+      "lcoe": 224.26923288439,
+      "lcoe_1cfe": 220.0125640803369,
+      "violated": [
+        "divertor_heat_ok"
+      ]
+    },
+    {
+      "R": 13.0,
+      "lcoe": 231.41462669668095,
+      "lcoe_1cfe": 227.0305832790801,
+      "violated": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    },
+    {
+      "R": 13.35,
+      "lcoe": 238.44219055440308,
+      "lcoe_1cfe": 233.95910910118482,
+      "violated": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    },
+    {
+      "R": 13.7,
+      "lcoe": 244.54898949541942,
+      "lcoe_1cfe": 239.96212059477645,
+      "violated": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    },
+    {
+      "R": 14.0,
+      "lcoe": 250.89832244487582,
+      "lcoe_1cfe": 246.2018206142481,
+      "violated": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    }
+  ],
+  "channel_comparisons": 987,
+  "qualified_verdict_comparisons": 126,
+  "independent_ratio_recalculations": 42,
+  "worst_recorded_channel_deviation": 7.53300808677988e-15,
+  "unsupported_inputs": 147,
+  "omitted_independent_outputs": 17
+}

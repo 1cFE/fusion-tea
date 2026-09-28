@@ -23,6 +23,10 @@ package mfe_cryo_plant {
             steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
             wall-plug power" = heat load x plant efficiency -- semantics
             witness only, value inadmissible)
+        Domain: 0 < T_cold < T_amb. Native typed manual completion raises
+        ValueError before any COP arithmetic when the temperature ordering
+        fails. Valid default temperatures retain dormant/direct-power behavior.
+
         **Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
             concept-agnostic (MR-3) -- all values bound by instances
         */
@@ -44,10 +48,8 @@ package mfe_cryo_plant {
         // directly-specified cryoplant electrical [MW] (additive)
         in attribute p_direct : Real default 0.0;
 
-        attribute p_cold : Real = (q_nuc * vol_cold * 1.0e-6 + p_fixed) * f_uplift;
-        attribute cop_carnot : Real = T_cold / (T_amb - T_cold);
-        attribute cop : Real = f_carnot * cop_carnot;
-
-        out attribute p_elec : Real = p_cold / cop + p_direct;
+        // Native manual completion enforces the documented temperature domain
+        // before evaluating the unchanged refrigeration equations (WI-053).
+        out attribute p_elec : Real;
     }
 }

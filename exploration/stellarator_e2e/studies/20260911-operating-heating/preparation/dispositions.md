@@ -1,0 +1,10 @@
+# Pre-execution dispositions and authorization
+
+[AGENT] Parent accepts the fresh critique's two concrete findings before any TEAx baseline or point. The original 16-case proposal, preliminary probes and FINDINGS review remain unchanged. The effective proposal is `execution-proposal.json`, with 15 cases. These are execution decisions under the authorized study scope, not owner-originated requirements.
+
+- F1: Fixed by replacing separate arm runs with one stock `run_points` call over the ordered arm/case union in `study.py::run_all`. All arms share one store and package fingerprint. Execution must retain actual candidate IDs and proposal indices, verify their inputs, and map labels without assuming query order.
+- F2: Decline the ill-conditioned algebraic center before execution. Retain its preliminary residual and formula as declined evidence; retain the positive/negative flanks in `arm-signed-bracket`. Stock relative verification and exact sign predicates remain unchanged. The additional absolute tolerance applies only to independently stated identity residuals. No full-plant exact-zero result will be claimed; copied native component evidence retains that separate scope.
+
+The reserve equality value remains a candidate pending the exact pinned baseline and formal post-preflight scan. Compare it with the baseline demand before freezing the window. Any resulting pre-sweep decision must be recorded; never retune after seeing sweep outcomes. All four explored axes retain their indicators, including declined temperature. No no-constraint-response axis is scheduled.
+
+Parent authorizes native baseline, all preflight gates, formal oracle scan, window freeze and then execution under the corrected proposal. No additional clean-verdict artifact is required for these exact, objectively checked corrections to the critic's recommendations. Keep the named pre-execution verdict FINDINGS with F1/F2 dispositioned, rather than relabeling the critic's report PASS. The executor owns final strict export, snapshot/report and fresh correctness/honesty/readability review; no source/finance/model/package change is authorized.

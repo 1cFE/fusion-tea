@@ -1,0 +1,39 @@
+# WI-069 independent implementation audit
+
+**Verdict: PASS for the reviewed implementation and readiness to enter native integration.** Reviewed 2026-09-19 by the non-author accounting/source reviewer. No open implementation finding remains in the inspected scope. This is not whole-item completion: final native integration, the focused study, unchanged-rubric grading and owner-held goal closure remain subsequent evidence.
+
+## Audited identity
+
+The candidate is an uncommitted working-tree change based on `e36fe456805655fe404d49a5fd4d83f9f8c814a4`, not a new pinned Git revision. The reviewed executable fingerprint is `e19b63a03be3a00ebd5cec4ce4ed06a082f5bb7ed89b736aed06feaea8d1e319`. Reviewer checks matched every recorded SHA256 for 35 normative seeds, 367 generated package files and 38 model files in `evidence/candidate-seeds.json`, `evidence/package-hashes.json` and `evidence/model-hashes.json`. All five affected canonical/exploration pairs were byte-identical. The final inventory seed hash is `6b47aba8c234e02779892b76f05fdba29733083006457fd9db088874e05bd1e2`.
+
+`evidence/baseline.json` SHA256 is `8221bff54dd78965211821a01c62896001abc4093c282cc716929ec6c7d52ca3`. `evidence/strict-inventory-baseline.json` SHA256 is `9acac3a62a39788aaa7b520a273accdfc68902dfcad953e50eca2718abf18f62`. These identify the receipt contents inspected here; source or executable changes require assessing their effect on this verdict.
+
+## Contract and implementation checks
+
+- The released `spec.md`, `design.md`, `evidence/proposed-abi.md` and `evidence/verification-plan.md` match the implemented conditional boundary. Original-source transcription and scientific judgments reuse the unchanged source/design review at `work/orchestration/goals/fuel-inventory-and-startup/evidence/source-design-review.md`; no source values were newly approved during this audit.
+- Seven actual `Fuel Stock` occurrences bind their atoms and kg to calculation outputs in `models/library/structure/mfe_plant_systems.sysml`. They represent feed, plasma, combined processing, breeder zone, extraction, buffer and reserve. Combined processor stock uses unburned inlet flow before outlet loss. Breeder/extraction stock uses gross production, with extraction efficiency applied once. Neither reserve nor stage fill is purchased twice.
+- Plasma stock uses the existing volume, peak tritium density and fuel-profile exponent. Generic wiring, stellarator activation and generated pipeline bindings were inspected. Burn is independently calculated from the same power/energy inputs to avoid a dependency cycle. Computed `I_total` feeds both the original fuel requirement and breeding adequacy; the old active public inventory input is retired.
+- The generated manual implementation follows the four-event startup maximum, separate prefill, finite commissioning horizon and conservative allowance including its own decay. Ongoing shortage is separate. Running capacity is independent of availability; calendar production uses productive time while maintained stock decays throughout calendar time. D+T capacity uses distinct atomic masses. Passive remaining stock and maintained-stock replacement have separate meanings.
+- Dormant held stock passes through without a computed inventory claim. Undefined breeding masks production carriers and invalidates production-dependent interpretation while retaining independent nonbreeding quantities. Existing breeding applicability remains authoritative. Invalid domains and arithmetic are refused.
+- Existing required-breeding arithmetic and fuel/capital pricing equations remain unchanged. The prior fixed-1.19 test was correctly updated to include the existing decay term with computed inventory. Family tests now name the 13 added controls and one retired control explicitly; their current strict seed receipt points to this work item.
+
+## Findings resolved before release
+
+1. Undefined breeding with stale positive TBR originally produced nonzero gross-production carriers. A public-module counterexample returned 0.51 kg/s against oracle zero. Production is now masked by applicability; retained tests cover this case.
+2. Computing passive remaining stock by subtracting decay loss cancelled a positive late-time tail to zero. A valid startup case returned zero instead of `2.230385984028084e-17` kg. Remaining stock now uses `exp` directly; loss retains `expm1`. Reviewer reproduction and native positive-tail tests pass.
+3. The independent oracle originally accepted overflow of reaction-energy multiplication as zero burn. It now rejects nonfinite/nonpositive reaction energy. Native and oracle both reject the reproduced counterexample.
+4. Native arithmetic originally accepted burn underflow to zero and overflow of the shutdown decay exponent. Explicit guards now reject both. Reviewer re-executed these counterexamples through the final typed public module and independent oracle; both refuse them.
+
+## Verification evidence and limits
+
+`evidence/generation-final.log` records exact equality of two fresh generated packages and preservation of the 34 earlier normative seeds. Reviewer inspected the generation/seed recipe and independently checked current hash custody; the reviewer did not rerun generation.
+
+`evidence/repin-final.log` compares all 906 mapped baseline outputs. All 70 new channels pass relative tolerance `1e-10`, absolute `1e-18`, recorded against the final executable fingerprint in `evidence/strict-inventory-baseline.json`. The native package has 470 public inputs and 914 numeric outputs; eight numeric outputs remain outside the oracle mapping and are not claimed covered by those 906 comparisons.
+
+Final author checks pass 75 tests (`evidence/author-final-domain-tests.log`). Final independent oracle/breeding checks pass 195 tests (`evidence/oracle-regressions.log`), including 700 comparisons across ten off-reference native cases at relative tolerance `1e-9`, absolute `1e-18`, and an additional positive-tail shutdown check with zero absolute tolerance. `evidence/oracle-native-off-reference.json` records the final fingerprint, source hashes and unchanged seal. Warnings concern Boolean serialization and do not constitute test failures.
+
+The preceding full author/breeding/calendar/family battery passed 218 tests (`evidence/affected-final-current.log`) before the last two arithmetic guards. Its structural/calendar evidence is reused with this explicit identity limit. Final native integration must perform its required family checks on the final package. Early failed runs remain in the evidence directory; their obsolete requirement expectation, receipt pointer and inadmissible availability-test route were repaired rather than reported as passing or inherited physical failures.
+
+Complete native static validation exits 1: L1/L3/L4/L5 pass; L2 retains the same ten issues; L6 grows from 1,076 to 1,079. Reviewer inspected the three additions: dot-reference reports on `I_total`, plasma volume and tritium density EXPOSEs. Generated runtime dependencies correctly resolve those producers, and native/oracle tests exercise them. `evidence/static-classification.md` accurately records this executable evidence without calling the static errors passes or certifying inherited residue.
+
+Conditional represented inventory is supported. Helium/PbLi residence qualification, omitted retention/permeation/bypass, physical startup delivery, reserve reliability and obtainable external tritium remain outside this result. No full self-sufficiency or total-plant qualification follows from numerical agreement. The reviewer changed no implementation, tests, source facts, frozen r2 or historical studies.

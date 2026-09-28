@@ -1,0 +1,34 @@
+{
+  "cases": 108,
+  "channels_per_case": 161,
+  "numeric_comparisons": 17388,
+  "outcome": "PASS",
+  "tolerance": {
+    "absolute": null,
+    "relative": 1e-09
+  },
+  "unmapped_numeric_channels": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__magnet__coil_length__c_coil",
+    "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+    "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event"
+  ],
+  "verdict_comparisons": 1944,
+  "worst": {
+    "case": "20260913-magnet-design-transfer:c0020",
+    "channel": "stellarator_09__stellaris__calendar__terminal_downtime_yr",
+    "relative_deviation": 3.0938283708360177e-13
+  }
+}

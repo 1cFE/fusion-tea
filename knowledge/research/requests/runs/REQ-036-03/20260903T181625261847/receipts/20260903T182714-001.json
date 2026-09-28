@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://arxiv.org/pdf/1502.06713",
+  "slug": "electro_mechanical_properties_of_rebco_coated_conductors",
+  "path": "knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/",
+  "source_id": "15ec2a340eaba7b7797f8a9be2a0170aa1b5c33a6d6b6bf744ca8923deab3a53",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-03T18:27:14.178519+00:00"
+}

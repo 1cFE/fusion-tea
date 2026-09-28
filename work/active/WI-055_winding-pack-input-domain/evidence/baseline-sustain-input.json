@@ -1,0 +1,22 @@
+{
+  "iota_23_in": 0.92,
+  "Z_eff_in": 1.2,
+  "ash_frac_in": 0.2002,
+  "alpha_T_in": 1.19,
+  "kappa_sync_in": 1.0,
+  "V": 425.0000143721807,
+  "n_e0_in": 5.06e+20,
+  "T_i0_in": 14.63,
+  "f_suppr_in": 0.5,
+  "R_in": 12.7,
+  "tau_ratio_in": 8.0,
+  "f_ren_in": 1.0,
+  "f_W_in": 7.76e-06,
+  "E_fus_in": 2.817e-12,
+  "alpha_n_in": 0.33,
+  "B_in": 8.999999999999998,
+  "f_alpha_in": 0.95,
+  "r_TiTe_in": 0.95,
+  "R_w_sync_in": 0.6,
+  "a_in": 1.3
+}

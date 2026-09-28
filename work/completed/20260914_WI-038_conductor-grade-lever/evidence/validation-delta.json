@@ -1,0 +1,20 @@
+{
+  "L2": {
+    "before_success": false,
+    "after_success": false,
+    "before_count": 10,
+    "after_count": 10,
+    "removed": [],
+    "added": [],
+    "unchanged_identities": 10
+  },
+  "L6": {
+    "before_success": false,
+    "after_success": false,
+    "before_count": 249,
+    "after_count": 249,
+    "removed": [],
+    "added": [],
+    "unchanged_identities": 238
+  }
+}

@@ -1,0 +1,1225 @@
+{
+  "status": "PASS",
+  "kind": "all-point native development numerical verification; not main study",
+  "executable_fingerprint": "668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23",
+  "relative_tolerance": 1e-09,
+  "absolute_tolerances": [
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+      "value": 1.9073486328125e-06,
+      "units": "USD2004",
+      "basis": "Two ULP of the capital magnitude covers cancellation in the subtractive IDC diagnostic; no other financial channel relaxed. Evidence: exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/tiny-rate-tolerance.json"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(new_feed - gross_makeup, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(gross_makeup - new_feed, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(new_feed - gross_makeup, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(gross_makeup - new_feed, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination 1e-8 MW plus roundoff; independent Brent root 1e-11 K. Numerical comparison only, below 1e-6 MW engineering solve contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    }
+  ],
+  "comparison_catalog": [
+    "aries_integrated_plant__annual_om__evaluate__annual_om",
+    "aries_integrated_plant__auxiliary_cooling__estimate__amount",
+    "aries_integrated_plant__auxiliary_cooling__purchase__cost",
+    "aries_integrated_plant__blanket_inventory__purchase__capital",
+    "aries_integrated_plant__blanket_inventory__purchase__extrapolated",
+    "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity",
+    "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio",
+    "aries_integrated_plant__blanket_inventory__purchase__source_budget",
+    "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__compressor_capacity__evaluate__margin",
+    "aries_integrated_plant__compressor_equipment__purchase__capital",
+    "aries_integrated_plant__compressor_equipment__purchase__extrapolated",
+    "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__compressor_equipment__purchase__source_budget",
+    "aries_integrated_plant__contingency__evaluate__cost",
+    "aries_integrated_plant__contingency_basis__evaluate__total",
+    "aries_integrated_plant__conversion_equipment__evaluate__total",
+    "aries_integrated_plant__conversion_services__estimate__amount",
+    "aries_integrated_plant__conversion_services__purchase__cost",
+    "aries_integrated_plant__core_cost__evaluate__total",
+    "aries_integrated_plant__core_first__evaluate__total",
+    "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh",
+    "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost",
+    "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh",
+    "aries_integrated_plant__cost_ledger__evaluate__annual_operating",
+    "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve",
+    "aries_integrated_plant__cost_ledger__evaluate__currency_year",
+    "aries_integrated_plant__cost_ledger__evaluate__direct",
+    "aries_integrated_plant__cost_ledger__evaluate__direct_difference",
+    "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement",
+    "aries_integrated_plant__cost_ledger__evaluate__overnight",
+    "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess",
+    "aries_integrated_plant__cost_ledger__evaluate__source_core_excess",
+    "aries_integrated_plant__cost_ledger__evaluate__source_direct",
+    "aries_integrated_plant__cost_ledger__evaluate__source_inclusive",
+    "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap",
+    "aries_integrated_plant__deposition__evaluate__divertor_friction",
+    "aries_integrated_plant__deposition__evaluate__he_friction",
+    "aries_integrated_plant__deposition__evaluate__pbli_friction",
+    "aries_integrated_plant__deposition__evaluate__pump_electric",
+    "aries_integrated_plant__direct_cost__evaluate__total",
+    "aries_integrated_plant__direct_source_scope__evaluate__total",
+    "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__divertor_capacity__evaluate__margin",
+    "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+    "aries_integrated_plant__divertor_duty_equipment__purchase__capital",
+    "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated",
+    "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget",
+    "aries_integrated_plant__divertor_hx__evaluate__area",
+    "aries_integrated_plant__divertor_hx__evaluate__ua",
+    "aries_integrated_plant__divertor_hx__purchase__capital",
+    "aries_integrated_plant__divertor_hx__purchase__extrapolated",
+    "aries_integrated_plant__divertor_hx__purchase__purchased_quantity",
+    "aries_integrated_plant__divertor_hx__purchase__quantity_ratio",
+    "aries_integrated_plant__divertor_hx__purchase__source_budget",
+    "aries_integrated_plant__divertor_inventory__estimate__amount",
+    "aries_integrated_plant__divertor_inventory__purchase__cost",
+    "aries_integrated_plant__divertor_pump__evaluate__electric",
+    "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported",
+    "aries_integrated_plant__divertor_pump__evaluate__mode",
+    "aries_integrated_plant__divertor_pump__evaluate__operating_flow",
+    "aries_integrated_plant__divertor_pump__purchase__capital",
+    "aries_integrated_plant__divertor_pump__purchase__extrapolated",
+    "aries_integrated_plant__divertor_pump__purchase__purchased_quantity",
+    "aries_integrated_plant__divertor_pump__purchase__quantity_ratio",
+    "aries_integrated_plant__divertor_pump__purchase__source_budget",
+    "aries_integrated_plant__divertor_pump__screen__evaluation_defined",
+    "aries_integrated_plant__divertor_pump__screen__margin",
+    "aries_integrated_plant__electrical_equipment__estimate__amount",
+    "aries_integrated_plant__electrical_equipment__purchase__cost",
+    "aries_integrated_plant__facilities__estimate__amount",
+    "aries_integrated_plant__facilities__purchase__cost",
+    "aries_integrated_plant__fuel__evaluate__burn_rate",
+    "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+    "aries_integrated_plant__fuel__evaluate__loss_rate",
+    "aries_integrated_plant__fuel__evaluate__tbr_required",
+    "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__fuel_capacity__evaluate__margin",
+    "aries_integrated_plant__fuel_equipment__evaluate__total",
+    "aries_integrated_plant__fuel_inventory__annual__annual_burn",
+    "aries_integrated_plant__fuel_inventory__annual__annual_cost",
+    "aries_integrated_plant__fuel_inventory__annual__annual_decay",
+    "aries_integrated_plant__fuel_inventory__annual__annual_external",
+    "aries_integrated_plant__fuel_inventory__annual__annual_loss",
+    "aries_integrated_plant__fuel_inventory__annual__annual_recovery",
+    "aries_integrated_plant__fuel_inventory__annual__breeding_supported",
+    "aries_integrated_plant__fuel_inventory__annual__required_stock",
+    "aries_integrated_plant__fuel_inventory__atoms__atoms",
+    "aries_integrated_plant__fuel_inventory__atoms__stock_kg",
+    "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel",
+    "aries_integrated_plant__fuel_inventory__purchase__amount",
+    "aries_integrated_plant__fuel_inventory__screen__evaluation_defined",
+    "aries_integrated_plant__fuel_inventory__screen__margin",
+    "aries_integrated_plant__fuel_processing_equipment__purchase__capital",
+    "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated",
+    "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget",
+    "aries_integrated_plant__fuel_services__estimate__amount",
+    "aries_integrated_plant__fuel_services__purchase__cost",
+    "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+    "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__generator_capacity__evaluate__margin",
+    "aries_integrated_plant__generator_equipment__purchase__capital",
+    "aries_integrated_plant__generator_equipment__purchase__extrapolated",
+    "aries_integrated_plant__generator_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__generator_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__generator_equipment__purchase__source_budget",
+    "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__he_capacity__evaluate__margin",
+    "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+    "aries_integrated_plant__he_duty_equipment__purchase__capital",
+    "aries_integrated_plant__he_duty_equipment__purchase__extrapolated",
+    "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__he_duty_equipment__purchase__source_budget",
+    "aries_integrated_plant__he_hx__evaluate__area",
+    "aries_integrated_plant__he_hx__evaluate__ua",
+    "aries_integrated_plant__he_hx__purchase__capital",
+    "aries_integrated_plant__he_hx__purchase__extrapolated",
+    "aries_integrated_plant__he_hx__purchase__purchased_quantity",
+    "aries_integrated_plant__he_hx__purchase__quantity_ratio",
+    "aries_integrated_plant__he_hx__purchase__source_budget",
+    "aries_integrated_plant__he_pump__evaluate__electric",
+    "aries_integrated_plant__he_pump__evaluate__hydraulic_supported",
+    "aries_integrated_plant__he_pump__evaluate__mode",
+    "aries_integrated_plant__he_pump__evaluate__operating_flow",
+    "aries_integrated_plant__he_pump__purchase__capital",
+    "aries_integrated_plant__he_pump__purchase__extrapolated",
+    "aries_integrated_plant__he_pump__purchase__purchased_quantity",
+    "aries_integrated_plant__he_pump__purchase__quantity_ratio",
+    "aries_integrated_plant__he_pump__purchase__source_budget",
+    "aries_integrated_plant__he_pump__screen__evaluation_defined",
+    "aries_integrated_plant__he_pump__screen__margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+    "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+    "aries_integrated_plant__heat_exchangers__evaluate__control_mode_used",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_active_flow",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_hx_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_mixed_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
+    "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+    "aries_integrated_plant__heat_exchangers__evaluate__expansion_factor",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_active_flow",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_capability",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hot",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_hx_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_mixed_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
+    "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+    "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+    "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet",
+    "aries_integrated_plant__heat_exchangers__evaluate__network_mode_used",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_active_flow",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_hx_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_mixed_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_return",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
+    "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+    "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+    "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+    "aries_integrated_plant__heat_rejection_equipment__purchase__capital",
+    "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated",
+    "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget",
+    "aries_integrated_plant__heat_transport_cost__evaluate__total",
+    "aries_integrated_plant__heating_equipment__estimate__amount",
+    "aries_integrated_plant__heating_equipment__purchase__cost",
+    "aries_integrated_plant__impurity_control__estimate__amount",
+    "aries_integrated_plant__impurity_control__purchase__cost",
+    "aries_integrated_plant__indirect_cost__evaluate__cost",
+    "aries_integrated_plant__instrumentation_control__estimate__amount",
+    "aries_integrated_plant__instrumentation_control__purchase__cost",
+    "aries_integrated_plant__inventory_comparison__evaluate__difference",
+    "aries_integrated_plant__inventory_comparison__support__amount",
+    "aries_integrated_plant__known_dry_inventory__evaluate__total",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__currency_year",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__new_feed",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__real_convention",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__salvage",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe",
+    "aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe",
+    "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+    "aries_integrated_plant__lipb_comparison__evaluate__difference",
+    "aries_integrated_plant__lipb_comparison__price__amount",
+    "aries_integrated_plant__lipb_inventory__inventory__amount",
+    "aries_integrated_plant__lipb_inventory__purchase__capital",
+    "aries_integrated_plant__lipb_inventory__purchase__extrapolated",
+    "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity",
+    "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio",
+    "aries_integrated_plant__lipb_inventory__purchase__source_budget",
+    "aries_integrated_plant__magnet_inventory__inventory__total",
+    "aries_integrated_plant__magnet_inventory__purchase__capital",
+    "aries_integrated_plant__magnet_inventory__purchase__extrapolated",
+    "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity",
+    "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio",
+    "aries_integrated_plant__magnet_inventory__purchase__source_budget",
+    "aries_integrated_plant__magnet_power_supplies__estimate__amount",
+    "aries_integrated_plant__magnet_power_supplies__purchase__cost",
+    "aries_integrated_plant__miscellaneous_equipment__estimate__amount",
+    "aries_integrated_plant__miscellaneous_equipment__purchase__cost",
+    "aries_integrated_plant__operating_levelization__evaluate__crf",
+    "aries_integrated_plant__operating_levelization__evaluate__levelized",
+    "aries_integrated_plant__other_reactor_equipment__estimate__amount",
+    "aries_integrated_plant__other_reactor_equipment__purchase__cost",
+    "aries_integrated_plant__owner_commissioning__evaluate__amount",
+    "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__pbli_capacity__evaluate__margin",
+    "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+    "aries_integrated_plant__pbli_duty_equipment__purchase__capital",
+    "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated",
+    "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget",
+    "aries_integrated_plant__pbli_hx__evaluate__area",
+    "aries_integrated_plant__pbli_hx__evaluate__ua",
+    "aries_integrated_plant__pbli_hx__purchase__capital",
+    "aries_integrated_plant__pbli_hx__purchase__extrapolated",
+    "aries_integrated_plant__pbli_hx__purchase__purchased_quantity",
+    "aries_integrated_plant__pbli_hx__purchase__quantity_ratio",
+    "aries_integrated_plant__pbli_hx__purchase__source_budget",
+    "aries_integrated_plant__pbli_pump__evaluate__electric",
+    "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported",
+    "aries_integrated_plant__pbli_pump__evaluate__mode",
+    "aries_integrated_plant__pbli_pump__evaluate__operating_flow",
+    "aries_integrated_plant__pbli_pump__purchase__capital",
+    "aries_integrated_plant__pbli_pump__purchase__extrapolated",
+    "aries_integrated_plant__pbli_pump__purchase__purchased_quantity",
+    "aries_integrated_plant__pbli_pump__purchase__quantity_ratio",
+    "aries_integrated_plant__pbli_pump__purchase__source_budget",
+    "aries_integrated_plant__pbli_pump__screen__evaluation_defined",
+    "aries_integrated_plant__pbli_pump__screen__margin",
+    "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+    "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+    "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+    "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+    "aries_integrated_plant__primary_heat_cost__evaluate__total",
+    "aries_integrated_plant__primary_piping__estimate__amount",
+    "aries_integrated_plant__primary_piping__purchase__cost",
+    "aries_integrated_plant__primary_support__purchase__capital",
+    "aries_integrated_plant__primary_support__purchase__extrapolated",
+    "aries_integrated_plant__primary_support__purchase__purchased_quantity",
+    "aries_integrated_plant__primary_support__purchase__quantity_ratio",
+    "aries_integrated_plant__primary_support__purchase__source_budget",
+    "aries_integrated_plant__reactor_cost__evaluate__total",
+    "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__rejection_capacity__evaluate__margin",
+    "aries_integrated_plant__replacement__evaluate__annual_reserve",
+    "aries_integrated_plant__replacement__evaluate__event_cost",
+    "aries_integrated_plant__replacement__evaluate__event_count",
+    "aries_integrated_plant__replacement__evaluate__first_event_year",
+    "aries_integrated_plant__replacement__evaluate__interval_years",
+    "aries_integrated_plant__replacement__evaluate__last_event_year",
+    "aries_integrated_plant__replacement__evaluate__lifetime_total",
+    "aries_integrated_plant__replacement_lipb__evaluate__amount",
+    "aries_integrated_plant__replacement_price__evaluate__amount",
+    "aries_integrated_plant__replacement_scope__evaluate__total",
+    "aries_integrated_plant__secondary_transport__estimate__amount",
+    "aries_integrated_plant__secondary_transport__purchase__cost",
+    "aries_integrated_plant__shield_inventory__inventory__total",
+    "aries_integrated_plant__shield_inventory__purchase__capital",
+    "aries_integrated_plant__shield_inventory__purchase__extrapolated",
+    "aries_integrated_plant__shield_inventory__purchase__purchased_quantity",
+    "aries_integrated_plant__shield_inventory__purchase__quantity_ratio",
+    "aries_integrated_plant__shield_inventory__purchase__source_budget",
+    "aries_integrated_plant__site_land__estimate__amount",
+    "aries_integrated_plant__site_land__purchase__cost",
+    "aries_integrated_plant__source__evaluate__selected_power",
+    "aries_integrated_plant__source_budget__evaluate__direct_total",
+    "aries_integrated_plant__source_budget__evaluate__inclusive_capital",
+    "aries_integrated_plant__source_coil_children__evaluate__total",
+    "aries_integrated_plant__source_core_children_first__evaluate__total",
+    "aries_integrated_plant__source_finance__boundary__years",
+    "aries_integrated_plant__source_finance_energy__evaluate__annual_energy",
+    "aries_integrated_plant__source_fuel_children__evaluate__total",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__idc",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe",
+    "aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe",
+    "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+    "aries_integrated_plant__source_reactor_children__evaluate__total",
+    "aries_integrated_plant__source_reconciliation__coil_excess_calc__difference",
+    "aries_integrated_plant__source_reconciliation__core_excess_calc__difference",
+    "aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference",
+    "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference",
+    "aries_integrated_plant__source_replacement_comparison__cost__amount",
+    "aries_integrated_plant__source_replacement_comparison__evaluate__difference",
+    "aries_integrated_plant__source_replacement_comparison__mass__amount",
+    "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+    "aries_integrated_plant__turbine_capacity__evaluate__margin",
+    "aries_integrated_plant__turbine_equipment__purchase__capital",
+    "aries_integrated_plant__turbine_equipment__purchase__extrapolated",
+    "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__turbine_equipment__purchase__source_budget",
+    "aries_integrated_plant__unallocated_source_scope__estimate__amount",
+    "aries_integrated_plant__unallocated_source_scope__purchase__cost",
+    "aries_integrated_plant__vacuum_equipment__inventory__total",
+    "aries_integrated_plant__vacuum_equipment__purchase__capital",
+    "aries_integrated_plant__vacuum_equipment__purchase__extrapolated",
+    "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity",
+    "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio",
+    "aries_integrated_plant__vacuum_equipment__purchase__source_budget",
+    "aries_integrated_plant__vf_coils__estimate__amount",
+    "aries_integrated_plant__vf_coils__purchase__cost",
+    "aries_integrated_plant__waste_equipment__estimate__amount",
+    "aries_integrated_plant__waste_equipment__purchase__cost"
+  ],
+  "operand_bindings": {
+    "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__divertor_pump__screen__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__divertor_pump__screen__margin"
+      }
+    },
+    "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__rejection_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__turbine_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__compressor_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__fuel_inventory__screen__margin"
+      }
+    },
+    "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__pbli_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__divertor_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__he_pump__screen__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__he_pump__screen__margin"
+      }
+    },
+    "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__fuel_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_return_ok__f69c5310bdcc41d7": {
+      "residual_magnitude_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude"
+      },
+      "tolerance_in": {
+        "kind": "input",
+        "key": "aries_integrated_plant__heat_exchangers__return_tolerance"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_control_ok__0c3b021e2e8589fb": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_return_ok__100f6bf9ad61a22c": {
+      "residual_magnitude_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude"
+      },
+      "tolerance_in": {
+        "kind": "input",
+        "key": "aries_integrated_plant__heat_exchangers__return_tolerance"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_control_ok__14c1c0f314a994fd": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_return_ok__ae5f4d6db630fc8e": {
+      "residual_magnitude_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude"
+      },
+      "tolerance_in": {
+        "kind": "input",
+        "key": "aries_integrated_plant__heat_exchangers__return_tolerance"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_cold_approach_ok__e70598993d392f74": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_state_ok__4664e5e1ddbb7ac5": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_required_hot_ok__3371b55ff752c6e4": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_state_ok__d5b9d58030392fe5": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_state_ok__416e01681b16be81": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_hot_cap_ok__05ebd6dad2e4adc1": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_cold_approach_ok__667d6ca45c6e61de": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_control_ok__f48454bb1d6f0e91": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_required_hot_ok__712add8be60bd1ae": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_hot_approach_ok__7a2967e855192aeb": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_hot_approach_ok__85855c74bdb13305": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_hot_cap_ok__cd5f29bd8533c481": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_hot_cap_ok__73a44108fcb5be1c": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__divertor_hot_approach_ok__5e95ef937d10cc33": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__he_cold_approach_ok__eab4f3486f0aa140": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin"
+      }
+    },
+    "aries_integrated_plant__heat_exchangers__pbli_required_hot_ok__aa9057b8ce236e6b": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin"
+      }
+    },
+    "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__he_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__pbli_pump__screen__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__pbli_pump__screen__margin"
+      }
+    },
+    "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161": {
+      "defined_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined"
+      },
+      "margin_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__generator_capacity__evaluate__margin"
+      }
+    },
+    "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07": {
+      "unmet_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat"
+      },
+      "tolerance_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance"
+      }
+    },
+    "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535": {
+      "magnitude_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude"
+      },
+      "tolerance_in": {
+        "kind": "channel",
+        "key": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance"
+      }
+    }
+  },
+  "source_sha256": {
+    "exploration/exchanger_architecture/thermal_requirements/studies/oracle_entry.py": "cc5d3477836ea7fd49b8063bcc7eafa773b97226d88344a553937065e8241bfc",
+    "exploration/exchanger_architecture/thermal_requirements/studies/thermal_oracle.py": "83ee791150eb345e216d0784717677002873faef626c6da56a328d4fb1eb68e0",
+    "exploration/aries_integrated/studies/oracle_entry.py": "0d711df9eeb0544342a84cca543a7ab4aa637df1eb0e845015a9c6888fad1dbe",
+    "exploration/aries_integrated/studies/equipment_bindings.py": "15bb56c1e58b5cb3522be428bcb1a03529d47ec5c0fb38ba5ed5fac5667c6a75",
+    "exploration/aries_integrated/studies/equipment_oracle.py": "cf20068b6e8d0c3cbb2114c5cacba97d2ea09eb5e7c682d9770e52ed38450fab",
+    "exploration/aries_integrated/studies/lifecycle_bindings.py": "038117c55763d1ee1b12c29cbc6e2a71111015c892f7f324bd4a4b38ff668aa1",
+    "exploration/aries_integrated/studies/lifecycle_oracle.py": "dbdab6b6748e0cd051fa9a42bcd04906f948cdf73f764ad3a096f88bf7d3c5ff",
+    "exploration/aries_integrated/studies/study_route.py": "3c37f2047aa196d7bd0343d05bfd9ea77fd510bace3b226889a9f401d9df06d3",
+    "exploration/aries_integrated/studies/interface_data.py": "9682b2f503f6601dcaf6a7ec12d56208e88880eb19acee2a3ddeaa4b534512ab",
+    "exploration/exchanger_architecture/thermal_requirements/studies/prepare_interface.py": "7fa061b5e03109cb6e6bb1b8b58339d8a9d6a20d130b56b41354602dffecd3af",
+    "exploration/exchanger_architecture/thermal_requirements/studies/study_route.py": "820693c9f94ae41dfd9af50bd140acd8a4dbf85c44e35d7f336c9b1c323baa3c",
+    "exploration/aries_integrated/studies/manifest.json": "16b91d0ef205beb7ac04ad0ae4452a55895efd222bdebde9d7a83cbf237b3078"
+  },
+  "cases": [
+    {
+      "case": "replay-nominal-calculated",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 7.538801582995801e+21,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 7.92351784184575e-09
+    },
+    {
+      "case": "replay-supplied-n",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 33156.0,
+      "worst_channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 7.918742994661443e-09
+    },
+    {
+      "case": "replay-series-leader-2300",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 107.45454545454545,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 5.607034836430103e-10
+    },
+    {
+      "case": "replay-network-leader-2300",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 31.21875,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 4.770299710799009e-10
+    },
+    {
+      "case": "replay-series-unmet-pbli",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 12033.0,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 5.471974873216823e-09
+    },
+    {
+      "case": "replay-network-fixed-split-failure",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 234.53846153846155,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 4.159574018558487e-09
+    },
+    {
+      "case": "replay-network-2600",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 18016.0,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 8.492861525155604e-09
+    },
+    {
+      "case": "original-controlled-0",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 5.801666702609509e+21,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 6.027039489708841e-08
+    },
+    {
+      "case": "original-controlled-1",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 5.801666702609509e+21,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 4.5718479668721557e-08
+    },
+    {
+      "case": "offer-a-0",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 8263.5,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 2.3558459361083806e-07
+    },
+    {
+      "case": "offer-a-1",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 2630.6666666666665,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 1.4189936337061226e-07
+    },
+    {
+      "case": "offer-b-0",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 2306.8888888888887,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 2.8418071451596916e-07
+    },
+    {
+      "case": "offer-b-1",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 1.8621904018800703e+21,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 6.234040483832359e-08
+    },
+    {
+      "case": "partial-transfer",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 9275.0,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 4.217781679471955e-09
+    },
+    {
+      "case": "source-hot-cap-failure",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 19824.5,
+      "worst_channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 4.7983576223487034e-08
+    },
+    {
+      "case": "control-authority-failure",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 2306.8888888888887,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 2.8418071451596916e-07
+    },
+    {
+      "case": "zero-conductance",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 2188.3333333333335,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": false,
+      "largest_thermal_absolute_error": 1.252919901162386e-08
+    },
+    {
+      "case": "offer-b-linear-price",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 2306.8888888888887,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 2.8418071451596916e-07
+    },
+    {
+      "case": "repair-c0621",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 112907.0,
+      "worst_channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 6.381378625519574e-08
+    },
+    {
+      "case": "repair-c1085",
+      "native_status": "evaluated",
+      "status": "PASS",
+      "channels": 435,
+      "predicates": 35,
+      "worst_relative_deviation": 7879.0,
+      "worst_channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "engineering_satisfied": true,
+      "largest_thermal_absolute_error": 1.800362952053547e-07
+    }
+  ]
+}

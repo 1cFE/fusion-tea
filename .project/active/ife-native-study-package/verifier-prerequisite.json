@@ -1,0 +1,6 @@
+{
+  "result": "PREREQUISITE",
+  "producer": "scripts/study/verify.py",
+  "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+  "error": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+}

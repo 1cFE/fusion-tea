@@ -1,0 +1,10 @@
+{
+  "study_id": "20260915-winding-pack-casing-fit",
+  "executable_fingerprint": "c9c9f4c962e8b3d7c06652a22541411ec643d2f44385dee0ed5b145027b820f6",
+  "model_contract_fingerprint": "d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386",
+  "study_definition_fingerprint": "d9e81ba3132a3a03045bc810cd276aaf947a69de9ceb1051bf8594af401fd27e",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "7c9e8b61bfdcc0344f7c7a75ae739d11134d0e60f6e14b89af41f54a53546ff4"
+}

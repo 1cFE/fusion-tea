@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="241.2pt" viewBox="0 0 734.4 241.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 241.2
+L 734.4 241.2
+L 734.4 0
+L 0 0
+z
+" style="fill: #fbfaf8"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 102.816 205.02
+L 719.712 205.02
+L 719.712 55.476
+L 102.816 55.476
+z
+" style="fill: #fbfaf8"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 102.816 205.02
+L 102.816 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m8f3be87a98" d="M 0 0
+L 0 3
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m8f3be87a98" x="102.816" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="102.816" y="219.2375" transform="rotate(-0 102.816 219.2375)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 187.905103 205.02
+L 187.905103 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="187.905103" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="187.905103" y="219.2375" transform="rotate(-0 187.905103 219.2375)">200</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 272.994207 205.02
+L 272.994207 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="272.994207" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="272.994207" y="219.2375" transform="rotate(-0 272.994207 219.2375)">400</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 358.08331 205.02
+L 358.08331 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="358.08331" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="358.08331" y="219.2375" transform="rotate(-0 358.08331 219.2375)">600</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 443.172414 205.02
+L 443.172414 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="443.172414" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="443.172414" y="219.2375" transform="rotate(-0 443.172414 219.2375)">800</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 528.261517 205.02
+L 528.261517 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="528.261517" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="528.261517" y="219.2375" transform="rotate(-0 528.261517 219.2375)">1,000</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 613.350621 205.02
+L 613.350621 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="613.350621" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="613.350621" y="219.2375" transform="rotate(-0 613.350621 219.2375)">1,200</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 698.439724 205.02
+L 698.439724 55.476
+" clip-path="url(#pcde7a460ec)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m8f3be87a98" x="698.439724" y="205.02" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="698.439724" y="219.2375" transform="rotate(-0 698.439724 219.2375)">1,400</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #191919" x="411.264" y="234.572578" transform="rotate(-0 411.264 234.572578)">Whole-plant LCOE (2025 $ per MWh)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_17">
+      <defs>
+       <path id="m8b3890ff32" d="M 0 0
+L -3 0
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m8b3890ff32" x="102.816" y="76.839429" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="80.698179" transform="rotate(-0 96.316 80.698179)">2,500 MW · steam</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m8b3890ff32" x="102.816" y="112.445143" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="116.303893" transform="rotate(-0 96.316 116.303893)">2,500 MW · gas</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m8b3890ff32" x="102.816" y="148.050857" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="151.909607" transform="rotate(-0 96.316 151.909607)">2,800 MW · steam</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m8b3890ff32" x="102.816" y="183.656571" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="187.515321" transform="rotate(-0 96.316 187.515321)">2,800 MW · gas</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 102.816 87.521143
+L 235.891234 87.521143
+L 235.891234 66.157714
+L 102.816 66.157714
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 235.891234 87.521143
+L 243.399231 87.521143
+L 243.399231 66.157714
+L 235.891234 66.157714
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 243.399231 87.521143
+L 273.73209 87.521143
+L 273.73209 66.157714
+L 243.399231 66.157714
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 273.73209 87.521143
+L 276.467461 87.521143
+L 276.467461 66.157714
+L 273.73209 66.157714
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #9a7fd0"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 102.816 123.126857
+L 387.639975 123.126857
+L 387.639975 101.763429
+L 102.816 101.763429
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 387.639975 123.126857
+L 403.024336 123.126857
+L 403.024336 101.763429
+L 387.639975 101.763429
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 403.024336 123.126857
+L 469.258197 123.126857
+L 469.258197 101.763429
+L 403.024336 101.763429
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 469.258197 123.126857
+L 475.213805 123.126857
+L 475.213805 101.763429
+L 469.258197 101.763429
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #9a7fd0"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 102.816 158.732571
+L 223.179007 158.732571
+L 223.179007 137.369143
+L 102.816 137.369143
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 223.179007 158.732571
+L 230.127929 158.732571
+L 230.127929 137.369143
+L 223.179007 137.369143
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 230.127929 158.732571
+L 258.063556 158.732571
+L 258.063556 137.369143
+L 230.127929 137.369143
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 258.063556 158.732571
+L 260.529237 158.732571
+L 260.529237 137.369143
+L 258.063556 137.369143
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #9a7fd0"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 102.816 194.338286
+L 501.066713 194.338286
+L 501.066713 172.974857
+L 102.816 172.974857
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 501.066713 194.338286
+L 522.591842 194.338286
+L 522.591842 172.974857
+L 501.066713 172.974857
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 522.591842 194.338286
+L 617.907315 194.338286
+L 617.907315 172.974857
+L 522.591842 172.974857
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 617.907315 194.338286
+L 626.234652 194.338286
+L 626.234652 172.974857
+L 617.907315 172.974857
+z
+" clip-path="url(#pcde7a460ec)" style="fill: #9a7fd0"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 102.816 205.02
+L 102.816 55.476
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 102.816 205.02
+L 719.712 205.02
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="107.921346" y="79.438179" transform="rotate(-0 107.921346 79.438179)">$313</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="281.572807" y="79.881968" transform="rotate(-0 281.572807 79.881968)">$408 per MWh</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="107.921346" y="115.043893" transform="rotate(-0 107.921346 115.043893)">$669</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="480.319151" y="115.487682" transform="rotate(-0 480.319151 115.487682)">$875 per MWh</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="107.921346" y="150.649607" transform="rotate(-0 107.921346 150.649607)">$283</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="265.634583" y="151.093396" transform="rotate(-0 265.634583 151.093396)">$371 per MWh</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="107.921346" y="186.255321" transform="rotate(-0 107.921346 186.255321)">$936</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="631.339999" y="186.69911" transform="rotate(-0 631.339999 186.69911)">$1,230 per MWh</text>
+   </g>
+  </g>
+  <g id="legend_1">
+   <g id="patch_21">
+    <path d="M 112.266 17.1675
+L 123.816 17.1675
+L 123.816 9.8175
+L 112.266 9.8175
+z
+" style="fill: #1b5f99; stroke: #1b5f99; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="132.216" y="17.1675" transform="rotate(-0 132.216 17.1675)">Initial financed capital</text>
+   </g>
+   <g id="patch_22">
+    <path d="M 112.266 32.655
+L 123.816 32.655
+L 123.816 25.305
+L 112.266 25.305
+z
+" style="fill: #f08c30; stroke: #f08c30; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="132.216" y="32.655" transform="rotate(-0 132.216 32.655)">Annual service, fuel, makeup and imports</text>
+   </g>
+   <g id="patch_23">
+    <path d="M 346.566937 17.1675
+L 358.116938 17.1675
+L 358.116938 9.8175
+L 346.566937 9.8175
+z
+" style="fill: #276b2c; stroke: #276b2c; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="366.516937" y="17.1675" transform="rotate(-0 366.516937 17.1675)">Blanket, magnet, primary and conversion replacements</text>
+   </g>
+   <g id="patch_24">
+    <path d="M 346.566937 32.8125
+L 358.116938 32.8125
+L 358.116938 25.4625
+L 346.566937 25.4625
+z
+" style="fill: #9a7fd0; stroke: #9a7fd0; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="366.516937" y="32.8125" transform="rotate(-0 366.516937 32.8125)">Overhaul and terminal cost</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcde7a460ec">
+   <rect x="102.816" y="55.476" width="616.896" height="149.544"/>
+  </clipPath>
+ </defs>
+</svg>

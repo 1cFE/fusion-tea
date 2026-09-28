@@ -1,0 +1,14 @@
+{
+  "repo_commit_at_execution": "52e01b48ecda5dfdf6ee9d39bf1411cbb3a1907d",
+  "uncommitted_at_execution": [
+    "exploration/aries_integrated/studies/reconciliation_support.py",
+    "exploration/aries_integrated/studies/reconciliation_reporting.py",
+    "exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/",
+    "work/orchestration/goals/aries-reference-heat-electricity-reconciliation/ (evidence and trail updates after grounding)"
+  ],
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.reconciliation_support execute --record exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation --integration-return work/orchestration/goals/aries-integrated-lcoe/evidence/integration-attempt1/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/manifest.json --identity exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/preparation/package_identity.json --store exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/results/native/20260925-aries-reference-heat-electricity-reconciliation.db --sample-size 27 --out exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/results/verification_summary.json'",
+  "reporting_command": ".codex-test/run python exploration/aries_integrated/studies/reconciliation_reporting.py --cases exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/results/cases.json --out exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/results/attribution.json > exploration/aries_integrated/studies/20260925-aries-reference-heat-electricity-reconciliation/results/attribution.md",
+  "preparation_baseline": "Native baseline point executed once into preparation/ before the axis set was extended; manifest, package and environment unchanged; indicators and preflight rerun on the final 18-axis declaration; goal T-001 replay reproduced all four canonical cases exactly.",
+  "attempts": "27 started, 27 completed in one invocation; no retries."
+}

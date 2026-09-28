@@ -1,0 +1,9 @@
+entry HEAD: 96914299649d5c72adf6f6f79ee2e6e5942f5fdf
+branch: fix/modeling-intent-after-reveal
+date: 2026-09-25
+--- git status --short at entry (preserved, not committed by this goal):
+M  .project/CURRENT_WORK.md
+A  docs/write-up/aries-model-transfer-outline.md
+A  docs/write-up/writing-prompt.md
+A  work/analysis/20260920-184131_design-choice-assignment-audit.md
+?? work/orchestration/goals/aries-reference-heat-electricity-reconciliation/

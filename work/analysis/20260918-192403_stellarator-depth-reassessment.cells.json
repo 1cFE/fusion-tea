@@ -1,0 +1,1788 @@
+{
+  "schema_version": "stellarator-depth-reassessment/v1",
+  "assessment_timestamp_utc": "2026-09-18T19:24:03Z",
+  "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+  "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+  "previous_assessment": "work/analysis/20260912-plant-closure-consolidated-grade.md",
+  "previous_cell_records": "work/orchestration/goals/plant-closure/evidence/T-015_grading/cells.json",
+  "previous_model_version": "641c10512076cc21fac78715de2effc2c33b9194",
+  "grader": "/root with independent area readers /root/physics, /root/magnets_cooling, /root/cost_lifecycle; none authored the rubric/model/studies being graded",
+  "summary": {
+    "scored_cells": 23,
+    "target_met": 17,
+    "below_target": 6,
+    "not_applicable": 3,
+    "ungraded": 0,
+    "changed_scores": []
+  },
+  "new_verification": {
+    "identity_checks": {
+      "head": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "last_model_commit": "5dd9cbd0292a6f439a790048203bdba1ca124702",
+      "last_package_commit": "48b65159d8a704aae9eb3c97d77a2079186bf7de",
+      "git_status": "M .project/CURRENT_WORK.md\n M .project/active/aries-comparison-preparation/draft.md\n M .project/execution/ENTRIES.md\n M .project/feedback/ENTRIES.md\n M knowledge/holdout/aries-cs/PROTOCOL.md\n?? .project/TRIAGE_MEMORIES.md\n?? .project/active/aries-comparison-preparation/draft-review-20260917.md\n?? .project/active/aries-comparison-preparation/execution-prompt.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-2.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-3.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-4.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-5.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-6.md\n?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review.md\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed.md\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed.review-2.md\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed.review.md\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.html\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.review-2.md\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.review-3.md\n?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.review.md\n?? work/narratives/20260917-234914Z-pre-reveal-feasible-neighborhood.md",
+      "package_identity_verified": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "sealed_artifact_count": 296,
+      "semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+      "indicator_input_fingerprint": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551",
+        "files": [
+          {
+            "path": "contracts/model_contract.json",
+            "sha256": "580aa74eee17a82e5c8a96e0e11aa33049d7048172600db28aacef60db2c5e5c"
+          },
+          {
+            "path": "inputs/mfe_account_costs_params.json",
+            "sha256": "8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21"
+          },
+          {
+            "path": "inputs/mfe_cryo_plant_params.json",
+            "sha256": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f"
+          },
+          {
+            "path": "inputs/mfe_fuel_cycle_params.json",
+            "sha256": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009"
+          },
+          {
+            "path": "inputs/mfe_magnet_cost_params.json",
+            "sha256": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee"
+          },
+          {
+            "path": "inputs/mfe_magnet_field_params.json",
+            "sha256": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6"
+          },
+          {
+            "path": "inputs/mfe_plant_params.json",
+            "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+          },
+          {
+            "path": "inputs/mfe_plasma_scaling_params.json",
+            "sha256": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86"
+          },
+          {
+            "path": "inputs/mfe_plasma_sustainment_params.json",
+            "sha256": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc"
+          },
+          {
+            "path": "inputs/mfe_vacuum_params.json",
+            "sha256": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240"
+          },
+          {
+            "path": "inputs/stellarator_plant_params.json",
+            "sha256": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207"
+          },
+          {
+            "path": "pipelines/pipeline.yaml",
+            "sha256": "df7a42ce2c9d0c572655bd52107103143791c323088e30b00dac91df8e78f2d1"
+          }
+        ]
+      },
+      "latest_study_commit": "d53d6ec5748442833ff44bc179bb988bce726486",
+      "current_vs_study_model_package_diff": "",
+      "current_vs_r2_base_model_package_diff": "",
+      "rubric_diff": "",
+      "r2_archive_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+      "r2_model_package_files_equal": 340,
+      "r2_model_package_differences": [],
+      "snapshot_hash_checks": {
+        "checked": 542,
+        "mismatches": []
+      }
+    },
+    "lineage_check": {
+      "entering_head": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "historical_integration": "work/orchestration/goals/stellaris-reference-reconciliation/evidence/T-007_integration/integration_return.json",
+      "indicator_pin": "6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551",
+      "limitations": [
+        "Historical ten-gate integration reused by unchanged-source and fresh seal checks, not rerun.",
+        "Read-set coverage applies to this current parsed package; scripts/integrate.py itself is unchanged.",
+        "Static L2/L6 limitations and sixteen prior independently unmapped native outputs remain.",
+        "This proves numerical package lineage, not technology applicability or engineering qualification."
+      ],
+      "physical_evaluations": 0,
+      "produced_channels": 263,
+      "read_set": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "580aa74eee17a82e5c8a96e0e11aa33049d7048172600db28aacef60db2c5e5c"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21"
+        },
+        {
+          "path": "inputs/mfe_cryo_plant_params.json",
+          "sha256": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f"
+        },
+        {
+          "path": "inputs/mfe_fuel_cycle_params.json",
+          "sha256": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009"
+        },
+        {
+          "path": "inputs/mfe_magnet_cost_params.json",
+          "sha256": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee"
+        },
+        {
+          "path": "inputs/mfe_magnet_field_params.json",
+          "sha256": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6"
+        },
+        {
+          "path": "inputs/mfe_plant_params.json",
+          "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+        },
+        {
+          "path": "inputs/mfe_plasma_scaling_params.json",
+          "sha256": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86"
+        },
+        {
+          "path": "inputs/mfe_plasma_sustainment_params.json",
+          "sha256": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc"
+        },
+        {
+          "path": "inputs/mfe_vacuum_params.json",
+          "sha256": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240"
+        },
+        {
+          "path": "inputs/stellarator_plant_params.json",
+          "sha256": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "df7a42ce2c9d0c572655bd52107103143791c323088e30b00dac91df8e78f2d1"
+        }
+      ],
+      "read_set_negative_checks": [
+        "uncovered-input.json",
+        "outside-package-input.json"
+      ],
+      "sealed_artifacts": 296,
+      "semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+      "source_checkpoint": "fe104e8d9db72e5abf86a29262583ce744f62307",
+      "source_model_files": 74,
+      "status": "pass",
+      "unchanged_source_paths": [
+        "models",
+        "exploration/stellarator_e2e/models",
+        "exploration/stellarator_e2e/generated",
+        "exploration/stellarator_e2e/verify_stellaris.py",
+        "exploration/stellarator_e2e/studies/oracle_entry.py"
+      ]
+    },
+    "lineage_command": ".codex-test/run python .project/active/aries-comparison-preparation/package/check_lineage.py --out /tmp/depth-lineage.json",
+    "identity_check_script": "import json, hashlib, subprocess, tarfile\nfrom pathlib import Path\nfrom scripts.study import identity, manifest\nroot=Path.cwd(); pkg=root/'exploration/stellarator_e2e/generated'; study=root/'exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood'\ndef sha(b): return hashlib.sha256(b).hexdigest()\ndef git(*args): return subprocess.check_output(['git',*args],text=True).strip()\nsnap=json.loads((study/'snapshot.json').read_text()); contract=json.loads((pkg/'contracts/package_contract.json').read_text()); doc=json.loads((study/'results/package_identity.json').read_text())\nout={'head':git('rev-parse','HEAD'),'last_model_commit':git('log','-1','--format=%H','--','models'),'last_package_commit':git('log','-1','--format=%H','--','exploration/stellarator_e2e/generated'),'git_status':git('status','--short'),'package_identity_verified':identity.assert_matches(doc,pkg),'sealed_artifact_count':len(contract['artifact_hashes']),'semantic_fingerprint':manifest.read_semantic_fingerprint(pkg),'indicator_input_fingerprint':manifest.indicator_input_fingerprint(pkg),'latest_study_commit':snap['package']['repo_commit'],'current_vs_study_model_package_diff':git('diff',snap['package']['repo_commit'],'--','models','exploration/stellarator_e2e/generated'),'current_vs_r2_base_model_package_diff':git('diff','fe104e8d9db72e5abf86a29262583ce744f62307','--','models','exploration/stellarator_e2e/generated'),'rubric_diff':git('diff','dc0f0b6dc6512b29e1307da647f3a508a1f5356d','--','.project/active/demo-depth-rubric/rubric.md')}\narchive=root/'.project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz'\nout['r2_archive_sha256']=sha(archive.read_bytes()); matches=[]; diffs=[]\n# Only inspect admitted model/runtime members, not archived source documents.\nwith tarfile.open(archive,'r:gz') as tf:\n for m in tf.getmembers():\n  if m.isfile() and (m.name.startswith('models/') or m.name.startswith('exploration/stellarator_e2e/generated/')):\n   p=root/m.name; b=tf.extractfile(m).read()\n   (matches if p.is_file() and sha(p.read_bytes())==sha(b) else diffs).append(m.name)\nout['r2_model_package_files_equal']=len(matches); out['r2_model_package_differences']=diffs\n# Verify retained snapshot artifact references by path/hash only.\nchecks=[]\ndef walk(x):\n if isinstance(x,dict):\n  if 'path' in x and 'sha256' in x and isinstance(x['path'],str):\n   p=study/x['path']\n   if not p.is_file(): p=root/x['path']\n   if p.is_file(): checks.append({'path':x['path'],'matches':sha(p.read_bytes())==x['sha256']})\n  for v in x.values(): walk(v)\n elif isinstance(x,list):\n  for v in x: walk(v)\nwalk(snap)\nout['snapshot_hash_checks']={'checked':len(checks),'mismatches':[x for x in checks if not x['matches']]}\nPath('/tmp/depth-identity.json').write_text(json.dumps(out,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in out.items() if k not in ['git_status','indicator_input_fingerprint']},indent=2)); print('indicator',out['indicator_input_fingerprint']['digest'])\n",
+    "targeted_calculation_tests": {
+      "command": ".codex-test/run python -m pytest tests/test_dependency_provenance.py tests/models/test_current_driven_sizing.py tests/models/test_conductor_current.py tests/models/test_primary_loop_domains.py tests/models/test_divertor_heat_account.py tests/models/test_mfe_financial_rate_limits.py -q",
+      "passed": 625,
+      "failed": 0,
+      "warnings": 11,
+      "log": "........................................................................ [ 11%]\n........................................................................ [ 23%]\n........................................................................ [ 34%]\n........................................................................ [ 46%]\n........................................................................ [ 57%]\n........................................................................ [ 69%]\n........................................................................ [ 80%]\n........................................................................ [ 92%]\n.................................................                        [100%]\n=============================== warnings summary ===============================\ntests/models/test_conductor_current.py: 11 warnings\n  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:\n    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])\n    return self.__pydantic_serializer__.to_python(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n625 passed, 11 warnings in 27.66s\n"
+    },
+    "targeted_consumer_tests": {
+      "command": ".codex-test/run python -m pytest tests/study/test_major_radius.py tests/study/test_winding_consumers.py -q",
+      "passed": 190,
+      "failed": 8,
+      "failed_tests": [
+        "tests/study/test_major_radius.py::test_exact_input_contract",
+        "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle",
+        "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero]",
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]",
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]",
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]",
+        "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact",
+        "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle"
+      ],
+      "log": "........F.F............................................................. [ 36%]\n........................................................................ [ 72%]\n.................................F...............FFFFF                   [100%]\n=================================== FAILURES ===================================\n__________________________ test_exact_input_contract ___________________________\n\n    def test_exact_input_contract():\n        from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS, WI058_PARAMETERS, WI058_RETIRED\n        # WI-058 (2026-09-14): k_coil retired from the contract and the seam, c_coil_ref added (the winding\n        # length follows the coil bore); the counts (265 inputs, 118 mapped, 147 unmapped) do not move.\n        added = WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS\n        inputs = {}\n        for path in (route.PACKAGE_DIR / \"inputs\").glob(\"*.json\"):\n            inputs.update(json.loads(path.read_text()))\n>       assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)\nE       AssertionError: assert 313 == (265 + 45)\nE        +  where 313 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})\nE        +  and   45 = len(((((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__magnet__casing__assembly_clearance', 'stellarator_09__stellaris__magnet__casing__interior...is__magnet__winding_pack__ground_insulation', 'stellarator_09__stellaris__magnet__winding_pack__internal_build_x', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation', 'stellarator_09__stellaris__magnet__win...is__magnet__winding_pack__material_factor', 'stellarator_09__stellaris__magnet__winding_pack__orientation_factor', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}))\n\ntests/study/test_major_radius.py:56: AssertionError\n____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____\n\ntmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12894/test_current_radius_controls_m0')\nstock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')\n\n    def test_current_radius_controls_match_frozen_model_and_independent_oracle(\n        tmp_path, stock_simkit_path\n    ):\n        from tests.study import financial_radius_controls as controls\n    \n>       results = controls.check_controls(tmp_path)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/study/test_major_radius.py:98: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nout = PosixPath('/tmp/pytest-of-reid/pytest-12894/test_current_radius_controls_m0')\n\n    def check_controls(out):\n        out = Path(out)\n        out.mkdir(parents=True, exist_ok=True)\n        frozen_dir = ROOT / \"work/active/WI-051_mfe-model-owned-major-radius/prototype\"\n        frozen = json.loads((frozen_dir / \"frozen-results.json\").read_text())\n        expectations = json.loads((frozen_dir / \"expectations.json\").read_text())\n        # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was produced with\n        # the R-form (c_coil = k_coil * R). At a = 1.3 the bore ratio is 1.0, so binding the reference\n        # circumference to k_coil * R reproduces the R-form length exactly and the frozen row stays the exact\n        # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in\n        # tests/models/test_winding_length_bore.py).\n        from tests.models.current_mfe_regressions import K_COIL_RETIRED\n        proposals = [WI059_REPLAY, WI059_REPLAY | {route.P + \"plasma__R\": 14.0, route.P + \"magnet__coil__c_coil_ref\": K_COIL_RETIRED * 14.0}]\n        cases, db = route.run_points(\"radius-controls\", proposals, out / \"_work\")\n        assert len(cases) == 2 and all(c.state == \"completed\" for c in cases)\n        comparisons = {}\n        for proposal, name, old_name in zip(proposals, [\"baseline\", \"R14\"], [\"baseline\", \"tied_R14\"]):\n            case = next(c for c in cases if dict(c.inputs) == proposal)\n            expected = frozen[\"cases\"][old_name][\"native\"]\n            # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.\n            frozen_outputs = renamed_keys(expected[\"outputs\"])\n            expected_outputs = dict(frozen_outputs)\n            channels = oracle.evaluate(proposal)\n            changed_costs = {oracle.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}\n            # Preserve every frozen physical/structured value. Only the named WI-040\n            # accounting descendants and new inventory channels use current expectations.\n            for key in changed_costs | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS:\n                expected_outputs[key] = channels[key]\n            # Both controls retain the reference envelope: the two retained grade outputs are\n            # known exactly without replacing any frozen physical value.\n            expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {\n                'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272}.items()})\n            expected_outputs.update(wi059_native_additions(frozen_outputs, oracle.vs.IN))\n>           assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations[\"channels\"]} | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE           AssertionError\n\ntests/study/financial_radius_controls.py:57: AssertionError\n_ test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero] _\n\noverrides = {'magnet_I_coil': 0.0}, message = 'wp_side must be nonzero'\n\n    @pytest.mark.parametrize('overrides,message', INVALID)\n    def test_invalid_public_oracle_inputs_are_deliberate(overrides, message):\n        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}\n        saved = dict(oracle.vs.IN)\n        with pytest.raises(ValueError, match=message):\n>           oracle.evaluate(WI059_REPLAY | {names[name]: value for name, value in overrides.items()})\n\ntests/study/test_winding_consumers.py:48: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nexploration/stellarator_e2e/studies/oracle_entry.py:628: in evaluate\n    result = _compute(_oracle_overrides(point))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexploration/stellarator_e2e/studies/oracle_entry.py:615: in _compute\n    return vs.compute()\n           ^^^^^^^^^^^^\nexploration/stellarator_e2e/verify_stellaris.py:1027: in compute\n    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\np = {'E_fus': 2.817e-12, 'G_stock': 0.0, 'I_total': 0.0, 'R': 12.7, ...}\nfield = 0.0, legacy_density = 118.8271604938272\n\n    def _current_driven_sizing(p, field, legacy_density):\n        \"\"\"WI-064 independent inversion: tape capacity per composite area sets density.\n    \n        Required quantities are minimum continuous reference-conductor inventory;\n        extra inventory is a physical multiplier, never an acceptance relaxation.\n        \"\"\"\n        mode = p['magnet_sizing_mode']\n        multiplier = p['magnet_inventory_multiplier']\n        if mode not in (0, 1) or not math.isfinite(multiplier) or multiplier < 1:\n            raise ValueError('oracle current sizing: invalid mode or inventory multiplier')\n        fractions = [p['magnet_f_' + k] for k in ('copper', 'solder', 'steel', 'helium')]\n        if any(not math.isfinite(v) or v < 0 for v in fractions) or sum(fractions) >= 1:\n            raise ValueError('oracle current sizing: invalid composition')\n        for value in (legacy_density, p['magnet_I_coil'], p['magnet_turn_current']):\n            if not math.isfinite(value) or value <= 0:\n>               raise ValueError('oracle current sizing: invalid loading')\nE               ValueError: oracle current sizing: invalid loading\n\nexploration/stellarator_e2e/verify_stellaris.py:830: ValueError\n\nDuring handling of the above exception, another exception occurred:\n\noverrides = {'magnet_I_coil': 0.0}, message = 'wp_side must be nonzero'\n\n    @pytest.mark.parametrize('overrides,message', INVALID)\n    def test_invalid_public_oracle_inputs_are_deliberate(overrides, message):\n        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}\n        saved = dict(oracle.vs.IN)\n>       with pytest.raises(ValueError, match=message):\nE       AssertionError: Regex pattern did not match.\nE         Expected regex: 'wp_side must be nonzero'\nE         Actual message: 'oracle current sizing: invalid loading'\n\ntests/study/test_winding_consumers.py:47: AssertionError\n_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row0] ________\n\nrow = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {}}\n\n    @pytest.mark.parametrize('row', BEFORE['controls'])\n    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):\n        actual = oracle._compute(wi059_replay(row['overrides']))\n        # WI-040: independently derive only the additive-account cost increments;\n        # all frozen physics and unrelated output values retain exact comparison.\n        expected, changed = wi040_expected(row)\n        added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}\n>       assert actual.keys() == expected.keys() | added\nE       AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}\nE         \nE         Use -v to get more diff\n\ntests/study/test_winding_consumers.py:84: AssertionError\n_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row1] ________\n\nrow = {'outputs': {'A': 9.769230769230768, 'B_axis': 9.9, 'B_peak': 27.39, 'T_e0': 15.400000000000002, ...}, 'overrides': {'magnet_I_coil': 16940000.0}}\n\n    @pytest.mark.parametrize('row', BEFORE['controls'])\n    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):\n        actual = oracle._compute(wi059_replay(row['overrides']))\n        # WI-040: independently derive only the additive-account cost increments;\n        # all frozen physics and unrelated output values retain exact comparison.\n        expected, changed = wi040_expected(row)\n        added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}\n>       assert actual.keys() == expected.keys() | added\nE       AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}\nE         \nE         Use -v to get more diff\n\ntests/study/test_winding_consumers.py:84: AssertionError\n_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row2] ________\n\nrow = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'magnet_j_wp': 142.59259259259264}}\n\n    @pytest.mark.parametrize('row', BEFORE['controls'])\n    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):\n        actual = oracle._compute(wi059_replay(row['overrides']))\n        # WI-040: independently derive only the additive-account cost increments;\n        # all frozen physics and unrelated output values retain exact comparison.\n        expected, changed = wi040_expected(row)\n        added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}\n>       assert actual.keys() == expected.keys() | added\nE       AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}\nE         \nE         Use -v to get more diff\n\ntests/study/test_winding_consumers.py:84: AssertionError\n_____________________ test_adapter_coverage_remains_exact ______________________\n\n    def test_adapter_coverage_remains_exact():\n        old_inputs = renamed_keys(BEFORE['input_mapping'])\n        # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil.\n        assert WI058_RETIRED <= old_inputs.keys()\n        old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}\n>       assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs\nE       AssertionError: assert {'stellarator..._direct', ...} == {'stellarator..._direct', ...}\nE         \nE         Omitting 98 identical items, use -vv to show\nE         Left contains 6 more items:\nE         {'stellarator_09__stellaris__divertor__target_capture_fraction': 'target_capture_fraction',\nE          'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier': 'magnet_inventory_multiplier',\nE          'stellarator_09__stellaris__magnet__winding_pack__sizing_mode': 'magnet_sizing_mode',\nE          'stellarator_09__stellaris__plasma__alpha_T': 'alpha_T',...\nE         \nE         ...Full output truncated (3 lines hidden), use '-vv' to show\n\ntests/study/test_winding_consumers.py:103: AssertionError\n_______ test_current_native_winding_route_agrees_with_independent_oracle _______\n\ntmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12894/test_current_native_winding_ro0')\nstock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')\n\n    def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):\n        import study_route as route\n        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}\n        points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]\n        cases, _ = route.run_points('winding-consumer-controls', points, tmp_path)\n        assert len(cases) == len(points)\n        for case in cases:\n            assert case.state == 'completed', (dict(case.inputs), case.state)\n            expected = oracle.evaluate(case.inputs)\n>           assert len(case.outputs) == 177 + len(WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS) and len(expected) == 161 + len(WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS)  # WI-038 adds three grade outputs\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE           assert (242 == (177 + 51))\nE            +  where 242 = len({'stellarator_09__stellaris__blanket__blanket_cost__cost': 718414154.606785, 'stellarator_09__stellaris__blanket__firs...08570995383, 'stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak': 3.9788448937763854, ...})\nE            +    where {'stellarator_09__stellaris__blanket__blanket_cost__cost': 718414154.606785, 'stellarator_09__stellaris__blanket__firs...08570995383, 'stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak': 3.9788448937763854, ...} = CaseView(candidate_id='winding-consumer-controls:c0000', state='completed', inputs={'stellarator_09__stellaris__cryopl...alue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}')}).outputs\nE            +  and   51 = len(((({'stellarator_09__stellaris__cryoplant__cold_load__p_cold', 'stellarator_09__stellaris__cryoplant__cold_load__q_struct...9__stellaris__cryoplant__inventory__p_drive', 'stellarator_09__stellaris__cryoplant__inventory__q_inventory_cold', ...} | {'stellarator_09__stellaris__magnet__wp_fit__cavity_x', 'stellarator_09__stellaris__magnet__wp_fit__cavity_y', 'stella...stellarator_09__stellaris__magnet__wp_fit__insulated_x', 'stellarator_09__stellaris__magnet__wp_fit__insulated_y', ...}) | {'stellarator_09__stellaris__magnet__conductor_current__allowable_current', 'stellarator_09__stellaris__magnet__conduc...gnet__conductor_current__margin_current', 'stellarator_09__stellaris__magnet__conductor_current__margin_fraction', ...}) | {'stellarator_09__stellaris__magnet__insulation_inventory__ground_volume', 'stellarator_09__stellaris__magnet__insulat...__insulation_inventory__stock_cost', 'stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate'}))\n\ntests/study/test_winding_consumers.py:126: AssertionError\n=========================== short test summary info ============================\nFAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...\nFAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle\nFAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero]\nFAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]\nFAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]\nFAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]\nFAILED tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact\nFAILED tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle\n8 failed, 190 passed in 16.59s\n"
+    },
+    "scope": "Only fixed verification/test controls were executed. No design search, new scientific study, source acquisition, model change or archive modification. Scratch import/path and list-shape inspection errors were corrected without model execution or edits.",
+    "retained_result_recount": {
+      "cases": 334,
+      "all20_passes": 103,
+      "valid_account_all20_passes": 103,
+      "source": "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/native-cases.json",
+      "check": "Fresh read-only recount of retained 242-output/20-verdict records and exact join to analysis.json; no model execution."
+    }
+  },
+  "validation_findings": [
+    {
+      "id": "V-consumer-tests",
+      "cells": [
+        "R1.P",
+        "R2a.P",
+        "R3.P",
+        "R3.S",
+        "R12.S"
+      ],
+      "finding": "Eight inherited consumer failures freshly reproduced; 190 pass. Stale input/output inventories, coverage and error-text expectations prevent a green consumer suite; numerical comparison after a preceding failed assertion is not credited.",
+      "evidence": "new_verification.targeted_consumer_tests"
+    },
+    {
+      "id": "V-current-boundary",
+      "cells": [
+        "R3.P"
+      ],
+      "finding": "Three exact-current predicate disagreements and six strict-relative scalar misses remain at reserve 1.0; native negatives are not waived. Reserve 1.01 buys inventory under a different declared scenario.",
+      "evidence": "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+    },
+    {
+      "id": "V-coverage",
+      "cells": "all executable claims",
+      "finding": "Latest study has 226 of 242 numeric channels mapped; all 20 native predicates reconstructed. Shared equations and fixed assumptions limit independent physical validation. Broad suite and publication failure-path certification were not rerun.",
+      "evidence": "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+    },
+    {
+      "id": "V-static",
+      "cells": "all executable claims",
+      "finding": "Reused WI-065 static record: L1/L3/L4/L5 pass; L2 retains 10 literal-binding warnings; L6 records 304 scanner diagnostics (296 inherited plus 8). No clean complete static-validation claim.",
+      "evidence": "work/active/WI-065_divertor-deposited-power-and-peak-area-account/audit.md"
+    }
+  ],
+  "reused_evidence_scope": "Latest Sep17 native baseline and334selected cases; Sep16 loop/reconciliation studies; Sep17 power-balance diagnostics; prior claim-specific results where unchanged equations and current checks support transfer. Goal summaries were navigation only. Cell evidence_read lists actual records read.",
+  "unverified": "Full suite; general study publication failure paths; complete source/engineering qualification; sixteen unmapped current native scalar channels as independent oracle comparisons; full procurement/installation prices; physical breeding and startup inventories.",
+  "quarantine": "Read PROTOCOL only under knowledge/holdout. No sealed/barred source or forbidden concept opened. Model/archive byte checks were restricted to models and generated package members; whole archive hash is custody verification, not source extraction. Existing protocol disclosures remain.",
+  "cells": [
+    {
+      "cell_id": "R1.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "An achievable operating point: a confinement/transport relation links field and heating to density and temperature, and a beta, density, or power limit pushes back on the choice",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_plasma_sustainment.sysml:48",
+        "models/library/structure/mfe_plasma.sysml:108",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1768",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py:194"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/radiation-diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/reuse-check.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-plasma-power-balance/reconciliation.md"
+      ],
+      "why_not_next": "P4 requires operating point jointly closed with magnets and heating over a justified, independently checked range; the selected reduced-model search retains fixed profiles, empirical transport and unqualified conductor/geometry assumptions.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "ISS04 confinement, shaped ash, radiation and signed heating demand remain computed at chosen density and temperature; the native baseline demand is 49.0796007879 MW and the latest anchor demand 37.105329 MW. Matched radius, minor-radius and current interventions fail sustainment or burn-hold screens.",
+      "correctness_and_validation_limitations": [
+        "The source-conditioned point predicts 44.003808 MW operating auxiliary versus published zero; fusion 2603.403337 versus 2700 MW, W 513.000714 versus 504.65 MJ, tau 1.577431 versus 1.46 s. Radiation law/atomic-data/species boundary differences remain unresolved. These affect prediction confidence, not the presence of a computed confinement/power constraint."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "An achievable operating point: a confinement/transport relation links field and heating to density and temperature, and a beta, density, or power limit pushes back on the choice",
+      "limitations": [
+        "The source-conditioned point predicts 44.003808 MW operating auxiliary versus published zero; fusion 2603.403337 versus 2700 MW, W 513.000714 versus 504.65 MJ, tau 1.577431 versus 1.46 s. Radiation law/atomic-data/species boundary differences remain unresolved. These affect prediction confidence, not the presence of a computed confinement/power constraint."
+      ],
+      "integrity_findings": [
+        "The source-conditioned point predicts 44.003808 MW operating auxiliary versus published zero; fusion 2603.403337 versus 2700 MW, W 513.000714 versus 504.65 MJ, tau 1.577431 versus 1.46 s. Radiation law/atomic-data/species boundary differences remain unresolved. These affect prediction confidence, not the presence of a computed confinement/power constraint."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static",
+        "V-consumer-tests"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_plasma_sustainment.sysml:48",
+        "models/library/structure/mfe_plasma.sysml:108",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1768",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py:194",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/radiation-diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/reuse-check.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-plasma-power-balance/reconciliation.md"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R1.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "target_met": null,
+      "anchor_satisfied": "S is not applicable: the plasma has no hardware or cost account of its own; its structure is the calc spine, and its cost lives in rows 3/4.",
+      "old_score": "not_applicable",
+      "new_score": "not_applicable",
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/structure/mfe_plasma.sysml:108",
+        "models/library/cost_structure/mfe_power_core.sysml:469"
+      ],
+      "runtime_evidence": [
+        "Not required for applicability"
+      ],
+      "study_evidence": [],
+      "why_not_next": "No next level applies: this dimension is explicitly not applicable in the pinned rubric.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "The plasma remains a calculation spine; hardware and cost belong to magnets and heating.",
+      "correctness_and_validation_limitations": [],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": null,
+      "limitations": [],
+      "integrity_findings": [],
+      "integrity_finding_refs": [],
+      "evidence_read": [
+        "models/library/structure/mfe_plasma.sysml:108",
+        "models/library/cost_structure/mfe_power_core.sysml:469",
+        "Not required for applicability"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": "not_applicable",
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R2.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "Replaceable units vs life-of-plant components separately sized; replacement logic follows computed life",
+      "old_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:32",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:98",
+        "models/designs/generic_mfe/mfe_plant.sysml:148",
+        "models/designs/generic_mfe/mfe_plant.sysml:608",
+        "models/library/analyses/mfe_account_costs.sysml:22",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/blanket_cost_impl.py:79"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Component-class fabrication estimates and stated uncertainty are absent.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Blanket/first-wall and shield have separate radial-build volumes and costs; the calendar replaces only blanket/first-wall plus divertor. The current baseline prices blanket at $718.414M and shield at $452.063M.",
+      "limitations": [
+        "One blanket/divertor replacement event shares the neutron-limited life; separate divertor erosion life is absent. Life-of-plant treatment of shield/structure is assumed, not radiation-damage verification."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "One blanket/divertor replacement event shares the neutron-limited life; separate divertor erosion life is absent. Life-of-plant treatment of shield/structure is assumed, not radiation-damage verification."
+      ],
+      "new_score": 3,
+      "target_anchor": "Replaceable units vs life-of-plant components separately sized; replacement logic follows computed life",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:32",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:98",
+        "models/designs/generic_mfe/mfe_plant.sysml:148",
+        "models/designs/generic_mfe/mfe_plant.sysml:608",
+        "models/library/analyses/mfe_account_costs.sysml:22",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/blanket_cost_impl.py:79",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R2a.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "2a: wall-load limit pushes back on the design",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_plasma_scaling.sysml:52",
+        "models/library/analyses/mfe_plasma_scaling.sysml:268",
+        "models/library/analyses/mfe_plasma_scaling.sysml:272",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1777"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "P4 requires neutronics/damage closure across the build, searched and independently checked; a held calibration on a simplified torus does not provide it.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Layer radii and torus volumes produce wall area; source-calibrated peak neutron wall load is computed from fusion power and geometry. The latest anchor wall margin is 0.33784616 MW/m2; restoring radius or temperature produces wall violations.",
+      "correctness_and_validation_limitations": [
+        "Calibration holds source wall shape and peaking constant when geometry changes. Latest verifier leaves radial geometry channels unmapped; prior targeted arithmetic verification applies only where the equations are unchanged."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "2a: wall-load limit pushes back on the design",
+      "limitations": [
+        "Calibration holds source wall shape and peaking constant when geometry changes. Latest verifier leaves radial geometry channels unmapped; prior targeted arithmetic verification applies only where the equations are unchanged."
+      ],
+      "integrity_findings": [
+        "Calibration holds source wall shape and peaking constant when geometry changes. Latest verifier leaves radial geometry channels unmapped; prior targeted arithmetic verification applies only where the equations are unchanged."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static",
+        "V-consumer-tests"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_plasma_scaling.sysml:52",
+        "models/library/analyses/mfe_plasma_scaling.sysml:268",
+        "models/library/analyses/mfe_plasma_scaling.sysml:272",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1777",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R2b.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "2b: lifetime feeds replacement schedule and availability",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_lifecycle.sysml:14",
+        "models/library/analyses/mfe_lifecycle.sysml:59",
+        "models/designs/generic_mfe/mfe_plant.sysml:622",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:101",
+        "tests/models/test_lifecycle_calendar.py:64"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "P4 requires material-specific neutronics and damage closure across the build; the shared in-vessel replacement clock does not calculate divertor erosion or shielding-dependent coil life.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Neutron fluence divided by peak wall load sets physical life, dated bundle replacements, productive time and availability. The current retained baseline gives 4.52392603395 full-power years, five replacements and availability 0.902777777778.",
+      "correctness_and_validation_limitations": [
+        "One bundle represents first wall, blanket and divertor; held fluence allowance is not shown equivalent to the source damage convention. Unplanned outage fraction and other plant equipment reliability remain assumptions."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "2b: lifetime feeds replacement schedule and availability",
+      "limitations": [
+        "One bundle represents first wall, blanket and divertor; held fluence allowance is not shown equivalent to the source damage convention. Unplanned outage fraction and other plant equipment reliability remain assumptions."
+      ],
+      "integrity_findings": [
+        "One bundle represents first wall, blanket and divertor; held fluence allowance is not shown equivalent to the source damage convention. Unplanned outage fraction and other plant equipment reliability remain assumptions."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_lifecycle.sysml:14",
+        "models/library/analyses/mfe_lifecycle.sysml:59",
+        "models/designs/generic_mfe/mfe_plant.sysml:622",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:101",
+        "tests/models/test_lifecycle_calendar.py:64",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R2c.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 1,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "Thickness, lifetime, or TBR held as cited values",
+      "old_score": 1,
+      "new_score": 1,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/stellarator_09/stellarator_plant.sysml:597",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1753",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1781",
+        "models/library/analyses/mfe_fuel_cycle.sysml:87"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-reference-reconciliation/reconciliation.md"
+      ],
+      "why_not_next": "P2 needs achieved tritium breeding calculated from the blanket configuration; P3 then needs that calculated ratio to constrain the build.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Achieved TBR is held at 1.074 and compared to held 1.05; computed required TBR is 1.1900000000000002 with margin -0.1160000000000001. Calculating required breeding does not calculate achieved breeding.",
+      "correctness_and_validation_limitations": [
+        "The held achieved ratio is transferred from a water/PbLi source design to an alternative helium-primary scenario. Passing the held floor does not establish tritium self-sufficiency; no predicate checks the adverse required-breeding margin."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "2c: computed TBR vs floor pushes back on blanket/build choices",
+      "limitations": [
+        "The held achieved ratio is transferred from a water/PbLi source design to an alternative helium-primary scenario. Passing the held floor does not establish tritium self-sufficiency; no predicate checks the adverse required-breeding margin."
+      ],
+      "integrity_findings": [
+        "The held achieved ratio is transferred from a water/PbLi source design to an alternative helium-primary scenario. Passing the held floor does not establish tritium self-sufficiency; no predicate checks the adverse required-breeding margin."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/designs/stellarator_09/stellarator_plant.sysml:597",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1753",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1781",
+        "models/library/analyses/mfe_fuel_cycle.sysml:87",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-reference-reconciliation/reconciliation.md"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 1,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R3.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "A stress or current-density limit pushes back on coil sizing and field choice",
+      "target_anchor": "A stress or current-density limit pushes back on coil sizing and field choice",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_conductor_current.sysml:3",
+        "models/library/analyses/mfe_conductor_current.sysml:41",
+        "models/library/analyses/mfe_winding_pack_fit.sysml:3",
+        "models/library/cost_structure/mfe_power_core.sysml:174",
+        "models/library/cost_structure/mfe_power_core.sysml:221",
+        "models/library/cost_structure/mfe_power_core.sysml:320",
+        "models/designs/generic_mfe/mfe_plant.sysml:727",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1761",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/current_driven_pack_sizing_impl.py:8",
+        "tests/models/test_winding_pack_fit.py:17"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "work/orchestration/goals/joint-magnet-sizing-feasibility/answer.md",
+        "work/orchestration/goals/magnet-manufacturing-cost-completeness/answer.md"
+      ],
+      "why_not_next": "P4 requires independently checked coil-set closure over a justified physical range; continuous reference-conductor sizing and local rectangular fit still lack qualified product/angle/strain data, full coil geometry and independently validated structural closure.",
+      "grader": "Fresh non-author delegated assessor /root/magnets_cooling, 2026-09-18",
+      "evidence_assessment": "Stress/current limits constrain field and sizing. Since September 12 the model adds absolute conditional conductor-current capacity, current-driven pack inventory, and a two-axis casing-fit screen. Latest study jointly exercises magnets, geometry, plasma and cooling; 103 of 334 cases pass all native predicates, but conditional pass does not establish P4.",
+      "limitations": [
+        "Conditional 20 K performance uses inferred 200 A normalization, 4-to-6 mm width transfer and assumed retention/orientation factors; above 24 T is explicit extrapolation, not measurement support.",
+        "Latest study preserves 3 exact conductor-current predicate disagreements at tiny negative native margins versus zero oracle margins, plus 6 relative scalar mismatches. Generic verifier refused; local all-point comparisons retain signs.",
+        "Local casing fit does not reprice casing or support fabrication and is not a global nonplanar fit qualification."
+      ],
+      "integrity_findings": [
+        "Conditional 20 K performance uses inferred 200 A normalization, 4-to-6 mm width transfer and assumed retention/orientation factors; above 24 T is explicit extrapolation, not measurement support.",
+        "Latest study preserves 3 exact conductor-current predicate disagreements at tiny negative native margins versus zero oracle margins, plus 6 relative scalar mismatches. Generic verifier refused; local all-point comparisons retain signs.",
+        "Local casing fit does not reprice casing or support fabrication and is not a global nonplanar fit qualification."
+      ],
+      "executable_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static",
+        "V-consumer-tests",
+        "V-current-boundary"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_conductor_current.sysml:3",
+        "models/library/analyses/mfe_conductor_current.sysml:41",
+        "models/library/analyses/mfe_winding_pack_fit.sysml:3",
+        "models/library/cost_structure/mfe_power_core.sysml:174",
+        "models/library/cost_structure/mfe_power_core.sysml:221",
+        "models/library/cost_structure/mfe_power_core.sysml:320",
+        "models/designs/generic_mfe/mfe_plant.sysml:727",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1761",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/current_driven_pack_sizing_impl.py:8",
+        "tests/models/test_winding_pack_fit.py:17",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "work/orchestration/goals/joint-magnet-sizing-feasibility/answer.md",
+        "work/orchestration/goals/magnet-manufacturing-cost-completeness/answer.md"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R3.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "Winding pack, structure, power supplies, cryoplant costed as separately sized sub-accounts",
+      "target_anchor": "Winding pack, structure, power supplies, cryoplant costed as separately sized sub-accounts",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_winding_pack_cost.sysml:4",
+        "models/library/analyses/mfe_winding_pack_cost.sysml:42",
+        "models/library/analyses/mfe_winding_pack_cost.sysml:71",
+        "models/library/cost_structure/mfe_power_core.sysml:380",
+        "models/library/cost_structure/mfe_power_core.sysml:407",
+        "models/library/cost_structure/mfe_power_core.sysml:417",
+        "models/library/structure/mfe_plant_systems.sysml:211",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:191",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py:15",
+        "tests/models/test_magnet_manufacturing_integration.py:21"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "work/orchestration/goals/joint-magnet-sizing-feasibility/answer.md",
+        "work/orchestration/goals/magnet-manufacturing-cost-completeness/answer.md"
+      ],
+      "why_not_next": "S4 requires design-based fabrication/installation and stated uncertainty; mixed-year tape/material/winding/support accounts retain unpriced installation, joints, ground insulation, qualification, yield and spares without a bounded estimate uncertainty.",
+      "grader": "Fresh non-author delegated assessor /root/magnets_cooling, 2026-09-18",
+      "evidence_assessment": "Separate engineered winding inventory, electromagnetic support, power-supply and cryoplant accounts remain S3. New tape volume/cross-section procurement, component materials, explicit winding operations and conditional insulation stock deepen the same level.",
+      "limitations": [
+        "Mixed price-year subtotal, incomplete procurement/manufacturing/installation scope and unqualified ordinary laminate-stock proxy.",
+        "C220107 power-supply basis retains disclosed ARIES-lineage exception; no barred source was opened for this assessment."
+      ],
+      "integrity_findings": [
+        "Mixed price-year subtotal, incomplete procurement/manufacturing/installation scope and unqualified ordinary laminate-stock proxy.",
+        "C220107 power-supply basis retains disclosed ARIES-lineage exception; no barred source was opened for this assessment."
+      ],
+      "executable_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static",
+        "V-consumer-tests"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_winding_pack_cost.sysml:4",
+        "models/library/analyses/mfe_winding_pack_cost.sysml:42",
+        "models/library/analyses/mfe_winding_pack_cost.sysml:71",
+        "models/library/cost_structure/mfe_power_core.sysml:380",
+        "models/library/cost_structure/mfe_power_core.sysml:407",
+        "models/library/cost_structure/mfe_power_core.sysml:417",
+        "models/library/structure/mfe_plant_systems.sysml:211",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:191",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py:15",
+        "tests/models/test_magnet_manufacturing_integration.py:21",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "work/orchestration/goals/joint-magnet-sizing-feasibility/answer.md",
+        "work/orchestration/goals/magnet-manufacturing-cost-completeness/answer.md"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R4.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Wall-plug → coupled-power chain computed with a stated deposition assumption, verified",
+      "old_score": 2,
+      "new_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_heating_chain.sysml:65",
+        "models/library/analyses/mfe_heating_chain.sysml:79",
+        "models/library/cost_structure/mfe_power_core.sysml:469",
+        "tests/models/test_mfe_operating_heating.py:60",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/operating_heating_power_impl.py:19"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/radiation-diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/reuse-check.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-plasma-power-balance/reconciliation.md"
+      ],
+      "why_not_next": "P3 requires both plasma-derived demand and a port, coupling or geometry limit; required demand exists, but generic efficiency-domain bounds and installed-power capacity do not establish that hardware constraint.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Installed wall-plug/source/coupled capacities remain distinct from operating demand and electrical draw. Efficiencies and deposition are explicit; native study outputs and tests exercise the signed conversion and reserve invariance.",
+      "correctness_and_validation_limitations": [
+        "Coupling is held at 1.0 and source efficiency at 0.5; no transmission/launcher/deposition solver or geometry-dependent coupling is established. The unresolved plasma power residual affects predicted operating heating."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "Wall-plug → coupled-power chain computed with a stated deposition assumption, verified",
+      "limitations": [
+        "Coupling is held at 1.0 and source efficiency at 0.5; no transmission/launcher/deposition solver or geometry-dependent coupling is established. The unresolved plasma power residual affects predicted operating heating."
+      ],
+      "integrity_findings": [
+        "Coupling is held at 1.0 and source efficiency at 0.5; no transmission/launcher/deposition solver or geometry-dependent coupling is established. The unresolved plasma power residual affects predicted operating heating."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_heating_chain.sysml:65",
+        "models/library/analyses/mfe_heating_chain.sysml:79",
+        "models/library/cost_structure/mfe_power_core.sysml:469",
+        "tests/models/test_mfe_operating_heating.py:60",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/operating_heating_power_impl.py:19",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/radiation-diagnostics.json",
+        "work/orchestration/goals/stellaris-plasma-power-balance/evidence/reuse-check.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-plasma-power-balance/reconciliation.md"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R4.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cost follows installed heating power with source basis",
+      "old_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/cost_structure/mfe_power_core.sysml:476",
+        "models/library/analyses/mfe_account_costs.sysml:202",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/heating_cost_impl.py:75"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Sources, transmission and launchers need separate equipment cost accounts and replaceable-component lives.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "The installed delivered heating power still drives per-method procurement cost ($264.145M baseline); operating demand is distinct from installed capacity.",
+      "limitations": [
+        "Per-MW procurement proxy does not establish launcher layout, delivery hardware or replacement cost."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "Per-MW procurement proxy does not establish launcher layout, delivery hardware or replacement cost."
+      ],
+      "new_score": 2,
+      "target_anchor": "Cost follows installed heating power with source basis",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/cost_structure/mfe_power_core.sysml:476",
+        "models/library/analyses/mfe_account_costs.sysml:202",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/heating_cost_impl.py:75",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R5.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "A heat-flux or erosion limit pushes back on operation or geometry",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_divertor_heat.sysml:42",
+        "models/library/analyses/mfe_divertor_heat.sysml:54",
+        "models/designs/generic_mfe/mfe_plant.sysml:760",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py:14",
+        "tests/models/test_divertor_heat_account.py:32",
+        "tests/models/test_divertor_heat_integration.py:24"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-reference-reconciliation/reconciliation.md"
+      ],
+      "why_not_next": "P4 needs exhaust and detachment closure, searched and independently checked; fixed reference transport/profile transfer plus an accounting identity is not that closure.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "The new conserved ledger separates core radiation, edge radiation, captured target power and uncaptured transport. Sourced peak/load pairs still calculate peak heat against 10 MW/m2. The native baseline peak is 10.5178415460 MW/m2; the latest anchor has 0.29166879 MW/m2 margin and neighboring/restore cases cross the limit.",
+      "correctness_and_validation_limitations": [
+        "Peak-equivalent area is reconstructed from a supplied profile, not independent wetted-area sizing. Radiation deposited on target surfaces, erosion, transients and physically transferable footprint geometry remain absent; the passing screen covers non-radiated transport only."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "A heat-flux or erosion limit pushes back on operation or geometry",
+      "limitations": [
+        "Peak-equivalent area is reconstructed from a supplied profile, not independent wetted-area sizing. Radiation deposited on target surfaces, erosion, transients and physically transferable footprint geometry remain absent; the passing screen covers non-radiated transport only."
+      ],
+      "integrity_findings": [
+        "Peak-equivalent area is reconstructed from a supplied profile, not independent wetted-area sizing. Radiation deposited on target surfaces, erosion, transients and physically transferable footprint geometry remain absent; the passing screen covers non-radiated transport only."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_divertor_heat.sysml:42",
+        "models/library/analyses/mfe_divertor_heat.sysml:54",
+        "models/designs/generic_mfe/mfe_plant.sysml:760",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py:14",
+        "tests/models/test_divertor_heat_account.py:32",
+        "tests/models/test_divertor_heat_integration.py:24",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv",
+        "work/orchestration/goals/stellaris-reference-reconciliation/reconciliation.md"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R5.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cost follows divertor thermal power or area with source basis",
+      "old_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/cost_structure/mfe_power_core.sysml:534",
+        "models/library/analyses/mfe_account_costs.sysml:174",
+        "models/designs/generic_mfe/mfe_plant.sysml:608",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/divertor_cost_impl.py:76"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Targets/cassettes need explicit replaceable units with replacement logic from their own computed life.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Divertor cost remains source-based thermal-power scaling ($109.015M baseline); the newer heat ledger adds physical bookkeeping but does not create cassette costs or independent life.",
+      "limitations": [
+        "The calendar uses first-wall neutron fluence for the bundled blanket/divertor replacement, not divertor erosion life."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "The calendar uses first-wall neutron fluence for the bundled blanket/divertor replacement, not divertor erosion life."
+      ],
+      "new_score": 2,
+      "target_anchor": "Cost follows divertor thermal power or area with source basis",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/cost_structure/mfe_power_core.sysml:534",
+        "models/library/analyses/mfe_account_costs.sysml:174",
+        "models/designs/generic_mfe/mfe_plant.sysml:608",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/divertor_cost_impl.py:76",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R6.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Shell volume from the radial build and a computed gas-load/pumping estimate, verified",
+      "old_score": 2,
+      "new_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_vacuum.sysml:4",
+        "models/library/analyses/mfe_vacuum.sysml:53",
+        "models/designs/generic_mfe/mfe_plant.sysml:170",
+        "models/library/structure/mfe_plant_systems.sysml:324",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1396",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_vacuum/vacuum_gas_load_impl.py:49"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "P3 requires vessel structural or actual pumping-capacity constraints; required effective speed alone supplies neither a selected pumping train nor a capacity limit.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Computed radial build supplies vessel shell volume; recombined D/T plus helium exhaust gives gas throughput and required effective speed. Current baseline vessel volume is 147.9058915547 m3 and effective speed 78.0137257066 m3/s at the declared 1 Pa boundary.",
+      "correctness_and_validation_limitations": [
+        "The 1 Pa exhaust pressure is declared and unsourced; ducts, conductance, species-dependent pumps, regeneration, leakage and outgassing are omitted. Required speed is not a pump specification."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "Shell volume from the radial build and a computed gas-load/pumping estimate, verified",
+      "limitations": [
+        "The 1 Pa exhaust pressure is declared and unsourced; ducts, conductance, species-dependent pumps, regeneration, leakage and outgassing are omitted. Required speed is not a pump specification."
+      ],
+      "integrity_findings": [
+        "The 1 Pa exhaust pressure is declared and unsourced; ducts, conductance, species-dependent pumps, regeneration, leakage and outgassing are omitted. Required speed is not a pump specification."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_vacuum.sysml:4",
+        "models/library/analyses/mfe_vacuum.sysml:53",
+        "models/designs/generic_mfe/mfe_plant.sysml:170",
+        "models/library/structure/mfe_plant_systems.sysml:324",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1396",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_vacuum/vacuum_gas_load_impl.py:49",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R6.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cost follows computed shell volume/mass with source basis",
+      "old_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:162",
+        "models/designs/generic_mfe/mfe_plant.sysml:169",
+        "models/library/analyses/mfe_account_costs.sysml:114",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/vessel_cost_impl.py:85"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Shell, ports and pumping train need separately sized cost subaccounts.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Radial-build vessel volume drives the shell account ($120.842M baseline). The computed vacuum flow is not wired to a separately priced pumping train.",
+      "limitations": [
+        "Vessel cost explicitly omits gas-load pumping cost."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "Vessel cost explicitly omits gas-load pumping cost."
+      ],
+      "new_score": 2,
+      "target_anchor": "Cost follows computed shell volume/mass with source basis",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:162",
+        "models/designs/generic_mfe/mfe_plant.sysml:169",
+        "models/library/analyses/mfe_account_costs.sysml:114",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/vessel_cost_impl.py:85",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R7.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "The computed loop feeds the recirculation/net-power constraints so coolant choices push back on feasibility",
+      "target_anchor": "The computed loop feeds the recirculation/net-power constraints so coolant choices push back on feasibility",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_primary_loop.sysml:4",
+        "models/library/structure/mfe_plant_systems.sysml:68",
+        "models/designs/generic_mfe/mfe_plant.sysml:322",
+        "models/designs/generic_mfe/mfe_plant.sysml:711",
+        "models/designs/generic_mfe/mfe_plant.sysml:744",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py:12",
+        "tests/models/test_primary_loop_domains.py:37"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md:17",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/results/verification_summary.json"
+      ],
+      "why_not_next": "P4 requires thermal-hydraulic state closure across the loop; fixed-density reference-layout loss scaling, imposed temperatures and an unsized intermediate heat exchanger do not close the loop.",
+      "grader": "Fresh non-author delegated assessor /root/magnets_cooling, 2026-09-18",
+      "evidence_assessment": "Source heat derives flow, flow derives pressure loss and compressor electricity, and those computed terms feed recirculation and net power. September 16 count interventions document the loop-capacity crossing without changing its limit.",
+      "limitations": [
+        "Representative helium loop is not the source Stellaris water-cooled breeding-zone/helium-first-wall architecture.",
+        "Held layout/density, compressor efficiency and flow rating transfer; intermediate exchanger duty is computed but exchanger realization is not verified."
+      ],
+      "integrity_findings": [
+        "Representative helium loop is not the source Stellaris water-cooled breeding-zone/helium-first-wall architecture.",
+        "Held layout/density, compressor efficiency and flow rating transfer; intermediate exchanger duty is computed but exchanger realization is not verified."
+      ],
+      "executable_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_primary_loop.sysml:4",
+        "models/library/structure/mfe_plant_systems.sysml:68",
+        "models/designs/generic_mfe/mfe_plant.sysml:322",
+        "models/designs/generic_mfe/mfe_plant.sysml:711",
+        "models/designs/generic_mfe/mfe_plant.sysml:744",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py:12",
+        "tests/models/test_primary_loop_domains.py:37",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md:17",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/results/verification_summary.json"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R7.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "Costs follow loop thermal power or flow quantities with source basis",
+      "target_anchor": "Pumps, piping, heat exchangers as separately sized subaccounts",
+      "old_score": 2,
+      "new_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/structure/mfe_plant_systems.sysml:85",
+        "models/library/analyses/mfe_account_costs.sysml:532",
+        "models/library/analyses/mfe_account_costs.sysml:566",
+        "models/designs/generic_mfe/mfe_plant.sysml:454"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md:17",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/results/verification_summary.json"
+      ],
+      "why_not_next": "S3 requires separately sized and costed pumps, piping and heat exchangers; count-derived equipment requirements and annual break-even headroom do not provide installed equipment accounts.",
+      "grader": "Fresh non-author delegated assessor /root/magnets_cooling, 2026-09-18",
+      "evidence_assessment": "Coolant and auxiliary-cooling costs remain net/thermal-power proxies with explicit account rollup and source basis. September 16 study itself states installed hardware additions are unpriced.",
+      "limitations": [
+        "More loops lower pumping losses in the model without purchasing additional pumps, piping and exchangers; resulting LCOE changes are not installed-system savings."
+      ],
+      "integrity_findings": [
+        "More loops lower pumping losses in the model without purchasing additional pumps, piping and exchangers; resulting LCOE changes are not installed-system savings."
+      ],
+      "executable_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/structure/mfe_plant_systems.sysml:85",
+        "models/library/analyses/mfe_account_costs.sysml:532",
+        "models/library/analyses/mfe_account_costs.sysml:566",
+        "models/designs/generic_mfe/mfe_plant.sysml:454",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md:17",
+        "exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/results/verification_summary.json"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R8.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Cycle responds to blanket/coolant temperature with a materials or temperature limit pushing back",
+      "target_anchor": "Cycle efficiency computed from coolant outlet temperature and a stated cycle model, verified",
+      "old_score": 3,
+      "new_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_power_cycle.sysml:4",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:265",
+        "models/designs/generic_mfe/mfe_plant.sysml:751",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py:52"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json"
+      ],
+      "why_not_next": "P4 requires thermodynamic state closure with the primary loop; a temperature-efficiency correlation and validity fence do not solve cycle states or heat-exchanger performance.",
+      "grader": "Fresh non-author delegated assessor /root/magnets_cooling, 2026-09-18",
+      "evidence_assessment": "Coolant outlet temperature feeds the executed logarithmic cycle-efficiency correlation; its declared temperature validity domain is an executable plant constraint. This retains the prior literal P3 interpretation, without claiming independently validated materials compatibility.",
+      "limitations": [
+        "Correlation validity is not materials qualification; no thermodynamic-state solution, exchanger design or coolant-compatibility demonstration."
+      ],
+      "integrity_findings": [
+        "Correlation validity is not materials qualification; no thermodynamic-state solution, exchanger design or coolant-compatibility demonstration."
+      ],
+      "executable_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_power_cycle.sysml:4",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:265",
+        "models/designs/generic_mfe/mfe_plant.sysml:751",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py:52",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R8.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Costs follow computed gross/net power with source basis",
+      "target_anchor": "Costs follow computed gross/net power with source basis",
+      "old_score": 2,
+      "new_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:229",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:284",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:312",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:338",
+        "models/library/analyses/mfe_account_costs.sysml:232",
+        "models/designs/generic_mfe/mfe_plant.sysml:392"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json"
+      ],
+      "why_not_next": "S3 requires independently sized equipment subaccounts; the turbine, electrical plant, heat sink and miscellaneous plant remain aggregate power-rate products.",
+      "grader": "Fresh non-author delegated assessor /root/magnets_cooling, 2026-09-18",
+      "evidence_assessment": "Four separate cost homes follow calculated power and declared unit rates. They do not constitute equipment-level sizing.",
+      "limitations": [
+        "Power-scaled aggregates cannot resolve turbine/electrical/heat-sink hardware or detailed installation boundaries."
+      ],
+      "integrity_findings": [
+        "Power-scaled aggregates cannot resolve turbine/electrical/heat-sink hardware or detailed installation boundaries."
+      ],
+      "executable_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:229",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:284",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:312",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:338",
+        "models/library/analyses/mfe_account_costs.sysml:232",
+        "models/designs/generic_mfe/mfe_plant.sysml:392",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/r2-control-comparison.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/campaign-counts.json"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R9.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "target_met": null,
+      "anchor_satisfied": "Buildings carry no plasma physics; their depth is structural",
+      "old_score": "not_applicable",
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:364"
+      ],
+      "runtime_evidence": [],
+      "study_evidence": [],
+      "why_not_next": "No next level applies: the frozen rubric assigns this dimension not_applicable.",
+      "grader": "/root/cost_lifecycle; 2026-09-18",
+      "evidence_assessment": "Rechecked applicability against actual canonical ownership; this area is structural/economic, as the frozen rubric specifies.",
+      "limitations": [],
+      "integrity_findings": [],
+      "new_score": "not_applicable",
+      "target_anchor": null,
+      "integrity_finding_refs": [],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:364"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": "not_applicable",
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R9.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "Grouped building bases scaled by plant power with source basis",
+      "old_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:364",
+        "models/library/analyses/mfe_account_costs.sysml:310",
+        "models/library/analyses/mfe_account_costs.sysml:482"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Size buildings, hot cell and remote-handling facilities from layout, component envelopes and maintenance throughput.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Six grouped building bases still scale with fusion, thermal and electric power ($652.383M baseline). Remote handling has a power-law account; no building-volume or hot-cell-throughput calculation is present.",
+      "limitations": [
+        "Stale part documentation calls buildings a pass-through, but the actual calc at mfe_subsystems.sysml:392 is authoritative. CAS10 sqrt(net power) can remain undefined outside the positive-net domain."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "Stale part documentation calls buildings a pass-through, but the actual calc at mfe_subsystems.sysml:392 is authoritative. CAS10 sqrt(net power) can remain undefined outside the positive-net domain."
+      ],
+      "new_score": 2,
+      "target_anchor": "Building set sized by volume/function from layout drivers, incl. hot cell and remote-handling facilities",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_subsystems.sysml:364",
+        "models/library/analyses/mfe_account_costs.sysml:310",
+        "models/library/analyses/mfe_account_costs.sysml:482",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R10.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 1,
+      "target": 2,
+      "target_met": false,
+      "anchor_satisfied": "Annual feed from fusion energy with held burn/recovery fractions",
+      "old_score": 1,
+      "new_score": 1,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_fuel_cycle.sysml:4",
+        "models/library/analyses/mfe_fuel_cycle.sysml:29",
+        "models/library/analyses/mfe_fuel_cycle.sysml:83",
+        "models/library/structure/mfe_plant_systems.sysml:277",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py:79"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "P2 requires tritium inventory, startup requirement and processing throughput all forward-computed and verified; residence-time inventory and startup reserve policy are absent.",
+      "grader": "/root/physics; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Burn, circulating injection, exhaust and permanent loss are calculated from fusion with held burn/recovery fractions. Required TBR includes dormant inventory/decay/growth terms; those terms have not become a calculated startup/inventory system.",
+      "correctness_and_validation_limitations": [
+        "Inventory and stock growth remain zero dormant inputs, extraction unity, burn/recovery held. The resulting required TBR 1.19 exceeds held 1.074; recovery as physical recycling differs from its inherited economic feedstock meaning."
+      ],
+      "runtime_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "target_anchor": "Tritium inventory, startup requirement, and processing throughput forward-computed, verified",
+      "limitations": [
+        "Inventory and stock growth remain zero dormant inputs, extraction unity, burn/recovery held. The resulting required TBR 1.19 exceeds held 1.074; recovery as physical recycling differs from its inherited economic feedstock meaning."
+      ],
+      "integrity_findings": [
+        "Inventory and stock growth remain zero dormant inputs, extraction unity, burn/recovery held. The resulting required TBR 1.19 exceeds held 1.074; recovery as physical recycling differs from its inherited economic feedstock meaning."
+      ],
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_fuel_cycle.sysml:4",
+        "models/library/analyses/mfe_fuel_cycle.sysml:29",
+        "models/library/analyses/mfe_fuel_cycle.sysml:83",
+        "models/library/structure/mfe_plant_systems.sysml:277",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py:79",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/package_identity.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "author_reading": null,
+      "grader_score": 1,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R10.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 1,
+      "target": 2,
+      "target_met": false,
+      "anchor_satisfied": "Annual fuel cost line with a CAS home",
+      "old_score": 1,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/structure/mfe_plant_systems.sysml:290",
+        "models/library/structure/mfe_plant_systems.sysml:300",
+        "models/library/analyses/mfe_fuel_cycle.sysml:29",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/dt_fuel_cost_impl.py:135"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Connect processing-plant equipment cost to computed tritium throughput with an admissible source basis.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Annual fuel cost follows fusion reactions and held recovery/burn fractions ($0.551M/year unlevelized baseline); the $121.057M fuel-handling account follows net power rather than computed processing throughput.",
+      "limitations": [
+        "Inventory and startup stock remain dormant assumptions. Fuel-price recovery and tritium-stream recovery share a number but have different meanings."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "Inventory and startup stock remain dormant assumptions. Fuel-price recovery and tritium-stream recovery share a number but have different meanings."
+      ],
+      "new_score": 1,
+      "target_anchor": "Processing-plant cost follows computed throughput with source basis",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/structure/mfe_plant_systems.sysml:290",
+        "models/library/structure/mfe_plant_systems.sysml:300",
+        "models/library/analyses/mfe_fuel_cycle.sysml:29",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/dt_fuel_cost_impl.py:135",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 1,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R11.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 3,
+      "target": 3,
+      "target_met": true,
+      "anchor_satisfied": "Availability derived from the maintenance/replacement schedule and feeds the economics, pushing back on design choices",
+      "old_score": 3,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_lifecycle.sysml:14",
+        "models/designs/generic_mfe/mfe_plant.sysml:621",
+        "models/designs/generic_mfe/mfe_plant.sysml:664",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1614",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1644",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:99",
+        "tests/models/test_mfe_financial_calendar.py:108"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/scoped-tests.log",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.log"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Add separate maintenance sequences/logistics and component schedules, search their justified domain and independently check the resulting plant calendar.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Computed life drives dated replacements, downtime, availability and electricity-cost denominator. Current baseline has 4.523926 FPY life, five replacements and availability 0.9027778; retained study rows show three through six replacements with varying availability.",
+      "limitations": [
+        "Unplanned downtime is explicitly zero without an admissible source. Coil-life margin is -17.0833 FPY at baseline and remains a report, not a lifetime constraint. Bundled first-wall/divertor life omits other maintenance."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "Unplanned downtime is explicitly zero without an admissible source. Coil-life margin is -17.0833 FPY at baseline and remains a report, not a lifetime constraint. Bundled first-wall/divertor life omits other maintenance."
+      ],
+      "new_score": 3,
+      "target_anchor": "Availability derived from the maintenance/replacement schedule and feeds the economics, pushing back on design choices",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_lifecycle.sysml:14",
+        "models/designs/generic_mfe/mfe_plant.sysml:621",
+        "models/designs/generic_mfe/mfe_plant.sysml:664",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1614",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1644",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:99",
+        "tests/models/test_mfe_financial_calendar.py:108",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/scoped-tests.log",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.log",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 3,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R11.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 2,
+      "target_met": true,
+      "anchor_satisfied": "Levelized replacement follows computed component life",
+      "old_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/library/analyses/mfe_lifecycle.sysml:14",
+        "models/designs/generic_mfe/mfe_plant.sysml:608",
+        "models/designs/generic_mfe/mfe_plant.sysml:635",
+        "models/library/analyses/mfe_account_costs.sysml:409",
+        "models/designs/generic_mfe/mfe_plant.sysml:524",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:130"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/scoped-tests.log",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.log"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "Add replacement per component class plus decomposed O&M and decommissioning.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Dated replacements are discounted and annualized into CAS72 ($138.187M/year baseline), then joined to annual O&M. WI-052 improves numerical behavior at zero/near-zero rates without adding a lifecycle cost class.",
+      "limitations": [
+        "O&M is a staffing/power proxy; decommissioning is a lump allowance; replacement labour and waste are outside the calendar."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "O&M is a staffing/power proxy; decommissioning is a lump allowance; replacement labour and waste are outside the calendar."
+      ],
+      "new_score": 2,
+      "target_anchor": "Levelized replacement follows computed component life",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static"
+      ],
+      "evidence_read": [
+        "models/library/analyses/mfe_lifecycle.sysml:14",
+        "models/designs/generic_mfe/mfe_plant.sysml:608",
+        "models/designs/generic_mfe/mfe_plant.sysml:635",
+        "models/library/analyses/mfe_account_costs.sysml:409",
+        "models/designs/generic_mfe/mfe_plant.sysml:524",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py:130",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/scoped-tests.log",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.log",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    },
+    {
+      "cell_id": "R12.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "target_met": null,
+      "anchor_satisfied": "The economics layer's depth is structural.",
+      "old_score": "not_applicable",
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_plant.sysml:664"
+      ],
+      "runtime_evidence": [],
+      "study_evidence": [],
+      "why_not_next": "No next level applies: the frozen rubric assigns this dimension not_applicable.",
+      "grader": "/root/cost_lifecycle; 2026-09-18",
+      "evidence_assessment": "Rechecked applicability against actual canonical ownership; this area is structural/economic, as the frozen rubric specifies.",
+      "limitations": [],
+      "integrity_findings": [],
+      "new_score": "not_applicable",
+      "target_anchor": null,
+      "integrity_finding_refs": [],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_plant.sysml:664"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": "not_applicable",
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion.",
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study."
+    },
+    {
+      "cell_id": "R12.S",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "score": 2,
+      "target": 3,
+      "target_met": false,
+      "anchor_satisfied": "2-digit CAS coverage with computed contingency, indirects, IDC, levelization, and LCOE",
+      "old_score": 2,
+      "model_version": "e78099cb93ab36b57debf70045cc9c4e7bcfcdd8",
+      "model_evidence": [
+        "models/designs/generic_mfe/mfe_plant.sysml:465",
+        "models/designs/generic_mfe/mfe_plant.sysml:484",
+        "models/designs/generic_mfe/mfe_plant.sysml:547",
+        "models/designs/generic_mfe/mfe_plant.sysml:664",
+        "models/designs/generic_mfe/mfe_plant.sysml:696",
+        "models/library/analyses/mfe_account_costs.sysml:261",
+        "models/library/analyses/mfe_lcoe_dcf.sysml:4"
+      ],
+      "runtime_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/scoped-tests.log",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.log"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "why_not_next": "State the estimate maturity/class and apply a documented uncertainty treatment alongside functional subaccounts where cost concentrates.",
+      "grader": "/root/cost_lifecycle; independent read-only reassessment 2026-09-18",
+      "evidence_assessment": "Two-digit account coverage, contingency, indirects, interest during construction, annualization and both electricity-cost forms execute. Current baseline gives $144.7474/MWh headline and $142.2095/MWh comparison form. Finer magnet accounts do not supply a stated estimate class or uncertainty treatment.",
+      "limitations": [
+        "Latest all-point verification does not map every finance/rollup channel; consult its explicit unmapped_native_channels list. WI-052 separately verifies rate-limit arithmetic, which is correctness progress rather than depth. Deterministic contingency and unweighted sensitivity do not establish estimate uncertainty. CAS10 and other sqrt(net power) accounts restrict evaluability."
+      ],
+      "verification_status": "Current equations, implementation and retained execution inspected; see top-level new_verification for fresh tests and identity checks. No new study.",
+      "integrity_findings": [
+        "Latest all-point verification does not map every finance/rollup channel; consult its explicit unmapped_native_channels list. WI-052 separately verifies rate-limit arithmetic, which is correctness progress rather than depth. Deterministic contingency and unweighted sensitivity do not establish estimate uncertainty. CAS10 and other sqrt(net power) accounts restrict evaluability."
+      ],
+      "new_score": 2,
+      "target_anchor": "3-digit functional subaccounts where cost concentrates, plus a stated estimate class and uncertainty treatment",
+      "integrity_finding_refs": [
+        "V-coverage",
+        "V-static",
+        "V-consumer-tests"
+      ],
+      "evidence_read": [
+        "models/designs/generic_mfe/mfe_plant.sysml:465",
+        "models/designs/generic_mfe/mfe_plant.sysml:484",
+        "models/designs/generic_mfe/mfe_plant.sysml:547",
+        "models/designs/generic_mfe/mfe_plant.sysml:664",
+        "models/designs/generic_mfe/mfe_plant.sysml:696",
+        "models/library/analyses/mfe_account_costs.sysml:261",
+        "models/library/analyses/mfe_lcoe_dcf.sysml:4",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/baseline_result.json",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/verification_summary.json",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/scoped-tests.log",
+        "work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.log",
+        "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/points.csv"
+      ],
+      "package_identity": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+      "identity_scope": "Current source/package continuity established by fresh seal, lineage and actual r2 archive byte comparison; see top-level verification.",
+      "author_reading": null,
+      "grader_score": 2,
+      "resolution": "No scoring disagreement; independently reassessed against the complete pinned criterion."
+    }
+  ]
+}

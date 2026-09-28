@@ -1,0 +1,27 @@
+['.codex-test/run', 'agentic-mbse', 'validate', '/tmp/wi050-implementation-ccj8kjq5/models', '--level=1']
+
+======================================================================
+SysML Quality Validation
+Models path: /tmp/wi050-implementation-ccj8kjq5/models
+Mode: Fail-fast
+Running: Level 1 only
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 23 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 23
+   Errors: 0
+   Warnings: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/.project/active/model-evaluation-comparison-adapter/v1/adapter.py", line 276, in execute
+    point, selection = select(parsed, defaults(contract))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/.project/active/model-evaluation-comparison-adapter/v1/adapter.py", line 131, in select
+    raise ValueError('incompatible or ambiguous quantity definition/unit: ' + key)
+ValueError: incompatible or ambiguous quantity definition/unit: stellarator_09__stellaris__plasma__n_e0

@@ -1,0 +1,16 @@
+{
+  "request_id": "REQ-COOL-INSTALL-01",
+  "question": "Which admissible original HTGR NGNP and helium heat-transport studies provide equipment and installed cost methods transferable to 8 MPa 300-500 C helium circuits, with price year, materials, scope and lifecycle?",
+  "consumer": "installed-cooling-equipment-costs/T-001",
+  "gap_type": "missing_cost_method",
+  "priority": "P1",
+  "where_to_look": [
+    "INL NGNP original design contractor reports",
+    "OSTI helium heat transport economics",
+    "EU DEMO HCPB original engineering sources"
+  ],
+  "limits": {
+    "max_searches": 12,
+    "max_captures": 3
+  }
+}

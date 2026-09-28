@@ -1,0 +1,49 @@
+{
+  "2": {
+    "prior_count": 105,
+    "current_count": 105,
+    "added": [],
+    "removed": [],
+    "metrics": {
+      "Unused definitions": 0,
+      "Unbound inputs": 0,
+      "Undefined bindings": 0,
+      "Placeholder bindings": 105,
+      "Self-named bindings": 0,
+      "Orphaned elements": 0
+    }
+  },
+  "6": {
+    "prior_count": 493,
+    "current_count": 498,
+    "added": [
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_stream_out' at file:exploration/aries_integrated/input_models/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::divertor_stream_out' at file:exploration/aries_integrated/input_models/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::mixed_outlet' at file:exploration/aries_integrated/input_models/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::network_mode_used' at file:exploration/aries_integrated/input_models/plant.sysml:LINE",
+      "ERROR: Unsupported operator '.' in attribute 'aries_integrated_plant::heat_exchangers::pbli_split_used' at file:exploration/aries_integrated/input_models/plant.sysml:LINE"
+    ],
+    "removed": [],
+    "metrics": {
+      "Calc defs checked": 81,
+      "Calc usages checked": 147,
+      "Bindings validated": 803,
+      "Design attrs checked": 0,
+      "Manifests checked": 0,
+      "L6_MISSING_QUALIFIED_NAME": 0,
+      "L6_INVALID_QUALIFIED_NAME": 0,
+      "L6_CALC_DEF_NO_OUTPUT": 0,
+      "L6_CALC_DEF_NO_DIRECTION": 0,
+      "L6_INVALID_BINDING_FORMAT": 0,
+      "L6_DESIGN_ATTR_INCOMPLETE": 0,
+      "L6_DESIGN_ATTR_UNEXTRACTABLE": 0,
+      "L6_ANONYMOUS_RETURN": 0,
+      "L6_BODY_ASSIGNMENT_IMPL_LOSS": 0,
+      "V4_STATIC_FUNCTION_INVOCATION": 0,
+      "L6_CONSTRAINT_MALFORMED_NUMERICAL": 0,
+      "L6_CONSTRAINT_NON_NUMERICAL": 0,
+      "L6_CALC_DEF_NO_INSTANTIATION": 0,
+      "L6_ATTR_REDEF_EXPR_DROPPED": 0
+    }
+  }
+}

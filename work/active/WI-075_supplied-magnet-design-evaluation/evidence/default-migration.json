@@ -1,0 +1,12 @@
+{
+  "authority": "AGENT migration of entering native evaluated design, not new empirical evidence",
+  "source": "work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json",
+  "source_sha256": "5d9bde989895a72fe61bdd4b8db9e31c685e98175c089d3f679a2e6a953f79e1",
+  "selected": {
+    "wp_side": 0.35999999999999993,
+    "m_support": 11615604.482575215,
+    "m_casing": 63000.0,
+    "reference_turns": 308.0
+  },
+  "reference_turns_derivation": "existing I_coil=15400000 A-turn / turn_current=50000 A"
+}

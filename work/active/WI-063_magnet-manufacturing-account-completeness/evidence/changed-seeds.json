@@ -1,0 +1,10 @@
+{
+  "handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py": {
+    "before": null,
+    "after": "bb1a1fd0915f5b79e7860e0dcf37dd5912a94bce7a694d6ba344e0e60836c5ea"
+  },
+  "handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py": {
+    "before": "6c636718aaa6358bf4d8207f7c337dfa3b0fffd79be8602631567430f66e7568",
+    "after": "a68693f0a4d9de7837abf9f901d78f6a72f03a62e0e78fab09e5d9fad2c1cc69"
+  }
+}

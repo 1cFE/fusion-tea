@@ -1,0 +1,38 @@
+[
+  {
+    "path": "knowledge/holdout/aries-cs/08-FST-Najmabadi.pdf",
+    "exists": true,
+    "expected_sha256": "5eb7889311beecd9b9be56837ecf82b0a92b8ff99804d01bb3fa5fac4a9b78e7",
+    "actual_sha256": "5eb7889311beecd9b9be56837ecf82b0a92b8ff99804d01bb3fa5fac4a9b78e7",
+    "expected_bytes": 1109098,
+    "actual_bytes": 1109098,
+    "retrieval": "http://web.archive.org/web/20170809003451id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Najmabadi.pdf"
+  },
+  {
+    "path": "knowledge/holdout/aries-cs/08-FST-Ku.pdf",
+    "exists": true,
+    "expected_sha256": "8fb35d57ec3563276af13076ee97728f6237630df803bd46639224d5f3e8a7f5",
+    "actual_sha256": "8fb35d57ec3563276af13076ee97728f6237630df803bd46639224d5f3e8a7f5",
+    "expected_bytes": 1199694,
+    "actual_bytes": 1199694,
+    "retrieval": "http://web.archive.org/web/20120714063819id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Ku.pdf"
+  },
+  {
+    "path": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+    "exists": true,
+    "expected_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+    "actual_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+    "expected_bytes": 1594295,
+    "actual_bytes": 1594295,
+    "retrieval": "http://web.archive.org/web/20111206134434id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Lyon.pdf"
+  },
+  {
+    "path": "knowledge/holdout/aries-cs/08-FST-Raffray.pdf",
+    "exists": true,
+    "expected_sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7",
+    "actual_sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7",
+    "expected_bytes": 1974632,
+    "actual_bytes": 1974632,
+    "retrieval": "http://web.archive.org/web/20170808114520id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Raffray.pdf"
+  }
+]

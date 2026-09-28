@@ -1,0 +1,9 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python exploration/ife_e2e/sweep_ife.py --output-dir /tmp/wi048-final-sweep'
+
+11505 grid points in 0.4s -> /tmp/wi048-final-sweep/sweep_results.csv
+power-positive: 10440 (90.7%)
+viable ('Viability Threshold' satisfied): 8755 (76.1%)
+attractive (viable & LCOE<=$100): 7419 (64.5%)
+on-grid anchor B check: LCOE=68.6902 OK
+
+Exit code: 0

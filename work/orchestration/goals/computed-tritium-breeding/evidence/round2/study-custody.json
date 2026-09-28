@@ -1,0 +1,7 @@
+{
+  "study_commit": "5347d5a3",
+  "snapshot_sha256": "4ed3597f081ada28a208b11dd9f6276fde0e065631fb92e2f06d89ecbe7b9b02",
+  "committed_artifact_hashes_checked": 37,
+  "status": "PASS",
+  "note": "All declared artifacts included, including force-staged ignored result databases; no bytes changed."
+}

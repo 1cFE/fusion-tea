@@ -1,0 +1,218 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "15508c7fd070b25e9ac44025beb223efe61af0618356b6f5059184a65187d58e",
+    "after": "466c1d814106741c95452165629c5b5fb21c1b2bab84ee3fa2f78df85329b845"
+  },
+  "__init__.py": {
+    "before": "c7bff0206d7c019e2b431dfd8e459060f52d143cc2444998d23c63d16cf22568",
+    "after": "d6576cfcf9225f7a2d29a56a2c889f8c64501cb524060186f49f5db029159fed"
+  },
+  "contracts/generation_manifest.json": {
+    "before": "c06b61ea4a2f3650860f098d517b7f9a3ca246552e7b2f319c8e2e8ed85e506f",
+    "after": "1b7dfd8def1c8b68449c3c357d2db8c7d8e0e878202512688c09419701915bf7"
+  },
+  "contracts/model_contract.json": {
+    "before": "b7bb23bdc60cdd958f21fc8609e1706458f811542541dc106ed3e8d7970242cb",
+    "after": "d31ca8ddca26e050146606feb7ff995696a4d33198c3a48fb22986bd0a917e09"
+  },
+  "contracts/package_contract.json": {
+    "before": "957a306a73967359364df933930991f083ac27445d0fd13c0ba1f3084b95bfd4",
+    "after": "ba88b5be674d15a0d73c0791736a6f87390993873d65f6dbed65cfc76f0aaa2f"
+  },
+  "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py": {
+    "before": "8ba8cf19783eb3be8de5d05ca8d097dbe2dcce20eb8f932f0921283220c0c817",
+    "after": "95720d9456d07ed282acb28aebc3f1afd0de0435977cea8a204a4e3d7acbc382"
+  },
+  "handwritten/mfe_magnet_field/conductor_strain_impl.py": {
+    "before": "dd5cbd8c54f78b70552f09f046a8458f05d424271d6630a3ca50b843eb1a8b2b",
+    "after": "ea33688c8496d88afd615606300d9440f7c53e304914a33bc7a156f9f4c6cf77"
+  },
+  "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py": {
+    "before": "99fa624532b31b36199423c138628a73f33aaa7230c0b666638101598d20fcba",
+    "after": "1f922fb3a4fbc8258161cc5a629624dcabd045cbe7caf114c475fdfa6cf4d062"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+    "before": "1047153bde52dcc4e91379d248e2ed8301a4f8ddd4c3b4ec9a26bcc643cd3bf1",
+    "after": "7da158ec547a7ac6ae1511d1c6e88907a5af2bc2dc6c3f9129c9f1b77d2674de"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+    "before": "bce23478cc47297c262e6aa3e44c16820aff8a22dce67e41058d1ada97c463e0",
+    "after": "187c1f3880a5f4bd445c0a2f581fa77347573603f93ac6ab042013c8e031d17b"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+    "before": "43c8dee1c1c1df901f07f01ca27766af6c8f13913a512feeb022eb39345b04e1",
+    "after": "8ef9c8da961286f4c4f8b75a59b3ac792864d1b508eb5d8c99c801e83acc4de1"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+    "before": "1bbacf4c4db13c41f1c07f9a2b0ab5c3351541bb34dadef28d5601f64edc025f",
+    "after": "35f077d3ae9062cabaf325fe27a07e97e2b4ccbe527c532160faec50e81528ca"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+    "before": "8035253d45a67e3dca4725659189db9c8bb27f0197b275d76eabe4539cb6b994",
+    "after": "c196494ac7f763f85f34eebf2ba46322d20acf02d0fc4729989db6e570817889"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+    "before": "c9c5b81066faa6d35dc0637e989776dcc0054b0919e120e7ba34cd8ba4051bcc",
+    "after": "dd207e00547e6c1ff9eb0784f254d771238637839795b865fdf7ea5c17362d4b"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+    "before": "b43b43213f0f97d5204bca92b6a9fcc9e6ffae556130eeae5c35444a3fbda54a",
+    "after": "ca101a1a956759856cb4ba13d0252edf2bee73831bc2df0035357a18c0a5177c"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+    "before": "b38260d92703e0712488b354689c447d4700936c07e968a8894c93a767b400fc",
+    "after": "28cd635a280a834efaec69fd530ba0c841bfaba2866dbdeec5a49e42c50d6e45"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+    "before": "ed8c50db95326255a41e02c5b5f12703d3b7c57a95a3bb12e2e04646cde618c4",
+    "after": "999c6eafbeec0979c7bed3172004409eed78c35a65bad025de417e2a7ad90ee3"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+    "before": "b7f690d8d66a892bdc525884aab9a68f623a087789141cac3e049d338f1c2719",
+    "after": "7f26f85697229f89a1a160136947b5ea686e5074ac8027d51bd0b4a758e1eb48"
+  },
+  "handwritten/mfe_winding_pack_cost/__init__.py": {
+    "before": null,
+    "after": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8"
+  },
+  "handwritten/stellarator_09/stellaris/magnet/__init__.py": {
+    "before": null,
+    "after": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8"
+  },
+  "handwritten/stellarator_09/stellaris/magnet/winding_pack/__init__.py": {
+    "before": null,
+    "after": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8"
+  },
+  "handwritten/stellarator_09/stellaris/magnet/winding_pack/cost_escalation_impl.py": {
+    "before": null,
+    "after": "c979b9550135f5b2f94304161ee72192517d6d61f1398138ba233beed9bfe427"
+  },
+  "handwritten/stellarator_09/stellaris/magnet/winding_pack/price_helium_impl.py": {
+    "before": null,
+    "after": "0cae93f30fcbde1f5f007f75d6f26ea0e8b128a7fc578e8c782217aecdd17d75"
+  },
+  "handwritten/stellarator_09/stellaris/magnet/winding_pack/price_solder_impl.py": {
+    "before": null,
+    "after": "06053f73da166ba8edceeb787b41262d4787af67c4371e7ea5ca586d6988c0ff"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "eff2519ed64defb01f16b9ce1f4c71c09b0686e6fe925e18e910e5b37915aceb",
+    "after": "ada90610b28778843d79fb9c75656464e72e5a1b73d77195ef7de60bcefef8a6"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "bfedd76d71e34721083afb4053e98f5bc6090c7218c08d1535ac3b1266abcc0e",
+    "after": "1784d384471aa5def1756aa6288326deedfc5444d5a469a144c43b6aeddf96bd"
+  },
+  "modules/mfe_magnet_field/coil_set_stored_energy.py": {
+    "before": "fdef9374b6042167b96b67e8eb70d0d3c8efb8305793d34da517c0c9aeab4165",
+    "after": "98ebefc725fc12183b465d24255a113f16db81fbce4d5f1d786dd6a50063f423"
+  },
+  "modules/mfe_magnet_field/conductor_strain.py": {
+    "before": "3250f4f300d89122fcb631122b42ac4d3979a9130da5312edf1f0189f350c39e",
+    "after": "20aa26fb7cd072191caf74ae5fa64a16ff1097166d345c6121835ab168fc91b1"
+  },
+  "modules/mfe_magnet_field/winding_pack_cold_volume.py": {
+    "before": "b7a06d8edb4e27aaca5d68cb655b10a71f2f18e3d3ec76eb5fcdaa52fa3b9e33",
+    "after": "373833bdfe29605542c98aef5a75b9609f7fe10f48b8d2dcfdffae94c05460db"
+  },
+  "modules/mfe_plant/mfe_power_plant/bop_capital.py": {
+    "before": "fd4a2fb4acf415e13bd72a38120d02b05a2a632eef60931043553406dfaa1af1",
+    "after": "132124df0bbc58b0736530a7fe12fecc24cc55849fc535764ed3cedd8ed8f1ce"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas20_capital.py": {
+    "before": "d8099b54604d3612384ec511170a5c5a3ad28a885aea65c10f4b7f6a235b93bb",
+    "after": "75a3868e5610d9bd01f415c0a2e9ffaad3d7d8a7af1bd5335c1eef43b4db571a"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas22_capital.py": {
+    "before": "e5c9cc96663ca813551c3134425614894ab309afefd1798649736373df0c3577",
+    "after": "49b040069ba4fc3ecf0ec4a65aeaa00a7a138b4ee1d847956057177d7348511d"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py": {
+    "before": "f54de82c09a9eb7b4debafcef170b4f771afd6e208668d0e844b99ad5000217d",
+    "after": "90cbcf05169a0e9cd98d3573d6a6eebaaf9b97b9c9a2477de1d6ba61f0579025"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py": {
+    "before": "b20705b9d458ba1ec79ec58cbb324b7139d39bf1283b5dc8b18a81e96140e0f1",
+    "after": "26f392a320147c74ef41cf85c00fe9f9a29b4896068391f870a9b30437e71dc7"
+  },
+  "modules/mfe_plant/mfe_power_plant/overnight_capital.py": {
+    "before": "ad612d9b044c40faa6df8898d05ee3713cca4ed295deddd6af0d54272620d3a2",
+    "after": "735a985d901d591f74e4af31c8dd18fb762e364c5a2d52a23136e328831acad2"
+  },
+  "modules/mfe_plant/mfe_power_plant/powercore_capital.py": {
+    "before": "3e6a10199cffe689e05f587eebc4e00903127459fa04cde3033b11c6b3a59032",
+    "after": "b43819b94f1d666d87e43308852d99ec1aa83d0886bae995d577a4a8d59f60ce"
+  },
+  "modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py": {
+    "before": "34c0856d4ce7d297d8c3cb79fc9363578457d3900ce4f775e833645bc0192076",
+    "after": "36db3206d47e7998e571a82b0b1c3b1e8aef65a69b6993c23bd33e02434ae5ed"
+  },
+  "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": {
+    "before": "e35b3a1cf47c63d606638cb7ac8be25a24b7294c2261e4c74e5a5b17f42f2c92",
+    "after": "34bfa324c523d00e8253d4543f196695e3c4bcc83dcd2032e9f78ff9ebf8eb18"
+  },
+  "modules/mfe_plant/mfe_power_plant/total_capital.py": {
+    "before": "bfd22c74f7d4b2f1ebc9137f9e8143b569bf292f0b950ee41277d34b894ad1ed",
+    "after": "edc2f2b852e96d3113bef1c5a09b81cc1747514a54074ab6b987c76342fa4e76"
+  },
+  "modules/mfe_winding_pack_cost/__init__.py": {
+    "before": null,
+    "after": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_material_inventory.py": {
+    "before": null,
+    "after": "ab89480b1a7bd348674f37062812eece0fdd457c7abab119fe16961efd1de54f"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py": {
+    "before": null,
+    "after": "517ea7b59c858f4dbc13204554e07120379628513571f5dd7f100999e623b1ad"
+  },
+  "modules/stellarator_09/stellaris/magnet/__init__.py": {
+    "before": null,
+    "after": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1"
+  },
+  "modules/stellarator_09/stellaris/magnet/winding_pack/__init__.py": {
+    "before": null,
+    "after": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1"
+  },
+  "modules/stellarator_09/stellaris/magnet/winding_pack/cost_escalation.py": {
+    "before": null,
+    "after": "9b81d728a9bd9a2fb936b05b5d6f003b9091f747dbed575641d2f96ab3cc2140"
+  },
+  "modules/stellarator_09/stellaris/magnet/winding_pack/price_helium.py": {
+    "before": null,
+    "after": "5bd0d20da94e2c72f1cd8f4f7309a95f093a87a91a23ce6fe2f5de2f35e1217f"
+  },
+  "modules/stellarator_09/stellaris/magnet/winding_pack/price_solder.py": {
+    "before": null,
+    "after": "5f67d90658186cd24cac7740f5de1b900aa1c21c0b800f497b5c8e4b1bae0a24"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "f679e0961557f98116f73b5b5ee08b5595603dd3ec4998e51e1f988aef269159",
+    "after": "d9d243254eb5907731835f67e0f541e3df69767bd23a5b6189bb6ea8555c569b"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "34c6167c94d23d3373f611b832214d1186415b398b792b6415921affd9759d48",
+    "after": "8f9ceb4a94df6331f45bbf0aeb7d1d82054d00ff4428850c4a2615a6b4ccfdb1"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "d4b1381d1cf75b9db6cfe531fb5924c70a173d8abbd4b7a13749eab1dd6e33e7",
+    "after": "af1ff537bdb252aeb0ccc774c2df51843dc52e7ab8c0bac79eeeaf2b354424c9"
+  },
+  "schemas/winding_pack_cold_volume_output.py": {
+    "before": null,
+    "after": "f86883c9b11a5cdfeb3f2a19f6cd7893a7bd60022bbe09462b72b4580caec926"
+  },
+  "schemas/winding_pack_material_inventory_output.py": {
+    "before": null,
+    "after": "5341e47607f6650a3273783099bfbcc8dd8037547efced2e75f43d6311707fe9"
+  },
+  "schemas/winding_pack_procurement_cost_output.py": {
+    "before": null,
+    "after": "639b461041310cdcc43c1dfce05e363436204138e2396838aa98d1cf2fc8b3f7"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "c7240088d9f8616b9d56537402f8db7c6967b34c26d15529623fdbd0da643952",
+    "after": "83aea854c2819d4679c74afde24e9a3604575eaec909b896d11c37821f37d279"
+  }
+}

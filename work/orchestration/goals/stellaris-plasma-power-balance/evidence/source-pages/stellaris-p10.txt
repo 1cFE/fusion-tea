@@ -1,0 +1,192 @@
+J. Lion et al.
+Table 5
+Selected plasma and machine parameters for the two design points shown in Fig. 15.
+A-priori profiles are used according to Eq. (3). Ratios taken for 𝜏⋆∕𝜏𝐸are assumptions.
+𝑛𝑂1 refers to the cut-off density of electron cyclotron resonance heating (ECRH) in the
+first ordinary (O1) mode. In further studies, until not otherwise stated, values for point
+A are taken. Point B would violate the ‘Sudo- density limit’ [131], but might still be
+feasible with sufficient plasma purity.
+Description
+Point A
+Point B
+Minor plasma radius [m]
+1.3
+1.3
+Major plasma radius [m]
+12.74
+12.74
+Axis averaged 𝐵0 [T]
+9.0
+9.0
+Aspect ratio [1]
+9.8
+9.8
+Plasma volume [m3]
+425
+425
+Plasma surface area [m2]
+327
+327
+𝑓r en [1]
+1.0
+1.0
+Vol av. 𝑍ef f (core) [1]
+1.20
+1.21
+Vol. av. beta [%]
+2.76
+2.81
+Vol. av. el. density [1020 m−3]
+3.17
+4.21
+Peak helium ash density [1020 m−3]
+0.56
+0.83
+Peak el. density [1020 m−3]
+5.06
+6.89
+Peak D density [1020 m−3]
+1.96
+2.60
+Peak T density [1020 m−3]
+1.96
+2.60
+𝑛𝑒,0∕𝑛𝑂1 [1]
+0.64
+0.87
+⟨𝑛𝑒⟩𝑉∕𝑛Sudo [1]
+1.00
+1.55
+Peak el. temperature [keV]
+15.40
+12.25
+Peak ion temperature [keV]
+14.63
+11.64
+Fusion gain [1]
+∞
+182
+Aux. power at operation point [MW]
+0
+14.77
+Fusion power [MW]
+2700
+2700
+Peak fusion heating [MW∕m3]
+5.51
+6.02
+𝑃∕𝑆LCFS (no edge radiation) [MW∕m2]
+1.18
+0.91
+Total plasma energy [MJ]
+504.65
+533.14
+Av. neutron wall power [MW∕m2]
+2.87
+2.87
+Av. photon wall power [MW∕m2]
+0.70
+0.72
+Peak triple product [k eVs∕m3]
+3.93 × 1021
+5.66 × 1021
+Confinement time [s]
+1.46
+1.99
+Alpha slowing down time [ms]
+43.76
+23.75
+Ratio 𝜏⋆∕𝜏𝐸[1]
+8.00
+8.00
+Tritium burn rate [g/day]
+416.57
+416.49
+Rel. tungsten fraction core 𝑛𝑊∕𝑛𝑒[10−6]
+7.76
+7.55
+Fig. 16. Steady-state density profiles (a) and temperature profiles (b) for the chosen
+design point (Point A) as a function of the normalized radius 𝜌= 𝑟∕𝑎. The shape of
+the profile corresponds to the analytical expression used in Eq. (3) for 𝛼𝑇= 1.2 and
+𝛼𝑛= 0.35.
+case of Stellaris, the requirements are reduced to achieving density
+control, detachment and edge radiation control, and potentially con-
+trol of the edge island locations through an array of control coils.
+If the chosen design point is thermally unstable, an additional con-
+trol scheme or confinement degradation scheme should be employed
+to achieve burn-control. While density control is widely adopted in
+current experimental fusion devices, resilient mechanisms for tem-
+perature control are not yet well-established, but are conceptually
+straightforward: plasma confinement degradation can be achieved by
+tuning coil currents or controlling the tritium fraction in the core.
+Alternatively, it may be possible to use electron-cyclotron-current-
+drive (ECCD)-induced confinement degradation [144]. We expect the
+temperature to be ultimately limited by temperature gradient-driven
+turbulence or electromagnetic turbulence, such as kinetic ballooning
+modes. However, no tools or workflows currently exist to predict limits
+with high confidence.
+To contextualize the confinement time model utilized in this section,
+we compare the resulting profiles at the operation point against a
+higher fidelity transport simulation of the selected stellarator configu-
+ration. This simulation assumes that turbulent timescales are distinctly
+separated from those governing significant changes in the density and
+temperature profiles.
+For this analysis, turbulent diffusivities are computed using flux-
+tube simulations with GENE [145] and then passed to the transport
+solver TANGO [146,147], similar to the approach described in [148].
+The transport equations are solved with fixed density profiles, and the
+electron and ion temperature values are constrained by a Dirichlet
+boundary condition set to 4.2 and 5.2 keV respectively at 𝜌= 0.8,
+informed by the assumed kinetic profiles of Fig. 16 at this location.
+The GENE simulations are conducted at the flux-tube with field-line
+label 𝛼= 0, specifically at 𝜌∈ {0.1, 0.4, 0.6, 0.8}.
+To reduce any thermal runaway effects and allow for a more di-
+rect comparison of the resulting profiles, we set the power source in
+TANGO fix to the fusion heating profile expected at the 0.5 D design
+point. We distribute this heating 80% to the electrons and 20% to
+the ions, following [149]. Note that by choosing fixed fusion heating
+profiles, the resulting profiles will change, while the heating sources
+are not updated. The purpose is not a fully integrated, fully consistent
+temperature profile simulation, but instead a qualitative comparison
+to determine whether the assumed temperature gradients can be sup-
+ported by full electrostatic turbulence. For this reason, other radiation
+losses, such as Bremsstrahlung, were neglected as a heat sink for the
+electrons. In order to obtain the profiles, an iterative loop is established
+between the heat fluxes obtained with GENE and the transport solver
+TANGO, following a methodology similar to that in [148,150]. The
+equilibrium is treated as fixed and is not updated within this simula-
+tion workflow. It is worth noting that if electromagnetic effects were
+included, one might expect stabilization of turbulence levels, leading to
+lower stiffness—provided that the system remains below the threshold
+for kinetic ballooning instability. We also remark that the effect of
+the neoclassical 𝐸× 𝐵shear is not included in this simulation. Recent
+studies show that even moderate neoclassical 𝐸× 𝐵shear in W7-X can
+change turbulence levels significantly [151].
+Fig. 17 shows the resulting temperature profiles for the given as-
+sumptions. We find that the GENE+TANGO results indicate that peak
+temperature values of the 0.5 D profiles are supportable by electrostatic
+turbulence level within the used model fidelity, when making favorable
+assumptions of the edge temperature value. However, the simulations
+demonstrate high sensitivity to the assumption of the edge temperature,
+which again highlights the importance of coupling core- and edge-
+transport simulations for first-principle profile prediction simulations
+in stellarators.
+On high confinement regimes in stellarators. Before concluding this sec-
+tion, we put the assumptions taken on confinement quality into per-
+spective: significant uncertainties still exist in predicting the maximum
+achievable density and temperatures of a stellarator dominated by
+turbulent transport. keVs
+Experimentally, a wide range of confinement properties has been
+observed in both W7-X and W7-AS. In W7-X, confinement times devi-
+ate significantly between ‘ion-temperature clamping’ experiments [65]
+and higher performance experiments in quasi-steady state after pellet
+injections [75]. In W7-AS, several articles report on high-confinement
+(H-Mode) in different forms [47,152,153] with significantly reduced
+transport levels.
+It has been hypothesized that the ratio of heating power over
+plasma boundary surface area, 𝑃∕𝑆, is decisive for achieving the tran-
+sition from low- to high-confinement, as seen in tokamaks [32,154]. In
+ASDEX-Upgrade (AUG), within 2 < ̄𝑛19 < 6, the 𝑃∕𝑆threshold value to
+access H-mode is 𝑃∕𝑆≃ 0.07 MW∕m2. Instead, W7-X has only reached
+Fusion Engineering and Design xxx (xxxx) xxx 
+10 

@@ -1,0 +1,10 @@
+{
+  "attempt1": "results-attempt1/cases.json",
+  "attempt2": "results/cases.json",
+  "cases": 27,
+  "channels_compared": 14877,
+  "worst_abs_difference": 0,
+  "non_numeric_differences": 0,
+  "inputs_equal": true,
+  "verdicts_equal": true
+}

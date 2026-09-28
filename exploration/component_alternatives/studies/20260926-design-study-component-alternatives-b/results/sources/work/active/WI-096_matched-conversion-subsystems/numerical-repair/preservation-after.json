@@ -1,0 +1,36 @@
+{
+  "protected_entries": 989,
+  "protected_differences": [],
+  "original_package_files": 199,
+  "changed_package_files": [
+    "contracts/package_contract.json",
+    "handwritten/component_alternatives_thermal/finite_water_cooler_impl.py",
+    "handwritten/integrated_heat_electricity/network_heat_driven_closure_impl.py",
+    "handwritten/loop_return_control/primary_bypass_control_impl.py"
+  ],
+  "unchanged_model_sources": 14,
+  "old_study_snapshot_unchanged": true,
+  "provenance": [
+    {
+      "original": "exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/network_heat_driven_closure_impl.py",
+      "original_sha256": "21ea5124e23e1fff773d5219dde215fdc6f3ef9e0c83aedefc0531b3a9faa5c1",
+      "variant": "exploration/component_alternatives/bodies/integrated_heat_electricity/network_heat_driven_closure_impl.py",
+      "variant_sha256": "4e5c9afb19bee2f2534c4ef4f92da14039538679b2a7e34b2ea513525a34af06",
+      "diff": "--- exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/network_heat_driven_closure_impl.py\n+++ exploration/component_alternatives/bodies/integrated_heat_electricity/network_heat_driven_closure_impl.py\n@@ -86,10 +86,14 @@\n     hi = max([lo]+[v[b+'_limit'] for b in BRANCHES])\n     require(evaluate(lo)[0] <= 1e-8 and evaluate(hi)[0] >= -1e-8, 'thermal closure bracket invalid')\n     for iteration in range(1,101):\n-        temperature = (lo+hi)/2\n+        temperature = lo+(hi-lo)/2\n+        # Resolve the root to adjacent floats: small hot-side margins and\n+        # downstream bypass flow amplify an otherwise small heat residual.\n+        if temperature == lo or temperature == hi:\n+            temperature = min((lo,hi), key=lambda value: abs(evaluate(value)[0]))\n+            residual, inlet, accepted, out = evaluate(temperature)\n+            break\n         residual, inlet, accepted, out = evaluate(temperature)\n-        if abs(residual) <= 1e-8 or hi-lo <= 1e-10:\n-            break\n         if residual > 0:\n             hi = temperature\n         else:\n"
+    },
+    {
+      "original": "exploration/costed_loop_brayton/bodies/loop_return_control/primary_bypass_control_impl.py",
+      "original_sha256": "998f333bc56a406b08cf12dc9453fb7beda04b1eec7bd63d57792a5d99905a46",
+      "variant": "exploration/component_alternatives/bodies/loop_return_control/primary_bypass_control_impl.py",
+      "variant_sha256": "03d5fccc1a2ec1fc83b12efe9e2165b454c362e02e576ae6dd34f1e2d0ead711",
+      "diff": "--- exploration/costed_loop_brayton/bodies/loop_return_control/primary_bypass_control_impl.py\n+++ exploration/component_alternatives/bodies/loop_return_control/primary_bypass_control_impl.py\n@@ -73,11 +73,13 @@\n         else:\n             f = None\n             for _ in range(200):\n-                mid = 0.5 * (lo + hi)\n+                mid = lo + 0.5 * (hi - lo)\n+                # Resolve the fraction bracket to adjacent floats so the\n+                # heat residual does not prematurely limit small bypass flows.\n+                if mid == lo or mid == hi:\n+                    f = min((lo,hi), key=lambda value: abs(g(value)))\n+                    break\n                 g_mid = g(mid)\n-                if abs(g_mid) <= 1e-9 or (hi - lo) < 1e-15:\n-                    f = mid\n-                    break\n                 if g_mid > 0.0:\n                     lo = mid\n                 else:\n"
+    },
+    {
+      "original": "git:49c20e69:exploration/component_alternatives/bodies/component_alternatives_thermal/finite_water_cooler_impl.py",
+      "original_sha256": "d01b69cd3261d3175198697ed23c0c6e5b9788ca8cb0b0beb9233e87e7d5c294",
+      "variant": "exploration/component_alternatives/bodies/component_alternatives_thermal/finite_water_cooler_impl.py",
+      "variant_sha256": "33861fd03e8ab18faf8487016e7bf4730c01fbda59ef56c0465bee1c8833dc5d",
+      "diff": "--- 49c20e69:exploration/component_alternatives/bodies/component_alternatives_thermal/finite_water_cooler_impl.py\n+++ exploration/component_alternatives/bodies/component_alternatives_thermal/finite_water_cooler_impl.py\n@@ -43,8 +43,14 @@\n         out.update(failure_code=2.)\n         return out\n     for iteration in range(1,201):\n-        mid=(lo+hi)/2;ua,mdot,gap=at(mid)\n-        if abs(ua-x['ua'])<=1e-10:break\n+        mid=lo+(hi-lo)/2\n+        # Resolve the temperature bracket to adjacent floats. A UA-only stop\n+        # does not bound flow or pumping power when the water rise is small.\n+        if mid==lo or mid==hi:\n+            mid=min((lo,hi),key=lambda value:abs(at(value)[0]-x['ua']))\n+            ua,mdot,gap=at(mid)\n+            break\n+        ua,mdot,gap=at(mid)\n         if ua<x['ua']:lo=mid\n         else:hi=mid\n     else:raise ValueError('cooler bisection failed to converge')\n"
+    }
+  ]
+}

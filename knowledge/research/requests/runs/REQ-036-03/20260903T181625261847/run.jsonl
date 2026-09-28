@@ -1,0 +1,2 @@
+{"kind": "search", "query": "REBCO coated conductor irreversible strain limit critical current degradation", "at": "2026-09-03T18:27:11.135890+00:00"}
+{"kind": "failure", "ref": "https://doi.org/10.1109/TASC.2019.2902458", "reason": "Pierro et al. 2019, IEEE, paywalled -- the only identified source measuring irreversible strain THROUGH 20 K (4.2-40 K at 15 T), and one of the two authorities Stellaris cites; worth manual acquisition", "disposition": "queued", "at": "2026-09-03T18:27:11.211961+00:00"}

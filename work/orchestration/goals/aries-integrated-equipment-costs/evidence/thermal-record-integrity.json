@@ -1,0 +1,20 @@
+{
+  "record": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs",
+  "passed": true,
+  "cases": 64,
+  "hashed_artifacts": 138,
+  "findings": [
+    "20260922-aries-integrated-equipment-costs#1",
+    "20260922-aries-integrated-equipment-costs#10",
+    "20260922-aries-integrated-equipment-costs#2",
+    "20260922-aries-integrated-equipment-costs#3",
+    "20260922-aries-integrated-equipment-costs#4",
+    "20260922-aries-integrated-equipment-costs#5",
+    "20260922-aries-integrated-equipment-costs#6",
+    "20260922-aries-integrated-equipment-costs#7",
+    "20260922-aries-integrated-equipment-costs#8",
+    "20260922-aries-integrated-equipment-costs#9"
+  ],
+  "snapshot_sha256": "894a81ddc6142bc983c95a783a3ff32783ac6b9f4b58a5d1a727269a3b8f4fcc",
+  "coverage": "record identities, retained artifact digests, full stored/proposed input maps, completed store count, findings joins; no repeated physical evaluation"
+}

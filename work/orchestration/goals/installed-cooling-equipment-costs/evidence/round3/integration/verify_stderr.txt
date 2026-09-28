@@ -1,0 +1,1 @@
+case stellarator-baseline-point-v1:c0000: missing required numeric comparisons: store=[], oracle=['stellarator_09__stellaris__calendar__cas72_annual']

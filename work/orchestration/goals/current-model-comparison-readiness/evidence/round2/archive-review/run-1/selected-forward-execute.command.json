@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/tmp/wi073-actual-archive-qvqi6313/.project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py",
+    "--root",
+    "/tmp/wi073-actual-archive-qvqi6313",
+    "--rules",
+    "/tmp/wi073-actual-archive-qvqi6313/.project/active/aries-comparison-preparation/current-readiness/candidate/input-rules.json",
+    "--request",
+    "/tmp/wi073-actual-archive-qvqi6313/.project/active/aries-comparison-preparation/current-readiness/candidate/requests/selected-forward.json",
+    "--out-dir",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/selected-forward"
+  ],
+  "cwd": "/tmp/wi073-actual-archive-qvqi6313",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log_sha256": "d3be030801b90ea8057d3997d9845c7f850cc7b784450645d5ec2811cc927d7a"
+}

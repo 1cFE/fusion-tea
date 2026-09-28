@@ -1,0 +1,8 @@
+{
+  "run_kind": "conditioned",
+  "values": {},
+  "conditioned_seam": "held_cycle",
+  "conditioned_values": {
+    "stellarator_09__stellaris__turbine__eta_th_direct": 0.38
+  }
+}

@@ -1,0 +1,21 @@
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+{
+  "entering_evidence": "work/active/WI-064_current-driven-magnet-inventory-sizing/evidence/L6-candidate.json",
+  "entering_count": 296,
+  "candidate_count": 304,
+  "added": [
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::p_rad_total'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::p_rad_edge'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::p_target_deposited'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::p_nonrad_uncaptured'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::peak_equivalent_area'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::peak_equivalent_area_defined'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::f_rad_edge_defined'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::Divertor::power_account_valid'"
+  ],
+  "removed": [],
+  "normalization": "diagnostic identity excludes source line suffix; entering source is the entering WI064 production model before this item"
+}

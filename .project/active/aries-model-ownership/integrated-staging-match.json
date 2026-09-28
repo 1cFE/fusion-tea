@@ -1,0 +1,16 @@
+{
+  "source": "exploration/aries_integrated/build.py:SOURCES",
+  "paths": [
+    "models/library/analyses/integrated_heat_electricity.sysml",
+    "models/library/analyses/radial_density_profile.sysml",
+    "models/library/analyses/supplied_profile_plasma.sysml",
+    "models/library/analyses/mfe_plasma_scaling.sysml",
+    "models/library/analyses/mfe_fuel_cycle.sysml",
+    "models/library/analyses/mfe_viability.sysml",
+    "models/library/analyses/dual_circuit_heat_accounting.sysml",
+    "models/library/analyses/ideal_gas_brayton_components.sysml",
+    "models/designs/aries_cs_transfer/plasma_integration.sysml",
+    "models/designs/aries_cs_integrated/plant.sysml"
+  ],
+  "exact_ordered_registry_match": true
+}

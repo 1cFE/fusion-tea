@@ -1,0 +1,6 @@
+{
+  "repo_revision": "fe7205533b191fb538ade6a6ed89d59d04545b82",
+  "launcher": ".codex-test/run",
+  "runtime_import_setup": "STOP_PARSER_TEAX_ROOT/packages/teax-simkit on sys.path/PYTHONPATH; STUDY_REQUIRE_TEAX=1",
+  "execution_revision_scope": "candidate code revision, before study result commit"
+}

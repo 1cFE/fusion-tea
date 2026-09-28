@@ -1,0 +1,806 @@
+{
+  "axes": [
+    {
+      "axis": "auxiliary_cooling_price",
+      "keys": [
+        "aries_integrated_plant__auxiliary_cooling__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "blanket_inventory_price",
+      "keys": [
+        "aries_integrated_plant__blanket_inventory__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "compressor_equipment_price",
+      "keys": [
+        "aries_integrated_plant__compressor_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "conversion_services_price",
+      "keys": [
+        "aries_integrated_plant__conversion_services__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "divertor_duty_equipment_price",
+      "keys": [
+        "aries_integrated_plant__divertor_duty_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "divertor_hx_price",
+      "keys": [
+        "aries_integrated_plant__divertor_hx__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "divertor_inventory_price",
+      "keys": [
+        "aries_integrated_plant__divertor_inventory__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "divertor_pump_price",
+      "keys": [
+        "aries_integrated_plant__divertor_pump__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "electrical_equipment_price",
+      "keys": [
+        "aries_integrated_plant__electrical_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "facilities_price",
+      "keys": [
+        "aries_integrated_plant__facilities__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "fuel_processing_equipment_price",
+      "keys": [
+        "aries_integrated_plant__fuel_processing_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "fuel_services_price",
+      "keys": [
+        "aries_integrated_plant__fuel_services__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "generator_equipment_price",
+      "keys": [
+        "aries_integrated_plant__generator_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "he_duty_equipment_price",
+      "keys": [
+        "aries_integrated_plant__he_duty_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "he_hx_price",
+      "keys": [
+        "aries_integrated_plant__he_hx__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "he_pump_price",
+      "keys": [
+        "aries_integrated_plant__he_pump__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "heat_rejection_equipment_price",
+      "keys": [
+        "aries_integrated_plant__heat_rejection_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "heating_equipment_price",
+      "keys": [
+        "aries_integrated_plant__heating_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "impurity_control_price",
+      "keys": [
+        "aries_integrated_plant__impurity_control__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "instrumentation_control_price",
+      "keys": [
+        "aries_integrated_plant__instrumentation_control__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "lipb_inventory_price",
+      "keys": [
+        "aries_integrated_plant__lipb_inventory__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "magnet_inventory_price",
+      "keys": [
+        "aries_integrated_plant__magnet_inventory__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "magnet_power_supplies_price",
+      "keys": [
+        "aries_integrated_plant__magnet_power_supplies__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "miscellaneous_equipment_price",
+      "keys": [
+        "aries_integrated_plant__miscellaneous_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "other_reactor_equipment_price",
+      "keys": [
+        "aries_integrated_plant__other_reactor_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "pbli_duty_equipment_price",
+      "keys": [
+        "aries_integrated_plant__pbli_duty_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "pbli_hx_price",
+      "keys": [
+        "aries_integrated_plant__pbli_hx__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "pbli_pump_price",
+      "keys": [
+        "aries_integrated_plant__pbli_pump__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "primary_piping_price",
+      "keys": [
+        "aries_integrated_plant__primary_piping__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "primary_support_price",
+      "keys": [
+        "aries_integrated_plant__primary_support__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "secondary_transport_price",
+      "keys": [
+        "aries_integrated_plant__secondary_transport__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "shield_inventory_price",
+      "keys": [
+        "aries_integrated_plant__shield_inventory__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "site_land_price",
+      "keys": [
+        "aries_integrated_plant__site_land__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "turbine_equipment_price",
+      "keys": [
+        "aries_integrated_plant__turbine_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "unallocated_source_scope_price",
+      "keys": [
+        "aries_integrated_plant__unallocated_source_scope__price_factor"
+      ],
+      "values": [
+        0.5,
+        2.0
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "vacuum_equipment_price",
+      "keys": [
+        "aries_integrated_plant__vacuum_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "vf_coils_price",
+      "keys": [
+        "aries_integrated_plant__vf_coils__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "waste_equipment_price",
+      "keys": [
+        "aries_integrated_plant__waste_equipment__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+    },
+    {
+      "axis": "fuel_inventory_tritium_price",
+      "keys": [
+        "aries_integrated_plant__fuel_inventory__tritium_price"
+      ],
+      "values": [
+        10000000.0,
+        100000000.0
+      ],
+      "units": "USD2004/kg",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "fuel_inventory_selected_tritium_kg",
+      "keys": [
+        "aries_integrated_plant__fuel_inventory__selected_tritium_kg"
+      ],
+      "values": [
+        1.0,
+        30.0
+      ],
+      "units": "kg",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "fuel_inventory_deuterium_price",
+      "keys": [
+        "aries_integrated_plant__fuel_inventory__deuterium_price"
+      ],
+      "values": [
+        100.0,
+        10000.0
+      ],
+      "units": "USD2004/kg",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "annual_om_selected_amount",
+      "keys": [
+        "aries_integrated_plant__annual_om__selected_amount"
+      ],
+      "values": [
+        35000000.0,
+        140000000.0
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "cost_ledger_consumables",
+      "keys": [
+        "aries_integrated_plant__cost_ledger__consumables"
+      ],
+      "values": [
+        1000000.0,
+        15000000.0
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "indirect_cost_fraction",
+      "keys": [
+        "aries_integrated_plant__indirect_cost__fraction"
+      ],
+      "values": [
+        0.1,
+        0.3
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "contingency_fraction",
+      "keys": [
+        "aries_integrated_plant__contingency__fraction"
+      ],
+      "values": [
+        0.1,
+        0.4
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "owner_commissioning_fraction",
+      "keys": [
+        "aries_integrated_plant__owner_commissioning__fraction"
+      ],
+      "values": [
+        0.02,
+        0.1
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "cost_schedule_replacement_life_fpy",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__replacement_life_fpy"
+      ],
+      "values": [
+        2.0,
+        8.0
+      ],
+      "units": "full-power years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "cost_schedule_replacement_factor",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__replacement_factor"
+      ],
+      "values": [
+        0.5,
+        2.0
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "cost_schedule_lipb_makeup_fraction",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__lipb_makeup_fraction"
+      ],
+      "values": [
+        0.0,
+        0.2
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "cost_schedule_availability",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__availability"
+      ],
+      "values": [
+        0.7,
+        0.95
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+    },
+    {
+      "axis": "supplied_recovery",
+      "keys": [
+        "aries_integrated_plant__fuel_inventory__annual_recovery_kg"
+      ],
+      "values": [
+        0.0,
+        200.0
+      ],
+      "units": "kg/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Independently supplied recovery is not a calculated breeding capability; support remains zero.",
+      "scenario_values": [
+        0.0,
+        100.0,
+        200.0
+      ],
+      "response_limit": "Supplied recovery has no incremental recovery-cost or qualification law at fixed installed scope; it is a boundary scenario, not purchased-capability optimization."
+    },
+    {
+      "axis": "purchase_mode",
+      "keys": [
+        "aries_integrated_plant__cost_accounts__estimate_mode"
+      ],
+      "values": [
+        0,
+        1
+      ],
+      "units": "enumeration",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Fixed budget mode deliberately suppresses selected quantity price response."
+    },
+    {
+      "axis": "adequate_he_area",
+      "keys": [
+        "aries_integrated_plant__he_hx__selected_area"
+      ],
+      "values": [
+        50000.0,
+        75000.0
+      ],
+      "units": "m2",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Previously tested adequate area is not geometry or hydraulic qualification."
+    }
+  ],
+  "scenario_covariance": "Combined economic corners vary all first 50 axes together, reversing life endpoints for lower/higher replacement exposure; supplied recovery is independently fixed at 0 or 100 kg/year. Area/mode scenarios jointly choose area and purchase mode. These are declared coordinated scenarios, not physical equality ties or probabilistic bounds."
+}

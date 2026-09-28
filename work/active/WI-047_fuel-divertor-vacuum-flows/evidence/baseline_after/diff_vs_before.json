@@ -1,0 +1,133 @@
+{
+ "channels_before": 136,
+ "channels_after": 155,
+ "channels_moved": [],
+ "channels_gone": [],
+ "new_channels": [
+  "stellarator_09__stellaris__divheat__f_rad_edge",
+  "stellarator_09__stellaris__divheat__f_rad_edge_in_range",
+  "stellarator_09__stellaris__divheat__p_heat_abs",
+  "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed",
+  "stellarator_09__stellaris__divheat__p_sep",
+  "stellarator_09__stellaris__divheat__p_target_nonrad",
+  "stellarator_09__stellaris__divheat__q_target_margin",
+  "stellarator_09__stellaris__divheat__q_target_peak",
+  "stellarator_09__stellaris__divheat__q_target_peak_area_scaled",
+  "stellarator_09__stellaris__fuel__burn_kg_per_fpy",
+  "stellarator_09__stellaris__fuel__burn_rate",
+  "stellarator_09__stellaris__fuel__exhaust_rate",
+  "stellarator_09__stellaris__fuel__inject_rate",
+  "stellarator_09__stellaris__fuel__loss_rate",
+  "stellarator_09__stellaris__fuel__tbr_margin",
+  "stellarator_09__stellaris__fuel__tbr_required",
+  "stellarator_09__stellaris__vacuum__Q_total",
+  "stellarator_09__stellaris__vacuum__S_eff_required",
+  "stellarator_09__stellaris__vacuum__n_molecules"
+ ],
+ "verdicts_changed": {},
+ "verdicts_new": {
+  "divertor_heat_ok": "violated"
+ },
+ "lcoe_before": 224.60952472804465,
+ "lcoe_after": 224.60952472804465,
+ "new_vs_prediction": {
+  "stellarator_09__stellaris__fuel__burn_rate": {
+   "executed": 9.417518585656878e+20,
+   "predicted": 9.417518585656878e+20,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__fuel__inject_rate": {
+   "executed": 1.8835037171313755e+22,
+   "predicted": 1.8835037171313755e+22,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__fuel__exhaust_rate": {
+   "executed": 1.7893285312748067e+22,
+   "predicted": 1.7893285312748067e+22,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__fuel__loss_rate": {
+   "executed": 1.7893285312748084e+20,
+   "predicted": 1.7893285312748084e+20,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__fuel__tbr_required": {
+   "executed": 1.1900000000000002,
+   "predicted": 1.1900000000000002,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__fuel__tbr_margin": {
+   "executed": -0.1160000000000001,
+   "predicted": -0.1160000000000001,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__fuel__burn_kg_per_fpy": {
+   "executed": 148.74097510492368,
+   "predicted": 148.74097510492368,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__p_heat_abs": {
+   "executed": 554.4910068982205,
+   "predicted": 554.4910068982205,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__p_sep": {
+   "executed": 334.7693616744551,
+   "predicted": 334.7693616744551,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__f_rad_edge": {
+   "executed": 0.8343662621559043,
+   "predicted": 0.8343662621559043,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__f_rad_edge_in_range": {
+   "executed": 0.1381992027318891,
+   "predicted": 0.1381992027318891,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__p_target_nonrad": {
+   "executed": 55.449100689822046,
+   "predicted": 55.449100689822046,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__q_target_peak": {
+   "executed": 10.53532913106619,
+   "predicted": 10.53532913106619,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": {
+   "executed": 10.53532913106619,
+   "predicted": 10.53532913106619,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__q_target_margin": {
+   "executed": -0.5353291310661898,
+   "predicted": -0.5353291310661898,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": {
+   "executed": -0.920399212073221,
+   "predicted": -0.920399212073221,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__vacuum__n_molecules": {
+   "executed": 1.8835037171313755e+22,
+   "predicted": 1.8835037171313755e+22,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__vacuum__Q_total": {
+   "executed": 78.0137257066115,
+   "predicted": 78.0137257066115,
+   "reldev": 0.0
+  },
+  "stellarator_09__stellaris__vacuum__S_eff_required": {
+   "executed": 78.0137257066115,
+   "predicted": 78.0137257066115,
+   "reldev": 0.0
+  }
+ },
+ "worst_reldev": 0.0,
+ "executable_before": "e0d9b1ac19a440ff66a5a8cfa22a4d7d8aac2eaa64b64831fef6dd79216a1ce1",
+ "executable_after": "234d0b27d2b5327ede2cae1c05a2e1c1ead1d89337fd019782bdda03d841e81d"
+}

@@ -1,0 +1,24 @@
+{"kind": "search", "query": "Coordinator: \"911105\" \"NGNP\" pdf", "at": "2026-09-18T21:37:04.241577+00:00"}
+{"kind": "search", "query": "Coordinator: \"M-6914-00-04\" pdf", "at": "2026-09-18T21:37:04.287690+00:00"}
+{"kind": "search", "query": "Coordinator: site.osti.gov \"heat transfer and transport\" \"NGNP\"", "at": "2026-09-18T21:37:04.334350+00:00"}
+{"kind": "search", "query": "Coordinator: \"Independent Evaluation\" \"Varrin\" \"Costs\" -site:art.inl.gov", "at": "2026-09-18T21:37:04.379822+00:00"}
+{"kind": "search", "query": "Coordinator: \"NGNP\" \"911105\" -site:art.inl.gov -site:scribd.com -site:researchgate.net", "at": "2026-09-18T21:37:04.426870+00:00"}
+{"kind": "search", "query": "Coordinator: \"NGNP\" \"circulator\" \"installed\" \"cost\" -ARIES", "at": "2026-09-18T21:37:04.472889+00:00"}
+{"kind": "search", "query": "Coordinator: \"NGNP Steam Generator Alternatives Study\" -site:art.inl.gov", "at": "2026-09-18T21:37:04.518397+00:00"}
+{"kind": "search", "query": "Coordinator: \"911105\" filetype:pdf -site:art.inl.gov", "at": "2026-09-18T21:37:04.565167+00:00"}
+{"kind": "search", "query": "Coordinator: \"helium circulator\" \"cost\" \"Stewart\" \"2021\"", "at": "2026-09-18T21:37:04.610630+00:00"}
+{"kind": "search", "query": "\"Economic solution for low carbon process heat\" pdf", "at": "2026-09-18T21:37:04.656592+00:00"}
+{"kind": "search", "query": "\"horizontal\" \"Stewart\" \"helium circulator\" cost", "at": "2026-09-18T21:37:04.702218+00:00"}
+{"kind": "search", "query": "\"Economic solution\" \"compact\" site:dspace.mit.edu", "at": "2026-09-18T21:37:04.747904+00:00"}
+{"kind": "search", "query": "\"117650\" Stewart pdf MIT", "at": "2026-09-18T21:37:04.793683+00:00"}
+{"kind": "search", "query": "\"117650\" \"Stewart\" -site:researchgate.net -site:sciencedirect.com -site:scribd.com filetype:pdf", "at": "2026-09-18T21:38:32.254182+00:00"}
+{"kind": "search", "query": "\"911120\" pdf -site:art.inl.gov", "at": "2026-09-18T21:38:32.301708+00:00"}
+{"kind": "search", "query": "\"Economic solution for low carbon process heat\" -site:researchgate.net -site:sciencedirect.com -site:scribd.com", "at": "2026-09-18T21:38:32.348396+00:00"}
+{"kind": "search", "query": "Coordinator: \"Economic solution for low carbon process heat\" \"pdf\" -site:researchgate.net -site:sciencedirect.com", "at": "2026-09-18T21:38:32.394372+00:00"}
+{"kind": "search", "query": "Coordinator: \"S0306261921010175\" -site:sciencedirect.com", "at": "2026-09-18T21:38:32.441917+00:00"}
+{"kind": "search", "query": "Coordinator: \"117650\" \"Stewart\" \"repository\"", "at": "2026-09-18T21:38:32.489044+00:00"}
+{"kind": "failure", "ref": "https://art.inl.gov/NGNP/Subcontractors%20Documents/General%20Atomics/NGNP%20High%20Temperature%20Process%20Heat%20Transfer%20and%20Transport%20Study.pdf", "reason": "Original HTTP and HTTPS404; no alternative original from targeted searches; screenshot cache miss.", "disposition": "queued", "at": "2026-09-18T21:39:06.121426+00:00"}
+{"kind": "failure", "ref": "https://art.inl.gov/NGNP/INL%20Documents/Year%202011/Independent%20Evaluation%20of%20Costs%20of%20Major%20Capital%20Items%20for%20High%20Temperature%20Gas%20Cooled%20Reactors.pdf", "reason": "Original404 and no acquired mirror; still promising original cost assessment.", "disposition": "queued", "at": "2026-09-18T21:39:06.168502+00:00"}
+{"kind": "failure", "ref": "https://art.inl.gov/NGNP/Water%20Ingress%20Assessment%20Review%20Material/INL%20Published%20Material/NGNP%20Steam%20Generator%20Alternatives%20Study%20Prepared%20by%20AREVA.pdf", "reason": "Direct original404; cached table lead not admitted; installation and reference design require original verification.", "disposition": "queued", "at": "2026-09-18T21:39:06.216041+00:00"}
+{"kind": "failure", "ref": "https://www.sciencedirect.com/science/article/am/pii/S0306261921010175", "reason": "Publisher403; author ResearchGate PDF403/cache-miss; Elsevier API metadata-only, full view401 and PDF406. Original helium cost method remains unverified.", "disposition": "queued", "at": "2026-09-18T21:39:06.263400+00:00"}
+{"kind": "candidate", "ref": "https://inldigitallibrary.inl.gov/sites/STI/STI/Sort_109810.pdf", "triage": "rejected", "note": "Downloaded screened original INL/RPT-24-7767 80pages; zero quarantine term hits. General capital cost framework cites Stewart2021 but no helium/circulator/IHX or piping cost method found; does not close item-specific pricing gap.", "at": "2026-09-18T21:39:06.309707+00:00"}

@@ -1,0 +1,30 @@
+{
+  "request_id": "REQ-WALL-02",
+  "run": "knowledge/research/requests/runs/REQ-WALL-02/20260904T035641288429",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16",
+      "path": "knowledge/sources/the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16/",
+      "source_id": "06c61f90626d75cb7c46cbb7177cc31091ca5e6f3143e249a9d2a797e9fe8a51",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www-pub.iaea.org/mtcd/publications/pdf/csp_008c/pdf/ft_4.pdf",
+      "reason": "IAEA CSP-008c 'The Helias Reactor' PDF returned HTTP 402 Payment Required; not retrievable by this session"
+    },
+    {
+      "candidate": "https://www.mdpi.com/1996-1073/16/11/4430",
+      "reason": "MDPI Energies 16(11):4430 'Neutronic Assessments towards a Novel First Wall Design for a Stellarator Fusion Reactor with DCLL Breeding Blanket' \u2014 open access but the host returns HTTP 403 to both WebFetch and direct curl (bot wall). Possible modern corroboration of a HELIAS first-wall area; an operator retrieving it must first screen it for ARIES-CS design values under the clean-room bar."
+    },
+    {
+      "candidate": "https://onlinelibrary.wiley.com/doi/full/10.1002/er.7343",
+      "reason": "Bongiovi et al., 'Heterogeneous design and mechanical analysis of HELIAS 5-B HCPB breeding blanket concept', Int. J. Energy Res. 2022 \u2014 host returns HTTP 403 to WebFetch (bot wall). OPTIONAL corroboration only: the request is already answered by the registered Beidler et al. source. Chase it only if a second, more recent first-wall area for the HELIAS line is wanted; screen for ARIES-CS design values first."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

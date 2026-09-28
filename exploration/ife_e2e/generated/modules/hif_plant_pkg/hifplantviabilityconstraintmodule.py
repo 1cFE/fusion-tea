@@ -14,9 +14,9 @@ from ife_tea.modules.constraints.predicates import _finalize_assertion, constrai
 
 class HifPlantViabilityConstraintInput(BaseModel):
     """Exact input schema: one field per resolved formal."""
-    eta: float
-    gain: float
     threshold: float
+    eta: float
+    gain_in: float
 
 
 class HifPlantViabilityConstraintOutput(MultiOutput):
@@ -29,9 +29,9 @@ class HifPlantViabilityConstraintModule(ModuleBase[HifPlantViabilityConstraintIn
 
     CONSTRAINT_ID = "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b"
 
-    def run(self, eta: float, gain: float, threshold: float) -> ModuleResult[HifPlantViabilityConstraintOutput]:
-        HifPlantViabilityConstraintInput(eta=eta, gain=gain, threshold=threshold)  # validate every resolved formal
-        body = constraint_pred_definition_fusion_cycle__viability_threshold(eta=eta, gain=gain, threshold=threshold)
+    def run(self, threshold: float, eta: float, gain_in: float) -> ModuleResult[HifPlantViabilityConstraintOutput]:
+        HifPlantViabilityConstraintInput(threshold=threshold, eta=eta, gain_in=gain_in)  # validate every resolved formal
+        body = constraint_pred_definition_fusion_cycle__viability_threshold(eta=eta, gain_in=gain_in, threshold=threshold)
         verdict = _finalize_assertion(
             body,
             is_negated=False,
@@ -44,7 +44,7 @@ class HifPlantViabilityConstraintModule(ModuleBase[HifPlantViabilityConstraintIn
                     actual_value=verdict.actual_value,
                     status=verdict.status,
                     margin=verdict.margin,
-                    observed={"eta": float(eta), "gain": float(gain), "threshold": float(threshold)},
+                    observed={"eta": float(eta), "gain_in": float(gain_in), "threshold": float(threshold)},
                 )
             )
         )

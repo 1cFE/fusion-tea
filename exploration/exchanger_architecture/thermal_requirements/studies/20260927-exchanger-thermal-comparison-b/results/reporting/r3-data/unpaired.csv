@@ -1,0 +1,7 @@
+scenario,load_MW,offer,passing_architecture,case,candidate_id,net_MW,lcoe_USD2004_MWh,paired_allowance
+U1.2,1835.4512830147435,B,network,case-00754,20260927-exchanger-thermal-comparison-b:c0754,546.4269453011611,866.7749084049489,undefined; no passing native counterpart
+linear-area-price,1650.0,B,network,case-01175,20260927-exchanger-thermal-comparison-b:c1175,453.92040053079614,946.0659212686506,undefined; no passing native counterpart
+main,1650.0,B,network,case-00108,20260927-exchanger-thermal-comparison-b:c0108,453.92040053079614,950.0529814099572,undefined; no passing native counterpart
+price-double,1650.0,B,network,case-01174,20260927-exchanger-thermal-comparison-b:c1174,453.92040053079614,955.3927940992071,undefined; no passing native counterpart
+price-half,1650.0,B,network,case-01173,20260927-exchanger-thermal-comparison-b:c1173,453.92040053079614,947.3830750653323,undefined; no passing native counterpart
+zero-tritium,1650.0,B,network,case-01172,20260927-exchanger-thermal-comparison-b:c1172,453.92040053079614,105.22855517876873,undefined; no passing native counterpart

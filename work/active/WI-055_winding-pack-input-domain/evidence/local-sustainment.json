@@ -1,0 +1,12 @@
+[
+  {
+    "B_in": 0.0,
+    "error": "SustainmentError",
+    "message": "Plasma Sustainment: B_in must be nonzero for synchrotron and confinement equations"
+  },
+  {
+    "B_in": -0.0,
+    "error": "SustainmentError",
+    "message": "Plasma Sustainment: B_in must be nonzero for synchrotron and confinement equations"
+  }
+]

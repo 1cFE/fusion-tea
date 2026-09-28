@@ -1,0 +1,64 @@
+{
+  "basis": "Historical reference only; multiple model increments separate packages",
+  "source_pin": {
+    "model_contract_semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+    "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+    "repo_commit": "4cd5e6081fc7683b32bd936fc40d3e7d858067f7",
+    "from": "20260912-plant-closure/snapshot.json"
+  },
+  "cases": [
+    {
+      "source_case": "20260912-plant-closure:c0113",
+      "current": {
+        "candidate_id": "20260915-coil-inventory:c0013",
+        "arm": "arm-a-transect",
+        "column": "cheap-100",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 135.51216290303634,
+        "feasible_18": true,
+        "violated": [],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.007970880717543065,
+        "magnet_capital": 1687402377.6972747,
+        "support_cost": 193430695.20393717,
+        "support_mass": 10746149.733552067
+      },
+      "historical_lcoe": 191.7581690876428,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260912-plant-closure:c0130",
+      "current": {
+        "candidate_id": "20260915-coil-inventory:c0014",
+        "arm": "arm-a-transect",
+        "column": "cheap-220",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 141.7644024828237,
+        "feasible_18": true,
+        "violated": [],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.007970880717543065,
+        "magnet_capital": 1687402377.6972747,
+        "support_cost": 193430695.20393717,
+        "support_mass": 10746149.733552067
+      },
+      "historical_lcoe": 198.00258969214127,
+      "verdict_flips": {}
+    }
+  ]
+}

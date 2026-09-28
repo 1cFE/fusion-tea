@@ -1,0 +1,12 @@
+{
+  "repo_commit_at_execution": "812b79bf0f3cebdfa065378116bfb89c669530cb",
+  "uncommitted_at_execution": [
+    "exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/ (preparation, indicators, scan, results)",
+    "work/orchestration/goals/aries-reference-heat-electricity-reconciliation/ (evidence, trail, answer and contract updates after commit 812b79bf)"
+  ],
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.revised_reference_support execute --record exploration/aries_integrated/studies/20260925-aries-flow-scaling-check --integration-return work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/integration-attempt2/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/manifest.json --identity exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/preparation/package_identity.json --store exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/results/native/20260925-aries-flow-scaling-check.db --sample-size 12 --out exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/results/verification_summary.json'",
+  "reporting_command": ".codex-test/run python work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/flow-scaling-ledger.py exploration/aries_integrated/studies/20260925-aries-flow-scaling-check",
+  "preparation_baseline": "Native baseline point executed once into preparation/ after the final 25-axis declaration; preflight on the unchanged live manifest (six absolute tolerances, as re-pinned and amended in round 2).",
+  "attempts": "12 started, 12 completed in one invocation; no retries. Integration candidate reused from round 2 (same package identity, same manifest pin)."
+}

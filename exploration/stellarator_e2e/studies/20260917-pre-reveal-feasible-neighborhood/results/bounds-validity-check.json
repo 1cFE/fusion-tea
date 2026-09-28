@@ -1,0 +1,8 @@
+{
+  "outcome": "pass",
+  "checked_screening_calls": 837,
+  "domain_violations": [],
+  "controls_exempt_from_search_allocation_bounds": true,
+  "geometry_valid_all": true,
+  "exact_profile_and_inventory_scenarios_all": true
+}

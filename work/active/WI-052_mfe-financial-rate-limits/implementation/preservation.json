@@ -1,0 +1,38 @@
+{
+  "calendar_nonfinance_function_ast": {
+    "_clip": "a0ac89cbc36552322e39d706c4fc8515fd9aa8a952b078d2e9614f8d55aa215f",
+    "lifecycle_calendar_held": "7e1c915e70576da4bf8baff2604121664609ee8c471785d97be2ad6891f0ebe8",
+    "_validate_live": "e01b2a4e4fcde6497252d92fd6de9d55d48e6749f66fdc207a6d81aa4630831f",
+    "lifecycle_calendar_live": "f4eaad5359341cb764d2e85b5c6357e36bc2ce2279d0635b39a0bff377afba76",
+    "_dated_energy_ratio": "feb588a10a0f251a84945a5f69bbec95c6917de6d5dca5fa5c3d59d77b11dd61",
+    "lifecycle_calendar": "e04cee09fc92601fcfbeb3bc31df3601fe77ecb100d3666901a503fdb7dbb8ed",
+    "calendar_events": "7cd48cfe5962c9f4494cd1b986f349bb446b3d2a4913093e791c1cddf2d17d16",
+    "run_lifecycle_calendar": "25158e07149c2785134d8d162bd41e59f68705fc8a2c41f215db281eb76aa2fb"
+  },
+  "canonical_equals_family": {
+    "analyses/mfe_account_costs.sysml": "5c7c090f71d2e1b5ac2cda84e81e676447b72a242e118ab92dfdc4c2d9e38a11",
+    "analyses/mfe_cryo_plant.sysml": "8c889cab72a4079cd92de82ffa199bccf129b2d851bdde192909faafc84593d9",
+    "analyses/mfe_heating_chain.sysml": "1d05adfe7502305ed6dce125af83108d0223a6e24c2fc77d48712cf63fd346ac",
+    "analyses/mfe_lcoe_dcf.sysml": "9018eb1c9d85c1f0ef733f406803fda3d7ba1adce3c0ce49cf747f7515e31499",
+    "analyses/mfe_magnet_cost.sysml": "36ff88699f73cf89b781856aa61b06c1d4450a79ad8fc73fbcf5377f624332b0",
+    "analyses/mfe_magnet_field.sysml": "d8c4ca9abbd2a3b0a0296ac250a793aaa0f462ab89f9843c75c910d125cf6168",
+    "analyses/mfe_plasma_scaling.sysml": "253769769330155898f092e0978b21a678beab1f0e2f7472fbd8d5adc277fead",
+    "analyses/mfe_plasma_sustainment.sysml": "a6a1f8708c80c5873c823a8ae3614f1d61578d57ccf55b90e17390e55a0f387a",
+    "analyses/mfe_power_balance.sysml": "94a129f3c9e8dffdbb805bcd09975022f1a2a600b97963dcc5c188669be4c721",
+    "analyses/mfe_power_cycle.sysml": "d086af8a9fab2d4e3d516a302d9fea9be4e2630c3a7407a5d18d550d79f20117",
+    "analyses/mfe_primary_loop.sysml": "d0020ee0c567ab4ee3a8244f60ed7a67cc5f2ec14ee4d2b135486391b896c3f2",
+    "analyses/mfe_lifecycle.sysml": "8a394e40ef248b4e976d97cd2afbaf99a665d37acf1507db58c774e3b8702bb2",
+    "analyses/mfe_fuel_cycle.sysml": "f0657c82258b80a1b59b9c7315f6d5da275b8f1226ebf86a7ad15582c89901cd",
+    "analyses/mfe_divertor_heat.sysml": "ca6cbbec1370b9e98a8ba6a98f0a33933a4af8b50149787a04dcda33afc2eecd",
+    "analyses/mfe_vacuum.sysml": "016dbe4d5c8c7d9b67c739e14b052a173c342d67617ea77c9fe82a6c7fd4d340",
+    "analyses/mfe_viability.sysml": "523ad523569d92e322a16ba5efcb8b306a1d1749679ee73a4be4468b592466e4",
+    "cost_structure/cas_hierarchy.sysml": "5b786ed074f4093528d227b11a7cf093e1a9be98778765c4f13d9bee19dc4602",
+    "cost_structure/mfe_power_core.sysml": "5564c5946c562672d08023eb2e83c466871838493b32269374a76c9fea197f59",
+    "designs/generic_mfe/mfe_plant.sysml": "266c39d3f069620a22a62879b6b8d8f04527953cf3a439fef222fca89868cad7",
+    "designs/generic_mfe/mfe_subsystems.sysml": "ca00da362a7a0b14766bdd28b0481d5820c191ad4107207b44c0c81a1846cdb1",
+    "designs/stellarator_09/stellarator_plant.sysml": "4a98b5a4139992a539c482e3283e9749b34b1b54ef116b74255607fd87aac82a",
+    "foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
+    "foundation/economic_parameter.sysml": "39400c8a9d773e8cd8fcd24c321f2b027090e8bbb8faf9d8ffb7f97ac0d935e3"
+  },
+  "production_inventory_unchanged": true
+}

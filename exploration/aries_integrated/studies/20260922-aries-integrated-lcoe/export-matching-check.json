@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "cases": 64,
+  "full_maps_unique": true,
+  "integer_float_numeric_equality": true,
+  "single_key_change_rejected": true,
+  "package_evaluations": 0,
+  "executor_sha256": "9bd24a4f0caa081cdd80a2a4574cc9cd828d39fbcef9842cb325003f25c77444"
+}

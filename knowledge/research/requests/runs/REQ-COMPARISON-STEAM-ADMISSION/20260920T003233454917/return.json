@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-COMPARISON-STEAM-ADMISSION",
+  "run": "knowledge/research/requests/runs/REQ-COMPARISON-STEAM-ADMISSION/20260920T003233454917",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "nist_webbook_water6_2mpa171to455c_state_table",
+      "path": "knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/",
+      "source_id": "2ce732b34c9b483369f8d4cb00a9c742f48f4d23b7bc3e3bef19725904600230",
+      "pre_existing": false
+    },
+    {
+      "slug": "nist_webbook_water6_2mpa171to455c_halfk_state_table",
+      "path": "knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/",
+      "source_id": "46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

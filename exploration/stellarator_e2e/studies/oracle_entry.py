@@ -9,8 +9,8 @@ nothing else. Everything that is *this package's* knowledge lives here —
   (`operand_bindings`, design D12).
 
 Two published surfaces and nothing else: `evaluate` and `operand_bindings`. The
-independent oracle `verify_stellaris.py` is imported and never modified — it stays
-independent evidence, and a study-seam edit to it would compromise that.
+independent oracle `verify_stellaris.py` recomputes the current model equations.
+Its live radius operands use plant R; fixed reference anchors stay unchanged.
 
 Everything here fails closed. An entry key with no declared mapping, two keys
 that map to one oracle input but disagree, or an oracle output with no channel
@@ -33,11 +33,11 @@ E2E = Path(__file__).resolve().parent.parent
 if str(E2E) not in sys.path:
     sys.path.insert(0, str(E2E))
 
-import verify_stellaris as vs  # noqa: E402  (the independent oracle, unmodified)
+import verify_stellaris as vs  # noqa: E402  (the independent oracle)
 
-# The profile integral depends only on (alpha_n, alpha_T, T_i0), none of which any
-# study sweeps, so memoizing it is exact rather than an approximation. Applied once
-# at import (`run_design_search.py:79`).
+# All profile-integral inputs (alpha_n, alpha_T, T_i0) are cache keys, so
+# memoization remains exact when the source-reconstruction study varies them.
+# Applied once at import (`run_design_search.py:79`).
 if not hasattr(vs._profile_integral, "cache_info"):
     vs._profile_integral = functools.lru_cache(maxsize=None)(vs._profile_integral)
 
@@ -47,66 +47,441 @@ P = "stellarator_09__stellaris__"
 #: or in a recorded case's inputs is declared here; an undeclared key is a failure.
 #: One key per swept plant attribute since the model migration (the library formals
 #: are bound by the `_in` convention, so codegen projects one entry point per
-#: authored attribute); `magnet__R0` is the separately authored tie.
+#: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
-    f"{P}R": "R",
-    f"{P}magnet__R0": "magnet_R0",
-    f"{P}a": "a",
-    f"{P}availability": "availability",
-    # WI-030: the magnet A/B levers and the beta referents (Item 6 study 1).
-    f"{P}magnet__B": "magnet_B",
-    f"{P}magnet__B_max": "magnet_B_max",
-    f"{P}magnet__peak_ratio": "magnet_peak_ratio",
-    f"{P}n_e0": "n_e0",
-    f"{P}T_e0": "T_e0",
-    f"{P}n_He0": "n_He0",
-    f"{P}alpha_n_e": "alpha_n_e",
-    f"{P}n_D0": "n_D0",
-    f"{P}n_T0": "n_T0",
-    f"{P}T_i0": "T_i0",
+    f"{P}blanket__first_wall__fluence_limit": "fluence_limit",
+    f"{P}heat_transport__equipment_enabled": "cooling_enabled",
+    f"{P}heat_transport__equipment_layout_multiplier": "cooling_layout_multiplier",
+    f"{P}heat_transport__equipment_tube_wall": "cooling_tube_wall",
+    f"{P}heat_transport__equipment_shell_wall": "cooling_shell_wall",
+    f"{P}heat_transport__equipment_accessory_mass": "cooling_accessory_mass",
+    f"{P}heat_transport__equipment_secondary_head": "cooling_secondary_head",
+    f"{P}heat_transport__equipment_eta_p": "cooling_eta_p",
+    f"{P}heat_transport__equipment_eta_motor": "cooling_eta_motor",
+    f"{P}heat_transport__equipment_machine_life": "cooling_machine_life",
+    f"{P}heat_transport__equipment_bundle_life": "cooling_bundle_life",
+    f"{P}heat_transport__equipment_makeup_fraction": "cooling_makeup_fraction",
+    f"{P}heat_transport__equipment_inventory_reserve": "cooling_inventory_reserve",
+    f"{P}heat_transport__equipment_removal_multiplier": "cooling_removal_multiplier",
+    f"{P}heat_transport__equipment_saltprice_source_choice": "cooling_saltprice_source_choice",
+    f"{P}heat_transport__equipment_costscale": "cooling_costscale",
+    f"{P}heat_transport__equipment_stainless_fabrication_usd2017_per_kg": "cooling_fabrication_rate_2017",
+    f"{P}contingency_rate": "contingency_rate",
+    f"{P}heat_transport__equipment_cost_mode": "cooling_cost_mode",
+    f"{P}heat_transport__secondary_energy_mode": "cooling_energy_mode",
+
+    **{f"{P}magnet__winding_pack__{name}": "magnet_" + name for name in (
+        "reference_tape_current", "material_factor", "orientation_factor", "cabling_factor",
+        "degradation_factor", "sharing_factor", "allowable_fraction", "allow_field_extrapolation",
+    )},
+    f"{P}magnet__winding_pack__fit_aspect_ratio": "fit_aspect_ratio",
+    f"{P}magnet__winding_pack__internal_build_x": "fit_internal_x",
+    f"{P}magnet__winding_pack__internal_build_y": "fit_internal_y",
+    f"{P}magnet__winding_pack__ground_insulation": "fit_ground",
+    f"{P}magnet__casing__interior_y": "fit_interior_y",
+    f"{P}magnet__casing__wall_thickness": "fit_wall",
+    f"{P}magnet__casing__assembly_clearance": "fit_clearance",
+    f"{P}magnet__coil__coil_t": "coil_t",
+
+    # WI-059 reviewed explicit coil inventory and total-support accounting controls.
+    **{f"{P}cryoplant__{leaf}": key for leaf, key in {
+        'inventory_enabled': 'cryo_inventory_enabled', 'n_leads': 'cryo_n_leads',
+        'L0': 'cryo_L0', 'f_lead': 'cryo_f_lead', 'T_shield': 'T_shield_cryo',
+        'f_carnot_shield': 'f_carnot_shield', 't_case': 'cryo_t_case',
+        'shield_area_ratio': 'cryo_shield_area_ratio', 'eps_eff': 'cryo_emittance',
+        'sigma_SB': 'cryo_sigma_SB', 'q_MLI': 'cryo_q_mli', 'g_per_coil': 'cryo_g_per_coil',
+        'k_c': 'cryo_k_cold', 'k_s': 'cryo_k_shield',
+        'q_nuc_structure': 'cryo_q_nuc_structure', 'rho_structure': 'cryo_rho_structure',
+        'joint_drive_fraction': 'cryo_joint_drive_fraction',
+    }.items()},
+    f"{P}magnet__legacy_casing_fraction": "magnet_legacy_casing_fraction",
+    f"{P}structure__residual_fraction": "structure_residual_fraction",
+    f"{P}plasma__R": "R",
+    f"{P}plasma__a": "a",
+    f"{P}plasma__alpha_n": "alpha_n",
+    f"{P}plasma__alpha_T": "alpha_T",
+    f"{P}plasma__f_shape": "f_shape",
+    # WI-046 (goal plant-closure round 1, 2026-09-08): availability retired as an entry
+    # key -- the lifecycle calendar produces it. The four calendar levers replace it;
+    # availability_direct > 0 selects the held mode (the compatibility bridge).
+    f"{P}availability_direct": "availability_direct",
+    f"{P}outage_years": "outage_years",
+    f"{P}unplanned_fraction": "unplanned_fraction",
+    f"{P}magnet__coil__coil_life_fpy": "coil_life_fpy",
+    # WI-030/WI-035: the magnet levers and the beta referents. magnet__B retired
+    # (WI-035 inversion — the field is a channel now); the coil-set current and
+    # its facts are the entry keys.
+    f"{P}magnet__coil__n_coils": "magnet_n_coils",
+    f"{P}magnet__coil__reference_turns": "magnet_reference_turns",
+    f"{P}magnet__winding_pack__wp_side": "magnet_wp_side",
+    f"{P}magnet__m_support": "magnet_support_mass",
+    f"{P}magnet__casing__m_casing": "magnet_m_casing",
+    f"{P}magnet__coil__k_link": "magnet_k_link",
+    f"{P}magnet__coil__f_set": "magnet_f_set",
+    # WI-058 (2026-09-14): the winding length follows the coil bore; the printed circumference
+    # at the reference bore replaces the WI-036 shape factor over the major radius.
+    f"{P}magnet__coil__c_coil_ref": "magnet_c_coil_ref",
+    f"{P}magnet__winding_pack__f_wp_vol": "magnet_f_wp_vol",
+    f"{P}magnet__winding_pack__E_wp": "magnet_E_wp",
+    f"{P}magnet__winding_pack__f_cond": "magnet_f_cond",
+    f"{P}magnet__winding_pack__eps_cond_allow": "magnet_eps_cond_allow",
+    f"{P}magnet__winding_pack__k_sigma": "magnet_k_sigma",
+    f"{P}magnet__casing__sigma_allow": "magnet_sigma_allow",
+    f"{P}magnet__winding_pack__f_wp_fab": "magnet_f_wp_fab",
+    # WI-040 explicit material procurement and winding-operation facts.
+    f"{P}magnet__coil__turn_current": "magnet_turn_current",
+    **{f"{P}magnet__winding_pack__{name}": "magnet_" + name for name in (
+        "f_copper", "f_solder", "f_steel", "f_helium", "rho_copper", "rho_solder",
+        "rho_steel", "price_copper", "price_solder", "price_steel", "price_helium",
+        "helium_pressure", "helium_gas_constant", "winding_rate_1990",
+        "tape_width", "tape_thickness", "tape_price_per_m",
+        "cost_escalation", "nonplanar_factor",
+        "f_wp_perimeter", "insulation_sheet_thickness", "insulation_sheet_price",
+    )},
+    # Stored-energy reference anchors remain separate from supplied masses.
+    f"{P}magnet__casing__W_mag_ref": "magnet_W_mag_ref",
+    f"{P}magnet__coil__I_ref": "magnet_I_ref",
+    f"{P}magnet__coil__R_ref": "magnet_R_ref",
+    f"{P}magnet__coil__a_coil_ref": "magnet_a_coil_ref",
+    f"{P}magnet__casing__steel_price": "magnet_steel_price",
+    f"{P}magnet__casing__f_steel_fab": "magnet_f_steel_fab",
+    f"{P}magnet__winding_pack__B_max": "magnet_B_max",
+    f"{P}magnet__coil__peak_ratio": "magnet_peak_ratio",
+    f"{P}plasma__n_e0": "n_e0",
+    # WI-042: alpha_n_e retired as an entry key -- the electron profile is derived
+    # inside the sustainment chain by quasi-neutrality from the fuel and the ash.
+    f"{P}plasma__T_i0": "T_i0",
+    # WI-037: n_D0/n_T0/T_e0/n_He0 retired as entry keys (computed by the
+    # sustainment chain); the sustainment held facts and the coupled-heating
+    # lever are entry keys instead. Oracle input names per `verify_stellaris.IN`.
+    f"{P}plasma__iota_23": "iota_23",
+    f"{P}plasma__f_ren": "f_ren",
+    f"{P}plasma__f_alpha_fast": "f_alpha_fast",
+    f"{P}plasma__tau_ratio_ash": "tau_ratio_ash",
+    f"{P}plasma__f_suppr_ash": "f_suppr_ash",
+    f"{P}plasma__Z_eff_core": "Z_eff_core",
+    f"{P}plasma__f_W_core": "f_W_core",
+    f"{P}plasma__Ti_over_Te": "Ti_over_Te",
+    # WI-039: p_input, p_ecrh and eta_pin retired as entry points -- installed
+    # wall-plug power is now the lever and the chain derives both. The declared
+    # p_input/p_ecrh tie went with them: the invariant it maintained is structural.
+    f"{P}heating__p_wallplug_heat": "p_wallplug_heat",
+    f"{P}heating__eta_source_heat": "eta_source_heat",
+    f"{P}heating__eta_couple_heat": "eta_couple_heat",
+    f"{P}heating__p_delivered_direct_heat": "p_delivered_direct_heat",
+    f"{P}heating__p_coupled_direct_heat": "p_coupled_direct_heat",
+    # WI-041: the six source-anchored peak-calibration facts and the dormant
+    # direct term are entry keys (the retired exact ash_frac never was one here).
+    f"{P}blanket__first_wall__wall_peak_q_ref": "wall_peak_q_ref",
+    f"{P}blanket__first_wall__wall_peak_p_fus_ref": "wall_peak_p_fus_ref",
+    f"{P}blanket__first_wall__wall_peak_R_ref": "wall_peak_R_ref",
+    f"{P}blanket__first_wall__wall_peak_a_ref": "wall_peak_a_ref",
+    f"{P}blanket__first_wall__wall_peak_kappa_ref": "wall_peak_kappa_ref",
+    f"{P}blanket__first_wall__wall_peak_standoff_ref": "wall_peak_standoff_ref",
+    f"{P}blanket__first_wall__wall_peak_calibration_direct": "wall_peak_calibration_direct",
+    f"{P}plasma__sustain__ash_frac_in": "sustain_ash_frac",
+    f"{P}plasma__sustain__R_w_sync_in": "R_w_sync",
+    f"{P}plasma__sustain__kappa_sync_in": "kappa_sync",
     # Item 6 study 2 (20260821-power-cycle-ab): the power-conversion block that
     # defines the arms, and the discount-rate lever. Oracle input names per
     # `verify_stellaris.IN` (eta_th, turbine_per_mw, heat_rej_per_mw, discount_rate).
-    f"{P}eta_th": "eta_th",
+    # WI-045 (goal plant-closure): eta_th retired as an entry key (it is the cycle
+    # calc's channel now); eta_p and p_pump were never mapped. The five flags and
+    # directs plus the circuit and fit facts are the entry keys. Study levers per
+    # design D7: loop_live, cycle_live, p_pump_direct, eta_p_direct, eta_th_direct,
+    # n_loops, loop_dT_blanket, loop_T_in, f_loss, dT_approach; the fit coefficients
+    # and domain are swapped together through a declared arm binding, never alone.
+    f"{P}heat_transport__loop_live": "loop_live",
+    f"{P}turbine__cycle_live": "cycle_live",
+    f"{P}heat_transport__p_pump_direct": "p_pump_direct",
+    f"{P}heat_transport__eta_p_direct": "eta_p_direct",
+    f"{P}turbine__eta_th_direct": "eta_th_direct",
+    f"{P}heat_transport__loop_T_in": "loop_T_in",
+    f"{P}heat_transport__loop_dT_blanket": "loop_dT_blanket",
+    f"{P}heat_transport__loop_cp": "loop_cp",
+    f"{P}heat_transport__loop_gamma": "loop_gamma",
+    f"{P}heat_transport__loop_p": "loop_p",
+    f"{P}heat_transport__n_loops": "n_loops",
+    f"{P}heat_transport__mdot_loop_ref": "mdot_loop_ref",
+    f"{P}heat_transport__dp_loop_ref": "dp_loop_ref",
+    f"{P}heat_transport__f_loss": "f_loss",
+    f"{P}heat_transport__eta_is": "eta_is",
+    f"{P}heat_transport__eta_drive": "eta_drive",
+    f"{P}turbine__dT_approach": "dT_approach",
+    f"{P}turbine__a_fit": "a_fit",
+    f"{P}turbine__b_fit": "b_fit",
+    f"{P}turbine__T_offset_fit": "T_offset_fit",
+    f"{P}turbine__T2_min": "T2_min",
+    f"{P}turbine__T2_max": "T2_max",
+    f"{P}turbine__delta_eta": "delta_eta",
     f"{P}turbine__cost_per_mw": "turbine_per_mw",
     f"{P}heat_rejection__cost_per_mw": "heat_rej_per_mw",
     f"{P}discount_rate": "discount_rate",
     # Item 6 study 1 (20260823-magnet-technology-ab): the conductor block that
     # defines the arms. Oracle input names per `verify_stellaris.IN`.
-    f"{P}magnet__cost_per_kAm": "magnet_cost_per_kAm",
-    f"{P}T_cold_cryo": "T_cold_cryo",
-    f"{P}vol_cold_cryo": "vol_cold_cryo",
+    f"{P}magnet__coil__cost_per_kAm": "magnet_cost_per_kAm",
+    f"{P}cryoplant__T_cold_cryo": "T_cold_cryo",
+    # WI-059: publish existing equipment/allowance levers used by the reviewed sensitivities.
+    f"{P}cryoplant__f_carnot_cryo": "f_carnot_cryo",
+    f"{P}cryoplant__p_tfcool": "p_tfcool",
+    f"{P}magnet__vol_cold_cryo": "vol_cold_cryo",
+    # WI-047 (goal plant-closure, 2026-09-08): the fuel-cycle, divertor-heat and
+    # vacuum facts (design D11). Levers for the round's study: t_recycle (the
+    # recovery semantics), burn_fraction,
+    # f_rad_total, q_target_ref / p_nonrad_ref (the low case 5.0 at 50), p_exhaust,
+    # T_gas, R_ref_divertor; WI-066 retires the held achieved-TBR input.
+    # The two library defaults are LIBRARY_DEFAULT entry points of the package.
+    f"{P}tbr_floor": "tbr_floor",
+    # WI-066: all response applicability coordinates must reach the independent oracle.
+    f"{P}plasma__kappa": "kappa",
+    f"{P}blanket__blanket_t": "blanket_t",
+    f"{P}blanket__reflector_t": "reflector_t",
+    f"{P}blanket__first_wall__vacuum_t": "vacuum_t",
+    f"{P}blanket__first_wall__firstwall_t": "firstwall_t",
+    f"{P}shield__ht_shield_t": "ht_shield_t",
+    f"{P}structure__structure_t": "structure_t",
+    f"{P}vessel__gap1_t": "gap1_t",
+    f"{P}vessel__vessel_t": "vessel_t",
+    f"{P}fuel_cycle__burn_fraction": "burn_fraction",
+    f"{P}fuel_cycle__t_recycle": "t_recycle",
+    f"{P}fuel_cycle__eta_extract": "eta_extract",
+    f"{P}fuel_cycle__lambda_T": "lambda_T",
+    f"{P}fuel_cycle__G_stock": "G_stock",
+    f"{P}fuel_cycle__m_T_kg": "m_T_kg",
+    f"{P}divertor__target_capture_fraction": "target_capture_fraction",
+    f"{P}divertor__f_rad_total": "f_rad_total",
+    f"{P}divertor__q_target_ref": "q_target_ref",
+    f"{P}divertor__p_nonrad_ref": "p_nonrad_ref",
+    f"{P}divertor__q_target_limit": "q_target_limit",
+    f"{P}divertor__R_ref_divertor": "R_ref_divertor",
+    f"{P}vacuum_pumping__T_gas": "T_gas",
+    f"{P}vacuum_pumping__p_exhaust": "p_exhaust",
+    f"{P}fuel_cycle__fuel__s_per_fpy_in": "s_per_fpy",
+    f"{P}vacuum_pumping__vacuum__k_B_in": "k_B",
 }
 
 #: Oracle output name -> qualified channel name. Only channels the package records
 #: as single-field floats appear; the oracle returns more than the package does.
 ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
-    "V": f"{P}geom__V",
-    "p_fus": f"{P}fusion__p_fus",
+    "cooling_primary_circulators_cost": f"{P}heat_transport__equipment__primary_circulators_cost",
+    "cooling_primary_piping_cost": f"{P}heat_transport__equipment__primary_piping_cost",
+    "cooling_exchangers_cost": f"{P}heat_transport__equipment__exchangers_cost",
+    "cooling_secondary_pumps_cost": f"{P}heat_transport__equipment__secondary_pumps_cost",
+    "cooling_secondary_piping_cost": f"{P}heat_transport__equipment__secondary_piping_cost",
+    "cooling_inventory_cost": f"{P}heat_transport__equipment__inventory_cost",
+    "cooling_spares_cost": f"{P}heat_transport__equipment__spares_cost",
+    "cooling_purchased_total": f"{P}heat_transport__equipment__purchased_total",
+    "cooling_installation_total": f"{P}heat_transport__equipment__installation_total",
+    "cooling_installed_total": f"{P}heat_transport__equipment__installed_total",
+    "cooling_delivered_total": f"{P}heat_transport__equipment__delivered_total",
+    "cooling_primary_vendor": f"{P}heat_transport__equipment__primary_vendor",
+    "cooling_primary_installation": f"{P}heat_transport__equipment__primary_installation",
+    "cooling_primary_design": f"{P}heat_transport__equipment__primary_design",
+    "cooling_primary_spare": f"{P}heat_transport__equipment__primary_spare",
+    "cooling_secondary_vendor": f"{P}heat_transport__equipment__secondary_vendor",
+    "cooling_secondary_installation": f"{P}heat_transport__equipment__secondary_installation",
+    "cooling_secondary_spare": f"{P}heat_transport__equipment__secondary_spare",
+    "cooling_hx_purchase": f"{P}heat_transport__equipment__hx_purchase",
+    "cooling_hx_installation": f"{P}heat_transport__equipment__hx_installation",
+    "cooling_primary_pipe_purchase": f"{P}heat_transport__equipment__primary_pipe_purchase",
+    "cooling_primary_pipe_installation": f"{P}heat_transport__equipment__primary_pipe_installation",
+    "cooling_secondary_pipe_purchase": f"{P}heat_transport__equipment__secondary_pipe_purchase",
+    "cooling_secondary_pipe_installation": f"{P}heat_transport__equipment__secondary_pipe_installation",
+    "cooling_helium_inventory_cost": f"{P}heat_transport__equipment__helium_inventory_cost",
+    "cooling_salt_inventory_cost": f"{P}heat_transport__equipment__salt_inventory_cost",
+    "cooling_machine_event_purchase": f"{P}heat_transport__equipment__machine_event_purchase",
+    "cooling_machine_event_installation": f"{P}heat_transport__equipment__machine_event_installation",
+    "cooling_machine_event_removal": f"{P}heat_transport__equipment__machine_event_removal",
+    "cooling_bundle_event_purchase": f"{P}heat_transport__equipment__bundle_event_purchase",
+    "cooling_bundle_event_installation": f"{P}heat_transport__equipment__bundle_event_installation",
+    "cooling_bundle_event_removal": f"{P}heat_transport__equipment__bundle_event_removal",
+    "cooling_replacement_annual": f"{P}heat_transport__equipment__replacement_annual",
+    "cooling_consumables_annual": f"{P}heat_transport__equipment__consumables_annual",
+    "cooling_helium_makeup_annual": f"{P}heat_transport__equipment__helium_makeup_annual",
+    "cooling_salt_makeup_annual": f"{P}heat_transport__equipment__salt_makeup_annual",
+    "cooling_salt_electric_MW": f"{P}heat_transport__equipment__salt_electric_MW",
+    "cooling_salt_shaft_MW": f"{P}heat_transport__equipment__salt_shaft_MW",
+    "cooling_conversion_heat_MW": f"{P}heat_transport__equipment__conversion_heat_MW",
+    "cooling_circulator_shaft_MW": f"{P}heat_transport__equipment__circulator_shaft_MW",
+    "cooling_circulator_electric_MW": f"{P}heat_transport__equipment__circulator_electric_MW",
+    "cooling_ihx_duty_MW": f"{P}heat_transport__equipment__ihx_duty_MW",
+    "cooling_tube_mass": f"{P}heat_transport__equipment__tube_mass",
+    "cooling_shell_mass": f"{P}heat_transport__equipment__shell_mass",
+    "cooling_heads_mass": f"{P}heat_transport__equipment__heads_mass",
+    "cooling_sheets_mass": f"{P}heat_transport__equipment__sheets_mass",
+    "cooling_hx_mass": f"{P}heat_transport__equipment__hx_mass",
+    "cooling_bundle_mass": f"{P}heat_transport__equipment__bundle_mass",
+    "cooling_primary_pipe_mass": f"{P}heat_transport__equipment__primary_pipe_mass",
+    "cooling_secondary_pipe_mass": f"{P}heat_transport__equipment__secondary_pipe_mass",
+    "cooling_helium_inventory_mass": f"{P}heat_transport__equipment__helium_inventory_mass",
+    "cooling_salt_inventory_mass": f"{P}heat_transport__equipment__salt_inventory_mass",
+    "cooling_primary_pipe_volume": f"{P}heat_transport__equipment__primary_pipe_volume",
+    "cooling_helium_hx_volume": f"{P}heat_transport__equipment__helium_hx_volume",
+    "cooling_helium_inventory_volume": f"{P}heat_transport__equipment__helium_inventory_volume",
+    "cooling_helium_standard_volume": f"{P}heat_transport__equipment__helium_standard_volume",
+    "cooling_salt_pipe_volume": f"{P}heat_transport__equipment__salt_pipe_volume",
+    "cooling_salt_hx_volume": f"{P}heat_transport__equipment__salt_hx_volume",
+    "cooling_salt_inventory_volume": f"{P}heat_transport__equipment__salt_inventory_volume",
+    "cooling_ihx_installed_area": f"{P}heat_transport__equipment__ihx_installed_area",
+    "cooling_ihx_required_area": f"{P}heat_transport__equipment__ihx_required_area",
+    "cooling_hx_shell_bore": f"{P}heat_transport__equipment__hx_shell_bore",
+    "cooling_hx_shell_wall": f"{P}heat_transport__equipment__hx_shell_wall",
+    "cooling_hx_shell_length": f"{P}heat_transport__equipment__hx_shell_length",
+    "cooling_hx_tube_length": f"{P}heat_transport__equipment__hx_tube_length",
+    "cooling_circulator_count": f"{P}heat_transport__equipment__circulator_count",
+    "cooling_salt_pump_count": f"{P}heat_transport__equipment__salt_pump_count",
+    "cooling_source_volume_ratio": f"{P}heat_transport__equipment__source_volume_ratio",
+    "cooling_salt_expansion_ratio": f"{P}heat_transport__equipment__salt_expansion_ratio",
+    "cooling_salt_Re_hot": f"{P}heat_transport__equipment__salt_Re_hot",
+    "cooling_salt_Re_cold": f"{P}heat_transport__equipment__salt_Re_cold",
+    "cooling_pump_size_factor": f"{P}heat_transport__equipment__pump_size_factor",
+    "cooling_pump_shaft_hp": f"{P}heat_transport__equipment__pump_shaft_hp",
+    "cooling_motor_electric_hp": f"{P}heat_transport__equipment__motor_electric_hp",
+    "cooling_machine_events": f"{P}heat_transport__equipment__machine_events",
+    "cooling_bundle_events": f"{P}heat_transport__equipment__bundle_events",
+    "cooling_salt_price_raw": f"{P}heat_transport__equipment__salt_price_raw",
+    "cooling_salt_price_year": f"{P}heat_transport__equipment__salt_price_year",
+    "cooling_salt_unit_price": f"{P}heat_transport__equipment__salt_unit_price",
+    "cooling_helium_price_raw": f"{P}heat_transport__equipment__helium_price_raw",
+    "cooling_helium_price_year": f"{P}heat_transport__equipment__helium_price_year",
+    "cooling_circulator_flow": f"{P}heat_transport__equipment__circulator_flow",
+    "cooling_circulator_volume": f"{P}heat_transport__equipment__circulator_volume",
+    "cooling_circulator_suction_Pa": f"{P}heat_transport__equipment__circulator_suction_Pa",
+    "cooling_ihx_hot_approach": f"{P}heat_transport__equipment__ihx_hot_approach",
+    "cooling_ihx_cold_approach": f"{P}heat_transport__equipment__ihx_cold_approach",
+    "cooling_ihx_lmtd": f"{P}heat_transport__equipment__ihx_lmtd",
+    "cooling_salt_flow": f"{P}heat_transport__equipment__salt_flow",
+    "cooling_salt_velocity_hot": f"{P}heat_transport__equipment__salt_velocity_hot",
+    "cooling_salt_velocity_cold": f"{P}heat_transport__equipment__salt_velocity_cold",
+    "cooling_salt_straight_loss": f"{P}heat_transport__equipment__salt_straight_loss",
+    "cooling_salt_head_remaining": f"{P}heat_transport__equipment__salt_head_remaining",
+    "cooling_salt_return_C": f"{P}heat_transport__equipment__salt_return_C",
+    "cooling_cycle_temperature_gap": f"{P}heat_transport__equipment__cycle_temperature_gap",
+    "cooling_pump_flow_gpm": f"{P}heat_transport__equipment__pump_flow_gpm",
+    "cooling_pump_head_ft": f"{P}heat_transport__equipment__pump_head_ft",
+    "cooling_ihx_capacity_ok": f"{P}heat_transport__equipment__ihx_capacity_ok",
+    "cooling_pump_size_ok": f"{P}heat_transport__equipment__pump_size_ok",
+    "cooling_pump_type_ok": f"{P}heat_transport__equipment__pump_type_ok",
+    "cooling_motor_base_ok": f"{P}heat_transport__equipment__motor_base_ok",
+    "cooling_motor_factor_ok": f"{P}heat_transport__equipment__motor_factor_ok",
+    "cooling_salt_head_ok": f"{P}heat_transport__equipment__salt_head_ok",
+    "cooling_salt_flow_regime_ok": f"{P}heat_transport__equipment__salt_flow_regime_ok",
+    "cooling_cycle_interface_ok": f"{P}heat_transport__equipment__cycle_interface_ok",
+    "cooling_salt_bulk_scale_ok": f"{P}heat_transport__equipment__salt_bulk_scale_ok",
+    "cooling_inventory_source_volume_ok": f"{P}heat_transport__equipment__inventory_source_volume_ok",
+    "cooling_pressure_qualified": f"{P}heat_transport__equipment__pressure_qualified",
+    "cooling_helium_price_transfer_validated": f"{P}heat_transport__equipment__helium_price_transfer_validated",
+    "cooling_salt_pump_transfer_validated": f"{P}heat_transport__equipment__salt_pump_transfer_validated",
+    "cooling_inventory_complete": f"{P}heat_transport__equipment__inventory_complete",
+    "cooling_salt_pump_flow": f"{P}heat_transport__equipment__salt_pump_flow",
+    "cooling_salt_pump_shaft_MW": f"{P}heat_transport__equipment__salt_pump_shaft_MW",
+    "cooling_ihx_count": f"{P}heat_transport__equipment__ihx_count",
+    "cooling_electric_total": f"{P}heat_transport__cooling_energy__electric_total",
+    "cooling_recovered_total": f"{P}heat_transport__cooling_energy__recovered_total",
+    "cooling_om_total": f"{P}cooling_annual__annual_om",
+
+    **{'breeding_' + name: f'{P}blanket__breeding__{name}' for name in (
+        'tbr_li6', 'tbr_li7', 'tbr_mean', 'tbr_std_error', 'interpolation_allowance',
+        'tbr_lower', 'defined_flag')},
+    **{'breeding_adequacy_' + name: f'{P}breeding_adequacy__{name}' for name in (
+        'required_tbr', 'design_margin', 'fuel_margin', 'numerical_margin', 'production_rate',
+        'extracted_supply_rate', 'extraction_loss_rate', 'recycle_loss_rate', 'decay_rate',
+        'stock_growth_rate', 'balance_rate', 'defined_flag')},
+    "winding_I_coil": f"{P}magnet__winding_state__I_coil",
+    "winding_j_wp_effective": f"{P}magnet__winding_state__j_wp_effective",
+    **{"conductor_" + name: f"{P}magnet__conductor_current__{name}" for name in (
+        "parallel_tapes_set", "parallel_tapes_reference", "tape_critical_current",
+        "critical_current_reference", "critical_current_set", "operating_fraction_reference",
+        "operating_fraction_set", "allowable_current", "margin_fraction", "margin_current", "field_extrapolated",
+    )},
+    "fit_minimum_margin": f"{P}magnet__wp_fit__minimum_margin",
+    "fit_nominal_x": f"{P}magnet__wp_fit__nominal_x",
+    "fit_nominal_y": f"{P}magnet__wp_fit__nominal_y",
+    "fit_internal_x": f"{P}magnet__wp_fit__internal_x",
+    "fit_internal_y": f"{P}magnet__wp_fit__internal_y",
+    "fit_pack_x": f"{P}magnet__wp_fit__pack_x",
+    "fit_pack_y": f"{P}magnet__wp_fit__pack_y",
+    "fit_insulated_x": f"{P}magnet__wp_fit__insulated_x",
+    "fit_insulated_y": f"{P}magnet__wp_fit__insulated_y",
+    "fit_required_x": f"{P}magnet__wp_fit__required_x",
+    "fit_required_y": f"{P}magnet__wp_fit__required_y",
+    "fit_cavity_x": f"{P}magnet__wp_fit__cavity_x",
+    "fit_cavity_y": f"{P}magnet__wp_fit__cavity_y",
+    "fit_exterior_x": f"{P}magnet__wp_fit__exterior_x",
+    "fit_exterior_y": f"{P}magnet__wp_fit__exterior_y",
+    "fit_margin_x": f"{P}magnet__wp_fit__margin_x",
+    "fit_margin_y": f"{P}magnet__wp_fit__margin_y",
+
+    "operating_heat_coupled": f"{P}operating_heat__p_coupled",
+    "operating_heat_delivered": f"{P}operating_heat__p_delivered",
+    "operating_heat_wallplug": f"{P}operating_heat__p_wallplug",
+    "V": f"{P}plasma__geom__V",
+    "p_fus": f"{P}plasma__fusion__p_fus",
     "p_th": f"{P}pb__p_th",
     "p_the": f"{P}pb__p_the",
     "p_et": f"{P}pb__p_et",
-    "p_cryo": f"{P}cryo_elec__p_elec",
+    "p_cryo": f"{P}cryoplant__refrigeration_sum__total",
+    "p_cryo_cold": f"{P}cryoplant__cryo_elec__p_elec",
+    "p_cryo_shield": f"{P}cryoplant__shield_elec__p_elec",
+    "p_tf_total": f"{P}power_supplies__tf_power__total",
+    "p_cold": f"{P}cryoplant__cold_load__p_cold",
+    "structure_nuclear": f"{P}cryoplant__cold_load__q_structure_nuclear",
+    "structure_legacy_cost": f"{P}structure__structure_cost__legacy_cost",
+    **{f'thermal_{name}': f'{P}cryoplant__inventory__{channel}' for name, channel in {
+        'area_cold': 'area_cold', 'area_shield': 'area_shield',
+        'q_lead_cold': 'q_lead_cold', 'q_lead_shield': 'q_lead_shield',
+        'q_radiation_cold': 'q_rad_cold', 'q_radiation_shield': 'q_rad_shield',
+        'q_support_cold': 'q_support_cold', 'q_support_shield': 'q_support_shield',
+        'q_cold': 'q_inventory_cold', 'q_shield': 'q_inventory_shield', 'p_drive': 'p_drive',
+    }.items()},
     "q_eng": f"{P}pb__q_eng",
     "rec_frac": f"{P}pb__rec_frac",
     "p_net": f"{P}pb__p_net",
-    "wall_load": f"{P}wall_load_calc__wall_load",
-    "beta": f"{P}beta_calc__beta",  # WI-030 computed volume-averaged beta
-    "B_peak": f"{P}peak_field_calc__B_peak",  # WI-030 peak field on the conductor
-    "magnet": f"{P}magnet_cost__capital_cost",
-    "heating": f"{P}heating_cost__cost",
-    "divertor": f"{P}divertor_cost__cost",
-    "blanket": f"{P}blanket_cost__cost",
-    "shield": f"{P}shield_cost__cost",
-    "structure": f"{P}structure_cost__cost",
-    "vessel": f"{P}vessel_cost__cost",
-    "power_supplies": f"{P}power_supplies_cost__cost",
-    "turbine": f"{P}turbine_cost__cost",
-    "electric": f"{P}electric_cost__cost",
-    "heat_rejection": f"{P}heat_rejection_cost__cost",
-    "misc": f"{P}misc_cost__cost",
-    "buildings": f"{P}buildings_cost__cost",
-    "precon": f"{P}precon_cost__cost",
+    "wall_load": f"{P}blanket__first_wall__wall_load_calc__wall_load",
+    "wall_peak_calibration": f"{P}blanket__first_wall__wall_peak_cal__calibration",  # WI-041
+    "wall_load_peak": f"{P}blanket__first_wall__wall_peak_calc__wall_load_peak",  # WI-041 the fence and lifetime operand
+    "beta": f"{P}plasma__beta_calc__beta",  # WI-030 computed volume-averaged beta
+    "B_peak": f"{P}magnet__peak_field_calc__B_peak",  # WI-030 peak field on the conductor
+    "B_axis": f"{P}magnet__field_calc__B_axis",  # WI-035 computed axis field
+    "sigma_wp": f"{P}magnet__wp_stress__sigma_wp",  # WI-035 winding-pack stress operand
+    "eps_cond": f"{P}magnet__cond_strain__eps_cond",  # WI-036 conductor strain operand
+    # WI-044: the coil-bore channels
+    "W_mag": f"{P}magnet__stored_energy__W_mag",  # stored magnetic energy (eq. 2.82 shape, anchored)
+    "r_coil_centre": f"{P}rb__r_coil_centre",  # the coil bore the shapes take
+    "A": f"{P}plasma__geom__A",  # reported aspect ratio
+    "winding_pack_legacy": f"{P}magnet__winding_pack_cost__cost",  # retained WI-035 comparison
+    "winding_pack": f"{P}magnet__winding_procurement__cost",  # WI-040 selected account
+    "vol_winding_pack": f"{P}magnet__wp_volume__vol_winding_pack",
+    **{"winding_" + name: f"{P}magnet__material_inventory__{name}" for name in (
+        "mass_copper", "mass_solder", "mass_steel", "mass_helium", "cost_copper",
+        "cost_solder", "cost_steel", "cost_helium", "material_cost", "helium_density",
+        "tape_volume",
+    )},
+    "tape_length": f"{P}magnet__winding_procurement__tape_length",
+    "tape_procurement_cost": f"{P}magnet__winding_procurement__tape_cost",
+    "conductor_length": f"{P}magnet__winding_procurement__conductor_length",
+    "winding_fabrication_cost": f"{P}magnet__winding_procurement__winding_fabrication_cost",
+    **{"insulation_" + name: f"{P}magnet__insulation_inventory__{name}" for name in (
+        "internal_volume", "ground_volume", "sheet_area", "stock_cost")},
+    "support_effective_all_in_rate": f"{P}magnet__magnet_structure_cost__effective_all_in_rate",
+    "magnet_structure": f"{P}magnet__magnet_structure_cost__cost",  # WI-035 sub-account
+    "magnet_capital_rollup": f"{P}magnet__magnet_capital_rollup__capital_cost",  # WI-035 rollup
+    "aux_cost": f"{P}cryoplant__aux_cooling__aux_cost",  # WI-035 aux split
+    "cryo_cost": f"{P}cryoplant__aux_cooling__cryo_cost",  # WI-035 cryoplant sub-account
+    "magnet": f"{P}magnet__magnet_cost__capital_cost",  # WI-035: the 1cfe-form comparison channel
+    "heating": f"{P}heating__heating_cost__cost",
+    "divertor": f"{P}divertor__divertor_cost__cost",
+    "blanket": f"{P}blanket__blanket_cost__cost",
+    "shield": f"{P}shield__shield_cost__cost",
+    "structure": f"{P}structure__structure_cost__cost",
+    "vessel": f"{P}vessel__vessel_cost__cost",
+    "power_supplies": f"{P}power_supplies__power_supplies_cost__cost",
+    "turbine": f"{P}turbine__turbine_cost__cost",
+    "electric": f"{P}electric_plant__electric_cost__cost",
+    "heat_rejection": f"{P}heat_rejection__heat_rejection_cost__cost",
+    "misc": f"{P}misc_plant__misc_cost__cost",
+    "buildings_legacy": f"{P}buildings__buildings_cost__cost",
+    "precon_legacy": f"{P}precon_cost__cost",
     # The package's om_cost channel is the *unlevelized* annual O&M; the oracle's
     # `annual_om` is the levelized one. Checked against the committed store, not
     # matched by name — the names agree and the numbers do not.
@@ -115,15 +490,17 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "bop_capital": f"{P}bop_capital__bop_capital",
     "remote_handling": f"{P}remote_handling__cost",
     "installation": f"{P}installation__cost",
-    "coolant": f"{P}coolant__cost",
-    "aux_cooling": f"{P}aux_cooling__cost",
+    "coolant": f"{P}heat_transport__cooling_selection__cost",
+    "coolant_legacy": f"{P}heat_transport__coolant__cost",
+    "aux_cooling": f"{P}cryoplant__aux_cooling__cost",
     "waste": f"{P}waste__cost",
-    "fuel_handling": f"{P}fuel_handling__cost",
+    "fuel_handling_legacy": f"{P}fuel_cycle__fuel_handling__cost",
     "other_rpe": f"{P}other_rpe__cost",
     "inc": f"{P}inc_cost__cost",
     "owner": f"{P}owner__cost",
     "supplementary": f"{P}supplementary__cost",
     "idc_capital": f"{P}idc__cost",
+    "reactor_equipment_subtotal": f"{P}reactor_equipment_subtotal__reactor_equipment_subtotal",
     "cas22_capital": f"{P}cas22_capital__cas22_capital",
     "cas2x_pre_contingency": f"{P}cas2x_pre_contingency__cas2x_pre_contingency",
     "cas20_capital": f"{P}cas20_capital__cas20_capital",
@@ -136,8 +513,93 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     # CAS27, recomputed by the oracle from its own blanket volume and compared against
     # the package's in-package producer — the ingredient the era route could not verify.
     "special_materials": f"{P}special_materials_capital__special_materials_capital",
-    "annual_fuel": f"{P}fuel_calc__annual_fuel",
-    "cas72_annual": f"{P}cas72_calc__cost",
+    "annual_fuel": f"{P}fuel_cycle__fuel_calc__annual_fuel",
+    # WI-037 sustainment channels
+    "n_bar19": f"{P}plasma__sustain__n_bar19",
+    "n_He0": f"{P}plasma__sustain__n_He0",
+    "n_D0": f"{P}plasma__sustain__n_D0",
+    "n_T0": f"{P}plasma__sustain__n_T0",
+    "T_e0": f"{P}plasma__sustain__T_e0",
+    "W_th": f"{P}plasma__sustain__W_th",
+    "tau_E": f"{P}plasma__sustain__tau_E",
+    "p_brems": f"{P}plasma__sustain__p_brems",
+    "p_line": f"{P}plasma__sustain__p_line",
+    "p_sync": f"{P}plasma__sustain__p_sync",
+    "p_rad": f"{P}plasma__sustain__p_rad",
+    "p_alpha_heat": f"{P}plasma__sustain__p_alpha_heat",
+    "p_aux_required": f"{P}plasma__sustain__p_aux_required",
+    # WI-042 derived-profile channels: the one volume-averaged pressure (beta's
+    # input), the derived electron profile's volume average and effective
+    # exponent, and the ash shape's effective exponent (a diagnostic).
+    "p_avg": f"{P}plasma__sustain__p_avg",
+    "n_e_volav": f"{P}plasma__sustain__n_e_volav",
+    "alpha_n_e_eff": f"{P}plasma__sustain__alpha_n_e_eff",
+    "alpha_He_eff": f"{P}plasma__sustain__alpha_He_eff",
+    # WI-039 heating-chain channels
+    "heat_coupled": f"{P}heating__heat__p_coupled",
+    "heat_delivered": f"{P}heating__heat__p_delivered",
+    "heat_wallplug_total": f"{P}heating__heat__p_wallplug_total",
+    "heat_eta_pin_eff": f"{P}heating__heat__eta_pin_eff",
+    # WI-045 (goal plant-closure): the source heat, the loop and the cycle. The
+    # usage is named primary_loop because `loop` is a SysML keyword.
+    "q_source": f"{P}blanket__source_heat__q_source",
+    "loop_mdot": f"{P}heat_transport__primary_loop__mdot",
+    "loop_T_out": f"{P}heat_transport__primary_loop__T_out",
+    "loop_mdot_loop": f"{P}heat_transport__primary_loop__mdot_loop",
+    "loop_dp_loop": f"{P}heat_transport__primary_loop__dp_loop",
+    "loop_p_loop_margin": f"{P}heat_transport__primary_loop__p_loop_margin",
+    "loop_r_comp": f"{P}heat_transport__primary_loop__r_comp",
+    "loop_T_comp_in": f"{P}heat_transport__primary_loop__T_comp_in",
+    "loop_w_fluid": f"{P}heat_transport__primary_loop__w_fluid",
+    "loop_p_elec": f"{P}heat_transport__primary_loop__p_elec",
+    "loop_q_ihx": f"{P}heat_transport__primary_loop__q_ihx",
+    "loop_capacity_margin": f"{P}heat_transport__primary_loop__capacity_margin",
+    "loop_p_pump_total": f"{P}heat_transport__primary_loop__p_pump_total",
+    "loop_q_recovered_total": f"{P}heat_transport__primary_loop__q_recovered_total",
+    "cycle_T2_C": f"{P}turbine__cycle__T2_C",
+    "cycle_eta_fit": f"{P}turbine__cycle__eta_fit",
+    "cycle_eta_th": f"{P}turbine__cycle__eta_th",
+    "cycle_margin_low": f"{P}turbine__cycle__margin_low",
+    "cycle_margin_high": f"{P}turbine__cycle__margin_high",
+    "cycle_domain_product": f"{P}turbine__cycle__domain_product",
+    # WI-067: retain the WI-046 calendar amount independently beside the total
+    # replacement account, which also includes cooling replacements.
+    "cas72_annual": f"{P}cooling_annual__cas72_total",
+    "calendar_cas72_annual": f"{P}calendar__cas72_annual",
+    "calendar_availability": f"{P}calendar__availability",
+    "calendar_coil_life_margin_fpy": f"{P}calendar__coil_life_margin_fpy",
+    "calendar_replacement_pv": f"{P}calendar__replacement_pv",
+    "calendar_planned_downtime_yr": f"{P}calendar__planned_downtime_yr",
+    "calendar_terminal_downtime_yr": f"{P}calendar__terminal_downtime_yr",
+    "calendar_unplanned_downtime_yr": f"{P}calendar__unplanned_downtime_yr",
+    "calendar_productive_fpy": f"{P}calendar__productive_fpy",
+    "calendar_dated_energy_ratio": f"{P}calendar__dated_energy_ratio",
+    "calendar_n_replacements": f"{P}calendar__n_replacements",
+    "calendar_physical_life_fpy": f"{P}calendar__physical_life_fpy",
+    # WI-047 fuel / divertor-heat / vacuum channels (nineteen)
+    "fuel_burn_rate": f"{P}fuel_cycle__fuel__burn_rate",
+    "fuel_inject_rate": f"{P}fuel_cycle__fuel__inject_rate",
+    "fuel_exhaust_rate": f"{P}fuel_cycle__fuel__exhaust_rate",
+    "fuel_loss_rate": f"{P}fuel_cycle__fuel__loss_rate",
+    "fuel_tbr_required": f"{P}fuel_cycle__fuel__tbr_required",
+    "fuel_tbr_margin": f"{P}fuel_cycle__fuel__tbr_margin",
+    "fuel_burn_kg_per_fpy": f"{P}fuel_cycle__fuel__burn_kg_per_fpy",
+    **{"divheat_" + name: f"{P}divertor__divheat__{name}" for name in (
+        "p_rad_total", "p_rad_edge", "p_target_deposited", "p_nonrad_uncaptured",
+        "peak_equivalent_area", "peak_equivalent_area_defined", "f_rad_edge_defined",
+        "power_account_valid")},
+    "divheat_p_heat_abs": f"{P}divertor__divheat__p_heat_abs",
+    "divheat_p_sep": f"{P}divertor__divheat__p_sep",
+    "divheat_f_rad_edge": f"{P}divertor__divheat__f_rad_edge",
+    "divheat_f_rad_edge_in_range": f"{P}divertor__divheat__f_rad_edge_in_range",
+    "divheat_p_target_nonrad": f"{P}divertor__divheat__p_target_nonrad",
+    "divheat_q_target_peak": f"{P}divertor__divheat__q_target_peak",
+    "divheat_q_target_peak_area_scaled": f"{P}divertor__divheat__q_target_peak_area_scaled",
+    "divheat_q_target_margin": f"{P}divertor__divheat__q_target_margin",
+    "divheat_p_heat_operating_minus_installed": f"{P}divertor__divheat__p_heat_operating_minus_installed",
+    "vacuum_n_molecules": f"{P}vacuum_pumping__vacuum__n_molecules",
+    "vacuum_Q_total": f"{P}vacuum_pumping__vacuum__Q_total",
+    "vacuum_S_eff_required": f"{P}vacuum_pumping__vacuum__S_eff_required",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
 }
@@ -149,21 +611,178 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
 #: and no key by name at all (it is the `pb__p_net` channel), and the three that
 #: could be name-matched use three different composition rules. A tool that guessed
 #: would compare the wrong number and read as a pass.
+# WI-068 public contract: explicit registered scenario/quantity names in the
+# independent oracle, never discovered from production wrappers.
+ENTRY_KEY_TO_ORACLE_INPUT.update({
+    f'{P}buildings__{key}': 'facility_'+key for key in vs.facilities_oracle.DEFAULTS
+    if key not in ('initial_sector_start_days', 'cooling_initial_handoff_days', 'selected_parcel_x_min', 'selected_parcel_y_min')
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'facility_'+key: f'{P}buildings__layout__{key}'
+    for key in (*vs.facilities_oracle.SCALARS,
+                *(child+'_'+quantity for child in vs.facilities_oracle.CHILDREN
+                  for quantity in vs.facilities_oracle.QUANTITIES))
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'facility_'+child+'_'+quantity: f'{P}buildings__{child}__civil__{quantity}'
+    for child in vs.facilities_oracle.CHILDREN
+    for quantity in ('sub_cost_2018','super_cost_2018','cost_2018','cost_2025')
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'buildings': f'{P}buildings__facility_accounts__cost',
+    'precon': f'{P}facility_preconstruction__cost',
+    'facility_civil_capital': f'{P}buildings__civil_rollup__civil_capital',
+    'facility_installed_facility_capital': f'{P}buildings__facility_accounts__installed_facility_capital',
+    'facility_layout_buildings_capital': f'{P}buildings__facility_accounts__layout_buildings_capital',
+    'facility_layout_land_cost': f'{P}buildings__facility_land__cost',
+    'facility_ventilation_1990': f'{P}buildings__ventilation__cost_1990',
+    'facility_ventilation_2025': f'{P}buildings__ventilation__cost_2025',
+    'facility_exclusion': f'{P}facility_shipping__exclusion',
+    'facility_initial_sector_start_days': f'{P}buildings__initial_sector_start_days__initial_sector_start_days',
+    'facility_cooling_initial_handoff_days': f'{P}buildings__cooling_initial_handoff_days__cooling_initial_handoff_days',
+    'facility_site_allowance': f'{P}buildings__site_allowance__cost',
+    'shipping_cooling_exclusion': f'{P}shipping_scope__cooling_exclusion',
+    'shipping_facility_exclusion': f'{P}shipping_scope__facility_exclusion',
+    'shipping_remaining_base': f'{P}shipping_scope__remaining_shipping_base',
+})
+
+# WI-078 independently declared supplied design-point interface.
+ENTRY_KEY_TO_ORACLE_INPUT.update({f"{P}heat_transport__equipment_{key}": "cooling_"+key for key in ['helium_design_shaft_MW', 'helium_design_suction_Pa', 'salt_design_flow_kg_s', 'salt_design_head_m', 'salt_design_eta_p', 'salt_design_eta_motor', 'helium_purchased_mass_kg', 'salt_purchased_mass_kg']})
+ENTRY_KEY_TO_ORACLE_INPUT[f"{P}heat_transport__mdot_loop_rated"] = "mdot_loop_rated"
+ORACLE_OUTPUT_TO_CHANNEL.update({"cooling_"+key:f"{P}heat_transport__equipment__{key}" for key in (*vs.cooling_oracle.NUMERIC_OUTPUTS, *vs.cooling_oracle.BOOLEAN_OUTPUTS)})
+
+# WI-069 fields are the reviewed public ABI, not introspected production code.
+ENTRY_KEY_TO_ORACLE_INPUT.update({
+    f'{P}fuel_cycle__{key}': 'inventory_'+key for key in vs.inventory_oracle.DEFAULTS
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'inventory_'+key: f'{P}fuel_cycle__inventory__{key}'
+    for key in vs.inventory_oracle.OUTPUTS
+})
+
+# WI-070 reviewed explicit processing ABI.
+ENTRY_KEY_TO_ORACLE_INPUT.update({f'{P}fuel_cycle__processing_'+key:'processing_'+('capacity' if key == 'capacity_kg_s' else key) for key in ['enabled', 'source_conditions', 'capacity_kg_s', 'price_multiplier', 'reference_flow', 'exponent', 'target_cpi', 'transfer_cpi', 'transfer_capital', 'transfer_installation', 'cleanup_cpi', 'cleanup_capital', 'cleanup_installation', 'distiller_cpi', 'distiller_capital', 'distiller_installation', 'containment_cpi', 'containment_capital', 'containment_installation']})
+ORACLE_OUTPUT_TO_CHANNEL.update({'processing_'+key:f'{P}fuel_cycle__processing_cost__'+key for key in ['flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'plant_demand_kg_s', 'capacity_margin_kg_s', 'capacity_evaluation_defined', 'flow_ratio', 'scaling_factor', 'transfer_reference_capital', 'transfer_reference_installation', 'transfer_capital', 'transfer_installation', 'cleanup_reference_capital', 'cleanup_reference_installation', 'cleanup_capital', 'cleanup_installation', 'distiller_reference_capital', 'distiller_reference_installation', 'distiller_capital', 'distiller_installation', 'containment_reference_capital', 'containment_reference_installation', 'containment_capital', 'containment_installation', 'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag']})
+ORACLE_OUTPUT_TO_CHANNEL['shipping_fuel_installation_exclusion'] = f'{P}shipping_scope__fuel_installation_exclusion'
+
+# WI-073 paths read from the stock-generated parameter and output contracts.
+# Keep the existing cycle_eta_th mapping on the raw historical fit producer.
+ENTRY_KEY_TO_ORACLE_INPUT.update({
+    f'{P}turbine__matched_cycle_enabled': 'matched_cycle_enabled',
+    f'{P}heat_rejection__cooling_water_enabled': 'cooling_water_enabled',
+    f'{P}heat_transport__salt_hot_C': 'matched_salt_hot_C',
+    f'{P}heat_transport__salt_cp_kJ_kgK': 'matched_salt_cp_kJ_kgK',
+    **{f'{P}turbine__{path}': 'matched_'+name for name,path in {
+        'main_pressure_MPa': 'main_steam_generator__pressure_MPa',
+        'extraction_pressure_MPa': 'open_feedwater_heater__pressure_MPa',
+        'steam_temperature_C': 'main_steam_generator__outlet_temperature_C',
+        'reheat_temperature_C': 'reheater__outlet_temperature_C',
+        'condenser_temperature_C': 'condenser__temperature_C',
+        'eta_hp': 'hp_turbine__efficiency', 'eta_lp': 'lp_turbine__efficiency',
+        'eta_condensate_pump': 'condensate_pump__efficiency',
+        'eta_feedwater_pump': 'feedwater_pump__efficiency',
+        'eta_pump_motor': 'pump_motor_efficiency',
+        'eta_mechanical': 'generator__mechanical_efficiency',
+        'eta_generator': 'generator__generator_efficiency',
+    }.items()},
+    **{f'{P}heat_rejection__{path}': 'cw_'+name for name,path in {
+        'water_inlet_C': 'water_inlet_C', 'water_outlet_C': 'water_outlet_C',
+        'head_m': 'circulating_water_pump__head_m',
+        'eta_pump': 'circulating_water_pump__efficiency',
+        'eta_motor': 'circulating_water_pump__motor_efficiency',
+    }.items()},
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'matched_'+name: f'{P}turbine__matched_cycle__{name}'
+    for name in vs.matched_cycle_oracle.MATCHED_REALS + vs.matched_cycle_oracle.MATCHED_BOOLS
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'cw_'+name: f'{P}heat_rejection__cooling_water__{name}'
+    for name in vs.matched_cycle_oracle.COOLING_REALS + vs.matched_cycle_oracle.COOLING_BOOLS
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'cycle_selection_'+name: f'{P}turbine__cycle_selection__{name}'
+    for name in ('eta_selected','legacy_domain_applicable','matched_domain_applicable')
+})
+
+# WI-072 reviewed producer inventory. These values are computed independently
+# by verify_stellaris, including aliases of separately emitted native producers.
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'coverage_' + name: P + suffix for name, suffix in {
+        'annual_total': 'cas70_calc__annual_total',
+        'cas70': 'cas70_calc__cas70',
+        'cas71_crf': 'cas71_calc__crf',
+        'cas71_levelized': 'cas71_calc__levelized',
+        'cas80_crf': 'cas80_calc__crf',
+        'cas80_levelized': 'cas80_calc__levelized',
+        'cooling_cost_mode': 'heat_transport__cooling_guard__cost_mode',
+        'cooling_energy_mode': 'heat_transport__cooling_guard__energy_mode',
+        'cooling_consumables': 'heat_transport__cooling_selection__consumables_annual',
+        'cooling_replacements': 'heat_transport__cooling_selection__replacement_annual',
+        'cooling_shipping': 'heat_transport__cooling_selection__shipping_exclusion',
+        'coil_length': 'magnet__coil_length__c_coil',
+        'cold_volume': 'magnet__wp_volume__vol_cold_total',
+        'blanket_volume': 'rb__blanket_vol',
+        'outer_radius': 'rb__outer_radius',
+        'coil_inner_radius': 'rb__r_coil',
+        'shield_volume': 'rb__shield_vol',
+        'structure_volume': 'rb__structure_vol',
+        'vessel_volume': 'rb__vessel_vol',
+        'wall_area': 'rb__wall_area',
+        'replacement_event': 'replacement_cost_per_event__replacement_cost_per_event',
+    }.items()
+})
+
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
+    # WI-068 IDs/formal read from the generated native contract.
+    f"{P}facility_capacity_ok__8acbe7a714e6a4d9": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__capacity_margin_units"},
+    },
+    f"{P}facility_outage_ok__9b00e5bd8ea45722": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__outage_margin_days"},
+    },
+    f"{P}facility_routes_ok__a3dca4061c7bcc9b": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__route_margin_m"},
+    },
+    f"{P}facility_replacement_ready__00706bc8dbdf6938": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__readiness_margin_days"},
+    },
+    f"{P}facility_initial_ready__d3a5b04c428ef75f": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__initial_margin_days"},
+    },
+    # WI-050 scalar domains, IDs and formal names read from the current contract.
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+        "efficiency": {"kind": "input", "key": f"{P}heating__eta_couple_heat"},
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+        "efficiency": {"kind": "input", "key": f"{P}heating__eta_source_heat"},
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+        "efficiency": {"kind": "input", "key": f"{P}heating__eta_couple_heat"},
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+        "efficiency": {"kind": "input", "key": f"{P}heating__eta_source_heat"},
+    },
+    f"{P}reference_conductor_current_ok__3cf239a7cdc0f2f0": {
+        "margin_fraction_in": {"kind": "channel", "key": f"{P}magnet__conductor_current__margin_fraction"},
+    },
+    f"{P}wp_fit_ok__a25ca6a0161f6339": {
+        "minimum_margin_in": {"kind": "channel", "key": f"{P}magnet__wp_fit__minimum_margin"},
+    },
     # Operand names are the constraint definitions' formal names as the catalog's
     # predicate IR spells them: `_in`-suffixed where the D-5 rename touched the formal
     # (beta, beta_limit, tbr, tbr_floor, wall_load_limit), bare where it did not
     # (net_electric, rec_frac, threshold, wall_load).
     f"{P}beta_ok__82b78aad420730d5": {
         # WI-030: beta is computed ('Volume-Averaged Beta'), no longer a bound input.
-        "beta_in": {"kind": "channel", "key": f"{P}beta_calc__beta"},
+        "beta_in": {"kind": "channel", "key": f"{P}plasma__beta_calc__beta"},
         "beta_limit_in": {"kind": "input", "key": f"{P}beta_limit"},
     },
     f"{P}peak_field_ok__49c6b8228a73cac5": {
         # WI-030: B_peak is the 'Conductor Peak Field' output; the ceiling is a
         # magnet-part attribute (entry point magnet__B_max).
-        "B_peak": {"kind": "channel", "key": f"{P}peak_field_calc__B_peak"},
-        "B_max_in": {"kind": "input", "key": f"{P}magnet__B_max"},
+        "B_peak": {"kind": "channel", "key": f"{P}magnet__peak_field_calc__B_peak"},
+        "B_max_in": {"kind": "input", "key": f"{P}magnet__winding_pack__B_max"},
     },
     f"{P}net_positive__484521d56c02667a": {
         # No parameter and no key contains "net_electric": it is the power-balance
@@ -179,27 +798,100 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         "threshold": {"kind": "input", "key": f"{P}recirc_ok__threshold"},
     },
     f"{P}tbr_ok__2cd198f674d413e4": {
-        "tbr_in": {"kind": "input", "key": f"{P}tbr"},
-        "tbr_floor_in": {"kind": "input", "key": f"{P}tbr_floor"},
+        "defined_in": {"kind": "channel", "key": f"{P}breeding_adequacy__defined_flag"},
+        "numerical_margin_in": {"kind": "channel", "key": f"{P}breeding_adequacy__numerical_margin"},
     },
     f"{P}wall_load_ok__ab2c790419af93bb": {
-        "wall_load": {"kind": "channel", "key": f"{P}wall_load_calc__wall_load"},
+        # WI-041: the fence's operand is the source-anchored PEAK, not the
+        # circular-torus average (the constraint id did not move: it hashes
+        # the definition and the local identity, not the binding).
+        "wall_load": {"kind": "channel", "key": f"{P}blanket__first_wall__wall_peak_calc__wall_load_peak"},
         "wall_load_limit_in": {"kind": "input", "key": f"{P}wall_load_limit"},
+    },
+    f"{P}wp_stress_ok__f38a102195da1dd0": {
+        # WI-035: computed winding-pack stress vs the held sourced allowable.
+        "sigma_in": {"kind": "channel", "key": f"{P}magnet__wp_stress__sigma_wp"},
+        "sigma_allow_in": {"kind": "input", "key": f"{P}magnet__casing__sigma_allow"},
+    },
+    f"{P}cond_strain_ok__251d4c803804ab60": {
+        # WI-036: the conductor's own check, separate from the structure's.
+        # The operand is computed ('Conductor Strain'); the limit is a magnet-part
+        # attribute and stays settable, because the band practitioners enforce
+        # spans 0.2% to 0.4% and the tape this design specifies is the weakest
+        # of the five measured.
+        "eps_cond": {"kind": "channel", "key": f"{P}magnet__cond_strain__eps_cond"},
+        "eps_cond_allow_in": {"kind": "input", "key": f"{P}magnet__winding_pack__eps_cond_allow"},
+    },
+    f"{P}sustainment_ok__77add152ed8eafce": {
+        # WI-037: computed required sustained coupled heating vs the installed
+        # plasma-coupled heating, coupled-to-coupled. WI-039: the installed side
+        # is no longer the held p_input entry key -- it is the heating chain's
+        # computed coupled power, so both operands are now computed.
+        "p_aux_required_in": {"kind": "channel", "key": f"{P}plasma__sustain__p_aux_required"},
+        "p_aux_installed_in": {"kind": "channel", "key": f"{P}heating__heat__p_coupled"},
+    },
+    f"{P}burn_hold_ok__03c3f94b878e5b58": {
+        # WI-043 (goal burn-control): the lower half of the operating-point
+        # condition, p_aux_required >= 0, on the same computed operand the
+        # sustainment limit reads. One operand, a literal zero on the other
+        # side (the balance's own closing value; not an entry point). The id's
+        # hash is codegen's, read from generated/contracts/model_contract.json.
+        "p_aux_required_in": {"kind": "channel", "key": f"{P}plasma__sustain__p_aux_required"},
+    },
+    # WI-045 (goal plant-closure): the loop's two fences and the cycle's domain
+    # fence, all on computed operands ('Primary Coolant Loop', 'Power Cycle
+    # Efficiency' outputs); the rated per-loop flow is the instance's reference
+    # figure (entry point mdot_loop_ref). Ids read from model_contract.json at the
+    # 2026-09-08 regeneration.
+    f"{P}loop_pressure_ok__5905ab54f5e8a945": {
+        "p_loop_margin_in": {"kind": "channel", "key": f"{P}heat_transport__primary_loop__p_loop_margin"},
+    },
+    f"{P}loop_capacity_ok__d77f6027ceb27852": {
+        "mdot_loop_in": {"kind": "channel", "key": f"{P}heat_transport__primary_loop__mdot_loop"},
+        "mdot_loop_rated_in": {"kind": "input", "key": f"{P}heat_transport__mdot_loop_rated"},
+    },
+    f"{P}cycle_domain_ok__ba3fa9c3653b3fd3": {
+        "domain_product_in": {"kind": "channel", "key": f"{P}turbine__cycle__domain_product"},
+    },
+    # Active Steam Heat Direction predicates keep the generated `(enabled <= 0)
+    # or (gap > 0)` expression. The solver separately refuses non-binary modes.
+    f'{P}matched_main_heat_direction__0768c1b90a9f4f87': {
+        'enabled_in': {'kind':'input','key':f'{P}turbine__matched_cycle_enabled'},
+        'gap_in': {'kind':'channel','key':f'{P}turbine__matched_cycle__main_min_gap_K'},
+    },
+    f'{P}matched_reheat_heat_direction__31add2a272bf6444': {
+        'enabled_in': {'kind':'input','key':f'{P}turbine__matched_cycle_enabled'},
+        'gap_in': {'kind':'channel','key':f'{P}turbine__matched_cycle__reheat_min_gap_K'},
+    },
+    f'{P}cooling_water_heat_direction__6719109cbd7ec328': {
+        'enabled_in': {'kind':'input','key':f'{P}heat_rejection__cooling_water_enabled'},
+        'gap_in': {'kind':'channel','key':f'{P}heat_rejection__cooling_water__condenser_water_gap_K'},
+    },
+    # WI-047: the divertor target peak (computed, the fixed-geometry pessimistic
+    # case scaled in load) against the adopted threshold (an instance input).
+    # The id is read from generated/contracts/model_contract.json, never guessed.
+    f"{P}divertor_heat_ok__26b4658f9fdfd7b7": {
+        "q_target_peak_in": {"kind": "channel", "key": f"{P}divertor__divheat__q_target_peak"},
+        "q_target_limit_in": {"kind": "input", "key": f"{P}divertor__q_target_limit"},
     },
 }
 
+
+# MR-7 actual producer operands; stable IDs read from the regenerated catalog.
+OPERAND_BINDINGS.update({'stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__unused_material_capacity'}}, 'stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__geometry_fit_margin_m'}}, 'stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__occupancy_area_margin_m2'}}, 'stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__parcel_fit_margin_m'}}, 'stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a': {'defined_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_evaluation_defined'}, 'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_margin_kg_s'}}, 'stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda': {'defined_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__heat_transport__equipment__represented_fill_defined'}, 'helium_margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__heat_transport__equipment__helium_represented_fill_margin_kg'}, 'salt_margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__heat_transport__equipment__salt_represented_fill_margin_kg'}}})
 
 class OracleSeamError(Exception):
     """A point, key, or output this seam cannot map. Always a mechanical failure."""
 
 
 def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
-    """Translate qualified entry keys into oracle inputs, refusing anything undeclared.
-
-    Several keys carry one physical quantity (``geom__R`` and ``rb__R`` are both the
-    major radius). They must agree: a proposal that set them apart would be two
-    different geometries, and the oracle can only be given one.
-    """
+    """Translate qualified current entry keys, refusing undeclared inputs."""
+    retired_magnet = {P + "magnet__" + name for name in ('coil__I_coil', 'winding_pack__j_wp', 'winding_pack__B_grade_ref', 'winding_pack__field_exponent', 'winding_pack__sizing_mode', 'winding_pack__inventory_multiplier', 'c_support', 'e_support', 'casing__m_casing_ref')}
+    obsolete = sorted(retired_magnet.intersection(point))
+    if obsolete:
+        raise OracleSeamError(f"retired magnet entry keys {obsolete}; migrate to supplied pack side, reference turns and masses")
+    if f"{P}magnet__R0" in point:
+        raise OracleSeamError(f"retired entry key {P}magnet__R0; use plant R")
     overrides: dict[str, float] = {}
     for key, value in point.items():
         name = ENTRY_KEY_TO_ORACLE_INPUT.get(key)
@@ -213,12 +905,19 @@ def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
                 f"entry keys disagree on oracle input {name!r}: already {overrides[name]}, "
                 f"then {key!r} = {float(value)}"
             )
-        overrides[name] = float(value)
+        if name in ('cooling_enabled', 'facility_facilities_enabled', 'inventory_inventory_enabled', 'processing_enabled', 'processing_source_conditions'):
+            if value not in (False, True, 0., 1.):
+                raise OracleSeamError(f'{name} must be Boolean or its stored zero/one representation')
+            overrides[name] = bool(value)
+        else:
+            overrides[name] = float(value)
     return overrides
 
 
 def _compute(overrides: Mapping[str, float]) -> dict[str, float]:
     """Run the independent oracle at a point, restoring its module globals after."""
+    if "magnet_R0" in overrides:
+        raise OracleSeamError("retired oracle input magnet_R0; use plant R")
     saved = dict(vs.IN)
     vs.IN.update(overrides)
     try:
@@ -252,3 +951,166 @@ def operand_bindings() -> dict[str, dict[str, dict[str, str]]]:
         cid: {name: dict(binding) for name, binding in ops.items()}
         for cid, ops in OPERAND_BINDINGS.items()
     }
+
+# WI-076 absolute parcel coordinates are identities of public signed offsets.
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    "facility_selected_parcel_"+axis+"_min": f"{P}buildings__selected_parcel_{axis}_min__selected_parcel_{axis}_min"
+    for axis in ("x", "y")
+})
+
+# WI-079 explicit supplied purchase/design-class inputs.
+ENTRY_KEY_TO_ORACLE_INPUT.update({P+suffix: name for suffix,(name,value) in vs.oracle_procurement.PUBLIC_DEFAULTS.items()})
+
+# WI-080 offered capability interface; independent results, no generated values.
+ENTRY_KEY_TO_ORACLE_INPUT.update({P+suffix: name for suffix,(name,value) in vs.oracle_capability.PUBLIC_DEFAULTS.items()})
+ORACLE_OUTPUT_TO_CHANNEL.update(vs.oracle_capability.OUTPUT_MAP)
+ORACLE_OUTPUT_TO_CHANNEL.update({"procurement_guard_"+suffix: P+suffix+"_guard__value" for suffix in vs.oracle_procurement.PUBLIC_DEFAULTS if "class_" in suffix})
+
+# WI-079 retired demand-price inputs cannot be silently accepted.
+for _retired_suffix in ('cryoplant__aux_cooling__alpha', 'cryoplant__aux_cooling__p_cryo_ref', 'divertor__divertor_cost__alpha', 'divertor__divertor_cost__p_th_ref', 'power_supplies__power_supplies_cost__alpha', 'power_supplies__power_supplies_cost__p_et_ref', 'cryoplant__aux_cryo_base', 'divertor__divertor_base', 'heat_rejection__cost_per_mw', 'power_supplies__base', 'turbine__cost_per_mw'):
+    ENTRY_KEY_TO_ORACLE_INPUT.pop(P + _retired_suffix, None)
+
+# WI-080 reviewed scalar assertions bind independent actual producer outputs.
+OPERAND_BINDINGS.update({'stellarator_09__stellaris__cold_stage_capacity_ok__93eb65dcc5b55e0b': {'defined_in': {'key': 'stellarator_09__stellaris__cryoplant__cold_stage_capability__evaluation_defined',
+                                                                                        'kind': 'channel'},
+                                                                         'margin_in': {'key': 'stellarator_09__stellaris__cryoplant__cold_stage_capability__margin',
+                                                                                       'kind': 'channel'}},
+ 'stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__condensate_electric_capability__evaluation_defined',
+                                                                                                 'kind': 'channel'},
+                                                                                  'margin_in': {'key': 'stellarator_09__stellaris__turbine__condensate_electric_capability__margin',
+                                                                                                'kind': 'channel'}},
+ 'stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__condensate_flow_capability__evaluation_defined',
+                                                                                             'kind': 'channel'},
+                                                                              'margin_in': {'key': 'stellarator_09__stellaris__turbine__condensate_flow_capability__margin',
+                                                                                            'kind': 'channel'}},
+ 'stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__condensate_pressure_rise_capability__evaluation_defined',
+                                                                                                      'kind': 'channel'},
+                                                                                       'margin_in': {'key': 'stellarator_09__stellaris__turbine__condensate_pressure_rise_capability__margin',
+                                                                                                     'kind': 'channel'}},
+ 'stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__condenser_rejection_capability__evaluation_defined',
+                                                                                                 'kind': 'channel'},
+                                                                                  'margin_in': {'key': 'stellarator_09__stellaris__turbine__condenser_rejection_capability__margin',
+                                                                                                'kind': 'channel'}},
+ 'stellarator_09__stellaris__direct_electric_capacity_ok__5acaaed766dc1371': {'defined_in': {'key': 'stellarator_09__stellaris__cryoplant__direct_electric_capability__evaluation_defined',
+                                                                                             'kind': 'channel'},
+                                                                              'margin_in': {'key': 'stellarator_09__stellaris__cryoplant__direct_electric_capability__margin',
+                                                                                            'kind': 'channel'}},
+ 'stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1': {'defined_in': {'key': 'stellarator_09__stellaris__electric_plant__electric_gross_capability__evaluation_defined',
+                                                                                            'kind': 'channel'},
+                                                                             'margin_in': {'key': 'stellarator_09__stellaris__electric_plant__electric_gross_capability__margin',
+                                                                                           'kind': 'channel'}},
+ 'stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__feedwater_electric_capability__evaluation_defined',
+                                                                                                'kind': 'channel'},
+                                                                                 'margin_in': {'key': 'stellarator_09__stellaris__turbine__feedwater_electric_capability__margin',
+                                                                                               'kind': 'channel'}},
+ 'stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__feedwater_flow_capability__evaluation_defined',
+                                                                                            'kind': 'channel'},
+                                                                             'margin_in': {'key': 'stellarator_09__stellaris__turbine__feedwater_flow_capability__margin',
+                                                                                           'kind': 'channel'}},
+ 'stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability__evaluation_defined',
+                                                                                                     'kind': 'channel'},
+                                                                                      'margin_in': {'key': 'stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability__margin',
+                                                                                                    'kind': 'channel'}},
+ 'stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_electric_capability__evaluation_defined',
+                                                                                             'kind': 'channel'},
+                                                                              'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_electric_capability__margin',
+                                                                                            'kind': 'channel'}},
+ 'stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_flow_capability__evaluation_defined',
+                                                                                         'kind': 'channel'},
+                                                                          'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_flow_capability__margin',
+                                                                                        'kind': 'channel'}},
+ 'stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability__evaluation_defined',
+                                                                                                  'kind': 'channel'},
+                                                                                   'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability__margin',
+                                                                                                 'kind': 'channel'}},
+ 'stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_pumping_capability__evaluation_defined',
+                                                                                            'kind': 'channel'},
+                                                                             'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__helium_pumping_capability__margin',
+                                                                                           'kind': 'channel'}},
+ 'stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__hp_flow_capability__evaluation_defined',
+                                                                                     'kind': 'channel'},
+                                                                      'margin_in': {'key': 'stellarator_09__stellaris__turbine__hp_flow_capability__margin',
+                                                                                    'kind': 'channel'}},
+ 'stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__hp_shaft_capability__evaluation_defined',
+                                                                                      'kind': 'channel'},
+                                                                       'margin_in': {'key': 'stellarator_09__stellaris__turbine__hp_shaft_capability__margin',
+                                                                                     'kind': 'channel'}},
+ 'stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_defined',
+                                                                                 'kind': 'channel'},
+                                                                  'margin_m2_in': {'key': 'stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_margin_m2',
+                                                                                'kind': 'channel'}},
+ 'stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085': {'defined_in': {'key': 'stellarator_09__stellaris__cryoplant__intercept_stage_capability__evaluation_defined',
+                                                                                             'kind': 'channel'},
+                                                                              'margin_in': {'key': 'stellarator_09__stellaris__cryoplant__intercept_stage_capability__margin',
+                                                                                            'kind': 'channel'}},
+ 'stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__lp_flow_capability__evaluation_defined',
+                                                                                     'kind': 'channel'},
+                                                                      'margin_in': {'key': 'stellarator_09__stellaris__turbine__lp_flow_capability__margin',
+                                                                                    'kind': 'channel'}},
+ 'stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__lp_shaft_capability__evaluation_defined',
+                                                                                      'kind': 'channel'},
+                                                                       'margin_in': {'key': 'stellarator_09__stellaris__turbine__lp_shaft_capability__margin',
+                                                                                     'kind': 'channel'}},
+ 'stellarator_09__stellaris__magnet_pf_electric_capacity_ok__8a8fdad77b158738': {'defined_in': {'key': 'stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__evaluation_defined',
+                                                                                                'kind': 'channel'},
+                                                                                 'margin_in': {'key': 'stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability__margin',
+                                                                                               'kind': 'channel'}},
+ 'stellarator_09__stellaris__magnet_tf_electric_capacity_ok__23bdb2b2b84fef80': {'defined_in': {'key': 'stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__evaluation_defined',
+                                                                                                'kind': 'channel'},
+                                                                                 'margin_in': {'key': 'stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability__margin',
+                                                                                               'kind': 'channel'}},
+ 'stellarator_09__stellaris__main_UA_capacity_ok__86518fe643367961': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__main_UA_capability__evaluation_defined',
+                                                                                     'kind': 'channel'},
+                                                                      'margin_in': {'key': 'stellarator_09__stellaris__turbine__main_UA_capability__margin',
+                                                                                    'kind': 'channel'}},
+ 'stellarator_09__stellaris__reheat_UA_capacity_ok__e377a2da71f404d0': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__reheat_UA_capability__evaluation_defined',
+                                                                                       'kind': 'channel'},
+                                                                        'margin_in': {'key': 'stellarator_09__stellaris__turbine__reheat_UA_capability__margin',
+                                                                                      'kind': 'channel'}},
+ 'stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_electric_capability__evaluation_defined',
+                                                                                           'kind': 'channel'},
+                                                                            'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_electric_capability__margin',
+                                                                                          'kind': 'channel'}},
+ 'stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_flow_capability__evaluation_defined',
+                                                                                       'kind': 'channel'},
+                                                                        'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_flow_capability__margin',
+                                                                                      'kind': 'channel'}},
+ 'stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_head_capability__evaluation_defined',
+                                                                                       'kind': 'channel'},
+                                                                        'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_head_capability__margin',
+                                                                                      'kind': 'channel'}},
+ 'stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0': {'defined_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_shaft_capability__evaluation_defined',
+                                                                                        'kind': 'channel'},
+                                                                         'margin_in': {'key': 'stellarator_09__stellaris__heat_transport__salt_shaft_capability__margin',
+                                                                                       'kind': 'channel'}},
+ 'stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4': {'defined_in': {'key': 'stellarator_09__stellaris__turbine__turbine_gross_capability__evaluation_defined',
+                                                                                           'kind': 'channel'},
+                                                                            'margin_in': {'key': 'stellarator_09__stellaris__turbine__turbine_gross_capability__margin',
+                                                                                          'kind': 'channel'}},
+ 'stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d': {'defined_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_electric_capability__evaluation_defined',
+                                                                                            'kind': 'channel'},
+                                                                             'margin_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_electric_capability__margin',
+                                                                                           'kind': 'channel'}},
+ 'stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb': {'defined_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_flow_capability__evaluation_defined',
+                                                                                        'kind': 'channel'},
+                                                                         'margin_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_flow_capability__margin',
+                                                                                       'kind': 'channel'}},
+ 'stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7': {'defined_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_head_capability__evaluation_defined',
+                                                                                        'kind': 'channel'},
+                                                                         'margin_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_head_capability__margin',
+                                                                                       'kind': 'channel'}},
+ 'stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2': {'defined_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_rejection_capability__evaluation_defined',
+                                                                                             'kind': 'channel'},
+                                                                              'margin_in': {'key': 'stellarator_09__stellaris__heat_rejection__water_rejection_capability__margin',
+                                                                                            'kind': 'channel'}}})
+
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    "cooling_ihx_capacity_defined": P+"heat_transport__equipment__ihx_capacity_defined",
+    "cooling_ihx_capacity_margin_m2": P+"heat_transport__equipment__ihx_capacity_margin_m2",
+})
+
+# The generated single-module package formals share the existing guarded module count.
+ENTRY_KEY_TO_ORACLE_INPUT.update({P + owner + "__" + calc + "__n_mod_in": "n_mod" for owner, calc in (("divertor", "divertor_cost"), ("power_supplies", "power_supplies_cost"))})
+
+# Emitted Boolean literals may only remove capability credit.
+ENTRY_KEY_TO_ORACLE_INPUT.update({P+suffix: name for suffix,(name,value) in vs.oracle_capability.FLAG_DEFAULTS.items()})

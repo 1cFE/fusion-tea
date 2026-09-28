@@ -1,0 +1,4 @@
+Model failed exact-route validation: SI_OCCURRENCE_MISSING: hif_plant_pkg__hif_plant__pv_factors: reference='lcoe_calc.construction_years': semantic owner kind 'CalculationUsage' cannot anchor containment [root-0/designs/generic_ife/ife_plant.sysml:111]; SI_OCCURRENCE_MISSING: hif_plant_pkg__hif_plant__pv_factors: reference='lcoe_calc.operational_years': semantic owner kind 'CalculationUsage' cannot anchor containment [root-0/designs/generic_ife/ife_plant.sysml:112]
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError

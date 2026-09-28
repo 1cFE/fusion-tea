@@ -1,0 +1,16 @@
+fuel_cycle__burn_fraction: no_constraint_response=false constraints 1/25 objectives 3/14 modules_fired=11
+fuel_cycle__eta_extract: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__lambda_T: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__reserve_fraction: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__shutdown_duration: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__startup_extension: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__t_recycle: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__tau_blanket: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__tau_buffer: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__tau_extract: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__tau_feed: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__tau_process: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+fuel_cycle__tau_reserve: no_constraint_response=false constraints 1/25 objectives 0/14 modules_fired=6
+plasma__n_e0: no_constraint_response=false constraints 16/25 objectives 11/14 modules_fired=114
+unplanned_fraction: no_constraint_response=false constraints 6/25 objectives 5/14 modules_fired=62
+A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds.

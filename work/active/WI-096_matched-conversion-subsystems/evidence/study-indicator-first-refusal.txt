@@ -1,0 +1,5 @@
+Command: .codex-test/run python scripts/study/indicators.py --package exploration/component_alternatives/component_alternatives_tea --manifest exploration/component_alternatives/studies/manifest.json --groups exploration/component_alternatives/studies/axes.json --out exploration/component_alternatives/studies/20260926-design-study-component-alternatives/indicators.json
+Implementation commit: b5269722
+Exit: 1
+Producer refusal: constraint component_alternatives__plant__steam_ledger__balance__79e79cd29079c8e8: unsupported nested operator '-'
+No indicator report or main-study execution was produced. Native task T-004 remains in implementation validation; its package has not been promoted through integration.

@@ -1,0 +1,27 @@
+RUN consumers.py
+PASS: actual indicator parser accepts all 18 entries; verifier resolves all four new entries across both efficiency boundaries; 28 feature occurrences, 247 parameters, no demand entry
+RUN check_results.py
+conversion, thermal/electric/divertor conservation, reserve invariance/procurement, physical-demand alpha compensation, availability invariance, efficiency rejection, no demand entry
+changed baseline scalars 73
+{
+  "lcoe_calc__lcoe": {
+    "capital_delta_dollars": 187911.24591636658,
+    "annual_capital_charge_delta": 19849.503901213408,
+    "annual_cost_delta": 35069.373548299074,
+    "energy_delta_mwh": 12392.853822924197,
+    "capital_effect_per_mwh": 0.002479291687110228,
+    "annual_effect_per_mwh": 0.004380321379475186,
+    "energy_effect_per_mwh": -0.3471514567212637
+  },
+  "lcoe_1cfe_calc__lcoe": {
+    "capital_delta_dollars": 187911.24591636658,
+    "annual_capital_charge_delta": 19420.641118496656,
+    "annual_cost_delta": 35069.373548299074,
+    "energy_delta_mwh": 12392.853822924197,
+    "capital_effect_per_mwh": 0.002425724810205279,
+    "annual_effect_per_mwh": 0.004380321379475186,
+    "energy_effect_per_mwh": -0.3405624620691299
+  }
+}
+RUN check_repair.py
+PASS: original evidence bytes preserved, operation outputs exact, four new scalar comparisons, quality differential unchanged

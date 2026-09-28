@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://github.com/proximafusion/open_stellarator_models",
+  "slug": "proxima_fusion_public_simplified_stellarator_cad_models",
+  "path": "knowledge/sources/proxima_fusion_public_simplified_stellarator_cad_models/",
+  "source_id": "fbe19b2ab852fb7910324aaf51a4e2edbd62377220805bb67573d2e04a7d5a39",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-21T02:48:12.211352+00:00"
+}

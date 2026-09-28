@@ -1,0 +1,7 @@
+{
+  "source_bank_sha256": "6190e95144406e06439477b5eb34294b0d1dcaa399f440d793736af02c9ee85d",
+  "source_bank_bytes": 42002128,
+  "source_script_sha256": "2d5223070fb261fd33f1548390431a04fbe3265ca6a12869b32e8d2f36552517",
+  "inherited_model_reactivity_path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py",
+  "inherited_model_reactivity_sha256": "30aee9ecd9820a24929de992e70a8c47d65bcd07895633930946d11b86527308"
+}

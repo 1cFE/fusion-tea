@@ -1,0 +1,304 @@
+[
+  {
+    "owner": "he_hx",
+    "cas": "22.2",
+    "quantity": "selected_area",
+    "reference_quantity": 50000.0,
+    "reference_musd2004": 58.325700000000005
+  },
+  {
+    "owner": "he_pump",
+    "cas": "22.2",
+    "quantity": "selected_flow_capacity",
+    "reference_quantity": 3261.0,
+    "reference_musd2004": 19.4419
+  },
+  {
+    "owner": "he_duty_equipment",
+    "cas": "22.2",
+    "quantity": "he_capacity.selected_rating",
+    "reference_quantity": 1500.0,
+    "reference_musd2004": 32.40316666666667
+  },
+  {
+    "owner": "pbli_hx",
+    "cas": "22.2",
+    "quantity": "selected_area",
+    "reference_quantity": 50000.0,
+    "reference_musd2004": 58.325700000000005
+  },
+  {
+    "owner": "pbli_pump",
+    "cas": "22.2",
+    "quantity": "selected_flow_capacity",
+    "reference_quantity": 26860.0,
+    "reference_musd2004": 19.4419
+  },
+  {
+    "owner": "pbli_duty_equipment",
+    "cas": "22.2",
+    "quantity": "pbli_capacity.selected_rating",
+    "reference_quantity": 1800.0,
+    "reference_musd2004": 32.40316666666667
+  },
+  {
+    "owner": "divertor_hx",
+    "cas": "22.2",
+    "quantity": "selected_area",
+    "reference_quantity": 50000.0,
+    "reference_musd2004": 58.325700000000005
+  },
+  {
+    "owner": "divertor_pump",
+    "cas": "22.2",
+    "quantity": "selected_flow_capacity",
+    "reference_quantity": 500.0,
+    "reference_musd2004": 19.4419
+  },
+  {
+    "owner": "divertor_duty_equipment",
+    "cas": "22.2",
+    "quantity": "divertor_capacity.selected_rating",
+    "reference_quantity": 800.0,
+    "reference_musd2004": 32.40316666666667
+  },
+  {
+    "owner": "primary_piping",
+    "cas": "22.2",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 58.3257,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "secondary_transport",
+    "cas": "22.2",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 85.933,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "compressor_equipment",
+    "cas": "23",
+    "quantity": "compressor_capacity.selected_rating",
+    "reference_quantity": 1600.0,
+    "reference_musd2004": 78.6395
+  },
+  {
+    "owner": "turbine_equipment",
+    "cas": "23",
+    "quantity": "turbine_capacity.selected_rating",
+    "reference_quantity": 3500.0,
+    "reference_musd2004": 125.8232
+  },
+  {
+    "owner": "generator_equipment",
+    "cas": "23",
+    "quantity": "generator_capacity.selected_rating",
+    "reference_quantity": 1800.0,
+    "reference_musd2004": 47.183699999999995
+  },
+  {
+    "owner": "heat_rejection_equipment",
+    "cas": "27",
+    "quantity": "rejection_capacity.selected_rating",
+    "reference_quantity": 2500.0,
+    "reference_musd2004": 56.086
+  },
+  {
+    "owner": "fuel_processing_equipment",
+    "cas": "22.5",
+    "quantity": "fuel_capacity.selected_rating",
+    "reference_quantity": 3e+22,
+    "reference_musd2004": 16.59
+  },
+  {
+    "owner": "conversion_services",
+    "cas": "23",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 62.9116,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "magnet_inventory",
+    "cas": "22.1.3",
+    "quantity": "selected_mass",
+    "reference_quantity": 4092200.0,
+    "reference_musd2004": 204.208
+  },
+  {
+    "owner": "vf_coils",
+    "cas": "22.1.3",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 13.358,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "divertor_inventory",
+    "cas": "22.1.3",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 5.318,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "blanket_inventory",
+    "cas": "22.1.1",
+    "quantity": "selected_mass",
+    "reference_quantity": 662500.0,
+    "reference_musd2004": 59.347
+  },
+  {
+    "owner": "shield_inventory",
+    "cas": "22.1.2",
+    "quantity": "selected_mass",
+    "reference_quantity": 4585000.0,
+    "reference_musd2004": 228.627
+  },
+  {
+    "owner": "primary_support",
+    "cas": "22.1.5",
+    "quantity": "selected_mass",
+    "reference_quantity": 2909000.0,
+    "reference_musd2004": 73.126
+  },
+  {
+    "owner": "vacuum_equipment",
+    "cas": "22.1.6",
+    "quantity": "selected_mass",
+    "reference_quantity": 2773000.0,
+    "reference_musd2004": 137.135
+  },
+  {
+    "owner": "site_land",
+    "cas": "20",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 12.929,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "facilities",
+    "cas": "21",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 336.133,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "heating_equipment",
+    "cas": "22.1.4",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 66.427,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "magnet_power_supplies",
+    "cas": "22.1.7",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 70.624,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "impurity_control",
+    "cas": "22.1.8",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 6.561,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "auxiliary_cooling",
+    "cas": "22.3",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 3.735,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "waste_equipment",
+    "cas": "22.4",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 6.655,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "fuel_services",
+    "cas": "22.5",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 38.689,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "other_reactor_equipment",
+    "cas": "22.6",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 60.723,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "instrumentation_control",
+    "cas": "22.7",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 44.558,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "unallocated_source_scope",
+    "cas": "22",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 28.396,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "electrical_equipment",
+    "cas": "24",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 138.764,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "miscellaneous_equipment",
+    "cas": "25",
+    "quantity": "selected_quantity",
+    "reference_quantity": 1.0,
+    "reference_musd2004": 70.958,
+    "cost_output": "cost",
+    "fixed_package": true
+  },
+  {
+    "owner": "lipb_inventory",
+    "cas": "26",
+    "quantity": "total_mass",
+    "reference_quantity": 8830000.0,
+    "reference_musd2004": 151.327
+  }
+]

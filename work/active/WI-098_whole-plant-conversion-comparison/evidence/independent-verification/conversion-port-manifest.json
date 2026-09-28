@@ -1,0 +1,64 @@
+[
+  {
+    "source": "exploration/component_alternatives/verify.py",
+    "target": "exploration/whole_plant_conversion/verify.py",
+    "source_sha256": "76e8208b26ddbf8c528aa51b0d3113393a03e09f5a4a60480d8e951d82652a1f",
+    "target_sha256": "f739b28949dac3b081e62444f71c151422cb5cabce87bab87532aa10d53e2b7a",
+    "changes": [
+      "package output/input prefix only",
+      "isolated generated-package, authored-model and default receipt paths",
+      "relative oracle imports when used as a package; standalone fallback retained"
+    ],
+    "arithmetic_changed": false
+  },
+  {
+    "source": "exploration/component_alternatives/oracle_gas.py",
+    "target": "exploration/whole_plant_conversion/oracle_gas.py",
+    "source_sha256": "ae12f96870c577eee4e71ff6678f9eb94d75f26a93bad9550fe67dc4ced537a7",
+    "target_sha256": "0ec5245e352934debbfa9c06f21e2248ef1f54351350ec84114feb0262812680",
+    "changes": [
+      "package output/input prefix only"
+    ],
+    "arithmetic_changed": false
+  },
+  {
+    "source": "exploration/component_alternatives/oracle_cooling.py",
+    "target": "exploration/whole_plant_conversion/oracle_cooling.py",
+    "source_sha256": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c",
+    "target_sha256": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c",
+    "changes": [
+      "byte-exact copy"
+    ],
+    "arithmetic_changed": false
+  },
+  {
+    "source": "exploration/component_alternatives/oracle_matched_cycle.py",
+    "target": "exploration/whole_plant_conversion/oracle_matched_cycle.py",
+    "source_sha256": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc",
+    "target_sha256": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc",
+    "changes": [
+      "byte-exact copy"
+    ],
+    "arithmetic_changed": false
+  },
+  {
+    "source": "exploration/component_alternatives/oracle_matched_cycle_properties.json",
+    "target": "exploration/whole_plant_conversion/oracle_matched_cycle_properties.json",
+    "source_sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b",
+    "target_sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b",
+    "changes": [
+      "byte-exact copy"
+    ],
+    "arithmetic_changed": false
+  },
+  {
+    "source": "exploration/component_alternatives/oracle_thermal.py",
+    "target": "exploration/whole_plant_conversion/oracle_thermal.py",
+    "source_sha256": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417",
+    "target_sha256": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417",
+    "changes": [
+      "byte-exact copy"
+    ],
+    "arithmetic_changed": false
+  }
+]

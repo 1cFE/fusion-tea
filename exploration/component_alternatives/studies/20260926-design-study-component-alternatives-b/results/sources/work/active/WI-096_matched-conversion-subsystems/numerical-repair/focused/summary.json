@@ -1,0 +1,308 @@
+[
+  {
+    "case": "baseline",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    }
+  },
+  {
+    "case": "c0035",
+    "label": "gas-q2500-m1750-r1.5-ua25-25-20",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0036",
+    "label": "gas-q2500-m1750-r1.5-ua25-25-25",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0040",
+    "label": "gas-q2500-m1750-r1.65-ua25-25-20",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__water_pre__flow_margin_ok__129a83656acb8a06",
+      "component_alternatives__plant__water_pre__power_margin_ok__d793d504da406d97"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0041",
+    "label": "gas-q2500-m1750-r1.65-ua25-25-25",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0160",
+    "label": "gas-q2800-m1750-r1.5-ua25-25-20",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__water_pre__flow_margin_ok__129a83656acb8a06"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0161",
+    "label": "gas-q2800-m1750-r1.5-ua25-25-25",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0205",
+    "label": "gas-q2800-m2250-r1.35-ua25-25-20",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8",
+      "component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0206",
+    "label": "gas-q2800-m2250-r1.35-ua25-25-25",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__gas_ledger__net_positive__ee25ae39167c9ad3",
+      "component_alternatives__plant__water_pre__flow_margin_ok__129a83656acb8a06",
+      "component_alternatives__plant__water_pre__power_margin_ok__d793d504da406d97"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0207",
+    "label": "gas-q2800-m2250-r1.35-ua25-25-40",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8",
+      "component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5"
+    ],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0480",
+    "label": "sensitivity-q3000-gas-eta-0.03",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0481",
+    "label": "sensitivity-q3000-gas-eta+0.03",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0482",
+    "label": "sensitivity-q3000-steam-eta-0.03",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0484",
+    "label": "sensitivity-q3000-both-eta-0.03",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  },
+  {
+    "case": "c0485",
+    "label": "sensitivity-q3000-both-eta+0.03",
+    "verification": {
+      "status": "pass",
+      "comparisons": 872,
+      "predicates": 84,
+      "diagnostic_only": [
+        "component_alternatives__plant__water_ic1__evaluate__iterations",
+        "component_alternatives__plant__water_ic2__evaluate__iterations",
+        "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+        "component_alternatives__plant__water_pre__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "verdict_changes": {},
+    "original_failed_predicates": [],
+    "fingerprint": "36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986"
+  }
+]

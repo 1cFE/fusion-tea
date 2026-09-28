@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "limit_reached",
+  "candidate": "https://www.ncbi.nlm.nih.gov/books/NBK598740/table/ch4.tab2/",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "run has spent its max_captures limit of 1",
+  "rule_id": null,
+  "captured": false,
+  "at": "2026-09-18T20:32:20.822315+00:00"
+}

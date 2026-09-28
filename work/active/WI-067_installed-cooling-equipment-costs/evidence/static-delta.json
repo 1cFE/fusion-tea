@@ -1,0 +1,15 @@
+{
+  "before": 336,
+  "after": 341,
+  "added": [
+    "ERROR: Design attribute 'mfe_plant::'MFE Power Plant'::cas72_annual' has expression but codegen cannot extract a numeric default: Feature reference 'cas72_total' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "ERROR: Design attribute 'mfe_subsystems::'Turbine Plant'::cycle_argument' has expression but codegen cannot extract a numeric default: Feature reference 'T2_C' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation.",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_plant_systems::'Primary Heat Transport'::consumables_annual'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_plant_systems::'Primary Heat Transport'::replacement_annual'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_plant_systems::'Primary Heat Transport'::shipping_exclusion'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_subsystems::'Turbine Plant'::cycle_argument'"
+  ],
+  "removed": [
+    "ERROR: Design attribute 'mfe_plant::'MFE Power Plant'::cas72_annual' has expression but codegen cannot extract a numeric default: Feature reference 'cas72_annual' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation."
+  ]
+}

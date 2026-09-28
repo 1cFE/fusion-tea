@@ -1,0 +1,63 @@
+{
+  "baseline": {
+    "channels": 158,
+    "responses_exact": true,
+    "report_exact": true
+  },
+  "R14": {
+    "channels": 158,
+    "responses_exact": true,
+    "report_exact": true
+  },
+  "independent_ratios": {
+    "geom__V": {
+      "expected": 1.1023622047244095,
+      "actual": 1.1023622047244095
+    },
+    "coil_length__c_coil": {
+      "expected": 1.1023622047244095,
+      "actual": 1.1023622047244095
+    },
+    "field_calc__B_axis": {
+      "expected": 0.9071428571428571,
+      "actual": 0.9071428571428571
+    },
+    "stored_energy__W_mag": {
+      "expected": 0.9071428571428571,
+      "actual": 0.9071428571428571
+    },
+    "peak_field_calc__B_peak": {
+      "expected": 0.880184331797235,
+      "actual": 0.8801843317972349
+    },
+    "magnet_cost__capital_cost": {
+      "expected": 1.0,
+      "actual": 1.0
+    }
+  },
+  "anchors": {
+    "stellarator_09__stellaris__magnet__R_ref": 12.7,
+    "stellarator_09__stellaris__magnet__a_coil_ref": 3.1500000000000004,
+    "stellarator_09__stellaris__wall_peak_R_ref": 12.7,
+    "stellarator_09__stellaris__R_ref_divertor": 12.7
+  },
+  "component": {
+    "original_negative": {
+      "B_peak": -792.6499999999979
+    },
+    "equality": {
+      "error": "ZeroDivisionError",
+      "message": "float division by zero"
+    },
+    "valid": {
+      "B_peak": 24.9
+    },
+    "reference_equal": {
+      "error": "ZeroDivisionError",
+      "message": "float division by zero"
+    },
+    "reference_inverted": {
+      "B_peak": -0.7821989528795832
+    }
+  }
+}

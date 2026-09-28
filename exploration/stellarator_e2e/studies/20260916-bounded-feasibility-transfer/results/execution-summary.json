@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-16T14:21:46.957007+00:00",
+  "finished_at_utc": "2026-09-16T14:23:14.986122+00:00",
+  "elapsed_seconds": 88.02911723218858,
+  "cases": 71,
+  "states": {
+    "completed": 71
+  },
+  "store": "results/study/_work/20260916-bounded-feasibility-transfer.db",
+  "repo_revision": "a3ea15e88ee6c48de44d5880751636e7c9615776"
+}

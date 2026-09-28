@@ -1,0 +1,70 @@
+{
+  "ANNEX.md": {
+    "original": "exploration/stellarator_e2e/studies/ANNEX.md",
+    "sha256": "71fed26e5fbe0164efc11d6daedb74fdd24db9c6aa664816332c3b448d3bd9cc"
+  },
+  "STUDY_POLICY.md": {
+    "original": "modeling_project/STUDY_POLICY.md",
+    "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef"
+  },
+  "WI038-audit.md": {
+    "original": "work/active/WI-038_conductor-grade-lever/audit.md",
+    "sha256": "e0112a7f51da8bfb703c26bc6f976ebdc0c6e834f03c5375a3698b4badd439b4"
+  },
+  "WI038-basis.md": {
+    "original": "work/active/WI-038_conductor-grade-lever/basis.md",
+    "sha256": "f249269e03c50545de2833d1655b672e84e6e1e9186898c42d419285e447ebbf"
+  },
+  "WI038-design.md": {
+    "original": "work/active/WI-038_conductor-grade-lever/design.md",
+    "sha256": "e314aeaecdc027e1baa1961123fe2c4d36bf2f0a03d6ad592cf45cad95417cbf"
+  },
+  "WI040-accounting-research.md": {
+    "original": "work/active/WI-040_winding-pack-mass-cost/evidence/accounting-research.md",
+    "sha256": "150bd1776f2387a1e0d356dbc79effd34435a4869bf955ae6aa7055c7984b8a7"
+  },
+  "WI040-design.md": {
+    "original": "work/active/WI-040_winding-pack-mass-cost/design.md",
+    "sha256": "6ece34bcc7318ab133913199081f4fd8919fe55163407fcfb7915e87bcc9ef9b"
+  },
+  "WI040-material-research.md": {
+    "original": "work/active/WI-040_winding-pack-mass-cost/evidence/material-research.md",
+    "sha256": "7fdaced31a53398bac3f18dca6a6bd37599e8b638234fdae4bd57c56e3d52a0a"
+  },
+  "integration_return.json": {
+    "original": "work/orchestration/goals/magnet-design-transfer/evidence/T005-integration/integration_return.json",
+    "sha256": "349f0517e18e96b23971e02019e293b66b5858d48f35e072cdc263b6ad4211f4"
+  },
+  "manifest.json": {
+    "original": "exploration/stellarator_e2e/studies/manifest.json",
+    "sha256": "5acecc77dc4ac2996f936cbe8d8c3c091a1d3a4f8f45b0e93bd1aa9f3430224d"
+  },
+  "model_contract.json": {
+    "original": "exploration/stellarator_e2e/generated/contracts/model_contract.json",
+    "sha256": "90ef5b3e4dfef3d976b4664ab34c53edca0c08ec8c7749acca9e4da94ba84ccd"
+  },
+  "oracle/oracle_entry.py": {
+    "original": "exploration/stellarator_e2e/studies/oracle_entry.py",
+    "sha256": "9c4c70a7ae66d2f8c8a3b7539bab1979b95ec4b68976119d2baccf387a9eb1e2"
+  },
+  "oracle/oracle_finance.py": {
+    "original": "exploration/stellarator_e2e/oracle_finance.py",
+    "sha256": "8cd2d9803c74bace69a4fe2f13bdc700686e9db69c650a0688c3c40204943873"
+  },
+  "oracle/verify_stellaris.py": {
+    "original": "exploration/stellarator_e2e/verify_stellaris.py",
+    "sha256": "0d0dc192d40147156ee078e16a1b7a579892abf45dc390a35df7cf07ebd1dca0"
+  },
+  "package_contract.json": {
+    "original": "exploration/stellarator_e2e/generated/contracts/package_contract.json",
+    "sha256": "ad7f4ef50c7b4ec186f22d19aefdf085a6eef374f31cb7f8181da663cb252b77"
+  },
+  "pipeline.yaml": {
+    "original": "exploration/stellarator_e2e/generated/pipelines/pipeline.yaml",
+    "sha256": "fcd55b5b1b0b662273a71d4749e88b064048f50c3ed376a1f0f14becdc261af0"
+  },
+  "transfer-evidence-assessment.md": {
+    "original": "work/orchestration/goals/magnet-design-transfer/evidence/transfer-evidence-assessment.md",
+    "sha256": "34c93c05320c1b91eee31e50a387ce7247b9be97c38ca74d3dc902a9c85ae6a6"
+  }
+}

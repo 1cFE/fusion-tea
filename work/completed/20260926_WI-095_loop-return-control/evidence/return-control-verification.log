@@ -1,0 +1,61 @@
+{
+ "passed": true,
+ "cases": {
+  "best-screen-point-aries-ratings": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.1296192906533925,
+   "feasible": 1.0,
+   "identities_ok": true
+  },
+  "best-screen-point-reselected": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.1296192906533925,
+   "feasible": 1.0,
+   "identities_ok": true
+  },
+  "c1-aries-ratios-aries-ratings": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.31122159957504514,
+   "feasible": 1.0,
+   "identities_ok": true
+  },
+  "c1-aries-ratios-reselected-ratings": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.31122159957504514,
+   "feasible": 1.0,
+   "identities_ok": true
+  },
+  "c1-flow1400-aries-ratings": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.0,
+   "feasible": 0.0,
+   "identities_ok": true
+  },
+  "c1-flow4000-reselected-ratings": {
+   "compared": 0,
+   "diffs": 0,
+   "f": null,
+   "feasible": null,
+   "identities_ok": true
+  },
+  "c1-ratio1.35-reselected-ratings": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.0,
+   "feasible": 0.0,
+   "identities_ok": true
+  },
+  "starting-point-fuel-term-wired": {
+   "compared": 245,
+   "diffs": 0,
+   "f": 0.31122159957504514,
+   "feasible": 1.0,
+   "identities_ok": true
+  }
+ }
+}

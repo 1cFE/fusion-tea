@@ -1,0 +1,237 @@
+{
+  "status": "PREPARATION ONLY; fresh critique and formal Step 7 scan pending",
+  "study_id": "20260911-operating-heating",
+  "baseline_point": {
+    "stellarator_09__stellaris__R": 12.7,
+    "stellarator_09__stellaris__magnet__R0": 12.7,
+    "stellarator_09__stellaris__a": 1.3,
+    "stellarator_09__stellaris__availability_direct": 0.0
+  },
+  "arms": [
+    {
+      "arm_id": "arm-reserve",
+      "provenance": "engineered",
+      "note": "Fixed plasma, efficiencies and all other modeled inputs. Capacity-limited, equality candidate, baseline, and extra reserve controls.",
+      "cases": [
+        {
+          "label": "installed-80",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 80.0
+          }
+        },
+        {
+          "label": "installed-98.1592015758536",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 98.15920157585356
+          }
+        },
+        {
+          "label": "installed-100",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 100.0
+          }
+        },
+        {
+          "label": "installed-110",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 110.0
+          }
+        },
+        {
+          "label": "installed-120",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 120.0
+          }
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-retained-alpha",
+      "provenance": "engineered",
+      "note": "At fixed installation and baseline plasma density/temperature; physical retained-alpha assumption control. Divertor absorbed heat cancels algebraically here.",
+      "cases": [
+        {
+          "label": "alpha-0.94",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__f_alpha_fast": 0.94
+          }
+        },
+        {
+          "label": "alpha-0.95",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__f_alpha_fast": 0.95
+          }
+        },
+        {
+          "label": "alpha-0.96",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__f_alpha_fast": 0.96
+          }
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-density",
+      "provenance": "engineered",
+      "note": "Public plasma-density sensitivity at fixed installed heating. Positive and negative signed demand; all other physical couplings and verdicts remain visible. No density-limit or engineering-feasibility claim.",
+      "cases": [
+        {
+          "label": "density-1.0",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 5.06e+20
+          }
+        },
+        {
+          "label": "density-1.1",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20
+          }
+        },
+        {
+          "label": "density-1.2",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 6.072e+20
+          }
+        },
+        {
+          "label": "density-1.3",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 6.578e+20
+          }
+        },
+        {
+          "label": "density-1.4",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 7.084e+20
+          }
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-coordinated-zero",
+      "provenance": "engineered",
+      "note": "Separate coordinated density + retained-alpha diagnostic. The affine zero construction is preselected, not a pure-density control, optimization, or discovered physical boundary. Exact native zero remains unproved; call near-zero for any nonzero native residual.",
+      "cases": [
+        {
+          "label": "positive-near-zero",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 6.578e+20,
+            "stellarator_09__stellaris__f_alpha_fast": 0.953987533602518
+          }
+        },
+        {
+          "label": "algebraic-zero-candidate",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 6.578e+20,
+            "stellarator_09__stellaris__f_alpha_fast": 0.9539975336025179
+          }
+        },
+        {
+          "label": "negative-near-zero",
+          "point": {
+            "stellarator_09__stellaris__R": 12.7,
+            "stellarator_09__stellaris__magnet__R0": 12.7,
+            "stellarator_09__stellaris__a": 1.3,
+            "stellarator_09__stellaris__availability_direct": 0.0,
+            "stellarator_09__stellaris__n_e0": 6.578e+20,
+            "stellarator_09__stellaris__f_alpha_fast": 0.9540075336025179
+          }
+        }
+      ]
+    }
+  ],
+  "case_count": 16,
+  "held": {
+    "eta_source_heat": 0.5,
+    "eta_couple_heat": 1.0,
+    "f_ren": 1.0,
+    "T_i0": 14.63,
+    "p_wallplug_heat_except_reserve": 100.0,
+    "finance": "unchanged modeled defaults",
+    "calendar": "live, unchanged modeled defaults",
+    "geometry": "baseline R and a, complete baseline magnet radius tie"
+  },
+  "declined": {
+    "T_i0": "Temperature-only probe stayed positive over its candidate range. Density provides signed-demand cases without changing temperature; no temperature point will run."
+  },
+  "zero_construction": {
+    "density": 6.578e+20,
+    "formula": "f*=f0 + (f1-f0)*D(f0)/(D(f0)-D(f1)), using f0=.95 and f1=1 at held density; D is affine in this fraction at held plasma solution.",
+    "f0": 0.95,
+    "f1": 1.0,
+    "fraction": 0.9539975336025179,
+    "fraction_in_unit_interval": true,
+    "oracle_residual_mw": -1.1368683772161603e-13,
+    "native_residual": "not executed; never round a nonzero value to exact zero"
+  },
+  "verification": {
+    "generic_sample_size": 16,
+    "scheme": "all completed cases, hence every verdict stratum; stock generic verify.py plus additional independently stated conservation/cost identities",
+    "tolerance": {
+      "relative": 1e-09,
+      "absolute_for_signed_zero": 1e-09
+    },
+    "all_constraints_required": 18,
+    "failures": "Keep failed case evidence; stop execution/publication under runbook Step 9; never suppress or regrade. No execution-failure point intentionally scheduled; negative demand is an expected completed invalid verdict."
+  }
+}

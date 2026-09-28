@@ -14,7 +14,7 @@ promoted_to: null
 
 ## Decision
 
-The first build is three prose files per goal — `goal.md`, `trail.md`, `learnings.md` — plus the fresh-round discipline and the joined discovery-log dispositions of ADR-004. `trail.md` is append-oriented; corrections are dated amendments; git supplies history and there is no first-build sealing scheme.
+The first build is three prose files per goal — `goal.md`, `trail.md`, `learnings.md` — plus the review coverage of ADR-002/ADR-005 and the joined discovery-log dispositions of ADR-004. `trail.md` is append-oriented; corrections are dated amendments; git supplies history and there is no first-build sealing scheme. The 2026-09-14 amendments to ADR-002/ADR-005 replace unconditional fresh-round review with risk-based coverage; the historical proof records below remain unchanged.
 
 Accepted cross-round meaning goes in a separate `learnings.md` rather than staying inline in the trail. That separation is the design's mechanism, not the owner's ruling.
 
@@ -75,6 +75,10 @@ Two things this run adds that Item 4's could not:
 - **The mid-run sandbox degraded three times** (git writes, then home-directory writes, then `claude` invocation) and the lean route absorbed it: the execution subagent stopped cleanly at each wall, each refusal was quoted into `operator-notes.md`, and the operator role moved to the orchestrator. An unattended dispatcher would have had to handle this; an attended prose route simply stopped and said why. The row stays untested rather than passed, for the same reason it did in Item 4.
 
 Two measurements are now on this record, taken on different goal shapes, and neither promotes anything. A future round re-opening the hardening question starts from both.
+
+### Amendment — 2026-09-11: native fresh-reviewer dispatch
+
+[OWNER-VERBATIM] "yeah I am fine with the automatic reviewer, as long as it is a subagent with fresh context". A goal agent may use the host’s native subagent tool to obtain a reviewer with no inherited conversation context. This supersedes the operator-only dispatch restriction in the goal runbook; the recorded handoff remains the fallback when a fresh session cannot be obtained.
 
 ## Rejected alternatives
 

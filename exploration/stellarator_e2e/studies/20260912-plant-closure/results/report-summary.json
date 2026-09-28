@@ -1,0 +1,887 @@
+{
+  "satisfaction_counts": {
+    "old-ten": 125,
+    "round1-fourteen": 19,
+    "current-eighteen": 19
+  },
+  "unique_cases": 371,
+  "fully_satisfied": 19,
+  "constraint_counts": {
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": {
+      "source_local_identity": "wp_stress_ok",
+      "satisfied": 358,
+      "violated": 13
+    },
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": {
+      "source_local_identity": "cond_strain_ok",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": {
+      "source_local_identity": "recirc_ok",
+      "satisfied": 264,
+      "violated": 107
+    },
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": {
+      "source_local_identity": "cycle_domain_ok",
+      "satisfied": 369,
+      "violated": 2
+    },
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": {
+      "source_local_identity": "beta_ok",
+      "satisfied": 347,
+      "violated": 24
+    },
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+      "source_local_identity": "heating_couple_positive_ok",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": {
+      "source_local_identity": "divertor_heat_ok",
+      "violated": 319,
+      "satisfied": 52
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+      "source_local_identity": "heating_source_upper_ok",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": {
+      "source_local_identity": "net_positive",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": {
+      "source_local_identity": "burn_hold_ok",
+      "satisfied": 281,
+      "violated": 90
+    },
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": {
+      "source_local_identity": "wall_load_ok",
+      "satisfied": 308,
+      "violated": 63
+    },
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": {
+      "source_local_identity": "tbr_ok",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+      "source_local_identity": "heating_couple_upper_ok",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": {
+      "source_local_identity": "peak_field_ok",
+      "satisfied": 291,
+      "violated": 80
+    },
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": {
+      "source_local_identity": "sustainment_ok",
+      "satisfied": 310,
+      "violated": 61
+    },
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": {
+      "source_local_identity": "loop_capacity_ok",
+      "satisfied": 188,
+      "violated": 183
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+      "source_local_identity": "heating_source_positive_ok",
+      "satisfied": 371
+    },
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": {
+      "source_local_identity": "loop_pressure_ok",
+      "satisfied": 371
+    }
+  },
+  "arms": [
+    {
+      "arm_id": "arm-baseline",
+      "correlation_status_counts": {
+        "eligible": 1
+      },
+      "unique_cases": 1,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 1,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        224.26923288439,
+        224.26923288439
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 1
+          },
+          "unique_cases": 1,
+          "satisfaction_counts": {
+            "old-ten": 1,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-calendar",
+      "correlation_status_counts": {
+        "eligible": 36,
+        "excluded": 9
+      },
+      "unique_cases": 36,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 9,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        222.26708944891968,
+        325.2569682349723
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 27,
+            "excluded": 9
+          },
+          "unique_cases": 27,
+          "satisfaction_counts": {
+            "old-ten": 9,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 9
+          },
+          "unique_cases": 9,
+          "satisfaction_counts": {
+            "old-ten": 0,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-closure-factorial",
+      "correlation_status_counts": {
+        "eligible": 36,
+        "excluded": 4
+      },
+      "unique_cases": 36,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 20,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        129.84598100793139,
+        532.7448486317671
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 28,
+            "excluded": 4
+          },
+          "unique_cases": 28,
+          "satisfaction_counts": {
+            "old-ten": 16,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 8
+          },
+          "unique_cases": 8,
+          "satisfaction_counts": {
+            "old-ten": 4,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-cycle",
+      "correlation_status_counts": {
+        "eligible": 6
+      },
+      "unique_cases": 6,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 6,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        210.0156701125407,
+        249.68761641421526
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 6
+          },
+          "unique_cases": 6,
+          "satisfaction_counts": {
+            "old-ten": 6,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-divertor-radiation",
+      "correlation_status_counts": {
+        "eligible": 12,
+        "excluded": 3
+      },
+      "unique_cases": 12,
+      "fully_satisfied_unique_cases": 1,
+      "satisfaction_counts": {
+        "old-ten": 3,
+        "round1-fourteen": 1,
+        "current-eighteen": 1
+      },
+      "best_full_current_sample": {
+        "candidate_id": "20260912-plant-closure:c0020",
+        "inputs": {
+          "stellarator_09__stellaris__f_rad_total": 0.95
+        },
+        "lcoe": 224.26923288439,
+        "lcoe_1cfe": 220.0125640803369,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": []
+      },
+      "lcoe_extrema_all_diagnostics": [
+        224.26923288439,
+        285.8710498639662
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 9,
+            "excluded": 3
+          },
+          "unique_cases": 9,
+          "satisfaction_counts": {
+            "old-ten": 3,
+            "round1-fourteen": 1,
+            "current-eighteen": 1
+          },
+          "fully_satisfied_unique_cases": 1,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0020",
+            "inputs": {
+              "stellarator_09__stellaris__f_rad_total": 0.95
+            },
+            "lcoe": 224.26923288439,
+            "lcoe_1cfe": 220.0125640803369,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 3
+          },
+          "unique_cases": 3,
+          "satisfaction_counts": {
+            "old-ten": 0,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-divertor-transport",
+      "correlation_status_counts": {
+        "eligible": 8,
+        "excluded": 2
+      },
+      "unique_cases": 8,
+      "fully_satisfied_unique_cases": 1,
+      "satisfaction_counts": {
+        "old-ten": 2,
+        "round1-fourteen": 1,
+        "current-eighteen": 1
+      },
+      "best_full_current_sample": {
+        "candidate_id": "20260912-plant-closure:c0018",
+        "inputs": {
+          "stellarator_09__stellaris__q_target_ref": 5.0
+        },
+        "lcoe": 224.26923288439,
+        "lcoe_1cfe": 220.0125640803369,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": []
+      },
+      "lcoe_extrema_all_diagnostics": [
+        224.26923288439,
+        285.8710498639662
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 6,
+            "excluded": 2
+          },
+          "unique_cases": 6,
+          "satisfaction_counts": {
+            "old-ten": 2,
+            "round1-fourteen": 1,
+            "current-eighteen": 1
+          },
+          "fully_satisfied_unique_cases": 1,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0018",
+            "inputs": {
+              "stellarator_09__stellaris__q_target_ref": 5.0
+            },
+            "lcoe": 224.26923288439,
+            "lcoe_1cfe": 220.0125640803369,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 2
+          },
+          "unique_cases": 2,
+          "satisfaction_counts": {
+            "old-ten": 0,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-edge-diagnostics",
+      "correlation_status_counts": {
+        "eligible": 84
+      },
+      "unique_cases": 52,
+      "fully_satisfied_unique_cases": 16,
+      "satisfaction_counts": {
+        "old-ten": 18,
+        "round1-fourteen": 16,
+        "current-eighteen": 16
+      },
+      "best_full_current_sample": {
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": []
+      },
+      "lcoe_extrema_all_diagnostics": [
+        150.69573393691638,
+        345.7059150218498
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 28
+          },
+          "unique_cases": 19,
+          "satisfaction_counts": {
+            "old-ten": 3,
+            "round1-fourteen": 3,
+            "current-eighteen": 3
+          },
+          "fully_satisfied_unique_cases": 3,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0113",
+            "inputs": {
+              "stellarator_09__stellaris__a": 1.7,
+              "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+              "stellarator_09__stellaris__n_e0": 4.048e+20
+            },
+            "lcoe": 191.7581690876428,
+            "lcoe_1cfe": 188.12676969778198,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 56
+          },
+          "unique_cases": 33,
+          "satisfaction_counts": {
+            "old-ten": 15,
+            "round1-fourteen": 13,
+            "current-eighteen": 13
+          },
+          "fully_satisfied_unique_cases": 13,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0130",
+            "inputs": {
+              "stellarator_09__stellaris__a": 1.7,
+              "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+              "stellarator_09__stellaris__n_e0": 4.048e+20,
+              "stellarator_09__stellaris__p_wallplug_heat": 220.0
+            },
+            "lcoe": 198.00258969214127,
+            "lcoe_1cfe": 194.23627511198842,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-fuel",
+      "correlation_status_counts": {
+        "eligible": 12,
+        "excluded": 3
+      },
+      "unique_cases": 12,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 3,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        224.26092746033905,
+        285.89694295668926
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 9,
+            "excluded": 3
+          },
+          "unique_cases": 9,
+          "satisfaction_counts": {
+            "old-ten": 3,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 3
+          },
+          "unique_cases": 3,
+          "satisfaction_counts": {
+            "old-ten": 0,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-loop-loss",
+      "correlation_status_counts": {
+        "eligible": 9
+      },
+      "unique_cases": 9,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 9,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        204.75785092199806,
+        261.1193056390885
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 9
+          },
+          "unique_cases": 9,
+          "satisfaction_counts": {
+            "old-ten": 9,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-reserve",
+      "correlation_status_counts": {
+        "eligible": 12,
+        "excluded": 3
+      },
+      "unique_cases": 12,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 3,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        224.26923288439,
+        290.6685998819485
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 4,
+            "excluded": 1
+          },
+          "unique_cases": 4,
+          "satisfaction_counts": {
+            "old-ten": 1,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        },
+        {
+          "installed_power_MW": 120.0,
+          "correlation_status_counts": {
+            "eligible": 4,
+            "excluded": 1
+          },
+          "unique_cases": 4,
+          "satisfaction_counts": {
+            "old-ten": 1,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 4,
+            "excluded": 1
+          },
+          "unique_cases": 4,
+          "satisfaction_counts": {
+            "old-ten": 1,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-sized-witness",
+      "correlation_status_counts": {
+        "eligible": 1
+      },
+      "unique_cases": 1,
+      "fully_satisfied_unique_cases": 0,
+      "satisfaction_counts": {
+        "old-ten": 0,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "best_full_current_sample": null,
+      "lcoe_extrema_all_diagnostics": [
+        150.1278563075687,
+        150.1278563075687
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 1
+          },
+          "unique_cases": 1,
+          "satisfaction_counts": {
+            "old-ten": 0,
+            "round1-fourteen": 0,
+            "current-eighteen": 0
+          },
+          "fully_satisfied_unique_cases": 0,
+          "best_full_current_sample": null
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "correlation_status_counts": {
+        "eligible": 143,
+        "excluded": 258
+      },
+      "unique_cases": 143,
+      "fully_satisfied_unique_cases": 9,
+      "satisfaction_counts": {
+        "old-ten": 33,
+        "round1-fourteen": 9,
+        "current-eighteen": 9
+      },
+      "best_full_current_sample": {
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": []
+      },
+      "lcoe_extrema_all_diagnostics": [
+        138.1157255491147,
+        146982.20585272106
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 77,
+            "excluded": 129
+          },
+          "unique_cases": 77,
+          "satisfaction_counts": {
+            "old-ten": 11,
+            "round1-fourteen": 2,
+            "current-eighteen": 2
+          },
+          "fully_satisfied_unique_cases": 2,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0113",
+            "inputs": {
+              "stellarator_09__stellaris__a": 1.7,
+              "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+              "stellarator_09__stellaris__n_e0": 4.048e+20
+            },
+            "lcoe": 191.7581690876428,
+            "lcoe_1cfe": 188.12676969778198,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 66,
+            "excluded": 129
+          },
+          "unique_cases": 66,
+          "satisfaction_counts": {
+            "old-ten": 22,
+            "round1-fourteen": 7,
+            "current-eighteen": 7
+          },
+          "fully_satisfied_unique_cases": 7,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0130",
+            "inputs": {
+              "stellarator_09__stellaris__a": 1.7,
+              "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+              "stellarator_09__stellaris__n_e0": 4.048e+20,
+              "stellarator_09__stellaris__p_wallplug_heat": 220.0
+            },
+            "lcoe": 198.00258969214127,
+            "lcoe_1cfe": 194.23627511198842,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "correlation_status_counts": {
+        "eligible": 135,
+        "excluded": 126
+      },
+      "unique_cases": 135,
+      "fully_satisfied_unique_cases": 10,
+      "satisfaction_counts": {
+        "old-ten": 52,
+        "round1-fourteen": 10,
+        "current-eighteen": 10
+      },
+      "best_full_current_sample": {
+        "candidate_id": "20260912-plant-closure:c0113",
+        "inputs": {
+          "stellarator_09__stellaris__a": 1.7,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__n_e0": 4.048e+20
+        },
+        "lcoe": 191.7581690876428,
+        "lcoe_1cfe": 188.12676969778198,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": true,
+          "current-eighteen": true
+        },
+        "violations": []
+      },
+      "lcoe_extrema_all_diagnostics": [
+        115.56923288351543,
+        28343.446671305803
+      ],
+      "power_levels": [
+        {
+          "installed_power_MW": 100.0,
+          "correlation_status_counts": {
+            "eligible": 70,
+            "excluded": 63
+          },
+          "unique_cases": 70,
+          "satisfaction_counts": {
+            "old-ten": 18,
+            "round1-fourteen": 2,
+            "current-eighteen": 2
+          },
+          "fully_satisfied_unique_cases": 2,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0113",
+            "inputs": {
+              "stellarator_09__stellaris__a": 1.7,
+              "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+              "stellarator_09__stellaris__n_e0": 4.048e+20
+            },
+            "lcoe": 191.7581690876428,
+            "lcoe_1cfe": 188.12676969778198,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        },
+        {
+          "installed_power_MW": 220.0,
+          "correlation_status_counts": {
+            "eligible": 65,
+            "excluded": 63
+          },
+          "unique_cases": 65,
+          "satisfaction_counts": {
+            "old-ten": 34,
+            "round1-fourteen": 8,
+            "current-eighteen": 8
+          },
+          "fully_satisfied_unique_cases": 8,
+          "best_full_current_sample": {
+            "candidate_id": "20260912-plant-closure:c0130",
+            "inputs": {
+              "stellarator_09__stellaris__a": 1.7,
+              "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+              "stellarator_09__stellaris__n_e0": 4.048e+20,
+              "stellarator_09__stellaris__p_wallplug_heat": 220.0
+            },
+            "lcoe": 198.00258969214127,
+            "lcoe_1cfe": 194.23627511198842,
+            "satisfied_sets": {
+              "old-ten": true,
+              "round1-fourteen": true,
+              "current-eighteen": true
+            },
+            "violations": []
+          }
+        }
+      ]
+    }
+  ]
+}

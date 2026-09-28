@@ -1,0 +1,10 @@
+{
+  "study_id": "20260919-cost-estimate-maturity-and-uncertainty",
+  "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236",
+  "model_contract_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
+  "study_definition_fingerprint": "4c0656afd2f8791c0c550c7c81299987120316116a847524e4889b5893a3d8c0",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "7f794d975175fdf2f03ba7ff7c7282606b4021a9a2f312e33766ffbefdf9038b"
+}

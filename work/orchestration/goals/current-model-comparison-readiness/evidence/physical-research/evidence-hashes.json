@@ -1,0 +1,17 @@
+{
+  "models/library/analyses/mfe_power_cycle.sysml": "d086af8a9fab2d4e3d516a302d9fea9be4e2630c3a7407a5d18d550d79f20117",
+  "models/library/analyses/mfe_primary_loop.sysml": "f35bc5e9e388e697bc8e2af3545f355e8fea0e68449b57a7388cd15c29cb5f94",
+  "models/designs/generic_mfe/mfe_subsystems.sysml": "a649b7f14345768aaf83c62e6782cdab6e56ac6cd0e094ffb6cfed77162d954e",
+  "models/designs/generic_mfe/mfe_plant.sysml": "31db270a35a711a9085df9d7008658bd7c5380f8d9ebfac2e48368c2591f596d",
+  "models/designs/stellarator_09/stellarator_plant.sysml": "a287de915afe917ccb47c3b0289b0ecdb3561519006e9ac8a7950a45e7491a93",
+  "exploration/stellarator_e2e/generated/handwritten/mfe_cooling_equipment/cooling_equipment_impl.py": "6d26c152415c644089104e03aa49764bdb746624c360cb44e3670744ab63ced6",
+  "knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md": "c842218c4258b3d495dc89ecd19b9393c99d0b42aa6d865943491ecca3649a81",
+  "knowledge/sources/mcdonnell_douglas_1979_small_power_system_volume5/output.md": "f501153004540ff5c17f9025504924987e77500a04c1a3065b411ff88eda8ece",
+  "knowledge/sources/nistir5078_table2_water_saturation_pressure/output.md": "b1e73c00d85add81a317e80768991d129a087565f038801776d358d3bd3a632f",
+  "work/orchestration/goals/plant-closure/evidence/grounding_sources/kovari2016_p9_table4.png": "4bf9f34894b66884b40b79f3b5a452828517891fabf0489b02bd161e1d1d887e",
+  "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/nasa-p144.png": "95c790bb79d753afc811dbb20f90d1447e651044ac2f1b67f654b482abe3ec06",
+  "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/nasa-p143.png": "feb0a253b8dcf77ebc563e5ed882f06d0835dce721ef59b5cecbcc26c7a827ab",
+  "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/nasa-p142.png": "c1460923853621f4969c6404e5b168b77e37a445ab6c6994370c5045671b920f",
+  "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/nasa-p146.png": "6fdbcfacee517b8313e1cbcf8ece8fa54c5c45ecacf43a87b6adcf24a12b04ce",
+  "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/nist-saturation.png": "a9505061d73d90e142ea2982aaa3909a4e2d2bab465eaaa564e9be40d65daf23"
+}

@@ -1,0 +1,109 @@
+..........FF....................................................         [100%]
+=================================== FAILURES ===================================
+_______________________ test_overlay_occurrence_grouping _______________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12425/test_overlay_occurrence_groupi0')
+
+    def test_overlay_occurrence_grouping(viewer_page, tmp_path):
+>       snap, expected, (twin_a, twin_b) = vs.overlay(load_fixture())
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/model_viz/test_guards.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snap = {'authority': {'agentic_mbse_version': '0.1.3', 'certifiability_profile': 'projectable-instance-graph/v1', 'executable...lization': 'sysml-codegen-json-v1', 'digest': '37174bd1d66052181797ff7074c62678a58f808bdcde3048cc7351aa2d5d6ba5'}, ...}
+
+    def overlay(snap: dict) -> tuple[dict, dict[str, str], tuple[str, str]]:
+        """Add a parent occurrence under the root with two children sharing one display_segment,
+        and split one source file's calcs across the two children.
+    
+        Returns the snapshot, the expected node_id -> occurrence_id for every calc, and the two
+        sibling occurrence ids.
+        """
+        out = copy.deepcopy(snap)
+        graph = out["instance_graph"]["graph"]
+        (root,) = [o for o in graph["occurrences"] if o["parent_id"] is None]
+        root_wire = json.loads(root["occurrence_id"])
+        parent_id = json.dumps(root_wire + [["overlay-parent", None]])
+        twin_a = json.dumps(root_wire + [["overlay-parent", None], ["twin-a", None]])
+        twin_b = json.dumps(root_wire + [["overlay-parent", None], ["twin-b", None]])
+        graph["occurrences"] += [
+            {
+                "occurrence_id": parent_id,
+                "parent_id": root["occurrence_id"],
+                "display_segment": "plant",
+            },
+            {"occurrence_id": twin_a, "parent_id": parent_id, "display_segment": "twin"},
+            {"occurrence_id": twin_b, "parent_id": parent_id, "display_segment": "twin"},
+        ]
+        split = [c for c in calcs(out) if c["source_file"] == OVERLAY_SPLIT_FILE]
+        assert len(split) >= 2
+        for i, calc in enumerate(split):
+            calc["scope"]["wire"] = twin_a if i < len(split) // 2 + 1 else twin_b
+        expected = {c["node_id"]: c["scope"]["wire"] for c in calcs(out)}
+    
+        ids = {o["occurrence_id"] for o in graph["occurrences"]}
+        assert all(o["parent_id"] is None or o["parent_id"] in ids for o in graph["occurrences"])
+        assert twin_a != twin_b
+>       assert set(expected.values()) == {root["occurrence_id"], twin_a, twin_b}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests/model_viz/viewer_snapshots.py:159: AssertionError
+_________________ test_overlay_occurrence_edges_under_collapse _________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12425/test_overlay_occurrence_edges_0')
+
+    def test_overlay_occurrence_edges_under_collapse(viewer_page, tmp_path):
+        """The visible-edge rule in occurrence grouping, against the oracle, with nested collapses."""
+>       snap, _expected, (twin_a, twin_b) = vs.overlay(load_fixture())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/model_viz/test_guards.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snap = {'authority': {'agentic_mbse_version': '0.1.3', 'certifiability_profile': 'projectable-instance-graph/v1', 'executable...lization': 'sysml-codegen-json-v1', 'digest': '37174bd1d66052181797ff7074c62678a58f808bdcde3048cc7351aa2d5d6ba5'}, ...}
+
+    def overlay(snap: dict) -> tuple[dict, dict[str, str], tuple[str, str]]:
+        """Add a parent occurrence under the root with two children sharing one display_segment,
+        and split one source file's calcs across the two children.
+    
+        Returns the snapshot, the expected node_id -> occurrence_id for every calc, and the two
+        sibling occurrence ids.
+        """
+        out = copy.deepcopy(snap)
+        graph = out["instance_graph"]["graph"]
+        (root,) = [o for o in graph["occurrences"] if o["parent_id"] is None]
+        root_wire = json.loads(root["occurrence_id"])
+        parent_id = json.dumps(root_wire + [["overlay-parent", None]])
+        twin_a = json.dumps(root_wire + [["overlay-parent", None], ["twin-a", None]])
+        twin_b = json.dumps(root_wire + [["overlay-parent", None], ["twin-b", None]])
+        graph["occurrences"] += [
+            {
+                "occurrence_id": parent_id,
+                "parent_id": root["occurrence_id"],
+                "display_segment": "plant",
+            },
+            {"occurrence_id": twin_a, "parent_id": parent_id, "display_segment": "twin"},
+            {"occurrence_id": twin_b, "parent_id": parent_id, "display_segment": "twin"},
+        ]
+        split = [c for c in calcs(out) if c["source_file"] == OVERLAY_SPLIT_FILE]
+        assert len(split) >= 2
+        for i, calc in enumerate(split):
+            calc["scope"]["wire"] = twin_a if i < len(split) // 2 + 1 else twin_b
+        expected = {c["node_id"]: c["scope"]["wire"] for c in calcs(out)}
+    
+        ids = {o["occurrence_id"] for o in graph["occurrences"]}
+        assert all(o["parent_id"] is None or o["parent_id"] in ids for o in graph["occurrences"])
+        assert twin_a != twin_b
+>       assert set(expected.values()) == {root["occurrence_id"], twin_a, twin_b}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests/model_viz/viewer_snapshots.py:159: AssertionError
+=========================== short test summary info ============================
+FAILED tests/model_viz/test_guards.py::test_overlay_occurrence_grouping - Ass...
+FAILED tests/model_viz/test_guards.py::test_overlay_occurrence_edges_under_collapse
+2 failed, 62 passed in 28.39s

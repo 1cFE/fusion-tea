@@ -1,0 +1,10 @@
+{
+  "verdict": "pass",
+  "identity_sha256": "9e06f8df1ddb359debfa65a96debb95f5440a72fc74c2c6f91c3c3f79d1ba4d4",
+  "patch_sha256": "90af94de941cc508986b8fe2e9f62d5bb292dbbe8047e377db4a0309b961ecaf",
+  "source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7",
+  "indexed_files_verified": 50,
+  "verification_sha256": "df2a3492d8a692938f617d3b80501b1bbc11d34ff105fd0283485a75b00f3e53",
+  "focused_tests": 14,
+  "scope": "unchanged baseline with synthetic conductor exception; no reference execution"
+}

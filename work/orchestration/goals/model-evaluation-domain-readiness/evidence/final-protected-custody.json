@@ -1,0 +1,11 @@
+{
+  "protected_inventory": "entering-custody.json",
+  "checked_files": 941,
+  "changed_files": [],
+  "adapter_identity_sha256": "1266a929e6057e7005538149ccfb15e4405ecad42a2813dc80bdec97fd8f23d6",
+  "adapter_indexed_files": 512,
+  "adapter_drift": [],
+  "branch": "fix/modeling-intent-after-reveal",
+  "checked_checkpoint": "5b524b2284cd0306018c1bdcf20662e182b15191",
+  "scope": "Byte preservation and adapter identity only; no reference observations interpreted."
+}

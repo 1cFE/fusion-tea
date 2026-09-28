@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "frozen_files_unchanged": 88,
+  "snapshot_artifact_hashes_checked": 75,
+  "sqlite_json_artifact_parity": true,
+  "points": 14,
+  "numeric_outputs_per_case": 211,
+  "csv_numeric_columns": 187,
+  "comparison_coverage": {
+    "scalars": 420,
+    "verdicts": 140,
+    "verdict_combinations": 5
+  },
+  "all_ten_pass": 8,
+  "fixed_hardware_input_comparisons": true,
+  "missing_tool_source_copies": [
+    "scripts/study/schemas/axis_declaration.v1.schema.json",
+    "scripts/study/schemas/baseline_result.v1.schema.json",
+    "scripts/study/schemas/indicators.v1.schema.json",
+    "scripts/study/schemas/package_identity.v1.schema.json",
+    "scripts/study/schemas/preflight_results.v1.schema.json",
+    "scripts/study/schemas/study_package_manifest.v1.schema.json",
+    "scripts/study/schemas/verification_summary.v1.schema.json"
+  ],
+  "snapshot_artifacts_tracked_at_frozen_commit": 75,
+  "uncopied_schema_digests_match_execution_commit": true,
+  "database_hash_unchanged_after_read": true,
+  "audit_sidecars_removed": true
+}

@@ -1,0 +1,10 @@
+{
+  "study_id": "20260917-pre-reveal-feasible-neighborhood",
+  "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+  "model_contract_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "study_definition_fingerprint": "6cd7bb0ddfa268840131e6c9109222c197f8d04c4c00f62e91f8f919824f57d3",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "ef252b43b59ac9cce10db8827f4ad535b28534fa520d635ec36c8a2b26a71287"
+}

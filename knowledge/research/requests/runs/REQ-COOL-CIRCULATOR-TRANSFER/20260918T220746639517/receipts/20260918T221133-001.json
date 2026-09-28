@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/cool-circ-transfer/heliumloop1980.pdf",
+  "slug": "bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale",
+  "path": "knowledge/sources/bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale/",
+  "source_id": "c28be58088c7153bbe95da784bb735dc3cb740812e806af594031543c4f41952",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:11:33.809499+00:00"
+}

@@ -1,0 +1,11 @@
+# Package annex — aries_integrated
+
+[AGENT] Current study: `20260922-aries-integrated-lcoe/`, 64 complete maps over 19 declared sensitivity axes. The accepted thermal and equipment-cost studies remain immutable prerequisites. This study extends the same assumed integrated 423.10679410931664 MW baseline with complete conditional lifecycle accounting.
+
+Executable `d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b`; semantic `419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131`. All ten native integration gates pass. Each of the 64 completed cases ran once and publishes 546 numeric outputs; independent verification compares 364 channels and rederives all 14 predicates. Four cases retain engineering failures: three source controls and the undersized helium exchanger.
+
+No-breeding-credit and named new-tritium-feed cases remain separate. Supplied feed is net new usable tritium after extraction losses, outside the already credited exhaust-recycling loop, in kg/calendar year. Feed and its incremental annual service charge lack a qualified capability/cost law and remain sensitivity assumptions. Fixed supply under changing availability or demand can cross the external-purchase floor; no operating or equipment optimum follows.
+
+Finance uses constant USD2004, real discounting, one construction adjustment, dated replacements, an explicit non-blanket overhaul allowance and terminal decommissioning/disposal less salvage. The alternative replacement reserve is excluded. Already-financed source capital has an exact-zero construction-duration guard. Source-conditioned electricity is supplied and recurring fuel throughput remains integrated; numerical proximity to published LCOE is not source reconstruction.
+
+The manifest and independent oracle define the scoped comparisons, including predeclared residual and IDC-only absolute tolerances. Separate stock-runtime refusals and an explicitly identified diagnostic route retain unavailable LCOE and upstream evidence; they are not completed study points. Exact replay, source comparisons, full maps, original persistent-store hashes and interpretation limits are retained in the current study record. Scientific qualification is not inferred from scalar capacity checks. This annex update documents the completed execution without changing model, proposals or oracle meaning.

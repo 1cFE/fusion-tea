@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="234pt" viewBox="0 0 734.4 234" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 234
+L 734.4 234
+L 734.4 0
+L 0 0
+z
+" style="fill: #fbfaf8"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 102.816 198.9
+L 719.712 198.9
+L 719.712 44.46
+L 102.816 44.46
+z
+" style="fill: #fbfaf8"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 102.816 198.9
+L 102.816 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="mc95c1d2bcd" d="M 0 0
+L 0 3
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="102.816" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="102.816" y="213.1175" transform="rotate(-0 102.816 213.1175)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 201.51936 198.9
+L 201.51936 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="201.51936" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="201.51936" y="213.1175" transform="rotate(-0 201.51936 213.1175)">200</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 300.22272 198.9
+L 300.22272 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="300.22272" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="300.22272" y="213.1175" transform="rotate(-0 300.22272 213.1175)">400</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 398.92608 198.9
+L 398.92608 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="398.92608" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="398.92608" y="213.1175" transform="rotate(-0 398.92608 213.1175)">600</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 497.62944 198.9
+L 497.62944 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="497.62944" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="497.62944" y="213.1175" transform="rotate(-0 497.62944 213.1175)">800</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 596.3328 198.9
+L 596.3328 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="596.3328" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="596.3328" y="213.1175" transform="rotate(-0 596.3328 213.1175)">1,000</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 695.03616 198.9
+L 695.03616 44.46
+" clip-path="url(#pc858fdf658)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mc95c1d2bcd" x="695.03616" y="198.9" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="695.03616" y="213.1175" transform="rotate(-0 695.03616 213.1175)">1,200</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #191919" x="411.264" y="228.452578" transform="rotate(-0 411.264 228.452578)">Electricity (MW)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_15">
+      <defs>
+       <path id="med1b231f81" d="M 0 0
+L -3 0
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#med1b231f81" x="102.816" y="66.522857" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="70.381607" transform="rotate(-0 96.316 70.381607)">2,500 MW · steam</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#med1b231f81" x="102.816" y="103.294286" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="107.153036" transform="rotate(-0 96.316 107.153036)">2,500 MW · gas</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#med1b231f81" x="102.816" y="140.065714" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="143.924464" transform="rotate(-0 96.316 143.924464)">2,800 MW · steam</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#med1b231f81" x="102.816" y="176.837143" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="96.316" y="180.695893" transform="rotate(-0 96.316 180.695893)">2,800 MW · gas</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 102.816 77.554286
+L 430.49595 77.554286
+L 430.49595 55.491429
+L 102.816 55.491429
+z
+" clip-path="url(#pc858fdf658)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 430.49595 77.554286
+L 441.696775 77.554286
+L 441.696775 55.491429
+L 430.49595 55.491429
+z
+" clip-path="url(#pc858fdf658)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 441.696775 77.554286
+L 576.727791 77.554286
+L 576.727791 55.491429
+L 441.696775 55.491429
+z
+" clip-path="url(#pc858fdf658)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 102.816 114.325714
+L 243.904259 114.325714
+L 243.904259 92.262857
+L 102.816 92.262857
+z
+" clip-path="url(#pc858fdf658)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 243.904259 114.325714
+L 247.56496 114.325714
+L 247.56496 92.262857
+L 243.904259 92.262857
+z
+" clip-path="url(#pc858fdf658)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 247.56496 114.325714
+L 382.595977 114.325714
+L 382.595977 92.262857
+L 247.56496 92.262857
+z
+" clip-path="url(#pc858fdf658)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 102.816 151.097143
+L 471.297687 151.097143
+L 471.297687 129.034286
+L 102.816 129.034286
+z
+" clip-path="url(#pc858fdf658)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 471.297687 151.097143
+L 483.957751 151.097143
+L 483.957751 129.034286
+L 471.297687 129.034286
+z
+" clip-path="url(#pc858fdf658)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 483.957751 151.097143
+L 638.743759 151.097143
+L 638.743759 129.034286
+L 483.957751 129.034286
+z
+" clip-path="url(#pc858fdf658)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 102.816 187.868571
+L 203.720574 187.868571
+L 203.720574 165.805714
+L 102.816 165.805714
+z
+" clip-path="url(#pc858fdf658)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 203.720574 187.868571
+L 206.933939 187.868571
+L 206.933939 165.805714
+L 203.720574 165.805714
+z
+" clip-path="url(#pc858fdf658)" style="fill: #f08c30"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 206.933939 187.868571
+L 361.719947 187.868571
+L 361.719947 165.805714
+L 206.933939 165.805714
+z
+" clip-path="url(#pc858fdf658)" style="fill: #276b2c"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 102.816 198.9
+L 102.816 44.46
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 102.816 198.9
+L 719.712 198.9
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="108.738202" y="69.121607" transform="rotate(-0 108.738202 69.121607)">664 for sale</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #ffffff" x="509.212283" y="69.121607" transform="rotate(-0 509.212283 69.121607)">274</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="581.662959" y="69.042857" transform="rotate(-0 581.662959 69.042857)">960 generated</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="108.738202" y="105.893036" transform="rotate(-0 108.738202 105.893036)">286 for sale</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #ffffff" x="315.080468" y="105.893036" transform="rotate(-0 315.080468 105.893036)">274</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="387.531145" y="105.811825" transform="rotate(-0 387.531145 105.811825)">567 generated</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="108.738202" y="142.664464" transform="rotate(-0 108.738202 142.664464)">747 for sale</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #ffffff" x="561.350755" y="142.664464" transform="rotate(-0 561.350755 142.664464)">314</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="643.678927" y="142.585714" transform="rotate(-0 643.678927 142.585714)">1,086 generated</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #ffffff" x="108.738202" y="179.435893" transform="rotate(-0 108.738202 179.435893)">204 for sale</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #ffffff" x="284.326943" y="179.435893" transform="rotate(-0 284.326943 179.435893)">314</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="366.655115" y="179.357143" transform="rotate(-0 366.655115 179.357143)">525 generated</text>
+   </g>
+  </g>
+  <g id="legend_1">
+   <g id="patch_17">
+    <path d="M 112.266 18.3375
+L 123.816 18.3375
+L 123.816 10.9875
+L 112.266 10.9875
+z
+" style="fill: #1b5f99; stroke: #1b5f99; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="132.216" y="18.3375" transform="rotate(-0 132.216 18.3375)">For sale</text>
+   </g>
+   <g id="patch_18">
+    <path d="M 186.332016 18.3375
+L 197.882016 18.3375
+L 197.882016 10.9875
+L 186.332016 10.9875
+z
+" style="fill: #f08c30; stroke: #f08c30; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="206.282016" y="18.3375" transform="rotate(-0 206.282016 18.3375)">Conversion equipment's own use</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 383.909203 18.3375
+L 395.459203 18.3375
+L 395.459203 10.9875
+L 383.909203 10.9875
+z
+" style="fill: #276b2c; stroke: #276b2c; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="403.859203" y="18.3375" transform="rotate(-0 403.859203 18.3375)">Reactor circulation, heating, refrigeration and services</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc858fdf658">
+   <rect x="102.816" y="44.46" width="616.896" height="154.44"/>
+  </clipPath>
+ </defs>
+</svg>

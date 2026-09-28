@@ -1,0 +1,393 @@
+........FFFFFFFFF....................................................... [ 34%]
+........................................................................ [ 69%]
+...............................................................          [100%]
+=================================== FAILURES ===================================
+____ test_native_quantity_scaling_and_expanded_oracle[overrides0-1.25-1.0] _____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__winding_pack__j_wp': 95.06172839506176}, tape_ratio = 1.25
+conductor_ratio = 1.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_ test_native_quantity_scaling_and_expanded_oracle[overrides1-0.8333333333333334-1.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__winding_pack__j_wp': 142.59259259259264}
+tape_ratio = 0.8333333333333334, conductor_ratio = 1.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_ test_native_quantity_scaling_and_expanded_oracle[overrides2-1.3978583260547828-1.0] _
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__winding_pack__B_max': 30.0, 'magnet__winding_pack__j_wp': 95.06172839506176}
+tape_ratio = 1.3978583260547828, conductor_ratio = 1.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_____ test_native_quantity_scaling_and_expanded_oracle[overrides3-0.5-1.0] _____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__winding_pack__tape_width': 0.012}, tape_ratio = 0.5
+conductor_ratio = 1.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_____ test_native_quantity_scaling_and_expanded_oracle[overrides4-0.5-1.0] _____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__winding_pack__tape_thickness': 0.000112}, tape_ratio = 0.5
+conductor_ratio = 1.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_____ test_native_quantity_scaling_and_expanded_oracle[overrides5-1.0-0.8] _____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__coil__f_set': 0.6961038961038961}, tape_ratio = 1.0
+conductor_ratio = 0.8
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_____ test_native_quantity_scaling_and_expanded_oracle[overrides6-0.8-1.0] _____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__winding_pack__f_wp_vol': 0.7024691358024693}
+tape_ratio = 0.8, conductor_ratio = 1.0
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+_____ test_native_quantity_scaling_and_expanded_oracle[overrides7-1.1-1.1] _____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__coil__n_coils': 52.800000000000004}, tape_ratio = 1.1
+conductor_ratio = 1.1
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7754810.139222082, 'observed': mappingproxy({'p_loop_margin_in': 7754810.139222082})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+____ test_native_quantity_scaling_and_expanded_oracle[overrides8-1.01-1.01] ____
+
+evaluate = <function evaluate.<locals>.run at 0x7e0e6c5371a0>
+overrides = {'magnet__coil__I_coil': 15554000.0}, tape_ratio = 1.01
+conductor_ratio = 1.01
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
+        ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
+          'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+        ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
+        ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
+        ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
+        ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
+        ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
+        ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ])
+    def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
+        import oracle_entry
+        baseline, changed = evaluate(), evaluate(overrides)
+        before = output(baseline, 'magnet__winding_procurement__tape_length')
+        after = output(changed, 'magnet__winding_procurement__tape_length')
+        assert before == pytest.approx(36578571.42857143, rel=1e-12)
+        assert after / before == pytest.approx(tape_ratio, rel=1e-12)
+>       assert output(changed, 'magnet__tape_length') == after
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_tape_procurement.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7705807.152134366, 'observed': mappingproxy({'p_loop_margin_in': 7705807.152134366})}))}))
+suffix = 'magnet__tape_length'
+
+    def output(row, suffix):
+>       return row.outputs[P + suffix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__magnet__tape_length'
+
+tests/models/test_winding_pack_cost.py:189: KeyError
+=============================== warnings summary ===============================
+tests/models/test_tape_procurement.py: 13 warnings
+tests/models/test_winding_pack_cost.py: 2 warnings
+tests/models/test_conductor_grade.py: 3 warnings
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides0-1.25-1.0]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides1-0.8333333333333334-1.0]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides2-1.3978583260547828-1.0]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides3-0.5-1.0]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides4-0.5-1.0]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides5-1.0-0.8]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides6-0.8-1.0]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides7-1.1-1.1]
+FAILED tests/models/test_tape_procurement.py::test_native_quantity_scaling_and_expanded_oracle[overrides8-1.01-1.01]
+9 failed, 198 passed, 18 warnings in 61.13s (0:01:01)

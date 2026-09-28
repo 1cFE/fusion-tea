@@ -1,0 +1,132 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/whole_plant_conversion/whole_plant_conversion_tea",
+    "manifest": "exploration/whole_plant_conversion/studies/manifest.json",
+    "axis_declaration": "exploration/whole_plant_conversion/studies/axes.json",
+    "identity_document": "work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration/package_identity.json",
+    "baseline_result": "work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "cc2f53a5b61fcaaa8dc8178718b56711d7f32880f45fcc3b75e2e342d7c0dd6b",
+    "baseline_result": "3a52460b99b29dcfe59c96fbedb01c5043e0a8d96c43fb37d255da7af3207433",
+    "identity_document": "a8b2f1d8342b215bb8eb5435b68fb2a5719b718fa28c74923e99b19af234c27a",
+    "manifest": "671977f7fbf294ae9ed1fd069f5b606c7c258c0e84bfdab725ffcd34d3b7f7cd"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "90 declared keys across 90 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 37",
+      "warnings": [
+        "gas_boundary_bypass_flow_rating: undeclared suffix-sibling whole_plant_conversion__plant__gas_losses__bypass_flow_rating",
+        "gas_boundary_bypass_flow_rating: undeclared suffix-sibling whole_plant_conversion__plant__steam_losses__bypass_flow_rating",
+        "gas_ledger_capital9: undeclared suffix-sibling whole_plant_conversion__plant__steam_ledger__capital9",
+        "recuperator_hardware_ua: undeclared suffix-sibling whole_plant_conversion__plant__idle_branches__ua",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__auxiliary_rejection_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__blanket_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__cryogenic_offer__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__digital_twin_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__divertor_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__facilities_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__fuel_processing_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__heating_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__installation_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__land_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__miscellaneous_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__other_reactor_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__owner_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__pbl_initial_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__power_supplies_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__primary_circulators_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__primary_helium_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__primary_pipes_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__primary_spares_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__reactor_controls_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__remote_handling_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__shared_electrical_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__shield_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__structure_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__vessel_account__quote_USD2025",
+        "source_installation_allowance_account_quote_USD2025: undeclared suffix-sibling whole_plant_conversion__plant__waste_account__quote_USD2025",
+        "steam_boundary_bypass_flow_rating: undeclared suffix-sibling whole_plant_conversion__plant__gas_losses__bypass_flow_rating",
+        "steam_boundary_bypass_flow_rating: undeclared suffix-sibling whole_plant_conversion__plant__steam_losses__bypass_flow_rating",
+        "steam_cycle_condenser_temperature_C: undeclared suffix-sibling whole_plant_conversion__plant__gas_loss_water__condenser_temperature_C",
+        "steam_cycle_condenser_temperature_C: undeclared suffix-sibling whole_plant_conversion__plant__steam_water__condenser_temperature_C",
+        "water_ic1_ua: undeclared suffix-sibling whole_plant_conversion__plant__idle_branches__ua",
+        "water_ic2_ua: undeclared suffix-sibling whole_plant_conversion__plant__idle_branches__ua",
+        "water_pre_ua: undeclared suffix-sibling whole_plant_conversion__plant__idle_branches__ua"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest 6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "whole_plant_conversion__plant__steam_whole__evaluate__lcoe_USD2025_MWh reproduces at relative deviation 0.000e+00; 62/62 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

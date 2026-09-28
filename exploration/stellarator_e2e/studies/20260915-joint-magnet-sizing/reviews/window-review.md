@@ -1,0 +1,13 @@
+# Independent preexecution window review
+
+2026-09-15. Reviewer `/root/reviewer`, reusing prior source/design/oracle/implementation coverage. **PASS: release the fixed 347-case native cohort for execution.** No material window-selection defect found. This is preexecution acceptance, not native result assurance.
+
+Reviewed protocol, window-selection rationale, final selection, all three oracle-scan aggregates, completed edge scan and retained exact-boundary diagnostic. The unique-proposals SHA256 is `2e70b5c0f6e108328b45549422cae87759dfcf44216ec0e9257fc0b87e3a9508`.
+
+- Independently verified 352 scan rows → 351 report aliases → 347 unique proposal coordinates, with only `reference-exact` separated. Proposal coordinate sets agree exactly after unpacking the prepared-list `point` field. All scan rows carry twenty verdicts and evaluate successfully. The only combined pass is the separately labeled historical 30 T/orientation-three control; initial default, refinement and new sensitivities have none.
+- Checked every scientific proposal against resolved defaults: 50 kA turn current, allowance 0.8, principal field ceiling 24.9 T, mode 1, multiplier 1.01, ground insulation, wall thickness and assembly clearance remain fixed. Default rows retain unit material/orientation/retention factors and square aspect. Allocation remains an independent coordinate.
+- Refinement to minor radius 1.15 m and current 14.6 MA is explicitly an engineered extension motivated by retained failures. Neither these bounds nor the larger cavities claim measured available space. Enhanced cases and local shape diagnostics remain separate; no performance coefficient is inferred from the gain needed to pass.
+- All 38 edge diagnostics are evaluated and rejected. Their anchor itself is rejected, so they do not bracket a feasible region. The edge inventory includes historical-envelope 30 T and legacy-mode endpoints; those are diagnostic controls, outside the principal 24.9 T current-sized cohort and its feasibility claim.
+- Exact-boundary evidence retains native margin −3.3306690738754696e-16 with `violated`, versus oracle margin zero. Keeping this separately from the previously declared 1% extra-inventory cohort preserves the failure and exact predicates. It does not permit calling native/oracle boundary verdicts equal.
+
+Omitted electromagnetic, structural, thermal and manufacturing dependencies remain compatible with the explicitly conditional claim. Finite sampling supports no global infeasibility or optimum. Matched entering comparisons, all-point native/oracle agreement, scalar closure residuals, retained native failures and final frozen-record review remain pending obligations before conclusions are accepted.

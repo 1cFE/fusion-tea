@@ -1,0 +1,194 @@
+[
+  {
+    "era": "old-ten",
+    "source_local_identity": "wp_stress_ok",
+    "historical_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+    "current_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "cond_strain_ok",
+    "historical_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+    "current_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "recirc_ok",
+    "historical_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "current_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "beta_ok",
+    "historical_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+    "current_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "net_positive",
+    "historical_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "current_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "burn_hold_ok",
+    "historical_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+    "current_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "wall_load_ok",
+    "historical_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "current_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "tbr_ok",
+    "historical_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "current_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "peak_field_ok",
+    "historical_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+    "current_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "old-ten",
+    "source_local_identity": "sustainment_ok",
+    "historical_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+    "current_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "wp_stress_ok",
+    "historical_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+    "current_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "cond_strain_ok",
+    "historical_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+    "current_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "recirc_ok",
+    "historical_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "current_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "cycle_domain_ok",
+    "historical_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+    "current_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "beta_ok",
+    "historical_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+    "current_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "divertor_heat_ok",
+    "historical_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "current_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "net_positive",
+    "historical_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "current_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "burn_hold_ok",
+    "historical_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+    "current_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "wall_load_ok",
+    "historical_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "current_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "tbr_ok",
+    "historical_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "current_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "peak_field_ok",
+    "historical_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+    "current_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "sustainment_ok",
+    "historical_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+    "current_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "loop_capacity_ok",
+    "historical_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+    "current_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  },
+  {
+    "era": "round1-fourteen",
+    "source_local_identity": "loop_pressure_ok",
+    "historical_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+    "current_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+    "same_predicate": true,
+    "meaning": "Predicate comparison only; changed upstream model operands are the intended comparison, not numerical invariance"
+  }
+]

@@ -1,0 +1,878 @@
+{
+  "scope": "Native check_case over existing author baseline evidence; no package execution, no store, no study point",
+  "native_baseline_path": "work/active/WI-089_aries-integrated-heat-and-electricity/evidence/baseline-execution.json",
+  "native_baseline_sha256": "90b8cb391b8858e9746348e6b4bd5c02f435e361d41c6d19b559608e634dea68",
+  "checker_path": "exploration/aries_integrated/studies/oracle_entry.py",
+  "checker_sha256": "fa49336ed5b0d2ab8a184413b3a18cd312850fff1cb7aac47af7fc1df8b5aeeb",
+  "tolerance_policy": "default native relative1e-9; no absolute tolerance passed",
+  "cases": [
+    {
+      "case": "nominal-source-assumed",
+      "status": "refused",
+      "error": "channel off tolerance on case nominal-source-assumed, channel aries_integrated_plant__plant_ledger__evaluate__residual_magnitude: store 1.291482476517558e-09, oracle 6.821210263296962e-13, relative deviation 1.892e+03 (tolerance 1e-09); absolute error 1.291e-09 (declared tolerance 0)",
+      "channel_differences": [
+        {
+          "channel": "aries_integrated_plant__source__evaluate__selected_power",
+          "native": 2436.0,
+          "independent": 2436.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+          "native": 1.6432423549621273e+22,
+          "independent": 1.6432423549621273e+22,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+          "native": 1143.7550400000002,
+          "independent": 1143.75504,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 1.987957801202188e-16
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+          "native": 1379.6529600000001,
+          "independent": 1379.65296,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 1.6480497779907788e-16
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+          "native": 394.40000000000003,
+          "independent": 394.40000000000003,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+          "native": 2759.0821521101725,
+          "independent": 2759.0821521107187,
+          "absolute_difference": 5.461515684146434e-10,
+          "relative_deviation": 1.9794683097668306e-13
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+          "native": 158.72584788982817,
+          "independent": 158.72584788928134,
+          "absolute_difference": 5.468336894409731e-10,
+          "relative_deviation": 3.445145807773004e-12
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+          "native": 935.7830367485797,
+          "independent": 935.7830367483683,
+          "absolute_difference": 2.113438313244842e-10,
+          "relative_deviation": 2.2584704255684692e-13
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+          "native": 556.2773626114908,
+          "independent": 556.2773626113819,
+          "absolute_difference": 1.0891199053730816e-10,
+          "relative_deviation": 1.9578720591115372e-13
+        },
+        {
+          "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+          "native": 1.6432423549621273,
+          "independent": 1.6432423549621273,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+          "native": 796.0052878870191,
+          "independent": 796.0052878864825,
+          "absolute_difference": 5.366018740460277e-10,
+          "relative_deviation": 6.741184791256712e-13
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+          "native": 1028.6585302419812,
+          "independent": 1028.6585302414446,
+          "absolute_difference": 5.366018740460277e-10,
+          "relative_deviation": 5.216520917977296e-13
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+          "native": 1.291482476517558e-09,
+          "independent": 6.821210263296962e-13,
+          "absolute_difference": 1.2908003554912284e-09,
+          "relative_deviation": 1892.3333333333333
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+          "native": 2.917808e-06,
+          "independent": 2.917808e-06,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+          "native": 356.24495999999976,
+          "independent": 356.24496,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 6.382509255519911e-16
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+          "native": 420.3470399999999,
+          "independent": 420.3470400000001,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 5.409189403194846e-16
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+          "native": 405.59999999999997,
+          "independent": 405.59999999999997,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+          "native": 1.3567576450378727e+22,
+          "independent": 1.3567576450378727e+22,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+          "native": 227.14905157213934,
+          "independent": 227.14905157213934,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+          "native": 1077.49749010073,
+          "independent": 1077.4974901012774,
+          "absolute_difference": 5.475158104673028e-10,
+          "relative_deviation": 5.081365065786279e-13
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+          "native": 771.3414697580188,
+          "independent": 771.3414697585554,
+          "absolute_difference": 5.366018740460277e-10,
+          "relative_deviation": 6.9567357011674e-13
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+          "native": 790.5694093599463,
+          "independent": 790.5694093601439,
+          "absolute_difference": 1.9758772396016866e-10,
+          "relative_deviation": 2.499308999573971e-13
+        }
+      ]
+    },
+    {
+      "case": "nominal-calculated",
+      "status": "refused",
+      "error": "channel off tolerance on case nominal-calculated, channel aries_integrated_plant__plant_ledger__evaluate__residual_magnitude: store 7.539028956671245e-09, oracle 9.094947017729282e-13, relative deviation 8.288e+03 (tolerance 1e-09); absolute error 7.538e-09 (declared tolerance 0)",
+      "channel_differences": [
+        {
+          "channel": "aries_integrated_plant__source__evaluate__selected_power",
+          "native": 1835.4512830147435,
+          "independent": 1835.4512830147396,
+          "absolute_difference": 3.865352482534945e-12,
+          "relative_deviation": 2.1059412027466514e-15
+        },
+        {
+          "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+          "native": 1.2381327129390006e+22,
+          "independent": 1.238132712938998e+22,
+          "absolute_difference": 27262976.0,
+          "relative_deviation": 2.201942951275792e-15
+        },
+        {
+          "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+          "native": 896.545166140189,
+          "independent": 896.5451661401873,
+          "absolute_difference": 1.7053025658242404e-12,
+          "relative_deviation": 1.902082159637223e-15
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+          "native": 1039.5261886482303,
+          "independent": 1039.5261886482278,
+          "absolute_difference": 2.5011104298755527e-12,
+          "relative_deviation": 2.406010023785865e-15
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+          "native": 304.31769245221153,
+          "independent": 304.31769245221096,
+          "absolute_difference": 5.684341886080801e-13,
+          "relative_deviation": 1.8678972754676272e-15
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+          "native": 2240.389047240631,
+          "independent": 2240.389047240626,
+          "absolute_difference": 5.002220859751105e-12,
+          "relative_deviation": 2.232746524944892e-15
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+          "native": 0.0,
+          "independent": 0.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+          "native": 788.6375184556719,
+          "independent": 788.6375184535317,
+          "absolute_difference": 2.1401547201094218e-09,
+          "relative_deviation": 2.7137368816869502e-12
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+          "native": 480.47693865756867,
+          "independent": 480.47693865646613,
+          "absolute_difference": 1.1025349522242323e-09,
+          "relative_deviation": 2.294667784279504e-12
+        },
+        {
+          "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+          "native": 1.2381327129390007,
+          "independent": 1.238132712938998,
+          "absolute_difference": 2.6645352591003757e-15,
+          "relative_deviation": 2.15205949350573e-15
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+          "native": 423.10679410931664,
+          "independent": 423.10679410388695,
+          "absolute_difference": 5.4296833695843816e-09,
+          "relative_deviation": 1.2832890998794057e-11
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+          "native": 655.3549268222556,
+          "independent": 655.3549268168259,
+          "absolute_difference": 5.4296833695843816e-09,
+          "relative_deviation": 8.285103456774648e-12
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+          "native": 7.539028956671245e-09,
+          "independent": 9.094947017729282e-13,
+          "absolute_difference": 7.538119461969472e-09,
+          "relative_deviation": 8288.25
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+          "native": 2.2403890472406306e-06,
+          "independent": 2.2403890472406263e-06,
+          "absolute_difference": 4.235164736271502e-21,
+          "relative_deviation": 1.890370220068581e-15
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+          "native": 603.454833859811,
+          "independent": 603.4548338598127,
+          "absolute_difference": 1.7053025658242404e-12,
+          "relative_deviation": 2.8258992556523223e-15
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+          "native": 760.4738113517697,
+          "independent": 760.4738113517722,
+          "absolute_difference": 2.5011104298755527e-12,
+          "relative_deviation": 3.2888843672732533e-15
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+          "native": 495.68230754778847,
+          "independent": 495.68230754778904,
+          "absolute_difference": 5.684341886080801e-13,
+          "relative_deviation": 1.1467711878202896e-15
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+          "native": 1.7618672870609994e+22,
+          "independent": 1.761867287061002e+22,
+          "absolute_difference": 27262976.0,
+          "relative_deviation": 1.5473910095395317e-15
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+          "native": 227.14905157213934,
+          "independent": 227.14905157213934,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+          "native": 1458.4195344065724,
+          "independent": 1458.4195344121129,
+          "absolute_difference": 5.540414349525236e-09,
+          "relative_deviation": 3.798916716895574e-12
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+          "native": 1144.6450731777445,
+          "independent": 1144.6450731831742,
+          "absolute_difference": 5.4296833695843816e-09,
+          "relative_deviation": 4.743551950549029e-12
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+          "native": 928.3404699173973,
+          "independent": 928.3404699194011,
+          "absolute_difference": 2.003844201681204e-09,
+          "relative_deviation": 2.158522941324726e-12
+        }
+      ]
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "status": "refused",
+      "error": "channel off tolerance on case literal-Lyon-source-input, channel aries_integrated_plant__plant_ledger__evaluate__residual_magnitude: store 5.852598405908793e-09, oracle 4.547473508864641e-13, relative deviation 1.287e+04 (tolerance 1e-09); absolute error 5.852e-09 (declared tolerance 0)",
+      "channel_differences": [
+        {
+          "channel": "aries_integrated_plant__source__evaluate__selected_power",
+          "native": 2436.0,
+          "independent": 2436.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+          "native": 1.6432423549621273e+22,
+          "independent": 1.6432423549621273e+22,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+          "native": 1143.7550400000002,
+          "independent": 1143.75504,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 1.987957801202188e-16
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+          "native": 1379.6529600000001,
+          "independent": 1379.65296,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 1.6480497779907788e-16
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+          "native": 394.40000000000003,
+          "independent": 394.40000000000003,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+          "native": 2518.8994756643133,
+          "independent": 2518.899475667888,
+          "absolute_difference": 3.5747689253184944e-09,
+          "relative_deviation": 1.419178875477213e-12
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+          "native": 398.90852433568705,
+          "independent": 398.90852433211194,
+          "absolute_difference": 3.5751099858316593e-09,
+          "relative_deviation": 8.962230104802663e-12
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+          "native": 940.1234020712739,
+          "independent": 940.1234020704671,
+          "absolute_difference": 8.067218004725873e-10,
+          "relative_deviation": 8.581020307503412e-13
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+          "native": 593.6543261627479,
+          "independent": 593.6543261622544,
+          "absolute_difference": 4.935145625495352e-10,
+          "relative_deviation": 8.31316375204264e-13
+        },
+        {
+          "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+          "native": 1.6432423549621273,
+          "independent": 1.6432423549621273,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+          "native": 807.0166597175527,
+          "independent": 807.0166597155056,
+          "absolute_difference": 2.0470452000154182e-09,
+          "relative_deviation": 2.5365587876922577e-12
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+          "native": 1039.6699020725148,
+          "independent": 1039.6699020704677,
+          "absolute_difference": 2.0470452000154182e-09,
+          "relative_deviation": 1.9689376367814403e-12
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+          "native": 5.852598405908793e-09,
+          "independent": 4.547473508864641e-13,
+          "absolute_difference": 5.852143658557907e-09,
+          "relative_deviation": 12869.0
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+          "native": 2.917808e-06,
+          "independent": 2.917808e-06,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+          "native": 356.24495999999976,
+          "independent": 356.24496,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 6.382509255519911e-16
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+          "native": 420.3470399999999,
+          "independent": 420.3470400000001,
+          "absolute_difference": 2.2737367544323206e-13,
+          "relative_deviation": 5.409189403194846e-16
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+          "native": 405.59999999999997,
+          "independent": 405.59999999999997,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+          "native": 1.3567576450378727e+22,
+          "independent": 1.3567576450378727e+22,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+          "native": 227.14905157213934,
+          "independent": 227.14905157213934,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+          "native": 1066.261396396104,
+          "independent": 1066.2613963981926,
+          "absolute_difference": 2.0886545826215297e-09,
+          "relative_deviation": 1.9588579214036623e-12
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+          "native": 760.3300979274852,
+          "independent": 760.3300979295323,
+          "absolute_difference": 2.0470452000154182e-09,
+          "relative_deviation": 2.692311149578008e-12
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+          "native": 1041.98817950587,
+          "independent": 1041.9881795060583,
+          "absolute_difference": 1.8826540326699615e-10,
+          "relative_deviation": 1.80679020136525e-13
+        }
+      ]
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "status": "passed",
+      "error": null,
+      "channel_differences": [
+        {
+          "channel": "aries_integrated_plant__source__evaluate__selected_power",
+          "native": 2365.0,
+          "independent": 2365.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+          "native": 1.5953481812337565e+22,
+          "independent": 1.5953481812337565e+22,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+          "native": 1192.0,
+          "independent": 1192.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+          "native": 1444.0,
+          "independent": 1444.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+          "native": 383.75,
+          "independent": 383.75,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+          "native": 2517.615797620653,
+          "independent": 2517.615797619542,
+          "absolute_difference": 1.1114025255665183e-09,
+          "relative_deviation": 4.414504097953995e-13
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+          "native": 502.1342023793469,
+          "independent": 502.1342023804582,
+          "absolute_difference": 1.1112888387287967e-09,
+          "relative_deviation": 2.2131311379717427e-12
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+          "native": 939.6686512886138,
+          "independent": 939.6686512888647,
+          "absolute_difference": 2.509068508516066e-10,
+          "relative_deviation": 2.670163046382985e-13
+        },
+        {
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+          "native": 593.3761424692096,
+          "independent": 593.3761424693631,
+          "absolute_difference": 1.5347723092418164e-10,
+          "relative_deviation": 2.5865082860507135e-13
+        },
+        {
+          "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+          "native": 1.5953481812337567,
+          "independent": 1.5953481812337567,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+          "native": 805.9108652992365,
+          "independent": 805.910865299873,
+          "absolute_difference": 6.364189175656065e-10,
+          "relative_deviation": 7.89688965576609e-13
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+          "native": 1038.5162134804702,
+          "independent": 1038.5162134811067,
+          "absolute_difference": 6.364189175656065e-10,
+          "relative_deviation": 6.128155817927292e-13
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+          "native": 182.03000000000014,
+          "independent": 182.03000000000014,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+          "native": 2.83772e-06,
+          "independent": 2.83772e-06,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+          "native": 308.0,
+          "independent": 308.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+          "native": 356.0,
+          "independent": 356.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+          "native": 416.25,
+          "independent": 416.25,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+          "native": 1.4046518187662435e+22,
+          "independent": 1.4046518187662435e+22,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+          "native": 227.14905157213934,
+          "independent": 227.14905157213934,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+          "native": 1067.438629653292,
+          "independent": 1067.4386296526427,
+          "absolute_difference": 6.493792170658708e-10,
+          "relative_deviation": 6.08352741812601e-13
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+          "native": 761.4837865195298,
+          "independent": 761.4837865188933,
+          "absolute_difference": 6.364189175656065e-10,
+          "relative_deviation": 8.35761612830894e-13
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+          "native": 1.0,
+          "independent": 1.0,
+          "absolute_difference": 0.0,
+          "relative_deviation": 0.0
+        },
+        {
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+          "native": 1042.0946243000149,
+          "independent": 1042.0946242999566,
+          "absolute_difference": 5.820766091346741e-11,
+          "relative_deviation": 5.585640646843305e-14
+        }
+      ]
+    }
+  ]
+}

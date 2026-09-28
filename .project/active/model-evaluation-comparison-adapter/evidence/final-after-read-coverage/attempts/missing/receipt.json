@@ -1,0 +1,18 @@
+{
+  "artifacts": {
+    "model-export.json": "b939c0cb9866a0627de1774c6d3a89498112dc356a292b006b9893ef07e5005b",
+    "native-case.json": "c127ccc9b6e5635eeb1e8c77b38af107320d2d2a8bbd6bcfc6de6d65730b9ff2",
+    "native/adapter-preparation-v1.db": "27511684be6404c593cc3a4942fac00476947001ade25cd557eb903b3e81179a",
+    "native/adapter-preparation-v1.db-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "native/adapter-preparation-v1.db-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/artifacts/de4b7d788410a45ab43431fbf7cd7ef13c990a2ed051e6839043bcf111e2e8f7.json": "de4b7d788410a45ab43431fbf7cd7ef13c990a2ed051e6839043bcf111e2e8f7",
+    "request.raw.json": "2092cb55e8521d3256389c1050df666536bd45e2c483451c0c836dd767cdbfa6",
+    "result.json": "c90ec8c54953a427185c47e0fe127616638e039b9576bacaa9c661775490efa4",
+    "selection.json": "2a401f89286ba474bb2e42c6c5d0001fdb3a9571cf28a855d2a6868e88b3bc86"
+  },
+  "first_attempt": {
+    "attempt": "incompatible",
+    "pointer_sha256": "dc97b8c53d25ba693a6c5e79a157f8f328232ce222d4bc9a3ee899d65b7ed492",
+    "schema_version": "first-attempt/v1"
+  }
+}

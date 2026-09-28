@@ -1,0 +1,32 @@
+{
+  "prior_commit": "9e07184f1301ad0d4ebdba5ae9bbe5fa97f1f1ef",
+  "prior_count": 490,
+  "current_count": 511,
+  "added": [
+    "stellarator_09__stellaris__heat_rejection__circulating_water_pump__efficiency",
+    "stellarator_09__stellaris__heat_rejection__circulating_water_pump__head_m",
+    "stellarator_09__stellaris__heat_rejection__circulating_water_pump__motor_efficiency",
+    "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+    "stellarator_09__stellaris__heat_rejection__water_inlet_C",
+    "stellarator_09__stellaris__heat_rejection__water_outlet_C",
+    "stellarator_09__stellaris__heat_transport__salt_cp_kJ_kgK",
+    "stellarator_09__stellaris__heat_transport__salt_hot_C",
+    "stellarator_09__stellaris__turbine__condensate_pump__efficiency",
+    "stellarator_09__stellaris__turbine__condenser__temperature_C",
+    "stellarator_09__stellaris__turbine__feedwater_pump__efficiency",
+    "stellarator_09__stellaris__turbine__generator__generator_efficiency",
+    "stellarator_09__stellaris__turbine__generator__mechanical_efficiency",
+    "stellarator_09__stellaris__turbine__hp_turbine__efficiency",
+    "stellarator_09__stellaris__turbine__lp_turbine__efficiency",
+    "stellarator_09__stellaris__turbine__main_steam_generator__outlet_temperature_C",
+    "stellarator_09__stellaris__turbine__main_steam_generator__pressure_MPa",
+    "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+    "stellarator_09__stellaris__turbine__open_feedwater_heater__pressure_MPa",
+    "stellarator_09__stellaris__turbine__pump_motor_efficiency",
+    "stellarator_09__stellaris__turbine__reheater__outlet_temperature_C"
+  ],
+  "removed": [],
+  "exact_designed_input_set": true,
+  "no_calculated_state_or_bound_heat_entry": true,
+  "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1"
+}

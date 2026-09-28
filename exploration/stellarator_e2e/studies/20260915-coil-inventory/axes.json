@@ -1,0 +1,185 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "a",
+      "note": "Swept: plasma minor radius; the coil bore follows it through the radial build and, since WI-058, so does the winding length. Sensitivity-framed.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "R",
+      "note": "Swept: model-owned major radius shared by every live consumer (WI-051/057). Sensitivity-framed; the winding length no longer reads it.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "I_coil",
+      "note": "Matched-window coordinate (three values), not swept as its own transect; declared so its indicators are traced.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "B_max",
+      "note": "Matched-window coordinate (four selected envelopes), not swept as its own transect; declared so its indicators are traced.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "n_e0",
+      "note": "Column coordinate only (4.048e20 on the cheap column, the committed c0113/c0130 value); declined as a swept axis; declared so its indicators are traced.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "p_wallplug_heat",
+      "note": "Column coordinate only (100 and 220 MW); declined as a swept axis; declared so its indicators are traced.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heating__p_wallplug_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_eps_eff",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__eps_eff",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_f_carnot_cryo",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__f_carnot_cryo",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_f_carnot_shield",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__f_carnot_shield",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_f_lead",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__f_lead",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_g_per_coil",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__g_per_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_p_tfcool",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__p_tfcool",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_q_MLI",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__q_MLI",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cryoplant_q_nuc_structure",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cryoplant__q_nuc_structure",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet_c_support",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__c_support",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet_casing_steel_price",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__steel_price",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet_e_support",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__e_support",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "structure_residual_fraction",
+      "note": "Engineering assumption sensitivity under owner delegated judgment; no design-optimum claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__structure__residual_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

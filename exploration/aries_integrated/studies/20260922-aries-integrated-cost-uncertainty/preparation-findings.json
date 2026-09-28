@@ -1,0 +1,429 @@
+{
+  "findings": [
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#1",
+      "axis": "auxiliary_cooling_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#2",
+      "axis": "blanket_inventory_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#3",
+      "axis": "compressor_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#4",
+      "axis": "conversion_services_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#5",
+      "axis": "divertor_duty_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#6",
+      "axis": "divertor_hx_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#7",
+      "axis": "divertor_inventory_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#8",
+      "axis": "divertor_pump_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#9",
+      "axis": "electrical_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#10",
+      "axis": "facilities_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#11",
+      "axis": "fuel_processing_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#12",
+      "axis": "fuel_services_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#13",
+      "axis": "generator_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#14",
+      "axis": "he_duty_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#15",
+      "axis": "he_hx_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#16",
+      "axis": "he_pump_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#17",
+      "axis": "heat_rejection_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#18",
+      "axis": "heating_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#19",
+      "axis": "impurity_control_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#20",
+      "axis": "instrumentation_control_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#21",
+      "axis": "lipb_inventory_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#22",
+      "axis": "magnet_inventory_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#23",
+      "axis": "magnet_power_supplies_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#24",
+      "axis": "miscellaneous_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#25",
+      "axis": "other_reactor_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#26",
+      "axis": "pbli_duty_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#27",
+      "axis": "pbli_hx_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#28",
+      "axis": "pbli_pump_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#29",
+      "axis": "primary_piping_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#30",
+      "axis": "primary_support_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#31",
+      "axis": "secondary_transport_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#32",
+      "axis": "shield_inventory_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#33",
+      "axis": "site_land_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#34",
+      "axis": "turbine_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#35",
+      "axis": "unallocated_source_scope_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#36",
+      "axis": "vacuum_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#37",
+      "axis": "vf_coils_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#38",
+      "axis": "waste_equipment_price",
+      "kind": "model",
+      "finding": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#39",
+      "axis": "fuel_inventory_tritium_price",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#40",
+      "axis": "fuel_inventory_selected_tritium_kg",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#41",
+      "axis": "fuel_inventory_deuterium_price",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#42",
+      "axis": "annual_om_selected_amount",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#43",
+      "axis": "cost_ledger_consumables",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#44",
+      "axis": "indirect_cost_fraction",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#45",
+      "axis": "contingency_fraction",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#46",
+      "axis": "owner_commissioning_fraction",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#47",
+      "axis": "cost_schedule_replacement_life_fpy",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#48",
+      "axis": "cost_schedule_replacement_factor",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#49",
+      "axis": "cost_schedule_lipb_makeup_fraction",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#50",
+      "axis": "cost_schedule_availability",
+      "kind": "model",
+      "finding": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#51",
+      "axis": "supplied_recovery",
+      "kind": "model",
+      "finding": "Independently supplied recovery is not a calculated breeding capability; support remains zero. Supplied recovery has no incremental recovery-cost or qualification law at fixed installed scope; it is a boundary scenario, not purchased-capability optimization.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#52",
+      "axis": "purchase_mode",
+      "kind": "model",
+      "finding": "Fixed budget mode deliberately suppresses selected quantity price response.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    },
+    {
+      "id": "20260922-aries-integrated-cost-uncertainty#53",
+      "axis": "adequate_he_area",
+      "kind": "model",
+      "finding": "Previously tested adequate area is not geometry or hydraulic qualification.",
+      "disposition": "Retain sensitivity-only; no optimum or qualification claim.",
+      "home": "axis-plan.json"
+    }
+  ],
+  "discovery_publication": "Append first-sighting rows after completed study; these pre-execution missing-response findings and owner rulings already authorize the bounded sensitivity."
+}

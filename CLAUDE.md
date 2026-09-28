@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Design-choice preservation
+
+Before planning or changing model equations, parameter roles, equipment/capacity bindings or demand-based costs, read [MR-7](modeling_project/REQUIREMENTS.md#mr-7-preserve-design-choices-separate-evaluation-from-design-selection) and apply its evidence and review checks through `modeling_project/MODELING_PROCESS.md`. Goal agents carry the same requirement through `work/orchestration/GOAL_RUNBOOK.md`. Existing sizing code and passing depth scores do not authorize a fixed design-variable assignment. This pointer is shared by Claude and Codex through `AGENTS.md`; the requirement itself has one authoritative home.
+
 ## Project Overview
 
 **Project**: Fusion TEA (Techno-Economic Analysis)
@@ -12,7 +16,7 @@ This project investigates the economics of nuclear fusion power across fundament
 
 The investigation scope, research questions, comparison axes, and "done" criteria are defined in:
 - **`modeling_project/OVERVIEW.md`** — the investigation scope document (read this for the full strategy)
-- **`modeling_project/REQUIREMENTS.md`** — modeling requirements (MR-1→6) and process requirements (PR-1→5)
+- **`modeling_project/REQUIREMENTS.md`** — modeling requirements (MR-1→7) and process requirements (PR-1→5)
 
 Key points:
 - **Two-stage process**: Stage 1 (Taxonomy — classify all ~36+ concepts) → Stage 2 (Concept Modeling — cost models for ~13 selected concepts). Each stage follows its own cycle of information gathering → work → analysis.
@@ -221,7 +225,7 @@ When helping with MBSE tasks:
 
 1. **Read `modeling_project/OVERVIEW.md`** for investigation scope and process
 2. **Check `knowledge/SOURCE_INDEX.md`** for reference sources
-3. **Read `modeling_project/REQUIREMENTS.md`** for modeling constraints (MR-1→6)
+3. **Read `modeling_project/REQUIREMENTS.md`** for modeling constraints (MR-1→7)
 4. **Follow the modeling PM work loop**: `/spec-model` → `/design-model` → `/plan-model` → `/implement-model`
 5. **Maintain traceability**: all quantitative values must carry structured citations (see MR-4)
 

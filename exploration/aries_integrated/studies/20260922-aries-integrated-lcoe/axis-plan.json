@@ -1,0 +1,316 @@
+{
+  "axes": [
+    {
+      "axis": "discount",
+      "keys": [
+        "aries_integrated_plant__finance__discount_rate"
+      ],
+      "values": [
+        0.0,
+        1e-12,
+        0.03,
+        0.05,
+        0.08,
+        0.1
+      ],
+      "units": "real/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "construction",
+      "keys": [
+        "aries_integrated_plant__finance__construction_years"
+      ],
+      "values": [
+        0.0,
+        4.0,
+        6.0,
+        10.0
+      ],
+      "units": "calendar years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "terminal",
+      "keys": [
+        "aries_integrated_plant__finance__terminal_fraction"
+      ],
+      "values": [
+        0.05,
+        0.1,
+        0.2
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "salvage",
+      "keys": [
+        "aries_integrated_plant__finance__salvage_fraction"
+      ],
+      "values": [
+        0.0,
+        0.02,
+        0.05
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "overhaul_fraction",
+      "keys": [
+        "aries_integrated_plant__finance__other_overhaul_fraction"
+      ],
+      "values": [
+        0.0,
+        0.05,
+        0.1
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "overhaul_date",
+      "keys": [
+        "aries_integrated_plant__finance__other_overhaul_year"
+      ],
+      "values": [
+        15.0,
+        20.0,
+        30.0
+      ],
+      "units": "calendar years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "life",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__plant_years"
+      ],
+      "values": [
+        20.0,
+        30.0,
+        40.0,
+        60.0
+      ],
+      "units": "calendar years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Financial assumption lacks financing, liability or service-life evidence; no engineering optimum."
+    },
+    {
+      "axis": "availability",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__availability"
+      ],
+      "values": [
+        0.6,
+        0.75,
+        0.85,
+        0.95
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied availability has no outage/reliability response; no additional downtime charge."
+    },
+    {
+      "axis": "magnet_inventory_price",
+      "keys": [
+        "aries_integrated_plant__magnet_inventory__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.0,
+        1.5
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price factor has no calibrated market or equipment-quality response."
+    },
+    {
+      "axis": "unallocated_source_scope_price",
+      "keys": [
+        "aries_integrated_plant__unallocated_source_scope__price_factor"
+      ],
+      "values": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supplied price factor has no calibrated market or equipment-quality response."
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        "aries_integrated_plant__fuel_inventory__tritium_price"
+      ],
+      "values": [
+        10000000.0,
+        30000000.0,
+        100000000.0
+      ],
+      "units": "USD2004/kg",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence."
+    },
+    {
+      "axis": "routine_om",
+      "keys": [
+        "aries_integrated_plant__annual_om__selected_amount"
+      ],
+      "values": [
+        35000000.0,
+        70000000.0,
+        140000000.0
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence."
+    },
+    {
+      "axis": "consumables",
+      "keys": [
+        "aries_integrated_plant__cost_ledger__consumables"
+      ],
+      "values": [
+        1000000.0,
+        5000000.0,
+        15000000.0
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence."
+    },
+    {
+      "axis": "replacement_life",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__replacement_life_fpy"
+      ],
+      "values": [
+        2.0,
+        5.0,
+        8.0
+      ],
+      "units": "full-power years",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence."
+    },
+    {
+      "axis": "replacement_factor",
+      "keys": [
+        "aries_integrated_plant__cost_schedule__replacement_factor"
+      ],
+      "values": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence."
+    },
+    {
+      "axis": "new_feed",
+      "keys": [
+        "aries_integrated_plant__fuel_inventory__annual_recovery_kg"
+      ],
+      "values": [
+        0.0,
+        50.0,
+        100.0,
+        110.0
+      ],
+      "units": "kg/calendar year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Net extracted breeder feed has no qualified capability or extraction-cost model; internal exhaust recycling is already accounted."
+    },
+    {
+      "axis": "supply_service",
+      "keys": [
+        "aries_integrated_plant__finance__supply_service_annual"
+      ],
+      "values": [
+        0.0,
+        10000000.0,
+        30000000.0,
+        100000000.0
+      ],
+      "units": "USD2004/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Incremental assumed extraction/service cost has no price-versus-capability relationship."
+    },
+    {
+      "axis": "density_amplitude",
+      "keys": [
+        "aries_cs_plasma_integration__plasma__amplitude"
+      ],
+      "values": [
+        4.5e+20,
+        5e+20,
+        5.5e+20
+      ],
+      "units": "m^-3",
+      "role": "demand",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Fixed-hardware source-demand change does not qualify confinement."
+    },
+    {
+      "axis": "he_hx_area",
+      "keys": [
+        "aries_integrated_plant__he_hx__selected_area"
+      ],
+      "values": [
+        5000.0,
+        50000.0,
+        75000.0
+      ],
+      "units": "m2",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "missing_response": "Selected area has linear provisional price response; hydraulic/geometric qualification absent."
+    }
+  ]
+}

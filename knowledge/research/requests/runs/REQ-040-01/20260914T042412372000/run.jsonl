@@ -1,0 +1,11 @@
+{"kind": "search", "query": "site.usgs.gov mineral commodity summaries 2025 helium price 2024 copper tin", "at": "2026-09-14T04:24:42.953642+00:00"}
+{"kind": "search", "query": "site.indium.com solder alloy density Sn63 Pb37 8.4", "at": "2026-09-14T04:24:43.025529+00:00"}
+{"kind": "search", "query": "site.nist.gov helium 20 K density 2 MPa", "at": "2026-09-14T04:24:43.096595+00:00"}
+{"kind": "search", "query": "site.onlinemetals.com density copper stainless steel 304", "at": "2026-09-14T04:24:43.165200+00:00"}
+{"kind": "search", "query": "Sn63Pb37 bar solder 1 lb price", "at": "2026-09-14T04:24:43.236006+00:00"}
+{"kind": "search", "query": "site.pubchem.ncbi.nlm.nih.gov copper density 8.96", "at": "2026-09-14T04:25:17.565836+00:00"}
+{"kind": "search", "query": "site.usgs.gov helium 2025 14 cubic meter 15 C 101.325", "at": "2026-09-14T04:25:17.638053+00:00"}
+{"kind": "search", "query": "site.webbook.nist.gov/cgi/fluid.cgi helium", "at": "2026-09-14T04:25:17.709181+00:00"}
+{"kind": "candidate", "ref": "https://www.indium.com/products/bar-solder/", "triage": "keeper", "note": "Native raw HTML table supplies specific gravity; output.md drops table.", "at": "2026-09-14T04:27:22.588319+00:00"}
+{"kind": "candidate", "ref": "https://www.rotometals.com/aim-sn63pb37-solder-bar-1/", "triage": "keeper", "note": "Retail alloy price retained in native raw HTML.", "at": "2026-09-14T04:27:22.654686+00:00"}
+{"kind": "candidate", "ref": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&ID=C7440597&Type=IsoTherm&Digits=5&PLow=15&PHigh=20&PInc=5&T=20&RefState=DEF&TUnit=K&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm", "triage": "keeper", "note": "Native captured NIST isotherm supplies state-specific inventory density.", "at": "2026-09-14T04:27:35.258947+00:00"}

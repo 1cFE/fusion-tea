@@ -1,0 +1,40 @@
+{
+  "fabrication": {
+    "cases": [
+      "fabrication240-tonne907.185-containment82.4-sheet61.6772",
+      "reference",
+      "fabrication360-tonne907.185-containment82.4-sheet61.6772"
+    ],
+    "lcoe_min": 245.28672735872343,
+    "lcoe_max": 290.36831460198874,
+    "span": 45.08158724326532
+  },
+  "tonne": {
+    "cases": [
+      "reference",
+      "fabrication310-tonne1000-containment82.4-sheet61.6772"
+    ],
+    "lcoe_min": 271.1930236047137,
+    "lcoe_max": 271.5843199172948,
+    "span": 0.39129631258111885
+  },
+  "containment": {
+    "cases": [
+      "fabrication310-tonne907.185-containment65.2-sheet61.6772",
+      "reference",
+      "fabrication310-tonne907.185-containment96.5-sheet61.6772"
+    ],
+    "lcoe_min": 271.58015324077064,
+    "lcoe_max": 271.5918427055457,
+    "span": 0.01168946477503141
+  },
+  "sheet": {
+    "cases": [
+      "reference",
+      "fabrication310-tonne907.185-containment82.4-sheet0"
+    ],
+    "lcoe_min": 271.57515618311413,
+    "lcoe_max": 271.5843199172948,
+    "span": 0.00916373418067451
+  }
+}

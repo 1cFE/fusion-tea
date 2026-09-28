@@ -1,0 +1,11 @@
+# Replacement-freeze interface inventory
+
+[AGENT] Coordination inventory, 2026-09-17. This records current interfaces; recommendations await scientific review. The historical freeze remains unchanged. Entering code HEAD is 22e563392520142246c6883af7674473f973ae4b. The preparation package is entering untracked state, so these live files are unpinned; the historical freeze-record is its separate custody record.
+
+- `.project/active/aries-comparison-preparation/package/input-rules.json` fixes current sizing mode 1, reserve 1.0 and current defaults. Its seven permitted independent inputs are R, a, peak electron density, peak ion temperature, reference-coil ampere-turns, exterior radial coil allocation and transverse clear casing cavity. It has no permitted profile exponent or volume-shape transfer.
+- `input-applicability.md` preserves current-boundary limitations and distinguishes six conditioned seams. Table 5 plasma conditioning and held W/tau/radiation are not existing frozen seams.
+- `manifest.json` marks operating coupled heating as an alias of calculated signed sustainment demand, not installed capacity or a supplied independent value. Changing that definition would require a reviewed manifest/accounting update.
+- Current `exploration/stellarator_e2e/studies/oracle_entry.py` maps profile exponents and volume shape after the historical freeze. It maps W_th, tau_E, p_rad, retained alpha and signed auxiliary outputs and both sustainment and burn-hold predicates. Supplied diagnostic substitutions must not be reported through those forward channels as independent predictions.
+- A replacement requires explicit input-rule/default classification, oracle contract/mapping identity, predicate applicability and source boundaries, accounting/normalization, execution/export tests, identity/read-set coverage, selected-mode verification, native control receipts, source/evidence custody and a newly built reproducible archive. The exact list of changed equations/files remains contingent on the reviewed reconstruction.
+
+No execution mode is chosen by this inventory. Prior selected-mode discrepancy remains 224/226 scalar and 19/20 predicate matches at reserve 1.0; the prior 1.01-reserve study cannot silently replace it.

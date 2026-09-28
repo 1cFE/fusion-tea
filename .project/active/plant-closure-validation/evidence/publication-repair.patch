@@ -1,0 +1,203 @@
+--- a/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py
++++ b/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py
+@@ -167,8 +167,7 @@
+             "availability": float(inp[f"{P}availability"]),
+             "discount_rate": float(inp[f"{P}discount_rate"]),
+         }
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         verdicts = route.short_verdicts(case)
+         row.update(verdicts)
+         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
+@@ -224,7 +223,7 @@
+     evaluable, unevaluable = screen(proposals())
+     excluded_path = export_excluded(unevaluable, record_dir / "results" / "excluded_points.csv")
+ 
+-    cases, db = route.run_points(STUDY_ID, evaluable, work_dir)
++    cases, db = route.run_points(STUDY_ID, evaluable, work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     return {
+         "points": export(completed, record_dir / "results" / "points.csv"),
+--- a/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py
++++ b/exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py
+@@ -204,8 +204,7 @@
+             "availability": float(inp[f"{P}availability"]),
+             "discount_rate": float(inp[f"{P}discount_rate"]),
+         }
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         verdicts = route.short_verdicts(case)
+         row.update(verdicts)
+         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
+@@ -271,7 +270,7 @@
+     evaluable, unevaluable = screen(proposals())
+     excluded_path = export_excluded(unevaluable, record_dir / "results" / "excluded_points.csv")
+ 
+-    cases, db = route.run_points(STUDY_ID, evaluable, work_dir)
++    cases, db = route.run_points(STUDY_ID, evaluable, work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     return {
+         "points": export(completed, record_dir / "results" / "points.csv"),
+--- a/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py
++++ b/exploration/stellarator_e2e/studies/20260903-priced-levers/study.py
+@@ -255,8 +255,7 @@
+             "availability": float(inp[f"{P}availability"]),
+             "discount_rate": float(inp[f"{P}discount_rate"]),
+         }
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         verdicts = route.short_verdicts(case)
+         row.update(verdicts)
+         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
+@@ -332,7 +331,7 @@
+     evaluable, unevaluable = screen(tagged)
+     excluded_path = export_excluded(unevaluable, record_dir / "results" / "excluded_points.csv")
+ 
+-    cases, db = route.run_points(STUDY_ID, [c for _, c in evaluable], work_dir)
++    cases, db = route.run_points(STUDY_ID, [c for _, c in evaluable], work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     return {
+         "points": export(completed, arms, record_dir / "results" / "points.csv"),
+--- a/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py
++++ b/exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py
+@@ -406,8 +406,7 @@
+             "availability": float(inp[f"{P}availability"]),
+             "discount_rate": float(inp[f"{P}discount_rate"]),
+         }
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         verdicts = route.short_verdicts(case)
+         row.update(verdicts)
+         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
+@@ -518,7 +517,7 @@
+     evaluable, unevaluable = screen(tagged)
+     excluded_path = export_excluded(unevaluable, record_dir / "results" / "excluded_points.csv")
+ 
+-    cases, db = route.run_points(STUDY_ID, [c for _, c in evaluable], work_dir)
++    cases, db = route.run_points(STUDY_ID, [c for _, c in evaluable], work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     return {
+         "points": export(completed, arms, record_dir / "results" / "points.csv"),
+--- a/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py
++++ b/exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py
+@@ -414,8 +414,7 @@
+                "eta_couple_heat": float(inp[f"{P}eta_couple_heat"]),
+                "availability": float(inp[f"{P}availability"]),
+                "discount_rate": float(inp[f"{P}discount_rate"])}
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         cal = row.get("wall_peak_calibration")
+         if cal is None or abs(float(cal) - EXPECTED_CALIBRATION) > 1e-9:
+             raise route.RouteError(
+@@ -535,7 +534,7 @@
+ 
+     print(f"[screen] done: {len(evaluable)} evaluable, {len(unevaluable)} excluded", file=sys.stderr, flush=True)
+     print(f"[run_points] executing {len(evaluable)} points", file=sys.stderr, flush=True)
+-    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir)
++    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     print(f"[run_points] completed {len(completed)}; exporting", file=sys.stderr, flush=True)
+     # The oracle was evaluated once per proposal in the screen; join it to the executed
+--- a/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py
++++ b/exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py
+@@ -535,8 +535,7 @@
+                "eta_couple_heat": float(inp[f"{P}eta_couple_heat"]),
+                "availability": float(inp[f"{P}availability"]),
+                "discount_rate": float(inp[f"{P}discount_rate"])}
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         cal = row.get("wall_peak_calibration")
+         if cal is None or abs(float(cal) - EXPECTED_CALIBRATION) > 1e-9:
+             raise route.RouteError(
+@@ -781,7 +780,7 @@
+         excluded_path = record_dir / "results" / "excluded_points.csv"
+         print(f"[screen] loaded from cache: {len(evaluable)} evaluable, {len(unevaluable)} excluded", file=sys.stderr, flush=True)
+     print(f"[run_points] executing {len(evaluable)} points", file=sys.stderr, flush=True)
+-    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir)
++    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     # Critique F5: the executed set is the screened set, key for key.
+     executed_keys = {_key(case.inputs) for case in completed}
+--- a/exploration/stellarator_e2e/studies/20260907-burn-control/study.py
++++ b/exploration/stellarator_e2e/studies/20260907-burn-control/study.py
+@@ -560,8 +560,7 @@
+                "eta_couple_heat": float(inp[f"{P}eta_couple_heat"]),
+                "availability": float(inp[f"{P}availability"]),
+                "discount_rate": float(inp[f"{P}discount_rate"])}
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         cal = row.get("wall_peak_calibration")
+         if cal is None or abs(float(cal) - EXPECTED_CALIBRATION) > 1e-9:
+             raise route.RouteError(
+@@ -925,7 +924,7 @@
+         excluded_path = record_dir / "results" / "excluded_points.csv"
+         print(f"[screen] loaded from cache: {len(evaluable)} evaluable, {len(unevaluable)} excluded", file=sys.stderr, flush=True)
+     print(f"[run_points] executing {len(evaluable)} points", file=sys.stderr, flush=True)
+-    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir)
++    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     # Critique F5: the executed set is the screened set, key for key.
+     executed_keys = {_key(case.inputs) for case in completed}
+--- a/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py
++++ b/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py
+@@ -629,8 +629,7 @@
+                "eta_couple_heat": float(inp[f"{P}eta_couple_heat"]),
+                "availability": float(inp[f"{P}availability"]),
+                "discount_rate": float(inp[f"{P}discount_rate"])}
+-        for name, channel in CHANNELS.items():
+-            row[name] = case.outputs.get(channel)
++        row.update(route.required_outputs(case, CHANNELS))
+         cal = row.get("wall_peak_calibration")
+         if cal is None or abs(float(cal) - EXPECTED_CALIBRATION) > 1e-9:
+             raise route.RouteError(
+@@ -941,7 +940,7 @@
+         excluded_path = record_dir / "results" / "excluded_points.csv"
+         print(f"[screen] loaded from cache: {len(evaluable)} evaluable, {len(unevaluable)} excluded", file=sys.stderr, flush=True)
+     print(f"[run_points] executing {len(evaluable)} points", file=sys.stderr, flush=True)
+-    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir)
++    cases, db = route.run_points(STUDY_ID, [c for _, c, _, _, _ in evaluable], work_dir, required_channels=CHANNELS)
+     completed = route._completed(cases, STUDY_ID)
+     # Critique F5: the executed set is the screened set, key for key.
+     executed_keys = {_key(case.inputs) for case in completed}
+--- a/exploration/stellarator_e2e/studies/20260912-plant-closure/execution/execute.py
++++ b/exploration/stellarator_e2e/studies/20260912-plant-closure/execution/execute.py
+@@ -26,18 +26,18 @@
+ cases,db=study.run()
+ print('Native lifecycle returned',len(cases),'cases in',time.time()-start,'seconds',flush=True)
+ failures=[{'candidate_id':c.candidate_id,'state':c.state,'inputs':dict(c.inputs)} for c in cases if c.state!='completed']
+-write(R/'execution-summary.json',{'finished_at_utc':datetime.now(timezone.utc).isoformat(),'cases':len(cases),'states':dict(Counter(c.state for c in cases)),'elapsed_seconds':time.time()-start,'failures':failures})
++write(R/'execution-summary.json',{'finished_at_utc':datetime.now(timezone.utc).isoformat(),'cases':len(cases),'states':dict(Counter(c.state for c in cases)),'elapsed_seconds':time.time()-start,'failures':failures,'publication':'pending'})
+ assert len(cases)==len(study.proposals())
+ if failures:raise RuntimeError('Native cases failed; store retained, publication stopped')
+ channels=study.channels();catalog=route._catalog_by_constraint_id(route.PACKAGE_DIR)
+ fieldnames=['candidate_id',*channels,*catalog,'full_satisfied','headline']
+-with (R/'native-points.csv').open('w',newline='') as f:
+- w=csv.DictWriter(f,fieldnames=fieldnames,lineterminator='\n');w.writeheader()
+- for c in cases:
+-  values=route.required_outputs(c,channels)
+-  assert set(c.verdicts)==set(catalog)
+-  assert c.headline==('satisfied' if all(v=='satisfied' for v in c.verdicts.values()) else 'violated')
+-  w.writerow({'candidate_id':c.candidate_id,**values,**c.verdicts,'full_satisfied':all(v=='satisfied' for v in c.verdicts.values()),'headline':c.headline})
++rows=[]
++for c in cases:
++ values=route.required_outputs(c,channels)
++ if set(c.verdicts)!=set(catalog):raise route.RouteError('Verdicts do not match the publication catalog')
++ if c.headline!=('satisfied' if all(v=='satisfied' for v in c.verdicts.values()) else 'violated'):raise route.RouteError('Headline disagrees with case verdicts')
++ rows.append({'candidate_id':c.candidate_id,**values,**c.verdicts,'full_satisfied':all(v=='satisfied' for v in c.verdicts.values()),'headline':c.headline})
++route.write_csv(rows,R/'native-points.csv')
+ write(R/'case-inputs.json',[{'candidate_id':c.candidate_id,'inputs':dict(c.inputs),'state':c.state} for c in cases])
+ by_key={key(c.inputs):c.candidate_id for c in cases}
+ correlation=json.loads((H/'preparation/reduced-correlation.json').read_text())
+@@ -55,4 +55,5 @@
+ finally:store.close()
+ clean=preflight.run_clean(route.PACKAGE_DIR);write(R/'post-run-clean.json',clean);assert clean['outcome']=='pass'
+ write(R/'native-store-path.json',{'path':str(db.relative_to(H))})
++summary=json.loads((R/'execution-summary.json').read_text());summary['publication']='complete';write(R/'execution-summary.json',summary)
+ print('Exported all 158 numeric channels and 18 qualified verdicts, one store.',flush=True)

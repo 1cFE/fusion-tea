@@ -1,0 +1,8 @@
+Implemented; ready for a fresh coding audit. [Evidence and commands](.project/active/mfe-major-radius-study-package/implementation/verification.md).
+
+- 233 targeted tests pass.
+- Baseline/R14 match all 158 native scalars, 141 oracle channels and 18 verdicts.
+- Audited package unchanged; 97 historical failures individually confirmed.
+- Audit gate remains unchecked.
+
+Process incident: my initial hash helper read seven quarantined files. Parent corrected the guard; subsequent execution made zero quarantined read attempts. The incident is documented for audit.

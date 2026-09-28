@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "native_points": 4,
+  "scalars_per_point": 1192,
+  "predicates_per_point": 125,
+  "verification_command": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python",
+    "/home/reid/1cfe/fusion-tea/scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea/exploration/whole_plant_conversion/whole_plant_conversion_tea",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea/exploration/whole_plant_conversion/studies/manifest.json",
+    "--identity",
+    "/home/reid/1cfe/fusion-tea/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/integration/package_identity.json",
+    "--store",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/design-study-whole-plant-conversion/evidence/numerical-repair-r2-validation/cryo-native/results/native/cryo-native.db",
+    "--sample-size",
+    "4",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/design-study-whole-plant-conversion/evidence/numerical-repair-r2-validation/cryo-native/results/verification_summary.json"
+  ],
+  "behavior": [
+    {
+      "case": "r2-cryo-capacity-q2500-below-gas",
+      "q_nuc_W_m3": 75.42260142820312,
+      "cold_margin_W": 3.072599999992235,
+      "extra_cold_capacity_W": 3.072599999988597,
+      "failed_predicates": []
+    },
+    {
+      "case": "r2-cryo-capacity-q2500-above-gas",
+      "q_nuc_W_m3": 75.44260142820313,
+      "cold_margin_W": -3.072600000006787,
+      "extra_cold_capacity_W": -3.072600000014063,
+      "failed_predicates": [
+        "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+      ]
+    },
+    {
+      "case": "r2-cryo-capacity-q2800-below-gas",
+      "q_nuc_W_m3": 75.42260142820312,
+      "cold_margin_W": 3.072599999992235,
+      "extra_cold_capacity_W": 3.072599999988597,
+      "failed_predicates": []
+    },
+    {
+      "case": "r2-cryo-capacity-q2800-above-gas",
+      "q_nuc_W_m3": 75.44260142820313,
+      "cold_margin_W": -3.072600000006787,
+      "extra_cold_capacity_W": -3.072600000014063,
+      "failed_predicates": [
+        "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+      ]
+    }
+  ]
+}

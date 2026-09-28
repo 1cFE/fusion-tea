@@ -1,0 +1,2590 @@
+{
+  "authority": "Owner requires original failed executable/cases/diagnostics and independent oracle/tolerances preserved. This checks native evidence, not orchestration-state freshness.",
+  "revision": "0485f5903e9ca879edadcbbd67bd97b73592ec40",
+  "files": [
+    {
+      "path": "exploration/component_alternatives/oracle_cooling.py",
+      "sha256": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_gas.py",
+      "sha256": "ae12f96870c577eee4e71ff6678f9eb94d75f26a93bad9550fe67dc4ced537a7"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_matched_cycle.py",
+      "sha256": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_matched_cycle_properties.json",
+      "sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_thermal.py",
+      "sha256": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/ANNEX.md",
+      "sha256": "0ff8af6839b48b090f1871cc6effe39ebfa0e482ecff3800645bfccf6a880650"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/addendum-20260926-cause-attribution.md",
+      "sha256": "30f2ef2e4b24ee0717b7988587a794fb8f0ee81f47d4ea821c514b4f16463e48"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/axes.json",
+      "sha256": "4caab4414f234c510467e138818b82121cc23736f5d59162927e7d184d933aca"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/axis-framing.json",
+      "sha256": "e297fd590a907980f2051909d08cefac1bbcb0a33c5f6068ef29d22963c48ab3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/core-oracle-scan.json",
+      "sha256": "2cdc7336f8bbdfb2eadb46661a6b9e3e7ccd5dfa3f1d6105809e275fa0b59c4e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/core-scan-proposals.json",
+      "sha256": "d5cdb1f4464f44078f32af3b5108dfa74979946716ebeb34b4a6253e18af8d2e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/gas-anchor-selection.json",
+      "sha256": "3d56f28ca465efc8addefd4906aaa9b631836b9567656b770c59280864d75c42"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/indicators.json",
+      "sha256": "fd2eccd250c476d433655fa26724f95777c2960877751c85134f5a7e527303be"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/manifest.json",
+      "sha256": "03391bfa73a8c4039ae16ac62c6419b8abbe0c19c04e9917af98e6ea6a98b9a0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/matched-anchor-selection.json",
+      "sha256": "d85d0686124f7b3d8881cca0336c7e7f317b40d970e8efe965cb413b3990be61"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/numerical-tolerances.json",
+      "sha256": "644e1458e6ce046ffbe4686d2eaffcf411aedbe3eb430b1112bc0f49c92106ef"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/baseline_result.json",
+      "sha256": "baa3d1881f3c3bc3ab2268b3a3b5c0ea8c6619c69c4301c6ad13b17932630d04"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/execution-attempt1/constraint_catalog.json",
+      "sha256": "0a594a09b138a7b19f58c1e3f017749a1431574f63be4854d9b180bfbd2b04ef"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/execution-attempt1/failure.txt",
+      "sha256": "a71e96d0de859ff97e2cc34f658cb220e1d73926712e2886ca2ff3258cc17202"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/execution-attempt1/integration_return_used.json",
+      "sha256": "37dee0029290e37f10de37f6a6100e44a76d536738ac9e39bff1a76ec331d2db"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/execution-attempt1/manifest_used.json",
+      "sha256": "03391bfa73a8c4039ae16ac62c6419b8abbe0c19c04e9917af98e6ea6a98b9a0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/integration_return.json",
+      "sha256": "37dee0029290e37f10de37f6a6100e44a76d536738ac9e39bff1a76ec331d2db"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/manifest_read_coverage.json",
+      "sha256": "336e8bed50366e233023822d1b0ceb5b051e5f271332da605ce7524e2ece1539"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/package_identity.json",
+      "sha256": "fc4b772fe006d9ddab14c8907d63827e72e0d47c9aa4a66eb10d2a14a93c98a9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/preflight_results.json",
+      "sha256": "602f6e3690969cf26928bc5dff62feb8664540aea815449a8a0bacfff35c6f9c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/read_coverage.json",
+      "sha256": "348d0b9a94aabb4cbafa6ac4278bf3dba0617ac30cc10c2f852dcc64ebc240eb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/verification_summary.json",
+      "sha256": "ffa67c97a3e4e7c42a186fa06b5c5d3a2bd17d721dbfa9757addfeb3e1535365"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/proposed-points.json",
+      "sha256": "9460a90ac6ef9dd84fe17403f6b6067133828d3114deb1cddbedcbc47dd0b000"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/record.md",
+      "sha256": "af26d91f18dfe210b2d852f418f69a15221911391df1c0fe8f78b408706d6ded"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/axis-assessment.json",
+      "sha256": "1e417a021aa70bc0325391489afd23ecbbf5c519dfc0b51e201a7a7607c5c369"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/baseline_result.json",
+      "sha256": "baa3d1881f3c3bc3ab2268b3a3b5c0ea8c6619c69c4301c6ad13b17932630d04"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/cases.csv",
+      "sha256": "47a5db7c63a2b2beddd19a710dcb710349209b601dfc2fabbe103e2159858fc0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/cases.json",
+      "sha256": "882536629bb46561f03cefbc856b25885257de9d74cda903764940122e5d9ec1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/constraint-summary.json",
+      "sha256": "6121e4e7c0314f77b41f2acd041e8be0f01272efe9487b4925b74162ed4b445d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/constraint_catalog.json",
+      "sha256": "0a594a09b138a7b19f58c1e3f017749a1431574f63be4854d9b180bfbd2b04ef"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/execution-context.json",
+      "sha256": "bdd9f14a9ed4dff773a7e10c9ad5c3ba485e91aedb8cc9416017161586a590e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/export-proof.json",
+      "sha256": "0e109a751f39ededb09505b94f7574182999d600e37f26cdd81da09fd7c1c3e5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/integration_return_used.json",
+      "sha256": "37dee0029290e37f10de37f6a6100e44a76d536738ac9e39bff1a76ec331d2db"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/manifest_used.json",
+      "sha256": "03391bfa73a8c4039ae16ac62c6419b8abbe0c19c04e9917af98e6ea6a98b9a0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/20260926-design-study-component-alternatives.db",
+      "sha256": "400ee8c5e77698f150b6c3441d7a5b660b587a5d8c0939ba23041cb28fe57ab7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/003a5467859262305202028bd0f6ddfcc9a57bd93ffba919e7516beda4c0f2c3.json",
+      "sha256": "003a5467859262305202028bd0f6ddfcc9a57bd93ffba919e7516beda4c0f2c3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/00900b9ffd70ec56212d356c3c979391f1fbed1b88c020c56571cefd1563307f.json",
+      "sha256": "00900b9ffd70ec56212d356c3c979391f1fbed1b88c020c56571cefd1563307f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/014965588a6fd25c2dce7527ff9b8f984eee73681707e31fb9ed207ee7a15b93.json",
+      "sha256": "014965588a6fd25c2dce7527ff9b8f984eee73681707e31fb9ed207ee7a15b93"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/02ab1089feaec8cc22a59cddfc7f5b537596e8f8b6e7f7732f8306ae50598ea1.json",
+      "sha256": "02ab1089feaec8cc22a59cddfc7f5b537596e8f8b6e7f7732f8306ae50598ea1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/02db409f8624b0e6b87952752c9c0b9a400ac12b9b0eae2274e0123a6eb43aa5.json",
+      "sha256": "02db409f8624b0e6b87952752c9c0b9a400ac12b9b0eae2274e0123a6eb43aa5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/02eb94d1b58c7b0fe5ff68a6a538d6aa19340d005ccc2cb972f78ba13c010cbc.json",
+      "sha256": "02eb94d1b58c7b0fe5ff68a6a538d6aa19340d005ccc2cb972f78ba13c010cbc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/031d090c7624fe0201ba0cd0821b9f7869d4e251dd624b1ea47de28b7097ca74.json",
+      "sha256": "031d090c7624fe0201ba0cd0821b9f7869d4e251dd624b1ea47de28b7097ca74"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/038a39cb53f5378612d87b015a4d8983bcdfa7febd6a92be8f411ced16dda801.json",
+      "sha256": "038a39cb53f5378612d87b015a4d8983bcdfa7febd6a92be8f411ced16dda801"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/03febf5850ab6c84ae5d1aa035b63f818f057f765d05ecd5a9e63266e7fdf0a5.json",
+      "sha256": "03febf5850ab6c84ae5d1aa035b63f818f057f765d05ecd5a9e63266e7fdf0a5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/05c60440d690c5ed9df27b6db5702bb31cdfb660d2ff116542929b94ae993a17.json",
+      "sha256": "05c60440d690c5ed9df27b6db5702bb31cdfb660d2ff116542929b94ae993a17"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/05f1daba311d3840f06e0c812c4975f44df121e3e0484723e84eee1656e995ed.json",
+      "sha256": "05f1daba311d3840f06e0c812c4975f44df121e3e0484723e84eee1656e995ed"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/066837a0d5b2537c15938e9d0c4f36cc8704d26f45378cf8b4c72ab5bf1491fb.json",
+      "sha256": "066837a0d5b2537c15938e9d0c4f36cc8704d26f45378cf8b4c72ab5bf1491fb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0742d3f7d7d4fcc3bb22379b5295410c5a014ce1f895cb07b8ed3b1abb6e5402.json",
+      "sha256": "0742d3f7d7d4fcc3bb22379b5295410c5a014ce1f895cb07b8ed3b1abb6e5402"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/075f6101c3f70e84d764eb4246504729238c623f9f75c2c8639381e79037e826.json",
+      "sha256": "075f6101c3f70e84d764eb4246504729238c623f9f75c2c8639381e79037e826"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/079708648094617a8dc1786c30c9a2db55f6b8bf139ae7cb8cfe021e4b6760bb.json",
+      "sha256": "079708648094617a8dc1786c30c9a2db55f6b8bf139ae7cb8cfe021e4b6760bb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/09566586b9aeebc7df65cf73ff3c42ddb1ca9d2b4bd8935c4f4010e3aa8d79e4.json",
+      "sha256": "09566586b9aeebc7df65cf73ff3c42ddb1ca9d2b4bd8935c4f4010e3aa8d79e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0a93e03a70545166903c9b2b5b8e03722a34a7a176a06d34fca9fc8d9067e250.json",
+      "sha256": "0a93e03a70545166903c9b2b5b8e03722a34a7a176a06d34fca9fc8d9067e250"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0ba31c894baf08a06128afbe702a261c7ced1abde16b9103944bb663df447918.json",
+      "sha256": "0ba31c894baf08a06128afbe702a261c7ced1abde16b9103944bb663df447918"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0bfe9c826f396f24ef2fb80bfe312bc0e90773c8f8cd43e0ab3814633bfef974.json",
+      "sha256": "0bfe9c826f396f24ef2fb80bfe312bc0e90773c8f8cd43e0ab3814633bfef974"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0d29d7f4a3e7629b76efbb1612ff5dc72f56a05cc8be295547ebc6995b6bf700.json",
+      "sha256": "0d29d7f4a3e7629b76efbb1612ff5dc72f56a05cc8be295547ebc6995b6bf700"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0d88a180cac07b1a101eb47579190ac4afd84885a34ca11f110a1133983b7c9f.json",
+      "sha256": "0d88a180cac07b1a101eb47579190ac4afd84885a34ca11f110a1133983b7c9f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0df4625bd5b84f98110c84df9d623b537b02ccab401014d4f9e1f2ff1cd44900.json",
+      "sha256": "0df4625bd5b84f98110c84df9d623b537b02ccab401014d4f9e1f2ff1cd44900"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/0f11795e23f547cd0e9d667df76f8a77678206645ddf78163f00438b5f3510ba.json",
+      "sha256": "0f11795e23f547cd0e9d667df76f8a77678206645ddf78163f00438b5f3510ba"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/109423d8ec89e3812232289ba9b6f5959db7d8ce3df4b620c24de31f9189c173.json",
+      "sha256": "109423d8ec89e3812232289ba9b6f5959db7d8ce3df4b620c24de31f9189c173"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/118f6121b64040c83b6f7ab99750df9e60d3bbd08d09fb894f7fce49f9771d04.json",
+      "sha256": "118f6121b64040c83b6f7ab99750df9e60d3bbd08d09fb894f7fce49f9771d04"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/11f382ae53f19b50e91f7b9d66858c28aecdc137020ef38f750852bfe54022fa.json",
+      "sha256": "11f382ae53f19b50e91f7b9d66858c28aecdc137020ef38f750852bfe54022fa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/121a481926f54b181375765f2e349756dccabf013230c04f4faccf66666e92fc.json",
+      "sha256": "121a481926f54b181375765f2e349756dccabf013230c04f4faccf66666e92fc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1269ecfb569aa4c7dda9a8d264a615f784b863f1c67d2ca9cf0207dc9348061b.json",
+      "sha256": "1269ecfb569aa4c7dda9a8d264a615f784b863f1c67d2ca9cf0207dc9348061b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/13ea5d8dffbb68f2294863c90fc75bb0aec898eaa01670e302ae0567f7320e31.json",
+      "sha256": "13ea5d8dffbb68f2294863c90fc75bb0aec898eaa01670e302ae0567f7320e31"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/14318ede30dd787b85366edff85eaaf846a1891ae8130852467e856aa55eccbf.json",
+      "sha256": "14318ede30dd787b85366edff85eaaf846a1891ae8130852467e856aa55eccbf"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/14397ab6055155c8d237686ad387e9c348b53ebded6921b50e9ba4deacd24257.json",
+      "sha256": "14397ab6055155c8d237686ad387e9c348b53ebded6921b50e9ba4deacd24257"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/15c680f5069e7feef44ff80624f706e3eced879c669699fad13d18611ab46c65.json",
+      "sha256": "15c680f5069e7feef44ff80624f706e3eced879c669699fad13d18611ab46c65"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1646f2ea131878126520e3257dd218629eacc2788ed37dd45ef510e398a9cb7d.json",
+      "sha256": "1646f2ea131878126520e3257dd218629eacc2788ed37dd45ef510e398a9cb7d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/16c505532d9f4f0f84220b79b30fa2a0848d530d05cfb6049f548e25ff889d23.json",
+      "sha256": "16c505532d9f4f0f84220b79b30fa2a0848d530d05cfb6049f548e25ff889d23"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/16c71047dad4c428d79530ebea239af7c3ddef4eca28d59e48504f75820211f5.json",
+      "sha256": "16c71047dad4c428d79530ebea239af7c3ddef4eca28d59e48504f75820211f5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/184b10faa3bdad3398d7a02b34cc0c90a95e2084b412e11928636ed56fc114e1.json",
+      "sha256": "184b10faa3bdad3398d7a02b34cc0c90a95e2084b412e11928636ed56fc114e1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1904ad4cab16c35db0f08a1bb24df24a4e33dc2c1b14f44c487a3e1ec4523939.json",
+      "sha256": "1904ad4cab16c35db0f08a1bb24df24a4e33dc2c1b14f44c487a3e1ec4523939"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/190905d70f5351db1a1d56f1cd3dd2a62ed7475101197a9c2b77748199e2ab5d.json",
+      "sha256": "190905d70f5351db1a1d56f1cd3dd2a62ed7475101197a9c2b77748199e2ab5d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/196ab52ab2eea5c27c9de2de0aee49ad643bda4c602d41c2c2e0d505fd9240f6.json",
+      "sha256": "196ab52ab2eea5c27c9de2de0aee49ad643bda4c602d41c2c2e0d505fd9240f6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1985a5eb8c3d90de310d3ee36bf4b9e077e9a401f76b3ba15dd6b40bf8a47f34.json",
+      "sha256": "1985a5eb8c3d90de310d3ee36bf4b9e077e9a401f76b3ba15dd6b40bf8a47f34"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1986226f333866ef8379a4aee64f6498d32e814d3e63d86904edbdf95c3a7a3d.json",
+      "sha256": "1986226f333866ef8379a4aee64f6498d32e814d3e63d86904edbdf95c3a7a3d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1a422ce19a0e4710fcb78cb9660858bbdc5d3d9e8a0ba9e23fcb522422a881c2.json",
+      "sha256": "1a422ce19a0e4710fcb78cb9660858bbdc5d3d9e8a0ba9e23fcb522422a881c2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1af0bb764bb77dc9f738987c084e980372479c5e814e7e191287241e4c24da94.json",
+      "sha256": "1af0bb764bb77dc9f738987c084e980372479c5e814e7e191287241e4c24da94"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1afd0aa0ef11e49231e6050a43245efc97729b28137914ca2ad01f1c8b419d9f.json",
+      "sha256": "1afd0aa0ef11e49231e6050a43245efc97729b28137914ca2ad01f1c8b419d9f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1b197d1ad3d8ca18b5d0bd91f36a3847f1642e8d4bc39835cc7c899990e9bae8.json",
+      "sha256": "1b197d1ad3d8ca18b5d0bd91f36a3847f1642e8d4bc39835cc7c899990e9bae8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1be7b19b25b47a39e253fba5276092d2c9356ae2eb0375c517b0eaea42a29f5d.json",
+      "sha256": "1be7b19b25b47a39e253fba5276092d2c9356ae2eb0375c517b0eaea42a29f5d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1d4fb4d352cc7f91e785c4986f03e2561801c46cf0ed7a201f464538b9ea0b81.json",
+      "sha256": "1d4fb4d352cc7f91e785c4986f03e2561801c46cf0ed7a201f464538b9ea0b81"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1e02a7318522e67986f7da104470b7ddac96fee7dbefeb65d31393243dbc256d.json",
+      "sha256": "1e02a7318522e67986f7da104470b7ddac96fee7dbefeb65d31393243dbc256d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/1e3de87f6674a60b788ccc711cc9f8074ce215a6e71b100ab624a765ccd840c9.json",
+      "sha256": "1e3de87f6674a60b788ccc711cc9f8074ce215a6e71b100ab624a765ccd840c9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/20fa1f66163aae4f5c50adb84b528351f1d6f8ecff99bd1236e65511458a7a39.json",
+      "sha256": "20fa1f66163aae4f5c50adb84b528351f1d6f8ecff99bd1236e65511458a7a39"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2128dfca4dca378cf9d4d3bed92609d973e9d72c4dd7c7f43442df574bebfadd.json",
+      "sha256": "2128dfca4dca378cf9d4d3bed92609d973e9d72c4dd7c7f43442df574bebfadd"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/21c9097cb96d654e5a38e8b2e7167a4dc9d5fefee23b0ca184c6d0d233e6b4e8.json",
+      "sha256": "21c9097cb96d654e5a38e8b2e7167a4dc9d5fefee23b0ca184c6d0d233e6b4e8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/21d0ea7b2a7d58fd47eba47b882e1c9dcee075d97b56e48efdad469952561fbd.json",
+      "sha256": "21d0ea7b2a7d58fd47eba47b882e1c9dcee075d97b56e48efdad469952561fbd"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/225a835e973441dcdfb732b2c53df71cafa5cf2a2fc14fa4bab4f01be399b4c3.json",
+      "sha256": "225a835e973441dcdfb732b2c53df71cafa5cf2a2fc14fa4bab4f01be399b4c3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/23dac04077dfd5d0d2702ef6cb475037a7dfcffa61550a16ec5fd4ffa3383cfd.json",
+      "sha256": "23dac04077dfd5d0d2702ef6cb475037a7dfcffa61550a16ec5fd4ffa3383cfd"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/245873721563a973207519ca8b64c374c2832faff61334b75e7bfe87c31978a4.json",
+      "sha256": "245873721563a973207519ca8b64c374c2832faff61334b75e7bfe87c31978a4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/24f7a2e2d09ac9c5b35fc4ce0b03b951c771638879238c4b6263444e31e099d4.json",
+      "sha256": "24f7a2e2d09ac9c5b35fc4ce0b03b951c771638879238c4b6263444e31e099d4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/25301b52fae5ed414cac214e34bfd3ce418fb61122738e4af624e726289c284f.json",
+      "sha256": "25301b52fae5ed414cac214e34bfd3ce418fb61122738e4af624e726289c284f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/270bede6a63504e35653470c5f85d28ca5fa7e64912d108deac52971731bc534.json",
+      "sha256": "270bede6a63504e35653470c5f85d28ca5fa7e64912d108deac52971731bc534"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/27c76b27755ac6905955191b8d7e8547d169e5bd95625844359f4e1a4c724898.json",
+      "sha256": "27c76b27755ac6905955191b8d7e8547d169e5bd95625844359f4e1a4c724898"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/27d364a2b4c4c13857c0646b4c916757a9bd7109fd18b906805c79fb84fb4e4d.json",
+      "sha256": "27d364a2b4c4c13857c0646b4c916757a9bd7109fd18b906805c79fb84fb4e4d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/28fd5e9f6ba9b2fe81f2a759f6d3d3359ed6b0b7d0b0f9c8d9add4b90bccd746.json",
+      "sha256": "28fd5e9f6ba9b2fe81f2a759f6d3d3359ed6b0b7d0b0f9c8d9add4b90bccd746"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2909d1eff9852bc6817f40ecb7b9a2156e5d4ef89a7808264de560c7b25dbf6c.json",
+      "sha256": "2909d1eff9852bc6817f40ecb7b9a2156e5d4ef89a7808264de560c7b25dbf6c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/293ab9e5b46d66f6ba8773eb4a880f371087cd066275c40b0da6f335b009b330.json",
+      "sha256": "293ab9e5b46d66f6ba8773eb4a880f371087cd066275c40b0da6f335b009b330"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2a1066b7ea6e1ccb10ddb4c999668e3203570c7bed7a2e73e2463d51dde1c511.json",
+      "sha256": "2a1066b7ea6e1ccb10ddb4c999668e3203570c7bed7a2e73e2463d51dde1c511"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2a3eec051ab9d43aeeb2daec78f04ca80ae53fc444c1311ff2eb8d40344af6d9.json",
+      "sha256": "2a3eec051ab9d43aeeb2daec78f04ca80ae53fc444c1311ff2eb8d40344af6d9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2a7e4075d1fa8df0ff6705d4b0bd701715f081a4d50d7fe354509a0c8b4a5176.json",
+      "sha256": "2a7e4075d1fa8df0ff6705d4b0bd701715f081a4d50d7fe354509a0c8b4a5176"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2bfb97ecdeccc128fb595858e0b1ca4e1d086ba9f4e13080441af9fc64bb5e9d.json",
+      "sha256": "2bfb97ecdeccc128fb595858e0b1ca4e1d086ba9f4e13080441af9fc64bb5e9d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2d5258017464ac030e2b98426f7affde4e1802740ae6a8cc52ec95973955d780.json",
+      "sha256": "2d5258017464ac030e2b98426f7affde4e1802740ae6a8cc52ec95973955d780"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2e16d3089e7e0f4d4bcf90d88c09b46cef21279f92fb3653e11e17780933b318.json",
+      "sha256": "2e16d3089e7e0f4d4bcf90d88c09b46cef21279f92fb3653e11e17780933b318"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2e2e7388132ea1a186b38bf27cd7788246fee96673f4b6626ad62385a317390c.json",
+      "sha256": "2e2e7388132ea1a186b38bf27cd7788246fee96673f4b6626ad62385a317390c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2f084cf7be7b6bf18f380a40d8d871f82fed2174963201af4135478b8c714266.json",
+      "sha256": "2f084cf7be7b6bf18f380a40d8d871f82fed2174963201af4135478b8c714266"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2f2b03f726b9343c4dec7b2aef6ad890c327f25d8e4274094e184eabaa0fb51d.json",
+      "sha256": "2f2b03f726b9343c4dec7b2aef6ad890c327f25d8e4274094e184eabaa0fb51d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/2f991d0816ca7d8e9bbe78126e3926267bab4c0c6b34aff37fbfd5226a6dcc46.json",
+      "sha256": "2f991d0816ca7d8e9bbe78126e3926267bab4c0c6b34aff37fbfd5226a6dcc46"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3019bf43a2bf2771536197feea31afb8cf7b21d747dc6ea0212d47b6e1d756bb.json",
+      "sha256": "3019bf43a2bf2771536197feea31afb8cf7b21d747dc6ea0212d47b6e1d756bb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3024611c453824b515a084e0cdef577aecfa202b98d8aaa8c2649d2eb0ca8ab2.json",
+      "sha256": "3024611c453824b515a084e0cdef577aecfa202b98d8aaa8c2649d2eb0ca8ab2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/303770f7d74501d6de0ba8ec2941a5a8fab697488ec7790f3f7f6139fa7c5b19.json",
+      "sha256": "303770f7d74501d6de0ba8ec2941a5a8fab697488ec7790f3f7f6139fa7c5b19"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/30aef2d90d31e2c17a9d5712f1aa75a5fd834e1711668bb18a8b741aa534cb80.json",
+      "sha256": "30aef2d90d31e2c17a9d5712f1aa75a5fd834e1711668bb18a8b741aa534cb80"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/30eb336f5a12d97ccca929be5cbacfe635aed756167f24cc4d6b53868c514a91.json",
+      "sha256": "30eb336f5a12d97ccca929be5cbacfe635aed756167f24cc4d6b53868c514a91"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3186a4f2e288bc36b6d932dd1e71959653bc66b0094f7bcdae9002953a61999a.json",
+      "sha256": "3186a4f2e288bc36b6d932dd1e71959653bc66b0094f7bcdae9002953a61999a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/31bed05b67a60ba75a552a4b46336e0b0f78945f66bdc33a49d77ea8f5d28d44.json",
+      "sha256": "31bed05b67a60ba75a552a4b46336e0b0f78945f66bdc33a49d77ea8f5d28d44"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/337f39da420df5e0d0e4df6319b2aa7928374237308a67d633cfcea5ff7612a8.json",
+      "sha256": "337f39da420df5e0d0e4df6319b2aa7928374237308a67d633cfcea5ff7612a8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/33ad6dc240f3ee0e94a91d9c45de2509070f17843ac1d60302181cb26cc8c9e7.json",
+      "sha256": "33ad6dc240f3ee0e94a91d9c45de2509070f17843ac1d60302181cb26cc8c9e7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/33ca6697c4ff7c9b519dddb7ffdc809beee4e6c73f5e13d2a57fe15c3c09ddd2.json",
+      "sha256": "33ca6697c4ff7c9b519dddb7ffdc809beee4e6c73f5e13d2a57fe15c3c09ddd2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3532d5c039db04dc4acbd46d1ad8d81dc84904b75111020a8f1220dcfe141258.json",
+      "sha256": "3532d5c039db04dc4acbd46d1ad8d81dc84904b75111020a8f1220dcfe141258"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/36daf6faabd1db741a41e450fce6dbc69c4f52db45cf3b7e378b59ffb3e817c1.json",
+      "sha256": "36daf6faabd1db741a41e450fce6dbc69c4f52db45cf3b7e378b59ffb3e817c1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/374ad787788dc40d7ab55c708812a731a2dfb687ff8a614bf469682b082e5f17.json",
+      "sha256": "374ad787788dc40d7ab55c708812a731a2dfb687ff8a614bf469682b082e5f17"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/376124a3bf5c192367e312c90b5fe9772d6d47b2bd70e7b8713edf700e2092e4.json",
+      "sha256": "376124a3bf5c192367e312c90b5fe9772d6d47b2bd70e7b8713edf700e2092e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3857a153d66d26980e2abe2816469bb4d2a16d3101bb9fbfa19634358db604a7.json",
+      "sha256": "3857a153d66d26980e2abe2816469bb4d2a16d3101bb9fbfa19634358db604a7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/389c9e8ea57bf8532369199f4eb4da9f3fa1616c07b3aac3b708836ad69ac112.json",
+      "sha256": "389c9e8ea57bf8532369199f4eb4da9f3fa1616c07b3aac3b708836ad69ac112"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/38eb16d4e9c54f79f633fb81bfe2f40223a96b6d6652ecc896595d967c93b730.json",
+      "sha256": "38eb16d4e9c54f79f633fb81bfe2f40223a96b6d6652ecc896595d967c93b730"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/38fcd914e6e1311c96441d0a7b7d937d60d470e33432f8f739323f1ade141169.json",
+      "sha256": "38fcd914e6e1311c96441d0a7b7d937d60d470e33432f8f739323f1ade141169"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/397910c555fccf6c62c10ed9a7797651a6e10cadf81751991066112d8fb83f4d.json",
+      "sha256": "397910c555fccf6c62c10ed9a7797651a6e10cadf81751991066112d8fb83f4d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/39cb1ccd3196464a4f2f9c1839a5976289615a8c1d93a1b6a00cdcbbe19689c0.json",
+      "sha256": "39cb1ccd3196464a4f2f9c1839a5976289615a8c1d93a1b6a00cdcbbe19689c0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/39d38e086363a53e516c82584863eaa8d26c45da1399ab491e87ba60141938e4.json",
+      "sha256": "39d38e086363a53e516c82584863eaa8d26c45da1399ab491e87ba60141938e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3a36a6e9f854a6d8fe6ad41c3f99cfe4255410bfbfc7b5a4d755129474365805.json",
+      "sha256": "3a36a6e9f854a6d8fe6ad41c3f99cfe4255410bfbfc7b5a4d755129474365805"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3b4f2131c69f0a1f5d11a1206669d0e33406996addefaf0a2fbe7fc8c754ff51.json",
+      "sha256": "3b4f2131c69f0a1f5d11a1206669d0e33406996addefaf0a2fbe7fc8c754ff51"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3b50ab8ee3aed47cb3c8395e49fec32c03d938003a23814cbf1f315def5ee544.json",
+      "sha256": "3b50ab8ee3aed47cb3c8395e49fec32c03d938003a23814cbf1f315def5ee544"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3ba85f903f5b866df29af48a089d28a3e14f27be7e47d7056e3f02ad82815f8d.json",
+      "sha256": "3ba85f903f5b866df29af48a089d28a3e14f27be7e47d7056e3f02ad82815f8d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3d49deefefb7c4fddddbd69c95deb13e171ed352e0ca3654f07b24558835d67b.json",
+      "sha256": "3d49deefefb7c4fddddbd69c95deb13e171ed352e0ca3654f07b24558835d67b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3e4505b4590a3e11a0b99184a2bac0d888cc350f09becbf1fe587d0a4df39cbb.json",
+      "sha256": "3e4505b4590a3e11a0b99184a2bac0d888cc350f09becbf1fe587d0a4df39cbb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3edbb64c23ddda5dc265da8ede0ed9524fb40bf3ebd3d392b88e39d17259bb50.json",
+      "sha256": "3edbb64c23ddda5dc265da8ede0ed9524fb40bf3ebd3d392b88e39d17259bb50"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3f3f4dd53f9e1c9d413f456eb69a677b1f003f437c1773f079d3b944a9aa4ce7.json",
+      "sha256": "3f3f4dd53f9e1c9d413f456eb69a677b1f003f437c1773f079d3b944a9aa4ce7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3f49c0efd81aab74dba1c6d79cdf68dc5a6c30e76d83a0a5fbc6a5061676911b.json",
+      "sha256": "3f49c0efd81aab74dba1c6d79cdf68dc5a6c30e76d83a0a5fbc6a5061676911b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3f6f1e7204125555fc9ae07664bbd0eb14cca5e91d0c1b0c5314f3ec2f11e38c.json",
+      "sha256": "3f6f1e7204125555fc9ae07664bbd0eb14cca5e91d0c1b0c5314f3ec2f11e38c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/3f8b628ebcf6f2c72e78984439e576798bc6f2d45cdaeecd777be18fd2ccdbf0.json",
+      "sha256": "3f8b628ebcf6f2c72e78984439e576798bc6f2d45cdaeecd777be18fd2ccdbf0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/40730a6b44b79479672df051ca51ac1b56f853a47b3b936e69bdd2bd895c152c.json",
+      "sha256": "40730a6b44b79479672df051ca51ac1b56f853a47b3b936e69bdd2bd895c152c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/40ba8328a39cbc43f1b5ae66bc4c61f1acf5b9fa4c6fdc635755d4b4309b9782.json",
+      "sha256": "40ba8328a39cbc43f1b5ae66bc4c61f1acf5b9fa4c6fdc635755d4b4309b9782"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/40e0c839cf341c79fc29346cb3b7f893bf1d145402bdefbdb34c3d4fcd36baa3.json",
+      "sha256": "40e0c839cf341c79fc29346cb3b7f893bf1d145402bdefbdb34c3d4fcd36baa3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4179f0dbc2dc2878883063f7552198d3bc0cfe4a7d558839e4218096383218e4.json",
+      "sha256": "4179f0dbc2dc2878883063f7552198d3bc0cfe4a7d558839e4218096383218e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4221ad7b64b44c0c4c62f56c3f539bfda50bd2af46eac71df6ac31f6e5617da2.json",
+      "sha256": "4221ad7b64b44c0c4c62f56c3f539bfda50bd2af46eac71df6ac31f6e5617da2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/44ae5e4b93c450c5c38846c10601a48baa5ba85e32991bd5e696070d38975ff1.json",
+      "sha256": "44ae5e4b93c450c5c38846c10601a48baa5ba85e32991bd5e696070d38975ff1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/44c4d787d66d755e52081c53aee96a9a94b9ec95c9d1ff3a715b07b2ce9c846b.json",
+      "sha256": "44c4d787d66d755e52081c53aee96a9a94b9ec95c9d1ff3a715b07b2ce9c846b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4582770f1bd8067126835e7c4483589fbac63bbf024463043073e4db5a4df576.json",
+      "sha256": "4582770f1bd8067126835e7c4483589fbac63bbf024463043073e4db5a4df576"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/45aeb1d383bc75b0ffdcb0d1dbf36ef96fe3631b27cffd546d70755d048241da.json",
+      "sha256": "45aeb1d383bc75b0ffdcb0d1dbf36ef96fe3631b27cffd546d70755d048241da"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/45bea8da2fb85d963222c52c89d663340231d15079ec0aaa123b53de63043401.json",
+      "sha256": "45bea8da2fb85d963222c52c89d663340231d15079ec0aaa123b53de63043401"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4627e2d3b27dc25561ebb980bd703dcc0f6fe501dfe899c08c0e20360b3c7f78.json",
+      "sha256": "4627e2d3b27dc25561ebb980bd703dcc0f6fe501dfe899c08c0e20360b3c7f78"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/46a7137e61db4719c92f18ff2939c6e8818e952a2c30852943ad51d29438e1d6.json",
+      "sha256": "46a7137e61db4719c92f18ff2939c6e8818e952a2c30852943ad51d29438e1d6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/46c6d169ed368865e826c0013044dbb82206c69457bffbb979b24bb89fc40a65.json",
+      "sha256": "46c6d169ed368865e826c0013044dbb82206c69457bffbb979b24bb89fc40a65"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/46d3b3dd9285264248aacfa62b2da329434443e98f26dc0877e9b2581cc49c44.json",
+      "sha256": "46d3b3dd9285264248aacfa62b2da329434443e98f26dc0877e9b2581cc49c44"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4769c1375db81a5609f63b99a7799a6a8e0f2a1fa10c612d2cc4de8202cc147b.json",
+      "sha256": "4769c1375db81a5609f63b99a7799a6a8e0f2a1fa10c612d2cc4de8202cc147b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4788158ecfa9224d54d8b7f32e6aef93fe82b336e129aef33194298a0d233b84.json",
+      "sha256": "4788158ecfa9224d54d8b7f32e6aef93fe82b336e129aef33194298a0d233b84"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/493a16a5386c7c51324323aeb90ab9406f6dbd2caafe40f3a670643a98d18dfc.json",
+      "sha256": "493a16a5386c7c51324323aeb90ab9406f6dbd2caafe40f3a670643a98d18dfc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4ad998de2a50372df87290f945314528cd7c2eec2c91da52be9ea612682df080.json",
+      "sha256": "4ad998de2a50372df87290f945314528cd7c2eec2c91da52be9ea612682df080"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4ae1bcf72e60ffebae69a81bcdf0cd1d30026873ec035dac00d243efd383cb0c.json",
+      "sha256": "4ae1bcf72e60ffebae69a81bcdf0cd1d30026873ec035dac00d243efd383cb0c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4bd6f05c984e2c7fd51f18a2f2c77e2db81d975e43e734c160a9045359f877d2.json",
+      "sha256": "4bd6f05c984e2c7fd51f18a2f2c77e2db81d975e43e734c160a9045359f877d2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4d20b8d32ef3c37acd438c6303ef249214834dfa763385f9270fe91e6d78b455.json",
+      "sha256": "4d20b8d32ef3c37acd438c6303ef249214834dfa763385f9270fe91e6d78b455"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4da0672353dd8393145daa58ae6fcf9a04ccca39e12777c4f4adfcb352ae36e0.json",
+      "sha256": "4da0672353dd8393145daa58ae6fcf9a04ccca39e12777c4f4adfcb352ae36e0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4de921568ccd700e6ddd895bbe26d8a1f93ef482c7e37fad870a5adc898458dc.json",
+      "sha256": "4de921568ccd700e6ddd895bbe26d8a1f93ef482c7e37fad870a5adc898458dc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4e06462621ba5ad19a8c8e3aeb290405563f16115816529f16831549d81ffce7.json",
+      "sha256": "4e06462621ba5ad19a8c8e3aeb290405563f16115816529f16831549d81ffce7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4e59b9b1cabbc7fbfdba123edb528872f1387bfb8aa57d0fc7341be6b0c171b2.json",
+      "sha256": "4e59b9b1cabbc7fbfdba123edb528872f1387bfb8aa57d0fc7341be6b0c171b2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4fc0caace8f3853343d25142a6bb684309b1128f9aca74ec1b46207f5e4abab8.json",
+      "sha256": "4fc0caace8f3853343d25142a6bb684309b1128f9aca74ec1b46207f5e4abab8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4fdb1fe90702078082e32392b16477b41609dd8426b717cd65339592af31708b.json",
+      "sha256": "4fdb1fe90702078082e32392b16477b41609dd8426b717cd65339592af31708b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/4fe719a59e9eed098d17e1e8d55e37dd975ce388194a016d0923be460d4217f3.json",
+      "sha256": "4fe719a59e9eed098d17e1e8d55e37dd975ce388194a016d0923be460d4217f3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/502ff4d625fdd4df23c964c532b5cb43131e51b944e201a563eeb1cad62b16c1.json",
+      "sha256": "502ff4d625fdd4df23c964c532b5cb43131e51b944e201a563eeb1cad62b16c1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/514a0b3855a85094513ab4eef46c6d15923b701e98f3a2103182eb651d71e556.json",
+      "sha256": "514a0b3855a85094513ab4eef46c6d15923b701e98f3a2103182eb651d71e556"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/516c4d0ebfef28e030b8b8d45a3bb3b4c7ce47f8a2babd9ec9c5540407d643d6.json",
+      "sha256": "516c4d0ebfef28e030b8b8d45a3bb3b4c7ce47f8a2babd9ec9c5540407d643d6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/520f5ede2ea969ccfbb11c093ac4c2aefaf2b2bffb6695153a53c68bfaf8ab18.json",
+      "sha256": "520f5ede2ea969ccfbb11c093ac4c2aefaf2b2bffb6695153a53c68bfaf8ab18"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5291df8d9a0cb801953d91ad644d1955851482df5bb5b44701d98c1b3c6d17da.json",
+      "sha256": "5291df8d9a0cb801953d91ad644d1955851482df5bb5b44701d98c1b3c6d17da"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/52bf7243bb1a6a12badd739aff22b7e630468675d3cd69e94f442242427a3743.json",
+      "sha256": "52bf7243bb1a6a12badd739aff22b7e630468675d3cd69e94f442242427a3743"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/52e8a6d43d1616b578d6df38ad0bb2c04208b68bd7c0837b84b43cad105b7646.json",
+      "sha256": "52e8a6d43d1616b578d6df38ad0bb2c04208b68bd7c0837b84b43cad105b7646"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/52f1e7e3a07dcf8974d6ecf83d33359d10b703a45556855d0dd4285814102f4f.json",
+      "sha256": "52f1e7e3a07dcf8974d6ecf83d33359d10b703a45556855d0dd4285814102f4f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/531d8a210c63919f4f436b4c49b709ef8210f47453f3e41014c06e710311977b.json",
+      "sha256": "531d8a210c63919f4f436b4c49b709ef8210f47453f3e41014c06e710311977b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5380d515d37dabc1afbb1f45b47dc208d9a6791aac3f6f12b4f6f5b3c38a67a8.json",
+      "sha256": "5380d515d37dabc1afbb1f45b47dc208d9a6791aac3f6f12b4f6f5b3c38a67a8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/54b85516b1d986b22121cc1a195873135f1adf766aa5462540bbdd250efa1748.json",
+      "sha256": "54b85516b1d986b22121cc1a195873135f1adf766aa5462540bbdd250efa1748"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/54dea023bd64dbf9589a10e94944a66e1b39b62035d15ef4e3054fbb92f8d5cf.json",
+      "sha256": "54dea023bd64dbf9589a10e94944a66e1b39b62035d15ef4e3054fbb92f8d5cf"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/54e03369ce2cce587a104bb6ecb3971fd4a449069ed3db74060455d505827486.json",
+      "sha256": "54e03369ce2cce587a104bb6ecb3971fd4a449069ed3db74060455d505827486"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/56054b5c3781ad414fb505999158b6100ddcfb5576c525a82c9b81eb56deaec9.json",
+      "sha256": "56054b5c3781ad414fb505999158b6100ddcfb5576c525a82c9b81eb56deaec9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/56368005a8cb4b7cc9914cc2a2db1a5af91a279638b44f43957558c2fac90db9.json",
+      "sha256": "56368005a8cb4b7cc9914cc2a2db1a5af91a279638b44f43957558c2fac90db9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5686b3b59bb55a4ae7b9c10d57d75081645ded7a20681ae0c1b730380ebe1902.json",
+      "sha256": "5686b3b59bb55a4ae7b9c10d57d75081645ded7a20681ae0c1b730380ebe1902"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/56c0414dfad868537f648ff08f79818155813882da15d09a99312a0e9511bbf9.json",
+      "sha256": "56c0414dfad868537f648ff08f79818155813882da15d09a99312a0e9511bbf9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/56feddf06e67ad306bdfb4dab86e9c8443078feb21d8b81ae901987a997b3855.json",
+      "sha256": "56feddf06e67ad306bdfb4dab86e9c8443078feb21d8b81ae901987a997b3855"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/57dd7740e7b4d14f486f2148da46ade67f44a5638d9f5d46f46895808eaa902f.json",
+      "sha256": "57dd7740e7b4d14f486f2148da46ade67f44a5638d9f5d46f46895808eaa902f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/57e96ec0567dabd6210ed44dd869e957a4bd81504ca290e3cab586fb4934e858.json",
+      "sha256": "57e96ec0567dabd6210ed44dd869e957a4bd81504ca290e3cab586fb4934e858"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/598ee5e29e1db76b6f822e66dfb34cd728c771cad479da31b09a2e3ed36c9b34.json",
+      "sha256": "598ee5e29e1db76b6f822e66dfb34cd728c771cad479da31b09a2e3ed36c9b34"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/59d6c6e721a9397932d04189ac0a055ceb6ea38f5ad067c9c68769b32812e240.json",
+      "sha256": "59d6c6e721a9397932d04189ac0a055ceb6ea38f5ad067c9c68769b32812e240"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/59e2472236d46174aefe31e2972c268f47a01015761e9e9bac60c1422fe00c9b.json",
+      "sha256": "59e2472236d46174aefe31e2972c268f47a01015761e9e9bac60c1422fe00c9b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5ca96298ff5b4183ae5efc884e6eeb8dec2db5c6e34324d8f8abac1f97348cb3.json",
+      "sha256": "5ca96298ff5b4183ae5efc884e6eeb8dec2db5c6e34324d8f8abac1f97348cb3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5cc1a88baba0f2c222883285ef8b9326e271b1e890acd16bc0d1413642c13861.json",
+      "sha256": "5cc1a88baba0f2c222883285ef8b9326e271b1e890acd16bc0d1413642c13861"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5cf584803c8e6dc96e2b1ccfcfa9a516e0f806eb92fa10b1c0b0d96fce2ca261.json",
+      "sha256": "5cf584803c8e6dc96e2b1ccfcfa9a516e0f806eb92fa10b1c0b0d96fce2ca261"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5d1438bba3c0581c1f8fda24f97740d64853df1fb8837dfb866eb1ecf2436b4c.json",
+      "sha256": "5d1438bba3c0581c1f8fda24f97740d64853df1fb8837dfb866eb1ecf2436b4c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5d2d01dc3592ee22ec33364c828841cb50e683346c0069e717c752fd87dc7ee5.json",
+      "sha256": "5d2d01dc3592ee22ec33364c828841cb50e683346c0069e717c752fd87dc7ee5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5d34f622db1fb4fe37772a07040e7fc76be112ebc13734d6f377588c7388cfff.json",
+      "sha256": "5d34f622db1fb4fe37772a07040e7fc76be112ebc13734d6f377588c7388cfff"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5d51a8a915f9a589b76277b5db232f6f593bf00ffeae3ae35e69b953d41f4b21.json",
+      "sha256": "5d51a8a915f9a589b76277b5db232f6f593bf00ffeae3ae35e69b953d41f4b21"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5da3b07d134ae03e76e0aa02f34d2b1a7b46749c1af9c656b1e2f2dbb1a03a8e.json",
+      "sha256": "5da3b07d134ae03e76e0aa02f34d2b1a7b46749c1af9c656b1e2f2dbb1a03a8e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5e684141c0b5da53b06aee9bab4126c25bd39f7e7480d7fb74507f26a6ff2d44.json",
+      "sha256": "5e684141c0b5da53b06aee9bab4126c25bd39f7e7480d7fb74507f26a6ff2d44"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5f35645c0149ed06576cc41f2f1051c481fe48b849a86f71af5f3444c4605cdb.json",
+      "sha256": "5f35645c0149ed06576cc41f2f1051c481fe48b849a86f71af5f3444c4605cdb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5f7be210bbbce29cca331d5cb36d44ea29ce02def99b01daf7bf2496ef6e3f1e.json",
+      "sha256": "5f7be210bbbce29cca331d5cb36d44ea29ce02def99b01daf7bf2496ef6e3f1e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/5fcc68a2d42cfb6fd0006bddb9b8e37c4be6c34644ec29d4204a70864b6d4a4f.json",
+      "sha256": "5fcc68a2d42cfb6fd0006bddb9b8e37c4be6c34644ec29d4204a70864b6d4a4f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6066c5e904a25e270d12b0f47faef46116a216cf044345f592f3eacf8a714923.json",
+      "sha256": "6066c5e904a25e270d12b0f47faef46116a216cf044345f592f3eacf8a714923"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/60cd485960f0adf14895d03be58306fea17ab940bf73f3608dd736b7d1767c31.json",
+      "sha256": "60cd485960f0adf14895d03be58306fea17ab940bf73f3608dd736b7d1767c31"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/626826238e37e418d5cc59058f4290f6f28df50ce887dff3fd32413bfbb53505.json",
+      "sha256": "626826238e37e418d5cc59058f4290f6f28df50ce887dff3fd32413bfbb53505"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/62ab09a74913b1b802f11c16c023f2cf15e9d8f2b79aed68daeaede10b9923b5.json",
+      "sha256": "62ab09a74913b1b802f11c16c023f2cf15e9d8f2b79aed68daeaede10b9923b5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/62d62905d0ed0da13b72e56a23a358f4a55f5f9ac4daa3eaa7074109caf8e604.json",
+      "sha256": "62d62905d0ed0da13b72e56a23a358f4a55f5f9ac4daa3eaa7074109caf8e604"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6355f800b74b6bf5e6d1830a8092c5d5774efa4f09ff5eae41b17c6f8618374a.json",
+      "sha256": "6355f800b74b6bf5e6d1830a8092c5d5774efa4f09ff5eae41b17c6f8618374a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/641b17ce6ae92a472e868c58072f3acad0c8c27478759e10a5cc903c930cfa2b.json",
+      "sha256": "641b17ce6ae92a472e868c58072f3acad0c8c27478759e10a5cc903c930cfa2b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/64a1998e144d289dd0e11e863cb8b63b2845603c8e89be976a444553b5a0ba1a.json",
+      "sha256": "64a1998e144d289dd0e11e863cb8b63b2845603c8e89be976a444553b5a0ba1a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/64d86f284aa28a14d10510c32aa96ebf20fdb020b70ad4f8b4f2848054e482f3.json",
+      "sha256": "64d86f284aa28a14d10510c32aa96ebf20fdb020b70ad4f8b4f2848054e482f3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/66367473d502a1505a27c128a95c369b19ad5079ad661b4c37472677c9ea22e4.json",
+      "sha256": "66367473d502a1505a27c128a95c369b19ad5079ad661b4c37472677c9ea22e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/66e02039fd4367c898c6808b8ec77e125517d473d4fc2ed80d12674c8d410e7e.json",
+      "sha256": "66e02039fd4367c898c6808b8ec77e125517d473d4fc2ed80d12674c8d410e7e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/683fb07aca35e5f43552b8eb7c2ea6533083fc4423dce01bd4594e99b63068c8.json",
+      "sha256": "683fb07aca35e5f43552b8eb7c2ea6533083fc4423dce01bd4594e99b63068c8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/68f1d018183002baae5daabc78dedb07c46216ebd8ffa30bc17cd5306c271ae7.json",
+      "sha256": "68f1d018183002baae5daabc78dedb07c46216ebd8ffa30bc17cd5306c271ae7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/691b2374b642d76f60327806b4802a11425d061c9c19ea8bc386173c2c8442d0.json",
+      "sha256": "691b2374b642d76f60327806b4802a11425d061c9c19ea8bc386173c2c8442d0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6ab8ee05b6ef252ea1d2108e47bc77410c0b9b207d8d5682758396692643c9bf.json",
+      "sha256": "6ab8ee05b6ef252ea1d2108e47bc77410c0b9b207d8d5682758396692643c9bf"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6b18b5824528c93380e353779894ca3cf1c5e12c442d9457941a64c6d49e5327.json",
+      "sha256": "6b18b5824528c93380e353779894ca3cf1c5e12c442d9457941a64c6d49e5327"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6b5ac34e4c40efc6163010a07ad146d4e025971d39ef69b9997d212b39ad66b7.json",
+      "sha256": "6b5ac34e4c40efc6163010a07ad146d4e025971d39ef69b9997d212b39ad66b7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6b964dff6e78c3c26227e68a870d8098de4861f21f6f957f564a25215fc292d9.json",
+      "sha256": "6b964dff6e78c3c26227e68a870d8098de4861f21f6f957f564a25215fc292d9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6c64e9c5744302f6d1408ccf31063685dc19ce8e9d4e898eedf4ffa1fea31792.json",
+      "sha256": "6c64e9c5744302f6d1408ccf31063685dc19ce8e9d4e898eedf4ffa1fea31792"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6c786805aac7b8a9f1bb5d77ab0cdac466296e959499c73d7ab1f15c8a2e317a.json",
+      "sha256": "6c786805aac7b8a9f1bb5d77ab0cdac466296e959499c73d7ab1f15c8a2e317a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6c81863116680c563208932168d1669a2eaa48f865c758d1cabf7eb25f7595c9.json",
+      "sha256": "6c81863116680c563208932168d1669a2eaa48f865c758d1cabf7eb25f7595c9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6d1c1ea38e241961d5e104ba09018045981fd26e185d697c0547ad1053c06a93.json",
+      "sha256": "6d1c1ea38e241961d5e104ba09018045981fd26e185d697c0547ad1053c06a93"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6e61a29cfa2eba365026a7526bbfe5103b62df8f6af4f48d2131593ffa299d1f.json",
+      "sha256": "6e61a29cfa2eba365026a7526bbfe5103b62df8f6af4f48d2131593ffa299d1f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6f2fce442f358b3dac24fcad7855febb6aad59d88151b2acc7590a0b6ef13753.json",
+      "sha256": "6f2fce442f358b3dac24fcad7855febb6aad59d88151b2acc7590a0b6ef13753"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/6fb0ff975aca9d69c965867dac2c434b5d16d60c570db4469aedaa681bea212e.json",
+      "sha256": "6fb0ff975aca9d69c965867dac2c434b5d16d60c570db4469aedaa681bea212e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/70c57bb00d51bb7303969d422f858f5f31e1f32f90107d0ff6365b1d8c159dc9.json",
+      "sha256": "70c57bb00d51bb7303969d422f858f5f31e1f32f90107d0ff6365b1d8c159dc9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7110740c1f30b0e9f2931e1cdcf6c932e7e6912882d6bbfa7c8b6dad93c36cfc.json",
+      "sha256": "7110740c1f30b0e9f2931e1cdcf6c932e7e6912882d6bbfa7c8b6dad93c36cfc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/71f8273a8570315b56bc5ea2615fa421c0ddc4e24e22d9bb1e5ede4839be81c8.json",
+      "sha256": "71f8273a8570315b56bc5ea2615fa421c0ddc4e24e22d9bb1e5ede4839be81c8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7318e3e21d02d1d1265df8b3964fe33cf76ba1d0f51bc6b0a2ce879259ec80b1.json",
+      "sha256": "7318e3e21d02d1d1265df8b3964fe33cf76ba1d0f51bc6b0a2ce879259ec80b1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/743b23d2b5e7a9f0a5035c006534b458266270c4ae81f0d00b4c7b7c547b5044.json",
+      "sha256": "743b23d2b5e7a9f0a5035c006534b458266270c4ae81f0d00b4c7b7c547b5044"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/746709b752662a040268320d320a7eec3c4d4dd23751fe791c7ee3f3dbcba678.json",
+      "sha256": "746709b752662a040268320d320a7eec3c4d4dd23751fe791c7ee3f3dbcba678"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7485783e57c8473c05d634df3aab9618670c27eabc910d53b19592349ccb1d2f.json",
+      "sha256": "7485783e57c8473c05d634df3aab9618670c27eabc910d53b19592349ccb1d2f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7615d2f26824a52298d17c4de6ec3cfccb7419cb1f1bb82fcac9e2fb4e843cc6.json",
+      "sha256": "7615d2f26824a52298d17c4de6ec3cfccb7419cb1f1bb82fcac9e2fb4e843cc6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7626ae5605fbb6b37190a100f27983272527b92866b7c9ec4952adb3a998e983.json",
+      "sha256": "7626ae5605fbb6b37190a100f27983272527b92866b7c9ec4952adb3a998e983"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/766070fbd64ebd55431a2d808c8bd6fbf24d68adb2a49235f107b0caa3fcbed5.json",
+      "sha256": "766070fbd64ebd55431a2d808c8bd6fbf24d68adb2a49235f107b0caa3fcbed5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/768b3c4b2a5c7481e9585309678c52d01f8548d056fe5449b28219bbebde8a3b.json",
+      "sha256": "768b3c4b2a5c7481e9585309678c52d01f8548d056fe5449b28219bbebde8a3b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/774eed0e60f48bbd0ca55f337c6f7eb4343bfa37af50a26d748f61986d65506b.json",
+      "sha256": "774eed0e60f48bbd0ca55f337c6f7eb4343bfa37af50a26d748f61986d65506b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/77bfe43c4b4b43c60933b72e1e0be04b18133995870d39e575d5799369d3bd15.json",
+      "sha256": "77bfe43c4b4b43c60933b72e1e0be04b18133995870d39e575d5799369d3bd15"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/78837004a4a59f54a8aa848a7c9b85940d67f4ab0cca6f0ce5f0ea511e582e33.json",
+      "sha256": "78837004a4a59f54a8aa848a7c9b85940d67f4ab0cca6f0ce5f0ea511e582e33"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/79876c6bd77ef5a014d6b7c5535b0c8b6f978a1c7a53c204b50ed40f515419f4.json",
+      "sha256": "79876c6bd77ef5a014d6b7c5535b0c8b6f978a1c7a53c204b50ed40f515419f4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/798ea88a8ad3a198437018ce949f5ae95871004782461a7e77565e75ac70215f.json",
+      "sha256": "798ea88a8ad3a198437018ce949f5ae95871004782461a7e77565e75ac70215f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7a0039852d5342da7bedaf845b59bdba7311bb0db874bf2d8a297b2166d39330.json",
+      "sha256": "7a0039852d5342da7bedaf845b59bdba7311bb0db874bf2d8a297b2166d39330"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7b94f6b399d071676ec741e4d81d350ad95fd4cafb1bbdd245e9f7bfe6767b25.json",
+      "sha256": "7b94f6b399d071676ec741e4d81d350ad95fd4cafb1bbdd245e9f7bfe6767b25"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7f956a3154db3a8441a52de513a9a5671833b918215fe5a8f816c6852b33def7.json",
+      "sha256": "7f956a3154db3a8441a52de513a9a5671833b918215fe5a8f816c6852b33def7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7fddc8f7fbb266908ad59141f6d0b4eb2d237138b4fedcf11437bde4019596fe.json",
+      "sha256": "7fddc8f7fbb266908ad59141f6d0b4eb2d237138b4fedcf11437bde4019596fe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/7ff1f90aa09f75e365198c0112dfdf83d46771a9dd6a8032a5e3b895135b7a03.json",
+      "sha256": "7ff1f90aa09f75e365198c0112dfdf83d46771a9dd6a8032a5e3b895135b7a03"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/80307a3396e6a9776cc2212f7486d5c3627e02bfd52fecf93b08d978ec619c78.json",
+      "sha256": "80307a3396e6a9776cc2212f7486d5c3627e02bfd52fecf93b08d978ec619c78"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/804e34a9a961a23363750505bb89ec9f2fc91157be7cda5198ed49edc282ad2c.json",
+      "sha256": "804e34a9a961a23363750505bb89ec9f2fc91157be7cda5198ed49edc282ad2c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/80e4639097a3e69f6688e5ee5337ed7fb562218aa38c26a8418e5879782a11ce.json",
+      "sha256": "80e4639097a3e69f6688e5ee5337ed7fb562218aa38c26a8418e5879782a11ce"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/80e4aaf9cab1cff4d262c6ccd81c1ef5490e860dc77dff94821f4f880eef9e6f.json",
+      "sha256": "80e4aaf9cab1cff4d262c6ccd81c1ef5490e860dc77dff94821f4f880eef9e6f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/83b60b260861593ecb4d94b4b9a748f4f5f87c8f3a953a97e23b38f14841aa08.json",
+      "sha256": "83b60b260861593ecb4d94b4b9a748f4f5f87c8f3a953a97e23b38f14841aa08"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/842c9257b3cd8759cf9401c0a861b5a84788a29651cf3f55d9b82fc30bd8db0b.json",
+      "sha256": "842c9257b3cd8759cf9401c0a861b5a84788a29651cf3f55d9b82fc30bd8db0b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/84334017291e1b61b8dfffea83b9cad5c3225465c8d55acfcce040f5d812defa.json",
+      "sha256": "84334017291e1b61b8dfffea83b9cad5c3225465c8d55acfcce040f5d812defa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/84f30b94103686df1bcf7184d7810fcde9be94deeab22499bb0f087a4c55f2b7.json",
+      "sha256": "84f30b94103686df1bcf7184d7810fcde9be94deeab22499bb0f087a4c55f2b7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/85b4feb6b8fd22b2bee8c2b9165fa6ffd3f52ec1b1a7304ffad8aba5740e2cf7.json",
+      "sha256": "85b4feb6b8fd22b2bee8c2b9165fa6ffd3f52ec1b1a7304ffad8aba5740e2cf7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/882f1cbe1b31faa309a7ca6b1c5df27cf5ba453d6c0e9a5fbaf91a29bf9922fe.json",
+      "sha256": "882f1cbe1b31faa309a7ca6b1c5df27cf5ba453d6c0e9a5fbaf91a29bf9922fe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/887c33cb17c4fba401d9f2c744209f565ddc1c490662da08c0d932ba26527aa4.json",
+      "sha256": "887c33cb17c4fba401d9f2c744209f565ddc1c490662da08c0d932ba26527aa4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/89a4790cd8220b39187225bd9748919d99db8d0c268e98f95243cdb5530feae8.json",
+      "sha256": "89a4790cd8220b39187225bd9748919d99db8d0c268e98f95243cdb5530feae8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/89e9ed59d4a52101b384d44f6d4ca40db96a32f530097efd8c718e694e90296a.json",
+      "sha256": "89e9ed59d4a52101b384d44f6d4ca40db96a32f530097efd8c718e694e90296a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/89ecfa2d8716960606ee46e57ef1640f285dc1e9f7275c3629fb18861c300f64.json",
+      "sha256": "89ecfa2d8716960606ee46e57ef1640f285dc1e9f7275c3629fb18861c300f64"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8a080f53fc6988084b6ec5b0fd297949266df22df78dfd77b16981ff24c39f83.json",
+      "sha256": "8a080f53fc6988084b6ec5b0fd297949266df22df78dfd77b16981ff24c39f83"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8a247661023fdec6b0e8df5a16d6f5aa2324b42b55acf0a0a2ed7d936ccc114c.json",
+      "sha256": "8a247661023fdec6b0e8df5a16d6f5aa2324b42b55acf0a0a2ed7d936ccc114c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8abd62aec93b26cee8385f74b9e650f312fc0d6adc428ec096bf607548ea9524.json",
+      "sha256": "8abd62aec93b26cee8385f74b9e650f312fc0d6adc428ec096bf607548ea9524"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8ac0af5a06fb9285ef60b9cdbf85c280e8b3eb38c3e1b2a1fa111cdc117d35ed.json",
+      "sha256": "8ac0af5a06fb9285ef60b9cdbf85c280e8b3eb38c3e1b2a1fa111cdc117d35ed"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8bb859c64e1cf3da8933ee85e97935d3e2f062106ade1998c18a79217e28dedb.json",
+      "sha256": "8bb859c64e1cf3da8933ee85e97935d3e2f062106ade1998c18a79217e28dedb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8bcb1bf224eb16c11b9f9cdd5e1e1d7aa9dada9b01b2bb6e91a3419539bf0edc.json",
+      "sha256": "8bcb1bf224eb16c11b9f9cdd5e1e1d7aa9dada9b01b2bb6e91a3419539bf0edc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8bfad5e9b3a7ab74de5c72e6e4f4e58acb10b2c490a64a1652cc141d3619f85b.json",
+      "sha256": "8bfad5e9b3a7ab74de5c72e6e4f4e58acb10b2c490a64a1652cc141d3619f85b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8c1b13e1703fc8db7ed5f2d107e80a89fc2ef7c92ec10436e61f703a6d1b1116.json",
+      "sha256": "8c1b13e1703fc8db7ed5f2d107e80a89fc2ef7c92ec10436e61f703a6d1b1116"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8ce8b2cdbb6e7ca3efba1afe7667fb2a3d7d786a36ab2698399c2a4ea76734cb.json",
+      "sha256": "8ce8b2cdbb6e7ca3efba1afe7667fb2a3d7d786a36ab2698399c2a4ea76734cb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8e6748f37fc27ddc834f452ef80924fd82c8e522c76302067dbde45711e8b7aa.json",
+      "sha256": "8e6748f37fc27ddc834f452ef80924fd82c8e522c76302067dbde45711e8b7aa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8e8a6bbe24075300969416057461b551cbd959300dbe30a7d4e1fe7107a55fb0.json",
+      "sha256": "8e8a6bbe24075300969416057461b551cbd959300dbe30a7d4e1fe7107a55fb0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8ed049ba74536882d8f54499d6a5271a77a8aa1e7e3c4ba50dd7a57c7ebd4569.json",
+      "sha256": "8ed049ba74536882d8f54499d6a5271a77a8aa1e7e3c4ba50dd7a57c7ebd4569"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8f21d430de5cceced4af7e2e6581e3e2b2280b9bc78c5972bd7f680166188954.json",
+      "sha256": "8f21d430de5cceced4af7e2e6581e3e2b2280b9bc78c5972bd7f680166188954"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8f7f976883cb9934ee8549d7e18c5c3b91dcce0561ae19651a8590d746940122.json",
+      "sha256": "8f7f976883cb9934ee8549d7e18c5c3b91dcce0561ae19651a8590d746940122"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8ff9446863e0746f35d9cd9fe02a286444388b51a02a5d1407e7a65a91162c4a.json",
+      "sha256": "8ff9446863e0746f35d9cd9fe02a286444388b51a02a5d1407e7a65a91162c4a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/8fff021d2dfba5fa496d2be10a429f61a74638b94a32846baff247e14420909f.json",
+      "sha256": "8fff021d2dfba5fa496d2be10a429f61a74638b94a32846baff247e14420909f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/90496b59782220528016259bbc0bc7f29bd7daa03f93f68b7f114642fb6c400e.json",
+      "sha256": "90496b59782220528016259bbc0bc7f29bd7daa03f93f68b7f114642fb6c400e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/90f1b15f38fff3bab6484c281f289848c7d128d2a4471bdf0e21b2c5e3c7edb0.json",
+      "sha256": "90f1b15f38fff3bab6484c281f289848c7d128d2a4471bdf0e21b2c5e3c7edb0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/91c96810f168dc06a2c9fcad3e95ece2e939d3d81c57ef01f9cec9998b34b84a.json",
+      "sha256": "91c96810f168dc06a2c9fcad3e95ece2e939d3d81c57ef01f9cec9998b34b84a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/92dab5eeae02331e2eda88a155b4e763133898bd675e8ac290594df49fdf1f17.json",
+      "sha256": "92dab5eeae02331e2eda88a155b4e763133898bd675e8ac290594df49fdf1f17"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/936094014a7cb236f1f0ba67491589866aa5174518eb7a5d4d27e04565ff4c39.json",
+      "sha256": "936094014a7cb236f1f0ba67491589866aa5174518eb7a5d4d27e04565ff4c39"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/93784418db0eded23794ef5fe9198d993d3126a2925b60b3e30ada78355807a3.json",
+      "sha256": "93784418db0eded23794ef5fe9198d993d3126a2925b60b3e30ada78355807a3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/938d667ac826c6c7cb3e6a38a57e3856976bb13b9db27d1cb0a103094f57c359.json",
+      "sha256": "938d667ac826c6c7cb3e6a38a57e3856976bb13b9db27d1cb0a103094f57c359"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/93e35d2c279ce7da6bc09e8d1f9fa3920e2d952fc1bb375f12b8b71be8e6ddab.json",
+      "sha256": "93e35d2c279ce7da6bc09e8d1f9fa3920e2d952fc1bb375f12b8b71be8e6ddab"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/98c15d5bd63975516e12c5fa6f121ef5011c1ec502e7b28fe7ea1d22d6261ba1.json",
+      "sha256": "98c15d5bd63975516e12c5fa6f121ef5011c1ec502e7b28fe7ea1d22d6261ba1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/98c36fe2a60ca184963c84c2095b2e2c0728bef60e45dc2ea449d514e21eb78f.json",
+      "sha256": "98c36fe2a60ca184963c84c2095b2e2c0728bef60e45dc2ea449d514e21eb78f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/98fd27b695fffe3ea0684964a35ab4b8e42af067f294c760bfd0745b79b4ddc4.json",
+      "sha256": "98fd27b695fffe3ea0684964a35ab4b8e42af067f294c760bfd0745b79b4ddc4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9947d0147cb30566db3cddd0f41c4401a7bd7a0ebdb628e5a5b92678c46d57e1.json",
+      "sha256": "9947d0147cb30566db3cddd0f41c4401a7bd7a0ebdb628e5a5b92678c46d57e1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/99542d61d523e3d43ed55dc8dca135bb10e9bdf636810c2e43b21fcc6ba58a6b.json",
+      "sha256": "99542d61d523e3d43ed55dc8dca135bb10e9bdf636810c2e43b21fcc6ba58a6b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9992bbb75a8803aa9276ce63bf7a89eb3958c9f265e45ee0d9d21cf068c2bc11.json",
+      "sha256": "9992bbb75a8803aa9276ce63bf7a89eb3958c9f265e45ee0d9d21cf068c2bc11"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/99c2861f3676eaac5e5af21a2f2702bf9221205ad466f74903dc374db54b5c59.json",
+      "sha256": "99c2861f3676eaac5e5af21a2f2702bf9221205ad466f74903dc374db54b5c59"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9a0ae7412b4215da39e17cdeec091e8d21ccbbc0fbc675c643988cc00ba5517a.json",
+      "sha256": "9a0ae7412b4215da39e17cdeec091e8d21ccbbc0fbc675c643988cc00ba5517a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9ab6386029529a9f9ef4e41d6c7eeb5e7b496c94b54e98d8af111216f593b99c.json",
+      "sha256": "9ab6386029529a9f9ef4e41d6c7eeb5e7b496c94b54e98d8af111216f593b99c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9b65d95e2daaea6e2f971a2ed56cc9f347b5ccf12b2c5ffd6d3dbec3708eed93.json",
+      "sha256": "9b65d95e2daaea6e2f971a2ed56cc9f347b5ccf12b2c5ffd6d3dbec3708eed93"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9ba51d45f119d96cd64fd86e6be2c96721164506385bae3106bfc51078d26744.json",
+      "sha256": "9ba51d45f119d96cd64fd86e6be2c96721164506385bae3106bfc51078d26744"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9c2291a6eacc8b6eff239034a91594528941a299a4aff8a8c708eadbab1dd474.json",
+      "sha256": "9c2291a6eacc8b6eff239034a91594528941a299a4aff8a8c708eadbab1dd474"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9cc258aeb6fb3cbed1d8a240bb8a7cc53b5bc96aa5bae0069d925f6dc9dc9498.json",
+      "sha256": "9cc258aeb6fb3cbed1d8a240bb8a7cc53b5bc96aa5bae0069d925f6dc9dc9498"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9d26d1453c4481c465935abbced8a4cd274cfaf7b60529e1fe614fa7f1f5e582.json",
+      "sha256": "9d26d1453c4481c465935abbced8a4cd274cfaf7b60529e1fe614fa7f1f5e582"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9db9ec70c529d1de1239de8051d896d805315d256f2a15a1426363c4ab8897bf.json",
+      "sha256": "9db9ec70c529d1de1239de8051d896d805315d256f2a15a1426363c4ab8897bf"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9e41be59275f51e93e445e5ab3c0880d8d3a949b4b0206f1fbdaeacb4b4a5a24.json",
+      "sha256": "9e41be59275f51e93e445e5ab3c0880d8d3a949b4b0206f1fbdaeacb4b4a5a24"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9e5e4c2b4fc6193e35e98abbbdeef8e65e64bd1f3679e46dd4c7cf97d06b4081.json",
+      "sha256": "9e5e4c2b4fc6193e35e98abbbdeef8e65e64bd1f3679e46dd4c7cf97d06b4081"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9eb18bb14d87deb9d8feec541e90b59b0ef52743529dfa1842c4a96e1f868c53.json",
+      "sha256": "9eb18bb14d87deb9d8feec541e90b59b0ef52743529dfa1842c4a96e1f868c53"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9eb54d3869404deff2c90be41079e1df87b73069922940e05e082f84fc9ee836.json",
+      "sha256": "9eb54d3869404deff2c90be41079e1df87b73069922940e05e082f84fc9ee836"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9ee26a9873e07b7b5b4c086e8442c9dc9b7d930054ffc0d396c5a6a0b62a80a2.json",
+      "sha256": "9ee26a9873e07b7b5b4c086e8442c9dc9b7d930054ffc0d396c5a6a0b62a80a2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9f314925eedbb2d00d80ce1bd84ea57ed99d9a743eef516de1458c192435e88c.json",
+      "sha256": "9f314925eedbb2d00d80ce1bd84ea57ed99d9a743eef516de1458c192435e88c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/9f9099ef8340f3acd2d15490ea200ceee68efadb752c180ed8a9dadca9a0cf5b.json",
+      "sha256": "9f9099ef8340f3acd2d15490ea200ceee68efadb752c180ed8a9dadca9a0cf5b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a03596d228b3724dde31293de92764fa4316641504fda458b607f75efbf23d0d.json",
+      "sha256": "a03596d228b3724dde31293de92764fa4316641504fda458b607f75efbf23d0d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a06639cac766419dcf6fc4104e92412469aa38f1353fb37336bda7b24e196a99.json",
+      "sha256": "a06639cac766419dcf6fc4104e92412469aa38f1353fb37336bda7b24e196a99"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a188113298901e890f90d38bdc9cebc100349da77b281016a61ddbc0c66986ef.json",
+      "sha256": "a188113298901e890f90d38bdc9cebc100349da77b281016a61ddbc0c66986ef"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a190d3df2087558133f23952e937c72e9fbe0624674631d35f459f29307967fe.json",
+      "sha256": "a190d3df2087558133f23952e937c72e9fbe0624674631d35f459f29307967fe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a1e7a79f13e7fbc1d2d9ef0226eb1a080c183cbf18a97d79c33d8b7165094739.json",
+      "sha256": "a1e7a79f13e7fbc1d2d9ef0226eb1a080c183cbf18a97d79c33d8b7165094739"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a1edb233c71c9e3cf22e6d8800c941c5d36728dc3c7f7354e8769afb57a3b604.json",
+      "sha256": "a1edb233c71c9e3cf22e6d8800c941c5d36728dc3c7f7354e8769afb57a3b604"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a24ed2dc4cece39dc3bd8703f2c8f4fc3d18679f8b1d09875690b0348c36f22b.json",
+      "sha256": "a24ed2dc4cece39dc3bd8703f2c8f4fc3d18679f8b1d09875690b0348c36f22b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a3225986e43353664827da9679a37805af84ebe6ad06f80a575b8655c7478fe5.json",
+      "sha256": "a3225986e43353664827da9679a37805af84ebe6ad06f80a575b8655c7478fe5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a36134eb979565fb7a1e40f7c663bf6787d1ffc01883b1758783ced83a42ef69.json",
+      "sha256": "a36134eb979565fb7a1e40f7c663bf6787d1ffc01883b1758783ced83a42ef69"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a43bac652fac1717d30a1011bf873e14f04e7f1fbb43271db40727cf568c3e03.json",
+      "sha256": "a43bac652fac1717d30a1011bf873e14f04e7f1fbb43271db40727cf568c3e03"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a46adf976d0e29b830f78ebd9b7a24412b9a7e77f5c3d2cda78fac362d2bc969.json",
+      "sha256": "a46adf976d0e29b830f78ebd9b7a24412b9a7e77f5c3d2cda78fac362d2bc969"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a513ad4bad025157a0af863a50c69501fa09596044cc2faf6902c342f5f4db1c.json",
+      "sha256": "a513ad4bad025157a0af863a50c69501fa09596044cc2faf6902c342f5f4db1c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a51b291c1a5df975b344cfc248a7e35a512e974a9053e48e25e14308b79857c7.json",
+      "sha256": "a51b291c1a5df975b344cfc248a7e35a512e974a9053e48e25e14308b79857c7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a566102f2bbc30117e4de5aefb906da45c1496384a82e03de16fa32dcd81e0e2.json",
+      "sha256": "a566102f2bbc30117e4de5aefb906da45c1496384a82e03de16fa32dcd81e0e2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a5bd20652fb989f4ca5588727a0abc13d6a70b0571e416ba145a1f430310f848.json",
+      "sha256": "a5bd20652fb989f4ca5588727a0abc13d6a70b0571e416ba145a1f430310f848"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a6f4c0e1dca17aef41f54aa91a8d2f12484e1529b2af33ce8f0f96401f141b84.json",
+      "sha256": "a6f4c0e1dca17aef41f54aa91a8d2f12484e1529b2af33ce8f0f96401f141b84"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a705e1c7d9f58561d280fe756cffd9713e5b38a8b48c6f7112709c17533528ab.json",
+      "sha256": "a705e1c7d9f58561d280fe756cffd9713e5b38a8b48c6f7112709c17533528ab"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a7b9ac28f4ed75f866d0567d3dd1a217e2ac680df366d1d5934b667a2e0218f8.json",
+      "sha256": "a7b9ac28f4ed75f866d0567d3dd1a217e2ac680df366d1d5934b667a2e0218f8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a7e48b31b61b75c32c666af3c42f39ea0a84f0633f23e8b186cb8c0d5908bf7b.json",
+      "sha256": "a7e48b31b61b75c32c666af3c42f39ea0a84f0633f23e8b186cb8c0d5908bf7b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a827532edda6a1bd74de0fe7756bdc3c0570d7911af8670e994d7d9c8800247c.json",
+      "sha256": "a827532edda6a1bd74de0fe7756bdc3c0570d7911af8670e994d7d9c8800247c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a83dc110c18175bef5a2a567dc1fd0f275fd2c3874c1bc57f224633a55361b3f.json",
+      "sha256": "a83dc110c18175bef5a2a567dc1fd0f275fd2c3874c1bc57f224633a55361b3f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a85ebf80c4543d74a79216c3839359391e56e862c097f27df02de7fb93bc17c2.json",
+      "sha256": "a85ebf80c4543d74a79216c3839359391e56e862c097f27df02de7fb93bc17c2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a926c415a2ccf7fa680962fde5883507eb5cbac5cd703c742af4b88595632148.json",
+      "sha256": "a926c415a2ccf7fa680962fde5883507eb5cbac5cd703c742af4b88595632148"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a928978cd6ed1da767bb1cf957434a2fb32809395cf7a24344914a5b44e7ecfe.json",
+      "sha256": "a928978cd6ed1da767bb1cf957434a2fb32809395cf7a24344914a5b44e7ecfe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a9ab57e9975a8e7493681bd7b0e58b5e310de2081030b350a784c8ea3376479d.json",
+      "sha256": "a9ab57e9975a8e7493681bd7b0e58b5e310de2081030b350a784c8ea3376479d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/a9d42f76097caa7796b0b406d7b6439224f1899908d0902474f54aca6792f176.json",
+      "sha256": "a9d42f76097caa7796b0b406d7b6439224f1899908d0902474f54aca6792f176"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ab5da7f7c494f29542d4dd4f4cdc843bf0ad78ce0a8c28cb828e9533c7de0ee9.json",
+      "sha256": "ab5da7f7c494f29542d4dd4f4cdc843bf0ad78ce0a8c28cb828e9533c7de0ee9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ac2edb79de340dfa577881ea85c80a349639628ca72bf1e50faeaf4abb867e55.json",
+      "sha256": "ac2edb79de340dfa577881ea85c80a349639628ca72bf1e50faeaf4abb867e55"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ac53795205301c18763b6b8c15c5a7fcc2abcbfa4018eae1872be950ab3e988d.json",
+      "sha256": "ac53795205301c18763b6b8c15c5a7fcc2abcbfa4018eae1872be950ab3e988d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/aca1c4595da1862ab4167baca0ef005915645c84524e0a5573cf2fe29f8dce08.json",
+      "sha256": "aca1c4595da1862ab4167baca0ef005915645c84524e0a5573cf2fe29f8dce08"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/acefe46ad6cabaec82706e03fac9af842e566924f80453b4449fd75426107e64.json",
+      "sha256": "acefe46ad6cabaec82706e03fac9af842e566924f80453b4449fd75426107e64"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ad2b370fc570c17fd57e635dd6bbf4c95d12583de8eb0fbe5b1999a07188bdd2.json",
+      "sha256": "ad2b370fc570c17fd57e635dd6bbf4c95d12583de8eb0fbe5b1999a07188bdd2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ad97f68f89deb046ab9b19c1183af732b8df51ae4d4a5ebf7fe612617ae5a130.json",
+      "sha256": "ad97f68f89deb046ab9b19c1183af732b8df51ae4d4a5ebf7fe612617ae5a130"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/aeb222f8b48d4623b06224b48178148ab05b4ad422497fff64b847217bc4d7ff.json",
+      "sha256": "aeb222f8b48d4623b06224b48178148ab05b4ad422497fff64b847217bc4d7ff"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/af18e90e36d896093e5975b19733fa73a510d08f5bbe369b5c85d35b539a52c8.json",
+      "sha256": "af18e90e36d896093e5975b19733fa73a510d08f5bbe369b5c85d35b539a52c8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b07419eb60d903eb2d5ec078b342503d3fed488f214ae200265a0bc0f0d3a152.json",
+      "sha256": "b07419eb60d903eb2d5ec078b342503d3fed488f214ae200265a0bc0f0d3a152"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b10a045a8480b2c15162b2ed2bba242698ae98435a0d6fbec86f701083727bb7.json",
+      "sha256": "b10a045a8480b2c15162b2ed2bba242698ae98435a0d6fbec86f701083727bb7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b13063fad378c3df2a78a9d0d5bab87d35c2ec20b73c96419da064fb17adc4ec.json",
+      "sha256": "b13063fad378c3df2a78a9d0d5bab87d35c2ec20b73c96419da064fb17adc4ec"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b14a10d49cfb470f10e51222c405c25dd0ed1c40e080043ee31d3ec612937e88.json",
+      "sha256": "b14a10d49cfb470f10e51222c405c25dd0ed1c40e080043ee31d3ec612937e88"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b1f14fe4388bb68d8046a35c294371e564775735c753ccac87a9a40343f99b81.json",
+      "sha256": "b1f14fe4388bb68d8046a35c294371e564775735c753ccac87a9a40343f99b81"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b226ac5ea15ce75f6d6f1d76c64f554e01cca32f4c62a62659893eead8b4e924.json",
+      "sha256": "b226ac5ea15ce75f6d6f1d76c64f554e01cca32f4c62a62659893eead8b4e924"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b2642e92e75cd0336fc126e935659402611106f0a150dbd6e9f6f7e6c9551422.json",
+      "sha256": "b2642e92e75cd0336fc126e935659402611106f0a150dbd6e9f6f7e6c9551422"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b2903923a2bbccfafbe3b2bbe96937bdec34f283667a82d1055739c5cd815660.json",
+      "sha256": "b2903923a2bbccfafbe3b2bbe96937bdec34f283667a82d1055739c5cd815660"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b2b27cbc181ecaea5d0df32352830881179d36cf6a834c639cce1d11749fe7fc.json",
+      "sha256": "b2b27cbc181ecaea5d0df32352830881179d36cf6a834c639cce1d11749fe7fc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b3a1a9b5a94dc8fb1b95818c3962339489d860495f5d9ad8111518a78fe42c23.json",
+      "sha256": "b3a1a9b5a94dc8fb1b95818c3962339489d860495f5d9ad8111518a78fe42c23"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b3f567ced6db8dce43f57b10f379f344b632641201326dcd42ac7cfd9c12c547.json",
+      "sha256": "b3f567ced6db8dce43f57b10f379f344b632641201326dcd42ac7cfd9c12c547"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b4434785ac069cc21ffb41fc3fa542bb39fc78ae9a7fdbae74454bb66b439b65.json",
+      "sha256": "b4434785ac069cc21ffb41fc3fa542bb39fc78ae9a7fdbae74454bb66b439b65"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b471eff7f9c15f2039d7616dc5ad75e14be784f23b8728c06ab6440165b1eb84.json",
+      "sha256": "b471eff7f9c15f2039d7616dc5ad75e14be784f23b8728c06ab6440165b1eb84"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b47aaa34707f791c389093bcc7adc76642e2105ca59ecca834522dacd1f6d883.json",
+      "sha256": "b47aaa34707f791c389093bcc7adc76642e2105ca59ecca834522dacd1f6d883"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b5eadf1acd2f665751dc6393ef0388086f1601621ed3cc3c9c8b7d4392077921.json",
+      "sha256": "b5eadf1acd2f665751dc6393ef0388086f1601621ed3cc3c9c8b7d4392077921"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b61a7b5d934bc0fde7c1989bf4bd5346eef8ef4e6da96faa34e43868dc1248d0.json",
+      "sha256": "b61a7b5d934bc0fde7c1989bf4bd5346eef8ef4e6da96faa34e43868dc1248d0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b6efd0610bc11244a3f018ad903410c2403aff0e0c922a9ecbbfce090847c3ee.json",
+      "sha256": "b6efd0610bc11244a3f018ad903410c2403aff0e0c922a9ecbbfce090847c3ee"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b7c889e42fcfe78dc2b8dd45f441fcc79f784492924194396c074b6ffe707f96.json",
+      "sha256": "b7c889e42fcfe78dc2b8dd45f441fcc79f784492924194396c074b6ffe707f96"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b819d6e753a3f10d34bfb0a5b02db0f8d2645327c06c4fe10897e2b81145068c.json",
+      "sha256": "b819d6e753a3f10d34bfb0a5b02db0f8d2645327c06c4fe10897e2b81145068c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b85bc41667649333792db3ec040d5f53b52ed82c81e0f80453abfe51a906e32e.json",
+      "sha256": "b85bc41667649333792db3ec040d5f53b52ed82c81e0f80453abfe51a906e32e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b87a884e1c0722d3b6f94d20613c74a2f868a2e1c621c9303d0e791fb53ce419.json",
+      "sha256": "b87a884e1c0722d3b6f94d20613c74a2f868a2e1c621c9303d0e791fb53ce419"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b8aa496d78818a95bd1b778a0744d471bd5c81413685f41df372cea54305e808.json",
+      "sha256": "b8aa496d78818a95bd1b778a0744d471bd5c81413685f41df372cea54305e808"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b9cd722515f163755d15887b61c94d68478d49d9358069a9c52f184330615261.json",
+      "sha256": "b9cd722515f163755d15887b61c94d68478d49d9358069a9c52f184330615261"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b9f89cc74a4e896bed38d316242880f3a1dae20630d20127b9b7552e853e1a96.json",
+      "sha256": "b9f89cc74a4e896bed38d316242880f3a1dae20630d20127b9b7552e853e1a96"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/b9fe8aa90b89b83ad935c67ec7bd15459bca6bb42b2b354a7c9627e27968a17a.json",
+      "sha256": "b9fe8aa90b89b83ad935c67ec7bd15459bca6bb42b2b354a7c9627e27968a17a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bab1ba140f8e2b752fd3cf63daa9e4c8ba6de63917844ba0edb6ea6cb0d34586.json",
+      "sha256": "bab1ba140f8e2b752fd3cf63daa9e4c8ba6de63917844ba0edb6ea6cb0d34586"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bb88c9d6c29e5fb4809208a921f660c73be7e9efedfa8b961eb742ca5c409169.json",
+      "sha256": "bb88c9d6c29e5fb4809208a921f660c73be7e9efedfa8b961eb742ca5c409169"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bbcee28a59456e2e996a91d614cd138b0f2a8e60d3995909de3a999f61d6aedc.json",
+      "sha256": "bbcee28a59456e2e996a91d614cd138b0f2a8e60d3995909de3a999f61d6aedc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bbed1e5a2b66e75bfedc31822715a39863235d2dbf8366d1f4ca8e37727bd058.json",
+      "sha256": "bbed1e5a2b66e75bfedc31822715a39863235d2dbf8366d1f4ca8e37727bd058"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bc65db9d03a58dff2d3cc9a780f74c84cf7eb469ff98a47c94ad8e000c3edb73.json",
+      "sha256": "bc65db9d03a58dff2d3cc9a780f74c84cf7eb469ff98a47c94ad8e000c3edb73"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bc84ef6bb16278cfd6536ba755c3640fa8e9bfdd82b45ea41eefb7d2f21a992d.json",
+      "sha256": "bc84ef6bb16278cfd6536ba755c3640fa8e9bfdd82b45ea41eefb7d2f21a992d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bcd2179061bf1b5e687cc6cf26578f1db30b440ae90ffd12c6ca6e9241ed4c1f.json",
+      "sha256": "bcd2179061bf1b5e687cc6cf26578f1db30b440ae90ffd12c6ca6e9241ed4c1f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bd33e7ca0b63d718ff35164085f8087d1ef1d32fc4669a020648b4c6d7da8b73.json",
+      "sha256": "bd33e7ca0b63d718ff35164085f8087d1ef1d32fc4669a020648b4c6d7da8b73"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/be007efa19ec0677ac5c6b956773f93c1931dcaa340e0a2fef080f6423f1c9b0.json",
+      "sha256": "be007efa19ec0677ac5c6b956773f93c1931dcaa340e0a2fef080f6423f1c9b0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/be07128cc1e1f445d024675c833ddbe418c7a1f77524c2bad3ff9c0e206c616c.json",
+      "sha256": "be07128cc1e1f445d024675c833ddbe418c7a1f77524c2bad3ff9c0e206c616c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/be125dddecf017f4fd7f2b3ab8f2e850ac3d7276ab9eb10013a643fc06937feb.json",
+      "sha256": "be125dddecf017f4fd7f2b3ab8f2e850ac3d7276ab9eb10013a643fc06937feb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bf0cf5943511a9c67ad9d2d6d867444af7581a59cca3355874f2dcf4e47f4ad4.json",
+      "sha256": "bf0cf5943511a9c67ad9d2d6d867444af7581a59cca3355874f2dcf4e47f4ad4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bf8cfdfd45adef757f6c3f656354a5ec6eec1a8e9447a24ee65a05f542031c14.json",
+      "sha256": "bf8cfdfd45adef757f6c3f656354a5ec6eec1a8e9447a24ee65a05f542031c14"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bfa5fccc5650abf7380a02658abd606ccc13cd207c9a995cd11a6d97ddbb3969.json",
+      "sha256": "bfa5fccc5650abf7380a02658abd606ccc13cd207c9a995cd11a6d97ddbb3969"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/bfd1e0ba07be3d24d4b84bcbfa49f2bf3fa856f4a01dc33a776403d5f233b2f0.json",
+      "sha256": "bfd1e0ba07be3d24d4b84bcbfa49f2bf3fa856f4a01dc33a776403d5f233b2f0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c07c7c90dcde0016da859a5dd8c1c1f78c4c2c905091d4815907cb77dd8fcf6d.json",
+      "sha256": "c07c7c90dcde0016da859a5dd8c1c1f78c4c2c905091d4815907cb77dd8fcf6d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c0dc84cc8af88718ca0f8d0fa54ee6fd951507f507944e8fce72a84c3dde1c0a.json",
+      "sha256": "c0dc84cc8af88718ca0f8d0fa54ee6fd951507f507944e8fce72a84c3dde1c0a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c0e1f0ef32a8c3316ef00df8e12313a38fbb6ae2f78bc321073bd05963a21231.json",
+      "sha256": "c0e1f0ef32a8c3316ef00df8e12313a38fbb6ae2f78bc321073bd05963a21231"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c0ef6896058b9e8270365a0c6fa8a3f0c639e080576dfefaaafdec178acb037a.json",
+      "sha256": "c0ef6896058b9e8270365a0c6fa8a3f0c639e080576dfefaaafdec178acb037a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c0f4c39ec0a9d1cc7cb7c6d2123938131ffcfd145d3fd7d7e3a745fa5a67fcb0.json",
+      "sha256": "c0f4c39ec0a9d1cc7cb7c6d2123938131ffcfd145d3fd7d7e3a745fa5a67fcb0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c1f7ad9e10717beca67a1ca6f367056f458692b4c7d8869180988a7a317950af.json",
+      "sha256": "c1f7ad9e10717beca67a1ca6f367056f458692b4c7d8869180988a7a317950af"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c2c0c8fd7b11e66c4b4b719130c88672a5d1c8ebad4412f060b1acfa291cedae.json",
+      "sha256": "c2c0c8fd7b11e66c4b4b719130c88672a5d1c8ebad4412f060b1acfa291cedae"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c37776e010d1fb9a1c0121a2e7c4b0c2e21955babbaa3fc4d6baa7a417e65782.json",
+      "sha256": "c37776e010d1fb9a1c0121a2e7c4b0c2e21955babbaa3fc4d6baa7a417e65782"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c39d02a2dde3f8abdba11ddae8e6443ecc865d14f8fcdf53511f8ded638d5856.json",
+      "sha256": "c39d02a2dde3f8abdba11ddae8e6443ecc865d14f8fcdf53511f8ded638d5856"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c3afef90f91ebbe141e963ba42fdc235fbb24bde5d72292b242ebc6c5f725227.json",
+      "sha256": "c3afef90f91ebbe141e963ba42fdc235fbb24bde5d72292b242ebc6c5f725227"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c4a443a2a96c33718f869d68b19d2416796049f986ec68480673c73724ca2399.json",
+      "sha256": "c4a443a2a96c33718f869d68b19d2416796049f986ec68480673c73724ca2399"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c4cd0b1184319e23c22e648f781e098020da71338b5a03718773762bf81bbf41.json",
+      "sha256": "c4cd0b1184319e23c22e648f781e098020da71338b5a03718773762bf81bbf41"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c4fc55dce479bbff760fc0cea1cb9229210f3175e61e1359f56a997597b8db76.json",
+      "sha256": "c4fc55dce479bbff760fc0cea1cb9229210f3175e61e1359f56a997597b8db76"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c53a45cbe663fcd820ed885678047a5eb7dcc34d42fb64aaabac9258799d87ff.json",
+      "sha256": "c53a45cbe663fcd820ed885678047a5eb7dcc34d42fb64aaabac9258799d87ff"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c54a12342a6da69f441b0785e4a64ce1acdcede6cc26b7632a140a3a979f798c.json",
+      "sha256": "c54a12342a6da69f441b0785e4a64ce1acdcede6cc26b7632a140a3a979f798c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c59ed252b9c06c78d261f7d48ffd843ea22516f5d3248e901323f033e0811e51.json",
+      "sha256": "c59ed252b9c06c78d261f7d48ffd843ea22516f5d3248e901323f033e0811e51"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c5b66671fd31c06fc9d2ba5854e2a2fb0d219b667209e5a95bdeeacf291d7a45.json",
+      "sha256": "c5b66671fd31c06fc9d2ba5854e2a2fb0d219b667209e5a95bdeeacf291d7a45"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c5d6af9c91187eae3ddb4f734c0ddcda4f64a739021d1aa5f3e203bd6d0271c3.json",
+      "sha256": "c5d6af9c91187eae3ddb4f734c0ddcda4f64a739021d1aa5f3e203bd6d0271c3"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c65e2bd1897741a0ff7329486ea8e41b7c7ddb61fe2e94241e742834079cb00d.json",
+      "sha256": "c65e2bd1897741a0ff7329486ea8e41b7c7ddb61fe2e94241e742834079cb00d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c68904a3625357cb8d8ac6434a778afb9a4ac3e44ffcc0a8a4152896f3ea6589.json",
+      "sha256": "c68904a3625357cb8d8ac6434a778afb9a4ac3e44ffcc0a8a4152896f3ea6589"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c797b006b472d43f03b2794d443e96b489c9ef7e5571532beb25ea9fe1992ce4.json",
+      "sha256": "c797b006b472d43f03b2794d443e96b489c9ef7e5571532beb25ea9fe1992ce4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c7ad63b2780d10bb7b5809a3c7319641ecdadff5e94e4b596db06d9e2ed914d2.json",
+      "sha256": "c7ad63b2780d10bb7b5809a3c7319641ecdadff5e94e4b596db06d9e2ed914d2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c89cb890d65563102afb8b1e8df941de64bbfe5ec4c4281ab868aae2d4543015.json",
+      "sha256": "c89cb890d65563102afb8b1e8df941de64bbfe5ec4c4281ab868aae2d4543015"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/c967a7d3c0f114c5df85bdbe5397148bd4f49da4ac43cbdc7a04475c1e88d3f1.json",
+      "sha256": "c967a7d3c0f114c5df85bdbe5397148bd4f49da4ac43cbdc7a04475c1e88d3f1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ca2a7884d96fb64a080e0744497f41b76cf457ad56ac7f456b53fe17446078bd.json",
+      "sha256": "ca2a7884d96fb64a080e0744497f41b76cf457ad56ac7f456b53fe17446078bd"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ca2b7cae3aa2f430dcc1b5e4d7a6e002bbc0526dd75938d3b44f7845f7962b62.json",
+      "sha256": "ca2b7cae3aa2f430dcc1b5e4d7a6e002bbc0526dd75938d3b44f7845f7962b62"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ca4094b46b81da246b0fdf94177d96701db2c7c6da2f0c28ab800f69e93de437.json",
+      "sha256": "ca4094b46b81da246b0fdf94177d96701db2c7c6da2f0c28ab800f69e93de437"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ca4cfc7c8d9d7a963e10c2f8dbf3f463a492ec67c48ab6b7d0b0c250b0ddb1cf.json",
+      "sha256": "ca4cfc7c8d9d7a963e10c2f8dbf3f463a492ec67c48ab6b7d0b0c250b0ddb1cf"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ca5d3255f76c978ae41e1c9085275e2ce9f36f852bd14deeeafdda7bb10291b9.json",
+      "sha256": "ca5d3255f76c978ae41e1c9085275e2ce9f36f852bd14deeeafdda7bb10291b9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/caf6d56fda412863acf412ac281cd62801d48aeff99ba64842d06ab0464dfc1d.json",
+      "sha256": "caf6d56fda412863acf412ac281cd62801d48aeff99ba64842d06ab0464dfc1d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/cbb3e59d5c1c004383b6fc4b952093f0ea8ecc111b6dca0494300146b2312f52.json",
+      "sha256": "cbb3e59d5c1c004383b6fc4b952093f0ea8ecc111b6dca0494300146b2312f52"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/cbb8e5a6c6db2e59cf78155ca686f3cd867268bfb4f983fd4f7351594b5af54b.json",
+      "sha256": "cbb8e5a6c6db2e59cf78155ca686f3cd867268bfb4f983fd4f7351594b5af54b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ccee4bed2002ea9eadfe3f156f49e3bda5ecf0dee198f5790987cf28ed6b90e8.json",
+      "sha256": "ccee4bed2002ea9eadfe3f156f49e3bda5ecf0dee198f5790987cf28ed6b90e8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/cd26c0d9ca05201d88fc0053df3a44d49619fcc2e59dc125272e90d0658907aa.json",
+      "sha256": "cd26c0d9ca05201d88fc0053df3a44d49619fcc2e59dc125272e90d0658907aa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/cdf08609d9de713125d232bf65104847d4884d956ecf9d78ab858d272eac2f17.json",
+      "sha256": "cdf08609d9de713125d232bf65104847d4884d956ecf9d78ab858d272eac2f17"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ce25f6a6e74a433ef9431721bf2d09c1f2b347b33cc99ba38b0c4532699e771a.json",
+      "sha256": "ce25f6a6e74a433ef9431721bf2d09c1f2b347b33cc99ba38b0c4532699e771a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/cf16ab99515807bb7fd83343fec2dd591c9635140c422c5c68a329b28bd000fa.json",
+      "sha256": "cf16ab99515807bb7fd83343fec2dd591c9635140c422c5c68a329b28bd000fa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/cf9519681b6159ae3e58f4e08e6c1b31fc4033ad23ee6fe741f30f94abcab006.json",
+      "sha256": "cf9519681b6159ae3e58f4e08e6c1b31fc4033ad23ee6fe741f30f94abcab006"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d0033d33528995e76f9e85cb24b67469f5bc88d011e8553bba3791679ed27fb2.json",
+      "sha256": "d0033d33528995e76f9e85cb24b67469f5bc88d011e8553bba3791679ed27fb2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d0475347fc2d5649add91f90cec5acb25b11f5b977341bdfdfcda334e6d13df6.json",
+      "sha256": "d0475347fc2d5649add91f90cec5acb25b11f5b977341bdfdfcda334e6d13df6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d1138dfbd8a5f6eab7b62e56ddbca31ee4df5370b76dfc91622519dc0d00648a.json",
+      "sha256": "d1138dfbd8a5f6eab7b62e56ddbca31ee4df5370b76dfc91622519dc0d00648a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d2490ad1367c27bbfddf8c659f89faf0bc8a16b84c6864fa957811ed4a4a293f.json",
+      "sha256": "d2490ad1367c27bbfddf8c659f89faf0bc8a16b84c6864fa957811ed4a4a293f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d25364d9a4d614c13421dd8d841351224b4b82615821c53e7c19c207f5675074.json",
+      "sha256": "d25364d9a4d614c13421dd8d841351224b4b82615821c53e7c19c207f5675074"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d2dc8902bd7e3c396897aa96f3e5f1551e93a163b7ebdf085af1097d414cf624.json",
+      "sha256": "d2dc8902bd7e3c396897aa96f3e5f1551e93a163b7ebdf085af1097d414cf624"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d464d5a0312626985d76763e170fbb6c94eb93127bafaa01156196ca29bf4779.json",
+      "sha256": "d464d5a0312626985d76763e170fbb6c94eb93127bafaa01156196ca29bf4779"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d505ea064a02c7b25bc97854e3fe4ed2a4428c54ab8e2d1422526806818c2d32.json",
+      "sha256": "d505ea064a02c7b25bc97854e3fe4ed2a4428c54ab8e2d1422526806818c2d32"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d54e4a0ed901ad46585200aa6430876d8d62c978f5c561acec22c834427d2a99.json",
+      "sha256": "d54e4a0ed901ad46585200aa6430876d8d62c978f5c561acec22c834427d2a99"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d65a402c66cc6263972ae52d6f78df31ce99a9f63c738c379bf256810e1bd58c.json",
+      "sha256": "d65a402c66cc6263972ae52d6f78df31ce99a9f63c738c379bf256810e1bd58c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d7203c369eb431f3853493b4b21b00ed73ecfbd67c247dcd2d191ca63bf5cb40.json",
+      "sha256": "d7203c369eb431f3853493b4b21b00ed73ecfbd67c247dcd2d191ca63bf5cb40"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d7659f86cebe9046f8a68a25965e592c8277fc13d5694329acae1f4328fad29c.json",
+      "sha256": "d7659f86cebe9046f8a68a25965e592c8277fc13d5694329acae1f4328fad29c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d88a51244feef150da01beda69f3167a1be50097d06fde0778a1566fa5cf84d5.json",
+      "sha256": "d88a51244feef150da01beda69f3167a1be50097d06fde0778a1566fa5cf84d5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d8f082b9378e76b1375189341e1ba0a021a6e4d2b312110bffd6f4604313fa5f.json",
+      "sha256": "d8f082b9378e76b1375189341e1ba0a021a6e4d2b312110bffd6f4604313fa5f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d90ee30330038b539d1cb334883ca3aa39c5467f0ed24b1e9d6e509e4fd4b2f2.json",
+      "sha256": "d90ee30330038b539d1cb334883ca3aa39c5467f0ed24b1e9d6e509e4fd4b2f2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d93744f6a5919af250ab27a4af9c0f22ba02abc015f4c2bf4cda54fa8fc4e67d.json",
+      "sha256": "d93744f6a5919af250ab27a4af9c0f22ba02abc015f4c2bf4cda54fa8fc4e67d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d94a915f5a488b54b3f64eb1ff16ceb85210eec37defa9fdc2b798b52109c6ee.json",
+      "sha256": "d94a915f5a488b54b3f64eb1ff16ceb85210eec37defa9fdc2b798b52109c6ee"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d998b4a0df9ed2b93b8958eb35c2b49070da45f9e1695a83e1fae916187db8c5.json",
+      "sha256": "d998b4a0df9ed2b93b8958eb35c2b49070da45f9e1695a83e1fae916187db8c5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d9db2a6dbac2f29f2d39638371c271f53443c473fccb820a6c0eb06ebe4d8d9d.json",
+      "sha256": "d9db2a6dbac2f29f2d39638371c271f53443c473fccb820a6c0eb06ebe4d8d9d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d9e0cf13579ab3a492c8322f5cb8b141a41466ad28b9d40da2d0d4c963bd4e0f.json",
+      "sha256": "d9e0cf13579ab3a492c8322f5cb8b141a41466ad28b9d40da2d0d4c963bd4e0f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/d9fbf79a11374df507f3bd4079dd18c8eabced3f0d728943f8bb4e49f9d5b41b.json",
+      "sha256": "d9fbf79a11374df507f3bd4079dd18c8eabced3f0d728943f8bb4e49f9d5b41b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/da06a0fef91fbd969041b60a5f94829ad4988b1d4c8845b4d5f46e01b55802fa.json",
+      "sha256": "da06a0fef91fbd969041b60a5f94829ad4988b1d4c8845b4d5f46e01b55802fa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/da44579486767ff2186112ecdd3768fa39641944d9ea9f9822869f20826cebdf.json",
+      "sha256": "da44579486767ff2186112ecdd3768fa39641944d9ea9f9822869f20826cebdf"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/da567696df418a8b7ed033c820f169726d72029a3e1739331ea3561c725943ed.json",
+      "sha256": "da567696df418a8b7ed033c820f169726d72029a3e1739331ea3561c725943ed"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/da898a755d176168465845f52a5a3af9cefdfdfed21a028030c4fe86955d24b1.json",
+      "sha256": "da898a755d176168465845f52a5a3af9cefdfdfed21a028030c4fe86955d24b1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/da903526b5e3975d23a5c0e3a8c4ec446238adb38eadbe9faee57f513e409cd9.json",
+      "sha256": "da903526b5e3975d23a5c0e3a8c4ec446238adb38eadbe9faee57f513e409cd9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/dd0fc06d3fd5d46cbb03167c8d37d41cdc69d3b5c5ec965d77cc6a2819ed470f.json",
+      "sha256": "dd0fc06d3fd5d46cbb03167c8d37d41cdc69d3b5c5ec965d77cc6a2819ed470f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/dd30b15dfa2a2c126bfc34606bad77a8dd2815a1d97cfbfd8f162d9ac84e6507.json",
+      "sha256": "dd30b15dfa2a2c126bfc34606bad77a8dd2815a1d97cfbfd8f162d9ac84e6507"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/dd87a657c011cb321af6a863e42d54bbde68729f75b4bb80510aefb7c8b9e734.json",
+      "sha256": "dd87a657c011cb321af6a863e42d54bbde68729f75b4bb80510aefb7c8b9e734"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ddb63c40736e65badacf27c9dc56be450543848adf84887c6c092ab35fd5ea11.json",
+      "sha256": "ddb63c40736e65badacf27c9dc56be450543848adf84887c6c092ab35fd5ea11"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ddee76ac5eb9ec29e4e94258fd4fee284c495aa4bcd13723683f029b7dcd71d8.json",
+      "sha256": "ddee76ac5eb9ec29e4e94258fd4fee284c495aa4bcd13723683f029b7dcd71d8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/df55dae478683394efba99b8ef3f5f4a3024c0333d5ac45764c0989aee6500e4.json",
+      "sha256": "df55dae478683394efba99b8ef3f5f4a3024c0333d5ac45764c0989aee6500e4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/df5f10f6d0350f836fa6513d3e7d3ad3a2e749cef3656d5a662862c70bf53392.json",
+      "sha256": "df5f10f6d0350f836fa6513d3e7d3ad3a2e749cef3656d5a662862c70bf53392"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e07e3c0d68b60e316b42db7f6cf915411cb39414c6943133ccaab262b7473489.json",
+      "sha256": "e07e3c0d68b60e316b42db7f6cf915411cb39414c6943133ccaab262b7473489"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e0b7be4ee6e6bcf03f4076efa4be5fd7aa73943fcdd00e46d6e8bdeed12721b1.json",
+      "sha256": "e0b7be4ee6e6bcf03f4076efa4be5fd7aa73943fcdd00e46d6e8bdeed12721b1"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e17f3b1083a5e3f5abd2f64a4bc32268eec1fa2a44f2d823612873c81a8758ba.json",
+      "sha256": "e17f3b1083a5e3f5abd2f64a4bc32268eec1fa2a44f2d823612873c81a8758ba"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e1d690969a590bc5131e449c05e96bc4d46137f68cfa311261ec9ca2fee40e39.json",
+      "sha256": "e1d690969a590bc5131e449c05e96bc4d46137f68cfa311261ec9ca2fee40e39"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e1f655f6e306f7027bcf5335268c2d9562d5487df26de7bb5e4ed7c237f868c7.json",
+      "sha256": "e1f655f6e306f7027bcf5335268c2d9562d5487df26de7bb5e4ed7c237f868c7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e2af6cfaec489488094e6a92b1982040da407b9fbd2fdc91e540f32735c30abb.json",
+      "sha256": "e2af6cfaec489488094e6a92b1982040da407b9fbd2fdc91e540f32735c30abb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e3114d453bbc755072048b099305c994c1e04561db7fa1021b23e707ae2ccdd6.json",
+      "sha256": "e3114d453bbc755072048b099305c994c1e04561db7fa1021b23e707ae2ccdd6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e33adbe338d29e81d67795d631b169e971a7777bf6b49872a9a4819117506476.json",
+      "sha256": "e33adbe338d29e81d67795d631b169e971a7777bf6b49872a9a4819117506476"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e3c6821039f933429d97192c2df25d5cf191050a8a106b9c7a5787e824a1ef12.json",
+      "sha256": "e3c6821039f933429d97192c2df25d5cf191050a8a106b9c7a5787e824a1ef12"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e4383101054e9dc846d000e1d2b17c7e8815008c392d20189c18976044ce348c.json",
+      "sha256": "e4383101054e9dc846d000e1d2b17c7e8815008c392d20189c18976044ce348c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e50b11cbdbf520cbb97827bfe473164055a829669f5edcfb7c72272833b8b298.json",
+      "sha256": "e50b11cbdbf520cbb97827bfe473164055a829669f5edcfb7c72272833b8b298"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e50bc79e170384da6aea3baa452682215933ff4dc7758f5e465a709deb809381.json",
+      "sha256": "e50bc79e170384da6aea3baa452682215933ff4dc7758f5e465a709deb809381"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e51d13069e35b0d8a6c7856be1e96651918fae7e4358de0c01bde2bb826b4510.json",
+      "sha256": "e51d13069e35b0d8a6c7856be1e96651918fae7e4358de0c01bde2bb826b4510"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e5f6a2d38ddd3b154ce97b7cac24161a3a03f2ec28295c31fec649d08b02d287.json",
+      "sha256": "e5f6a2d38ddd3b154ce97b7cac24161a3a03f2ec28295c31fec649d08b02d287"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e601a7d415d2dc18a2e874f5f4578b0f4039079c089e76b35d187a6181668012.json",
+      "sha256": "e601a7d415d2dc18a2e874f5f4578b0f4039079c089e76b35d187a6181668012"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e60dee3ab9e640a3e403cc4391957ce47c1e09c9ad9ae1d6bdd3796fc595fa95.json",
+      "sha256": "e60dee3ab9e640a3e403cc4391957ce47c1e09c9ad9ae1d6bdd3796fc595fa95"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e6336a0ea55c6ffdc537fec6a4f46565ca5d6e7f6644f546b15664de04f68242.json",
+      "sha256": "e6336a0ea55c6ffdc537fec6a4f46565ca5d6e7f6644f546b15664de04f68242"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e6a1ece5c330a7cc07f707daee0d03657dfecc6cd57823bc632337c49bbc1527.json",
+      "sha256": "e6a1ece5c330a7cc07f707daee0d03657dfecc6cd57823bc632337c49bbc1527"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e6ac08b07171a5403738b6bef7ea5710187c4d3894274da8f67fdc5d9dd08931.json",
+      "sha256": "e6ac08b07171a5403738b6bef7ea5710187c4d3894274da8f67fdc5d9dd08931"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e7019bf602aecb410b1184e97f57364bc4c3d22709de4f4831e7e01d1a7abb8e.json",
+      "sha256": "e7019bf602aecb410b1184e97f57364bc4c3d22709de4f4831e7e01d1a7abb8e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e7a98e1bd039b75d62429f951a159b3ff890641773ed342cb5a146690e508d74.json",
+      "sha256": "e7a98e1bd039b75d62429f951a159b3ff890641773ed342cb5a146690e508d74"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e83f665c0e7d4bcf36232c6f4c1b753769088080fc7bdbc4f4858319382d0e20.json",
+      "sha256": "e83f665c0e7d4bcf36232c6f4c1b753769088080fc7bdbc4f4858319382d0e20"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e8fd43cc3370609da45ab27c583eaee070b4d656071d9b5a4f577d5a40224481.json",
+      "sha256": "e8fd43cc3370609da45ab27c583eaee070b4d656071d9b5a4f577d5a40224481"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e965e70e2cf61bf28f4188c28267bbdb1ea080386530e66058f1ed1659b40f47.json",
+      "sha256": "e965e70e2cf61bf28f4188c28267bbdb1ea080386530e66058f1ed1659b40f47"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e966b519ebdd2084681bec15cb82331296d352f59c04a6404e9aa16800bbbeb4.json",
+      "sha256": "e966b519ebdd2084681bec15cb82331296d352f59c04a6404e9aa16800bbbeb4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e971e4ec06d8a21f288346c5c22f42979350343318ea0ac078f9af60ac31d397.json",
+      "sha256": "e971e4ec06d8a21f288346c5c22f42979350343318ea0ac078f9af60ac31d397"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e9b4542432d903d43c1b69c80bc87ba3ca3b984d0aac3135f4d36d8a479ffe25.json",
+      "sha256": "e9b4542432d903d43c1b69c80bc87ba3ca3b984d0aac3135f4d36d8a479ffe25"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/e9ffc4d8aeac04bc0b249270548a47842222d12726366b611776bef046d8eb04.json",
+      "sha256": "e9ffc4d8aeac04bc0b249270548a47842222d12726366b611776bef046d8eb04"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ea4ff49c7acfea9134c6e00d0dfd4cb088c21581dc8004de35dd82c0ab6a24dc.json",
+      "sha256": "ea4ff49c7acfea9134c6e00d0dfd4cb088c21581dc8004de35dd82c0ab6a24dc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ec2f75651d2e55d25a6fff57a1e3587b2f30a068b57cfd78a843a7a37dabd8ed.json",
+      "sha256": "ec2f75651d2e55d25a6fff57a1e3587b2f30a068b57cfd78a843a7a37dabd8ed"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ec37954c22aa9201f164989ae62a783b11bef1fc38c149bf08ef3512040bc19c.json",
+      "sha256": "ec37954c22aa9201f164989ae62a783b11bef1fc38c149bf08ef3512040bc19c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ec5eeabad75e9460af7e732d9ddaae3bddfb48eaed63fc6c9a5506efecd63776.json",
+      "sha256": "ec5eeabad75e9460af7e732d9ddaae3bddfb48eaed63fc6c9a5506efecd63776"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ecec6758da8193d6998b56c39399ae5d5aca1f8e4a465239ac048f53da07ac0b.json",
+      "sha256": "ecec6758da8193d6998b56c39399ae5d5aca1f8e4a465239ac048f53da07ac0b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ed222256fdbd25b289874842a80f7a128dec195e7443851284f80cdaf912498c.json",
+      "sha256": "ed222256fdbd25b289874842a80f7a128dec195e7443851284f80cdaf912498c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/edfa71b3aec7f8a2cfe3e1e864a930591d8cc45410e36909b82fc35160bcb0d0.json",
+      "sha256": "edfa71b3aec7f8a2cfe3e1e864a930591d8cc45410e36909b82fc35160bcb0d0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/ee34de8ea9d5026acecd1d8d1cd6b2c1d6356722160e2d04cb8e5148c7359adb.json",
+      "sha256": "ee34de8ea9d5026acecd1d8d1cd6b2c1d6356722160e2d04cb8e5148c7359adb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/efae7f1ddc3b922b7fc54e838915d45dfc036987dfea6baeab5b2ea5ab6eb703.json",
+      "sha256": "efae7f1ddc3b922b7fc54e838915d45dfc036987dfea6baeab5b2ea5ab6eb703"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f111fccd1fb9eac235921cf3c50bb54368cc1bf6740c452231e7925b1dc40d8e.json",
+      "sha256": "f111fccd1fb9eac235921cf3c50bb54368cc1bf6740c452231e7925b1dc40d8e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f126f632e8556ab4d5944d6c7371e4b6c118cb78eb867833c13c8ff991c2c767.json",
+      "sha256": "f126f632e8556ab4d5944d6c7371e4b6c118cb78eb867833c13c8ff991c2c767"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f1bbe9860dda1a0b14d5be35cfff6e087c3aa69e1c2c82ee2b6c31d116093048.json",
+      "sha256": "f1bbe9860dda1a0b14d5be35cfff6e087c3aa69e1c2c82ee2b6c31d116093048"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f215eb720b7a42c4e07dcfd5c066757116c5ca8465e4ab47b6e36dbedcbd38a0.json",
+      "sha256": "f215eb720b7a42c4e07dcfd5c066757116c5ca8465e4ab47b6e36dbedcbd38a0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f240bb580d5f73e988e6bff7876ca9d5a5ae9b95e047f1b4160de23ca3d594d4.json",
+      "sha256": "f240bb580d5f73e988e6bff7876ca9d5a5ae9b95e047f1b4160de23ca3d594d4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f2ea2b77ed4947cb8887230f8e186e9cee004b91dfab101a5ae1ae907073467e.json",
+      "sha256": "f2ea2b77ed4947cb8887230f8e186e9cee004b91dfab101a5ae1ae907073467e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f37ceb4a901dc39ae7cff01ee8c0b3d043f6ef25abbf11783e0857ccad2aa796.json",
+      "sha256": "f37ceb4a901dc39ae7cff01ee8c0b3d043f6ef25abbf11783e0857ccad2aa796"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f4067f91a78634601f5af8aea40873a728a9c590299a9593fe6c1c1dac8a5173.json",
+      "sha256": "f4067f91a78634601f5af8aea40873a728a9c590299a9593fe6c1c1dac8a5173"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f42019c6528638a81e47e0d8a8fffbb39b3fda0c6fb860abdba633c67a91f9ad.json",
+      "sha256": "f42019c6528638a81e47e0d8a8fffbb39b3fda0c6fb860abdba633c67a91f9ad"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f437ab955142f95556cbb9ffe855a065fb459f5149252a0747d4ae26d35c28af.json",
+      "sha256": "f437ab955142f95556cbb9ffe855a065fb459f5149252a0747d4ae26d35c28af"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f48cec9b8dd032bb790e4c5677a5942304f3e183fb2d49d8cfefc40cfbb8e4ce.json",
+      "sha256": "f48cec9b8dd032bb790e4c5677a5942304f3e183fb2d49d8cfefc40cfbb8e4ce"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f5305f3e1cc40cffec7e29dc9d0bbb559e401cf6af63869653d8e6c1c17334a5.json",
+      "sha256": "f5305f3e1cc40cffec7e29dc9d0bbb559e401cf6af63869653d8e6c1c17334a5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f55b2bd63d91d70ddf109ccf704b044242779e2f9d848919d7fe7026a914cabe.json",
+      "sha256": "f55b2bd63d91d70ddf109ccf704b044242779e2f9d848919d7fe7026a914cabe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f59988f34f2afc9673afddf7cc887d252a1b600aa5fa40509efd13f463b7a084.json",
+      "sha256": "f59988f34f2afc9673afddf7cc887d252a1b600aa5fa40509efd13f463b7a084"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f5ee09627f19b824b8284d3cb8414952c051120ae66550c013a1a4e77e9a1ea9.json",
+      "sha256": "f5ee09627f19b824b8284d3cb8414952c051120ae66550c013a1a4e77e9a1ea9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f6bdc1c133a3a6877da13cdad6e9b02102e683edeac3327b478824f8ebf6b9b6.json",
+      "sha256": "f6bdc1c133a3a6877da13cdad6e9b02102e683edeac3327b478824f8ebf6b9b6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f6fc7884efc28e2bed403b0255841e80cb3cbfac3b5245d386f514f7f39209fd.json",
+      "sha256": "f6fc7884efc28e2bed403b0255841e80cb3cbfac3b5245d386f514f7f39209fd"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f7050148efc54f32fe76f17ad3cd823f3485fd47f600f56ba840da6c076f9e49.json",
+      "sha256": "f7050148efc54f32fe76f17ad3cd823f3485fd47f600f56ba840da6c076f9e49"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f74f02a75964038b832d4e43a8e6740071e751191a5f3b8115022721ae201aa7.json",
+      "sha256": "f74f02a75964038b832d4e43a8e6740071e751191a5f3b8115022721ae201aa7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f7b3c64847a31039067534f8c12e2582abc27cb560d9affb0168f42c14a05dfa.json",
+      "sha256": "f7b3c64847a31039067534f8c12e2582abc27cb560d9affb0168f42c14a05dfa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f7fe24b63c91f3413004cef9864398f6e498b7f6b04ccb6e996f3fa751c423d6.json",
+      "sha256": "f7fe24b63c91f3413004cef9864398f6e498b7f6b04ccb6e996f3fa751c423d6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f81f4196668ce615eb8fab372e3a2c0281604d278490253013e8b0f58f3b6b24.json",
+      "sha256": "f81f4196668ce615eb8fab372e3a2c0281604d278490253013e8b0f58f3b6b24"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f85d8bd54a5e85b30a5173872628377a0ff81b3135bd3066e5341c39544b8290.json",
+      "sha256": "f85d8bd54a5e85b30a5173872628377a0ff81b3135bd3066e5341c39544b8290"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f8a1372d011ff4c675085af68e8fcaac29fa6236874cc504e50216f9cbad6236.json",
+      "sha256": "f8a1372d011ff4c675085af68e8fcaac29fa6236874cc504e50216f9cbad6236"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f8d1760d3c3d8f2818461ee32c4e839fa5f5b6d9d8e3a8ce7c67a59095b33cb7.json",
+      "sha256": "f8d1760d3c3d8f2818461ee32c4e839fa5f5b6d9d8e3a8ce7c67a59095b33cb7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f9bf855f8e0c3f2ab531796c836daf85f22291f72ee3385affaaaf2737e2c1cc.json",
+      "sha256": "f9bf855f8e0c3f2ab531796c836daf85f22291f72ee3385affaaaf2737e2c1cc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f9c2c83c39cd5da46128a1d2fad26acfb2a836d1add70c230ab62541eef61dfb.json",
+      "sha256": "f9c2c83c39cd5da46128a1d2fad26acfb2a836d1add70c230ab62541eef61dfb"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/f9d083db6443f2bdc44160ab0d8b5b66e11c4ec70f4e0092aca722e495ce452d.json",
+      "sha256": "f9d083db6443f2bdc44160ab0d8b5b66e11c4ec70f4e0092aca722e495ce452d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fa125ad3d2280edc3fe3f3d97fae437540bc2c0c9f00af72061b3174607a2dbd.json",
+      "sha256": "fa125ad3d2280edc3fe3f3d97fae437540bc2c0c9f00af72061b3174607a2dbd"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fa92382d585911764d2989678e40de0594a045fca8dec70697c9ab496833c9a6.json",
+      "sha256": "fa92382d585911764d2989678e40de0594a045fca8dec70697c9ab496833c9a6"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/facbaa1bb3102eb864f9cc41a0897de87308999737a33bffa7f42cf83d30e281.json",
+      "sha256": "facbaa1bb3102eb864f9cc41a0897de87308999737a33bffa7f42cf83d30e281"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fb02e926737efa05de25e03c114e0bb5c8767695575e52d608c33e03da9208e7.json",
+      "sha256": "fb02e926737efa05de25e03c114e0bb5c8767695575e52d608c33e03da9208e7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fb29c29ba545394c203171c5d8dc66aede84038ff68083fa3e95479f74f0d506.json",
+      "sha256": "fb29c29ba545394c203171c5d8dc66aede84038ff68083fa3e95479f74f0d506"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fb40c207b18e49708072bb3c5195b2734bd1aab542021c9c10b03a89b0ec93c2.json",
+      "sha256": "fb40c207b18e49708072bb3c5195b2734bd1aab542021c9c10b03a89b0ec93c2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fb61ebe0ad9120773ce7a89276c88259001cde35233ecf16cb1bba5e7626c89d.json",
+      "sha256": "fb61ebe0ad9120773ce7a89276c88259001cde35233ecf16cb1bba5e7626c89d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fc4e7bcab00c5a310a0b8c9fd3dd8c1e6123d36761e4c007788bb808c45d4d90.json",
+      "sha256": "fc4e7bcab00c5a310a0b8c9fd3dd8c1e6123d36761e4c007788bb808c45d4d90"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fcceaab8d5ee623e5cf10acec911af0a2423d0b01a069443183da223d5ebccee.json",
+      "sha256": "fcceaab8d5ee623e5cf10acec911af0a2423d0b01a069443183da223d5ebccee"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fe3271d76730b0e065608c96c02a3cea69a65c2d4997a6a0daa86e2a9e0a9087.json",
+      "sha256": "fe3271d76730b0e065608c96c02a3cea69a65c2d4997a6a0daa86e2a9e0a9087"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/feb07467aeb5f29aef8a19520c69ae9207fd49386d1cd635d543fb6263a58205.json",
+      "sha256": "feb07467aeb5f29aef8a19520c69ae9207fd49386d1cd635d543fb6263a58205"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/artifacts/fef06118b0c15f5deb973ac6dd2048ff4d00567458e8026195117a78042cf05d.json",
+      "sha256": "fef06118b0c15f5deb973ac6dd2048ff4d00567458e8026195117a78042cf05d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/original-preservation-final.json",
+      "sha256": "bd77578535d96f6a530d9c4e97749b605b4e591a52f479486b1ee5946770d9aa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/package_identity.json",
+      "sha256": "fc4b772fe006d9ddab14c8907d63827e72e0d47c9aa4a66eb10d2a14a93c98a9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/analyze-matched-study.py",
+      "sha256": "996036b85ed6f17e72b6ab70222799f9c0b3941b22dd47a003c97caa486bbaa5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/cooler-verification-diagnosis.md",
+      "sha256": "0ef68884a061baece6693f8c679b5a7a4062533b623a89c627c6470d2194953c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-cost.png",
+      "sha256": "aff359813169a129c59294be9ed45d473c096af35e72d3c52648cd4ed224121e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-cost.svg",
+      "sha256": "0dbce5362b9c4ef2834d8bf2d005ea3bc118ea2c1e83b2f76213329621294b07"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-output.png",
+      "sha256": "4599a589abb3d3523a6f3bfea338a9cc061b975a4abcdb58291ac84114417c6a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-output.svg",
+      "sha256": "a3d50f939d61f8d27ea76b17b11bcf2e22d73b92045dc2fdb508eb356ba0e630"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-results-draft.md",
+      "sha256": "a9a269c206005f0c26e99fda925bc78728f96151baafd1f52abf938b42b78c95"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-sensitivity.png",
+      "sha256": "e542446e222b6aa38efbca3b990cd0bd66355dfd7a99505fe04c14d29bc6a71e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-sensitivity.svg",
+      "sha256": "712eca44d66f66e784566e14a0c179deec44f31f49d9ac5a09cca939ad0b89e0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/matched-study-summary.json",
+      "sha256": "b8dfd59b8ace892c513dc90ddbf46b7fa19820c9e81e3daf107842f6bdfb7f65"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/plot-data.csv",
+      "sha256": "cb5d03a58dfaf5a731ca3ed9c73068bdccf28304477fda95fcd498a3db8e7669"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/plot-data.json",
+      "sha256": "86c6198078d89198811ed972bd41b33dd8c3d1b9880fe4f2e5258fdf1a86ac8a"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/render-reviewed-boundary.py",
+      "sha256": "455d9b81aff85e59590c59701fde3fd933d44b52760042ef662398f10ef6d283"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/reviewed-comparison-boundary.png",
+      "sha256": "bd23b23058c8333755151899c1af9044c9d5babd3322627521df51b9a3baca86"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/report/reviewed-comparison-boundary.svg",
+      "sha256": "7838badbe6b1a391f323acd9a19acb11c151a64bbe93b731b578a56afafc7366"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/author_model.py",
+      "sha256": "3304b1bf7aca772c174f9fdaece887392bbe9bbd19522994dcb0b8a39a21061b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/build.py",
+      "sha256": "ff0d334bc9f68724382afc6836083699a1d5e5bf090a76ddc4957fc65a27c98d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/census.json",
+      "sha256": "8dbf27f447fc8864988b40cabb132f2aa14ed392da2db9c14b88f75500c4138e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/component_alternatives.snapshot.json",
+      "sha256": "f230e401651b9610a1f9e0302c7bd11bc7f4b8ab10c0899e864c442440f4edd9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/component_alternatives_thermal.sysml",
+      "sha256": "6a786c884b6934cf458b0347af08e9012a2c96c675f7bf3bc91eb69cc2105333"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/cooling_equipment_selected_pumps.sysml",
+      "sha256": "3dc64331518a533396dd7654ae331c12986d15f9066ff72c08967e0c01166fbe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/costed_component.sysml",
+      "sha256": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/ideal_gas_brayton_components.sysml",
+      "sha256": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/integrated_equipment_costs.sysml",
+      "sha256": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/integrated_equipment_parts.sysml",
+      "sha256": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/integrated_heat_electricity.sysml",
+      "sha256": "795c5d313e3a80f2e3a508bc01df0acece8871cfde836b7edcb8b8adf117fd77"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/loop_return_control.sysml",
+      "sha256": "7a980c0f5519ded9d21dbed40744ddcbcd0fd999d1cf11880e9c1a72d40d09d0"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/mfe_account_costs.sysml",
+      "sha256": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/mfe_lcoe_dcf.sysml",
+      "sha256": "4ca6c46646074f81671efbf02fe6229759e3fbcdfb136371ea3ffe8ad0e6f960"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/mfe_matched_steam_cycle.sysml",
+      "sha256": "ba9d5bdd8b6941cbb196419cdbfd092d2d8e8132f59785ef8fa6e72bcdf54ee4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/mfe_primary_loop.sysml",
+      "sha256": "288db9973333a0516d1080927783a58a6aa78d7ca50163e5ac6c8934f8b78dc5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/mfe_viability.sysml",
+      "sha256": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/input_models/plant.sysml",
+      "sha256": "3e73af9536e8c67d049aa5d747bc72be0f601901637da9571e85abdf6dc13b30"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/oracle_cooling.py",
+      "sha256": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/oracle_gas.py",
+      "sha256": "ae12f96870c577eee4e71ff6678f9eb94d75f26a93bad9550fe67dc4ced537a7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/oracle_matched_cycle.py",
+      "sha256": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/oracle_matched_cycle_properties.json",
+      "sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/oracle_thermal.py",
+      "sha256": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/run.py",
+      "sha256": "c89d24e553ce719a38c11a19608a3e1b645d6c539ad54fce0a383352a986fa08"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/ANNEX.md",
+      "sha256": "0ff8af6839b48b090f1871cc6effe39ebfa0e482ecff3800645bfccf6a880650"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/declare_axes.py",
+      "sha256": "acbabefdce8ae8cbcaf4b7a4c1c04ff14b49fc85c142b6a2e0fb41722627e860"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/diagnose_verification.py",
+      "sha256": "632424366b393a9024af7419a6135641670619f6bb58fb4048139f37c73856b2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/execute_study.py",
+      "sha256": "ee4f53cd669e520e9f67ec6dfeabdef061f1d638af9cd78d3aad930ae73b837f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/interface_data.py",
+      "sha256": "681818676162c2ae8e104b0b2aaf9ef39931025e97902a9cb4fadddb5bb45d95"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/oracle_entry.py",
+      "sha256": "93ffec7159798eb3e2ff1ba4a1f4763ae62de4360f5509ae9fd90460bd341a5c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/oracle_scan.py",
+      "sha256": "c2c7d1904dd4f7fbea96d3fe01c139cfdd117fbe37351fc7922adac6be0bad02"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/prepare_interface.py",
+      "sha256": "a0136074ae48855a4d1eccba3cbd8c7d8bcd9225af2d7dd11dbc62119fc4731b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/proposals.py",
+      "sha256": "7cb74fa057b24157c6aea3694e2f279cc6120cd95a022fdf6c283b8c9b5ac436"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/studies/study_route.py",
+      "sha256": "0a95f34031c2092edb6081db7c6790f02447bf1183d73198a6fb8947e9ed5e35"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/exploration/component_alternatives/verify.py",
+      "sha256": "76e8208b26ddbf8c528aa51b0d3113393a03e09f5a4a60480d8e951d82652a1f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/modeling_project/REQUIREMENTS.md",
+      "sha256": "533382ee3517ddfb6394cb6bb76ad64a8400ad040f35acddbc3ca2dc23470d77"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/modeling_project/STUDY_POLICY.md",
+      "sha256": "51f773572c25708b7b32b9aec2ff0c78508447ced0b12658e6e04fb92132f4a9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/models/designs/component_alternatives/plant.sysml",
+      "sha256": "3e73af9536e8c67d049aa5d747bc72be0f601901637da9571e85abdf6dc13b30"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/models/library/analyses/component_alternatives_thermal.sysml",
+      "sha256": "6a786c884b6934cf458b0347af08e9012a2c96c675f7bf3bc91eb69cc2105333"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/models/library/analyses/cooling_equipment_selected_pumps.sysml",
+      "sha256": "3dc64331518a533396dd7654ae331c12986d15f9066ff72c08967e0c01166fbe"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/integrate.py",
+      "sha256": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/indicators.py",
+      "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/manifest.py",
+      "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/read_coverage.py",
+      "sha256": "3a63ba15c37d889c40420c66317ed8c685089ac1bb778b60fbe7e7c0e808412c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/axis_declaration.v1.schema.json",
+      "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/baseline_result.v1.schema.json",
+      "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/indicators.v1.schema.json",
+      "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/package_identity.v1.schema.json",
+      "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/preflight_results.v1.schema.json",
+      "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/study_package_manifest.v1.schema.json",
+      "sha256": "7e70dfa1db56e91e1e628174b7383a8ff96200c55ef7c8fd634afaef7556f1f8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/schemas/verification_summary.v1.schema.json",
+      "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/scripts/study/verify.py",
+      "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/tests/model_families.py",
+      "sha256": "e5243ae34a7b85b6271505f3e0511f74560183fa6db21d837b06eac488d30754"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/design.md",
+      "sha256": "ec7d08e01ec0702e33ac6589dfaaa1a4eec5edad565c5be7bf9dc22c92c03f91"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/evidence/build-hashes.json",
+      "sha256": "c452b9abbdee5af2699955dd8bdb05730e2a246adf4462c1a2beca3267b2f4f5"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/evidence/constraint-identity-check.json",
+      "sha256": "96ede75776a1a81e483452138c885b1632deb329ca310883d917ee1f83673bf4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/evidence/implementation-census-final.json",
+      "sha256": "d70d1b34062d5c1d0ae5756ad589f8ec87f860f2c88b7d6b3cff915fce42566f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/evidence/independent-verification-final.json",
+      "sha256": "1f362995ff53cddfa5998d6a0714c77d3f9ac94ddf8035db2def888925fca67f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/evidence/validation-detail.json",
+      "sha256": "e6472cf30f386c2b19fe057e05180c4025d5b6ddf2f4af78717e373b312fd736"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/evidence/validation-detail.md",
+      "sha256": "c9d6c4f397f8716a5137234fda129db9b3c526f4f17a1ae3471e6274def1a32f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/plan.md",
+      "sha256": "8ea3611985ea12405e134d9c5dcc03ead25f3f6bb51a605579a8d8c8e43c69a9"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/report.md",
+      "sha256": "bbdb17cd99cbe71bcd064ada3bb2f0d58564e369f80ef10b4bb92bdc32b34534"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/active/WI-096_matched-conversion-subsystems/spec.md",
+      "sha256": "b7e021efe1c9bca12431879c5eddc541966469ef0a824283ee3629a65c78068c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/comparison-contract.md",
+      "sha256": "b7692c22c94fbc9d67b636e14fe58840869b6fa7436411d0f34048992d3d8df7"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/cooler-verification-diagnosis.md",
+      "sha256": "0ef68884a061baece6693f8c679b5a7a4062533b623a89c627c6470d2194953c"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/design-review-fourth-submission.md",
+      "sha256": "8e19e37ec51a052b39b1f355da84e10c38e56461abe7b323e45695dfa274e542"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/engineering-equalities.md",
+      "sha256": "22976926b47dbce62681ea46683145a6ac50d9abea7d3c161180b749458cf6d2"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/freeze-study.py",
+      "sha256": "6468d69ef3ecc00d8bb5467f09821b4142c8b8703b9d4173fa140deb438ded4e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/implementation-integration-review.md",
+      "sha256": "1b6f34c3f6c11ec8767e660d640a9ce93bb4c2bad25d4fccbe8774454ea933aa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/original-preservation-after-implementation.json",
+      "sha256": "bd77578535d96f6a530d9c4e97749b605b4e591a52f479486b1ee5946770d9aa"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/owner-brief.md",
+      "sha256": "30c085ab373945cd9bbd2fd7972206a493108564b42bcca523f656720cd2781d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/owner-direction-fourth-submission.md",
+      "sha256": "4a4c973fccb76e2947e48b03bc9c4bcb43ec215597692ed183991242bbcd9c3d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/sources/work/orchestration/goals/design-study-component-alternatives/evidence/verification-failure-review.md",
+      "sha256": "881152e1ec0ace8aced74a6e128c2c9399b51608dd411a290a9ee0f1193448b4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/verification-attempt1-failure.json",
+      "sha256": "956c005f0c710b809ebe4b04501cf79ba6d6547eac3dbeac12e2b25deca84ac8"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/verification-blocker.json",
+      "sha256": "b065d0d11b9d1ee8cbd39eeadfee916856780a349455d6a3e50059ca9fb1775f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/verification-diagnostics.json",
+      "sha256": "e1733720f33a6843b9b288d883e464ef536925e0b1430862776e448625af6142"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/verification-failure-review.md",
+      "sha256": "881152e1ec0ace8aced74a6e128c2c9399b51608dd411a290a9ee0f1193448b4"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/sealed-package.tar.gz",
+      "sha256": "5b6732fcd48c63d37748579e05bffe3293f486455dd54222a82f432d3f76764f"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/sensitivity-oracle-scan.json",
+      "sha256": "63007d96a402e4a460a6ac3983a7ba5a3d5ba18c8b13c2088ec29e88d3f18d33"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/sensitivity-scan-proposals.json",
+      "sha256": "6b80894f2fbde870d9c8a4423fa70ed962550c2629a7a704bc7fd3fc16435a75"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/snapshot.json",
+      "sha256": "1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/steam-oracle-scan.json",
+      "sha256": "90d00c5429fd27f29d52303a5ea9db10133a172260f3878eef9c868c16599b6e"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/steam-scan-proposals.json",
+      "sha256": "4c8cd8531f41fc867d50f4e01412002113a6a0b55b4e28d628664a837df07dad"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/study-plan.md",
+      "sha256": "9e6727826a3725797c573ee458761949d24235e1f4a4d11bfaa1b6760c8fc82d"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/20260926-design-study-component-alternatives/window.json",
+      "sha256": "6385f18b1b8dadd100c5e4ec227e1f0d694aa0f2ee94774b73bad10f00b44372"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/numerical-tolerances.json",
+      "sha256": "644e1458e6ce046ffbe4686d2eaffcf411aedbe3eb430b1112bc0f49c92106ef"
+    },
+    {
+      "path": "exploration/component_alternatives/studies/oracle_entry.py",
+      "sha256": "93ffec7159798eb3e2ff1ba4a1f4763ae62de4360f5509ae9fd90460bd341a5c"
+    },
+    {
+      "path": "exploration/component_alternatives/verify.py",
+      "sha256": "76e8208b26ddbf8c528aa51b0d3113393a03e09f5a4a60480d8e951d82652a1f"
+    }
+  ]
+}

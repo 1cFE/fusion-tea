@@ -1,0 +1,141 @@
+{
+  "fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+  "cases": [
+    {
+      "case": "c1-aries-ratios-aries-ratings",
+      "status": "evaluated",
+      "violated": [
+        "rejection_capacity__capacity_ok",
+        "he_capacity__capacity_ok",
+        "compressor_capacity__capacity_ok"
+      ],
+      "n_satisfied": 8,
+      "net": 426.57863661707336,
+      "unmet": 0.0,
+      "overnight": 4350208470.0,
+      "lcoe": 1548.0423172195424,
+      "control_exact": true
+    },
+    {
+      "case": "c1-aries-ratios-reselected-ratings",
+      "status": "evaluated",
+      "violated": [],
+      "n_satisfied": 11,
+      "net": 426.57863661707336,
+      "unmet": 0.0,
+      "overnight": 4873104037.111111,
+      "lcoe": 1559.4383607658922,
+      "control_exact": true
+    },
+    {
+      "case": "c1-ratio1.35-reselected-ratings",
+      "status": "evaluated",
+      "violated": [
+        "checks__return_condition_ok",
+        "checks__heat_removal_ok"
+      ],
+      "n_satisfied": 9,
+      "net": 575.2271606643203,
+      "unmet": 278.14866501895676,
+      "overnight": 4873104037.111111,
+      "lcoe": 1156.4528508278765,
+      "control_exact": true
+    },
+    {
+      "case": "c1-flow1400-aries-ratings",
+      "status": "evaluated",
+      "violated": [
+        "checks__return_condition_ok",
+        "checks__heat_removal_ok",
+        "he_capacity__capacity_ok"
+      ],
+      "n_satisfied": 8,
+      "net": 365.2793278375982,
+      "unmet": 1130.012216371113,
+      "overnight": 4350208470.0,
+      "lcoe": 1807.8268622927433,
+      "control_exact": true
+    },
+    {
+      "case": "c1-flow4000-reselected-ratings",
+      "status": "refused",
+      "error": "LCOE undefined for nonpositive net electricity",
+      "refusing_module": null,
+      "control_exact": false
+    },
+    {
+      "case": "best-screen-point-reselected",
+      "status": "evaluated",
+      "violated": [],
+      "n_satisfied": 11,
+      "net": 575.6167137718417,
+      "unmet": 0.0,
+      "overnight": 4873104037.111111,
+      "lcoe": 1155.6702123273542
+    },
+    {
+      "case": "best-screen-point-aries-ratings",
+      "status": "evaluated",
+      "violated": [
+        "he_capacity__capacity_ok",
+        "compressor_capacity__capacity_ok"
+      ],
+      "n_satisfied": 9,
+      "net": 575.6167137718417,
+      "unmet": 0.0,
+      "overnight": 4350208470.0,
+      "lcoe": 1147.2248204502214
+    },
+    {
+      "case": "starting-point-fuel-term-wired",
+      "status": "evaluated",
+      "violated": [],
+      "n_satisfied": 11,
+      "net": 424.78930814343016,
+      "unmet": 0.0,
+      "overnight": 4873104037.111111,
+      "lcoe": 1566.007140648807
+    }
+  ],
+  "controls": {
+    "c1-aries-ratios-aries-ratings": {
+      "sealed_case": "baseline",
+      "channels_compared": 131,
+      "verdicts_compared": 8,
+      "differences": [],
+      "verdict_differences": [],
+      "exact": true
+    },
+    "c1-aries-ratios-reselected-ratings": {
+      "sealed_case": "c1-aries-ratios-reselected-ratings",
+      "channels_compared": 131,
+      "verdicts_compared": 8,
+      "differences": [],
+      "verdict_differences": [],
+      "exact": true
+    },
+    "c1-ratio1.35-reselected-ratings": {
+      "sealed_case": "c1-ratio1.35-reselected-ratings",
+      "channels_compared": 131,
+      "verdicts_compared": 8,
+      "differences": [],
+      "verdict_differences": [],
+      "exact": true
+    },
+    "c1-flow1400-aries-ratings": {
+      "sealed_case": "c1-flow1400-aries-ratings",
+      "channels_compared": 131,
+      "verdicts_compared": 8,
+      "differences": [],
+      "verdict_differences": [],
+      "exact": true
+    },
+    "c1-flow4000-reselected-ratings": {
+      "sealed_case": "c1-flow4000-reselected-ratings",
+      "channels_compared": 0,
+      "differences": [],
+      "exact": false,
+      "refused": "LCOE undefined for nonpositive net electricity"
+    }
+  }
+}

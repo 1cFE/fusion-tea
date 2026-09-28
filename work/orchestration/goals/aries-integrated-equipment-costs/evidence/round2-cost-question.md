@@ -1,0 +1,11 @@
+# Proposed economic sensitivity question
+
+[AGENT coordinator; proposed, not execution authorization] After the thermal study and its interpretation are accepted, use the same reviewed native package to quantify uncertainty in the declared accounting boundary. Hold the assumed integrated thermal baseline fixed. This is conditional accounting sensitivity, not equipment optimization or a replacement for scientific qualification.
+
+Use only the accepted WI-090 assumption register. Vary grouped package price factors over0.5–1.5, separately retain wider0.5–2 uncertainty for unresolved source scope, and expose the actual native capital account contributions. Vary tritium price/selected stock/delivered recovery, O&M, consumables, indirect/contingency/owner fractions, replacement life/event factor/LiPb makeup and availability within their declared ranges. Include the explicit100kg/year delivered-recovery scenario alongside the baseline no-credit boundary. Preserve all qualified input groups and declare any grouped factor changes as scenario ties. Independent supplied recovery must never track calculated burn.
+
+Compare provisional selected-quantity purchase mode with fixed source-package mode at the same selected hardware. Include a previously tested adequate selected-area change in both modes to expose the fixed-budget nonresponse. The source direct and source-inclusive comparison channels stay separate from selected overnight capital. Do not relabel the1.93 financing-inclusive source amount as overnight.
+
+Report one-factor finite cost changes and clearly labeled combined assumption corners, not a probability interval or engineering optimum. Keep initial inventory, annual fuel, annual operations, scheduled replacements and alternative reserve separate. The final range is conditional on declared price, scope and recovery assumptions; it must not erase the preceding thermal sensitivity or source-case failures. The native graph must produce every reported integrated amount; reporting may order or difference stored outputs only.
+
+This note defines the proposed question for disposition review. The next round must declare exact full points and evidence reuse before execution; it is not open yet.

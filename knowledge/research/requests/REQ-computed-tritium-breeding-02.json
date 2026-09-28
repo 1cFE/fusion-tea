@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-02",
+  "question": "Does the specifically identified Martinez Arroyo UPC thesis provide an accessible HCLL surrogate, coefficients and independent benchmarks applicable to the retained helium PbLi blanket?",
+  "consumer": "work/orchestration/goals/computed-tritium-breeding/goal.md",
+  "gap_type": "candidate_surrogate_verification",
+  "priority": "P1",
+  "where_to_look": ["https://upcommons.upc.edu/bitstream/handle/2099.1/17426/Neutronic_fusion_final_thesis_Martinez_Arroyo_Javier.pdf"],
+  "limits": {"max_searches": 1, "max_captures": 1}
+}

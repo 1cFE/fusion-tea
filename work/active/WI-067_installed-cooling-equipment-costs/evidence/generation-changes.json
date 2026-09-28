@@ -1,0 +1,74 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "d871ad38b7786a072f57f2d86324fa46bcc2f7f33ee0bfe71dac38826ce0457e",
+    "after": "3583e980ccdf08d9d3219330457c0d4ece43e639bff422d837a9e21af57ebcc8"
+  },
+  "__init__.py": {
+    "before": "ab44bb8c9f162b181a43ba4e19def63c32b54624aebfb5171160ec5be08c74c7",
+    "after": "609db270aef1a6ca1af0a6a36afa0cdbba08b308838d5df6123575f5d441f1f2"
+  },
+  "contracts/generation_manifest.json": {
+    "before": "457e02e2b13ab388c4b03709befc2bd6b5ad29ddb6250f4b01fe2e882dfa3aa1",
+    "after": "64fab9d89e899c141da3b9ee89b588db2259d260019a84234e8c1fa5d535cfb3"
+  },
+  "contracts/model_contract.json": {
+    "before": "b0aa4ce562f0533246ced000be15e9e854bc64bf086e947b89376f99b052f29a",
+    "after": "ef422c9cdc8eb369857b7dec9c463e869bef1ab1b14a46d322a7cb2470d528a4"
+  },
+  "contracts/package_contract.json": {
+    "before": "947c71dc20c8a324f668711ef25fa8ec712d9ff5dc11675de76ba3b2230b9767",
+    "after": "0c3d28d07f193629be7f50e5933a70baaa5c88cc4f3909076fbe772ea385175e"
+  },
+  "handwritten/mfe_cooling_accounts/cooling_account_selection_impl.py": {
+    "before": "18514422bd24a89c25be6b5453fed200e6cf1b7ec5b423c045b9574c34233929",
+    "after": "05d60481dbbfe95299b6e4f7399fe47da1eff705e6f1dfce24b815313c7ebab4"
+  },
+  "handwritten/mfe_cooling_accounts/cooling_annual_addition_impl.py": {
+    "before": "aa8b53e55cce8fd16bcdebd3b360dfae2710e3e0714d5ff3915a80a60035ea47",
+    "after": "a9302f95f9ed69fac70ff22de45e4042a0446210b95eb84069b1af5b826ce1df"
+  },
+  "handwritten/mfe_cooling_accounts/cooling_energy_addition_impl.py": {
+    "before": "0710079f5f74cced4f040b3147ce958e5f646be905fac403a93592e3dc340327",
+    "after": "f64af506e6c8b09b42380b2616d84b5b30cd13837dd9ab0feaf66032338612b1"
+  },
+  "modules/mfe_cooling_accounts/cooling_account_selection.py": {
+    "before": "55fcab709df6c6eab723d6bb9a5cd8f983eaf05b049f03f292eafd5c10690305",
+    "after": "0e3471c6fb75e5ecd6775cb8e5877e47a76d8051c22512176144e4b96635b620"
+  },
+  "modules/mfe_cooling_accounts/cooling_annual_addition.py": {
+    "before": "d426ec4d5a8c9e186fda9316c3383ae2bea64080d1ac8677ce5d2a2b2cd74352",
+    "after": "ab4d94f57fd26c3d2d059a704c8d8f9fedbc7e7ad3b335787fda1fb02ebcc62e"
+  },
+  "modules/mfe_cooling_accounts/cooling_energy_addition.py": {
+    "before": "5ede210fed6de6dfc4e6e7b804558ce17fc887c8166f9f9b998fe80248a9b3f7",
+    "after": "11c9fb4bf8a38d85ec762949b6f34e4c938e749243e303f7ae8476d9b75bb035"
+  },
+  "modules/mfe_cooling_accounts/cooling_scenario_guard.py": {
+    "before": null,
+    "after": "6aef1f77ab572e61e038d24268589cb4d41c9cdc350006971a314d1ba71b757c"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "fa529a0b5821f5b740ea5c3f0ba39c7ab5128978ed2940146900898bc3027d5a",
+    "after": "a83854927335954b6bf22f204f195ba49e63ef3bc6c3b7563aaa5382486392ec"
+  },
+  "schemas/cooling_account_selection_output.py": {
+    "before": "ad2f4b5cfef86eb07669dcea55b68261a0c834119d988e56badf541bc20f87f6",
+    "after": "2cc450ca0a02f51f2cb1a860b2549133e44fb5a5bd5389605686a6844ba9b8a7"
+  },
+  "schemas/cooling_annual_addition_output.py": {
+    "before": "afa1ab280608d2ce2c27b1b766bf3db9af0477cefab4aa204eaf9ec093094a27",
+    "after": "f07ebc1b505d424edceaebbfbb0cd61fa22bcb067efc7b972e8036a6e67c8601"
+  },
+  "schemas/cooling_energy_addition_output.py": {
+    "before": "6f49ececbbc51eaee8d97c7e5f3afa063c2a070da65b646e4fb73cba2d9f526e",
+    "after": "0199a866852312bf0dc514aee5fc1f42688e71041634e7836f41caae9f82ccba"
+  },
+  "schemas/cooling_scenario_guard_output.py": {
+    "before": null,
+    "after": "22ef31f6a82f18f8912d71431a696925e1b733e9d4dd981f4c372f0aaf75818d"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "c6190743f6b8c99b9e372cb8134a9a661d685ec73d536a156dec248506191ca5",
+    "after": "3c4056749dedd44161c0d0d7481fae321ed8571a9b9ca9f89b845ce8a9b1dc4a"
+  }
+}

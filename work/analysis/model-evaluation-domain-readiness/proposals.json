@@ -1,0 +1,128 @@
+[
+  [
+    "baseline",
+    {}
+  ],
+  [
+    "plasma__R=12.6",
+    {
+      "stellarator_09__stellaris__plasma__R": 12.6
+    }
+  ],
+  [
+    "plasma__R=15.7",
+    {
+      "stellarator_09__stellaris__plasma__R": 15.7
+    }
+  ],
+  [
+    "plasma__a=2.2",
+    {
+      "stellarator_09__stellaris__plasma__a": 2.2
+    }
+  ],
+  [
+    "plasma__n_e0=4.554e+20",
+    {
+      "stellarator_09__stellaris__plasma__n_e0": 4.554e+20
+    }
+  ],
+  [
+    "plasma__n_e0=5.5660000000000007e+20",
+    {
+      "stellarator_09__stellaris__plasma__n_e0": 5.5660000000000007e+20
+    }
+  ],
+  [
+    "magnet__coil__turn_current=40000.0",
+    {
+      "stellarator_09__stellaris__magnet__coil__turn_current": 40000.0
+    }
+  ],
+  [
+    "magnet__coil__turn_current=65000.0",
+    {
+      "stellarator_09__stellaris__magnet__coil__turn_current": 65000.0
+    }
+  ],
+  [
+    "cryoplant__T_cold_cryo=21.0",
+    {
+      "stellarator_09__stellaris__cryoplant__T_cold_cryo": 21.0
+    }
+  ],
+  [
+    "blanket__blanket_t=0.599",
+    {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.599
+    }
+  ],
+  [
+    "blanket__blanket_t=0.6",
+    {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.6
+    }
+  ],
+  [
+    "blanket__blanket_t=1.0",
+    {
+      "stellarator_09__stellaris__blanket__blanket_t": 1.0
+    }
+  ],
+  [
+    "heat_transport__loop_dT_blanket=160.0",
+    {
+      "stellarator_09__stellaris__heat_transport__loop_dT_blanket": 160.0
+    }
+  ],
+  [
+    "heat_transport__loop_dT_blanket=250.0",
+    {
+      "stellarator_09__stellaris__heat_transport__loop_dT_blanket": 250.0
+    }
+  ],
+  [
+    "heat_transport__loop_p=100000.0",
+    {
+      "stellarator_09__stellaris__heat_transport__loop_p": 100000.0
+    }
+  ],
+  [
+    "turbine__main_steam_generator__outlet_temperature_C=455.0",
+    {
+      "stellarator_09__stellaris__turbine__main_steam_generator__outlet_temperature_C": 455.0
+    }
+  ],
+  [
+    "turbine__main_steam_generator__outlet_temperature_C=456.0",
+    {
+      "stellarator_09__stellaris__turbine__main_steam_generator__outlet_temperature_C": 456.0
+    }
+  ],
+  [
+    "turbine__open_feedwater_heater__pressure_MPa=0.9",
+    {
+      "stellarator_09__stellaris__turbine__open_feedwater_heater__pressure_MPa": 0.9
+    }
+  ],
+  [
+    "turbine__condenser__temperature_C=20.0",
+    {
+      "stellarator_09__stellaris__turbine__condenser__temperature_C": 20.0
+    }
+  ],
+  [
+    "turbine__condenser__temperature_C=60.0",
+    {
+      "stellarator_09__stellaris__turbine__condenser__temperature_C": 60.0
+    }
+  ],
+  [
+    "coupled_water_approach",
+    {
+      "stellarator_09__stellaris__heat_rejection__water_inlet_C": 35.0,
+      "stellarator_09__stellaris__heat_rejection__water_outlet_C": 42.0,
+      "stellarator_09__stellaris__turbine__condenser__temperature_C": 42.0
+    }
+  ]
+]

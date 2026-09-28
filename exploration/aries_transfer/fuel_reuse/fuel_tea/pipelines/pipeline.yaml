@@ -1,0 +1,95 @@
+# Generated Pipeline Configuration for fuel_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for fuel_tea"
+  output_folder: "fuel_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      fuel_reuse_params: FuelReuseParams ../inputs/fuel_reuse_params.json
+      mfe_fuel_cycle_params: MfeFuelCycleParams ../inputs/mfe_fuel_cycle_params.json
+
+
+  # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+  aries_fuel_reuse__fuel_system__flows:
+    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+    inputs:
+      m_T_kg_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__tritium_atom_kg
+      tbr_available_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__unused_tbr_placeholder
+      s_per_fpy_in: float mfe_fuel_cycle_params.aries_fuel_reuse__fuel_system__flows__s_per_fpy_in
+      mev_to_joules_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__mev_joules
+      lambda_T_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__decay_constant_s
+      eta_extract_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__assumed_extraction
+      p_fus_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__fusion_load_mw
+      I_total_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__dormant_inventory_atoms
+      G_stock_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__dormant_stock_growth_atoms_s
+      burn_fraction_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__pass_burn_fraction
+      t_recycle_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__exhaust_recovery
+      q_eff_in: float fuel_reuse_params.aries_fuel_reuse__fuel_system__reaction_energy_mev
+    outputs:
+      burn_kg_per_fpy: float aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy
+      inject_rate: float aries_fuel_reuse__fuel_system__flows__inject_rate
+      burn_rate: float aries_fuel_reuse__fuel_system__flows__burn_rate
+      tbr_margin: float aries_fuel_reuse__fuel_system__flows__tbr_margin
+      tbr_required: float aries_fuel_reuse__fuel_system__flows__tbr_required
+      loss_rate: float aries_fuel_reuse__fuel_system__flows__loss_rate
+      exhaust_rate: float aries_fuel_reuse__fuel_system__flows__exhaust_rate
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_fuel_reuse__processing__capacity:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool fuel_reuse_params.aries_fuel_reuse__processing__flow_available
+      conditions_supported_in: bool fuel_reuse_params.aries_fuel_reuse__processing__assumed_conditions_supported
+      demand_in: float aries_fuel_reuse__fuel_system__flows__exhaust_rate
+      rating_in: float fuel_reuse_params.aries_fuel_reuse__processing__selected_rating_atoms_s
+      applicable_in: bool fuel_reuse_params.aries_fuel_reuse__processing__scenario_applicable
+    outputs:
+      evaluation_defined: float aries_fuel_reuse__processing__capacity__evaluation_defined
+      margin: float aries_fuel_reuse__processing__capacity__margin
+      applicable: bool aries_fuel_reuse__processing__capacity__applicable
+      supported: bool aries_fuel_reuse__processing__capacity__supported
+      capacity_ok: bool aries_fuel_reuse__processing__capacity__capacity_ok
+
+  # aries_fuel_reuse.ProcessingCapacityOkConstraintModule
+  aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c:
+    module_type: aries_fuel_reuse.ProcessingCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_fuel_reuse__processing__capacity__margin
+      defined_in: float aries_fuel_reuse__processing__capacity__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      aries_fuel_reuse_processing_capacity_ok_b37dfbe88f556a9c: ConstraintEvaluation aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy: float aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy.json
+      aries_fuel_reuse__fuel_system__flows__inject_rate: float aries_fuel_reuse__fuel_system__flows__inject_rate.json
+      aries_fuel_reuse__fuel_system__flows__burn_rate: float aries_fuel_reuse__fuel_system__flows__burn_rate.json
+      aries_fuel_reuse__fuel_system__flows__tbr_margin: float aries_fuel_reuse__fuel_system__flows__tbr_margin.json
+      aries_fuel_reuse__fuel_system__flows__tbr_required: float aries_fuel_reuse__fuel_system__flows__tbr_required.json
+      aries_fuel_reuse__fuel_system__flows__loss_rate: float aries_fuel_reuse__fuel_system__flows__loss_rate.json
+      aries_fuel_reuse__fuel_system__flows__exhaust_rate: float fuel_system__exhaust_atoms_s.json
+      aries_fuel_reuse__processing__capacity__evaluation_defined: float processing__evaluation_defined.json
+      aries_fuel_reuse__processing__capacity__margin: float processing__margin_atoms_s.json
+      aries_fuel_reuse__processing__capacity__applicable: bool aries_fuel_reuse__processing__capacity__applicable.json
+      aries_fuel_reuse__processing__capacity__supported: bool aries_fuel_reuse__processing__capacity__supported.json
+      aries_fuel_reuse__processing__capacity__capacity_ok: bool aries_fuel_reuse__processing__capacity__capacity_ok.json
+      aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation: ConstraintEvaluation aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

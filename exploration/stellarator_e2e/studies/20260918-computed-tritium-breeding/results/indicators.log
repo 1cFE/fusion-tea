@@ -1,0 +1,3 @@
+blanket__blanket_t: no_constraint_response=false constraints 9/20 objectives 8/14 modules_fired=88
+plasma__R: no_constraint_response=false constraints 16/20 objectives 14/14 modules_fired=105
+A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds.

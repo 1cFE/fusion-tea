@@ -1,0 +1,22 @@
+{
+  "reference": {
+    "unchanged_outputs": 915,
+    "capital_delta": -141271203.74481505
+  },
+  "burn-0.025": {
+    "unchanged_outputs": 915,
+    "capital_delta": -133370626.16800834
+  },
+  "burn-0.1": {
+    "unchanged_outputs": 915,
+    "capital_delta": -147860587.70445767
+  },
+  "density-4.554e+20": {
+    "unchanged_outputs": 915,
+    "capital_delta": -121429655.8082451
+  },
+  "density-5.566e+20": {
+    "unchanged_outputs": 915,
+    "capital_delta": -159640426.0156496
+  }
+}

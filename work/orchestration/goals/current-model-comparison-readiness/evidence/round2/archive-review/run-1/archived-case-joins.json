@@ -1,0 +1,68 @@
+[
+  {
+    "artifact_digest": "16d131ea9049971f8b7b0732bbc977ff2841015a235a4f35d1de65baf0f84325",
+    "attempt_id": "current-comparison-fixed-point:c0000:a1",
+    "candidate_id": "current-comparison-fixed-point:c0000",
+    "case": "selected-forward",
+    "native_sha256": "13647fc37bf5a2c248759507db56f4b277b028983018633c721296ff826d4a4d",
+    "outputs": 1050,
+    "predicates": 28,
+    "raw_violations": [
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+    ],
+    "state": "completed",
+    "store_sha256": "7137d55f1a53a73be3ec5f280c6f5019b2bc198a7bd7bf4868791cde4539e765"
+  },
+  {
+    "artifact_digest": "5e99f3024079114d9fb89061c86fd846c8a61255622c0e6ceb7c131f1a85fa14",
+    "attempt_id": "current-comparison-fixed-point:c0000:a1",
+    "candidate_id": "current-comparison-fixed-point:c0000",
+    "case": "table5-conditioned",
+    "native_sha256": "bc6feb19c87b777b5d0659eff0ead8f563beb39f145707f94d111c2b13f87bb4",
+    "outputs": 1050,
+    "predicates": 28,
+    "raw_violations": [
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+    ],
+    "state": "completed",
+    "store_sha256": "230cf0db0a5c55bd24b4e87c48e2cb532229865567bf71d4e08d94b10c51a21f"
+  },
+  {
+    "artifact_digest": "5377ea95dae24404212956b205878e244d7ba958315deaa35b38e1bc775e1cfa",
+    "attempt_id": "current-comparison-fixed-point:c0000:a1",
+    "candidate_id": "current-comparison-fixed-point:c0000",
+    "case": "held-cycle-diagnostic",
+    "native_sha256": "d92755fbf92956d7ec211622dea6d92cb30de5f95ecbc36937555dada70e742f",
+    "outputs": 1050,
+    "predicates": 28,
+    "raw_violations": [
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+    ],
+    "state": "completed",
+    "store_sha256": "acc0efbe112d3201e83320178d6726023d777e93b61380010f36e2c507b193b3"
+  },
+  {
+    "attempt_id": "current-comparison-fixed-point:c0000:a1",
+    "candidate_id": "current-comparison-fixed-point:c0000",
+    "case": "held-calendar-incompatibility",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "native_sha256": "23a911549ceb352b46b451c091a8167398646711949fe209c8f47c43334a7cfa",
+    "state": "execution_failed",
+    "store_sha256": "73ccda371a835ed2872589709c8722f44d2eeb14878fdf476722b859f4e7d58f"
+  }
+]

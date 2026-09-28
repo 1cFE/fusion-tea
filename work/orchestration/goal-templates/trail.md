@@ -46,7 +46,7 @@ One `Decision` block per goal-level decision made during the task.
 
 ### Checkpoint C-001.r1 — YYYY-MM-DD
 
-- **Reviewer:** a fresh non-author.
+- **Reviewer:** fresh non-author when triggered; otherwise coordinator, with a reason no additional independent review was needed and cited valid coverage.
 - **Reading reviewed:** the study reading.
 - **Dispositions reviewed:** the proposed dispositions.
 - **Verdict:** `PASS | REVISE`.
@@ -68,7 +68,7 @@ Mandatory, even when the intent failed.
 
 ### Round 1 review — YYYY-MM-DD
 
-- **Reviewer:** a fresh non-author who did not do this round's work.
+- **Reviewer:** fresh non-author for uncovered triggered risks; otherwise coordinator. Record the reason and reused evidence; do not label coordinator closure an independent pass.
 - **Verdict:** `PASS | FINDINGS | OWNER_GATE`.
 - **Checks:** native evidence by citation · goal and strategy fidelity · every recorded task scope · retry classification · every touched discovery row and what changed · cited-ref liveness · the learning delta · constraints carried forward.
 - **Next:** closure recommended, or the next strategy.

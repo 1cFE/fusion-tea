@@ -1,0 +1,196 @@
+[
+  {
+    "axis": "fuel_cycle__burn_fraction",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__fuel_calc",
+        "input": "burn_fraction_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1371
+      },
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__inventory",
+        "input": "burn_fraction_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1390
+      },
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__fuel",
+        "input": "burn_fraction_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1552
+      },
+      {
+        "module": "stellarator_09__stellaris__breeding_adequacy",
+        "input": "burn_fraction_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2861
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "fuel_cycle__t_recycle",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__t_recycle"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__t_recycle"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__inventory",
+        "input": "t_recycle_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1410
+      },
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__fuel",
+        "input": "t_recycle_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1554
+      },
+      {
+        "module": "stellarator_09__stellaris__breeding_adequacy",
+        "input": "t_recycle_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2859
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "plasma__n_e0",
+    "declared_keys": [
+      "stellarator_09__stellaris__plasma__n_e0"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__plasma__n_e0"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__plasma__sustain",
+        "input": "n_e0_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__plasma__n_e0",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 140
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "unplanned_fraction",
+    "declared_keys": [
+      "stellarator_09__stellaris__unplanned_fraction"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__unplanned_fraction"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__calendar",
+        "input": "unplanned_fraction_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__unplanned_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1350
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__layout",
+        "input": "calendar_unplanned_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__unplanned_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1586
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "fuel_cycle__processing_price_multiplier",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__processing_cost",
+        "input": "price_multiplier_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_price_multiplier",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1495
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "fuel_cycle__processing_capacity_margin",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__processing_cost",
+        "input": "capacity_margin_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_capacity_margin",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1503
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "fuel_cycle__processing_containment_cpi",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__processing_cost",
+        "input": "containment_cpi_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_containment_cpi",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1508
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  },
+  {
+    "axis": "fuel_cycle__processing_enabled",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__processing_cost",
+        "input": "enabled_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_enabled",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1493
+      }
+    ],
+    "finding": "One authored public key, all direct consumers bind it; no independent sibling key or tie."
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "counts": {
+    "pass": 498
+  },
+  "checked_cases": 498,
+  "failures": [],
+  "oracle_identity": "77ff2136013c728ba226d858f546a3cbb6c4480fe86eff7b8f99e30f8c91106e"
+}

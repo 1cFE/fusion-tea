@@ -1,0 +1,12 @@
+.........................                                                [100%]
+=============================== warnings summary ===============================
+tests/models/test_installed_cooling_equipment.py::test_actual_native_cost_and_energy_selectors
+tests/models/test_installed_cooling_equipment.py::test_native_replacement_reaches_lcoe_without_changing_capital
+tests/models/test_installed_cooling_equipment.py::test_matched_direct_delta_and_delivered_shipping_reach_total_capital
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+25 passed, 3 warnings in 19.62s

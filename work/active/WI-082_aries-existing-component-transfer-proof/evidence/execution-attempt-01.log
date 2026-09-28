@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/fuel_reuse/run.py", line 24, in <module>
+    from generated.handwritten.mfe_fuel_cycle.fuel_cycle_flows_impl import run_fuel_cycle_flows
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated/__init__.py", line 4, in <module>
+    from stellarator_tea.modules.mfe_account_costs.annual_cost_rollup import Annual_Cost_RollupModule
+ModuleNotFoundError: No module named 'stellarator_tea'

@@ -1,0 +1,216 @@
+{
+  "inputs": {
+    "enabled": [
+      "Boolean",
+      "false",
+      "1; activation"
+    ],
+    "held_inventory": [
+      "Real",
+      "0.0",
+      "T atoms; dormant legacy amount"
+    ],
+    "p_fus": [
+      "Real",
+      null,
+      "MW"
+    ],
+    "q_eff": [
+      "Real",
+      null,
+      "MeV/reaction"
+    ],
+    "mev_to_joules": [
+      "Real",
+      null,
+      "J/MeV"
+    ],
+    "burn_fraction": [
+      "Real",
+      null,
+      "1; (0,1]"
+    ],
+    "t_recycle": [
+      "Real",
+      null,
+      "1; [0,1]"
+    ],
+    "tbr_available": [
+      "Real",
+      null,
+      "T atoms/reaction"
+    ],
+    "breeding_defined": [
+      "Real",
+      "1.0",
+      "1; exact 0/1"
+    ],
+    "eta_extract": [
+      "Real",
+      null,
+      "1; (0,1]"
+    ],
+    "lambda_T": [
+      "Real",
+      null,
+      "1/s"
+    ],
+    "G_stock": [
+      "Real",
+      null,
+      "T atoms/s; active zero"
+    ],
+    "m_T_kg": [
+      "Real",
+      null,
+      "kg/T atom"
+    ],
+    "m_D_kg": [
+      "Real",
+      "0.0",
+      "kg/D atom"
+    ],
+    "plasma_volume": [
+      "Real",
+      "0.0",
+      "m^3"
+    ],
+    "n_T0": [
+      "Real",
+      "0.0",
+      "T atoms/m^3"
+    ],
+    "alpha_n": [
+      "Real",
+      "0.0",
+      "1; > -1"
+    ],
+    "tau_feed": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "tau_process": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "tau_blanket": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "tau_extract": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "tau_buffer": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "tau_reserve": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "startup_extension": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "shutdown_duration": [
+      "Real",
+      "0.0",
+      "s"
+    ],
+    "reserve_fraction": [
+      "Real",
+      "0.0",
+      "1; [0,1]"
+    ],
+    "availability": [
+      "Real",
+      null,
+      "1; calendar productive fraction"
+    ],
+    "s_per_year": [
+      "Real",
+      "31536000.0",
+      "s/year; existing model 8760-hour year"
+    ]
+  },
+  "outputs": {
+    "feed_atoms": "T atoms",
+    "feed_kg": "kg T",
+    "plasma_atoms": "T atoms",
+    "plasma_kg": "kg T",
+    "processor_atoms": "T atoms",
+    "processor_kg": "kg T",
+    "blanket_atoms": "T atoms",
+    "blanket_kg": "kg T",
+    "extraction_atoms": "T atoms",
+    "extraction_kg": "kg T",
+    "buffer_atoms": "T atoms",
+    "buffer_kg": "kg T",
+    "reserve_atoms": "T atoms",
+    "reserve_kg": "kg T",
+    "working_atoms": "T atoms",
+    "working_kg": "kg T",
+    "total_atoms": "T atoms",
+    "total_kg": "kg T",
+    "prefill_atoms": "T atoms",
+    "prefill_kg": "kg T",
+    "startup_deficit_atoms": "T atoms",
+    "startup_deficit_kg": "kg T",
+    "startup_minimum_atoms": "T atoms",
+    "startup_minimum_kg": "kg T",
+    "startup_decay_allowance_atoms": "T atoms",
+    "startup_decay_allowance_kg": "kg T",
+    "startup_conservative_atoms": "T atoms",
+    "startup_conservative_kg": "kg T",
+    "recycle_delay_s": "s",
+    "breeding_delay_s": "s",
+    "startup_horizon_s": "s",
+    "max_decay_residence": "1; max(lambda_T * individual process/buffer residence time), reserve interruption excluded",
+    "burn_kg_s": "kg T/s; full power",
+    "burn_kg_day": "kg T/day; full power",
+    "annual_burn_kg": "kg T/calendar year; productive time",
+    "injection_kg_s": "kg T/s; full power",
+    "injection_kg_day": "kg T/day; full power",
+    "annual_injection_kg": "kg T/calendar year; productive time",
+    "exhaust_kg_s": "kg T/s; full power",
+    "exhaust_kg_day": "kg T/day; full power",
+    "annual_exhaust_kg": "kg T/calendar year; productive time",
+    "recycle_kg_s": "kg T/s; full power",
+    "recycle_kg_day": "kg T/day; full power",
+    "annual_recycle_kg": "kg T/calendar year; productive time",
+    "production_kg_s": "kg T/s; full power",
+    "production_kg_day": "kg T/day; full power",
+    "annual_production_kg": "kg T/calendar year; productive time",
+    "extracted_kg_s": "kg T/s; full power",
+    "extracted_kg_day": "kg T/day; full power",
+    "annual_extracted_kg": "kg T/calendar year; productive time",
+    "recycle_loss_kg_s": "kg T/s; full power",
+    "recycle_loss_kg_day": "kg T/day; full power",
+    "annual_recycle_loss_kg": "kg T/calendar year; productive time",
+    "extraction_loss_kg_s": "kg T/s; full power",
+    "extraction_loss_kg_day": "kg T/day; full power",
+    "annual_extraction_loss_kg": "kg T/calendar year; productive time",
+    "dt_injection_kg_s": "kg (D+T)/s; full power",
+    "dt_injection_kg_day": "kg (D+T)/day; full power",
+    "dt_processor_kg_s": "kg (D+T)/s; full power",
+    "dt_processor_kg_day": "kg (D+T)/day; full power",
+    "decay_kg_s": "kg T/s; calendar_processor is calendar average, others operating",
+    "makeup_signed_kg_s": "kg T/s; calendar_processor is calendar average, others operating",
+    "external_shortfall_kg_s": "kg T/s; calendar_processor is calendar average, others operating",
+    "calendar_processor_kg_s": "kg T/s; calendar_processor is calendar average, others operating",
+    "annual_decay_kg": "kg T/calendar year; decay uses all calendar seconds",
+    "annual_makeup_signed_kg": "kg T/calendar year; decay uses all calendar seconds",
+    "annual_external_shortfall_kg": "kg T/calendar year; decay uses all calendar seconds",
+    "shutdown_remaining_kg": "kg T; passive shutdown, distinct from maintained design inventory",
+    "shutdown_decay_loss_kg": "kg T; passive shutdown, distinct from maintained design inventory",
+    "defined_flag": "1; exact 0/1, conditional inventory interpretation"
+  }
+}

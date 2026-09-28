@@ -1,0 +1,3 @@
+.project/active/mfe-major-radius-study-package/implementation/compare_tests.py:18:101: E501 Line too long (105 > 100)
+.project/active/mfe-major-radius-study-package/implementation/compare_tests.py:36:101: E501 Line too long (138 > 100)
+Found 2 errors.

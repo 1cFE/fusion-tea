@@ -1,23 +1,16 @@
-"""Item 8 phase-3 gate: prove the canonical embedded-catalog seam end-to-end on the real,
-license-regenerated IFE package (`generated/`, catalog_schema_version 2.0.0).
+"""Check the embedded constraint catalog on one repaired IFE baseline candidate.
 
-Scope (labelled honestly): this is a *representative* study run — one real evaluation of the
-whole-plant package through teax's `StudyRunner`/store, then a `StudyQuery` that reads codegen's
-embedded catalog straight from `contracts/model_contract.json` (no standalone
-`constraint_catalog.json`, no materializer). It proves exactly what Item 8 delivers: the catalog
-seam (`load_model_contract` + embedded-catalog `StudyQuery`) and the def→usage FK join. The full
-2,301-point (eta, gain) acceptance sweep is Item 13's bar, not this phase's.
-
-Multi-channel wiring is Item 9's stock `CandidateBridge` (zero/one/many channels), which this
-proof now uses directly: `StudyDefinition` carries the complete `entry_models` map and the plain
-`PreparedEvaluator` is the evaluator — no consumer wrapper. The candidate (the ife_plant_params
-template values) routes to its channel; the other two channels keep their modeled defaults.
-"""
+The stock study bridge supplies defaults for every generated entry channel.
+Both the viability and net_positive verdicts must be present; the baseline's
+net_positive verdict must be satisfied. New outputs use --output-dir or /tmp."""
 from __future__ import annotations
 
+import argparse
 import json
-import shutil
+import tempfile
 from pathlib import Path
+
+from exploration.ife_e2e.eligibility import NET_POSITIVE_ID
 
 from simkit.evaluation.evaluator import PreparedEvaluator
 from simkit.evaluation.package_load import ProvisionalPackageLoader
@@ -42,29 +35,24 @@ INPUTS = PACKAGE_DIR / "inputs"
 CONSTRAINT_ID = "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b"
 
 
-def _clean_build_artifacts() -> None:
-    """Remove stale `.pytest_cache` dirs left inside the sealed package tree (audit N1).
-
-    The package's own pytest run drops `generated/tests/.pytest_cache/`, an EXTRA file the
-    Item-7 seal verifier rejects (`SealVerificationError`) before this proof can load the
-    package. A reproducer must start from a clean tree, so sweep them first.
-    """
-    for cache in PACKAGE_DIR.rglob(".pytest_cache"):
-        if cache.is_dir():
-            shutil.rmtree(cache, ignore_errors=True)
-
-
 def main() -> None:
-    _clean_build_artifacts()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--limit", type=int)
+    args = parser.parse_args()
+    output = args.output_dir or Path(tempfile.mkdtemp(prefix="ife-study-"))
+    output.mkdir(parents=True, exist_ok=True)
+    global STORE_PATH
+    STORE_PATH = output / "catalog_seam.db"
     STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
     if STORE_PATH.exists():
         STORE_PATH.unlink()
 
     loader = ProvisionalPackageLoader(
-        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
+        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=output / "pkg"
     )
     loader.load()
-    prepared = PreparedEvaluator(loader, SPEC_PATH)
+    prepared = PreparedEvaluator(loader, SPEC_PATH, expects_constraint_report=True)
     # Stock Item-9 multi-channel bridge: plain PreparedEvaluator, no consumer wrapper.
     evaluator = prepared
 
@@ -99,8 +87,9 @@ def main() -> None:
     if not cases:
         raise SystemExit(
             f"REGRESSION: no case carries a verdict for {CONSTRAINT_ID!r} — the embedded catalog "
-            "has zero eligible entries where exactly one was expected (B4)."
+            "did not return the named viability verdict."
         )
+    assert cases[0].verdicts[NET_POSITIVE_ID] == "satisfied"
     view = cases[0].catalog[CONSTRAINT_ID]
     verdict = cases[0].verdicts[CONSTRAINT_ID]
     store.close()

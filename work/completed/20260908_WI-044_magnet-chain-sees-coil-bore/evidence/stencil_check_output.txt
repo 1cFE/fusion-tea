@@ -1,0 +1,1 @@
+auto-implemented stencils checked: 48; manual stages skipped: 3; stale: 0

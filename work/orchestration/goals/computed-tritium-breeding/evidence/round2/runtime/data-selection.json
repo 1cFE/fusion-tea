@@ -1,0 +1,325 @@
+{
+  "commit": "466ab3042f70e60b693fbbd3f6f15f30dba7cd1d",
+  "files": [
+    {
+      "path": "h5_files/neutron/B10.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52e9377e3ea620d8d420a9c1803219acefd6c8b2",
+      "size": 2461120,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/52e9377e3ea620d8d420a9c1803219acefd6c8b2"
+    },
+    {
+      "path": "h5_files/neutron/B11.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3becc32f43ea0ee6b0bc6933decbe45f745d3b8",
+      "size": 4112720,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/f3becc32f43ea0ee6b0bc6933decbe45f745d3b8"
+    },
+    {
+      "path": "h5_files/neutron/C12.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3adf810e2d4a880fbf8cb65e92be9846e604b594",
+      "size": 2555816,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/3adf810e2d4a880fbf8cb65e92be9846e604b594"
+    },
+    {
+      "path": "h5_files/neutron/C13.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c43e398f6569e99954f18655c6453f8f36caa517",
+      "size": 2185496,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/c43e398f6569e99954f18655c6453f8f36caa517"
+    },
+    {
+      "path": "h5_files/neutron/Cr50.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4be44bb3bf0ae1dab1bd952548716c359f123d97",
+      "size": 12522920,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/4be44bb3bf0ae1dab1bd952548716c359f123d97"
+    },
+    {
+      "path": "h5_files/neutron/Cr52.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a0acdca4957e12c9fa06cec79e2ba44447ab2c1",
+      "size": 12524200,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/2a0acdca4957e12c9fa06cec79e2ba44447ab2c1"
+    },
+    {
+      "path": "h5_files/neutron/Cr53.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b8eadf51bc72ea28af14d9ac5f812538de695bd",
+      "size": 10549640,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/8b8eadf51bc72ea28af14d9ac5f812538de695bd"
+    },
+    {
+      "path": "h5_files/neutron/Cr54.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebb0446ec490cfbf5898a0c1864a0516cfdda47c",
+      "size": 6821800,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/ebb0446ec490cfbf5898a0c1864a0516cfdda47c"
+    },
+    {
+      "path": "h5_files/neutron/Fe54.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3287ab62483291aa40a476f1ab60a2d6238ec925",
+      "size": 44368272,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/3287ab62483291aa40a476f1ab60a2d6238ec925"
+    },
+    {
+      "path": "h5_files/neutron/Fe56.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43afecad18a8483916eee6189de4c051cadcb85a",
+      "size": 57405104,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/43afecad18a8483916eee6189de4c051cadcb85a"
+    },
+    {
+      "path": "h5_files/neutron/Fe57.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3834760716304f3f196203032b4aa2708e04d878",
+      "size": 22030176,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/3834760716304f3f196203032b4aa2708e04d878"
+    },
+    {
+      "path": "h5_files/neutron/Fe58.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99ecde90de3776c2ea7073f2ac34fadd7d9515e8",
+      "size": 24452440,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/99ecde90de3776c2ea7073f2ac34fadd7d9515e8"
+    },
+    {
+      "path": "h5_files/neutron/H1.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61b1542053c8fcb7ff56b497053bb67f3d12b9f2",
+      "size": 328056,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/61b1542053c8fcb7ff56b497053bb67f3d12b9f2"
+    },
+    {
+      "path": "h5_files/neutron/H2.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68949aa9086c4c12bc55bc8ec49214f3548e5a81",
+      "size": 605176,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/68949aa9086c4c12bc55bc8ec49214f3548e5a81"
+    },
+    {
+      "path": "h5_files/neutron/He4.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0204d18e1d8fe1f658a4a1c0edd5fe312203809",
+      "size": 295776,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/f0204d18e1d8fe1f658a4a1c0edd5fe312203809"
+    },
+    {
+      "path": "h5_files/neutron/Li6.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cadddd5be1b90dc59e480c40e0afb0ff1094dd2",
+      "size": 1386016,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/1cadddd5be1b90dc59e480c40e0afb0ff1094dd2"
+    },
+    {
+      "path": "h5_files/neutron/Li7.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e91a9021fa27e53b0a0eca73ce1443b23ae56de5",
+      "size": 1198568,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/e91a9021fa27e53b0a0eca73ce1443b23ae56de5"
+    },
+    {
+      "path": "h5_files/neutron/Mn55.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cb1a2bc6261a0886262b506dd856661b55b94df",
+      "size": 14109376,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/7cb1a2bc6261a0886262b506dd856661b55b94df"
+    },
+    {
+      "path": "h5_files/neutron/O16.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ef4356319093f61496614a2375926358e13f5de",
+      "size": 8650648,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/6ef4356319093f61496614a2375926358e13f5de"
+    },
+    {
+      "path": "h5_files/neutron/O17.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36dbe64d225e282cc8b6822aa754dbb321909835",
+      "size": 741832,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/36dbe64d225e282cc8b6822aa754dbb321909835"
+    },
+    {
+      "path": "h5_files/neutron/O18.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0cd5d9c0a355d452b4af27395fd973195e8d673",
+      "size": 645416,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/a0cd5d9c0a355d452b4af27395fd973195e8d673"
+    },
+    {
+      "path": "h5_files/neutron/Pb204.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5739ebfbcebde656b8e0a15b26457c501afec810",
+      "size": 19371760,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/5739ebfbcebde656b8e0a15b26457c501afec810"
+    },
+    {
+      "path": "h5_files/neutron/Pb206.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e8fad2e151f9bc4dae27c6deb4ba943db43fe3d",
+      "size": 41331200,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/5e8fad2e151f9bc4dae27c6deb4ba943db43fe3d"
+    },
+    {
+      "path": "h5_files/neutron/Pb207.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e5d810d03f5a1eaa9061390ef6cbffc14c7dff9",
+      "size": 16359680,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/6e5d810d03f5a1eaa9061390ef6cbffc14c7dff9"
+    },
+    {
+      "path": "h5_files/neutron/Pb208.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5391f01de363923c9174c306ec38c907fcc2c5f",
+      "size": 12180760,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/f5391f01de363923c9174c306ec38c907fcc2c5f"
+    },
+    {
+      "path": "h5_files/neutron/Si28.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f928ca530284fcf6d84895e1baa041f3b9547aef",
+      "size": 8036808,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/f928ca530284fcf6d84895e1baa041f3b9547aef"
+    },
+    {
+      "path": "h5_files/neutron/Si29.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71ab8ee02fabfe711c7c3de8922abe96e6b738a8",
+      "size": 7794520,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/71ab8ee02fabfe711c7c3de8922abe96e6b738a8"
+    },
+    {
+      "path": "h5_files/neutron/Si30.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eedbd1ee0e0c8b8a9241c7a1855a855d396d7ed0",
+      "size": 4892920,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/eedbd1ee0e0c8b8a9241c7a1855a855d396d7ed0"
+    },
+    {
+      "path": "h5_files/neutron/V50.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6c91757dc140cb4402d01fe8e8ad45e651b4b89",
+      "size": 5225072,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/b6c91757dc140cb4402d01fe8e8ad45e651b4b89"
+    },
+    {
+      "path": "h5_files/neutron/V51.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53499db2d00190f8e5de97d8f137e339994e3d40",
+      "size": 12475864,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/53499db2d00190f8e5de97d8f137e339994e3d40"
+    },
+    {
+      "path": "h5_files/neutron/W180.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cb1df960b6c496698164b4ca7d957e865fb85e8",
+      "size": 13224256,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/1cb1df960b6c496698164b4ca7d957e865fb85e8"
+    },
+    {
+      "path": "h5_files/neutron/W182.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9bd93718e1002cd6a401e9dd6aca1b823ce5ecb",
+      "size": 30027328,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/c9bd93718e1002cd6a401e9dd6aca1b823ce5ecb"
+    },
+    {
+      "path": "h5_files/neutron/W183.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2428063efa666d807cfbd04e6c0762dd94fdda61",
+      "size": 51768312,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/2428063efa666d807cfbd04e6c0762dd94fdda61"
+    },
+    {
+      "path": "h5_files/neutron/W184.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be2b6db315334e7f105de40eca05c7ab5a8038b5",
+      "size": 18631224,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/be2b6db315334e7f105de40eca05c7ab5a8038b5"
+    },
+    {
+      "path": "h5_files/neutron/W186.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88f851bde82be56800c595aec29da80f0c0f71bc",
+      "size": 19449512,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/88f851bde82be56800c595aec29da80f0c0f71bc"
+    },
+    {
+      "path": "h5_files/neutron/Ni58.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb2478ac8bab29e45a7f6de0f1448c770f9a9b21",
+      "size": 21306872,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/cb2478ac8bab29e45a7f6de0f1448c770f9a9b21"
+    },
+    {
+      "path": "h5_files/neutron/Ni60.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d82b26355e1747809c28be84862d1d56c8cc7fab",
+      "size": 17719584,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/d82b26355e1747809c28be84862d1d56c8cc7fab"
+    },
+    {
+      "path": "h5_files/neutron/Ni61.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48810f1e9586751a716357b8cf94fb94f3bc01ae",
+      "size": 9341184,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/48810f1e9586751a716357b8cf94fb94f3bc01ae"
+    },
+    {
+      "path": "h5_files/neutron/Ni62.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebdea4b39c1eb797eead3039efb091ec46124d26",
+      "size": 9166576,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/ebdea4b39c1eb797eead3039efb091ec46124d26"
+    },
+    {
+      "path": "h5_files/neutron/Ni64.h5",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "beb561d48a760a90126f38ac3d6c1ff67215f42c",
+      "size": 8444704,
+      "url": "https://api.github.com/repos/openmc-data-storage/ENDF-B-VIII.0-NNDC/git/blobs/beb561d48a760a90126f38ac3d6c1ff67215f42c"
+    }
+  ]
+}

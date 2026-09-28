@@ -1,0 +1,215 @@
+......................FFFF..........................FFFF.F               [100%]
+=================================== FAILURES ===================================
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row0] ______
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['c...ff_required']) == dict_keys(['V...imum_margin'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:146: AssertionError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row1] ______
+
+row = {'outputs': {'A': 10.769230769230768, 'B_axis': 8.164285714285713, 'B_peak': 21.916589861751145, 'T_e0': 15.400000000000002, ...}, 'overrides': {'R': 14.0}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['c...ff_required']) == dict_keys(['V...imum_margin'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:146: AssertionError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row2] ______
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'T_amb_cryo': 310.0, 'T_cold_cryo': 30.0}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+>       result = oracle._compute(wi058_overrides(row))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_domain_consumers.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:598: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:906: in compute
+    conductor = _conductor_current(p, B_peak, procurement['tape_length'], procurement['conductor_length'])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+p = {'E_fus': 2.817e-12, 'G_stock': 0.0, 'I_total': 0.0, 'R': 12.7, ...}
+field = 24.899999999999995, tape_length = 36578571.42857145
+conductor_length = 321600.0
+
+    def _conductor_current(p, field, tape_length, conductor_length):
+        """Independent absolute-current estimate; continuous inventory counts, amperes.
+    
+        The material reference is fixed at 4 mm, 20 K, 20 T and 56 micrometres.
+        The field exponent is source-derived independently of the sizing envelope.
+        """
+        facts = {key: p['magnet_' + key] for key in (
+            'reference_tape_current', 'material_factor', 'orientation_factor',
+            'cabling_factor', 'degradation_factor', 'sharing_factor',
+            'allowable_fraction', 'allow_field_extrapolation', 'tape_width',
+            'tape_thickness', 'f_set', 'f_wp_vol', 'turn_current')}
+        facts.update(field=field, temperature=p['T_cold_cryo'],
+                     tape_length=tape_length, conductor_length=conductor_length)
+        for key, value in facts.items():
+            if not math.isfinite(value) or (value <= 0 and key != 'allow_field_extrapolation'):
+                raise ValueError('oracle conductor current: invalid ' + key)
+        if facts['temperature'] != 20 or facts['tape_thickness'] != 0.000056:
+>           raise ValueError('oracle conductor current: unsupported temperature/construction')
+E           ValueError: oracle conductor current: unsupported temperature/construction
+
+exploration/stellarator_e2e/verify_stellaris.py:759: ValueError
+______ test_valid_outputs_exactly_preserved_and_physical_identities[row3] ______
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'p_cryo_direct': 2.0, 'p_fixed_cryo': 0.0, 'q_nuc_cryo': 0.0}}
+
+    @pytest.mark.parametrize("row", BEFORE["controls"])
+    def test_valid_outputs_exactly_preserved_and_physical_identities(row):
+        result = oracle._compute(wi058_overrides(row))
+        expected, changed = wi040_expected(row)
+>       assert result.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['c...ff_required']) == dict_keys(['V...imum_margin'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_domain_consumers.py:146: AssertionError
+_____________ test_zero_field_is_rejected_by_sustainment_consumer ______________
+
+    def test_zero_field_is_rejected_by_sustainment_consumer():
+        # Test the existing consumer directly; zero sizing is separately accepted above.
+        with pytest.raises(RuntimeError, match='B_axis must be nonzero'):
+            oracle.vs._sustainment(oracle.vs.IN, 1000., 0.)
+        # A zero axis-field producer from a mapped linkage input reaches that guard too.
+        with pytest.raises(RuntimeError, match='B_axis must be nonzero'):
+>           oracle.evaluate({oracle.P + 'magnet__coil__k_link': 0.})  # WI-057 (2026-09-13): the key carries its part's path
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_winding_consumers.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:611: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:598: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:906: in compute
+    conductor = _conductor_current(p, B_peak, procurement['tape_length'], procurement['conductor_length'])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+p = {'E_fus': 2.817e-12, 'G_stock': 0.0, 'I_total': 0.0, 'R': 12.7, ...}
+field = 0.0, tape_length = 36578571.42857145, conductor_length = 321600.0
+
+    def _conductor_current(p, field, tape_length, conductor_length):
+        """Independent absolute-current estimate; continuous inventory counts, amperes.
+    
+        The material reference is fixed at 4 mm, 20 K, 20 T and 56 micrometres.
+        The field exponent is source-derived independently of the sizing envelope.
+        """
+        facts = {key: p['magnet_' + key] for key in (
+            'reference_tape_current', 'material_factor', 'orientation_factor',
+            'cabling_factor', 'degradation_factor', 'sharing_factor',
+            'allowable_fraction', 'allow_field_extrapolation', 'tape_width',
+            'tape_thickness', 'f_set', 'f_wp_vol', 'turn_current')}
+        facts.update(field=field, temperature=p['T_cold_cryo'],
+                     tape_length=tape_length, conductor_length=conductor_length)
+        for key, value in facts.items():
+            if not math.isfinite(value) or (value <= 0 and key != 'allow_field_extrapolation'):
+>               raise ValueError('oracle conductor current: invalid ' + key)
+E               ValueError: oracle conductor current: invalid field
+
+exploration/stellarator_e2e/verify_stellaris.py:757: ValueError
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row0] ________
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {}}
+
+    @pytest.mark.parametrize('row', BEFORE['controls'])
+    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
+        actual = oracle._compute(wi059_replay(row['overrides']))
+        # WI-040: independently derive only the additive-account cost increments;
+        # all frozen physics and unrelated output values retain exact comparison.
+        expected, changed = wi040_expected(row)
+>       assert actual.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['c...ff_required']) == dict_keys(['V...imum_margin'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:81: AssertionError
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row1] ________
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 9.9, 'B_peak': 27.39, 'T_e0': 15.400000000000002, ...}, 'overrides': {'magnet_I_coil': 16940000.0}}
+
+    @pytest.mark.parametrize('row', BEFORE['controls'])
+    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
+        actual = oracle._compute(wi059_replay(row['overrides']))
+        # WI-040: independently derive only the additive-account cost increments;
+        # all frozen physics and unrelated output values retain exact comparison.
+        expected, changed = wi040_expected(row)
+>       assert actual.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['c...ff_required']) == dict_keys(['V...imum_margin'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:81: AssertionError
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row2] ________
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'magnet_j_wp': 142.59259259259264}}
+
+    @pytest.mark.parametrize('row', BEFORE['controls'])
+    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
+        actual = oracle._compute(wi059_replay(row['overrides']))
+        # WI-040: independently derive only the additive-account cost increments;
+        # all frozen physics and unrelated output values retain exact comparison.
+        expected, changed = wi040_expected(row)
+>       assert actual.keys() == expected.keys()
+E       AssertionError: assert dict_keys(['c...ff_required']) == dict_keys(['V...imum_margin'])
+E         
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:81: AssertionError
+_______ test_current_native_winding_route_agrees_with_independent_oracle _______
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12828/test_current_native_winding_ro0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):
+        import study_route as route
+        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
+        cases, _ = route.run_points('winding-consumer-controls', points, tmp_path)
+        assert len(cases) == len(points)
+        for case in cases:
+            assert case.state == 'completed', (dict(case.inputs), case.state)
+            expected = oracle.evaluate(case.inputs)
+>           assert len(case.outputs) == 177 + len(WI059_CHANNELS) and len(expected) == 161 + len(WI059_CHANNELS)  # WI-038 adds three grade outputs
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           assert (223 == (177 + 18))
+E            +  where 223 = len({'stellarator_09__stellaris__blanket__blanket_cost__cost': 718414154.606785, 'stellarator_09__stellaris__blanket__firs...08570995383, 'stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak': 3.9788448937763854, ...})
+E            +    where {'stellarator_09__stellaris__blanket__blanket_cost__cost': 718414154.606785, 'stellarator_09__stellaris__blanket__firs...08570995383, 'stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak': 3.9788448937763854, ...} = CaseView(candidate_id='winding-consumer-controls:c0000', state='completed', inputs={'stellarator_09__stellaris__cryopl...alue","Base::Anything"]},"schema_version":"expression-ir/v1"}],"operator":"<=","schema_version":"expression-ir/v1"}')}).outputs
+E            +  and   18 = len({'stellarator_09__stellaris__cryoplant__cold_load__p_cold', 'stellarator_09__stellaris__cryoplant__cold_load__q_struct...9__stellaris__cryoplant__inventory__p_drive', 'stellarator_09__stellaris__cryoplant__inventory__q_inventory_cold', ...})
+
+tests/study/test_winding_consumers.py:123: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row2]
+FAILED tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]
+FAILED tests/study/test_winding_consumers.py::test_zero_field_is_rejected_by_sustainment_consumer
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]
+FAILED tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+9 failed, 49 passed in 13.06s

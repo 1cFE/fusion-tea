@@ -1,0 +1,404 @@
+{
+  "study_id": "20260922-aries-integrated-coupled-design",
+  "axes": [
+    {
+      "axis": "he_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m2",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Area changes UA and purchase; geometry and hydraulics remain unqualified.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m2",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Area changes UA and purchase; geometry and hydraulics remain unqualified.",
+      "declined": false
+    },
+    {
+      "axis": "density",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m^-3",
+      "role": "demand",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Fixed hardware; confinement and control unqualified; operating diagnostic only.",
+      "declined": false
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "kg/s",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Machine maps and priced flow capability absent; declined ranked axis.",
+      "declined": true
+    },
+    {
+      "axis": "compressor_1_ratio",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_1__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Machine maps and priced pressure capability absent; declined ranked axis.",
+      "declined": true
+    },
+    {
+      "axis": "compressor_2_ratio",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_2__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Machine maps and priced pressure capability absent; declined ranked axis.",
+      "declined": true
+    },
+    {
+      "axis": "compressor_3_ratio",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_3__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "operating",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope.",
+      "missing_response": "Machine maps and priced pressure capability absent; declined ranked axis.",
+      "declined": true
+    }
+  ],
+  "authority": "AGENT coupled sampling under reviewed C-001.r1 and T-004; source/operating qualifications unchanged",
+  "designs": [
+    {
+      "name": "grid-he45000-pbli45000-n4.75e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 45000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he45000-pbli45000-n5e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 45000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he45000-pbli45000-n5.25e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 45000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he45000-pbli50000-n4.75e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 50000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he45000-pbli50000-n5e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 50000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he45000-pbli50000-n5.25e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 50000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he45000-pbli55000-n4.75e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 55000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he45000-pbli55000-n5e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 55000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he45000-pbli55000-n5.25e+20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 55000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he50000-pbli45000-n4.75e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 45000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he50000-pbli45000-n5e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 45000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he50000-pbli45000-n5.25e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 45000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he50000-pbli50000-n4.75e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 50000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he50000-pbli50000-n5.25e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 50000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he50000-pbli55000-n4.75e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 55000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he50000-pbli55000-n5e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 55000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he50000-pbli55000-n5.25e+20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 55000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he55000-pbli45000-n4.75e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 45000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he55000-pbli45000-n5e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 45000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he55000-pbli45000-n5.25e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 45000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he55000-pbli50000-n4.75e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 50000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he55000-pbli50000-n5e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 50000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he55000-pbli50000-n5.25e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 50000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he55000-pbli55000-n4.75e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 55000.0,
+        "density": 4.75e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "grid-he55000-pbli55000-n5e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 55000.0,
+        "density": 5e+20
+      },
+      "classification": "purchased area comparison"
+    },
+    {
+      "name": "grid-he55000-pbli55000-n5.25e+20",
+      "values": {
+        "he_area": 55000.0,
+        "pbli_area": 55000.0,
+        "density": 5.25e+20
+      },
+      "classification": "coupled operating demand diagnostic"
+    },
+    {
+      "name": "probe-he50000-pbli50000-n4.875e20",
+      "values": {
+        "he_area": 50000.0,
+        "pbli_area": 50000.0,
+        "density": 4.875e+20
+      },
+      "classification": "interior operating demand diagnostic"
+    },
+    {
+      "name": "probe-he45000-pbli45000-n4.875e20",
+      "values": {
+        "he_area": 45000.0,
+        "pbli_area": 45000.0,
+        "density": 4.875e+20
+      },
+      "classification": "interior operating demand diagnostic"
+    },
+    {
+      "name": "he_area-5000.0",
+      "values": {
+        "he_area": 5000.0
+      },
+      "classification": "inadequate equipment control"
+    },
+    {
+      "name": "pbli_area-5000.0",
+      "values": {
+        "pbli_area": 5000.0
+      },
+      "classification": "inadequate equipment control"
+    },
+    {
+      "name": "nominal-source-assumed",
+      "canonical_base": "nominal-source-assumed",
+      "values": {},
+      "classification": "preserved source control"
+    },
+    {
+      "name": "literal-Lyon-source-input",
+      "canonical_base": "literal-Lyon-source-input",
+      "values": {},
+      "classification": "preserved source control"
+    },
+    {
+      "name": "literal-Raffray-accounting",
+      "canonical_base": "literal-Raffray-accounting",
+      "values": {},
+      "classification": "preserved source control"
+    }
+  ]
+}

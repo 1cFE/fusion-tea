@@ -1,0 +1,71 @@
+J. Lion et al.
+Fig. 7. Neoclassical radial transport coefficients 𝐷⋆
+11 as a function of collisionality 𝜈⋆,
+in vacuum and at the target volume-averaged plasma ⟨𝛽⟩𝑉= 3.0%. The normalized
+radial electric field, 𝑣∗
+𝐸=
+𝐸𝑟
+𝑣𝐵0 was set to 10−3. 𝑣is the particle velocity and 𝐵0 is
+the flux-surface averaged magnetic field strength. Configurations are evaluated at mid-
+radius (i.e., 𝜌= 0.5). The computation was performed with SFINCS using free-boundary
+VMEC equilibria.
+Fig. 8. The bootstrap current density profile 𝐽𝐵 𝐶for the different species at the design
+target of ⟨𝛽⟩𝑉= 3.0% as a function of the plasma minor radius 𝑟. The integrated toroidal
+current is 𝐼BC ≃ 23 k A.
+The bootstrap current is another important neoclassical quantity.
+Fig. 8 shows the magnitude of the bootstrap current density for dif-
+ferent species. Species profiles are computed using the 0.5-D models
+that will be introduced in Section 2.3. The radial electric field value
+for this computation was evaluated with the NTSS code [111] in the
+ion-root case (see ). For these profiles, the integrated bootstrap current
+is approximately 𝐼BC ≃ 23 k A. For most practical purposes, a toroidal
+current with this magnitude can be neglected, as it would result in a
+shift of the rotational transform at the edge of only 0.5% .
+Ideal-MHD stability. In QI configurations with low net toroidal current,
+MHD current-driven modes are expected to be negligible. However, it is
+important to consider the stability of pressure-driven ideal-MHD modes.
+In this analysis, local ideal-MHD stability criteria are employed to eval-
+uate the configuration’s stability against ballooning and interchange
+modes.
+To this end, we examine the configuration’s stability against the
+ideal-MHD interchange mode using the Mercier criterion [112–115].
+Fig. 9. The normalized Mercier criterion 𝛷2
+edge𝐷Merc as a function of the normalized
+toroidal flux 𝑠for different volume-averaged plasma 𝛽. A positive value of the Mercier
+criterion suggests a stable configuration with respect to the high-mode number ideal-
+MHD interchange mode, whereas a negative value suggests an unstable configuration.
+The proposed configuration features a positive Mercier criterion over the whole plasma
+volume up to and beyond the target volume-averaged 𝛽value of ⟨𝛽⟩𝑉= 3.0%. The red
+dashed line represents the boundary of stability. The evaluation was performed using
+the free boundary VMEC equilibrium.
+Fig. 10. Highest growth rate of the ideal-MHD infinite-𝑛ballooning mode across all
+evaluated field lines on a flux surface 𝛾max, plotted as a function of the normalized
+toroidal flux 𝑠for different volume-averaged plasma 𝛽. The growth rates are evaluated
+with the COBRAVMEC code. Negative growth rates indicate a stable configuration,
+positive growth rates indicate an unstable configuration. The red dashed line represents
+the boundary of stability. The evaluation was performed using the free boundary VMEC
+equilibrium.
+Appendix D describes the adopted definition of the Mercier criterion. A
+positive value of the Mercier criterion is a necessary (but not sufficient)
+condition for a stable configuration at that specific radial location,
+whereas a negative value suggests potential instability.
+Fig. 9 presents the Mercier criterion as a function of normalized
+toroidal flux for various volume-averaged plasma 𝛽values, as evaluated
+with VMEC using the free-boundary equilibrium. The results show
+positive values across the entire plasma profile up to and beyond the
+target 𝛽of ⟨𝛽⟩𝑉= 3.0% (see Fig. 9).
+Additionally, we employ the COBRAVMEC code [109], which com-
+putes the local (on a field line) growth rates of ideal-MHD infinite-𝑛
+ballooning modes using the VMEC free-boundary equilibrium solution.
+Fig. 10 shows the highest growth rate across all evaluated field lines
+on a flux surface as a function of normalized toroidal flux for various
+volume-averaged plasma 𝛽values. For each flux surface, growth rates
+are computed on 100 field lines with starting locations uniformly
+distributed across the poloidal and toroidal directions. We find that
+the free-boundary plasma configuration is stable against ideal-MHD
+infinite-𝑛ballooning modes throughout the entire plasma domain up
+to and beyond the design volume-averaged plasma ⟨𝛽⟩𝑉= 3%.
+Equilibrium resiliency with respect to finite-𝛽effects. Optimized QI con-
+figurations tend to be particularly resilient against varying plasma
+Fusion Engineering and Design xxx (xxxx) xxx 
+6 

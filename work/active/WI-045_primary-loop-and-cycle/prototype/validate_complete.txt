@@ -1,0 +1,115 @@
+
+======================================================================
+SysML Quality Validation
+Models path: models
+Mode: Complete
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 27 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 27
+   Errors: 0
+   Warnings: 0
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 27 SysML files
+
+❌ Level 2: Structural Completeness
+   Unused definitions: 0
+   Unbound inputs: 0
+   Undefined bindings: 0
+   Placeholder bindings: 12
+   Self-named bindings: 0
+   Orphaned elements: 0
+
+   Issues found: 12
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:823
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:823
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:829
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:829
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:835
+   ... and 7 more
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 27 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 10
+   Circular dependencies: 0
+
+============================================================
+Level 4: Constraint Coverage
+============================================================
+Found 27 SysML files
+
+✅ Level 4: Constraint Coverage
+   Total constraints: 14
+   ConstraintUsage: 14
+   ConstraintDefinition: 14
+   Constraint usages assessed (incl. satisfy): 14
+   Admitted numerical: 14
+   Malformed numerical: 0
+   Non-numerical: 0
+   Unassessed (satisfy/require/plain): 0
+   Executable share: 100.0%
+
+============================================================
+Level 5: Traceability & Documentation
+============================================================
+
+✅ Level 5: Traceability & Documentation
+   Total elements: 99
+   Documented: 99
+   Missing docs: 0
+   Coverage: 100.0%
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+❌ Level 6: Architecture & Pipeline Readiness
+   Calc defs checked: 60
+   Calc usages checked: 68
+   Bindings validated: 348
+   Design attrs checked: 227
+   Manifests checked: 0
+   L6_MISSING_QUALIFIED_NAME: 0
+   L6_INVALID_QUALIFIED_NAME: 0
+   L6_CALC_DEF_NO_OUTPUT: 0
+   L6_CALC_DEF_NO_DIRECTION: 0
+   L6_INVALID_BINDING_FORMAT: 0
+   L6_DESIGN_ATTR_INCOMPLETE: 116
+   L6_DESIGN_ATTR_UNEXTRACTABLE: 60
+   L6_ANONYMOUS_RETURN: 0
+   L6_BODY_ASSIGNMENT_IMPL_LOSS: 0
+   V4_STATIC_FUNCTION_INVOCATION: 0
+   L6_CONSTRAINT_MALFORMED_NUMERICAL: 0
+   L6_CONSTRAINT_NON_NUMERICAL: 0
+   L6_CALC_DEF_NO_INSTANTIATION: 0
+   L6_ATTR_REDEF_EXPR_DROPPED: 0
+
+   Issues found: 248
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:models/designs/generic_mfe/mfe_plant.sysml:755
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:models/designs/generic_mfe/mfe_plant.sysml:761
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'cas22_capital', 'bop_capital', 'special_materials_capital', 'cas28_capital'] at file:models/designs/generic_mfe/mfe_plant.sysml:872
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'n_mod'] at file:models/designs/generic_mfe/mfe_plant.sysml:1021
+   - ERROR: Derived expression references design attributes: ['wall_load'] at file:models/designs/stellarator_09/stellarator_plant.sysml:1508
+   ... and 243 more
+
+======================================================================
+Summary
+======================================================================
+Checks run: 6
+✅ Passed: 4
+❌ Failed: 2
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

@@ -1,0 +1,24 @@
+{
+  "executable_fingerprint": "7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f",
+  "indicator_fingerprint": "afe0dbbc1f8d0ae6d54eba2b7c969d964359978fb37cf6cbb8b0479bee1695dd",
+  "input_count": 511,
+  "input_file_count": 11,
+  "integration_receipt": "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/integration/integration_return.json",
+  "negative_guards": [
+    "uncovered-input.json",
+    "outside-package-input.json"
+  ],
+  "read_count": 13,
+  "runtime": {
+    "module_count": 4,
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "relocation": "Filesystem locations are recorded but are not content identities.",
+    "runtime_python_file_count": 205,
+    "sealed_wheel_count": 3,
+    "status": "pass",
+    "teax_commit": "8d877460ac4f6f264561d916e40c1708adb13397"
+  },
+  "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1",
+  "source_file_count": 534,
+  "status": "pass"
+}

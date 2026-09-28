@@ -1,0 +1,80 @@
+[
+  {
+    "copy": "context/manifest.json",
+    "source": "exploration/stellarator_e2e/studies/manifest.json",
+    "sha256": "47ad645b408df22bfddca1b9700c02a70e2761a3642925b4ac7637e88d8204a1",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/ANNEX.md",
+    "source": "exploration/stellarator_e2e/studies/ANNEX.md",
+    "sha256": "c3e62c7b65dfdace0aa0d9609ee3a4627d945fe11a9a9a68eb4df5ee33dbb411",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/oracle_entry.py",
+    "source": "exploration/stellarator_e2e/studies/oracle_entry.py",
+    "sha256": "87d7de2168e3d7d7c55526fa1382560347329b42b6b515ff3fd423ef11d11050",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/verify_stellaris.py",
+    "source": "exploration/stellarator_e2e/verify_stellaris.py",
+    "sha256": "31cd3a4282f4ae0fed503d179c62822747fc0626948153b0d8c09c5393d4d48a",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/study_route.py",
+    "source": "exploration/stellarator_e2e/studies/study_route.py",
+    "sha256": "a39daf5096f5cf42e58098cc580fbe9807126940c5bdb4deffee476107e0ae38",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/model-audit.md",
+    "source": "work/active/WI-050_mfe-coherent-operating-heating/audit.md",
+    "sha256": "6653b9ccd9ea9e30fd8da555b72a1e77fcbf2b9a8b485b19b360a35161f96d05",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/package-audit.md",
+    "source": ".project/active/mfe-operating-heating-study-package/audit.md",
+    "sha256": "f8106954e6d99190d482268b6553816241f3b5e39763f3278a915decbcfdd523",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/inherited-baseline-attribution.json",
+    "source": "work/active/WI-050_mfe-coherent-operating-heating/implementation/baseline-attribution.json",
+    "sha256": "af0a22f4a95896a79b275d0b5a472f142f8fbda0c23d42e92dbcaf6ac6c6a47c",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/inherited-baseline-attribution.md",
+    "source": "work/active/WI-050_mfe-coherent-operating-heating/implementation/baseline-attribution.md",
+    "sha256": "e622cb3c695c1405e3ab0abc262617911ff0e2660097a16f6b9084b94dd5f1cd",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/inherited-finance.json",
+    "source": "work/active/WI-050_mfe-coherent-operating-heating/audit-evidence/independent-finance.json",
+    "sha256": "483ffe38a588395c352b79e8d0c53c1495b6d8a1234afee0cfa405e30b4deb45",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/inherited-boundary-results.json",
+    "source": "work/active/WI-050_mfe-coherent-operating-heating/implementation/boundary-results.json",
+    "sha256": "ff5340bc7b67665890bfa064c2b345e5bb9934a8bd40c60574e4eb0213323b86",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/inherited-boundary-runner.py",
+    "source": "work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py",
+    "sha256": "5e29f15db52e45831a95799b70f2829952800941aaaaed1f283ca7ecf7806e1a",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  },
+  {
+    "copy": "context/integration_return.json",
+    "source": "work/orchestration/goals/fusion-audit-remediation/evidence/T-018_integration/integration_return.json",
+    "sha256": "262e3cf7a16c245d3f6cb14ebf4ac5737af37ec2466b855fc9281346b21145c9",
+    "scope": "Inherited evidence/source snapshot, not new study execution"
+  }
+]

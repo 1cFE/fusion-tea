@@ -1,0 +1,25 @@
+...................................F................                     [100%]
+=================================== FAILURES ===================================
+____________________ test_every_constraint_operand_resolves ____________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+oracle_entry = <module 'oracle_entry' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py'>
+
+    def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
+        entries = catalog_entries(real_package_path)
+        assert len(entries) == 20
+        bindings = oracle_entry.operand_bindings()
+        channels = oracle_entry.evaluate(BASELINE_POINT)
+        inputs = package_inputs(real_package_path)
+    
+        assert set(bindings) == {entry["constraint_id"] for entry in entries}
+>       assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 312 == (265 + 45)
+E        +  where 312 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})
+E        +  and   45 = len(((((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__magnet__casing__assembly_clearance', 'stellarator_09__stellaris__magnet__casing__interior...is__magnet__winding_pack__ground_insulation', 'stellarator_09__stellaris__magnet__winding_pack__internal_build_x', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation', 'stellarator_09__stellaris__magnet__win...is__magnet__winding_pack__material_factor', 'stellarator_09__stellaris__magnet__winding_pack__orientation_factor', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}))
+
+tests/study/test_operand_bindings.py:104: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves
+1 failed, 51 passed in 32.52s

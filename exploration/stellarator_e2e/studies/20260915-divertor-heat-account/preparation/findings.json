@@ -1,0 +1,37 @@
+[
+  {
+    "id": "20260915-divertor-heat-account#1",
+    "kind": "model",
+    "finding": "The low source profile lowers the target peak but increases uncaptured non-radiated load, while target capital and plant/loop response are unchanged at fixed plasma coordinates.",
+    "disposition": "Conditional transport sensitivity; wall interception and geometry-specific engineering/cost consequences remain unrepresented.",
+    "home": "work/orchestration/goals/divertor-peak-heat-load"
+  },
+  {
+    "id": "20260915-divertor-heat-account#2",
+    "kind": "model",
+    "finding": "Changing major radius at held transport changes heating and conditional peak response; neither equivalent area nor the radius shadow identifies physical wetted area or independent peaking.",
+    "disposition": "Geometry transfer remains unresolved; area/peaking gains are conditional requirements, not design levers.",
+    "home": "work/orchestration/goals/divertor-peak-heat-load"
+  },
+  {
+    "id": "20260915-divertor-heat-account#3",
+    "kind": "model",
+    "finding": "Greater total radiation can make the non-radiated target predicate pass without changing plant heat, primary-loop demand or target capital at a held plasma state.",
+    "disposition": "Radiation-control capability, total target radiative deposition and wall accommodation are not qualified.",
+    "home": "work/orchestration/goals/divertor-peak-heat-load"
+  },
+  {
+    "id": "20260915-divertor-heat-account#4",
+    "kind": "model",
+    "finding": "Two evaluated points have negative auxiliary demand and power_account_valid=0; they remain numerical failed controls.",
+    "disposition": "Both retained after coordinator release and excluded from physical heat-load-gain interpretation.",
+    "home": "work/orchestration/goals/divertor-peak-heat-load"
+  },
+  {
+    "id": "20260915-divertor-heat-account#5",
+    "kind": "model",
+    "finding": "No selected point satisfies all20 predicates, and every entering scalar/predicate comparison remains unchanged.",
+    "disposition": "Preserve the joint study bounded negative; these diagnostic source/radiation sensitivities do not regrade it or establish global infeasibility.",
+    "home": "work/orchestration/goals/divertor-peak-heat-load"
+  }
+]

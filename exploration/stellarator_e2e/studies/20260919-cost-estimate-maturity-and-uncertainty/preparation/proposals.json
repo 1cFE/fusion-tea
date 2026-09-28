@@ -1,0 +1,1038 @@
+[
+  {
+    "id": "fabrication240-tonne907.185-containment65.2-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne907.185-containment65.2-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne907.185-containment82.4-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne907.185-containment82.4-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne907.185-containment96.5-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne907.185-containment96.5-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne1000-containment65.2-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne1000-containment65.2-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne1000-containment82.4-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne1000-containment82.4-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne1000-containment96.5-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication240-tonne1000-containment96.5-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne907.185-containment65.2-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne907.185-containment65.2-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "reference",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "reference",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne907.185-containment82.4-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne907.185-containment96.5-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne907.185-containment96.5-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne1000-containment65.2-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne1000-containment65.2-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne1000-containment82.4-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne1000-containment82.4-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne1000-containment96.5-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication310-tonne1000-containment96.5-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne907.185-containment65.2-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne907.185-containment65.2-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne907.185-containment82.4-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne907.185-containment82.4-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne907.185-containment96.5-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne907.185-containment96.5-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne1000-containment65.2-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne1000-containment65.2-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne1000-containment82.4-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne1000-containment82.4-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne1000-containment96.5-sheet61.6772",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "fabrication360-tonne1000-containment96.5-sheet0",
+    "family": "source-envelope",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne907.185-containment65.2-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne907.185-containment65.2-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne907.185-containment82.4-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne907.185-containment82.4-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne907.185-containment96.5-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne907.185-containment96.5-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne907.185-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne1000-containment65.2-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne1000-containment65.2-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne1000-containment82.4-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne1000-containment82.4-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne1000-containment96.5-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication240-tonne1000-containment96.5-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 240.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication240-tonne1000-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne907.185-containment65.2-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne907.185-containment65.2-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-reference",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "reference",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne907.185-containment82.4-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne907.185-containment96.5-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne907.185-containment96.5-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne907.185-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne1000-containment65.2-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne1000-containment65.2-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne1000-containment82.4-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne1000-containment82.4-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne1000-containment96.5-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication310-tonne1000-containment96.5-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication310-tonne1000-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne907.185-containment65.2-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne907.185-containment65.2-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne907.185-containment82.4-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne907.185-containment82.4-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne907.185-containment96.5-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne907.185-containment96.5-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne907.185-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne1000-containment65.2-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment65.2-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne1000-containment65.2-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment65.2-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne1000-containment82.4-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment82.4-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne1000-containment82.4-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment82.4-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne1000-containment96.5-sheet61.6772",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment96.5-sheet61.6772",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "zero-contingency-fabrication360-tonne1000-containment96.5-sheet0",
+    "family": "contingency-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 360.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 0.0,
+      "stellarator_09__stellaris__contingency_rate": 0.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0
+    },
+    "matched_source_id": "fabrication360-tonne1000-containment96.5-sheet0",
+    "note": "Finite source-interpretation/model-analogy combination; financial diagnostic is outside headline source envelope."
+  },
+  {
+    "id": "downtime-stress-0.05",
+    "family": "downtime-stress",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "matched_source_id": "reference",
+    "note": "Engineered availability stress, not supported reliability bounds; nominal costs/contingency held."
+  },
+  {
+    "id": "downtime-stress-0.1",
+    "family": "downtime-stress",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price": 61.67720668774671,
+      "stellarator_09__stellaris__contingency_rate": 0.1,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "matched_source_id": "reference",
+    "note": "Engineered availability stress, not supported reliability bounds; nominal costs/contingency held."
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-03",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-03/20260918T201603775835",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "iaea_indc_nds_281_fusion_neutron_benchmark_proceedings",
+      "path": "knowledge/sources/iaea_indc_nds_281_fusion_neutron_benchmark_proceedings/",
+      "source_id": "3c7828e5ddbbfce35ba466fb3e2fc8bdf89511c849ce5a6e2fd3311b3d7ee62b",
+      "pre_existing": false
+    },
+    {
+      "slug": "iaea_indc_nds_281_original_neutron_multiplication_benchmark",
+      "path": "knowledge/sources/iaea_indc_nds_281_original_neutron_multiplication_benchmark/",
+      "source_id": "6df35c07b049385d326f0a71cee069b464d9a4b848cc6ad7717fb4be8616a2c0",
+      "pre_existing": false
+    },
+    {
+      "slug": "iaea_oktavian_tritium_breeding_benchmark_1994_text_rendering",
+      "path": "knowledge/sources/iaea_oktavian_tritium_breeding_benchmark_1994_text_rendering/",
+      "source_id": "61c8428172731605e0eab86e6b429ae9970ec5e11f9ed3f0fde8aea719b0f36d",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www-nds.iaea.org/fendl2/validation/benchmarks/jaerim94014/oktavian/tbr/readme.txt",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

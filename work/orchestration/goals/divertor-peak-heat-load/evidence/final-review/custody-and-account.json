@@ -1,0 +1,48 @@
+{
+  "outcome": "pass",
+  "snapshot_artifacts": 184,
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "cases": 1,
+      "export_joins": 0
+    },
+    {
+      "path": "results/study/_work/20260915-divertor-heat-account.db",
+      "cases": 27,
+      "export_joins": 27
+    }
+  ],
+  "sample_cases": 27,
+  "invalid_accounts": [
+    "r-13.1-1.45-1.54e+07--radius--0.2",
+    "signed-negative-burn-control"
+  ],
+  "valid_divertor_passes": 13,
+  "all_predicate_passes": 0,
+  "conditional_requirements": {
+    "reference": {
+      "power_reduction": 0.049234583328736314,
+      "area_increase": 0.051784154603679244,
+      "radiation_threshold": 0.9049234583328737
+    },
+    "current-sized-reference": {
+      "power_reduction": 0.049234583328736314,
+      "area_increase": 0.051784154603679244,
+      "radiation_threshold": 0.9049234583328737
+    },
+    "allocated-current-sized-reference": {
+      "power_reduction": 0.049234583328736314,
+      "area_increase": 0.051784154603679244,
+      "radiation_threshold": 0.9049234583328737
+    },
+    "r-13.1-1.45-1.54e+07": {
+      "power_reduction": 0.10369153404272247,
+      "area_increase": 0.11568733084762028,
+      "radiation_threshold": 0.9103691534042722
+    }
+  },
+  "integrated_gates": 10,
+  "strata_checked": 13,
+  "unchanged_implementation_revision": "48b65159"
+}

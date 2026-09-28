@@ -5,7 +5,7 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 SysML Expressions:
-    fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
+    fusion_cycle_gain = eta * gain_in * blanket_multiplier * thermal_efficiency_in
     f_recirc = 1.0 / fusion_cycle_gain
     
 Documentation:
@@ -20,6 +20,7 @@ in the cost curve.
 *Source**: knowledge/sources/energy_from_inertial_fusion/output.md
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
+*Last Updated**: 2026-09-11
 """
 
 AUTO_IMPLEMENTED = True
@@ -41,11 +42,12 @@ in the cost curve.
 *Source**: knowledge/sources/energy_from_inertial_fusion/output.md
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
+*Last Updated**: 2026-09-11
 
 SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 SysML Expressions:
-    fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
+    fusion_cycle_gain = eta * gain_in * blanket_multiplier * thermal_efficiency_in
     f_recirc = 1.0 / fusion_cycle_gain
     
 Documentation:
@@ -60,6 +62,7 @@ in the cost curve.
 *Source**: knowledge/sources/energy_from_inertial_fusion/output.md
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
+*Last Updated**: 2026-09-11
 
 Args:
     inputs: Input parameters validated against Recirculating_Power_FractionInput schema
@@ -71,5 +74,5 @@ Example:
     >>> inputs = Recirculating_Power_FractionInput(...)
     >>> result = run_recirculating_power_fraction(inputs)
     """
-    fusion_cycle_gain = (((inputs.eta * inputs.gain) * inputs.blanket_multiplier) * inputs.thermal_efficiency)
+    fusion_cycle_gain = (((inputs.eta * inputs.gain_in) * inputs.blanket_multiplier) * inputs.thermal_efficiency_in)
     return (1.0 / fusion_cycle_gain)

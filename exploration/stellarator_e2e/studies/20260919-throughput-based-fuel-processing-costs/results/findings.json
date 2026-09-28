@@ -1,0 +1,51 @@
+[
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#1",
+    "kind": "model",
+    "finding": "Capacity margin has no constraint response; process duty, pressure, reliability and adequacy are not qualified.",
+    "disposition": "Authorized sensitivity only; no redundancy or design-margin recommendation.",
+    "home": "work/orchestration/goals/throughput-based-fuel-processing-costs/learnings.md"
+  },
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#2",
+    "kind": "model",
+    "finding": "Source-price multiplier has no constraint response or procurement/economic calibration.",
+    "disposition": "Retain engineered stress range, not market-price confidence or physical improvement.",
+    "home": "work/orchestration/goals/throughput-based-fuel-processing-costs/learnings.md"
+  },
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#3",
+    "kind": "model",
+    "finding": "Containment expenditure CPI has no constraint response; the historical chronology and modern price remain unresolved.",
+    "disposition": "Retain named 1978/1980/1982 scenarios; date-only spread is not full uncertainty.",
+    "home": "work/orchestration/goals/throughput-based-fuel-processing-costs/learnings.md"
+  },
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#4",
+    "kind": "model",
+    "finding": "Account selection has no constraint response; no physical qualification predicate discriminates the cost methods.",
+    "disposition": "Matched controls preserve physical failures; conditional source declaration is not qualification.",
+    "home": "work/orchestration/goals/throughput-based-fuel-processing-costs/learnings.md"
+  },
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#5",
+    "kind": "model",
+    "finding": "Burn changes both throughput capital and existing recurring fuel; physical recovery and recurring-price recovery remain separate inputs.",
+    "disposition": "Use matched account deltas for attribution; hold recurring recovery at its authored value.",
+    "home": "work/orchestration/goals/throughput-based-fuel-processing-costs/learnings.md"
+  },
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#6",
+    "kind": "model",
+    "finding": "All 20 finite cases retain failed plant screens despite lower conditional processing cost.",
+    "disposition": "No feasible optimum, breeding self-sufficiency or complete installed fuel plant claim.",
+    "home": "work/orchestration/goals/throughput-based-fuel-processing-costs/learnings.md"
+  },
+  {
+    "id": "20260919-throughput-based-fuel-processing-costs#7",
+    "kind": "process",
+    "finding": "Stock proposal validation rejected five Boolean legacy switches before execution while accepting numeric representations.",
+    "disposition": "Preserved attempt 1; coordinator-authorized equivalent 0.0 controls re-scanned and executed in a fresh store. Shared-route allowlist remains unchanged.",
+    "home": "exploration/stellarator_e2e/studies/study_route.py"
+  }
+]

@@ -1,0 +1,9 @@
+# Continuing independent review brief
+
+Review the new benchmark and proposed executable interface against the existing method precheck. Entry evidence: `benchmark/report.md`, `benchmark/preexecution.md`, `benchmark/run_benchmarks.py`; registered original IAEA proceedings and 1994 text rendering; `work/active/WI-066_computed-tritium-breeding/design.md` and `spec.md`. The benchmark nominal calculations agree within experimental uncertainty; a low-density sensitivity fails and remains retained. Exact containment and penetration reconstruction is incomplete. Decide the limited physical claim that this evidence supports, without transferring experimental error to stellarator shape.
+
+Assess the proposed unsupported-input behavior: an explicitly undefined zero carrier plus applicability failure, preserving unrelated diagnostic outputs. An undefined result must never satisfy adequacy. Compare numerical lower breeding estimate against max(unchanged1.05 floor, conditional fuel requirement), preserving production/recovery/loss/reserve semantics. No production table is yet released.
+
+Resource measurement: 100k torus histories take29s active on2threads; a36case grid at sigma.001 would take3.6h serial. Coordinator proposes the simpler single thickness lever at fixed70%Li6, five nodes plus independent withheld points, numerical sigma.002 initially with refinement near the criterion or on failed interpolation checks. Enrichment remains a direct-transport sensitivity, not an exposed unsupported lever. Judge the concrete freeze once supplied; no acceptance from planned tests alone.
+
+Scope budget: eight tool calls and600-word return initially. No recursive orientation, nested delegation or full-suite rerun. Report precise missing evidence for expansion. Reviewer owns `benchmark-and-interface-review.md`; no model edits.

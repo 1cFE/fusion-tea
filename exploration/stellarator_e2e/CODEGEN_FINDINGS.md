@@ -40,3 +40,35 @@ WI-027 tried to un-strip the five asserts and regenerate at `constraint-exec-epi
 ## Reproduce
 
 `source /home/reid/1cfe/fusion-tea/.env` (SYSIDE_LICENSE_KEY) → `sysml-codegen snapshot` → `uv run python bridge_v11_generate.py` (from the sysml-codegen dir) → run `run_stellaris.py` with the pipeline-spike exec venv. See the WI-018 codegen agent report for exact paths.
+
+## Finding 10 (2026-09-07, WI-044) — a preserved AUTO_IMPLEMENTED stencil goes stale when only its expression and inputs change
+
+`sysml-codegen generate --smart-regen --preserve-handwritten` decides whether to keep a `handwritten/<pkg>/<calc>_impl.py` by its **output** signature. When a calc def's `out` set changes (WI-044: `'MFE Radial Build'` +`r_coil_centre`, `'Plasma Geometry'` +`A`), the stencil is regenerated (`Regenerated: 2`, a `handwritten/backup/` dir created and sealed in). When a calc def's **expression and input set change but its outputs do not** (`'Conductor Peak Field'`: four new formals, three new intermediates, `B_peak = B_axis_in * peak_ratio_in * bore_norm`), the old stencil is reported `Preserved` and kept verbatim — its body still `return (inputs.B_axis_in * inputs.peak_ratio_in)`, silently ignoring the new inputs. The module wrapper's "Calculation Specification" docstring shows the new expression; the impl the wrapper calls computes the old one. Nothing fails: the package seals, executes, and returns the pre-change number.
+
+- **Impact**: silent wrong arithmetic after an interface-preserving expression change. Caught at WI-044 only because the design predicted the off-design values before execution and the plan asked for the generated body to be read (design risk 1).
+- **Harness handling (WI-044 phase 3)**: delete the stale stencil and regenerate (`New: 1, Preserved: 69, Regenerated: 0`); a checker over every AUTO_IMPLEMENTED impl compares its "SysML Expressions" block to its module's "Calculation Specification" (48 checked, 0 stale after the third pass). Not hand-patched: the stencil is the tool's content.
+- **Upstream fix candidate**: preservation should key on the expression digest (or the full interface, inputs included), not the output signature alone; and `--preserve-handwritten` should never apply to AUTO_IMPLEMENTED stencils at all — they carry no hand-written content to preserve.
+- **Evidence**: `work/active/WI-044_magnet-chain-sees-coil-bore/evidence/regen_output{,_2,_3}.txt`; plan § Phase 3 record.
+
+## Finding 11 (2026-09-08, WI-047) — an unbound defaulted formal takes a bound formal's parameter name by slot position
+
+On the exact route, a calc def whose formals are `(a_in, b_in, k_B_in = <default>, p_exhaust_in)` — an **unbound defaulted** formal declared *before* bound ones — renders two distinct inputs to one parameter name and generation refuses:
+
+```
+SI_RENDERING_COLLISION: distinct inputs on 'stellarator_09__stellaris__vacuum' render to one parameter name
+```
+
+A monkeypatched projection showed why: the unbound defaulted formal `k_B_in`, declared fourth of six, was matched **by slot** and took the name of the bound formal `p_exhaust_in`. The refusal is the good case. The bad case is the one this class of bug threatens — a projection that matches by position rather than by name can silently bind a value to the wrong parameter wherever the slots happen to line up and the names never collide.
+
+- **Impact**: refused generation here; silent parameter aliasing is the latent risk. Every landed calc in this package happens to keep its defaulted formals last, which is why no predecessor hit it.
+- **Harness handling (WI-047 phase 1, deviation 4)**: `k_B_in` moved to the last formal position; generation then succeeds (91 module wrappers, 76 stencils). The convention "defaulted formals last" is now load-bearing and is stated in the calc's model text.
+- **Upstream fix candidate**: match formals to bound arguments by **name**, never by declaration slot; and if a slot match is kept as a fallback, refuse when a slot match and a name match disagree rather than preferring the slot.
+- **Evidence**: `work/active/WI-047_fuel-divertor-vacuum-flows/plan.md` § Phase 1 record, deviation 4; the scratch generation probe recorded there.
+
+## Finding 12 (2026-09-13, model-viz) — `calc_expressions` is documented as preserved as-is but carries the doc comment appended as its last entry
+
+The snapshot's `calc_expressions` list is documented as the calc's expression lines "preserved as-is" (`sysml-codegen/src/sysml_codegen/extraction/data_models.py:80`), but the extractor appends the doc comment to the list (`extraction/extractor.py:175-180`): as `"\nDocumentation:\n" + doc_comment` when formula lines exist (64 of 65 non-empty lists on the stellarator snapshot) and as `"See documentation:\n" + doc_comment` when none do (1, `calendar`). The same text is also serialized in `doc_comment`. A consumer that renders both fields shows the documentation twice, and a consumer that counts formula lines over-counts by one.
+
+- **Impact**: display only; no generated number is affected. The model-viz viewer (`.project/active/model-viz/design.md` D7) compensates by recognising a last entry that ends with the doc comment and labelling it as a repeat, rather than dropping it. That compensation is a workaround for this defect, not a contract the viewer should rely on.
+- **Upstream fix candidate**: stop appending the doc comment to `calc_expressions`; keep it only in `doc_comment`. If a rendered "Documentation:" block is wanted for some consumer, put it in a separate field. After the fix, the viewer's repeat note simply never fires.
+- **Evidence**: `.project/active/model-viz/design-review.md` DR-M3 and the fixture probe in `design.md` Appendix A (SHA-256 `c9f6e2a5…ce393`).

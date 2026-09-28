@@ -1,0 +1,15 @@
+{
+ "oracle_source_commit": "01771279",
+ "oracle_source_paths": {
+  "exploration/stellarator_e2e/verify_stellaris.py": "0d0dc192d40147156ee078e16a1b7a579892abf45dc390a35df7cf07ebd1dca0",
+  "exploration/stellarator_e2e/oracle_finance.py": "8cd2d9803c74bace69a4fe2f13bdc700686e9db69c650a0688c3c40204943873",
+  "exploration/stellarator_e2e/studies/oracle_entry.py": "9c4c70a7ae66d2f8c8a3b7539bab1979b95ec4b68976119d2baccf387a9eb1e2"
+ },
+ "source_pin": {
+  "executable": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+  "semantic": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e"
+ },
+ "points": 51,
+ "errors": 0,
+ "note": "Oracle-side diagnostic at the entering pin, generated before execution by running the archived entering-pin oracle (git show 01771279:...) over every transect point of this study, including the cheap columns. Never package evidence; same status as the goal grounding probe. c_coil_old_form is k_coil x R (the retired form, exact by construction at that pin); no oracle channel publishes c_coil or vol_cold."
+}

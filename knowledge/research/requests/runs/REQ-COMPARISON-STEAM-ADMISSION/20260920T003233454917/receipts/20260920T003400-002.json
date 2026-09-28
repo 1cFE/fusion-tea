@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=6.2&TLow=171&THigh=455&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+  "slug": "nist_webbook_water6_2mpa171to455c_halfk_state_table",
+  "path": "knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/",
+  "source_id": "46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-20T00:34:00.578802+00:00"
+}

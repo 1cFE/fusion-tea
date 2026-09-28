@@ -1,0 +1,693 @@
+{
+  "all_package_bytes_equal": true,
+  "snapshot_bytes_equal": true,
+  "files": {
+    "IMPLEMENTATION_BACKLOG.md": "ae3ff2e3efaeb7341fe782620d10dc5de99fe9a85b31e593c250c167d404c92b",
+    "__init__.py": "c7bff0206d7c019e2b431dfd8e459060f52d143cc2444998d23c63d16cf22568",
+    "contracts/generation_manifest.json": "c06b61ea4a2f3650860f098d517b7f9a3ca246552e7b2f319c8e2e8ed85e506f",
+    "contracts/model_contract.json": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2",
+    "contracts/package_contract.json": "7afe83954c8b591c7b30c94b64940f9904d9f25ea9cf4fc6da5bbb87f171c9f7",
+    "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
+    "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "handwritten/mfe_account_costs/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_account_costs/annual_cost_rollup_impl.py": "6fe2d59464058d9efac3534b5591ab4d3de258dbaecb423360838f5619ecfb71",
+    "handwritten/mfe_account_costs/annual_om_cost_impl.py": "b788c3c009bccc2bf014a7e1358374d935874ab8fcd52fe45845a216ae7aa46c",
+    "handwritten/mfe_account_costs/aux_cooling_cost_impl.py": "8e7d32b7a7cb6bce704945212f396a46a46dd1f3b9eb0038b95a8d8ae246d9d7",
+    "handwritten/mfe_account_costs/blanket_cost_impl.py": "56e33e3e3f9b1d2c0b639880d8b286db71a04389ab13c39dd233d1e70b93430a",
+    "handwritten/mfe_account_costs/buildings_cost_impl.py": "4e544e0bc275181b04666401683d32da9351bbaff5abcd944a69efe190ee15ad",
+    "handwritten/mfe_account_costs/contingency_cost_impl.py": "50ea9a1456bb993ee7dfd8a84fafbdf2a01c10bfe9960b9d6912d4bc589e4676",
+    "handwritten/mfe_account_costs/coolant_cost_impl.py": "1230009e6c39c7b7bd51050e330e3ac70c3720bfa0561acc2c521f55849eab60",
+    "handwritten/mfe_account_costs/divertor_cost_impl.py": "5b3def767f4a860dccbd46c51edc6641f12c2e9bee43ce0ef08a1c975b5d399b",
+    "handwritten/mfe_account_costs/dt_fuel_cost_impl.py": "3fb2bc628ed0db126221930366685d0c832de002eb1dd3270919cc262ca29330",
+    "handwritten/mfe_account_costs/heating_cost_impl.py": "6c7f0e764d1ee810b4c8e89d0d09464bba679a4bacdd0d5de1ac11082a7e002f",
+    "handwritten/mfe_account_costs/idc_closed_form_cost_impl.py": "1d2f354b03dde7f16a40def9928a49a839dd08f3053d7f927543e42d3f2f71a1",
+    "handwritten/mfe_account_costs/indirect_cost_impl.py": "3a3fc147b9db6e308fd656943f5a51594f2621ef2b844cb9293226bfd6c29576",
+    "handwritten/mfe_account_costs/installation_labor_cost_impl.py": "0cbb5b08a70a13ab536b358a66cd69a3b37c4a2baadd74336d89e59e68726a27",
+    "handwritten/mfe_account_costs/levelized_annual_cost_impl.py": "b4ecd1c7cfed5a2ee2ca6e438ff3e4367939fcd0ece80914a94ae77aabbf8b23",
+    "handwritten/mfe_account_costs/linear_power_cost_impl.py": "4315b88d49d0f4f269e99303a5881b61ca38e833416b534e25314709db214c8a",
+    "handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py": "2ad1053b4643d0bb8ce028109e2d8ff9584edb519562cf4198e2128b38832b1c",
+    "handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py": "781723615e89324c72edf9dcfad1377743cbc07aa306c1f16aff59e9a75d11c8",
+    "handwritten/mfe_account_costs/plant_power_law_cost_impl.py": "fe629649c9f4c3e34357b2e771bbd0a77cc35ade131ef3de18cd6f2cc818883e",
+    "handwritten/mfe_account_costs/power_supplies_cost_impl.py": "079ed198beed85d0bf2afec6c2d60f57eea2e6e7a1c9b44d938f793dcd834669",
+    "handwritten/mfe_account_costs/preconstruction_cost_impl.py": "49a1cf382aff8342613fd4701506d411bb37a619965b8f3888f7bf43b64622ea",
+    "handwritten/mfe_account_costs/remote_handling_cost_impl.py": "8661b792382ba0e112400e1b7fe324f47630e68ce6f8ee94379cf11bbec93c00",
+    "handwritten/mfe_account_costs/shield_cost_impl.py": "e14b2ce6b9c84ba7ae8179a384bf5ffb3dbd42c1ff44494202c8ab877929b532",
+    "handwritten/mfe_account_costs/structure_cost_impl.py": "4b6801b375a0297ea42a337886dd038f72e25f633e676a483c5bcad81531fd2f",
+    "handwritten/mfe_account_costs/supplementary_cost_impl.py": "6d5c9afc3ce3227545623721e391e4f24da0993154df0ffa32e8e5cc83eaa890",
+    "handwritten/mfe_account_costs/vessel_cost_impl.py": "8eb9238bb642bf91c1c7c27817ba7ec2895b6cc6ef6fcf71ab4dad7674acdee4",
+    "handwritten/mfe_cryo_plant/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": "caecdfe5d8006c19cf3fdcb159e67d5a081cfc1fcabcca07782160c2227eb5fc",
+    "handwritten/mfe_divertor_heat/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py": "94f6a98fab2adebabe509ec6523d5e09ec68cb7e9e5be8bb911808c91b705f8f",
+    "handwritten/mfe_fuel_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py": "13f81a31bfa6017627366375853453eb10fbac42d8a7b9f8ae574900e833ed3d",
+    "handwritten/mfe_heating_chain/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_heating_chain/heating_power_chain_impl.py": "48ee07655c075bfc1b3a369011576ae534e90cf830c4d2263d216a9c374e588f",
+    "handwritten/mfe_heating_chain/operating_heating_power_impl.py": "8b97fefff5af0547727d9f22eac023049d3af1ea1909057bb2bc48e423c529ea",
+    "handwritten/mfe_lcoe_dcf/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py": "fd36614a51e4ed4b41660697bb5599ec6ee26ad3ff644ed09554400f2499393e",
+    "handwritten/mfe_lifecycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_lifecycle/lifecycle_calendar_impl.py": "cbb20033c1e30d640b0f46e6dccbef2fd00633572e21aaff5fb64c761c07237f",
+    "handwritten/mfe_magnet_cost/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_magnet_cost/magnet_capital_impl.py": "920fd09e6c15b128b2229b75561d77235183a67457f7b847bf3040e20837651d",
+    "handwritten/mfe_magnet_cost/magnet_casing_mass_impl.py": "03e4c8ea6d8308495aadcf1e1ac7919650899efb429356433cc514282368952a",
+    "handwritten/mfe_magnet_cost/magnet_coil_cost_impl.py": "f0d3525f2e3267546eb7472df956a3dbd757c939a2faf3646b9008fcb7ad730e",
+    "handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py": "d072cdabc7ff77b89e4aa46c394d93b25e68af2e87fccf86c6439b36a595f201",
+    "handwritten/mfe_magnet_cost/winding_pack_cost_impl.py": "29d04c0e7bb6bb968344d2e0f97bc14aea131dcfae93423e6ed7c5af7bf9e858",
+    "handwritten/mfe_magnet_field/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_magnet_field/coil_set_axis_field_impl.py": "4d7214bfc6cc43a9f79cd12a2d61d115ccd3f3eb6339be44a62b67118db0bf34",
+    "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py": "e8c228c130a5b5028982ce3cca5f378adac82313ea329e152ce54ebde859cdd1",
+    "handwritten/mfe_magnet_field/coil_winding_length_impl.py": "b5b94cb90a39203d1f44f01750a771535a02d6b2deaa02d3751255a9f7575a12",
+    "handwritten/mfe_magnet_field/conductor_strain_impl.py": "77a35ffd1d98dd9ef4ed51af72f635fcb39e79ed09ce361407c69cc31e15fd57",
+    "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py": "aaa94b1495e81b3f8969f78b885efbc6a0f8ca47495a3c73739e6f527694a258",
+    "handwritten/mfe_magnet_field/winding_pack_sizing_impl.py": "993b05c5614ef48e47e8cd469bdff4fbf99b6057206c5a4be8b2b222730d50d1",
+    "handwritten/mfe_magnet_field/winding_pack_stress_impl.py": "db5f7c9895d0d31b425de32f03372c1c2ba3bc3f2dafdbcfd2ab86b4cdc2bb47",
+    "handwritten/mfe_plant/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_plant/mfe_power_plant/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": "ef4ba556dd95bf44e86b35e397bcbd9c5a584cba9d45d90877641f20b6577278",
+    "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": "42eab836ce1197c2139073c62ca961183671c0fc2b609ad9cd32c80bcca29599",
+    "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": "9fbfb1241dbf9855af1ff4cf5d661f205f3f66cd3fee729d33a33bcbb02f9a71",
+    "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": "12bfcccfd8948b07c2ff8d61ac54f616fbaa91f8ba41bc1969941a2892968206",
+    "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": "466301bc86b22e90a536823e2a6afcbb21272f3804b5e29d812b5ead35ed8c69",
+    "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": "93bdd1add793a12f764d034e43f6e4f919ebefe26339a388174f77adfb1cb364",
+    "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": "3b80c294a533d4fc8a87bf95cb6b745bf091d7306623609800b1c775e2f58e9a",
+    "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": "5845c466b4a81dd2fe8668266e17fb93bf8df806e36f3a7f66db3fcc551cf796",
+    "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": "a5d91c690127252dab9c02cabeef15e4734f727f69464e8ae7f3d610bf934808",
+    "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": "4072a14d3218320aa65f1cffd8a979de0d261ce0e9ea7ce571226db0b158b2a3",
+    "handwritten/mfe_plasma_scaling/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": "def322d2656d8a071c3e98d88458521c2ed436a4348eceedca139f79d7f3f22f",
+    "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py": "30aee9ecd9820a24929de992e70a8c47d65bcd07895633930946d11b86527308",
+    "handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py": "d259c3129bb12d69cffd00c6791ebc4255fe2547aa072cde6f9bac344fb055e7",
+    "handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py": "6cd951d2f08b08be03644a69fa161ee826abb6997ddc7e04baea733fe1549fdb",
+    "handwritten/mfe_plasma_scaling/neutron_wall_load_peak_calibration_impl.py": "941a86cf2d97cfd49b8a046a4d2b07db5493616932966ae656623899cc1262dc",
+    "handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py": "1305b2a40cd39ce7d9d3a9103d7855ce9d3ca6807f90e43d7bc60f441ace7f0e",
+    "handwritten/mfe_plasma_scaling/plasma_geometry_impl.py": "fa0615b89f87a73902d80ab84383740e89561f5805427d22a6ae0bbc77708f3f",
+    "handwritten/mfe_plasma_scaling/volume_averaged_beta_impl.py": "a4f7499f19fb5e764365833c092db97bb8aa618c4c7b3a0913df7c96d43b26fd",
+    "handwritten/mfe_plasma_sustainment/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py": "4f86ff9c90f465893c6684b2d336056ffa0fa2b0671df73ab8ba15c53fa9da37",
+    "handwritten/mfe_power_balance/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py": "4e8f6eb6b02d37ebc2b51be22c4311c6573fee34596f8642e084057e431ef8bb",
+    "handwritten/mfe_power_balance/reactor_source_heat_impl.py": "a44860398f548b94d90a08856db3be6ef1eba1f5a2291b630434f507e3fea6d7",
+    "handwritten/mfe_power_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": "ed5872f52003434c873cbd60e17b580427c861f97a088e5dd6c14bcebca5db11",
+    "handwritten/mfe_primary_loop/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": "b4ccfe9282316ab0f7cfda866d6917f78571c63effae9e30f0675c35ceb30b14",
+    "handwritten/mfe_vacuum/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_vacuum/vacuum_gas_load_impl.py": "1956c0a4161c354b9935d053d61c178a719657f8bf3a35a877ba48abc9eff4ad",
+    "handwritten/stellarator_09/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/stellarator_09/stellaris/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": "87b565c9a177e82de04bb4c31ab6e4e9686c700ea93ff04808abc239f0e29532",
+    "inputs/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "inputs/mfe_account_costs_params.json": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3",
+    "inputs/mfe_fuel_cycle_params.json": "7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b",
+    "inputs/mfe_magnet_cost_params.json": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113",
+    "inputs/mfe_magnet_field_params.json": "e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180",
+    "inputs/mfe_plant_params.json": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814",
+    "inputs/mfe_plasma_scaling_params.json": "d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d",
+    "inputs/mfe_plasma_sustainment_params.json": "d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14",
+    "inputs/mfe_vacuum_params.json": "4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902",
+    "inputs/stellarator_plant_params.json": "e5d567f2c6b2f67a7495341998b0ceef86c5e0f382161a20b98cce941718a9b4",
+    "modules/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "modules/constraints/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/constraints/constraintreportaggregatormodule.py": "1779c730b42d952f0736a36eb7e9e387baccbf64b7507210817f6ac633df95f7",
+    "modules/constraints/predicates.py": "163c35da13c51adb47700300915cc410c2edbb7371799472e555c41e829f2f7b",
+    "modules/mfe_account_costs/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_account_costs/annual_cost_rollup.py": "b22962a7cbd2c445a8cdf6ce0bfbf1e5e7ca8a28a2067b58c08943ffafe204fe",
+    "modules/mfe_account_costs/annual_om_cost.py": "a5fab1647f126ef40b7297c10e13377947ec1a9a6b0910f2a606b43ab2c273d4",
+    "modules/mfe_account_costs/aux_cooling_cost.py": "4122e21fb47d5d6cc32d21b99069b00e96269c2dcaf155ea169c14df7eea19f0",
+    "modules/mfe_account_costs/blanket_cost.py": "a7d1d185e606332bbe2458279b2ff01284ec783dea325983199db4cef899f3ef",
+    "modules/mfe_account_costs/buildings_cost.py": "f18ab2b6fea3f7469c67dffd24afdb139f61aa7e7fd5525d91a26dac1a6aa194",
+    "modules/mfe_account_costs/contingency_cost.py": "36d97f33d6275296675d3d7a2527aed926112dd6c979de359db2b95326f194b6",
+    "modules/mfe_account_costs/coolant_cost.py": "fa8d486f25eba2e7007ebe55a306193648adc0ec4d33402b88415e5f1bc79cb2",
+    "modules/mfe_account_costs/divertor_cost.py": "ebc687832a6426150865f56375ce18ceda4c38e591ed65a64077a54da6feaf6d",
+    "modules/mfe_account_costs/dt_fuel_cost.py": "413044a813660fcfb61382acf604cc511eb57440fb522ee186e6b7fed6e59f1a",
+    "modules/mfe_account_costs/heating_cost.py": "b290bdbce17e8fdc1df834aae0a0b3f8588be02d27547fba72407e1a44886778",
+    "modules/mfe_account_costs/idc_closed_form_cost.py": "60e6c2285f92bc1b1764f610514e7fc6c61f7d6a8a42a9639ea190c57270008a",
+    "modules/mfe_account_costs/indirect_cost.py": "fe0ecbfcf1ce6dd75a4d9d03adc4bf4485bfe307bb8bfbae87086b31a2b90ada",
+    "modules/mfe_account_costs/installation_labor_cost.py": "4e152ad747ec6aa1ff8aff9c996367368b33625cf518f71a1b9a89bddd9480ff",
+    "modules/mfe_account_costs/levelized_annual_cost.py": "f0d2f0f4269d1bdeb39676a3d599f6b8766b8a217ca23470233abcdb890992cd",
+    "modules/mfe_account_costs/linear_power_cost.py": "d68862d33d75827b135753c5ccba6587a02ee1ac9e7849116001ce8925fadc76",
+    "modules/mfe_account_costs/n_1cfe_form_capital_charge.py": "f779ef15cd1133d7c6855771f53d35d0ff028f95ff1259aeec8092211379baa0",
+    "modules/mfe_account_costs/n_1cfe_form_lcoe.py": "79bce96fb404890e9389a3c5de7bb95cd72d5b6ebc2d918f1786d1ecc719bda3",
+    "modules/mfe_account_costs/plant_power_law_cost.py": "cc1732e0beda20d047c65b3b4b1af4ab570116d3bc78bf6dbe676f9c05292e30",
+    "modules/mfe_account_costs/power_supplies_cost.py": "b4a9ab598f82b838f86ca1b6689916f50a45f58656727f359573066e8ff8abec",
+    "modules/mfe_account_costs/preconstruction_cost.py": "4ff0ed8aaa33d7831dcf27da3c8cd1874b4a8ad7f9fe59f213a098aba0b9914a",
+    "modules/mfe_account_costs/remote_handling_cost.py": "ba267ab13f5b7abf50e7f3dc44f0fabac971ca978a44bb9b7275a8257069d01b",
+    "modules/mfe_account_costs/shield_cost.py": "7229a50d7c76c6c1d146bddb2e1934286f2a21186266d9a4de4e9b2057928eba",
+    "modules/mfe_account_costs/structure_cost.py": "a9778419777702914c8b4fc4027337312285c8a58ef42d698d2fa4ecde5fcbed",
+    "modules/mfe_account_costs/supplementary_cost.py": "5dd0af238730376f396fdfac93af04b1bc3171f925d54894af6d02421e37d1b2",
+    "modules/mfe_account_costs/vessel_cost.py": "ba6487ff87a482ece9d19333455c0d53c1d14ca8d1daf67130eab9ff2aaab1ad",
+    "modules/mfe_cryo_plant/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_cryo_plant/cryoplant_electrical_power.py": "2948927ce56d87fa908b0986624d162d2bb4328179c85e568a4f7cca5b8bea79",
+    "modules/mfe_divertor_heat/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_divertor_heat/divertor_heat_ledger.py": "da833757671d9127a0794e05c8a7417642a13e20c2b8ea385d1a2b4662ee324c",
+    "modules/mfe_fuel_cycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_fuel_cycle/fuel_cycle_flows.py": "76af5a3e269f29f84d0a11dfb0c73ef110e158b1f27a199dff36266319ad5733",
+    "modules/mfe_heating_chain/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_heating_chain/heating_power_chain.py": "05c0071f083176efe99e677fee01b7a0c712efeec4afd58ada508fddff87775f",
+    "modules/mfe_heating_chain/operating_heating_power.py": "49c074b7a69eeea8a4bb506ea6055ab20a044bbc23c0347469ebfcd8fcebe1f0",
+    "modules/mfe_lcoe_dcf/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_lcoe_dcf/lcoe_dcf.py": "18cacea6a6c4b532a5156907c478ee9273bbe9a3c1db775d427fad0791d9c986",
+    "modules/mfe_lifecycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_lifecycle/lifecycle_calendar.py": "34ff0cd5ef2afca29bb04315c93e2b55de4b0e07b5670c5e238a6cc920df5e27",
+    "modules/mfe_magnet_cost/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_magnet_cost/magnet_capital.py": "02eccd1881a36b430ee2d3d41d722ac08e72d7423f55fff4d1e63069dde9a8a3",
+    "modules/mfe_magnet_cost/magnet_casing_mass.py": "6f3f717a6ba909aed26ec13bc9aabaf20dac16f0ab3693d813d5288275970a36",
+    "modules/mfe_magnet_cost/magnet_coil_cost.py": "8f8ff6390f64518a5ac73971303ff013125675164519e4f2060f8dc7fe4db9f7",
+    "modules/mfe_magnet_cost/magnet_structure_cost.py": "8d902189546664d9796272e45f2b52fc72b474e946c950eb6c7a76ebd7d7d822",
+    "modules/mfe_magnet_cost/winding_pack_cost.py": "81585a6fd94584355c194a1bf0514cd277aceb053c6a46eed1c6163e784a177e",
+    "modules/mfe_magnet_field/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_magnet_field/coil_set_axis_field.py": "cef3496f8298255f75a89342df41a38a477113aedefbe8ab1b2aecfb139f2313",
+    "modules/mfe_magnet_field/coil_set_stored_energy.py": "cd908efae85a08d79b1e463425898cfe48b3b585dd2ca17f0a941abf5a49ff94",
+    "modules/mfe_magnet_field/coil_winding_length.py": "161dbe95732e08344a0d4b854621da202a3c2b151b9ca7dea4a9edb55121a6fc",
+    "modules/mfe_magnet_field/conductor_strain.py": "7422797b4a92dd2f4ce19706a03f085817c36527b09a7c6e8ab25f769ebaa2d9",
+    "modules/mfe_magnet_field/winding_pack_cold_volume.py": "20c961850ba61206ac7be42daf2d2a656e91a94c2cd036209ba59da045fac114",
+    "modules/mfe_magnet_field/winding_pack_sizing.py": "6352e5c34382e6b8bd8e3c6131b80e3e25a7d8bfa534236c73e2283aebfce42a",
+    "modules/mfe_magnet_field/winding_pack_stress.py": "9c8a8dfc3fa442ddeffa2616302185dcebee047a2f097f14e0587b316bfa3624",
+    "modules/mfe_plant/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_plant/mfe_power_plant/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_plant/mfe_power_plant/bop_capital.py": "f4e45471a93c8d8de85e12f2083631e887581db5ad03dd867023ecac5cd1c247",
+    "modules/mfe_plant/mfe_power_plant/cas20_capital.py": "a2a11db0786526dcd2221452676418b86a0b160ef10e580e670820cfd0080487",
+    "modules/mfe_plant/mfe_power_plant/cas22_capital.py": "957cfc80335e40eadef7a285ed91ebf22a3143111d893e3e2e6a1cdc12072eb3",
+    "modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py": "9a863621a6bddef18b450c2ae1c06a8fb68e3a2c5669c3f2d4b9b44ced640b48",
+    "modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py": "082f14e50b48b1bf27feaf09aaf729357743e4776dbe996c2650314db5f12aa2",
+    "modules/mfe_plant/mfe_power_plant/overnight_capital.py": "66e97aa7e851e6cdffb3da05d8fa446469221af13c089c9974b64faf17625137",
+    "modules/mfe_plant/mfe_power_plant/powercore_capital.py": "d26bc065ff4b549c2d80b7ae6bc4e89e4d53c9a7cef638b7da52c4c663b83757",
+    "modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py": "0ea2f355522887ae7d79c8e9dd64ab2f40a2f11ad3a37d5f5326f8a599cf3f9d",
+    "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": "25860173ca2d07e6e8dd53b9f9eba5a200894c64c751ba1e16adec96afe36333",
+    "modules/mfe_plant/mfe_power_plant/total_capital.py": "13fb96a6fd737798f93af4f3e94578927603e5596352328afbe31ab0bcc26fef",
+    "modules/mfe_plasma_scaling/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_plasma_scaling/conductor_peak_field.py": "ccebcd148ebaffd4cee2a570d09a55e441909890758e3dc6983e5deea7d46215",
+    "modules/mfe_plasma_scaling/dt_fusion_power.py": "a3a706667323ae915de103c4d60b6ff3e841307edb2cb6adf563e7c100073b2a",
+    "modules/mfe_plasma_scaling/mfe_radial_build.py": "64d40b9017d19789c030dcd3057e25479b6d5a2095f1f6f41fcdbfad98c5b346",
+    "modules/mfe_plasma_scaling/neutron_wall_load.py": "f0b269dbbe7f0645b3ac1c075e4a48d7c1b191f3e5c0d0f575e76206d4849bc2",
+    "modules/mfe_plasma_scaling/neutron_wall_load_peak.py": "de74c2b3a34cc867a42d8c67ab0eff3ed683fd8f5a3d84a9ad689caefcaa3f57",
+    "modules/mfe_plasma_scaling/neutron_wall_load_peak_calibration.py": "224dfeafa3ff9d5c74a0a66f394722fb048db87055e61d1fa77c67424617413c",
+    "modules/mfe_plasma_scaling/plasma_geometry.py": "90765aa05227e5e490b485a333593e99162b056d86fa1569b1cd5f7ace85f9cd",
+    "modules/mfe_plasma_scaling/volume_averaged_beta.py": "193ca93323402fdb69a1e2afff60f3cb62e33e16beff200f872cbcfc4da99f5c",
+    "modules/mfe_plasma_sustainment/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_plasma_sustainment/plasma_sustainment.py": "7e61deb356419ca4caf113c62693d643ad226e9755c29c87e6f1428c8352a7f7",
+    "modules/mfe_power_balance/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_power_balance/mfe_power_balance_calc.py": "26ccde628b45014b080f6f86f290a4adc7d93276a58fd23b61e3b1a91c4806e2",
+    "modules/mfe_power_balance/reactor_source_heat.py": "d4e87073a785ef824054be5b9b01c3a52a89bd77deb35e89c13a7fc568856c32",
+    "modules/mfe_power_cycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_power_cycle/power_cycle_efficiency.py": "455c6ac20c5422067ca3ce34281a60f060081ccf2ed1ae08fa85ac337496e513",
+    "modules/mfe_primary_loop/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_primary_loop/primary_coolant_loop.py": "e3eb6f85397fb5de0143fdafa6e03fcd01669a5485f8e2e21016c9afcc1cf375",
+    "modules/mfe_vacuum/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_vacuum/vacuum_gas_load.py": "2dd3a4e6ec562fab2d879157edadefd1d163b86b095a366b31192786fdda793e",
+    "modules/stellarator_09/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/stellarator_09/stellaris/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/stellarator_09/stellaris/special_materials_capital.py": "1d57bac6dc6ad74ae74c95e2d886ba19b324a57402678d65b5b9c1373c45b9a4",
+    "modules/stellarator_09/stellarisbetaokconstraintmodule.py": "443cc6b8e282eb5717c220b026ad945a4a171532744e56246d6e232f46e2b9e5",
+    "modules/stellarator_09/stellarisburnholdokconstraintmodule.py": "3843fc1ac7d50e1bc654c77deba9802102d120494b60eae258ffbc1a6de4ba87",
+    "modules/stellarator_09/stellariscondstrainokconstraintmodule.py": "a5814265c67d6713762be4b4c82e9d31bad75dd02e1a8899c875062cea0f4b76",
+    "modules/stellarator_09/stellariscycledomainokconstraintmodule.py": "3445ff333b78663e19ba1d53cdd27775299a6ff90ff587222408431b122ab8e1",
+    "modules/stellarator_09/stellarisdivertorheatokconstraintmodule.py": "0c36e8c01753b5bea05ae8de9ca82681e1b49e095290116d91051ac4ebf9d780",
+    "modules/stellarator_09/stellarisheatingcouplepositiveokconstraintmodule.py": "3d987a284bd60286a0d120595193889b3d9b7a2e9bca4d202f160466c24efb89",
+    "modules/stellarator_09/stellarisheatingcoupleupperokconstraintmodule.py": "073a0f93f0099b76852beb9c96750c498fae585bbc3ca49f7da0956bd9b15ec0",
+    "modules/stellarator_09/stellarisheatingsourcepositiveokconstraintmodule.py": "3e891ba374a2b5452a78198904b5e69e99058bd243985cba91b1868b9060cee6",
+    "modules/stellarator_09/stellarisheatingsourceupperokconstraintmodule.py": "bac1478abf8d802c4d786f4b7111a9fe228f83705fe00ef91ed8c2891b3af738",
+    "modules/stellarator_09/stellarisloopcapacityokconstraintmodule.py": "0b5d00d41d89ba9d41e76b246d352c26b12a49004249b63fb5824bd53b056cad",
+    "modules/stellarator_09/stellarislooppressureokconstraintmodule.py": "e1a554b8d08327ed076a9fc01faf71b3b1ab7b842ae00b3297e566c8d807a6d0",
+    "modules/stellarator_09/stellarisnetpositiveconstraintmodule.py": "bca047bf0bc17b06eaf60f4d8e503a8ea2d9ebb8c3e927503b2ada073a7336a1",
+    "modules/stellarator_09/stellarispeakfieldokconstraintmodule.py": "961bab74b6f53e54f733a7f5e3eb1614186b9e5ebd35305587edcedf22dd7b68",
+    "modules/stellarator_09/stellarisrecircokconstraintmodule.py": "673191e6c84420c1f90d94c1a6fa5da3ec1b8371ed013ff3a4cffbc459f82a35",
+    "modules/stellarator_09/stellarissustainmentokconstraintmodule.py": "7286b28399d4621c08a42f5d3f30a8782792439fa10ab337902522b99fa319f9",
+    "modules/stellarator_09/stellaristbrokconstraintmodule.py": "3f3bec824ab92938e032930e8212f9c6f5b889bd131e7dc02f39f06772dba7f0",
+    "modules/stellarator_09/stellariswallloadokconstraintmodule.py": "9a39a9821e28fd97c3efe1b010d27bbe8e49a82248a0dd741124884e382e5fb8",
+    "modules/stellarator_09/stellariswpstressokconstraintmodule.py": "ab03b6cacd517b75d875e7a2d1c8b0c962f9e69017d3b6987b57e3db05a4814a",
+    "pipelines/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "pipelines/pipeline.yaml": "84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f",
+    "primitives.py": "1bc6be58e5290b102d762227c33f138ecc4f9feaa00fa2f4cfd02f87f5f71998",
+    "schemas/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "schemas/annual_cost_rollup_output.py": "0f4ef3aef6e1be1abdce919b24f8975c115b289b15a8517f857478b91ea56f1f",
+    "schemas/aux_cooling_cost_output.py": "68f1f6ecda7f935ed40cdab84ca8e2b3e130717b672f667f5eb49c18fcd3b5bb",
+    "schemas/constraint_types.py": "c7910f974bd106e6d58f61bd0ae5ce28a2f63135bf841327a6b76a7a1d21cc49",
+    "schemas/divertor_heat_ledger_output.py": "2c5e3a769630412fe583fe760d12652c80a50bf8fe56e1f4b60daad901696c7b",
+    "schemas/fuel_cycle_flows_output.py": "4882306119acff2ec8db8d178dabdc0979fd5665be4a98177dcace2b06c63df9",
+    "schemas/heating_power_chain_output.py": "1002f31bca410924f9c96af9fdeff729dd2ec40d005a3e8a994226d5fc684079",
+    "schemas/levelized_annual_cost_output.py": "4b2f6f42d2db706fb10b1c091d158615f43310d80c08cc1d928aea838e0e9939",
+    "schemas/lifecycle_calendar_output.py": "fbf569364612d14448e00bce7fafcdbda96b978e2423a0c9513f92b2a9d39e3e",
+    "schemas/mfe_account_costs_params.py": "8b594888effb7a715abced5958db56a949d5b11e988f6fcfdc60f99b4725994b",
+    "schemas/mfe_fuel_cycle_params.py": "5392369e100be2ec0b638081ab29273372124ed2bdab22f5757b264c4fd2791e",
+    "schemas/mfe_magnet_cost_params.py": "923ba7aee8e260ec4bc4e1782588f854809b9d1dc4c73e89b9e0e690230cd8ec",
+    "schemas/mfe_magnet_field_params.py": "eef83088276cfc2dd93e9c94e6777181964514e152bb1e510298076ad9889409",
+    "schemas/mfe_plant_params.py": "64e2f64db3ca3c16c229e34f4d92bc257c0c10001e6a37b6b1c8358b71b088b0",
+    "schemas/mfe_plasma_scaling_params.py": "7f76f41ae69e03277b8df279d5750177dda388a73be18980cfe974b1b9584ed7",
+    "schemas/mfe_plasma_sustainment_params.py": "ec4494cca9899310631c725e2639e930a9482c0690c7466d0073bb8007a64f25",
+    "schemas/mfe_power_balance_calc_output.py": "c28e47af684f4d5acf04d8b76117cb3bbc155a9cef456537aed258b3a391fd3f",
+    "schemas/mfe_radial_build_output.py": "f4a59ade412763fe0f293540f7e2d49fee1d2b1b28ff1e6005440451e20d9a0e",
+    "schemas/mfe_vacuum_params.py": "8b8eaa29a527244465f6d5e6b39f227c11aec808b7e71bb1bcfcf7a11cea4aec",
+    "schemas/operating_heating_power_output.py": "31aad93d3da25f684e9861507a2eedf392183a2e7cf8363cccee8a2a7dfd9859",
+    "schemas/plasma_geometry_output.py": "75ffdc6aa93b35e4f6c3d5f7e1fc1176cfbe3cb458a23186c7f5339d5e136e6d",
+    "schemas/plasma_sustainment_output.py": "f8fe2ce70b237e81f07502655b6287cb373b85ebd4f4883ad2bb4a1e81e91f25",
+    "schemas/power_cycle_efficiency_output.py": "04961d4afef6a2d81d89fe655c6928a6f44393b3d203b02adf56cc8a2694dd9f",
+    "schemas/primary_coolant_loop_output.py": "7530c30ccf024d7d09599ec5354a24b985f7b03b7416c125a497d764c5ebd9b9",
+    "schemas/stellarator_plant_params.py": "81dc4232ff3bb589133c335232b9520cd649d2daa787a8c74cc2ef14049bd857",
+    "schemas/vacuum_gas_load_output.py": "dcd18114a6488a8a5aa73ee91ddf3d7c3008d23d27a7122f5752d7bb6ada0b6f",
+    "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "tests/test_implementations_runnable.py": "d744b1e4fca43793f993e7cef7fc2e3e980dfbb9c9c7187273f215607af87bc0"
+  },
+  "bodies": [
+    {
+      "path": "handwritten/mfe_account_costs/annual_cost_rollup_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/annual_om_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/aux_cooling_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/blanket_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/buildings_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/contingency_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/coolant_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/divertor_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/dt_fuel_cost_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/heating_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/idc_closed_form_cost_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/indirect_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/installation_labor_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/levelized_annual_cost_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/linear_power_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/plant_power_law_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/power_supplies_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/preconstruction_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/remote_handling_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/shield_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/structure_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/supplementary_cost_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_account_costs/vessel_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_heating_chain/heating_power_chain_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_heating_chain/operating_heating_power_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_lifecycle/lifecycle_calendar_impl.py",
+      "manual": true,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_cost/magnet_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_cost/magnet_casing_mass_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_cost/magnet_coil_cost_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_cost/winding_pack_cost_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/coil_set_axis_field_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/coil_winding_length_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/conductor_strain_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/winding_pack_sizing_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_magnet_field/winding_pack_stress_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py",
+      "manual": true,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/neutron_wall_load_peak_calibration_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/plasma_geometry_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_scaling/volume_averaged_beta_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py",
+      "manual": true,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_power_balance/reactor_source_heat_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py",
+      "manual": true,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/mfe_vacuum/vacuum_gas_load_impl.py",
+      "manual": false,
+      "bytes_equal": true,
+      "executable_ast_without_docstrings_equal": true
+    },
+    {
+      "path": "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py",
+      "manual": false,
+      "bytes_equal": false,
+      "executable_ast_without_docstrings_equal": true
+    }
+  ],
+  "sources": {
+    "analyses/mfe_account_costs.sysml": "8684e3fd0b88ee76008035b6061a9bae3b30a90ae505570067c7da3a2f0beec0",
+    "analyses/mfe_cryo_plant.sysml": "8c889cab72a4079cd92de82ffa199bccf129b2d851bdde192909faafc84593d9",
+    "analyses/mfe_divertor_heat.sysml": "ca6cbbec1370b9e98a8ba6a98f0a33933a4af8b50149787a04dcda33afc2eecd",
+    "analyses/mfe_fuel_cycle.sysml": "f0657c82258b80a1b59b9c7315f6d5da275b8f1226ebf86a7ad15582c89901cd",
+    "analyses/mfe_heating_chain.sysml": "1d05adfe7502305ed6dce125af83108d0223a6e24c2fc77d48712cf63fd346ac",
+    "analyses/mfe_lcoe_dcf.sysml": "391b86fb048be6a3d43dbd3666f929f13da6076be793b1228624d7a65077ff20",
+    "analyses/mfe_lifecycle.sysml": "ff4613ee5e09e767e5ecabe2efc58701a05cbe3e59f42f599b65882953d33637",
+    "analyses/mfe_magnet_cost.sysml": "36ff88699f73cf89b781856aa61b06c1d4450a79ad8fc73fbcf5377f624332b0",
+    "analyses/mfe_magnet_field.sysml": "d8c4ca9abbd2a3b0a0296ac250a793aaa0f462ab89f9843c75c910d125cf6168",
+    "analyses/mfe_plasma_scaling.sysml": "253769769330155898f092e0978b21a678beab1f0e2f7472fbd8d5adc277fead",
+    "analyses/mfe_plasma_sustainment.sysml": "a6a1f8708c80c5873c823a8ae3614f1d61578d57ccf55b90e17390e55a0f387a",
+    "analyses/mfe_power_balance.sysml": "94a129f3c9e8dffdbb805bcd09975022f1a2a600b97963dcc5c188669be4c721",
+    "analyses/mfe_power_cycle.sysml": "d086af8a9fab2d4e3d516a302d9fea9be4e2630c3a7407a5d18d550d79f20117",
+    "analyses/mfe_primary_loop.sysml": "d0020ee0c567ab4ee3a8244f60ed7a67cc5f2ec14ee4d2b135486391b896c3f2",
+    "analyses/mfe_vacuum.sysml": "016dbe4d5c8c7d9b67c739e14b052a173c342d67617ea77c9fe82a6c7fd4d340",
+    "analyses/mfe_viability.sysml": "523ad523569d92e322a16ba5efcb8b306a1d1749679ee73a4be4468b592466e4",
+    "cost_structure/cas_hierarchy.sysml": "5b786ed074f4093528d227b11a7cf093e1a9be98778765c4f13d9bee19dc4602",
+    "cost_structure/mfe_power_core.sysml": "5564c5946c562672d08023eb2e83c466871838493b32269374a76c9fea197f59",
+    "designs/generic_mfe/mfe_plant.sysml": "266c39d3f069620a22a62879b6b8d8f04527953cf3a439fef222fca89868cad7",
+    "designs/generic_mfe/mfe_subsystems.sysml": "ca00da362a7a0b14766bdd28b0481d5820c191ad4107207b44c0c81a1846cdb1",
+    "designs/stellarator_09/stellarator_plant.sysml": "4a98b5a4139992a539c482e3283e9749b34b1b54ef116b74255607fd87aac82a",
+    "foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
+    "foundation/economic_parameter.sysml": "39400c8a9d773e8cd8fcd24c321f2b027090e8bbb8faf9d8ffb7f97ac0d935e3"
+  }
+}

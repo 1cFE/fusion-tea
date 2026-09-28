@@ -1,0 +1,129 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "source_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source__producer_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "1 calculated control; 0 supplied downstream family; no sustained plasma claim"
+    },
+    {
+      "axis": "source_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source__reference_fusion_mw",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Supplied common-load boundary; exact nominal source anchor and engineered 1650\u20132600 MW window"
+    },
+    {
+      "axis": "architecture",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__network_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Existing series or series-then-parallel connection graph"
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Same four supplied operating choices for both architectures; installed capacities fixed"
+    },
+    {
+      "axis": "branch_split",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__pbli_split_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Supplied network operating choice; inert .85 placeholder in series"
+    },
+    {
+      "axis": "conductance_uncertainty",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__divertor_hx__assumed_u",
+          "provenance": "tie"
+        }
+      ],
+      "note": "[AGENT] correlated 0.8/1.2 multiplier on each inherited U; shared uncertainty, no physical identity or hardware change asserted"
+    },
+    {
+      "axis": "pressure_loss",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pressure_loss__loss_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Common .02/.08 sensitivity and network .08 differential against inherited .045 series"
+    },
+    {
+      "axis": "pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__pump_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_pump__pump_mode",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__divertor_pump__pump_mode",
+          "provenance": "tie"
+        }
+      ],
+      "note": "[AGENT] coordinated switch to existing fixed-power mode 1 for all pumps"
+    },
+    {
+      "axis": "pump_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__fixed_power",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_pump__fixed_power",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__divertor_pump__fixed_power",
+          "provenance": "tie"
+        }
+      ],
+      "note": "[AGENT] coordinated 0.8/1.2 multiplier on each own reference power; preserves distinct powers and existing heat recovery"
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "[AGENT] selected zero-price bookkeeping endpoint within owner-authorized fuel sensitivity; reprices annual purchases and initial stock; no breeding claim"
+    }
+  ]
+}

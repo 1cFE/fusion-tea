@@ -1,0 +1,108 @@
+# Modeling Process
+
+Build models that explain the system and support their intended use. Requirements state the outcome, design explains the system and its dependencies, and validation supplies evidence. Scale the preparation to the uncertainty and consequences of the change.
+
+## Command-Level Modeling Flow
+
+Skills are available tools. Choose them from the uncertainty and affected consumers, not the line count or work-item label. The main agent owns delivery and may carry out the whole change or delegate scoped work.
+
+- **Trivial change:** `/quick-model` handles an understood correction with affected-consumer checks.
+- **Standard work:** track one cohesive outcome with native PM metadata and a short `spec.md`. Design and plan may be sections of that record when separate documents add no value.
+- **Epic work:** `/backlog` separates independently useful outcomes and dependency handoffs. See `work/EPIC_GUIDE.md`.
+
+Optional stages: `/research`, `/spec-model`, `/design-model`, `/review-model`, `/plan-model`, `/implement-model`, and `/audit-models` can each be brief, combined, or skipped when their responsibility is already satisfied or does not apply. Do not create empty stage artifacts. An explicitly requested review still runs. Skipping a stage does not remove an applicable evidence obligation below.
+
+## Process Selection
+
+For changes to design variables, equipment/capacity bindings, sizing, operating-point closure or demand-based costing, apply [REQUIREMENTS.md MR-7](REQUIREMENTS.md#mr-7-preserve-design-choices-separate-evaluation-from-design-selection) before selecting a process. This applies to direct edits and inherited patterns as well as new work. Stage compression does not waive its evidence or review obligations.
+
+Before editing, record the intended behavior, affected definitions and consumers, source basis, and selected checks/reviews in the existing work record. A few sentences suffice. Search references and inspect inherited definitions and bindings; a local edit can affect other instances. Unknown impact calls for a bounded dependency investigation before choosing the final scope.
+
+| Evidence about the change | Required response |
+|---|---|
+| Existing pattern and source interpretation; affected consumers known; expected behavior directly checkable | Main agent edits and verifies. No independent review required. |
+| New or reinterpreted source value, equation, unit conversion, physical assumption, or domain of applicability | Focused independent source/math review using original evidence, units, assumptions, and off-reference behavior. Resolve source interpretation before relying on it. |
+| New modeling pattern or changed ownership, specialization, public interface, or binding semantics | Focused independent design review before dependent implementation; check surrounding producer/consumer interfaces and the applicable pattern. |
+| Shared definition or calculation changes | Identify affected instances and test relevant consumer behavior, including preserved behavior. Shared use alone does not require a full audit. |
+| Coupled changes across model families/subsystems, architectural restructuring, or material uncertainty remaining after focused checks | Substantive independent design/integration assessment. Inspect interacting assumptions and coverage; use `/review-model` or `/audit-models` for the unresolved scope. |
+| Mechanical correction to already reviewed work | Recheck the diff and affected evidence. Reuse the reviewer when review is needed; no new full audit by default. |
+
+Combine related review questions in one independent session when the evidence overlaps. A completed source/design review does not automatically require a second completion audit. Complex work needs positive independent assessment of its consequential design choices and integrated behavior; one continuing reviewer can cover both. Report unverified behavior explicitly instead of declaring completion on a missing check.
+
+## Artifact Contracts
+
+For MR-7 work, the spec identifies the design choices the consumer must retain. The design records the affected variable roles, physical relationships, selection policies, authority and actual binding paths. The implementation preserves those choices through generated/native execution and downstream costs. Review checks those bindings rather than inferring compliance from names such as `required`, `selected` or `sizing_mode`. Acceptance includes MR-7's applicable insufficient/sufficient design tests and explicit validity limits. Carry the MR-7 evidence into the handoff; do not call a repair complete on depth scores or baseline reproduction alone. Prospective depth assessments also follow `.project/active/demo-depth-rubric/application-policy.md`; historical rubric bytes and grades remain unchanged.
+
+Preserve native PM registration and required `spec.md` frontmatter for tracked items. Keep the intended outcome, supported use, source authority, acceptance conditions, decisions, and verification results in that record or linked existing evidence. `/spec-model` captures missing requirements; `/design-model` resolves design uncertainty; `/plan-model` supplies a checklist when sequencing or interruption recovery needs it. A short change can use one record. Larger work can use separate `design.md` and `plan.md` documents. Cite decisions instead of restating them.
+
+## Review Brief and Context Limits
+
+Independent judgment uses a fresh non-author context without inherited author conversation. Supply a self-contained brief with the exact question, candidate revision, entry files/sections, relevant requirements/pattern excerpts, original source evidence, and available verification results. The reviewer checks primary evidence, not only the author's summary. Include surrounding interfaces or source context needed to challenge the premise.
+
+For a focused review, default to at most six tool calls and a 300-word return. Batch related reads. The brief must explicitly forbid recursive project orientation, reading whole trails or precedent collections, nested delegation, and full-suite reruns. If evidence is missing or the scope will exceed the budget, return the named missing evidence and reason for expansion; do not silently broaden or issue a pass. The coordinator supplies that evidence or grants a specific broader assignment. These are starting budgets, not limits on correctness.
+
+For complex review, name the system claims, interacting surfaces, and evidence to assess; set a larger explicit investigation budget appropriate to that scope. Allow dependency tracing and independent calculations where they address a real uncertainty. Do not use the focused budget to certify a complex change. Return material findings, evidence, and limits; optional improvements do not block delivery.
+
+Reuse deposited test results when candidate revision, tested scope, and environment apply. Independently reproduce a check when there is a concrete doubt or a missing result, and explain why. A review is not a second execution of the author's entire test plan. Send repairs to the same reviewer as a diff with affected evidence.
+
+## MBSE Methodology: Four Integrated Views
+
+The model must connect the following views for the system claims in scope. Scale their detail to the engineering question and inspect inherited relationships before adding new ones.
+
+| View | What it establishes | Connection to the other views |
+|---|---|---|
+| Requirements | Intended outcomes, limits, and verification criteria | Identify the behavior and component properties needed to satisfy them and the evidence that verifies them |
+| Behavior | Functions, operating modes, and relevant energy, material, or signal exchanges | Identify which components perform the functions and which operating assumptions the analysis represents |
+| Structure | Components, decomposition, owned properties, and interfaces | Ground analytical inputs, outputs, and aggregation in identifiable component occurrences and exchanges |
+| Analysis | Equations, constraints, performance, and cost estimates | Use the modeled properties and behavior to evaluate requirements within a stated domain |
+
+For a changed system claim, preserve an inspectable path through the relevant requirements, behavior, components/interfaces, analytical bindings, and verification evidence. Use model relationships and existing traceability records; record an approximation or unsupported relationship in the design with its consequence for supported use. An omitted relationship that defeats the claim prevents completion. Declaration counts and diagrams alone do not demonstrate integration.
+
+## Architecture & Design
+
+- **Own quantities and responsibilities.** Give shared physical quantities identifiable owners and bind consumers to those owners. Distinguish quantities with different meanings, such as installed capacity and operating demand. Trace relevant functions and exchanges to the components that perform them.
+- **Design across dependencies.** Inspect affected producers, consumers, inherited definitions, and assemblies. A public-input change or expanded supported use requires checking assumptions inherited from the narrower use. Aggregate from modeled component occurrences where the result claims to represent that structure.
+- **Separate reusable logic from configuration.** Discover existing library definitions before adding new ones. Keep reusable definitions in the library and concept-specific assemblies, values, and wiring in designs. Apply the calculation placement and binding rules below.
+- **Make execution dependencies explicit.** Keep imports and calculation dependencies acyclic where required by the execution route. Physical feedback loops still belong in the system description; explain how the analysis solves or approximates them. Probe unfamiliar constructs through the intended execution route, since parsing establishes only syntax support.
+
+## Technical Patterns: Read at the Point of Use
+
+Read the relevant section of `MODELING_GUIDE.md` and its detailed pattern reference before designing or changing the corresponding construct. Detailed references live in `.agentic-mbse/patterns/`; the guide provides navigation. These summaries preserve the failure-derived rules without duplicating their full examples.
+
+| When changing | Rule to preserve | Detailed reference |
+|---|---|---|
+| Calculation placement | Put `calc def` in the library. Design attributes may use literals, static expressions, pure EXPOSE, and simple arithmetic/unit conversions over same-part siblings. Move computation on calc outputs, self-reference, or other dotted attribute expressions into library calculations. | `adr002-calculations.md` |
+| Calculation input binding | For a local attribute, use different names: `in volume_in = volume;`. For another part, name the occurrence: `in driver_cost = driver.cost;`. Owner-qualified references must resolve to the exact owning usage. A self-named `in volume = volume;` binds to itself. | `plant-idiom.md`, “Binding a modelled value into a calculation” (authoritative binding rule) |
+| Cross-file interfaces | Expose a calculation result as a producer attribute; consumers bind that interface instead of reaching into the producer's calculation internals. Use explicit, private imports by default. | `expose-pattern.md`, `cross-file-binding.md` |
+| Assignments, defaults, or specialization | Choose operators for the intended binding and override semantics. | `semantic-operators.md` |
+| Functions, interfaces, or constraints | Relate functions to components and exchanges to interfaces; distinguish declared constraints from checks actually evaluated by the supported tools. | `mbse-concepts.md`, `constraints.md` |
+
+Research reads the four-view framework when investigating system modeling and captures the source-supported relationships and gaps. Design applies the architecture principles and selects relevant technical references. Implementation reads those references before authoring the constructs. Audit checks the affected relationships and failure modes against actual model and execution evidence. Reuse already loaded, current guidance within a continuing context.
+
+## Evidence and Responsibility
+
+The model item owns its intended meaning and coherent model/executable changes. Identify downstream consumer work needed before the broader outcome is ready. Integration proves the assembled package; studies own their experiments and interpretations. Follow the target project's owning procedures at these boundaries rather than compensating for missing model relationships in a caller.
+
+Maintain a traceable path from outcome or finding to authority, decision, responsible work, and evidence. Use the project's existing requirement identifiers, citations, validation registry, and audit records. Source facts, assumptions, and agent choices retain their provenance across artifacts.
+
+Select checks for actual failure modes and affected behavior. Distinguish source fidelity, translation agreement, numerical correctness, engineering applicability, and consumer behavior where relevant. A source path is not evidence that a number was transcribed correctly; agreement with a formula mirror does not independently validate the formula. See the **model-validation** skill for execution and reporting guidance.
+
+Preserve owner-reserved decisions and any independent interpretation checkpoint required by the target project. Ordinary execution decisions can remain with the author or coordinator. Surface source conflicts and premise surprises before dependent work proceeds.
+
+## Durable Handoff and Closure
+
+The author owns carrying consequential reusable decisions and discoveries into the applicable architecture, knowledge, requirement, and verification records before handoff. Use native PM operations and preserve source authority and owner-reserved approvals. Select what future work needs; a routine correction need not create new project-wide entries.
+
+Before archiving, check the acceptance evidence and the reviews selected by “Process Selection” against the current change. Resolve missing or failed required evidence; do not commission an audit solely because the item is Standard or is being closed. Use `pm close-item` under existing owner authorization. That operation mutates records; it does not validate the outcome. Report independent certification only for the scope actually reviewed.
+
+The PM epic `completed` rollup means all items are closed. Assess cross-item integration using applicable item evidence and independent review of remaining consequential interactions; a separate epic audit is needed only when existing reviews do not cover that scope.
+
+## Context and Parallel Work
+
+Keep a continuing author when its context remains useful. Resume it after answers or repairs; start a replacement when stale context or a distinct job warrants it. Independent criticism uses a fresh non-author context without inherited author conversation. Default delegated work to a fresh self-contained brief. Use a full-context fork only when the task actually requires that conversation; do not fork a long pipeline merely to preserve the main window.
+
+The main agent may offload bounded research, source lookup, dependency discovery, or implementation at its discretion. A delegated job needs its outcome, relevant source/artifact references, write ownership, constraints, expected evidence, and an explicit scope/tool-call budget. Read the relevant sections first and expand when dependencies require it. Use specialists for concrete questions, not a standing roster.
+
+Parallelize work when neither its writes nor its conclusions are likely to invalidate the other task. Name an owner for shared package generation, registries, and integration. Context separation does not isolate filesystem writes; separate worktrees still need coordination over shared resources. Queue work within the host's capacity.
+
+For interruption recovery, keep the remaining checklist and consequential decisions current. A new author inspects native artifacts and actual completed work before repeating actions.

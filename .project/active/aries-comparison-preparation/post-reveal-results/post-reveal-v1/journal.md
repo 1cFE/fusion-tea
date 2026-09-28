@@ -1,0 +1,25 @@
+# Execution journal
+
+## 2026-09-20 — authorization and restoration
+
+[OWNER-VERBATIM] “Execute .project/active/aries-comparison-preparation/post-reveal-preparation/execution-prompt.md”. This supplies the subsequent numerical authorization required by the adopted prompt. Historical adoption and mapping fields remain unchanged.
+
+[AGENT] Initial branch `fix/modeling-intent-after-reveal`, HEAD `0cfe5267f9cb470fb35488278b443f7f30a571d0`. The only initial working-tree change was untracked `work/analysis/20260920-184131_design-choice-assignment-audit.md`; it is unrelated and preserved. The declared post-reveal register did not exist. No previous post-reveal attempt was found or removed.
+
+[AGENT] Archive SHA256 verified as `d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a` before extraction to `/tmp/post-reveal-execution.OIh9Gv`. Tools resolve to `/tmp/post-reveal-execution.OIh9Gv/.project/active/aries-comparison-preparation/post-reveal-preparation/tools`. Interpreter resolves to `/home/reid/1cfe/fusion-tea/.venv/bin/python`. The operating register is in the primary checkout. The sealed environment is loaded from the documented license/integration files without recording their contents.
+
+[AGENT] Started archived identity verification, focused tests and a synthetic baseline in a separate temporary store. Independent input review and source-observation preparation proceed separately. No reference evaluation has started at this checkpoint.
+
+[AGENT] Restoration verified all 587 indexed files; nine focused tests passed. The separate synthetic baseline completed with 1,352 outputs, 67 predicates and six violations. Its retained receipt/native evidence is under `receipts/synthetic-verification/`, separate from operating `attempts/`. All adoption artifact hashes match.
+
+[AGENT] Independent input review passed; four source images, original evidence Git objects, input definitions and complete held partition verified. Exact adopted request copied unchanged (SHA256 `d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560`). Source-selection contract, held inventory and evidence are retained in `input-evidence/`, with hashes in `receipts/input-hashes.json`. Preparation checkpoint: `24ee1d45`.
+
+[AGENT] Executed the committed request once after request checkpoint `3358d63b`, using `receipts/execute-once.sh`. Exit status 1; retained native state `execution_failed`. The conductor-current module reports `REBCO Conductor Current: B_peak outside 20..32 T; actual=56.61785714285713 T at 20.0 K`. Native outputs and verdicts are empty; no partial artifacts were retained. All 67 engineering predicates are unevaluated. LCOE, power and cost predictions are unavailable. This is a domain refusal, not a physical infeasibility finding or an evaluated predicate violation. The first-attempt pointer and native evidence remain retained. No retry or input change occurred.
+
+[AGENT] Generated the untouched unavailable worksheet from the retained attempt, then joined retained source evidence without physical evaluation. Independent review passed observations SHA256 `e4305c2dafef62f5e0d0151dd11eb3c82b3d530ba50fe108632b5c9fd30a958e`: all 276 native fields remain unavailable, with 52 contextual source numbers. The adopted reporter exited 0 and registered `reports/first-forward/`; all 276 comparison rows and all account reconciliations are blocked. No ratios or prediction credit are admitted. Narrative review requested only clarification of the post-reveal attempt label and final review links; no scientific correction was needed.
+
+[AGENT] Independent replay passed from a fresh extraction. All original attempt/report receipts verify; the pure export reproduces byte for byte. The full scientific comparison, all 276 blocked rows, all 14 blocked account checks, predicates, source/input identities and qualification match exactly. Only the separate report-attempt name and pointer digest differ. Independent immutable-copy database inspection confirms one proposal, case and physical attempt; original database/sidecars remain unchanged. Review scripts, copied diagnostic database, export and report are retained inside `replay-verification/` and `review/`. No additional physical evaluation occurred.
+
+[AGENT] Final disposition: reporting and replay complete; numerical comparison blocked by the selected conductor domain. No model output, LCOE, evaluated engineering verdict or feasibility claim is available. Further physical evaluation requires a separate owner instruction. Frozen adoption/mapping/package files and original r3 results remain unchanged; unrelated untracked audit remains preserved.
+
+[AGENT] Reviewed report/replay checkpoint `19d440fc` committed. Final preservation checks confirmed unchanged archive/adoption artifacts, source hashes, native/report receipts and original r3 branch. `receipts/final-file-hashes.json` indexes all retained register files except itself; checkpoint-index finalization records this completion.

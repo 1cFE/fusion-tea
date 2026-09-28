@@ -1,0 +1,100 @@
+# Prompt for writing and revising technical explainers
+
+Use this prompt when helping revise the public write-ups in this directory. It captures the owner's writing preferences established while revising `sysml-codegen-model-evaluation.md`. The instructions below paraphrase owner-stated preferences and agent recommendations explicitly accepted during that session. They are guidance for explaining the intended argument, not a substitute for understanding it.
+
+## Understand the story before editing
+
+Read the article and any relevant handoff. State the intended story in plain language before proposing substantial changes. Establish what the reader should understand, why they should care, and how the technology serves that purpose. Preserve that argument while improving the prose.
+
+For the model-evaluation article, the purpose is rapid engineering iteration and trade studies. Numerical parameters, categorical component or material choices, and plant architecture require different mechanisms for representing and evaluating alternatives. Codegen and TEAx turn those choices into performance, cost, and engineering-check results that inform the next design decision. Reuse supports that purpose; it is not the whole story.
+
+## Write as the team doing the work
+
+`sysml-codegen-model-evaluation.md` is the reference for voice. It reads as an engineer explaining the work to a colleague, and new sections should match it.
+
+- Speak as "we", the people doing the work, and start from what we want or need. "We want to iterate on engineering designs quickly enough to learn from them" brings the reader into the engineering problem.
+- Describe the system, not the document. Refer to another section only to use what it established ("The radius connection from section 2.1 shows how this works"), or to say where a topic continues.
+- Join sentences by cause. Words such as "so", "therefore", "because" and "that means" carry the reader from one fact to the next.
+- Keep the tone calm and plain. Explain the thing directly.
+
+Texture that breaks this voice:
+
+- Aphoristic openers that personify the system, such as "A session knows only what it can find on disk."
+- Metaphors doing the explaining, such as "this section is the map of that memory."
+- Commentary on the document or its readers, such as "Two readers need it."
+- Callbacks to the essay's own phrasing, such as "Section 1 called the records the memory of the whole effort."
+- Staccato rhetorical setups, such as "Two rules keep the map small enough to learn."
+- Narrative hooks and dramatized setups, such as "The stored-energy goal started from one number" or "The re-run found something the earlier study had not anticipated." State the subject and the finding directly.
+- Paragraphs that argue for the process instead of describing it. If the point is made elsewhere, cut the paragraph.
+- Statements that a mechanism works without saying what it is for, such as "the tests fail when an expectation no longer holds."
+
+*(Added 2026-09-26. The owner rejected the voice of a Part 3 draft; the characterization above is the agent's, accepted by the owner. The last three items were added later the same day from the owner's corrections to Part 3 sections 4–8.)*
+
+## Work one section at a time
+
+When asked to review a section, read its current text and assess how it advances the intended story. Identify what already works, where the explanation loses the reader, and what should change. Explain the reason for each substantive recommendation. Offer short sample passages when they make the proposed direction concrete.
+
+When the owner asks you to apply the recommendations, edit the section in the article so they can read it in context. Keep the scope to the agreed changes and any explicitly agreed relocation of supporting detail. Do not use feedback on one section as a reason to rewrite the whole article.
+
+## Establish the problem before the example
+
+Begin a technical section with a brief, general statement of the problem or step it addresses. Explain why that step is needed, then introduce the example that demonstrates it. An operation on a specific component is not enough context by itself.
+
+For example, the accepted opening to the component-modeling section is:
+
+> We begin by defining a component’s calculations and connecting their inputs and outputs to the plant model.
+
+The magnet example follows that scope sentence. Similarly, the component-selection section first explains why varying numerical inputs cannot explore behavior absent from the current component model, then introduces the blanket's more detailed breeding calculation.
+
+These are examples of the explanation pattern, not required wording. Titles should identify the engineering purpose or technical subject. “Exploring the design space: parameters, components, and architecture” gives useful context; “What do we want to change?” does not.
+
+## Structure a section so it reads in one pass
+
+Tell the reader what the section covers, cover it, then say what it covered. The frame leads and the examples support it. When the examples lead, the reader cannot tell what they are examples of.
+
+- When a paragraph carries a chain of facts, break it into bullets. Each bullet states its point first and gives the numbers after. When a point takes several steps to reach, state it in a main bullet and put the steps under it as sub-bullets.
+- Give a list of parallel items one simple, repeating pattern, such as a check followed by "**Example:** when X, it caught Y." Where an item has nothing to fill the pattern, explain it plainly instead of forcing it.
+- Reuse structures the piece has already introduced. Part 3 describes a round as a sequence of tasks, so its worked example walks each round task by task: what it was, what changed, what it found. A summary table that restates the prose adds nothing.
+- Do not re-explain what a published post already covers. Summarize it in a sentence, link it, and spend the space showing the example.
+
+*(Added 2026-09-26 from the owner's corrections to Part 3 sections 4–8; the wording is the agent's summary.)*
+
+## Develop the causal explanation
+
+Give each paragraph one point, and make its sentences develop that point. Short sentences alone do not create clarity. The reader should understand why one fact leads to the next, rather than having to connect a sequence of loosely related statements.
+
+Explain the need before naming the mechanism. Component and material choices are categorical and do not fit naturally into a numerical sweep; that motivates alternative definitions and selecting their usages. A calculation needs another calculation's result; that motivates dependencies and execution order. A study explores many input combinations; that motivates constraints for identifying engineering failures.
+
+Use a brief forward reference when the motivation depends on material explained later. For example, tell the reader that a later study will sweep broad ranges of inputs when introducing constraints. Preserve that connection without explaining the whole study prematurely.
+
+Introduce a physical component's role before its quantities or implementation details. Explain what the blanket does before discussing its breeding surrogate. Explain what the magnet calculation answers before introducing coil attributes.
+
+## Show enough machinery to make the process imaginable
+
+Explain what the program actually does. “Codegen constructs a graph” is insufficient without explaining that it identifies component occurrences, finds their calculations, and follows input connections to supplying parameters or calculated outputs.
+
+Keep definitions and usages distinct when that distinction explains the mechanism. Follow values through a complete example: where the plant supplies them, how a calculation usage binds them to an equation, and how the result becomes available to other calculations. Do not lose one part of that chain while shortening the prose.
+
+Introduce technical terms after explaining their meaning in ordinary language. Explain code through the decisions and behavior it expresses. In a wiring example, prioritize which calculation runs, where its inputs come from, and where its output goes. Long identifiers, wrapper types, and internal bookkeeping deserve attention only when they help the reader understand that behavior.
+
+## Keep examples focused and evidence intact
+
+Use one strong example to develop a point. The blanket surrogate explains the need for custom computation more directly than input checks around a simple arithmetic function. Avoid adding a second example that interrupts the main explanation without advancing it.
+
+Introduce figures with the question they help answer. Explain their main causal chain afterward. Captions should help readers interpret marks, arrows, assumptions, and result limits; detailed verification records can live in linked evidence notes.
+
+Keep qualifications that change what the reader may conclude. Historical study costs remain historical. Passing modeled constraints does not establish unmodeled physical feasibility. Preserve distinctions between supported sweeps, external optimization, and capabilities not yet implemented. Move secondary implementation details or complete held-input lists into linked notes when agreed, preserving their content and sources.
+
+Do not simplify a claim into something technically different. In the magnet example, selected ampere-turns and geometry produce field. In the blanket example, selecting a richer component model demonstrates added model detail, not a demonstrated material substitution. Check the retained evidence when a proposed edit would change such a claim.
+
+Give an example only when the reader has its context. If the context is set up elsewhere in the piece, point to it. If an example needs more setup than it is worth, cut it. A wrap-up summarizes and does not retell examples already used, and no section should end on a claim it has not set up.
+
+Treat outline bullets and runbook phrases as prompts to check, not text to copy. Check each claim against the record before writing it, flag any that does not hold, and explain a runbook phrase in plain words before using it.
+
+## Finish on what the reader can now do or understand
+
+End a section by explaining what the completed step enables and how that prepares the next step. Finish the article by returning to the engineering purpose: evaluate choices, see what improves and what fails, investigate, revise the model, and study again.
+
+Before saving, read the section as someone unfamiliar with the implementation. Can they identify the problem, follow the mechanism, and understand the result on one reading? If not, repair the explanation rather than merely cutting words.
+
+Keep Markdown paragraphs and list items on one source line. Preserve local links, figures, and technical evidence. Report edits briefly so the owner can return to reading the article in context.

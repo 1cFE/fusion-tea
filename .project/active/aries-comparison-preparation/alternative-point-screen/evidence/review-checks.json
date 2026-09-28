@@ -1,0 +1,19 @@
+{
+  "examined_head": "3e3cc8252d20d88dfaf7a6d1cf42ce1970de9127",
+  "exact_replay": [
+    "domain-rules.json",
+    "screen.json",
+    "screen.csv"
+  ],
+  "replay_reason": "Verify final source-ID join and elimination of interim Table X beta labels after review correction",
+  "protected_files_checked": 1350,
+  "protected_files_changed": [],
+  "baseline_sha256": "08749956897d7d0fd6883745f7ddfa7aa6224d5f79be53961aed37548b697e44",
+  "artifact_sha256": {
+    "source-points.json": "d49c15ae8e47d8ab3c7df985a523c94bc003c0ffc19107ff8f95ff4343ec6ddf",
+    "domain-rules.json": "48fdb4d08750d267be9ea0c32fcd239e7fa0cbf0d3b0a0c7520225913a1f77bb",
+    "screen.json": "0c52c34276724d2cfdae44339baeaecee78f354d90d1223dba64e50be0b084cc",
+    "screen.csv": "4301cf608e70a8f41763a09f0beb64516cc933bb77a2eb1fcaae14c8e0fa8522"
+  },
+  "model_execution_performed": false
+}

@@ -1,0 +1,10 @@
+{
+  "files": {
+    "native-result.json": "d92755fbf92956d7ec211622dea6d92cb30de5f95ecbc36937555dada70e742f",
+    "native/artifacts/5377ea95dae24404212956b205878e244d7ba958315deaa35b38e1bc775e1cfa.json": "5377ea95dae24404212956b205878e244d7ba958315deaa35b38e1bc775e1cfa",
+    "native/current-comparison-fixed-point.db": "acc0efbe112d3201e83320178d6726023d777e93b61380010f36e2c507b193b3",
+    "request.json": "42ff3ce5d8b3d64806ab68e4a3aceb1ac7ead2dc7cec133b042a85a500c21e7e",
+    "request.raw.json": "42ff3ce5d8b3d64806ab68e4a3aceb1ac7ead2dc7cec133b042a85a500c21e7e"
+  },
+  "result_directory": "held-cycle-diagnostic"
+}

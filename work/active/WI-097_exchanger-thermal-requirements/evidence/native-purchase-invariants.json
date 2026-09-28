@@ -1,0 +1,27 @@
+[
+  {
+    "case": "offer-a-0",
+    "hx_capital_usd2004": 174977100.00000003,
+    "extrapolation_flags_preserved": true
+  },
+  {
+    "case": "offer-a-1",
+    "hx_capital_usd2004": 174977100.00000003,
+    "extrapolation_flags_preserved": true
+  },
+  {
+    "case": "offer-b-0",
+    "hx_capital_usd2004": 174977100.0,
+    "extrapolation_flags_preserved": true
+  },
+  {
+    "case": "offer-b-1",
+    "hx_capital_usd2004": 174977100.0,
+    "extrapolation_flags_preserved": true
+  },
+  {
+    "case": "offer-b-linear-price",
+    "hx_capital_usd2004": 44327532.00000001,
+    "extrapolation_flags_preserved": true
+  }
+]

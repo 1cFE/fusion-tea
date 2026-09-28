@@ -1,0 +1,13 @@
+[integrate] BLOCKER
+  pass         repo     pinned-packages: tests/test_dependency_provenance.py passed
+  pass         request  teax-revision: teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397
+  pass         request  regeneration: regeneration through aries_integrated rewrote no byte outside handwritten/
+  pass         request  handwritten-preservation: 60 file(s) under handwritten/ are byte-identical
+  pass         request  census-snapshot: the snapshot recaptures byte-identically and 424 entry points re-derive to the census as bound
+  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed
+  pass         request  manifest: manifest identity, pin 06e0627ca37475e7ceaaaefa245e71f2fdfe4acca2af8ccae4a7a049396e9021 and resolved reference coverage pass
+  fail         request  preflight: ['undeclared dependency read: /packages/teax-simkit']
+  not reached  request  verification: the sequence stopped before this gate
+  not reached  request  lineage: the sequence stopped before this gate
+[integrate] refused at preflight (scripts/study/read_coverage.py, read-coverage-refused): ['undeclared dependency read: /packages/teax-simkit']
+             evidence: work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/integration-attempt1/read_coverage.json

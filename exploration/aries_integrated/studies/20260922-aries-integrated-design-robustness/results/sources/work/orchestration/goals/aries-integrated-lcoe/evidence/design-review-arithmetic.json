@@ -1,0 +1,52 @@
+{
+  "purpose": "Design equation verification only; supplied synthetic annual cost is not integrated model output",
+  "rates": [
+    {
+      "rate": 0.0,
+      "proposed": 1062.9353591209422,
+      "dated_decimal_oracle": 1062.9353591209422,
+      "absolute_difference": 0.0
+    },
+    {
+      "rate": 1e-12,
+      "proposed": 1062.9353591217002,
+      "dated_decimal_oracle": 1062.9353591217,
+      "absolute_difference": 2.2737367544323206e-13
+    },
+    {
+      "rate": 0.03,
+      "proposed": 1092.266650831097,
+      "dated_decimal_oracle": 1092.2666508310972,
+      "absolute_difference": 2.2737367544323206e-13
+    },
+    {
+      "rate": 0.05,
+      "proposed": 1119.3761156540904,
+      "dated_decimal_oracle": 1119.3761156540904,
+      "absolute_difference": 0.0
+    },
+    {
+      "rate": 0.1,
+      "proposed": 1212.7373942682216,
+      "dated_decimal_oracle": 1212.7373942682216,
+      "absolute_difference": 0.0
+    },
+    {
+      "rate": 1.0,
+      "proposed": 12067.442780560043,
+      "dated_decimal_oracle": 12067.442780560043,
+      "absolute_difference": 0.0
+    }
+  ],
+  "source_scalar_checks": {
+    "direct_parents_million": 2619.572,
+    "inclusive_million": 5055.77396,
+    "gross_T_kg": 104.66770702324638,
+    "new_feed_shortfall_kg": 4.667707023246379
+  },
+  "reviewed_sha256": {
+    "work/active/WI-091_aries-integrated-lifecycle-cost/spec.md": "1eafcffda887fe8b621dbd604e7c3f7618157668e16835f61896b898bb873a62",
+    "work/active/WI-091_aries-integrated-lifecycle-cost/design.md": "10957828124dccbb025a4c3ad179b4c34f13a780ba1858ed0e7c9f458094ab1e",
+    "work/active/WI-091_aries-integrated-lifecycle-cost/plan.md": "4da72846f8dc1414dc717ca143fab575d056e1c5fb19bb2662ebc520860af4e3"
+  }
+}

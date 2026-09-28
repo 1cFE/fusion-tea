@@ -1,0 +1,10 @@
+{
+  "study_id": "20260915-joint-magnet-sizing",
+  "executable_fingerprint": "8e4aa8eaebf2667a74565e6e66fc9ce5947c6d27ccfc210f8452e82d87fba45f",
+  "model_contract_fingerprint": "14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed",
+  "study_definition_fingerprint": "b92f977c36ed01fa8ac092dde522320a9fa5461e4f642a66e24788713e259547",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "0c72c03cf5c69950232df9970001138d8c4c08f4adbd2562cfc3571fe250fc7d"
+}

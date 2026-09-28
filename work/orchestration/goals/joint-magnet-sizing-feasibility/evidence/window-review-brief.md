@@ -1,0 +1,7 @@
+# Focused preexecution window review
+
+Reuse your WI064 source/design/oracle/implementation coverage. Check new study protocol.md, reviews/window-selection.md, preparation/final-selection.json, results/initial-oracle-scan.json/refinement-oracle-scan.json/sensitivity-oracle-scan.json/edge-scan.json (aggregate/query, do not dump megabytes), and results/exact-boundary-diagnostic.json. Path prefix exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/. All347 unique proposals fixed; no default or new sensitivity all20 pass, one historical30T orientation3 pass. Endpoint file may be finishing; wait or note pending before verdict.
+
+Check bounded finite claims, no acceptance relaxation, independent allocation, scope of enhanced vs default, exact-boundary numerical diagnostic exclusion (native negative3e-16 vs oracle0; physical1% reserve declared before scan), and that any omitted dependencies invalidate no claim being made. New bounds a1.15/current14.6 extend source-anchored initial ranges modestly within existing broad model applicability; explicit engineered assumptions. No global infeasibility claim. Source normalization unchanged. All all-point native checks still pending.
+
+Own goal evidence/window-review.md only. Return PASS/FINDINGS before native execution;8calls/400words default. Do not modify other artifacts, spawn agents, reread full context or run broad tests. Preserve quarantine; Python .codex-test/run. After freeze you will review native/frozen evidence under expanded final brief.

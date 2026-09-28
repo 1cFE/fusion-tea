@@ -1,0 +1,18 @@
+{
+  "0": {
+    "error": "ValidationError",
+    "message": "1 validation error for StellaratorPlantParams\nstellarator_09__stellaris__magnet__R0\n  Extra inputs are not permitted [type=extra_forbidden, input_value=14.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+  },
+  "1": {
+    "error": "ValidationError",
+    "message": "1 validation error for StellaratorPlantParams\nstellarator_09__stellaris__magnet__R0\n  Extra inputs are not permitted [type=extra_forbidden, input_value=14.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+  },
+  "2": {
+    "error": "ValidationError",
+    "message": "1 validation error for StellaratorPlantParams\nstellarator_09__stellaris__magnet__R0\n  Extra inputs are not permitted [type=extra_forbidden, input_value=12.7, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+  },
+  "3": {
+    "error": "ValidationError",
+    "message": "1 validation error for StellaratorPlantParams\nstellarator_09__stellaris__magnet__R0\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+  }
+}

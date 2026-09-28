@@ -1,0 +1,12 @@
+{
+  "note": "[AGENT reviewed scenario] OAT ten groups; both HX price factors vary together as one explicit correlated scenario. This explicit study tie joins independently owned inputs; it neither changes the package nor declares physical hardware identity.",
+  "keys": [
+    "aries_integrated_plant__he_hx__price_factor",
+    "aries_integrated_plant__pbli_hx__price_factor"
+  ],
+  "levels": [
+    0.5,
+    1.5
+  ],
+  "effective_manifest_sha256": "45f11731e91bf0f44e4e4f2b4ceb3b1604dd9e40537337ffa1e8b2bbe8ebba98"
+}

@@ -1,0 +1,32 @@
+--- B3 window probe on N (oracle only)
+amp 4.50e20 hol 0.66 net 0: {'fus': 1486.7, 'net': 140.2, 'unmet': 0.0, 'ext_t': 84.9}
+amp 4.50e20 hol 0.6 net 0: {'fus': 1325.5, 'net': 9.5, 'unmet': 0.0, 'ext_t': 75.7}
+amp 4.50e20 hol 0.55 net 0: {'refused': 'nonpositive net electricity: LCOE undefined'}
+amp 4.50e20 hol 0.5 net 0: {'refused': 'nonpositive net electricity: LCOE undefined'}
+amp 4.75e20 hol 0.66 net 0: {'fus': 1656.5, 'net': 277.9, 'unmet': 0.0, 'ext_t': 94.5}
+amp 4.75e20 hol 0.6 net 0: {'fus': 1476.9, 'net': 132.3, 'unmet': 0.0, 'ext_t': 84.3}
+amp 4.75e20 hol 0.55 net 0: {'fus': 1335.7, 'net': 17.7, 'unmet': 0.0, 'ext_t': 76.3}
+amp 4.75e20 hol 0.5 net 0: {'refused': 'nonpositive net electricity: LCOE undefined'}
+amp 5.00e20 hol 0.66 net 0: {'fus': 1835.5, 'net': 423.1, 'unmet': 0.0, 'ext_t': 104.7}
+amp 5.00e20 hol 0.6 net 0: {'fus': 1636.5, 'net': 261.7, 'unmet': 0.0, 'ext_t': 93.4}
+amp 5.00e20 hol 0.55 net 0: {'fus': 1480.0, 'net': 134.8, 'unmet': 0.0, 'ext_t': 84.5}
+amp 5.00e20 hol 0.5 net 0: {'fus': 1332.1, 'net': 14.8, 'unmet': 0.0, 'ext_t': 76.1}
+amp 5.25e20 hol 0.66 net 0: {'fus': 2023.6, 'net': 575.7, 'unmet': 0.0, 'ext_t': 115.3}
+amp 5.25e20 hol 0.6 net 0: {'fus': 1804.2, 'net': 397.8, 'unmet': 0.0, 'ext_t': 102.9}
+amp 5.25e20 hol 0.55 net 0: {'fus': 1631.7, 'net': 257.8, 'unmet': 0.0, 'ext_t': 93.1}
+amp 5.25e20 hol 0.5 net 0: {'fus': 1468.6, 'net': 125.6, 'unmet': 0.0, 'ext_t': 83.9}
+amp 5.50e20 hol 0.66 net 0: {'fus': 2220.9, 'net': 735.8, 'unmet': 0.0, 'ext_t': 126.5}
+amp 5.50e20 hol 0.6 net 0: {'fus': 1980.1, 'net': 540.5, 'unmet': 0.0, 'ext_t': 112.9}
+amp 5.50e20 hol 0.55 net 0: {'fus': 1790.8, 'net': 386.9, 'unmet': 0.0, 'ext_t': 102.1}
+amp 5.50e20 hol 0.5 net 0: {'fus': 1611.8, 'net': 241.7, 'unmet': 0.0, 'ext_t': 92.0}
+amp 5.75e20 hol 0.66 net 0: {'fus': 2427.4, 'net': 795.4, 'unmet': 149.9, 'ext_t': 138.2}
+amp 5.75e20 hol 0.6 net 0: {'fus': 2164.2, 'net': 689.8, 'unmet': 0.0, 'ext_t': 123.3}
+amp 5.75e20 hol 0.55 net 0: {'fus': 1957.3, 'net': 522.0, 'unmet': 0.0, 'ext_t': 111.6}
+amp 5.75e20 hol 0.5 net 0: {'fus': 1761.7, 'net': 363.3, 'unmet': 0.0, 'ext_t': 100.5}
+--- B2 binding probe on A at rec 0.95, level -60 (oracle only)
+flow 3359.0 mode 1: {'fus': 2436.0, 'net': 745.3, 'unmet': 162.1, 'ext_t': 138.7}
+flow 3359.0 mode 0: {'fus': 2436.0, 'net': 744.8, 'unmet': 162.6, 'ext_t': 138.7}
+flow 4000.0 mode 1: {'fus': 2436.0, 'net': 746.7, 'unmet': 160.5, 'ext_t': 138.7}
+flow 4000.0 mode 0: {'fus': 2436.0, 'net': 628.8, 'unmet': 267.1, 'ext_t': 138.7}
+flow 4700.0 mode 1: {'fus': 2436.0, 'net': 747.6, 'unmet': 159.6, 'ext_t': 138.7}
+flow 4700.0 mode 0: {'fus': 2436.0, 'net': 450.5, 'unmet': 428.1, 'ext_t': 138.7}

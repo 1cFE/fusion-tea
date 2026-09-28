@@ -1,0 +1,516 @@
+FFFFFFFFFFFFFF.FFFFFF..                                                  [100%]
+=================================== FAILURES ===================================
+_______________ test_declared_package_manifest_and_source_reads ________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_declared_package_manifest0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df617584a0>, write=<function observed_route.<locals>.write at 0x71df6175ab60>)
+
+    def test_declared_package_manifest_and_source_reads(observed_route):
+        done, receipt = observed_route.run('''(package_dir / "value.json").read_text()
+    manifest_path.read_text()''')
+>       assert done.returncode == 0, done.stderr
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 4, in <module>
+E           File "/home/reid/1cfe/fusion-tea/scripts/study/read_coverage.py", line 156, in run_route
+E             raise CoverageError(error or "; ".join(receipt["violations"]))
+E         scripts.study.read_coverage.CoverageError: CoverageError: unsupported integer-descriptor open: 3
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...t["violations"]))\nscripts.study.read_coverage.CoverageError: CoverageError: unsupported integer-descriptor open: 3\n').returncode
+
+tests/study/test_read_coverage.py:57: AssertionError
+__________________ test_undeclared_actual_data_reads[package] __________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_undeclared_actual_data_re0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df61597560>, write=<function observed_route.<locals>.write at 0x71df61597420>)
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13148/test_undeclared_actual_data_re0')
+location = 'package'
+
+    @pytest.mark.parametrize('location', ['package', 'route', 'outside'])
+    def test_undeclared_actual_data_reads(observed_route, tmp_path, location):
+        roots = {'package': observed_route.package, 'route': observed_route.route, 'outside': tmp_path}
+        unexpected = roots[location] / 'unexpected.csv'
+        unexpected.write_text('changed data')
+        done, receipt = observed_route.run(f'Path({str(unexpected)!r}).read_text()')
+        assert done.returncode != 0
+>       assert 'undeclared' in str(receipt['violations'])
+E       assert 'undeclared' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:69: AssertionError
+___________________ test_undeclared_actual_data_reads[route] ___________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_undeclared_actual_data_re1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df612b2de0>, write=<function observed_route.<locals>.write at 0x71df612b2ca0>)
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13148/test_undeclared_actual_data_re1')
+location = 'route'
+
+    @pytest.mark.parametrize('location', ['package', 'route', 'outside'])
+    def test_undeclared_actual_data_reads(observed_route, tmp_path, location):
+        roots = {'package': observed_route.package, 'route': observed_route.route, 'outside': tmp_path}
+        unexpected = roots[location] / 'unexpected.csv'
+        unexpected.write_text('changed data')
+        done, receipt = observed_route.run(f'Path({str(unexpected)!r}).read_text()')
+        assert done.returncode != 0
+>       assert 'undeclared' in str(receipt['violations'])
+E       assert 'undeclared' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:69: AssertionError
+__________________ test_undeclared_actual_data_reads[outside] __________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_undeclared_actual_data_re2/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df611ea7a0>, write=<function observed_route.<locals>.write at 0x71df611ea700>)
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13148/test_undeclared_actual_data_re2')
+location = 'outside'
+
+    @pytest.mark.parametrize('location', ['package', 'route', 'outside'])
+    def test_undeclared_actual_data_reads(observed_route, tmp_path, location):
+        roots = {'package': observed_route.package, 'route': observed_route.route, 'outside': tmp_path}
+        unexpected = roots[location] / 'unexpected.csv'
+        unexpected.write_text('changed data')
+        done, receipt = observed_route.run(f'Path({str(unexpected)!r}).read_text()')
+        assert done.returncode != 0
+>       assert 'undeclared' in str(receipt['violations'])
+E       assert 'undeclared' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:69: AssertionError
+_____________________________ test_symlink_escape ______________________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_symlink_escape0/package'), route=PosixPath('/tmp/py...ction observed_route.<locals>.run at 0x71df61119f80>, write=<function observed_route.<locals>.write at 0x71df61119ee0>)
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13148/test_symlink_escape0')
+
+    def test_symlink_escape(observed_route, tmp_path):
+        outside = tmp_path / 'external.json'
+        outside.write_text('outside')
+        (observed_route.package / 'escape.json').symlink_to(outside)
+        done, receipt = observed_route.run('(package_dir / "escape.json").read_text()')
+        assert done.returncode != 0
+>       assert str(outside) in str(receipt['violations'])
+E       assert '/tmp/pytest-of-reid/pytest-13148/test_symlink_escape0/external.json' in "['unsupported integer-descriptor open: 3']"
+E        +  where '/tmp/pytest-of-reid/pytest-13148/test_symlink_escape0/external.json' = str(PosixPath('/tmp/pytest-of-reid/pytest-13148/test_symlink_escape0/external.json'))
+E        +  and   "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:78: AssertionError
+__________________ test_declared_dependency_mutation[before] ___________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_declared_dependency_mutat0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df611184a0>, write=<function observed_route.<locals>.write at 0x71df61118400>)
+when = 'before'
+
+    @pytest.mark.parametrize('when', ['before', 'after'])
+    def test_declared_dependency_mutation(observed_route, when):
+        read = '(package_dir / "value.json").read_text()'
+        write = '(package_dir / "value.json").write_text("mutated")'
+        done, receipt = observed_route.run('\n'.join([write, read] if when == 'before' else [read, write]))
+        assert done.returncode != 0
+>       assert 'changed' in str(receipt['violations'])
+E       assert 'changed' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:87: AssertionError
+___________________ test_declared_dependency_mutation[after] ___________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_declared_dependency_mutat1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df610544a0>, write=<function observed_route.<locals>.write at 0x71df61054360>)
+when = 'after'
+
+    @pytest.mark.parametrize('when', ['before', 'after'])
+    def test_declared_dependency_mutation(observed_route, when):
+        read = '(package_dir / "value.json").read_text()'
+        write = '(package_dir / "value.json").write_text("mutated")'
+        done, receipt = observed_route.run('\n'.join([write, read] if when == 'before' else [read, write]))
+        assert done.returncode != 0
+>       assert 'changed' in str(receipt['violations'])
+E       assert 'changed' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:87: AssertionError
+_________________________ test_new_output_can_be_read __________________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_new_output_can_be_read0/package'), route=PosixPath(...ction observed_route.<locals>.run at 0x71df6151f2e0>, write=<function observed_route.<locals>.write at 0x71df6151f1a0>)
+
+    def test_new_output_can_be_read(observed_route):
+        done, receipt = observed_route.run('''(out / "new.json").write_text("new")
+    (out / "new.json").read_text()''')
+>       assert done.returncode == 0, done.stderr
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 4, in <module>
+E           File "/home/reid/1cfe/fusion-tea/scripts/study/read_coverage.py", line 156, in run_route
+E             raise CoverageError(error or "; ".join(receipt["violations"]))
+E         scripts.study.read_coverage.CoverageError: CoverageError: unsupported integer-descriptor open: 3
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...t["violations"]))\nscripts.study.read_coverage.CoverageError: CoverageError: unsupported integer-descriptor open: 3\n').returncode
+
+tests/study/test_read_coverage.py:93: AssertionError
+___________ test_preexisting_output_write_does_not_admit_old_data[a] ___________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_preexisting_output_write_0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df61012ac0>, write=<function observed_route.<locals>.write at 0x71df61012a20>)
+mode = 'a'
+
+    @pytest.mark.parametrize('mode', ['a', 'r+'])
+    def test_preexisting_output_write_does_not_admit_old_data(observed_route, mode):
+        (observed_route.out / 'old.json').write_text('old')
+        done, receipt = observed_route.run(f'''with (out / "old.json").open({mode!r}) as handle:
+        handle.write("new")
+    (out / "old.json").read_text()''')
+        assert done.returncode != 0
+>       assert 'undeclared' in str(receipt['violations'])
+E       assert 'undeclared' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:104: AssertionError
+__________ test_preexisting_output_write_does_not_admit_old_data[r+] ___________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_preexisting_output_write_1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df61232340>, write=<function observed_route.<locals>.write at 0x71df612322a0>)
+mode = 'r+'
+
+    @pytest.mark.parametrize('mode', ['a', 'r+'])
+    def test_preexisting_output_write_does_not_admit_old_data(observed_route, mode):
+        (observed_route.out / 'old.json').write_text('old')
+        done, receipt = observed_route.run(f'''with (out / "old.json").open({mode!r}) as handle:
+        handle.write("new")
+    (out / "old.json").read_text()''')
+        assert done.returncode != 0
+>       assert 'undeclared' in str(receipt['violations'])
+E       assert 'undeclared' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:104: AssertionError
+__________ test_cached_import_records_actual_cache_and_source[False] ___________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_cached_import_records_act0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df61435bc0>, write=<function observed_route.<locals>.write at 0x71df61435b20>)
+mutate = False
+
+    @pytest.mark.parametrize('mutate', [False, True])
+    def test_cached_import_records_actual_cache_and_source(observed_route, mutate):
+        source = observed_route.route / 'cached_dependency.py'
+        source.write_text('VALUE = 7\n')
+        cache = Path(py_compile.compile(str(source), doraise=True))
+        original = coverage.digest(cache)
+        body = 'import cached_dependency\nassert cached_dependency.VALUE == 7'
+        if mutate:
+            body += f'\nPath({str(cache)!r}).write_bytes(b"changed cached bytes")'
+        done, receipt = observed_route.run(body)
+>       assert (done.returncode != 0) is mutate
+E       assert (1 != 0) is False
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '-c', '\nimport json, sys\nfrom scripts.study.r...t["violations"]))\nscripts.study.read_coverage.CoverageError: CoverageError: unsupported integer-descriptor open: 3\n').returncode
+
+tests/study/test_read_coverage.py:117: AssertionError
+___________ test_cached_import_records_actual_cache_and_source[True] ___________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_cached_import_records_act1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df60f65440>, write=<function observed_route.<locals>.write at 0x71df60f653a0>)
+mutate = True
+
+    @pytest.mark.parametrize('mutate', [False, True])
+    def test_cached_import_records_actual_cache_and_source(observed_route, mutate):
+        source = observed_route.route / 'cached_dependency.py'
+        source.write_text('VALUE = 7\n')
+        cache = Path(py_compile.compile(str(source), doraise=True))
+        original = coverage.digest(cache)
+        body = 'import cached_dependency\nassert cached_dependency.VALUE == 7'
+        if mutate:
+            body += f'\nPath({str(cache)!r}).write_bytes(b"changed cached bytes")'
+        done, receipt = observed_route.run(body)
+        assert (done.returncode != 0) is mutate
+>       row = next(row for row in receipt['reads'] if row['path'] == str(cache))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/study/test_read_coverage.py:118: StopIteration
+_______________________ test_sourceless_bytecode_refused _______________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_sourceless_bytecode_refus0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df60f64360>, write=<function observed_route.<locals>.write at 0x71df60f642c0>)
+
+    def test_sourceless_bytecode_refused(observed_route):
+        source = observed_route.route / 'only_cache.py'
+        source.write_text('VALUE = 3\n')
+        py_compile.compile(str(source), cfile=str(source.with_suffix('.pyc')), doraise=True)
+        source.unlink()
+        done, receipt = observed_route.run('import only_cache')
+        assert done.returncode != 0
+>       assert 'undeclared' in str(receipt['violations'])
+E       assert 'undeclared' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:133: AssertionError
+__________________________ test_child_process_refused __________________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_child_process_refused0/package'), route=PosixPath('...ction observed_route.<locals>.run at 0x71df61533e20>, write=<function observed_route.<locals>.write at 0x71df61533ce0>)
+
+    def test_child_process_refused(observed_route):
+        done, receipt = observed_route.run('subprocess.run([sys.executable, "-c", "pass"])')
+        assert done.returncode != 0
+>       assert 'child execution' in str(receipt['violations'])
+E       assert 'child execution' in "['unsupported integer-descriptor open: 3']"
+E        +  where "['unsupported integer-descriptor open: 3']" = str(['unsupported integer-descriptor open: 3'])
+
+tests/study/test_read_coverage.py:139: AssertionError
+_______________ test_caught_violation_still_refuses_integration ________________
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_caught_violation_still_re0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df6129fa60>, write=<function observed_route.<locals>.write at 0x71df6129f880>)
+
+    def test_caught_violation_still_refuses_integration(observed_route):
+        extra = observed_route.package / 'unlisted.csv'
+        extra.write_text('unexpected')
+        observed_route.write('''try:
+        (package_dir / "unlisted.csv").read_text()
+    except RuntimeError:
+        pass''')
+        with pytest.raises(integrate.SeamBlocker) as caught:
+>           integrate.execute_baseline(observed_route.request, dict(os.environ))
+
+tests/study/test_read_coverage.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/integrate.py:1269: in execute_baseline
+    raise SeamBlocker(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SeamBlocker("['unsupported integer-descriptor open: 3']")
+
+    def __init__(self, *, gate: str, producer: str, scope: str, mode: str, condition: str,
+                 detail: str, expected=None, actual=None, evidence: tuple[str, ...] = ()):
+        super().__init__(detail)
+        if condition not in CONDITIONS:
+>           raise ValueError(f"condition is not in the closed set: {condition!r}")
+E           ValueError: condition is not in the closed set: 'read-coverage-refused'
+
+scripts/integrate.py:218: ValueError
+_____ test_integration_rejects_invalid_receipt_even_on_zero_exit[missing] ______
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_integration_rejects_inval0/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df613eb560>, write=<function observed_route.<locals>.write at 0x71df613eb380>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71df617955e0>
+receipt_kind = 'missing'
+
+    @pytest.mark.parametrize('receipt_kind', ['missing', 'malformed', 'stale', 'empty', 'violation'])
+    def test_integration_rejects_invalid_receipt_even_on_zero_exit(observed_route, monkeypatch, receipt_kind):
+        path = observed_route.out / 'read_coverage.json'
+        path.write_text('{"outcome":"pass"}')  # Existing evidence cannot satisfy new invocation.
+    
+        def fake_producer(argv, env):
+            assert not path.exists()
+            if receipt_kind == 'malformed':
+                path.write_text('not json')
+            elif receipt_kind != 'missing':
+                document = {'schema_version': coverage.SCHEMA,
+                            'invocation': 'old-token' if receipt_kind == 'stale' else argv[-1],
+                            'outcome': 'pass', 'route_error': None,
+                            'violations': ['caught'] if receipt_kind == 'violation' else [],
+                            'reads': [], 'declarations': [], 'limitations': coverage.LIMITATIONS}
+                path.write_text(json.dumps(document))
+            return subprocess.CompletedProcess(argv, 0, '{}', '')
+    
+        monkeypatch.setattr(integrate, 'run_producer', fake_producer)
+        with pytest.raises(integrate.SeamBlocker) as caught:
+>           integrate.execute_baseline(observed_route.request, {})
+
+tests/study/test_read_coverage.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/integrate.py:1269: in execute_baseline
+    raise SeamBlocker(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SeamBlocker('missing or malformed read-coverage receipt')
+
+    def __init__(self, *, gate: str, producer: str, scope: str, mode: str, condition: str,
+                 detail: str, expected=None, actual=None, evidence: tuple[str, ...] = ()):
+        super().__init__(detail)
+        if condition not in CONDITIONS:
+>           raise ValueError(f"condition is not in the closed set: {condition!r}")
+E           ValueError: condition is not in the closed set: 'read-coverage-refused'
+
+scripts/integrate.py:218: ValueError
+____ test_integration_rejects_invalid_receipt_even_on_zero_exit[malformed] _____
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_integration_rejects_inval1/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df613eb880>, write=<function observed_route.<locals>.write at 0x71df613eb920>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71df61797a10>
+receipt_kind = 'malformed'
+
+    @pytest.mark.parametrize('receipt_kind', ['missing', 'malformed', 'stale', 'empty', 'violation'])
+    def test_integration_rejects_invalid_receipt_even_on_zero_exit(observed_route, monkeypatch, receipt_kind):
+        path = observed_route.out / 'read_coverage.json'
+        path.write_text('{"outcome":"pass"}')  # Existing evidence cannot satisfy new invocation.
+    
+        def fake_producer(argv, env):
+            assert not path.exists()
+            if receipt_kind == 'malformed':
+                path.write_text('not json')
+            elif receipt_kind != 'missing':
+                document = {'schema_version': coverage.SCHEMA,
+                            'invocation': 'old-token' if receipt_kind == 'stale' else argv[-1],
+                            'outcome': 'pass', 'route_error': None,
+                            'violations': ['caught'] if receipt_kind == 'violation' else [],
+                            'reads': [], 'declarations': [], 'limitations': coverage.LIMITATIONS}
+                path.write_text(json.dumps(document))
+            return subprocess.CompletedProcess(argv, 0, '{}', '')
+    
+        monkeypatch.setattr(integrate, 'run_producer', fake_producer)
+        with pytest.raises(integrate.SeamBlocker) as caught:
+>           integrate.execute_baseline(observed_route.request, {})
+
+tests/study/test_read_coverage.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/integrate.py:1269: in execute_baseline
+    raise SeamBlocker(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SeamBlocker('missing or malformed read-coverage receipt')
+
+    def __init__(self, *, gate: str, producer: str, scope: str, mode: str, condition: str,
+                 detail: str, expected=None, actual=None, evidence: tuple[str, ...] = ()):
+        super().__init__(detail)
+        if condition not in CONDITIONS:
+>           raise ValueError(f"condition is not in the closed set: {condition!r}")
+E           ValueError: condition is not in the closed set: 'read-coverage-refused'
+
+scripts/integrate.py:218: ValueError
+______ test_integration_rejects_invalid_receipt_even_on_zero_exit[stale] _______
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_integration_rejects_inval2/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df6129fe20>, write=<function observed_route.<locals>.write at 0x71df6129fd80>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71df618c0050>
+receipt_kind = 'stale'
+
+    @pytest.mark.parametrize('receipt_kind', ['missing', 'malformed', 'stale', 'empty', 'violation'])
+    def test_integration_rejects_invalid_receipt_even_on_zero_exit(observed_route, monkeypatch, receipt_kind):
+        path = observed_route.out / 'read_coverage.json'
+        path.write_text('{"outcome":"pass"}')  # Existing evidence cannot satisfy new invocation.
+    
+        def fake_producer(argv, env):
+            assert not path.exists()
+            if receipt_kind == 'malformed':
+                path.write_text('not json')
+            elif receipt_kind != 'missing':
+                document = {'schema_version': coverage.SCHEMA,
+                            'invocation': 'old-token' if receipt_kind == 'stale' else argv[-1],
+                            'outcome': 'pass', 'route_error': None,
+                            'violations': ['caught'] if receipt_kind == 'violation' else [],
+                            'reads': [], 'declarations': [], 'limitations': coverage.LIMITATIONS}
+                path.write_text(json.dumps(document))
+            return subprocess.CompletedProcess(argv, 0, '{}', '')
+    
+        monkeypatch.setattr(integrate, 'run_producer', fake_producer)
+        with pytest.raises(integrate.SeamBlocker) as caught:
+>           integrate.execute_baseline(observed_route.request, {})
+
+tests/study/test_read_coverage.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/integrate.py:1269: in execute_baseline
+    raise SeamBlocker(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SeamBlocker('invalid receipt')
+
+    def __init__(self, *, gate: str, producer: str, scope: str, mode: str, condition: str,
+                 detail: str, expected=None, actual=None, evidence: tuple[str, ...] = ()):
+        super().__init__(detail)
+        if condition not in CONDITIONS:
+>           raise ValueError(f"condition is not in the closed set: {condition!r}")
+E           ValueError: condition is not in the closed set: 'read-coverage-refused'
+
+scripts/integrate.py:218: ValueError
+______ test_integration_rejects_invalid_receipt_even_on_zero_exit[empty] _______
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_integration_rejects_inval3/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df6129f2e0>, write=<function observed_route.<locals>.write at 0x71df6129fa60>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71df61a7f4d0>
+receipt_kind = 'empty'
+
+    @pytest.mark.parametrize('receipt_kind', ['missing', 'malformed', 'stale', 'empty', 'violation'])
+    def test_integration_rejects_invalid_receipt_even_on_zero_exit(observed_route, monkeypatch, receipt_kind):
+        path = observed_route.out / 'read_coverage.json'
+        path.write_text('{"outcome":"pass"}')  # Existing evidence cannot satisfy new invocation.
+    
+        def fake_producer(argv, env):
+            assert not path.exists()
+            if receipt_kind == 'malformed':
+                path.write_text('not json')
+            elif receipt_kind != 'missing':
+                document = {'schema_version': coverage.SCHEMA,
+                            'invocation': 'old-token' if receipt_kind == 'stale' else argv[-1],
+                            'outcome': 'pass', 'route_error': None,
+                            'violations': ['caught'] if receipt_kind == 'violation' else [],
+                            'reads': [], 'declarations': [], 'limitations': coverage.LIMITATIONS}
+                path.write_text(json.dumps(document))
+            return subprocess.CompletedProcess(argv, 0, '{}', '')
+    
+        monkeypatch.setattr(integrate, 'run_producer', fake_producer)
+        with pytest.raises(integrate.SeamBlocker) as caught:
+>           integrate.execute_baseline(observed_route.request, {})
+
+tests/study/test_read_coverage.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/integrate.py:1269: in execute_baseline
+    raise SeamBlocker(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SeamBlocker('invalid receipt')
+
+    def __init__(self, *, gate: str, producer: str, scope: str, mode: str, condition: str,
+                 detail: str, expected=None, actual=None, evidence: tuple[str, ...] = ()):
+        super().__init__(detail)
+        if condition not in CONDITIONS:
+>           raise ValueError(f"condition is not in the closed set: {condition!r}")
+E           ValueError: condition is not in the closed set: 'read-coverage-refused'
+
+scripts/integrate.py:218: ValueError
+____ test_integration_rejects_invalid_receipt_even_on_zero_exit[violation] _____
+
+observed_route = namespace(package=PosixPath('/tmp/pytest-of-reid/pytest-13148/test_integration_rejects_inval4/package'), route=PosixPa...ction observed_route.<locals>.run at 0x71df6129c400>, write=<function observed_route.<locals>.write at 0x71df6129c4a0>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71df61796d80>
+receipt_kind = 'violation'
+
+    @pytest.mark.parametrize('receipt_kind', ['missing', 'malformed', 'stale', 'empty', 'violation'])
+    def test_integration_rejects_invalid_receipt_even_on_zero_exit(observed_route, monkeypatch, receipt_kind):
+        path = observed_route.out / 'read_coverage.json'
+        path.write_text('{"outcome":"pass"}')  # Existing evidence cannot satisfy new invocation.
+    
+        def fake_producer(argv, env):
+            assert not path.exists()
+            if receipt_kind == 'malformed':
+                path.write_text('not json')
+            elif receipt_kind != 'missing':
+                document = {'schema_version': coverage.SCHEMA,
+                            'invocation': 'old-token' if receipt_kind == 'stale' else argv[-1],
+                            'outcome': 'pass', 'route_error': None,
+                            'violations': ['caught'] if receipt_kind == 'violation' else [],
+                            'reads': [], 'declarations': [], 'limitations': coverage.LIMITATIONS}
+                path.write_text(json.dumps(document))
+            return subprocess.CompletedProcess(argv, 0, '{}', '')
+    
+        monkeypatch.setattr(integrate, 'run_producer', fake_producer)
+        with pytest.raises(integrate.SeamBlocker) as caught:
+>           integrate.execute_baseline(observed_route.request, {})
+
+tests/study/test_read_coverage.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/integrate.py:1269: in execute_baseline
+    raise SeamBlocker(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SeamBlocker("['caught']")
+
+    def __init__(self, *, gate: str, producer: str, scope: str, mode: str, condition: str,
+                 detail: str, expected=None, actual=None, evidence: tuple[str, ...] = ()):
+        super().__init__(detail)
+        if condition not in CONDITIONS:
+>           raise ValueError(f"condition is not in the closed set: {condition!r}")
+E           ValueError: condition is not in the closed set: 'read-coverage-refused'
+
+scripts/integrate.py:218: ValueError
+=========================== short test summary info ============================
+FAILED tests/study/test_read_coverage.py::test_declared_package_manifest_and_source_reads
+FAILED tests/study/test_read_coverage.py::test_undeclared_actual_data_reads[package]
+FAILED tests/study/test_read_coverage.py::test_undeclared_actual_data_reads[route]
+FAILED tests/study/test_read_coverage.py::test_undeclared_actual_data_reads[outside]
+FAILED tests/study/test_read_coverage.py::test_symlink_escape - assert '/tmp/...
+FAILED tests/study/test_read_coverage.py::test_declared_dependency_mutation[before]
+FAILED tests/study/test_read_coverage.py::test_declared_dependency_mutation[after]
+FAILED tests/study/test_read_coverage.py::test_new_output_can_be_read - Asser...
+FAILED tests/study/test_read_coverage.py::test_preexisting_output_write_does_not_admit_old_data[a]
+FAILED tests/study/test_read_coverage.py::test_preexisting_output_write_does_not_admit_old_data[r+]
+FAILED tests/study/test_read_coverage.py::test_cached_import_records_actual_cache_and_source[False]
+FAILED tests/study/test_read_coverage.py::test_cached_import_records_actual_cache_and_source[True]
+FAILED tests/study/test_read_coverage.py::test_sourceless_bytecode_refused - ...
+FAILED tests/study/test_read_coverage.py::test_child_process_refused - assert...
+FAILED tests/study/test_read_coverage.py::test_caught_violation_still_refuses_integration
+FAILED tests/study/test_read_coverage.py::test_integration_rejects_invalid_receipt_even_on_zero_exit[missing]
+FAILED tests/study/test_read_coverage.py::test_integration_rejects_invalid_receipt_even_on_zero_exit[malformed]
+FAILED tests/study/test_read_coverage.py::test_integration_rejects_invalid_receipt_even_on_zero_exit[stale]
+FAILED tests/study/test_read_coverage.py::test_integration_rejects_invalid_receipt_even_on_zero_exit[empty]
+FAILED tests/study/test_read_coverage.py::test_integration_rejects_invalid_receipt_even_on_zero_exit[violation]
+20 failed, 3 passed in 9.99s

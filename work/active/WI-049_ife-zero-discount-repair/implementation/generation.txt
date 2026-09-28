@@ -1,0 +1,1 @@
+Native run_codegen overwrite succeeded; both typed completions installed and preserve_handwritten resealing succeeded. Subsequent byte identity and loader evidence: native-regeneration.json.

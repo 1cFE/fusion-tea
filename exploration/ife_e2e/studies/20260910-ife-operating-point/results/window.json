@@ -1,0 +1,26 @@
+{
+  "provenance": "engineered",
+  "bounds": {
+    "beam_energy_mj": {
+      "values": [
+        4,
+        5,
+        6
+      ],
+      "held_frequency_hz": 4.6
+    },
+    "frequency": {
+      "values": [
+        3.6,
+        4.6,
+        5.6
+      ],
+      "held_beam_energy_mj": 5
+    }
+  },
+  "scheme": "five unique one-factor points plus fixed counterexample and zero diagnostics",
+  "diagnostics": [
+    "counterexample",
+    "zero"
+  ]
+}

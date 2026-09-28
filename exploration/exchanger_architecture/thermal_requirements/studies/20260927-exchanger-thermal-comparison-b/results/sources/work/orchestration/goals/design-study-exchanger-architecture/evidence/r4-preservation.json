@@ -1,0 +1,11 @@
+{
+  "outcome": "pass",
+  "round1_artifacts_checked": 873,
+  "round1_snapshot_sha256": "349db0a5b3cffe60cc08cd3230191d07b3ee3fcd8aba840113ce319f078c2ff1",
+  "round1_package_files_checked": 180,
+  "round1_artifact_mismatches": [],
+  "round1_package_mismatches": [],
+  "round3_artifacts_checked": 1431,
+  "round3_attempt_snapshot_sha256": "5e2d010aa192e47c61081e32281449fb6bc21f2b4d987f63a5f705617560f111",
+  "round3_artifact_mismatches": []
+}

@@ -1,0 +1,69 @@
+[
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/tmp/pytest-of-reid/pytest-12975/wi0510/acceptance/cli-output-0"
+    ],
+    "exit": 1,
+    "arguments": [],
+    "compatibility": "unsupported historical nine-anchor/twenty-predicate calibration"
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/tmp/pytest-of-reid/pytest-12975/wi0510/acceptance/cli-output-1",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__magnet__R0=14"
+    ]
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/tmp/pytest-of-reid/pytest-12975/wi0510/acceptance/cli-output-2",
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ]
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/tmp/pytest-of-reid/pytest-12975/wi0510/acceptance/cli-output-3",
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=12.7"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=12.7"
+    ]
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/tmp/pytest-of-reid/pytest-12975/wi0510/acceptance/cli-output-4",
+      "stellarator_09__stellaris__magnet__R0=0"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__magnet__R0=0"
+    ]
+  }
+]

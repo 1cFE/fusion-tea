@@ -1,0 +1,3756 @@
+{
+  "artifacts": [
+    {
+      "channel": "aries_integrated_plant__pbli_hx__evaluate__area",
+      "produced": true,
+      "relative_path": "pbli_hx__area.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__evaluate__ua",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_ua.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "pbli_hx__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_hx__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "pbli_hx__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__capital",
+      "produced": true,
+      "relative_path": "pbli_hx__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "pbli_hx__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__impurity_control__estimate__amount",
+      "produced": true,
+      "relative_path": "impurity_control__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__impurity_control__purchase__cost",
+      "produced": true,
+      "relative_path": "impurity_control__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "he_hx__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_hx__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "he_hx__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__capital",
+      "produced": true,
+      "relative_path": "he_hx__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "he_hx__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__evaluate__area",
+      "produced": true,
+      "relative_path": "he_hx__area.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__evaluate__ua",
+      "produced": true,
+      "relative_path": "he_hx__ua.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "divertor_pump__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_pump__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "divertor_pump__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__capital",
+      "produced": true,
+      "relative_path": "divertor_pump__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "divertor_pump__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__electric",
+      "produced": true,
+      "relative_path": "deposition__divertor_pump.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__operating_flow",
+      "produced": true,
+      "relative_path": "divertor_pump__operating_flow.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__mode",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_pump__evaluate__mode.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported",
+      "produced": true,
+      "relative_path": "divertor_pump__hydraulic_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__evaluation_defined",
+      "produced": true,
+      "relative_path": "divertor_pump__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__margin",
+      "produced": true,
+      "relative_path": "divertor_pump__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_pump__screen__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_pump__screen__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_pump__screen__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__unallocated_source_scope__estimate__amount",
+      "produced": true,
+      "relative_path": "unallocated_source_scope__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__unallocated_source_scope__purchase__cost",
+      "produced": true,
+      "relative_path": "unallocated_source_scope__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__inventory__total",
+      "produced": true,
+      "relative_path": "magnet_inventory__selected_mass.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "magnet_inventory__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__magnet_inventory__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "magnet_inventory__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__capital",
+      "produced": true,
+      "relative_path": "magnet_inventory__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "magnet_inventory__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__site_land__estimate__amount",
+      "produced": true,
+      "relative_path": "site_land__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__site_land__purchase__cost",
+      "produced": true,
+      "relative_path": "site_land__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__inventory__amount",
+      "produced": true,
+      "relative_path": "lipb_inventory__total_mass.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "lipb_inventory__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__lipb_inventory__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "lipb_inventory__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__capital",
+      "produced": true,
+      "relative_path": "lipb_inventory__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "lipb_inventory__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_coil_children__evaluate__total",
+      "produced": true,
+      "relative_path": "source_coil_children__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__coil_excess_calc__difference",
+      "produced": true,
+      "relative_path": "source_reconciliation__coil_excess.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__conversion_services__estimate__amount",
+      "produced": true,
+      "relative_path": "conversion_services__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__conversion_services__purchase__cost",
+      "produced": true,
+      "relative_path": "conversion_services__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__waste_equipment__estimate__amount",
+      "produced": true,
+      "relative_path": "waste_equipment__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__waste_equipment__purchase__cost",
+      "produced": true,
+      "relative_path": "waste_equipment__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_finance_energy__evaluate__annual_energy",
+      "produced": true,
+      "relative_path": "source_finance_energy__annual_energy.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_core_children_first__evaluate__total",
+      "produced": true,
+      "relative_path": "source_core_children_first__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__core_excess_calc__difference",
+      "produced": true,
+      "relative_path": "source_reconciliation__core_excess.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_fuel_children__evaluate__total",
+      "produced": true,
+      "relative_path": "source_fuel_children__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference",
+      "produced": true,
+      "relative_path": "source_reconciliation__fuel_gap.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_power_supplies__estimate__amount",
+      "produced": true,
+      "relative_path": "magnet_power_supplies__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_power_supplies__purchase__cost",
+      "produced": true,
+      "relative_path": "magnet_power_supplies__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__inventory_comparison__support__amount",
+      "produced": true,
+      "relative_path": "inventory_comparison__vf_mass_availability.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__inventory__total",
+      "produced": true,
+      "relative_path": "vacuum_equipment__selected_mass.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "vacuum_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__vacuum_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "vacuum_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "vacuum_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "vacuum_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "fuel_processing_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "fuel_processing_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "fuel_processing_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "fuel_processing_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__secondary_transport__estimate__amount",
+      "produced": true,
+      "relative_path": "secondary_transport__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__secondary_transport__purchase__cost",
+      "produced": true,
+      "relative_path": "secondary_transport__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__vf_coils__estimate__amount",
+      "produced": true,
+      "relative_path": "vf_coils__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__vf_coils__purchase__cost",
+      "produced": true,
+      "relative_path": "vf_coils__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__purchase__amount",
+      "produced": true,
+      "relative_path": "fuel_inventory__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__atoms__stock_kg",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_inventory__atoms__stock_kg.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__atoms__atoms",
+      "produced": true,
+      "relative_path": "fuel_inventory__selected_tritium_atoms.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__deuterium_rate__amount",
+      "produced": true,
+      "relative_path": "fuel_inventory__deuterium_per_reaction.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "heat_rejection_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "heat_rejection_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "heat_rejection_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "heat_rejection_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "divertor_hx__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_hx__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "divertor_hx__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__capital",
+      "produced": true,
+      "relative_path": "divertor_hx__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "divertor_hx__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__evaluate__area",
+      "produced": true,
+      "relative_path": "divertor_hx__area.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__evaluate__ua",
+      "produced": true,
+      "relative_path": "divertor_hx__ua.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_comparison__price__amount",
+      "produced": true,
+      "relative_path": "lipb_comparison__material_price.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_comparison__evaluate__difference",
+      "produced": true,
+      "relative_path": "lipb_comparison__material_minus_source.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_budget__evaluate__direct_total",
+      "produced": true,
+      "relative_path": "source_budget__direct_total.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_budget__evaluate__inclusive_addition",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__source_budget__evaluate__inclusive_addition.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_budget__evaluate__inclusive_capital",
+      "produced": true,
+      "relative_path": "source_budget__inclusive_capital.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__facilities__estimate__amount",
+      "produced": true,
+      "relative_path": "facilities__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__facilities__purchase__cost",
+      "produced": true,
+      "relative_path": "facilities__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "generator_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__generator_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "generator_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "generator_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "generator_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__miscellaneous_equipment__estimate__amount",
+      "produced": true,
+      "relative_path": "miscellaneous_equipment__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__miscellaneous_equipment__purchase__cost",
+      "produced": true,
+      "relative_path": "miscellaneous_equipment__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_services__estimate__amount",
+      "produced": true,
+      "relative_path": "fuel_services__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_services__purchase__cost",
+      "produced": true,
+      "relative_path": "fuel_services__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_equipment__evaluate__total",
+      "produced": true,
+      "relative_path": "fuel_equipment__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "divertor_duty_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "divertor_duty_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "divertor_duty_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "divertor_duty_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "pbli_duty_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "pbli_duty_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "pbli_duty_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "pbli_duty_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_1__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "compressor_1__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_1__evaluate__shaft_demand",
+      "produced": true,
+      "relative_path": "compressor_1__shaft_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_1__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "compressor_1__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__electric",
+      "produced": true,
+      "relative_path": "deposition__he_pump.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__operating_flow",
+      "produced": true,
+      "relative_path": "he_pump__operating_flow.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__mode",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_pump__evaluate__mode.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__hydraulic_supported",
+      "produced": true,
+      "relative_path": "he_pump__hydraulic_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "he_pump__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_pump__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "he_pump__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__capital",
+      "produced": true,
+      "relative_path": "he_pump__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "he_pump__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__evaluation_defined",
+      "produced": true,
+      "relative_path": "he_pump__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__margin",
+      "produced": true,
+      "relative_path": "he_pump__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_pump__screen__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_pump__screen__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_pump__screen__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement_lipb__evaluate__amount",
+      "produced": true,
+      "relative_path": "replacement_lipb__amount.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__intercooler_1__evaluate__heat_into_fluid",
+      "produced": true,
+      "relative_path": "intercooler_1__heat_into_fluid.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__intercooler_1__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "intercooler_1__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__intercooler_1__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "intercooler_1__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_2__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "compressor_2__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_2__evaluate__shaft_demand",
+      "produced": true,
+      "relative_path": "compressor_2__shaft_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_2__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "compressor_2__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__intercooler_2__evaluate__heat_into_fluid",
+      "produced": true,
+      "relative_path": "intercooler_2__heat_into_fluid.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__intercooler_2__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "intercooler_2__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__intercooler_2__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "intercooler_2__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_3__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "compressor_3__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_3__evaluate__shaft_demand",
+      "produced": true,
+      "relative_path": "compressor_3__shaft_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_3__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "compressor_3__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pressure_loss__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "pressure_loss__pressure_out.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "blanket_inventory__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__blanket_inventory__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "blanket_inventory__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__capital",
+      "produced": true,
+      "relative_path": "blanket_inventory__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "blanket_inventory__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "turbine_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__turbine_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "turbine_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "turbine_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "turbine_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__edge_density__edge_density",
+      "produced": true,
+      "relative_path": "aries_cs_plasma_integration__plasma__edge_density__edge_density.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__thermal_pressure",
+      "produced": true,
+      "relative_path": "plasma__thermal_pressure.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__field_for_beta",
+      "produced": true,
+      "relative_path": "plasma__field_for_beta.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature",
+      "produced": true,
+      "relative_path": "plasma__density_weighted_temperature.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change",
+      "produced": true,
+      "relative_path": "plasma__quadrature_relative_change.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__fusion_power_MW",
+      "produced": true,
+      "relative_path": "plasma__fusion_power_MW.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__density_mean",
+      "produced": true,
+      "relative_path": "plasma__density_mean.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__quadrature_intervals",
+      "produced": true,
+      "relative_path": "plasma__quadrature_intervals.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ",
+      "produced": true,
+      "relative_path": "plasma__stored_thermal_MJ.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source__evaluate__selected_power",
+      "produced": true,
+      "relative_path": "source__selected_power.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source__evaluate__selected_mode",
+      "produced": true,
+      "relative_path": "source__selected_mode.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_deuterium_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__inject_rate",
+      "produced": true,
+      "relative_path": "fuel__inject_rate.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__burn_rate",
+      "produced": true,
+      "relative_path": "fuel__burn_rate.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__tbr_margin",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel__evaluate__tbr_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__tbr_required",
+      "produced": true,
+      "relative_path": "fuel__tbr_required.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__loss_rate",
+      "produced": true,
+      "relative_path": "fuel__loss_rate.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+      "produced": true,
+      "relative_path": "fuel__exhaust_rate.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_loss",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_cost",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_burn",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_burn.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_recovery",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_recovery.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_decay",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_decay.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_external",
+      "produced": true,
+      "relative_path": "fuel_inventory__annual_external.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__required_stock",
+      "produced": true,
+      "relative_path": "fuel_inventory__required_stock.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__breeding_supported",
+      "produced": true,
+      "relative_path": "fuel_inventory__breeding_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined",
+      "produced": true,
+      "relative_path": "fuel_inventory__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__margin",
+      "produced": true,
+      "relative_path": "fuel_inventory__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_inventory__screen__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_inventory__screen__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_inventory__screen__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "fuel_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "fuel_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__density_sample__density",
+      "produced": true,
+      "relative_path": "aries_cs_plasma_integration__plasma__density_sample__density.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_cs_plasma_integration__plasma__beta_calculation__beta",
+      "produced": true,
+      "relative_path": "plasma__beta.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_inventory__estimate__amount",
+      "produced": true,
+      "relative_path": "divertor_inventory__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_inventory__purchase__cost",
+      "produced": true,
+      "relative_path": "divertor_inventory__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "compressor_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__compressor_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "compressor_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "compressor_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "compressor_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__inventory__total",
+      "produced": true,
+      "relative_path": "shield_inventory__selected_mass.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__known_dry_inventory__evaluate__total",
+      "produced": true,
+      "relative_path": "known_dry_inventory__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__inventory_comparison__evaluate__difference",
+      "produced": true,
+      "relative_path": "inventory_comparison__known_mass_minus_source.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "shield_inventory__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__shield_inventory__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "shield_inventory__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__capital",
+      "produced": true,
+      "relative_path": "shield_inventory__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "shield_inventory__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "he_duty_equipment__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_duty_equipment__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "he_duty_equipment__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__capital",
+      "produced": true,
+      "relative_path": "he_duty_equipment__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "he_duty_equipment__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "pbli_pump__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_pump__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "pbli_pump__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__capital",
+      "produced": true,
+      "relative_path": "pbli_pump__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "pbli_pump__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__electric",
+      "produced": true,
+      "relative_path": "deposition__pbli_pump.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__operating_flow",
+      "produced": true,
+      "relative_path": "pbli_pump__operating_flow.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__mode",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_pump__evaluate__mode.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported",
+      "produced": true,
+      "relative_path": "pbli_pump__hydraulic_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__divertor_deposition",
+      "produced": true,
+      "relative_path": "deposition__divertor_deposition.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__topology_zero",
+      "produced": true,
+      "relative_path": "deposition__topology_zero.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__pump_electric",
+      "produced": true,
+      "relative_path": "deposition__pump_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__neutron_power",
+      "produced": true,
+      "relative_path": "deposition__neutron_power.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__charged_power",
+      "produced": true,
+      "relative_path": "deposition__charged_power.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__pbli_friction",
+      "produced": true,
+      "relative_path": "deposition__pbli_friction.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__other_heat",
+      "produced": true,
+      "relative_path": "deposition__other_heat.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__nuclear_gain",
+      "produced": true,
+      "relative_path": "deposition__nuclear_gain.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__he_deposition",
+      "produced": true,
+      "relative_path": "deposition__he_deposition.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__source_residual",
+      "produced": true,
+      "relative_path": "deposition__source_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__he_friction",
+      "produced": true,
+      "relative_path": "deposition__he_friction.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__exchange",
+      "produced": true,
+      "relative_path": "deposition__exchange.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__pump_recovered",
+      "produced": true,
+      "relative_path": "deposition__pump_recovered.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__pbli_deposition",
+      "produced": true,
+      "relative_path": "deposition__pbli_deposition.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__divertor_friction",
+      "produced": true,
+      "relative_path": "deposition__divertor_friction.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+      "produced": true,
+      "relative_path": "pbli_coolant__delivered_heat.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "pbli_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "pbli_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+      "produced": true,
+      "relative_path": "divertor_coolant__delivered_heat.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "divertor_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "divertor_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+      "produced": true,
+      "relative_path": "he_coolant__delivered_heat.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_secondary_in.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hx_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_hx_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_hot.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_secondary_in.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_cold_approach_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet",
+      "produced": true,
+      "relative_path": "heat_exchangers__mixed_outlet.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_split_used.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_return_residual_magnitude.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+      "produced": true,
+      "relative_path": "heat_exchangers__heater_inlet.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_capability_at_solution.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_cold_terminal_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_capability.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_secondary_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_cold_approach_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_hot.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_required_hot.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_cold_approach_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_transferred.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_return_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_return_residual_magnitude.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_stream_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_return_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_state_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_active_flow",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_active_flow.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__network_mode_used",
+      "produced": true,
+      "relative_path": "heat_exchangers__network_mode_used.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hx_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_hx_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_cold_terminal_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "produced": true,
+      "relative_path": "heat_exchangers__unmet_heat.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__iterations",
+      "produced": true,
+      "relative_path": "heat_exchangers__iterations.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_state_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_mixed_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_mixed_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_unmet.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_hot_terminal_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_secondary_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+      "produced": true,
+      "relative_path": "heat_exchangers__accepted_heat.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_hot_approach_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+      "produced": true,
+      "relative_path": "heat_exchangers__turbine_temperature.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_mixed_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_mixed_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_active_flow",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_active_flow.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_active_flow",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_active_flow.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_state_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_required_hot_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_transferred.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_hot_terminal_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_hot_bound_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_capability.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_hot_bound_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_capability_at_solution.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_cold_terminal_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_transferred.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_secondary_in.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_mixed_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_mixed_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_required_hot_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_capability_at_solution.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_stream_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hx_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_hx_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_secondary_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_hot.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_hot_approach_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_hot_approach_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_return_residual_magnitude.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_return.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_required_hot_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_return_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_control_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_bypass_fraction.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_control_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_unmet.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_bypass_fraction.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_unmet.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_control_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_capability.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "produced": true,
+      "relative_path": "heat_exchangers__divertor_hot_terminal_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__expansion_factor",
+      "produced": true,
+      "relative_path": "heat_exchangers__expansion_factor.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "produced": true,
+      "relative_path": "heat_exchangers__closure_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot",
+      "produced": true,
+      "relative_path": "heat_exchangers__he_required_hot.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__control_mode_used",
+      "produced": true,
+      "relative_path": "heat_exchangers__control_mode_used.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_bypass_fraction.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_required_hot.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "produced": true,
+      "relative_path": "heat_exchangers__pbli_hot_bound_margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "turbine__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine__evaluate__shaft_produced",
+      "produced": true,
+      "relative_path": "turbine__shaft_produced.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "turbine__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "turbine_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "turbine_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__turbine_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__turbine_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__turbine_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_base_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__fuel_base_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__other_electric_demand",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__other_electric_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__dissipated_auxiliary",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__dissipated_auxiliary.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__net_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__net_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__generator_loss",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__generator_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__net_shaft",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__net_shaft.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__heating_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__heating_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__cryo_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__cryo_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__fuel_variable_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__compressor_demand",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__compressor_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__auxiliary_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__auxiliary_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__gross_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__gross_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__fuel_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__primary_pump_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__primary_pump_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__motor_loss",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__motor_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__shaft_import",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__shaft_import.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__heating_loss",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__heating_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__pump_loss",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__pump_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__control_electric",
+      "produced": true,
+      "relative_path": "generator_auxiliaries__control_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__recuperator__evaluate__bypass_active",
+      "produced": true,
+      "relative_path": "recuperator__bypass_active.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__recuperator__evaluate__cold_out",
+      "produced": true,
+      "relative_path": "recuperator__cold_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__recuperator__evaluate__hot_out",
+      "produced": true,
+      "relative_path": "recuperator__hot_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__recuperator__evaluate__recovered_heat",
+      "produced": true,
+      "relative_path": "recuperator__recovered_heat.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__precooler__evaluate__heat_into_fluid",
+      "produced": true,
+      "relative_path": "precooler__heat_into_fluid.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__precooler__evaluate__temperature_out",
+      "produced": true,
+      "relative_path": "precooler__temperature_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__precooler__evaluate__pressure_out",
+      "produced": true,
+      "relative_path": "precooler__pressure_out.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "he_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "he_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__evaluation_defined",
+      "produced": true,
+      "relative_path": "pbli_pump__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__margin",
+      "produced": true,
+      "relative_path": "pbli_pump__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_pump__screen__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_pump__screen__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_pump__screen__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__conversion_equipment__evaluate__total",
+      "produced": true,
+      "relative_path": "conversion_equipment__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__instrumentation_control__estimate__amount",
+      "produced": true,
+      "relative_path": "instrumentation_control__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__instrumentation_control__purchase__cost",
+      "produced": true,
+      "relative_path": "instrumentation_control__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__auxiliary_cooling__estimate__amount",
+      "produced": true,
+      "relative_path": "auxiliary_cooling__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__auxiliary_cooling__purchase__cost",
+      "produced": true,
+      "relative_path": "auxiliary_cooling__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__heating_equipment__estimate__amount",
+      "produced": true,
+      "relative_path": "heating_equipment__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__heating_equipment__purchase__cost",
+      "produced": true,
+      "relative_path": "heating_equipment__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__supported_hydraulics",
+      "produced": true,
+      "relative_path": "plant_ledger__supported_hydraulics.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__fuel_base_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__fuel_base_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__comparison_fusion_difference",
+      "produced": true,
+      "relative_path": "plant_ledger__comparison_fusion_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__heating_loss",
+      "produced": true,
+      "relative_path": "plant_ledger__heating_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__assumed_auxiliary_demands",
+      "produced": true,
+      "relative_path": "plant_ledger__assumed_auxiliary_demands.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__control_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__control_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__net_shaft",
+      "produced": true,
+      "relative_path": "plant_ledger__net_shaft.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__fuel_variable_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__fuel_variable_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__plant_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__plant_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__fuel_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__fuel_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__recuperator_state_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__recuperator_state_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__auxiliary_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__auxiliary_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__comparison_blanket_deposition_difference",
+      "produced": true,
+      "relative_path": "plant_ledger__comparison_blanket_deposition_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__net_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__efficiency_defined",
+      "produced": true,
+      "relative_path": "plant_ledger__efficiency_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__conditional_net_result",
+      "produced": true,
+      "relative_path": "plant_ledger__conditional_net_result.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+      "produced": true,
+      "relative_path": "plant_ledger__energy_tolerance.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__heating_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__heating_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__primary_pump_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__primary_pump_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__comparison_turbine_temperature_difference",
+      "produced": true,
+      "relative_path": "plant_ledger__comparison_turbine_temperature_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__thermal_efficiency",
+      "produced": true,
+      "relative_path": "plant_ledger__thermal_efficiency.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__cycle_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__cycle_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__cryo_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__cryo_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__unmatched_source_heat",
+      "produced": true,
+      "relative_path": "plant_ledger__unmatched_source_heat.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__generator_loss",
+      "produced": true,
+      "relative_path": "plant_ledger__generator_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "produced": true,
+      "relative_path": "plant_ledger__residual_magnitude.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__comparison_gross_difference",
+      "produced": true,
+      "relative_path": "plant_ledger__comparison_gross_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__supported_deposition",
+      "produced": true,
+      "relative_path": "plant_ledger__supported_deposition.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__source_energy_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__source_energy_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__motor_loss",
+      "produced": true,
+      "relative_path": "plant_ledger__motor_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__other_electric_demand",
+      "produced": true,
+      "relative_path": "plant_ledger__other_electric_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__supported_materials",
+      "produced": true,
+      "relative_path": "plant_ledger__supported_materials.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__dissipated_auxiliary",
+      "produced": true,
+      "relative_path": "plant_ledger__dissipated_auxiliary.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+      "produced": true,
+      "relative_path": "plant_ledger__gross_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__branch_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__branch_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__supported_magnet",
+      "produced": true,
+      "relative_path": "plant_ledger__supported_magnet.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__supported_machine_map",
+      "produced": true,
+      "relative_path": "plant_ledger__supported_machine_map.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__pump_loss",
+      "produced": true,
+      "relative_path": "plant_ledger__pump_loss.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__electrical_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__electrical_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__cycle_rejection",
+      "produced": true,
+      "relative_path": "plant_ledger__cycle_rejection.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__shaft_import",
+      "produced": true,
+      "relative_path": "plant_ledger__shaft_import.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__comparison_heater_temperature_difference",
+      "produced": true,
+      "relative_path": "plant_ledger__comparison_heater_temperature_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__supported_breeding",
+      "produced": true,
+      "relative_path": "plant_ledger__supported_breeding.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__turbine_state_residual",
+      "produced": true,
+      "relative_path": "plant_ledger__turbine_state_residual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__compressor_demand",
+      "produced": true,
+      "relative_path": "plant_ledger__compressor_demand.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__total_available_heat",
+      "produced": true,
+      "relative_path": "plant_ledger__total_available_heat.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__comparison_net_difference",
+      "produced": true,
+      "relative_path": "plant_ledger__comparison_net_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__net_result_producer_mode",
+      "produced": true,
+      "relative_path": "plant_ledger__net_result_producer_mode.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "rejection_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "rejection_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__rejection_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__rejection_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__rejection_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "compressor_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "compressor_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__compressor_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__compressor_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__compressor_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+      "produced": true,
+      "relative_path": "generator_capacity__evaluation_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+      "produced": true,
+      "relative_path": "generator_capacity__margin.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__applicable",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__generator_capacity__evaluate__applicable.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__supported",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__generator_capacity__evaluate__supported.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__capacity_ok",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__generator_capacity__evaluate__capacity_ok.json",
+      "type_name": "bool"
+    },
+    {
+      "channel": "aries_integrated_plant__source_finance__boundary__years",
+      "produced": true,
+      "relative_path": "source_finance__validated_years.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__annual_om__evaluate__annual_om",
+      "produced": true,
+      "relative_path": "annual_om__amount.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement_scope__evaluate__total",
+      "produced": true,
+      "relative_path": "replacement_scope__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement_price__evaluate__amount",
+      "produced": true,
+      "relative_path": "replacement_price__amount.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__lifetime_total",
+      "produced": true,
+      "relative_path": "replacement__lifetime_total.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__interval_years",
+      "produced": true,
+      "relative_path": "replacement__interval_years.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__event_cost",
+      "produced": true,
+      "relative_path": "replacement__event_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__last_event_year",
+      "produced": true,
+      "relative_path": "replacement__last_event_year.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__annual_reserve",
+      "produced": true,
+      "relative_path": "replacement__annual_reserve.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__first_event_year",
+      "produced": true,
+      "relative_path": "replacement__first_event_year.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__event_count",
+      "produced": true,
+      "relative_path": "replacement__event_count.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_replacement_comparison__mass__amount",
+      "produced": true,
+      "relative_path": "source_replacement_comparison__lifetime_mass.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_replacement_comparison__cost__amount",
+      "produced": true,
+      "relative_path": "source_replacement_comparison__rounded_lifetime_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_replacement_comparison__evaluate__difference",
+      "produced": true,
+      "relative_path": "source_replacement_comparison__rounded_minus_printed.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_piping__estimate__amount",
+      "produced": true,
+      "relative_path": "primary_piping__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_piping__purchase__cost",
+      "produced": true,
+      "relative_path": "primary_piping__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_heat_cost__evaluate__total",
+      "produced": true,
+      "relative_path": "primary_heat_cost__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_transport_cost__evaluate__total",
+      "produced": true,
+      "relative_path": "heat_transport_cost__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__electrical_equipment__estimate__amount",
+      "produced": true,
+      "relative_path": "electrical_equipment__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__electrical_equipment__purchase__cost",
+      "produced": true,
+      "relative_path": "electrical_equipment__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reactor_children__evaluate__total",
+      "produced": true,
+      "relative_path": "source_reactor_children__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference",
+      "produced": true,
+      "relative_path": "source_reconciliation__reactor_gap.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__purchased_quantity",
+      "produced": true,
+      "relative_path": "primary_support__inventory_quantity.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__source_budget",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__primary_support__purchase__source_budget.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__quantity_ratio",
+      "produced": true,
+      "relative_path": "primary_support__quantity_ratio.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__capital",
+      "produced": true,
+      "relative_path": "primary_support__capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__extrapolated",
+      "produced": true,
+      "relative_path": "primary_support__cost_extrapolated.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__core_first__evaluate__total",
+      "produced": true,
+      "relative_path": "core_first__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__core_cost__evaluate__total",
+      "produced": true,
+      "relative_path": "core_cost__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__other_reactor_equipment__estimate__amount",
+      "produced": true,
+      "relative_path": "other_reactor_equipment__supplied_budget.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__other_reactor_equipment__purchase__cost",
+      "produced": true,
+      "relative_path": "other_reactor_equipment__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__reactor_cost__evaluate__total",
+      "produced": true,
+      "relative_path": "reactor_cost__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__direct_source_scope__evaluate__total",
+      "produced": true,
+      "relative_path": "direct_source_scope__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__direct_cost__evaluate__total",
+      "produced": true,
+      "relative_path": "direct_cost__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__owner_commissioning__evaluate__amount",
+      "produced": true,
+      "relative_path": "owner_commissioning__amount.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__indirect_cost__evaluate__cost",
+      "produced": true,
+      "relative_path": "indirect_cost__amount.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__contingency_basis__evaluate__total",
+      "produced": true,
+      "relative_path": "contingency_basis__total.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__contingency__evaluate__cost",
+      "produced": true,
+      "relative_path": "contingency__amount.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_operating",
+      "produced": true,
+      "relative_path": "cost_ledger__annual_operating.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_inclusive",
+      "produced": true,
+      "relative_path": "cost_ledger__source_inclusive.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__direct",
+      "produced": true,
+      "relative_path": "cost_ledger__direct.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap",
+      "produced": true,
+      "relative_path": "cost_ledger__source_reactor_gap.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__direct_difference",
+      "produced": true,
+      "relative_path": "cost_ledger__direct_difference.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh",
+      "produced": true,
+      "relative_path": "cost_ledger__annual_export_mwh.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_direct",
+      "produced": true,
+      "relative_path": "cost_ledger__source_direct.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess",
+      "produced": true,
+      "relative_path": "cost_ledger__source_coil_excess.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost",
+      "produced": true,
+      "relative_path": "cost_ledger__annual_import_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve",
+      "produced": true,
+      "relative_path": "cost_ledger__annual_replacement_reserve.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess",
+      "produced": true,
+      "relative_path": "cost_ledger__source_core_excess.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__overnight",
+      "produced": true,
+      "relative_path": "cost_ledger__overnight.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh",
+      "produced": true,
+      "relative_path": "cost_ledger__annual_import_mwh.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement",
+      "produced": true,
+      "relative_path": "cost_ledger__lifetime_replacement.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__currency_year",
+      "produced": true,
+      "relative_path": "cost_ledger__currency_year.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__operating_levelization__evaluate__levelized",
+      "produced": true,
+      "relative_path": "operating_levelization__annual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__operating_levelization__evaluate__crf",
+      "produced": true,
+      "relative_path": "operating_levelization__factor.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__real_convention",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__real_convention.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__other_overhaul_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__gross_makeup.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__supply_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__other_overhaul_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__lcoe_sum.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__noncapital_annual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__breeding_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_supply.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__other_overhaul_occurs.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__curtailed_feed.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__replacement_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__gross_terminal.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__salvage_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__financial_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__idc.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__annual_capital.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_replacement.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__supply_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__om_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_terminal_gross.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__tritium_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__capital_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__annual_energy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__external_shortfall.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_salvage.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_operating.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__new_feed",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__new_feed.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__lifetime_energy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__financed_capital.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_other_overhaul.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__terminal_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__currency_year",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__currency_year.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_energy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__salvage.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__deuterium_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__pv_terminal_net.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__imports_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_accounts__consumables_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+      "produced": true,
+      "relative_path": "lifecycle_price__lcoe.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__real_convention.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__other_overhaul_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__gross_makeup.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__supply_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__other_overhaul_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__lcoe_sum.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__noncapital_annual.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__breeding_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_supply.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__other_overhaul_occurs.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__curtailed_feed.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__replacement_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__gross_terminal.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__salvage_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__financial_defined.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__idc",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__idc.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__annual_capital.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_replacement.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__supply_supported.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__om_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_terminal_gross.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__tritium_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__capital_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__annual_energy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__external_shortfall.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_salvage.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_operating.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__new_feed.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__lifetime_energy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__financed_capital.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_other_overhaul.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__terminal_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__currency_year.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_energy.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__salvage.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__deuterium_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__pv_terminal_net.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__imports_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_accounts__consumables_lcoe.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+      "produced": true,
+      "relative_path": "source_lifecycle_price__lcoe.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_return_ok__f69c5310bdcc41d7__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_return_ok__f69c5310bdcc41d7__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_control_ok__0c3b021e2e8589fb__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_control_ok__0c3b021e2e8589fb__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_return_ok__100f6bf9ad61a22c__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_return_ok__100f6bf9ad61a22c__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_control_ok__14c1c0f314a994fd__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_control_ok__14c1c0f314a994fd__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_return_ok__ae5f4d6db630fc8e__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_return_ok__ae5f4d6db630fc8e__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_cold_approach_ok__e70598993d392f74__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_cold_approach_ok__e70598993d392f74__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_state_ok__4664e5e1ddbb7ac5__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_state_ok__4664e5e1ddbb7ac5__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_required_hot_ok__3371b55ff752c6e4__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_required_hot_ok__3371b55ff752c6e4__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_state_ok__d5b9d58030392fe5__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_state_ok__d5b9d58030392fe5__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_state_ok__416e01681b16be81__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_state_ok__416e01681b16be81__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_hot_cap_ok__05ebd6dad2e4adc1__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_hot_cap_ok__05ebd6dad2e4adc1__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_cold_approach_ok__667d6ca45c6e61de__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_cold_approach_ok__667d6ca45c6e61de__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_control_ok__f48454bb1d6f0e91__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_control_ok__f48454bb1d6f0e91__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_required_hot_ok__712add8be60bd1ae__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_required_hot_ok__712add8be60bd1ae__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_hot_approach_ok__7a2967e855192aeb__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_hot_approach_ok__7a2967e855192aeb__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_hot_approach_ok__85855c74bdb13305__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_hot_approach_ok__85855c74bdb13305__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_hot_cap_ok__cd5f29bd8533c481__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_hot_cap_ok__cd5f29bd8533c481__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_hot_cap_ok__73a44108fcb5be1c__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_hot_cap_ok__73a44108fcb5be1c__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__divertor_hot_approach_ok__5e95ef937d10cc33__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__divertor_hot_approach_ok__5e95ef937d10cc33__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__he_cold_approach_ok__eab4f3486f0aa140__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__he_cold_approach_ok__eab4f3486f0aa140__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__pbli_required_hot_ok__aa9057b8ce236e6b__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__heat_exchangers__pbli_required_hot_ok__aa9057b8ce236e6b__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+      "produced": true,
+      "relative_path": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation.json",
+      "type_name": "ConstraintEvaluation"
+    },
+    {
+      "channel": "constraint_report",
+      "produced": true,
+      "relative_path": "constraint_report.json",
+      "type_name": "ConstraintReport"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea/work/active/WI-097_exchanger-thermal-requirements/evidence/repair-native-runs/repair-c0621/outputs",
+  "metadata": {
+    "output_folder": "exchanger_architecture_thermal_tea_results",
+    "run_description": "Generated pipeline for exchanger_architecture_thermal_tea"
+  },
+  "run_directory": "exchanger-architecture-thermal-tea-results-f57eede1",
+  "run_name": "exchanger-architecture-thermal-tea-results",
+  "short_id": "f57eede1"
+}

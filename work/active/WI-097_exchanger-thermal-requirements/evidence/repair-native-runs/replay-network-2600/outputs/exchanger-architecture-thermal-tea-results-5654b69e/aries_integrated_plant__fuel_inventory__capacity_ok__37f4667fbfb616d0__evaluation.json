@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+  "margin": null,
+  "observed": {
+    "defined_in": 1.0,
+    "margin_in": 9.912161438308994
+  },
+  "status": "satisfied"
+}

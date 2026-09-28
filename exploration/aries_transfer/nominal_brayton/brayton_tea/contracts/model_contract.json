@@ -1,0 +1,624 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": {
+    "concrete_entries": [
+      {
+        "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+        "declaration_id": "1098f86f-b164-54a3-9ba8-c26812194b65",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_nominal_brayton__heater_capacity",
+        "owner_qualified_name": "aries_nominal_brayton::heater_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_nominal_brayton::heater_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+        "declaration_id": "142a8595-8dc6-53c4-8366-e56d4c4d43d4",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_nominal_brayton__rejection_capacity",
+        "owner_qualified_name": "aries_nominal_brayton::rejection_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_nominal_brayton::rejection_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+        "declaration_id": "876a1c64-2d52-5914-a436-8b01a9399a46",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_nominal_brayton__compressor_capacity",
+        "owner_qualified_name": "aries_nominal_brayton::compressor_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_nominal_brayton::compressor_capacity::capacity_ok"
+      }
+    ],
+    "excluded_records": [],
+    "fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+    "source_records": [
+      {
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "formal_names": [
+          "defined_in",
+          "margin_in"
+        ]
+      }
+    ],
+    "usage_records": [
+      {
+        "declaration_id": "1098f86f-b164-54a3-9ba8-c26812194b65",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_nominal_brayton::heater_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_nominal_brayton::heater_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_nominal_brayton::heater_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "142a8595-8dc6-53c4-8366-e56d4c4d43d4",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_nominal_brayton::rejection_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_nominal_brayton::rejection_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_nominal_brayton::rejection_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "876a1c64-2d52-5914-a436-8b01a9399a46",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_nominal_brayton::compressor_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_nominal_brayton::compressor_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_nominal_brayton::compressor_capacity::capacity_ok"
+      }
+    ]
+  },
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "aries_nominal_brayton__compressor_1__performance__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_1__performance__shaft_demand",
+      "field_name": "shaft_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_1__performance__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__intercooler_1__conditioning__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__intercooler_1__conditioning__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_2__performance__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_2__performance__shaft_demand",
+      "field_name": "shaft_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_2__performance__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__intercooler_2__conditioning__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__intercooler_2__conditioning__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_3__performance__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_3__performance__shaft_demand",
+      "field_name": "shaft_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_3__performance__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__hot_side_loss__loss__pressure_out",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__equivalent_turbine__performance__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced",
+      "field_name": "shaft_produced",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__equivalent_turbine__performance__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__recuperator__exchange__transferred_heat",
+      "field_name": "transferred_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__recuperator__exchange__hot_temperature_out",
+      "field_name": "hot_temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__recuperator__exchange__cold_temperature_out",
+      "field_name": "cold_temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__precooler__conditioning__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__precooler__conditioning__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__precooler__conditioning__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater__conditioning__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater__conditioning__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater__conditioning__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency",
+      "field_name": "shaft_efficiency",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__cycle_ledger__balance__net_shaft",
+      "field_name": "net_shaft",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__cycle_ledger__balance__compressor_demand",
+      "field_name": "compressor_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__cycle_ledger__balance__rejected_heat",
+      "field_name": "rejected_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__cycle_ledger__balance__energy_residual",
+      "field_name": "energy_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio",
+      "field_name": "total_pressure_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater_capacity__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater_capacity__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater_capacity__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater_capacity__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater_capacity__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__rejection_capacity__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__rejection_capacity__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__rejection_capacity__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__rejection_capacity__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_capacity__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_capacity__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_capacity__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_capacity__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "constraint_report",
+      "field_name": "constraint_report",
+      "python_type": "ConstraintReport"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 0.89,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_1__efficiency"
+    },
+    {
+      "default_value": 1.5182944859378311,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_1__selected_ratio"
+    },
+    {
+      "default_value": 0.89,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_2__efficiency"
+    },
+    {
+      "default_value": 1.5182944859378311,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_2__selected_ratio"
+    },
+    {
+      "default_value": 0.89,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_3__efficiency"
+    },
+    {
+      "default_value": 1.5182944859378311,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_3__selected_ratio"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__compressor_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__compressor_capacity__demand_available"
+    },
+    {
+      "default_value": 1100.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__compressor_capacity__offered_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__compressor_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 0.93,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__equivalent_turbine__efficiency"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__heater__heating_role"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__heater_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__heater_capacity__demand_available"
+    },
+    {
+      "default_value": 2000.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__heater_capacity__offered_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__heater_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 0.045,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__hot_side_loss__loss_fraction"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__intercooler_1__heating_role"
+    },
+    {
+      "default_value": 308.15,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__intercooler_1__target_temperature"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__intercooler_2__heating_role"
+    },
+    {
+      "default_value": 308.15,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__intercooler_2__target_temperature"
+    },
+    {
+      "default_value": 5193.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__operating_point__cp"
+    },
+    {
+      "default_value": 1.6666666666666667,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__operating_point__gamma"
+    },
+    {
+      "default_value": 308.15,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__operating_point__low_temperature"
+    },
+    {
+      "default_value": 4.285714285714286,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__operating_point__return_pressure"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__operating_point__selected_flow"
+    },
+    {
+      "default_value": 980.15,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__operating_point__turbine_temperature"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__precooler__heating_role"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__recuperator__effectiveness"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__rejection_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__rejection_capacity__demand_available"
+    },
+    {
+      "default_value": 1200.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "float",
+      "qualified_name": "aries_nominal_brayton__rejection_capacity__offered_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "nominal_brayton_params",
+      "python_type": "bool",
+      "qualified_name": "aries_nominal_brayton__rejection_capacity__scenario_applicable"
+    }
+  ],
+  "semantic_fingerprint": "35651037158e1103fb5188fa3dde9acffd777495fc3371ad24f04e3c32583fc1"
+}

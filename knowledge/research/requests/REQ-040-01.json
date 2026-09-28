@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-040-01",
+  "question": "What admissible source-backed density, composition and procurement unit-cost basis can price copper jacket, solder, stainless steel and helium in a 20 K stellarator winding pack, distinguishing commercial prices from modeling assumptions?",
+  "consumer": "WI-040",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["USGS mineral commodity summaries copper tin helium", "NIST helium thermophysical properties", "solder manufacturer SnPb or indium alloy density datasheets", "registered Stellaris unit-cell composition"],
+  "limits": {"max_searches": 10, "max_captures": 8}
+}

@@ -1,0 +1,26 @@
+{
+  "baseline": {
+    "geometry_identities": "pass",
+    "conductor_procurement_invariance": "pass",
+    "isolated_oracle_R_fix": "all published shared channels match",
+    "compared_channels": 141
+  },
+  "plant_only_R14": {
+    "geometry_identities": "pass",
+    "conductor_procurement_invariance": "pass",
+    "isolated_oracle_R_fix": "all published shared channels match",
+    "compared_channels": 141
+  },
+  "magnet_only_R14": {
+    "geometry_identities": "pass",
+    "conductor_procurement_invariance": "pass",
+    "isolated_oracle_R_fix": "all published shared channels match",
+    "compared_channels": 141
+  },
+  "tied_R14": {
+    "geometry_identities": "pass",
+    "conductor_procurement_invariance": "pass",
+    "isolated_oracle_R_fix": "all published shared channels match",
+    "compared_channels": 141
+  }
+}

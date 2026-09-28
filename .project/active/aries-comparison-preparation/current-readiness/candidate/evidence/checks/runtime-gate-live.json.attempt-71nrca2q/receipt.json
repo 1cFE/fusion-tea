@@ -1,0 +1,14 @@
+{
+  "attempt_directory": "runtime-gate-live.json.attempt-71nrca2q",
+  "inputs": [
+    {
+      "source": ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json",
+      "sha256": "1bbe8f8c0e42ab8eed0a22ea1c863e49247f01097a019186d035a7cd9905c319",
+      "retained": "input-0.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/runtime-gate-live.json",
+  "output_sha256": "25b560e12652f1e5cd3feae547ec07e919008a85b19ee1d4a6386efdcc137e01",
+  "state": "completed"
+}

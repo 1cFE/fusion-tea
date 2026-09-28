@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://ukaea.github.io/PROCESS/source/reference/process/models/costs/costs_2015/",
+  "slug": "ukaea_process_kovari_2014_cost_algorithm_building_and",
+  "path": "knowledge/sources/ukaea_process_kovari_2014_cost_algorithm_building_and/",
+  "source_id": "16d702b8e8aa78ec0b26aea14f548a0c4a5c9a8041261b36fe946c44c663fd1a",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T01:16:55.160043+00:00"
+}

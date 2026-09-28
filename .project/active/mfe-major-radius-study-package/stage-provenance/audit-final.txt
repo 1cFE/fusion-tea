@@ -1,0 +1,10 @@
+**Certify — bounded consumer migration.** [Audit report](/home/reid/1cfe/fusion-tea-codex-test/.project/active/mfe-major-radius-study-package/audit.md)
+
+- 233 targeted passes; broad replay: 580 passes, 97 individually matched inherited failures.
+- Frozen controls and metadata reproduce; all 246 package files remain unchanged.
+- Fresh product-lens findings explicitly disposed.
+- Quarantine violation remains disclosed; corrected guard independently verified.
+
+Verified checkboxes updated. No commits, fixes, integration or goal/CURRENT_WORK edits.
+
+Next: parent reviews the certificate and incident disclosure. Resolve the tests’ active-item-path dependency before archival.

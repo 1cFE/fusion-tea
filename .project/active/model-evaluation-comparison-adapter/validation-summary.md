@@ -1,0 +1,13 @@
+# Adapter validation state
+
+[AGENT] The final synthetic runner completed successfully against diagnostic executable `83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23`; see `evidence/final-run.log` and `evidence/final/`. It retained incompatible-first refusal, subsequent native default completion, partial49kA completion with only operating current changed,65kA conductor-domain refusal, interrupted-first reservation followed by completion, and R12.6m completed arithmetic with undefined breeding predictions suppressed. All raw records and stores are retained. Native completion does not mean all67 predicates passed.
+
+[AGENT] Unit tests reported24 passes before this runner. Earlier development evidence remains under its original directories: initial primary-loop refusal at1kA, source/role corrections, and revision2 identity-drift refusals during concurrent tooling edits. These attempts are not added to the final pass count.
+
+[AGENT] Independent adapter implementation review remains pending. Independent integration review subsequently found an output-path lifecycle admission bug in the separate read observer. Repairing that tool changes this adapter's deliberately broad study-tooling pin. The existing final synthetic evidence and its pin will be preserved; a later coherent pin/validation receipt is required before release. No reference comparison or publication occurred.
+
+## Final release — 2026-09-20
+
+[AGENT] Final read-observer tooling is committed at `02925b74`. The preceding adapter pin is preserved byte-for-byte at `evidence/development-r4-before-read-gate-acceptance/identity.json`; its receipt identifies the unchanged older evidence/final records. The new `v1/identity.json` SHA-256 is `1266a929e6057e7005538149ccfb15e4405ecad42a2813dc80bdec97fd8f23d6`. Only the indexed observer file changed; no adapter semantic or model change occurred.
+
+[AGENT] `evidence/run_after_read_coverage.py` completed with exit zero; `evidence/final-after-read-coverage.log` and the matching evidence directory retain all six attempts and the interrupted reservation. The continuing independent reviewer accepts this pin and all 48 receipt artifacts, verifies complete outputs/verdicts and fixed-choice/definedness/custody behavior, and reruns the same 24 focused tests successfully. These are 24 unique tests, not 48 from two executions. See implementation-review.md for final acceptance. Synthetic preparation is ready; reference interpretation, contract adoption and comparison authorization remain owner-held. Full integration is separately reported by the read-coverage item.

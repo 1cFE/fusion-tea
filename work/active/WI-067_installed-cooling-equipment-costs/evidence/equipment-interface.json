@@ -1,0 +1,872 @@
+{
+  "calc": "mfe_cooling_equipment::Cooling Equipment",
+  "inputs": [
+    {
+      "name": "enabled",
+      "type": "Boolean",
+      "default": false,
+      "units": "1",
+      "sysml_name": "enabled_in"
+    },
+    {
+      "name": "n_mod",
+      "type": "Real",
+      "default": 1,
+      "units": "1",
+      "sysml_name": "n_mod_in"
+    },
+    {
+      "name": "n_loops",
+      "type": "Real",
+      "default": 18,
+      "units": "1",
+      "sysml_name": "n_loops_in"
+    },
+    {
+      "name": "mdot_loop",
+      "type": "Real",
+      "default": 156.575,
+      "units": "kg/s",
+      "sysml_name": "mdot_loop_in"
+    },
+    {
+      "name": "dp_loop",
+      "type": "Real",
+      "default": 159300,
+      "units": "Pa",
+      "sysml_name": "dp_loop_in"
+    },
+    {
+      "name": "helium_suction_K",
+      "type": "Real",
+      "default": 567.221,
+      "units": "K",
+      "sysml_name": "helium_suction_K_in"
+    },
+    {
+      "name": "helium_discharge_Pa",
+      "type": "Real",
+      "default": 8000000.0,
+      "units": "Pa",
+      "sysml_name": "helium_discharge_Pa_in"
+    },
+    {
+      "name": "helium_hot_K",
+      "type": "Real",
+      "default": 773.15,
+      "units": "K",
+      "sysml_name": "helium_hot_K_in"
+    },
+    {
+      "name": "helium_cp",
+      "type": "Real",
+      "default": 5193,
+      "units": "J/(kg K)",
+      "sysml_name": "helium_cp_in"
+    },
+    {
+      "name": "helium_gamma",
+      "type": "Real",
+      "default": 1.6666666666666667,
+      "units": "1",
+      "sysml_name": "helium_gamma_in"
+    },
+    {
+      "name": "primary_shaft_MW",
+      "type": "Real",
+      "default": 86.7762,
+      "units": "MW",
+      "sysml_name": "primary_shaft_MW_in"
+    },
+    {
+      "name": "primary_electric_MW",
+      "type": "Real",
+      "default": 86.7762,
+      "units": "MW",
+      "sysml_name": "primary_electric_MW_in"
+    },
+    {
+      "name": "q_ihx_MW",
+      "type": "Real",
+      "default": 3013.914942,
+      "units": "MW",
+      "sysml_name": "q_ihx_MW_in"
+    },
+    {
+      "name": "layout_multiplier",
+      "type": "Real",
+      "default": 1,
+      "units": "1",
+      "sysml_name": "layout_multiplier_in"
+    },
+    {
+      "name": "tube_wall",
+      "type": "Real",
+      "default": 0.0015,
+      "units": "m",
+      "sysml_name": "tube_wall_in"
+    },
+    {
+      "name": "shell_wall",
+      "type": "Real",
+      "default": 0.2,
+      "units": "m",
+      "sysml_name": "shell_wall_in"
+    },
+    {
+      "name": "accessory_mass",
+      "type": "Real",
+      "default": 10000,
+      "units": "kg",
+      "sysml_name": "accessory_mass_in"
+    },
+    {
+      "name": "secondary_head",
+      "type": "Real",
+      "default": 40,
+      "units": "m",
+      "sysml_name": "secondary_head_in"
+    },
+    {
+      "name": "eta_p",
+      "type": "Real",
+      "default": 0.75,
+      "units": "1",
+      "sysml_name": "eta_p_in"
+    },
+    {
+      "name": "eta_motor",
+      "type": "Real",
+      "default": 0.95,
+      "units": "1",
+      "sysml_name": "eta_motor_in"
+    },
+    {
+      "name": "machine_life",
+      "type": "Real",
+      "default": 10,
+      "units": "year",
+      "sysml_name": "machine_life_in"
+    },
+    {
+      "name": "bundle_life",
+      "type": "Real",
+      "default": 15,
+      "units": "year",
+      "sysml_name": "bundle_life_in"
+    },
+    {
+      "name": "years",
+      "type": "Real",
+      "default": 30,
+      "units": "year",
+      "sysml_name": "years_in"
+    },
+    {
+      "name": "discount",
+      "type": "Real",
+      "default": 0.07,
+      "units": "1",
+      "sysml_name": "discount_in"
+    },
+    {
+      "name": "makeup_fraction",
+      "type": "Real",
+      "default": 0.001,
+      "units": "1/year",
+      "sysml_name": "makeup_fraction_in"
+    },
+    {
+      "name": "inventory_reserve",
+      "type": "Real",
+      "default": 0.1,
+      "units": "1",
+      "sysml_name": "inventory_reserve_in"
+    },
+    {
+      "name": "removal_multiplier",
+      "type": "Real",
+      "default": 1,
+      "units": "1",
+      "sysml_name": "removal_multiplier_in"
+    },
+    {
+      "name": "saltprice_source_choice",
+      "type": "Real",
+      "default": 0,
+      "units": "1",
+      "sysml_name": "saltprice_source_choice_in"
+    },
+    {
+      "name": "costscale",
+      "type": "Real",
+      "default": 1,
+      "units": "1",
+      "sysml_name": "costscale_in"
+    },
+    {
+      "name": "sourcefitargument_C",
+      "type": "Real",
+      "default": 480,
+      "units": "degC",
+      "sysml_name": "sourcefitargument_C_in"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "primary_circulators_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_piping_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "exchangers_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_pumps_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_piping_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "inventory_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "spares_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "purchased_total",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "installation_total",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "installed_total",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "delivered_total",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_vendor",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_design",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_spare",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_vendor",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_spare",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "hx_purchase",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "hx_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_pipe_purchase",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_pipe_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_pipe_purchase",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_pipe_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_inventory_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_inventory_cost",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "machine_event_purchase",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "machine_event_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "machine_event_removal",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "bundle_event_purchase",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "bundle_event_installation",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "bundle_event_removal",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "replacement_annual",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy/year",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "consumables_annual",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy/year",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_makeup_annual",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy/year",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_makeup_annual",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy/year",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_electric_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_shaft_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "conversion_heat_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "circulator_shaft_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "per machine"
+    },
+    {
+      "name": "circulator_electric_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "per machine"
+    },
+    {
+      "name": "ihx_duty_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "per IHX"
+    },
+    {
+      "name": "tube_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "per IHX"
+    },
+    {
+      "name": "shell_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "per IHX"
+    },
+    {
+      "name": "heads_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "per IHX"
+    },
+    {
+      "name": "sheets_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "per IHX"
+    },
+    {
+      "name": "hx_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "per IHX"
+    },
+    {
+      "name": "bundle_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "per IHX"
+    },
+    {
+      "name": "primary_pipe_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "secondary_pipe_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_inventory_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_inventory_mass",
+      "type": "Real",
+      "units": "kg",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "primary_pipe_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_hx_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_inventory_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant modeled wetted geometry before reserve; mass includes reserve"
+    },
+    {
+      "name": "helium_standard_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_pipe_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_hx_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_inventory_volume",
+      "type": "Real",
+      "units": "m^3",
+      "basis": "plant modeled wetted geometry before reserve; mass includes reserve"
+    },
+    {
+      "name": "ihx_installed_area",
+      "type": "Real",
+      "units": "m^2",
+      "basis": "per IHX"
+    },
+    {
+      "name": "ihx_required_area",
+      "type": "Real",
+      "units": "m^2",
+      "basis": "per IHX"
+    },
+    {
+      "name": "circulator_count",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_pump_count",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "source_volume_ratio",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_expansion_ratio",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_Re_hot",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_Re_cold",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pump_size_factor",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pump_shaft_hp",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "motor_electric_hp",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "machine_events",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "bundle_events",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_price_raw",
+      "type": "Real",
+      "units": "source USD/kg",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_price_year",
+      "type": "Real",
+      "units": "calendar year",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_unit_price",
+      "type": "Real",
+      "units": "USD2025_CPI_proxy/kg",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_price_raw",
+      "type": "Real",
+      "units": "USD2024/standard_m^3",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_price_year",
+      "type": "Real",
+      "units": "calendar year",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "circulator_flow",
+      "type": "Real",
+      "units": "kg/s",
+      "basis": "per machine"
+    },
+    {
+      "name": "circulator_volume",
+      "type": "Real",
+      "units": "m^3/s",
+      "basis": "per machine"
+    },
+    {
+      "name": "circulator_suction_Pa",
+      "type": "Real",
+      "units": "Pa",
+      "basis": "per machine"
+    },
+    {
+      "name": "ihx_hot_approach",
+      "type": "Real",
+      "units": "K",
+      "basis": "per IHX"
+    },
+    {
+      "name": "ihx_cold_approach",
+      "type": "Real",
+      "units": "K",
+      "basis": "per IHX"
+    },
+    {
+      "name": "ihx_lmtd",
+      "type": "Real",
+      "units": "K",
+      "basis": "per IHX"
+    },
+    {
+      "name": "salt_flow",
+      "type": "Real",
+      "units": "kg/s",
+      "basis": "per circuit"
+    },
+    {
+      "name": "salt_velocity_hot",
+      "type": "Real",
+      "units": "m/s",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_velocity_cold",
+      "type": "Real",
+      "units": "m/s",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_straight_loss",
+      "type": "Real",
+      "units": "m",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_head_remaining",
+      "type": "Real",
+      "units": "m",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_return_C",
+      "type": "Real",
+      "units": "degC",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "cycle_temperature_gap",
+      "type": "Real",
+      "units": "K",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pump_flow_gpm",
+      "type": "Real",
+      "units": "USgal/min",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pump_head_ft",
+      "type": "Real",
+      "units": "ft",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "ihx_capacity_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pump_size_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pump_type_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "motor_base_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "motor_factor_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_head_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_flow_regime_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "cycle_interface_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_bulk_scale_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "inventory_source_volume_ok",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "pressure_qualified",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "helium_price_transfer_validated",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_pump_transfer_validated",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "inventory_complete",
+      "type": "Boolean",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    },
+    {
+      "name": "salt_pump_flow",
+      "type": "Real",
+      "units": "kg/s",
+      "basis": "per machine"
+    },
+    {
+      "name": "salt_pump_shaft_MW",
+      "type": "Real",
+      "units": "MW",
+      "basis": "per machine"
+    },
+    {
+      "name": "ihx_count",
+      "type": "Real",
+      "units": "1",
+      "basis": "plant total or diagnostic (single module)"
+    }
+  ],
+  "cost_contract": "Subaccount costs installed except inventory/spares. installed_total includes all seven subaccounts. purchased_total includes inventory, spares and first-design fee. delivered_total excludes installation, first-design engineering, salt pumps/inventories and future replacements; includes primary spare."
+}

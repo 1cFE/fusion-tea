@@ -1,0 +1,24 @@
+{
+  "manifest_sha256": "f366acbbc0c9cdfaa3bc294beedb83b24e7dc1cc62cc27ce66981f7de5f0afcd",
+  "config_sha256": "c4734471f003a7d2a7baefbdbb9846b6e3151f72ba1969473a8dc58ad4b565eb",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/costed_loop_brayton_params.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_viability_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+      "semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
+    }
+  },
+  "native_evaluations": 0,
+  "composition": "Every case is a complete input map composed on the manifest baseline by declared axis values; the sensitivity anchors are chosen from the oracle scan by the declared rule; cases the oracle refuses are excluded from the executed list and reported as the scanned edge; nothing is optimized."
+}

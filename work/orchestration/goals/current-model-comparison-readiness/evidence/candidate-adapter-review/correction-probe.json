@@ -1,0 +1,193 @@
+{
+  "refusals": {
+    "knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/example.txt": "ValueError: protocol-barred member: knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/example.txt",
+    "exploration/concept_analysis/analyses/09-qi-stellarator-hts/example.txt": "ValueError: protocol-barred member: exploration/concept_analysis/analyses/09-qi-stellarator-hts/example.txt",
+    "knowledge/sources/aries_cost_account_documentation/example.txt": "ValueError: protocol-barred member: knowledge/sources/aries_cost_account_documentation/example.txt",
+    "knowledge/research/pending/20260912-115614_stellaris-structural-behavioral-modeling.md": "ValueError: protocol-barred member: knowledge/research/pending/20260912-115614_stellaris-structural-behavioral-modeling.md",
+    "extra_fixed_override": "ValueError: rules differ from declared selection policy: forward_overrides",
+    "table5_extra_input": "ValueError: fixed Table5 control requires empty values and conditioned_values",
+    "overwrite": "FileExistsError: [Errno 17] File exists: '/tmp/candidate-correction-review-oi_w2sz_/report.json'",
+    "selected_rules_identity_hash": "AssertionError: selected rules differ from candidate identity",
+    "extra_zero_facility_child": "ValueError: facility civil-child inventory differs"
+  },
+  "reviewed_hashes": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/candidate_common.py": "7961e831554a1791eee8e08f7a9d790ea8313e66639f65bd4c9472b296c3a561",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py": "c5c34256a246086e9662750f7105429c4ba0ca7fb84061d4ecb49e5ef9a49719",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/refresh_contract.py": "dbee2ba5bc5be63670a2b5deb29df95bd68cc3cfa09b576543cd067a67f7f4b6",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_lineage.py": "743450a9a3a4615b097c12a3e9a8c8407419af8b86fdf30bc8c62f6a54f65858",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py": "b70c3b507e60fc6c7ec3ad53a172f7f8fa29cb46c1d9f715e899bb432156eb56",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py": "4572823afec0a48ad0a8355bd8328c837aa0652d2d45b20bf9b82ef9b4f75ade",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_selected_mode.py": "a2f2226e9764c369e06e382e6f1b3098b49fe72402368e5d2c9a5734765c1f6f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py": "c10844cadb7b118163bd979224282fa26b008fd25ea6cb274f214b8bd56ac507",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/input-rules.json": "bd293abb6986c09dcd7b17d42fa9ff9bc46f1f99294fb0ee1437faf02aae778b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json": "253e9d53e369f48dfd7b25391180ea06ae5c1273f46da4e78d302a1bdf6a7432",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/constraint-inventory.json": "d9821474866f7670e33ad5b5abbbe990e723f72c9b285833cd30a74f539a9eef",
+    "tests/test_current_comparison_candidate.py": "09a6b2bd451f015c7c1fe27f4b8bbab7372f69bf683e68724885a3c5d5b214ad",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/selection-policy.json": "0d7ecbaad06fd40020e2f8c4c74ed1b6daf6e265c91766bb7c504acea7cce186",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/account-inventory.json": "f8213b6ac31a32b518c3055c26c085368b9bd0acb9b5f5b7dfddfb43eecdeead"
+  },
+  "overwrite_receipt": {
+    "state": "refused",
+    "stage": "exclusive_creation",
+    "destination": "/tmp/candidate-correction-review-oi_w2sz_/report.json",
+    "error": "destination exists",
+    "producer_started": false
+  },
+  "baseline_accounting": {
+    "status": "pass",
+    "source_sha256": "5298b7940c4fc0b058ac1fcb6b8cd61374c39f0a54d793c0b83bf8404a8a76f0",
+    "checks": [
+      {
+        "name": "materials",
+        "actual": 15954709.374417959,
+        "expected": 15954709.374417959,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "procurement",
+        "actual": 1497941229.6061373,
+        "expected": 1497941229.6061375,
+        "residual": -2.384185791015625e-07,
+        "passed": true
+      },
+      {
+        "name": "magnet",
+        "actual": 1707443242.2597551,
+        "expected": 1707443242.2597551,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "aux_cooling",
+        "actual": 35116270.129820704,
+        "expected": 35116270.129820704,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "core",
+        "actual": 3500357699.499224,
+        "expected": 3500357699.4992247,
+        "residual": -4.76837158203125e-07,
+        "passed": true
+      },
+      {
+        "name": "equipment",
+        "actual": 3667164572.987823,
+        "expected": 3667164572.987823,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas22",
+        "actual": 10809801971.108973,
+        "expected": 10809801971.108974,
+        "residual": -1.9073486328125e-06,
+        "passed": true
+      },
+      {
+        "name": "bop",
+        "actual": 580934471.49956,
+        "expected": 580934471.4995599,
+        "residual": 1.1920928955078125e-07,
+        "passed": true
+      },
+      {
+        "name": "direct",
+        "actual": 12219310280.608742,
+        "expected": 12219310280.608742,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas20",
+        "actual": 13441241308.669617,
+        "expected": 13441241308.669617,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "overnight",
+        "actual": 17918171013.726093,
+        "expected": 17918171013.726093,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "total",
+        "actual": 17918171013.726093,
+        "expected": 17918171013.726093,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "annual70",
+        "actual": 273360371.15999794,
+        "expected": 273360371.15999794,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "annual_total",
+        "actual": 274152877.1251124,
+        "expected": 274152877.1251124,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cooling_equipment_children",
+        "actual": 6471347145.807992,
+        "expected": 6471347145.807993,
+        "residual": -9.5367431640625e-07,
+        "passed": true
+      },
+      {
+        "name": "facilities_children",
+        "actual": 799758795.94032,
+        "expected": 799758795.9403197,
+        "residual": 3.5762786865234375e-07,
+        "passed": true
+      },
+      {
+        "name": "fuel_processing_children",
+        "actual": 22786229.403793395,
+        "expected": 22786229.403793395,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas72_selected_replacements",
+        "actual": 193999912.5748553,
+        "expected": 193999912.5748553,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "headline_lcoe",
+        "actual": 271.58431991729486,
+        "expected": 271.5843199172948,
+        "residual": 5.684341886080802e-14,
+        "passed": true
+      },
+      {
+        "name": "comparison_lcoe",
+        "actual": 266.45893056660543,
+        "expected": 266.4589305666054,
+        "residual": 5.684341886080802e-14,
+        "passed": true
+      }
+    ],
+    "annual_energy_mwh": 7978704.890195747,
+    "tolerance": {
+      "relative": 1e-12,
+      "absolute": 1e-05
+    },
+    "limitations": [
+      "Arithmetic consistency does not validate physical applicability or complete installed cost.",
+      "Explicit 23-row direct-account and shipping-exclusion checks are not yet implemented.",
+      "Steam-generator cost inclusion remains unverified; no duplicate allowance added.",
+      "Mixed monetary years remain unresolved."
+    ]
+  }
+}

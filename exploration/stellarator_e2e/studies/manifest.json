@@ -7,20 +7,27 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "20c2c364d6c79592b87e8d467b0a4c29a2695fe89c3a5a83e247dfd7a7d758d6",
+      "digest": "b60bcb940398d1df39bf779394ebab46ea309e31e8c00034d3dedee39832c9d3",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_cryo_plant_params.json",
+        "inputs/mfe_fuel_cycle_params.json",
         "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
         "inputs/mfe_plant_params.json",
+        "inputs/mfe_plant_systems_params.json",
         "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
+        "inputs/mfe_vacuum_params.json",
+        "inputs/mfe_viability_params.json",
         "inputs/stellarator_plant_params.json",
         "pipelines/pipeline.yaml"
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
-      "semantic_fingerprint": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e"
+      "semantic_fingerprint": "6f51a9963348754694563855957d9bf9bfdfb90c61bd9228c9bd8868286fac90",
+      "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23"
     }
   },
   "objective_catalog": [
@@ -36,12 +43,12 @@
     },
     {
       "name": "cas72",
-      "channel": "stellarator_09__stellaris__cas72_calc__cost",
-      "note": "Levelized annual replacement cost."
+      "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+      "note": "Levelized annual replacement cost -- the lifecycle calendar's output since WI-046 (2026-09-08; the retired cas72_calc__cost channel is gone)."
     },
     {
       "name": "fuel",
-      "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
       "note": "Annual fuel cost."
     },
     {
@@ -56,38 +63,243 @@
     },
     {
       "name": "beta",
-      "channel": "stellarator_09__stellaris__beta_calc__beta",
+      "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
       "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
     },
     {
       "name": "magnet_capital",
-      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
-      "note": "CAS22.1.3 magnet capital. Declared as an objective (Item 6 design D9, 2026-08-21) so generic verification compares it against the oracle: a magnet-technology study moves this channel first, and it was a known coverage gap (ANNEX \u00a7 Oracle)."
-    }
-  ],
-  "ties": [
+      "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+      "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+    },
     {
-      "key": "stellarator_09__stellaris__magnet__R0",
-      "rides_with": [
-        "stellarator_09__stellaris__R"
-      ],
-      "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+      "name": "magnet_capital_1cfe",
+      "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+      "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+    },
+    {
+      "name": "p_aux_required",
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+    },
+    {
+      "name": "tau_E",
+      "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
+      "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+    },
+    {
+      "name": "operating_heat_coupled",
+      "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+    },
+    {
+      "name": "operating_heat_delivered",
+      "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+    },
+    {
+      "name": "operating_heat_wallplug",
+      "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "note": "WI-050 signed operating demand at held source/coupling efficiencies."
     }
   ],
+  "ties": [],
   "baseline": {
     "point": {
-      "stellarator_09__stellaris__R": 12.7,
-      "stellarator_09__stellaris__magnet__R0": 12.7,
-      "stellarator_09__stellaris__a": 1.3,
-      "stellarator_09__stellaris__availability": 0.85
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__availability_direct": 0.0
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 333.0670332813743
+      "value": 318.7377471541504
     },
     "verdicts": [
       {
         "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "burn_hold_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cold_stage_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condensate_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condensate_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condensate_pressure_rise_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condenser_rejection_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cooling_water_heat_direction",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cycle_domain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "direct_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "divertor_heat_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "electric_gross_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_geometry_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_initial_ready",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_material_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_occupancy_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "facility_outage_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_parcel_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_replacement_ready",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_routes_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "feedwater_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "feedwater_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "feedwater_pressure_rise_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "fuel_processing_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_couple_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_couple_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_pressure_rise_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_pumping_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "hp_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "hp_shaft_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "ihx_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "intercept_stage_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "lp_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "lp_shaft_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "magnet_pf_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "magnet_tf_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "main_UA_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "matched_main_heat_direction",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "matched_reheat_heat_direction",
         "expected": "satisfied"
       },
       {
@@ -103,11 +315,71 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "reference_conductor_current_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "reheat_UA_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "represented_coolant_fill_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_head_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_shaft_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "sustainment_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "tbr_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "turbine_gross_capacity_ok",
         "expected": "satisfied"
       },
       {
         "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "water_electric_capacity_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "water_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "water_head_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "water_rejection_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wp_fit_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "wp_stress_ok",
         "expected": "satisfied"
       }
     ]
@@ -117,6 +389,6 @@
     "module": "oracle_entry",
     "callable": "evaluate",
     "sys_path": "exploration/stellarator_e2e/studies",
-    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
+    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, whose current live radius operands follow model-owned plant R. ANNEX.md section Current oracle comparison coverage lists the seventeen native channels outside its 141-channel map. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
   }
 }

@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-hitec-nasa.pdf",
+  "slug": "mcdonnell_douglas_1979_small_power_system_volume5",
+  "path": "knowledge/sources/mcdonnell_douglas_1979_small_power_system_volume5/",
+  "source_id": "fe432a2fb34bd8c11fa08331d4720d47d51c0910ae9d06ff7bf74dacf09ac9ec",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:44:29.721805+00:00"
+}

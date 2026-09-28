@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/reid/1cfe/fusion-tea/scripts/integrate.py", line 1270, in execute_baseline
+    raise SeamBlocker(
+scripts.integrate.SeamBlocker: ['undeclared dependency read: /home/reid/1cfe/teax/packages/teax-simkit/teax_simkit.egg-info/entry_points.txt']

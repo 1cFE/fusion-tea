@@ -1,0 +1,54 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": null,
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "Probe__plant__turbine__legacy__gross_out",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "Probe__plant__turbine__property_value__property_value",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "Probe__plant__turbine__matched__gross_out",
+      "field_name": "gross_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "Probe__plant__turbine__matched__state_h",
+      "field_name": "state_h",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "Probe__plant__turbine__matched__pump_out",
+      "field_name": "pump_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "Probe__plant__sink__result",
+      "field_name": "root",
+      "python_type": "float"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "probe_params",
+      "python_type": "float",
+      "qualified_name": "Probe__plant__turbine__enabled"
+    },
+    {
+      "default_value": 3.0,
+      "entry_type": "design_attribute",
+      "param_group": "probe_params",
+      "python_type": "float",
+      "qualified_name": "Probe__plant__turbine__raw"
+    }
+  ],
+  "semantic_fingerprint": "8264e8a680bebd49b22d915b6cfaa87135a7f85aa9b13cf32f723ece98de7f51"
+}

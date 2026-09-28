@@ -1,0 +1,63 @@
+{
+  "frozen": true,
+  "provenance": "engineered",
+  "unique_native_proposals": 15191,
+  "correlation_rows": 16139,
+  "excluded_correlations": 408,
+  "arms": {
+    "arm-baseline": {
+      "eligible": 1
+    },
+    "arm-calendar": {
+      "eligible": 36,
+      "excluded": 9
+    },
+    "arm-closure-factorial": {
+      "eligible": 36,
+      "excluded": 4
+    },
+    "arm-cycle": {
+      "eligible": 6
+    },
+    "arm-divertor-radiation": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-divertor-transport": {
+      "eligible": 8,
+      "excluded": 2
+    },
+    "arm-edge-diagnostics": {
+      "eligible": 84
+    },
+    "arm-fuel": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-loop-loss": {
+      "eligible": 9
+    },
+    "arm-reserve": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-sized-witness": {
+      "eligible": 1
+    },
+    "arm-window-fixed": {
+      "eligible": 7691,
+      "excluded": 258
+    },
+    "arm-window-sized": {
+      "eligible": 7823,
+      "excluded": 126
+    }
+  },
+  "digests": {
+    "correlation.json": "0314aa4dbcc3ad47d980ed7edb1f6a7889dd348e6a5bad35f5faa8c567f55c60",
+    "oracle-scan.json": "602be214ee25bcce5a0da93c3f99ba32132c38da734409656b17fb47dbafd657",
+    "proposals.json": "16106a618adeb7509b6eb44716f9edca686ca6f774e65954ae6951f4903aab74",
+    "window-edges.json": "40f14012f94b842cca55322f582f1ddd2155708b19138ab1ea527e79b9e87e30"
+  },
+  "claims": "Sampled predicate and exclusion evidence only. Uncaught edges remain uncaught; no extrapolated optimum or whole feasible-region claim. Four owner-approved sensitivities make no boundary claims."
+}

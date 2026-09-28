@@ -1,0 +1,41 @@
+{
+  "thermal_record_commit": "494c329e",
+  "thermal_snapshot_sha256": "894a81ddc6142bc983c95a783a3ff32783ac6b9f4b58a5d1a727269a3b8f4fcc",
+  "thermal_record": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs",
+  "reuse_integration_commit": "e8f9cc1d59a0583fb1b2b2ca4eaa51d87b891c2f",
+  "reuse_integration_path": "work/orchestration/goals/aries-integrated-equipment-costs/evidence/integration-attempt1",
+  "new_preflight": "preparation/preflight_results.json",
+  "copies": [
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/report.md",
+      "copy": "prerequisite/thermal-report.md",
+      "sha256": "0f3d8959d9391650de259c7558548a9a1726e3a6d35d6d8482fcf58f15c96c04"
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/thermal-results.md",
+      "copy": "prerequisite/thermal-results.md",
+      "sha256": "2d2ec45f3798659b6947b5a934fef20adcf2c17ae06fcd0b1478184d7341226f"
+    },
+    {
+      "source": "work/orchestration/goals/aries-integrated-equipment-costs/evidence/thermal-study-review.md",
+      "copy": "prerequisite/thermal-study-review.md",
+      "sha256": "61ea1149a514dbe664cb3848a1e6382216ee367c354969ac0c1334ee541ccbba"
+    },
+    {
+      "source": "work/orchestration/goals/aries-integrated-equipment-costs/evidence/cost-study-brief.md",
+      "copy": "prerequisite/cost-study-brief.md",
+      "sha256": "0e2af5639ab7a1883c57bf83230cef2c7a0b29f55d229ab817d35701312754b1"
+    },
+    {
+      "source": "work/orchestration/goals/aries-integrated-equipment-costs/goal.md",
+      "copy": "prerequisite/goal.md",
+      "sha256": "7867362d1f404cb3751d06fc0072b6d6fcea50a8a302d95075b3d133b6408724"
+    },
+    {
+      "source": "work/active/WI-090_aries-integrated-equipment-and-costs/evidence/financial-handoff.md",
+      "copy": "prerequisite/financial-handoff.md",
+      "sha256": "13a69aa8a6badbe4353808d6369e5b7e6cf18fb48580fa9b7abc19217ef7b4f2"
+    }
+  ],
+  "reuse_scope": "Accepted unchanged package, source/design/MR-7, native route and integration CANDIDATE; new study metadata independently preflighted. Future results/integration/preflight_results.json must copy this new preparation preflight, not the prior thermal preflight."
+}

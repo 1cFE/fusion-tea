@@ -1,0 +1,33 @@
+{
+  "python_ast_count": 151,
+  "changed_python_ast_without_docstrings": [],
+  "sysml_without_doc_comments_unchanged": {
+    "models/designs/aries_cs_integrated/plant.sysml": true,
+    "models/library/analyses/integrated_heat_electricity.sysml": true
+  },
+  "canonical_cases": {
+    "nominal-source-assumed": {
+      "inputs_equal": true,
+      "outputs_equal": true,
+      "groups_equal": true
+    },
+    "nominal-calculated": {
+      "inputs_equal": true,
+      "outputs_equal": true,
+      "groups_equal": true
+    },
+    "literal-Lyon-source-input": {
+      "inputs_equal": true,
+      "outputs_equal": true,
+      "groups_equal": true
+    },
+    "literal-Raffray-accounting": {
+      "inputs_equal": true,
+      "outputs_equal": true,
+      "groups_equal": true
+    }
+  },
+  "previous_executable": "524c13a905320a5ca35664bdb035043f3588fca22a772503e8383e88f51a0734",
+  "current_executable": "01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021",
+  "current_semantic": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+}

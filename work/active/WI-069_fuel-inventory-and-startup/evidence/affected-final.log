@@ -1,0 +1,355 @@
+........................................................................ [ 33%]
+........................................................................ [ 66%]
+..................................................................FEEEEE [ 99%]
+E                                                                        [100%]
+==================================== ERRORS ====================================
+__ ERROR at setup of test_ife_census_is_19_entry_points_18_design_attributes ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x71aff9c41100>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12936'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -> dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+>           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+_ ERROR at setup of test_mfe_census_matches_current_generated_public_contract __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x71aff9c41100>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12936'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -> dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+>           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+_ ERROR at setup of test_ife_gain_mutation_reaches_every_and_only_its_three_consumers _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x71aff9c41100>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12936'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -> dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+>           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+___ ERROR at setup of test_ife_beam_energy_mutation_has_one_direct_consumer ____
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x71aff9c41100>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12936'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -> dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+>           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+_ ERROR at setup of test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x71aff9c41100>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12936'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -> dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+>           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+_ ERROR at setup of test_mfe_blanket_thickness_mutation_reaches_radial_build_and_breeding _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x71aff9c41100>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12936'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def baselines(tmp_path_factory) -> dict[str, Path]:
+        """One live generation per family from its materialized canonical subset."""
+        packages: dict[str, Path] = {}
+        for name, family in FAMILIES.items():
+            root = tmp_path_factory.mktemp(f"baseline-{name}")
+            output = root / "package"
+>           assert _generate(_subset(root, family), output, family.package_name), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{name}: the canonical subset must generate with zero readiness diagnostics"
+            )
+
+tests/models/test_model_family_spines.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/package')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/baseline-mfe0/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+=================================== FAILURES ===================================
+__________ test_family_subset_generates_and_live_equals_snapshot[mfe] __________
+
+family = 'mfe'
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12936/test_family_subset_generates_a1')
+
+    @pytest.mark.parametrize("family", sorted(FAMILIES))
+    def test_family_subset_generates_and_live_equals_snapshot(family: str, tmp_path: Path) -> None:
+        """Each family alone: generation (which seals) succeeds, and the v6 snapshot route
+        reproduces the live package exactly."""
+        spec = FAMILIES[family]
+        models = _subset(tmp_path, spec)
+        live = tmp_path / "live"
+>       assert _generate(models, live, spec.package_name), family
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_model_family_spines.py:320: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_model_family_spines.py:130: in _generate
+    seed_and_generate(output, models_path=models)
+work/active/WI-068_layout-based-facilities/evidence/regenerate.py:35: in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-reid/pytest-12936/test_family_subset_generates_a1/live')
+source = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+generator = None
+kwargs = {'models_path': PosixPath('/tmp/pytest-of-reid/pytest-12936/test_family_subset_generates_a1/model_copy')}
+GenerationConfig = <class 'sysml_codegen.cli.GenerationConfig'>
+run_codegen = <function run_codegen at 0x71afd34625c0>
+expected = {'handwritten/mfe_account_costs/financial_factors.py': 'cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee8702...ten/mfe_account_costs/structure_cost_impl.py': 'ed0a48ad8e64c5e6f2ce7da68e405a70da9efcf2d63240c8548a73d196e769a4', ...}
+found = {'handwritten/mfe_account_costs/financial_factors.py', 'handwritten/mfe_account_costs/idc_closed_form_cost_impl.py', '..._current/current_driven_pack_sizing_impl.py', 'handwritten/mfe_conductor_current/rebco_conductor_current_impl.py', ...}
+
+    def seed_and_generate(path, source=PACKAGE, *, generator=None, **kwargs):
+        from sysml_codegen.cli import GenerationConfig, run_codegen
+        path, source = Path(path), Path(source)
+        if path.is_symlink() or path.exists() and (not path.is_dir() or any(path.iterdir())):
+            raise FileExistsError(f'Nonfresh destination: {path}')
+        expected = json.loads(SEEDS.read_text())
+        found = {str(p.relative_to(source)) for p in (source / 'handwritten').rglob('*.py')
+                 if p.name == 'financial_factors.py' or re.search(r'^AUTO_IMPLEMENTED = False$', p.read_text(), re.M)}
+        if found != set(expected):
+>           raise ValueError(f'Unexpected normative seed inventory: {found ^ set(expected)}')
+E           ValueError: Unexpected normative seed inventory: {'handwritten/mfe_fuel_cycle/fuel_inventory_impl.py'}
+
+work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py:30: ValueError
+=============================== warnings summary ===============================
+tests/models/test_computed_tritium_breeding.py::test_native_thickness_changes_breeding_build_and_cost
+tests/models/test_computed_tritium_breeding.py::test_unsupported_native_geometry_keeps_cost_diagnostics_but_fails_breeding
+tests/models/test_fuel_inventory.py::test_native_inventory_drives_existing_breeding_and_preserves_fuel_cost
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_model_family_spines.py::test_family_subset_generates_and_live_equals_snapshot[mfe]
+ERROR tests/models/test_model_family_spines.py::test_ife_census_is_19_entry_points_18_design_attributes
+ERROR tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract
+ERROR tests/models/test_model_family_spines.py::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers
+ERROR tests/models/test_model_family_spines.py::test_ife_beam_energy_mutation_has_one_direct_consumer
+ERROR tests/models/test_model_family_spines.py::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups
+ERROR tests/models/test_model_family_spines.py::test_mfe_blanket_thickness_mutation_reaches_radial_build_and_breeding
+1 failed, 210 passed, 3 warnings, 6 errors in 14.99s

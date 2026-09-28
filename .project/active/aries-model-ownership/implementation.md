@@ -1,0 +1,15 @@
+# Ownership prerequisite implementation
+
+[AGENT] Added eight explicit independently generated ARIES source collections and retained exact canonical coverage across their union with the existing IFE/MFE family paths. The original family definitions remain structurally identical to entry HEAD; no original membership, twin, snapshot or generation spine was changed. The helper reports unregistered and missing paths separately.
+
+[AGENT] Evidence: `family-preservation.json` compares both original family constructor expressions against Git HEAD; `staging-match.json` establishes exact equality between each registry tuple and canonical source literals in its existing build or verification script. `spine-tests.log` records the complete existing family spine suite, including two added negative ownership tests that create a full temporary canonical tree and then add an unregistered file or delete a registered file. All fifteen checks pass in 183.40 seconds, including original family generation, snapshot parity, bytewise twin equality, shared-file equality and mutation propagation.
+
+[AGENT] Residual risk is future drift between explicit collection tuples and standalone build staging lists. The retained staging comparison covers this change but is not a new permanent build-schema contract. Exact canonical coverage still catches new or deleted canonical paths, while a future rearrangement of already owned shared paths needs review against its generation sources. The new integrated collection is deliberately pending actual canonical files and actual build evidence; the handoff in `requirements-design.md` gives the proposed list. No scientific result, standalone source, package, runtime or integration gate control flow was changed.
+
+## Integrated source registration
+
+[AGENT] The coordinator registered the new integrated source collection after both canonical files and `exploration/aries_integrated/build.py` existed. The ten paths match `build.py:SOURCES` in exact order; `integrated-staging-match.json` records the check. The focused canonical coverage and missing/unregistered-file cases pass (three tests, `integrated-coverage.log`). The continuing reviewer accepted this bounded delta in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/ownership-review.md`. Original family membership and test behavior remain unchanged. Native integration will rerun the full repository spine gate against the final package checkpoint.
+
+## Equipment extension source registration — 2026-09-22
+
+[AGENT] The integrated source collection now matches the fifteen actual sources in the equipment extension's `exploration/aries_integrated/build.py`, including two new generic model files and three reused dependencies. `equipment-staging-match.json` records the exact list and unchanged original IFE/MFE constructor expressions. The focused coverage and missing/unregistered-path checks pass in `equipment-coverage.log`. This is declarative registration through the existing source-ownership mechanism; no gate implementation or original family membership changes. The full native integration spine will assess the final package checkpoint.

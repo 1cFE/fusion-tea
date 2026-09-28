@@ -1,0 +1,52 @@
+{
+  "historical_rows": 7781,
+  "historical_exclusions_reconsidered": 168,
+  "correlation_rows": 16054,
+  "unique_eligible_proposals": 15191,
+  "excluded_correlations": 408,
+  "fully_satisfied_correlations": 801,
+  "arms": {
+    "arm-baseline": {
+      "eligible": 1
+    },
+    "arm-calendar": {
+      "eligible": 36,
+      "excluded": 9
+    },
+    "arm-closure-factorial": {
+      "eligible": 36,
+      "excluded": 4
+    },
+    "arm-cycle": {
+      "eligible": 6
+    },
+    "arm-divertor-radiation": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-divertor-transport": {
+      "eligible": 8,
+      "excluded": 2
+    },
+    "arm-fuel": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-loop-loss": {
+      "eligible": 9
+    },
+    "arm-reserve": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-window-fixed": {
+      "eligible": 7691,
+      "excluded": 258
+    },
+    "arm-window-sized": {
+      "eligible": 7823,
+      "excluded": 126
+    }
+  },
+  "status": "scan complete; edge report and freeze still required"
+}

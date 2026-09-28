@@ -1,0 +1,13 @@
+# Independent correction review — Round 2
+
+**PASS.** Fresh continuing reviewer `/root/reviewer`, 2026-09-16. The correction resolves Round 1's coverage finding. The earlier [FINDINGS review](final-review.md) remains intact as the historical verdict. Reuse its independent numerical, custody, source and transfer checks; no scientific rerun was needed.
+
+Independently matched all nine entries in the study's `coverage-erratum.json` to the frozen scan: exact IDs, current, minor radius, evaluation status and failed predicates agree. None occurs in the native selection. Recounting the retained coordinates gives 192 planned/control calls at 191 unique points: 185 evaluated and six refused. The nine additional evaluated diagnostics produce the unchanged total of 201 calls/200 unique points. Neither cohort contains a combined pass.
+
+The erratum names the unapproved lower-current excursions and their cause, preserves the declared 12.0–16.2 MA-turn bounds, and explicitly rejects retroactive authorization. The answer, readiness assessment and synthesis use the corrected denominators. The transfer contract correctly states that the native transfer checks are unaffected. The appended record correction and erratum visibly supersede the false historical bound-compliance claims while retaining the original account.
+
+Rechecked all 228 snapshot artifact hashes and the snapshot bytes against `a16e7256`; unchanged. The record modification is strictly append-only relative to that commit. Thus the earlier 71 native cases, 16,046 fresh scalar comparisons, 1,420 oracle predicates, 1,420 native-operand checks and 354 coupled identities remain valid evidence within their original scope. Sixteen unmapped scalar channels, static L2/L6/read-set limitations, H1's failed feasible-fraction expectation and missing baseline timing remain disclosed.
+
+Accept the corrected disposition of current finding #1 and preserved routing for #2–#5 and the 42 prior findings. Their joined publication remains coordinator bookkeeping. Accept **L-001, L-002 and L-003** with the corrected declared-window scope: finite coupled rejections, conditional transfer distinct from qualification, and incomplete accommodation economics. The recorded protocol deviation receives no repair or authorization credit from these learnings.
+
+The bounded technical answer and comparison-readiness assessment are supported. No further technical correction is required for this goal. The coolant premise and meaningful comparison mappings still need their stated applicability dispositions before equivalence claims. This review neither formally closes the goal nor authorizes reveal, archive, merge or push.

@@ -1,0 +1,9 @@
+{
+  "repo_commit_at_execution": "d4455af3d426dbdbf353350fb1aba92e89fb3cfb",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python -m exploration.whole_plant_conversion.studies.execute_study --record exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion --integration-return work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/whole_plant_conversion/whole_plant_conversion_tea --manifest exploration/whole_plant_conversion/studies/manifest.json --identity exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/integration/package_identity.json --store exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/native/20260927-design-study-whole-plant-conversion.db --sample-size 2496 --out exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/verification_summary.json'",
+  "unique_proposals": 2496,
+  "proposal_sha256": "55782d25a4c7a6818547e9fe1b587deb79bd3d6ef8535b07ec858e14ab6e1217",
+  "preparation_scope": "fixed before first main point; no native proposals added after execution",
+  "date": "2026-09-27"
+}

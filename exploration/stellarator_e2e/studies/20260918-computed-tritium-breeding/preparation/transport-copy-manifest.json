@@ -1,0 +1,62 @@
+[
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/table-report.md",
+    "copy": "preparation/transport-evidence/table-report.md",
+    "sha256": "8d31008488c68f8b5df4a5fb605785f685e2314a222b693e36e37bf5a768ded3"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/pilot-report.md",
+    "copy": "preparation/transport-evidence/pilot-report.md",
+    "sha256": "4d8e7570deb9a7af10a8c1beaa089447faa2d36de182797aeaba82f2fbf9100c"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/table-validation.json",
+    "copy": "preparation/transport-evidence/table-validation.json",
+    "sha256": "f33ad2013a0812f0e40b12b570e3c4bb6eb6e03b7f74af1469884c4fb124aa22"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/table-freeze.md",
+    "copy": "preparation/transport-evidence/table-freeze.md",
+    "sha256": "9e459e28b3e74188ccaa69edd638e89ae239cc2ac35482656e70e232dff76e48"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/table-plan.json",
+    "copy": "preparation/transport-evidence/table-plan.json",
+    "sha256": "11d0e7cbdb6da6b6b6b7b13e76cd0e6919fb7a97c4c340d80ce644858efbeaf3"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/response-candidate.json",
+    "copy": "preparation/transport-evidence/response-candidate.json",
+    "sha256": "b9bd8dc740dcb9694d2263b394cc1af50bd4e1cc69c64fe648aabd995d2f1712"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/tritium-semantics-check.json",
+    "copy": "preparation/transport-evidence/tritium-semantics-check.json",
+    "sha256": "542f3f2457c65cf0f615b34b589204753a333323989c050a9103360294cbeab8"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/source-verification.json",
+    "copy": "preparation/transport-evidence/source-verification.json",
+    "sha256": "91803cf80044ec9f0475a60bd0a51730afa1a6d224476f17a0aea1edafd661e1"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/geometry-verification.json",
+    "copy": "preparation/transport-evidence/geometry-verification.json",
+    "sha256": "0e1723dc24e4ad758d3f788c15a444fb91e455a6bc8be7d1b7247be12216f7bc"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/opening-verification.json",
+    "copy": "preparation/transport-evidence/opening-verification.json",
+    "sha256": "c318f5d96aa26620828ed72a3c054c1729b8dff14bb73fe5057f62f2680b81d6"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/inventory-verification.json",
+    "copy": "preparation/transport-evidence/inventory-verification.json",
+    "sha256": "4d8e5549921561242373231569540c87b31ca3012e64d8d7e67595489fdc2912"
+  },
+  {
+    "source": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/tally-verification.json",
+    "copy": "preparation/transport-evidence/tally-verification.json",
+    "sha256": "b13eb567c5511e0ed78bc329e446cb86df9f136cc332c12672be9efed39cb85f"
+  }
+]

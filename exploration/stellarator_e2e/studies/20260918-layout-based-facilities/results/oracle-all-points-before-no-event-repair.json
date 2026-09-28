@@ -1,0 +1,24 @@
+{
+  "outcome": "fail",
+  "scalar_comparisons": 40128,
+  "predicate_comparisons": 1200,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-09,
+  "strict_relative_misses": [
+    {
+      "case": "20260918-layout-based-facilities:c0042",
+      "channel": "stellarator_09__stellaris__buildings__layout__outage_margin_days",
+      "native": 10957.5,
+      "oracle": 33.0625
+    }
+  ],
+  "failures": [
+    {
+      "case": "20260918-layout-based-facilities:c0042",
+      "channel": "stellarator_09__stellaris__buildings__layout__outage_margin_days",
+      "native": 10957.5,
+      "oracle": 33.0625
+    }
+  ],
+  "limits": "Transport table data shared; this verifies independent implementation, not physical accuracy.Channels outside the captured oracle map remain native evidence only."
+}

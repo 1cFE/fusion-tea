@@ -1,0 +1,39 @@
+package Probe {
+private import ScalarValues::*;
+calc def Legacy {
+ in attribute x_in : Real;
+ out attribute gross_out : Real = x_in * 2.0;
+}
+calc def Match :> Legacy {
+ in attribute enabled_in : Real;
+ in attribute legacy_in : Real;
+ in attribute property_in : Real;
+ out attribute :>> gross_out : Real;
+ out attribute state_h : Real;
+ out attribute pump_out : Real;
+}
+calc def Sink {
+ in attribute value_in : Real;
+ out attribute result : Real = value_in;
+}
+part def Component { attribute enthalpy : Real; }
+part def Turbine {
+ attribute raw : Real default 3.0;
+ calc cycle : Legacy { in x_in = raw; }
+ attribute gross : Real = cycle.gross_out;
+}
+part def MatchedTurbine :> Turbine {
+ attribute enabled : Real default 1.0;
+ attribute property_value : Real default 4.0;
+ calc :>> cycle : Match {
+  in enabled_in = enabled;
+  in legacy_in = raw;
+  in property_in = property_value;
+ }
+}
+part def Plant {
+ part turbine : Turbine;
+ calc sink : Sink { in value_in = turbine.gross; }
+}
+part plant : Plant { part :>> turbine : MatchedTurbine; }
+}

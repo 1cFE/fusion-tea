@@ -1,0 +1,10 @@
+{
+  "request_id": "REQ-MCR-STRUCTURE-01",
+  "run": "knowledge/research/requests/runs/REQ-MCR-STRUCTURE-01/20260915T140055884498",
+  "class": "BOUNDED_NEGATIVE",
+  "registered": [],
+  "queued": [],
+  "negative": "knowledge/research/requests/negatives/be0d1ba92fa0c9a66be0bb10802c2d9c7e904f3dd5547e6136212996a2e3119b.json",
+  "limit_reached": "max_searches",
+  "reason": "the search ran and found no usable source"
+}

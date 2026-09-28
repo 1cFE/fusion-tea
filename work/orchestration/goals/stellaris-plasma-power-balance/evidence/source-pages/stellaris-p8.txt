@@ -1,0 +1,120 @@
+J. Lion et al.
+low-order rational values (e.g. 0.8). The 𝜖eff profile shows remarkable
+resiliency to profile variations.
+The two chosen metrics for evaluating MHD stability suggest that
+the profile shape can affect the MHD stability of the configuration.
+Positive growth rates for the ideal-MHD infinite-𝑛ballooning mode are
+observed near the plasma boundary, suggesting instability in that re-
+gion for profiles with strong pressure gradients. In reality, such unstable
+profiles would likely flatten toward profiles that are MHD-stable.
+It should be noted that even if linear ideal-MHD stability is vi-
+olated for some regimes, the plasma can still be non-linearly MHD
+stable [116,117]. Modeling tools to test non-linear MHD stability are
+under development [118].
+The resiliency of the equilibrium properties with respect to finite-
+beta effects have been optimized only indirectly via the QI optimiza-
+tion. Future optimized configurations could benefit from including
+additional metrics directly targeting the resiliency of MHD stability.
+Flux surface quality. A set of nested surfaces is crucial for plasma con-
+finement. In a stellarator field, nested flux surfaces are not guaranteed
+to exist. The electromagnetic coils need to be carefully optimized so
+that islands and stochastic regions are minimized within the confined
+volume. At the same time, reliable island divertor operation across dif-
+ferent plasma 𝛽values requires maintaining both stable island location
+and size.
+As plasma pressure increases, pressure-driven currents arise. These
+currents can significantly alter the vacuum field and ‘break’ flux sur-
+faces. In most previously proposed stellarator configurations, pressure-
+driven currents caused significant stochasticity of flux surfaces in a
+substantial portion of the plasma volume [117,119–124]. This phe-
+nomenon has been observed both in simulation and in experimentation.
+It is therefore critical to assess whether a set of nested flux surfaces
+is preserved as the plasma 𝛽increases. The (indirect) minimization
+of the Shafranov shift should also lead to good flux surface quality
+at finite 𝛽. To assess the flux surface quality at finite 𝛽, the HINT-
+3D equilibrium code [125,126] has been employed. This code does
+not rely on the assumption of the existence of a nested set of flux
+surfaces, unlike VMEC, making it suitable to analyze configurations with
+potential pressure-driven modifications.
+Fig. 13 shows that no signs of loss of confined plasma volume are
+visible as the plasma 𝛽increases. At 𝛽axis = 8.0% (which corresponds
+to ⟨𝛽⟩𝑉∼ 3.0%), HINT-3D calculates a Shafranov shift of ∼8.0%, which
+translates to a radial magnetic axis displacement of ≃0.1 m. Moreover,
+the 4∕4-island chain is well-preserved, while the resonant islands them-
+selves are moving slightly. The precise location and orientation of the
+resonant islands will need to be controlled with an array of correction
+coils, which are not further specified in this paper.
+Ambipolar radial electric field. Stellaris utilizes tungsten coatings as the
+primary material for both the first wall and the divertor. Experiments
+with tungsten divertors have shown that tungsten atoms can be sput-
+tered and potentially accumulate in the core of the plasma [127]. This
+accumulation can lead to a radiative collapse, causing operations to
+halt.
+A negative radial electric field (i.e., an electric field pointing radially
+inwards) is known to be a significant factor in driving heavy impurities
+toward the core [128,129]. Conversely, a positive radial electric field
+can act to ‘flush out’ these heavy impurities.
+Recent efforts have focused on developing methods to optimize
+stellarator configurations to achieve a positive electric field within the
+plasma core under reactor-relevant conditions (i.e., 𝑇𝑒≃𝑇𝑖) [71,108,
+130]. The proposed configuration has been optimized similarly to the
+configurations presented in [71]. Therefore, it is expected to support a
+positive radial electric field in reactor-relevant conditions as well.
+The 1-D NTSS [111] code has been used to compute the radial elec-
+tric field profile from the ambipolarity condition. The mono-energetic
+neoclassical transport coefficients for the necessary particle fluxes are
+calculated using the SFINCS code [107]. Details of the simulation
+Fig. 13. Poincaré plots of the cross-section at 𝜑= 𝜋
+4 at 2% (black) and 8% (red) peak
+𝛽values, corresponding to 1% and 4% volume averaged beta respectively. 𝑅is the
+cylindrical major radius (which is 0 in the center of the device) and 𝑍is the Cartesian
+coordinate. The cross section is mirror symmetric at the 𝑍= 0 plane. The analysis
+reveals preservation of good, nested flux surfaces as plasma 𝛽increases. The 4∕4 island
+chain remains intact across all relevant 𝛽values. The equilibrium magnetic field was
+calculated using the HINT-3D equilibrium code [125,126].
+set-up can be found in [108].
+The proposed configuration has the potential to support a positive
+radial electric field, as shown in Fig. 14. However, calculations based
+on the target design point and plasma profiles outlined in Section 2.3
+predict a negative electric field. By adjusting the operational point
+toward a higher electron temperature (𝑇𝑒,0
+= 19.8 k eV) and lower
+ion density (𝑛𝑖,0
+= 1.7 ⋅1020m−3), the configuration can achieve a
+positive radial electric field. This operational regime aligns with the 0-D
+analysis, but it comes at the expense of reduced fusion power output
+(𝑃fusion = 860 MW).
+While electron-root plasmas for reactor conditions are compelling
+to address impurity transport challenges, the radial location of the root
+transition is important: if it takes place at mid-radius, as in the case
+of Fig. 14 (orange line), it could potentially lead to an ‘annulus’ of
+impurity density accumulation at the region of the root transition, and
+therefore potentially to a radiative collapse of the plasma. Secondly, at
+the location of the root transition the radial electric field vanishes—in
+a stellarator, this is expected to lead to maximal neoclassical transport.
+Consequently, kinetic profiles might flatten at these locations. How-
+ever, this may not be a significant drawback if the root transition were
+located near the plasma edge, where turbulence shearing effects may
+enable advanced confinement regimes. Future research will explore this
+possibility in more detail.
+2.3. Physics performance
+To determine possible operational temperatures and densities, we
+chose an integrated treatment of the power balance to assess the
+required auxiliary power and the fusion gain. This method is sometimes
+referred to as a ‘0.5D’ treatment, as we calculate with an a priori
+assumed profile shape, but enforce the power balance by equating the
+integrated loss power with the integrated heating power, rather than
+solving a set of transport equations. In this paper, we will equivalently
+use the term ‘0D’ for this method, for simplicity. High-fidelity profile
+predictions are still the subject of active research [132–134], and only
+preliminary calculations are available for the Stellaris design.
+To obtain key parameters for the design point, we choose a simple
+parametrization of the ion density and electron temperature profiles:
+𝑇𝑒= 𝑇𝑒,0
+(1 −𝜌2)𝛼𝑇,
+(2)
+𝑛𝑖= 𝑛𝑖,0
+(1 −𝜌2)𝛼𝑛,
+(3)
+Fusion Engineering and Design xxx (xxxx) xxx 
+8 

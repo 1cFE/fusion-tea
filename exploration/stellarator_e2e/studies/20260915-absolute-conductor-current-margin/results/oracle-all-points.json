@@ -1,0 +1,27 @@
+{
+  "outcome": "pass",
+  "cases": 295,
+  "mapped_channels_per_case": 207,
+  "scalar_comparisons": 61065,
+  "predicate_comparisons": 5900,
+  "max_relative_deviation": 2.474163829169531e-12,
+  "failures": [],
+  "unmapped_native_channels": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__magnet__coil_length__c_coil",
+    "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+    "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event"
+  ]
+}

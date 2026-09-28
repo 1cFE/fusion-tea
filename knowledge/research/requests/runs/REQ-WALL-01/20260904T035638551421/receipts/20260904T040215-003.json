@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/23253093-d9a2-4820-96f5-668f3f9c2631/scratchpad/lion_2022_nf_stellarator_nwl.pdf",
+  "slug": "a_deterministic_method_for_the_fast_evaluation_and_2",
+  "path": "knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/",
+  "source_id": "15c2dc7ed897d6ae13b1fd60d33dbbc0b851528a746619274444c8857d98f0fe",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-04T04:02:15.496788+00:00"
+}

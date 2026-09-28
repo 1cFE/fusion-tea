@@ -1,0 +1,232 @@
+{
+  "schema_version": "preparation-preservation/v1",
+  "package_checkpoint": "a24f90809239c8c79382bef9a48a7d77e27b1693",
+  "capture_head": "a24f90809239c8c79382bef9a48a7d77e27b1693",
+  "status": "prior preparation evidence only; no native study points and no committed study record",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "136124cdac945a0ede3ecb067876694320652fe8878b392c44634f5d65223910",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "inputs/source_budget_accounting_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "d1aa04e629836d405efab0878fbb3936df94c0343644333212a019d8e8e445b7",
+      "semantic_fingerprint": "1a076482cb5f319094d97547bb35da8531e51b4ea09838bf6a4127869670b004"
+    }
+  },
+  "manifest_sha256": "6f00ee0a3a390223b831aaf2d96a902b8c406f68f0e8cdae95c8afa5700409c0",
+  "canonical_comparisons": 1048,
+  "canonical_predicates": 56,
+  "oracle_scan_points": 64,
+  "oracle_scan_refusals": 0,
+  "files": [
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/axes.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/axes.json",
+      "sha256": "1eacbf033b662d7d0fa6989cfde295c6c710fd55f035a26802d24b24374f8ea6",
+      "bytes": 8411
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/axis-plan.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/axis-plan.json",
+      "sha256": "e940476e899247e57b8560973a67ec09002c2e736ed8dcff6f235f726d2e22a3",
+      "bytes": 9831
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/canonical-author-receipt.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/canonical-author-receipt.json",
+      "sha256": "350c6a137f005a2a584215f91433f35ecc467945f7be15e6e554fb1f036763a0",
+      "bytes": 418344
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/development-canonical-check.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/development-canonical-check.json",
+      "sha256": "3fd167c09ec12600715aaccbf7c071927b8415a8c4f60304fb286a138d735a5f",
+      "bytes": 2198
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/generated-interface-inventory.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/generated-interface-inventory.json",
+      "sha256": "2f2a788580aa674234a5a10880b0d2a15a8c8a255a8e9fef607c76c37152b841",
+      "bytes": 182492
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/indicators.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/indicators.json",
+      "sha256": "c2acd6edb7290a5fc76fa84add779d1d8e40b712435a5bfa19253f03de720f48",
+      "bytes": 1510988
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/oracle-window-scan.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/oracle-window-scan.json",
+      "sha256": "42bdb6fd146293369259f08d725b88144cd1f9fbc8c20b827dc712bb9a54d9b2",
+      "bytes": 1425200
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/proposed-points.json",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/proposed-points.json",
+      "sha256": "090dff33f73da14b051579eaa22d2dd36afddb434f4aa619167a4486ea69f5fd",
+      "bytes": 1814488
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/record.md",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/record.md",
+      "sha256": "5e03106f10eaaa03a0b82253963ba2cd462a8b5301512858a7ded2291ffa1628",
+      "bytes": 9736
+    },
+    {
+      "source": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/replay-preparation.md",
+      "copy": "files/exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/replay-preparation.md",
+      "sha256": "a0937c91cc44fd6f14de43c83a3eb6589d7f24a27aa186899f1f55ef4778458a",
+      "bytes": 2868
+    },
+    {
+      "source": "exploration/aries_integrated/studies/ANNEX.md",
+      "copy": "files/exploration/aries_integrated/studies/ANNEX.md",
+      "sha256": "da8bed3f8bcd1420b5621b04535a0f7941825790d606123904e548c4a0eb420b",
+      "bytes": 5952
+    },
+    {
+      "source": "exploration/aries_integrated/studies/README.md",
+      "copy": "files/exploration/aries_integrated/studies/README.md",
+      "sha256": "67a68b9495e104f411174a15e5e5be3245d66e50843fe5e59cb954e25dabfc5f",
+      "bytes": 6243
+    },
+    {
+      "source": "exploration/aries_integrated/studies/axes.json",
+      "copy": "files/exploration/aries_integrated/studies/axes.json",
+      "sha256": "1eacbf033b662d7d0fa6989cfde295c6c710fd55f035a26802d24b24374f8ea6",
+      "bytes": 8411
+    },
+    {
+      "source": "exploration/aries_integrated/studies/equipment_bindings.py",
+      "copy": "files/exploration/aries_integrated/studies/equipment_bindings.py",
+      "sha256": "1a0c64f703a4ad0ba59130dcdb496025c270f404c08a9b37ebe7197832ab0dd5",
+      "bytes": 13819
+    },
+    {
+      "source": "exploration/aries_integrated/studies/equipment_oracle.py",
+      "copy": "files/exploration/aries_integrated/studies/equipment_oracle.py",
+      "sha256": "cf20068b6e8d0c3cbb2114c5cacba97d2ea09eb5e7c682d9770e52ed38450fab",
+      "bytes": 2952
+    },
+    {
+      "source": "exploration/aries_integrated/studies/equipment_proposals.py",
+      "copy": "files/exploration/aries_integrated/studies/equipment_proposals.py",
+      "sha256": "a223887baaf94816e1077c02ac08582ad989998f06437f007351c6097ea98d06",
+      "bytes": 6289
+    },
+    {
+      "source": "exploration/aries_integrated/studies/execute_study.py",
+      "copy": "files/exploration/aries_integrated/studies/execute_study.py",
+      "sha256": "7a475bc4e65d7efe1c3ca6927d478cc9e39f669f24231f0e513ddfd96b4f0627",
+      "bytes": 4187
+    },
+    {
+      "source": "exploration/aries_integrated/studies/interface_data.py",
+      "copy": "files/exploration/aries_integrated/studies/interface_data.py",
+      "sha256": "da98792d67571971163c74fcb129d4e7d4a114ef2a778415c2f0e35d054566b3",
+      "bytes": 98050
+    },
+    {
+      "source": "exploration/aries_integrated/studies/manifest.json",
+      "copy": "files/exploration/aries_integrated/studies/manifest.json",
+      "sha256": "6f00ee0a3a390223b831aaf2d96a902b8c406f68f0e8cdae95c8afa5700409c0",
+      "bytes": 75436
+    },
+    {
+      "source": "exploration/aries_integrated/studies/oracle_entry.py",
+      "copy": "files/exploration/aries_integrated/studies/oracle_entry.py",
+      "sha256": "5eb6620c68bdb5bf294622875671e3c7ddc3eb753e65871c0849cc99b7251b77",
+      "bytes": 11369
+    },
+    {
+      "source": "exploration/aries_integrated/studies/prepare_equipment_study.py",
+      "copy": "files/exploration/aries_integrated/studies/prepare_equipment_study.py",
+      "sha256": "54d47f70dc2952717ac6ffdb9f4d0397a391356af6ef831a038cf9b5feb74541",
+      "bytes": 8134
+    },
+    {
+      "source": "exploration/aries_integrated/studies/prepare_metadata.py",
+      "copy": "files/exploration/aries_integrated/studies/prepare_metadata.py",
+      "sha256": "4390c4d37c7d3e9cf370b340109a214586ba3a68fa02c91cea381c3318b518c9",
+      "bytes": 4832
+    },
+    {
+      "source": "exploration/aries_integrated/studies/study_route.py",
+      "copy": "files/exploration/aries_integrated/studies/study_route.py",
+      "sha256": "3c37f2047aa196d7bd0343d05bfd9ea77fd510bace3b226889a9f401d9df06d3",
+      "bytes": 13509
+    },
+    {
+      "source": "exploration/aries_integrated/studies/test_equipment_proposals.py",
+      "copy": "files/exploration/aries_integrated/studies/test_equipment_proposals.py",
+      "sha256": "96246aef335be85f7ffae6a100c4791863d007764938dc98cb7a13f143b3e1b2",
+      "bytes": 2729
+    },
+    {
+      "source": "exploration/aries_integrated/studies/test_oracle_entry.py",
+      "copy": "files/exploration/aries_integrated/studies/test_oracle_entry.py",
+      "sha256": "59cfe3e150a1a96c49944f6749a7beffc2add2d92f0616139e5f7c803f67ff9e",
+      "bytes": 1266
+    },
+    {
+      "source": "exploration/aries_integrated/studies/test_study_route.py",
+      "copy": "files/exploration/aries_integrated/studies/test_study_route.py",
+      "sha256": "0d88da1db5f875ed7f964e6af02a410d0e8654f639110eec795c603f50a163af",
+      "bytes": 2043
+    },
+    {
+      "source": "scripts/study/common.py",
+      "copy": "files/scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521",
+      "bytes": 5230
+    },
+    {
+      "source": "scripts/study/identity.py",
+      "copy": "files/scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e",
+      "bytes": 12326
+    },
+    {
+      "source": "scripts/study/indicators.py",
+      "copy": "files/scripts/study/indicators.py",
+      "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87",
+      "bytes": 39650
+    },
+    {
+      "source": "scripts/study/manifest.py",
+      "copy": "files/scripts/study/manifest.py",
+      "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee",
+      "bytes": 20717
+    },
+    {
+      "source": "scripts/study/preflight.py",
+      "copy": "files/scripts/study/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472",
+      "bytes": 21666
+    },
+    {
+      "source": "scripts/study/verify.py",
+      "copy": "files/scripts/study/verify.py",
+      "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba",
+      "bytes": 26431
+    },
+    {
+      "source": "work/active/WI-090_aries-integrated-equipment-and-costs/evidence/account-manifest.json",
+      "copy": "files/work/active/WI-090_aries-integrated-equipment-and-costs/evidence/account-manifest.json",
+      "sha256": "2f192f0838d37d308fdb7900a1a7c49ccd5eb4814a67889341f82fdf8f1d3822",
+      "bytes": 7401
+    }
+  ]
+}

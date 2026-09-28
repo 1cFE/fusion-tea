@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+  "margin": 3.552713678800501e-15,
+  "observed": {
+    "B_max_in": 24.9,
+    "B_peak": 24.899999999999995
+  },
+  "status": "satisfied"
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://www.ncbi.nlm.nih.gov/books/NBK598740/table/ch4.tab2/",
+  "slug": "atsdr_tungsten_physical_and_chemical_properties_table_4_2",
+  "path": "knowledge/sources/atsdr_tungsten_physical_and_chemical_properties_table_4_2/",
+  "source_id": "7a3c2d9d1e16d87ef04b6cf28bac696055a524e4204c83fe3f8935e0926b56ed",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:32:58.345398+00:00"
+}

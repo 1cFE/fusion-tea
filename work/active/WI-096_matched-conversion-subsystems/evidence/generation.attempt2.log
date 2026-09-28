@@ -1,0 +1,5 @@
+INFO: Generating code from /home/reid/1cfe/fusion-tea/exploration/component_alternatives/input_models
+INFO: Output to /home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea
+INFO: Package name: component_alternatives_tea
+INFO: Building pipeline context...
+ERROR: Model failed exact-route validation: SI_ID_UNSTABLE: <model>: AssertConstraintUsage has no reload-stable qualified declaration identity

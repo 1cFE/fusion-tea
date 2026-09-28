@@ -1,0 +1,36 @@
+{
+  "request_id": "REQ-MCR-CRYO-01",
+  "run": "knowledge/research/requests/runs/REQ-MCR-CRYO-01/20260915T134156635935",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties",
+      "path": "knowledge/sources/nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties/",
+      "source_id": "6992fc4a372745b3b6a852c4df75eb3f98065db9babb29599a9a2520ee113665",
+      "pre_existing": false
+    },
+    {
+      "slug": "layered_thermal_insulation_systems_for_cryogenic",
+      "path": "knowledge/sources/layered_thermal_insulation_systems_for_cryogenic/",
+      "source_id": "8773476b3ddab256f03703af1bf8f2384d7628a72c5fb1d35fa850a0c88d7841",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "/tmp/T004-cern-leads.pdf",
+      "reason": "input file not found: /tmp/T004-cern-leads.pdf"
+    },
+    {
+      "candidate": "https://cds.cern.ch/record/1026941/files/at-2007-005.pdf",
+      "reason": "Elevated fetch returns HTML Anubis access challenge instead of PDF; requires accessible primary-author copy or operator retrieval."
+    },
+    {
+      "candidate": "https://at-mel-cf.web.cern.ch/resources/Leads_4LB09_last.pdf",
+      "reason": "Elevated DNS failure for departmental CERN mirror; cern.ch short URL redirects to same unresolved host. No source bytes obtained."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

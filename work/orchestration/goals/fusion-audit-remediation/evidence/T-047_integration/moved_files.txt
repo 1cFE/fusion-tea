@@ -1,0 +1,1 @@
+exploration/stellarator_e2e/generated/contracts/package_contract.json

@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/cool-circ-transfer/cit.pdf",
+  "slug": "ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987",
+  "path": "knowledge/sources/ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987/",
+  "source_id": "600c6ad7048753e0b7932ee3e6e9fa9772c5e6254666abad68fe20739fb427d8",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:11:50.090991+00:00"
+}

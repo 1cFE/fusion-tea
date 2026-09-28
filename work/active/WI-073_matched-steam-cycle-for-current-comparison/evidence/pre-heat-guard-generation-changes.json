@@ -1,0 +1,218 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "a0c1402981893bffa18885ed06c140467743f137f89b5cd28b65803d0846ec1d",
+    "after": "1c7faf83bc88be63a3efa9c90ebdb98bdbb9a0a77e78a6791b7d4e29cfb80655"
+  },
+  "__init__.py": {
+    "before": "6fcdef989571c0b6cc873fe85636425bccfc4ce34ce8d7ad6a26ae94b4aaf646",
+    "after": "71b6cc8493800c66fde34ca1ee9123b10a569d1b20211837674f847357560cf2"
+  },
+  "contracts/generation_manifest.json": {
+    "before": "068d9934118c19870f7110ef2f61126f0200996a6a42073c407aa90c08d1b662",
+    "after": "7716976bd4f609ad97f3b412ca869c1778e99a1680c5a618ea1d03bf2f9879dc"
+  },
+  "contracts/model_contract.json": {
+    "before": "b7fdb93770c90b9ae78805295160bc36312565721366c2eb9e3ce68bdee4d2e9",
+    "after": "6d111c672b1486b41aacbdc7c0aa6c3bde836cd82503510448d99b03c879f29c"
+  },
+  "contracts/package_contract.json": {
+    "before": "2371b52f6d0bb5d3b452dc50867528455ea5a55eaf8208e26d32b8352a30527f",
+    "after": "9c6c440d0d78a7b35ee6f9c25047e419239c8837a8a1b0e92997401485460aac"
+  },
+  "handwritten/mfe_matched_steam_cycle/__init__.py": {
+    "before": null,
+    "after": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+    "before": "882da53dc568d480744597a81e0b29210135ebafb85f32c069c2758f67bc0420",
+    "after": "df8d435deb7222089baeeebfb12559524febf2612cb59b291c21d4485e28a966"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+    "before": "d315c98e07aa0c4b5d923f5dcddd5f799b3f4ea4ff6c8dec55f0936f940d0b4d",
+    "after": "37ad0458ae2d312635dc8756a166d16704c55b572e9491198e09aae534db7913"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+    "before": "027e7f4055d2b2f26e17c93d9d422d2c05c01266db19f223167bcb1cecb9aae6",
+    "after": "654993dad08c945b129accdf11d6e64a0c4379cca131f1a89978e9c628c84605"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+    "before": "5a38d5b11016ce4f2f842718979b37264c3a379a53f97f429d5ebda6105da612",
+    "after": "601b163bd6597c29b0330259e4620370925f40fb2a93988245e2df471b3bd2ce"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+    "before": "39cfb9af84267ff9c29a922256a45955d3a357c9c681083fffe3b691c9e43659",
+    "after": "632fd9ae0b611160e68f12738561b3758958a9f81096f8c47db44d1d1d5e1f59"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+    "before": "5e0509589a488a976603c095ac30e7460903797a864a088aefba390b8cf83f98",
+    "after": "b5c06bfcb088f29821a08bc08df7045384adb3a3bd57186ebf8aee977a41417b"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+    "before": "301447129374e426b5c676d58c931891d6e03c5da80914f3fbbe276682464660",
+    "after": "d03aa25320260c240bc74ea40719fca7f53e361b000a171546dabf19400bcbdf"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+    "before": "cf7987a59d988ad4ee65511b4e720613e6a8c31fb10fb1858bca20f60964d123",
+    "after": "3a842016830bdd4cbdf956a23542f7678724e6d63e690226e34b0c8cb086cc68"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+    "before": "6f4b2870bc69942a3fa85c7a3cb0fed1b61d71cee23009a57902a82350dbfeec",
+    "after": "065531ed2329f352fa1c1ff3d36d830552d98b1e0620cf9d89603336add8cd48"
+  },
+  "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+    "before": "9816680db657b77a75ec9e89217a4f85544e1ebae1c22042de1edf1a670da74e",
+    "after": "037cdadd0a4a6236c64ce1f5df61b18f88ade0dc659c54592fe4889d2a86b3e6"
+  },
+  "handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py": {
+    "before": "4e8f6eb6b02d37ebc2b51be22c4311c6573fee34596f8642e084057e431ef8bb",
+    "after": "1e4ccab4ce339f435c6b8891d08a042f67d3f528e40af4143a051187a0068925"
+  },
+  "handwritten/mfe_power_balance/reactor_source_heat_impl.py": {
+    "before": "a44860398f548b94d90a08856db3be6ef1eba1f5a2291b630434f507e3fea6d7",
+    "after": "2fcd78e132969a3583613cb142f93bb4b322571b2c95c9c6ff97923ab303794a"
+  },
+  "handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py": {
+    "before": "32c7bdff27b51509545086323fdcf3301f2eab85bc1f7cc15f5a3a3dc92a8ced",
+    "after": "6f0f1f1a79b9af7ab7d68356f66479419d6fabcd904bb6b649f3720af50a1b98"
+  },
+  "handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py": {
+    "before": "34971f19f67339c099d1b2646d895b489f801b3403814e777a15977cfa1e7dbb",
+    "after": "386f294309d1e1ce9e69470414461496e9366a89e11755f1056eb298bb8347bb"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "f3a030cedb3bf15a7ccad328aada8038e66522bbb4db12afd6b999c562b7e7e3",
+    "after": "1c52deccb34492cdadcc6e5331b46931985c2c1098f583941e88e5c9ad37c09e"
+  },
+  "inputs/mfe_plant_systems_params.json": {
+    "before": "883eecfc416d7fecc7061d4b8d32c993f41fba537f941a8222ce9e1b17e0e91d",
+    "after": "bda8499c1bdeef2ca69717598d7d423471dc999f3c25f5f79564d071da903983"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "ebed292a07ebfe4e840927d27851809ffd005353a32360a2dfb0a09125ad3b15",
+    "after": "f275419460d50ed1c303fa48530c4ec35cb6dce85c9a3f8bbf22d6265a36dc92"
+  },
+  "modules/constraints/constraintreportaggregatormodule.py": {
+    "before": "1feb5a063b1d81a4777adab1817b1b0aee931359a6d935acf1971a9b267b7093",
+    "after": "67e5c5cddb25b7cc02407c0099d4efc2a530fefac7b6e1ed5fe02001fd45ce84"
+  },
+  "modules/constraints/predicates.py": {
+    "before": "8c215c57b145a149d088ffb6280e409327085a0350600a669750d0e58b89257c",
+    "after": "1fa524997cc089f71cb3d9666a4f58ac10a0afb1c331b55f5d70603cf99d41f1"
+  },
+  "modules/mfe_matched_steam_cycle/__init__.py": {
+    "before": null,
+    "after": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1"
+  },
+  "modules/mfe_matched_steam_cycle/cooling_water_rejection.py": {
+    "before": null,
+    "after": "33c5d9c5a0e1260adec4ad624b271bd1e2e1ddd1c3c019c681a661a0c74566e7"
+  },
+  "modules/mfe_matched_steam_cycle/cycle_mode_selection.py": {
+    "before": null,
+    "after": "4fb6df8a1be7c3b32e204ba19487227a596eb798338b302465f21e1db5b794f1"
+  },
+  "modules/mfe_matched_steam_cycle/matched_steam_cycle.py": {
+    "before": null,
+    "after": "889d4cd5347da41d3fc4b1861ae5c39474f5d9a03d807f75680b0c63db8b18ad"
+  },
+  "modules/mfe_plant/mfe_power_plant/bop_capital.py": {
+    "before": "09413e7e21626483ebac8ae201d138f2fc2e83c07f927b50bdf10a37a75fecd6",
+    "after": "251609730c0a34d1965c2763ddf924405db425930402c75b6f38b2fb80adacd1"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas20_capital.py": {
+    "before": "a687e3e0ad8010823e5d0f510eee6a19307e8cb068fee39e1184cdfc02986ce3",
+    "after": "0fc7225a383b4cdc02438799f193466b12e5554bb48d9244cc598e9042bdd685"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas22_capital.py": {
+    "before": "230eba73dc940e0a74963d39903ef859daefb89c0988ac10e40f9fe9fbfef563",
+    "after": "de045388e3a302bcf4d69344da7d926330d3728cdabff696bea803536e6c432a"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py": {
+    "before": "c5cfe788226d29a9ac7a224da657b0de05c7fe65fe8bd2d171af91dcfb7f3f4f",
+    "after": "c7dc592cd5d2fd6578dc4edfd798a6f59765839688ff29c8c14f71a62466ea8f"
+  },
+  "modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py": {
+    "before": "04f74aea58baf5ddd83738ffd729cf67ec7d6b085f9f48a4a32d6ea395a89871",
+    "after": "5e0d3437805e859d26b5180e72e944f73e2d11366330bfca9ec093c56313ff94"
+  },
+  "modules/mfe_plant/mfe_power_plant/overnight_capital.py": {
+    "before": "8e2211656afd4aac76798f4aceb8c9b22307f6cb510082fc9ad27899b9112cdb",
+    "after": "3dc816b11c8364358bf399f7a33fce2692b7a6157417c0f0dc6fa1780ed6ffce"
+  },
+  "modules/mfe_plant/mfe_power_plant/powercore_capital.py": {
+    "before": "75ff9e94f278c55ea4e2df1c2e70fa2994657389c3fccf87f0d10cebef1126ae",
+    "after": "b11733b6072ba9810ce93a2dd50232a6ec820789eab03d48ad180224a3684844"
+  },
+  "modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py": {
+    "before": "ec02f4f6d5f57fca374409205dfb0e4116cb9a6130a77545ab8f49daf2f330b3",
+    "after": "6575b9ce4613fd1dd040661251ad8d67657909e57c6051d899426f51f7ba8378"
+  },
+  "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": {
+    "before": "d487ad3f1f2afd9807e4dba244baa6ef4df09336a4934839ec5ba500c4bdbaa4",
+    "after": "3f12213c5680c7ddb2950f29c5f9b42e6f653e400d41e7518de4de9f02c6fd12"
+  },
+  "modules/mfe_plant/mfe_power_plant/total_capital.py": {
+    "before": "ed3defb6a08c870e73f37979a69544d2161c0932e1a7715fe75c4bba24aae836",
+    "after": "a732f0dd4612efa330ce1356b793a08ef8fa308bc631d1abfb4e3e95882f3f3c"
+  },
+  "modules/mfe_power_balance/mfe_power_balance_calc.py": {
+    "before": "26ccde628b45014b080f6f86f290a4adc7d93276a58fd23b61e3b1a91c4806e2",
+    "after": "ed870170ecaea91681c3189358831a248e5e0644fb3a8f264b52f8953ccf3f4c"
+  },
+  "modules/mfe_power_balance/reactor_source_heat.py": {
+    "before": "4267d1de8d68d3d96c8e7942dad811412ea9b1510390663ad8efc8e06eb60aab",
+    "after": "5e8758fb7c98495a4e90a9b466e035030aabc3d592c3ec3a4167ed7698a602c0"
+  },
+  "modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py": {
+    "before": "ad59bb038cd54092eb822f04582e5c1804c401f021d2092c0c0620a5d8e7da63",
+    "after": "ee3e6beb6709dcb71942e50f96488f2b95b0fdd34d61935341aecba1b0c0ecd5"
+  },
+  "modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py": {
+    "before": "62a473d5357d2b678757f5dbd21c4d1e5a9a2abebec79c9c9617459ead74ea4e",
+    "after": "3a4925f09b62ff6d95c7229af26058d8b9743aef90b09a995fbc3e1e7a823a5e"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "f3e5c9b43d6afdaad02e5e1e60e8c43c07a7f681cbb69d1a07704fd5230fed96",
+    "after": "aeb97b94aa4c2e96c5ba21100b456251855dd39d85c9798d5836b7683bf9c0e5"
+  },
+  "modules/stellarator_09/stellariscoolingwaterheatdirectionconstraintmodule.py": {
+    "before": null,
+    "after": "cce149ae5481612646a8e05df8023efc3e42e2a7592889ced711ba882e8707ec"
+  },
+  "modules/stellarator_09/stellarismatchedmainheatdirectionconstraintmodule.py": {
+    "before": null,
+    "after": "b01a3260cd8dfbc011af182b19a4fd3961d55c28d427708a5598da59cbee80b0"
+  },
+  "modules/stellarator_09/stellarismatchedreheatheatdirectionconstraintmodule.py": {
+    "before": null,
+    "after": "a83f497e608ef1a7691e046e5fe2945e3042883006ee24be59d0bdfd17bb5a22"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "0b81c80b449573724f44795903ae794bb9272fca01b4647a40bf477662bfd7ef",
+    "after": "a7ed00152e2c459ee4080dd0c39d5521ee2c593485633c33e5ec4a68bf30b04b"
+  },
+  "schemas/cooling_water_rejection_output.py": {
+    "before": null,
+    "after": "01d75c38dbf63ceed5252082db534b6ea3b314d48d09503cc490d6af4e4b8c09"
+  },
+  "schemas/cycle_mode_selection_output.py": {
+    "before": null,
+    "after": "046767cd509026d45b727159011506abeaa97d46fb012bfd39558eb59195e4aa"
+  },
+  "schemas/matched_steam_cycle_output.py": {
+    "before": null,
+    "after": "d59648023d150ef3ad7f712ffd615b037a8be67a59bf7fa61d9ebe0319abddbb"
+  },
+  "schemas/mfe_plant_systems_params.py": {
+    "before": "21289946587174e33c73f1eb8c689b3ede62b4bae55802985b4963fb3648ca84",
+    "after": "377616514b3252c095f0918175ec9219fe83b59975c71c318736f5f18ddb35d8"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "016c87147fcc044986d2b20134aa4367b61ab1a42c17861344f1c207db595da7",
+    "after": "d0c691ad0e3b3c8bb171565b52fadd43bb94692511b8e25c57d895e8c3025a2a"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "3662ebf0ab84ddfcf0a679310752ea70240026635b6921b89b1c5f0685c9a428",
+    "after": "31f92bc56e37f864d47fe3b3eb9ee85092157837346497d1df17deae79f81ccc"
+  }
+}

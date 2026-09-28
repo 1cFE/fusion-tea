@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://raw.githubusercontent.com/mit-crpg/TIMCAT/efd801ad7c1530d6c58b342c55765b523b67cc89/PWR12_ME_inflated_reduced.csv",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T01:23:28.068675+00:00"
+}

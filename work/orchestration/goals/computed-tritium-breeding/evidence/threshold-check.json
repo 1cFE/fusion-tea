@@ -1,0 +1,63 @@
+{
+  "scope": "Existing balance arithmetic only; recovery values are assumptions, not source evidence or plant predictions.",
+  "blanket_extraction": 1.0,
+  "inventory_decay": 0.0,
+  "reserve_growth": 0.0,
+  "cases": [
+    {
+      "exhaust_recovery": 0.99,
+      "burn": 1.0,
+      "injected": 20.0,
+      "exhaust": 19.0,
+      "permanent_loss": 0.19000000000000017,
+      "requirement": 1.1900000000000002,
+      "held_production": 1.074,
+      "physical_reading_margin": -0.1160000000000001,
+      "old_floor_margin": 0.02400000000000002
+    },
+    {
+      "exhaust_recovery": 0.995,
+      "burn": 1.0,
+      "injected": 20.0,
+      "exhaust": 19.0,
+      "permanent_loss": 0.09500000000000008,
+      "requirement": 1.0950000000000002,
+      "held_production": 1.074,
+      "physical_reading_margin": -0.02100000000000013,
+      "old_floor_margin": 0.02400000000000002
+    },
+    {
+      "exhaust_recovery": 0.9961052631578947,
+      "burn": 1.0,
+      "injected": 20.0,
+      "exhaust": 19.0,
+      "permanent_loss": 0.0740000000000004,
+      "requirement": 1.0740000000000003,
+      "held_production": 1.074,
+      "physical_reading_margin": -2.220446049250313e-16,
+      "old_floor_margin": 0.02400000000000002
+    },
+    {
+      "exhaust_recovery": 0.999,
+      "burn": 1.0,
+      "injected": 20.0,
+      "exhaust": 19.0,
+      "permanent_loss": 0.019000000000000017,
+      "requirement": 1.0190000000000001,
+      "held_production": 1.074,
+      "physical_reading_margin": 0.05499999999999994,
+      "old_floor_margin": 0.02400000000000002
+    },
+    {
+      "exhaust_recovery": 1.0,
+      "burn": 1.0,
+      "injected": 20.0,
+      "exhaust": 19.0,
+      "permanent_loss": 0.0,
+      "requirement": 1.0,
+      "held_production": 1.074,
+      "physical_reading_margin": 0.07400000000000007,
+      "old_floor_margin": 0.02400000000000002
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "20260926-design-study-component-alternatives-b": {
+    "snapshot_sha256": "ea6b9de7cf242c88f764a9a997aadd1b6d813560b5c0953e84e63a7aeef9928e",
+    "artifacts_checked": 720
+  },
+  "20260926-design-study-component-alternatives": {
+    "snapshot_sha256": "1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641",
+    "artifacts_checked": 635
+  },
+  "verified_report_files_match": true,
+  "findings_ids_joined": [
+    "20260926-design-study-component-alternatives-b#1",
+    "20260926-design-study-component-alternatives-b#2",
+    "20260926-design-study-component-alternatives-b#3",
+    "20260926-design-study-component-alternatives-b#4",
+    "20260926-design-study-component-alternatives-b#5",
+    "20260926-design-study-component-alternatives-b#6"
+  ],
+  "archived_initial_review_sha256": "3dce51056b125fb259c838d5ddb42b59553224c8afe9fd308604c036a1033bb0"
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/stellarator_e2e/generated",
+    "manifest": "exploration/stellarator_e2e/studies/manifest.json",
+    "axis_declaration": "exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/axes.json",
+    "identity_document": "exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/package_identity.json",
+    "baseline_result": "exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "73addd9ed9896928fe0e282cca61a547c05179b550371850e23de33c9ed9a41a",
+    "baseline_result": "0ec42e4f4a9ed8334bdd5954a351863024ca1e7f93dda209b3c21772d07b999e",
+    "identity_document": "ade544b52d050893679ef539c0c513d5fd4b29af9ca9d5f6d107f8277f07fb52",
+    "manifest": "e4f76a7daf6ab95a1cf1415dd96325db856c3090d24b7f9bd6df272e06994a95"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "6 declared keys across 6 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "pass"
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 0.000e+00; 25/25 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

@@ -1,0 +1,86 @@
+{
+  "all_checks_pass": true,
+  "arithmetic": "exact rational",
+  "checks": [
+    {
+      "case": "fixed_geometry_proportional_current",
+      "current_ratio": "1/2",
+      "relative_fields": [
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "case": "fixed_geometry_proportional_current",
+      "current_ratio": "1",
+      "relative_fields": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "case": "fixed_geometry_proportional_current",
+      "current_ratio": "2",
+      "relative_fields": [
+        "2",
+        "2"
+      ]
+    },
+    {
+      "case": "homothetic_geometry_including_pack",
+      "length_ratio": "1/2",
+      "relative_fields": [
+        "2",
+        "2"
+      ]
+    },
+    {
+      "case": "homothetic_geometry_including_pack",
+      "length_ratio": "1",
+      "relative_fields": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "case": "homothetic_geometry_including_pack",
+      "length_ratio": "2",
+      "relative_fields": [
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "case": "pack_side_doubled_at_fixed_coil_centreline_and_current",
+      "omitted_term_prediction": "1",
+      "relative_fields": [
+        "7/8",
+        "5/8"
+      ]
+    },
+    {
+      "case": "coil_centreline_scaled_but_pack_held",
+      "omitted_term_prediction": "1/2",
+      "relative_fields": [
+        "5/8",
+        "7/8"
+      ]
+    }
+  ],
+  "conclusion": "One normalized reference value cannot identify two positive coefficients. Current scaling and full geometric similarity remove that ambiguity in relative response; independent pack or non-similar geometry changes do not.",
+  "illustrative_reference_second_term_fractions": [
+    "1/4",
+    "3/4"
+  ],
+  "schema_version": "field-identifiability-proof/v1",
+  "scope": "Synthetic normalized algebra only; no physical calibration or geometry qualification",
+  "script_sha256": "f12b2ed0eb999ee8a4037d8141eac0111867dbde19bf732bd007fce91f6f1c17",
+  "source_equation": "Lion2021 Eq39; thesis2023 Eqs2.65/2.66 establish axis convention and scaling",
+  "source_sha256": {
+    "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/images/lion_2021_nf_stellarator_process.pdf-0009-19.png": "36c93e8d3f131d08dcb458781e21729cf5f7b8e199dcff8c56b5ba3bee1a7556",
+    "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/output.md": "b0bfb0c0dc24645945121f5ffbb27d0d2059fb804a5f44910cbb5b66f9d765c0",
+    "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/images/lion_2023_phd_thesis_stellarator_systems_code_models.pdf-0067-03.png": "445cc55423fc5136861028d9d12dcc7137dbb37f91bffbaa87176d972d4bef3e",
+    "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/images/lion_2023_phd_thesis_stellarator_systems_code_models.pdf-0067-05.png": "16161da44bf5cc6cfc230141f5bdadbb435e36641366136433b4d387d085e0b8",
+    "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/output.md": "4d58343e8b46f79cb2bd806aba9a9837cf454057ccd54fbef7218e9ee51b5964"
+  }
+}

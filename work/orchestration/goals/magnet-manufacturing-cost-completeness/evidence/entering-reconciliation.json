@@ -1,0 +1,51 @@
+{
+  "source": "exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/results/baseline_result.json",
+  "executed_under": {
+    "identity_digest": "c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be",
+    "store_id": "exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/results/_work/stellarator-baseline-point-v1.db",
+    "case_id": "stellarator-baseline-point-v1:c0000"
+  },
+  "units": "USD nominal mixed/partly normalized bases; not a reconciled common-year total",
+  "tape": 731571428.5714288,
+  "external_materials": {
+    "copper": 4700258.639999999,
+    "solder": 8859919.781807616,
+    "steel": 2359756.7999999993,
+    "helium": 34774.15261034517
+  },
+  "winding_operations": 750415091.6602907,
+  "pack": 1497941229.6061373,
+  "all_in_support": 209080880.68635386,
+  "magnet": 1707022110.2924912,
+  "nonmagnet_allowance": 34155617.209747344,
+  "conductor_m": 321600.0,
+  "support_kg": 11615604.482575215,
+  "checks": {
+    "external_material_sum": {
+      "computed": 15954709.374417959,
+      "native": 15954709.374417959,
+      "pass": true
+    },
+    "pack_sum": {
+      "computed": 1497941229.6061373,
+      "native": 1497941229.6061373,
+      "pass": true
+    },
+    "magnet_sum": {
+      "computed": 1707022110.2924912,
+      "native": 1707022110.2924912,
+      "pass": true
+    },
+    "tape_metre_basis": {
+      "computed": 731571428.5714288,
+      "native": 731571428.5714288,
+      "pass": true
+    },
+    "support_effective_rate": {
+      "computed": 209080880.68635386,
+      "native": 209080880.68635386,
+      "pass": true
+    }
+  },
+  "limitation": "Support is an all-in scenario, not an observed stock/fabrication split. No unpriced term is assigned zero by this reconciliation."
+}

@@ -1,0 +1,48 @@
+/* Layout glue for the embedded viewer; the reading styles come from write-up.css. */
+body.writeup { display: block; height: auto; }
+.writeup .viewer-shell { display: flex; flex-direction: column; border: 1px solid var(--rule); font-size: 14px; line-height: 1.45; min-width: 0; }
+.writeup .article .viewer-shell section { display: block; }
+.writeup .workspace { height: 70vh; min-height: 500px; }
+.writeup .panel { width: 32%; min-width: 220px; }
+.writeup .toolbar { gap: 8px; }
+.writeup .toolbar input[type=search] { width: 150px; }
+.writeup .evo { padding: 0 14px 20px; }
+.writeup .evo-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.writeup .evo-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+.writeup .evo-nav select { max-width: 100%; width: 100%; }
+.writeup .evo h3 { font-size: 19px; margin: 14px 0 4px; }
+.writeup .evo h4 { font-size: 13px; margin: 16px 0 6px; }
+.writeup .evo p, .writeup .evo li { font-size: 14px; }
+.writeup .evo-mono, .writeup .evo-where, .writeup .evo-calc, .writeup .evo-src { overflow-wrap: anywhere; }
+.writeup .evo pre { max-width: 100%; box-sizing: border-box; }
+.writeup .viewer-shell .evo-title { display: none; }
+.writeup #evolution-viewer { margin-bottom: 0; min-width: 0; }
+.writeup #frame-record th { min-width: 10rem; vertical-align: top; }
+.writeup #frame-record td:last-child { min-width: 18rem; }
+html.evo-expanded .writeup .viewer-shell { position: fixed; inset: 0; z-index: 20; background: white; }
+html.evo-expanded .writeup .workspace { min-height: 0; height: auto; }
+html.evo-expanded .writeup .evo-nav select { width: auto; max-width: 300px; }
+@media (max-width: 700px) {
+  .writeup .workspace { flex-direction: column; height: 650px; }
+  .writeup .graph-pane { min-height: 370px; }
+  .writeup .panel { width: 100%; min-width: 0; height: 210px; border-left: 0; border-top: 1px solid var(--rule); }
+  .writeup .evo-cols { grid-template-columns: minmax(0, 1fr); }
+  .writeup .evo-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .writeup .evo-nav { gap: 6px; }
+  .writeup .evo-nav input[type=range] { min-width: 100px; flex-basis: 110px; }
+  html.evo-expanded .writeup .graph-pane { min-height: 0; }
+}
+@media (max-width: 700px) {
+  .writeup #frame-record table, .writeup #frame-record tbody, .writeup #frame-record tr, .writeup #frame-record th, .writeup #frame-record td { display: block; min-width: 0; width: auto; }
+  .writeup #frame-record thead { display: none; }
+  .writeup #frame-record tr { border-bottom: 1px solid var(--rule); padding-block: 1rem; }
+  .writeup #frame-record td::before { content: attr(data-label); display: block; font-weight: 600; margin-bottom: .4rem; }
+}
+
+.writeup .evo-actions { background: var(--surface); }
+.writeup .evo-actions button { border-color: var(--accent); color: var(--accent); }
+.writeup .evo-actions button:first-child { background: var(--accent); color: white; }
+
+.writeup .theme-group > h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+.writeup .theme-intro { margin-block: 0; }
+.writeup .theme-group > section:first-of-type > h3 { margin-top: 1.5rem; }

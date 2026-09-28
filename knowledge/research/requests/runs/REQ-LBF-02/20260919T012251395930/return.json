@@ -1,0 +1,26 @@
+{
+  "request_id": "REQ-LBF-02",
+  "run": "knowledge/research/requests/runs/REQ-LBF-02/20260919T012251395930",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "mit_timcat_pwr12_me_civil_reference_cost_csv_pinned_html",
+      "path": "knowledge/sources/mit_timcat_pwr12_me_civil_reference_cost_csv_pinned_html/",
+      "source_id": "a555257877cb617788e7f9d56e763b7d9c8ada05e69f307d4b1358480a26f1db",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://raw.githubusercontent.com/mit-crpg/TIMCAT/efd801ad7c1530d6c58b342c55765b523b67cc89/PWR12_ME_inflated_reduced.csv",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://raw.githubusercontent.com/mit-crpg/TIMCAT/efd801ad7c1530d6c58b342c55765b523b67cc89/readme.md",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

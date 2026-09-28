@@ -1,0 +1,967 @@
+F................EEEEEFEFEEE....s........F.....FFFFF..FFF.F........      [100%]
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_the_summary_validates_against_its_schema ________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_summary_validates_aga0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_summary_validates_aga0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_the_summary_is_a_superset_of_the_committed_field_set __
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_summary_is_a_superset0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_summary_is_a_superset0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+___ ERROR at setup of test_parity_holds_at_the_committed_order_of_magnitude ____
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_parity_holds_at_the_commi0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_parity_holds_at_the_commi0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_every_catalog_constraint_is_rederived_with_its_operand_count _
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_every_catalog_constraint_0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_every_catalog_constraint_0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_stratification_covers_every_observed_verdict_combination _
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_stratification_covers_eve0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_stratification_covers_eve0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_the_derived_seed_reproduces_from_the_recorded_fields __
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_derived_seed_reproduc0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_derived_seed_reproduc0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_____ ERROR at setup of test_cas27_is_compared_and_nothing_is_undisclosed ______
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_cas27_is_compared_and_not0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_cas27_is_compared_and_not0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_________ ERROR at setup of test_the_command_carries_no_absolute_paths _________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_command_carries_no_ab0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_command_carries_no_ab0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_the_operand_bindings_digest_is_the_documented_canonicalization _
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_operand_bindings_dige0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_the_operand_bindings_dige0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+=================================== FAILURES ===================================
+____________________ test_every_constraint_operand_resolves ____________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+oracle_entry = <module 'oracle_entry' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py'>
+
+    def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
+        entries = catalog_entries(real_package_path)
+        assert len(entries) == 20
+        bindings = oracle_entry.operand_bindings()
+        channels = oracle_entry.evaluate(BASELINE_POINT)
+        inputs = package_inputs(real_package_path)
+    
+        assert set(bindings) == {entry["constraint_id"] for entry in entries}
+        assert len(inputs) == 273 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+        resolved = 0
+        for entry in entries:
+            cid = entry["constraint_id"]
+            assert cid in bindings, f"no published bindings for constraint {cid}"
+            ir = json.loads(entry["predicate_ir"])  # the IR is a JSON *string*
+            for operand in feature_refs(ir):
+                name = operand["reference"]["source_name"]
+                assert name in bindings[cid], f"{cid}: operand {name!r} has no published binding"
+                binding = bindings[cid][name]
+                assert binding["kind"] in ("input", "channel"), binding
+                pool = inputs if binding["kind"] == "input" else channels
+                assert binding["key"] in pool, (
+                    f"{cid}/{name} binds to {binding['key']!r}, which is not "
+                    f"a package {binding['kind']}"
+                )
+                resolved += 1
+>       assert resolved == 29
+E       assert 30 == 29
+
+tests/study/test_operand_bindings.py:120: AssertionError
+___________________ test_stratification_is_a_floor_not_a_cap ___________________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_stratification_is_a_floor0')
+
+    def test_stratification_is_a_floor_not_a_cap(promoted_run, tmp_path):
+        """Asked for one row, every stratum still appears."""
+        out = tmp_path / "summary.json"
+>       run_verify(promoted_run, out, "--sample-size", "1", expect=0)
+
+tests/study/test_verify.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_stratification_is_a_floor0/summary.json')
+expect = 0, extra = ('--sample-size', '1')
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+________________ test_an_explicit_seed_is_recorded_as_explicit _________________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_an_explicit_seed_is_recor0')
+
+    def test_an_explicit_seed_is_recorded_as_explicit(promoted_run, tmp_path):
+        out = tmp_path / "summary.json"
+>       run_verify(promoted_run, out, "--seed", "beef", expect=0)
+
+tests/study/test_verify.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12820/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12820/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12820/test_an_explicit_seed_is_recor0/summary.json')
+expect = 0, extra = ('--seed', 'beef')
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12820/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py
+E             ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py
+E             ?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...torcurrentokconstraintmodule.py\n?? exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_____________________________ test_fixture_binding _____________________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+
+    def test_fixture_binding(real_package_path):
+        """Fixtures are bound to the fingerprint they were derived against (spec)."""
+        live = manifest.read_semantic_fingerprint(real_package_path)
+>       assert live == EXPECTED_SEMANTIC_FINGERPRINT, (
+            "package regenerated — re-derive the expectation files from the new package, "
+            "never patch them to match"
+        )
+E       AssertionError: package regenerated — re-derive the expectation files from the new package, never patch them to match
+E       assert 'f1340dda1471...67214483c2ed8' == 'd61aff71c088...278c56ec55386'
+E         
+E         - d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386
+E         + f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8
+
+tests/study/test_known_answers.py:151: AssertionError
+____________________ test_known_answer[availability_direct] ____________________
+
+axis = 'availability_direct'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_known_answer(axis, report):
+        """Field for field: operand class per reached operand, operator, bound_vs_bound,
+        both objective lists, sibling candidates, and the module/channel counts."""
+        got = group_by_axis(report, axis)
+        expected = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
+>       assert got == expected
+E       assert {'axis': 'ava....}, ...], ...} == {'axis': 'ava....}, ...], ...}
+E         
+E         Omitting 11 identical items, use -vv to show
+E         Differing items:
+E         {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]} != {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]}
+E         {'constraints_unreachable': [{'b...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/study/test_known_answers.py:169: AssertionError
+_______________________ test_known_answer[interest_rate] _______________________
+
+axis = 'interest_rate'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_known_answer(axis, report):
+        """Field for field: operand class per reached operand, operator, bound_vs_bound,
+        both objective lists, sibling candidates, and the module/channel counts."""
+        got = group_by_axis(report, axis)
+        expected = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
+>       assert got == expected
+E       assert {'axis': 'int....}, ...], ...} == {'axis': 'int....}, ...], ...}
+E         
+E         Omitting 11 identical items, use -vv to show
+E         Differing items:
+E         {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]} != {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]}
+E         {'constraints_unreachable': [{'b...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/study/test_known_answers.py:169: AssertionError
+_____________________________ test_known_answer[R] _____________________________
+
+axis = 'R'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_known_answer(axis, report):
+        """Field for field: operand class per reached operand, operator, bound_vs_bound,
+        both objective lists, sibling candidates, and the module/channel counts."""
+        got = group_by_axis(report, axis)
+        expected = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
+>       assert got == expected
+E       assert {'axis': 'R',...], ...}], ...} == {'axis': 'R',...], ...}], ...}
+E         
+E         Omitting 10 identical items, use -vv to show
+E         Differing items:
+E         {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]} != {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]}
+E         {'constraints_reachable': [{'bou...
+E         
+E         ...Full output truncated (3 lines hidden), use '-vv' to show
+
+tests/study/test_known_answers.py:169: AssertionError
+_____________________________ test_known_answer[a] _____________________________
+
+axis = 'a'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_known_answer(axis, report):
+        """Field for field: operand class per reached operand, operator, bound_vs_bound,
+        both objective lists, sibling candidates, and the module/channel counts."""
+        got = group_by_axis(report, axis)
+        expected = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
+>       assert got == expected
+E       assert {'axis': 'a',...], ...}], ...} == {'axis': 'a',...], ...}], ...}
+E         
+E         Omitting 10 identical items, use -vv to show
+E         Differing items:
+E         {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]} != {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]}
+E         {'constraints_reachable': [{'bou...
+E         
+E         ...Full output truncated (3 lines hidden), use '-vv' to show
+
+tests/study/test_known_answers.py:169: AssertionError
+__________________________ test_known_answer[I_coil] ___________________________
+
+axis = 'I_coil'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_known_answer(axis, report):
+        """Field for field: operand class per reached operand, operator, bound_vs_bound,
+        both objective lists, sibling candidates, and the module/channel counts."""
+        got = group_by_axis(report, axis)
+        expected = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
+>       assert got == expected
+E       assert {'axis': 'I_c...], ...}], ...} == {'axis': 'I_c...], ...}], ...}
+E         
+E         Omitting 10 identical items, use -vv to show
+E         Differing items:
+E         {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]} != {'bounds': [{'bound_vs_bound': False, 'constraint_id': 'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'defini...finition_qualified_name': "mfe_heating_chain::'Heating Efficiency Positive'", 'operand_classes': ['bound'], ...}, ...]}
+E         {'constraints_reachable': [{'bou...
+E         
+E         ...Full output truncated (3 lines hidden), use '-vv' to show
+
+tests/study/test_known_answers.py:169: AssertionError
+_________________ test_matches_the_item_1_fixture_contract[R] __________________
+
+axis = 'R'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_matches_the_item_1_fixture_contract(axis, report):
+        no_response, constraints, objectives, fired, tainted = FIXTURE_CONTRACT[axis]
+        group = group_by_axis(report, axis)
+        assert group["group_valid"] is True
+        assert group["no_constraint_response"] is no_response
+>       assert sorted(c["source_local_identity"] for c in group["constraints_reachable"]) == constraints
+E       AssertionError: assert ['beta_ok', '...city_ok', ...] == ['beta_ok', '...city_ok', ...]
+E         
+E         At index 10 diff: 'reference_conductor_current_ok' != 'sustainment_ok'
+E         Left contains one more item: 'wp_stress_ok'
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:178: AssertionError
+_________________ test_matches_the_item_1_fixture_contract[a] __________________
+
+axis = 'a'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_matches_the_item_1_fixture_contract(axis, report):
+        no_response, constraints, objectives, fired, tainted = FIXTURE_CONTRACT[axis]
+        group = group_by_axis(report, axis)
+        assert group["group_valid"] is True
+        assert group["no_constraint_response"] is no_response
+>       assert sorted(c["source_local_identity"] for c in group["constraints_reachable"]) == constraints
+E       AssertionError: assert ['beta_ok', '...city_ok', ...] == ['beta_ok', '...city_ok', ...]
+E         
+E         At index 10 diff: 'reference_conductor_current_ok' != 'sustainment_ok'
+E         Left contains one more item: 'wp_stress_ok'
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:178: AssertionError
+_______________ test_matches_the_item_1_fixture_contract[I_coil] _______________
+
+axis = 'I_coil'
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    @pytest.mark.parametrize("axis", CASES)
+    def test_matches_the_item_1_fixture_contract(axis, report):
+        no_response, constraints, objectives, fired, tainted = FIXTURE_CONTRACT[axis]
+        group = group_by_axis(report, axis)
+        assert group["group_valid"] is True
+        assert group["no_constraint_response"] is no_response
+>       assert sorted(c["source_local_identity"] for c in group["constraints_reachable"]) == constraints
+E       AssertionError: assert ['beta_ok', '...city_ok', ...] == ['beta_ok', '...city_ok', ...]
+E         
+E         At index 10 diff: 'reference_conductor_current_ok' != 'sustainment_ok'
+E         Left contains one more item: 'wp_stress_ok'
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:178: AssertionError
+___________ test_I_coil_reaches_the_field_constraints_through_calcs ____________
+
+report = {'axis_declaration': {'digest': '6794e8b4d3a643d45cf8bfb499e82ada37de3940f9b31c93a4f2cbcbdd92609b', 'groups_declared':...me-quantity identity across differing key names', 'intra-module operand dependency (the trace is module-level)']}, ...}
+
+    def test_I_coil_reaches_the_field_constraints_through_calcs(report):
+        """WI-035 gave the coil-current lever the field-side constraints (beta_ok,
+        peak_field_ok, wp_stress_ok). WI-037 extends its reach through the ISS04
+        sustainment chain: B feeds tau_E, the ash/fuel state, and p_aux_required,
+        so I_coil now also reaches sustainment_ok and — through the computed fuel —
+        the whole fusion-derived chain (net_positive, recirc_ok, wall_load_ok).
+        This is the structural close of discovery row 20260823-magnet-technology-ab#4
+        ("field is never rewarded"): the field lever finally has a path to fusion
+        power. Computed-vs-bound throughout, with two exceptions: net_positive is
+        computed vs a literal 0, and since WI-039 sustainment_ok is computed vs
+        *computed* — its installed side is the heating chain's coupled power, not the
+        held p_input it used to be."""
+        group = group_by_axis(report, "I_coil")
+        reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
+        # WI-036 adds cond_strain_ok: the winding-pack sizing chain runs off I_coil,
+        # so the conductor's own check is reached by the same lever that reaches the
+        # structure's -- the conductor is not left unchecked by the field sweep.
+        # WI-043 adds burn_hold_ok: the lower half of the sustainment condition reads the
+        # same computed operand, so every lever that reaches sustainment_ok reaches it.
+        # WI-045 (goal plant-closure, 2026-09-08) adds the two loop fences and the cycle
+        # domain fence: the reactor source heat sizes the loop's flow from the fusion power,
+        # so every lever that reaches fusion reaches loop_pressure_ok, loop_capacity_ok and
+        # cycle_domain_ok (the cycle reads the loop's outlet).
+        # WI-047 (goal plant-closure, 2026-09-08) adds divertor_heat_ok: the ledger's absorbed
+        # heating is the sustainment chain's alpha heating plus the coupled heating, so every
+        # lever that reaches the sustainment chain reaches the computed target peak.
+>       assert set(reached) == {
+            "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
+            "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
+            "burn_hold_ok", "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+            "divertor_heat_ok", "wp_fit_ok",
+        }
+E       AssertionError: assert {'beta_ok', '...city_ok', ...} == {'beta_ok', '...city_ok', ...}
+E         
+E         Extra items in the left set:
+E         'reference_conductor_current_ok'
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:225: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves
+FAILED tests/study/test_verify.py::test_stratification_is_a_floor_not_a_cap
+FAILED tests/study/test_verify.py::test_an_explicit_seed_is_recorded_as_explicit
+FAILED tests/study/test_known_answers.py::test_fixture_binding - AssertionErr...
+FAILED tests/study/test_known_answers.py::test_known_answer[availability_direct]
+FAILED tests/study/test_known_answers.py::test_known_answer[interest_rate] - ...
+FAILED tests/study/test_known_answers.py::test_known_answer[R] - assert {'axi...
+FAILED tests/study/test_known_answers.py::test_known_answer[a] - assert {'axi...
+FAILED tests/study/test_known_answers.py::test_known_answer[I_coil] - assert ...
+FAILED tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]
+FAILED tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]
+FAILED tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]
+FAILED tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs
+ERROR tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+ERROR tests/study/test_verify.py::test_the_summary_is_a_superset_of_the_committed_field_set
+ERROR tests/study/test_verify.py::test_parity_holds_at_the_committed_order_of_magnitude
+ERROR tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+ERROR tests/study/test_verify.py::test_stratification_covers_every_observed_verdict_combination
+ERROR tests/study/test_verify.py::test_the_derived_seed_reproduces_from_the_recorded_fields
+ERROR tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed
+ERROR tests/study/test_verify.py::test_the_command_carries_no_absolute_paths
+ERROR tests/study/test_verify.py::test_the_operand_bindings_digest_is_the_documented_canonicalization
+13 failed, 44 passed, 1 skipped, 2 warnings, 9 errors in 205.98s (0:03:25)

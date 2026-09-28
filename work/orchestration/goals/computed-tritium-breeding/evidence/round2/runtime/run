@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root=$(cd "$(dirname "$0")/../../../../../../.." && pwd)
+runtime="$root/.codex-test/breeding-transport"
+export PATH="$runtime/env/bin:$PATH"
+export OPENMC_CROSS_SECTIONS="$runtime/data/cross_sections.xml"
+export OMP_NUM_THREADS="${OMP_NUM_THREADS:-2}"
+exec "$root/.codex-test/run" "$runtime/env/bin/python" "$@"

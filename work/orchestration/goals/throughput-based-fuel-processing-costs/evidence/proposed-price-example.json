@@ -1,0 +1,64 @@
+{
+  "status": "Proposal only; source/account review and owner adoption pending. Not an integrated model or complete plant cost.",
+  "capacity_margin": 1.0,
+  "capacity_margin_basis": "No extra reserve priced; no standby train or reliability claim.",
+  "flow_kg_D_plus_T_per_running_day": 12.911794045007683,
+  "flow_ratio": 7.184714457024397,
+  "source_exponent": 0.3,
+  "price_basis": "2025 CPI purchasing power, not contemporary equipment-price escalation.",
+  "year_assumptions": "Installation uses capital expenditure year as proxy; containment 1978\u20131982 uses 1980 central scenario.",
+  "rows": [
+    {
+      "function": "transfer pumps",
+      "raw_capital_usd": 111000.0,
+      "raw_installation_usd": 112000.0,
+      "year_scenario": 1977,
+      "cpi_ratio": 5.311881188118812,
+      "source_reference_capital_2025": 589618.8118811881,
+      "source_reference_installation_2025": 594930.6930693069,
+      "at_current_flow_capital_2025": 1065354.5991795573,
+      "at_current_flow_installation_2025": 1074952.3883613553
+    },
+    {
+      "function": "fuel cleanup",
+      "raw_capital_usd": 1000000.0,
+      "raw_installation_usd": 70000.0,
+      "year_scenario": 1980,
+      "cpi_ratio": 3.906553398058252,
+      "source_reference_capital_2025": 3906553.398058252,
+      "source_reference_installation_2025": 273458.7378640776,
+      "at_current_flow_capital_2025": 7058568.257487227,
+      "at_current_flow_installation_2025": 494099.7780241059
+    },
+    {
+      "function": "cryogenic distiller",
+      "raw_capital_usd": 1237000.0,
+      "raw_installation_usd": 63000.0,
+      "year_scenario": 1978,
+      "cpi_ratio": 4.9371165644171775,
+      "source_reference_capital_2025": 6107213.190184048,
+      "source_reference_installation_2025": 311038.3435582822,
+      "at_current_flow_capital_2025": 11034837.303738713,
+      "at_current_flow_installation_2025": 562000.6064151487
+    },
+    {
+      "function": "secondary containment",
+      "raw_capital_usd": 182000.0,
+      "raw_installation_usd": 30000.0,
+      "year_scenario": 1980,
+      "cpi_ratio": 3.906553398058252,
+      "source_reference_capital_2025": 710992.7184466019,
+      "source_reference_installation_2025": 117196.60194174756,
+      "at_current_flow_capital_2025": 1284659.4228626753,
+      "at_current_flow_installation_2025": 211757.04772461683
+    }
+  ],
+  "included_capital_2025": 20443419.583268173,
+  "included_direct_installation_2025": 2342809.8205252266,
+  "included_total_2025": 22786229.4037934,
+  "containment_year_only_total_range": {
+    "1978": 23180989.577015813,
+    "1982": 22567582.023116916
+  },
+  "exclusions": "Storage, additional plant-wide analysis/monitoring/control, effluent and emergency systems, blanket extraction/conditioning, buildings, fuel purchases/startup stock and other unpriced scope in proposed-cost-scope.md; included packages contain some local controls. Containment is limited purchased scope, with some source boxes supplied free; not all plant-area containment or ORNL multiplied support coverage. No LCOE impact asserted."
+}

@@ -1,0 +1,28 @@
+.....F..F..F.....                                                        [100%]
+=================================== FAILURES ===================================
+_ test_native_publication_refuses_before_replacing_evidence[absent-20260912-plant-closure] _
+tests/study/test_native_publication.py:81: in test_native_publication_refuses_before_replacing_evidence
+    assert (tmp_path / name).read_bytes() == previous
+E   AssertionError: assert b'candidate_i...e,satisfied\n' == b'previous evidence\n'
+E     
+E     At index 0 diff: b'c' != b'p'
+E     Use -v to get more diff
+_ test_native_publication_refuses_before_replacing_evidence[null-20260912-plant-closure] _
+tests/study/test_native_publication.py:81: in test_native_publication_refuses_before_replacing_evidence
+    assert (tmp_path / name).read_bytes() == previous
+E   AssertionError: assert b'candidate_i...e,satisfied\n' == b'previous evidence\n'
+E     
+E     At index 0 diff: b'c' != b'p'
+E     Use -v to get more diff
+_ test_native_publication_refuses_before_replacing_evidence[nan-20260912-plant-closure] _
+tests/study/test_native_publication.py:81: in test_native_publication_refuses_before_replacing_evidence
+    assert (tmp_path / name).read_bytes() == previous
+E   AssertionError: assert b'candidate_i...e,satisfied\n' == b'previous evidence\n'
+E     
+E     At index 0 diff: b'c' != b'p'
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260912-plant-closure]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260912-plant-closure]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260912-plant-closure]
+3 failed, 14 passed in 0.13s

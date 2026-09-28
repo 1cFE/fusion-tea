@@ -1,0 +1,44 @@
+{
+  "source_pdf_sha256": "80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c",
+  "inspected_pdf_pages": [
+    1,
+    282,
+    283,
+    284,
+    285,
+    286,
+    319
+  ],
+  "printed_locator_map": {
+    "282": "263:Section12.2",
+    "283": "264:cycle-efficiency comparison scope",
+    "284": "265:Figure12.8 and12.9",
+    "285": "266:Figure12.10 and station-load caveat",
+    "286": "267:supercritical-cycle discussion, distinct from superheated",
+    "319": "300:source bibliography"
+  },
+  "figure12_8_visible_labels": {
+    "main_steam_pressure_MPa": 15,
+    "feedwater_to_SG_C": 280,
+    "condensing_side_temperature_label_C": 30,
+    "intermediate_pressure_labels_MPa": [
+      3,
+      1
+    ],
+    "pump_discharge_label_MPa": 16,
+    "feedheating_labels_C": [
+      80,
+      130,
+      180,
+      230,
+      280
+    ]
+  },
+  "conditional_transplant_check": {
+    "current_salt_return_to_pump_C": 269.6647299145299,
+    "source_illustrated_feedwater_C": 280,
+    "cold_end_gap_K": -10.335270085470086,
+    "status": "negative gap; illustrated cycle cannot be transplanted unchanged into current countercurrent SG salt span"
+  },
+  "important_limit": "Figure12.8 is representative cycle evidence; exact Kovari regression dataset and per-point assumptions have not been reproduced."
+}

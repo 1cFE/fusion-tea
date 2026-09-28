@@ -1,0 +1,39 @@
+{
+  "codegen_produced": [
+    "IMPLEMENTATION_BACKLOG.md",
+    "__init__.py",
+    "contracts/generation_manifest.json",
+    "contracts/model_contract.json",
+    "contracts/verify.py",
+    "inputs/__init__.py",
+    "inputs/dual_blanket_heat_params.json",
+    "modules/__init__.py",
+    "modules/aries_dual_blanket_heat/__init__.py",
+    "modules/aries_dual_blanket_heat/heliumcapacityokconstraintmodule.py",
+    "modules/aries_dual_blanket_heat/inter_coolant_exchange/__init__.py",
+    "modules/aries_dual_blanket_heat/inter_coolant_exchange/absent_boundary_exchange_mw.py",
+    "modules/aries_dual_blanket_heat/pblicapacityokconstraintmodule.py",
+    "modules/constraints/__init__.py",
+    "modules/constraints/constraintreportaggregatormodule.py",
+    "modules/constraints/predicates.py",
+    "modules/dual_circuit_heat_accounting/__init__.py",
+    "modules/dual_circuit_heat_accounting/coolant_branch_heat.py",
+    "modules/dual_circuit_heat_accounting/dual_circuit_heat_ledger.py",
+    "modules/mfe_viability/__init__.py",
+    "modules/mfe_viability/offered_capacity_screen.py",
+    "pipelines/__init__.py",
+    "pipelines/pipeline.yaml",
+    "primitives.py",
+    "schemas/__init__.py",
+    "schemas/constraint_types.py",
+    "schemas/dual_blanket_heat_params.py",
+    "schemas/dual_circuit_heat_ledger_output.py",
+    "schemas/offered_capacity_screen_output.py",
+    "tests/__init__.py",
+    "tests/test_implementations_runnable.py"
+  ],
+  "handwritten_globs": [
+    "handwritten/**"
+  ],
+  "runtime_globs": []
+}

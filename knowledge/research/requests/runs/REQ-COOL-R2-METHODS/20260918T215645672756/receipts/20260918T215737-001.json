@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://idaes-pse.readthedocs.io/en/2.7.0/_modules/idaes/models/costing/SSLW.html",
+  "slug": "idaes_2_7_sslw_equipment_costing_implementation",
+  "path": "knowledge/sources/idaes_2_7_sslw_equipment_costing_implementation/",
+  "source_id": "961acb44344737d31c895f07e8b7f55fb5d8256ddab1dc1b09762e9d665f4c8b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T21:57:37.799194+00:00"
+}

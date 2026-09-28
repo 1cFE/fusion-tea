@@ -1,0 +1,218 @@
+{
+ "compat": {
+  "recirc_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "rec_frac": 0.3325626292668907,
+    "threshold": 0.5
+   }
+  },
+  "loop_pressure_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "p_loop_margin_in": 7699503.225174673
+   }
+  },
+  "loop_capacity_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "mdot_loop_in": 215.04584992810234,
+    "mdot_loop_rated_in": 225.07777777777778
+   }
+  },
+  "cycle_domain_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "domain_product_in": 15552.0
+   }
+  }
+ },
+ "P1": {
+  "recirc_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "rec_frac": 0.26402516671983356,
+    "threshold": 0.5
+   }
+  },
+  "loop_pressure_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "p_loop_margin_in": 7661790.363503654
+   }
+  },
+  "loop_capacity_ok": {
+   "oracle": "violated",
+   "package": "violated",
+   "agree": true,
+   "operands": {
+    "mdot_loop_in": 228.1414234683378,
+    "mdot_loop_rated_in": 225.07777777777778
+   }
+  },
+  "cycle_domain_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "domain_product_in": 15552.0
+   }
+  }
+ },
+ "P3": {
+  "recirc_ok": {
+   "oracle": "violated",
+   "package": "violated",
+   "agree": true,
+   "operands": {
+    "rec_frac": 0.5269002172397199,
+    "threshold": 0.5
+   }
+  },
+  "loop_pressure_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "p_loop_margin_in": 6791224.272211342
+   }
+  },
+  "loop_capacity_ok": {
+   "oracle": "violated",
+   "package": "violated",
+   "agree": true,
+   "operands": {
+    "mdot_loop_in": 431.30453393065153,
+    "mdot_loop_rated_in": 225.07777777777778
+   }
+  },
+  "cycle_domain_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "domain_product_in": 15552.0
+   }
+  }
+ },
+ "P4": {
+  "recirc_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "rec_frac": 0.21661322229463523,
+    "threshold": 0.5
+   }
+  },
+  "loop_pressure_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "p_loop_margin_in": 7675006.800210456
+   }
+  },
+  "loop_capacity_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "mdot_loop_in": 223.63938796404156,
+    "mdot_loop_rated_in": 225.07777777777778
+   }
+  },
+  "cycle_domain_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "domain_product_in": 15552.0
+   }
+  }
+ },
+ "S_T350": {
+  "recirc_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "rec_frac": 0.24451574881049679,
+    "threshold": 0.5
+   }
+  },
+  "loop_pressure_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "p_loop_margin_in": 7699503.225174673
+   }
+  },
+  "loop_capacity_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "mdot_loop_in": 215.04584992810234,
+    "mdot_loop_rated_in": 225.07777777777778
+   }
+  },
+  "cycle_domain_ok": {
+   "oracle": "violated",
+   "package": "violated",
+   "agree": true,
+   "operands": {
+    "domain_product_in": -16848.0
+   }
+  }
+ },
+ "S_N7": {
+  "recirc_ok": {
+   "oracle": "violated",
+   "package": "violated",
+   "agree": true,
+   "operands": {
+    "rec_frac": 0.5659633129515843,
+    "threshold": 0.5
+   }
+  },
+  "loop_pressure_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "p_loop_margin_in": 6798012.9006986935
+   }
+  },
+  "loop_capacity_ok": {
+   "oracle": "violated",
+   "package": "violated",
+   "agree": true,
+   "operands": {
+    "mdot_loop_in": 430.0916998562047,
+    "mdot_loop_rated_in": 225.07777777777778
+   }
+  },
+  "cycle_domain_ok": {
+   "oracle": "satisfied",
+   "package": "satisfied",
+   "agree": true,
+   "operands": {
+    "domain_product_in": 15552.0
+   }
+  }
+ }
+}

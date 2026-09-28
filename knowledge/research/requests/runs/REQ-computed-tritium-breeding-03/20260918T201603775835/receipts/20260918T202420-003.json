@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/iaea-0281-original.pdf",
+  "slug": "iaea_indc_nds_281_original_neutron_multiplication_benchmark",
+  "path": "knowledge/sources/iaea_indc_nds_281_original_neutron_multiplication_benchmark/",
+  "source_id": "6df35c07b049385d326f0a71cee069b464d9a4b848cc6ad7717fb4be8616a2c0",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:24:20.773447+00:00"
+}

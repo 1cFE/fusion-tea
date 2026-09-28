@@ -1,0 +1,26 @@
+{
+  "request_id": "REQ-COOL-INSTALL-01",
+  "run": "knowledge/research/requests/runs/REQ-COOL-INSTALL-01/20260918T213031349204",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "inl_markets_and_economics_for_thermal_power_extraction_from",
+      "path": "knowledge/sources/inl_markets_and_economics_for_thermal_power_extraction_from/",
+      "source_id": "fec51bddcae7f50089196c288cabda8b29aa44905b53d14c933e04a534a3044b",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://art.inl.gov/NGNP/Subcontractors%20Documents/General%20Atomics/NGNP%20High%20Temperature%20Process%20Heat%20Transfer%20and%20Transport%20Study.pdf",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://art.inl.gov/NGNP/INL%20Documents/Year%202011/Independent%20Evaluation%20of%20Costs%20of%20Major%20Capital%20Items%20for%20High%20Temperature%20Gas%20Cooled%20Reactors.pdf",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

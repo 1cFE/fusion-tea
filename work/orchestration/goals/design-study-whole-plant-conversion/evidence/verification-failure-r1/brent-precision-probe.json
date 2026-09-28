@@ -1,0 +1,53 @@
+{
+  "kind": "diagnostic in-process Brent stopping-precision experiment only; no acceptance change",
+  "case": "gas-favourable::gas-q2500-m2500-r1.8-ua40-40-60",
+  "candidate_id": "20260927-design-study-whole-plant-conversion:c1868",
+  "source_sha256_before": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417",
+  "source_sha256_after": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417",
+  "files_unchanged": true,
+  "solver_calls": [
+    {
+      "outlet": 39.11820057461562,
+      "residual": -2.8350655156827997e-11,
+      "xtol": 5e-324,
+      "rtol": 8.881784197001252e-16
+    }
+  ],
+  "scalar_comparisons": 1192,
+  "failed_comparisons": [],
+  "predicate_comparisons": 125,
+  "predicate_mismatches": [],
+  "precooler_outputs": {
+    "whole_plant_conversion__plant__water_pre__evaluate__evaluation_defined": 1.0,
+    "whole_plant_conversion__plant__water_pre__evaluate__failure_code": 0.0,
+    "whole_plant_conversion__plant__water_pre__evaluate__duty": 53.466386605122175,
+    "whole_plant_conversion__plant__water_pre__evaluate__water_inlet_after_C": 25.06171436763265,
+    "whole_plant_conversion__plant__water_pre__evaluate__water_outlet_C": 39.11820057461562,
+    "whole_plant_conversion__plant__water_pre__evaluate__water_flow": 909.9133017969382,
+    "whole_plant_conversion__plant__water_pre__evaluate__pump_electric": 0.23482108634386692,
+    "whole_plant_conversion__plant__water_pre__evaluate__total_rejection": 53.70120769146604,
+    "whole_plant_conversion__plant__water_pre__evaluate__min_gap": 0.00014231813401721638,
+    "whole_plant_conversion__plant__water_pre__evaluate__required_ua": 59.99999999997165,
+    "whole_plant_conversion__plant__water_pre__evaluate__ua_residual": -2.8350655156827997e-11,
+    "whole_plant_conversion__plant__water_pre__evaluate__energy_residual": 3.969047313034935e-15,
+    "whole_plant_conversion__plant__water_pre__evaluate__flow_margin": 99090.08669820306,
+    "whole_plant_conversion__plant__water_pre__evaluate__power_margin": 29.765178913656133,
+    "whole_plant_conversion__plant__water_pre__evaluate__duty_margin": 1946.5336133948779,
+    "whole_plant_conversion__plant__water_pre__evaluate__bracket_low_ua": 4.501026684274192,
+    "whole_plant_conversion__plant__water_pre__evaluate__bracket_high_ua": 99.05568782116445
+  },
+  "operating_outputs": {
+    "whole_plant_conversion__plant__gas_operating__evaluate__upstream_electric_MW": 273.60976709237633,
+    "whole_plant_conversion__plant__gas_operating__evaluate__net_export_MW": -38.951076845482135,
+    "whole_plant_conversion__plant__gas_operating__evaluate__standby_MW": 8.537567041872167,
+    "whole_plant_conversion__plant__gas_operating__evaluate__annual_export_MWh": -272969.1465331388,
+    "whole_plant_conversion__plant__gas_operating__evaluate__annual_import_MWh": 14957.817457360034,
+    "whole_plant_conversion__plant__gas_operating__evaluate__annual_net_grid_MWh": -287926.96399049886,
+    "whole_plant_conversion__plant__gas_operating__evaluate__annual_import_cost": 747890.8728680017,
+    "whole_plant_conversion__plant__gas_operating__evaluate__auxiliary_heat_MW": 125.20643196039195,
+    "whole_plant_conversion__plant__gas_operating__evaluate__auxiliary_margin_MW": 74.79356803960805,
+    "whole_plant_conversion__plant__gas_operating__evaluate__primary_motor_loss_MW": 0.0,
+    "whole_plant_conversion__plant__gas_operating__evaluate__power_residual": 0.0,
+    "whole_plant_conversion__plant__gas_operating__evaluate__domain_supported": 1.0
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "p_wallplug_heat",
+      "note": "Proposed sensitivity: installed electric capacity at fixed plasma and efficiencies. Complete single-attribute entry group; installed delivered and coupled powers are computed.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__p_wallplug_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "f_alpha_fast",
+      "note": "Proposed assumption sensitivity and supported plasma-demand control. Retained alpha fraction remains within [0,1]; held source/coupling efficiencies do not change. No claim that this fraction is freely achievable by engineering.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__f_alpha_fast",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T_i0",
+      "note": "DECLINED sensitivity candidate. Temperature-only preliminary probe remained positive; density provides signed demand without changing temperature. Complete single-attribute expansion. Candidate probe retained.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "n_e0",
+      "note": "SWEPT sensitivity. Public electron-density control with installed heating, efficiencies, source-held f_ren and temperature fixed. Coordinated zero arm separately changes retained-alpha fraction; no engineering density-limit or feasible-plant claim. Complete single-attribute expansion.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

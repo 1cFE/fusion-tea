@@ -1,0 +1,1424 @@
+{
+  "outcome": "pass",
+  "scope": "Paired native numerical isolation; unchanged old physics is not independently validated by this check",
+  "cases": [
+    {
+      "proposal_id": "reference--manufacturing-700",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--manufacturing-1000",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--sample-220",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--sample-270",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--orientation-2",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--orientation-3",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--cabling_factor-0.8",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--degradation_factor-0.8",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--sharing_factor-0.8",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--orientation-3-combined-0.9",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "reference--orientation-3-combined-0.8",
+      "anchor_id": "reference",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--manufacturing-700",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--manufacturing-1000",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--sample-220",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--sample-270",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--orientation-2",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--orientation-3",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--cabling_factor-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--degradation_factor-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--sharing_factor-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--orientation-3-combined-0.9",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5--orientation-3-combined-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--manufacturing-700",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--manufacturing-1000",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--sample-220",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--sample-270",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--orientation-2",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--orientation-3",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--cabling_factor-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--degradation_factor-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--sharing_factor-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--orientation-3-combined-0.9",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6--orientation-3-combined-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.6",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--manufacturing-700",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--manufacturing-1000",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--sample-220",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--sample-270",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--orientation-2",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--orientation-3",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--cabling_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--degradation_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--sharing_factor-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--orientation-3-combined-0.9",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0--orientation-3-combined-0.8",
+      "anchor_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--manufacturing-700",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--manufacturing-1000",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--sample-220",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--sample-270",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--orientation-2",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--orientation-3",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--cabling_factor-0.8",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--degradation_factor-0.8",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--sharing_factor-0.8",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--orientation-3-combined-0.9",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m013--orientation-3-combined-0.8",
+      "anchor_id": "m013",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--manufacturing-700",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--manufacturing-1000",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--sample-220",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--sample-270",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--orientation-2",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--orientation-3",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--cabling_factor-0.8",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--degradation_factor-0.8",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--sharing_factor-0.8",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--orientation-3-combined-0.9",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m031--orientation-3-combined-0.8",
+      "anchor_id": "m031",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--manufacturing-700",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--manufacturing-1000",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--sample-220",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--sample-270",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--orientation-2",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--orientation-3",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--cabling_factor-0.8",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--degradation_factor-0.8",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--sharing_factor-0.8",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--orientation-3-combined-0.9",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m049--orientation-3-combined-0.8",
+      "anchor_id": "m049",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "m000--orientation-3-independence",
+      "anchor_id": "m000",
+      "scalar_comparisons": 212,
+      "predicate_comparisons": 19,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    }
+  ],
+  "scalar_comparisons": 37524,
+  "predicate_comparisons": 3363
+}

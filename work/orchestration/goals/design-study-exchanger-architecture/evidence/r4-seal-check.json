@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "snapshot_sha256": "3b927ef10a9bf69549c5e807cd9b4fc6bca5d6c2da17665bc613fd09157584cc",
+  "artifact_hashes_checked": 1546,
+  "current_package_archive_files_equal": 205,
+  "original_package_archive_files_equal": 180,
+  "round1_artifact_hashes_checked": 873,
+  "record_numbered_sections": 17,
+  "reviewed_local_links_missing": 0,
+  "original_diagrams_exact_to_commit": "afd96d51",
+  "corrected_diagram": "r3-connections.svg/png",
+  "replay_cases": 1277,
+  "replay_compared_fields": [
+    "inputs",
+    "outputs",
+    "verdicts",
+    "state",
+    "executable_fingerprint"
+  ],
+  "replay_exact": true,
+  "replay_receipt_sha256": "75c8680b598247e9da634955881017f45912002ddae216b869cd8e7e097fd204",
+  "sealed_record_unchanged_since": "846c098be3f41b0373fda58753cd9f319168b784"
+}

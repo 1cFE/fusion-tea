@@ -1,0 +1,42 @@
+{
+  "provenance": "engineered",
+  "choices": {
+    "burn": [
+      0.025,
+      0.05,
+      0.1
+    ],
+    "recovery": [
+      0.99,
+      0.999,
+      1.0
+    ],
+    "density": [
+      4.554e+20,
+      5.06e+20,
+      5.5660000000000007e+20
+    ],
+    "downtime": [
+      0.0,
+      0.1,
+      0.5
+    ],
+    "price": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "margin": [
+      1.0,
+      1.25,
+      1.5
+    ],
+    "containment-date": [
+      65.2,
+      82.4,
+      96.5
+    ]
+  },
+  "unique_candidates": 20,
+  "selection": "Finite one-factor and matched-account controls; no feasible-boundary claim."
+}

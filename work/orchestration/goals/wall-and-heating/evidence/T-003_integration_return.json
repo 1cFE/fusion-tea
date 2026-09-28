@@ -1,0 +1,208 @@
+{
+  "schema_version": "integration-seam-return/v1",
+  "tool": {
+    "path": "scripts/integrate.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "1aa085461236a4c449b73e318b56908400b375d354c3b990705c090e933c1513",
+      "files": [
+        {
+          "path": "scripts/integrate.py",
+          "sha256": "f4d3c9056111aa3844a3cfb8008488f56002d66863e05b4bb407f4bdd79b5f87"
+        },
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/integrate.py",
+    "--audited-work",
+    "work/active/WI-039_heating-system-structure@ba7098a2",
+    "--models-root",
+    "exploration/stellarator_e2e/models",
+    "--package",
+    "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--groups",
+    "tests/study/data/axes.known_answers.json",
+    "--census-file",
+    "tests/models/data/mfe_census.json",
+    "--expected-semantic-fingerprint",
+    "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+    "--expected-executable-fingerprint",
+    "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "--expected-teax-revision",
+    "744745f895677f3344b9884627369a6a47ed987f",
+    "--route-sys-path",
+    "exploration/stellarator_e2e/studies",
+    "--route-module",
+    "study_route",
+    "--route-callable",
+    "execute_baseline",
+    "--out-dir",
+    "/tmp/integration-run-wi039"
+  ],
+  "request": {
+    "audited_work": [
+      {
+        "path": "work/active/WI-039_heating-system-structure",
+        "commit": "ba7098a2"
+      }
+    ],
+    "models_root": "exploration/stellarator_e2e/models",
+    "package": [
+      "exploration/stellarator_e2e/generated"
+    ],
+    "manifest": [
+      "exploration/stellarator_e2e/studies/manifest.json"
+    ],
+    "groups": "tests/study/data/axes.known_answers.json",
+    "census": "tests/models/data/mfe_census.json",
+    "expected": {
+      "semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+      "executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+      "teax_revision": "744745f895677f3344b9884627369a6a47ed987f"
+    }
+  },
+  "class": "CANDIDATE",
+  "exit_code": 0,
+  "candidate": {
+    "package": "exploration/stellarator_e2e/generated",
+    "manifest": "exploration/stellarator_e2e/studies/manifest.json",
+    "pin": "2649e0ea2a987f3e56e9f659c4b4c48c9b670e6a0f8e47831c5fc253608455ad",
+    "semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+    "executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "identity_document": "../../../../tmp/integration-run-wi039/package_identity.json",
+    "baseline_result": "../../../../tmp/integration-run-wi039/baseline_result.json",
+    "verification_summary": "../../../../tmp/integration-run-wi039/verification_summary.json"
+  },
+  "blocker": null,
+  "gates": [
+    {
+      "gate": "pinned-packages",
+      "producer": "tests/test_dependency_provenance.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the pinned package revisions and installed wheel artifacts",
+      "detail": "tests/test_dependency_provenance.py passed",
+      "evidence": [
+        "../../../../tmp/integration-run-wi039/junit/pinned-packages.xml"
+      ]
+    },
+    {
+      "gate": "teax-revision",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the teax checkout's revision against the expected one",
+      "detail": "teax is at 744745f895677f3344b9884627369a6a47ed987f, matching the expected 744745f895677f3344b9884627369a6a47ed987f",
+      "evidence": []
+    },
+    {
+      "gate": "regeneration",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "regeneration in place moves no package byte",
+      "detail": "regeneration through stellarator_tea rewrote no byte outside handwritten/",
+      "evidence": []
+    },
+    {
+      "gate": "handwritten-preservation",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the handwritten implementations survive regeneration byte for byte",
+      "detail": "72 file(s) under handwritten/ are byte-identical",
+      "evidence": []
+    },
+    {
+      "gate": "census-snapshot",
+      "producer": "sysml_codegen.snapshot.capture; the spine census helper",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the recaptured snapshot and the re-derived entry-point census",
+      "detail": "the snapshot recaptures byte-identically and 199 entry points re-derive to the census as bound",
+      "evidence": [
+        "../../../../tmp/integration-run-wi039/recaptured.snapshot.json"
+      ]
+    },
+    {
+      "gate": "model-family-spine",
+      "producer": "tests/models/test_model_family_spines.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the canonical tree, the family twins and the tracked census",
+      "detail": "tests/models/test_model_family_spines.py passed",
+      "evidence": [
+        "../../../../tmp/integration-run-wi039/junit/model-family-spine.xml"
+      ]
+    },
+    {
+      "gate": "manifest",
+      "producer": "scripts/study/manifest.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the manifest's schema, package identity and recomputed pin",
+      "detail": "the manifest is stellarator_tea's and its pin 2649e0ea2a987f3e56e9f659c4b4c48c9b670e6a0f8e47831c5fc253608455ad recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)",
+      "evidence": [
+        "exploration/stellarator_e2e/studies/manifest.json"
+      ]
+    },
+    {
+      "gate": "preflight",
+      "producer": "scripts/study/preflight.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the six mechanical gates a study passes",
+      "detail": "all six preflight gates pass",
+      "evidence": [
+        "../../../../tmp/integration-run-wi039/preflight_results.json"
+      ]
+    },
+    {
+      "gate": "verification",
+      "producer": "scripts/study/verify.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "oracle parity and re-derived verdicts over an executed store",
+      "detail": "oracle parity holds and every verdict re-derived",
+      "evidence": [
+        "../../../../tmp/integration-run-wi039/verification_summary.json",
+        "../../../../tmp/integration-run-wi039/verify_stderr.txt"
+      ]
+    },
+    {
+      "gate": "lineage",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the live fingerprints against the lineage the request named",
+      "detail": "semantic 48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba and executable b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78 are the lineage the request named",
+      "evidence": []
+    }
+  ],
+  "toolchain": {
+    "agentic_mbse": "0.1.3",
+    "sysml_codegen": "0.1.1",
+    "costingfe": "0.1.0",
+    "teax_revision": "744745f895677f3344b9884627369a6a47ed987f",
+    "teax_module_path": "/home/reid/1cfe/teax/packages/teax-simkit/simkit"
+  }
+}

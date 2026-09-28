@@ -1,0 +1,11 @@
+{
+  "adoption_sha256": "520cb2fbfdcdb9c8681bc8a07f0387ef4ba498e33d932609abcfb732ad141170",
+  "attempt_receipt_sha256": "a588bdb2f3ff7e96c2be7108b02ab9813f50e7a3fdcef34aff6e737e13eca932",
+  "field_qualification_exact": true,
+  "model_definedness_exact": true,
+  "physical_evaluations": 0,
+  "predicates": 67,
+  "report_exact": true,
+  "rows": 276,
+  "status": "pass"
+}

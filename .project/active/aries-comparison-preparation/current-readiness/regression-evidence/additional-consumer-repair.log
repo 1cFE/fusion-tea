@@ -1,0 +1,42 @@
+...................................F.................................... [ 34%]
+........................................................................ [ 69%]
+.........F.....................................................          [100%]
+=================================== FAILURES ===================================
+__ test_three_qualified_domain_rows_have_complete_independent_native_coverage __
+tests/study/test_domain_consumers.py:209: in test_three_qualified_domain_rows_have_complete_independent_native_coverage
+    point=WI059_REPLAY | {names[k]:v for k,v in row['overrides'].items()}
+                          ^^^^^^^^
+E   KeyError: 'q_nuc_cryo'
+_____________________ test_current_rate_route_and_coverage _____________________
+tests/study/test_financial_consumers.py:138: in test_current_rate_route_and_coverage
+    assert_current_predicates({'outputs':case.outputs,'responses':dict(case.verdicts,headline=case.headline)},case.inputs)
+tests/models/current_mfe_regressions.py:539: in assert_current_predicates
+    for values in (row.outputs, expected):
+                   ^^^^^^^^^^^
+E   AttributeError: 'dict' object has no attribute 'outputs'
+=============================== warnings summary ===============================
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_domain_consumers.py::test_three_qualified_domain_rows_have_complete_independent_native_coverage
+FAILED tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+2 failed, 205 passed, 4 warnings in 106.35s (0:01:46)

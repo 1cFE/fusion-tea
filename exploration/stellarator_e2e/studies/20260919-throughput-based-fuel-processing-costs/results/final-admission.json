@@ -1,0 +1,7 @@
+{
+  "proposals": 20,
+  "accepted": 20,
+  "rejected": 0,
+  "store": "results/study/retry-1/20260919-throughput-based-fuel-processing-costs.db",
+  "original_attempt": "results/attempt-1/attempt.json"
+}

@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_cold_approach_ok__e70598993d392f74",
+  "margin": 155.0181493487371,
+  "observed": {
+    "margin_in": 155.0181493487371
+  },
+  "status": "satisfied"
+}

@@ -1,0 +1,44 @@
+# Fixed-point comparison reporter
+
+[AGENT] `scripts/compare_fixed_point.py` is a deterministic stdlib JSON reporter. It reads the frozen manifest and explicit observations. It performs no physical evaluation, source retrieval, reference lookup or parameter selection. `synthetic-input.json` and `synthetic-report.json` are artificial software fixtures. Their numeric values and evidence assertions represent neither the current physical model nor a reference design.
+
+Run from the repository root:
+
+```sh
+.codex-test/run python scripts/compare_fixed_point.py --manifest .project/active/aries-comparison-preparation/package/manifest.json --input .project/active/aries-comparison-preparation/package/synthetic-input.json --output /tmp/fixed-point-synthetic-report.json
+.codex-test/run python -m pytest tests/test_compare_fixed_point.py -q
+```
+
+[AGENT] Successful parsing/reporting exits 0 even when comparison fails. Read `pass`, the axes and row issues for the scientific verdict. Malformed input exits 2 and writes an explicit error report with `pass: false`. Duplicate JSON keys and nonstandard NaN/Infinity literals are rejected. Output is sorted JSON with no timestamps. File access errors remain operating-system errors.
+
+## Observation contract
+
+[AGENT] Top-level required fields are `schema_version: 1`, `run_kind: blind|conditioned`, `execution_status: completed|failed|refused`, `constraints` (exact frozen constraint IDs mapped to Boolean results), `extrapolations` (explicit string list) and `quantities` (observations keyed by manifest ID). Optional `notes` is a string retained in the report. Unknown observation fields and unknown quantity IDs are rejected. Keep separate observation files for each blind or conditioned run; a conditioned report is diagnostic-only and never earns blind or independent row credit, including a row whose frozen forward role is independent or derived. Ratios and row statuses remain visible.
+
+[AGENT] Each quantity requires `model`, `reference`, `model_valid` (Boolean) and `applicability_evidence` (string). Each side requires `value`, `unit`, `basis`, `scope` (list matching the manifest's included scope) and `technology` (matching the manifest string). A missing numeric value is `null`; never fill missing observations with zero. Structural observations may have `value: null`; they additionally require `structural_evidence: {"corresponds": true|false, "evidence": "source and correspondence rationale"}`. Numerical values cannot replace structural evidence. The synthetic input is a complete field-shape template, not evidence to copy into a real comparison.
+
+[AGENT] Observation evidence must cite the actual reference definition, design point, page/table, scope, uncertainty and technology as required by each manifest row. The reporter checks field structure and declared compatibility; it cannot establish that a human's evidence assertion is true. The frozen input-selection procedure and independent review own that check. `model_valid: false`, unresolved applicability, failed/refused execution, missing evidence, unknown conversions and incompatible scope/technology block the row. Conditional applicability needs a nonempty evidence statement; a manifest row marked unresolved cannot be unblocked by observation flags.
+
+## Conversion and accounting rules
+
+[AGENT] The manifest authorizes units per quantity through `conversion.allowed_units`. The code contains dimension-checked scales for W/kW/MW/GW, USD/kUSD/MUSD, USD/kWh versus USD/MWh, m/cm/mm, kg/t and dimensionless 1/percent. Other units support exact identity only. A unit appearing in the allowlist does not authorize a dimension change. No currency/year normalization is inferred.
+
+[AGENT] Basis transformations require a predeclared manifest rule with `id`, `from`, `to`, positive finite `factor` and `evidence`. The target must be the quantity's canonical `conversion.basis`. An observation selects that rule through optional `basis_conversion`; it cannot provide its own factor. Both raw observations and adjusted values remain in the report, alongside every applied factor and rule citation. The current actual manifest permits no basis transformations; any later new rule requires a separately versioned procedure, preserving the frozen raw comparison.
+
+[INHERITED] Ratio bands are inclusive [1/3, 3] for derived quantities and [0.5, 2] for component costs. The code compares direct floating-point quotients with these endpoints and uses no ratio tolerance. Nonpositive, missing and nonfinite reference denominators block evaluation. Tests exercise both endpoints and `math.nextafter` immediately outside each one. Source: native spec and ratified acceptance specification referenced there.
+
+[AGENT] Accounting equations sum only their declared disjoint children. Duplicate children, cycles and parent-plus-descendant double counting are rejected. Missing or incompatible account bases block reconciliation. Arithmetic equality uses `math.isclose(rel_tol=1e-10, abs_tol=1e-8)` only for accounting sums, never ratio decisions. Both model and reference residuals are retained. C220107 is excluded from independent row credit; containing aggregates and quantities reached through declared `depends_on` links receive a transitive disclosure and no uncontaminated independent credit. Aggregate comparisons remain visible and footnoted.
+
+## Verdict meanings and limits
+
+[AGENT] The report preserves every manifest row, including absent observations. Formal axes require at least one eligible predicted quantity and passing results for all their eligible rows. Supplied and held values are informational matches/mismatches and cannot create an axis pass. A blocked formal row, including a supplied/held row, prevents overall numerical success. Unreconciled accounting prevents numerical success. Diagnostic rows, including both LCOE conventions, show their ratio with status `diagnostic` and no acceptance band. They do not earn pass/fail or independent prediction credit.
+
+[AGENT] `numerical_comparison_pass` covers formal axes, formal evidence completeness, execution and accounting. `blind_comparison_pass` and `pass` additionally require a blind run and the complete frozen constraint inventory. `physical_feasibility` separately requires completed execution, the full inventory and every constraint true. Failed or refused execution cannot inherit feasibility from stale constraint results; the supplied constraint results remain visible. Adverse constraints and extrapolation flags are retained; their presence does not alone turn numerical agreement into disagreement. Out-of-domain invalidity is represented by `model_valid: false` and unresolved applicability, which do block comparison. None of these flags establishes engineering qualification.
+
+[AGENT] The actual-manifest synthetic rehearsal intentionally fails: unsupported model quantities and unresolved applicability remain visible, with artificial adverse constraints and an artificial extrapolation flag. This is a preparation test, not a reference comparison. The retained report must be regenerated whenever the manifest changes before freeze. The unit suite also constructs small fully artificial supported manifests so that valid passes, failures and boundary behavior are tested independently of the actual model's open gaps.
+
+## Replacement r2 execution classification
+
+[AGENT] The primary point uses held exact profiles0.35/1.2 with the existing rounded geometry/current chain, sizing1 and reserve1. The separate `table5_geometry_field` control supplies exact source geometry, volume, field and profiles. Native metadata records all six fixed conditioned keys, shape/current derivations, supplied B9 T and425 m³ declarations, and field-output roles. These declarations are conditions rather than observed native volume predictions. `export_model_values.py` preserves that metadata and classifies supplied aliases without enlarging the174-row manifest. Export alone awards no independent match credit because no reference observations have been loaded; the reporter adjudicates complete comparison observations. Every conditioned report remains diagnostic-only.
+
+[INHERITED: reviewed source reconciliations] All twenty raw predicates remain visible. Missing source thermal/fast-energy and core-radiation implementation, source local field-angle conductor capability, manufactured local fit and source coolant performance remain applicability limits. Wall/divertor and core radiation have different boundaries. The accepted conditional helium scope does not resolve source correspondence. No ignition-equivalence, manufactured-fit qualification or whole-plant feasibility claim is licensed by this replacement. Evidence: `work/orchestration/goals/stellaris-plasma-power-balance/reconciliation.md` and `work/orchestration/goals/stellaris-reference-reconciliation/reconciliation.md`.

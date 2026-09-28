@@ -1,0 +1,24 @@
+{
+  "controls498": {
+    "status": "pass",
+    "cases": 498,
+    "counts": {
+      "pass": 498,
+      "consistent_refusal": 0,
+      "fail": 0
+    },
+    "scalar_comparisons": 593616,
+    "predicate_comparisons": 62250
+  },
+  "development35": {
+    "status": "pass",
+    "cases": 35,
+    "counts": {
+      "pass": 32,
+      "consistent_refusal": 3,
+      "fail": 0
+    },
+    "scalar_comparisons": 38144,
+    "predicate_comparisons": 4000
+  }
+}

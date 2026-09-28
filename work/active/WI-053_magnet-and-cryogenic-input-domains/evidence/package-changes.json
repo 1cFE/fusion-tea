@@ -1,0 +1,26 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "bacf06646482cd47ee71ee0b0264aff66650b13c59a5320a4cc7feb0f4c099ee",
+    "after": "1c7f68db2645fe38ba13ed7180dc3f1d65394aa1e60c24249bbac27cdbe96411"
+  },
+  "contracts/package_contract.json": {
+    "before": "4f5a1a78d9a4a8df1f7179c4a53e4c9aa7d929880707ebf09c1f782276c3f18f",
+    "after": "bc06b828389080f8c2f6282b1804ddd227e8c215732679704bf126250b716e54"
+  },
+  "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": {
+    "before": "caecdfe5d8006c19cf3fdcb159e67d5a081cfc1fcabcca07782160c2227eb5fc",
+    "after": "f2f72f4adaac88b5972c55c98d8fef012279301e6d885b13a2b37e8ec22ea953"
+  },
+  "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": {
+    "before": "def322d2656d8a071c3e98d88458521c2ed436a4348eceedca139f79d7f3f22f",
+    "after": "d910b83372e0e990b0504831c0b8370741b043e1c38b8c012011a3ddd8ea2f26"
+  },
+  "modules/mfe_cryo_plant/cryoplant_electrical_power.py": {
+    "before": "2948927ce56d87fa908b0986624d162d2bb4328179c85e568a4f7cca5b8bea79",
+    "after": "aa6b04851892ab2f17cd3d3ab11fe0fc8c97da0f5338a5716bfb2e3ba7343e61"
+  },
+  "modules/mfe_plasma_scaling/conductor_peak_field.py": {
+    "before": "ccebcd148ebaffd4cee2a570d09a55e441909890758e3dc6983e5deea7d46215",
+    "after": "ff56ffb94f0b2dbd3ed888b2cb57dadb2b22e863b48145bc2ee0658e0fe569da"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "native_execution_repo_revision": "03e451686f5eb6a2af55d49eec479612e1bfaec0",
+  "corrected_oracle_repo_revision": "450f4eab11ffc27ca284dd99fc38d27b781b0caf",
+  "native_points_reexecuted": false,
+  "scope": "Reviewed independent oracle operation-order correction only; unchanged native package and store."
+}

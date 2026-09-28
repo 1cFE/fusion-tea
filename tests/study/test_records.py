@@ -25,7 +25,7 @@ def test_record_is_closed(record):
     assert all(a["store_id"] in stores for a in snap["arms"])
     assert "<" not in (record / "record.md").read_text()  # no placeholders
     with (record / "results" / "points.csv").open(newline="") as fh:
-        csv_arms = {row["arm_id"] for row in csv.DictReader(fh)}
+        csv_arms = _csv_arms(list(csv.DictReader(fh)), snap["arms"])
     assert csv_arms == {a["arm_id"] for a in snap["arms"]}
 
 
@@ -45,7 +45,7 @@ def _ids_in_record(text, prefix):
     return {
         cell.strip("` ")
         for line in text.splitlines()
-        if line.startswith("| `")
+        if line.startswith("|")
         for cell in [line.split("|")[1]]
         if cell.strip("` ").startswith(f"{prefix}#")
     }
@@ -106,3 +106,26 @@ def test_a_joined_disposition_row_is_legal():
         "`work/active/WI-040` |\n"
     )
     assert _ids_in_record(record, "20260823-x") == _ids_in_log(log, "20260823-x")
+
+
+def _csv_arms(rows, arms):
+    declared={a['arm_id'] for a in arms}
+    assert rows, 'a committed record must carry exported rows'
+    if all('arm_id' in row for row in rows):
+        return {row['arm_id'] for row in rows}
+    assert all('arm_id' not in row for row in rows), 'mixed arm-id schema'
+    assert len(declared)==1, 'missing arm_id is ambiguous for multiple arms'
+    return declared
+
+
+def test_plain_finding_cells_join_the_same_discovery_ids():
+    assert _ids_in_record('| 20260918-example#1 | model | finding |', '20260918-example') == {'20260918-example#1'}
+    assert not _ids_in_record('| unrelated | 20260918-example#1 |', '20260918-example')
+
+
+def test_missing_arm_ids_require_one_nonempty_unambiguous_arm():
+    with pytest.raises(AssertionError, match='multiple arms'):
+        _csv_arms([{'case_id':'one'}],[{'arm_id':'a'},{'arm_id':'b'}])
+    with pytest.raises(AssertionError, match='exported rows'):
+        _csv_arms([],[{'arm_id':'a'}])
+    assert _csv_arms([{'case_id':'one'}],[{'arm_id':'a'}]) == {'a'}

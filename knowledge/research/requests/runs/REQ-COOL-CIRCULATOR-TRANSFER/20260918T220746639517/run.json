@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COOL-CIRCULATOR-TRANSFER",
+  "request_key": "5759a085dba67d16f9663d8e61559020547ab689acccbad21919ba7b4ca1620a",
+  "request_path": "knowledge/research/requests/REQ-COOL-CIRCULATOR-TRANSFER.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 15,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-18T22:07:46.639698+00:00",
+  "override_reason": null
+}

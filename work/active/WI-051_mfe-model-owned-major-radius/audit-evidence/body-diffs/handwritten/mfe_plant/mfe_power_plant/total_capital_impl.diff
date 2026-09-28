@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
++++ production/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:996
+ 
+ SysML Expressions:
+ """
+@@ -15,7 +15,7 @@
+ def run_total_capital(inputs: total_capitalInput) -> float:
+     """Execute total_capital calculation.
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:996
+ 
+ Args:
+     inputs: Input parameters validated against total_capitalInput schema

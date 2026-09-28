@@ -1,0 +1,40 @@
+{
+  "positive": {
+    "cases": 6,
+    "successful": 5,
+    "equal": true,
+    "errors": {
+      "half_current": "module_execution: ValidationError: 1 validation error for RootModel[float]\n  Input should be a valid number [type=float_type, input_value=(-72077152.06342883+99205688.979155j), input_type=complex]\n    For further information visit https://errors.pydantic.dev/2.12/v/float_type"
+    }
+  },
+  "financial": {
+    "cases": 10,
+    "successful": 10,
+    "equal": true,
+    "errors": {}
+  },
+  "double_current_ratios": {
+    "stellarator_09__stellaris__wp_sizing__wp_side": 1.4142135623730951,
+    "stellarator_09__stellaris__field_calc__B_axis": 2.0,
+    "stellarator_09__stellaris__wp_stress__sigma_wp": 2.8284271247461894,
+    "stellarator_09__stellaris__cond_strain__eps_cond": 2.8284271247461894,
+    "stellarator_09__stellaris__wp_volume__vol_cold_total": 2.0000000000000004
+  },
+  "model_contract.json": "semantic equality; package artifact hashes and executable identity change as recorded",
+  "executable_identity": {
+    "before": "3ab3ef8d253cc630db655e34b25a6c30694d493b429aa2859e32e8af931ba56b",
+    "after": "9184cbc42c41c6364ec9f36b58d787319a4abb586e4461010b8516fa8dc5bd76"
+  },
+  "package_contract.json": "semantic equality; package artifact hashes and executable identity change as recorded",
+  "unchanged_generated_AST": [
+    "modules/mfe_magnet_field/coil_set_stored_energy.py",
+    "modules/mfe_magnet_field/coil_winding_length.py",
+    "modules/mfe_magnet_field/conductor_strain.py",
+    "modules/mfe_magnet_field/winding_pack_cold_volume.py",
+    "modules/mfe_magnet_field/winding_pack_sizing.py",
+    "modules/mfe_magnet_field/winding_pack_stress.py",
+    "modules/mfe_plasma_sustainment/plasma_sustainment.py",
+    "schemas/plasma_sustainment_output.py",
+    "tests/test_implementations_runnable.py"
+  ]
+}

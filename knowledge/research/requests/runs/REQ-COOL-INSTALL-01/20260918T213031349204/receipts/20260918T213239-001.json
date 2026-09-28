@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-inl-tdl.pdf",
+  "slug": "inl_markets_and_economics_for_thermal_power_extraction_from",
+  "path": "knowledge/sources/inl_markets_and_economics_for_thermal_power_extraction_from/",
+  "source_id": "fec51bddcae7f50089196c288cabda8b29aa44905b53d14c933e04a534a3044b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T21:32:39.590258+00:00"
+}

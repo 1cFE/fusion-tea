@@ -1,46 +1,24 @@
-"""WI-015 anchor checks — post-retirement harness (PIPELINE-TRUTH Item 3).
+"""Check historical A/B modules and the repaired computed Osiris pipeline.
 
-Executes the generated IFE pipeline and asserts LCOE against the verified oracle
-(scripts/verify_ife_lcoe.py, which mirrors ife_lcoe.sysml line-for-line).
-
-This is the workaround-free harness. What changed vs the WI-015 original, now that the
-sysml-codegen PIPELINE-TRUTH fixes have landed and the models generate whole-plant with
-zero V11 offenders:
-
-  1. Single pass, no manual gamma recirculation. The Meier chain is closed by generated
-     wiring — gamma -> lcoe.driver_cost_constant and cost_billions -> meier_capital.driver_cost
-     are wired channels in the emitted YAML. Run C runs the pipeline exactly once.
-  2. NO hand-written input JSONs. Run C's inputs are the GENERATED inputs/*.json exactly
-     as emitted (the value-fill materializer carries the model's own cross-part literals).
-  3. Meier channels are keyed off the CANONICAL driver path
-     (hif_plant_pkg__hif_plant__driver__meier_cost__*). The standalone driver-instance
-     workaround part is gone; the retyped-part indexing fix emits meier_cost from
-     `part :>> driver`.
-  4. Anchors A/B are MODULE-LEVEL checks. With driver_cost_constant a wired input (not an
-     entry point), the pipeline can no longer be fed the Hawker/Realistic driver_cost=5.0
-     that A/B are defined at — that is the model's own semantics. A/B call the generated
-     lcoe/recirc implementations directly.
-  5. A perturbed-key rerun proves the emitted JSON is genuinely CONSUMED (not shadowed by a
-     baked default): move the emitted lcoe gain key 80 -> 100 and assert lcoe follows to an
-     oracle-computed target (SC-B rider).
-
-The teax T-1/T-2 router (RootModel[float]/float exit handlers) is reused verbatim — those
-findings are out of the epic's scope and stay harness-side.
-
-Run:  cd ~/1cfe/fusion-tea/exploration/ife_e2e && \
-      ../pipeline_spike/.venv-exec/bin/python run_anchors.py
+The source oracle uses annual cash-flow sums independently of generated finance.
+All anchor prices require generating=1 and the named net_positive verdict.
+Outputs default to a temporary directory; generated input files are never edited.
 """
 
+import argparse
 import json
+import tempfile
 import sys
 from pathlib import Path
 
 E2E = Path(__file__).parent
 REPO = E2E.parent.parent
 
-# Oracle (pure stdlib, venv-independent): mirrors ife_lcoe.sysml line-for-line.
+# Independent source-equation oracle (annual discount sums).
 sys.path.insert(0, str(REPO / "scripts"))
 from verify_ife_lcoe import compute_ife_lcoe  # noqa: E402
+from verify_hif_costs import computed_osiris  # noqa: E402
+from eligibility import NET_POSITIVE_ID, module_balance, module_price, require_price
 
 # Make the generated package importable as `ife_tea`.
 pkg_dir = E2E / "pkg"
@@ -60,27 +38,22 @@ from ife_tea import CUSTOM_SCHEMA_TYPES, create_ife_tea_registry  # noqa: E402
 from ife_tea.handwritten.fusion_cycle.recirculating_power_fraction_impl import (  # noqa: E402
     run_recirculating_power_fraction,
 )
-from ife_tea.handwritten.ife_lcoe.ife_lcoe_impl import run_ife_lcoe  # noqa: E402
 from ife_tea.modules.fusion_cycle.recirculating_power_fraction import (  # noqa: E402
     Recirculating_Power_FractionInput,
 )
-from ife_tea.modules.ife_lcoe.ife_lcoe import IFE_LCOEInput  # noqa: E402
 
-REL_TOL = 1e-6  # spec.md tolerance
+REL_TOL = 1e-9  # WI-048 numerical identity tolerance
 
 P = "hif_plant_pkg__hif_plant__"
-CH_LCOE = f"{P}lcoe_calc__lcoe"
+CH_LCOE = f"{P}hawker_price__price"
 CH_FREC = f"{P}recirc_calc__f_recirc"
 CH_GAMMA = f"{P}driver__meier_cost__gamma"        # canonical driver path (instance deleted)
 CH_CB = f"{P}driver__meier_cost__cost_billions"
-CH_COE = f"{P}meier_coe_calc__coe_cents_kwh"
+CH_COE = f"{P}meier_price__price"
 CH_CAPITAL = f"{P}meier_capital_calc__total_capital_billions"
 
-# Pinned codegen emits the default pipeline filename `pipeline.yaml` (was `ife_hif.yaml`
-# in the pre-epic package); migrated for Item 13 compose (test-infra only).
-PIPELINE = E2E / "generated/pipelines/pipeline.yaml"
 INPUTS_DIR = E2E / "generated/inputs"
-GAIN_LCOE_KEY = f"{P}lcoe_calc__gain"   # the emitted per-consumer lcoe gain key
+GAIN_LCOE_KEY = f"{P}gain"   # authoritative plant gain entry
 
 # --- Anchor parameter sets (Hawker's 14 + 2 fixed constants) ---------------
 HAWKER_DEFAULTS = dict(
@@ -100,10 +73,10 @@ REALISTIC_HIF = dict(
 # Osiris (hif_plant.sysml bindings); driver_cost_constant comes from generated wiring.
 OSIRIS = dict(
     availability=0.90, blanket_energy_multiple=1.15, discount_rate=0.08,
-    driver_efficiency=0.35, driver_energy=14.286e6,
-    driver_lifetime_shots=6.0e9, frequency=3.5, gain=80.0,
+    driver_efficiency=0.28, driver_energy=5e6 / 0.28,
+    driver_lifetime_shots=6.0e9, frequency=4.6, gain=87.0,
     om_cost_constant=65.0, plant_cost_constant=2000.0,
-    target_cost_constant=10.0, thermal_efficiency=0.43,
+    target_cost_constant=10.0, thermal_efficiency=0.45,
     yield_cost_constant=5.0e6,
 )
 
@@ -118,7 +91,7 @@ def check(label: str, actual: float, expected: float) -> None:
         failures.append(label)
 
 
-def run_pipeline() -> dict:
+def run_pipeline(output_dir: Path, gain=None) -> dict:
     """Execute the generated pipeline once (T-1/T-2 router kept) and return channels."""
     # CONSTRAINT-EXEC W1: the whole-plant package now carries a constraint module
     # (ConstraintEvaluation/ConstraintReport ExitPoint outputs) that didn't exist when
@@ -131,21 +104,29 @@ def run_pipeline() -> dict:
         WriteHandler(fn=lambda value, path: Path(path).write_text(json.dumps(value)),
                      extension=".json"),
     )
+    # Copy a runnable package so a parameter probe cannot change the sealed source.
+    import shutil
+    package = output_dir / "package"
+    shutil.copytree(E2E / "generated", package, dirs_exist_ok=True)
+    if gain is not None:
+        gain_file = package / "inputs" / _inputs_file_for(GAIN_LCOE_KEY).name
+        data = json.loads(gain_file.read_text())
+        data[GAIN_LCOE_KEY] = gain
+        gain_file.write_text(json.dumps(data))
     result = execute_pipeline(
-        PIPELINE,
-        output_dir=E2E / "outputs" / "osiris",
+        package / "pipelines/pipeline.yaml",
+        output_dir=output_dir / "results",
         registry=create_ife_tea_registry(),
         output_router=router,
         custom_schema_types=CUSTOM_SCHEMA_TYPES,
     )
-    # CONSTRAINT-EXEC W1: ExitPoint now also carries constraint evidence
-    # (ConstraintEvaluation/ConstraintReport), which isn't a scalar the anchor
-    # checks compare against — only numeric channels are collected here.
-    return {
-        chan: (float(val.root) if hasattr(val, "root") else float(val))
-        for chan, val in result.outputs.items()
-        if hasattr(val, "root") or isinstance(val, (int, float))
-    }
+    out = {chan: (float(val.root) if hasattr(val, "root") else val)
+           for chan, val in result.outputs.items()}
+    verdict = out[NET_POSITIVE_ID + "__evaluation"].status
+    for prefix in ("hawker_price", "meier_price"):
+        require_price(out[P + prefix + "__price"],
+                      out[P + prefix + "__generating"], verdict)
+    return out
 
 
 def _inputs_file_for(key: str) -> Path:
@@ -159,63 +140,42 @@ def _inputs_file_for(key: str) -> Path:
 def module_level(tag: str, params: dict) -> None:
     print(f"=== {tag} (module-level: generated impls called directly) ===")
     exp = compute_ife_lcoe(**params)
-    lcoe = run_ife_lcoe(IFE_LCOEInput(
-        construction_years=5.0, operational_years=40.0, **params))
+    lcoe = module_balance(dict(params, construction_years=5.0, operational_years=40.0))
     f_recirc = run_recirculating_power_fraction(Recirculating_Power_FractionInput(
-        eta=params["driver_efficiency"], gain=params["gain"],
+        eta=params["driver_efficiency"], gain_in=params["gain"],
         blanket_multiplier=params["blanket_energy_multiple"],
-        thermal_efficiency=params["thermal_efficiency"]))
-    check("LCOE $/MWh", lcoe, exp["lcoe_per_MWh"])
+        thermal_efficiency_in=params["thermal_efficiency"]))
+    price, verdict = module_price(lcoe)
+    check("LCOE $/MWh", require_price(price.price, price.generating, verdict), exp["lcoe_per_MWh"])
     check("f_recirc", f_recirc, exp["recirculating_fraction"])
 
 
 def main() -> None:
     # --- Anchors A and B: module level ------------------------------------
-    module_level("Run A: Hawker defaults", HAWKER_DEFAULTS)
-    module_level("Run B: realistic HIF", REALISTIC_HIF)
+    module_level("Run A: historical Hawker defaults", HAWKER_DEFAULTS)
+    module_level("Run B: historical realistic HIF", REALISTIC_HIF)
 
-    # --- Anchor C: full pipeline, generated wiring, single pass -----------
-    print("=== Run C: Osiris plant point — ONE pass, generated wiring, "
-          "generated inputs ===")
-
-    # Meier chain hand-math (per hif_economics.sysml).
-    cb = (0.32 + 0.088 * 5.0) * (1.25 + 0.05 * 1.0) * (1.0 + 0.0088 * (3.5 - 5.0))
-    gamma = cb * 1e9 / (5.0e6 / 0.35)
-    reactor = 0.66 * (2.054 / 1.67) ** 0.49 * (0.72 * 1.0 + 0.28)
-    capital = 1.83 * (reactor + cb + 0.1)
-    coe = (0.113 * capital) / (0.0876 * 0.90 * 1.0)
-    exp_c = compute_ife_lcoe(**{**OSIRIS, "driver_cost_constant": gamma})
-
-    out = run_pipeline()
-    check("Meier driver cost $B (wired)", out[CH_CB], cb)
-    check("Meier gamma $/J (wired)", out[CH_GAMMA], gamma)
-    check("Meier capital $B (wired)", out[CH_CAPITAL], capital)
-    check("Meier COE c/kWh", out[CH_COE], coe)
-    check("LCOE $/MWh (gamma via wiring)", out[CH_LCOE], exp_c["lcoe_per_MWh"])
-    check("f_recirc", out[CH_FREC], exp_c["recirculating_fraction"])
-
-    # --- Perturbed-key rerun: prove the emitted JSON is CONSUMED -----------
-    # Move the emitted lcoe gain key 80 -> 100 in place, rerun, assert lcoe follows to the
-    # oracle-computed target (gamma unaffected by gain), then restore the file byte-for-byte.
-    print("=== Run C': perturbed gain 80 -> 100 (proves JSON is consumed) ===")
-    gain_file = _inputs_file_for(GAIN_LCOE_KEY)
-    original = gain_file.read_text()
-    try:
-        data = json.loads(original)
-        data[GAIN_LCOE_KEY] = 100.0
-        gain_file.write_text(json.dumps(data, indent=2))
-        exp_cp = compute_ife_lcoe(**{**OSIRIS, "gain": 100.0, "driver_cost_constant": gamma})
-        out_p = run_pipeline()
-        check("LCOE $/MWh (gain=100, moved)", out_p[CH_LCOE], exp_cp["lcoe_per_MWh"])
-    finally:
-        gain_file.write_text(original)
-
-    print()
-    print(f"Anchor C LCOE: ${out[CH_LCOE]:.2f}/MWh (WI-015: $270.12, SV-013)")
-    print(f"Osiris Meier COE: {out[CH_COE]:.3f} c/kWh (WI-015: 4.735)")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path)
+    args = parser.parse_args()
+    output = args.output_dir or Path(tempfile.mkdtemp(prefix="ife-anchors-"))
+    print("=== Computed Osiris-based point (435 MJ, equal driver/cooling allowance) ===")
+    expected = computed_osiris()
+    out = run_pipeline(output / "baseline")
+    check("Meier driver $B", out[CH_CB], expected["driver_cost_billions"])
+    check("Meier gamma $/J", out[CH_GAMMA], expected["gamma"])
+    check("Meier capital $B", out[CH_CAPITAL], expected["capital_billions"])
+    check("Meier 1988 cents/kWh", out[CH_COE], expected["meier_coe"])
+    check("Hawker $/MWh", out[CH_LCOE], expected["lcoe_per_MWh"])
+    check("Driver-only fraction", out[CH_FREC], expected["recirculating_fraction"])
+    changed = run_pipeline(output / "gain100", gain=100.0)
+    target = compute_ife_lcoe(
+        **{**OSIRIS, "gain": 100.0, "driver_cost_constant": expected["gamma"]})
+    check("Gain 87 -> 100 Hawker $/MWh", changed[CH_LCOE], target["lcoe_per_MWh"])
+    print(f"Output: {output}")
     if failures:
         raise SystemExit(f"{len(failures)} anchor check(s) FAILED: {failures}")
-    print("ALL ANCHOR CHECKS PASSED (rel tol 1e-6) — run C wired, single pass, JSON consumed")
+    print("ALL ANCHOR CHECKS PASSED (rel tol 1e-9) — run C wired, single pass, JSON consumed")
 
 
 if __name__ == "__main__":

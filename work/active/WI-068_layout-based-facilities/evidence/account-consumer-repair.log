@@ -1,0 +1,132 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+____ test_retained_primary_controls_reach_full_current_native_comparison[0] ____
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12922/test_retained_primary_controls0')
+control_index = 0
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_retained_primary_controls_reach_full_current_native_comparison(runtime, tmp_path, control_index):
+        # Replaces the numerical coverage blocked by the six entering stale-keyset tests.
+        # The old records and failing test expectations remain untouched.
+        import oracle_entry
+        import study_route
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = WI059_REPLAY | {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-primary-consumer-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+>           assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+E           AssertionError: stellarator_09__stellaris__buildings__site_allowance__cost
+E           assert 0.0 == 85000000.0 ± 0.085
+E             
+E             comparison failed
+E             Obtained: 0.0
+E             Expected: 85000000.0 ± 0.085
+
+tests/models/test_installed_cooling_equipment.py:140: AssertionError
+____ test_retained_primary_controls_reach_full_current_native_comparison[1] ____
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12922/test_retained_primary_controls1')
+control_index = 1
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_retained_primary_controls_reach_full_current_native_comparison(runtime, tmp_path, control_index):
+        # Replaces the numerical coverage blocked by the six entering stale-keyset tests.
+        # The old records and failing test expectations remain untouched.
+        import oracle_entry
+        import study_route
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = WI059_REPLAY | {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-primary-consumer-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+>           assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+E           AssertionError: stellarator_09__stellaris__buildings__site_allowance__cost
+E           assert 0.0 == 85000000.0 ± 0.085
+E             
+E             comparison failed
+E             Obtained: 0.0
+E             Expected: 85000000.0 ± 0.085
+
+tests/models/test_installed_cooling_equipment.py:140: AssertionError
+____ test_retained_primary_controls_reach_full_current_native_comparison[2] ____
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12922/test_retained_primary_controls2')
+control_index = 2
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_retained_primary_controls_reach_full_current_native_comparison(runtime, tmp_path, control_index):
+        # Replaces the numerical coverage blocked by the six entering stale-keyset tests.
+        # The old records and failing test expectations remain untouched.
+        import oracle_entry
+        import study_route
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = WI059_REPLAY | {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-primary-consumer-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+>           assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+E           AssertionError: stellarator_09__stellaris__buildings__site_allowance__cost
+E           assert 0.0 == 85000000.0 ± 0.085
+E             
+E             comparison failed
+E             Obtained: 0.0
+E             Expected: 85000000.0 ± 0.085
+
+tests/models/test_installed_cooling_equipment.py:140: AssertionError
+____ test_retained_primary_controls_reach_full_current_native_comparison[3] ____
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12922/test_retained_primary_controls3')
+control_index = 3
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_retained_primary_controls_reach_full_current_native_comparison(runtime, tmp_path, control_index):
+        # Replaces the numerical coverage blocked by the six entering stale-keyset tests.
+        # The old records and failing test expectations remain untouched.
+        import oracle_entry
+        import study_route
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = WI059_REPLAY | {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-primary-consumer-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+>           assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+E           AssertionError: stellarator_09__stellaris__buildings__site_allowance__cost
+E           assert 0.0 == 85000000.0 ± 0.085
+E             
+E             comparison failed
+E             Obtained: 0.0
+E             Expected: 85000000.0 ± 0.085
+
+tests/models/test_installed_cooling_equipment.py:140: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[0]
+FAILED tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[1]
+FAILED tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[2]
+FAILED tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[3]
+4 failed, 23 deselected in 11.62s

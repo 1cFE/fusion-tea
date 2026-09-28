@@ -1,0 +1,6 @@
+{
+  "frozen_git_sources_exact": true,
+  "expectations_hash_exact": true,
+  "fresh_live_package_equals_prototype": true,
+  "files": 246
+}

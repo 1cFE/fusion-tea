@@ -1,0 +1,5 @@
+{
+  "sha256": "a6886f64d5378be524fff4b4135f14d7af92c95a9b2fe3b8bd0f67a2fddec40c",
+  "applies_to": "evidence/final and final-run.log",
+  "reason": "Final read-observer lifecycle and SQLite changes require a new broad tooling identity. Prior native evidence remains unchanged."
+}

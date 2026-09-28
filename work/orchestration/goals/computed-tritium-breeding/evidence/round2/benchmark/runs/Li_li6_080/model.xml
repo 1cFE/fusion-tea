@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <cross_sections>/home/reid/1cfe/fusion-tea/.codex-test/breeding-transport/data/cross_sections.xml</cross_sections>
+    <material id="1" name="natural lithium approximation" temperature="294">
+      <density units="g/cm3" value="0.534"/>
+      <nuclide ao="0.08" name="Li6"/>
+      <nuclide ao="0.92" name="Li7"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="1" material="void" region="-1" universe="1"/>
+    <cell id="2" material="1" region="1 -2" universe="1"/>
+    <surface coeffs="0.0 0.0 0.0 10" id="1" type="sphere"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 0.0 60" id="2" type="sphere"/>
+  </geometry>
+  <settings>
+    <run_mode>fixed source</run_mode>
+    <particles>10000</particles>
+    <batches>40</batches>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space type="point">
+        <parameters>0.0 0.0 0.0</parameters>
+      </space>
+      <angle type="isotropic"/>
+      <energy type="discrete">
+        <parameters>14100000.0 1.0</parameters>
+      </energy>
+    </source>
+    <seed>981731</seed>
+  </settings>
+  <tallies>
+    <filter id="1" type="cell">
+      <bins>2</bins>
+    </filter>
+    <tally id="1" name="breeder tritium">
+      <filters>1</filters>
+      <nuclides>Li6 Li7 total</nuclides>
+      <scores>(n,Xt)</scores>
+    </tally>
+  </tallies>
+</model>

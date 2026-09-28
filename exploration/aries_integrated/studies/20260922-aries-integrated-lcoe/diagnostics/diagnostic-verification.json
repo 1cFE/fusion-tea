@@ -1,0 +1,1027 @@
+{
+  "passed": true,
+  "runtime": ".project/active/aries-comparison-preparation/post-reveal-investigation/failure-propagation/native-teax",
+  "baseline_numeric_parity": true,
+  "cases": [
+    {
+      "case": "no-breeding-credit",
+      "state": "complete_diagnostic",
+      "net_electric_mw": 423.10679410931664,
+      "numeric_count": 546,
+      "predicate_count": 14,
+      "predicates": {
+        "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation": {
+          "channel": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+          "producer": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 227.14905157213934
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation": {
+          "channel": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+          "producer": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 495.68230754778847
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation": {
+          "channel": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+          "producer": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation": {
+          "channel": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+          "producer": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1.7618672870609994e+22
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation": {
+          "channel": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+          "producer": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 9.937990999710028
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation": {
+          "channel": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+          "producer": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1144.6450731777445
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation": {
+          "channel": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+          "producer": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 603.454833859811
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation": {
+          "channel": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+          "producer": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation": {
+          "channel": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+          "producer": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 760.4738113517697
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation": {
+          "channel": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
+          "producer": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+            "margin": 2.2328500182839593e-06,
+            "observed": {
+              "magnitude_in": 7.539028956671245e-09,
+              "tolerance_in": 2.2403890472406306e-06
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+            "margin": 2.2403890472406306e-06,
+            "observed": {
+              "tolerance_in": 2.2403890472406306e-06,
+              "unmet_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation": {
+          "channel": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+          "producer": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 928.3404699173973
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation": {
+          "channel": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+          "producer": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1458.4195344065724
+            },
+            "status": "satisfied"
+          }
+        }
+      },
+      "provenance": {
+        "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+        "input_digest": "a11cf452aeb09074605942bcdb113faad48d495937564d12b4cb96db977cdf59",
+        "diagnostic_evaluator_version": "v1",
+        "native_source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7"
+      },
+      "integrated_lcoe_publication": {
+        "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__lifecycle_price__evaluate",
+        "root_causes": [],
+        "status": "available_numeric",
+        "value": 1119.4080833905023
+      },
+      "source_lcoe_publication": {
+        "channel": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__source_lifecycle_price__evaluate",
+        "root_causes": [],
+        "status": "available_numeric",
+        "value": 473.9514539717135
+      },
+      "sha256": "2a7cca8d6bf8babc08f94aae3697fab005355b4e591026d137f4b7f1fa96434f"
+    },
+    {
+      "case": "nonpositive_energy",
+      "state": "partial",
+      "net_electric_mw": -571.8932058906834,
+      "numeric_count": 505,
+      "predicate_count": 14,
+      "predicates": {
+        "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation": {
+          "channel": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+          "producer": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 227.14905157213934
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation": {
+          "channel": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+          "producer": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 495.68230754778847
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation": {
+          "channel": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+          "producer": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation": {
+          "channel": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+          "producer": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1.7618672870609994e+22
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation": {
+          "channel": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+          "producer": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 9.937990999710028
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation": {
+          "channel": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+          "producer": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1144.6450731777445
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation": {
+          "channel": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+          "producer": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 603.454833859811
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation": {
+          "channel": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+          "producer": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation": {
+          "channel": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+          "producer": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 760.4738113517697
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation": {
+          "channel": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
+          "producer": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+            "margin": 2.2328502456576348e-06,
+            "observed": {
+              "magnitude_in": 7.538801582995802e-09,
+              "tolerance_in": 2.2403890472406306e-06
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+            "margin": 2.2403890472406306e-06,
+            "observed": {
+              "tolerance_in": 2.2403890472406306e-06,
+              "unmet_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation": {
+          "channel": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+          "producer": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 928.3404699173973
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation": {
+          "channel": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+          "producer": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1458.4195344065724
+            },
+            "status": "satisfied"
+          }
+        }
+      },
+      "provenance": {
+        "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+        "input_digest": "7a28fe832ba8ee3e025833b385a67e0dd62447de3c4b0087b4d949e069db27ca",
+        "diagnostic_evaluator_version": "v1",
+        "native_source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7"
+      },
+      "integrated_lcoe_publication": {
+        "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__lifecycle_price__evaluate",
+        "root_causes": [
+          "aries_integrated_plant__lifecycle_accounts__evaluate"
+        ],
+        "status": "blocked_dependency"
+      },
+      "source_lcoe_publication": {
+        "channel": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__source_lifecycle_price__evaluate",
+        "root_causes": [],
+        "status": "available_numeric",
+        "value": 103.67423674811707
+      },
+      "sha256": "2afd9e254874914f7e5d220e61da5c4f578d3d9733fb699a377a424455549001"
+    },
+    {
+      "case": "negative_discount",
+      "state": "partial",
+      "net_electric_mw": 423.10679410931664,
+      "numeric_count": 464,
+      "predicate_count": 14,
+      "predicates": {
+        "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation": {
+          "channel": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+          "producer": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 227.14905157213934
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation": {
+          "channel": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+          "producer": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 495.68230754778847
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation": {
+          "channel": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+          "producer": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation": {
+          "channel": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+          "producer": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1.7618672870609994e+22
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation": {
+          "channel": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+          "producer": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 9.937990999710028
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation": {
+          "channel": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+          "producer": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1144.6450731777445
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation": {
+          "channel": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+          "producer": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 603.454833859811
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation": {
+          "channel": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+          "producer": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation": {
+          "channel": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+          "producer": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 760.4738113517697
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation": {
+          "channel": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
+          "producer": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+            "margin": 2.2328500182839593e-06,
+            "observed": {
+              "magnitude_in": 7.539028956671245e-09,
+              "tolerance_in": 2.2403890472406306e-06
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+            "margin": 2.2403890472406306e-06,
+            "observed": {
+              "tolerance_in": 2.2403890472406306e-06,
+              "unmet_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation": {
+          "channel": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+          "producer": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 928.3404699173973
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation": {
+          "channel": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+          "producer": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1458.4195344065724
+            },
+            "status": "satisfied"
+          }
+        }
+      },
+      "provenance": {
+        "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+        "input_digest": "0cef73897ab28ef9c9c6264c13a7a269d7e1f389a91545cd91a1f10578f73c73",
+        "diagnostic_evaluator_version": "v1",
+        "native_source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7"
+      },
+      "integrated_lcoe_publication": {
+        "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__lifecycle_price__evaluate",
+        "root_causes": [
+          "aries_integrated_plant__lifecycle_accounts__evaluate"
+        ],
+        "status": "blocked_dependency"
+      },
+      "source_lcoe_publication": {
+        "channel": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__source_lifecycle_price__evaluate",
+        "root_causes": [
+          "aries_integrated_plant__source_lifecycle_accounts__evaluate"
+        ],
+        "status": "blocked_dependency"
+      },
+      "sha256": "b5275fb1f746c0c730e657a7248662bacfac5e0e2d0db31f2a5ddae424424cda"
+    },
+    {
+      "case": "double_source_financing",
+      "state": "partial",
+      "net_electric_mw": 423.10679410931664,
+      "numeric_count": 504,
+      "predicate_count": 14,
+      "predicates": {
+        "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation": {
+          "channel": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+          "producer": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 227.14905157213934
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation": {
+          "channel": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+          "producer": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 495.68230754778847
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation": {
+          "channel": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+          "producer": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation": {
+          "channel": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+          "producer": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1.7618672870609994e+22
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation": {
+          "channel": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+          "producer": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 9.937990999710028
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation": {
+          "channel": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+          "producer": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1144.6450731777445
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation": {
+          "channel": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+          "producer": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 603.454833859811
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation": {
+          "channel": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+          "producer": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation": {
+          "channel": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+          "producer": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 760.4738113517697
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation": {
+          "channel": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
+          "producer": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+            "margin": 2.2328500182839593e-06,
+            "observed": {
+              "magnitude_in": 7.539028956671245e-09,
+              "tolerance_in": 2.2403890472406306e-06
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation": {
+          "channel": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+          "producer": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+            "margin": 2.2403890472406306e-06,
+            "observed": {
+              "tolerance_in": 2.2403890472406306e-06,
+              "unmet_in": 0.0
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation": {
+          "channel": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+          "producer": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 928.3404699173973
+            },
+            "status": "satisfied"
+          }
+        },
+        "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation": {
+          "channel": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+          "producer": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "root_causes": [],
+          "status": "available_structured",
+          "structured_value": {
+            "actual_value": true,
+            "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+            "margin": null,
+            "observed": {
+              "defined_in": 1.0,
+              "margin_in": 1458.4195344065724
+            },
+            "status": "satisfied"
+          }
+        }
+      },
+      "provenance": {
+        "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+        "input_digest": "1f5c62548fb89036931488105212f59033c27a2d658143b582f078e094ed77c1",
+        "diagnostic_evaluator_version": "v1",
+        "native_source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7"
+      },
+      "integrated_lcoe_publication": {
+        "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__lifecycle_price__evaluate",
+        "root_causes": [],
+        "status": "available_numeric",
+        "value": 176.6865694100971
+      },
+      "source_lcoe_publication": {
+        "channel": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+        "producer": "aries_integrated_plant__source_lifecycle_price__evaluate",
+        "root_causes": [
+          "aries_integrated_plant__source_finance__boundary"
+        ],
+        "status": "blocked_dependency"
+      },
+      "sha256": "4214a3c3972883e4e54806451f447dcf2a7b7604da26ffe8ac69d0f31e3d7f1a"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-IC-001",
+  "question": "What absolute critical-current normalization at nominal 20 K supports a conditional 6 mm by 56 micrometre REBCO composite tape model, with field and angle domain and manufacturing spread explicit?",
+  "consumer": "absolute-conductor-current-margin/T-001",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": [
+    "Molodyk et al. 2021 registered original source and figures",
+    "Stellaris clean original conductor analysis"
+  ],
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  }
+}

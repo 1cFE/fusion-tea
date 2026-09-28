@@ -1,6 +1,56 @@
 package mfe_account_costs {
     private import ScalarValues::*;
 
+    calc def 'Supplied Cost Class' {
+        doc /* Guarded identity for a selected procurement class. Native completion
+        rejects nonfinite, Boolean or negative quantities. The value is chosen,
+        not computed from operating demand and not a qualified physical capacity.
+        Its MW thermal/fusion or MWe interpretation belongs to the owning account.
+        **Source**: modeling_project/REQUIREMENTS.md
+        **Reference**: MR-7; work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/design.md
+        **Basis**: model-owned selected-input domain, preserving the supplied value
+        **Last Updated**: 2026-09-20 */
+        in attribute class_in : Real;
+        out attribute value : Real;
+    }
+
+    calc def 'Supplied Purchase Cost' {
+        doc /* WI-079 evaluates a supplied package purchase estimate, dollars per module.
+        cost = purchase_cost_in * n_mod_in. Native completion rejects nonfinite,
+        negative or Boolean amounts and any n_mod_in other than one: account
+        aggregation beyond the current single-module contract remains unsupported.
+        The amount and offered specification form one assumed package; demand does
+        not select either. No price law for hypothetical specification changes.
+        **Source**: modeling_project/REQUIREMENTS.md
+        **Reference**: MR-7; work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/design.md
+        **Basis**: independently reviewed supplied-package evaluation contract
+        **Last Updated**: 2026-09-20 */
+        in attribute purchase_cost_in : Real;
+        in attribute n_mod_in : Real;
+        out attribute cost : Real;
+    }
+
+    calc def 'Supplied Auxiliary Cooling Cost' {
+        doc /* WI-079 separate chosen auxiliary allowance and cryogenic package price.
+        aux_cost = aux_per_mw_in * thermal_class_in * n_mod_in;
+        cryo_cost = purchase_cost_in; cost = aux_cost + cryo_cost.
+        The class is thermal MW of the selected procurement scenario, never actual
+        rejected heat or cold-stage W. The cryo amount is dollars for the selected
+        package; current one-module scope preserves entering aggregation. Native
+        completion rejects nonfinite/negative inputs and n_mod_in other than one.
+        **Source**: modeling_project/REQUIREMENTS.md
+        **Reference**: MR-7; work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/design.md
+        **Basis**: reviewed selected amount plus independent budget-class allowance
+        **Last Updated**: 2026-09-20 */
+        in attribute aux_per_mw_in : Real;
+        in attribute thermal_class_in : Real;
+        in attribute purchase_cost_in : Real;
+        in attribute n_mod_in : Real;
+        out attribute aux_cost : Real;
+        out attribute cryo_cost : Real;
+        out attribute cost : Real;
+    }
+
     // =========================================================================
     // Concept-agnostic steady-state CAS account cost scalings (MFE)
     //
@@ -81,7 +131,11 @@ package mfe_account_costs {
     calc def 'Structure Cost' {
         doc /*
         CAS22.1.5 Primary structure (gravity supports, thermal shields,
-        inter-coil structure, machine base) cost. Volume x gross-electric
+        inter-coil structure, machine base) legacy proxy. WI-059 total-support mode
+        reallocates residual_fraction of this proxy to an explicitly assumed
+        nonmagnet allowance, with no sourced allocation; legacy_cost is exposed.
+        Native completion requires residual_fraction in [0,1].
+        Volume x gross-electric
         scaling:
 
           cost = unit_cost * structure_vol * (p_et/p_et_ref)^alpha
@@ -91,6 +145,7 @@ package mfe_account_costs {
         **Basis**: Volume-based structure cost with gross-electric power law
         */
 
+        in attribute residual_fraction : Real default 1.0;
         in attribute unit_cost : Real;
         in attribute structure_vol : Real;
         in attribute p_et_in : Real;
@@ -101,8 +156,9 @@ package mfe_account_costs {
         // Exponent. Source: cas22.py:501 (** 0.5).
         in attribute alpha : Real default 0.5;
 
-        out attribute cost : Real =
+        out attribute legacy_cost : Real =
             unit_cost * structure_vol * (p_et_in / p_et_ref) ** alpha;
+        out attribute cost : Real = residual_fraction * legacy_cost;
     }
 
     calc def 'Vessel Cost' {
@@ -384,7 +440,7 @@ package mfe_account_costs {
 
         // fixed adders, fuel/FOAK-keyed [$]
         in attribute fixed_precon : Real;
-        // net electric power [MW]
+        // Supplied net-electric procurement class [MW], not operating demand.
         in attribute p_net : Real;
 
         // Frozen n_mod = 1 (WI-025 ruling 1). Source: costs.py:64.
@@ -403,7 +459,9 @@ package mfe_account_costs {
     calc def 'Annual OM Cost' {
         doc /*
         CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-        concept input) scaled by sqrt of plant-total net electric. CAS71
+        concept input) scaled by sqrt of a supplied staffing procurement class.
+        WI-079: p_net is a selected net-MWe class, never operating power; staffing
+        expenditure stays fixed when the same supplied design changes output. CAS71
         inflation levelization and CAS72 scheduled replacement are documented
         Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
         om_direct is an additive direct term for concepts that specify O&M
@@ -418,7 +476,7 @@ package mfe_account_costs {
 
         // annual O&M at ref power, fuel-keyed [$/yr]
         in attribute om_ref : Real;
-        // net electric power [MW]
+        // Supplied net-electric procurement class [MW], not operating demand.
         in attribute p_net : Real;
 
         // Frozen n_mod = 1 (WI-025 ruling 1). Source: costs.py:353.
@@ -455,7 +513,7 @@ package mfe_account_costs {
         Plant-wide account, linear-or-power-law in plant-total driving power.
         Covers C220400 waste (base 1.96, ref 1000, a=1.0), C220500 fuel
         handling (fuel base, ref 1000, a=0.7), C220600 other (11.5, ref 1000,
-        a=0.8), C220700 I&C (85.0, ref 3500, a=0.65), and CAS40 owner (owner
+        a=0.8), C220700 I&C (85.0, ref 3500, a=0.65; WI-070 allocates distinct plasma/central supervisory functions here, excluding C220500 package-local controls; inherited coefficient is an uncalibrated residual allowance, not a historical price decomposition), and CAS40 owner (owner
         base, ref 1000, a=0.5). base/ref_power/alpha are per-account concept
         inputs (MR-3, bound at the instance).
 
@@ -582,20 +640,26 @@ package mfe_account_costs {
         in attribute p_cryo_ref : Real default 30.0;
         // cas22.py:694
         in attribute alpha : Real default 0.7;
-        out attribute cost : Real =
-            aux_per_mw_in * (n_mod_in * p_th_in)
-            + cryo_base * (p_cryo / p_cryo_ref) ** alpha;
+        // WI-035 D7: the aux term and the cryoplant term as their own
+        // outputs; cost stays their exact sum (same operations, bit-identical).
+        out attribute aux_cost : Real = aux_per_mw_in * (n_mod_in * p_th_in);
+        out attribute cryo_cost : Real = cryo_base * (p_cryo / p_cryo_ref) ** alpha;
+        out attribute cost : Real = aux_cost + cryo_cost;
     }
 
     // ---- CAS50 supplementary (consumes cas20 / cas23..28 / cas30 aggregates) ----
     calc def 'Supplementary Cost' {
         doc /*
-        CAS50 supplementary account:
+        CAS50 supplementary account (WI-079 uses independent startup/decommissioning procurement classes; WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
           cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
                   + insurance*(cas20+cas30)
                   + startup*(n_mod*p_net/ref) + decom*(n_mod*p_net/ref))
                  * (1 + contingency_rate)
+
+        WI-067 subtracts explicitly delivered initial cooling purchases from the
+        shipping base only. This does not subtract field labor or future replacement.
+        Default zero preserves generic designs.
 
         cas20 is CAS20 WITH contingency; cas23_to_28 is c23+c24+c25+c26+c27+c28
         (1cfe's param is misnamed cas22_to_28 but model.py:1492 feeds c23..c28 --
@@ -618,8 +682,13 @@ package mfe_account_costs {
         in attribute cas23_to_28 : Real;
         // indirect [$]
         in attribute cas30 : Real;
-        in attribute p_net : Real;
+        in attribute startup_net_class_in : Real;
+        in attribute decom_net_class_in : Real;
         in attribute n_mod_in : Real default 1.0;
+        // WI-067: optional bound formal precedes skipped defaults on the exact route.
+        in attribute delivered_shipping_exclusion_in : Real default 0.0;
+        in attribute facility_exclusion_in : Real default 0.0;
+        in attribute fuel_installation_exclusion_in : Real default 0.0;
         // Defaulted formals declared last: usages bind the formals above by name
         // and leave these at their defaults; a skipped default must not precede
         // a bound formal on the exact route (migration ledger).
@@ -630,12 +699,12 @@ package mfe_account_costs {
         in attribute contingency_rate_in : Real default 0.0;
         in attribute ref_net_power : Real default 1000.0;
         out attribute cost : Real =
-            (shipping_frac * cas20
+            (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in - fuel_installation_exclusion_in)
              + spares_frac * cas23_to_28
              + tax_frac * cas20
              + insurance_frac * (cas20 + cas30)
-             + startup_fuel_base * (n_mod_in * p_net / ref_net_power)
-             + decom_base * (n_mod_in * p_net / ref_net_power))
+             + startup_fuel_base * (n_mod_in * startup_net_class_in / ref_net_power)
+             + decom_base * (n_mod_in * decom_net_class_in / ref_net_power))
             * (1.0 + contingency_rate_in);
     }
 
@@ -648,22 +717,30 @@ package mfe_account_costs {
                   / (interest_rate * construction_years) - 1
           cost  = f_idc * overnight_cost
 
-        Variable real exponent construction_years -- the idc_factor precedent
-        (mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
+        Real construction_years retains its existing analytic extension. WI-028
         Option C (owner-ruled): this line is A-2-checked and reported but
         EXCLUDED from total_capital; the DCF idc_factor is untouched.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
         **Ref**: costs.py:286-297 (cas60_idc)
         **Basis**: Uniform-spend closed-form interest during construction
+        Native manual completion evaluates the retained equation above for Real T.
+        The zero-interest factor is exactly zero. Near zero, a generalized-binomial
+        series avoids cancellation; outside its documented switch, factoring T-1
+        retains the one-year zero. Reported IDC remains excluded from headline
+        total capital and is distinct from the headline midpoint multiplier.
+
+        **Source**: models/library/analyses/mfe_account_costs.sysml
+        **Ref**: IDC Closed-Form Cost, uniform-spend f_idc and cost equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+        Preceding external citations are inherited and not reverified in WI-052.
+        **Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+        **Last Updated**: 2026-09-12 (native equation and numerical method verification)
         */
         in attribute interest_rate : Real;
         in attribute construction_years_in : Real;
         in attribute overnight_cost : Real;
-        attribute f_idc : Real =
-            ((1.0 + interest_rate) ** construction_years_in - 1.0)
-            / (interest_rate * construction_years_in) - 1.0;
-        out attribute cost : Real = f_idc * overnight_cost;
+        out attribute cost : Real;
+
     }
 
     // ---- CAS71 / CAS80 shared levelization wrapper (WI-029) ----
@@ -688,12 +765,23 @@ package mfe_account_costs {
         annual_cost = the unlevelized annual O&M -> CAS71, and with
         annual_cost = the raw annual DT fuel cost -> CAS80.
 
-        Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+        Output-only Real declarations select typed native manual completion.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
         **Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);
             costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
         **Basis**: Growing-annuity present value annuitized by the capital recovery factor
+        Native manual completion evaluates the retained CRF*PV expression above
+        for Real N and T. A1 is construction-escalated annual_cost; its first
+        operating payment is discounted at year one. CRF(0,N)=1/N and
+        PV(i,i,N)=A1*N/(1+i). log1p/expm1 retain nearby represented rate differences.
+        Public outputs remain levelized and crf in the emitted wrapper order.
+
+        **Source**: models/library/analyses/mfe_account_costs.sysml
+        **Ref**: Levelized Annual Cost, CRF, construction-escalated A1, growing-annuity PV and levelized equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+        Preceding external citations are inherited and not reverified in WI-052.
+        **Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+        **Last Updated**: 2026-09-12 (native equation and numerical method verification)
         */
 
         // raw annual stream [$/yr]
@@ -707,23 +795,9 @@ package mfe_account_costs {
         // Tc (NOAK: construction_time)
         in attribute project_time : Real;
 
-        // CRF(i,n). Source: economics.py:6-10. Exposed as an OUT so the plant's
-        // 1cfe-form CAS90 comparison channel (WI-029 Option ii) REUSES this one
-        // capital-recovery factor instead of restating CRF a second time; the
-        // DCF core computes the identical CRF from the same discount_rate /
-        // operational_years and is left untouched (mfe_lcoe_dcf.sysml:42-43).
-        attribute disc_pow_n : Real = (1.0 + interest_rate) ** operational_years_in;
-        out attribute crf : Real = interest_rate * disc_pow_n / (disc_pow_n - 1.0);
+        out attribute crf : Real;
+        out attribute levelized : Real;
 
-        // A1 = escalated first-operating-year cost. Source: economics.py:40.
-        attribute a1 : Real = annual_cost * (1.0 + inflation_rate_in) ** project_time;
-
-        // Growing-annuity present value. Source: economics.py:44-46.
-        attribute pv : Real =
-            a1 * (1.0 - ((1.0 + inflation_rate_in) / (1.0 + interest_rate)) ** operational_years_in)
-            / (interest_rate - inflation_rate_in);
-
-        out attribute levelized : Real = crf * pv;
     }
 
     // ---- CAS80 raw annual DT fuel cost (WI-029) ----
@@ -751,7 +825,8 @@ package mfe_account_costs {
         All fuel constants are inputs, never library defaults (MR-3) -- a
         concept binds its own fuel chemistry and unit prices.
 
-        Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+        The annual_raw, burn_correction and annual_fuel SysML expressions
+        generate the fuel arithmetic directly.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
         **Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -790,94 +865,7 @@ package mfe_account_costs {
         out attribute annual_fuel : Real = annual_raw * burn_correction;
     }
 
-    // ---- CAS72 levelized scheduled replacement (WI-029, Rung B) ----
-    calc def 'Levelized Replacement Cost' {
-        doc /*
-        CAS72 levelized scheduled-replacement cost of the neutron-damage-
-        limited in-vessel accounts (first wall / blanket + divertor):
-
-          p_neutron        = p_fus * (1 - ash_frac)              [MW]
-          q_n              = p_neutron / firstwall_area          [MW/m^2]
-          core_lifetime_FPY= clip(fluence_limit / max(q_n, 1e-6),
-                                  0.5, operational_years*availability)
-          core_lifetime_cal= core_lifetime_FPY / availability     [cal-yr]
-          s                = (1 + i)^(-core_lifetime_cal)
-          n_rep            = max(0, ceil(operational_years/core_lifetime_cal) - 1)
-          pv               = cost_per_event * s * (1 - s^n_rep) / (1 - s)
-          cost             = CRF(i, n) * pv
-
-        The replaceable core survives a fixed neutron fluence, so its life in
-        full-power years is the fluence limit divided by the wall load, and its
-        calendar life divides again by availability. Each replacement is a
-        discrete event discounted at its own date; `n_rep` counts the events
-        inside the plant life (the final core is never replaced, hence -1).
-
-        EXECUTABLE SEMANTIC (Rung B, WI-022 pattern): `max`, `min` and `floor`
-        are invocations, which fall outside the codegen arithmetic envelope
-        (+ - * / ** only, calc_compat_renderer.py:39-46), so this calc routes
-        to the handwritten codegen stage (manual_required). The generated
-        handwritten impl is normative and is guarded bit-exact (rel 1e-9) by
-        the oracle mirror in verify_stellaris.py. Both carry 1cfe's guards
-        VERBATIM -- the clip floor/cap, the inner max(q_n, 1e-6), and the outer
-        max(0, ...) -- rather than dropping them as point-inert no-ops: they go
-        live at study-sweep extremes and a dropped guard would return a wrong
-        CAS72 silently and discontinuously.
-
-        Two faithful re-expressions in the model-resident statement, both exact
-        identities changing no value: clip(z, lo, hi) is written min(max(z, lo),
-        hi) -- jnp.clip's own order -- and ceil(z) is written -floor(-z) (the KerML
-        Real function library has floor, min and max but no ceiling or clip). The handwritten impl
-        uses Python's math.ceil and the same guards directly.
-
-        EXACT-ROUTE FORM (stellarator-model-migration, 2026-08-21; Class B,
-        marked for revert -- see models/stellarator_migration_ledger.md): the
-        pinned codegen admits no function invocation (max/min/floor) in an
-        executable expression, so the model-resident statement of the chain
-        above is carried as this doc and the output is declared without an
-        expression (a manual interface). The pre-migration body, with the
-        intermediates p_neutron, q_n, fpy_raw, fpy_cap, core_lifetime_fpy,
-        core_lifetime_cal, s, n_rep, pv, disc_pow_n, crf, is recorded verbatim
-        in the ledger row and in git at the migration PR's parent.
-
-        `n_rep` is a discontinuous step function of the live neutron/geometry
-        chain and is computed every run -- never frozen as a defaulted input.
-
-        Concept-agnostic: the fluence limit, the wall loading, the replaceable-
-        account cost, and the plant life are all inputs (MR-3).
-
-        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
-        **Ref**: economics.py:53-75 (levelized_replacement_cost); model.py:102-111
-            (_core_lifetime_fpy, the clip and inner max); economics.py:6-10 (CRF);
-            defaults.py:291 (fluence_limit_dt), defaults.py:299 (replaceable accounts)
-        **Basis**: Fluence-limited replacement schedule, discretely discounted and annuitized
-        */
-
-        // plant-total replaceable-account cost [$]
-        in attribute cost_per_event : Real;
-        // The neutron power is taken as fusion power x (1 - ash_frac) INSIDE this
-        // calc rather than from a plant-level derived attribute: codegen wires a
-        // calc input only from a producer channel, and an attribute mixing a calc
-        // output (fusion.p_fus) with a sibling (ash_frac) classifies EXPOSE_COMPUTED
-        // and produces none. Same arithmetic, same operand order (WI-029 adaptation).
-        // fusion power [MW]
-        in attribute p_fus : Real;
-        // charged-particle share of fusion energy
-        in attribute ash_frac_in : Real;
-        // first-wall area [m^2]
-        in attribute firstwall_area : Real;
-        // core fluence limit [MW-yr/m^2]
-        in attribute fluence_limit_in : Real;
-        in attribute availability_in : Real;
-        // i
-        in attribute interest_rate : Real;
-        // n
-        in attribute operational_years_in : Real;
-
-        // Manual interface on the exact route (see EXACT-ROUTE FORM in the doc):
-        // the handwritten impl carries the guarded chain verbatim and is the
-        // executable meaning (guarded by the oracle mirror).
-        out attribute cost : Real;
-    }
+    // CAS72 moved to mfe_lifecycle 'Lifecycle Calendar' (WI-046); its periodic chain is that calc's held mode.
 
     // ---- WI-029 producer-shaping defs (codegen mechanics, value-preserving) ----
     // Codegen wires a calc input only from a PRODUCER channel: a calc output, or

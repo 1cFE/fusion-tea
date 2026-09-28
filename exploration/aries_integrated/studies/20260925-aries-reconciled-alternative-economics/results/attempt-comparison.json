@@ -1,0 +1,16 @@
+{
+  "cases": 64,
+  "same_case_names": true,
+  "input_maps_differing": 0,
+  "output_channels_compared": 35264,
+  "output_channels_differing": 0,
+  "verdict_sets_differing": 0,
+  "attempt1_fingerprints": [
+    "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4"
+  ],
+  "attempt2_fingerprints": [
+    "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4"
+  ],
+  "identical": true,
+  "note": "attempt 1 retained under results-attempt1/ with its refused verification log; attempt 2 executed after the reviewed curtailed-feed tolerance amendment"
+}

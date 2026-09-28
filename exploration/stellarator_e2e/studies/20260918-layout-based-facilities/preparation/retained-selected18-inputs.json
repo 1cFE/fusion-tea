@@ -1,0 +1,14 @@
+{
+  "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+  "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+  "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+  "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+  "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+  "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+  "stellarator_09__stellaris__plasma__R": 11.251748216682868,
+  "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+  "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+  "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+  "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+  "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20
+}

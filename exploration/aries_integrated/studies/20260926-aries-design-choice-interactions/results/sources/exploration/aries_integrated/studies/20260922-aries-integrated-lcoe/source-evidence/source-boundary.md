@@ -1,0 +1,59 @@
+# Retained financial sources and tritium supply boundary
+
+[AGENT] Bounded evidence investigation, 2026-09-22. This is source interpretation for authoring and subsequent independent review, not design acceptance. Authority is the retained owner brief and supplement. No source, model, package or historical result was changed. Original retained Lyon pages 707, 709 and 716 were visually inspected; equations and the active selected-stock completion were read directly. No new acquisition was needed.
+
+## Primary evidence and financial facts
+
+[INHERITED: predecessor source-basis.md] Lyon et al., “ARIES-CS Systems Studies,” Fusion Science and Technology 54 (2008), retained PDF `.project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/source-evidence/retained/knowledge/holdout/aries-cs/08-FST-Lyon.pdf`, SHA256 `454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067`. This investigation directly viewed `work/active/WI-088_aries-source-budget-cost-contribution/evidence/lyon-p707.png`, `lyon-p709.png` and `lyon-p716.png`. The preceding interpretation and fresh acceptance are at `work/orchestration/goals/aries-integrated-equipment-costs/evidence/source-basis.md` and `source-review.md`.
+
+| Item | Original observation | Consequence |
+| --- | --- | --- |
+| Published reference | Page 716 Table VII: 77.6 mills/kWh, 1 GW net plant; 2436 MW fusion, 1253 MW gross; cost accounts use year-2004 dollars. | 77.6 USD2004/MWh is the reference comparison, not a calibration requirement. The integrated 423.106794 MW plant differs physically. |
+| Direct capital | Page 707 Table III eight parents sum to 2619.572 MUSD2004; Table VII rounds to 2620. | Use parents once; children and other summaries overlap. |
+| Inclusive capital | Page 707 says multiply direct by 1.93, including construction services, engineering, owner costs, contingencies, interest and escalation during construction. | Calculated 5055.77396 MUSD2004 already includes financing. No second IDC. Breakdown into overnight and financing is unavailable. |
+| Source financing | Page 709 describes a high borrowed-capital interest rate inherited from ARIES 1990s studies and says newer lower rates would reduce CoE. | No explicit rate or dated construction schedule is supplied on inspected pages. Do not infer a discount rate by fitting 77.6. |
+| Availability | Page 707 states 85% availability; it separately applies an O&M cost-credit factor 0.85. | Two different meanings; availability must not apply the O&M credit again. Source annual electricity is 7,446,000 MWh. |
+| Life | Page 707 calls 40 the number of full-power years, but Eq. 7 multiplies it by availability. Page 709 also calls the life 40 full-power years. | FPY versus calendar denominator remains unresolved. A new 40-calendar-year assumption is distinct and must be labeled. |
+| O&M | Page 707 says approximately 14% of CoE, with a 0.85 cost-credit factor. | No independent annual USD2004 O&M estimate is recovered. Reverse-derived 80,893,344 USD2004/year uses 77.6 × 14% × annual energy and is target-derived. |
+| Replacement | Page 709 gives 842 tonnes, approximately 75 MUSD2004 per event, 13 operating replacements and wall-fluence arithmetic. Table VII reports 966 MUSD replaced components. | Rounded events total 975 MUSD, a 9 MUSD difference. This does not determine a consistent discounted cashflow schedule. Initial equipment is separate. |
+| Fuel | Eq. 7 description identifies fuel as deuterium. | Source reference does not establish a recurring tritium market-purchase allowance or initial tritium stock purchase. |
+| Terminal | Page 707 specifies decontamination/decommissioning including waste disposal at 0.5 mills/kWh in 1992 dollars. | This is 0.5 USD1992/MWh, not USD2004, and not a dated terminal payment. No valid USD2004 total can be recovered without a conversion/timing assumption. |
+
+[AGENT calculation] Literal division of inclusive capital by `1000 × 8760 × 0.85 × 40` gives only 16.9747984153 USD2004/MWh of capital. Page 707 says capital is about 82% of published CoE, or approximately 63.632 USD2004/MWh. The printed equation and inspected amounts therefore do not reconstruct the published financial treatment. This is an unresolved source-convention comparison, not proof that the published CoE is erroneous. WI-088 partial allocations remain partial, not full LCOEs.
+
+## Actual tritium accounting
+
+[AGENT code observation] `models/library/analyses/mfe_fuel_cycle.sysml`, `Fuel Cycle Flows`, explicitly calculates burn `B=P_fus*1e6/(Q*c)`, injection `F=B/f`, exhaust `U=F-B` and permanent loss `L=(1-r)*U`, all in T atoms/s. The same file's `Fuel Inventory` description explicitly distinguishes recycled exhaust `R=r*U` from usable breeder supply `S=eta*TBR*B`. Its steady-state identity is `F-R=B+L`. Thus recycling is already credited before any new-supply subtraction.
+
+[AGENT code observation] The reused active annual completion is `exploration/aries_integrated/native_completions/equipment/annual_selected_fuel_impl.py:6`. It calculates `b=B*m_T*seconds*availability`, `l=L*m_T*seconds*availability`, `d=selected_stock_kg*lambda*seconds`, and `external=max(b+l+d-annual_recovery,0)`. Decay assumes maintained nominal inventory and all calendar time; it is not passive depletion of an unrefilled stock. Initial stock purchase belongs once in capital. Processing residence supplies only a required-stock screen. The completion always returns breeding support zero.
+
+[AGENT interpretation] The inherited input name `annual_recovery` must mean **new usable tritium delivered into the plant's fuel-supply boundary, excluding ordinary exhaust recycling already included in r**. Examples include an explicitly assumed net extracted breeder supply, or a separately accounted third-party supply. It is already kg per calendar year and must not receive another availability factor. Usable delivery is after the supplier's extraction losses; an additional extraction-efficiency factor would repeat those losses unless the input boundary were changed explicitly.
+
+[AGENT recommendation] Name reporting rows “no breeding/new-supply credit” and “assumed new usable T supply, X kg/calendar year.” Preserve the legacy input if needed but document this meaning beside its binding. No-credit means zero new supply while retaining the existing 99% exhaust recycle. It does not mean zero recycling or predicted zero breeding. If third-party supply is purchased, give it its own purchase cost or count it in external purchases; subtracting it as free recovery would hide its price. If breeder supply is assumed, equipment already present in the source-based fuel/blanket accounts does not establish its achieved performance or incremental expense. Explicitly declare the provision for any incremental supply expense and keep breeding unsupported.
+
+| Baseline quantity | kg T/calendar year | Meaning |
+| --- | ---: | --- |
+| Burn | 87.483603061730122 | Productive-time reaction consumption |
+| Permanent exhaust loss | 16.621884581728743 | After 99% exhaust recycling |
+| Maintained-stock decay | 0.56221937978751124 | Selected 10 kg stock over calendar time |
+| Gross makeup before new supply | 104.66770702324638 | Sum of the preceding three |
+| Already recycled exhaust | 1645.5665735911455 | Derived as loss / 0.01 × 0.99; never subtract again |
+| Shortfall at independently supplied 100 kg/year | 4.667707023246379 | New-supply scenario, not a fitted breeding ratio |
+
+[INHERITED: WI-090 financial handoff and design E6] The selected price 30 MUSD2004/kg is a broad engineering assumption, not a dated market quote. It yields 3,140,031,210.6973915 USD2004/year external purchase at no new-supply credit, or 140,031,210.69739136 USD2004/year at 100 kg/year new supply before any separately declared cost of that supplied quantity. Exceeding demand clips external purchases at zero; it supplies no sales revenue or stock-growth credit. These cases cannot establish a supply-market feasibility claim.
+
+[AGENT recommendation] Hold the independently selected supply quantity fixed under physical-demand perturbations. Do not bind it to calculated demand to force adequacy. Do not call a recovery sweep an equipment improvement: changing exhaust recycle r needs a recovery/capacity/expense model, while changing new supply is an unsupported supply assumption. Both lack scientific breeding qualification; no free-recovery optimum is supported. Gross supply need, supplied amount, purchase shortfall, supply expense and support status should remain visible.
+
+## Recommended conditional financial convention
+
+[AGENT recommendation, not reconstructed source finance] Use constant USD2004 purchasing power and an explicitly assumed real discount rate. Set commercial operation as time zero. The inherited provisional overnight capital is 4,350,208,470 USD2004 and excludes IDC; accumulate an explicit construction spending schedule once to time zero using the declared real construction rate. For a separate source-conditioned comparison, take the 5,055,773,960 USD2004 inclusive source capital as a supplied time-zero comparison amount and apply no further construction multiplier. Discounting operating-period cashflows against that amount does not itself add a second IDC, but it remains a new assumed operating-finance convention, not a reconstruction of the source.
+
+[AGENT recommendation] Use declared calendar life N (40 is the inherited scenario), annual net energy `P_net*8760*availability`, end-of-year operating cashflows, and the same discount times for energy and recurring costs. Availability already represents productive-time loss, including declared outages; do not subtract another replacement downtime allowance without redefining it. With rate r, use `LCOE=(K_COD + Σ C_t/(1+r)^t + Σ C_event/(1+r)^event_time + (D-S)/(1+r)^N)/(Σ E_t/(1+r)^t)`. D is explicit gross terminal/decommissioning/waste cost; S is explicit salvage. Positive net discounted energy is required. At r=0 the expression reduces to total undiscounted lifetime costs divided by total lifetime net energy.
+
+[AGENT recommendation] Select either explicit replacement events or the annual reserve. The inherited events have interval 5/0.85 calendar years, six events strictly before year 40 and event cost 72,231,350 USD2004; the inherited reserve is an alternative representation. Do not charge both. Declare a nonzero terminal allowance with a broad sensitivity range and a replacement condition for better evidence. A zero-salvage assumption is defensible as a conservative estimate only when explicit; it does not justify zero gross decommissioning cost. Handle tritium stock disposal/decontamination in that terminal scope and do not claim resale revenue without a supplied recoverable mass/value assumption.
+
+[AGENT] Source reconciliation should list each reported value, corresponding model value, difference, price year, boundary and calculated/supplied status. Mark unconvertible terminal quantities and unresolved source finance as unmatched. The difference between the 1 GW source plant and the 423.1 MW assumed integrated baseline, added startup T, selected replacement schedule, no-breeding-credit fuel and declared financing are distinct causes; none should be silently described as model error.
+
+## Verification and scope
+
+[AGENT] Scalar arithmetic above was recomputed with `.codex-test/run python` using the inherited exact handoff values and the visually checked source scalars. This is independent evidence arithmetic, not caller-side filling of advertised model outputs. The model author must expose advertised costs and quotient through the native generated graph. This bounded investigation ended without pursuing the source's cited historical financial method indefinitely. Scientific breeding, actual recovery equipment, market supply, decommissioning procurement, and the source's exact financing/amortization remain unresolved.

@@ -1,0 +1,10 @@
+# Learnings: Model evaluation domain readiness
+
+## Accepted at Round 1 review — 2026-09-20
+
+- [AGENT] The intended size/operating envelope exceeds current scientific support. Fixed breeding geometry, conditional conductor support and equipment point-rating applicability must remain separate from physical adequacy. Evidence: work/analysis/model-evaluation-domain-readiness/coverage-map.md and evidence/coverage-review.md.
+- [AGENT] Complete native arithmetic is not a complete defined prediction. Existing subsystem definition flags must accompany comparison exports, while valid failed physical constraints remain evaluated results. Evidence: adapter current-overlay.json and final-after-read-coverage/undefined-breeding fixture at 5b524b22.
+- [AGENT] Static file membership, public-input consumer coverage and observed file-read identity answer different questions. The corrected integration runs both static membership and a bounded cooperative baseline observer; native reads and unexecuted branches remain uncertified. Evidence: read-coverage implementation-review.md and integration-corrected/.
+- [AGENT] Output-file admission must track current contents through renames/deletion rather than remember paths ever written. Fresh SQLite-store admission constrains this route but does not observe native database bytes. Evidence: retained independent counterexample, lifecycle tests and reviewed observer@02925b74.
+- [AGENT] Ampere-turns cannot determine installed turns and per-turn operating current. Reference mapping must state physical meaning, missing-information policy and held assumptions. Reserve original-attempt custody before decoding so refusal or interruption cannot be replaced by later success. Evidence: adapter mapping/implementation and independent review@5b524b22.
+- [AGENT] Active regression seed selection must identify reviewed current normative bodies. Preserve historical seed receipts and retain failed integration attempts when updating that consumer. Evidence: current_mfe_regressions.py@d94f8774 and both integration attempt directories.

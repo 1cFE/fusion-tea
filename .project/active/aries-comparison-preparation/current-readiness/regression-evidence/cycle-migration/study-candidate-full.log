@@ -1,0 +1,840 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+......................................F................................. [ 17%]
+........................................................................ [ 22%]
+.....................................................FF................. [ 28%]
+.....FF..FF.......F.EEEEEEEE............................................ [ 34%]
+........................................................................ [ 39%]
+........................................................................ [ 45%]
+.........................................F..F..F..F..................F.. [ 51%]
+........................................................................ [ 56%]
+........................................................................ [ 62%]
+........................................................................ [ 68%]
+.......................................x................................ [ 73%]
+.....................................................................F.. [ 79%]
+........................................................................ [ 85%]
+..s..................................................................... [ 90%]
+........................................................................ [ 96%]
+............................................                             [100%]
+==================================== ERRORS ====================================
+________ ERROR at setup of test_committed_package_yields_one_candidate _________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_committed_package_yields_0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 83.64s (0:01:23)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_committed_package_yields_0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_committed_package_yields_0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+____________ ERROR at setup of test_every_candidate_field_resolves _____________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_every_candidate_field_res0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 84.14s (0:01:24)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_every_candidate_field_res0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_every_candidate_field_res0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+___ ERROR at setup of test_the_candidate_names_the_lineage_the_request_named ___
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_candidate_names_the_l0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 83.16s (0:01:23)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_candidate_names_the_l0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_candidate_names_the_l0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+__ ERROR at setup of test_the_pin_is_the_manifests_own_value_not_a_new_number __
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_pin_is_the_manifests_0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 81.62s (0:01:21)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_pin_is_the_manifests_0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_pin_is_the_manifests_0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+____ ERROR at setup of test_the_package_is_byte_identical_before_and_after _____
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_package_is_byte_ident0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 82.65s (0:01:22)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_package_is_byte_ident0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_package_is_byte_ident0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+_ ERROR at setup of test_the_verification_summary_the_candidate_cites_reads_pass _
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_verification_summary_0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 83.46s (0:01:23)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_verification_summary_0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_verification_summary_0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+_ ERROR at setup of test_the_preflight_results_the_run_produced_read_six_of_six _
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_preflight_results_the0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 82.65s (0:01:22)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_preflight_results_the0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_preflight_results_the0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+___ ERROR at setup of test_the_toolchain_the_candidate_ran_under_is_recorded ___
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_toolchain_the_candida0')
+
+    @pytest.fixture
+    def candidate_run(integration_workspace, tmp_path):
+        """One full, passing invocation. Shared by the assertions below so it runs once."""
+        out = tmp_path / "out"
+        entry = integrate.package_digests(integration_workspace.package)
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 82.20s (0:01:22)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_toolchain_the_candida0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_toolchain_the_candida0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_success.py:33: AssertionError
+=================================== FAILURES ===================================
+_____________________ test_current_rate_route_and_coverage _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_current_rate_route_and_co0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
+        import sqlite3
+        from types import SimpleNamespace
+        rates = [.07, .02, .02-1e-12, .02+1e-12, 0.] + [sign*magnitude for magnitude in (1e-4, 1e-8, 1e-12, 1e-16, 1e-18) for sign in (-1, 1)]
+        proposals = [{route.P+'availability_direct': held, route.P+'discount_rate': rate}
+                     for held in (0., .85) for rate in rates]
+        current,db = route.run_points('finance-current-contract', proposals, tmp_path / 'current')
+        legacy,_ = route.run_points('finance-qualified-legacy-contract', [LEGACY_COOLING_FACILITIES | p for p in proposals], tmp_path / 'legacy')
+        assert len(current)==len(legacy)==len(proposals)==30
+        with sqlite3.connect(f'file:{db}?mode=ro',uri=True) as connection:
+            failures={candidate:json.loads(payload) if payload else None for candidate,payload in connection.execute('select candidate_id,failure_json from cases')}
+        for case in current:
+            rate=case.inputs[route.P+'discount_rate']; held=case.inputs[route.P+'availability_direct']
+            if rate < 0:
+                assert case.state=='execution_failed'
+                assert failures[case.candidate_id]['cause']=='ValueError: negative allowance or invalid makeup fraction'
+                assert failures[case.candidate_id]['module_or_channel']==route.P+'heat_transport__equipment'
+            elif held:
+                assert case.state=='execution_failed'
+                assert failures[case.candidate_id]['cause']=='ValueError: facilities requires one module, four sectors, live calendar'
+                assert failures[case.candidate_id]['module_or_channel']==route.P+'buildings__layout'
+            else:
+                assert case.state=='completed'
+        assert sum(c.state=='completed' for c in current)==10
+        assert all(c.state=='completed' for c in legacy)
+        inputs={}
+        for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
+            inputs.update(json.loads(path.read_text()))
+        assert set(inputs)==CURRENT_PARAMETERS
+        assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)==set(ADDITIONAL_MAPPING['mapped_input_keys'])
+        assert set(inputs)-set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)==CURRENT_PARAMETERS-set(ADDITIONAL_MAPPING['mapped_input_keys'])
+        financial=set(FINANCE_DEPENDENCIES['complete_channels']); unchanged=set(FINANCE_DEPENDENCIES['unchanged_channels'])
+        assert financial | unchanged == CURRENT_NUMERIC and not financial & unchanged
+        assert FINANCIAL_CHANNELS <= financial
+        rows=[]
+        for label,cases in [('current',[c for c in current if c.state=='completed']),('qualified-legacy',legacy)]:
+            controls={c.inputs[route.P+'availability_direct']:c for c in cases if c.inputs[route.P+'discount_rate']==.07}
+            for case in cases:
+                control=controls[case.inputs[route.P+'availability_direct']]
+                assert set(case.outputs)==CURRENT_NUMERIC
+                assert set(case.verdicts)==CURRENT_PREDICATES
+                assert case.verdicts==control.verdicts
+                for channel in unchanged:
+                    assert case.outputs[channel]==control.outputs[channel],(label,channel)
+                expected=oracle.evaluate(case.inputs)
+                assert set(expected)==CURRENT_NUMERIC
+                for channel,value in expected.items():
+>                   relative(case.outputs[channel],value)
+
+tests/study/test_financial_consumers.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = 0.0, expected = -5.684341886080802e-14
+
+    def relative(actual, expected):
+        assert math.isfinite(actual)
+        if expected == 0:
+            assert abs(actual) <= 1e-9
+        else:
+>           assert abs((actual - expected) / expected) <= 1e-9, (actual, expected)
+E           AssertionError: (0.0, -5.684341886080802e-14)
+E           assert 1.0 <= 1e-09
+E            +  where 1.0 = abs(((0.0 - -5.684341886080802e-14) / -5.684341886080802e-14))
+
+tests/study/test_financial_consumers.py:28: AssertionError
+______________ test_wrong_expected_fingerprint_refuses_at_gate_9 _______________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_wrong_expected_fingerprin0')
+
+    def test_wrong_expected_fingerprint_refuses_at_gate_9(integration_workspace, tmp_path):
+        out = tmp_path / "out"
+        wrong = _one_digit_off(integration_workspace.expected_semantic_fingerprint)
+        argv = integration_workspace.request_argv(
+            out, **{"--expected-semantic-fingerprint": wrong}
+        )
+    
+        document = run_seam(argv, out)
+    
+        blocker = document["blocker"]
+>       assert blocker["gate"] == "lineage"
+E       AssertionError: assert 'model-family-spine' == 'lineage'
+E         
+E         - lineage
+E         + model-family-spine
+
+tests/study/test_integrate_lineage.py:28: AssertionError
+_______ test_absent_expected_fingerprints_could_not_run_rather_than_pass _______
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_absent_expected_fingerpri0')
+
+    def test_absent_expected_fingerprints_could_not_run_rather_than_pass(
+        integration_workspace, tmp_path
+    ):
+        out = tmp_path / "out"
+        argv = integration_workspace.request_argv(
+            out,
+            **{"--expected-semantic-fingerprint": None,
+               "--expected-executable-fingerprint": None},
+        )
+        document = run_seam(argv, out)
+        blocker = document["blocker"]
+>       assert blocker["gate"] == "lineage"
+E       AssertionError: assert 'model-family-spine' == 'lineage'
+E         
+E         - lineage
+E         + model-family-spine
+
+tests/study/test_integrate_lineage.py:59: AssertionError
+_______________________ test_doctored_pin_refuses_gate_6 _______________________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_doctored_pin_refuses_gate0')
+
+    def test_doctored_pin_refuses_gate_6(integration_workspace, tmp_path):
+        """The manifest's pin must recompute over the live package, or it is not this package's."""
+        out = tmp_path / "out"
+        _edit_manifest(
+            integration_workspace.manifest,
+            lambda data: data["fingerprints"]["indicator_inputs"].update(digest="0" * 64),
+        )
+    
+        document = run_seam(integration_workspace.request_argv(out), out)
+    
+        blocker = document["blocker"]
+>       assert blocker["gate"] == "manifest"
+E       AssertionError: assert 'model-family-spine' == 'manifest'
+E         
+E         - manifest
+E         + model-family-spine
+
+tests/study/test_integrate_refusals.py:223: AssertionError
+_______________ test_drifted_recorded_provenance_refuses_gate_7 ________________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_drifted_recorded_provenan0')
+
+    def test_drifted_recorded_provenance_refuses_gate_7(integration_workspace, tmp_path):
+        """`check_manifest_currency` is the re-pin read backwards, and it is preflight's to make."""
+        out = tmp_path / "out"
+        _edit_manifest(
+            integration_workspace.manifest,
+            lambda data: data["fingerprints"]["recorded_provenance"].update(
+                semantic_fingerprint="0" * 64
+            ),
+        )
+    
+        document = run_seam(integration_workspace.request_argv(out), out)
+    
+        blocker = document["blocker"]
+>       assert blocker["gate"] == "preflight"
+E       AssertionError: assert 'model-family-spine' == 'preflight'
+E         
+E         - preflight
+E         + model-family-spine
+
+tests/study/test_integrate_refusals.py:245: AssertionError
+____________________ test_two_runs_return_the_same_identity ____________________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_two_runs_return_the_same_0')
+
+    def test_two_runs_return_the_same_identity(integration_workspace, tmp_path):
+        documents = []
+        for name in ("a", "b"):
+            out = tmp_path / name
+            done = run_seam_raw(integration_workspace.request_argv(out))
+            document = read_return(done, out)
+>           assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E           AssertionError: {
+E               "gate": "model-family-spine",
+E               "producer": "tests/models/test_model_family_spines.py",
+E               "scope": "repo",
+E               "mode": "refused",
+E               "condition": "repo-lineage-broken",
+E               "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 82.48s (0:01:22)",
+E               "expected": null,
+E               "actual": null,
+E               "evidence": [
+E                 "../../../../tmp/pytest-of-reid/pytest-13031/test_two_runs_return_the_same_0/a/junit/model-family-spine.xml"
+E               ]
+E             }
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...vidence: ../../../../tmp/pytest-of-reid/pytest-13031/test_two_runs_return_the_same_0/a/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_rerun.py:28: AssertionError
+_______________ test_the_second_run_is_a_candidate_not_a_refusal _______________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_second_run_is_a_candi0')
+
+    def test_the_second_run_is_a_candidate_not_a_refusal(integration_workspace, tmp_path):
+        """Re-running regenerates again, in place, on a tree the first run already regenerated.
+    
+        That is only safe because regeneration on the pin is byte-stable; if it were not, the
+        second run would find a dirtied tree and refuse. The contract holds either way — a
+        re-run returns the prior identity or a blocker, never a second conflicting identity —
+        but which branch fires is worth pinning, because a seam that always refused on its
+        second call would be useless to a caller that retries.
+        """
+        for name in ("first", "second"):
+            out = tmp_path / name
+            done = run_seam_raw(integration_workspace.request_argv(out))
+            document = read_return(done, out)
+>           assert document["class"] == "CANDIDATE", name + " run: " + json.dumps(
+                document["blocker"], indent=2
+            )[:2500]
+E           AssertionError: first run: {
+E               "gate": "model-family-spine",
+E               "producer": "tests/models/test_model_family_spines.py",
+E               "scope": "repo",
+E               "mode": "refused",
+E               "condition": "repo-lineage-broken",
+E               "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 83.54s (0:01:23)",
+E               "expected": null,
+E               "actual": null,
+E               "evidence": [
+E                 "../../../../tmp/pytest-of-reid/pytest-13031/test_the_second_run_is_a_candi0/first/junit/model-family-spine.xml"
+E               ]
+E             }
+E           assert 'BLOCKER' == 'CANDIDATE'
+E             
+E             - CANDIDATE
+E             + BLOCKER
+
+tests/study/test_integrate_rerun.py:53: AssertionError
+_________________ test_the_return_rebuilds_the_stock_commands __________________
+
+integration_workspace = IntegrationWorkspace(root=PosixPath('/home/reid/1cfe/fusion-tea/.integration_workspace'), package=PosixPath('/home/rei...be586e41310ad41a1', expected_executable_fingerprint='7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_the_return_rebuilds_the_s0')
+
+    def test_the_return_rebuilds_the_stock_commands(integration_workspace, tmp_path):
+        out = tmp_path / "out"
+        done = run_seam_raw(integration_workspace.request_argv(out))
+        document = read_return(done, out)
+>       assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
+E       AssertionError: {
+E           "gate": "model-family-spine",
+E           "producer": "tests/models/test_model_family_spines.py",
+E           "scope": "repo",
+E           "mode": "refused",
+E           "condition": "repo-lineage-broken",
+E           "detail": "tests/models/test_model_family_spines.py: 1 failing check(s)\ninding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}) | {'stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier', 'stellarator_09__stellaris__magnet__winding_pack__sizing_mode'}) | {'stellarator_09__stellaris__divertor__target_capture_fraction'}) | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__heat_transport__equipment_accessory_mass', 'stellarator_09__stellaris__heat_transport__eq...__stellaris__heat_transport__equipment_enabled', 'stellarator_09__stellaris__heat_transport__equipment_eta_motor', ...}) | {'stellarator_09__stellaris__buildings__administration_area_per_person', 'stellarator_09__stellaris__buildings__admini...larator_09__stellaris__buildings__civil_rate_multiplier', 'stellarator_09__stellaris__buildings__clean_positions', ...}) | {'stellarator_09__stellaris__fuel_cycle__held_inventory', 'stellarator_09__stellaris__fuel_cycle__inventory_enabled', ..., 'stellarator_09__stellaris__fuel_cycle__s_per_year', 'stellarator_09__stellaris__fuel_cycle__shutdown_duration', ...}) | {'stellarator_09__stellaris__fuel_cycle__processing_capacity_margin', 'stellarator_09__stellaris__fuel_cycle__processi..._fuel_cycle__processing_containment_capital', 'stellarator_09__stellaris__fuel_cycle__processing_containment_cpi', ...}) | {'stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}))\nE        +  and   2 = len(({'stellarator_09__stellaris__blanket__tbr'} | {'stellarator_09__stellaris__fuel_cycle__I_total'}))\n\ntests/models/test_model_family_spines.py:369: AssertionError\n=========================== short test summary info ============================\nFAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract\n1 failed, 12 passed in 83.08s (0:01:23)",
+E           "expected": null,
+E           "actual": null,
+E           "evidence": [
+E             "../../../../tmp/pytest-of-reid/pytest-13031/test_the_return_rebuilds_the_s0/out/junit/model-family-spine.xml"
+E           ]
+E         }
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/integrate.p...dence: ../../../../tmp/pytest-of-reid/pytest-13031/test_the_return_rebuilds_the_s0/out/junit/model-family-spine.xml\n").returncode
+
+tests/study/test_integrate_stock_route.py:65: AssertionError
+_ test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius] _
+
+study_id = '20260911-model-owned-radius'
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_native_publication_preser0')
+
+    @pytest.mark.parametrize("study_id", NATIVE)
+    def test_native_publication_preserves_values_and_case_identity(study_id, tmp_path):
+>       data = cases(study_id)
+               ^^^^^^^^^^^^^^^
+
+tests/study/test_native_publication.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+study_id = '20260911-model-owned-radius'
+
+    def cases(study_id=None):
+        verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
+        if study_id == '20260911-model-owned-radius':
+            from tests.models.current_mfe_regressions import CURRENT_PREDICATES, FACILITY_PREDICATES, WI061_PREDICATE, WI062_PREDICATE
+            historical = CURRENT_PREDICATES - FACILITY_PREDICATES - {WI061_PREDICATE, WI062_PREDICATE}
+>           assert len(historical) == 18
+E           AssertionError: assert 21 == 18
+E            +  where 21 = len(frozenset({'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__burn_hold_ok__03c3f94b8...__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3', 'stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7', ...}))
+
+tests/study/test_native_publication.py:61: AssertionError
+_ test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius] _
+
+study_id = '20260911-model-owned-radius', bad = 'absent'
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_native_publication_refuse0')
+
+    @pytest.mark.parametrize("study_id", NATIVE)
+    @pytest.mark.parametrize("bad", ["absent", None, float("nan")], ids=["absent", "null", "nan"])
+    def test_native_publication_refuses_before_replacing_evidence(study_id, bad, tmp_path):
+>       data = cases(study_id)
+               ^^^^^^^^^^^^^^^
+
+tests/study/test_native_publication.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+study_id = '20260911-model-owned-radius'
+
+    def cases(study_id=None):
+        verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
+        if study_id == '20260911-model-owned-radius':
+            from tests.models.current_mfe_regressions import CURRENT_PREDICATES, FACILITY_PREDICATES, WI061_PREDICATE, WI062_PREDICATE
+            historical = CURRENT_PREDICATES - FACILITY_PREDICATES - {WI061_PREDICATE, WI062_PREDICATE}
+>           assert len(historical) == 18
+E           AssertionError: assert 21 == 18
+E            +  where 21 = len(frozenset({'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__burn_hold_ok__03c3f94b8...__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3', 'stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7', ...}))
+
+tests/study/test_native_publication.py:61: AssertionError
+_ test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius] _
+
+study_id = '20260911-model-owned-radius', bad = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_native_publication_refuse3')
+
+    @pytest.mark.parametrize("study_id", NATIVE)
+    @pytest.mark.parametrize("bad", ["absent", None, float("nan")], ids=["absent", "null", "nan"])
+    def test_native_publication_refuses_before_replacing_evidence(study_id, bad, tmp_path):
+>       data = cases(study_id)
+               ^^^^^^^^^^^^^^^
+
+tests/study/test_native_publication.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+study_id = '20260911-model-owned-radius'
+
+    def cases(study_id=None):
+        verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
+        if study_id == '20260911-model-owned-radius':
+            from tests.models.current_mfe_regressions import CURRENT_PREDICATES, FACILITY_PREDICATES, WI061_PREDICATE, WI062_PREDICATE
+            historical = CURRENT_PREDICATES - FACILITY_PREDICATES - {WI061_PREDICATE, WI062_PREDICATE}
+>           assert len(historical) == 18
+E           AssertionError: assert 21 == 18
+E            +  where 21 = len(frozenset({'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__burn_hold_ok__03c3f94b8...__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3', 'stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7', ...}))
+
+tests/study/test_native_publication.py:61: AssertionError
+_ test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius] _
+
+study_id = '20260911-model-owned-radius', bad = nan
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_native_publication_refuse6')
+
+    @pytest.mark.parametrize("study_id", NATIVE)
+    @pytest.mark.parametrize("bad", ["absent", None, float("nan")], ids=["absent", "null", "nan"])
+    def test_native_publication_refuses_before_replacing_evidence(study_id, bad, tmp_path):
+>       data = cases(study_id)
+               ^^^^^^^^^^^^^^^
+
+tests/study/test_native_publication.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+study_id = '20260911-model-owned-radius'
+
+    def cases(study_id=None):
+        verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
+        if study_id == '20260911-model-owned-radius':
+            from tests.models.current_mfe_regressions import CURRENT_PREDICATES, FACILITY_PREDICATES, WI061_PREDICATE, WI062_PREDICATE
+            historical = CURRENT_PREDICATES - FACILITY_PREDICATES - {WI061_PREDICATE, WI062_PREDICATE}
+>           assert len(historical) == 18
+E           AssertionError: assert 21 == 18
+E            +  where 21 = len(frozenset({'stellarator_09__stellaris__beta_ok__82b78aad420730d5', 'stellarator_09__stellaris__burn_hold_ok__03c3f94b8...__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3', 'stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7', ...}))
+
+tests/study/test_native_publication.py:61: AssertionError
+_______ test_real_multi_output_values_survive_reopened_store_and_export ________
+
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_real_multi_output_values_0')
+
+    def test_real_multi_output_values_survive_reopened_store_and_export(
+        stock_simkit_path,
+        tmp_path,
+    ):
+        from simkit.study.query import StudyQuery
+        from simkit.study.store import StudyStore
+    
+        required = {
+            "p_net": f"{route.P}pb__p_net",
+            "rec_frac": f"{route.P}pb__rec_frac",
+            "q_eng": f"{route.P}pb__q_eng",
+            "p_th": f"{route.P}pb__p_th",
+            "p_et": f"{route.P}pb__p_et",
+            # WI-045 (goal plant-closure, 2026-09-08): the thermal efficiency is the
+            # cycle calc's channel now, not the held 0.333; the identity below reads it.
+            "eta_th": f"{route.P}turbine__cycle__eta_th",
+            "lcoe": route.CHANNELS["lcoe"],
+        }
+        cases, db = route.run_points(
+            "numeric-evidence",
+            [route.proposal_for(**route.BASELINE)],
+            tmp_path,
+            required_channels=required,
+        )
+        assert len(cases) == 1 and cases[0].state == "completed"
+        store = StudyStore(db)
+        try:
+            reopened = StudyQuery(store, route.PACKAGE_DIR).cases()[0]
+            assert (
+                store.conn.execute("SELECT evidence_schema_version FROM compatibility").fetchone()[0]
+                == "v3"
+            )
+        finally:
+            store.close()
+        values = route.required_outputs(reopened, required)
+        assert values == route.required_outputs(cases[0], required)
+        assert all(isinstance(value, float) for value in values.values())
+        assert values["p_net"] == pytest.approx(values["p_et"] * (1 - values["rec_frac"]))
+>       assert values["p_et"] == pytest.approx(values["eta_th"] * values["p_th"])  # WI-045: p_the = eta_th * p_th on the cycle's channel
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 1219.9981701764736 == 1360.31050432...6 ± 0.00136031
+E         
+E         comparison failed
+E         Obtained: 1219.9981701764736
+E         Expected: 1360.3105043264716 ± 0.00136031
+
+tests/study/test_numeric_evidence.py:110: AssertionError
+____________ test_all_six_booleans_survive_bridge_native_and_store _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13031/test_all_six_booleans_survive_0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_all_six_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit_path):
+        from simkit.study.bridge import CandidateBridge
+        points = []
+        for key in sorted(route.BOOLEAN_KEYS):
+            for value in (False, True):
+                point = {key: value, route.P+'plasma__R': 12.7 + len(points)*.001}
+                if not value:
+                    if key == route.P+'heat_transport__equipment_enabled':
+                        point.update({route.P+'heat_transport__equipment_cost_mode':0., route.P+'heat_transport__secondary_energy_mode':0.,
+                                      route.P+'buildings__facilities_enabled':False, route.P+'buildings__facilities_cost_mode':0., route.P+'buildings__facilities_capacity_mode':0.})
+                    if key == route.P+'buildings__facilities_enabled':
+                        point.update({route.P+'buildings__facilities_cost_mode':0., route.P+'buildings__facilities_capacity_mode':0.})
+                    if key in {route.P+'fuel_cycle__inventory_enabled', route.P+'fuel_cycle__processing_source_conditions'}:
+                        point[route.P+'fuel_cycle__processing_enabled'] = False
+                points.append(route.validate_proposal(point))
+        prepared = route.prepare(route.PACKAGE_DIR, tmp_path/'bridge')
+        bridge = CandidateBridge(prepared.entry_models)
+        for point in points:
+            typed = bridge.build(point)
+            fields = {k:v for model in typed.values() for k,v in model.model_dump().items()}
+            for key in point.keys() & route.BOOLEAN_KEYS:
+                assert fields[key] is point[key]
+        cases, _ = route.run_points('boolean-transport', points, tmp_path/'native')
+        assert len(cases) == len(points) == 12
+>       assert all(case.state == 'completed' for case in cases)
+E       assert False
+E        +  where False = all(<generator object test_all_six_booleans_survive_bridge_native_and_store.<locals>.<genexpr> at 0x71b1a4fe1e50>)
+
+tests/study/test_stock_route.py:221: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+tests/study/test_numeric_evidence.py::test_real_multi_output_values_survive_reopened_store_and_export
+tests/study/test_numeric_evidence.py::test_adding_persisted_column_reuses_store_without_evaluation
+tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[complete]
+tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[partial]
+tests/study/test_numeric_evidence.py::test_execution_failures_remain_recorded_cases[first-fails]
+tests/study/test_numeric_evidence.py::test_nonfinite_declared_value_is_persisted_and_refused_only_at_export
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_domain_consumers.py::test_three_qualified_domain_rows_have_complete_independent_native_coverage
+tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle
+tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+FAILED tests/study/test_integrate_lineage.py::test_wrong_expected_fingerprint_refuses_at_gate_9
+FAILED tests/study/test_integrate_lineage.py::test_absent_expected_fingerprints_could_not_run_rather_than_pass
+FAILED tests/study/test_integrate_refusals.py::test_doctored_pin_refuses_gate_6
+FAILED tests/study/test_integrate_refusals.py::test_drifted_recorded_provenance_refuses_gate_7
+FAILED tests/study/test_integrate_rerun.py::test_two_runs_return_the_same_identity
+FAILED tests/study/test_integrate_rerun.py::test_the_second_run_is_a_candidate_not_a_refusal
+FAILED tests/study/test_integrate_stock_route.py::test_the_return_rebuilds_the_stock_commands
+FAILED tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]
+FAILED tests/study/test_numeric_evidence.py::test_real_multi_output_values_survive_reopened_store_and_export
+FAILED tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+ERROR tests/study/test_integrate_success.py::test_committed_package_yields_one_candidate
+ERROR tests/study/test_integrate_success.py::test_every_candidate_field_resolves
+ERROR tests/study/test_integrate_success.py::test_the_candidate_names_the_lineage_the_request_named
+ERROR tests/study/test_integrate_success.py::test_the_pin_is_the_manifests_own_value_not_a_new_number
+ERROR tests/study/test_integrate_success.py::test_the_package_is_byte_identical_before_and_after
+ERROR tests/study/test_integrate_success.py::test_the_verification_summary_the_candidate_cites_reads_pass
+ERROR tests/study/test_integrate_success.py::test_the_preflight_results_the_run_produced_read_six_of_six
+ERROR tests/study/test_integrate_success.py::test_the_toolchain_the_candidate_ran_under_is_recorded
+14 failed, 1244 passed, 1 skipped, 1 xfailed, 24 warnings, 8 errors in 2441.80s (0:40:41)

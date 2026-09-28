@@ -1,0 +1,130 @@
+{
+  "origin_commit": "829539f5eb7fde217d18318d1646a5e47103812c",
+  "files": [
+    {
+      "original": ".project/active/aries-comparison-preparation/current-readiness/revealed-results/c2-source-outputs/source-values.json",
+      "retained": "source-values-historical.json",
+      "sha256": "af49a0816dbb93060a607302fd716b84010885fcd317ddc572f1fe0b970ecf5e"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/08-FST-Ku.pdf",
+      "retained": "retained/knowledge/holdout/aries-cs/08-FST-Ku.pdf",
+      "sha256": "8fb35d57ec3563276af13076ee97728f6237630df803bd46639224d5f3e8a7f5"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "retained": "retained/knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/08-FST-Najmabadi.pdf",
+      "retained": "retained/knowledge/holdout/aries-cs/08-FST-Najmabadi.pdf",
+      "sha256": "5eb7889311beecd9b9be56837ecf82b0a92b8ff99804d01bb3fa5fac4a9b78e7"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/08-FST-Raffray.pdf",
+      "retained": "retained/knowledge/holdout/aries-cs/08-FST-Raffray.pdf",
+      "sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Ku/page-01.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Ku/page-01.md",
+      "sha256": "06445d216d556a08f1733eca4cc6b438f7249fbdb9d0b2f7938c321a9af51671"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-05.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-05.png",
+      "sha256": "63bb412fcced6b8eea4f8ae95456ac72cd47f3f168ed64c2431d666deb921358"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+      "sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-14.png",
+      "sha256": "78f6797a176798edb03e0994f93b49326d4fb2ea890f6aacae6e26a9c52b7a5d"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-15.png",
+      "sha256": "ab0361e6e58d94775d1cfeadef2bc894b299d010d3d72c264f7a1b259f8329be"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-05.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-05.md",
+      "sha256": "da0e5b63863666815943c6978d914aa418ff5280054bea8722afebd0f28a8990"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-13.md",
+      "sha256": "414a58b806e6a6397fb22576c1546ef254a3c03c2604b90b53c41bccdba0bf84"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+      "sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-15.md",
+      "sha256": "17cc9b1cc51670f376f61204809ba39ad00a5b91db15d7b5167c734580e594a6"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/outputs-page-08.png",
+      "sha256": "7709221fa0727f04a867de2e32c7602c0cebb8d5f00590833c9f6f3e496e7b90"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-08.md",
+      "sha256": "be69db8eeebf4849ea05da5b21a425c10d30105801b4826c4ea1afc44de48d90"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-14.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-14.md",
+      "sha256": "5cf01f2138775e8df2f4f8cc380d8931f5469288db60e09e6f78f1ed90457218"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-09.png",
+      "sha256": "c4684860d5c71ccfe4ad3eeea13271cea40d54841a0b8d3c27d1d429c77f2e0d"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-11.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-11.png",
+      "sha256": "23358f6db9d192a0d305a73a2d4e62488e49e6824d22f6c35d3676cd7d189d55"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-12.png",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/outputs-page-12.png",
+      "sha256": "dac6958ad0b7fcc5a78288d1e8ef8f1ef0dc1fecf182058cee514d2685c67f25"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-09.md",
+      "sha256": "e48fcfaddd1412c36071ddf770661c7e54e6fb2cd7db5937d560eb7bd1fa459e"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-11.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-11.md",
+      "sha256": "56310412929dd492698f4962657e388dbfe1b0466700442feba4b1f73e721aea"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-12.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-12.md",
+      "sha256": "d45998e4417568e967a74aeec208d8ae8a85c54949354d99cbdf56b277d0c7ff"
+    },
+    {
+      "original": ".project/active/aries-comparison-preparation/current-readiness/revealed-results/c4-review/review.md",
+      "retained": "retained/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c4-review/review.md",
+      "sha256": "ab0a02c3d48db6f06a348ae656e33d080fc1caeff8a2026803c01fb34bb918f6"
+    },
+    {
+      "original": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-02.md",
+      "retained": "retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-02.md",
+      "sha256": "0db2b3a65d8624c628732c6976f58e6106ec56916e85253ca8cbaac6a22fc60c"
+    }
+  ]
+}

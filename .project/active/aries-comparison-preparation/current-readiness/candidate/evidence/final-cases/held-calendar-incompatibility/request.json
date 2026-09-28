@@ -1,0 +1,8 @@
+{
+  "run_kind": "conditioned",
+  "values": {},
+  "conditioned_seam": "held_calendar",
+  "conditioned_values": {
+    "stellarator_09__stellaris__availability_direct": 0.9
+  }
+}

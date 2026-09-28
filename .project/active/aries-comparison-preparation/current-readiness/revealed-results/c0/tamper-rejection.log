@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py", line 116, in <module>
+    print(json.dumps(verify(args.verify) if args.verify else build(args.root,Path(__file__).parent,args.out_dir),indent=2))
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py", line 105, in verify
+    if sha(tar.extractfile(name).read())!=digest: raise ValueError('content mismatch: '+name)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: content mismatch: .project/active/aries-comparison-preparation/current-readiness/candidate/scientific-summary.md

@@ -1,0 +1,4 @@
+{
+  "tests/models/test_mfe_major_radius.py": true,
+  "tests/study/test_single_point_gate.py": true
+}

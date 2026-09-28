@@ -1,0 +1,11 @@
+# Readiness after owner scope decision — 2026-09-16
+
+**Ready for owner-triggered reveal for the initial conditional comparison. Preparation goal closed. ARIES remains sealed; reveal is not authorized.**
+
+[OWNER-VERBATIM] “Accept the frozen helium scenario for the initial conditional comparison. Retain unsupported coolant/blanket correspondence and affected downstream quantities as unresolved or incompatible where equivalence cannot be established. Preserve all formal criteria, missing quantities and failed predictions. Close the preparation goal; ARIES reveal remains a separate explicit authorization.”
+
+[AGENT] This decision accepts the conditional comparison option already described in the frozen package and independently reviewed. It resolves the reserved comparison-scope gate without establishing coolant/blanket equivalence. Unsupported correspondence and affected downstream quantities remain unresolved or incompatible wherever evidence cannot establish equivalence. All formal criteria, missing quantities, failed predictions, constraint violations and the bounded-negative result remain intact. Conditional numerical transfer remains distinct from engineering qualification.
+
+[AGENT] The frozen model, selected mode, manifest, input rules, normalization, acceptance criteria and reporting procedure are unchanged. Freeze r1 archive SHA256: `fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533`. This owner decision is an external attestation to that immutable snapshot. Its embedded readiness verdict and pending-owner field accurately record the pre-decision state; they must be read with this decision record, not rewritten or treated as a new equivalence claim.
+
+[AGENT] [Independent review](evidence/final-review.md) passed technical preparation and freeze assurance with only this reserved scope gate remaining. Its historical OWNER_GATE verdict is preserved. This administrative close needs no new model execution, freeze or independent technical review. The [frozen post-reveal procedure](../../../../.project/active/aries-comparison-preparation/package/freeze-procedure.md) applies only after separate explicit owner reveal authorization: frozen forward comparison first, conditioned diagnostics and later corrections separate.

@@ -1,0 +1,50 @@
+# WI-070 independent implementation audit
+
+**Verdict: PASS for candidate commit and native integration.** [AGENT] The implementation carries verified operating D+T exhaust through the adopted four-row price into selected C220500, project capital and both electricity-cost outputs. Its declared scope, applicability, module convention and controls ownership match the released design. No unresolved implementation finding blocks integration. This audit does not claim completion of the native study, R10.S2 grading or goal closure.
+
+Non-author reviewer: `/root/source_review`, 2026-09-19. Owner adoption and coordinator audit-ready release preceded final execution. Reviewed the specification/design, six canonical model changes and twins, new/changed normative bodies, generated consumers/contracts, independent oracle and adapter, new tests, altered existing tests, generation/metadata receipts and final author evidence. Reused original-source checks in the goal's source/price/design reviews. No production or historical study artifact was edited by this reviewer.
+
+## Candidate identity
+
+| Identity | Audited value |
+|---|---|
+| Semantic fingerprint | `37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f` |
+| Executable fingerprint | `3e3bf467fd98ad927cf12409f1c36807b92e9e8eaa4fd598a2fcd79c00ae698f` |
+| Indicator-input digest | `50c9d4b9b3bf16fdb00e5c726011f2b434bfa0ba8970569795372a12364c312b` |
+| New normative processing body | SHA256 `e55b694c33553a08f795ef25cca709013c3c8e00d9fdd969a1d5ae0481f256e3` |
+| Changed normative shipping body | SHA256 `02e6dd8be34f124499dd49fe7ff728ff9a5a2ae076f2493b1d81443ad85a1b47` |
+
+Independent checks matched all 370 recorded package-file hashes and 38 model hashes, and all 38 canonical/twin pairs. The 36 normative seeds comprise 34 unchanged prior bodies, one changed shipping guard and one new processing body. The audited WI-069 inventory body is among the unchanged seeds. Manifest fingerprints match; the census was independently rederived from the current contract and matched. An AST comparison excluding documentation found only the expected shipping guard and supplementary-cost executable changes among previously tracked generated handwritten files; the new processing body was reviewed separately. Author receipts show two byte-identical fresh generations. This reviewer checked that recipe and its results rather than rerunning the complete generator.
+
+Exact candidate/source/test file identities are retained in `work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/implementation-review/reviewed-files.json`. Reviewer-native script, results, hash checks and test log are alongside it. Candidate commit identity will be assigned by the coordinator; fingerprints above identify this precommit review.
+
+## Requirement coverage
+
+| Requirement | Evidence and disposition |
+|---|---|
+| MR-070-01: verified operating inlet | PASS. Public `dt_processing_flow` binds unchanged WI-069 `dt_processor_kg_s`, upstream of recovery. No mass balance is duplicated in the cost calculator. Native burn-fraction change follows the resulting flow; calendar changes do not resize processing. Undefined breeding retains exhaust and its conditional price while the breeding predicate fails. Active processing with disabled inventory is refused in executed author tests. |
+| MR-070-02: source rows and conversion | PASS. Four source rows and expenditure-year/CPI assumptions match the original independently reviewed data. Reviewer reran source/domain tests covering all 27 outputs against high-precision arithmetic, raw-price reconstruction, current/source anchors and date endpoints. The price remains a 2025 CPI purchasing-power scenario, not a procurement quotation. |
+| MR-070-03: selected account and charges | PASS. The existing processor occurrence binds selected `processing_cost.cost`; its stock is per-module and attached capital is plant-total. CAS22 includes selected fuel cost once and retains the separate legacy output. Generic installation excludes this account. Freight removes direct installation plus its CAS29 contingency. Tax, insurance, indirect and finance follow the reviewed consumers. Local controls and supervisory controls have explicit disjoint ownership with unchanged C220700 coefficient uncertainty disclosed. |
+| MR-070-04: domains and controls | PASS. Separate margin, price and containment-CPI inputs act as designed; exact source-condition flags are checked by the normative function. Nonfinite/negative/zero-invalid inputs, overflow, module count and zero-flow behavior are tested. Source-condition false preserves diagnostic numbers but marks the new public applicability interface false. No fabricated physical qualification constraint or certified capacity limit was added. |
+| MR-070-05: truthful scope | PASS. Model documentation and account records retain limited purchased containment, included local controls, omitted specialized instrumentation and other unpriced functions. Startup proxy, annual fuel purchases, civil costs, torus vacuum/fueling and blanket extraction are not silently repriced by this block. Generic overhead proxies do not establish source-supported complete installed cost. |
+| MR-070-06: implementation verification | PASS for this integration stage. Full mapped native responses, independent arithmetic, legacy behavior, cost-only invariance, shared consumers, source domains, generation identity and static deltas are covered. Focused native study and fresh final R10.S grade remain explicit downstream obligations. |
+
+## Independent execution
+
+The reviewer executed seven native cases through the actual `study_route` and `CandidateBridge`: baseline, legacy selection, burn fraction 0.037, price multiplier 1.37, source conditions false, undefined-breeding geometry and unplanned fraction 0.23. All **6,538 mapped scalar comparisons** passed, 934 per case. Each result retains all 956 raw outputs and its response dictionary in `implementation-review/native-results.json` under the goal.
+
+The burn case verifies the cost ratio against the actual computed inlet ratio raised to 0.3. Price-only change leaves 929 raw outputs exactly unchanged; the other 27 channels are explicitly enumerated processing/financial outputs. All 25 physical constraint verdicts remain unchanged for that price comparison. Legacy mode returns exactly the legacy price and no installation freight exclusion. Source-condition false preserves the baseline numerical price with applicability zero. Undefined breeding preserves positive exhaust and processing applicability. Annual-availability changes preserve running cost.
+
+Reviewer execution reproduces $20,443,419.58 equipment plus $2,342,809.82 direct installation, totaling **$22,786,229.40** before generic charges. Against legacy processing, fuel capital falls $97,960,242.80. Using actual observed current CAS29 c=0.1 and indirect factor k=0.2666666667, independent accounting predicts supplementary change −$4,779,932.11 and overnight change **−$141,271,203.74**; native execution agrees. Baseline total capital is $17,918,171,013.73 and headline LCOE is $271.5843199173/MWh; the separate 1cfe LCOE is $266.4589305666/MWh. These are conditional accounting results, not evidence of feasibility or complete plant pricing.
+
+The reviewer also ran **176 focused tests**, all passing: the 172 source/domain checks plus actual shipping/supplementary consumer cases with nonzero CAS29 and supplementary contingencies, and the typed public processing-module check. The final author evidence records **263 affected regression passes** with 46 warnings and **13 model-family passes**. Those broader runs were inspected rather than repeated. Existing test repairs correctly distinguish historical legacy-price replays from active new processing and include the separate installation freight exclusion; no production equation was changed to satisfy the stale expectations.
+
+## Resolved findings and remaining limitations
+
+The early audit found that the independent oracle accepted negative legacy prices and numeric Boolean values rejected by production. The author corrected those domain checks and added counterexamples before final execution. Source/configuration citations and the per-module-stock/plant-total-capital documentation are present. The cost component binds selected price, including legacy mode. No implementation finding remains open.
+
+Native static validation is **not a pass**. L1/L3/L4/L5 pass; L2 retains its ten prior diagnostic identities. L6 increases from 1,079 to 1,082, adding three unsupported-dot diagnostics on `dt_processing_flow`, `fuel_processing_installation` and `fuel_processing_defined`; none are removed. These are new instances of the known EXPOSE static limitation, not unchanged inherited failures. Fresh generation and actual native flow, shipping and applicability outputs independently exercise the corresponding resolved bindings. That executable evidence does not certify the remaining static residue. See item `evidence/static-classification.md`, `static-delta.json` and `native-validation.log`.
+
+Pydantic serializer warnings concerning stored Boolean zero/one representations remain visible in reviewer and author logs. The numerical/native checks passed. This audit does not assert strict rejection of every coercible representation at the outer Pydantic entry boundary; the normative function's exact-Boolean domain and the study adapter's explicit Boolean normalization are separately checked.
+
+The adopted historical cost law and CPI conversion remain estimates; source-like impurities and conditioning are declared applicability assumptions. Redundancy, commercial service, blanket/fueler stream additions, missing specialized equipment and full safety coverage are not established. C220700 is an uncalibrated supervisory allowance under the explicit accounting convention, not proof that historical source dollars were disaggregated. The reviewed implementation preserves those qualifications. Integration, study execution and final independent grading may proceed.

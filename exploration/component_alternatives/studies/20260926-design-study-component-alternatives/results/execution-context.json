@@ -1,0 +1,10 @@
+{
+  "repo_commit_at_execution": "29dcb5d88afe5d696d0ed41940207987ae75b826",
+  "execution_date": "2026-09-26",
+  "launcher": ".codex-test/run",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python -m exploration.component_alternatives.studies.execute_study --record exploration/component_alternatives/studies/20260926-design-study-component-alternatives --integration-return work/orchestration/goals/design-study-component-alternatives/evidence/integration/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/component_alternatives/component_alternatives_tea --manifest exploration/component_alternatives/studies/20260926-design-study-component-alternatives/manifest.json --identity exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/package_identity.json --store exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/20260926-design-study-component-alternatives.db --sample-size 498 --out exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/verification_summary.json'",
+  "package_clean": true,
+  "study_support_state": "Study-specific proposal/scan files uncommitted during execution; exact bytes retained and hashed at freeze. Package committed at 29dcb5d8.",
+  "first_attempt": "preparation/execution-attempt1/failure.txt"
+}

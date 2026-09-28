@@ -1,0 +1,85 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "fuel_cycle__burn_fraction",
+      "note": "burn: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__burn_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__t_recycle",
+      "note": "recovery: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__t_recycle",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__n_e0",
+      "note": "density: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "unplanned_fraction",
+      "note": "downtime: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__unplanned_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__processing_price_multiplier",
+      "note": "price: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__processing_capacity_margin",
+      "note": "margin: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__processing_containment_cpi",
+      "note": "containment-date: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__processing_enabled",
+      "note": "account-selection: public authored attribute; no tie to a different input. Complete fan-out must be checked against released pipelines before framing release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__processing_enabled",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

@@ -22,6 +22,7 @@ wheels/
 .claude/skills/*
 !.claude/skills/browser-inspect/
 !.claude/skills/concept-research-navigation/
+!.claude/skills/narrate-goal/
 !.claude/skills/run-study/
 !.claude/skills/run-goal/
 .claude/hooks/
@@ -52,3 +53,39 @@ exploration/stellarator_e2e/outputs/
 
 # Agent orchestration run logs (never tracked)
 .orchestrate-logs/
+
+# Local Codex test installer and runtime launcher
+.codex-test/
+
+# Import aliases recreated by historical study and frozen comparison runners.
+/exploration/stellarator_e2e/studies/**/pkg_link/
+/exploration/component_alternatives/links/component_alternatives_tea
+/exploration/component_alternatives/studies/**/pkg_link/
+/exploration/exchanger_architecture/studies/**/pkg_link/
+/exploration/exchanger_architecture/thermal_requirements/studies/**/pkg_link/
+/work/active/WI-097_exchanger-thermal-requirements/evidence/**/pkg_link/
+/work/orchestration/goals/**/pkg_link/
+/.project/active/aries-comparison-preparation/current-readiness/candidate/evidence/**/pkg_link/
+/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/selector/probe_selector
+
+# Disposable test copies recreated by the historical archive review script.
+/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/pytest-temp/
+
+# Study outputs over GitHub's 100 MB file limit, removed from history on 2026-09-27.
+# They stay on the machine that ran the studies; see .project/reports/2026-09-27-history-rewrite.md.
+/exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/results/cases.json
+/exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/results/cases.json
+/exploration/stellarator_e2e/studies/20260912-plant-closure/preparation/oracle-scan.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/preparation/oracle-scan.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/preparation/proposed-points.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/preparation/recomputed-reporting-locations/proposed-points.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/proposed-points.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/cases.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/native/20260927-design-study-whole-plant-conversion-b.db
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/preparation-attempt-01-invalid/proposed-points.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/preparation/oracle-scan.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/preparation/proposed-points.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/proposed-points.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/cases.json
+/exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/native/20260927-design-study-whole-plant-conversion.db
+/work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/cases.json

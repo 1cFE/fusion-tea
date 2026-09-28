@@ -1,0 +1,17 @@
+{
+  "schema_version": "study-package-identity/v1",
+  "package": {
+    "name": "aries_integrated",
+    "path": "exploration/aries_integrated/aries_integrated"
+  },
+  "identity": {
+    "kind": "sealed",
+    "recipe": "effective-executable-fingerprint/v1",
+    "sealed_executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+    "allowed_modified_files": [],
+    "adapter_sources": [],
+    "adapter_source_digest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "digest": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b"
+  },
+  "glue_ledger": []
+}

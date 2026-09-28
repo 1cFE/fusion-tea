@@ -1,0 +1,61 @@
+# Goal: ARIES reference heat-to-electricity reconciliation
+
+## Status
+
+`grounded` — 2026-09-25. [OWNER] Issuance of the prompt retained at `evidence/owner-brief.md` authorizes grounding and execution under its contract; the slug it proposed is adopted as issued. Formal goal/item closure stays owner-held.
+
+## Question
+
+When supplied the published ARIES-CS fusion power, why does the integrated model calculate approximately 796 MW net electricity instead of the reported 1000 MW, and why can it not remove all the heat?
+
+## Consumer
+
+[OWNER] The owner wants the published ARIES operating point evaluated as far as the available evidence permits and the important differences from the model explained. The answer feeds the write-up and decides which model refinements are worth making. It is an attribution, not a tuned agreement; a well-supported disagreement is a valid result.
+
+## Answered when
+
+[INHERITED: evidence/owner-brief.md § Completion condition] The report explains, numerically and by subsystem, why the revised source-conditioned case does or does not reproduce the reported heat balance, gross generation and net electricity within a materiality budget declared and independently reviewed before refinement studies and not relaxed afterward. The 158.7 MW unmet-heat result is resolved by an evidence-supported correction, or traced and bounded as a specific discrepancy; a case with unremoved heat is not accepted as a steady reconstruction merely because it has finite electrical output. Every material discrepancy ends in exactly one of four states: corrected through an evidence-supported input, definition or connection change with before/after execution; explained by a quantified difference in physical or accounting meaning; bounded by an evidence-supported missing-input range including its effect on net electricity and thermal adequacy; or unresolved, reported as unfinished reconciliation with the exact missing evidence and the useful next action. `answer.md` carries the source case definition, baseline and revised heat/electricity tables, the discrepancy ledger (source quantity → original result → revised result → difference → cause → evidence → remaining uncertainty), remaining uncertainty, engineering statuses, reuse/model changes, independent review, Stellaris preservation, exact replay instructions and a short plain-language explanation. The 423 MW calculated-plasma baseline is not a substitute for completion. Agreement with 1000 MW is neither required nor a tuning target; an unexplained difference is not a completed reconciliation.
+
+## Invariants
+
+- **Package:** entry package `aries_integrated`, executable `d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b`, semantic `419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131`, TEAx revision `8d877460ac4f6f264561d916e40c1708adb13397`, native CANDIDATE `f4ea4795`, unchanged since the lifecycle goal. The original failing source-conditioned case is retained verbatim in every round; any revised reference case is separately named and shows exactly what changed and why. Prior ARIES evidence stays frozen even as the live assembly evolves: study records sealed at `8e6fb2f2`, `494c329e`, `8d322312`, `3f521955`, `a396a2e0`, `d976da47`, `d57ee5cd`. At most one promoted package and one committed study per round.
+- **Comparison:** the primary target is the Lyon systems reference: 2436 MW fusion, 2916 MW thermal, 1253 MW gross electric, 1000 MW net, 253 MW of gross required for auxiliaries (170 blanket helium pumping, 27 divertor helium pumping, 55 plant plus cryogenic), 1.16 blanket energy multiplication, 43% net thermal conversion, ignited plasma with zero input power (Table IV, printed p708). Raffray's engineering case (2365 MW fusion; Tables II/III; Figs 12/13) is a separately identified source; the two are never silently combined in powers, temperatures or heat boundaries. Published fusion power is deliberately supplied to isolate downstream performance and earns no prediction credit; source-conditioned and predictive paths stay separate. Causes are quantified one justified change at a time where meaningful, then combined; change order is stated, interactions measured, and the ledger accounts for the combined difference rather than summing unrelated sensitivities. Thermal MW are never added to electrical MW.
+- **Modeling requirements:** MR-3 (library definitions concept-agnostic; case values in designs), MR-4 (every quantity cited), MR-6/PR-3 (patterns validated before production use) and MR-7. For MR-7 the chosen quantities are primary flows, exchanger areas and assumed U (hence UA), hot-side bulk temperature limits, cycle flow, compressor ratios, pressures, machine efficiencies, recuperator effectiveness, auxiliary-load laws and offered ratings; the calculated quantities are operating temperatures, transferred and unmet heat, shaft work, losses, auxiliary demand and net export. No automatic sizing. Equipment is not enlarged until the run passes and called reference reproduction; a deliberately resized alternative is a separately named case with its purpose and changed hardware explicit. A change in variable roles, exchanger network topology or auxiliary-load definitions needs recorded MR-7 reasoning and independent design review before implementation, and insufficient/sufficient tests for any repaired capacity relation. Clipping that conceals unmet demand, target-output substitution in a claimed prediction, and automatic passing of unsupported checks are prohibited. Unsupported science (deposition transport, hydraulics, materials, machine maps, magnets, breeding) keeps its zero support flags.
+- **Preservation:** Stellaris models, the six library files shared with the MFE family (`mfe_lcoe_dcf`, `costed_component`, `mfe_account_costs`, `mfe_plasma_scaling`, `mfe_fuel_cycle`, `mfe_viability`), Stellaris inputs, generated packages, completions and frozen results are unchanged; `evidence/preservation-entry.json` is checked at every delivered increment with `evidence/check-preservation.py`, and an isolated Stellaris behavioral replay is run at delivery. ARIES-only definitions may gain additive alternatives; existing definitions consumed by the retained original case keep their meaning. Unrelated workspace changes present at entry (`evidence/entry-state.txt`) are preserved and never committed by this goal.
+- **Sources:** post-reveal ARIES reading is authorized by the owner brief; retained primary page images and reviewed source records are preferred; every new or reinterpreted source reading gets a focused independent check against the original page image before dependent scientific work; shared quarantine policy and acquisition safeguards are not rewritten; the original hold-out result stands.
+
+## Grounding evidence
+
+Tracked artifacts are cited at entry HEAD `96914299649d5c72adf6f6f79ee2e6e5942f5fdf` unless a sealing commit is more informative.
+
+- `work/orchestration/goals/aries-integrated-heat-electricity/answer.md@96914299` and `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md@96914299`: the integrated assembly, the historical four-scenario table, the S1–S3/A1–A9 assumption register, and the successor handoff naming source thermal reconciliation as established-but-unresolved.
+- `exploration/aries_integrated/studies/20260922-integrated-heat-electricity/record.md@8e6fb2f2` with `results/cases.json`: the frozen fourteen-point record. Its stored `nominal-source-assumed` point differs from `nominal-calculated` only in `source__producer_mode`; `literal-Lyon-source-input` additionally sets recuperator effectiveness 0.95. The live `exploration/aries_integrated/run.py@96914299` also sets `pump_mode=1` on the three pumps for the literal cases, so the historical table must be reproduced against the current package before adoption.
+- `work/orchestration/goals/aries-integrated-equipment-costs/answer.md@96914299`, `work/completed/20260922_WI-090_aries-integrated-equipment-and-costs/design.md@96914299` (assumptions E1–E10; UA bound as selected area × assumed U; pump cubic proxy with a fixed-power source mode), `work/orchestration/goals/aries-integrated-lcoe/answer.md@96914299`, `work/orchestration/goals/aries-integrated-design-studies/answer.md@96914299` and `exploration/aries_integrated/studies/ANNEX.md@96914299`: current package identity, replay routes, and the source-control failures retained across 266 later cases.
+- `models/designs/aries_cs_integrated/plant.sysml@96914299`, `models/library/analyses/integrated_heat_electricity.sysml@96914299` and `exploration/aries_integrated/aries_integrated/handwritten/integrated_heat_electricity/heat_driven_closure_impl.py@96914299`: the sequential helium → divertor → PbLi heater closure with hot-side bulk limits 729.15/973.15/1011.15 K, fixed cycle flow 1400 kg/s, bisection on turbine inlet temperature, and unmet heat as an explicit output; ledger and electrical balance definitions.
+- `tests/model_families.py@96914299`: family ownership; the six shared library files above are consumed by Stellaris, and any new ARIES source file must be registered in `SOURCE_COLLECTIONS`.
+- Retained primary source images: `work/active/WI-086_aries-dual-blanket-heat-accounting/evidence/raffray-p734.png`, `raffray-p736.png`, `raffray-p737.png@21394aca` (Table II; Fig 12 network with a series blanket-helium stage followed by parallel PbLi and divertor-helium stages, cycle helium 355 → 707 °C; Fig 13 cycle; Table III); `work/active/WI-088_aries-source-budget-cost-contribution/evidence/lyon-p716.png@21394aca` (Table VII); `.project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/source-evidence/retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md` and `outputs-page-14.png@19d440fc` (Table IV and the text stating 2436 MW fusion with 1.16 multiplication and 43% net thermal conversion to reach 1 GW net, and 253 MW = 170 + 27 + 55 of gross required for auxiliaries); the retained PDFs under the same `retained/knowledge/holdout/aries-cs/` root@19d440fc for pages not yet rendered.
+- `work/orchestration/aries-transfer-experiment/heat-transport-scope.md@45d90d95` and `power-conversion-scope.md@45d90d95`: prior reviewed readings of Raffray Tables II/III and Figs 12/13, including the derived 940/1555/111/141 MW boundary and the missing cycle flow, stage ratios and shaft split.
+- `.project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/decisions.md@19d440fc`: owner authorization of revealed-source use; `knowledge/holdout/aries-cs/PROTOCOL.md@96914299` § 4 derived-artifact rule remains binding.
+- `modeling_project/REQUIREMENTS.md@96914299` MR-7, and `work/analysis/20260920-184131_design-choice-assignment-audit.md` (staged, unpinned; no native digest): the design-choice inventory this goal must not erode.
+- `evidence/owner-brief.md` and `evidence/entry-state.txt` (unpinned until the grounding commit).
+
+## Limits
+
+| Limit | This goal |
+|---|---|
+| Retry cap | 2 retries (3 attempts) per failed task |
+| Checkpoint revision cap | 2 revisions (3 submissions) |
+| Round limit | 6 rounds |
+| Time or iteration limit | No additional wall-clock cap; at most one promoted package and one committed study per round; caps are never extended silently |
+
+## Reserved gates
+
+[OWNER] Changes to stated modeling intent, changes to Stellaris, external messages, push/merge and formal goal/item closure. The materiality budget, once declared and reviewed, is not relaxed to accept an observed residual. A source ambiguity or an unresolved interpretation that changes the comparison's scientific meaning is surfaced to the owner with dependent conclusions parked, never resolved silently. Routine engineering assumptions, ARIES-specific model changes with the required reviews, diagnostic studies, delegation, independent review and local commits are authorized by the brief. Automatic equipment sizing is not authorized.
+
+## Close rule
+
+[OWNER] Only the owner formally closes the goal or any modeling item. The agent delivers `answer.md` with the completion condition assessed honestly (met, partially answered or unmet) and leaves formal status grounded pending that act.
+
+## Amendments
+
+None.

@@ -1,0 +1,3 @@
+baseline evidence keys ['responses', 'outputs', 'provenance', 'report']
+output keys ['stellarator_09__stellaris__wp_sizing__wp_side', 'stellarator_09__stellaris__coil_length__c_coil', 'stellarator_09__stellaris__winding_pack_cost__cost']
+Preparatory baseline verifier control PASS; no native study case written

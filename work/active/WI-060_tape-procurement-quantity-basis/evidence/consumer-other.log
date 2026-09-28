@@ -1,0 +1,79 @@
+........................................................................ [ 17%]
+........................................................................ [ 35%]
+........................................................................ [ 53%]
+.................F...................................................... [ 70%]
+........................................................................ [ 88%]
+.................................F.............                          [100%]
+=================================== FAILURES ===================================
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12791/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/study/financial_radius_controls.py:94: in check_controls
+    summary = verify.build_summary(
+scripts/study/verify.py:481: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def assert_tree_clean(tree: Path | str) -> None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+>           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E           M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E            M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_conductor_grade/conductor_field_capability_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E            M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E            M exploration/stellarator_e2e/generated/modules/mfe_conductor_grade/conductor_field_capability.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E            M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/stellarator_e2e/generated/schemas/conductor_field_capability_output.py
+E            M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E            M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+
+scripts/study/common.py:81: ToolError
+_________________ test_the_shim_reproduces_the_pinned_headline _________________
+
+oracle_entry = <module 'oracle_entry' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py'>
+
+    def test_the_shim_reproduces_the_pinned_headline(oracle_entry):
+        lcoe = oracle_entry.evaluate(BASELINE_POINT)["stellarator_09__stellaris__lcoe_calc__lcoe"]
+>       assert abs(lcoe - PINNED_LCOE) / PINNED_LCOE < 1e-9, lcoe
+E       AssertionError: 144.73830113443242
+E       assert (1.570254928907957 / 146.30855606334038) < 1e-09
+E        +  where 1.570254928907957 = abs((144.73830113443242 - 146.30855606334038))
+
+tests/study/test_operand_bindings.py:149: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline
+2 failed, 405 passed, 1 warning in 122.98s (0:02:02)

@@ -15,7 +15,7 @@ import json
 import pytest
 
 PIPELINE = "pipelines/pipeline.yaml"
-ABSENT_KEY = "stellarator_09__stellaris__geom__NOPE"
+ABSENT_KEY = "stellarator_09__stellaris__plasma__geom__NOPE"
 COMPUTED_QUANTITY = "stellarator_09__stellaris__pb__p_net"
 UNCLASSIFIED_KEY = "stellarator_09__stellaris__not_in_the_contract"
 
@@ -55,17 +55,22 @@ def fingerprint_mismatch(copy):
 def unparseable_reference(copy):
     copy.edit(
         PIPELINE,
-        "wall_load: float stellarator_09__stellaris__wall_load_calc__wall_load.root",
-        "wall_load: float stellarator_09__stellaris__wall_load_calc__wall_load.value.deep",
+        "wall_load: float stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load.root",
+        "wall_load: float stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load.value.deep",
     )
 
 
 def corrupt_pipeline_line(copy):
-    copy.edit(
-        PIPELINE,
-        "R_in: float stellarator_plant_params.stellarator_09__stellaris__R",
-        "R_in: floatonly_one_token",
-    )
+    import yaml
+    path=copy.path / PIPELINE
+    text=path.read_text()
+    document=yaml.compose(text)
+    modules=next(value for key,value in document.value if key.value=='modules')
+    geometry=next(value for key,value in modules.value if key.value=='stellarator_09__stellaris__plasma__geom')
+    inputs=next(value for key,value in geometry.value if key.value=='inputs')
+    value=next(value for key,value in inputs.value if key.value=='R_in')
+    assert value.value=='float stellarator_plant_params.stellarator_09__stellaris__plasma__R'
+    path.write_text(text[:value.start_mark.index]+'floatonly_one_token'+text[value.end_mark.index:])
 
 
 def ghost_objective_channel(copy):
@@ -128,8 +133,12 @@ def test_the_computed_quantity_message_names_the_producing_module(real_copy, tmp
 def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
     corrupt_pipeline_line(real_copy)
     _, _, err = real_copy.run(out=tmp_path / "c.json")
-    assert "pipeline.yaml:77" in err  # the rb R_in line; moved from :49 when WI-030 added two modules
-    assert "key path modules.stellarator_09__stellaris__rb.inputs.R_in" in err
+    fault_line = next(
+        i for i, line in enumerate((real_copy.path / PIPELINE).read_text().splitlines(), 1)
+        if "R_in: floatonly_one_token" in line
+    )
+    assert f"pipeline.yaml:{fault_line}" in err
+    assert "key path modules.stellarator_09__stellaris__plasma__geom.inputs.R_in" in err  # WI-057: the mutated line is geom's (the plasma's template calc)
     assert "floatonly_one_token" in err
 
 
@@ -153,7 +162,7 @@ def test_a_nonstandard_node_tag_inside_modules_is_a_failure(real_copy, tmp_path)
     than read. Nothing executes either way — compose does not construct."""
     real_copy.edit(
         PIPELINE,
-        "R_in: float stellarator_plant_params.stellarator_09__stellaris__R",
+        "R_in: float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
         "R_in: !!python/object/apply:os.system ['echo pwned']",
     )
     rc, out, err = real_copy.run(out=tmp_path / "f.json")
@@ -165,8 +174,8 @@ def test_a_nonstandard_node_tag_inside_modules_is_a_failure(real_copy, tmp_path)
 def test_an_unknown_key_inside_a_module_is_a_failure(real_copy, tmp_path):
     real_copy.edit(
         PIPELINE,
-        "  stellarator_09__stellaris__geom:\n    module_type:",
-        "  stellarator_09__stellaris__geom:\n    surprise: true\n    module_type:",
+        "  stellarator_09__stellaris__plasma__geom:\n    module_type:",
+        "  stellarator_09__stellaris__plasma__geom:\n    surprise: true\n    module_type:",
     )
     rc, _, err = real_copy.run(out=tmp_path / "g.json")
     assert rc != 0

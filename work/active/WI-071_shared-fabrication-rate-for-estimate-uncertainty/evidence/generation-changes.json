@@ -1,0 +1,54 @@
+{
+  "contracts/model_contract.json": {
+    "before": "9dc0b4ffb6f7508f54a09877abb53ffbef3a313493bf407d8621b42ae3b4fb6c",
+    "after": "b7fdb93770c90b9ae78805295160bc36312565721366c2eb9e3ce68bdee4d2e9"
+  },
+  "contracts/package_contract.json": {
+    "before": "7cc1d625c3defd754f6a54aa308683c35c3ecb2910047263d5863535546fc994",
+    "after": "2371b52f6d0bb5d3b452dc50867528455ea5a55eaf8208e26d32b8352a30527f"
+  },
+  "handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py": {
+    "before": "37e4d9c600a8ea2f1a2d5683a71e723e5096741f4667841cd5a9fde66cfd6587",
+    "after": "32c7bdff27b51509545086323fdcf3301f2eab85bc1f7cc15f5a3a3dc92a8ced"
+  },
+  "handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py": {
+    "before": "8fd0a30c75b9f1cfc265904d01b06346d52582df830d111ffd67644893d9a5e5",
+    "after": "34971f19f67339c099d1b2646d895b489f801b3403814e777a15977cfa1e7dbb"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "3dfc1d4b13a6bb1f366d060bbb57d51e88c75b903fa1770a80a2aeb8f5fdd5b1",
+    "after": "f3a030cedb3bf15a7ccad328aada8038e66522bbb4db12afd6b999c562b7e7e3"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "741d421f7b52c85276bc197ed33a21282f557621aceb6e9c2148b1e149021100",
+    "after": "ebed292a07ebfe4e840927d27851809ffd005353a32360a2dfb0a09125ad3b15"
+  },
+  "modules/mfe_cooling_equipment/cooling_equipment.py": {
+    "before": "2da341e1d675dbdaae8cecd04c246d1a248d5407fc07829285cedf6c8f38ffcc",
+    "after": "1fbf17a50b8a9176fe5aa0710b7a61b0f21a2bacade2b15f314d784a5b9bfcef"
+  },
+  "modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py": {
+    "before": "3129022572cc9eea4c184a0bcc601e69f1359c67c50283740903c3daf8dfd387",
+    "after": "ad59bb038cd54092eb822f04582e5c1804c401f021d2092c0c0620a5d8e7da63"
+  },
+  "modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py": {
+    "before": "25c2bab43c9afa149914bac24ec1e17bb37b8bf262e5554b81a89c72502d68eb",
+    "after": "62a473d5357d2b678757f5dbd21c4d1e5a9a2abebec79c9c9617459ead74ea4e"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "0f6d4b3934d77e588151d429b24e8bce5295211dbd5e737f4c3900c4e3b2e8bf",
+    "after": "f3e5c9b43d6afdaad02e5e1e60e8c43c07a7f681cbb69d1a07704fd5230fed96"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "933226bd9fb3b57c98251f6d1898697b139a208761ba2480ec05f4a461071f57",
+    "after": "0b81c80b449573724f44795903ae794bb9272fca01b4647a40bf477662bfd7ef"
+  },
+  "schemas/cooling_equipment_output.py": {
+    "before": "ac3f268a4188483505842e399f3cf91f16cc4bafa97408307569099e86d2baf4",
+    "after": "311575bdae67b40f46de2cf3ff343d83ab040dc30d9622e67397eec88786150a"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "d9ccddc7035030a3c307094fb364a6d196a68f779f7a71f799c95707a1e9cce2",
+    "after": "016c87147fcc044986d2b20134aa4367b61ab1a42c17861344f1c207db595da7"
+  }
+}

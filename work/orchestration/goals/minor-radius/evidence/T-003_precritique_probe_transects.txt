@@ -1,0 +1,52 @@
+=== c2823 column extended (R 15.7, I 13 MA, T 13, n 1.0) ===
+R 15.7 a2.20 I13.0 T13.00 n1.0 wp  100 | lcoe  202.165 Bp  17.23 sig  413.3 eps 0.00138 W  105.8GJ cas   60.7t struct   52.4M p_aux    33.34 wall 3.961 beta 0.0443 A 7.14 | ok
+R 15.7 a2.40 I13.0 T13.00 n1.0 wp  100 | lcoe  200.274 Bp  17.53 sig  420.5 eps 0.00140 W  116.5GJ cas   65.4t struct   56.5M p_aux    12.81 wall 3.778 beta 0.0426 A 6.54 | ok
+R 15.7 a2.50 I13.0 T13.00 n1.0 wp  100 | lcoe  200.072 Bp  17.69 sig  424.2 eps 0.00141 W  122.0GJ cas   67.8t struct   58.6M p_aux    10.34 wall 3.678 beta 0.0418 A 6.28 | ok
+R 15.7 a2.60 I13.0 T13.00 n1.0 wp  100 | lcoe  200.264 Bp  17.84 sig  428.0 eps 0.00143 W  127.7GJ cas   70.3t struct   60.7M p_aux    12.50 wall 3.574 beta 0.0410 A 6.04 | ok
+R 15.7 a2.70 I13.0 T13.00 n1.0 wp  100 | lcoe  198.938 Bp  18.00 sig  431.8 eps 0.00144 W  133.5GJ cas   72.8t struct   62.9M p_aux    18.87 wall 3.468 beta 0.0403 A 5.81 | ok
+R 15.7 a2.80 I13.0 T13.00 n1.0 wp  100 | lcoe  199.826 Bp  18.17 sig  435.7 eps 0.00145 W  139.4GJ cas   75.3t struct   65.0M p_aux    29.09 wall 3.362 beta 0.0395 A 5.61 | ok
+R 15.7 a2.90 I13.0 T13.00 n1.0 wp  100 | lcoe  200.967 Bp  18.33 sig  439.7 eps 0.00147 W  145.5GJ cas   77.8t struct   67.2M p_aux    42.79 wall 3.255 beta 0.0389 A 5.41 | ok
+R 15.7 a3.00 I13.0 T13.00 n1.0 wp  100 | lcoe  202.328 Bp  18.50 sig  443.7 eps 0.00148 W  151.7GJ cas   80.4t struct   69.4M p_aux    59.67 wall 3.150 beta 0.0382 A 5.23 | sustain
+R 15.7 a3.20 I13.0 T13.00 n1.0 wp  100 | lcoe  205.611 Bp  18.85 sig  452.1 eps 0.00151 W  164.5GJ cas   85.6t struct   74.0M p_aux   101.83 wall 2.945 beta 0.0370 A 4.91 | sustain
+R15.7 a3.40 I13.0 T13.0 n1.0 wp100.0: ERROR RuntimeError: oracle sustainment: non-positive fuel
+R15.7 a3.60 I13.0 T13.0 n1.0 wp100.0: ERROR RuntimeError: oracle sustainment: non-positive fuel
+R 15.7 a2.20 I13.0 T13.00 n1.0 wp  220 | lcoe  218.921 Bp  17.23 sig  413.3 eps 0.00138 W  105.8GJ cas   60.7t struct   52.4M p_aux    33.34 wall 3.961 beta 0.0443 A 7.14 | ok
+R 15.7 a2.40 I13.0 T13.00 n1.0 wp  220 | lcoe  216.213 Bp  17.53 sig  420.5 eps 0.00140 W  116.5GJ cas   65.4t struct   56.5M p_aux    12.81 wall 3.778 beta 0.0426 A 6.54 | ok
+R 15.7 a2.50 I13.0 T13.00 n1.0 wp  220 | lcoe  215.771 Bp  17.69 sig  424.2 eps 0.00141 W  122.0GJ cas   67.8t struct   58.6M p_aux    10.34 wall 3.678 beta 0.0418 A 6.28 | ok
+R 15.7 a2.60 I13.0 T13.00 n1.0 wp  220 | lcoe  215.809 Bp  17.84 sig  428.0 eps 0.00143 W  127.7GJ cas   70.3t struct   60.7M p_aux    12.50 wall 3.574 beta 0.0410 A 6.04 | ok
+R 15.7 a2.70 I13.0 T13.00 n1.0 wp  220 | lcoe  214.286 Bp  18.00 sig  431.8 eps 0.00144 W  133.5GJ cas   72.8t struct   62.9M p_aux    18.87 wall 3.468 beta 0.0403 A 5.81 | ok
+R 15.7 a2.80 I13.0 T13.00 n1.0 wp  220 | lcoe  215.160 Bp  18.17 sig  435.7 eps 0.00145 W  139.4GJ cas   75.3t struct   65.0M p_aux    29.09 wall 3.362 beta 0.0395 A 5.61 | ok
+R 15.7 a2.90 I13.0 T13.00 n1.0 wp  220 | lcoe  216.340 Bp  18.33 sig  439.7 eps 0.00147 W  145.5GJ cas   77.8t struct   67.2M p_aux    42.79 wall 3.255 beta 0.0389 A 5.41 | ok
+R 15.7 a3.00 I13.0 T13.00 n1.0 wp  220 | lcoe  217.788 Bp  18.50 sig  443.7 eps 0.00148 W  151.7GJ cas   80.4t struct   69.4M p_aux    59.67 wall 3.150 beta 0.0382 A 5.23 | ok
+R 15.7 a3.20 I13.0 T13.00 n1.0 wp  220 | lcoe  221.365 Bp  18.85 sig  452.1 eps 0.00151 W  164.5GJ cas   85.6t struct   74.0M p_aux   101.83 wall 2.945 beta 0.0370 A 4.91 | ok
+R15.7 a3.40 I13.0 T13.0 n1.0 wp220.0: ERROR RuntimeError: oracle sustainment: non-positive fuel
+R15.7 a3.60 I13.0 T13.0 n1.0 wp220.0: ERROR RuntimeError: oracle sustainment: non-positive fuel
+=== design column past 2.4 (seam check) ===
+R 12.7 a2.30 I15.4 T14.63 n1.0 wp  100 | lcoe  275.447 Bp  27.81 sig  726.0 eps 0.00242 W  192.7GJ cas   96.9t struct   83.7M p_aux   -53.73 wall 2.875 beta 0.0198 A 5.52 | field,burn
+R 12.7 a2.40 I15.4 T14.63 n1.0 wp  100 | lcoe  276.250 Bp  28.14 sig  734.6 eps 0.00245 W  202.1GJ cas  100.5t struct   86.9M p_aux   -40.01 wall 2.745 beta 0.0194 A 5.29 | field,burn
+R12.7 a2.45 I15.4 T14.63 n1.0 wp100.0: ERROR RuntimeError: oracle sustainment: non-positive fuel
+R12.7 a2.50 I15.4 T14.63 n1.0 wp100.0: ERROR RuntimeError: oracle sustainment: non-positive fuel
+=== c1661 column (R 14.2, I 16, T 17, n 0.8, 100 MW): the cheapest committed at A~9.8 ===
+R 14.2 a1.30 I16.0 T17.00 n0.8 wp  100 | lcoe  318.767 Bp  22.36 sig  594.9 eps 0.00198 W  107.2GJ cas   61.3t struct   53.0M p_aux   129.07 wall 3.961 beta 0.0283 A 10.92 | sustain
+R 14.2 a1.40 I16.0 T17.00 n0.8 wp  100 | lcoe  298.380 Bp  22.56 sig  600.3 eps 0.00200 W  114.1GJ cas   64.4t struct   55.6M p_aux    60.76 wall 3.983 beta 0.0277 A 10.14 | sustain
+R 14.2 a1.50 I16.0 T17.00 n0.8 wp  100 | lcoe  283.699 Bp  22.77 sig  605.9 eps 0.00202 W  121.2GJ cas   67.5t struct   58.3M p_aux     2.38 wall 3.969 beta 0.0271 A 9.47 | ok
+R 14.2 a1.60 I16.0 T17.00 n0.8 wp  100 | lcoe  273.064 Bp  22.98 sig  611.5 eps 0.00204 W  128.5GJ cas   70.6t struct   61.0M p_aux   -46.69 wall 3.925 beta 0.0265 A 8.87 | burn
+R 14.2 a1.80 I16.0 T17.00 n0.8 wp  100 | lcoe  259.958 Bp  23.42 sig  623.1 eps 0.00208 W  143.9GJ cas   77.1t struct   66.6M p_aux  -119.69 wall 3.771 beta 0.0254 A 7.89 | burn
+R 14.2 a2.00 I16.0 T17.00 n0.8 wp  100 | lcoe  253.884 Bp  23.87 sig  635.1 eps 0.00212 W  160.1GJ cas   83.8t struct   72.4M p_aux  -163.95 wall 3.562 beta 0.0243 A 7.10 | burn
+R 14.2 a2.20 I16.0 T17.00 n0.8 wp  100 | lcoe  250.585 Bp  24.34 sig  647.7 eps 0.00216 W  177.1GJ cas   90.7t struct   78.4M p_aux  -184.99 wall 3.325 beta 0.0233 A 6.45 | burn
+R 14.2 a2.40 I16.0 T17.00 n0.8 wp  100 | lcoe  252.027 Bp  24.83 sig  660.7 eps 0.00220 W  195.1GJ cas   97.8t struct   84.5M p_aux  -187.68 wall 3.082 beta 0.0224 A 5.92 | burn
+R 14.2 a2.50 I16.0 T17.00 n0.8 wp  100 | lcoe  253.569 Bp  25.08 sig  667.4 eps 0.00222 W  204.4GJ cas  101.4t struct   87.6M p_aux  -183.44 wall 2.963 beta 0.0219 A 5.68 | field,burn
+R 14.2 a2.60 I16.0 T17.00 n0.8 wp  100 | lcoe  255.550 Bp  25.34 sig  674.2 eps 0.00225 W  213.9GJ cas  105.1t struct   90.8M p_aux  -176.04 wall 2.845 beta 0.0215 A 5.46 | field,burn
+=== c2073 column (R 14.2, I 13, T 13, n 1.0), cheapest at R 14.2, both levels ===
+R 14.2 a2.00 I13.0 T13.00 n1.0 wp  100 | lcoe  225.212 Bp  19.39 sig  465.2 eps 0.00155 W  105.7GJ cas   60.6t struct   52.4M p_aux    34.09 wall 3.686 beta 0.0365 A 7.10 | ok
+R 14.2 a2.20 I13.0 T13.00 n1.0 wp  100 | lcoe  219.337 Bp  19.78 sig  474.3 eps 0.00158 W  116.9GJ cas   65.6t struct   56.7M p_aux    14.20 wall 3.510 beta 0.0350 A 6.45 | ok
+R 14.2 a2.40 I13.0 T13.00 n1.0 wp  100 | lcoe  218.326 Bp  20.17 sig  483.9 eps 0.00161 W  128.8GJ cas   70.7t struct   61.1M p_aux    13.03 wall 3.309 beta 0.0336 A 5.92 | ok
+R 14.2 a2.60 I13.0 T13.00 n1.0 wp  100 | lcoe  219.395 Bp  20.59 sig  493.8 eps 0.00165 W  141.2GJ cas   76.0t struct   65.7M p_aux    27.27 wall 3.098 beta 0.0323 A 5.46 | ok
+R 14.2 a2.80 I13.0 T13.00 n1.0 wp  100 | lcoe  221.972 Bp  21.02 sig  504.1 eps 0.00168 W  154.2GJ cas   81.4t struct   70.3M p_aux    54.10 wall 2.887 beta 0.0311 A 5.07 | sustain
+R 14.2 a3.00 I13.0 T13.00 n1.0 wp  100 | lcoe  223.701 Bp  21.47 sig  514.9 eps 0.00172 W  167.7GJ cas   86.9t struct   75.1M p_aux    91.19 wall 2.684 beta 0.0300 A 4.73 | sustain
+R 14.2 a2.00 I13.0 T13.00 n1.0 wp  220 | lcoe  250.521 Bp  19.39 sig  465.2 eps 0.00155 W  105.7GJ cas   60.6t struct   52.4M p_aux    34.09 wall 3.686 beta 0.0365 A 7.10 | ok
+R 14.2 a2.20 I13.0 T13.00 n1.0 wp  220 | lcoe  242.824 Bp  19.78 sig  474.3 eps 0.00158 W  116.9GJ cas   65.6t struct   56.7M p_aux    14.20 wall 3.510 beta 0.0350 A 6.45 | ok
+R 14.2 a2.40 I13.0 T13.00 n1.0 wp  220 | lcoe  241.026 Bp  20.17 sig  483.9 eps 0.00161 W  128.8GJ cas   70.7t struct   61.1M p_aux    13.03 wall 3.309 beta 0.0336 A 5.92 | ok
+R 14.2 a2.60 I13.0 T13.00 n1.0 wp  220 | lcoe  241.878 Bp  20.59 sig  493.8 eps 0.00165 W  141.2GJ cas   76.0t struct   65.7M p_aux    27.27 wall 3.098 beta 0.0323 A 5.46 | ok
+R 14.2 a2.80 I13.0 T13.00 n1.0 wp  220 | lcoe  244.642 Bp  21.02 sig  504.1 eps 0.00168 W  154.2GJ cas   81.4t struct   70.3M p_aux    54.10 wall 2.887 beta 0.0311 A 5.07 | ok
+R 14.2 a3.00 I13.0 T13.00 n1.0 wp  220 | lcoe  246.694 Bp  21.47 sig  514.9 eps 0.00172 W  167.7GJ cas   86.9t struct   75.1M p_aux    91.19 wall 2.684 beta 0.0300 A 4.73 | ok

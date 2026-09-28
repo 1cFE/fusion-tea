@@ -1,0 +1,31 @@
+{
+  "physics_evaluations": 0,
+  "quantities": 174,
+  "all_reconciliation_receipt_equal": true,
+  "accounting_checks": 1008,
+  "selected_case_store_join": true,
+  "selected_artifact_digest": "8cbe750e43456af3af5ed2b45c6421ff6338a3f6318b2e72d256ddc68518498d",
+  "selected_export_exact": true,
+  "synthetic_alias_credit": {
+    "fit_cavity_y": {
+      "role": "derived",
+      "status": "pass",
+      "independent_credit": true
+    },
+    "fit_exterior_x": {
+      "role": "derived",
+      "status": "pass",
+      "independent_credit": true
+    },
+    "installed_wallplug": {
+      "role": "derived",
+      "status": "pass",
+      "independent_credit": true
+    }
+  },
+  "file_hashes": {
+    ".project/active/aries-comparison-preparation/package/manifest.json": "5c4825bc98572eab9943e7ff1fdc2436af40ee9901296dacf68f4aba060fd582",
+    "scripts/compare_fixed_point.py": "4d4907de51095cc648131e36d53ac43fc5ae2da8a19cd09792fd122d750a7f56",
+    ".project/active/aries-comparison-preparation/package/export_model_values.py": "eb1d0a87508b8967c1ef6e96e1f68fb40b899e1f3c61924b86c8fcf028f3ce46"
+  }
+}

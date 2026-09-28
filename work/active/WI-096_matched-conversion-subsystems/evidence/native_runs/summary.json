@@ -1,0 +1,214 @@
+[
+  {
+    "case": "baseline",
+    "status": "evaluated",
+    "violated": [],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "source2800-ihx10",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__steam_feed_flow_capacity__capacity_requirement__f522084f390b88ed",
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__steam_condensate_electric_capacity__capacity_requirement__7f87933904cdde5d",
+      "component_alternatives__plant__steam_hp_flow_capacity__capacity_requirement__7d80da68d49ab07e",
+      "component_alternatives__plant__steam_lp_shaft_capacity__capacity_requirement__145e6e0999fc7f4f",
+      "component_alternatives__plant__steam_gross_capacity__capacity_requirement__4252a99565636ed5",
+      "component_alternatives__plant__steam_condenser_capacity__capacity_requirement__67922fb363412df0",
+      "component_alternatives__plant__steam_lp_flow_capacity__capacity_requirement__704e61a5a8c7bf24",
+      "component_alternatives__plant__steam_reheat_ua_capacity__capacity_requirement__ff5775187764fbbd",
+      "component_alternatives__plant__steam_boundary__source_adequate_ok__eaa371ee289234f1",
+      "component_alternatives__plant__steam_hp_shaft_capacity__capacity_requirement__08512b73f01b2ff4",
+      "component_alternatives__plant__steam_condensate_pressure_capacity__capacity_requirement__d523b96c0c76de1b",
+      "component_alternatives__plant__steam_feed_electric_capacity__capacity_requirement__02f57441b4cf6746",
+      "component_alternatives__plant__steam_feed_pressure_capacity__capacity_requirement__2b0a04222feb552b",
+      "component_alternatives__plant__steam_main_ua_capacity__capacity_requirement__c2efdc04c52106da",
+      "component_alternatives__plant__steam_condensate_flow_capacity__capacity_requirement__a06233d7139b47ec",
+      "component_alternatives__plant__steam_transport__ihx_capacity_ok_required__a8ade32d723ec9f2",
+      "component_alternatives__plant__steam_conditions__supported_required__92a5d05764f5fff9"
+    ],
+    "steam_net": 1051.0153017578757,
+    "gas_net": 763.695575609929
+  },
+  {
+    "case": "source3000-ihx12",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__steam_feed_flow_capacity__capacity_requirement__f522084f390b88ed",
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__steam_condensate_electric_capacity__capacity_requirement__7f87933904cdde5d",
+      "component_alternatives__plant__steam_hp_flow_capacity__capacity_requirement__7d80da68d49ab07e",
+      "component_alternatives__plant__steam_lp_shaft_capacity__capacity_requirement__145e6e0999fc7f4f",
+      "component_alternatives__plant__steam_gross_capacity__capacity_requirement__4252a99565636ed5",
+      "component_alternatives__plant__steam_condenser_capacity__capacity_requirement__67922fb363412df0",
+      "component_alternatives__plant__steam_lp_flow_capacity__capacity_requirement__704e61a5a8c7bf24",
+      "component_alternatives__plant__steam_reheat_ua_capacity__capacity_requirement__ff5775187764fbbd",
+      "component_alternatives__plant__steam_boundary__source_adequate_ok__eaa371ee289234f1",
+      "component_alternatives__plant__steam_hp_shaft_capacity__capacity_requirement__08512b73f01b2ff4",
+      "component_alternatives__plant__steam_condensate_pressure_capacity__capacity_requirement__d523b96c0c76de1b",
+      "component_alternatives__plant__steam_feed_electric_capacity__capacity_requirement__02f57441b4cf6746",
+      "component_alternatives__plant__steam_feed_pressure_capacity__capacity_requirement__2b0a04222feb552b",
+      "component_alternatives__plant__steam_main_ua_capacity__capacity_requirement__c2efdc04c52106da",
+      "component_alternatives__plant__steam_condensate_flow_capacity__capacity_requirement__a06233d7139b47ec",
+      "component_alternatives__plant__steam_transport__ihx_capacity_ok_required__a8ade32d723ec9f2",
+      "component_alternatives__plant__steam_conditions__supported_required__92a5d05764f5fff9"
+    ],
+    "steam_net": 1143.7275659778475,
+    "gas_net": 776.904895220121
+  },
+  {
+    "case": "source3000-ihx14",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330"
+    ],
+    "steam_net": 1144.0025314827728,
+    "gas_net": 776.904895220121
+  },
+  {
+    "case": "gas-low-ratio-flow",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5",
+      "component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8"
+    ],
+    "steam_net": 1144.0025314827728,
+    "gas_net": 390.8440498930215
+  },
+  {
+    "case": "bypass-small-offer",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__gas_boundary__bypass_flow_margin_ok__840f5556c962fa45",
+      "component_alternatives__plant__gas_boundary__controller_capacity_ok_ok__3c7a992b7ef572ac"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "salt-two-pumps",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__salt_flow_capacity__capacity_requirement__1f3f2b5125f26aed",
+      "component_alternatives__plant__salt_electric_capacity__capacity_requirement__d0a6e35468ded9cc",
+      "component_alternatives__plant__salt_shaft_capacity__capacity_requirement__419a029d2df87f3c",
+      "component_alternatives__plant__steam_transport__pump_type_ok_required__a1706d503ff60f4c"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "salt-three-pumps",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__steam_transport__design_pump_type_ok_required__86fcc6e00c250519"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "salt225-offer",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__salt_flow_capacity__capacity_requirement__1f3f2b5125f26aed",
+      "component_alternatives__plant__steam_feed_flow_capacity__capacity_requirement__f522084f390b88ed",
+      "component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330",
+      "component_alternatives__plant__steam_condensate_electric_capacity__capacity_requirement__7f87933904cdde5d",
+      "component_alternatives__plant__steam_hp_flow_capacity__capacity_requirement__7d80da68d49ab07e",
+      "component_alternatives__plant__salt_electric_capacity__capacity_requirement__d0a6e35468ded9cc",
+      "component_alternatives__plant__steam_lp_shaft_capacity__capacity_requirement__145e6e0999fc7f4f",
+      "component_alternatives__plant__steam_gross_capacity__capacity_requirement__4252a99565636ed5",
+      "component_alternatives__plant__steam_condenser_capacity__capacity_requirement__67922fb363412df0",
+      "component_alternatives__plant__steam_lp_flow_capacity__capacity_requirement__704e61a5a8c7bf24",
+      "component_alternatives__plant__steam_reheat_ua_capacity__capacity_requirement__ff5775187764fbbd",
+      "component_alternatives__plant__steam_boundary__source_adequate_ok__eaa371ee289234f1",
+      "component_alternatives__plant__steam_hp_shaft_capacity__capacity_requirement__08512b73f01b2ff4",
+      "component_alternatives__plant__steam_condensate_pressure_capacity__capacity_requirement__d523b96c0c76de1b",
+      "component_alternatives__plant__salt_shaft_capacity__capacity_requirement__419a029d2df87f3c",
+      "component_alternatives__plant__steam_feed_electric_capacity__capacity_requirement__02f57441b4cf6746",
+      "component_alternatives__plant__steam_feed_pressure_capacity__capacity_requirement__2b0a04222feb552b",
+      "component_alternatives__plant__steam_main_ua_capacity__capacity_requirement__c2efdc04c52106da",
+      "component_alternatives__plant__steam_condensate_flow_capacity__capacity_requirement__a06233d7139b47ec",
+      "component_alternatives__plant__steam_transport__ihx_capacity_ok_required__a8ade32d723ec9f2",
+      "component_alternatives__plant__steam_conditions__supported_required__92a5d05764f5fff9"
+    ],
+    "steam_net": 1051.0153017578757,
+    "gas_net": 763.695575609929
+  },
+  {
+    "case": "pre-UA40-no-root",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5",
+      "component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 562.6655922290437
+  },
+  {
+    "case": "pre-UA20-no-root",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5",
+      "component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 562.6655922290437
+  },
+  {
+    "case": "water-flow-insufficient",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__water_ic1__flow_margin_ok__2ca46da8d6c9fc06"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "water-power-insufficient",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__water_ic1__power_margin_ok__ceac76348e0eb2b6"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "water-duty-insufficient",
+    "status": "evaluated",
+    "violated": [
+      "component_alternatives__plant__water_ic1__duty_margin_ok__ae893105fd8169d4"
+    ],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "recuperator-UA80",
+    "status": "evaluated",
+    "violated": [],
+    "steam_net": 937.5789564279194,
+    "gas_net": 581.2391600316191
+  },
+  {
+    "case": "flow2250-fixed-UA",
+    "status": "evaluated",
+    "violated": [],
+    "steam_net": 937.5789564279194,
+    "gas_net": 363.5700345890984
+  },
+  {
+    "case": "zero-discount",
+    "status": "evaluated",
+    "violated": [],
+    "steam_net": 937.5789564279194,
+    "gas_net": 559.4931629141395
+  },
+  {
+    "case": "water-property-refusal",
+    "status": "refused",
+    "error": "cooler water/property/pump domain"
+  }
+]

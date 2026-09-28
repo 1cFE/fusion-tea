@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "authority": "AGENT author assistance; subject to coordinator and independent C2 review",
+  "selection_policy_sha256": "9d995bb9b8cd1733721d8e07712b0b289e3d423afa863eb02672731b0c934b71",
+  "suggested_inputs": [
+    {
+      "key": "stellarator_09__stellaris__plasma__R",
+      "unit": "m",
+      "default": 12.7,
+      "reason": "Major radius using the model geometric definition; no equilibrium/topology substitution.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": 7.75,
+      "suggested_effective_value": 7.75,
+      "disposition": "admit_reference",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C01"
+      ]
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__a",
+      "unit": "m",
+      "default": 1.3,
+      "reason": "Minor radius using the model geometric definition; no optimized shape inference.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": 1.7,
+      "suggested_effective_value": 1.7,
+      "disposition": "admit_reference",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C02"
+      ]
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__n_e0",
+      "unit": "m^-3",
+      "default": 5.06e+20,
+      "reason": "Peak electron density; average density is not interchangeable.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": null,
+      "suggested_effective_value": 5.06e+20,
+      "disposition": "held_missing_exact_definition",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C03",
+        "C04"
+      ]
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__T_i0",
+      "unit": "keV",
+      "default": 14.63,
+      "reason": "Peak ion temperature; electron or volume-average temperature is not interchangeable.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": 11.83,
+      "suggested_effective_value": 11.83,
+      "disposition": "admit_reference",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C05",
+        "C06"
+      ]
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+      "unit": "A-turn",
+      "default": 15400000.0,
+      "reason": "Reference-coil ampere-turns; neither turn current nor coil-set aggregate.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": null,
+      "suggested_effective_value": 15400000.0,
+      "disposition": "held_missing_exact_definition",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C07"
+      ]
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+      "unit": "m",
+      "default": 0.3,
+      "reason": "Independently specified radial exterior allocation, not solved from target fit.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": null,
+      "suggested_effective_value": 0.3,
+      "disposition": "held_missing_exact_definition",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C08",
+        "C09",
+        "C10"
+      ]
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+      "unit": "m",
+      "default": 0.4,
+      "reason": "Independently specified transverse clear cavity, not exterior casing width.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "suggested_reference_value": null,
+      "suggested_effective_value": 0.4,
+      "disposition": "held_missing_exact_definition",
+      "uncertainty": "No statistical uncertainty supplied; retain published precision. Definition/mapping uncertainty explicit in candidates.",
+      "candidate_ids": [
+        "C11"
+      ]
+    }
+  ],
+  "raw_candidates": [
+    {
+      "id": "C01",
+      "input": "R",
+      "value": 7.75,
+      "unit": "m",
+      "evidence_id": "lyon_table",
+      "disposition": "admit",
+      "reason": "Published reference major radius; no topology substitution."
+    },
+    {
+      "id": "C02",
+      "input": "a",
+      "value": 1.7,
+      "unit": "m",
+      "evidence_id": "overview",
+      "disposition": "admit",
+      "reason": "Published average minor radius; corroborated by Raffray Table I 1.7 m and Lyon ARE aspect ratio 4.55."
+    },
+    {
+      "id": "C03",
+      "input": "n_e0",
+      "value": 3.84e+20,
+      "unit": "m^-3",
+      "evidence_id": "lyon_table",
+      "disposition": "reject_definition",
+      "reason": "Central electron density, not peak of the hollow density profile."
+    },
+    {
+      "id": "C04",
+      "input": "n_e0",
+      "value": 4.01e+20,
+      "unit": "m^-3",
+      "evidence_id": "lyon_table",
+      "disposition": "reject_definition",
+      "reason": "Volume-average density, not peak electron density."
+    },
+    {
+      "id": "C05",
+      "input": "T_i0",
+      "value": 11.83,
+      "unit": "keV",
+      "evidence_id": "lyon_table",
+      "disposition": "admit",
+      "reason": "Central plasma T; Section V.B states Ti=Te; Figure12 confirms T maximum at center."
+    },
+    {
+      "id": "C06",
+      "input": "T_i0",
+      "value": 6.55,
+      "unit": "keV",
+      "evidence_id": "lyon_table",
+      "disposition": "reject_definition",
+      "reason": "Density-averaged T, not peak T."
+    },
+    {
+      "id": "C07",
+      "input": "I_coil",
+      "value": [
+        10800000.0,
+        13500000.0,
+        13100000.0
+      ],
+      "unit": "A-turn",
+      "evidence_id": "physics_coils",
+      "disposition": "unresolved_mapping",
+      "reason": "Three different coil family ampere-turns. Frozen selection contract has no rule selecting one family or reducing to one scalar."
+    },
+    {
+      "id": "C08",
+      "input": "coil_t",
+      "value": 0.194,
+      "unit": "m",
+      "evidence_id": "physics_coils",
+      "disposition": "reject_definition",
+      "reason": "Radial winding-pack depth, not exterior coil allocation."
+    },
+    {
+      "id": "C09",
+      "input": "coil_t",
+      "value": 0.28,
+      "unit": "m",
+      "evidence_id": "engineering_coils",
+      "disposition": "reject_definition",
+      "reason": "Average strongback thickness, not total exterior radial allocation."
+    },
+    {
+      "id": "C10",
+      "input": "coil_t",
+      "value": 0.494,
+      "unit": "m",
+      "evidence_id": "engineering_coils",
+      "disposition": "unresolved_mapping",
+      "reason": "Derived sum 0.02+0.194+0.28 from average structure diagram, not an explicitly specified single-coil exterior envelope. Source uses integrated toroidal support."
+    },
+    {
+      "id": "C11",
+      "input": "interior_y",
+      "value": 0.743,
+      "unit": "m",
+      "evidence_id": "engineering_coils",
+      "disposition": "unresolved_mapping",
+      "reason": "Published winding-pack/cover width. Groove clearance or precise clear-cavity definition is not supplied."
+    }
+  ],
+  "evidence": {
+    "lyon_table": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "pdf_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "pdf_page_zero_based": 14,
+      "printed_page": 708,
+      "locator": "Table IV",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-14.md",
+      "markdown_sha256": "2111f7f2a9520d16c0e58908a617470a0911e891b16109ac76c42c827a685d5a",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-14.png",
+      "image_sha256": "2e2f25ee55f4537160fa5d5ec7906a7981f15ff6a584fa117c79357df2a9ada4",
+      "image_inspected": true
+    },
+    "lyon_profile": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "pdf_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "pdf_page_zero_based": 8,
+      "printed_page": 702,
+      "locator": "Figure 12",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-08.md",
+      "markdown_sha256": "871fed4f6361e9e8074c5fcca569aa4fc4f168db9f87620c7a25479d4d3dee6c",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-08.png",
+      "image_sha256": "14a1455bc4874ab482ed92537064010370ed625c253ec6ec48a7c0097e0d23ee",
+      "image_inspected": true
+    },
+    "lyon_equation": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "pdf_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "pdf_page_zero_based": 7,
+      "printed_page": 701,
+      "locator": "Section V.B, Equation (3), Ti=Te statement",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-07.md",
+      "markdown_sha256": "9cd9c4463d8054ba3824a4bd2ef495f71887ba4f5188f19b6a9ab23fdbd253b3",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-07.png",
+      "image_sha256": "a4bed69ae431d6f2192dd0aa3821f186092d434c439c5e1096f520c5b19f7b01",
+      "image_inspected": true
+    },
+    "lyon_geometry": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "pdf_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "pdf_page_zero_based": 3,
+      "printed_page": 697,
+      "locator": "Table I ARE column",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-03.md",
+      "markdown_sha256": "394a5966a61a0a05c5b3b673074cdb19c4220b5540514785bc0b2caa3715b7f2",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-03.png",
+      "image_sha256": "039988f9783603a276c172f06ab0b929e8b0a350270c45aaa50d004c8ce9a6b1",
+      "image_inspected": true
+    },
+    "lyon_structure": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Lyon.pdf",
+      "pdf_sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "pdf_page_zero_based": 12,
+      "printed_page": 706,
+      "locator": "Table II",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/page-12.md",
+      "markdown_sha256": "8bf01b42e28dce099109fcc2ca12614e9a684fed09b12461c91ad88f0317f249",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-12.png",
+      "image_sha256": "46225783f81f5d9f81fdb69dc958d4d1969715ca9e791c4a896363b938d8e197",
+      "image_inspected": true
+    },
+    "overview": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Najmabadi.pdf",
+      "pdf_sha256": "5eb7889311beecd9b9be56837ecf82b0a92b8ff99804d01bb3fa5fac4a9b78e7",
+      "pdf_page_zero_based": 2,
+      "printed_page": 657,
+      "locator": "Table I",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/page-02.md",
+      "markdown_sha256": "0db2b3a65d8624c628732c6976f58e6106ec56916e85253ca8cbaac6a22fc60c",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/input-page-02.png",
+      "image_sha256": "d155be592ece6a71ad3bd49a2415b42ffc308d54ba515a86ad1456a7e13ed529",
+      "image_inspected": true
+    },
+    "physics_coils": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Ku.pdf",
+      "pdf_sha256": "8fb35d57ec3563276af13076ee97728f6237630df803bd46639224d5f3e8a7f5",
+      "pdf_page_zero_based": 4,
+      "printed_page": 677,
+      "locator": "Section II.B; Figure 6 adjacent text",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Ku/page-04.md",
+      "markdown_sha256": "a5c10e2eb1a4c94016f48bb1ec11b5160c0803eaecf62d4bac2618b9e33ec3c3",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Ku/input-page-04.png",
+      "image_sha256": "80c1b8d637e66ade135bd9134387b6b5fb4d00077e490a243cc1b4135a71c52c",
+      "image_inspected": true
+    },
+    "engineering_coils": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Raffray.pdf",
+      "pdf_sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7",
+      "pdf_page_zero_based": 19,
+      "printed_page": 744,
+      "locator": "Figures 22 and 23",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-19.md",
+      "markdown_sha256": "c747cb253029fdaead0ddfd82901758723b0be634f9d284f01acad649e9fdef2",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/input-page-19.png",
+      "image_sha256": "ded2ec1601c41ba506a6456767381a1779db28a7d133ecb8f21842d5c01e3bb2",
+      "image_inspected": true
+    },
+    "engineering_geometry": {
+      "pdf": "knowledge/holdout/aries-cs/08-FST-Raffray.pdf",
+      "pdf_sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7",
+      "pdf_page_zero_based": 2,
+      "printed_page": 727,
+      "locator": "Table I",
+      "markdown": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/page-02.md",
+      "markdown_sha256": "bdbf027725864a43008e14402e0f591c056afb29ffc49d21840d6b205366320f",
+      "image": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Raffray/input-page-02.png",
+      "image_sha256": "0eae0c57e15c4f1ea2d68561cc80716be9a8569b4db06dc5796f70dbc6002fd1",
+      "image_inspected": true
+    }
+  },
+  "fully_reference_specified": false,
+  "forward_executed": false
+}

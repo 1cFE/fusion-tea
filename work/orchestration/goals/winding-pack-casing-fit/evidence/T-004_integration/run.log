@@ -1,0 +1,11 @@
+[integrate] CANDIDATE
+  pass         repo     pinned-packages: tests/test_dependency_provenance.py passed
+  pass         request  teax-revision: teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397
+  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/
+  pass         request  handwritten-preservation: 103 file(s) under handwritten/ are byte-identical
+  pass         request  census-snapshot: the snapshot recaptures byte-identically and 299 entry points re-derive to the census as bound
+  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed
+  pass         request  manifest: the manifest is stellarator_tea's and its pin d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735 recomputes over the live package; assert_read_set_covered was NOT run — it is out of reach here and covered by nothing else (filed)
+  pass         request  preflight: all six preflight gates pass
+  pass         request  verification: oracle parity holds and every verdict re-derived
+  pass         request  lineage: semantic d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386 and executable c9c9f4c962e8b3d7c06652a22541411ec643d2f44385dee0ed5b145027b820f6 are the lineage the request named

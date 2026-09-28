@@ -1,0 +1,362 @@
+[
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 0.07
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 0.02
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 0.019999999999
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 0.020000000001
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 0.0
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": -0.0001
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 0.0001
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": -1e-08
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 1e-08
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": -1e-12
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 1e-12
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": -1e-16
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 1e-16
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": -1e-18
+    }
+  },
+  {
+    "state": "completed",
+    "failure": null,
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__discount_rate": 1e-18
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.07
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.02
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.019999999999
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.020000000001
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.0
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": -0.0001
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.0001
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": -1e-08
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 1e-08
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": -1e-12
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 1e-12
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": -1e-16
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 1e-16
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: negative allowance or invalid makeup fraction",
+      "module_or_channel": "stellarator_09__stellaris__heat_transport__equipment",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": -1e-18
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__discount_rate": 1e-18
+    }
+  }
+]

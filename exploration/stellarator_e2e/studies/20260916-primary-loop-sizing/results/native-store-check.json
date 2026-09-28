@@ -1,0 +1,20 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "4c7a1c4a3125a4d291b9d16dd6aeee796e89b8b337b61f1669071771740331a3",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260916-primary-loop-sizing.db",
+      "sha256": "0000eb942111976626f9d92e1d3c491aacad154989ae92120068f5911da310a7",
+      "cases": 20,
+      "export_joins": 20,
+      "content_addressed_evidence_checked": 20
+    }
+  ],
+  "snapshot_artifacts_checked": 0
+}

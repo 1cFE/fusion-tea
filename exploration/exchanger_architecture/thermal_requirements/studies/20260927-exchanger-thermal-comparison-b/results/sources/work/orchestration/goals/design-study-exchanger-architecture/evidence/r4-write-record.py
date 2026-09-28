@@ -1,0 +1,105 @@
+"""Build the argument record from verified native results and declared provenance."""
+import json
+from pathlib import Path
+from collections import Counter
+ROOT=Path(__file__).resolve().parents[5]
+R=ROOT/'exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b'
+G=ROOT/'work/orchestration/goals/design-study-exchanger-architecture'
+assert not (R/'snapshot.json').exists(), 'Never rewrite a sealed study record.'
+read=lambda p:json.loads(p.read_text())
+rows=read(R/'results/cases.json')['cases'];report=read(G/'evidence/r3-data/reporting.json')
+axes=read(R/'axis-plan.json')['axes'];catalog=read(R/'results/constraint_catalog.json')
+assert len(rows)==1277 and all(r['state']=='completed' for r in rows)
+assert read(R/'results/verification_summary.json')['outcome']=='pass'
+lines=['# Thermally consistent exchanger architecture comparison','']
+def section(title,text):lines.extend(['## '+title,'',text,''])
+section('1. Study header','**Study id:** 20260927-exchanger-thermal-comparison-b. **Package:** exchanger_architecture_thermal_tea. **Executed:** 2026-09-27. **Executor:** goal coordinator, with separate oracle verification and reporting authors. **Mode:** execute. **Arms:** one architecture arm on the corrected executable. This replaces the preserved failed attempt by replaying its exact 1277 input maps.')
+section('2. Intake', '''Owner intake is retained verbatim in [owner-brief.md](owner-brief.md), [owner-supplement-r2.md](owner-supplement-r2.md) and [owner-supplement-r3.md](owner-supplement-r3.md).
+
+> The goal need not deliver a physically qualified plant recommendation. It does need to establish that its preferred cases satisfy the thermal requirements it claims to represent.
+
+> you are very intelligent. I trust your judgement. please make your best calls, document it, and proceed until you have strong study results.
+
+[AGENT] Adopt source-informed N-R aggregate returns and 30 K at all six actual primary terminals. These remain agent-selected requirements under delegated authority; the source does not uniquely prescribe all six. Use fixed priced A/B inventories, physical primary bypass, common flow freedom and supplied network split. The full contract and cost omissions are in r3-study-contract.md and r3-cost-boundary.md. Their Round 3 labels identify original preparation; this unchanged-meaning execution is Round 4.''')
+section('3. Objective and result', '''Qualified objectives are `aries_integrated_plant__plant_ledger__evaluate__net_electric` and `aries_integrated_plant__lifecycle_price__evaluate__lcoe`. Rank complete passing operations at common source and offer; the represented cost numerator is common within main matched pairs.
+
+All 1277 maps completed; 535 satisfy every engineering predicate and positive net. At 1835.451283 MW supplied fusion, offer B gives series 497.768342 MW / 951.505200 USD2004/MWh versus network 528.427310 MW / 896.299560 USD2004/MWh. The executed zero-tritium-price endpoints give 95.960966 versus 90.393381 USD2004/MWh. Source, hardware and prices are conditional inputs. The main network gain survives fine flow/split refinement; extra network pressure loss can reverse it. Original equipment fails the adopted thermal contract. See [results analysis](results/reporting/r3-results-analysis.md) and complete [paired data](results/reporting/r3-data/pairs.csv).''')
+table=['All verdicts are determinate. Counts cover every completed map, including intended failure controls. The selected main operations satisfy all 35 predicates. Exact violated-case IDs and observed input locations are in [axis-violations.json](results/axis-violations.json).','','| constraint_id | source_local_identity | Satisfied | Violated |','|---|---|---:|---:|']
+for cid,item in sorted(catalog.items()):
+ c=Counter(r['verdicts'][cid] for r in rows);table.append(f"| `{cid}` | `{item['source_local_identity']}` | {c['satisfied']} | {c['violated']} |")
+section('4. Constraint outcomes','\n'.join(table))
+table=['| Axis | Proposed | Judged after execution | Changed? | Basis |','|---|---|---|---|---|']
+for a in axes:table.append(f"| {a['axis']} | {a['framing']} | {a['framing']} | No | {a['basis'].replace('[AGENT] ','')} |")
+section('5. Framing','\n'.join(table))
+accounts={
+'source_mode':'The calculated-source legacy control preserves the historical mode. Main comparisons supply source power. Neither establishes required plasma heating or sustainment.',
+'source_load':'The N-R divertor return/flow/hot cap gives an analytic upper source bound of 2005.036667 MW. Native original/A/B controls bracket 2005/2005.04 MW and reject old 2200/2300 leaders. Main selected A/B points pass at four declared loads except no sampled B-series pass at1650 MW. This absence is sampled, not a proof.',
+'architecture':'Seven matched main pairs favor the network by30.659–44.742 MW; B at1650 MW has a network-only sampled pass. Seven passing equal-flow controls have exactly equal net output. The advantage is access to lower passing flow, not an additional cycle-efficiency term.',
+'flow':'Every selected passing search group has a lower native failing neighbor0.00625 kg/s away at its selected split. Complete failed predicates and inputs locate each boundary witness. Main nominal B selected flows are1290.783398 series and1245.934766 network kg/s. These are local sampled transitions, not global optima.',
+'split':'Local split refinement reaches0.0005, then0.00025 for six unstable cost targets. The additional receipt supersedes earlier split-halving changes where applicable. Final stability meets0.2 MW /0.1 USD2004/MWh. Nominal B selected split is0.741. Failure components and outer-edge checks remain visible.',
+'control_mode':'The legacy path remains exact in regression and in two retained study controls, while the added thermal predicates expose missing return/approach compliance. Main physical primary bypass enforces aggregate return; actual pre-mix exchanger outlets determine cold approaches.',
+'offer':'All original-inventory controls fail. A/B are explicit area/price pairs, each174.9771 million USD2004 total assumed purchase. The nominal B network produces more net than A at the same assumed cost; no procurement ranking is established. Half/double purchase and extrapolated linear-area scenarios preserve matched nominal architecture preference.',
+'approach':'Main six-terminal minima are30 K. Labelled15 K and45 K scenarios use B at N only;45 K has no passing sampled operation in either architecture. All main preferred terminal gaps exceed33.8327 K.',
+'conductance':'At fixed B area and N source, U×0.8 retains a19.4144 MW paired network gain. U×1.2 has a network pass and no sampled series pass, so a paired allowance is undefined. Constant U versus active primary flow remains unsupported physics.',
+'pressure_loss':'At B/N, common2% and8% loss retain29.9380/31.7701 MW network gains. Network8% compared with series4.5% instead loses6.5866 MW and increases LCOE12.7593 USD2004/MWh. The assumed differential is a scenario, not a hydraulic prediction.',
+'pump_mode':'Pump perturbations use coordinated fixed-power mode to make the .8/1.2 scenarios explicit. The native model recomputes recovered friction heat and coupled return/hot states; legacy modes are retained controls.',
+'pump_power':'At B/N, multiplying the three reference pump powers by.8/1.2 retains30.0581/31.2932 MW network gains. Recovered heat is charged once; these are not post hoc net-power subtractions.',
+'bypass_limit':'No sampled B/N operation passes when each branch bypass is limited to.25 or.5. Nominal main B needs blanket-He bypass.68872 in series and.63229 in the network. The main limit1 denotes the mathematical control domain; no valve rating is claimed.',
+'return_convention':'The alternative post-pump source reading subtracts booked pump heat/Ch from aggregate return targets and retains delivered duty. At B/N the reselected gain is29.3195 MW. It is a separate labelled convention, not a replacement of the main returns.',
+ 'tritium_price':'The zero-price endpoint changes startup tritium stock and annual purchases consistently. At nominal B the paired LCOEs become95.960966/90.393381 USD2004/MWh. No breeding or supply-availability claim follows; deuterium remains charged.'}
+text=[]
+for a in axes:
+ name=a['axis'];search=a['framing']=='search'
+ for framing,label,applies in [('search','feasible structure',search),('sensitivity','observed response',not search)]:
+  text.extend([f'#### {name} — {label} ({framing} framing)','',f"**Applies:** {'yes' if applies else 'not applicable — this axis is '+a['framing']+'-framed'}.",''])
+  if applies:
+   text.extend([accounts[name],'',f"Observed violations for `{name}`, with each qualified predicate, native case IDs and all declared keys' values or observed extrema, are indexed under this axis in [axis-violations.json](results/axis-violations.json). These are locations of actual sampled failures; axis association alone does not establish causality."+(' No uncertainty boundary is claimed.' if not search else ''),''])
+section('6. Per-axis account','\n'.join(text))
+table=['| Axis | Entry key | Provenance | Interpretation |','|---|---|---|---|']
+for a in axes:
+ for k in a['keys']:table.append(f"| {a['axis']} | `{k['key']}` | {k['provenance']} | {'Agent-declared coordinated scenario; no cross-key physical equality asserted.' if k['provenance']=='tie' else 'Supplied operating/scenario choice.'} |")
+section('7. Axis groups','\n'.join(table)+'\n\nExact coupling rules are retained in manifest.json ties and axes.json; offer ties coordinate price with preselected area, never with demand.')
+table=['| Axis | Indicator | Ruling and disposition |','|---|---|---|']
+for a in axes:table.append(f"| {a['axis']} | constraints_reachable | {'Sensitivity assumption under owner-delegated judgment; missing procurement/fuel support remains a finding.' if a['axis'] in ('offer','tritium_price') else 'Execute declared '+a['framing']+' scope under delegated judgment.'} |")
+section('8. Indicators and rulings','\n'.join(table)+'''\n\nNo proposed axis was declined; none produced no_constraint_response. The conditional no_constraint_response finding obligation is therefore not triggered. Agent judgment nevertheless identifies unresisted price assumptions and records findings#2/#3 below. Reachability is a possible graph path, not an actual response. Monotonicity, physical identity across keys and intra-module operand dependency are not derivable from the indicators.''')
+preflight=read(R/'preparation/preflight.json');table=['| Gate | Outcome | Detail |','|---|---|---|']
+for g in preflight['gates']:table.append(f"| {g['gate']} | {g['status']} | {g['detail']} |")
+section('9. Preflight results','\n'.join(table)+'''\n\nIdentity and baseline read preparation/package_identity.json and preparation/baseline_result.json. They were copied byte-for-byte from the successful integration, with source/destination hashes and exact manifest/axes match in preparation/integration-reuse.json. All six gates ran. The35 suffix-sibling warnings are unrelated price-factor inputs held fixed by the declared three-HX offer scope. Native integration separately passes all ten gates in results/integration_return_used.json. No gate was waived.''')
+section('10. Execution route and why','''**Route:** study-local direct API using stock strict loader, PreparedEvaluator, StudyDefinition, PreparedListStrategy, StudyRunner and StudyStore. Coordinated complete input maps across many tied keys justify the direct definition; integration exercised and verified the route before main execution.
+
+**Glue ledger: none.** No adapter supplies missing physical outputs. The native model supplies thermal/control/price quantities. The harness proposes explicit maps and exports exact stored outputs without evaluation; results/export-proof.json proves native evidence unchanged during export. Derived break-even curves are reporting arithmetic with named native parents, not new executed plant candidates.''')
+section('11. Study definition and window provenance','''The window is **engineered**. The retained independent scan evaluated91,234 maps, seeded697 development passes, searched common broad flows and network splits, refined every observed feasible component and same-status failed intervals, then checked local leaders and outer edges. Initial stages, additional refinement and final financial/control proposals are retained in oracle-selection.json, oracle-refinement-receipt.json and proposal-finalization.json. Full scan bytes are recoverable from prior-attempt/oracle-scan.json.gz and its base inputs; initial/refined proposal history remains in the immutable predecessor.
+
+The negative B-series1650 check used1 kg/s spacing without finding a pass. Nonpositive-net points were excluded from native LCOE execution because its positive-energy domain is undefined there; their independent scan outcomes remain visible. No unexpected oracle refusal was converted to an engineering failure. This sampling cannot exclude smaller unseen feasible islands or establish global optimality.
+
+Round4 rechecked all1277 unchanged full maps and46 original outer-edge witnesses independently before execution; oracle-window-recheck.json retains that evidence. All selected native operations and lower-flow failure neighbors executed. Scouting-only intermediate stages are labelled in reporting, not claimed as native results. axis-plan.json preserves the original pre-execution false authorization flag; actual release after model integration is recorded in results/execution-context.json and goal T-008. No map or search window changed after the numerical defect.''')
+section('12. Cross-fingerprint correlation and what it means','''Single executable fingerprint within this record: no cross-arm correlation is needed. Comparison with the previous failed attempt does cross a numerical-repair fingerprint. results/prior-attempt-correlation.json proves1277 exact full input maps, identical full constraint catalog including qualified definitions/local identities/predicate IR, unchanged verdicts on all1275 previously completed maps, unchanged tolerance on independently verified channels, and exact legacy study outputs. Both previously failing cases now complete. Controlled floating-point changes and algorithm diagnostics are disclosed.
+
+The preserved attempt at ca25c49c includes its own original executable archive, source bytes and partial verification. Its archive and attempt digest are referenced in prior-attempt.json. This correlation licenses reuse of the unchanged scientific scan and direct input-matched numerical comparisons; it does not change the earlier failed record into a completed study or relax any thermal requirement.''')
+section('13. Verification','''**PASS for all1277 maps**, with total=completed=sampled1277,435 independently calculated channels and35 re-derived predicates each. Every executed input matches its declared full map. The independent thermal oracle solves energy/LMTD/log-gap equations with Brent roots; native thermal execution uses effectiveness/NTU and bisection. The oracle and all44 absolute tolerance classes plus relative1e-9 remained unchanged during repair. The complete summary and log are in results/verification_summary.json and results/verification.log.
+
+Independent recalculation covers actual thermal states, aggregate returns, six terminal gaps, duty residuals, all engineering predicates and lifecycle outputs. Supplied inputs, common structural bindings, predicate definitions and algorithm iteration diagnostics are not independent physical evidence. This verifies the implemented conditional model, not source sustainment, fluid-property adequacy, constant-U applicability, procurement, valve design or plant operation.
+
+Model-level validator limitations remain:105 inherited literal warnings and498 baseline plus37 new pure-EXPOSE expression diagnostics. Stock generated execution and independent verification cover the affected paths; no all-level validator pass is claimed.''')
+section('14. Review outcomes','''| Lens | Verdict | Disposition |
+|---|---|---|
+| Original-source interpretation | PASS, reused | r2-source-review.md; adopted local requirement remains agent-originated. |
+| Thermal design/MR-7/implementation | PASS, reused | WI-097 independent design and implementation reviews; selected equipment/control roles unchanged. Exact source copies ship under results/sources/. |
+| Study framing/refinement/cost protocol | PASS, reused | r3-protocol-review.md; common search freedom, refinement and full-map retention followed. |
+| Stable numerical remedy and repaired executable | PASS | WI-097 numerical-repair-review.md; unchanged physics/oracle/tolerance, high-precision and regression controls. |
+| Integrated thermal comparison and economics | Review in progress | Final independent review will be copied to results/reviews/r4-final-review.md before sealing. |
+
+No additional source research or changed interpretation occurred in Round4. The continuing reviewer reuses its earlier accepted scopes and checks the new integrated evidence. A subsequent narrow delivery check covers only final seal hashes and exact replay.''')
+findings=[('1','model','Constant U, ideal mixing and mathematical bypass domain lack geometry/actuator qualification.','Declared conditional-model seam; thermal states verified within stated assumptions.','r3-study-contract.md'),('2','model','Explicit revised exchanger prices are assumed budgets; smaller-area calibration flags remain and procurement is unqualified.','Retain explicit area/price selections and price sensitivities; no vendor cost claim.','r3-cost-boundary.md'),('3','model','Supplied source and tritium price lack sustainment, breeding and supply resistance.','Retain supplied-source boundary and executed zero-price accounting endpoint.','r3-study-contract.md'),('4','model','Incremental bypass/manifold/control/maintenance and hydraulic scope is unresolved beyond retained budgets.','Two-sided break-even allowances and coupled pressure-loss/pump scenarios; no free-hardware claim.','results/reporting/r3-data/break-even.csv')]
+table=['| Id | Kind | Finding | Disposition | Home |','|---|---|---|---|---|']
+for n,kind,claim,disp,home in findings:table.append(f'| {R.name}#{n} | {kind} | {claim} | {disp} | {home} |')
+section('15. Findings','\n'.join(table)+'\n\nPredecessor finding20260927-exchanger-thermal-comparison#1 is resolved by the reviewed stable numerical repair and complete exact-map verification; the original failed attempt is preserved. All current seams are declared limitations of this conditional result, not deferred prerequisites for its thermal consistency.')
+section('16. Snapshot','Final seal pending independent review; snapshot.json will be created once, then its digest recorded here before the immutable commit.')
+section('17. What this record does not contain','''No complete piping layout, valve/actuator or exchanger-geometry qualification, measured U-versus-flow law, vendor quotations, source-sustainment or breeding/supply model, uncertainty distribution, global optimum proof or physical plant recommendation. The record includes reproducible conditional economics and explicit thermal acceptance. Earlier scan checkpoint/proposal versions and the original failed native tree remain in the separately committed predecessor; this record includes the full final scan archive, exact current proposals, predecessor references and archived old executable. Runtime symlink aliases and Python caches are omitted from the seal.''')
+document='\n'.join(lines)
+for before,after in [('all1277','all 1277'),('sampled1277','sampled 1277'),('by30.659','by 30.659'),('B-series1650','B-series 1650'),('at1650','at 1650'),('The35','The 35'),('check used1','check used 1'),('evaluated91,234','evaluated 91,234'),('seeded697','seeded 697'),('all44','all 44'),('relative1e-9','relative 1e-9'),('remain:105','remain: 105'),('and498','and 498'),('plus37','plus 37'),('proves1277','proves 1277'),('all1275','all 1275'),('and46','and 46'),('of 2005.036667','of 2005.036667'),('by.8/1.2','by .8/1.2'),('bypass.68872','bypass .68872'),('and.63229','and .63229'),('to.25 or.5','to .25 or .5'),('limit1','limit 1'),('network8%','network 8%'),('series4.5%','series 4.5%'),('common2%','common 2%'),('and8%','and 8%'),('then0.00025','then 0.00025'),('reaches0.0005','reaches 0.0005'),('split is0.741','split is 0.741'),('meets0.2','meets 0.2'),('neighbor0.00625','neighbor 0.00625'),('are1290','are 1290'),('and1245','and 1245'),('by30.','by 30.'),('a19.4144','a 19.4144'),('returns30','returns 30'),('minima are30','minima are 30'),('Labelled15','Labelled 15'),('and45','and 45'),(';45','; 45'),('exceed33','exceed 33'),('each174','each 174'),('remains435','remains 435'),('all 1277maps','all 1277 maps')]:
+    document=document.replace(before,after)
+import re
+document=re.sub(r'(\d)(?=(?:MW|USD2004|kg/s)\b)',r'\1 ',document)
+(R/'record.md').write_text(document)
+print('Wrote17-section record from verified results.')

@@ -1,0 +1,9 @@
+{
+  "outcome": "pass",
+  "executable_fingerprint": "e19b63a03be3a00ebd5cec4ce4ed06a082f5bb7ed89b736aed06feaea8d1e319",
+  "channels": 70,
+  "relative_tolerance": 1e-10,
+  "absolute_tolerance": 1e-18,
+  "errors": [],
+  "evidence": "repin-final.log: all906 comparisons; new70 channels rel1e-10abs1e-18"
+}

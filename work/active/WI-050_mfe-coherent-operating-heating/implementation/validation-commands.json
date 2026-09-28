@@ -1,0 +1,162 @@
+{
+  "phase-1-level-1": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=1"
+    ],
+    "exit": 0
+  },
+  "phase-1-level-2": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=2"
+    ],
+    "exit": 1
+  },
+  "phase-1-level-3": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=3"
+    ],
+    "exit": 0
+  },
+  "phase-2-level-1": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=1"
+    ],
+    "exit": 0
+  },
+  "phase-2-level-2": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=2"
+    ],
+    "exit": 1
+  },
+  "phase-2-level-3": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=3"
+    ],
+    "exit": 0
+  },
+  "phase-3-level-1": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=1"
+    ],
+    "exit": 0
+  },
+  "phase-3-level-2": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=2"
+    ],
+    "exit": 1
+  },
+  "phase-3-level-3": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=3"
+    ],
+    "exit": 0
+  },
+  "phase-4-level-1": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=1"
+    ],
+    "exit": 0
+  },
+  "phase-4-level-2": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=2"
+    ],
+    "exit": 1
+  },
+  "phase-4-level-3": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=3"
+    ],
+    "exit": 0
+  },
+  "phase-5-level-1": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=1"
+    ],
+    "exit": 0
+  },
+  "phase-5-level-2": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=2"
+    ],
+    "exit": 1
+  },
+  "phase-5-level-3": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--level=3"
+    ],
+    "exit": 0
+  },
+  "complete": {
+    "command": [
+      ".codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-implementation-ccj8kjq5/models",
+      "--complete"
+    ],
+    "exit": 1
+  }
+}

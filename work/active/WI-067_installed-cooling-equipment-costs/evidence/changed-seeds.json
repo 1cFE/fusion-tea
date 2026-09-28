@@ -1,0 +1,10 @@
+{
+  "handwritten/mfe_cooling_equipment/cooling_equipment_impl.py": {
+    "before": null,
+    "after": "9e9de89da8d28191bcc7b4f8a5695ee5e6ac7f1994470fec618cf390604a2c06"
+  },
+  "handwritten/mfe_cooling_accounts/cooling_scenario_guard_impl.py": {
+    "before": null,
+    "after": "70d65598c455a96d7badaa0347dde065f9ab6d7aacbbc323ffcad5d082c96dc5"
+  }
+}

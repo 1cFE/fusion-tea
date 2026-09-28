@@ -1,0 +1,68 @@
+{
+  "authority": "AGENT findings; final independent review blocks economic release at verification",
+  "findings": [
+    {
+      "id": "20260927-design-study-whole-plant-conversion#1",
+      "kind": "model",
+      "finding": "The common source is supplied; plasma sustainment and global manufactured fit are not qualified.",
+      "disposition": "Declared seam: retain this condition at every whole-plant conclusion; no reactor qualification claim.",
+      "home": "work/active/WI-098_whole-plant-conversion-comparison/configuration.md"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#2",
+      "kind": "model",
+      "finding": "The selected primary and divertor offers cannot support the 3000 MW source condition.",
+      "disposition": "Declared seam: preserve failed cases and exclude this source from paired preference; no automatic hardware resizing.",
+      "home": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/constraint-summary.json"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#3",
+      "kind": "model",
+      "finding": "Transferred nuclear heating is not a validated bound for the changed magnet/blanket geometry.",
+      "disposition": "Declared seam: vary demand at fixed cryoplant and retain the native capacity bracket; updated transport remains future research.",
+      "home": "work/active/WI-098_whole-plant-conversion-comparison/configuration.md"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#4",
+      "kind": "model",
+      "finding": "Generated descriptive CAS codes disagree with the accepted account categories; executable membership is correct.",
+      "disposition": "Declared seam: use the explicit reviewed mapping for this report; correct metadata before using generic CAS rollups.",
+      "home": "work/active/WI-098_whole-plant-conversion-comparison/report.md"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#5",
+      "kind": "model",
+      "finding": "The finite equipment window has uncaught edges and the technologies have different modeled operating freedoms.",
+      "disposition": "Declared seam: report finite-catalog minima and conditional scenarios; no equal global technology optimization claim.",
+      "home": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/ANNEX.md"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#6",
+      "kind": "process",
+      "finding": "The first oracle scan overlapped in-place regeneration and read temporarily absent input defaults.",
+      "disposition": "Corrected execution: retain invalid scan, serialize regeneration and scanning, and use the zero-refusal replacement scan.",
+      "home": "work/orchestration/goals/design-study-whole-plant-conversion/trail.md"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#7",
+      "kind": "model",
+      "finding": "The static validator reports inherited literal/alias diagnostics on the compiled assembly.",
+      "disposition": "Declared seam: retain raw exit1 and reviewed identity-level dispositions with zero unresolved diagnostics; do not call static validation green.",
+      "home": "work/active/WI-098_whole-plant-conversion-comparison/evidence/validation-detail.json"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#8",
+      "kind": "model",
+      "finding": "Equipment price and common reactor account stresses are explicit assumptions rather than established market uncertainty intervals.",
+      "disposition": "Declared seam: report conditional preference and native thresholds; do not present engineered endpoints as credible confidence bounds.",
+      "home": "work/active/WI-098_whole-plant-conversion-comparison/configuration.md"
+    },
+    {
+      "id": "20260927-design-study-whole-plant-conversion#9",
+      "kind": "model",
+      "finding": "The near-capacity cryogenic bracket fails unchanged stock numerical verification because a 7.276e-12 W difference exceeds the relative tolerance on a 0.00307 W residual.",
+      "disposition": "Declared seam: this attempt is blocked and retained; review a wider diagnostic bracket in a new round, without changing model, oracle or tolerances.",
+      "home": "work/orchestration/goals/design-study-whole-plant-conversion/evidence/final-results-review.md"
+    }
+  ]
+}

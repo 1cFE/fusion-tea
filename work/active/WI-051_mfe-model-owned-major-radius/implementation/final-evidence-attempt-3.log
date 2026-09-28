@@ -1,0 +1,25 @@
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 93, in <module>
+    preservation()
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 75, in preservation
+    assert set(changed)=={approved_test}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

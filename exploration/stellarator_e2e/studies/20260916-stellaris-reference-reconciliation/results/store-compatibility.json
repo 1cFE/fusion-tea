@@ -1,0 +1,10 @@
+{
+  "study_id": "20260916-stellaris-reference-reconciliation",
+  "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+  "model_contract_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "study_definition_fingerprint": "fb1cba59d19d291067c2740943b12852fd33c8d3f07d74305c9916e7620c4dd4",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "4bf588634a63e8cb80a2c0e4eb8739ce2e6e1228edbd20abace213065896018b"
+}

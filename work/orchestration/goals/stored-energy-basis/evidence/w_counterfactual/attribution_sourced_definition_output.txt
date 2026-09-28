@@ -1,0 +1,12 @@
+printed: W 504.65, beta 2.76, p_fus 2700, n_e0 5.06, <n_e> 3.17
+
+SOURCED: paper rules (1.2/0.35, Ti/Te 0.95, A.5 ash, QN electrons) W  518.3 MJ ( +2.7 %)  beta 2.52 %  p_fus   2711  n_e0 5.04  <n_e> 3.16  alpha_He_eff 4.13  the registered definition applied with the paper's own rules
+  same, T_i peak at the printed 14.63 (ratio 0.950)        W  518.3 MJ ( +2.7 %)  beta 2.52 %  p_fus   2711  n_e0 5.04  <n_e> 3.16  alpha_He_eff 4.13  
+  same, ash power-law alpha_He 2 (NOTES sec 7 bracket)     W  533.4 MJ ( +5.7 %)  beta 2.60 %  p_fus   2711  n_e0 5.04  <n_e> 3.28  alpha_He_eff 2.00  
+  same, ash power-law alpha_He 3                           W  521.5 MJ ( +3.3 %)  beta 2.54 %  p_fus   2711  n_e0 5.04  <n_e> 3.18  alpha_He_eff 3.00  
+  same, ash at the fuel exponent 0.35 (the model's ash shape) W  573.4 MJ (+13.6 %)  beta 2.79 %  p_fus   2711  n_e0 5.04  <n_e> 3.73  alpha_He_eff 0.35  
+MODEL family: 1.19/0.33, ash at 0.33, n_e at 0.596, printed peaks W  551.3 MJ ( +9.3 %)  beta 2.68 %  p_fus   2748  n_e0 5.06  <n_e> 3.17  alpha_He_eff 0.33  the model's bound exponents (NOTES sec 7 row 1)
+  model exponents but A.5 ash and QN electrons             W  524.5 MJ ( +3.9 %)  beta 2.55 %  p_fus   2748  n_e0 5.04  <n_e> 3.20  alpha_He_eff 4.05  what the ash shape alone is worth at the model's exponents
+
+printed W 504.65 at B0 9.0 implies beta 2.46 %; printed beta 2.76 % implies W 567.1 MJ; they agree only at B = 8.49 T
+sourced W / printed W = 1.0271;  model W / sourced W = 1.0637

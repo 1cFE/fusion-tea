@@ -1,0 +1,5 @@
+Command: .codex-test/run python scripts/study/indicators.py --package exploration/component_alternatives/component_alternatives_tea --manifest exploration/component_alternatives/studies/manifest.json --groups exploration/component_alternatives/studies/axes.json --out exploration/component_alternatives/studies/20260926-design-study-component-alternatives/indicators.json
+Implementation commit: b4c896ce
+Exit: 1
+Producer refusal: constraint 'component_alternatives__plant__steam_cycle__main_UA_available_required__f9837efa3d05f097' has no matching module in the pipeline
+The residual predicate now parses. The next stock check exposes the existing UA capitalization mismatch between constraint identity and pipeline module key. No indicator report or main study was produced. No package has been promoted through integration.

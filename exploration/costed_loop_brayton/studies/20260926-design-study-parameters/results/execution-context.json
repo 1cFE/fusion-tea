@@ -1,0 +1,42 @@
+{
+  "repo_commit_at_execution": "28de8a3b2b708090c9657be5f336bec1160214a0",
+  "uncommitted_at_execution": [
+    "M docs/write-up/plan.md",
+    " M exploration/costed_loop_brayton/studies/flow_ratio_config.py",
+    " M exploration/costed_loop_brayton/studies/study_support.py",
+    " M work/orchestration/goals/design-study-parameters/trail.md",
+    "?? docs/write-up/html-prompt.md",
+    "?? docs/write-up/html-render-prompt.md",
+    "?? docs/write-up/html-review-prompt.md",
+    "?? docs/write-up/html-work/",
+    "?? docs/write-up/stellaris-evolution-assets/",
+    "?? docs/write-up/stellaris-evolution.md",
+    "?? docs/write-up/write-up.css",
+    "?? exploration/costed_loop_brayton/studies/20260926-design-study-parameters/",
+    "?? exploration/costed_loop_brayton/studies/flow_ratio_figures.py",
+    "?? exploration/costed_loop_brayton/studies/flow_ratio_reporting.py",
+    "?? work/analysis/20260920-184131_design-choice-assignment-audit.md",
+    "?? work/narratives/20260925-221738Z-aries-reference-heat-electricity-reconciliation.md",
+    "?? work/orchestration/goals/design-study-parameters/evidence/owner-gate-verification-class.md",
+    "?? work/orchestration/goals/design-study-parameters/evidence/t005-execute.log",
+    "?? work/orchestration/goals/design-study-parameters/evidence/t005-verify.log",
+    "?? work/orchestration/goals/design-study-parameters/evidence/write-execution-context.py"
+  ],
+  "preparation_commands": [
+    ".codex-test/run python exploration/costed_loop_brayton/studies/flow_ratio_config.py --record exploration/costed_loop_brayton/studies/20260926-design-study-parameters",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.costed_loop_brayton.studies.study_support prepare --record exploration/costed_loop_brayton/studies/20260926-design-study-parameters --config exploration/costed_loop_brayton/studies/20260926-design-study-parameters/config.json'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python scripts/study/indicators.py --package exploration/costed_loop_brayton/costed_loop_brayton_tea --manifest exploration/costed_loop_brayton/studies/20260926-design-study-parameters/manifest.json --groups exploration/costed_loop_brayton/studies/20260926-design-study-parameters/axes.json --out exploration/costed_loop_brayton/studies/20260926-design-study-parameters/indicators.json'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.costed_loop_brayton.studies.study_support baseline --record exploration/costed_loop_brayton/studies/20260926-design-study-parameters'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python scripts/study/preflight.py gates --package exploration/costed_loop_brayton/costed_loop_brayton_tea --manifest exploration/costed_loop_brayton/studies/20260926-design-study-parameters/manifest.json --groups exploration/costed_loop_brayton/studies/20260926-design-study-parameters/axes.json --identity exploration/costed_loop_brayton/studies/20260926-design-study-parameters/preparation/package_identity.json --baseline-result exploration/costed_loop_brayton/studies/20260926-design-study-parameters/preparation/baseline_result.json --out exploration/costed_loop_brayton/studies/20260926-design-study-parameters/preparation/preflight_results.json'"
+  ],
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.costed_loop_brayton.studies.study_support execute --record exploration/costed_loop_brayton/studies/20260926-design-study-parameters --integration-return work/orchestration/goals/design-study-parameters/evidence/integration-t004/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/costed_loop_brayton/costed_loop_brayton_tea --manifest exploration/costed_loop_brayton/studies/20260926-design-study-parameters/manifest.json --identity exploration/costed_loop_brayton/studies/20260926-design-study-parameters/preparation/package_identity.json --store exploration/costed_loop_brayton/studies/20260926-design-study-parameters/results/native/20260926-design-study-parameters.db --sample-size 272 --out exploration/costed_loop_brayton/studies/20260926-design-study-parameters/results/verification_summary.json'",
+  "reporting_commands": [
+    ".codex-test/run python exploration/costed_loop_brayton/studies/flow_ratio_reporting.py exploration/costed_loop_brayton/studies/20260926-design-study-parameters",
+    ".codex-test/run python exploration/costed_loop_brayton/studies/flow_ratio_figures.py exploration/costed_loop_brayton/studies/20260926-design-study-parameters"
+  ],
+  "preparation_baseline": "Two preparations on the same live manifest (pin 53f48a7e\u2026) and package identity: r1 (313 composed, 257 kept) retained under preparation-r1/ after its oracle scan found the refined grid's best passing point at 2,250 kg/s / 1.5183 with its flow-step-higher neighbour coinciding with the starting point; r2 (328 composed, 272 kept, 56 refused) adds the declared extra anchor screen-best-passing (2,500 / 1.45). indicators.json and the native baseline point (preparation/) are shared: manifest and axes are identical between r1 and r2. Six preflight gates pass.",
+  "pre_execution_review": "Coordinator checkpoint C-001.r1 in work/orchestration/goals/design-study-parameters/trail.md (no review trigger met beyond the covered integration risk; reused coverage cited); not an independent verdict.",
+  "attempts": "272 started, 272 completed in one invocation; no retries. Integration candidate from T-004 (evidence/integration-t004/integration_return.json), same package identity and manifest pin.",
+  "verification_outcome": "REFUSED on one channel of one case (he_hot_bound_margin on s1-turb0.90-f2500-r1.4500, relative 1.466e-9 against the 1e-9 rule, absolute 5.3e-10 K, no declared class); every other channel of every case within the rule or its declared class; all verdicts re-derived. Owner gate G-001 (evidence/owner-gate-verification-class.md); no summary file was written by the verifier; the refusal text is evidence/t005-verify.log."
+}

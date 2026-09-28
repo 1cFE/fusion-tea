@@ -1,0 +1,436 @@
+{
+  "authority": "AGENT research prototype; not adopted or independently validated",
+  "source_sha256": {
+    "knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/raw.html": "46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234",
+    "knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/raw.html": "89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4",
+    "knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/raw.html": "02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3"
+  },
+  "cases": [
+    {
+      "name": "no_reheat_baseline",
+      "steam_C": 445.0,
+      "condenser_C": 42.0,
+      "eta_turbine": 0.9,
+      "reheat": false,
+      "bleed_fraction": 0.20500966665692555,
+      "feedwater_C": 171.45500475761446,
+      "bleed_C": 195.90861756356085,
+      "steam_kg_s": 1292.0850494078254,
+      "LP_quality": 0.8427341928394526,
+      "LP_ideal_quality": 0.8135434899899405,
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 47.873778714822144
+      },
+      "reheater": null,
+      "gross_MW": 1202.11861448241,
+      "gross_efficiency": 0.3635194826765918,
+      "feed_and_condensate_pump_MW": 11.31383703873501,
+      "cooling_water_pump_MW": 13.14422154468452,
+      "cycle_net_MW": 1177.6605558989904,
+      "condenser_MW": 2078.595175923538,
+      "mechanical_generator_motor_loss_MW": 37.48914548167872,
+      "rejection_before_cw_pump_MW": 2116.084321405217,
+      "cooling_water_kg_s": 50932.82810113666,
+      "cooling_water_pump_temperature_rise_K": 0.0617323189105576,
+      "cooling_water_heat_closure_MW": 4.973799150320701e-14,
+      "cooling_water_min_gap_K": 7.0,
+      "main_duty_MW": 3306.8890988488915,
+      "reheater_duty_MW": 0.0,
+      "salt_reheater_flow_fraction": 0.0,
+      "open_heater_residual_kJ_kg": 1.1368683772161603e-13,
+      "first_law_residual_MW": 1.4210854715202004e-13,
+      "shaft_first_law_residual_MW": 4.547473508864641e-13,
+      "states": {
+        "main_inlet": {
+          "T": 445.0,
+          "P": 6.2,
+          "h": 3287.7317,
+          "s": 6.6866472,
+          "v": 0.04991529
+        },
+        "bleed_h": 2830.288928194147,
+        "bleed_s": 6.797557321733462,
+        "feed_h": 728.3884893,
+        "LP_inlet": {
+          "h": 2830.288928194147,
+          "s": 6.797557321733462
+        },
+        "LP_outlet_h": 2199.4573690519983,
+        "condensate": {
+          "T": 42.0,
+          "P": 0.0082095634,
+          "h": 175.89327,
+          "s": 0.5990114,
+          "v": 0.0010086788
+        }
+      },
+      "assumptions": {
+        "pump_isentropic": 0.8,
+        "motor": 0.95,
+        "generator": 0.98,
+        "mechanical": 0.99,
+        "cooling_water_head_m": 20
+      }
+    },
+    {
+      "name": "reheat_baseline",
+      "steam_C": 445.0,
+      "condenser_C": 42.0,
+      "eta_turbine": 0.9,
+      "reheat": true,
+      "bleed_fraction": 0.20500966665692555,
+      "feedwater_C": 171.45500475761446,
+      "bleed_C": 195.90861756356085,
+      "steam_kg_s": 1108.5733942490047,
+      "LP_quality": 0.9728093554034173,
+      "LP_ideal_quality": 0.9334112241083311,
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 41.07438391129078
+      },
+      "reheater": {
+        "min_gap_K": 20.000000000000114,
+        "UA_MW_K": 11.18676346646296
+      },
+      "gross_MW": 1219.9981701764734,
+      "gross_efficiency": 0.36892624267355906,
+      "feed_and_condensate_pump_MW": 9.706960647643738,
+      "cooling_water_pump_MW": 13.023180063562142,
+      "cycle_net_MW": 1197.2680294652675,
+      "condenser_MW": 2058.6399114471737,
+      "mechanical_generator_motor_loss_MW": 37.95797787288818,
+      "rejection_before_cw_pump_MW": 2096.5978893200618,
+      "cooling_water_kg_s": 50463.80185031193,
+      "cooling_water_pump_temperature_rise_K": 0.0617323189105576,
+      "cooling_water_heat_closure_MW": -1.474376176702208e-13,
+      "cooling_water_min_gap_K": 7.0,
+      "main_duty_MW": 2837.219790133844,
+      "reheater_duty_MW": 469.66930871504724,
+      "salt_reheater_flow_fraction": 0.14202753544971808,
+      "open_heater_residual_kJ_kg": 1.1368683772161603e-13,
+      "first_law_residual_MW": 7.531752999057062e-13,
+      "shaft_first_law_residual_MW": 4.547473508864641e-13,
+      "states": {
+        "main_inlet": {
+          "T": 445.0,
+          "P": 6.2,
+          "h": 3287.7317,
+          "s": 6.6866472,
+          "v": 0.04991529
+        },
+        "bleed_h": 2830.288928194147,
+        "bleed_s": 6.797557321733462,
+        "feed_h": 728.3884893,
+        "LP_inlet": {
+          "T": 445.0,
+          "P": 0.8,
+          "h": 3363.213668490404,
+          "s": 7.710852878282219,
+          "v": 0.41093780775747096
+        },
+        "LP_outlet_h": 2511.792422476057,
+        "condensate": {
+          "T": 42.0,
+          "P": 0.0082095634,
+          "h": 175.89327,
+          "s": 0.5990114,
+          "v": 0.0010086788
+        }
+      },
+      "assumptions": {
+        "pump_isentropic": 0.8,
+        "motor": 0.95,
+        "generator": 0.98,
+        "mechanical": 0.99,
+        "cooling_water_head_m": 20
+      }
+    },
+    {
+      "name": "no_reheat_eta85",
+      "steam_C": 445.0,
+      "condenser_C": 42.0,
+      "eta_turbine": 0.85,
+      "reheat": false,
+      "bleed_fraction": 0.20306476986537245,
+      "feedwater_C": 171.45500475761446,
+      "bleed_C": 206.98493125919222,
+      "steam_kg_s": 1292.0850494078254,
+      "LP_quality": 0.8648914431074781,
+      "LP_ideal_quality": 0.8205721281162606,
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 47.873778714822144
+      },
+      "reheater": null,
+      "gross_MW": 1144.0356708955928,
+      "gross_efficiency": 0.34595525785664377,
+      "feed_and_condensate_pump_MW": 11.316477849088344,
+      "cooling_water_pump_MW": 13.50502464791902,
+      "cycle_net_MW": 1119.2141683985853,
+      "condenser_MW": 2138.4646642716225,
+      "mechanical_generator_motor_loss_MW": 35.705241530764724,
+      "rejection_before_cw_pump_MW": 2174.1699058023873,
+      "cooling_water_kg_s": 52330.91184256835,
+      "cooling_water_pump_temperature_rise_K": 0.0617323189105576,
+      "cooling_water_heat_closure_MW": 5.1514348342607263e-14,
+      "cooling_water_min_gap_K": 7.0,
+      "main_duty_MW": 3306.8890988488915,
+      "reheater_duty_MW": 0.0,
+      "salt_reheater_flow_fraction": 0.0,
+      "open_heater_residual_kJ_kg": 1.1368683772161603e-13,
+      "first_law_residual_MW": 1.2789769243681803e-13,
+      "shaft_first_law_residual_MW": 0.0,
+      "states": {
+        "main_inlet": {
+          "T": 445.0,
+          "P": 6.2,
+          "h": 3287.7317,
+          "s": 6.6866472,
+          "v": 0.04991529
+        },
+        "bleed_h": 2855.7024155166946,
+        "bleed_s": 6.851109881282283,
+        "feed_h": 728.3884893,
+        "LP_inlet": {
+          "h": 2855.7024155166946,
+          "s": 6.851109881282283
+        },
+        "LP_outlet_h": 2252.6611153305457,
+        "condensate": {
+          "T": 42.0,
+          "P": 0.0082095634,
+          "h": 175.89327,
+          "s": 0.5990114,
+          "v": 0.0010086788
+        }
+      },
+      "assumptions": {
+        "pump_isentropic": 0.8,
+        "motor": 0.95,
+        "generator": 0.98,
+        "mechanical": 0.99,
+        "cooling_water_head_m": 20
+      }
+    },
+    {
+      "name": "reheat_cold40",
+      "steam_C": 445.0,
+      "condenser_C": 40,
+      "eta_turbine": 0.9,
+      "reheat": true,
+      "bleed_fraction": 0.2075065507360933,
+      "feedwater_C": 171.45500475761446,
+      "bleed_C": 195.90861756356085,
+      "steam_kg_s": 1109.068123177996,
+      "LP_quality": 0.9690172302295074,
+      "LP_ideal_quality": 0.9291051873548091,
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 41.09271439447469
+      },
+      "reheater": {
+        "min_gap_K": 20.000000000000114,
+        "UA_MW_K": 11.156605079499188
+      },
+      "gross_MW": 1229.1922926686984,
+      "gross_efficiency": 0.3717065362417424,
+      "feed_and_condensate_pump_MW": 9.708618311664853,
+      "cooling_water_pump_MW": 12.96608035679649,
+      "cycle_net_MW": 1206.517594000237,
+      "condenser_MW": 2049.164963354128,
+      "mechanical_generator_motor_loss_MW": 38.24046113773031,
+      "rejection_before_cw_pump_MW": 2087.405424491858,
+      "cooling_water_kg_s": 50242.54496268009,
+      "cooling_water_pump_temperature_rise_K": 0.0617323189105576,
+      "cooling_water_heat_closure_MW": -2.078337502098293e-13,
+      "cooling_water_min_gap_K": 5,
+      "main_duty_MW": 2838.4859712593952,
+      "reheater_duty_MW": 468.40312758949653,
+      "salt_reheater_flow_fraction": 0.14164464352691622,
+      "open_heater_residual_kJ_kg": 1.1368683772161603e-13,
+      "first_law_residual_MW": 2.5579538487363607e-13,
+      "shaft_first_law_residual_MW": 4.547473508864641e-13,
+      "states": {
+        "main_inlet": {
+          "T": 445.0,
+          "P": 6.2,
+          "h": 3287.7317,
+          "s": 6.6866472,
+          "v": 0.04991529
+        },
+        "bleed_h": 2830.288928194147,
+        "bleed_s": 6.797557321733462,
+        "feed_h": 728.3884893,
+        "LP_inlet": {
+          "T": 445.0,
+          "P": 0.8,
+          "h": 3363.213668490404,
+          "s": 7.710852878282219,
+          "v": 0.41093780775747096
+        },
+        "LP_outlet_h": 2498.9664604803793,
+        "condensate": {
+          "T": 40.0,
+          "P": 0.0073849382,
+          "h": 167.53304,
+          "s": 0.57240174,
+          "v": 0.0010078866
+        }
+      },
+      "assumptions": {
+        "pump_isentropic": 0.8,
+        "motor": 0.95,
+        "generator": 0.98,
+        "mechanical": 0.99,
+        "cooling_water_head_m": 20
+      }
+    },
+    {
+      "name": "reheat_warm50",
+      "steam_C": 445.0,
+      "condenser_C": 50,
+      "eta_turbine": 0.9,
+      "reheat": true,
+      "bleed_fraction": 0.1948607004022808,
+      "feedwater_C": 171.45500475761446,
+      "bleed_C": 195.90861756356085,
+      "steam_kg_s": 1106.5670278913606,
+      "LP_quality": 0.9879652096414684,
+      "LP_ideal_quality": 0.9506198989957227,
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 41.00004488920339
+      },
+      "reheater": {
+        "min_gap_K": 20.000000000000114,
+        "UA_MW_K": 11.309070389424388
+      },
+      "gross_MW": 1183.1299088724127,
+      "gross_efficiency": 0.3577773168396403,
+      "feed_and_condensate_pump_MW": 9.699500748975172,
+      "cooling_water_pump_MW": 13.2521437844716,
+      "cycle_net_MW": 1160.1782643389658,
+      "condenser_MW": 2096.6335061596633,
+      "mechanical_generator_motor_loss_MW": 36.82518456579124,
+      "rejection_before_cw_pump_MW": 2133.4586907254547,
+      "cooling_water_kg_s": 51351.018320213414,
+      "cooling_water_pump_temperature_rise_K": 0.0617323189105576,
+      "cooling_water_heat_closure_MW": -4.2810199829546036e-13,
+      "cooling_water_min_gap_K": 15,
+      "main_duty_MW": 2832.084810018231,
+      "reheater_duty_MW": 474.80428883066077,
+      "salt_reheater_flow_fraction": 0.1435803483690872,
+      "open_heater_residual_kJ_kg": -1.1368683772161603e-13,
+      "first_law_residual_MW": -2.3447910280083306e-13,
+      "shaft_first_law_residual_MW": -4.547473508864641e-13,
+      "states": {
+        "main_inlet": {
+          "T": 445.0,
+          "P": 6.2,
+          "h": 3287.7317,
+          "s": 6.6866472,
+          "v": 0.04991529
+        },
+        "bleed_h": 2830.288928194147,
+        "bleed_s": 6.797557321733462,
+        "feed_h": 728.3884893,
+        "LP_inlet": {
+          "T": 445.0,
+          "P": 0.8,
+          "h": 3363.213668490404,
+          "s": 7.710852878282219,
+          "v": 0.41093780775747096
+        },
+        "LP_outlet_h": 2562.622665524996,
+        "condensate": {
+          "T": 50.0,
+          "P": 0.012351946,
+          "h": 209.34176,
+          "s": 0.70380863,
+          "v": 0.0010121496
+        }
+      },
+      "assumptions": {
+        "pump_isentropic": 0.8,
+        "motor": 0.95,
+        "generator": 0.98,
+        "mechanical": 0.99,
+        "cooling_water_head_m": 20
+      }
+    },
+    {
+      "name": "reheat_steam435",
+      "steam_C": 435,
+      "condenser_C": 42.0,
+      "eta_turbine": 0.9,
+      "reheat": true,
+      "bleed_fraction": 0.20628095718853784,
+      "feedwater_C": 171.45500475761446,
+      "bleed_C": 188.9352404095322,
+      "steam_kg_s": 1119.5783248513137,
+      "LP_quality": 0.9683924899174956,
+      "LP_ideal_quality": 0.9294896097588949,
+      "main": {
+        "min_gap_K": 30.0,
+        "UA_MW_K": 39.823410907463696
+      },
+      "reheater": {
+        "min_gap_K": 30.000000000000057,
+        "UA_MW_K": 8.954071059824575
+      },
+      "gross_MW": 1212.6276188241804,
+      "gross_efficiency": 0.3666973952184513,
+      "feed_and_condensate_pump_MW": 9.80182700379602,
+      "cooling_water_pump_MW": 13.069552083472132,
+      "cycle_net_MW": 1189.7562397369122,
+      "condenser_MW": 2066.326974654858,
+      "mechanical_generator_motor_loss_MW": 37.73633237364959,
+      "rejection_before_cw_pump_MW": 2104.0633070285076,
+      "cooling_water_kg_s": 50643.489792328786,
+      "cooling_water_pump_temperature_rise_K": 0.0617323189105576,
+      "cooling_water_heat_closure_MW": -5.968558980384842e-13,
+      "cooling_water_min_gap_K": 7.0,
+      "main_duty_MW": 2837.719732401018,
+      "reheater_duty_MW": 469.1693664478742,
+      "salt_reheater_flow_fraction": 0.14187635340150634,
+      "open_heater_residual_kJ_kg": 1.1368683772161603e-13,
+      "first_law_residual_MW": -1.1368683772161603e-13,
+      "shaft_first_law_residual_MW": 0.0,
+      "states": {
+        "main_inlet": {
+          "T": 435.0,
+          "P": 6.2,
+          "h": 3263.0211,
+          "s": 6.6519964,
+          "v": 0.049007988
+        },
+        "bleed_h": 2813.9362849413224,
+        "bleed_s": 6.762431929218236,
+        "feed_h": 728.3884893,
+        "LP_inlet": {
+          "T": 435.0,
+          "P": 0.8,
+          "h": 3341.9052151744077,
+          "s": 7.680973336584197,
+          "v": 0.40502904655848215
+        },
+        "LP_outlet_h": 2501.186693524276,
+        "condensate": {
+          "T": 42.0,
+          "P": 0.0082095634,
+          "h": 175.89327,
+          "s": 0.5990114,
+          "v": 0.0010086788
+        }
+      },
+      "assumptions": {
+        "pump_isentropic": 0.8,
+        "motor": 0.95,
+        "generator": 0.98,
+        "mechanical": 0.99,
+        "cooling_water_head_m": 20
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/scripts/integrate.py", line 1516, in run
+    run_sequence(request, env, state, results)
+  File "/home/reid/1cfe/fusion-tea/scripts/integrate.py", line 1478, in run_sequence
+    results.append(gate_result(gate, GATE_IMPLEMENTATIONS[gate.name](request, env, state)))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/scripts/integrate.py", line 1145, in gate_census_snapshot
+    if declared["derived_against_semantic_fingerprint"] != live_semantic:
+       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'derived_against_semantic_fingerprint'

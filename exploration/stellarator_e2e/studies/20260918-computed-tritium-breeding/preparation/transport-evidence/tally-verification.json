@@ -1,0 +1,301 @@
+[
+  {
+    "case": "sensitivity-enrichment60",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5250829657710845,
+      "nu-scatter": 145.2042081728331,
+      "scatter": 144.65740435684256
+    },
+    "leakage": 0.0217208502194718,
+    "neutron_balance_mean_residual": -2.721434189112415e-14
+  },
+  {
+    "case": "sensitivity-enrichment90",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5187913618058777,
+      "nu-scatter": 112.21693856064019,
+      "scatter": 111.67700318844267
+    },
+    "leakage": 0.02114401039152342,
+    "neutron_balance_mean_residual": 1.177356823145459e-13
+  },
+  {
+    "case": "sensitivity-external-steel",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5362732513140944,
+      "nu-scatter": 134.2219022739307,
+      "scatter": 133.67812673494873
+    },
+    "leakage": 0.00750228766777503,
+    "neutron_balance_mean_residual": 1.0616073992109065e-13
+  },
+  {
+    "case": "sensitivity-high-steel-he",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.467695332742635,
+      "nu-scatter": 134.14593382745468,
+      "scatter": 133.65732759114837
+    },
+    "leakage": 0.020910903563668023,
+    "neutron_balance_mean_residual": 7.396860901565105e-15
+  },
+  {
+    "case": "sensitivity-ideal-he",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5215885417896322,
+      "nu-scatter": 132.1708634672868,
+      "scatter": 131.6277503778017
+    },
+    "leakage": 0.021524547695463463,
+    "neutron_balance_mean_residual": 8.056055822436292e-15
+  },
+  {
+    "case": "sensitivity-low-steel-he",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.547289229370247,
+      "nu-scatter": 131.37985165539413,
+      "scatter": 130.81009236043633
+    },
+    "leakage": 0.02247006558758669,
+    "neutron_balance_mean_residual": -2.842517887735596e-14
+  },
+  {
+    "case": "sensitivity-peaked-r2",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5349164733305996,
+      "nu-scatter": 133.17918673446823,
+      "scatter": 132.6226040362141
+    },
+    "leakage": 0.021666224923426926,
+    "neutron_balance_mean_residual": 9.173564685660551e-14
+  },
+  {
+    "case": "sensitivity-wc-high",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5224070809402566,
+      "nu-scatter": 132.47380833434977,
+      "scatter": 131.92895482051
+    },
+    "leakage": 0.022446432899444035,
+    "neutron_balance_mean_residual": 6.816769371198461e-14
+  },
+  {
+    "case": "sensitivity-wc-low",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5212681259687915,
+      "nu-scatter": 131.7444762953477,
+      "scatter": 131.20100458685613
+    },
+    "leakage": 0.022203582522585374,
+    "neutron_balance_mean_residual": 2.0349347207293533e-13
+  },
+  {
+    "case": "table-node-t0.6",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5202464373425042,
+      "nu-scatter": 128.53645974175532,
+      "scatter": 127.99347133983558
+    },
+    "leakage": 0.022741964577694472,
+    "neutron_balance_mean_residual": -4.556008348366447e-13
+  },
+  {
+    "case": "table-node-t0.7",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5214438142473379,
+      "nu-scatter": 130.72756556753774,
+      "scatter": 130.18386442781025
+    },
+    "leakage": 0.02225732548013736,
+    "neutron_balance_mean_residual": 1.3444106938820255e-14
+  },
+  {
+    "case": "table-node-t0.8",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5214783174387962,
+      "nu-scatter": 132.01356547991537,
+      "scatter": 131.47028240514317
+    },
+    "leakage": 0.021804757333481528,
+    "neutron_balance_mean_residual": -7.271960811294775e-14
+  },
+  {
+    "case": "table-node-t0.9",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5220659668340242,
+      "nu-scatter": 133.1551044058697,
+      "scatter": 132.61135477802117
+    },
+    "leakage": 0.021683661014284282,
+    "neutron_balance_mean_residual": 2.3273744043095235e-13
+  },
+  {
+    "case": "table-node-t1",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5221388659758492,
+      "nu-scatter": 133.85383394857382,
+      "scatter": 133.31022585889167
+    },
+    "leakage": 0.0214692237062253,
+    "neutron_balance_mean_residual": 7.769826448900119e-14
+  },
+  {
+    "case": "table-withheld-t0.625",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5221533318370104,
+      "nu-scatter": 129.30123548012298,
+      "scatter": 128.75659555708296
+    },
+    "leakage": 0.022486591203512582,
+    "neutron_balance_mean_residual": -4.998085278984377e-13
+  },
+  {
+    "case": "table-withheld-t0.65",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5202577778148925,
+      "nu-scatter": 129.33214978939523,
+      "scatter": 128.78910375040812
+    },
+    "leakage": 0.022788261172652095,
+    "neutron_balance_mean_residual": -4.302148914892001e-13
+  },
+  {
+    "case": "table-withheld-t0.75",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5217328730434705,
+      "nu-scatter": 131.6406732822827,
+      "scatter": 131.09680082029857
+    },
+    "leakage": 0.022139588940802358,
+    "neutron_balance_mean_residual": -1.3621395678065085e-13
+  },
+  {
+    "case": "table-withheld-t0.75-refine1",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.521213988339463,
+      "nu-scatter": 131.2927871301698,
+      "scatter": 130.74913343992935
+    },
+    "leakage": 0.022439701900681282,
+    "neutron_balance_mean_residual": 3.1680560952374037e-13
+  },
+  {
+    "case": "table-withheld-t0.85",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5212475803706185,
+      "nu-scatter": 132.59703983135094,
+      "scatter": 132.05344500420068
+    },
+    "leakage": 0.022347246779393926,
+    "neutron_balance_mean_residual": 2.4580337765200966e-13
+  },
+  {
+    "case": "table-withheld-t0.85-refine1",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5203367170912943,
+      "nu-scatter": 132.51804994639122,
+      "scatter": 131.9758468537022
+    },
+    "leakage": 0.021866375597709244,
+    "neutron_balance_mean_residual": 1.8061940831870515e-14
+  },
+  {
+    "case": "table-withheld-t0.925",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5214218417590906,
+      "nu-scatter": 133.20923557628439,
+      "scatter": 132.66638470462428
+    },
+    "leakage": 0.021429029900847833,
+    "neutron_balance_mean_residual": 1.6886145259853436e-13
+  },
+  {
+    "case": "table-withheld-t0.925-refine1",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5220945314405965,
+      "nu-scatter": 133.14191828794503,
+      "scatter": 132.59764835758298
+    },
+    "leakage": 0.02217539892180476,
+    "neutron_balance_mean_residual": -3.5261030206790167e-13
+  },
+  {
+    "case": "table-withheld-t0.95",
+    "component_means_and_errors_match_OpenMC": true,
+    "sum_covariance_checked": true,
+    "lost_particle_warnings": false,
+    "neutron_diagnostic_means": {
+      "absorption": 1.5240950601517929,
+      "nu-scatter": 133.9678464147881,
+      "scatter": 133.42242950704846
+    },
+    "leakage": 0.0213218475877835,
+    "neutron_balance_mean_residual": 7.365635878997523e-14
+  }
+]

@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline.py", line 193, in execute_pipeline
+    run_result = executor.run(
+                 ^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 135, in run
+    self._execute_entry(module_spec, spec, context)
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 194, in _execute_entry
+    value, resolved_path = self._load_entry_binding(module_spec.key, binding, base_dir)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 304, in _load_entry_binding
+    raise PipelineValidationError(
+simkit.core.pipeline_validator.PipelineValidationError: Entry binding 'mfe_plasma_scaling_params' could not locate artifact. Attempted paths: /home/reid/1cfe/fusion-tea/exploration/aries_transfer/plasma_integration/native_runs/inputs/mfe_plasma_scaling_params.json, /home/reid/1cfe/teax/packages/teax-simkit/run_data/inputs/mfe_plasma_scaling_params.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/plasma_integration/verify.py", line 196, in <module>
+    verify(*build())
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/plasma_integration/verify.py", line 114, in verify
+    base = run('conditioned_source_shape', {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/plasma_integration/verify.py", line 93, in run
+    result = execute_pipeline(spec, folder/'outputs', registry=registry,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline.py", line 202, in execute_pipeline
+    raise RuntimeError(f"Pipeline execution failed: {exc}") from exc
+RuntimeError: Pipeline execution failed: Entry binding 'mfe_plasma_scaling_params' could not locate artifact. Attempted paths: /home/reid/1cfe/fusion-tea/exploration/aries_transfer/plasma_integration/native_runs/inputs/mfe_plasma_scaling_params.json, /home/reid/1cfe/teax/packages/teax-simkit/run_data/inputs/mfe_plasma_scaling_params.json

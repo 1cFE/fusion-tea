@@ -1,0 +1,540 @@
+{
+  "receipts": "work/active/WI-098_whole-plant-conversion-comparison/evidence/development/native/cases.json",
+  "receipts_sha256": "c10e4af842718aa54633b544cca4a6a2b694c1f91eb7c2d668776c7347d9a734",
+  "results": {
+    "whole-baseline2500": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "legacy-control2500": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "matched2800": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "matched3000-failed-source": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "demand-only2800": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "cryo-q50": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "cryo-q80": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "cryo-extra10000": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "cryo-extra13000": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "negative-cryo-domain": {
+      "status": "consistent_refusal",
+      "reason": "module_execution: ValueError: finite nonnegative cryogenic heating demands required",
+      "comparisons": 0,
+      "oracle_error": "finite nonnegative cryogenic heating demands required"
+    },
+    "stock-insufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "stock-sufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "processing-insufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "processing-sufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "primary-pressure-insufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "primary-pressure-sufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "auxiliary-insufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "auxiliary-sufficient": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "negative-whole-net": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "annual-import-dominated": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "outage-budget-failure": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "capture-identity-refusal": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "source-path-count-mismatch": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "fractional-horizon-refusal": {
+      "status": "consistent_refusal",
+      "reason": "module_execution: ValueError: whole lifecycle domain: integer years and positive lives required",
+      "comparisons": 0,
+      "oracle_error": "invalid lifecycle horizon/rate/availability/life"
+    },
+    "zero-discount": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "lower-breeding": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "lower-extraction": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "lower-recovery": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "zero-T-price": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "gas-price-only": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    },
+    "common-price-only": {
+      "status": "fail",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": [
+        {
+          "channel": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa",
+          "expected": 400640000.00000006,
+          "actual": 250640000.00000006
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "case": "literal_expression",
+      "partial_annual_cost_USD2004": 150544349.0,
+      "comparison_period": 40.0,
+      "lifetime_energy_MWh": 297840000.0,
+      "partial_contribution_USD2004_per_MWh": 20.21815055063121
+    },
+    {
+      "case": "inferred_fpy_calendar",
+      "partial_annual_cost_USD2004": 127962696.64999999,
+      "comparison_period": 47.05882352941177,
+      "lifetime_energy_MWh": 350400000.0,
+      "partial_contribution_USD2004_per_MWh": 17.185427968036528
+    },
+    {
+      "case": "land_cost_plus_one_million",
+      "partial_annual_cost_USD2004": 150592599.0,
+      "comparison_period": 40.0,
+      "lifetime_energy_MWh": 297840000.0,
+      "partial_contribution_USD2004_per_MWh": 20.224630539887187
+    },
+    {
+      "case": "literal_availability_070",
+      "partial_annual_cost_USD2004": 150544349.0,
+      "comparison_period": 40.0,
+      "lifetime_energy_MWh": 245280000.0,
+      "partial_contribution_USD2004_per_MWh": 24.550611382909327
+    },
+    {
+      "case": "inferred_availability_070",
+      "partial_annual_cost_USD2004": 105381044.3,
+      "comparison_period": 57.142857142857146,
+      "lifetime_energy_MWh": 350400000.0,
+      "partial_contribution_USD2004_per_MWh": 17.185427968036528
+    },
+    {
+      "case": "rounded_replacement_975M",
+      "partial_annual_cost_USD2004": 150769349.0,
+      "comparison_period": 40.0,
+      "lifetime_energy_MWh": 297840000.0,
+      "partial_contribution_USD2004_per_MWh": 20.24836811710986
+    },
+    {
+      "case": "supplied_net_power_900MW",
+      "partial_annual_cost_USD2004": 150544349.0,
+      "comparison_period": 40.0,
+      "lifetime_energy_MWh": 268056000.0,
+      "partial_contribution_USD2004_per_MWh": 22.464611722923568
+    },
+    {
+      "case": "capital_only_boundary",
+      "partial_annual_cost_USD2004": 126394349.0,
+      "comparison_period": 40.0,
+      "lifetime_energy_MWh": 297840000.0,
+      "partial_contribution_USD2004_per_MWh": 16.974798415256515
+    }
+  ],
+  "independent_comparisons": 112,
+  "exact_reuse_comparisons": 8,
+  "native_refusals": 20,
+  "all_checks_passed": true
+}

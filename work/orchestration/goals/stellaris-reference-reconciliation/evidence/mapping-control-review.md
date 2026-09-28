@@ -1,0 +1,13 @@
+# Mapping prerequisite and control review
+
+[AGENT independent review, 2026-09-16] **PASS for the proposed mapping repair and eight-case reserve study, with the document correction below.** No formula, default, predicate tolerance or source interpretation changes are authorized by this verdict. Implementation tests and native/oracle study comparisons remain outstanding.
+
+The frozen `package/input-rules.json` selects sizing mode1 and otherwise holds defaults, including inventory_multiplier1.0. Its `reconciliation.json` confirms the mode-only override and three native failures: divertor, conductor current and pack fit. `selected-mode-check.json` records20/20 agreement with reconstructed native operands but19/20 oracle predicate agreement: conductor current is native violated and oracle satisfied. This is existing diagnostic evidence, not all-predicate parity.
+
+Retaining that exact selected control as separately identified historical evidence is sound because numeric model/package behavior remains unchanged. Keep its artifact identity, multiplier1.0 and raw disagreement visible. The eight new native cases may use multiplier1.01 only under reserve-scenario labels. Their results cannot replace the historical control or imply its boundary disagreement was resolved. The reserve adds physical inventory; any resulting conductor pass must name that enabling change. Do not waive the study verification gate or claim nine parity-certified evaluations.
+
+**Document correction:** `execution-design.md` currently instructs adding a ninth named control. Replace that instruction with the reviewed eight-case study plus separately cited historical exact-control diagnostic. Correct the earlier “selected controls” wording to reserve scenarios where multiplier1.01 is meant. This is consistency work implementing the coordinator's revised proposal, not a new scientific choice.
+
+The generated input file declares qualified `plasma__alpha_n`, `plasma__alpha_T` and `plasma__f_shape`. The oracle already consumes their identically named scalar counterparts (`verify_stellaris.py:175–189,952`). Adding the three1:1 entries to `ENTRY_KEY_TO_ORACLE_INPUT` repairs missing interface coverage; it does not add physics. `_compute` saves/restores defaults. The integral cache wraps the three-argument function, so varying any exponent or temperature creates a distinct cache key. Correct the stale claim that these inputs are never swept.
+
+Verify each qualified override equals its direct oracle counterpart, demonstrate profile/f_shape effects on fusion/volume, and verify default outputs and input state remain unchanged after interleaved calls. Existing unknown-key refusal must remain intact. No archive or holdout content was read.

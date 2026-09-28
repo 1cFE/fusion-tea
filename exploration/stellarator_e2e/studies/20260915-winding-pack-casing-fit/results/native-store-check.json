@@ -1,0 +1,20 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "ad76b58938a739bd798bf24e9116b28b5c9d782fafbf4fe726e29caf4131bd8a",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260915-winding-pack-casing-fit.db",
+      "sha256": "adbee699a9e030a50ef4a8c944be24fdd414643d2ba5af9c853025d97ee1d827",
+      "cases": 116,
+      "export_joins": 116,
+      "content_addressed_evidence_checked": 116
+    }
+  ],
+  "snapshot_artifacts_checked": 0
+}

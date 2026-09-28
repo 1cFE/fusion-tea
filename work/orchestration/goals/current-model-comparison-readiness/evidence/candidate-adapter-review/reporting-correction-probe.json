@@ -1,0 +1,80 @@
+{
+  "synthetic_blind_reports": [
+    {
+      "original_forward": {
+        "native_result_sha256": "daea6050b531e682abc266bd22d1f19e202216622331ea5b33445e4de075de05",
+        "candidate_id": "synthetic-0",
+        "executable_fingerprint": "synthetic-executable",
+        "relationship": "original forward"
+      },
+      "input_selection": {
+        "held_fallback": true,
+        "missing_independent_inputs": [
+          "synthetic_missing"
+        ],
+        "supplied_input_keys": [],
+        "conditioned_seam": null,
+        "conditioned_input_keys": null,
+        "conditioned_input_roles": null,
+        "conditioned_supplied_quantities": null,
+        "conditioned_output_roles": null
+      }
+    },
+    {
+      "original_forward": {
+        "native_result_sha256": "7f70be84dcca0c7f9600e4b5dee02a68cbad55e23789ff4cb6ceddc5577260c1",
+        "candidate_id": "synthetic-1",
+        "executable_fingerprint": "synthetic-executable",
+        "relationship": "original forward"
+      },
+      "input_selection": {
+        "held_fallback": true,
+        "missing_independent_inputs": [
+          "synthetic_missing"
+        ],
+        "supplied_input_keys": [],
+        "conditioned_seam": null,
+        "conditioned_input_keys": null,
+        "conditioned_input_roles": null,
+        "conditioned_supplied_quantities": null,
+        "conditioned_output_roles": null
+      }
+    }
+  ],
+  "missing_predicates": {
+    "diagnostics": [],
+    "adverse_or_missing_diagnostics": [],
+    "authored_violations_or_unknowns": [],
+    "unresolved_essential_evidence": [],
+    "predicate_inventory_complete": false,
+    "missing_predicates": [
+      "required"
+    ],
+    "unexpected_predicates": [],
+    "engineering_acceptance_withheld": true,
+    "interpretation": "Authored predicates, physical screens, source ranges and unvalidated transfers are distinct. Report-only margins add no acceptance fence."
+  },
+  "capacity_margin_metadata": {
+    "id": "heat_transport__primary_loop__capacity_margin",
+    "channel": "stellarator_09__stellaris__heat_transport__primary_loop__capacity_margin",
+    "unit": "kg/s",
+    "kind": "raw_margin",
+    "meaning": "Reference loop mass-flow capacity minus calculated per-loop mass flow",
+    "interpretation": "report_only",
+    "active_input": null,
+    "source": "models/library/analyses/mfe_primary_loop.sysml",
+    "affects": []
+  },
+  "runtime_record_only": {
+    "commit": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "declared_python_file_count": 205,
+    "runtime_dirty_status": "",
+    "certification": "not performed"
+  },
+  "reviewed_hashes": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/compare_candidate.py": "5cb6752c09d627b22d137ab1071a02560fc28b763b5d3bb90c3670751937f197",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/diagnostic-inventory.json": "414738f44a03c60fd4917a1b3db6c5b72a10d193153077b22e559282cfc67334",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime_identity.py": "9103fbd2581f23ef4099b32f08d5dad31117bae5420649ea573a104cb6f5bad6",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json": "1bbe8f8c0e42ab8eed0a22ea1c863e49247f01097a019186d035a7cd9905c319"
+  }
+}

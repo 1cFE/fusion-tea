@@ -2,7 +2,7 @@
 
 Everything here is study knowledge, not tool knowledge: how this package is loaded
 (the stock strict loader, nothing else), how a proposal is spelled (the axis
-expansions and the one declared tie), the two proof-of-life studies' windows and
+expansions), the two proof-of-life studies' windows and
 validity mask, the exported column names, and the baseline-point executor that
 deposits the two documents the generic preflight gates read. A generic tool in
 `scripts/study/` holds none of it, which is why this module is package-owned.
@@ -18,19 +18,41 @@ Teax is imported from ``STOP_PARSER_TEAX_ROOT`` by the caller (the sealed-runner
 contract); this module only imports ``simkit`` lazily, inside the functions that need it.
 
 Entry-key shape (after the stellarator model migration, 2026-08-21): the swept axes
-are plant-level design attributes, one key each — ``stellarator_09__stellaris__R``,
-``__a``, ``__availability`` — because the library formals are now bound by the
+are plant-level design attributes, one key each — ``stellarator_09__stellaris__plasma__R``,
+``__a``, ``__availability_direct`` — because the library formals are now bound by the
 ``_in`` convention and codegen projects one entry point per authored attribute. The
-magnet major radius ``magnet__R0`` is still separately authored, so it is still a
-declared physical-identity tie (`ANNEX.md § Declared ties`), never fan-out.
+model binds all live magnet radius operands to plant R (WI-051).
+
+Cost-result interpretation (MR-7, WI-079/080): evaluated turbine, heat-rejection,
+cryogenic, power-supply and divertor packages have independently supplied purchase
+amounts and specifications. An amount may be an explicitly assumed estimate;
+it is not necessarily a vendor quote. Changing a rating at fixed supplied price
+is a hypothetical offer, not a prediction of a free upgrade. Electrical plant
+uses its selected gross rating in the matching inherited price law. Material and
+broad allowance accounts use independent selected procurement classes; they do
+not reprice equipment from running demand. Legacy account modes use the same
+separation. Operating energy/fuel and replacement timing can still change.
+
+Capacity checks compare actual propagated demands with supplied capabilities at
+declared conditions. Inactive or unsupported evaluation is separately identified
+and receives no affirmative physical adequacy credit. These scalar checks are
+necessary screens, not off-design machine maps, detailed structural assessment,
+or vendor qualification. Selected helium/salt machine price points retain their
+explicit source limits. Represented coolant fill covers only modeled volumes;
+inventory completeness remains false. A passing plant screen cannot qualify
+omitted physics. Historical packages retain their original interfaces and costs.
+
 """
 
 from __future__ import annotations
 
+import atexit
 import csv
 import json
 import math
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -46,20 +68,18 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 6  # WI-030 added peak_field_ok
+EXPECTED_CONSTRAINT_COUNT = 67  # Round 2 adds 32 offered-capacity assertions and the existing IHX area assertion.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
-    "R": [f"{P}R"],
-    "a": [f"{P}a"],
-    "availability": [f"{P}availability"],
+    "R": [f"{P}plasma__R"],
+    "a": [f"{P}plasma__a"],
+    # WI-046 (goal plant-closure round 1, 2026-09-08): the `availability` axis is renamed
+    # `availability_direct` -- the lifecycle calendar produces availability; this lever is
+    # its held-mode switch (0 = live; (0, 1] = the retired periodic chain at that value).
+    "availability_direct": [f"{P}availability_direct"],
 }
-#: Declared physical-identity tie: the magnet-cost Ampere's-law current runs on the
-#: major radius, so this is the same physical quantity under a separately authored
-#: attribute — a tie, not mechanical fan-out. The tie *data* is in the manifest.
-R_TIE = f"{P}magnet__R0"
-
-BASELINE = {"R": 12.7, "a": 1.3, "availability": 0.85}
+BASELINE = {"R": 12.7, "a": 1.3, "availability_direct": 0.0}  # WI-046: the instance is live
 #: The plasma plus the held-fixed radial-build stack must fit inside the major radius
 #: or the torus self-intersects. A derived geometric bound from held-fixed inputs, not
 #: a design screen. Itemized in ANNEX.md § Validity masks.
@@ -71,12 +91,15 @@ AVAIL_VALUES = [round(0.50 + 0.025 * i, 3) for i in range(19)]
 #: Exported columns: the proof-of-life's own column names, so the after-migration
 #: CSVs join the before-migration ones by coordinate and column.
 CHANNELS = {
+    "operating_heat_coupled": f"{P}operating_heat__p_coupled",
+    "operating_heat_delivered": f"{P}operating_heat__p_delivered",
+    "operating_heat_wallplug": f"{P}operating_heat__p_wallplug",
     "lcoe": f"{P}lcoe_calc__lcoe",
-    "wall_load": f"{P}wall_load_calc__wall_load",
-    "p_fus": f"{P}fusion__p_fus",
-    "plasma_volume": f"{P}geom__V",
+    "wall_load": f"{P}blanket__first_wall__wall_load_calc__wall_load",
+    "p_fus": f"{P}plasma__fusion__p_fus",
+    "plasma_volume": f"{P}plasma__geom__V",
     "total_capital": f"{P}total_capital__total_capital",
-    "magnet_capital": f"{P}magnet_cost__capital_cost",
+    "magnet_capital": f"{P}magnet__magnet_capital_rollup__capital_cost",
     "overnight_capital": f"{P}overnight_capital__overnight_capital",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
 }
@@ -86,25 +109,95 @@ class RouteError(Exception):
     """The route could not do what it was asked. Never a silent skip."""
 
 
-def proposal_for(R: float, a: float, availability: float) -> dict[str, float]:
-    """One proposal: the axis expansions plus the declared tie. Nothing else."""
+def proposal_for(R: float, a: float, availability_direct: float) -> dict[str, float]:
+    """One proposal containing the three model-owned axis inputs."""
     point: dict[str, float] = {}
     for key in AXES["R"]:
         point[key] = R
-    point[R_TIE] = R
     for key in AXES["a"]:
         point[key] = a
-    for key in AXES["availability"]:
-        point[key] = availability
+    for key in AXES["availability_direct"]:
+        point[key] = availability_direct
     return point
 
 
+BOOLEAN_KEYS = frozenset(P + suffix for suffix in (
+    "buildings__facilities_enabled", "cryoplant__inventory_enabled",
+    "fuel_cycle__inventory_enabled", "fuel_cycle__processing_enabled",
+    "fuel_cycle__processing_source_conditions", "heat_transport__equipment_enabled",
+))
+
+
+# WI-080 emitted administrative flags can only remove capability credit.
+BOOLEAN_KEYS |= frozenset(P + suffix for suffix in ('cryoplant__cold_stage_capability__demand_available_in',
+ 'cryoplant__cryogenic_offered_conditions__enabled_in',
+ 'cryoplant__direct_electric_capability__applicable_in',
+ 'cryoplant__direct_electric_capability__conditions_supported_in',
+ 'cryoplant__direct_electric_capability__demand_available_in',
+ 'electric_plant__electric_gross_capability__applicable_in',
+ 'electric_plant__electric_gross_capability__conditions_supported_in',
+ 'electric_plant__electric_gross_capability__demand_available_in',
+ 'heat_rejection__water_electric_capability__demand_available_in',
+ 'heat_rejection__water_flow_capability__demand_available_in',
+ 'heat_rejection__water_head_capability__demand_available_in',
+ 'heat_rejection__water_rejection_capability__demand_available_in',
+ 'heat_transport__helium_electric_capability__demand_available_in',
+ 'heat_transport__helium_flow_capability__demand_available_in',
+ 'heat_transport__helium_pressure_rise_capability__demand_available_in',
+ 'heat_transport__helium_pumping_capability__demand_available_in',
+ 'heat_transport__salt_electric_capability__demand_available_in',
+ 'heat_transport__salt_flow_capability__demand_available_in',
+ 'heat_transport__salt_head_capability__demand_available_in',
+ 'heat_transport__salt_shaft_capability__demand_available_in',
+ 'power_supplies__magnet_pf_electric_capability__applicable_in',
+ 'power_supplies__magnet_pf_electric_capability__conditions_supported_in',
+ 'power_supplies__magnet_pf_electric_capability__demand_available_in',
+ 'power_supplies__magnet_tf_electric_capability__applicable_in',
+ 'power_supplies__magnet_tf_electric_capability__conditions_supported_in',
+ 'power_supplies__magnet_tf_electric_capability__demand_available_in',
+ 'turbine__condensate_electric_capability__demand_available_in',
+ 'turbine__condensate_flow_capability__demand_available_in',
+ 'turbine__condensate_pressure_rise_capability__demand_available_in',
+ 'turbine__condenser_rejection_capability__demand_available_in',
+ 'turbine__feedwater_electric_capability__demand_available_in',
+ 'turbine__feedwater_flow_capability__demand_available_in',
+ 'turbine__feedwater_pressure_rise_capability__demand_available_in',
+ 'turbine__hp_flow_capability__demand_available_in',
+ 'turbine__hp_shaft_capability__demand_available_in',
+ 'turbine__lp_flow_capability__demand_available_in',
+ 'turbine__lp_shaft_capability__demand_available_in',
+ 'turbine__turbine_gross_capability__applicable_in',
+ 'turbine__turbine_gross_capability__conditions_supported_in',
+ 'turbine__turbine_gross_capability__demand_available_in'))
+
+
+def assert_boolean_declarations(package_dir):
+    contract = json.loads((Path(package_dir) / "contracts/model_contract.json").read_text())
+    declared = {p["qualified_name"] for p in contract["parameters"] if p["python_type"] == "bool"}
+    if declared != BOOLEAN_KEYS:
+        raise RouteError(f"Boolean declaration drift: {sorted(declared ^ BOOLEAN_KEYS)}")
+
+
 def validate_proposal(raw):
+    if not isinstance(raw, dict):
+        raise RouteError("proposal must be a mapping of entry keys to values")
+    retired_magnet = {P + "magnet__" + name for name in ('coil__I_coil', 'winding_pack__j_wp', 'winding_pack__B_grade_ref', 'winding_pack__field_exponent', 'winding_pack__sizing_mode', 'winding_pack__inventory_multiplier', 'c_support', 'e_support', 'casing__m_casing_ref')}
+    obsolete = sorted(retired_magnet.intersection(raw))
+    if obsolete:
+        raise RouteError(f"retired magnet entry keys {obsolete}; migrate to supplied pack side, reference turns and masses")
+    if f"{P}magnet__R0" in raw:
+        raise RouteError(f"retired entry key {P}magnet__R0; use plant R")
     out = {}
     for key, value in raw.items():
-        if not isinstance(value, (int, float)) or isinstance(value, bool):
-            return None
-        out[key] = float(value)
+        if key in BOOLEAN_KEYS:
+            if isinstance(value, bool) or (isinstance(value, (int, float)) and value in (0, 1)):
+                out[key] = bool(value)
+            else:
+                raise RouteError(f"{key}: Boolean value or numeric zero/one required")
+        elif not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
+            raise RouteError(f"{key}: finite numeric value required; Boolean values are not numeric controls")
+        else:
+            out[key] = float(value)
     return out
 
 
@@ -144,8 +237,11 @@ def prepare(package_dir: Path, work_dir: Path):
     from simkit.study.model_contract import load_model_contract, ships_constraint_report
 
     contract = load_model_contract(Path(package_dir).resolve())
+    # Import aliases are process setup, not retained scientific evidence.
+    link_root = Path(tempfile.mkdtemp(prefix="fusion-tea-imports-"))
+    atexit.register(shutil.rmtree, link_root, ignore_errors=True)
     return PreparedEvaluator(
-        package_loader(package_dir, Path(work_dir) / "pkg_link"),
+        package_loader(package_dir, link_root),
         spec_path(package_dir),
         expects_constraint_report=ships_constraint_report(contract),
     )
@@ -207,7 +303,8 @@ def run_points(
     from simkit.study.store import StudyStore
 
     work_dir = Path(work_dir)
-    proposals = list(proposals)
+    proposals = [validate_proposal(point) for point in proposals]
+    assert_boolean_declarations(package_dir)
     if not proposals:
         raise RouteError("cannot run a study with no proposals")
     required_channels = dict(CHANNELS if required_channels is None else required_channels)
@@ -353,7 +450,7 @@ def export_csv(
 
 def design_search_proposals() -> list[dict[str, float]]:
     grid = [
-        proposal_for(R, a, BASELINE["availability"])
+        proposal_for(R, a, BASELINE["availability_direct"])
         for R in R_VALUES
         for a in A_VALUES
         if R > a + BUILD_STACK_M
@@ -363,6 +460,9 @@ def design_search_proposals() -> list[dict[str, float]]:
 
 
 def availability_sweep_proposals() -> list[dict[str, float]]:
+    # WI-046: the sweep runs over availability_direct 0.5-0.95, every value of which
+    # selects the held mode, so its response is the retired periodic chain's -- the
+    # sweep keeps its meaning as the historical comparison it always was.
     return [proposal_for(BASELINE["R"], BASELINE["a"], av) for av in AVAIL_VALUES]
 
 
@@ -386,14 +486,14 @@ def run_design_search(out_dir: Path, package_dir: Path = PACKAGE_DIR) -> Path:
     )
 
 
-def run_availability_sweep(out_dir: Path, package_dir: Path = PACKAGE_DIR) -> Path:
+def run_availability_sweep(out_dir: Path, package_dir: Path = PACKAGE_DIR, *, scenario_overrides=None) -> Path:
     out_dir = Path(out_dir)
     cases, _ = run_points(
-        "stellarator-availability-sweep-v1", availability_sweep_proposals(), out_dir / "_work",
+        "stellarator-availability-sweep-v1", [dict(scenario_overrides or {}) | point for point in availability_sweep_proposals()], out_dir / "_work",
         package_dir,
     )
     return export_csv(
-        _completed(cases, "availability sweep"), ["availability"],
+        _completed(cases, "availability sweep"), ["availability_direct"],
         out_dir / "availability_sweep.csv",
     )
 

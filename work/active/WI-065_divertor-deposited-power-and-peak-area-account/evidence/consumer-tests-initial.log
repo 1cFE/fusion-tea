@@ -1,0 +1,255 @@
+...............F.F...................................................... [ 61%]
+............................................F                            [100%]
+=================================== FAILURES ===================================
+____________________ test_native_oracle_agreement[changes2] ____________________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x797aff29dee0>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+/tmp/pytest-of-reid/pytest-12858/wi040-public0/pkg_link/stellarator_tea/modules/mfe_divertor_heat/divertor_heat_ledger.py:378: in run
+    peak_equivalent_area, q_target_peak_area_scaled, f_rad_edge_defined, peak_equivalent_area_defined, p_heat_abs, f_rad_edge_in_range, q_target_margin, p_rad_total, p_target_nonrad, p_nonrad_uncaptured, f_rad_edge, p_target_deposited, p_rad_edge, p_heat_operating_minus_installed, power_account_valid, p_sep, q_target_peak = run_divertor_heat_ledger(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = Divertor_Heat_LedgerInput(p_nonrad_ref_in=50.0, p_alpha_heat_in=610.4227423235474, R_ref_in=12.7, p_aux_required_in=-1...ed_in=50.0, q_target_ref_in=9.5, p_coupled_in=-17.175088395664375, p_rad_core_in=281.9431540627058, f_rad_total_in=0.9)
+
+    def run_divertor_heat_ledger(inputs: Divertor_Heat_LedgerInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
+        """Compute conserved destinations and preserve the original peak arithmetic."""
+        def checked(name, value, positive=False):
+            if not math.isfinite(value) or (positive and value <= 0):
+                raise ValueError(f'Divertor Heat Ledger: {name} must be finite' + (' and positive' if positive else ''))
+            return value
+    
+        fractions = ('f_rad_total_in', 'target_capture_fraction_in')
+        positive_inputs = ('p_nonrad_ref_in', 'R_in', 'R_ref_in')
+        for name in type(inputs).model_fields:
+            value = getattr(inputs, name)
+            checked(name, value, name in positive_inputs)
+            if name != 'p_aux_required_in' and value < 0:
+>               raise ValueError(f'Divertor Heat Ledger: {name} must be nonnegative')
+E               ValueError: Divertor Heat Ledger: p_coupled_in must be nonnegative
+
+/tmp/pytest-of-reid/pytest-12858/wi040-public0/pkg_link/stellarator_tea/handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py:27: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x797afe9600e0>
+changes = {'magnet__coil__I_coil': 16000000.0, 'plasma__R': 13.5, 'plasma__a': 1.5}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('changes', [{},
+        {'magnet__coil__coil_t': .6, 'magnet__casing__interior_y': .6},
+        {'plasma__R': 13.5, 'plasma__a': 1.5, 'magnet__coil__I_coil': 16e6},
+        {'magnet__winding_pack__sizing_mode': 1., 'magnet__winding_pack__inventory_multiplier': 1.01},
+        {'magnet__winding_pack__sizing_mode': 1., 'magnet__coil__coil_t': .65,
+         'magnet__casing__interior_y': .65, 'plasma__R': 13.5, 'plasma__a': 1.5},
+        {'magnet__winding_pack__sizing_mode': 1., 'magnet__winding_pack__material_factor': 1.1,
+         'magnet__winding_pack__degradation_factor': .9},
+    ])
+    def test_native_oracle_agreement(evaluate, changes):
+        import oracle_entry
+>       row = evaluate(changes)
+              ^^^^^^^^^^^^^^^^^
+
+tests/models/test_current_driven_sizing_integration.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_winding_pack_cost.py:181: in run
+    result = evaluator.evaluate(bridge.build({P + k: v for k, v in (overrides or {}).items()}))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('Divertor Heat Ledger: p_coupled_in must be nonnegative')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x797aff29ce90>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: Divertor Heat Ledger: p_coupled_in must be nonnegative
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+____________________ test_native_oracle_agreement[changes4] ____________________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x797aff29dee0>
+typed_inputs = {'mfe_account_costs_params': MfeAccountCostsParams(stellarator_09__stellaris__blanket__blanket_cost__alpha=0.6, stella...e_magnet_cost_params': MfeMagnetCostParams(stellarator_09__stellaris__magnet__magnet_cost__mu0=1.25663706212e-06), ...}
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        validated = self._source.validate(typed_inputs)
+        context = _MappingContext(self._registry, validated)
+        try:
+>           result = self._executor.run(self._graph, context, persist_outputs=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+/tmp/pytest-of-reid/pytest-12858/wi040-public0/pkg_link/stellarator_tea/modules/mfe_divertor_heat/divertor_heat_ledger.py:378: in run
+    peak_equivalent_area, q_target_peak_area_scaled, f_rad_edge_defined, peak_equivalent_area_defined, p_heat_abs, f_rad_edge_in_range, q_target_margin, p_rad_total, p_target_nonrad, p_nonrad_uncaptured, f_rad_edge, p_target_deposited, p_rad_edge, p_heat_operating_minus_installed, power_account_valid, p_sep, q_target_peak = run_divertor_heat_ledger(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = Divertor_Heat_LedgerInput(p_nonrad_ref_in=50.0, p_alpha_heat_in=635.3731491967118, R_ref_in=12.7, p_aux_required_in=-4...led_in=50.0, q_target_ref_in=9.5, p_coupled_in=-4.379450884282505, p_rad_core_in=286.6845347130306, f_rad_total_in=0.9)
+
+    def run_divertor_heat_ledger(inputs: Divertor_Heat_LedgerInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
+        """Compute conserved destinations and preserve the original peak arithmetic."""
+        def checked(name, value, positive=False):
+            if not math.isfinite(value) or (positive and value <= 0):
+                raise ValueError(f'Divertor Heat Ledger: {name} must be finite' + (' and positive' if positive else ''))
+            return value
+    
+        fractions = ('f_rad_total_in', 'target_capture_fraction_in')
+        positive_inputs = ('p_nonrad_ref_in', 'R_in', 'R_ref_in')
+        for name in type(inputs).model_fields:
+            value = getattr(inputs, name)
+            checked(name, value, name in positive_inputs)
+            if name != 'p_aux_required_in' and value < 0:
+>               raise ValueError(f'Divertor Heat Ledger: {name} must be nonnegative')
+E               ValueError: Divertor Heat Ledger: p_coupled_in must be nonnegative
+
+/tmp/pytest-of-reid/pytest-12858/wi040-public0/pkg_link/stellarator_tea/handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py:27: ValueError
+
+The above exception was the direct cause of the following exception:
+
+evaluate = <function evaluate.<locals>.run at 0x797afe9600e0>
+changes = {'magnet__casing__interior_y': 0.65, 'magnet__coil__coil_t': 0.65, 'magnet__winding_pack__sizing_mode': 1.0, 'plasma__R': 13.5, ...}
+
+    @pytest.mark.codegen_available
+    @pytest.mark.parametrize('changes', [{},
+        {'magnet__coil__coil_t': .6, 'magnet__casing__interior_y': .6},
+        {'plasma__R': 13.5, 'plasma__a': 1.5, 'magnet__coil__I_coil': 16e6},
+        {'magnet__winding_pack__sizing_mode': 1., 'magnet__winding_pack__inventory_multiplier': 1.01},
+        {'magnet__winding_pack__sizing_mode': 1., 'magnet__coil__coil_t': .65,
+         'magnet__casing__interior_y': .65, 'plasma__R': 13.5, 'plasma__a': 1.5},
+        {'magnet__winding_pack__sizing_mode': 1., 'magnet__winding_pack__material_factor': 1.1,
+         'magnet__winding_pack__degradation_factor': .9},
+    ])
+    def test_native_oracle_agreement(evaluate, changes):
+        import oracle_entry
+>       row = evaluate(changes)
+              ^^^^^^^^^^^^^^^^^
+
+tests/models/test_current_driven_sizing_integration.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/test_winding_pack_cost.py:181: in run
+    result = evaluator.evaluate(bridge.build({P + k: v for k, v in (overrides or {}).items()}))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+error = ValueError('Divertor Heat Ledger: p_coupled_in must be nonnegative')
+context = <simkit.evaluation.evaluator._MappingContext object at 0x797af41e26c0>
+
+    def _normalize_run_failure(
+        error: Exception, context: PipelineExecutionContext
+    ) -> NoReturn:
+        """Raise the evaluator's fixed run-failure record from the original error.
+    
+        The phase is read from a **positive** write-phase signal set at the executor
+        seam (``context.in_output_write``, C1) — never inferred from the exception
+        type or a null module key. An entry-load or module failure keeps
+        ``MODULE_EXECUTION``; only a failure raised while genuinely inside output
+        write is stamped ``OUTPUT_WRITE``.
+        """
+        phase = (
+            EvaluationPhase.OUTPUT_WRITE
+            if getattr(context, "in_output_write", False)
+            else EvaluationPhase.MODULE_EXECUTION
+        )
+>       raise EvaluationFailed(
+            EvaluationFailure(
+                phase=phase,
+                module_or_channel=context.failed_module_key,
+                cause=f"{type(error).__name__}: {error}",
+            )
+        ) from error
+E       simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: Divertor Heat Ledger: p_coupled_in must be nonnegative
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: EvaluationFailed
+______________________ test_current_heating_reachability _______________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+real_manifest_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/manifest.json')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12858/test_current_heating_reachabil0')
+
+    def test_current_heating_reachability(real_package_path, real_manifest_path, tmp_path):
+        """Module reachability distinguishes installed reserve from operating demand."""
+        axes = tmp_path / "heating-axes.json"
+        names = ["p_wallplug_heat", "eta_source_heat", "eta_couple_heat"]
+        axes.write_text(json.dumps({"schema_version": "study-axis-declaration/v1", "groups": [
+            {"axis": name, "keys": [
+                {"key": f"stellarator_09__stellaris__heating__{name}", "provenance": "fan_out"}  # WI-057 (2026-09-13): the key carries its part's path
+            ]}
+            for name in names
+        ]}))
+        doc = run_tool(real_package_path, real_manifest_path, axes)
+        reserve = group_by_axis(doc, "p_wallplug_heat")
+        assert {c["source_local_identity"] for c in reserve["constraints_reachable"]} == {
+            "sustainment_ok", "divertor_heat_ok"
+        }
+>       assert reserve["trace_size"] == {"modules_fired": 21, "channels_tainted": 32}
+E       AssertionError: assert {'channels_ta...es_fired': 21} == {'channels_ta...es_fired': 21}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'channels_tainted': 40} != {'channels_tainted': 32}
+E         Use -v to get more diff
+
+tests/study/test_known_answers.py:313: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes0]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes1]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes3]
+tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes5]
+tests/models/test_current_driven_sizing_integration.py::test_every_entering_native_output_and_predicate_preserved
+tests/models/test_current_driven_sizing_integration.py::test_grade_is_not_applied_twice_and_multiplier_is_physical
+tests/models/test_current_driven_sizing_integration.py::test_radial_allocation_propagates_existing_feedback
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes2]
+FAILED tests/models/test_current_driven_sizing_integration.py::test_native_oracle_agreement[changes4]
+FAILED tests/study/test_known_answers.py::test_current_heating_reachability
+3 failed, 114 passed, 7 warnings in 53.49s

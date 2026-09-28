@@ -1,0 +1,11 @@
+[
+  {
+    "page_num": 0,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 3/31 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  }
+]

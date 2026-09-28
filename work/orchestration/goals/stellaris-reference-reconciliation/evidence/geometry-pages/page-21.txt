@@ -1,0 +1,129 @@
+J. Lion et al.
+Table 6
+Key neutronics values as obtained from a 3D OpenMC calculation. FPY are full power
+years. ‘Power Multiplication’ is sometimes also called ‘Energy Multiplication’ in the
+literature.
+Description
+Value
+TBR
+1.074
+Power Multiplication
+1.20
+Fast neutron flux (99th quantile) at coils [1∕m2s]
+9.5 × 1013
+Coil lifetime (99th quantile) [FPY]
+∼10
+Peak fast neutron flux at coils [1∕m2s]
+2.0 × 1014
+Peak DPA in the first wall [DPA∕FPY]
+10.7
+Estimated first wall structure lifetime [FPY]
+∼4–6
+Peak nuclear heating (blanket) [MW∕m3]
+35
+Mean cryogenic nuclear heating (winding pack) [W∕m3]
+35.5
+the safety margin relative to the yield strength limit might be exceeded.
+Going forward, several strategies could be employed to manage
+elevated neutron irradiation levels, including:
+• Targeted Replacement of High-DPA Sections: replacing only the
+first wall sections experiencing the highest Displacements-Per-
+Atom (DPA) levels could be an efficient strategy. These targeted
+replacements would not only extend the overall reactor lifespan,
+but also provide valuable samples for material characterization
+under high DPA conditions, contributing to better understanding
+and prediction of material behavior. Analysis of first wall replace-
+ment has not been performed, but it may be necessary to limit the
+amount of first wall replacements so that such replacements can
+be carried out during scheduled maintenance periods.
+• Increasing Radial Distance Between Plasma and First Wall: by
+increasing the distance between the plasma and the first wall,
+the neutron flux density at the wall can be reduced, lowering the
+DPA rate and extending the lifespan of the wall and other reactor
+components. Non-constant offsets between the first wall and the
+plasma could be considered to optimally utilize the available
+space while remaining within first wall, breeding and shielding
+limits. Non-uniform offsets could also help reduce heterogeneity
+of DPA across the first wall by moving parts of the first wall that
+have the highest DPA outwards. The magnitude of any achievable
+reduction in DPA by optimizing the offsetting of the first wall
+to the plasma has not been studied within this paper, but is
+investigated in similar contexts [240].
+• Applying Treatments to Enhance EUROFER97 Properties: en-
+hancements to the properties of EUROFER, as explored in studies
+such as [276], could improve its resilience to radiation damage
+and potentially increase the lifespan of the first wall without
+requiring major design changes.
+• Using a More Neutron-Resilient Material: exploring the use of al-
+ternative materials such as Oxide Dispersion Strengthened (ODS)
+steels or other Reduced Activation Ferritic/Martensitic (RAFM)
+steels could offer greater resistance to neutron damage compared
+to EUROFER97. However, these materials currently have a lower
+technological readiness level, and their implementation would
+require further research and development [277,278].
+Additionally, the feasibility of using ferromagnetic steels such as EU-
+ROFER – which would affect the magnetic field quality in the plasma,
+and hence the confining properties – would need to be validated.
+In conclusion, we have presented a preliminary conceptual study for
+the blanket and neutron shield system of Stellaris. This study includes
+estimates of the TBR, fast neutron fluxes at the superconducting mag-
+nets, nuclear heating in the cryogenic areas, and DPAs at the first wall.
+Key parameters are summarized in Table 6. It is important to emphasize
+that this study employs a simplified homogeneous model for the shield
+and breeder zones.
+Future work should focus on advancing this preliminary model by
+conducting a detailed analysis of a heterogeneous blanket configu-
+ration. This will involve evaluating the neutronics, mechanical, and
+Fig. 39. Physical dimensions of the first coil of the coilset, including its casing (in
+mm). With casing, the coil is about 10.4 m tall, has 6.5 m of radial extent, and extends
+over 4.8 m in toroidal direction.
+thermal performance of such a blanket, alongside a thorough manu-
+facturability assessment. A critical risk to address is the interaction
+between lead-lithium and water, a well-documented exothermic reac-
+tion [279]. To mitigate this, we currently rely on established designs
+like the WCLL, which incorporates double-walled tubes to bolster the
+reactor’s safety and reliability [280]. Additionally, further research—
+including simulation and experimental studies—will be necessary to
+address corrosion challenges and to understand the magnetohydrody-
+namic effects in liquid lithium-lead, similar to the studies performed
+in [245]. Activated corrosion products, activated lithium-lead and ac-
+tivated water will also require careful shielding considerations, due
+to their mobility around the building. These steps will be crucial for
+refining the blanket and shield design to ensure it meets the demands
+of a commercial fusion reactor.
+2.9. Magnets
+In Fig. 39 we display a selected coil of Stellaris with its correspond-
+ing casing, including physical dimensions in millimeters. The coils have
+an approximate size of 7 × 5 × 10 m, with a typical circumference of
+25 m, and the conductor needs to be manufactured using superconduct-
+ing material, for which multiple options exist. High-temperature su-
+perconductors (HTS), particularly ReBCO-based superconductors, have
+important advantages for high-field magnetic confinement fusion. Most
+notably, they allow for designs with higher magnetic field strengths,
+as the superconducting material can withstand much larger critical
+current densities at high magnetic field strengths compared to con-
+ventional low-temperature superconductors [281–283]. The technology
+is also reaching maturity, with ReBCO-based coils tested at relevant
+parameters—despite outstanding problems such as quench manage-
+ment and high stored energy. At the time of writing, the current
+record for the highest field strength achieved by a tested magnet has
+45.5 T [284] of peak field on the HTS. The SPARC tokamak [19] is
+currently being constructed using ReBCO-based magnets.
+Despite their advantages, ReBCO-coated conductors pose several
+challenges for cable design, which typically involve assembling hun-
+dreds of individual HTS tapes in a specific arrangement. The major
+limitations for cables, especially in fusion applications, can be at-
+tributed to three key aspects. First, the mechanical stress and strain
+that the conductor and the cable endure during the manufacturing
+process and operation result in significant limitations. Second, the
+anisotropic behavior of the ReBCO material under magnetic fields leads
+to critical current density values that are much lower for magnetic
+fields perpendicular to the flat face of the tape than for magnetic
+fields parallel to the tape, especially for the fields and temperatures of
+interest. Third, ensuring electro-thermal stability (i.e., avoiding quench
+events and loss of superconducting state) is crucial during the design
+process.
+Several successful cabling techniques have been developed over the
+past decade to address these challenges. Among these are concepts such
+Fusion Engineering and Design xxx (xxxx) xxx 
+21 

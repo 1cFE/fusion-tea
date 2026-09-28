@@ -1,0 +1,605 @@
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:10:1
+   |
+ 8 | ROOT = Path.cwd()
+ 9 | sys.path[:0] = [str(ROOT), str(ROOT/'exploration/stellarator_e2e/studies')]
+10 | import oracle_entry as oracle
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | import study_route as route
+12 | from scripts.study import verify
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:10:1
+   |
+ 8 |   ROOT = Path.cwd()
+ 9 |   sys.path[:0] = [str(ROOT), str(ROOT/'exploration/stellarator_e2e/studies')]
+10 | / import oracle_entry as oracle
+11 | | import study_route as route
+12 | | from scripts.study import verify
+   | |________________________________^
+   |
+help: Organize imports
+
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:11:1
+   |
+ 9 | sys.path[:0] = [str(ROOT), str(ROOT/'exploration/stellarator_e2e/studies')]
+10 | import oracle_entry as oracle
+11 | import study_route as route
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 | from scripts.study import verify
+   |
+
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:12:1
+   |
+10 | import oracle_entry as oracle
+11 | import study_route as route
+12 | from scripts.study import verify
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (148 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:30:101
+   |
+28 | …]) == set(expectations['channels'])
+29 | …
+30 | …baseline' else math.isclose(case.outputs[key],value,rel_tol=1e-9,abs_tol=1e-9), (name,key)
+   |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 | …
+32 | …O_CHANNEL.values())
+   |
+
+E501 Line too long (118 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:35:101
+   |
+33 | …     rows = {}
+34 | …     for key, value in channels.items():
+35 | …         assert math.isclose(value,case.outputs[key],rel_tol=1e-9,abs_tol=1e-9), (name,key,value,case.outputs[key])
+   |                                                                                                   ^^^^^^^^^^^^^^^^^^
+36 | …         rows[key] = {'oracle':value,'native':case.outputs[key],'frozen':expected['outputs'][key]}
+37 | …     comparisons[name] = {'inputs':dict(case.inputs),'outputs':dict(case.outputs),'verdicts':route.short_verdicts(case),'oracle_chann…
+   |
+
+E501 Line too long (101 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:36:101
+   |
+34 | …     for key, value in channels.items():
+35 | …         assert math.isclose(value,case.outputs[key],rel_tol=1e-9,abs_tol=1e-9), (name,key,value,case.outputs[key])
+36 | …         rows[key] = {'oracle':value,'native':case.outputs[key],'frozen':expected['outputs'][key]}
+   |                                                                                                   ^
+37 | …     comparisons[name] = {'inputs':dict(case.inputs),'outputs':dict(case.outputs),'verdicts':route.short_verdicts(case),'oracle_chann…
+38 | …     assert len(case.verdicts) == 18
+   |
+
+E501 Line too long (146 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:37:101
+   |
+35 | …el_tol=1e-9,abs_tol=1e-9), (name,key,value,case.outputs[key])
+36 | …puts[key],'frozen':expected['outputs'][key]}
+37 | …outputs':dict(case.outputs),'verdicts':route.short_verdicts(case),'oracle_channels':rows}
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | …
+39 | …
+   |
+
+E501 Line too long (119 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:49:101
+   |
+47 |     assert len(summary['constraints_rederived']) == 18
+48 |     assert summary['worst_channel_rel_dev'] < 1e-9
+49 |     for filename, data in [('controls.json',comparisons),('ratios.json',ratios),('verification_summary.json',summary)]:
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^
+50 |         (out/filename).write_text(json.dumps(data,indent=2,default=lambda x:dict(x) if isinstance(x,Mapping) else str(x))+'\n')
+51 |     print(json.dumps({'native_channels':len(case.outputs),'oracle_channels':len(channels),'authored_verdicts':len(case.verdicts),'wors…
+   |
+
+E501 Line too long (127 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/check_controls.py:50:101
+   |
+48 |     assert summary['worst_channel_rel_dev'] < 1e-9
+49 |     for filename, data in [('controls.json',comparisons),('ratios.json',ratios),('verification_summary.json',summary)]:
+50 |         (out/filename).write_text(json.dumps(data,indent=2,default=lambda x:dict(x) if isinstance(x,Mapping) else str(x))+'\n')
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |     print(json.dumps({'native_channels':len(case.outputs),'oracle_channels':len(channels),'authored_verdicts':len(case.verdicts),'wors…
+52 |     return comparisons
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> .project/active/mfe-major-radius-study-package/implementation/protect.py:2:1
+  |
+1 |   """Record protected tracked surfaces and all generated package bytes."""
+2 | / import hashlib
+3 | | import json
+4 | | import subprocess
+5 | | import sys
+6 | | from pathlib import Path
+  | |________________________^
+7 |   root = Path.cwd()
+8 |   out = Path(__file__).parent
+  |
+help: Organize imports
+
+E501 Line too long (269 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/protect.py:10:101
+   |
+ 8 | …
+ 9 | …
+10 | …s/oracle_entry.py', 'exploration/stellarator_e2e/studies/study_route.py', 'exploration/stellarator_e2e/studies/manifest.json', 'exploration/stellarator_e2e/studies/ANNEX.md']
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | …ct/active/mfe-major-radius-study-package/'))]
+12 | …() and '__pycache__' not in p.parts]
+   |
+
+E501 Line too long (140 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/protect.py:11:101
+   |
+ 9 | …z']).decode().split('\0')
+10 | ….py', 'exploration/stellarator_e2e/studies/oracle_entry.py', 'exploration/stellarator_e2e/studies/study_route.py', 'exploration/stell…
+11 | …not p.startswith(('tests/study/', '.project/active/mfe-major-radius-study-package/'))]
+   |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 | …r_e2e/generated').rglob('*') if p.is_file() and '__pycache__' not in p.parts]
+13 | …digest() for p in sorted(set(paths)) if (root/p).is_file()}
+   |
+
+E501 Line too long (131 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/protect.py:12:101
+   |
+10 | …laris.py', 'exploration/stellarator_e2e/studies/oracle_entry.py', 'exploration/stellarator_e2e/studies/study_route.py', 'exploration/…
+11 | … and not p.startswith(('tests/study/', '.project/active/mfe-major-radius-study-package/'))]
+12 | …arator_e2e/generated').rglob('*') if p.is_file() and '__pycache__' not in p.parts]
+   |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 | …).hexdigest() for p in sorted(set(paths)) if (root/p).is_file()}
+14 | …
+   |
+
+E501 Line too long (113 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/protect.py:13:101
+   |
+11 | paths = [p for p in paths if p and p not in owned and not p.startswith(('tests/study/', '.project/active/mfe-major-radius-study-packag…
+12 | paths += [str(p) for p in Path('exploration/stellarator_e2e/generated').rglob('*') if p.is_file() and '__pycache__' not in p.parts]
+13 | result = {p: hashlib.sha256((root/p).read_bytes()).hexdigest() for p in sorted(set(paths)) if (root/p).is_file()}
+   |                                                                                                     ^^^^^^^^^^^^^
+14 | if sys.argv[1] == 'before':
+15 |     (out/'protected-before.json').write_text(json.dumps(result, indent=2)+'\n')
+   |
+
+E501 Line too long (120 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/protect.py:18:101
+   |
+16 | else:
+17 |     before = json.loads((out/'protected-before.json').read_text())
+18 |     delta = {p: [before.get(p), result.get(p)] for p in before.keys() | result.keys() if before.get(p) != result.get(p)}
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+19 |     (out/'protected-after.json').write_text(json.dumps(result, indent=2)+'\n')
+20 |     (out/'protected-delta.json').write_text(json.dumps(delta, indent=2)+'\n')
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:6:1
+   |
+ 4 |   This prepares metadata identities. It does not invoke integration or promote a pin.
+ 5 |   """
+ 6 | / import argparse
+ 7 | | import json
+ 8 | | import sys
+ 9 | | import subprocess
+10 | | import pprint
+11 | | from pathlib import Path
+   | |________________________^
+12 |
+13 |   ROOT = Path.cwd()
+   |
+help: Organize imports
+
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:16:1
+   |
+14 | STUDIES = ROOT / 'exploration/stellarator_e2e/studies'
+15 | sys.path[:0] = [str(ROOT), str(STUDIES)]
+16 | from scripts.study import manifest
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+17 | from tests.study.conftest import DATA_DIR
+18 | import study_route
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:16:1
+   |
+14 |   STUDIES = ROOT / 'exploration/stellarator_e2e/studies'
+15 |   sys.path[:0] = [str(ROOT), str(STUDIES)]
+16 | / from scripts.study import manifest
+17 | | from tests.study.conftest import DATA_DIR
+18 | | import study_route
+   | |__________________^
+19 |
+20 |   parser = argparse.ArgumentParser()
+   |
+help: Organize imports
+
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:17:1
+   |
+15 | sys.path[:0] = [str(ROOT), str(STUDIES)]
+16 | from scripts.study import manifest
+17 | from tests.study.conftest import DATA_DIR
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18 | import study_route
+   |
+
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:18:1
+   |
+16 | from scripts.study import manifest
+17 | from tests.study.conftest import DATA_DIR
+18 | import study_route
+   | ^^^^^^^^^^^^^^^^^^
+19 |
+20 | parser = argparse.ArgumentParser()
+   |
+
+E501 Line too long (236 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:45:101
+   |
+43 | …
+44 | …
+45 | …study/indicators.py', '--package', str(package), '--manifest', str(path), '--groups', str(DATA_DIR / 'axes.known_answers.json')], text=True))
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 | …
+47 | …ge), 'group': group}
+   |
+
+E501 Line too long (115 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:47:101
+   |
+45 | report = json.loads(subprocess.check_output([str(ROOT / '.codex-test/run'), 'python', 'scripts/study/indicators.py', '--package', str(…
+46 | for group in report['groups']:
+47 |     fixture = {'derived_against_semantic_fingerprint': manifest.read_semantic_fingerprint(package), 'group': group}
+   |                                                                                                     ^^^^^^^^^^^^^^^
+48 |     (DATA_DIR / f"{group['axis']}.expected.json").write_text(json.dumps(fixture, indent=1) + '\n')
+49 | (args.work_dir / 'known-answers.json').write_text(json.dumps(report, indent=2) + '\n')
+   |
+
+E501 Line too long (249 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:54:101
+   |
+52 | …
+53 | …
+54 | …'] for c in group['constraints_reachable']), group['objectives_reachable'], group['trace_size']['modules_fired'], group['trace_size']['channels_tainted'])
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 | …
+56 | …
+   |
+
+E501 Line too long (121 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/refresh_metadata.py:59:101
+   |
+57 | start = text.index('EXPECTED_SEMANTIC_FINGERPRINT = ')
+58 | end = text.index('\n', start)
+59 | text = text[:start] + 'EXPECTED_SEMANTIC_FINGERPRINT = ' + repr(manifest.read_semantic_fingerprint(package)) + text[end:]
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^
+60 | start = text.index('FIXTURE_CONTRACT = ')
+61 | end = text.index('\n\n', start)
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> .project/active/mfe-major-radius-study-package/implementation/run_tests.py:2:1
+  |
+1 |   """Run selected kept tests with every Python child routed through the launcher."""
+2 | / import subprocess
+3 | | import sys
+4 | | from pathlib import Path
+  | |________________________^
+5 |   root = Path.cwd()
+6 |   sys.path.insert(0, str(root))
+  |
+help: Organize imports
+
+E501 Line too long (140 > 100)
+  --> .project/active/mfe-major-radius-study-package/implementation/run_tests.py:10:101
+   |
+ 8 | …
+ 9 | …
+10 | …d (str(args[0]) == sys.executable or Path(str(args[0])).name in {'python','python3'}):
+   |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | …on', *args[1:]]
+12 | …
+   |
+
+E402 Module level import not at top of file
+  --> .project/active/mfe-major-radius-study-package/implementation/run_tests.py:14:1
+   |
+12 |         super().__init__(args, *pos, **kw)
+13 | subprocess.Popen = LaunchedPopen
+14 | import pytest
+   | ^^^^^^^^^^^^^
+15 | raise SystemExit(pytest.main(sys.argv[1:]))
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> .project/active/mfe-major-radius-study-package/implementation/run_tests.py:14:1
+   |
+12 |         super().__init__(args, *pos, **kw)
+13 | subprocess.Popen = LaunchedPopen
+14 | import pytest
+   | ^^^^^^^^^^^^^
+15 | raise SystemExit(pytest.main(sys.argv[1:]))
+   |
+help: Organize imports
+
+E501 Line too long (103 > 100)
+  --> exploration/stellarator_e2e/verify_stellaris.py:38:101
+   |
+37 | def _profile_integral(alpha_n, alpha_T, T_i0):
+38 |     """I = trapezoid_{rho in [0,1]} (1-rho^2)^(2*alpha_n) * sigv_dt(T_i0*(1-rho^2)^alpha_T) * 2*rho."""
+   |                                                                                                     ^^^
+39 |     acc = 0.0
+40 |     n = N_INTERVALS
+   |
+
+E501 Line too long (103 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:123:101
+    |
+122 |     # Profile integrals that do not depend on the ash amount (computed once).
+123 |     I_line_fuel = _trapz_rho(lambda u, rho: u ** alpha_n)             # chord average of the fuel shape
+    |                                                                                                     ^^^
+124 |     I_line_S = _trapz_rho(lambda u, rho: S(u))                         # chord average of the ash shape
+125 |     I_W_S = _trapz_rho(lambda u, rho: S(u) * (u ** alpha_T) * 2.0 * rho)   # <S u^alpha_T>_V
+    |
+
+E501 Line too long (103 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:124:101
+    |
+122 |     # Profile integrals that do not depend on the ash amount (computed once).
+123 |     I_line_fuel = _trapz_rho(lambda u, rho: u ** alpha_n)             # chord average of the fuel shape
+124 |     I_line_S = _trapz_rho(lambda u, rho: S(u))                         # chord average of the ash shape
+    |                                                                                                     ^^^
+125 |     I_W_S = _trapz_rho(lambda u, rho: S(u) * (u ** alpha_T) * 2.0 * rho)   # <S u^alpha_T>_V
+126 |     I_vol_S = _trapz_rho(lambda u, rho: S(u) * 2.0 * rho)              # <S>_V
+    |
+
+E501 Line too long (114 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:276:101
+    |
+274 |     #   T_cold 20 K (sec. 2.9), T_amb 300 K (D4 assumption), f_carnot 0.20
+275 |     #   (THE assumption, D4), p_cryo_direct 0.0 (0.8 default retired, D2).
+276 |     q_nuc_cryo=35.5, vol_cold_cryo=0.0, p_fixed_cryo=0.0075,  # WI-036: additive slot; the pack volume is computed
+    |                                                                                                     ^^^^^^^^^^^^^^
+277 |     f_uplift_cryo=1.0, T_cold_cryo=20.0, T_amb_cryo=300.0, f_carnot_cryo=0.20,
+278 |     p_cryo_direct=0.0,
+    |
+
+E501 Line too long (106 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:364:101
+    |
+362 |     supp_spares_frac=0.03, supp_startup_base=40000000.0, supp_decom_base=272000000.0,
+363 |     supp_shipping_frac=0.015, supp_tax_frac=0.01, supp_insurance_frac=0.015,
+364 |     supp_contingency_rate=0.0,  # CAS50 c59 internal contingency: library default 0.0 (not instance-bound)
+    |                                                                                                     ^^^^^^
+365 |     cas28_capital=5000000.0,
+366 |     # ---- WI-029 annual-cost side: CAS71 / CAS72 / CAS80 instance bindings ----
+    |
+
+E501 Line too long (145 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:379:101
+    |
+377 | …ometry; p_exhaust 1.0 Pa is
+378 | …roughput's own value).
+379 | …ble 6); the oracle never needed it before WI-047 -- tbr_ok binds package inputs directly
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+380 | …230312e-09, I_total=0.0,
+381 | …
+    |
+
+E501 Line too long (104 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:435:101
+    |
+433 |     N, d, u, C, i = (operational_years, outage_years, unplanned_fraction,
+434 |                      cost_per_event, interest_rate)
+435 |     if not math.isfinite(availability_direct) or availability_direct < 0.0 or availability_direct > 1.0:
+    |                                                                                                     ^^^^
+436 |         raise ValueError(f"oracle calendar: availability_direct {availability_direct!r} outside [0, 1]")
+437 |     if availability_direct > 0.0:
+    |
+
+E501 Line too long (104 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:436:101
+    |
+434 |                      cost_per_event, interest_rate)
+435 |     if not math.isfinite(availability_direct) or availability_direct < 0.0 or availability_direct > 1.0:
+436 |         raise ValueError(f"oracle calendar: availability_direct {availability_direct!r} outside [0, 1]")
+    |                                                                                                     ^^^^
+437 |     if availability_direct > 0.0:
+438 |         A = availability_direct
+    |
+
+E501 Line too long (126 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:637:101
+    |
+635 |     # crashing. WI-045's expected text stands on either side of these three lines.
+636 |     if loop_p_loop_margin <= 0.0:
+637 |         raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+638 |     loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+639 |     loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+    |
+
+E501 Line too long (102 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:664:101
+    |
+662 |     cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+663 |     cop = (p["f_carnot_cryo"] * cop_carnot)
+664 |     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
+    |                                                                                                     ^^
+665 |     p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
+666 |     recirculating = (p_coils + loop_p_pump_total + p_sub + p_aux + p_cool + p_cryo
+    |
+
+E501 Line too long (130 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:680:101
+    |
+678 |     kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * c_coil / 1000.0
+679 |     winding_pack = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
+680 |     magnet_structure = p["magnet_n_coils"] * m_casing * p["magnet_steel_price"] * p["magnet_f_steel_fab"]  # WI-044: computed mass
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+681 |     magnet_capital_rollup = winding_pack + magnet_structure
+682 |     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
+    |
+
+E501 Line too long (114 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:711:101
+    |
+709 |     # Unlevelized annual O&M (WI-025). WI-029 levelizes it into CAS71 below;
+710 |     # it is no longer the DCF numerator itself.
+711 |     annual_om_unlevelized = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
+    |                                                                                                     ^^^^^^^^^^^^^^
+712 |                  + p["om_direct"])
+    |
+
+E501 Line too long (107 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:726:101
+    |
+724 |     installation = p["installation_frac"] * reactor_equipment_subtotal
+725 |     coolant = (p["coolant_primary_base"] * (n * p_net / p["coolant_ref_net"])
+726 |                + p["coolant_intermediate_base"] * (n * p_th / p["coolant_p_th_ref"]) ** p["coolant_alpha"])
+    |                                                                                                     ^^^^^^^
+727 |     # WI-035 D7: the aux and cryoplant terms as their own channels; sum bit-identical.
+728 |     aux_cost = p["aux_per_mw"] * (n * p_th)
+    |
+
+E501 Line too long (109 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:835:101
+    |
+833 |     #   exhaust      = inject - burn;  loss = (1 - t_recycle)*exhaust
+834 |     #   tbr_required = (burn + loss + lambda_T*I_total + G_stock)/(eta_extract*burn)
+835 |     #   p_heat_abs   = p_alpha_heat + p_coupled (sustained operating basis);  p_sep = p_heat_abs - p_rad_core
+    |                                                                                                     ^^^^^^^^^
+836 |     #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs
+837 |     #   q_peak       = q_ref*p_target/p_nonrad_ref;  shadow = q_peak*R_ref/R
+    |
+
+E501 Line too long (107 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:836:101
+    |
+834 |     #   tbr_required = (burn + loss + lambda_T*I_total + G_stock)/(eta_extract*burn)
+835 |     #   p_heat_abs   = p_alpha_heat + p_coupled (sustained operating basis);  p_sep = p_heat_abs - p_rad_core
+836 |     #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs
+    |                                                                                                     ^^^^^^^
+837 |     #   q_peak       = q_ref*p_target/p_nonrad_ref;  shadow = q_peak*R_ref/R
+838 |     #   n_molecules  = (D + T)/2 + He;  Q = n*k_B*T_gas;  S_eff = Q/p_exhaust
+    |
+
+E501 Line too long (104 > 100)
+   --> exploration/stellarator_e2e/verify_stellaris.py:844:101
+    |
+842 |     fuel_exhaust_rate = fuel_inject_rate - fuel_burn_rate
+843 |     fuel_loss_rate = (1.0 - p["t_recycle"]) * fuel_exhaust_rate
+844 |     fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p["lambda_T"] * p["I_total"] + p["G_stock"])
+    |                                                                                                     ^^^^
+845 |                          / (p["eta_extract"] * fuel_burn_rate))
+846 |     fuel_tbr_margin = p["tbr"] - fuel_tbr_required
+    |
+
+E402 Module level import not at top of file
+  --> tests/study/test_major_radius.py:10:1
+   |
+ 8 | ROOT = Path(__file__).resolve().parents[2]
+ 9 | sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
+10 | import oracle_entry as oracle
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | import study_route as route
+   |
+
+E402 Module level import not at top of file
+  --> tests/study/test_major_radius.py:11:1
+   |
+ 9 | sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
+10 | import oracle_entry as oracle
+11 | import study_route as route
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 |
+13 | OLD = route.P + 'magnet__R0'
+   |
+
+E501 Line too long (101 > 100)
+  --> tests/study/test_major_radius.py:51:101
+   |
+49 |     assert oracle.vs.IN['wall_peak_R_ref'] == 12.7
+50 |     assert oracle.vs.IN['R_ref_divertor'] == 12.7
+51 |     assert route.proposal_for(14, 1.3, 0) == {R:14, route.P+'a':1.3, route.P+'availability_direct':0}
+   |                                                                                                     ^
+52 |     assert json.loads(route.MANIFEST_PATH.read_text())['ties'] == []
+   |
+
+E501 Line too long (104 > 100)
+  --> tests/study/test_major_radius.py:55:101
+   |
+55 | def test_current_radius_controls_match_frozen_model_and_independent_oracle(tmp_path, stock_simkit_path):
+   |                                                                                                     ^^^^
+56 |     import importlib.util
+57 |     path = ROOT/'.project/active/mfe-major-radius-study-package/implementation/check_controls.py'
+   |
+
+E501 Line too long (102 > 100)
+  --> tests/study/test_major_radius.py:74:101
+   |
+73 | @pytest.mark.parametrize('radius', [4.0, 3.0, 3.1500000000000004, 0.0, -1.0])
+74 | def test_current_invalid_radius_is_retained_as_execution_failure(radius, tmp_path, stock_simkit_path):
+   |                                                                                                     ^^
+75 |     cases, _ = route.run_points('invalid-radius', [{R:radius}], tmp_path)
+76 |     assert len(cases) == 1
+   |
+
+E501 Line too long (106 > 100)
+  --> tests/study/test_provenance.py:55:101
+   |
+53 |     rc, out, err = provenance_copy.run()
+54 |     assert rc == 0, err
+55 |     tied = {e['key']:e['provenance'] for e in group_by_axis(json.loads(out), 'test_tie')['declared_keys']}
+   |                                                                                                     ^^^^^^
+56 |     assert tied['stellarator_09__stellaris__magnet__I_coil'] == 'tie'
+57 |     assert tied['stellarator_09__stellaris__R'] == 'fan_out'
+   |
+
+E501 Line too long (138 > 100)
+  --> tests/study/test_provenance.py:64:101
+   |
+62 | …
+63 | …ie')
+64 | …venance='fan_out') for g in d['groups'] if g['axis']=='test_tie' for k in g['keys']])
+   |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+65 | …
+66 | …
+   |
+
+E501 Line too long (122 > 100)
+  --> tests/study/test_provenance.py:68:101
+   |
+66 |     assert rc == 0, err
+67 |     plain = group_by_axis(json.loads(out), 'test_tie')
+68 |     assert {k:v for k,v in declared.items() if k!='declared_keys'} == {k:v for k,v in plain.items() if k!='declared_keys'}
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^
+69 |     assert [e['provenance'] for e in plain['declared_keys']] == ['fan_out']*2
+   |
+
+E501 Line too long (118 > 100)
+  --> tests/study/test_subset_flag.py:13:101
+   |
+12 | KNOWN_ANSWERS = DATA_DIR / "axes.known_answers.json"
+13 | ALL_AXES = ["I_coil", "R", "a", "availability_direct", "interest_rate"]  # WI-046: availability -> availability_direct
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (109 > 100)
+  --> tests/study/test_warnings.py:75:101
+   |
+74 | def test_a_declared_tie_earns_no_candidate_warning(advisory_copy):
+75 |     advisory_copy.edit_axes(lambda d: next(g for g in d['groups'] if g['axis']=='R_partial')['keys'].append({
+   |                                                                                                     ^^^^^^^^^
+76 |         'key': 'stellarator_09__stellaris__magnet__I_coil', 'provenance': 'tie'}))
+77 |     rc, out, err = advisory_copy.run()
+   |
+
+Found 55 errors.
+[*] 6 fixable with the `--fix` option.

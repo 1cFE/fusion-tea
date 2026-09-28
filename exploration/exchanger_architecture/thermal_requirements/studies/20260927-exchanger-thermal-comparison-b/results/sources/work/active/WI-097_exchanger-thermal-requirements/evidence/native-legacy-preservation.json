@@ -1,0 +1,51 @@
+[
+  {
+    "case": "replay-nominal-calculated",
+    "predecessor": "control-calculated-N",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  },
+  {
+    "case": "replay-supplied-n",
+    "predecessor": "main-L1835.45128301474-F1400-M0-S0.85",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  },
+  {
+    "case": "replay-series-leader-2300",
+    "predecessor": "main-L2300-F1500-M0-S0.85",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  },
+  {
+    "case": "replay-network-leader-2300",
+    "predecessor": "main-L2300-F1400-M1-S0.65",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  },
+  {
+    "case": "replay-series-unmet-pbli",
+    "predecessor": "main-L2300-F1400-M0-S0.85",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  },
+  {
+    "case": "replay-network-fixed-split-failure",
+    "predecessor": "main-L2300-F1400-M1-S0.85",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  },
+  {
+    "case": "replay-network-2600",
+    "predecessor": "main-L2600-F1600-M1-S0.65",
+    "numeric_channels": 551,
+    "legacy_predicates": 14,
+    "bit_exact": true
+  }
+]

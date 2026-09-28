@@ -1,0 +1,84 @@
+{
+  "name": "feedwater171",
+  "url": "file:///home/reid/1cfe/fusion-tea/knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/raw.html",
+  "title": "Isobaric Properties for Water",
+  "viewport": {
+    "width": 1800,
+    "height": 1000
+  },
+  "full_page": false,
+  "ms": 3172,
+  "console": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 459
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 460
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 460
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 460
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 460
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 461
+    },
+    {
+      "type": "error",
+      "text": "Access to script at 'file:///packages/uswds/components/usa-banner.js.mjs' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+      "ms": 461
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "ms": 461
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 461
+    },
+    {
+      "type": "error",
+      "text": "Unsafe attempt to load URL file:///chemistry//img/icons.svg#home-icon from frame with URL file:///home/reid/1cfe/fusion-tea/knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/raw.html. 'file:' URLs are treated as unique security origins.\n",
+      "ms": 461
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 548
+    },
+    {
+      "type": "error",
+      "text": "Access to XMLHttpRequest at 'file:///cdn-cgi/rum?' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+      "ms": 840
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "ms": 840
+    }
+  ],
+  "page_errors": [
+    {
+      "message": "svg4everybody is not defined",
+      "ms": 461
+    }
+  ]
+}

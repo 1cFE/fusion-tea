@@ -16,7 +16,7 @@
       "note": "One key from the three that share the __n_mod_in suffix (buildings_cost, om_cost, precon_cost -- the library defaults the plant does not bind), so the advisory suffix scan has something to find. Membership is still declared-only: the other two are candidates, not members.",
       "keys": [
         {
-          "key": "stellarator_09__stellaris__buildings_cost__n_mod_in",
+          "key": "stellarator_09__stellaris__buildings__buildings_cost__n_mod_in",
           "provenance": "fan_out"
         }
       ]
@@ -26,7 +26,7 @@
       "note": "R without its declared tie magnet__R0, so the manifest tie catalog has a candidate to report.",
       "keys": [
         {
-          "key": "stellarator_09__stellaris__R",
+          "key": "stellarator_09__stellaris__plasma__R",
           "provenance": "fan_out"
         }
       ]
@@ -36,7 +36,7 @@
       "note": "Declares a key that R_partial also declares, so the document-level duplicate-key warning has a case.",
       "keys": [
         {
-          "key": "stellarator_09__stellaris__R",
+          "key": "stellarator_09__stellaris__plasma__R",
           "provenance": "fan_out"
         }
       ]

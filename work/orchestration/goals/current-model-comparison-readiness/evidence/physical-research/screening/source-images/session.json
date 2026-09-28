@@ -1,0 +1,41 @@
+{
+  "session": "steam-properties",
+  "out_dir": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images",
+  "base": "",
+  "viewport": {
+    "width": 1800,
+    "height": 1000
+  },
+  "dpr": 2,
+  "duration_ms": 7321,
+  "steps": [
+    {
+      "i": 0,
+      "kind": "goto",
+      "value": "file:///home/reid/1cfe/fusion-tea/knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/raw.html",
+      "ok": true,
+      "ms": 2096,
+      "note": ""
+    },
+    {
+      "i": 1,
+      "kind": "scroll_to",
+      "value": "tr:has-text(\"277.73289\"):first-of-type",
+      "ok": false,
+      "ms": 7103,
+      "note": "TimeoutError: Locator.scroll_into_view_if_needed: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"tr:has-text(\\\"277.73289\\\"):first-of-type\").first\n"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "_fail_01_scroll_to",
+      "png": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images/_fail_01_scroll_to.png",
+      "json": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images/_fail_01_scroll_to.json"
+    }
+  ],
+  "reads_count": 0,
+  "evals_count": 0,
+  "console_count": 13,
+  "page_errors_count": 1,
+  "exit_code": 2
+}

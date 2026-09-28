@@ -58,3 +58,29 @@ part demo_plant : 'Toy Plant';   // REQUIRED for codegen — see below
 2. **Use `out attribute x : Real = expr;`, not `return x : Real = expr;`, for calc outputs.** Both parse and evaluate in syside, but sysml-codegen only treats `out attribute` as a module output — with `return` the module has zero outputs and generation crashes (`teax_module.py.jinja2:118`, "list object has no element 0").
 
 Two smaller live findings: an `assert constraint` doesn't evaluate to a boolean directly — evaluate the constraint *def*'s predicate `OperatorExpression` with `scope=` the assert usage (two-step); and the derived attribute `total_cost = cost_calc.cost` evaluates but is dropped at extraction (`EXPOSE_PURE ... could not identify instance/output` warning) — the value survives only as the raw channel `cost_calc__cost`. Full detail: findings.md "Live checks — license restored".
+
+---
+
+## 2026-09-13T21:49:00-07:00 — generated multi-output order
+
+**Category**: Workaround
+**Severity**: Important
+**Source**: WI-040 implementation under the owner's delegated technical judgment; `work/active/WI-040_winding-pack-mass-cost/evidence/rejected-first-generation/README.md`.
+
+### Problem
+
+The generated wrapper's tuple-unpack order differed from SysML output declaration order. Direct completion tests using the same assumed order passed, but public perturbations exposed mislabelled masses and costs.
+
+### Solution
+
+The completion computes named values and returns them in the generated Output schema's `model_fields` order. Tests also execute the actual module wrapper and inspect named outputs. Exact fresh regeneration verifies both implementations and wrapper agreement.
+
+### Generalization
+
+For multi-output manual calculations, verify the generated positional interface through named public channels. Declaration order and a green direct-function test do not establish that interface.
+
+### Verification Status
+
+- [x] Parser tested
+- [x] Generated wrappers and public perturbations tested (137 WI-040 cases)
+- [ ] Formalized to pattern doc

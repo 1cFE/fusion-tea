@@ -1,0 +1,11 @@
+{
+  "status": "15 completed native cases; 5 raw proposals rejected by stock validator before native evaluation",
+  "original_store": "results/study/_work/20260919-throughput-based-fuel-processing-costs.db",
+  "preserved_store_copy": "results/attempt-1/native-work/20260919-throughput-based-fuel-processing-costs.db",
+  "cold_reproduction_claim": false,
+  "note": "Original work directory remains untouched. Relocated backup may retain original absolute artifact references; use original paths for inspection. No model-domain rejection occurred.",
+  "original_window_release_sha256": "a4280f643539f5fa47820d44a43b3640ddbe7691b8eaffe2f14d9a508f33e21f",
+  "original_proposals_sha256": "1fb6a7b7567c3346cb4d1892474f4f60bca7497f4710dae231c633eb8dfe06df",
+  "failure": "workflow.execute count check refused success because only 15 of 20 candidates were admitted.",
+  "retry_authority": "Coordinator message: Authorized T004 mechanical retry1, preserve all original evidence; encode only legacy false as0.0; same20semantics/candidate; re-scan and execute in fresh store."
+}

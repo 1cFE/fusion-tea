@@ -1,0 +1,29 @@
+{
+  "request_id": "REQ-040-01",
+  "run": "knowledge/research/requests/runs/REQ-040-01/20260914T042735401431",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "usgs_mineral_commodity_summaries_2025_helium",
+      "path": "knowledge/sources/usgs_mineral_commodity_summaries_2025_helium/",
+      "source_id": "211bf4707cb97d0bfc8c6c8d5d19f55e7145534503a90d6d12b87c7786d67492",
+      "pre_existing": false
+    },
+    {
+      "slug": "reliable_source_metals_material_densities",
+      "path": "knowledge/sources/reliable_source_metals_material_densities/",
+      "source_id": "dfa8b625f7e1c6758814c31bc47925ded70d40d1485c2ccaca637c536774e81d",
+      "pre_existing": false
+    },
+    {
+      "slug": "nist_helium_isobar_20_bar_10_to_50_k",
+      "path": "knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/",
+      "source_id": "0baec1632f913735d06d2e91c7b3fdc7b8afd3c911bce88a8c7c010e50354590",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

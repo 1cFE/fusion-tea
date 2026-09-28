@@ -1,0 +1,27 @@
+F
+=================================== FAILURES ===================================
+__________ test_ledger_is_a_verified_bijection_onto_the_live_package ___________
+
+    def test_ledger_is_a_verified_bijection_onto_the_live_package():
+        ledger = json.loads((STRUCTURE_EVIDENCE / 'ledger.json').read_text())
+        params, outputs = ledger['parameters'], ledger['outputs']
+        assert set(params) == {x['qualified_name'] for x in ENTERING['parameters']}
+        assert set(outputs) == {x['channel_name'] for x in ENTERING['outputs']}
+        assert len(set(params.values())) == len(params) and len(set(outputs.values())) == len(outputs)
+        # WI-040 (2026-09-13): the historical bijection is preserved; only this explicit
+        # material-account ABI is added by the current model.
+        # WI-058 (2026-09-14): k_coil retired from the live contract, c_coil_ref added (the winding length
+        # follows the coil bore); the historical bijection is otherwise preserved.
+        assert (set(params.values()) - WI058_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS == LIVE_PARAMS
+>       assert set(outputs.values()) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS == LIVE_CHANNELS
+E       AssertionError: assert {'constraint_...ad_peak', ...} == {'constraint_...ad_peak', ...}
+E         
+E         Extra items in the right set:
+E         'stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation'
+E         Use -v to get more diff
+
+tests/models/test_structure_translation.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_structure_translation.py::test_ledger_is_a_verified_bijection_onto_the_live_package
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.07s

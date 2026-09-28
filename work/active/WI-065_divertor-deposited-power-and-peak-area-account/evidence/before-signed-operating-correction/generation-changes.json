@@ -1,0 +1,46 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "9162f0ba897c640c73698fbdc729157126c523e18e32fdf153f00e8b010db3ec",
+    "after": "d3a3193ccddc479d6f27069ba6683686c5d943c0bc4c2f62b40788af1f3f4533"
+  },
+  "contracts/model_contract.json": {
+    "before": "c4ac9fd3398178dec8f265dc90074c4bb19c58e15f3625a18bbbc13d0835c3ee",
+    "after": "580aa74eee17a82e5c8a96e0e11aa33049d7048172600db28aacef60db2c5e5c"
+  },
+  "contracts/package_contract.json": {
+    "before": "b8f5dc06bffd0ced00def8be499ccb70b1ff579f6b6bf224b6c5147000c73cad",
+    "after": "083dc84155a0b83a31be256f76868d39ec507ae49fec00363680d91c747d16b4"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "e23b7bd09bd2ddd0c9ba222db0f755e5d5e925937a3d114ceb488f6240168039",
+    "after": "133fa5664ab999e2824cbedbf88707ddc074bdefed0f13f96b7044d3e8af0828"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "9fdfc2a12c1f3a89606fd38321a436ebb84dce1ae341de73fc74b076f0247623",
+    "after": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207"
+  },
+  "modules/mfe_divertor_heat/divertor_heat_ledger.py": {
+    "before": "849e1a0ed692e2f1a8cb7f8d2711d2a9e7f8e84dcdbb45f3b1b5ed9f37715dfd",
+    "after": "158b06f7d091a17a0e95a57ec76037b9f4d849cedcc13cdfbc9a287d7d10140b"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "bbf635ecb7b2e5fe5952dcfa75e62044a07aa15b8abc226c32234e30ebf7f6b7",
+    "after": "80a3f49a1c3a4f7210a254b07579a5ab2c02e249daf24d18820f5d62fee5c9fa"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "64db3141ee887c53f3b79739f18c1ae4c8931358fb9bcd5d809b6047950a9ade",
+    "after": "df7a42ce2c9d0c572655bd52107103143791c323088e30b00dac91df8e78f2d1"
+  },
+  "schemas/divertor_heat_ledger_output.py": {
+    "before": "2c5e3a769630412fe583fe760d12652c80a50bf8fe56e1f4b60daad901696c7b",
+    "after": "0b0861caa291bcfbf3b8cee1eef2967ea80e176babe42375e9a8eeee0dbc51da"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "f308d2bdd0c57744a97d1063bd58d00f92897a9b5853fcc28d1d5be0e083022b",
+    "after": "998f01f297b70cfc0208ec20f5b8bf7f4b5c30226690081e10aa7214cb287a2e"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "aad6f36b6221082e6dbdd0df1c5f2193b8800f6318c4c354dafd941468fa6177",
+    "after": "cc9ab717a831d7128440def1d95444f39121a45de91fe6f4ef2b26467f7dcb40"
+  }
+}

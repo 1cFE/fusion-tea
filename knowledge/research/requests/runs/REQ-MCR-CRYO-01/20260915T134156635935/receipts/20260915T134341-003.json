@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "precondition_failed",
+  "candidate": "/tmp/T004-cern-leads.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "input file not found: /tmp/T004-cern-leads.pdf",
+  "rule_id": null,
+  "captured": false,
+  "at": "2026-09-15T13:43:41.690855+00:00"
+}

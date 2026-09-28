@@ -1,0 +1,33 @@
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 92, in <module>
+    regression()
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 61, in regression
+    a=test_nodes(H/'entering-tests.xml');b=test_nodes(H/'final-tests-attempt-2.xml')
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 53, in test_nodes
+    for node in ET.parse(path).getroot().iter('testcase'):
+                ^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/xml/etree/ElementTree.py", line 1204, in parse
+    tree.parse(source, parser)
+  File "/usr/lib/python3.12/xml/etree/ElementTree.py", line 558, in parse
+    source = open(source, "rb")
+             ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final-tests-attempt-2.xml'

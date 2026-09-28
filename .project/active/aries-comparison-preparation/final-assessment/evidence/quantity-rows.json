@@ -1,0 +1,790 @@
+{
+  "schema_version": 1,
+  "scope": "All 35 calculated derived rows unaffected by field finding; descriptive comparison only where stated",
+  "report_sha256": "25a779df33560e33171f61b1c5fe598c78fba5af8b8b7d1db9851a8af0d0d529",
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "live_model_files_match_archive": {
+    "models/library/analyses/mfe_winding_pack_fit.sysml": "8de45020c7efe4d6b03ed43615f7743967c2c5e7a681d8f462d7b0a3e358a8ca",
+    "models/library/analyses/mfe_winding_pack_cost.sysml": "1458390ecbd1ebe29edf44746fbb302f6835d5410650ad72eb328cb45e7e28bb",
+    "models/library/analyses/mfe_heating_chain.sysml": "1d05adfe7502305ed6dce125af83108d0223a6e24c2fc77d48712cf63fd346ac",
+    "models/library/cost_structure/mfe_power_core.sysml": "05365f8d9245e42aa4116ed4f15890aa1110a79330a586900b6b861436624133",
+    "models/library/structure/mfe_plant_systems.sysml": "aa237dbc1568c71a43b8e51a695ec7f3694acd513a166f26e113b938dfdd0a82",
+    "models/library/analyses/mfe_cryo_plant.sysml": "4293b63dcab5d710f85a61f73b2e98c90e7d5431594727b4257f634055d8847c"
+  },
+  "rows": [
+    {
+      "id": "outer_radius_sol",
+      "axis": "derived",
+      "model_value": 1.8,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_first_wall",
+      "axis": "derived",
+      "model_value": 1.8499999999999999,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_blanket",
+      "axis": "derived",
+      "model_value": 2.65,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_reflector",
+      "axis": "derived",
+      "model_value": 2.85,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_hot_shield",
+      "axis": "derived",
+      "model_value": 3.05,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_structure",
+      "axis": "derived",
+      "model_value": 3.2,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_vessel_gap",
+      "axis": "derived",
+      "model_value": 3.3,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_vessel",
+      "axis": "derived",
+      "model_value": 3.4,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_coil",
+      "axis": "derived",
+      "model_value": 3.7,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t",
+        "stellarator_09__stellaris__magnet__coil__coil_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_coil_gap",
+      "axis": "derived",
+      "model_value": 3.8,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t",
+        "stellarator_09__stellaris__magnet__coil__coil_t",
+        "stellarator_09__stellaris__magnet__gap2_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "outer_radius_cold_shield",
+      "axis": "derived",
+      "model_value": 3.95,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Cumulative radii of supplied uniform layers; ARIES has full and tapered sectors. No unique corresponding radius is established by its layer drawing.",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t",
+        "stellarator_09__stellaris__magnet__coil__coil_t",
+        "stellarator_09__stellaris__magnet__gap2_t",
+        "stellarator_09__stellaris__shield__lt_shield_t"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_wall_area",
+      "axis": "derived",
+      "model_value": 550.723925580785,
+      "unit": "m2",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Uniform toroidal shell quantity. Source component masses and plasma surface area cannot supply this wall area or layer volume without additional geometry/material assumptions.",
+      "producers": [
+        "stellarator_09__stellaris__rb__wall_area"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_shield_vol",
+      "axis": "derived",
+      "model_value": 358.3529987980527,
+      "unit": "m3",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Uniform toroidal shell quantity. Source component masses and plasma surface area cannot supply this wall area or layer volume without additional geometry/material assumptions.",
+      "producers": [
+        "stellarator_09__stellaris__rb__shield_vol"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_structure_vol",
+      "axis": "derived",
+      "model_value": 143.41768895332945,
+      "unit": "m3",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Uniform toroidal shell quantity. Source component masses and plasma surface area cannot supply this wall area or layer volume without additional geometry/material assumptions.",
+      "producers": [
+        "stellarator_09__stellaris__rb__structure_vol"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_r_coil_centre",
+      "axis": "derived",
+      "model_value": 3.5500000000000007,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Uniform minor-radius coil location; not the ARIES minimum plasma-to-coil distance or a reconstructed nonplanar centreline.",
+      "producers": [
+        "stellarator_09__stellaris__rb__r_coil_centre"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_r_coil",
+      "axis": "derived",
+      "model_value": 3.400000000000001,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_geometry_representation",
+      "reason": "Uniform minor-radius coil location; not the ARIES minimum plasma-to-coil distance or a reconstructed nonplanar centreline.",
+      "producers": [
+        "stellarator_09__stellaris__rb__r_coil"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_blanket_vol",
+      "axis": "derived",
+      "model_value": 746.9193240689401,
+      "unit": "m3",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Uniform toroidal shell quantity. Source component masses and plasma surface area cannot supply this wall area or layer volume without additional geometry/material assumptions.",
+      "producers": [
+        "stellarator_09__stellaris__rb__blanket_vol"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "radial_vessel_vol",
+      "axis": "derived",
+      "model_value": 102.49584170531303,
+      "unit": "m3",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Uniform toroidal shell quantity. Source component masses and plasma surface area cannot supply this wall area or layer volume without additional geometry/material assumptions.",
+      "producers": [
+        "stellarator_09__stellaris__rb__vessel_vol"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "mass_copper",
+      "axis": "derived",
+      "model_value": 481556.0799999998,
+      "unit": "kg",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_material_inventory",
+      "reason": "Material inventory of supplied REBCO winding pack. Lyon Table V supplies a total Nb3Sn winding-pack mass, not these individual copper/solder/steel/helium inventories.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_copper"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "mass_solder",
+      "axis": "derived",
+      "model_value": 154947.4788571428,
+      "unit": "kg",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_material_inventory",
+      "reason": "Material inventory of supplied REBCO winding pack. Lyon Table V supplies a total Nb3Sn winding-pack mass, not these individual copper/solder/steel/helium inventories.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_solder"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "mass_steel",
+      "axis": "derived",
+      "model_value": 443234.7428571427,
+      "unit": "kg",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_material_inventory",
+      "reason": "Material inventory of supplied REBCO winding pack. Lyon Table V supplies a total Nb3Sn winding-pack mass, not these individual copper/solder/steel/helium inventories.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_steel"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "mass_helium",
+      "axis": "derived",
+      "model_value": 444.5296969830677,
+      "unit": "kg",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "different_material_inventory",
+      "reason": "Material inventory of supplied REBCO winding pack. Lyon Table V supplies a total Nb3Sn winding-pack mass, not these individual copper/solder/steel/helium inventories.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_helium"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "vol_winding_pack",
+      "axis": "derived",
+      "model_value": 153.90095238095233,
+      "unit": "m3",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Cold inventory from selected pack size and transferred coil length. Source 627.2-tonne winding mass is not a volume; density/composition conversion is not established.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "vol_cold_total",
+      "axis": "derived",
+      "model_value": 153.90095238095233,
+      "unit": "m3",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Cold inventory from selected pack size and transferred coil length. Source 627.2-tonne winding mass is not a volume; density/composition conversion is not established.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_pack_x",
+      "axis": "derived",
+      "model_value": 0.35999999999999993,
+      "unit": "m",
+      "reference_value": 0.194,
+      "nominal_ratio": 1.8556701030927831,
+      "nominal_ratio_within_original_band": true,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "selected_geometry_context_only",
+      "reason": "Selected pack-envelope consequence, not independently predicted equipment size. ARIES winding-pack dimensions are identified but internal-sheet/insulation boundary correspondence is unresolved. Ratio describes the two recorded designs only.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__pack_x"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_pack_y",
+      "axis": "derived",
+      "model_value": 0.36899999999999994,
+      "unit": "m",
+      "reference_value": 0.743,
+      "nominal_ratio": 0.4966352624495289,
+      "nominal_ratio_within_original_band": true,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "selected_geometry_context_only",
+      "reason": "Selected pack-envelope consequence, not independently predicted equipment size. ARIES winding-pack dimensions are identified but internal-sheet/insulation boundary correspondence is unresolved. Ratio describes the two recorded designs only.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__pack_y"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_required_x",
+      "axis": "derived",
+      "model_value": 0.36999999999999994,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Supplied casing dimensions or local pack/insulation/clearance consequences. ARIES Table IV gives coil-pack dimensions, not these cavity/exterior/clearance definitions.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__required_x"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_required_y",
+      "axis": "derived",
+      "model_value": 0.37899999999999995,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Supplied casing dimensions or local pack/insulation/clearance consequences. ARIES Table IV gives coil-pack dimensions, not these cavity/exterior/clearance definitions.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__required_y"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_cavity_x",
+      "axis": "derived",
+      "model_value": 0.25,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Supplied casing dimensions or local pack/insulation/clearance consequences. ARIES Table IV gives coil-pack dimensions, not these cavity/exterior/clearance definitions.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__cavity_x"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_cavity_y",
+      "axis": "derived",
+      "model_value": 0.4,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Supplied casing dimensions or local pack/insulation/clearance consequences. ARIES Table IV gives coil-pack dimensions, not these cavity/exterior/clearance definitions.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__cavity_y"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_exterior_x",
+      "axis": "derived",
+      "model_value": 0.3,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Supplied casing dimensions or local pack/insulation/clearance consequences. ARIES Table IV gives coil-pack dimensions, not these cavity/exterior/clearance definitions.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__exterior_x"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "fit_exterior_y",
+      "axis": "derived",
+      "model_value": 0.45,
+      "unit": "m",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "no_matching_reference_quantity",
+      "reason": "Supplied casing dimensions or local pack/insulation/clearance consequences. ARIES Table IV gives coil-pack dimensions, not these cavity/exterior/clearance definitions.",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__exterior_y"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "installed_wallplug",
+      "axis": "derived",
+      "model_value": 100.0,
+      "unit": "MW",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "selected_capacity_no_matching_reference",
+      "reason": "Installed heating capacity from supplied hardware and efficiencies, not operating heating demand. Source plant power flows do not identify the same installed-capacity boundary.",
+      "producers": [
+        "stellarator_09__stellaris__heating__heat__p_wallplug_total"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "installed_coupled",
+      "axis": "derived",
+      "model_value": 50.0,
+      "unit": "MW",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "selected_capacity_no_matching_reference",
+      "reason": "Installed heating capacity from supplied hardware and efficiencies, not operating heating demand. Source plant power flows do not identify the same installed-capacity boundary.",
+      "producers": [
+        "stellarator_09__stellaris__heating__heat__p_coupled"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    },
+    {
+      "id": "refrigeration",
+      "axis": "derived",
+      "model_value": 2.188665725127782,
+      "unit": "MW",
+      "reference_value": null,
+      "nominal_ratio": null,
+      "nominal_ratio_within_original_band": null,
+      "formal_verdict": "not_established",
+      "independent_prediction_credit": false,
+      "disposition": "reference_aggregate_too_broad",
+      "reason": "Calculated cryogenic electrical demand, not cold-stage heat. Lyon p708 combines plant and cryogenic electricity (55 MW), which cannot be assigned to cryogenics alone; technologies/temperatures differ.",
+      "producers": [
+        "stellarator_09__stellaris__cryoplant__refrigeration_sum__total"
+      ],
+      "evidence": [
+        "quantities.md",
+        "evidence/quantity-source-receipt.json"
+      ]
+    }
+  ],
+  "supplemental_pack_shape": {
+    "model_area_m2": 0.13283999999999996,
+    "reference_area_m2": 0.144142,
+    "nominal_area_ratio": 0.9215912086692287,
+    "model_transverse_to_radial_ratio": 1.0250000000000001,
+    "reference_second_to_first_ratio": 3.8298969072164946,
+    "status": "descriptive_only; no new formal comparison row or prediction credit"
+  }
+}

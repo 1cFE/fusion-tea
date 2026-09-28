@@ -1,0 +1,7 @@
+{
+  "cause": "ValueError: synthetic conductor fault; unchanged baseline inputs",
+  "module_or_channel": "stellarator_09__stellaris__magnet__conductor_current",
+  "partial_artifacts": [],
+  "phase": "module_execution",
+  "retryable": false
+}

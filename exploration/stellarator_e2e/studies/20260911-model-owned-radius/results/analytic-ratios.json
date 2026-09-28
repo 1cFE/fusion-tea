@@ -1,0 +1,250 @@
+{
+  "assumptions": "Held minor radius, plasma shape/profile, coil current, winding count, fixed coil-centre c=3.1500000000000004 m, material/procurement coefficients and reference anchors. V and winding length scale with R; axis field and stored energy inversely with R; peak field inversely with R-c; computed B*R cancellation holds conductor procurement fixed. This does not assert invariant total/decomposed magnet cost or valid physical domain.",
+  "cases": [
+    {
+      "R": 12.0,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 0.9448818897637796,
+          "actual_ratio": 0.9448818897637794,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 0.9448818897637796,
+          "actual_ratio": 0.9448818897637795,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 1.0583333333333333,
+          "actual_ratio": 1.0583333333333333,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 1.0583333333333333,
+          "actual_ratio": 1.0583333333333333,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 1.07909604519774,
+          "actual_ratio": 1.0790960451977403,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0000000000000002,
+          "pass": true
+        }
+      }
+    },
+    {
+      "R": 12.35,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 0.9724409448818898,
+          "actual_ratio": 0.9724409448818896,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 0.9724409448818898,
+          "actual_ratio": 0.9724409448818898,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 1.0283400809716599,
+          "actual_ratio": 1.02834008097166,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 1.0283400809716599,
+          "actual_ratio": 1.0283400809716599,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 1.0380434782608696,
+          "actual_ratio": 1.0380434782608696,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        }
+      }
+    },
+    {
+      "R": 12.7,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        }
+      }
+    },
+    {
+      "R": 13.0,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 1.0236220472440944,
+          "actual_ratio": 1.0236220472440942,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 1.0236220472440944,
+          "actual_ratio": 1.0236220472440944,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 0.9769230769230769,
+          "actual_ratio": 0.9769230769230768,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 0.9769230769230769,
+          "actual_ratio": 0.9769230769230769,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 0.9695431472081217,
+          "actual_ratio": 0.9695431472081216,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        }
+      }
+    },
+    {
+      "R": 13.35,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 1.0511811023622049,
+          "actual_ratio": 1.0511811023622046,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 1.0511811023622049,
+          "actual_ratio": 1.0511811023622046,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 0.951310861423221,
+          "actual_ratio": 0.9513108614232212,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 0.951310861423221,
+          "actual_ratio": 0.951310861423221,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 0.9362745098039216,
+          "actual_ratio": 0.9362745098039216,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0000000000000002,
+          "pass": true
+        }
+      }
+    },
+    {
+      "R": 13.7,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 1.078740157480315,
+          "actual_ratio": 1.0787401574803148,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 1.078740157480315,
+          "actual_ratio": 1.078740157480315,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 0.927007299270073,
+          "actual_ratio": 0.9270072992700731,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 0.927007299270073,
+          "actual_ratio": 0.927007299270073,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 0.9052132701421801,
+          "actual_ratio": 0.9052132701421801,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0000000000000002,
+          "pass": true
+        }
+      }
+    },
+    {
+      "R": 14.0,
+      "ratios": {
+        "stellarator_09__stellaris__geom__V": {
+          "expected_ratio": 1.1023622047244095,
+          "actual_ratio": 1.1023622047244095,
+          "pass": true
+        },
+        "stellarator_09__stellaris__coil_length__c_coil": {
+          "expected_ratio": 1.1023622047244095,
+          "actual_ratio": 1.1023622047244095,
+          "pass": true
+        },
+        "stellarator_09__stellaris__field_calc__B_axis": {
+          "expected_ratio": 0.9071428571428571,
+          "actual_ratio": 0.9071428571428571,
+          "pass": true
+        },
+        "stellarator_09__stellaris__stored_energy__W_mag": {
+          "expected_ratio": 0.9071428571428571,
+          "actual_ratio": 0.9071428571428571,
+          "pass": true
+        },
+        "stellarator_09__stellaris__peak_field_calc__B_peak": {
+          "expected_ratio": 0.880184331797235,
+          "actual_ratio": 0.8801843317972349,
+          "pass": true
+        },
+        "stellarator_09__stellaris__magnet_cost__capital_cost": {
+          "expected_ratio": 1.0,
+          "actual_ratio": 1.0,
+          "pass": true
+        }
+      }
+    }
+  ]
+}

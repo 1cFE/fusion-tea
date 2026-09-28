@@ -1,0 +1,3669 @@
+{
+  "kind": "post-failure-diagnostic-not-a-verification-release",
+  "cases": [
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0000",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0001",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0002",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0003",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0004",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0005",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0006",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0007",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0008",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0009",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0010",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0011",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0012",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0013",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0014",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0015",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0016",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0017",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0018",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0019",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0020",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0021",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0022",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0023",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1500-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0024",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0025",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0026",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0027",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0028",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0029",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0030",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0031",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0032",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0033",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0034",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0035",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+          "native": 14530.146798748945,
+          "oracle": 14530.146814067703,
+          "relative_deviation": 1.0542741034333448e-09,
+          "absolute_error": 1.53187575051561e-05,
+          "absolute_limit": 0.0
+        }
+      ],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0036",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0037",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0038",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0039",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0040",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__annual_energy",
+          "native": 1176630.4152317059,
+          "oracle": 1176630.4137183127,
+          "relative_deviation": 1.2862094269439192e-09,
+          "absolute_error": 0.0015133931301534176,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__cost_per_net_MWh",
+          "native": 119.56031712546974,
+          "oracle": 119.56031727924935,
+          "relative_deviation": 1.286209446330245e-09,
+          "absolute_error": 1.537796094908117e-07,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__discounted_energy",
+          "native": 18087693.434890214,
+          "oracle": 18087693.411625654,
+          "relative_deviation": 1.2862093755703243e-09,
+          "absolute_error": 0.023264560848474503,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__net_electric",
+          "native": 158.0218124136054,
+          "oracle": 158.02181221035625,
+          "relative_deviation": 1.2862095118735024e-09,
+          "absolute_error": 2.0324915794844856e-07,
+          "absolute_limit": 0.0
+        }
+      ],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0041",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0042",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0043",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0044",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0045",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0046",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0047",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0048",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m1750-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0049",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0050",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0051",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0052",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0053",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0054",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0055",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0056",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0057",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0058",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0059",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0060",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0061",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0062",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0063",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0064",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0065",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0066",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0067",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0068",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0069",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0070",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0071",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0072",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0073",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2000-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0074",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0075",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0076",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0077",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0078",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0079",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0080",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0081",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0082",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0083",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0084",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0085",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0086",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0087",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0088",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0089",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0090",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0091",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0092",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0093",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0094",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0095",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0096",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0097",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0098",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2250-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0099",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0100",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0101",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0102",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0103",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0104",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0105",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0106",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0107",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0108",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0109",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0110",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0111",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0112",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0113",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0114",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0115",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0116",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0117",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0118",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0119",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0120",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0121",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0122",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0123",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2500-m2500-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0124",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0125",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0126",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0127",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0128",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0129",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0130",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0131",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0132",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0133",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0134",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0135",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0136",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0137",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0138",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0139",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0140",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0141",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0142",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0143",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0144",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0145",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0146",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0147",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0148",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1500-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0149",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0150",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0151",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0152",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0153",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0154",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0155",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0156",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0157",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0158",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0159",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0160",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+          "native": -608.7376620943251,
+          "oracle": -608.7376674751285,
+          "relative_deviation": 8.839281309221994e-09,
+          "absolute_error": 5.380803486332297e-06,
+          "absolute_limit": 0.0
+        }
+      ],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0161",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0162",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0163",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0164",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0165",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0166",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0167",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0168",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0169",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0170",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0171",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0172",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0173",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m1750-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0174",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0175",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0176",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0177",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0178",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0179",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0180",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0181",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0182",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0183",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0184",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0185",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0186",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0187",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0188",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0189",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0190",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0191",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0192",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0193",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0194",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0195",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0196",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0197",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0198",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2000-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0199",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0200",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0201",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0202",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0203",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0204",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0205",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0206",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__annual_energy",
+          "native": -8284329.920145388,
+          "oracle": -8284330.085954271,
+          "relative_deviation": 2.0014760611331836e-08,
+          "absolute_error": 0.16580888349562883,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__discounted_energy",
+          "native": -127350455.98797517,
+          "oracle": -127350458.53686412,
+          "relative_deviation": 2.0014760691279074e-08,
+          "absolute_error": 2.5488889515399933,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__electrical_load",
+          "native": 1865.5176491904367,
+          "oracle": 1865.517671460416,
+          "relative_deviation": 1.1937694128899071e-08,
+          "absolute_error": 2.2269979353950475e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__net_electric",
+          "native": -1112.5879559690288,
+          "oracle": -1112.5879782372108,
+          "relative_deviation": 2.0014760540849903e-08,
+          "absolute_error": 2.2268181965046097e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__gas_ledger__evaluate__total_rejected",
+          "native": 3782.846371710214,
+          "oracle": 3782.846393981042,
+          "relative_deviation": 5.887320239943244e-09,
+          "absolute_error": 2.2270828139880905e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__rejection_capacity__evaluate__margin",
+          "native": 1217.153628289786,
+          "oracle": 1217.1536060189578,
+          "relative_deviation": 1.8297467164168288e-08,
+          "absolute_error": 2.2270828139880905e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+          "native": -7113405.915089925,
+          "oracle": -7113406.001384442,
+          "relative_deviation": 1.2131251457353676e-08,
+          "absolute_error": 0.0862945169210434,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__power_margin",
+          "native": -1831.561766242542,
+          "oracle": -1831.5617885125455,
+          "relative_deviation": 1.2159023842513152e-08,
+          "absolute_error": 2.2270003455560072e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__pump_electric",
+          "native": 1861.561766242542,
+          "oracle": 1861.5617885125455,
+          "relative_deviation": 1.1963075087265624e-08,
+          "absolute_error": 2.2270003455560072e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__total_rejection",
+          "native": 2731.5639790570594,
+          "oracle": 2731.564001327875,
+          "relative_deviation": 8.15313695601814e-09,
+          "absolute_error": 2.227081540695508e-05,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__water_pre__evaluate__water_flow",
+          "native": 7213405.915089925,
+          "oracle": 7213406.001384442,
+          "relative_deviation": 1.1963074989052496e-08,
+          "absolute_error": 0.0862945169210434,
+          "absolute_limit": 0.0
+        }
+      ],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0207",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0208",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0209",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0210",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0211",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0212",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0213",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0214",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0215",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0216",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0217",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0218",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0219",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0220",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0221",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0222",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0223",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2250-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0224",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0225",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0226",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0227",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0228",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0229",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0230",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0231",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0232",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0233",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0234",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0235",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0236",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0237",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0238",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0239",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0240",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0241",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0242",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0243",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0244",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0245",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0246",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0247",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0248",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q2800-m2500-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0249",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0250",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0251",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0252",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0253",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0254",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0255",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0256",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0257",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0258",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0259",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0260",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0261",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0262",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0263",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0264",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0265",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0266",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0267",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0268",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0269",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0270",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0271",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0272",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0273",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1500-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0274",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0275",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0276",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0277",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0278",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0279",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0280",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0281",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0282",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0283",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0284",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0285",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0286",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0287",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0288",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0289",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0290",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0291",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0292",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0293",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0294",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0295",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0296",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0297",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0298",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m1750-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0299",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0300",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0301",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0302",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0303",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0304",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0305",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0306",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0307",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0308",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0309",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0310",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0311",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0312",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0313",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0314",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0315",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0316",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0317",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0318",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0319",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0320",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0321",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0322",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0323",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2000-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0324",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0325",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0326",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0327",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0328",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0329",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0330",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0331",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0332",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0333",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0334",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0335",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0336",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0337",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0338",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0339",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0340",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0341",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0342",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0343",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0344",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0345",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0346",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0347",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0348",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2250-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0349",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0350",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0351",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0352",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0353",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.2-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0354",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0355",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0356",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0357",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0358",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.35-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0359",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0360",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0361",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0362",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0363",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.5-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0364",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0365",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0366",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0367",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0368",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.65-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0369",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-20",
+      "candidate_id": "20260926-design-study-component-alternatives:c0370",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-25",
+      "candidate_id": "20260926-design-study-component-alternatives:c0371",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua25-25-40",
+      "candidate_id": "20260926-design-study-component-alternatives:c0372",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua30-30-50",
+      "candidate_id": "20260926-design-study-component-alternatives:c0373",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "gas-q3000-m2500-r1.8-ua40-40-60",
+      "candidate_id": "20260926-design-study-component-alternatives:c0374",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n10-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0375",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n10-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0376",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n10-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0377",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n10-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0378",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n10-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0379",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n10-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0380",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n11-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0381",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n11-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0382",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n11-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0383",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n11-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0384",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n11-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0385",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n11-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0386",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n12-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0387",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n12-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0388",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n12-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0389",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n12-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0390",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n12-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0391",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n12-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0392",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n14-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0393",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n14-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0394",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n14-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0395",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n14-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0396",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2500-n14-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0397",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n10-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0398",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n10-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0399",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n10-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0400",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n10-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0401",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n10-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0402",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n10-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0403",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n11-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0404",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n11-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0405",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n11-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0406",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n11-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0407",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n11-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0408",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n11-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0409",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n12-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0410",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n12-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0411",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n12-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0412",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n12-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0413",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n12-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0414",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n12-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0415",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n14-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0416",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n14-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0417",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n14-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0418",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n14-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0419",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q2800-n14-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0420",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n10-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0421",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n10-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0422",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n10-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0423",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n10-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0424",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n10-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0425",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n10-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0426",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n11-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0427",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n11-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0428",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n11-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0429",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n11-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0430",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n11-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0431",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n11-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0432",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n12-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0433",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n12-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0434",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n12-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0435",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n12-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0436",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n12-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0437",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n12-k4-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0438",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n14-k2-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0439",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n14-k2-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0440",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n14-k3-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0441",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n14-k3-pump250",
+      "candidate_id": "20260926-design-study-component-alternatives:c0442",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "steam-q3000-n14-k4-pump225",
+      "candidate_id": "20260926-design-study-component-alternatives:c0443",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-gas-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0444",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-gas-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0445",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-steam-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0446",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-steam-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0447",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-both-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0448",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-both-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0449",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0450",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0451",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-steam-quote-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0452",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-steam-quote-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0453",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x0.5-steam-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0454",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-gas-quote-x1.5-steam-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0455",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-recurring-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0456",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-recurring-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0457",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-common-source-pv-5e+08",
+      "candidate_id": "20260926-design-study-component-alternatives:c0458",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2500-common-source-pv-2e+09",
+      "candidate_id": "20260926-design-study-component-alternatives:c0459",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "controller-q2500-gas-500",
+      "candidate_id": "20260926-design-study-component-alternatives:c0460",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "controller-q2500-steam-500",
+      "candidate_id": "20260926-design-study-component-alternatives:c0461",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-gas-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0462",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-gas-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0463",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-steam-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0464",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-steam-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0465",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-both-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0466",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-both-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0467",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0468",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0469",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-steam-quote-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0470",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-steam-quote-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0471",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x0.5-steam-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0472",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-gas-quote-x1.5-steam-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0473",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-recurring-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0474",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-recurring-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0475",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-common-source-pv-5e+08",
+      "candidate_id": "20260926-design-study-component-alternatives:c0476",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q2800-common-source-pv-2e+09",
+      "candidate_id": "20260926-design-study-component-alternatives:c0477",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "controller-q2800-gas-500",
+      "candidate_id": "20260926-design-study-component-alternatives:c0478",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "controller-q2800-steam-500",
+      "candidate_id": "20260926-design-study-component-alternatives:c0479",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-gas-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0480",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [
+        {
+          "channel": "component_alternatives__plant__gas_boundary__evaluate__bypass_flow",
+          "native": 6.979494101063665,
+          "oracle": 6.979494118551429,
+          "relative_deviation": 2.5055919281037223e-09,
+          "absolute_error": 1.7487764125689864e-08,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+          "native": 0.13846356435738016,
+          "oracle": 0.13846356477915833,
+          "relative_deviation": 3.0461310787419645e-09,
+          "absolute_error": 4.2177816794719547e-10,
+          "absolute_limit": 0.0
+        }
+      ],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-gas-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0481",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-steam-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0482",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-steam-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0483",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-both-eta-0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0484",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [
+        {
+          "channel": "component_alternatives__plant__gas_boundary__evaluate__bypass_flow",
+          "native": 6.979494101063665,
+          "oracle": 6.979494118551429,
+          "relative_deviation": 2.5055919281037223e-09,
+          "absolute_error": 1.7487764125689864e-08,
+          "absolute_limit": 0.0
+        },
+        {
+          "channel": "component_alternatives__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+          "native": 0.13846356435738016,
+          "oracle": 0.13846356477915833,
+          "relative_deviation": 3.0461310787419645e-09,
+          "absolute_error": 4.2177816794719547e-10,
+          "absolute_limit": 0.0
+        }
+      ],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-both-eta+0.03",
+      "candidate_id": "20260926-design-study-component-alternatives:c0485",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0486",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0487",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-steam-quote-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0488",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-steam-quote-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0489",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x0.5-steam-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0490",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-gas-quote-x1.5-steam-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0491",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-recurring-x0.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0492",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-recurring-x1.5",
+      "candidate_id": "20260926-design-study-component-alternatives:c0493",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-common-source-pv-5e+08",
+      "candidate_id": "20260926-design-study-component-alternatives:c0494",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "sensitivity-q3000-common-source-pv-2e+09",
+      "candidate_id": "20260926-design-study-component-alternatives:c0495",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "controller-q3000-gas-500",
+      "candidate_id": "20260926-design-study-component-alternatives:c0496",
+      "satisfies_all_implemented_checks": false,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    },
+    {
+      "case": "controller-q3000-steam-500",
+      "candidate_id": "20260926-design-study-component-alternatives:c0497",
+      "satisfies_all_implemented_checks": true,
+      "numeric_mismatches": [],
+      "predicate_mismatches": []
+    }
+  ],
+  "channels_per_case": 872,
+  "constraints_per_case": 84,
+  "cases_with_numeric_mismatches": 6,
+  "cases_with_predicate_mismatches": 0
+}

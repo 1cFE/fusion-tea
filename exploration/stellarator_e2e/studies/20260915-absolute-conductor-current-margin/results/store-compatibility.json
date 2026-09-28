@@ -1,0 +1,10 @@
+{
+  "study_id": "20260915-absolute-conductor-current-margin",
+  "executable_fingerprint": "c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be",
+  "model_contract_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
+  "study_definition_fingerprint": "39a2b920f642f3a377486f45bb2eeea4650af38b36ec222c1be7f5987705b314",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "f3c0f4e3bdf6718c166d51a6f600e4da0e1a5b114d824d25c0a0f29697066eaa"
+}

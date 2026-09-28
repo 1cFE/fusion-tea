@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-15T16:40:05.582169+00:00",
+  "finished_at_utc": "2026-09-15T16:41:23.027226+00:00",
+  "elapsed_seconds": 77.44505554251373,
+  "cases": 64,
+  "states": {
+    "completed": 64
+  },
+  "store": "results/study/_work/20260915-tape-procurement-consistency.db",
+  "repo_revision": "a3a3a587dd1ab45e1d126511eadc5ff14615016b"
+}

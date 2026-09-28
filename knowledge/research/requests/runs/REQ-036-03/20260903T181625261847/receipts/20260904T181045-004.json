@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "registered",
+  "candidate": "/home/reid/1cfe/Pierro-strain.pdf",
+  "slug": "measurements_of_the_strain_dependence_of_critical_current",
+  "path": "knowledge/sources/measurements_of_the_strain_dependence_of_critical_current/",
+  "source_id": "943526b1bd0fad4672601d83e19217cf0f9b711d4982f343556ccb3cbbe0dc12",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-04T18:10:45.248231+00:00"
+}

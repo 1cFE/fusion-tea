@@ -1,0 +1,7 @@
+# T-006 post-execution record critique
+
+Read only exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/. Review the completed record for numerical correctness, honesty about the supported claim and missing coverage, and plain readability. This is a bounded executor quality review, not administrator synthesis or a goal review. Do not inspect outside the record directory or execute more model points.
+
+Check the 108-case native evidence, the distinction between the exhaustive 161-output comparison and the generic verifier's 25-channel subset, all 18 qualified predicates, the five passing cases, predeclared identities and invariances, complete 177-channel CSV/store evidence, snapshot identities/digests, and the engineered window's limitations. Check that no qualified design recommendation follows from extrapolated field capability, incomplete geometry qualification or incomplete manufacturing pricing. The pre-execution protocol and its committed critique remain historical preparation evidence; record.md is the final record draft.
+
+Write only postexecution-review.md in the study directory. Give separate correctness, honesty and readability outcomes, then PASS or required corrections with exact file/section references. The pending review row in record.md is expected and will be replaced with your outcome before the final freeze commit. Do not write synthesis.md or change results.

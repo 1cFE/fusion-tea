@@ -1,0 +1,303 @@
+# Generated Pipeline Configuration for inventory_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for inventory_tea"
+  output_folder: "inventory_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      constituent_inventory_params: ConstituentInventoryParams ../inputs/constituent_inventory_params.json
+
+
+  # sector_constituent_inventory.Covered_Layer_VolumeModule
+  aries_constituent_inventory__full__layer:
+    module_type: sector_constituent_inventory.Covered_Layer_VolumeModule
+    inputs:
+      coverage_in: float constituent_inventory_params.aries_constituent_inventory__full__coverage
+      thickness_in: float constituent_inventory_params.aries_constituent_inventory__full__thickness
+      area_basis_in: float constituent_inventory_params.aries_constituent_inventory__full__midpoint_area_basis
+    outputs:
+      root: RootModel[float] aries_constituent_inventory__full__layer__volume
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__full__lipb__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      region_volume_in: float aries_constituent_inventory__full__layer__volume.root
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__full__lipb__component_rate
+      density_in: float constituent_inventory_params.aries_constituent_inventory__full__lipb__material_density
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__full__lipb__volume_fraction
+    outputs:
+      constituent_volume: float aries_constituent_inventory__full__lipb__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__full__lipb__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__full__lipb__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__full__sic_insert__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      density_in: float constituent_inventory_params.aries_constituent_inventory__full__sic_insert__material_density
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__full__sic_insert__component_rate
+      region_volume_in: float aries_constituent_inventory__full__layer__volume.root
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__full__sic_insert__volume_fraction
+    outputs:
+      constituent_volume: float aries_constituent_inventory__full__sic_insert__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__full__sic_insert__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__full__sic_insert__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__full__ferritic_steel__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__full__ferritic_steel__volume_fraction
+      density_in: float constituent_inventory_params.aries_constituent_inventory__full__ferritic_steel__material_density
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__full__ferritic_steel__component_rate
+      region_volume_in: float aries_constituent_inventory__full__layer__volume.root
+    outputs:
+      constituent_volume: float aries_constituent_inventory__full__ferritic_steel__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__full__ferritic_steel__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__full__ferritic_steel__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Three_Constituent_Recipe_SummaryModule
+  aries_constituent_inventory__full__recipe:
+    module_type: sector_constituent_inventory.Three_Constituent_Recipe_SummaryModule
+    inputs:
+      unquantified_fraction_in: float constituent_inventory_params.aries_constituent_inventory__full__helium_fraction
+      mass_3_in: float aries_constituent_inventory__full__ferritic_steel__inventory__known_mass
+      price_3_in: float aries_constituent_inventory__full__ferritic_steel__inventory__source_price_subtotal
+      region_volume_in: float aries_constituent_inventory__full__layer__volume.root
+      price_1_in: float aries_constituent_inventory__full__lipb__inventory__source_price_subtotal
+      mass_1_in: float aries_constituent_inventory__full__lipb__inventory__known_mass
+      fraction_1_in: float constituent_inventory_params.aries_constituent_inventory__full__lipb__volume_fraction
+      price_2_in: float aries_constituent_inventory__full__sic_insert__inventory__source_price_subtotal
+      fraction_3_in: float constituent_inventory_params.aries_constituent_inventory__full__ferritic_steel__volume_fraction
+      fraction_2_in: float constituent_inventory_params.aries_constituent_inventory__full__sic_insert__volume_fraction
+      mass_2_in: float aries_constituent_inventory__full__sic_insert__inventory__known_mass
+    outputs:
+      unquantified_volume: float aries_constituent_inventory__full__recipe__unquantified_volume
+      source_price_subtotal: float aries_constituent_inventory__full__recipe__source_price_subtotal
+      known_mass: float aries_constituent_inventory__full__recipe__known_mass
+      represented_fraction: float aries_constituent_inventory__full__recipe__represented_fraction
+
+  # sector_constituent_inventory.Covered_Layer_VolumeModule
+  aries_constituent_inventory__behind_divertor__layer:
+    module_type: sector_constituent_inventory.Covered_Layer_VolumeModule
+    inputs:
+      coverage_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__coverage
+      thickness_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__thickness
+      area_basis_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__midpoint_area_basis
+    outputs:
+      root: RootModel[float] aries_constituent_inventory__behind_divertor__layer__volume
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__behind_divertor__ferritic_steel__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      region_volume_in: float aries_constituent_inventory__behind_divertor__layer__volume.root
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__ferritic_steel__volume_fraction
+      density_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__ferritic_steel__material_density
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__ferritic_steel__component_rate
+    outputs:
+      constituent_volume: float aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__behind_divertor__sic_insert__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__sic_insert__component_rate
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__sic_insert__volume_fraction
+      region_volume_in: float aries_constituent_inventory__behind_divertor__layer__volume.root
+      density_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__sic_insert__material_density
+    outputs:
+      constituent_volume: float aries_constituent_inventory__behind_divertor__sic_insert__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__behind_divertor__sic_insert__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__behind_divertor__sic_insert__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__behind_divertor__lipb__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      density_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__lipb__material_density
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__lipb__component_rate
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__lipb__volume_fraction
+      region_volume_in: float aries_constituent_inventory__behind_divertor__layer__volume.root
+    outputs:
+      constituent_volume: float aries_constituent_inventory__behind_divertor__lipb__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__behind_divertor__lipb__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__behind_divertor__lipb__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Three_Constituent_Recipe_SummaryModule
+  aries_constituent_inventory__behind_divertor__recipe:
+    module_type: sector_constituent_inventory.Three_Constituent_Recipe_SummaryModule
+    inputs:
+      unquantified_fraction_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__helium_fraction
+      fraction_2_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__sic_insert__volume_fraction
+      mass_2_in: float aries_constituent_inventory__behind_divertor__sic_insert__inventory__known_mass
+      region_volume_in: float aries_constituent_inventory__behind_divertor__layer__volume.root
+      price_3_in: float aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__source_price_subtotal
+      price_2_in: float aries_constituent_inventory__behind_divertor__sic_insert__inventory__source_price_subtotal
+      mass_3_in: float aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__known_mass
+      price_1_in: float aries_constituent_inventory__behind_divertor__lipb__inventory__source_price_subtotal
+      mass_1_in: float aries_constituent_inventory__behind_divertor__lipb__inventory__known_mass
+      fraction_1_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__lipb__volume_fraction
+      fraction_3_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__ferritic_steel__volume_fraction
+    outputs:
+      unquantified_volume: float aries_constituent_inventory__behind_divertor__recipe__unquantified_volume
+      source_price_subtotal: float aries_constituent_inventory__behind_divertor__recipe__source_price_subtotal
+      known_mass: float aries_constituent_inventory__behind_divertor__recipe__known_mass
+      represented_fraction: float aries_constituent_inventory__behind_divertor__recipe__represented_fraction
+
+  # sector_constituent_inventory.Covered_Layer_VolumeModule
+  aries_constituent_inventory__tapered__layer:
+    module_type: sector_constituent_inventory.Covered_Layer_VolumeModule
+    inputs:
+      area_basis_in: float constituent_inventory_params.aries_constituent_inventory__tapered__midpoint_area_basis
+      thickness_in: float constituent_inventory_params.aries_constituent_inventory__tapered__thickness
+      coverage_in: float constituent_inventory_params.aries_constituent_inventory__tapered__coverage
+    outputs:
+      root: RootModel[float] aries_constituent_inventory__tapered__layer__volume
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__tapered__ferritic_steel__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__tapered__ferritic_steel__volume_fraction
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__tapered__ferritic_steel__component_rate
+      density_in: float constituent_inventory_params.aries_constituent_inventory__tapered__ferritic_steel__material_density
+      region_volume_in: float aries_constituent_inventory__tapered__layer__volume.root
+    outputs:
+      constituent_volume: float aries_constituent_inventory__tapered__ferritic_steel__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__tapered__ferritic_steel__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__tapered__ferritic_steel__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__tapered__sic_insert__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      density_in: float constituent_inventory_params.aries_constituent_inventory__tapered__sic_insert__material_density
+      region_volume_in: float aries_constituent_inventory__tapered__layer__volume.root
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__tapered__sic_insert__component_rate
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__tapered__sic_insert__volume_fraction
+    outputs:
+      constituent_volume: float aries_constituent_inventory__tapered__sic_insert__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__tapered__sic_insert__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__tapered__sic_insert__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Constituent_InventoryModule
+  aries_constituent_inventory__tapered__lipb__inventory:
+    module_type: sector_constituent_inventory.Constituent_InventoryModule
+    inputs:
+      region_volume_in: float aries_constituent_inventory__tapered__layer__volume.root
+      density_in: float constituent_inventory_params.aries_constituent_inventory__tapered__lipb__material_density
+      unit_price_in: float constituent_inventory_params.aries_constituent_inventory__tapered__lipb__component_rate
+      fraction_in: float constituent_inventory_params.aries_constituent_inventory__tapered__lipb__volume_fraction
+    outputs:
+      constituent_volume: float aries_constituent_inventory__tapered__lipb__inventory__constituent_volume
+      known_mass: float aries_constituent_inventory__tapered__lipb__inventory__known_mass
+      source_price_subtotal: float aries_constituent_inventory__tapered__lipb__inventory__source_price_subtotal
+
+  # sector_constituent_inventory.Three_Constituent_Recipe_SummaryModule
+  aries_constituent_inventory__tapered__recipe:
+    module_type: sector_constituent_inventory.Three_Constituent_Recipe_SummaryModule
+    inputs:
+      mass_1_in: float aries_constituent_inventory__tapered__lipb__inventory__known_mass
+      region_volume_in: float aries_constituent_inventory__tapered__layer__volume.root
+      unquantified_fraction_in: float constituent_inventory_params.aries_constituent_inventory__tapered__helium_fraction
+      mass_3_in: float aries_constituent_inventory__tapered__ferritic_steel__inventory__known_mass
+      fraction_1_in: float constituent_inventory_params.aries_constituent_inventory__tapered__lipb__volume_fraction
+      fraction_3_in: float constituent_inventory_params.aries_constituent_inventory__tapered__ferritic_steel__volume_fraction
+      mass_2_in: float aries_constituent_inventory__tapered__sic_insert__inventory__known_mass
+      fraction_2_in: float constituent_inventory_params.aries_constituent_inventory__tapered__sic_insert__volume_fraction
+      price_3_in: float aries_constituent_inventory__tapered__ferritic_steel__inventory__source_price_subtotal
+      price_2_in: float aries_constituent_inventory__tapered__sic_insert__inventory__source_price_subtotal
+      price_1_in: float aries_constituent_inventory__tapered__lipb__inventory__source_price_subtotal
+    outputs:
+      unquantified_volume: float aries_constituent_inventory__tapered__recipe__unquantified_volume
+      source_price_subtotal: float aries_constituent_inventory__tapered__recipe__source_price_subtotal
+      known_mass: float aries_constituent_inventory__tapered__recipe__known_mass
+      represented_fraction: float aries_constituent_inventory__tapered__recipe__represented_fraction
+
+  # sector_constituent_inventory.Three_Sector_Inventory_SumModule
+  aries_constituent_inventory__reference_blanket_subset__totals:
+    module_type: sector_constituent_inventory.Three_Sector_Inventory_SumModule
+    inputs:
+      coverage_1_in: float constituent_inventory_params.aries_constituent_inventory__full__coverage
+      mass_2_in: float aries_constituent_inventory__behind_divertor__recipe__known_mass
+      price_3_in: float aries_constituent_inventory__tapered__recipe__source_price_subtotal
+      volume_1_in: float aries_constituent_inventory__full__layer__volume.root
+      price_1_in: float aries_constituent_inventory__full__recipe__source_price_subtotal
+      mass_1_in: float aries_constituent_inventory__full__recipe__known_mass
+      unquantified_volume_3_in: float aries_constituent_inventory__tapered__recipe__unquantified_volume
+      coverage_2_in: float constituent_inventory_params.aries_constituent_inventory__behind_divertor__coverage
+      volume_3_in: float aries_constituent_inventory__tapered__layer__volume.root
+      price_2_in: float aries_constituent_inventory__behind_divertor__recipe__source_price_subtotal
+      coverage_3_in: float constituent_inventory_params.aries_constituent_inventory__tapered__coverage
+      mass_3_in: float aries_constituent_inventory__tapered__recipe__known_mass
+      unquantified_volume_1_in: float aries_constituent_inventory__full__recipe__unquantified_volume
+      unquantified_volume_2_in: float aries_constituent_inventory__behind_divertor__recipe__unquantified_volume
+      volume_2_in: float aries_constituent_inventory__behind_divertor__layer__volume.root
+    outputs:
+      known_mass: float aries_constituent_inventory__reference_blanket_subset__totals__known_mass
+      unquantified_volume: float aries_constituent_inventory__reference_blanket_subset__totals__unquantified_volume
+      source_price_subtotal: float aries_constituent_inventory__reference_blanket_subset__totals__source_price_subtotal
+      volume: float aries_constituent_inventory__reference_blanket_subset__totals__volume
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      aries_constituent_inventory__full__layer__volume: RootModel[float] full__region_volume.json
+      aries_constituent_inventory__full__lipb__inventory__constituent_volume: float full__lipb__constituent_volume.json
+      aries_constituent_inventory__full__lipb__inventory__known_mass: float full__lipb__known_mass.json
+      aries_constituent_inventory__full__lipb__inventory__source_price_subtotal: float full__lipb__source_price_subtotal.json
+      aries_constituent_inventory__full__sic_insert__inventory__constituent_volume: float full__sic_insert__constituent_volume.json
+      aries_constituent_inventory__full__sic_insert__inventory__known_mass: float full__sic_insert__known_mass.json
+      aries_constituent_inventory__full__sic_insert__inventory__source_price_subtotal: float full__sic_insert__source_price_subtotal.json
+      aries_constituent_inventory__full__ferritic_steel__inventory__constituent_volume: float full__ferritic_steel__constituent_volume.json
+      aries_constituent_inventory__full__ferritic_steel__inventory__known_mass: float full__ferritic_steel__known_mass.json
+      aries_constituent_inventory__full__ferritic_steel__inventory__source_price_subtotal: float full__ferritic_steel__source_price_subtotal.json
+      aries_constituent_inventory__full__recipe__unquantified_volume: float full__unquantified_helium_volume.json
+      aries_constituent_inventory__full__recipe__source_price_subtotal: float full__source_price_subtotal.json
+      aries_constituent_inventory__full__recipe__known_mass: float full__known_mass.json
+      aries_constituent_inventory__full__recipe__represented_fraction: float aries_constituent_inventory__full__recipe__represented_fraction.json
+      aries_constituent_inventory__behind_divertor__layer__volume: RootModel[float] behind_divertor__region_volume.json
+      aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__constituent_volume: float behind_divertor__ferritic_steel__constituent_volume.json
+      aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__known_mass: float behind_divertor__ferritic_steel__known_mass.json
+      aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__source_price_subtotal: float behind_divertor__ferritic_steel__source_price_subtotal.json
+      aries_constituent_inventory__behind_divertor__sic_insert__inventory__constituent_volume: float behind_divertor__sic_insert__constituent_volume.json
+      aries_constituent_inventory__behind_divertor__sic_insert__inventory__known_mass: float behind_divertor__sic_insert__known_mass.json
+      aries_constituent_inventory__behind_divertor__sic_insert__inventory__source_price_subtotal: float behind_divertor__sic_insert__source_price_subtotal.json
+      aries_constituent_inventory__behind_divertor__lipb__inventory__constituent_volume: float behind_divertor__lipb__constituent_volume.json
+      aries_constituent_inventory__behind_divertor__lipb__inventory__known_mass: float behind_divertor__lipb__known_mass.json
+      aries_constituent_inventory__behind_divertor__lipb__inventory__source_price_subtotal: float behind_divertor__lipb__source_price_subtotal.json
+      aries_constituent_inventory__behind_divertor__recipe__unquantified_volume: float behind_divertor__unquantified_helium_volume.json
+      aries_constituent_inventory__behind_divertor__recipe__source_price_subtotal: float behind_divertor__source_price_subtotal.json
+      aries_constituent_inventory__behind_divertor__recipe__known_mass: float behind_divertor__known_mass.json
+      aries_constituent_inventory__behind_divertor__recipe__represented_fraction: float aries_constituent_inventory__behind_divertor__recipe__represented_fraction.json
+      aries_constituent_inventory__tapered__layer__volume: RootModel[float] tapered__region_volume.json
+      aries_constituent_inventory__tapered__ferritic_steel__inventory__constituent_volume: float tapered__ferritic_steel__constituent_volume.json
+      aries_constituent_inventory__tapered__ferritic_steel__inventory__known_mass: float tapered__ferritic_steel__known_mass.json
+      aries_constituent_inventory__tapered__ferritic_steel__inventory__source_price_subtotal: float tapered__ferritic_steel__source_price_subtotal.json
+      aries_constituent_inventory__tapered__sic_insert__inventory__constituent_volume: float tapered__sic_insert__constituent_volume.json
+      aries_constituent_inventory__tapered__sic_insert__inventory__known_mass: float tapered__sic_insert__known_mass.json
+      aries_constituent_inventory__tapered__sic_insert__inventory__source_price_subtotal: float tapered__sic_insert__source_price_subtotal.json
+      aries_constituent_inventory__tapered__lipb__inventory__constituent_volume: float tapered__lipb__constituent_volume.json
+      aries_constituent_inventory__tapered__lipb__inventory__known_mass: float tapered__lipb__known_mass.json
+      aries_constituent_inventory__tapered__lipb__inventory__source_price_subtotal: float tapered__lipb__source_price_subtotal.json
+      aries_constituent_inventory__tapered__recipe__unquantified_volume: float tapered__unquantified_helium_volume.json
+      aries_constituent_inventory__tapered__recipe__source_price_subtotal: float tapered__source_price_subtotal.json
+      aries_constituent_inventory__tapered__recipe__known_mass: float tapered__known_mass.json
+      aries_constituent_inventory__tapered__recipe__represented_fraction: float aries_constituent_inventory__tapered__recipe__represented_fraction.json
+      aries_constituent_inventory__reference_blanket_subset__totals__known_mass: float aries_constituent_inventory__reference_blanket_subset__totals__known_mass.json
+      aries_constituent_inventory__reference_blanket_subset__totals__unquantified_volume: float aries_constituent_inventory__reference_blanket_subset__totals__unquantified_volume.json
+      aries_constituent_inventory__reference_blanket_subset__totals__source_price_subtotal: float aries_constituent_inventory__reference_blanket_subset__totals__source_price_subtotal.json
+      aries_constituent_inventory__reference_blanket_subset__totals__volume: float aries_constituent_inventory__reference_blanket_subset__totals__volume.json

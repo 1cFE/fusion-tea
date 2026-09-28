@@ -1,0 +1,692 @@
+{
+  "historical_byte_parity": "Not established: no pre-first-recovery persistent database hash was saved. Current content is checked instead.",
+  "current_sidecars": [],
+  "sqlite_integrity": [
+    [
+      "ok"
+    ]
+  ],
+  "rows": 113,
+  "attempts": 113,
+  "complete_numeric_map_matches": 113,
+  "cases": [
+    {
+      "case": "nominal-calculated",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0000",
+      "evidence_digest": "6d7d989cda369afef58d8560d701a2c91a40314a07ce0576e7ab5953cf9fa44b",
+      "artifact_sha256": "6d7d989cda369afef58d8560d701a2c91a40314a07ce0576e7ab5953cf9fa44b"
+    },
+    {
+      "case": "nominal-source-assumed",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0001",
+      "evidence_digest": "e4097bec08e4896c17e04cb3c0a5b8c094858b5c0e9eceb0fb95d09e57161573",
+      "artifact_sha256": "e4097bec08e4896c17e04cb3c0a5b8c094858b5c0e9eceb0fb95d09e57161573"
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0002",
+      "evidence_digest": "dc3d1febab141ca3e4c00b48977fbd3bd4939417fde66b84c1fd2c48a4658420",
+      "artifact_sha256": "dc3d1febab141ca3e4c00b48977fbd3bd4939417fde66b84c1fd2c48a4658420"
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0003",
+      "evidence_digest": "35942b491d3cebabd63a054a1644eb02936675540df032246a61ececc65c4448",
+      "artifact_sha256": "35942b491d3cebabd63a054a1644eb02936675540df032246a61ececc65c4448"
+    },
+    {
+      "case": "auxiliary_cooling_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0004",
+      "evidence_digest": "032b8cb0977814eca6dedaddcd2fb9c6e917dc5fce108442710c9e8d62b5ed14",
+      "artifact_sha256": "032b8cb0977814eca6dedaddcd2fb9c6e917dc5fce108442710c9e8d62b5ed14"
+    },
+    {
+      "case": "auxiliary_cooling_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0005",
+      "evidence_digest": "3555ddd251ace0d47839543008c94c6dbf66009a85bd9eca87bef516faf765f5",
+      "artifact_sha256": "3555ddd251ace0d47839543008c94c6dbf66009a85bd9eca87bef516faf765f5"
+    },
+    {
+      "case": "blanket_inventory_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0006",
+      "evidence_digest": "9829642387a59baa475149247734f17dd465f8020952d9ba7451f6b1428bacc8",
+      "artifact_sha256": "9829642387a59baa475149247734f17dd465f8020952d9ba7451f6b1428bacc8"
+    },
+    {
+      "case": "blanket_inventory_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0007",
+      "evidence_digest": "474547d6b5866a9b93f87238e57c2fc7b0e94bfb7ed308f121aa1708f45c0219",
+      "artifact_sha256": "474547d6b5866a9b93f87238e57c2fc7b0e94bfb7ed308f121aa1708f45c0219"
+    },
+    {
+      "case": "compressor_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0008",
+      "evidence_digest": "f6e3075f27d3ab3474a0c820baea640151c72be2d11c3d6bd33fe5a94e9bba18",
+      "artifact_sha256": "f6e3075f27d3ab3474a0c820baea640151c72be2d11c3d6bd33fe5a94e9bba18"
+    },
+    {
+      "case": "compressor_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0009",
+      "evidence_digest": "210a1840237b1e2e9767eae4c4b501cfbd012b28376bbbac61f8f714528a48e8",
+      "artifact_sha256": "210a1840237b1e2e9767eae4c4b501cfbd012b28376bbbac61f8f714528a48e8"
+    },
+    {
+      "case": "conversion_services_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0010",
+      "evidence_digest": "b3a971aedffd45d4c287dd547b00b725aa03de271f57ba97fc31f450c815a883",
+      "artifact_sha256": "b3a971aedffd45d4c287dd547b00b725aa03de271f57ba97fc31f450c815a883"
+    },
+    {
+      "case": "conversion_services_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0011",
+      "evidence_digest": "469c99653ac79698c33aa9d85d6b5b267ea75a9921f98c7d7456dd7b8d0fa06b",
+      "artifact_sha256": "469c99653ac79698c33aa9d85d6b5b267ea75a9921f98c7d7456dd7b8d0fa06b"
+    },
+    {
+      "case": "divertor_duty_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0012",
+      "evidence_digest": "cc9923069c238a75317895e3bedb5b220b30e575e48dae77856181eb73f3c7b8",
+      "artifact_sha256": "cc9923069c238a75317895e3bedb5b220b30e575e48dae77856181eb73f3c7b8"
+    },
+    {
+      "case": "divertor_duty_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0013",
+      "evidence_digest": "b94c42069ef0adae6ff63c7beb3f4d60d409b275bd4d7aadf44856682c3cbd6b",
+      "artifact_sha256": "b94c42069ef0adae6ff63c7beb3f4d60d409b275bd4d7aadf44856682c3cbd6b"
+    },
+    {
+      "case": "divertor_hx_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0014",
+      "evidence_digest": "a03f4ab4a854f9f5eda5f48d3c90cc12b73059b4ff5e21286d70263bad69a929",
+      "artifact_sha256": "a03f4ab4a854f9f5eda5f48d3c90cc12b73059b4ff5e21286d70263bad69a929"
+    },
+    {
+      "case": "divertor_hx_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0015",
+      "evidence_digest": "d6d8a3089d22f8501d76effeb5bfea3ef82b4d0575758732cff7b489ffb6dc96",
+      "artifact_sha256": "d6d8a3089d22f8501d76effeb5bfea3ef82b4d0575758732cff7b489ffb6dc96"
+    },
+    {
+      "case": "divertor_inventory_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0016",
+      "evidence_digest": "bb05cfddb7666e3f9eda99a91105a18b190a2befab8f70cd809ccad7b2154042",
+      "artifact_sha256": "bb05cfddb7666e3f9eda99a91105a18b190a2befab8f70cd809ccad7b2154042"
+    },
+    {
+      "case": "divertor_inventory_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0017",
+      "evidence_digest": "b9cd492db25d5841483435ca31725dccffd51c167f9767103ce08ca7c3a11635",
+      "artifact_sha256": "b9cd492db25d5841483435ca31725dccffd51c167f9767103ce08ca7c3a11635"
+    },
+    {
+      "case": "divertor_pump_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0018",
+      "evidence_digest": "647d79aa68a7756142b3e8feb4114bc0d746eb40fb296c97723a04aecedb814b",
+      "artifact_sha256": "647d79aa68a7756142b3e8feb4114bc0d746eb40fb296c97723a04aecedb814b"
+    },
+    {
+      "case": "divertor_pump_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0019",
+      "evidence_digest": "abd57c053e0e586065c31fbba70c4d6d1a876696eef2feefa553d28f3f13c5e9",
+      "artifact_sha256": "abd57c053e0e586065c31fbba70c4d6d1a876696eef2feefa553d28f3f13c5e9"
+    },
+    {
+      "case": "electrical_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0020",
+      "evidence_digest": "bce452de0225cf1b354ed51348220e70f3256d29df259a02733f35a639889fbd",
+      "artifact_sha256": "bce452de0225cf1b354ed51348220e70f3256d29df259a02733f35a639889fbd"
+    },
+    {
+      "case": "electrical_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0021",
+      "evidence_digest": "7bb6081237861967a88d7191c246ad402a8c3eb36b0297265cb0f5d915397692",
+      "artifact_sha256": "7bb6081237861967a88d7191c246ad402a8c3eb36b0297265cb0f5d915397692"
+    },
+    {
+      "case": "facilities_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0022",
+      "evidence_digest": "318d99cfd83983248014b8256d8d929b597edb40e3cdc90ad8fa2c24b3f5677c",
+      "artifact_sha256": "318d99cfd83983248014b8256d8d929b597edb40e3cdc90ad8fa2c24b3f5677c"
+    },
+    {
+      "case": "facilities_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0023",
+      "evidence_digest": "d72071bef2aa465e8eeca2d643512de61572df940ece591a6c27b58c23261d32",
+      "artifact_sha256": "d72071bef2aa465e8eeca2d643512de61572df940ece591a6c27b58c23261d32"
+    },
+    {
+      "case": "fuel_processing_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0024",
+      "evidence_digest": "59b3f643b3b37f72fa6154bb3626067e34869a4d897fa09cc821ea13f9ed7556",
+      "artifact_sha256": "59b3f643b3b37f72fa6154bb3626067e34869a4d897fa09cc821ea13f9ed7556"
+    },
+    {
+      "case": "fuel_processing_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0025",
+      "evidence_digest": "ab43160d7156defbdca31e5080e32173bb9307da734bbc7a0fe1a460c9cf15b7",
+      "artifact_sha256": "ab43160d7156defbdca31e5080e32173bb9307da734bbc7a0fe1a460c9cf15b7"
+    },
+    {
+      "case": "fuel_services_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0026",
+      "evidence_digest": "402a05ff713dbe185fdae234a5c0260a396f3cba56f9a8e7ed9e86614a906dca",
+      "artifact_sha256": "402a05ff713dbe185fdae234a5c0260a396f3cba56f9a8e7ed9e86614a906dca"
+    },
+    {
+      "case": "fuel_services_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0027",
+      "evidence_digest": "9d6189bc83c476942bddda079ab8ccd1cdda55d103a32fffd7ce162c62f3009c",
+      "artifact_sha256": "9d6189bc83c476942bddda079ab8ccd1cdda55d103a32fffd7ce162c62f3009c"
+    },
+    {
+      "case": "generator_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0028",
+      "evidence_digest": "0fc8775ffd5c0003cc4b0297f0de839c349bbf82115f25344b7ca53b2e74431e",
+      "artifact_sha256": "0fc8775ffd5c0003cc4b0297f0de839c349bbf82115f25344b7ca53b2e74431e"
+    },
+    {
+      "case": "generator_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0029",
+      "evidence_digest": "0c97fe128bdd787ee7e103cc9774dffba7c48487d4e5a82ce36770e09ef2ec3c",
+      "artifact_sha256": "0c97fe128bdd787ee7e103cc9774dffba7c48487d4e5a82ce36770e09ef2ec3c"
+    },
+    {
+      "case": "he_duty_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0030",
+      "evidence_digest": "8ffdddc75796a3d56344a96ba431cf4578e6dd858db0095e3f374e8b03b95b06",
+      "artifact_sha256": "8ffdddc75796a3d56344a96ba431cf4578e6dd858db0095e3f374e8b03b95b06"
+    },
+    {
+      "case": "he_duty_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0031",
+      "evidence_digest": "fdaf3374025a679bab081bbf77094729f44cf70d8506e1f6ff26cc82da30fa72",
+      "artifact_sha256": "fdaf3374025a679bab081bbf77094729f44cf70d8506e1f6ff26cc82da30fa72"
+    },
+    {
+      "case": "he_hx_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0032",
+      "evidence_digest": "ca93f496319d848f056a5b71e540e26850b41e922228ce4b7a71c0ba5ed8cf33",
+      "artifact_sha256": "ca93f496319d848f056a5b71e540e26850b41e922228ce4b7a71c0ba5ed8cf33"
+    },
+    {
+      "case": "he_hx_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0033",
+      "evidence_digest": "11d0cceea6fcd7c2f3433cf4d6a53a67b3e8d58157914d3981fff8384a7f2aed",
+      "artifact_sha256": "11d0cceea6fcd7c2f3433cf4d6a53a67b3e8d58157914d3981fff8384a7f2aed"
+    },
+    {
+      "case": "he_pump_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0034",
+      "evidence_digest": "a31fd955a2274720b6c49a17aa9610e8bb2f7ee646cc81b8cbe4cd71a678b6f6",
+      "artifact_sha256": "a31fd955a2274720b6c49a17aa9610e8bb2f7ee646cc81b8cbe4cd71a678b6f6"
+    },
+    {
+      "case": "he_pump_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0035",
+      "evidence_digest": "3658cfe2bec9e4f682aafd7e8542946a1d6680787dfecb2a5b4d673046e166ad",
+      "artifact_sha256": "3658cfe2bec9e4f682aafd7e8542946a1d6680787dfecb2a5b4d673046e166ad"
+    },
+    {
+      "case": "heat_rejection_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0036",
+      "evidence_digest": "a814c6c505f6088f52a5a3f9030acd7bfd70d7ae6be00aa2c9cec01eac08f51e",
+      "artifact_sha256": "a814c6c505f6088f52a5a3f9030acd7bfd70d7ae6be00aa2c9cec01eac08f51e"
+    },
+    {
+      "case": "heat_rejection_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0037",
+      "evidence_digest": "f4c679fd23628484ef7073b61b87a9c0f69c0676d1453ab9492c680fd437651e",
+      "artifact_sha256": "f4c679fd23628484ef7073b61b87a9c0f69c0676d1453ab9492c680fd437651e"
+    },
+    {
+      "case": "heating_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0038",
+      "evidence_digest": "258cbb70ca530f32b6ea6744cd406d46da2c6e409bcba41c097a428b5898746a",
+      "artifact_sha256": "258cbb70ca530f32b6ea6744cd406d46da2c6e409bcba41c097a428b5898746a"
+    },
+    {
+      "case": "heating_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0039",
+      "evidence_digest": "049e47c338e024be877200f1b44bd1214db8cc00bfb074418b182b95934a3877",
+      "artifact_sha256": "049e47c338e024be877200f1b44bd1214db8cc00bfb074418b182b95934a3877"
+    },
+    {
+      "case": "impurity_control_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0040",
+      "evidence_digest": "bf3585f9ff6ad9fb1ad1aca95ca94f2722db9fc6cde9d19884a2141a843b4f00",
+      "artifact_sha256": "bf3585f9ff6ad9fb1ad1aca95ca94f2722db9fc6cde9d19884a2141a843b4f00"
+    },
+    {
+      "case": "impurity_control_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0041",
+      "evidence_digest": "04c3b993c0f5d4a376a55711e402e020c2c41bcfa84f4bcfbe37f3c1c79540ee",
+      "artifact_sha256": "04c3b993c0f5d4a376a55711e402e020c2c41bcfa84f4bcfbe37f3c1c79540ee"
+    },
+    {
+      "case": "instrumentation_control_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0042",
+      "evidence_digest": "532f4bfe25a98847be48977479cb241a2c0c82c241d0e56c8cdfbd1d9c8c1366",
+      "artifact_sha256": "532f4bfe25a98847be48977479cb241a2c0c82c241d0e56c8cdfbd1d9c8c1366"
+    },
+    {
+      "case": "instrumentation_control_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0043",
+      "evidence_digest": "d2855eb50576ac6246811be5774cbb1f96b464b887396aa379c60fbf0bc00cac",
+      "artifact_sha256": "d2855eb50576ac6246811be5774cbb1f96b464b887396aa379c60fbf0bc00cac"
+    },
+    {
+      "case": "lipb_inventory_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0044",
+      "evidence_digest": "37956f1c7793b8ba9a339783d30637f050012b8e44d28f80b1155d1245f4348b",
+      "artifact_sha256": "37956f1c7793b8ba9a339783d30637f050012b8e44d28f80b1155d1245f4348b"
+    },
+    {
+      "case": "lipb_inventory_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0045",
+      "evidence_digest": "06491f0978c8e892606504d2995b2e8186ccabfecfe8431dd4167dc68cfe039e",
+      "artifact_sha256": "06491f0978c8e892606504d2995b2e8186ccabfecfe8431dd4167dc68cfe039e"
+    },
+    {
+      "case": "magnet_inventory_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0046",
+      "evidence_digest": "09651ad403c52b38eb57c4e7e36e01a8e052730e399c5f345302ac88ebe3ed24",
+      "artifact_sha256": "09651ad403c52b38eb57c4e7e36e01a8e052730e399c5f345302ac88ebe3ed24"
+    },
+    {
+      "case": "magnet_inventory_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0047",
+      "evidence_digest": "524f865db8ae4e35ef7da6bd1df2ec59ab22a325ca09b402f57630e5d60583b4",
+      "artifact_sha256": "524f865db8ae4e35ef7da6bd1df2ec59ab22a325ca09b402f57630e5d60583b4"
+    },
+    {
+      "case": "magnet_power_supplies_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0048",
+      "evidence_digest": "78b3f2fa587b7b724d5a623616073244aa7eba147d9801d6db9b0a84f99d1b17",
+      "artifact_sha256": "78b3f2fa587b7b724d5a623616073244aa7eba147d9801d6db9b0a84f99d1b17"
+    },
+    {
+      "case": "magnet_power_supplies_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0049",
+      "evidence_digest": "ed9b0a7faab9aa09ef4bc86f2f83e33ec1777e6691db40756a08bac864ef8bd8",
+      "artifact_sha256": "ed9b0a7faab9aa09ef4bc86f2f83e33ec1777e6691db40756a08bac864ef8bd8"
+    },
+    {
+      "case": "miscellaneous_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0050",
+      "evidence_digest": "3385c13101cca0bd8661ab10d5e25b7268e7b368bcd6c5f072e593d3680222fa",
+      "artifact_sha256": "3385c13101cca0bd8661ab10d5e25b7268e7b368bcd6c5f072e593d3680222fa"
+    },
+    {
+      "case": "miscellaneous_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0051",
+      "evidence_digest": "bbeacb0f4724ea4abea0f6c6310edeee2232580322804de0840ff61dc3cb6e4b",
+      "artifact_sha256": "bbeacb0f4724ea4abea0f6c6310edeee2232580322804de0840ff61dc3cb6e4b"
+    },
+    {
+      "case": "other_reactor_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0052",
+      "evidence_digest": "d9d30f26b5ec6fbebf23b28dd40525e5caeaf04a96e1bbe6b7b1467173598a6d",
+      "artifact_sha256": "d9d30f26b5ec6fbebf23b28dd40525e5caeaf04a96e1bbe6b7b1467173598a6d"
+    },
+    {
+      "case": "other_reactor_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0053",
+      "evidence_digest": "41744f27620ac76cffb6fd6904256b6a3f22f57c6f805728811e388531d0eb44",
+      "artifact_sha256": "41744f27620ac76cffb6fd6904256b6a3f22f57c6f805728811e388531d0eb44"
+    },
+    {
+      "case": "pbli_duty_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0054",
+      "evidence_digest": "ee372523344b7461b601bbede89961d4aebbef9c49f8d5b906973832361d136a",
+      "artifact_sha256": "ee372523344b7461b601bbede89961d4aebbef9c49f8d5b906973832361d136a"
+    },
+    {
+      "case": "pbli_duty_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0055",
+      "evidence_digest": "b72654da85802af13f2b7ff36f8f60daf7f3893c12edcc27cc92de3874cb7518",
+      "artifact_sha256": "b72654da85802af13f2b7ff36f8f60daf7f3893c12edcc27cc92de3874cb7518"
+    },
+    {
+      "case": "pbli_hx_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0056",
+      "evidence_digest": "c2785b6ef7fb3a9dcaffb4d04b29e82f41ac887446f83a8889fffcdc19727072",
+      "artifact_sha256": "c2785b6ef7fb3a9dcaffb4d04b29e82f41ac887446f83a8889fffcdc19727072"
+    },
+    {
+      "case": "pbli_hx_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0057",
+      "evidence_digest": "95e770f66b4e81b7ccdd0967d2ac053e84e4ea74bae897c9d3b982f1181240e5",
+      "artifact_sha256": "95e770f66b4e81b7ccdd0967d2ac053e84e4ea74bae897c9d3b982f1181240e5"
+    },
+    {
+      "case": "pbli_pump_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0058",
+      "evidence_digest": "a1089d6431c7826d8c52ae7c2d48ce2341901194062289e2720481709d7a6a69",
+      "artifact_sha256": "a1089d6431c7826d8c52ae7c2d48ce2341901194062289e2720481709d7a6a69"
+    },
+    {
+      "case": "pbli_pump_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0059",
+      "evidence_digest": "ea34655fad6c5ff617f4896c156c65373494129bbe2cc61d3d761c25f87f48d5",
+      "artifact_sha256": "ea34655fad6c5ff617f4896c156c65373494129bbe2cc61d3d761c25f87f48d5"
+    },
+    {
+      "case": "primary_piping_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0060",
+      "evidence_digest": "09bc0981890d1a886fc1ab6b5766ec32cc4e2ea9a56a768998fe1426dd00307d",
+      "artifact_sha256": "09bc0981890d1a886fc1ab6b5766ec32cc4e2ea9a56a768998fe1426dd00307d"
+    },
+    {
+      "case": "primary_piping_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0061",
+      "evidence_digest": "76c5fb1f8a7290d8731ff631cbd23fefe73ffd4fb5296cae2f4d3b0a422e738d",
+      "artifact_sha256": "76c5fb1f8a7290d8731ff631cbd23fefe73ffd4fb5296cae2f4d3b0a422e738d"
+    },
+    {
+      "case": "primary_support_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0062",
+      "evidence_digest": "cad4eadb461e2c6dd81aa7e20e7d33576e966676f2078bb67e79d63e5bd20941",
+      "artifact_sha256": "cad4eadb461e2c6dd81aa7e20e7d33576e966676f2078bb67e79d63e5bd20941"
+    },
+    {
+      "case": "primary_support_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0063",
+      "evidence_digest": "cf2eddfa552a8e2fd6c8ab7bf307191309290a989e5f44808e76d89b8bbe23a3",
+      "artifact_sha256": "cf2eddfa552a8e2fd6c8ab7bf307191309290a989e5f44808e76d89b8bbe23a3"
+    },
+    {
+      "case": "secondary_transport_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0064",
+      "evidence_digest": "5f2353e486f45ff80d464590adfb02735082db7d8a15146cfdd521316b1bad06",
+      "artifact_sha256": "5f2353e486f45ff80d464590adfb02735082db7d8a15146cfdd521316b1bad06"
+    },
+    {
+      "case": "secondary_transport_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0065",
+      "evidence_digest": "e8203d3dc16fbbd512198cf86b522ff297d53c8350fca8e814fd40abbeaf28c4",
+      "artifact_sha256": "e8203d3dc16fbbd512198cf86b522ff297d53c8350fca8e814fd40abbeaf28c4"
+    },
+    {
+      "case": "shield_inventory_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0066",
+      "evidence_digest": "4de8f5bcd26bc0c64fe112cf71dea2fc7812a9e13c17b52bc053801addd3a428",
+      "artifact_sha256": "4de8f5bcd26bc0c64fe112cf71dea2fc7812a9e13c17b52bc053801addd3a428"
+    },
+    {
+      "case": "shield_inventory_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0067",
+      "evidence_digest": "6c0e93d8f03528b12ffcffe91559327145fae2635c1dce2ef86d9d2a250c3372",
+      "artifact_sha256": "6c0e93d8f03528b12ffcffe91559327145fae2635c1dce2ef86d9d2a250c3372"
+    },
+    {
+      "case": "site_land_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0068",
+      "evidence_digest": "63fd010a7e33844c9c4e9e586c6687c251d6fffa5923a5b3336a813a698099ed",
+      "artifact_sha256": "63fd010a7e33844c9c4e9e586c6687c251d6fffa5923a5b3336a813a698099ed"
+    },
+    {
+      "case": "site_land_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0069",
+      "evidence_digest": "558469ec9ea0abc1c13bdb3bf1462424d92acf0078d937c6f3abe740c5c28f03",
+      "artifact_sha256": "558469ec9ea0abc1c13bdb3bf1462424d92acf0078d937c6f3abe740c5c28f03"
+    },
+    {
+      "case": "turbine_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0070",
+      "evidence_digest": "d4c827b1a281d4ae4ebd89899c353ce4c1118f1bcdac452f1d69d6ae5153d52e",
+      "artifact_sha256": "d4c827b1a281d4ae4ebd89899c353ce4c1118f1bcdac452f1d69d6ae5153d52e"
+    },
+    {
+      "case": "turbine_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0071",
+      "evidence_digest": "296089789f0fcb1f308794e27641b02353487d5ecb9ff36c6d6c6b231c3529a3",
+      "artifact_sha256": "296089789f0fcb1f308794e27641b02353487d5ecb9ff36c6d6c6b231c3529a3"
+    },
+    {
+      "case": "unallocated_source_scope_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0072",
+      "evidence_digest": "0c4ece4a4a98585ee761b9421d00b832b2eab97a67345163ea22ccfb4aeecf93",
+      "artifact_sha256": "0c4ece4a4a98585ee761b9421d00b832b2eab97a67345163ea22ccfb4aeecf93"
+    },
+    {
+      "case": "unallocated_source_scope_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0073",
+      "evidence_digest": "e9e68a9e16db5210ab41de40b7b52ef228347587aa07c16436eeed1da44b632c",
+      "artifact_sha256": "e9e68a9e16db5210ab41de40b7b52ef228347587aa07c16436eeed1da44b632c"
+    },
+    {
+      "case": "vacuum_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0074",
+      "evidence_digest": "be284ac69c35909b227278d0bde23dcc27c46b6d9a9ec905137b495cd4f6b5d5",
+      "artifact_sha256": "be284ac69c35909b227278d0bde23dcc27c46b6d9a9ec905137b495cd4f6b5d5"
+    },
+    {
+      "case": "vacuum_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0075",
+      "evidence_digest": "453e58ae0e4f388174c38b438dc824660f75ab2a140d4fe87008d587cba12ff2",
+      "artifact_sha256": "453e58ae0e4f388174c38b438dc824660f75ab2a140d4fe87008d587cba12ff2"
+    },
+    {
+      "case": "vf_coils_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0076",
+      "evidence_digest": "44f529584971317121f94974dbdbde13e3c77362dcd708e0916a1ac46adb1e46",
+      "artifact_sha256": "44f529584971317121f94974dbdbde13e3c77362dcd708e0916a1ac46adb1e46"
+    },
+    {
+      "case": "vf_coils_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0077",
+      "evidence_digest": "c213b215d1b4df2c6209a9f37840ec7ff585bd58708a647cd61a7d00e84bc5bf",
+      "artifact_sha256": "c213b215d1b4df2c6209a9f37840ec7ff585bd58708a647cd61a7d00e84bc5bf"
+    },
+    {
+      "case": "waste_equipment_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0078",
+      "evidence_digest": "1431e55f5d0e284e11ac98a6faa932336b9cb6f897505762bb516826401a7c12",
+      "artifact_sha256": "1431e55f5d0e284e11ac98a6faa932336b9cb6f897505762bb516826401a7c12"
+    },
+    {
+      "case": "waste_equipment_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0079",
+      "evidence_digest": "d6e9c18313b48642337dc92fa3788b75e51f96312a657ae6c23ba9815b45d041",
+      "artifact_sha256": "d6e9c18313b48642337dc92fa3788b75e51f96312a657ae6c23ba9815b45d041"
+    },
+    {
+      "case": "fuel_inventory_tritium_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0080",
+      "evidence_digest": "7e6635dc239adac3c9b28e9848238136f97a5ae6fc2d9fc3fc356756b6e554d7",
+      "artifact_sha256": "7e6635dc239adac3c9b28e9848238136f97a5ae6fc2d9fc3fc356756b6e554d7"
+    },
+    {
+      "case": "fuel_inventory_tritium_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0081",
+      "evidence_digest": "025da47fafa76a7c55f9d3fd37ca94785994310bc341ad8c38255f82b47d8652",
+      "artifact_sha256": "025da47fafa76a7c55f9d3fd37ca94785994310bc341ad8c38255f82b47d8652"
+    },
+    {
+      "case": "fuel_inventory_selected_tritium_kg-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0082",
+      "evidence_digest": "f566c6854466cf983af23be955e7edf7d9d7833de72c4388421de180887d9af9",
+      "artifact_sha256": "f566c6854466cf983af23be955e7edf7d9d7833de72c4388421de180887d9af9"
+    },
+    {
+      "case": "fuel_inventory_selected_tritium_kg-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0083",
+      "evidence_digest": "d0fb85efe1379a939c8f21c301c41b9361c44c09839e058b9f5f848c310d3512",
+      "artifact_sha256": "d0fb85efe1379a939c8f21c301c41b9361c44c09839e058b9f5f848c310d3512"
+    },
+    {
+      "case": "fuel_inventory_deuterium_price-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0084",
+      "evidence_digest": "27d3acd4e7633816fcc37b3f0d61fb5c8f4f371aac93d774d290a1c962413287",
+      "artifact_sha256": "27d3acd4e7633816fcc37b3f0d61fb5c8f4f371aac93d774d290a1c962413287"
+    },
+    {
+      "case": "fuel_inventory_deuterium_price-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0085",
+      "evidence_digest": "4f4de83d3e8c3622b4420c53e02c6d42eb190524936edb3ae44b146026f845da",
+      "artifact_sha256": "4f4de83d3e8c3622b4420c53e02c6d42eb190524936edb3ae44b146026f845da"
+    },
+    {
+      "case": "annual_om_selected_amount-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0086",
+      "evidence_digest": "c8104df3866ebb68dbaa30b899c572929dce6d30a8bb784e4e24c7cc99624f6a",
+      "artifact_sha256": "c8104df3866ebb68dbaa30b899c572929dce6d30a8bb784e4e24c7cc99624f6a"
+    },
+    {
+      "case": "annual_om_selected_amount-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0087",
+      "evidence_digest": "2268f365801f0c790a137bc157da088403d1f4323325877d282baa950c579114",
+      "artifact_sha256": "2268f365801f0c790a137bc157da088403d1f4323325877d282baa950c579114"
+    },
+    {
+      "case": "cost_ledger_consumables-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0088",
+      "evidence_digest": "205b56b4f545eccab033c63b1a6221aacab3a3ac49e9879fed64940c7fec4793",
+      "artifact_sha256": "205b56b4f545eccab033c63b1a6221aacab3a3ac49e9879fed64940c7fec4793"
+    },
+    {
+      "case": "cost_ledger_consumables-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0089",
+      "evidence_digest": "8b83745b5dac172da85a3ba0093cf309b3c2c4d5a580ca34c1111566780a5ad8",
+      "artifact_sha256": "8b83745b5dac172da85a3ba0093cf309b3c2c4d5a580ca34c1111566780a5ad8"
+    },
+    {
+      "case": "indirect_cost_fraction-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0090",
+      "evidence_digest": "046c2e2cdea43f1e57ebd0885d33935756698f0fc33184838c2f0147aea215cc",
+      "artifact_sha256": "046c2e2cdea43f1e57ebd0885d33935756698f0fc33184838c2f0147aea215cc"
+    },
+    {
+      "case": "indirect_cost_fraction-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0091",
+      "evidence_digest": "ae28541546b8e84b09b64e0d0a6c88392a206c9f4be1268f301461b85a2160b6",
+      "artifact_sha256": "ae28541546b8e84b09b64e0d0a6c88392a206c9f4be1268f301461b85a2160b6"
+    },
+    {
+      "case": "contingency_fraction-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0092",
+      "evidence_digest": "e63ba716a4ba1cfdf334ac89162f0dbcd47f1acdd8e911637e67bc9c3928d41c",
+      "artifact_sha256": "e63ba716a4ba1cfdf334ac89162f0dbcd47f1acdd8e911637e67bc9c3928d41c"
+    },
+    {
+      "case": "contingency_fraction-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0093",
+      "evidence_digest": "b643b6114290e8a87effe0c29c70eec355c98eb43e5caf00b5420e394ef1214c",
+      "artifact_sha256": "b643b6114290e8a87effe0c29c70eec355c98eb43e5caf00b5420e394ef1214c"
+    },
+    {
+      "case": "owner_commissioning_fraction-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0094",
+      "evidence_digest": "2e512178bf75c3621355c72572773c3b6f7528d00756bef20bcaaca58446e13b",
+      "artifact_sha256": "2e512178bf75c3621355c72572773c3b6f7528d00756bef20bcaaca58446e13b"
+    },
+    {
+      "case": "owner_commissioning_fraction-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0095",
+      "evidence_digest": "204307012ab784c57a603dc3d11470753b74874266d6c0657735d66c8629ef89",
+      "artifact_sha256": "204307012ab784c57a603dc3d11470753b74874266d6c0657735d66c8629ef89"
+    },
+    {
+      "case": "cost_schedule_replacement_life_fpy-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0096",
+      "evidence_digest": "c952ed12d58f1130995cb89f85a996e582bbe6ebfa90d8cad781d38ef3876450",
+      "artifact_sha256": "c952ed12d58f1130995cb89f85a996e582bbe6ebfa90d8cad781d38ef3876450"
+    },
+    {
+      "case": "cost_schedule_replacement_life_fpy-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0097",
+      "evidence_digest": "d257a79f0fd56615d18816d12f737de552ac8cb8bee74313edd8caef4b695c0a",
+      "artifact_sha256": "d257a79f0fd56615d18816d12f737de552ac8cb8bee74313edd8caef4b695c0a"
+    },
+    {
+      "case": "cost_schedule_replacement_factor-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0098",
+      "evidence_digest": "cb1cb99f9a0d0dd1128c5839ac89fe95fa773d10ce131517edff1624155101e6",
+      "artifact_sha256": "cb1cb99f9a0d0dd1128c5839ac89fe95fa773d10ce131517edff1624155101e6"
+    },
+    {
+      "case": "cost_schedule_replacement_factor-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0099",
+      "evidence_digest": "fccf3added06b2cf9afef520b5b0a649cf876feb419b36824a93b47080aea97c",
+      "artifact_sha256": "fccf3added06b2cf9afef520b5b0a649cf876feb419b36824a93b47080aea97c"
+    },
+    {
+      "case": "cost_schedule_lipb_makeup_fraction-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0100",
+      "evidence_digest": "7936001173fbddc710869a4f876013521c455a06bf00cfa5a7a687b494a79dca",
+      "artifact_sha256": "7936001173fbddc710869a4f876013521c455a06bf00cfa5a7a687b494a79dca"
+    },
+    {
+      "case": "cost_schedule_lipb_makeup_fraction-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0101",
+      "evidence_digest": "64d72f00362a91c2867efb8049925c475fb6cefb1d8d23a7c77b6fbf746b4995",
+      "artifact_sha256": "64d72f00362a91c2867efb8049925c475fb6cefb1d8d23a7c77b6fbf746b4995"
+    },
+    {
+      "case": "cost_schedule_availability-low",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0102",
+      "evidence_digest": "53fd8eeab6115b802078166ee4dd3ca78636c0e791ea441b4e3bfa784156088f",
+      "artifact_sha256": "53fd8eeab6115b802078166ee4dd3ca78636c0e791ea441b4e3bfa784156088f"
+    },
+    {
+      "case": "cost_schedule_availability-high",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0103",
+      "evidence_digest": "e6f2ee9f4a5324068677c29aeffac244d3ebbaee6adedf062b6b07df6270e4d8",
+      "artifact_sha256": "e6f2ee9f4a5324068677c29aeffac244d3ebbaee6adedf062b6b07df6270e4d8"
+    },
+    {
+      "case": "recovery-100",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0104",
+      "evidence_digest": "ec69f96fb30de08ee33015d48071ef3921cfb86ba15e2654c369c2b0086a3fb7",
+      "artifact_sha256": "ec69f96fb30de08ee33015d48071ef3921cfb86ba15e2654c369c2b0086a3fb7"
+    },
+    {
+      "case": "recovery-200",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0105",
+      "evidence_digest": "43212375ce9baf3249d03becba1f0ff1e125e37b51e8a2a16f6942a47708fd35",
+      "artifact_sha256": "43212375ce9baf3249d03becba1f0ff1e125e37b51e8a2a16f6942a47708fd35"
+    },
+    {
+      "case": "fixed-budget-nominal",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0106",
+      "evidence_digest": "8db7393b81a20712438588a2a1971bfdf2ca74ff9b43c93b9bbd3f6fd957ef69",
+      "artifact_sha256": "8db7393b81a20712438588a2a1971bfdf2ca74ff9b43c93b9bbd3f6fd957ef69"
+    },
+    {
+      "case": "adequate-area-mode-0",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0107",
+      "evidence_digest": "c15d01748c9b95392e27a86de7a0715ae1077b4c711a848fea0b660b8528f0a7",
+      "artifact_sha256": "c15d01748c9b95392e27a86de7a0715ae1077b4c711a848fea0b660b8528f0a7"
+    },
+    {
+      "case": "adequate-area-mode-1",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0108",
+      "evidence_digest": "e27309a60a34370462f0abea92805d2ea20892611cc3c3035dead08dd1c678f5",
+      "artifact_sha256": "e27309a60a34370462f0abea92805d2ea20892611cc3c3035dead08dd1c678f5"
+    },
+    {
+      "case": "combined-low-recovery-0",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0109",
+      "evidence_digest": "a66b17a86a535374f8b676b67176fef121a5afb7636c60de6912bcaf6919d550",
+      "artifact_sha256": "a66b17a86a535374f8b676b67176fef121a5afb7636c60de6912bcaf6919d550"
+    },
+    {
+      "case": "combined-low-recovery-100",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0110",
+      "evidence_digest": "93cc77c2a72c9e893160b0970cad709c3cda34f4b006983e4c9edcab64fbc204",
+      "artifact_sha256": "93cc77c2a72c9e893160b0970cad709c3cda34f4b006983e4c9edcab64fbc204"
+    },
+    {
+      "case": "combined-high-recovery-0",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0111",
+      "evidence_digest": "70dc0363009b638187042ce019451d07d398296f9c8f29093c92a0d659037b32",
+      "artifact_sha256": "70dc0363009b638187042ce019451d07d398296f9c8f29093c92a0d659037b32"
+    },
+    {
+      "case": "combined-high-recovery-100",
+      "candidate_id": "20260922-aries-integrated-cost-uncertainty:c0112",
+      "evidence_digest": "5e9a21c7f073d55643b9caede25184f94bafe74d69ab16b463438c60a3c18faf",
+      "artifact_sha256": "5e9a21c7f073d55643b9caede25184f94bafe74d69ab16b463438c60a3c18faf"
+    }
+  ]
+}

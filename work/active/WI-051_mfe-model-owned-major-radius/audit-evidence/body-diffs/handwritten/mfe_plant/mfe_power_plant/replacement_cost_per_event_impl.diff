@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
++++ production/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:1131
+ 
+ SysML Expressions:
+ """
+@@ -15,7 +15,7 @@
+ def run_replacement_cost_per_event(inputs: replacement_cost_per_eventInput) -> float:
+     """Execute replacement_cost_per_event calculation.
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:1131
+ 
+ Args:
+     inputs: Input parameters validated against replacement_cost_per_eventInput schema

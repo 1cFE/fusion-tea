@@ -1,0 +1,7 @@
+{
+  "scope": "Strict evaluator construction only; no evaluate call or study store",
+  "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+  "entry_channels": 3,
+  "entry_fields": 122,
+  "status": "passed"
+}

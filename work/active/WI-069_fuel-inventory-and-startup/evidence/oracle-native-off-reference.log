@@ -1,0 +1,18 @@
+Final native off-reference checks are part of oracle-regressions.log/xml.
+Executable fingerprint: e19b63a03be3a00ebd5cec4ce4ed06a082f5bb7ed89b736aed06feaea8d1e319
+Seal unchanged throughout run: True
+Exit code: 0
+Inventory comparisons: 700; relative tolerance 1e-9, absolute tolerance 1e-18.
+Long-shutdown remaining uses relative tolerance 1e-9, absolute tolerance zero.
+PASS test_native_off_reference_inventory_matches_independent_oracle[slow-processing-and-extraction]
+PASS test_native_off_reference_inventory_matches_independent_oracle[fast-processing-short-reserve]
+PASS test_native_off_reference_inventory_matches_independent_oracle[immediate-breeding-before-recycle]
+PASS test_native_off_reference_inventory_matches_independent_oracle[loss-and-burn-sensitivity]
+PASS test_native_off_reference_inventory_matches_independent_oracle[buffer-reserve-and-extension]
+PASS test_native_off_reference_inventory_matches_independent_oracle[availability]
+PASS test_native_off_reference_inventory_matches_independent_oracle[zero-decay]
+PASS test_native_off_reference_inventory_matches_independent_oracle[profile-shape]
+PASS test_native_off_reference_inventory_matches_independent_oracle[shutdown-duration]
+PASS test_native_off_reference_inventory_matches_independent_oracle[dormant-held-inventory]
+PASS test_native_long_shutdown_keeps_positive_exponential_tail
+Previous unsupported held-calendar case and predecessor results retained in *-before-repair.log and *-before-final-guards.*.

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "20260916-bounded-feasibility-transfer#1",
+    "kind": "model",
+    "finding": "No combined pass in 71 native cases or 194 unique evaluated oracle coordinates under fixed main assumptions; the closest retained tradeoff misses field, divertor and wall limits simultaneously.",
+    "disposition": "declared seam \u2014 bounded negative complete; no global infeasibility or domain exhaustion claim.",
+    "home": "work/orchestration/goals/bounded-feasibility-transfer/answer.md"
+  },
+  {
+    "id": "20260916-bounded-feasibility-transfer#2",
+    "kind": "model",
+    "finding": "Three joint design-point anchors and six isolated contrasts agree with the independent equations; held configuration, TBR/lifetime, transport and accounting assumptions prevent arbitrary design or technology transfer.",
+    "disposition": "declared seam \u2014 conditional transfer documented; unsupported substitutions and missing dependencies remain open.",
+    "home": "work/orchestration/goals/bounded-feasibility-transfer/transfer-contract.md"
+  },
+  {
+    "id": "20260916-bounded-feasibility-transfer#3",
+    "kind": "model",
+    "finding": "Transverse accommodation lacks complete mass/thermal/cost response; extra primary loops remain unpriced despite represented hydraulic/electric response.",
+    "disposition": "declared seam \u2014 report physical requirements and annualized omitted-cost headroom separately; no economic optimum.",
+    "home": "work/orchestration/goals/bounded-feasibility-transfer/readiness.md"
+  },
+  {
+    "id": "20260916-bounded-feasibility-transfer#4",
+    "kind": "model",
+    "finding": "Six oracle field-domain refusals and ten native failed-burn/invalid-divertor-account cases remain explicit; all other evaluable predicate failures are retained.",
+    "disposition": "declared seam \u2014 retain domain/refusal/validity distinctions; never classify unsupported evaluation as global physical infeasibility.",
+    "home": "work/orchestration/goals/bounded-feasibility-transfer/answer.md"
+  },
+  {
+    "id": "20260916-bounded-feasibility-transfer#5",
+    "kind": "process",
+    "finding": "Fixed-point comparison still needs quantity-level mapping, accounting normalization, synthetic reporting checks, residual/applicability dispositions and freeze.",
+    "disposition": "declared seam \u2014 necessary preparation named; no reveal or changed acceptance authorized.",
+    "home": "work/orchestration/goals/bounded-feasibility-transfer/readiness.md"
+  }
+]

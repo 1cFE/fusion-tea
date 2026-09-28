@@ -1,0 +1,6 @@
+{
+  "checks_passed": true,
+  "cases": 5,
+  "exhaust_atoms_s": 1.6432423549621273e+22,
+  "reference_margin_atoms_s": 3.5675764503787266e+21
+}

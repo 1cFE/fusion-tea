@@ -1,0 +1,11 @@
+# WI-040 accounting research
+
+Execute REQ-040-02 using `.claude/commands/research-acquire.md` and `docs/research_seam_operator_guide.md`; read both fully. Read `.agentic-mbse/codex.md`, `.project/codex-test-setup.md`, and `knowledge/holdout/aries-cs/PROTOCOL.md` before any fetch. Use `.codex-test/run`. The owner explicitly directs autonomous technical judgment and research to resolve gaps.
+
+You are a fresh clean reader. Never open external 1costingFE account-justification documents: a prior reader encountered quarantined data there. Never open sealed/barred material, Helios, Waganer, Araiinejad or ARIES-CS-informed content. Screen any suspect fetched document with boolean-only pattern checks before reading; never emit matched data lines. Favor UKAEA PROCESS source code and documented cost formulas with no reactor design comparisons. A holdout match is not yours to waive.
+
+Read current `models/library/analyses/mfe_magnet_cost.sysml` and WI-035 design D4/Risk 4 for the existing problem: tape ampere-metres times price times 6.65, recomposed from copper manufacturing markup 3.5 and nonplanar penalty 1.9. No documented procurement/fabrication split. Table 7 materials are verified separately; do not research prices/densities (another worker owns that).
+
+Find a defensible engineering accounting form with procurement and manufacturing separately visible. Do not insist on recovering an unknowable historical split. Evaluate source-based alternatives, e.g. separate material costs plus manufacturing model, or replacing the old aggregate with a deliberately scoped estimate and retaining its comparison channel. Explicitly grade assumptions and uncertainty; avoid baseline fitting disguised as source validation. Select the simplest credible form and state what sensitivity would test it.
+
+Own only REQ-040-02 request/run artifacts, native source registration and `work/active/WI-040_winding-pack-mass-cost/evidence/accounting-research.md`. Source registry is the only ingestion writer. Other worker registers material sources concurrently; honor locks. You are not alone: preserve others' edits. No model, spec, goal trail, test or package writes. Return native outcome, registered source paths and recommended accounting form with limitations. Commit only your explicit artifacts if required by the seam; otherwise coordinator commits.

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py",
+    "--root",
+    "/tmp/aries-r3-execution-20260920",
+    "--rules",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/input-rules.json",
+    "--request",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/requests/table5-conditioned.json",
+    "--out-dir",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned"
+  ],
+  "command": "/home/reid/1cfe/fusion-tea/.venv/bin/python3 /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py --root /tmp/aries-r3-execution-20260920 --rules /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/input-rules.json --request /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/requests/table5-conditioned.json --out-dir /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned",
+  "cwd": "/tmp/aries-r3-execution-20260920",
+  "ended_utc": "2026-09-20T17:51:37.402842+00:00",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned-execute.log",
+  "log_sha256": "d3be030801b90ea8057d3997d9845c7f850cc7b784450645d5ec2811cc927d7a",
+  "started_utc": "2026-09-20T17:51:33.174377+00:00"
+}

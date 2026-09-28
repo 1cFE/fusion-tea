@@ -1,0 +1,8 @@
+arm_id,case_id,role,beam_energy_mj,frequency_hz,net_electric_mw,hawker_mixed_dollars_per_mwh,meier_1988_cents_per_kwh,net_positive,viability,hawker_price_eligible,meier_price_eligible,model_feasible
+arm-ife,20260910-ife-operating-point:c0000,baseline,5.0,4.6,871.2317857142856,240.66646063955096,5.589991561584082,satisfied,satisfied,True,True,True
+arm-ife,20260910-ife-operating-point:c0001,beam-4.0,4.0,4.6,696.9854285714283,290.03101160476376,6.257484286288592,satisfied,satisfied,True,True,True
+arm-ife,20260910-ife-operating-point:c0002,beam-6.0,6.0,4.6,1045.478142857143,207.75675999607577,5.125379537357357,satisfied,satisfied,True,True,True
+arm-ife,20260910-ife-operating-point:c0003,rate-3.6,5.0,3.6,681.8335714285713,244.4059639742846,6.773096721926153,satisfied,satisfied,True,True,True
+arm-ife,20260910-ife-operating-point:c0004,rate-5.6,5.0,5.6,1060.63,238.27233781820107,4.80652402361895,satisfied,satisfied,True,True,True
+arm-ife,20260910-ife-operating-point:c0005,counterexample,5.0,4.6,-45.99999999999994,0.0,0.0,violated,satisfied,False,False,False
+arm-ife,20260910-ife-operating-point:c0006,zero,5.0,5.0,0.0,0.0,0.0,violated,satisfied,False,False,False

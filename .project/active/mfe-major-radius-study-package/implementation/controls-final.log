@@ -1,0 +1,6 @@
+{
+  "native_channels": 158,
+  "oracle_channels": 141,
+  "authored_verdicts": 18,
+  "worst_rel_dev": 1.810960392900099e-16
+}

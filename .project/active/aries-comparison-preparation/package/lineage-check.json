@@ -1,0 +1,80 @@
+{
+  "entering_head": "fe104e8d9db72e5abf86a29262583ce744f62307",
+  "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+  "historical_integration": "work/orchestration/goals/stellaris-reference-reconciliation/evidence/T-007_integration/integration_return.json",
+  "indicator_pin": "6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551",
+  "limitations": [
+    "Historical ten-gate integration reused by unchanged-source and fresh seal checks, not rerun.",
+    "Read-set coverage applies to this current parsed package; scripts/integrate.py itself is unchanged.",
+    "Static L2/L6 limitations and sixteen prior independently unmapped native outputs remain.",
+    "This proves numerical package lineage, not technology applicability or engineering qualification."
+  ],
+  "physical_evaluations": 0,
+  "produced_channels": 263,
+  "read_set": [
+    {
+      "path": "contracts/model_contract.json",
+      "sha256": "580aa74eee17a82e5c8a96e0e11aa33049d7048172600db28aacef60db2c5e5c"
+    },
+    {
+      "path": "inputs/mfe_account_costs_params.json",
+      "sha256": "8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21"
+    },
+    {
+      "path": "inputs/mfe_cryo_plant_params.json",
+      "sha256": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f"
+    },
+    {
+      "path": "inputs/mfe_fuel_cycle_params.json",
+      "sha256": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009"
+    },
+    {
+      "path": "inputs/mfe_magnet_cost_params.json",
+      "sha256": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee"
+    },
+    {
+      "path": "inputs/mfe_magnet_field_params.json",
+      "sha256": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6"
+    },
+    {
+      "path": "inputs/mfe_plant_params.json",
+      "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+    },
+    {
+      "path": "inputs/mfe_plasma_scaling_params.json",
+      "sha256": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86"
+    },
+    {
+      "path": "inputs/mfe_plasma_sustainment_params.json",
+      "sha256": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc"
+    },
+    {
+      "path": "inputs/mfe_vacuum_params.json",
+      "sha256": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240"
+    },
+    {
+      "path": "inputs/stellarator_plant_params.json",
+      "sha256": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207"
+    },
+    {
+      "path": "pipelines/pipeline.yaml",
+      "sha256": "df7a42ce2c9d0c572655bd52107103143791c323088e30b00dac91df8e78f2d1"
+    }
+  ],
+  "read_set_negative_checks": [
+    "uncovered-input.json",
+    "outside-package-input.json"
+  ],
+  "sealed_artifacts": 296,
+  "semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "source_checkpoint": "fe104e8d9db72e5abf86a29262583ce744f62307",
+  "source_model_files": 74,
+  "status": "pass",
+  "unchanged_source_paths": [
+    "models",
+    "exploration/stellarator_e2e/models",
+    "exploration/stellarator_e2e/generated",
+    "exploration/stellarator_e2e/verify_stellaris.py",
+    "exploration/stellarator_e2e/studies/oracle_entry.py"
+  ]
+}

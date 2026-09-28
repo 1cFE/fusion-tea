@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="722.88pt" height="425.999413pt" viewBox="0 0 722.88 425.999413" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 425.999413 
+L 722.88 425.999413 
+L 722.88 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 66.45913 104.734536 
+L 165.443478 104.734536 
+Q 167.190261 104.734536 167.190261 103.118528 
+L 167.190261 70.798367 
+Q 167.190261 69.182359 165.443478 69.182359 
+L 66.45913 69.182359 
+Q 64.712348 69.182359 64.712348 70.798367 
+L 64.712348 103.118528 
+Q 64.712348 104.734536 66.45913 104.734536 
+z
+" clip-path="url(#pbf08481aaf)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 200.37913 104.734536 
+L 299.363478 104.734536 
+Q 301.110261 104.734536 301.110261 103.118528 
+L 301.110261 70.798367 
+Q 301.110261 69.182359 299.363478 69.182359 
+L 200.37913 69.182359 
+Q 198.632348 69.182359 198.632348 70.798367 
+L 198.632348 103.118528 
+Q 198.632348 104.734536 200.37913 104.734536 
+z
+" clip-path="url(#pbf08481aaf)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 334.29913 104.734536 
+L 433.283478 104.734536 
+Q 435.030261 104.734536 435.030261 103.118528 
+L 435.030261 70.798367 
+Q 435.030261 69.182359 433.283478 69.182359 
+L 334.29913 69.182359 
+Q 332.552348 69.182359 332.552348 70.798367 
+L 332.552348 103.118528 
+Q 332.552348 104.734536 334.29913 104.734536 
+z
+" clip-path="url(#pbf08481aaf)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 468.21913 104.734536 
+L 567.203478 104.734536 
+Q 568.950261 104.734536 568.950261 103.118528 
+L 568.950261 70.798367 
+Q 568.950261 69.182359 567.203478 69.182359 
+L 468.21913 69.182359 
+Q 466.472348 69.182359 466.472348 70.798367 
+L 466.472348 103.118528 
+Q 466.472348 104.734536 468.21913 104.734536 
+z
+" clip-path="url(#pbf08481aaf)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 602.13913 104.734536 
+L 701.123478 104.734536 
+Q 702.870261 104.734536 702.870261 103.118528 
+L 702.870261 70.798367 
+Q 702.870261 69.182359 701.123478 69.182359 
+L 602.13913 69.182359 
+Q 600.392348 69.182359 600.392348 70.798367 
+L 600.392348 103.118528 
+Q 600.392348 104.734536 602.13913 104.734536 
+z
+" clip-path="url(#pbf08481aaf)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(85.262242 84.118916)">Recuperator</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(101.337242 95.316729)">outlet</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="249.871304" y="89.717823" transform="rotate(-0 249.871304 89.717823)">Blanket He HX</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="383.791304" y="89.717823" transform="rotate(-0 383.791304 89.717823)">Divertor HX</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="517.711304" y="89.717823" transform="rotate(-0 517.711304 89.717823)">PbLi HX</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="651.631304" y="89.717823" transform="rotate(-0 651.631304 89.717823)">Turbine</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 168.61009 86.958448 
+Q 182.912995 86.958448 195.53885 86.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 191.53885 84.958448 
+L 195.53885 86.958448 
+L 191.53885 88.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 302.53009 86.958448 
+Q 316.832995 86.958448 329.45885 86.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 325.45885 84.958448 
+L 329.45885 86.958448 
+L 325.45885 88.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 436.45009 86.958448 
+Q 450.752995 86.958448 463.37885 86.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 459.37885 84.958448 
+L 463.37885 86.958448 
+L 459.37885 88.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 570.37009 86.958448 
+Q 584.672995 86.958448 597.29885 86.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 593.29885 84.958448 
+L 597.29885 86.958448 
+L 593.29885 88.958448 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start" x="46.08" y="16.318125" transform="rotate(-0 46.08 16.318125)">Series: the full cycle-helium stream visits all three exchangers</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_11">
+    <path d="M 66.45913 296.069891 
+L 165.443478 296.069891 
+Q 167.190261 296.069891 167.190261 294.453883 
+L 167.190261 262.133722 
+Q 167.190261 260.517714 165.443478 260.517714 
+L 66.45913 260.517714 
+Q 64.712348 260.517714 64.712348 262.133722 
+L 64.712348 294.453883 
+Q 64.712348 296.069891 66.45913 296.069891 
+z
+" clip-path="url(#pb3b2992250)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 200.37913 296.069891 
+L 299.363478 296.069891 
+Q 301.110261 296.069891 301.110261 294.453883 
+L 301.110261 262.133722 
+Q 301.110261 260.517714 299.363478 260.517714 
+L 200.37913 260.517714 
+Q 198.632348 260.517714 198.632348 262.133722 
+L 198.632348 294.453883 
+Q 198.632348 296.069891 200.37913 296.069891 
+z
+" clip-path="url(#pb3b2992250)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 375.057391 261.056383 
+L 474.041739 261.056383 
+Q 475.788522 261.056383 475.788522 259.440375 
+L 475.788522 227.120214 
+Q 475.788522 225.504206 474.041739 225.504206 
+L 375.057391 225.504206 
+Q 373.310609 225.504206 373.310609 227.120214 
+L 373.310609 259.440375 
+Q 373.310609 261.056383 375.057391 261.056383 
+z
+" clip-path="url(#pb3b2992250)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 375.057391 331.083399 
+L 474.041739 331.083399 
+Q 475.788522 331.083399 475.788522 329.467391 
+L 475.788522 297.14723 
+Q 475.788522 295.531222 474.041739 295.531222 
+L 375.057391 295.531222 
+Q 373.310609 295.531222 373.310609 297.14723 
+L 373.310609 329.467391 
+Q 373.310609 331.083399 375.057391 331.083399 
+z
+" clip-path="url(#pb3b2992250)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 602.13913 296.069891 
+L 701.123478 296.069891 
+Q 702.870261 296.069891 702.870261 294.453883 
+L 702.870261 262.133722 
+Q 702.870261 260.517714 701.123478 260.517714 
+L 602.13913 260.517714 
+Q 600.392348 260.517714 600.392348 262.133722 
+L 600.392348 294.453883 
+Q 600.392348 296.069891 602.13913 296.069891 
+z
+" clip-path="url(#pb3b2992250)" style="fill: #eef4f5; stroke: #45616c; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 331.387826 278.293802 
+L 331.387826 243.280294 
+L 372.146087 243.280294 
+" clip-path="url(#pb3b2992250)" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 475.206261 243.280294 
+L 552.646957 243.280294 
+L 552.646957 278.293802 
+" clip-path="url(#pb3b2992250)" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 331.387826 278.293802 
+L 331.387826 313.30731 
+L 372.146087 313.30731 
+" clip-path="url(#pb3b2992250)" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 475.206261 313.30731 
+L 552.646957 313.30731 
+L 552.646957 278.293802 
+" clip-path="url(#pb3b2992250)" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(85.262242 275.454271)">Recuperator</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(101.337242 286.652084)">outlet</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="249.871304" y="281.053177" transform="rotate(-0 249.871304 281.053177)">Blanket He HX</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="424.549565" y="246.039669" transform="rotate(-0 424.549565 246.039669)">PbLi HX</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="424.549565" y="316.066685" transform="rotate(-0 424.549565 316.066685)">Divertor HX</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="651.631304" y="281.053177" transform="rotate(-0 651.631304 281.053177)">Turbine</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 168.61009 278.293802 
+Q 182.912995 278.293802 195.53885 278.293802 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 191.53885 276.293802 
+L 195.53885 278.293802 
+L 191.53885 280.293802 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 302.528313 278.293802 
+Q 315.959331 278.293802 327.713297 278.293802 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 323.713297 276.293802 
+L 327.713297 278.293802 
+L 323.713297 280.293802 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 345.033357 243.280294 
+Q 358.464374 243.280294 370.21834 243.280294 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 366.21834 241.280294 
+L 370.21834 243.280294 
+L 366.21834 245.280294 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle" x="366.323478" y="222.810859" transform="rotate(-0 366.323478 222.810859)">s × flow</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 345.033357 313.30731 
+Q 358.464374 313.30731 370.21834 313.30731 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 366.21834 311.30731 
+L 370.21834 313.30731 
+L 366.21834 315.30731 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle" x="366.323478" y="339.16344" transform="rotate(-0 366.323478 339.16344)">(1−s) × flow</text>
+   </g>
+   <g id="patch_20">
+    <path d="M 554.649793 278.293802 
+Q 576.8127 278.293802 597.298556 278.293802 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 593.298556 276.293802 
+L 597.298556 278.293802 
+L 593.298556 280.293802 
+" style="fill: none; stroke: #45616c; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle" x="552.646957" y="293.376544" transform="rotate(-0 552.646957 293.376544)">ideal mixing</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start" x="46.08" y="207.65348" transform="rotate(-0 46.08 207.65348)">Network: heat in blanket He first, then divide and mix the cycle stream</text>
+   </g>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(7.2 405.521912)">Separate primary He, PbLi and divertor streams supply each exchanger. Supplied split; no branch hydraulic balance.</text>
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(7.2 416.719725)">Both layouts use the same selected exchangers. Primary return requirements and layout-specific hardware remain unqualified.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbf08481aaf">
+   <rect x="46.08" y="22.318125" width="669.6" height="129.280645"/>
+  </clipPath>
+  <clipPath id="pb3b2992250">
+   <rect x="46.08" y="213.65348" width="669.6" height="129.280645"/>
+  </clipPath>
+ </defs>
+</svg>

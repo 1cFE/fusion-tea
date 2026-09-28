@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://www-pub.iaea.org/mtcd/publications/pdf/csp_008c/pdf/ft_4.pdf",
+  "slug": "the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16",
+  "path": "knowledge/sources/the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16/",
+  "source_id": "06c61f90626d75cb7c46cbb7177cc31091ca5e6f3143e249a9d2a797e9fe8a51",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-04T04:01:39.780359+00:00"
+}

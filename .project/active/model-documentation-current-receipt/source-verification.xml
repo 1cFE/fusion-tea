@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.365" timestamp="2026-09-13T08:48:07.088537-07:00" hostname="reid-workstation"><testcase classname="tests.models.test_mfe_major_radius" name="test_binding_documentation_and_source_preservation" time="0.315" /></testsuite></testsuites>

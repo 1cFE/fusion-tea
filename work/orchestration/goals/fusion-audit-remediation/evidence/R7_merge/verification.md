@@ -1,0 +1,9 @@
+# Approved merge verification
+
+[OWNER-VERBATIM] "approved" responds to the request to merge `work/mfe-financial-rate-limits@19abc445`. The exact audited revision was merged into `test/codex-native-skills` at `bc75b11d`, after a fresh conflict-free merge-tree preview. No index/worktree reset or stash was used.
+
+SHA256 checks taken immediately before the merge and verified immediately afterward confirm unchanged `.gitignore`, `.project/CURRENT_WORK.md`, `tests/orchestration/test_goal_contract.py`, `tests/study/test_study_publication_fail_closed.py` and `tests/study/test_native_publication.py`. The approved branch has no changes under the separately owned plant-validation item. Additional concurrent historical publication-writer edits appeared during this operation; a merge-commit path comparison confirms the financial merge changed none of those files. Their ownership and approval are separate from this merge.
+
+The merged financial source files, generated package, current oracle and manifest match audited revision `19abc445`. Native integration then ran from the main checkout using `.codex-test/run` and returned CANDIDATE, exit 0, with all ten gates passing and the same full identity as T-033. The command and gate details are preserved in `integration_return.json`. This verifies adoption of the existing candidate; it promotes no second Round 7 candidate and runs no committed study.
+
+Producer output remains at `/tmp/financial-approved-merge-verification/` (unpinned; no native digest); the copied return's paths resolve from the main checkout. The original full isolated integration evidence remains committed under `evidence/T-033_integration/@7cd97823`. Prior independent audits and historical limitations remain unchanged. The native seam still omits its disclosed read-set assertion.

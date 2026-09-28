@@ -1,0 +1,296 @@
+<svg role="img" aria-label="Five stored breeding results between 0.60 and 1.00 m blanket thickness, joined by straight segments; outside that range the response is undefined." data-x0="0.5" data-x1="1.1" data-px0="58.752" data-px1="719.712" data-y0="1.05" data-y1="1.29" data-py0="254.016" data-py1="39.312" xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="302.4pt" viewBox="0 0 734.4 302.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="br-figure_1">
+  <g id="br-patch_1">
+   <path d="M 0 302.4 
+L 734.4 302.4 
+L 734.4 0 
+L 0 0 
+z
+" style="fill: #fbfaf8"/>
+  </g>
+  <g id="br-axes_1">
+   <g id="br-patch_2">
+    <path d="M 58.752 254.016 
+L 719.712 254.016 
+L 719.712 39.312 
+L 58.752 39.312 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="br-patch_3">
+    <path d="M 168.912 254.016 
+L 609.552 254.016 
+L 609.552 39.312 
+L 168.912 39.312 
+z
+" clip-path="url(#br-pc920243f79)" style="fill: #eef3f8; stroke: #eef3f8; stroke-linejoin: miter"/>
+   </g>
+   <g id="br-matplotlib.axis_1">
+    <g id="br-xtick_1">
+     <g id="br-line2d_1">
+      <path d="M 58.752 254.016 
+L 58.752 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_2">
+      <defs>
+       <path id="br-m953f6e3b04" d="M 0 0 
+L 0 3.5 
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="58.752" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_1">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="58.752" y="268.7335" transform="rotate(-0 58.752 268.7335)">0.5</text>
+     </g>
+    </g>
+    <g id="br-xtick_2">
+     <g id="br-line2d_3">
+      <path d="M 168.912 254.016 
+L 168.912 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_4">
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="168.912" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_2">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="168.912" y="268.7335" transform="rotate(-0 168.912 268.7335)">0.6</text>
+     </g>
+    </g>
+    <g id="br-xtick_3">
+     <g id="br-line2d_5">
+      <path d="M 279.072 254.016 
+L 279.072 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_6">
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="279.072" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_3">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="279.072" y="268.7335" transform="rotate(-0 279.072 268.7335)">0.7</text>
+     </g>
+    </g>
+    <g id="br-xtick_4">
+     <g id="br-line2d_7">
+      <path d="M 389.232 254.016 
+L 389.232 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_8">
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="389.232" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_4">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="389.232" y="268.7335" transform="rotate(-0 389.232 268.7335)">0.8</text>
+     </g>
+    </g>
+    <g id="br-xtick_5">
+     <g id="br-line2d_9">
+      <path d="M 499.392 254.016 
+L 499.392 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_10">
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="499.392" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_5">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="499.392" y="268.7335" transform="rotate(-0 499.392 268.7335)">0.9</text>
+     </g>
+    </g>
+    <g id="br-xtick_6">
+     <g id="br-line2d_11">
+      <path d="M 609.552 254.016 
+L 609.552 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_12">
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="609.552" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_6">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="609.552" y="268.7335" transform="rotate(-0 609.552 268.7335)">1.0</text>
+     </g>
+    </g>
+    <g id="br-xtick_7">
+     <g id="br-line2d_13">
+      <path d="M 719.712 254.016 
+L 719.712 39.312 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_14">
+      <g>
+       <use xlink:href="#br-m953f6e3b04" x="719.712" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_7">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="719.712" y="268.7335" transform="rotate(-0 719.712 268.7335)">1.1</text>
+     </g>
+    </g>
+    <g id="br-text_8">
+     <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #191919" x="389.232" y="283.433656" transform="rotate(-0 389.232 283.433656)">Blanket thickness (m)</text>
+    </g>
+   </g>
+   <g id="br-matplotlib.axis_2">
+    <g id="br-ytick_1">
+     <g id="br-line2d_15">
+      <path d="M 58.752 254.016 
+L 719.712 254.016 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_16">
+      <defs>
+       <path id="br-m777e6b6dd5" d="M 0 0 
+L -3.5 0 
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#br-m777e6b6dd5" x="58.752" y="254.016" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_9">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="51.752" y="257.87475" transform="rotate(-0 51.752 257.87475)">1.05</text>
+     </g>
+    </g>
+    <g id="br-ytick_2">
+     <g id="br-line2d_17">
+      <path d="M 58.752 209.286 
+L 719.712 209.286 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_18">
+      <g>
+       <use xlink:href="#br-m777e6b6dd5" x="58.752" y="209.286" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_10">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="51.752" y="213.14475" transform="rotate(-0 51.752 213.14475)">1.10</text>
+     </g>
+    </g>
+    <g id="br-ytick_3">
+     <g id="br-line2d_19">
+      <path d="M 58.752 164.556 
+L 719.712 164.556 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_20">
+      <g>
+       <use xlink:href="#br-m777e6b6dd5" x="58.752" y="164.556" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_11">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="51.752" y="168.41475" transform="rotate(-0 51.752 168.41475)">1.15</text>
+     </g>
+    </g>
+    <g id="br-ytick_4">
+     <g id="br-line2d_21">
+      <path d="M 58.752 119.826 
+L 719.712 119.826 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_22">
+      <g>
+       <use xlink:href="#br-m777e6b6dd5" x="58.752" y="119.826" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_12">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="51.752" y="123.68475" transform="rotate(-0 51.752 123.68475)">1.20</text>
+     </g>
+    </g>
+    <g id="br-ytick_5">
+     <g id="br-line2d_23">
+      <path d="M 58.752 75.096 
+L 719.712 75.096 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="br-line2d_24">
+      <g>
+       <use xlink:href="#br-m777e6b6dd5" x="58.752" y="75.096" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="br-text_13">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="51.752" y="78.95475" transform="rotate(-0 51.752 78.95475)">1.25</text>
+     </g>
+    </g>
+    <g id="br-text_14">
+     <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #191919" x="25.849656" y="146.664" transform="rotate(-90 25.849656 146.664)">Tritium breeding ratio (Li-6 + Li-7)</text>
+    </g>
+   </g>
+   <g id="br-line2d_25">
+    <path d="M 168.912 216.93759 
+L 279.072 160.95766 
+L 389.232 121.549072 
+L 499.392 92.130053 
+L 609.552 72.905321 
+" clip-path="url(#br-pc920243f79)" style="fill: none; stroke: #1b5f99; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="br-patch_4">
+    <path d="M 58.752 254.016 
+L 58.752 39.312 
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="br-patch_5">
+    <path d="M 58.752 254.016 
+L 719.712 254.016 
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="br-PathCollection_1">
+    <defs>
+     <path id="br-md42c18f64d" d="M 0 4 
+C 1.060812 4 2.078319 3.578535 2.828427 2.828427 
+C 3.578535 2.078319 4 1.060812 4 0 
+C 4 -1.060812 3.578535 -2.078319 2.828427 -2.828427 
+C 2.078319 -3.578535 1.060812 -4 0 -4 
+C -1.060812 -4 -2.078319 -3.578535 -2.828427 -2.828427 
+C -3.578535 -2.078319 -4 -1.060812 -4 0 
+C -4 1.060812 -3.578535 2.078319 -2.828427 2.828427 
+C -2.078319 3.578535 -1.060812 4 0 4 
+z
+" style="stroke: #ffffff; stroke-width: 1.5"/>
+    </defs>
+    <g clip-path="url(#br-pc920243f79)">
+     <use xlink:href="#br-md42c18f64d" x="168.912" y="216.93759" style="fill: #1b5f99; stroke: #ffffff; stroke-width: 1.5"/>
+     <use xlink:href="#br-md42c18f64d" x="279.072" y="160.95766" style="fill: #1b5f99; stroke: #ffffff; stroke-width: 1.5"/>
+     <use xlink:href="#br-md42c18f64d" x="389.232" y="121.549072" style="fill: #1b5f99; stroke: #ffffff; stroke-width: 1.5"/>
+     <use xlink:href="#br-md42c18f64d" x="499.392" y="92.130053" style="fill: #1b5f99; stroke: #ffffff; stroke-width: 1.5"/>
+     <use xlink:href="#br-md42c18f64d" x="609.552" y="72.905321" style="fill: #1b5f99; stroke: #ffffff; stroke-width: 1.5"/>
+    </g>
+   </g>
+   <g id="br-text_15">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #191919" x="160.912" y="208.93759" transform="rotate(-0 160.912 208.93759)">1.091</text>
+   </g>
+   <g id="br-text_16">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="617.552" y="84.905321" transform="rotate(-0 617.552 84.905321)">1.252</text>
+   </g>
+   <g id="br-text_17">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="389.232" y="57.7647" transform="rotate(-0 389.232 57.7647)">defined: five stored results, 0.60 to 1.00 m</text>
+   </g>
+   <g id="br-text_18">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #5f5f5f" x="69.768" y="57.7647" transform="rotate(-0 69.768 57.7647)">undefined</text>
+   </g>
+   <g id="br-text_19">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="708.696" y="57.7647" transform="rotate(-0 708.696 57.7647)">undefined</text>
+   </g>
+   <g id="br-text_20">
+    <text style="font-weight: 600; font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="58.752" y="29.312" transform="rotate(-0 58.752 29.312)">Stored transport results and the interpolated response</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="br-pc920243f79">
+   <rect x="58.752" y="39.312" width="660.96" height="214.704"/>
+  </clipPath>
+ </defs>
+</svg>

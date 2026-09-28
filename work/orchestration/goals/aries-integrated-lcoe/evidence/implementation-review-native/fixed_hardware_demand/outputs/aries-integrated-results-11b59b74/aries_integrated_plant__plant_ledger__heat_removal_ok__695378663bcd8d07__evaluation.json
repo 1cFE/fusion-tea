@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+  "margin": 2.3494488606930785e-06,
+  "observed": {
+    "tolerance_in": 2.3494488606930785e-06,
+    "unmet_in": 0.0
+  },
+  "status": "satisfied"
+}

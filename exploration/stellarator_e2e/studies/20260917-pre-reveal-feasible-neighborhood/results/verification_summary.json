@@ -1,0 +1,111 @@
+{
+  "outcome": "pass_with_boundary_exceptions",
+  "cases": 334,
+  "scalar_comparisons": 75484,
+  "predicate_comparisons": 6680,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-09,
+  "exact_predicates": true,
+  "boundary_exceptions": [
+    {
+      "proposal_id": "r2-forward",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "local_identity": "reference_conductor_current_ok",
+      "native": "violated",
+      "oracle": "satisfied"
+    },
+    {
+      "proposal_id": "r2-table5",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "local_identity": "reference_conductor_current_ok",
+      "native": "violated",
+      "oracle": "satisfied"
+    },
+    {
+      "proposal_id": "anchor-inventory1",
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "local_identity": "reference_conductor_current_ok",
+      "native": "violated",
+      "oracle": "satisfied"
+    }
+  ],
+  "strict_relative_misses": [
+    {
+      "proposal_id": "r2-forward",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -3.3306690738754696e-16,
+      "oracle": 0.0
+    },
+    {
+      "proposal_id": "r2-forward",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -2.1827872842550278e-11,
+      "oracle": 0.0
+    },
+    {
+      "proposal_id": "r2-table5",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -5.551115123125783e-16,
+      "oracle": 0.0
+    },
+    {
+      "proposal_id": "r2-table5",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -3.637978807091713e-11,
+      "oracle": 0.0
+    },
+    {
+      "proposal_id": "anchor-inventory1",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -3.3306690738754696e-16,
+      "oracle": 0.0
+    },
+    {
+      "proposal_id": "anchor-inventory1",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -2.1827872842550278e-11,
+      "oracle": 0.0
+    }
+  ],
+  "native_operand_checks": 6680,
+  "max_absolute_deviation": 5.7220458984375e-06,
+  "max_relative_deviation": 1.0,
+  "failures": [],
+  "unmapped_native_channels": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__magnet__coil_length__c_coil",
+    "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+    "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event"
+  ],
+  "schema_version": "study-local-all-point-verification/v1",
+  "tool": {
+    "path": "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/execution/analyze.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "7e30bd1e46de77eadd9d8c7aa0deb99559b034748ff57c974a85bbfd734fad5e",
+      "files": [
+        {
+          "path": "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/execution/analyze.py",
+          "sha256": "4ed0ac36c10f274979714e59af34a83149b02bcb0b9bfe19be015beb02840c1e"
+        }
+      ]
+    }
+  },
+  "command": [
+    "execution/analyze.py"
+  ],
+  "generic_verifier": "generic-verification-refusal.json",
+  "scope": "All mapped native scalars and all20 independently derived predicates; exact boundary exceptions preserved. Generic strict-relative verifier did not pass."
+}

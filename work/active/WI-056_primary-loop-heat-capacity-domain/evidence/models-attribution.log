@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-056_primary-loop-heat-capacity-domain/evidence/attribute_models.py", line 13, in <module>
+    added={k:v for k,v in new.items() if k not in old};assert len(added)==59 and all(v=='passed' for v in added.values())
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,9 @@
+# T-011 commands and observations
+
+[VERIFIED] `git merge --no-ff --no-commit 8234a8e6` in the target produced the expected discovery-log append conflict. Resolution retained base prefix + six preparation rows + 39 target rows, preserving newer same-ID dispositions after preparation. `git diff --cached --check` passed; merge `2529d904` contains exactly 12 preparation/discovery files and 558 additions relative to its first parent. Local setup files were excluded.
+
+[VERIFIED] `.codex-test/run python evidence/T-011_candidate-assessment/check_coverage.py` (actual full path under `work/orchestration/goals/plant-closure/`) reads current contract/maps and exercises `_oracle_overrides` only. It writes coverage/axes/publication JSON. Initial execution used identical script `/tmp/plant-coverage-probe.py`, then retained it as `check_coverage.py`. No evaluate/compute call occurs.
+
+[VERIFIED] `.codex-test/run python scripts/study/indicators.py --package exploration/stellarator_e2e/generated --manifest exploration/stellarator_e2e/studies/manifest.json --groups work/orchestration/goals/plant-closure/evidence/T-011_candidate-assessment/axes.json --out work/orchestration/goals/plant-closure/evidence/T-011_candidate-assessment/indicators.json`: exit 0, all 25 groups, four sound negatives. Native package identity, pin and parsed-read-set coverage pass.
+
+[VERIFIED] First record-check invocation named nonexistent `tests/test_goal_contract.py`: exit 4, no tests ran. Corrected `.codex-test/run python -m pytest tests/study/test_records.py tests/orchestration/test_goal_contract.py -q`: 68 passed, one failed. Failure is `test_narratives_are_separate_from_the_goal_contract`, naming an existing `work/narratives/` reference in `work/orchestration/goals/wall-and-heating/trail.md`. Same known failure as the entering remediation review. No test or unrelated trail was changed.

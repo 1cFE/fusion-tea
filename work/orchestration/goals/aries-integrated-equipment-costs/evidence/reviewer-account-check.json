@@ -1,0 +1,316 @@
+{
+  "passed": true,
+  "fingerprint": "d1aa04e629836d405efab0878fbb3936df94c0343644333212a019d8e8e445b7",
+  "checks": [
+    {
+      "case": "nominal-source-assumed",
+      "channel": "core_cost__evaluate__total",
+      "actual": 864731000.0,
+      "expected": 864731000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "reactor_cost__evaluate__total",
+      "actual": 1538848000.0,
+      "expected": 1538848000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "cost_ledger__evaluate__source_direct",
+      "actual": 2619572000.0,
+      "expected": 2619572000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "cost_ledger__evaluate__source_inclusive",
+      "actual": 5055773960.0,
+      "expected": 5055773960.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "cost_ledger__evaluate__direct",
+      "actual": 2919603000.0,
+      "expected": 2919603000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "cost_ledger__evaluate__overnight",
+      "actual": 4350208470.0,
+      "expected": 4350208470.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "replacement__evaluate__event_cost",
+      "actual": 72231350.0,
+      "expected": 72231350.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "replacement__evaluate__event_count",
+      "actual": 6.0,
+      "expected": 6,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "replacement__evaluate__lifetime_total",
+      "actual": 433388100.0,
+      "expected": 433388100.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "replacement__evaluate__annual_reserve",
+      "actual": 12279329.5,
+      "expected": 12279329.5,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-source-assumed",
+      "channel": "annual_decay",
+      "actual": 0.5622193797875112,
+      "expected": 0.5622193797875112,
+      "tolerance": 1e-12
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "core_cost__evaluate__total",
+      "actual": 864731000.0,
+      "expected": 864731000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "reactor_cost__evaluate__total",
+      "actual": 1538848000.0,
+      "expected": 1538848000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "cost_ledger__evaluate__source_direct",
+      "actual": 2619572000.0,
+      "expected": 2619572000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "cost_ledger__evaluate__source_inclusive",
+      "actual": 5055773960.0,
+      "expected": 5055773960.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "cost_ledger__evaluate__direct",
+      "actual": 2919603000.0,
+      "expected": 2919603000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "cost_ledger__evaluate__overnight",
+      "actual": 4350208470.0,
+      "expected": 4350208470.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "replacement__evaluate__event_cost",
+      "actual": 72231350.0,
+      "expected": 72231350.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "replacement__evaluate__event_count",
+      "actual": 6.0,
+      "expected": 6,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "replacement__evaluate__lifetime_total",
+      "actual": 433388100.0,
+      "expected": 433388100.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "replacement__evaluate__annual_reserve",
+      "actual": 12279329.5,
+      "expected": 12279329.5,
+      "tolerance": 0.01
+    },
+    {
+      "case": "nominal-calculated",
+      "channel": "annual_decay",
+      "actual": 0.5622193797875112,
+      "expected": 0.5622193797875112,
+      "tolerance": 1e-12
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "core_cost__evaluate__total",
+      "actual": 864731000.0,
+      "expected": 864731000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "reactor_cost__evaluate__total",
+      "actual": 1538848000.0,
+      "expected": 1538848000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "cost_ledger__evaluate__source_direct",
+      "actual": 2619572000.0,
+      "expected": 2619572000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "cost_ledger__evaluate__source_inclusive",
+      "actual": 5055773960.0,
+      "expected": 5055773960.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "cost_ledger__evaluate__direct",
+      "actual": 2919603000.0,
+      "expected": 2919603000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "cost_ledger__evaluate__overnight",
+      "actual": 4350208470.0,
+      "expected": 4350208470.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "replacement__evaluate__event_cost",
+      "actual": 72231350.0,
+      "expected": 72231350.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "replacement__evaluate__event_count",
+      "actual": 6.0,
+      "expected": 6,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "replacement__evaluate__lifetime_total",
+      "actual": 433388100.0,
+      "expected": 433388100.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "replacement__evaluate__annual_reserve",
+      "actual": 12279329.5,
+      "expected": 12279329.5,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "channel": "annual_decay",
+      "actual": 0.5622193797875112,
+      "expected": 0.5622193797875112,
+      "tolerance": 1e-12
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "core_cost__evaluate__total",
+      "actual": 864731000.0,
+      "expected": 864731000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "reactor_cost__evaluate__total",
+      "actual": 1538848000.0,
+      "expected": 1538848000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "cost_ledger__evaluate__source_direct",
+      "actual": 2619572000.0,
+      "expected": 2619572000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "cost_ledger__evaluate__source_inclusive",
+      "actual": 5055773960.0,
+      "expected": 5055773960.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "cost_ledger__evaluate__direct",
+      "actual": 2919603000.0,
+      "expected": 2919603000.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "cost_ledger__evaluate__overnight",
+      "actual": 4350208470.0,
+      "expected": 4350208470.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "replacement__evaluate__event_cost",
+      "actual": 72231350.0,
+      "expected": 72231350.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "replacement__evaluate__event_count",
+      "actual": 6.0,
+      "expected": 6,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "replacement__evaluate__lifetime_total",
+      "actual": 433388100.0,
+      "expected": 433388100.0,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "replacement__evaluate__annual_reserve",
+      "actual": 12279329.5,
+      "expected": 12279329.5,
+      "tolerance": 0.01
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "channel": "annual_decay",
+      "actual": 0.5622193797875112,
+      "expected": 0.5622193797875112,
+      "tolerance": 1e-12
+    }
+  ],
+  "build_source_count": 15,
+  "baseline_sha256": "350c6a137f005a2a584215f91433f35ecc467945f7be15e6e554fb1f036763a0"
+}

@@ -1,0 +1,4 @@
+**/pkg_link/
+**/__pycache__/
+*.db-wal
+*.db-shm

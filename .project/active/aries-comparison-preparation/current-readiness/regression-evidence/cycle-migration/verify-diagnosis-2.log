@@ -1,0 +1,93 @@
+E
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_the_summary_validates_against_its_schema ________
+tests/study/test_verify.py:70: in summary
+    run_verify(promoted_run, out, expect=0)
+tests/study/test_verify.py:63: in run_verify
+    assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E   AssertionError: exit 1
+E     package tree is not git-clean: exploration/stellarator_e2e/generated
+E     M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E      M exploration/stellarator_e2e/generated/__init__.py
+E      M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E      M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E      M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py
+E      M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E      M exploration/stellarator_e2e/generated/inputs/mfe_plant_systems_params.json
+E      M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E      M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E      M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_power_balance/mfe_power_balance_calc.py
+E      M exploration/stellarator_e2e/generated/modules/mfe_power_balance/reactor_source_heat.py
+E      M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py
+E      M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py
+E      M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E      M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E      M exploration/stellarator_e2e/generated/schemas/mfe_plant_systems_params.py
+E      M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E      M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E     ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/__init__.py
+E     ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cooling_water_rejection_impl.py
+E     ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cycle_mode_selection_impl.py
+E     ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py
+E     ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/__init__.py
+E     ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cooling_water_rejection.py
+E     ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cycle_mode_selection.py
+E     ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/matched_steam_cycle.py
+E     ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellariscoolingwaterheatdirectionconstraintmodule.py
+E     ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedmainheatdirectionconstraintmodule.py
+E     ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedreheatheatdirectionconstraintmodule.py
+E     ?? exploration/stellarator_e2e/generated/schemas/cooling_water_rejection_output.py
+E     ?? exploration/stellarator_e2e/generated/schemas/cycle_mode_selection_output.py
+E     ?? exploration/stellarator_e2e/generated/schemas/matched_steam_cycle_output.py
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...emas/cycle_mode_selection_output.py\n?? exploration/stellarator_e2e/generated/schemas/matched_steam_cycle_output.py\n').returncode
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+2 warnings, 1 error in 43.77s

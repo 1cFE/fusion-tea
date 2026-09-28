@@ -1,0 +1,55 @@
+{
+  "study_id": "20260922-aries-integrated-local-response",
+  "authority": "AGENT executor interpretation; proposed dispositions, not owner-originated settled decisions",
+  "findings": [
+    {
+      "id": "20260922-aries-integrated-local-response#1",
+      "kind": "model",
+      "finding": "Exchanger geometry and hydraulic/MHD qualification remain missing despite explicit area-to-UA and purchased-cost paths.",
+      "disposition": "Retain conditional scope; no scientific feasibility claim.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md"
+    },
+    {
+      "id": "20260922-aries-integrated-local-response#2",
+      "kind": "model",
+      "finding": "Brayton flow and three independent compression ratios lack qualified machine maps and priced flow/pressure capability.",
+      "disposition": "Keep declined axes fixed; do not infer capability from MW screens.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/axis-review.md"
+    },
+    {
+      "id": "20260922-aries-integrated-local-response#3",
+      "kind": "model",
+      "finding": "Density changes imposed fusion/fuel/heat demand with installed hardware fixed; confinement and control remain unqualified.",
+      "disposition": "Carry separately as demand diagnostics in follow-up comparisons.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md"
+    },
+    {
+      "id": "20260922-aries-integrated-local-response#4",
+      "kind": "model",
+      "finding": "Fixed 100 kg/calendar-year feed clips external purchases to zero at the lower-density point; density ranking differs between supply scenarios.",
+      "disposition": "Preserve fixed feed/service pairs and report gross makeup, purchases and contributions.",
+      "home": "record.md \u00a76 and \u00a78"
+    },
+    {
+      "id": "20260922-aries-integrated-local-response#5",
+      "kind": "model",
+      "finding": "Breeding and supplied-feed qualification flags remain unsupported for every candidate in both scenarios.",
+      "disposition": "No supply, service or efficiency optimization; preserve assumed-supply label.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md"
+    },
+    {
+      "id": "20260922-aries-integrated-local-response#6",
+      "kind": "model",
+      "finding": "All three inherited source controls fail heat removal; literal Raffray also fails integrated balance in both supply scenarios.",
+      "disposition": "Retain all adverse controls and finite prices without ranking them as acceptable designs.",
+      "home": "record.md \u00a74 and results/cases.json"
+    },
+    {
+      "id": "20260922-aries-integrated-local-response#7",
+      "kind": "model",
+      "finding": "Local area changes leave net electricity and gross fuel demand flat while changing capital/LCOE; undersized controls fail heat removal.",
+      "disposition": "Carry local purchased-cost finding into coupled study; claim no minimum-area boundary or optimum.",
+      "home": "record.md \u00a76; proposed follow-up exploration/aries_integrated/studies/20260922-aries-integrated-coupled-design/"
+    }
+  ]
+}

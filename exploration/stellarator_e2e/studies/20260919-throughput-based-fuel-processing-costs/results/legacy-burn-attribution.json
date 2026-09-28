@@ -1,0 +1,520 @@
+[
+  {
+    "id": "legacy-burn-0.025",
+    "all_changed_outputs": {
+      "stellarator_09__stellaris__breeding_adequacy__balance_rate": {
+        "reference": 6.03097635457502e+18,
+        "changed": -1.8356852819881633e+20
+      },
+      "stellarator_09__stellaris__breeding_adequacy__decay_rate": {
+        "reference": 1.5726523913486374e+18,
+        "changed": 2.8217852316022636e+18
+      },
+      "stellarator_09__stellaris__breeding_adequacy__fuel_margin": {
+        "reference": 0.006403997294744279,
+        "changed": -0.19492239545817935
+      },
+      "stellarator_09__stellaris__breeding_adequacy__numerical_margin": {
+        "reference": -0.0055243412569006,
+        "changed": -0.20685073400982423
+      },
+      "stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate": {
+        "reference": 1.7893285312748084e+20,
+        "changed": 3.672832248406186e+20
+      },
+      "stellarator_09__stellaris__breeding_adequacy__required_tbr": {
+        "reference": 1.1916699222592924,
+        "changed": 1.392996315012216
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "reference": 274152877.1251124,
+        "changed": 274286071.40496355
+      },
+      "stellarator_09__stellaris__cas80_calc__levelized": {
+        "reference": 792505.9651144512,
+        "changed": 925700.2449656195
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate": {
+        "reference": 1.7893285312748067e+22,
+        "changed": 3.672832248406182e+22
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__inject_rate": {
+        "reference": 1.8835037171313755e+22,
+        "changed": 3.767007434262751e+22
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate": {
+        "reference": 1.7893285312748084e+20,
+        "changed": 3.672832248406186e+20
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin": {
+        "reference": 0.006403997294744279,
+        "changed": -0.19492239545817935
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required": {
+        "reference": 1.1916699222592924,
+        "changed": 1.392996315012216
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel": {
+        "reference": 550716.1814915092,
+        "changed": 643273.5229186537
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_decay_kg": {
+        "reference": 0.24838586519653835,
+        "changed": 0.44567481663846187
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg": {
+        "reference": 2551.320892424733,
+        "changed": 5236.921831819188
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_external_shortfall_kg": {
+        "reference": 0.0,
+        "changed": 26.217517913637277
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_injection_kg": {
+        "reference": 2685.6009393944555,
+        "changed": 5371.201878788911
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_makeup_signed_kg": {
+        "reference": -0.835780431749232,
+        "changed": 26.217517913637277
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_kg": {
+        "reference": 2525.8076835004854,
+        "changed": 5184.552613500997
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_loss_kg": {
+        "reference": 25.51320892424735,
+        "changed": 52.36921831819193
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s": {
+        "reference": 8.090185478262091e-05,
+        "changed": 0.00016606170192222185
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s": {
+        "reference": 7.876264117089623e-09,
+        "changed": 1.413225572800805e-08
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_day": {
+        "reference": 13.591362152639665,
+        "changed": 27.18272430527933
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_s": {
+        "reference": 0.00015730743232221834,
+        "changed": 0.0003146148646444367
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day": {
+        "reference": 12.911794045007683,
+        "changed": 26.503156197647346
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s": {
+        "reference": 0.00014944206070610744,
+        "changed": 0.0003067494930283258
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_day": {
+        "reference": 7.7426808958727396,
+        "changed": 15.892871312580885
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_s": {
+        "reference": 8.96143622207493e-05,
+        "changed": 0.00018394526982153803
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__external_shortfall_kg_s": {
+        "reference": 0.0,
+        "changed": 9.19360323764496e-07
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__feed_atoms": {
+        "reference": 2.2602044605576507e+25,
+        "changed": 4.520408921115301e+25
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__feed_kg": {
+        "reference": 0.11319708912094648,
+        "changed": 0.22639417824189295
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_day": {
+        "reference": 8.150190416708146,
+        "changed": 16.30038083341629
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_s": {
+        "reference": 9.433090760078873e-05,
+        "changed": 0.00018866181520157745
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__makeup_signed_kg_s": {
+        "reference": -3.020474385431081e-08,
+        "changed": 9.19360323764496e-07
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__prefill_atoms": {
+        "reference": 2.2663578356857565e+25,
+        "changed": 4.526562296243407e+25
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg": {
+        "reference": 0.11350526661768452,
+        "changed": 0.226702355738631
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__processor_atoms": {
+        "reference": 2.5766330850357217e+26,
+        "changed": 5.288878437704902e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__processor_kg": {
+        "reference": 1.2904468159787899,
+        "changed": 2.6488118854301472
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_day": {
+        "reference": 7.665254086914012,
+        "changed": 15.733942599455077
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_s": {
+        "reference": 8.87182185985418e-05,
+        "changed": 0.00018210581712332265
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day": {
+        "reference": 0.07742680895872746,
+        "changed": 0.158928713125809
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_s": {
+        "reference": 8.961436222074938e-07,
+        "changed": 1.839452698215382e-06
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__reserve_atoms": {
+        "reference": 4.068368029003771e+26,
+        "changed": 8.136736058007542e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__reserve_kg": {
+        "reference": 2.0375476041770364,
+        "changed": 4.075095208354073
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__shutdown_decay_loss_kg": {
+        "reference": 0.0006804568120688539,
+        "changed": 0.001220932860689229
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__shutdown_remaining_kg": {
+        "reference": 4.417272287727169,
+        "changed": 7.92584157442789
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_atoms": {
+        "reference": 8.785720954992526e+26,
+        "changed": 1.6092952876939032e+27
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_kg": {
+        "reference": 4.400124215703401,
+        "changed": 8.059781549942635
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_atoms": {
+        "reference": 3.30720642901968e+23,
+        "changed": 5.5583118531951695e+23
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_kg": {
+        "reference": 0.001656337501407913,
+        "changed": 0.002783751351649446
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_atoms": {
+        "reference": 4.48740993599116e+26,
+        "changed": 7.498002277453953e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg": {
+        "reference": 2.2474150074072714,
+        "changed": 3.75520023449828
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_atoms": {
+        "reference": 8.782413748563507e+26,
+        "changed": 1.6087394565085837e+27
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_kg": {
+        "reference": 4.398467878201993,
+        "changed": 8.056997798590984
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__total_atoms": {
+        "reference": 8.82131914988682e+26,
+        "changed": 1.5827952977615538e+27
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__total_kg": {
+        "reference": 4.417952744539238,
+        "changed": 7.927062507288579
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__working_atoms": {
+        "reference": 4.7529511208830484e+26,
+        "changed": 7.691216919607994e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__working_kg": {
+        "reference": 2.380405140362202,
+        "changed": 3.851967298934506
+      },
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": {
+        "reference": 268.2888502744632,
+        "changed": 268.3055439962745
+      },
+      "stellarator_09__stellaris__lcoe_calc__lcoe": {
+        "reference": 273.4546494372188,
+        "changed": 273.47134315903
+      },
+      "stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total": {
+        "reference": 78.0137257066115,
+        "changed": 156.027451413223
+      },
+      "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required": {
+        "reference": 78.0137257066115,
+        "changed": 156.027451413223
+      },
+      "stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules": {
+        "reference": 1.8835037171313755e+22,
+        "changed": 3.767007434262751e+22
+      }
+    },
+    "total_capital_unchanged": true,
+    "processing_cost_unchanged": true
+  },
+  {
+    "id": "legacy-burn-0.1",
+    "all_changed_outputs": {
+      "stellarator_09__stellaris__breeding_adequacy__balance_rate": {
+        "reference": 6.03097635457502e+18,
+        "changed": 1.008307286312707e+20
+      },
+      "stellarator_09__stellaris__breeding_adequacy__decay_rate": {
+        "reference": 1.5726523913486374e+18,
+        "changed": 9.480859712218245e+17
+      },
+      "stellarator_09__stellaris__breeding_adequacy__fuel_margin": {
+        "reference": 0.006403997294744279,
+        "changed": 0.10706719367120598
+      },
+      "stellarator_09__stellaris__breeding_adequacy__numerical_margin": {
+        "reference": -0.0055243412569006,
+        "changed": 0.0951388551195611
+      },
+      "stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate": {
+        "reference": 1.7893285312748084e+20,
+        "changed": 8.475766727091197e+19
+      },
+      "stellarator_09__stellaris__breeding_adequacy__required_tbr": {
+        "reference": 1.1916699222592924,
+        "changed": 1.0910067258828307
+      },
+      "stellarator_09__stellaris__cas70_calc__annual_total": {
+        "reference": 274152877.1251124,
+        "changed": 274086279.9851868
+      },
+      "stellarator_09__stellaris__cas80_calc__levelized": {
+        "reference": 792505.9651144512,
+        "changed": 725908.825188867
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate": {
+        "reference": 1.7893285312748067e+22,
+        "changed": 8.475766727091189e+21
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__inject_rate": {
+        "reference": 1.8835037171313755e+22,
+        "changed": 9.417518585656878e+21
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate": {
+        "reference": 1.7893285312748084e+20,
+        "changed": 8.475766727091197e+19
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin": {
+        "reference": 0.006403997294744279,
+        "changed": 0.10706719367120598
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required": {
+        "reference": 1.1916699222592924,
+        "changed": 1.0910067258828307
+      },
+      "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel": {
+        "reference": 550716.1814915092,
+        "changed": 504437.510777937
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_decay_kg": {
+        "reference": 0.24838586519653835,
+        "changed": 0.1497413894755766
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg": {
+        "reference": 2551.320892424733,
+        "changed": 1208.5204227275049
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_injection_kg": {
+        "reference": 2685.6009393944555,
+        "changed": 1342.8004696972278
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_makeup_signed_kg": {
+        "reference": -0.835780431749232,
+        "changed": -14.362429604442488
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_kg": {
+        "reference": 2525.8076835004854,
+        "changed": 1196.43521850023
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_loss_kg": {
+        "reference": 25.51320892424735,
+        "changed": 12.085204227275058
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s": {
+        "reference": 8.090185478262091e-05,
+        "changed": 3.8321931212820424e-05
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s": {
+        "reference": 7.876264117089623e-09,
+        "changed": 4.74826831163041e-09
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_day": {
+        "reference": 13.591362152639665,
+        "changed": 6.795681076319832
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_s": {
+        "reference": 0.00015730743232221834,
+        "changed": 7.865371616110917e-05
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day": {
+        "reference": 12.911794045007683,
+        "changed": 6.116112968687849
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s": {
+        "reference": 0.00014944206070610744,
+        "changed": 7.078834454499826e-05
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_day": {
+        "reference": 7.7426808958727396,
+        "changed": 3.667585687518666
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_s": {
+        "reference": 8.96143622207493e-05,
+        "changed": 4.244890842035493e-05
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__feed_atoms": {
+        "reference": 2.2602044605576507e+25,
+        "changed": 1.1301022302788253e+25
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__feed_kg": {
+        "reference": 0.11319708912094648,
+        "changed": 0.05659854456047324
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_day": {
+        "reference": 8.150190416708146,
+        "changed": 4.075095208354073
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_s": {
+        "reference": 9.433090760078873e-05,
+        "changed": 4.7165453800394364e-05
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__makeup_signed_kg_s": {
+        "reference": -3.020474385431081e-08,
+        "changed": -5.049872776637142e-07
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__prefill_atoms": {
+        "reference": 2.2663578356857565e+25,
+        "changed": 1.1362556054069312e+25
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg": {
+        "reference": 0.11350526661768452,
+        "changed": 0.056906722057211284
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__processor_atoms": {
+        "reference": 2.5766330850357217e+26,
+        "changed": 1.2205104087011313e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__processor_kg": {
+        "reference": 1.2904468159787899,
+        "changed": 0.6112642812531109
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_day": {
+        "reference": 7.665254086914012,
+        "changed": 3.630909830643479
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_s": {
+        "reference": 8.87182185985418e-05,
+        "changed": 4.202441933615138e-05
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day": {
+        "reference": 0.07742680895872746,
+        "changed": 0.03667585687518669
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_s": {
+        "reference": 8.961436222074938e-07,
+        "changed": 4.244890842035496e-07
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__reserve_atoms": {
+        "reference": 4.068368029003771e+26,
+        "changed": 2.0341840145018855e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__reserve_kg": {
+        "reference": 2.0375476041770364,
+        "changed": 1.0187738020885182
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__shutdown_decay_loss_kg": {
+        "reference": 0.0006804568120688539,
+        "changed": 0.0004102187877586664
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__shutdown_remaining_kg": {
+        "reference": 4.417272287727169,
+        "changed": 2.6629876443768095
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_atoms": {
+        "reference": 8.785720954992526e+26,
+        "changed": 5.132104994019274e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_kg": {
+        "reference": 4.400124215703401,
+        "changed": 2.570295548583784
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_atoms": {
+        "reference": 3.30720642901968e+23,
+        "changed": 2.1816537169319354e+23
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_kg": {
+        "reference": 0.001656337501407913,
+        "changed": 0.0010926305762871463
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_atoms": {
+        "reference": 4.48740993599116e+26,
+        "changed": 2.9821137652597632e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg": {
+        "reference": 2.2474150074072714,
+        "changed": 1.4935223938617674
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_atoms": {
+        "reference": 8.782413748563507e+26,
+        "changed": 5.129923340302342e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_kg": {
+        "reference": 4.398467878201993,
+        "changed": 2.569202918007497
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__total_atoms": {
+        "reference": 8.82131914988682e+26,
+        "changed": 5.318002236022461e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__total_kg": {
+        "reference": 4.417952744539238,
+        "changed": 2.663397863164568
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__working_atoms": {
+        "reference": 4.7529511208830484e+26,
+        "changed": 3.283818221520576e+26
+      },
+      "stellarator_09__stellaris__fuel_cycle__inventory__working_kg": {
+        "reference": 2.380405140362202,
+        "changed": 1.6446240610760499
+      },
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": {
+        "reference": 268.2888502744632,
+        "changed": 268.2805034135576
+      },
+      "stellarator_09__stellaris__lcoe_calc__lcoe": {
+        "reference": 273.4546494372188,
+        "changed": 273.4463025763131
+      },
+      "stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total": {
+        "reference": 78.0137257066115,
+        "changed": 39.00686285330575
+      },
+      "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required": {
+        "reference": 78.0137257066115,
+        "changed": 39.00686285330575
+      },
+      "stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules": {
+        "reference": 1.8835037171313755e+22,
+        "changed": 9.417518585656878e+21
+      }
+    },
+    "total_capital_unchanged": true,
+    "processing_cost_unchanged": true
+  }
+]

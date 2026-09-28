@@ -1,0 +1,29 @@
+{
+  "scope": "Independent retained-report arithmetic, full-row preservation, frozen model identity, and reporting replay; no plant evaluation",
+  "original_rows_preserved": 276,
+  "quantity_rows_checked": 35,
+  "cost_rows_checked": 35,
+  "cost_nominal_band_counts": {
+    "above_2": 10,
+    "within_[0.5,2]": 8,
+    "below_0.5": 3,
+    "null": 14
+  },
+  "frozen_model_files_checked": 52,
+  "protected_files_checked": 1322,
+  "protected_files_changed": [],
+  "quantity_and_combined_reporting_replay": "exact",
+  "cost_reporting_replay_to_temporary_directory": "byte_exact",
+  "source_report_sha256": "25a779df33560e33171f61b1c5fe598c78fba5af8b8b7d1db9851a8af0d0d529",
+  "examined_artifacts": {
+    "structure.md": "9e28865bdd0331b58d309e40d2ef25f6c386aa597b2eb66a3b602c00c5e879d2",
+    "quantities.md": "540b4f9e0d46fa5b41f694b4effb3452b39bfcd9017850035b78266f7f387d51",
+    "costs.md": "6e70f82137035b7aec1ce99a54ae1b333f777db5956c086617d90a652a52615c",
+    "report.md": "ebc4dd54178ca9b14de10a14e4927c1ae8c11b75655e871b95bcbf8cd59ea282",
+    "replay.md": "c93212f4e476700b537f4494da1cb25e9cf01ff795fd2c54a814d31e459e094d",
+    "quantity-rows.json": "16901e1d377b05f948dc24e3dd5fe95f20a031f82e9952cf453aa9f6c173ee8b",
+    "cost-rows.json": "400b41f9c6435d8b225cda4da7da6211761cf008777846bb7a2cfabfd8dfae87",
+    "comparison-rows.json": "87473b51c1ef7846c13ddf7a0fa26370f9c4fee75e74aa208589c7954dbf75e4",
+    "preservation-after.json": "abcc47dc99eb43de64c3149c6abff9d12771b1cbf4744f45a4ad60eb56592082"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "scopes": {
+    "models": {
+      "pass": 2308,
+      "skip": 13,
+      "xfail": 1
+    },
+    "study": {
+      "pass": 1045,
+      "error": 39,
+      "failure": 48
+    }
+  },
+  "all39error_traces_contain_held_availability_message": false,
+  "errors": [
+    {
+      "name": "tests.study.test_committed_store::test_the_store_speaks_the_generic_vocabulary",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_all_six_checks_pass_on_the_real_package",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_the_results_document_validates_against_its_schema",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_the_document_carries_a_digest_for_every_input_it_read",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_the_six_results_map_onto_record_section_9s_five_rows",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_the_sibling_scan_is_advisory_and_can_never_fail",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_gates::test_the_identity_gate_reports_the_recomputed_digest",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[missing_declared_key]",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[key_names_a_channel]",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[wrong_fingerprint]",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_each_negative_fails_closed_and_still_writes_a_complete_document[stale_manifest]",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_the_wrong_fingerprint_message_names_both_values",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_an_unreadable_input_is_did_not_run_with_its_condition",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_a_baseline_executed_under_another_identity_is_refused",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_a_wrong_headline_is_refused_naming_the_channel",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_preflight_negatives::test_a_differing_baseline_verdict_is_refused_naming_the_constraint",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_the_summary_validates_against_its_schema",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_the_summary_is_a_superset_of_the_committed_field_set",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_parity_holds_at_the_committed_order_of_magnitude",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_every_catalog_constraint_is_rederived_with_its_operand_count",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_stratification_covers_every_observed_verdict_combination",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_stratification_is_a_floor_not_a_cap",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_the_derived_seed_reproduces_from_the_recorded_fields",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_an_explicit_seed_is_recorded_as_explicit",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_cas27_is_compared_and_nothing_is_undisclosed",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_the_command_carries_no_absolute_paths",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_the_operand_bindings_digest_is_the_documented_canonicalization",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_a_planted_channel_deviation_fails_naming_case_and_channel",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_a_planted_verdict_mismatch_fails_naming_the_constraint",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_a_missing_operand_bindings_attribute_fails_closed",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_an_unresolvable_binding_fails_naming_the_constraint_and_operand",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_a_store_bound_to_another_identity_is_refused",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_an_empty_result_is_a_broken_input_not_a_clean_pass",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_the_stores_are_never_written",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_stored_operating_controls_preserve_procurement_and_signed_capacity",
+      "held_availability_message": false
+    },
+    {
+      "name": "tests.study.test_verify::test_operating_channel_deviation_is_refused[p_coupled]",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_operating_channel_deviation_is_refused[p_delivered]",
+      "held_availability_message": true
+    },
+    {
+      "name": "tests.study.test_verify::test_operating_channel_deviation_is_refused[p_wallplug]",
+      "held_availability_message": true
+    }
+  ],
+  "files_sha256": {
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/implementation-full.log": "dd47553ffd8ce997e31dbe2bf26f8cf7de25e082fc08da57734aaf260fe8fa6c",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/implementation-full.xml": "30f73317751ee08ded4acb2f1bdf3f2e942a92397bcba11f5388c2361be32176",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/implementation-full-inventory.json": "4ccdb323de07e18def6c56aac7c0568c184f675e7a35be8dc855bff79454d354",
+    ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/financial-original-tolerance.log": "84f97b6acc5a30321858dd09a4334fe26c3ef8d5eaf6458c6b9b98ab69a1e9eb"
+  },
+  "financial_radius_final_sha256": "3b9e15822a7d60d895e4d6587f51fde786ee824b993d38bfe1ef3d2d1ebc53ba"
+}

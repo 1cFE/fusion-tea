@@ -1,0 +1,62 @@
+[
+  {
+    "name": "primary-suction",
+    "proposal": {
+      "stellarator_09__stellaris__heat_transport__loop_p": 100000.0
+    },
+    "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+    "status": "refused",
+    "exception": "module_execution: ValueError: Primary Coolant Loop: unsupported compressor pressure state; p_loop_in=100000.0 Pa, dp_loop=300319.8964637657 Pa, suction=-200319.8964637657 Pa; requires finite p_loop_in > dp_loop >= 0 Pa",
+    "exception_type": "EvaluationFailed",
+    "attributes": {
+      "failure": {
+        "phase": "module_execution",
+        "cause": "ValueError: Primary Coolant Loop: unsupported compressor pressure state; p_loop_in=100000.0 Pa, dp_loop=300319.8964637657 Pa, suction=-200319.8964637657 Pa; requires finite p_loop_in > dp_loop >= 0 Pa",
+        "module_or_channel": "stellarator_09__stellaris__heat_transport__primary_loop",
+        "retryable": false,
+        "partial_artifacts": []
+      }
+    },
+    "traceback": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 173, in evaluate\n    result = self._executor.run(self._graph, context, persist_outputs=False)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py\", line 147, in run\n    self._execute_module(module_key, module_spec, context)\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py\", line 213, in _execute_module\n    result = module.run(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/modules/mfe_primary_loop/primary_coolant_loop.py\", line 421, in run\n    p_loop_margin, q_recovered_total, p_elec, p_pump_total, T_out, T_comp_in, dp_loop, mdot_loop, w_fluid, capacity_margin, q_ihx, mdot, r_comp = run_primary_coolant_loop(validated_inputs)\n                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py\", line 59, in run_primary_coolant_loop\n    result = calculate(inputs)\n             ^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py\", line 31, in calculate\n    raise ValueError(\nValueError: Primary Coolant Loop: unsupported compressor pressure state; p_loop_in=100000.0 Pa, dp_loop=300319.8964637657 Pa, suction=-200319.8964637657 Pa; requires finite p_loop_in > dp_loop >= 0 Pa\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea/work/analysis/model-evaluation-diagnostics/native_acceptance.py\", line 29, in <module>\n    row=engine.evaluate(bridge.build(point))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 175, in evaluate\n    _normalize_run_failure(error, context)\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 70, in _normalize_run_failure\n    raise EvaluationFailed(\nsimkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: Primary Coolant Loop: unsupported compressor pressure state; p_loop_in=100000.0 Pa, dp_loop=300319.8964637657 Pa, suction=-200319.8964637657 Pa; requires finite p_loop_in > dp_loop >= 0 Pa\n"
+  },
+  {
+    "name": "conductor-field",
+    "proposal": {
+      "stellarator_09__stellaris__magnet__coil__turn_current": 40000.0
+    },
+    "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+    "status": "refused",
+    "exception": "module_execution: ValueError: REBCO Conductor Current: B_peak outside 20..32 T; actual=19.919999999999998 T at 20.0 K",
+    "exception_type": "EvaluationFailed",
+    "attributes": {
+      "failure": {
+        "phase": "module_execution",
+        "cause": "ValueError: REBCO Conductor Current: B_peak outside 20..32 T; actual=19.919999999999998 T at 20.0 K",
+        "module_or_channel": "stellarator_09__stellaris__magnet__conductor_current",
+        "retryable": false,
+        "partial_artifacts": []
+      }
+    },
+    "traceback": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 173, in evaluate\n    result = self._executor.run(self._graph, context, persist_outputs=False)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py\", line 147, in run\n    self._execute_module(module_key, module_spec, context)\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py\", line 213, in _execute_module\n    result = module.run(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/modules/mfe_conductor_current/rebco_conductor_current.py\", line 228, in run\n    critical_current_reference, critical_current_set, parallel_tapes_reference, operating_fraction_set, parallel_tapes_set, field_extrapolated, margin_fraction, tape_critical_current, allowable_current, margin_current, operating_fraction_reference = run_rebco_conductor_current(validated_inputs)\n                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py\", line 32, in run_rebco_conductor_current\n    raise ValueError(f'REBCO Conductor Current: B_peak outside 20..32 T; actual={inputs.B_peak!r} T at {inputs.temperature!r} K')\nValueError: REBCO Conductor Current: B_peak outside 20..32 T; actual=19.919999999999998 T at 20.0 K\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea/work/analysis/model-evaluation-diagnostics/native_acceptance.py\", line 29, in <module>\n    row=engine.evaluate(bridge.build(point))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 175, in evaluate\n    _normalize_run_failure(error, context)\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 70, in _normalize_run_failure\n    raise EvaluationFailed(\nsimkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: REBCO Conductor Current: B_peak outside 20..32 T; actual=19.919999999999998 T at 20.0 K\n"
+  },
+  {
+    "name": "conductor-temperature",
+    "proposal": {
+      "stellarator_09__stellaris__cryoplant__T_cold_cryo": 21.0
+    },
+    "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+    "status": "refused",
+    "exception": "module_execution: ValueError: REBCO Conductor Current: unsupported temperature=21.0 K; expected 20.0 K",
+    "exception_type": "EvaluationFailed",
+    "attributes": {
+      "failure": {
+        "phase": "module_execution",
+        "cause": "ValueError: REBCO Conductor Current: unsupported temperature=21.0 K; expected 20.0 K",
+        "module_or_channel": "stellarator_09__stellaris__magnet__conductor_current",
+        "retryable": false,
+        "partial_artifacts": []
+      }
+    },
+    "traceback": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 173, in evaluate\n    result = self._executor.run(self._graph, context, persist_outputs=False)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py\", line 147, in run\n    self._execute_module(module_key, module_spec, context)\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py\", line 213, in _execute_module\n    result = module.run(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/modules/mfe_conductor_current/rebco_conductor_current.py\", line 228, in run\n    critical_current_reference, critical_current_set, parallel_tapes_reference, operating_fraction_set, parallel_tapes_set, field_extrapolated, margin_fraction, tape_critical_current, allowable_current, margin_current, operating_fraction_reference = run_rebco_conductor_current(validated_inputs)\n                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/fusion-tea-imports-fp10khvg/stellarator_tea/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py\", line 28, in run_rebco_conductor_current\n    raise ValueError(f'REBCO Conductor Current: unsupported {key}={getattr(inputs, key)!r} {unit}; expected {target} {unit}')\nValueError: REBCO Conductor Current: unsupported temperature=21.0 K; expected 20.0 K\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea/work/analysis/model-evaluation-diagnostics/native_acceptance.py\", line 29, in <module>\n    row=engine.evaluate(bridge.build(point))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 175, in evaluate\n    _normalize_run_failure(error, context)\n  File \"/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py\", line 70, in _normalize_run_failure\n    raise EvaluationFailed(\nsimkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: REBCO Conductor Current: unsupported temperature=21.0 K; expected 20.0 K\n"
+  }
+]

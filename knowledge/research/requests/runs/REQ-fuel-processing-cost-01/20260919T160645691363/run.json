@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-fuel-processing-cost-01",
+  "request_key": "70c299aac674715400adeeb69962c8dba859f9f0034af64894753416c9da1843",
+  "request_path": "knowledge/research/requests/REQ-fuel-processing-cost-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 12,
+    "max_captures": 5
+  },
+  "opened_at": "2026-09-19T16:06:45.691545+00:00",
+  "override_reason": null
+}

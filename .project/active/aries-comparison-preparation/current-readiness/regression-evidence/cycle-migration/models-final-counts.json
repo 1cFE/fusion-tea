@@ -1,0 +1,111 @@
+{
+  "counts": {
+    "passed": 2310,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 13,
+    "xfailed": 1
+  },
+  "total": 2324,
+  "nonpass_dispositions": [
+    {
+      "classname": "tests.models.test_example.TestModelStructure",
+      "name": "test_example_definition_exists",
+      "outcome": "skipped",
+      "message": "Customize this test with your actual definition names",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_example.py:113: Customize this test with your actual definition names"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestFoundationParsing",
+      "name": "test_foundation_types_parse_without_errors",
+      "outcome": "skipped",
+      "message": "types.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:85: types.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestFoundationParsing",
+      "name": "test_foundation_units_parse_without_errors",
+      "outcome": "skipped",
+      "message": "units.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:93: units.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestFoundationParsing",
+      "name": "test_foundation_materials_parse_without_errors",
+      "outcome": "skipped",
+      "message": "materials.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:101: materials.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_enum_definitions_count",
+      "outcome": "skipped",
+      "message": "types.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:118: types.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_reactor_type_variants",
+      "outcome": "skipped",
+      "message": "types.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:129: types.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_confinement_type_variants_count",
+      "outcome": "skipped",
+      "message": "types.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:148: types.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_all_expected_enums_exist",
+      "outcome": "skipped",
+      "message": "types.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:165: types.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestCustomUnits",
+      "name": "test_custom_units_defined",
+      "outcome": "skipped",
+      "message": "units.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:201: units.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestCustomUnits",
+      "name": "test_custom_units_count",
+      "outcome": "skipped",
+      "message": "units.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:217: units.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestMaterialDefinitions",
+      "name": "test_materials_exist",
+      "outcome": "skipped",
+      "message": "materials.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:237: materials.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestMaterialDefinitions",
+      "name": "test_material_has_required_attributes",
+      "outcome": "skipped",
+      "message": "materials.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:248: materials.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestMaterialDefinitions",
+      "name": "test_all_materials_have_required_attributes",
+      "outcome": "skipped",
+      "message": "materials.sysml not found",
+      "detail": "/home/reid/1cfe/fusion-tea/tests/models/test_foundation.py:272: materials.sysml not found"
+    },
+    {
+      "classname": "tests.models.test_mfe_major_radius",
+      "name": "test_historical_cli_baseline_success",
+      "outcome": "xfailed",
+      "message": "Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker",
+      "detail": null
+    }
+  ],
+  "consequence": "Final full models pass; template skips and guarded unsupported historical CLI remain explicit limitations. Study/candidate completion is separate."
+}

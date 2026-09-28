@@ -1,0 +1,11 @@
+{
+  "stellarator_09__stellaris__rb.R_in": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__geom.R_in": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__sustain.R_in": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__divheat.R_in": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__coil_length.R0": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__field_calc.R0": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__peak_field_calc.R_in": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__magnet_cost.R0": "float stellarator_plant_params.stellarator_09__stellaris__R",
+  "stellarator_09__stellaris__stored_energy.R0": "float stellarator_plant_params.stellarator_09__stellaris__R"
+}

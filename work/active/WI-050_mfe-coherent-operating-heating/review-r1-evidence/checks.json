@@ -1,0 +1,522 @@
+{
+  "generated_operating_bindings": {
+    "stellarator_09__stellaris__heating_cost": {
+      "icrf_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_icrf_per_mw",
+      "p_nbi_in": "float stellarator_plant_params.stellarator_09__stellaris__p_nbi",
+      "ecrh_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_ecrh_per_mw",
+      "p_lhcd_in": "float stellarator_plant_params.stellarator_09__stellaris__p_lhcd",
+      "p_ecrh_in": "float stellarator_09__stellaris__heat__p_delivered",
+      "p_icrf_in": "float stellarator_plant_params.stellarator_09__stellaris__p_icrf",
+      "nbi_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_nbi_per_mw",
+      "lhcd_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_lhcd_per_mw"
+    },
+    "stellarator_09__stellaris__operating_heat": {
+      "eta_source_in": "float stellarator_plant_params.stellarator_09__stellaris__eta_source_heat",
+      "p_required_in": "float stellarator_09__stellaris__sustain__p_aux_required",
+      "eta_couple_in": "float stellarator_plant_params.stellarator_09__stellaris__eta_couple_heat"
+    },
+    "stellarator_09__stellaris__divheat": {
+      "p_aux_required_in": "float stellarator_09__stellaris__sustain__p_aux_required",
+      "q_target_limit_in": "float stellarator_plant_params.stellarator_09__stellaris__q_target_limit",
+      "f_rad_total_in": "float stellarator_plant_params.stellarator_09__stellaris__f_rad_total",
+      "R_in": "float stellarator_plant_params.stellarator_09__stellaris__R",
+      "q_target_ref_in": "float stellarator_plant_params.stellarator_09__stellaris__q_target_ref",
+      "p_coupled_in": "float stellarator_09__stellaris__operating_heat__p_coupled",
+      "R_ref_in": "float stellarator_plant_params.stellarator_09__stellaris__R_ref_divertor",
+      "p_alpha_heat_in": "float stellarator_09__stellaris__sustain__p_alpha_heat",
+      "p_nonrad_ref_in": "float stellarator_plant_params.stellarator_09__stellaris__p_nonrad_ref",
+      "p_installed_coupled_in": "float stellarator_09__stellaris__heat__p_coupled",
+      "p_rad_core_in": "float stellarator_09__stellaris__sustain__p_rad"
+    },
+    "stellarator_09__stellaris__source_heat": {
+      "p_input_in": "float stellarator_09__stellaris__operating_heat__p_coupled",
+      "p_nrl": "float stellarator_09__stellaris__fusion__p_fus.root",
+      "mn_in": "float stellarator_plant_params.stellarator_09__stellaris__mn"
+    },
+    "stellarator_09__stellaris__pb": {
+      "p_tfcool_in": "float stellarator_plant_params.stellarator_09__stellaris__p_tfcool",
+      "p_cryo": "float stellarator_09__stellaris__cryo_elec__p_elec.root",
+      "p_nrl": "float stellarator_09__stellaris__fusion__p_fus.root",
+      "f_sub_in": "float stellarator_plant_params.stellarator_09__stellaris__f_sub",
+      "p_pfcool_in": "float stellarator_plant_params.stellarator_09__stellaris__p_pfcool",
+      "p_pf_in": "float stellarator_plant_params.stellarator_09__stellaris__p_pf",
+      "p_wallplug_in": "float stellarator_09__stellaris__operating_heat__p_wallplug",
+      "p_pump_total_in": "float stellarator_09__stellaris__primary_loop__p_pump_total",
+      "p_house_in": "float stellarator_plant_params.stellarator_09__stellaris__p_house",
+      "mn_in": "float stellarator_plant_params.stellarator_09__stellaris__mn",
+      "q_recovered_in": "float stellarator_09__stellaris__primary_loop__q_recovered_total",
+      "eta_th_in": "float stellarator_09__stellaris__cycle__eta_th",
+      "p_tf_in": "float stellarator_plant_params.stellarator_09__stellaris__p_tf",
+      "p_input_in": "float stellarator_09__stellaris__operating_heat__p_coupled",
+      "p_trit_in": "float stellarator_plant_params.stellarator_09__stellaris__p_trit"
+    }
+  },
+  "passed": "conversion, thermal/electric/divertor conservation, reserve invariance/procurement, physical-demand alpha compensation, availability invariance, efficiency rejection, no demand entry",
+  "entry_count": 247,
+  "semantic_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf",
+  "changed_baseline_scalars": {
+    "divheat__q_target_peak_area_scaled": {
+      "before": 10.53532913106619,
+      "after": 10.517841546036793,
+      "delta": -0.017487585029396513
+    },
+    "divheat__p_heat_abs": {
+      "before": 554.4910068982205,
+      "after": 553.5706076861472,
+      "delta": -0.920399212073221
+    },
+    "divheat__f_rad_edge_in_range": {
+      "before": 0.1381992027318891,
+      "after": 0.1383201756794708,
+      "delta": 0.00012097294758170452
+    },
+    "divheat__q_target_margin": {
+      "before": -0.5353291310661898,
+      "after": -0.5178415460367933,
+      "delta": 0.017487585029396513
+    },
+    "divheat__p_target_nonrad": {
+      "before": 55.449100689822046,
+      "after": 55.3570607686147,
+      "delta": -0.09203992120734483
+    },
+    "divheat__f_rad_edge": {
+      "before": 0.8343662621559043,
+      "after": 0.8341853143400069,
+      "delta": -0.00018094781589739206
+    },
+    "divheat__p_heat_operating_minus_installed": {
+      "before": -0.920399212073221,
+      "after": 0.0,
+      "delta": 0.920399212073221
+    },
+    "divheat__p_sep": {
+      "before": 334.7693616744551,
+      "after": 333.8489624623819,
+      "delta": -0.920399212073221
+    },
+    "divheat__q_target_peak": {
+      "before": 10.53532913106619,
+      "after": 10.517841546036793,
+      "delta": -0.017487585029396513
+    },
+    "source_heat__q_source": {
+      "before": 3126.852676294579,
+      "after": 3125.9322770825056,
+      "delta": -0.9203992120733346
+    },
+    "primary_loop__p_loop_margin": {
+      "before": 7699503.225174673,
+      "after": 7699680.103536234,
+      "delta": 176.87836156133562
+    },
+    "primary_loop__q_recovered_total": {
+      "before": 175.4365426878376,
+      "after": 175.28093440448808,
+      "delta": -0.15560828334952248
+    },
+    "primary_loop__p_elec": {
+      "before": 175.4365426878376,
+      "after": 175.28093440448808,
+      "delta": -0.15560828334952248
+    },
+    "primary_loop__p_pump_total": {
+      "before": 175.4365426878376,
+      "after": 175.28093440448808,
+      "delta": -0.15560828334952248
+    },
+    "primary_loop__T_comp_in": {
+      "before": 561.9287138794313,
+      "after": 561.9353658449644,
+      "delta": 0.006651965533137627
+    },
+    "primary_loop__dp_loop": {
+      "before": 300496.77482532675,
+      "after": 300319.8964637657,
+      "delta": -176.87836156104458
+    },
+    "primary_loop__mdot_loop": {
+      "before": 215.04584992810234,
+      "after": 214.98255048571605,
+      "delta": -0.06329944238629537
+    },
+    "primary_loop__w_fluid": {
+      "before": 175.4365426878376,
+      "after": 175.28093440448808,
+      "delta": -0.15560828334952248
+    },
+    "primary_loop__capacity_margin": {
+      "before": 10.03192784967544,
+      "after": 10.095227292061736,
+      "delta": 0.06329944238629537
+    },
+    "primary_loop__q_ihx": {
+      "before": 3302.2892189824165,
+      "after": 3301.2132114869937,
+      "delta": -1.0760074954228003
+    },
+    "primary_loop__mdot": {
+      "before": 3010.6418989934327,
+      "after": 3009.7557068000247,
+      "delta": -0.8861921934080783
+    },
+    "primary_loop__r_comp": {
+      "before": 1.0390280731155237,
+      "after": 1.039004204385821,
+      "delta": -2.3868729702725133e-05
+    },
+    "pb__p_the": {
+      "before": 1358.4183135955561,
+      "after": 1357.9756908601075,
+      "delta": -0.44262273544859454
+    },
+    "pb__p_et": {
+      "before": 1358.4183135955561,
+      "after": 1357.9756908601075,
+      "delta": -0.44262273544859454
+    },
+    "pb__q_eng": {
+      "before": 3.9254581578158096,
+      "after": 3.9471016638869605,
+      "delta": 0.021643506071150842
+    },
+    "pb__p_th": {
+      "before": 3302.2892189824165,
+      "after": 3301.2132114869937,
+      "delta": -1.0760074954228003
+    },
+    "pb__p_net": {
+      "before": 1012.3648698998519,
+      "after": 1013.9319325539626,
+      "delta": 1.567062654110714
+    },
+    "pb__rec_frac": {
+      "before": 0.2547473338899163,
+      "after": 0.25335045437244624,
+      "delta": -0.0013968795174700843
+    },
+    "vessel_cost__cost": {
+      "before": 120865534.15953225,
+      "after": 120841903.15294513,
+      "delta": -23631.00658711791
+    },
+    "blanket_cost__cost": {
+      "before": 718554642.7088162,
+      "after": 718414154.606785,
+      "delta": -140488.10203111172
+    },
+    "fuel_handling__cost": {
+      "before": 121036732.9066372,
+      "after": 121167851.33791968,
+      "delta": 131118.4312824756
+    },
+    "owner__cost": {
+      "before": 41453933.76704803,
+      "after": 41486005.10526891,
+      "delta": 32071.338220879436
+    },
+    "other_rpe__cost": {
+      "before": 11613616.835268697,
+      "after": 11627996.196228182,
+      "delta": 14379.360959485173
+    },
+    "electric_cost__cost": {
+      "before": 117367342.29465605,
+      "after": 117329099.6903133,
+      "delta": -38242.604342758656
+    },
+    "heat_rejection_cost__cost": {
+      "before": 115778260.01752353,
+      "after": 115740535.19473399,
+      "delta": -37724.82278953493
+    },
+    "remote_handling__cost": {
+      "before": 166690819.00850835,
+      "after": 166663659.79080695,
+      "delta": -27159.217701405287
+    },
+    "coolant__cost": {
+      "before": 207374687.829644,
+      "after": 207627772.78611118,
+      "delta": 253084.95646718144
+    },
+    "aux_cooling__aux_cost": {
+      "before": 3632518.1408806583,
+      "after": 3631334.532635693,
+      "delta": -1183.6082449653186
+    },
+    "aux_cooling__cost": {
+      "before": 20332977.83145193,
+      "after": 20331794.223206963,
+      "delta": -1183.6082449667156
+    },
+    "buildings_cost__cost": {
+      "before": 652430848.3681422,
+      "after": 652383020.902597,
+      "delta": -47827.46554529667
+    },
+    "misc_cost__cost": {
+      "before": 71439219.1119903,
+      "after": 71415941.58233306,
+      "delta": -23277.529657244682
+    },
+    "om_cost__annual_om": {
+      "before": 55238372.90803245,
+      "after": 55281108.74464231,
+      "delta": 42735.836609862745
+    },
+    "cas71_calc__levelized": {
+      "before": 79490564.29442713,
+      "after": 79552063.13280472,
+      "delta": 61498.83837759495
+    },
+    "shield_cost__cost": {
+      "before": 452151730.956228,
+      "after": 452063328.57909954,
+      "delta": -88402.37712848186
+    },
+    "divertor_cost__cost": {
+      "before": 109033211.40064022,
+      "after": 109015446.43468271,
+      "delta": -17764.96595750749
+    },
+    "power_supplies_cost__cost": {
+      "before": 92733911.13301975,
+      "after": 92712758.81167144,
+      "delta": -21152.321348309517
+    },
+    "turbine_cost__cost": {
+      "before": 275541570.7297226,
+      "after": 275451789.1340642,
+      "delta": -89781.59565842152
+    },
+    "structure_cost__cost": {
+      "before": 34161183.14922503,
+      "after": 34155617.209747344,
+      "delta": -5565.939477682114
+    },
+    "precon_cost__cost": {
+      "before": 18515408.60236942,
+      "after": 18517354.678717773,
+      "delta": 1946.0763483531773
+    },
+    "waste__cost": {
+      "before": 6472486.869205536,
+      "after": 6470377.894514508,
+      "delta": -2108.9746910287067
+    },
+    "inc_cost__cost": {
+      "before": 81847329.94121604,
+      "after": 81829994.18345366,
+      "delta": -17335.757762372494
+    },
+    "powercore_capital__powercore_capital": {
+      "before": 7192677213.5074625,
+      "after": 7192380208.794931,
+      "delta": -297004.7125310898
+    },
+    "reactor_equipment_subtotal__reactor_equipment_subtotal": {
+      "before": 7359368032.515971,
+      "after": 7359043868.585738,
+      "delta": -324163.9302330017
+    },
+    "installation__cost": {
+      "before": 1030311524.5522361,
+      "after": 1030266141.6020035,
+      "delta": -45382.95023262501
+    },
+    "cas22_capital__cas22_capital": {
+      "before": 8838357389.281628,
+      "after": 8838365796.809175,
+      "delta": 8407.527547836304
+    },
+    "bop_capital__bop_capital": {
+      "before": 580126392.1538925,
+      "after": 579937365.6014445,
+      "delta": -189026.5524480343
+    },
+    "replacement_cost_per_event__replacement_cost_per_event": {
+      "before": 827587854.1094564,
+      "after": 827429601.0414678,
+      "delta": -158253.0679886341
+    },
+    "calendar__replacement_pv": {
+      "before": 1715096517.3342297,
+      "after": 1714768553.0167048,
+      "delta": -327964.31752491
+    },
+    "calendar__cas72_annual": {
+      "before": 138213460.00639772,
+      "after": 138187030.54156843,
+      "delta": -26429.464829295874
+    },
+    "cas70_calc__cas70": {
+      "before": 217704024.30082485,
+      "after": 217739093.67437315,
+      "delta": 35069.373548299074
+    },
+    "cas70_calc__annual_total": {
+      "before": 218496530.2659393,
+      "after": 218531599.6394876,
+      "delta": 35069.373548299074
+    },
+    "cas23_to_28_capital__cas23_to_28_capital": {
+      "before": 608941434.2137814,
+      "after": 608752407.6613333,
+      "delta": -189026.5524480343
+    },
+    "cas2x_pre_contingency__cas2x_pre_contingency": {
+      "before": 10099729671.863552,
+      "after": 10099501225.373106,
+      "delta": -228446.4904460907
+    },
+    "contingency__cost": {
+      "before": 1009972967.1863552,
+      "after": 1009950122.5373106,
+      "delta": -22844.64904463291
+    },
+    "cas20_capital__cas20_capital": {
+      "before": 11109702639.049908,
+      "after": 11109451347.910416,
+      "delta": -251291.1394920349
+    },
+    "indirect__cost": {
+      "before": 2962587370.413309,
+      "after": 2962520359.4427776,
+      "delta": -67010.97053146362
+    },
+    "supplementary__cost": {
+      "before": 822952998.5533631,
+      "after": 823425194.4947345,
+      "delta": 472195.9413714409
+    },
+    "overnight_capital__overnight_capital": {
+      "before": 14955212350.385998,
+      "after": 14955400261.631914,
+      "delta": 187911.24591636658
+    },
+    "idc__cost": {
+      "before": 4224478411.2191486,
+      "after": 4224531491.5086827,
+      "delta": 53080.28953409195
+    },
+    "cas90_1cfe_calc__cas90": {
+      "before": 1545622298.9330437,
+      "after": 1545641719.5741622,
+      "delta": 19420.64111852646
+    },
+    "lcoe_1cfe_calc__lcoe": {
+      "before": 220.34632049621635,
+      "after": 220.0125640803369,
+      "delta": -0.3337564158794635
+    },
+    "total_capital__total_capital": {
+      "before": 14955212350.385998,
+      "after": 14955400261.631914,
+      "delta": 187911.24591636658
+    },
+    "lcoe_calc__lcoe": {
+      "before": 224.60952472804465,
+      "after": 224.26923288439,
+      "delta": -0.34029184365465426
+    }
+  },
+  "reserve_changed_scalars": {
+    "heat__p_wallplug_total": {
+      "before": 100.0,
+      "after": 120.0
+    },
+    "heat__p_delivered": {
+      "before": 50.0,
+      "after": 60.0
+    },
+    "heat__p_coupled": {
+      "before": 50.0,
+      "after": 60.0
+    },
+    "heating_cost__cost": {
+      "before": 264145000.0,
+      "after": 316974000.0
+    },
+    "powercore_capital__powercore_capital": {
+      "before": 7192380208.794931,
+      "after": 7245209208.794931
+    },
+    "reactor_equipment_subtotal__reactor_equipment_subtotal": {
+      "before": 7359043868.585738,
+      "after": 7411872868.585738
+    },
+    "installation__cost": {
+      "before": 1030266141.6020035,
+      "after": 1037662201.6020035
+    },
+    "cas22_capital__cas22_capital": {
+      "before": 8838365796.809175,
+      "after": 8898590856.809175
+    },
+    "cas2x_pre_contingency__cas2x_pre_contingency": {
+      "before": 10099501225.373106,
+      "after": 10159726285.373106
+    },
+    "contingency__cost": {
+      "before": 1009950122.5373106,
+      "after": 1015972628.5373106
+    },
+    "cas20_capital__cas20_capital": {
+      "before": 11109451347.910416,
+      "after": 11175698913.910416
+    },
+    "indirect__cost": {
+      "before": 2962520359.4427776,
+      "after": 2980186377.042777
+    },
+    "supplementary__cost": {
+      "before": 823425194.4947345,
+      "after": 826340087.3987346
+    },
+    "overnight_capital__overnight_capital": {
+      "before": 14955400261.631914,
+      "after": 15042228738.135916
+    },
+    "idc__cost": {
+      "before": 4224531491.5086827,
+      "after": 4249058393.2922425
+    },
+    "cas90_1cfe_calc__cas90": {
+      "before": 1545641719.5741622,
+      "after": 1554615449.021976
+    },
+    "lcoe_1cfe_calc__lcoe": {
+      "before": 220.0125640803369,
+      "after": 221.13169064441888
+    },
+    "total_capital__total_capital": {
+      "before": 14955400261.631914,
+      "after": 15042228738.135916
+    },
+    "lcoe_calc__lcoe": {
+      "before": 224.26923288439,
+      "after": 225.41307293395366
+    }
+  },
+  "baseline_financial_bridge": {
+    "lcoe_calc__lcoe": {
+      "capital_delta_dollars": 187911.24591636658,
+      "annual_capital_charge_delta": 19849.503901213408,
+      "annual_cost_delta": 35069.373548299074,
+      "energy_delta_mwh": 12392.853822924197,
+      "capital_effect_per_mwh": 0.002479291687110228,
+      "annual_effect_per_mwh": 0.004380321379475186,
+      "energy_effect_per_mwh": -0.3471514567212637
+    },
+    "lcoe_1cfe_calc__lcoe": {
+      "capital_delta_dollars": 187911.24591636658,
+      "annual_capital_charge_delta": 19420.641118496656,
+      "annual_cost_delta": 35069.373548299074,
+      "energy_delta_mwh": 12392.853822924197,
+      "capital_effect_per_mwh": 0.002425724810205279,
+      "annual_effect_per_mwh": 0.004380321379475186,
+      "energy_effect_per_mwh": -0.3405624620691299
+    }
+  }
+}

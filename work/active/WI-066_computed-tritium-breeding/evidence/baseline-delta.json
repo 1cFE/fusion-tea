@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "parameters_before": 313,
+  "parameters_after": 312,
+  "numeric_before": 242,
+  "numeric_after": 261,
+  "oracle_mapped": 245,
+  "unchanged_predicate_ids": 20,
+  "changed_old_scalars": [
+    "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin"
+  ],
+  "changed_responses": [
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4"
+  ],
+  "new_channels": [
+    "stellarator_09__stellaris__blanket__breeding__defined_flag",
+    "stellarator_09__stellaris__blanket__breeding__interpolation_allowance",
+    "stellarator_09__stellaris__blanket__breeding__tbr_li6",
+    "stellarator_09__stellaris__blanket__breeding__tbr_li7",
+    "stellarator_09__stellaris__blanket__breeding__tbr_lower",
+    "stellarator_09__stellaris__blanket__breeding__tbr_mean",
+    "stellarator_09__stellaris__blanket__breeding__tbr_std_error",
+    "stellarator_09__stellaris__breeding_adequacy__balance_rate",
+    "stellarator_09__stellaris__breeding_adequacy__decay_rate",
+    "stellarator_09__stellaris__breeding_adequacy__defined_flag",
+    "stellarator_09__stellaris__breeding_adequacy__design_margin",
+    "stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate",
+    "stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate",
+    "stellarator_09__stellaris__breeding_adequacy__fuel_margin",
+    "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+    "stellarator_09__stellaris__breeding_adequacy__production_rate",
+    "stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate",
+    "stellarator_09__stellaris__breeding_adequacy__required_tbr",
+    "stellarator_09__stellaris__breeding_adequacy__stock_growth_rate"
+  ]
+}

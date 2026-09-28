@@ -1,0 +1,27 @@
+heat_transport__equipment_accessory_mass: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_bundle_life: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_cost_mode: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_enabled: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=53
+heat_transport__equipment_inventory_reserve: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_layout_multiplier: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_machine_life: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_makeup_fraction: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_removal_multiplier: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_saltprice_source_choice: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_shell_wall: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__equipment_tube_wall: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+heat_transport__n_loops: no_constraint_response=false constraints 5/20 objectives 5/14 modules_fired=57
+heat_transport__secondary_energy_mode: no_constraint_response=false constraints 2/20 objectives 5/14 modules_fired=52
+magnet__casing__interior_y: no_constraint_response=false constraints 1/20 objectives 0/14 modules_fired=3
+magnet__coil__I_coil: no_constraint_response=false constraints 16/20 objectives 13/14 modules_fired=104
+magnet__coil__coil_t: no_constraint_response=false constraints 8/20 objectives 8/14 modules_fired=85
+magnet__winding_pack__inventory_multiplier: no_constraint_response=false constraints 6/20 objectives 6/14 modules_fired=71
+magnet__winding_pack__sizing_mode: no_constraint_response=false constraints 6/20 objectives 6/14 modules_fired=71
+plasma__R: no_constraint_response=false constraints 16/20 objectives 14/14 modules_fired=109
+plasma__T_i0: no_constraint_response=false constraints 11/20 objectives 11/14 modules_fired=74
+plasma__a: no_constraint_response=false constraints 16/20 objectives 14/14 modules_fired=108
+plasma__alpha_T: no_constraint_response=false constraints 11/20 objectives 11/14 modules_fired=74
+plasma__alpha_n: no_constraint_response=false constraints 11/20 objectives 11/14 modules_fired=74
+plasma__f_shape: no_constraint_response=false constraints 11/20 objectives 11/14 modules_fired=75
+plasma__n_e0: no_constraint_response=false constraints 11/20 objectives 11/14 modules_fired=74
+A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds.

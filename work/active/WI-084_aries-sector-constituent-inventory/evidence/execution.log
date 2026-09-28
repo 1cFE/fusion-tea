@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "case": "lower_taper",
+      "volume": 0.45222200000000007,
+      "known_mass": 3481.6629918600006,
+      "source_price_subtotal": 87876.66260640603,
+      "unquantified_volume": 0.03617776
+    },
+    {
+      "case": "upper_taper",
+      "volume": 0.5225420000000001,
+      "known_mass": 4019.0287422600004,
+      "source_price_subtotal": 102345.24253824602,
+      "unquantified_volume": 0.041803360000000005
+    },
+    {
+      "case": "double_area",
+      "volume": 0.9044440000000001,
+      "known_mass": 6963.325983720001,
+      "source_price_subtotal": 175753.32521281205,
+      "unquantified_volume": 0.07235552
+    },
+    {
+      "case": "full_lipb_double_price",
+      "volume": 0.45222200000000007,
+      "known_mass": 3481.6629918600006,
+      "source_price_subtotal": 130558.62414931203,
+      "unquantified_volume": 0.03617776
+    },
+    {
+      "case": "zero_area",
+      "volume": 0.0,
+      "known_mass": 0.0,
+      "source_price_subtotal": 0.0,
+      "unquantified_volume": 0.0
+    }
+  ],
+  "independent_comparisons": 230,
+  "native_refusals": 14,
+  "all_checks_passed": true
+}

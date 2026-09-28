@@ -1,0 +1,15 @@
+{
+  "entry_head": "967a289cbfe0c0fb5d44fff702c9d0b0fc219d66",
+  "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+  "semantic_fingerprint": "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97",
+  "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+  "artifact_hash_count": 104,
+  "artifact_mismatches": [],
+  "sealed_archive_members_checked": 105,
+  "archive_to_live_mismatches": [],
+  "frozen_study_files_checked_against_entry_git": 89,
+  "frozen_study_mismatches": [],
+  "study_snapshot_sha256": "e888d008f2e740129bdbb39f359a619df53a2d9d6fd789a1df40a982a2bbc4ca",
+  "source_argv": "inline standard-library digest audit; package artifact_hashes plus frozen tar members and entry git blobs; no generation or evaluation",
+  "passed": true
+}

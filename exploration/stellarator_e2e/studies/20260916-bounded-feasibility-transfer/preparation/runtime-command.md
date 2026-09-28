@@ -1,0 +1,7 @@
+# Runtime invocation
+
+Use `PYTHONPATH=.:/home/reid/1cfe/teax/packages/teax-simkit STUDY_REQUIRE_TEAX=1 .codex-test/run python` followed by the study-local execution script path. Execute `execution/execute.py` only after explicit coordinator release and final proposal selection. Use `--export-only` to regenerate exports from existing native evidence without evaluating new points.
+
+After execution, run `execution/analyze.py`, the generic `scripts/study/verify.py --package exploration/stellarator_e2e/generated --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/results/package_identity.json --store exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/results/study/_work/20260916-bounded-feasibility-transfer.db --out exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/results/verification_summary.json`, and `execution/check_artifacts.py`. These checks use existing native evidence and oracle re-evaluation, not new native cases.
+
+Run `execution/write_record.py` after results are verified. The coordinator owns section 15 and discovery-log rows. Freeze only after the coordinator has completed findings and review capture, then rerun `execution/write_record.py` to record the snapshot digest and `execution/check_artifacts.py` for frozen-file validation. All scripts are executor checks, never independent review.

@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "scope": "baseline/preflight and declared oracle preparation; native execution additionally gated by window freeze",
+  "correction": "PC-PRE-01 closed by objective full 30-axis indicators",
+  "owner_rulings": "four sensitivities approved, recorded in context/goal-trail.md",
+  "remaining_conditions": "pre-execution-review.md conditions 1-5 retained"
+}

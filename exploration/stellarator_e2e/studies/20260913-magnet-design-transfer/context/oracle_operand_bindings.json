@@ -1,0 +1,150 @@
+{
+  "stellarator_09__stellaris__beta_ok__82b78aad420730d5": {
+    "beta_in": {
+      "key": "stellarator_09__stellaris__plasma__beta_calc__beta",
+      "kind": "channel"
+    },
+    "beta_limit_in": {
+      "key": "stellarator_09__stellaris__beta_limit",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": {
+    "p_aux_required_in": {
+      "key": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": {
+    "eps_cond": {
+      "key": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
+      "kind": "channel"
+    },
+    "eps_cond_allow_in": {
+      "key": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": {
+    "domain_product_in": {
+      "key": "stellarator_09__stellaris__turbine__cycle__domain_product",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": {
+    "q_target_limit_in": {
+      "key": "stellarator_09__stellaris__divertor__q_target_limit",
+      "kind": "input"
+    },
+    "q_target_peak_in": {
+      "key": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+    "efficiency": {
+      "key": "stellarator_09__stellaris__heating__eta_couple_heat",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+    "efficiency": {
+      "key": "stellarator_09__stellaris__heating__eta_couple_heat",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+    "efficiency": {
+      "key": "stellarator_09__stellaris__heating__eta_source_heat",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+    "efficiency": {
+      "key": "stellarator_09__stellaris__heating__eta_source_heat",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": {
+    "mdot_loop_in": {
+      "key": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
+      "kind": "channel"
+    },
+    "mdot_loop_rated_in": {
+      "key": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": {
+    "p_loop_margin_in": {
+      "key": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__net_positive__484521d56c02667a": {
+    "net_electric": {
+      "key": "stellarator_09__stellaris__pb__p_net",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": {
+    "B_max_in": {
+      "key": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+      "kind": "input"
+    },
+    "B_peak": {
+      "key": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": {
+    "rec_frac": {
+      "key": "stellarator_09__stellaris__pb__rec_frac",
+      "kind": "channel"
+    },
+    "threshold": {
+      "key": "stellarator_09__stellaris__recirc_ok__threshold",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": {
+    "p_aux_installed_in": {
+      "key": "stellarator_09__stellaris__heating__heat__p_coupled",
+      "kind": "channel"
+    },
+    "p_aux_required_in": {
+      "key": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "kind": "channel"
+    }
+  },
+  "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": {
+    "tbr_floor_in": {
+      "key": "stellarator_09__stellaris__tbr_floor",
+      "kind": "input"
+    },
+    "tbr_in": {
+      "key": "stellarator_09__stellaris__blanket__tbr",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": {
+    "wall_load": {
+      "key": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "kind": "channel"
+    },
+    "wall_load_limit_in": {
+      "key": "stellarator_09__stellaris__wall_load_limit",
+      "kind": "input"
+    }
+  },
+  "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": {
+    "sigma_allow_in": {
+      "key": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+      "kind": "input"
+    },
+    "sigma_in": {
+      "key": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
+      "kind": "channel"
+    }
+  }
+}

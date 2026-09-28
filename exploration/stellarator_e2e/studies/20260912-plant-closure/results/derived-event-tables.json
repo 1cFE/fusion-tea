@@ -1,0 +1,5197 @@
+{
+  "kind": "study-derived dates, not native model scalar outputs",
+  "cases": [
+    {
+      "candidate_id": "20260912-plant-closure:c0000",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0001",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.322265922292932,
+        10.644531844585863,
+        15.966797766878795,
+        21.289063689171726,
+        26.611329611464658
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 815933209.5049293,
+      "replacement_pv": 1571337531.454955
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0002",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 815933209.5049293,
+      "replacement_pv": 1690943383.2920413
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0003",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.322265922292932,
+        10.644531844585863,
+        15.966797766878795,
+        21.289063689171726,
+        26.611329611464658
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 815933209.5049293,
+      "replacement_pv": 1571337531.454955
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0004",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 815933209.5049293,
+      "replacement_pv": 1690943383.2920413
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0005",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.322265922292932,
+        10.644531844585863,
+        15.966797766878795,
+        21.289063689171726,
+        26.611329611464658
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1593477470.4686213
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0006",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0007",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.322265922292932,
+        10.644531844585863,
+        15.966797766878795,
+        21.289063689171726,
+        26.611329611464658
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1593477470.4686213
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0008",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.464518734564649,
+        14.405111435180308,
+        19.345704135795966,
+        24.286296836411626,
+        29.22688953702728
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1855646500.8502133
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0009",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.762027404156833,
+        9.940721474980332,
+        15.119415545803834,
+        20.298109616627332,
+        25.476803687450833
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1676487907.9779482
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0010",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.026584482165546,
+        10.469835630997759,
+        15.913086779829973,
+        21.356337928662185,
+        26.7995890774944
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1608331549.0014236
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0011",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.762027404156833,
+        10.107388141647,
+        15.452748879137166,
+        20.798109616627332,
+        26.143470354117497
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1651637606.306005
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0012",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.026584482165546,
+        10.636502297664427,
+        16.246420113163307,
+        21.856337928662185,
+        27.466255744161064
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1585033591.7093985
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0013",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.881185401231317,
+        15.23844476851364,
+        20.595704135795966,
+        25.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1676685689.9648385
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0014",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.762027404156833,
+        10.357388141647,
+        15.952748879137166,
+        21.548109616627332,
+        27.143470354117497
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1615704594.9785678
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0015",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.026584482165546,
+        10.886502297664427,
+        16.746420113163307,
+        22.606337928662185,
+        28.466255744161064
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1551335533.6086504
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0016",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0017",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0018",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0019",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0020",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0021",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0022",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0023",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.345828676290545,
+        10.69165735258109,
+        16.037486028871637,
+        21.38331470516218,
+        26.729143381452726
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2081446943.586029,
+      "replacement_pv": 3993711517.4101214
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0024",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2081446943.586029,
+      "replacement_pv": 4299936397.066095
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0025",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.345828676290545,
+        10.69165735258109,
+        16.037486028871637,
+        21.38331470516218,
+        26.729143381452726
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2081446943.586029,
+      "replacement_pv": 3993711517.4101214
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0026",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2081446943.586029,
+      "replacement_pv": 4299936397.066095
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0027",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.345828676290545,
+        10.69165735258109,
+        16.037486028871637,
+        21.38331470516218,
+        26.729143381452726
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4473126756.096268
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0028",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0029",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.345828676290545,
+        10.69165735258109,
+        16.037486028871637,
+        21.38331470516218,
+        26.729143381452726
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4473126756.096268
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0030",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0031",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.504575416360593,
+        14.465196457874224,
+        19.425817499387854,
+        24.386438540901484,
+        29.347059582415113
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 5210062244.348965
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0032",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.783109868259962,
+        9.98288640318659,
+        15.18266293811322,
+        20.38243947303985,
+        25.58221600796648
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4707866397.592739
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0033",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.048838194274404,
+        10.514343055215473,
+        15.979847916156546,
+        21.445352777097614,
+        26.910857638038685
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4515844361.1195345
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0034",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.783109868259962,
+        10.149553069853258,
+        15.515996271446552,
+        20.88243947303985,
+        26.248882674633144
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4638209804.855848
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0035",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.048838194274404,
+        10.681009721882141,
+        16.31318124948988,
+        21.945352777097614,
+        27.57752430470535
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4450555743.5519905
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0036",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.921242083027261,
+        15.298529791207557,
+        20.675817499387854,
+        26.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4709336378.712775
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0037",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.783109868259962,
+        10.399553069853258,
+        16.015996271446554,
+        21.63243947303985,
+        27.248882674633144
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4537485533.442419
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0038",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.048838194274404,
+        10.931009721882141,
+        16.81318124948988,
+        22.695352777097614,
+        28.57752430470535
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4356120297.771059
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0039",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0040",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0041",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0042",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0043",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0044",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0045",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2331309102.863612,
+      "replacement_pv": 4816111645.365332
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0046",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.258491409618379,
+        10.516982819236757,
+        15.775474228855135,
+        21.033965638473514,
+        26.292457048091894
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2414006514.161012,
+      "replacement_pv": 4695726800.030827
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0047",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2414006514.161012,
+      "replacement_pv": 5046018497.530832
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0048",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.258491409618379,
+        10.516982819236757,
+        15.775474228855135,
+        21.033965638473514,
+        26.292457048091894
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2414006514.161012,
+      "replacement_pv": 4695726800.030827
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0049",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2414006514.161012,
+      "replacement_pv": 5046018497.530832
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0050",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.258491409618379,
+        10.516982819236757,
+        15.775474228855135,
+        21.033965638473514,
+        26.292457048091894
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5410498053.60326
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0051",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0052",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.258491409618379,
+        10.516982819236757,
+        15.775474228855135,
+        21.033965638473514,
+        26.292457048091894
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5410498053.60326
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0053",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0054",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.356102063017909,
+        14.242486427860198,
+        19.128870792702486,
+        24.015255157544775,
+        28.90163952238706
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 6297435788.478688
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0055",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.704965998079602,
+        9.82659866282587,
+        14.94823132757214,
+        20.069863992318407,
+        25.191496657064675
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5686710619.788079
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0056",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.966352997972913,
+        10.349372662612492,
+        15.732392327252073,
+        21.11541199189165,
+        26.49843165653123
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5457582206.641266
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0057",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.704965998079602,
+        9.993265329492537,
+        15.281564660905472,
+        20.569863992318407,
+        25.85816332373134
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5602000260.353618
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0058",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.966352997972913,
+        10.51603932927916,
+        16.065725660585407,
+        21.61541199189165,
+        27.165098323197896
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5378108486.019173
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0059",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.772768729684577,
+        15.07581976119353,
+        20.378870792702486,
+        25.68192182421144
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5684381901.641815
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0060",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.704965998079602,
+        10.243265329492537,
+        15.781564660905472,
+        21.319863992318407,
+        26.85816332373134
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5479518469.199792
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0061",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.966352997972913,
+        10.76603932927916,
+        16.565725660585407,
+        22.36541199189165,
+        28.165098323197896
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5263165605.279189
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0062",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0063",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0064",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0065",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0066",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0067",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0068",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4697176981756215,
+        9.522768729684577,
+        14.57581976119353,
+        19.628870792702486,
+        24.68192182421144
+      ],
+      "derived_terminal_start": 29.734972855720397,
+      "replacement_cost": 2781460272.809739,
+      "replacement_pv": 5814110237.238969
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0069",
+      "mode": "held",
+      "derived_event_dates_years": [
+        2.3427885472951493,
+        4.685577094590299,
+        7.028365641885448,
+        9.371154189180597,
+        11.713942736475747,
+        14.056731283770896,
+        16.399519831066044,
+        18.742308378361194,
+        21.085096925656345,
+        23.427885472951495,
+        25.77067402024664,
+        28.11346256754179
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3015388131.8691716,
+      "replacement_pv": 14935273359.959219
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0070",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        1.991370265200877,
+        4.566073863735087,
+        7.140777462269297,
+        9.715481060803508,
+        12.290184659337719,
+        14.864888257871929,
+        17.43959185640614,
+        20.01429545494035,
+        22.58899905347456,
+        25.16370265200877,
+        27.73840625054298
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3015388131.8691716,
+      "replacement_pv": 14057972742.098541
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0071",
+      "mode": "held",
+      "derived_event_dates_years": [
+        2.3427885472951493,
+        4.685577094590299,
+        7.028365641885448,
+        9.371154189180597,
+        11.713942736475747,
+        14.056731283770896,
+        16.399519831066044,
+        18.742308378361194,
+        21.085096925656345,
+        23.427885472951495,
+        25.77067402024664,
+        28.11346256754179
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3015388131.8691716,
+      "replacement_pv": 14935273359.959219
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0072",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        1.991370265200877,
+        4.566073863735087,
+        7.140777462269297,
+        9.715481060803508,
+        12.290184659337719,
+        14.864888257871929,
+        17.43959185640614,
+        20.01429545494035,
+        22.58899905347456,
+        25.16370265200877,
+        27.73840625054298
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3015388131.8691716,
+      "replacement_pv": 14057972742.098541
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0073",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.242201116982538,
+        10.484402233965076,
+        15.726603350947613,
+        20.968804467930152,
+        26.21100558491269
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1987877699.2852993,
+      "replacement_pv": 3876745384.146346
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0074",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 1987877699.2852993,
+      "replacement_pv": 4164433902.633492
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0075",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.242201116982538,
+        10.484402233965076,
+        15.726603350947613,
+        20.968804467930152,
+        26.21100558491269
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1987877699.2852993,
+      "replacement_pv": 3876745384.146346
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0076",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 1987877699.2852993,
+      "replacement_pv": 4164433902.633492
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0077",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.242201116982538,
+        10.484402233965076,
+        15.726603350947613,
+        20.968804467930152,
+        26.21100558491269
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4320045141.814049
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0078",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0079",
+      "mode": "held",
+      "derived_event_dates_years": [
+        5.242201116982538,
+        10.484402233965076,
+        15.726603350947613,
+        20.968804467930152,
+        26.21100558491269
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4320045141.814049
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0080",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0081",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.32840856553698,
+        14.200946181638805,
+        19.07348379774063,
+        23.946021413842455,
+        28.818559029944275
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 5027567533.209817
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0082",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.690390473089639,
+        9.797447612845945,
+        14.904504752602252,
+        20.011561892358557,
+        25.118619032114864
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4539434428.457631
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0083",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.950967721594619,
+        10.318602109855904,
+        15.686236498117191,
+        21.053870886378476,
+        26.421505274639763
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4356953956.071963
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0084",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.690390473089639,
+        9.964114279512613,
+        15.237838085935584,
+        20.511561892358557,
+        25.78528569878153
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4471728883.732419
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0085",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.950967721594619,
+        10.485268776522572,
+        16.019569831450525,
+        21.553870886378476,
+        27.088171941306427
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4293422583.066637
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0086",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.745075232203648,
+        15.034279514972138,
+        20.32348379774063,
+        25.61268808050912
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4536962106.704611
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0087",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.690390473089639,
+        10.214114279512613,
+        15.737838085935584,
+        21.261561892358557,
+        26.78528569878153
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4373835720.921059
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0088",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.950967721594619,
+        10.735268776522572,
+        16.519569831450525,
+        22.303870886378476,
+        28.088171941306427
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4201538667.150463
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0089",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0090",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0091",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0092",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0093",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0094",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0095",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2215188398.0920634,
+      "replacement_pv": 4640630391.422786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0096",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 812072205.6842791,
+      "replacement_pv": 1682941822.8857
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0097",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 822232789.1314931,
+      "replacement_pv": 1703998658.3598657
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0098",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 837285777.4307358,
+      "replacement_pv": 1735194534.035549
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0099",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 814746752.1026835,
+      "replacement_pv": 1688484564.027775
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0100",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 846190034.4645569,
+      "replacement_pv": 1753647753.4156094
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0101",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 817419989.5013117,
+      "replacement_pv": 1694024592.3518114
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0102",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 832618539.1021702,
+      "replacement_pv": 1725522129.875503
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0103",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 855066590.0355833,
+      "replacement_pv": 1772043564.1687448
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0104",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 823058315.8069736,
+      "replacement_pv": 1705709483.2820203
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0105",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 823103463.5538907,
+      "replacement_pv": 1705803047.6608577
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0106",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 834694249.0089219,
+      "replacement_pv": 1729823839.7355356
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0107",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 834738954.8124602,
+      "replacement_pv": 1729916488.2290733
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0108",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.73844476851364,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 827429601.0414678,
+      "replacement_pv": 1714768553.016705
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0109",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.533076250540491,
+        13.649485834414316,
+        20.765895418288142,
+        27.882305002161964
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 738493410.5617956,
+      "replacement_pv": 1061093402.9013671
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0110",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5163248045703055,
+        9.615982942473945,
+        14.715641080377582,
+        19.815299218281222,
+        24.91495735618486
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1957898520.0521698,
+      "replacement_pv": 4062448710.636895
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0111",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.8289396083627825,
+        12.241212550058899,
+        18.653485491755017,
+        25.06575843345113
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 728084044.905778,
+      "replacement_pv": 1148496046.3064964
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0112",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.415187965694592,
+        13.413709264722518,
+        20.412230563750445,
+        27.41075186277837
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1251781710.7797554,
+      "replacement_pv": 1826631456.7280557
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0113",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.750587584023596,
+        12.084508501380526,
+        18.418429418737457,
+        24.752350336094384
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 975945793.1641488,
+      "replacement_pv": 1555784772.2083752
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0114",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.408927483022929,
+        17.40118829937919,
+        26.393449115735454
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 760032186.2957668,
+      "replacement_pv": 791874569.6137882
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0115",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        9.239156634411374,
+        19.06164660215608,
+        28.884136569900793
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 731962463.8022946,
+      "replacement_pv": 696996358.9214582
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0116",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.017883329287758,
+        8.61909999190885,
+        13.22031665452994,
+        17.821533317151033,
+        22.422749979772124,
+        27.023966642393216
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1235790943.375165,
+      "replacement_pv": 2976288153.114271
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0117",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        7.454253860712141,
+        15.491841054757616,
+        23.52942824880309
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 837806876.5091631,
+      "replacement_pv": 970187768.804685
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0118",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.743322087293935,
+        8.069977507921203,
+        12.39663292854847,
+        16.72328834917574,
+        21.049943769803004,
+        25.376599190430277
+      ],
+      "derived_terminal_start": 29.703254611057545,
+      "replacement_cost": 1296337994.022146,
+      "replacement_pv": 3280570080.9496875
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0119",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.205108806471324,
+        10.993550946275981,
+        16.78199308608064,
+        22.570435225885294,
+        28.35887736568995
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 763173535.5659581,
+      "replacement_pv": 1422327108.0541945
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0120",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.9988739074991715,
+        10.581081148331677,
+        16.163288389164183,
+        21.745495629996686,
+        27.32770287082919
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 788091422.4912395,
+      "replacement_pv": 1516161486.0650764
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0121",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.349267877608819,
+        11.281869088550971,
+        17.214470299493126,
+        23.147071510435275,
+        29.079672721377424
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 747397639.8562832,
+      "replacement_pv": 1362604947.120099
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0122",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.361581149879624,
+        13.306495633092583,
+        20.25141011630554,
+        27.196324599518498
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 677015387.7436728,
+      "replacement_pv": 994910511.1556401
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0123",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.7162345033038067,
+        8.015802339940947,
+        12.315370176578087,
+        16.614938013215227,
+        20.914505849852365,
+        25.21407368648951
+      ],
+      "derived_terminal_start": 29.513641523126648,
+      "replacement_cost": 942697740.9807526,
+      "replacement_pv": 2397424950.6461163
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0124",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.3818521239755093,
+        7.347037581284352,
+        11.312223038593194,
+        15.277408495902037,
+        19.24259395321088,
+        23.207779410519723,
+        27.172964867828565
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1008734022.7963128,
+      "replacement_pv": 2888723662.974577
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0125",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.205108806471324,
+        10.993550946275981,
+        16.78199308608064,
+        22.570435225885294,
+        28.35887736568995
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 763173535.5659581,
+      "replacement_pv": 1422327108.0541945
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0126",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.533076250540491,
+        13.649485834414316,
+        20.765895418288142,
+        27.882305002161964
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 738493410.5617956,
+      "replacement_pv": 1061093402.9013671
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0127",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5163248045703055,
+        9.615982942473945,
+        14.715641080377582,
+        19.815299218281222,
+        24.91495735618486
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1957898520.0521698,
+      "replacement_pv": 4062448710.636895
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0128",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.8289396083627825,
+        12.241212550058899,
+        18.653485491755017,
+        25.06575843345113
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 728084044.905778,
+      "replacement_pv": 1148496046.3064964
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0129",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.415187965694592,
+        13.413709264722518,
+        20.412230563750445,
+        27.41075186277837
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1251781710.7797554,
+      "replacement_pv": 1826631456.7280557
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0130",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.750587584023596,
+        12.084508501380526,
+        18.418429418737457,
+        24.752350336094384
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 975945793.1641488,
+      "replacement_pv": 1555784772.2083752
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0131",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.408927483022929,
+        17.40118829937919,
+        26.393449115735454
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 760032186.2957668,
+      "replacement_pv": 791874569.6137882
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0132",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        9.239156634411374,
+        19.06164660215608,
+        28.884136569900793
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 731962463.8022946,
+      "replacement_pv": 696996358.9214582
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0133",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.017883329287758,
+        8.61909999190885,
+        13.22031665452994,
+        17.821533317151033,
+        22.422749979772124,
+        27.023966642393216
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1235790943.375165,
+      "replacement_pv": 2976288153.114271
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0134",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        7.454253860712141,
+        15.491841054757616,
+        23.52942824880309
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 837806876.5091631,
+      "replacement_pv": 970187768.804685
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0135",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.743322087293935,
+        8.069977507921203,
+        12.39663292854847,
+        16.72328834917574,
+        21.049943769803004,
+        25.376599190430277
+      ],
+      "derived_terminal_start": 29.703254611057545,
+      "replacement_cost": 1296337994.022146,
+      "replacement_pv": 3280570080.9496875
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0136",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.533076250540491,
+        13.649485834414316,
+        20.765895418288142,
+        27.882305002161964
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 747078805.1084305,
+      "replacement_pv": 1073429200.8711952
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0137",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5163248045703055,
+        9.615982942473945,
+        14.715641080377582,
+        19.815299218281222,
+        24.91495735618486
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1828292739.6320164,
+      "replacement_pv": 3793529341.1361146
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0138",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.8289396083627825,
+        12.241212550058899,
+        18.653485491755017,
+        25.06575843345113
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 737676558.8150616,
+      "replacement_pv": 1163627492.1554134
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0139",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.415187965694592,
+        13.413709264722518,
+        20.412230563750445,
+        27.41075186277837
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1245477222.042221,
+      "replacement_pv": 1817431787.690397
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0140",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.408927483022929,
+        17.40118829937919,
+        26.393449115735454
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 775692149.2472994,
+      "replacement_pv": 808190623.9151872
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0141",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        9.239156634411374,
+        19.06164660215608,
+        28.884136569900793
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 745339289.2470686,
+      "replacement_pv": 709734168.699985
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0142",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.017883329287758,
+        8.61909999190885,
+        13.22031665452994,
+        17.821533317151033,
+        22.422749979772124,
+        27.023966642393216
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1201393177.6955492,
+      "replacement_pv": 2893444316.917973
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0143",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        7.454253860712141,
+        15.491841054757616,
+        23.52942824880309
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 848057878.7490634,
+      "replacement_pv": 982058520.0123851
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0144",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.743322087293935,
+        8.069977507921203,
+        12.39663292854847,
+        16.72328834917574,
+        21.049943769803004,
+        25.376599190430277
+      ],
+      "derived_terminal_start": 29.703254611057545,
+      "replacement_cost": 1246689505.2109358,
+      "replacement_pv": 3154927426.2489114
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0145",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.205108806471324,
+        10.993550946275981,
+        16.78199308608064,
+        22.570435225885294,
+        28.35887736568995
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 769947271.2754422,
+      "replacement_pv": 1434951324.5310528
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0146",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.9988739074991715,
+        10.581081148331677,
+        16.163288389164183,
+        21.745495629996686,
+        27.32770287082919
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 791504982.9113886,
+      "replacement_pv": 1522728628.7742634
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0147",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.349267877608819,
+        11.281869088550971,
+        17.214470299493126,
+        23.147071510435275,
+        29.079672721377424
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 753620707.8366594,
+      "replacement_pv": 1373950424.7669857
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0148",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.361581149879624,
+        13.306495633092583,
+        20.25141011630554,
+        27.196324599518498
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 688014423.1377143,
+      "replacement_pv": 1011074185.0162525
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0149",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.7162345033038067,
+        8.015802339940947,
+        12.315370176578087,
+        16.614938013215227,
+        20.914505849852365,
+        25.21407368648951
+      ],
+      "derived_terminal_start": 29.513641523126648,
+      "replacement_cost": 928820346.8974315,
+      "replacement_pv": 2362132608.9134526
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0150",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.3818521239755093,
+        7.347037581284352,
+        11.312223038593194,
+        15.277408495902037,
+        19.24259395321088,
+        23.207779410519723,
+        27.172964867828565
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 986780452.0280737,
+      "replacement_pv": 2825854960.291982
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0151",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.205108806471324,
+        10.993550946275981,
+        16.78199308608064,
+        22.570435225885294,
+        28.35887736568995
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 769947271.2754422,
+      "replacement_pv": 1434951324.5310528
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0152",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.533076250540491,
+        13.649485834414316,
+        20.765895418288142,
+        27.882305002161964
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 747078805.1084305,
+      "replacement_pv": 1073429200.8711952
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0153",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5163248045703055,
+        9.615982942473945,
+        14.715641080377582,
+        19.815299218281222,
+        24.91495735618486
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1828292739.6320164,
+      "replacement_pv": 3793529341.1361146
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0154",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.8289396083627825,
+        12.241212550058899,
+        18.653485491755017,
+        25.06575843345113
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 737676558.8150616,
+      "replacement_pv": 1163627492.1554134
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0155",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.415187965694592,
+        13.413709264722518,
+        20.412230563750445,
+        27.41075186277837
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1245477222.042221,
+      "replacement_pv": 1817431787.690397
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0156",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.408927483022929,
+        17.40118829937919,
+        26.393449115735454
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 775692149.2472994,
+      "replacement_pv": 808190623.9151872
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0157",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        9.239156634411374,
+        19.06164660215608,
+        28.884136569900793
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 745339289.2470686,
+      "replacement_pv": 709734168.699985
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0158",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.017883329287758,
+        8.61909999190885,
+        13.22031665452994,
+        17.821533317151033,
+        22.422749979772124,
+        27.023966642393216
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1201393177.6955492,
+      "replacement_pv": 2893444316.917973
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0159",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        7.454253860712141,
+        15.491841054757616,
+        23.52942824880309
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 848057878.7490634,
+      "replacement_pv": 982058520.0123851
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0160",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.743322087293935,
+        8.069977507921203,
+        12.39663292854847,
+        16.72328834917574,
+        21.049943769803004,
+        25.376599190430277
+      ],
+      "derived_terminal_start": 29.703254611057545,
+      "replacement_cost": 1246689505.2109358,
+      "replacement_pv": 3154927426.2489114
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0161",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        1.991370265200877,
+        4.566073863735087,
+        7.140777462269297,
+        9.715481060803508,
+        12.290184659337719,
+        14.864888257871929,
+        17.43959185640614,
+        20.01429545494035,
+        22.58899905347456,
+        25.16370265200877,
+        27.73840625054298
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3108203773.526578,
+      "replacement_pv": 14490686443.751068
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0162",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.204649628565998,
+        8.99263259046533,
+        13.78061555236466,
+        18.568598514263993,
+        23.356581476163324,
+        28.144564438062655
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1348074643.3341777,
+      "replacement_pv": 3140718863.189113
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0163",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.5299328617763135,
+        5.64319905688596,
+        8.756465251995607,
+        11.869731447105254,
+        14.982997642214901,
+        18.09626383732455,
+        21.209530032434195,
+        24.32279622754384,
+        27.43606242265349
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1923549544.7294993,
+      "replacement_pv": 7252306983.565994
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0164",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.600277156534336,
+        5.783887646402005,
+        8.967498136269674,
+        12.151108626137344,
+        15.334719116005013,
+        18.518329605872683,
+        21.70194009574035,
+        24.885550585608023,
+        28.06916107547569
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2476841347.2438254,
+      "replacement_pv": 9177069049.365294
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0165",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.814376779943816,
+        18.212086893220963,
+        27.609797006498116
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 968013530.4254261,
+      "replacement_pv": 964995866.447587
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0166",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.7952310267932843,
+        6.173795386919902,
+        9.552359747046518,
+        12.930924107173137,
+        16.309488467299754,
+        19.68805282742637,
+        23.06661718755299,
+        26.44518154767961
+      ],
+      "derived_terminal_start": 29.823745907806227,
+      "replacement_cost": 1139272085.4985044,
+      "replacement_pv": 3873364511.4143176
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0167",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.124164410491723,
+        12.83166215431678,
+        19.539159898141836,
+        26.24665764196689
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 697936468.6718228,
+      "replacement_pv": 1058375020.2155786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0168",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.491316408231996,
+        5.565966149797325,
+        8.640615891362655,
+        11.715265632927984,
+        14.789915374493313,
+        17.864565116058643,
+        20.939214857623973,
+        24.013864599189304,
+        27.08851434075463
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1165242160.4061804,
+      "replacement_pv": 4435743468.332348
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0169",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.280911906634644,
+        13.145157146602623,
+        20.009402386570603,
+        26.873647626538578
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 695311785.5591393,
+      "replacement_pv": 1032727753.5580019
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0170",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.204649628565998,
+        8.99263259046533,
+        13.78061555236466,
+        18.568598514263993,
+        23.356581476163324,
+        28.144564438062655
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1348074643.3341777,
+      "replacement_pv": 3140718863.189113
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0171",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.5299328617763135,
+        5.64319905688596,
+        8.756465251995607,
+        11.869731447105254,
+        14.982997642214901,
+        18.09626383732455,
+        21.209530032434195,
+        24.32279622754384,
+        27.43606242265349
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1923549544.7294993,
+      "replacement_pv": 7252306983.565994
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0172",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.600277156534336,
+        5.783887646402005,
+        8.967498136269674,
+        12.151108626137344,
+        15.334719116005013,
+        18.518329605872683,
+        21.70194009574035,
+        24.885550585608023,
+        28.06916107547569
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2476841347.2438254,
+      "replacement_pv": 9177069049.365294
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0173",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.814376779943816,
+        18.212086893220963,
+        27.609797006498116
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 968013530.4254261,
+      "replacement_pv": 964995866.447587
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0174",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.488098044408275,
+        11.559529422149884,
+        17.630960799891493,
+        23.7023921776331
+      ],
+      "derived_terminal_start": 29.773823555374708,
+      "replacement_cost": 1223976003.4698746,
+      "replacement_pv": 2021725886.7926989
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0175",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.431339211317102,
+        9.446011755967538,
+        14.460684300617972,
+        19.475356845268408,
+        24.490029389918842
+      ],
+      "derived_terminal_start": 29.50470193456928,
+      "replacement_cost": 1348151356.3025389,
+      "replacement_pv": 2835307284.9103045
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0176",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.764074117657294,
+        10.111481568647921,
+        15.458889019638546,
+        20.806296470629174,
+        26.1537039216198
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2319654177.031926,
+      "replacement_pv": 4628792919.067298
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0177",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.431339211317102,
+        9.446011755967538,
+        14.460684300617972,
+        19.475356845268408,
+        24.490029389918842
+      ],
+      "derived_terminal_start": 29.50470193456928,
+      "replacement_cost": 1303886419.4293244,
+      "replacement_pv": 2742213362.33552
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0178",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.488098044408275,
+        11.559529422149884,
+        17.630960799891493,
+        23.7023921776331
+      ],
+      "derived_terminal_start": 29.773823555374708,
+      "replacement_cost": 1223976003.4698746,
+      "replacement_pv": 2021725886.7926989
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0179",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.431339211317102,
+        9.446011755967538,
+        14.460684300617972,
+        19.475356845268408,
+        24.490029389918842
+      ],
+      "derived_terminal_start": 29.50470193456928,
+      "replacement_cost": 1348151356.3025389,
+      "replacement_pv": 2835307284.9103045
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0180",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.036149838340684,
+        10.655633010014702,
+        16.27511618168872,
+        21.894599353362736,
+        27.514082525036752
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2491734214.141077,
+      "replacement_pv": 4766144205.307076
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0181",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.431339211317102,
+        9.446011755967538,
+        14.460684300617972,
+        19.475356845268408,
+        24.490029389918842
+      ],
+      "derived_terminal_start": 29.50470193456928,
+      "replacement_cost": 1303886419.4293244,
+      "replacement_pv": 2742213362.33552
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0182",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.5315635140737416,
+        7.646460361480816,
+        11.76135720888789,
+        15.876254056294966,
+        19.99115090370204,
+        24.106047751109116,
+        28.22094459851619
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1737721610.4386613,
+      "replacement_pv": 4828891054.7618475
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0183",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.3860413336463795,
+        13.355416000626093,
+        20.324790667605807,
+        27.294165334585518
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 679208499.941337,
+      "replacement_pv": 994924606.4776442
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0184",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.9598497173813083,
+        6.50303276809595,
+        10.046215818810591,
+        13.589398869525233,
+        17.132581920239875,
+        20.675764970954518,
+        24.218948021669156,
+        27.762131072383802
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1782682327.926873,
+      "replacement_pv": 5839666221.993321
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0185",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.3860413336463795,
+        13.355416000626093,
+        20.324790667605807,
+        27.294165334585518
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 690356203.8368963,
+      "replacement_pv": 1011254091.330052
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0186",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.4898425934893917,
+        7.5630185203121165,
+        11.63619444713484,
+        15.709370373957567,
+        19.78254630078029,
+        23.855722227603017,
+        27.92889815442574
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1759469089.161632,
+      "replacement_pv": 4930306947.471635
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0187",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.991027882181171,
+        14.565389097695675,
+        22.13975031321018
+      ],
+      "derived_terminal_start": 29.714111528724683,
+      "replacement_cost": 1117417551.178666,
+      "replacement_pv": 1363225926.4312682
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0188",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.895870917471613,
+        6.375075168276559,
+        9.854279419081506,
+        13.333483669886451,
+        16.812687920691396,
+        20.291892171496347,
+        23.77109642230129,
+        27.25030067310624
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1808715448.5973918,
+      "replacement_pv": 6010788139.773856
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0189",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        10.43943270288366,
+        21.462198739100653
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 435153478.630932,
+      "replacement_pv": 316589488.1766008
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0190",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.6167880021210275,
+        9.816909337575389,
+        15.01703067302975,
+        20.21715200848411,
+        25.41727334393847
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 683479078.1291265,
+      "replacement_pv": 1395799921.9548697
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0191",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.8203233397818557,
+        6.223980012897044,
+        9.627636686012233,
+        13.031293359127423,
+        16.43495003224261,
+        19.8386067053578,
+        23.24226337847299,
+        26.645920051588178
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 909968415.8735306,
+      "replacement_pv": 3076171697.4222183
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0192",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.8203233397818557,
+        6.223980012897044,
+        9.627636686012233,
+        13.031293359127423,
+        16.43495003224261,
+        19.8386067053578,
+        23.24226337847299,
+        26.645920051588178
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 935676533.8128443,
+      "replacement_pv": 3163078653.1136346
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0193",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        7.107846427459377,
+        14.799026188252087,
+        22.490205949044796
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 981468353.9244971,
+      "replacement_pv": 1181668377.7098284
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0194",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.8203233397818557,
+        6.223980012897044,
+        9.627636686012233,
+        13.031293359127423,
+        16.43495003224261,
+        19.8386067053578,
+        23.24226337847299,
+        26.645920051588178
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 909968415.8735306,
+      "replacement_pv": 3076171697.4222183
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0195",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.023557180484168,
+        8.63044769430167,
+        13.237338208119171,
+        17.844228721936673,
+        22.451119235754174,
+        27.058009749571678
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 734944212.0800892,
+      "replacement_pv": 1768251062.7234597
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0196",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.3802401132922,
+        7.343813559917733,
+        11.307387006543268,
+        15.2709604531688,
+        19.234533899794332,
+        23.19810734641987,
+        27.161680793045402
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 819910563.5276978,
+      "replacement_pv": 2348752586.324685
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0197",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.3403567756024293,
+        7.264046884538192,
+        11.187736993473953,
+        15.111427102409717,
+        19.03511721134548,
+        22.95880732028124,
+        26.882497429217004
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1324945076.184019,
+      "replacement_pv": 3826256841.252334
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0198",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.3339630088537255,
+        9.251259351040785,
+        14.168555693227843,
+        19.085852035414902,
+        24.00314837760196,
+        28.92044471978902
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1136900426.9027715,
+      "replacement_pv": 2589140812.394786
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0199",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.136587465673754,
+        16.85650826468084,
+        25.57642906368793
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 799267232.3615335,
+      "replacement_pv": 858029245.3132997
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0200",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.168093080744293,
+        8.91951949482192,
+        13.670945908899546,
+        18.42237232297717,
+        23.173798737054796,
+        27.925225151132427
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1023654343.6266515,
+      "replacement_pv": 2400361342.5428677
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0201",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.168093080744293,
+        8.91951949482192,
+        13.670945908899546,
+        18.42237232297717,
+        23.173798737054796,
+        27.925225151132427
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1039206889.1791759,
+      "replacement_pv": 2436830419.5851784
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0202",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.3339630088537255,
+        9.251259351040785,
+        14.168555693227843,
+        19.085852035414902,
+        24.00314837760196,
+        28.92044471978902
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1160767115.3572984,
+      "replacement_pv": 2643494048.3265123
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0203",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.974457420161466,
+        10.532248173656265,
+        16.090038927151063,
+        21.647829680645863,
+        27.20562043414066
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1199727863.2444541,
+      "replacement_pv": 2316828511.4405017
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0204",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.810984422647316,
+        10.205302178627965,
+        15.599619934608613,
+        20.993937690589263,
+        26.38825544656991
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1082092788.542976,
+      "replacement_pv": 2143494789.5569599
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0205",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.149640046410913,
+        8.88261342615516,
+        13.615586805899406,
+        18.348560185643652,
+        23.081533565387897,
+        27.81450694513215
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1196723159.6359625,
+      "replacement_pv": 2815379520.102415
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0206",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.149640046410913,
+        8.88261342615516,
+        13.615586805899406,
+        18.348560185643652,
+        23.081533565387897,
+        27.81450694513215
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1165810724.6139202,
+      "replacement_pv": 2742655736.1789646
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0207",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.953208778316025,
+        18.489750889965382,
+        28.026293001614743
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 855677054.8274915,
+      "replacement_pv": 840287033.8775597
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0208",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.721225190139196,
+        10.025783713611727,
+        15.330342237084254,
+        20.634900760556786,
+        25.939459284029315
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1220467207.1447675,
+      "replacement_pv": 2451815649.065781
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0209",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.573758637702137,
+        9.730850608737608,
+        14.887942579773076,
+        20.04503455080855,
+        25.20212652184402
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1275155411.1149507,
+      "replacement_pv": 2621875582.5000367
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0210",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.573758637702137,
+        9.730850608737608,
+        14.887942579773076,
+        20.04503455080855,
+        25.20212652184402
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1242373915.5500154,
+      "replacement_pv": 2554472815.7232513
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0211",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        7.381457019590884,
+        15.346247372515101,
+        23.31103772543932
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 634842735.4258287,
+      "replacement_pv": 741173017.98411
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0212",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.9224844111134662,
+        8.428302155560266,
+        12.934119900007065,
+        17.439937644453863,
+        21.945755388900665,
+        26.451573133347466
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1083005691.2052605,
+      "replacement_pv": 2653318234.6900434
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0213",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.3187126785562975,
+        7.220758690445928,
+        11.122804702335559,
+        15.02485071422519,
+        18.92689672611482,
+        22.828942738004454,
+        26.73098874989408
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1864669170.6735127,
+      "replacement_pv": 5408600026.950077
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0214",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.966320342565992,
+        8.515974018465318,
+        13.065627694364641,
+        17.61528137026397,
+        22.164935046163293,
+        26.71458872206262
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1949081328.5825012,
+      "replacement_pv": 4737721782.715486
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0215",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.197938546762595,
+        10.979210426858524,
+        16.76048230695445,
+        22.54175418705038,
+        28.323026067146305
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1050975619.3431095,
+      "replacement_pv": 1960857368.3795567
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0216",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.701376698012821,
+        9.986086729358975,
+        15.270796760705128,
+        20.555506792051283,
+        25.840216823397437
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1533965221.0449748,
+      "replacement_pv": 3091225011.636092
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0217",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.474739006587639,
+        9.532811346508613,
+        14.590883686429583,
+        19.648956026350557,
+        24.70702836627153
+      ],
+      "derived_terminal_start": 29.765100706192502,
+      "replacement_cost": 1523863941.007622,
+      "replacement_pv": 3182805570.170166
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0218",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.616423732261586,
+        13.816180797856505,
+        21.015937863451423,
+        28.215694929046343
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1248366023.7645526,
+      "replacement_pv": 1774264805.7788079
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0219",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.616423732261586,
+        13.816180797856505,
+        21.015937863451423,
+        28.215694929046343
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1242127551.7969637,
+      "replacement_pv": 1765398254.5885153
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0220",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.224119626784313,
+        7.031572586901959,
+        10.839025547019604,
+        14.646478507137251,
+        18.453931467254897,
+        22.261384427372544,
+        26.06883738749019
+      ],
+      "derived_terminal_start": 29.876290347607835,
+      "replacement_cost": 1237404946.4579737,
+      "replacement_pv": 3659026959.7774067
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0221",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        8.288589731116963,
+        17.160512795567257,
+        26.032435860017554
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1291376678.8465698,
+      "replacement_pv": 1363342829.6437194
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0222",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.344657303537118,
+        5.272647940407569,
+        8.20063857727802,
+        11.128629214148472,
+        14.056619851018924,
+        16.984610487889373,
+        19.912601124759824,
+        22.84059176163028,
+        25.76858239850073,
+        28.69657303537118
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1313974857.5007842,
+      "replacement_pv": 5378380900.452981
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0223",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.231135698637402,
+        7.045604730608137,
+        10.860073762578871,
+        14.674542794549607,
+        18.48901182652034,
+        22.303480858491078,
+        26.117949890461812
+      ],
+      "derived_terminal_start": 29.932418922432547,
+      "replacement_cost": 2508667588.675332,
+      "replacement_pv": 7407538857.421531
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0224",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.31946307220934,
+        7.222259477752013,
+        11.125055883294687,
+        15.02785228883736,
+        18.930648694380032,
+        22.83344509992271,
+        26.73624150546538
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2598349618.93448,
+      "replacement_pv": 7535542096.288556
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0225",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.29742142433273,
+        5.178176181998793,
+        8.058930939664856,
+        10.93968569733092,
+        13.820440454996982,
+        16.701195212663045,
+        19.58194997032911,
+        22.462704727995174,
+        25.343459485661235,
+        28.224214243327296
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3119221569.836378,
+      "replacement_pv": 12930890027.230724
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0226",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.859412853363939,
+        10.302159040061213,
+        15.744905226758485,
+        21.187651413455757,
+        26.630397600153028
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1780194175.0988057,
+      "replacement_pv": 3499801222.5754194
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0227",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        3.4998166037091094,
+        7.582966540751552,
+        11.666116477793993,
+        15.749266414836438,
+        19.83241635187888,
+        23.915566288921323,
+        27.998716225963765
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2156519845.303617,
+      "replacement_pv": 6030843920.506773
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0228",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        2.5633553347025235,
+        5.71004400273838,
+        8.856732670774237,
+        12.003421338810094,
+        15.150110006845951,
+        18.29679867488181,
+        21.443487342917663,
+        24.59017601095352,
+        27.73686467898938
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2316031580.376796,
+      "replacement_pv": 8659945203.730495
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0229",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.534606223749597,
+        9.652545780832527,
+        14.770485337915456,
+        19.888424894998387,
+        25.006364452081318
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2725723698.6819334,
+      "replacement_pv": 5639250864.668225
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0230",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.534606223749597,
+        9.652545780832527,
+        14.770485337915456,
+        19.888424894998387,
+        25.006364452081318
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2441396367.769934,
+      "replacement_pv": 5051005934.534755
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0231",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.658772569418046,
+        9.900878472169426,
+        15.142984374920804,
+        20.385090277672184,
+        25.627196180423564
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2658239245.8766174,
+      "replacement_pv": 5392854817.439426
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0232",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        10.43943270288366,
+        21.462198739100653
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 435153478.630932,
+      "replacement_pv": 316589488.1766008
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0233",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        12.160968216460143,
+        24.905269766253618
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 564993115.0078847,
+      "replacement_pv": 352915260.8603096
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0234",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.614826770165147,
+        9.812986873663627,
+        15.011146977162106,
+        20.209307080660587,
+        25.407467184159064
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2358301663.0519705,
+      "replacement_pv": 4817610323.097848
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0235",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.4666451269961716,
+        9.516623587325677,
+        14.56660204765518,
+        19.616580507984686,
+        24.666558968314188
+      ],
+      "derived_terminal_start": 29.716537428643697,
+      "replacement_cost": 2202243843.7438936,
+      "replacement_pv": 4605617465.546016
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0236",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.564578929722553,
+        9.71249119277844,
+        14.860403455834325,
+        20.008315718890213,
+        25.1562279819461
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 891812724.2478546,
+      "replacement_pv": 1836339605.2277071
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0237",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.564578929722553,
+        9.71249119277844,
+        14.860403455834325,
+        20.008315718890213,
+        25.1562279819461
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 887857873.1784656,
+      "replacement_pv": 1828196135.8041
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0238",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.644886956917326,
+        9.873107247167987,
+        15.101327537418646,
+        20.329547827669305,
+        25.557768117919963
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 953864253.4888947,
+      "replacement_pv": 1939370821.8340287
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0239",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.644886956917326,
+        9.873107247167987,
+        15.101327537418646,
+        20.329547827669305,
+        25.557768117919963
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 949311929.0225,
+      "replacement_pv": 1930115159.7108755
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0240",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.759295958976205,
+        10.101925251285744,
+        15.444554543595281,
+        20.78718383590482,
+        26.129813128214355
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1013298117.3843033,
+      "replacement_pv": 2023516442.055294
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0241",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.759295958976205,
+        10.101925251285744,
+        15.444554543595281,
+        20.78718383590482,
+        26.129813128214355
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1003976088.0192721,
+      "replacement_pv": 2004900716.4659123
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0242",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.903650747450943,
+        10.39063482823522,
+        15.877618909019494,
+        21.36460298980377,
+        26.851587070588046
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1069987203.5005193,
+      "replacement_pv": 2089120705.3445544
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0243",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.903650747450943,
+        10.39063482823522,
+        15.877618909019494,
+        21.36460298980377,
+        26.851587070588046
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1059694306.9132732,
+      "replacement_pv": 2069024106.7048347
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0244",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.074785275825794,
+        10.732903884984921,
+        16.39102249414405,
+        22.049141103303175,
+        27.7072597124623
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1123927851.3292434,
+      "replacement_pv": 2137046987.2203903
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0245",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.074785275825794,
+        10.732903884984921,
+        16.39102249414405,
+        22.049141103303175,
+        27.7072597124623
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1112747449.9796052,
+      "replacement_pv": 2115788466.9409068
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0246",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.2702454125128275,
+        11.123824158358989,
+        16.97740290420515,
+        22.83098165005131,
+        28.68456039589747
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1175207367.2970927,
+      "replacement_pv": 2168520908.2718186
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0247",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.2702454125128275,
+        11.123824158358989,
+        16.97740290420515,
+        22.83098165005131,
+        28.68456039589747
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1163229839.0727634,
+      "replacement_pv": 2146419685.0267572
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0248",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.488098044408275,
+        11.559529422149884,
+        17.630960799891493,
+        23.7023921776331
+      ],
+      "derived_terminal_start": 29.773823555374708,
+      "replacement_cost": 1211292992.9921765,
+      "replacement_pv": 2000776480.4869106
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0249",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.726796184139192,
+        12.036925701611718,
+        18.347055219084243,
+        24.65718473655677
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1270424191.4900415,
+      "replacement_pv": 2031723530.6179233
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0250",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.726796184139192,
+        12.036925701611718,
+        18.347055219084243,
+        24.65718473655677
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1252155135.5069861,
+      "replacement_pv": 2002506776.7402947
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0251",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.985083719314275,
+        12.553500771961884,
+        19.121917824609493,
+        25.6903348772571
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1314764660.5761335,
+      "replacement_pv": 2031028481.1129193
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0252",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.985083719314275,
+        12.553500771961884,
+        19.121917824609493,
+        25.6903348772571
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1295761805.02181,
+      "replacement_pv": 2001673158.4376104
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0253",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.2619250633008345,
+        13.107183459935003,
+        19.95244185656917,
+        26.797700253203338
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1357219306.3842974,
+      "replacement_pv": 2020904700.8638246
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0254",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.2619250633008345,
+        13.107183459935003,
+        19.95244185656917,
+        26.797700253203338
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1337585558.833405,
+      "replacement_pv": 1991669976.2069259
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0255",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.556455331501618,
+        13.69624399633657,
+        20.836032661171522,
+        27.97582132600647
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1398009600.2543168,
+      "replacement_pv": 2002575014.1302636
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0256",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.556455331501618,
+        13.69624399633657,
+        20.836032661171522,
+        27.97582132600647
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1377835937.6163557,
+      "replacement_pv": 1973677306.4643614
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0257",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.996576237533218,
+        10.57648580839977,
+        16.15639537926632,
+        21.736304950132872,
+        27.316214520999424
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1704353104.1188698,
+      "replacement_pv": 3280068361.1586657
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0258",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.996576237533218,
+        10.57648580839977,
+        16.15639537926632,
+        21.736304950132872,
+        27.316214520999424
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1628879911.2529304,
+      "replacement_pv": 3134818394.2140646
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0259",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.27643107463915,
+        11.136195482611633,
+        16.995959890584118,
+        22.8557242985566,
+        28.71548870652908
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1860648057.7726235,
+      "replacement_pv": 3430071299.0053673
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0260",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.27643107463915,
+        11.136195482611633,
+        16.995959890584118,
+        22.8557242985566,
+        28.71548870652908
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1773473283.187498,
+      "replacement_pv": 3269366166.6980505
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0261",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.440215045210029,
+        11.463763423753392,
+        17.487311802296755,
+        23.510860180840115
+      ],
+      "derived_terminal_start": 29.534408559383476,
+      "replacement_cost": 1934544263.5877142,
+      "replacement_pv": 3216310545.262949
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0262",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.440215045210029,
+        11.463763423753392,
+        17.487311802296755,
+        23.510860180840115
+      ],
+      "derived_terminal_start": 29.534408559383476,
+      "replacement_cost": 1842115989.4093118,
+      "replacement_pv": 3062642294.545784
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0263",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.618595365082135,
+        11.820524063497604,
+        18.022452761913073,
+        24.22438146032854
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2005710415.7259922,
+      "replacement_pv": 3254844337.9066577
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0264",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.618595365082135,
+        11.820524063497604,
+        18.022452761913073,
+        24.22438146032854
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1902783317.8693624,
+      "replacement_pv": 3087815399.407301
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0265",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.810789662973672,
+        12.204912659280678,
+        18.599035655587684,
+        24.99315865189469
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2074278670.1366382,
+      "replacement_pv": 3280000421.194076
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0266",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.810789662973672,
+        12.204912659280678,
+        18.599035655587684,
+        24.99315865189469
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1966668487.2563043,
+      "replacement_pv": 3109839367.014689
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0267",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.016135992223202,
+        12.615605317779737,
+        19.215074643336273,
+        25.814543968892806
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2140409740.0500116,
+      "replacement_pv": 3292799872.6293764
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0268",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.016135992223202,
+        12.615605317779737,
+        19.215074643336273,
+        25.814543968892806
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2028536481.051062,
+      "replacement_pv": 3120694389.2307787
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0269",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.234068731685211,
+        13.051470796703756,
+        19.8688728617223,
+        26.686274926740843
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2204283082.256746,
+      "replacement_pv": 3294299286.168862
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0270",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.234068731685211,
+        13.051470796703756,
+        19.8688728617223,
+        26.686274926740843
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2088542718.4582438,
+      "replacement_pv": 3121325405.948373
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0271",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.464100808144518,
+        13.51153494962237,
+        20.55896909110022,
+        27.60640323257807
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2266088713.2750874,
+      "replacement_pv": 3285560752.2721696
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0272",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.464100808144518,
+        13.51153494962237,
+        20.55896909110022,
+        27.60640323257807
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2146847678.5174925,
+      "replacement_pv": 3112675347.757859
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0273",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.705808371287921,
+        13.994950075909175,
+        21.284091780530428,
+        28.573233485151682
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2326021118.9131794,
+      "replacement_pv": 3267629754.390066
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0274",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.705808371287921,
+        13.994950075909175,
+        21.284091780530428,
+        28.573233485151682
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2203612928.6513834,
+      "replacement_pv": 3095668871.7359247
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0275",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.30259896528054,
+        9.188531263894413,
+        14.074463562508285,
+        18.96039586112216,
+        23.84632815973603,
+        28.732260458349906
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1597760374.6679385,
+      "replacement_pv": 3658763200.74065
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0276",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.30259896528054,
+        9.188531263894413,
+        14.074463562508285,
+        18.96039586112216,
+        23.84632815973603,
+        28.732260458349906
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1521932977.5032926,
+      "replacement_pv": 3485123589.4744043
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0277",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.3306450369319,
+        9.244623407197134,
+        14.158601777462366,
+        19.0725801477276,
+        23.98655851799283,
+        28.900536888258067
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1973798245.0419102,
+      "replacement_pv": 4497679977.927184
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0278",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.3306450369319,
+        9.244623407197134,
+        14.158601777462366,
+        19.0725801477276,
+        23.98655851799283,
+        28.900536888258067
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1838295932.506692,
+      "replacement_pv": 4188911825.1621366
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0279",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2036036592.676471,
+      "replacement_pv": 4265322668.7902894
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0280",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.647067737097684,
+        9.877468807528702,
+        15.107869877959718,
+        20.338270948390736,
+        25.568672018821754
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2443925032.678158,
+      "replacement_pv": 4967215236.862142
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0281",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.647067737097684,
+        9.877468807528702,
+        15.107869877959718,
+        20.338270948390736,
+        25.568672018821754
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2226405109.8157015,
+      "replacement_pv": 4525111546.807686
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0282",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.764074117657294,
+        10.111481568647921,
+        15.458889019638546,
+        20.806296470629174,
+        26.1537039216198
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2552852544.004692,
+      "replacement_pv": 5094132520.318877
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0283",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.89403088871471,
+        10.371395110762753,
+        15.848759332810795,
+        21.32612355485884,
+        26.80348777690688
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2658014515.0047774,
+      "replacement_pv": 5197472092.26068
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0284",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.89403088871471,
+        10.371395110762753,
+        15.848759332810795,
+        21.32612355485884,
+        26.80348777690688
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2410064085.548263,
+      "replacement_pv": 4712630707.802715
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0285",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.036149838340684,
+        10.655633010014702,
+        16.27511618168872,
+        21.894599353362736,
+        27.514082525036752
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2759422722.9000807,
+      "replacement_pv": 5278173950.537673
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0286",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.036149838340684,
+        10.655633010014702,
+        16.27511618168872,
+        21.894599353362736,
+        27.514082525036752
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2491734214.141077,
+      "replacement_pv": 4766144205.307076
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0287",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.189766422105352,
+        10.962866177544038,
+        16.735965932982722,
+        22.50906568842141,
+        28.28216544386009
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2857160648.7793,
+      "replacement_pv": 5337428632.580763
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0288",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.189766422105352,
+        10.962866177544038,
+        16.735965932982722,
+        22.50906568842141,
+        28.28216544386009
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2576411699.3693485,
+      "replacement_pv": 4812964780.053655
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0289",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.354315546625903,
+        11.29196442658514,
+        17.229613306544376,
+        23.167262186503613,
+        29.10491106646285
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2951367650.3536987,
+      "replacement_pv": 5376604804.497552
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0290",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.354315546625903,
+        11.29196442658514,
+        17.229613306544376,
+        23.167262186503613,
+        29.10491106646285
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2658574391.0544453,
+      "replacement_pv": 4843213566.545816
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0291",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.529312918493203,
+        11.64195917031974,
+        17.754605422146277,
+        23.867251673972813
+      ],
+      "derived_terminal_start": 29.97989792579935,
+      "replacement_cost": 3042224692.790184,
+      "replacement_pv": 4996993526.11509
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0292",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.529312918493203,
+        11.64195917031974,
+        17.754605422146277,
+        23.867251673972813
+      ],
+      "derived_terminal_start": 29.97989792579935,
+      "replacement_cost": 2738372007.6122317,
+      "replacement_pv": 4497901560.842021
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0293",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.714340270418736,
+        12.012013874170806,
+        18.309687477922875,
+        24.607361081674945
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3129942063.080978,
+      "replacement_pv": 5013966558.4274845
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0294",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.714340270418736,
+        12.012013874170806,
+        18.309687477922875,
+        24.607361081674945
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2815966435.1014485,
+      "replacement_pv": 4510997727.975398
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0295",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.909033110297069,
+        12.401399553927472,
+        18.893765997557875,
+        25.386132441188277
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3214749296.661788,
+      "replacement_pv": 5016849647.63896
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0296",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.909033110297069,
+        12.401399553927472,
+        18.893765997557875,
+        25.386132441188277
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2891526573.4633036,
+      "replacement_pv": 4512437124.18929
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0297",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.113072183407425,
+        12.809477700148184,
+        19.505883216888943,
+        26.2022887336297
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3296886428.375472,
+      "replacement_pv": 5006886486.952254
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0298",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.113072183407425,
+        12.809477700148184,
+        19.505883216888943,
+        26.2022887336297
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2965223898.6081295,
+      "replacement_pv": 4503200153.013612
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0299",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.564578929722553,
+        9.71249119277844,
+        14.860403455834325,
+        20.008315718890213,
+        25.1562279819461
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 891812724.2478546,
+      "replacement_pv": 1836339605.2277071
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0300",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.564578929722553,
+        9.71249119277844,
+        14.860403455834325,
+        20.008315718890213,
+        25.1562279819461
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 887857873.1784656,
+      "replacement_pv": 1828196135.8041
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0301",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.644886956917326,
+        9.873107247167987,
+        15.101327537418646,
+        20.329547827669305,
+        25.557768117919963
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 953864253.4888947,
+      "replacement_pv": 1939370821.8340287
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0302",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.644886956917326,
+        9.873107247167987,
+        15.101327537418646,
+        20.329547827669305,
+        25.557768117919963
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 949311929.0225,
+      "replacement_pv": 1930115159.7108755
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0303",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.759295958976205,
+        10.101925251285744,
+        15.444554543595281,
+        20.78718383590482,
+        26.129813128214355
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1013298117.3843033,
+      "replacement_pv": 2023516442.055294
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0304",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.759295958976205,
+        10.101925251285744,
+        15.444554543595281,
+        20.78718383590482,
+        26.129813128214355
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1003976088.0192721,
+      "replacement_pv": 2004900716.4659123
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0305",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.903650747450943,
+        10.39063482823522,
+        15.877618909019494,
+        21.36460298980377,
+        26.851587070588046
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1069987203.5005193,
+      "replacement_pv": 2089120705.3445544
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0306",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.903650747450943,
+        10.39063482823522,
+        15.877618909019494,
+        21.36460298980377,
+        26.851587070588046
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1059694306.9132732,
+      "replacement_pv": 2069024106.7048347
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0307",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.074785275825794,
+        10.732903884984921,
+        16.39102249414405,
+        22.049141103303175,
+        27.7072597124623
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1123927851.3292434,
+      "replacement_pv": 2137046987.2203903
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0308",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.074785275825794,
+        10.732903884984921,
+        16.39102249414405,
+        22.049141103303175,
+        27.7072597124623
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1112747449.9796052,
+      "replacement_pv": 2115788466.9409068
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0309",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.2702454125128275,
+        11.123824158358989,
+        16.97740290420515,
+        22.83098165005131,
+        28.68456039589747
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1175207367.2970927,
+      "replacement_pv": 2168520908.2718186
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0310",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.2702454125128275,
+        11.123824158358989,
+        16.97740290420515,
+        22.83098165005131,
+        28.68456039589747
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1163229839.0727634,
+      "replacement_pv": 2146419685.0267572
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0311",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.488098044408275,
+        11.559529422149884,
+        17.630960799891493,
+        23.7023921776331
+      ],
+      "derived_terminal_start": 29.773823555374708,
+      "replacement_cost": 1211292992.9921765,
+      "replacement_pv": 2000776480.4869106
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0312",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.726796184139192,
+        12.036925701611718,
+        18.347055219084243,
+        24.65718473655677
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1270424191.4900415,
+      "replacement_pv": 2031723530.6179233
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0313",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.726796184139192,
+        12.036925701611718,
+        18.347055219084243,
+        24.65718473655677
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1252155135.5069861,
+      "replacement_pv": 2002506776.7402947
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0314",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.985083719314275,
+        12.553500771961884,
+        19.121917824609493,
+        25.6903348772571
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1314764660.5761335,
+      "replacement_pv": 2031028481.1129193
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0315",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.985083719314275,
+        12.553500771961884,
+        19.121917824609493,
+        25.6903348772571
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1295761805.02181,
+      "replacement_pv": 2001673158.4376104
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0316",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.2619250633008345,
+        13.107183459935003,
+        19.95244185656917,
+        26.797700253203338
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1357219306.3842974,
+      "replacement_pv": 2020904700.8638246
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0317",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.2619250633008345,
+        13.107183459935003,
+        19.95244185656917,
+        26.797700253203338
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1337585558.833405,
+      "replacement_pv": 1991669976.2069259
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0318",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.556455331501618,
+        13.69624399633657,
+        20.836032661171522,
+        27.97582132600647
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1398009600.2543168,
+      "replacement_pv": 2002575014.1302636
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0319",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.556455331501618,
+        13.69624399633657,
+        20.836032661171522,
+        27.97582132600647
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1377835937.6163557,
+      "replacement_pv": 1973677306.4643614
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0320",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.996576237533218,
+        10.57648580839977,
+        16.15639537926632,
+        21.736304950132872,
+        27.316214520999424
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1704353104.1188698,
+      "replacement_pv": 3280068361.1586657
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0321",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.996576237533218,
+        10.57648580839977,
+        16.15639537926632,
+        21.736304950132872,
+        27.316214520999424
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1628879911.2529304,
+      "replacement_pv": 3134818394.2140646
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0322",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.27643107463915,
+        11.136195482611633,
+        16.995959890584118,
+        22.8557242985566,
+        28.71548870652908
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1860648057.7726235,
+      "replacement_pv": 3430071299.0053673
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0323",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.27643107463915,
+        11.136195482611633,
+        16.995959890584118,
+        22.8557242985566,
+        28.71548870652908
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1773473283.187498,
+      "replacement_pv": 3269366166.6980505
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0324",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.440215045210029,
+        11.463763423753392,
+        17.487311802296755,
+        23.510860180840115
+      ],
+      "derived_terminal_start": 29.534408559383476,
+      "replacement_cost": 1934544263.5877142,
+      "replacement_pv": 3216310545.262949
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0325",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.440215045210029,
+        11.463763423753392,
+        17.487311802296755,
+        23.510860180840115
+      ],
+      "derived_terminal_start": 29.534408559383476,
+      "replacement_cost": 1842115989.4093118,
+      "replacement_pv": 3062642294.545784
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0326",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.618595365082135,
+        11.820524063497604,
+        18.022452761913073,
+        24.22438146032854
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2005710415.7259922,
+      "replacement_pv": 3254844337.9066577
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0327",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.618595365082135,
+        11.820524063497604,
+        18.022452761913073,
+        24.22438146032854
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1902783317.8693624,
+      "replacement_pv": 3087815399.407301
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0328",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.810789662973672,
+        12.204912659280678,
+        18.599035655587684,
+        24.99315865189469
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2074278670.1366382,
+      "replacement_pv": 3280000421.194076
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0329",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.810789662973672,
+        12.204912659280678,
+        18.599035655587684,
+        24.99315865189469
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1966668487.2563043,
+      "replacement_pv": 3109839367.014689
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0330",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.016135992223202,
+        12.615605317779737,
+        19.215074643336273,
+        25.814543968892806
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2140409740.0500116,
+      "replacement_pv": 3292799872.6293764
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0331",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.016135992223202,
+        12.615605317779737,
+        19.215074643336273,
+        25.814543968892806
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2028536481.051062,
+      "replacement_pv": 3120694389.2307787
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0332",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.234068731685211,
+        13.051470796703756,
+        19.8688728617223,
+        26.686274926740843
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2204283082.256746,
+      "replacement_pv": 3294299286.168862
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0333",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.234068731685211,
+        13.051470796703756,
+        19.8688728617223,
+        26.686274926740843
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2088542718.4582438,
+      "replacement_pv": 3121325405.948373
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0334",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.464100808144518,
+        13.51153494962237,
+        20.55896909110022,
+        27.60640323257807
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2266088713.2750874,
+      "replacement_pv": 3285560752.2721696
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0335",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.464100808144518,
+        13.51153494962237,
+        20.55896909110022,
+        27.60640323257807
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2146847678.5174925,
+      "replacement_pv": 3112675347.757859
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0336",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.705808371287921,
+        13.994950075909175,
+        21.284091780530428,
+        28.573233485151682
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2326021118.9131794,
+      "replacement_pv": 3267629754.390066
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0337",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.705808371287921,
+        13.994950075909175,
+        21.284091780530428,
+        28.573233485151682
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2203612928.6513834,
+      "replacement_pv": 3095668871.7359247
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0338",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.30259896528054,
+        9.188531263894413,
+        14.074463562508285,
+        18.96039586112216,
+        23.84632815973603,
+        28.732260458349906
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1597760374.6679385,
+      "replacement_pv": 3658763200.74065
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0339",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.30259896528054,
+        9.188531263894413,
+        14.074463562508285,
+        18.96039586112216,
+        23.84632815973603,
+        28.732260458349906
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1521932977.5032926,
+      "replacement_pv": 3485123589.4744043
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0340",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.3306450369319,
+        9.244623407197134,
+        14.158601777462366,
+        19.0725801477276,
+        23.98655851799283,
+        28.900536888258067
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1973798245.0419102,
+      "replacement_pv": 4497679977.927184
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0341",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.3306450369319,
+        9.244623407197134,
+        14.158601777462366,
+        19.0725801477276,
+        23.98655851799283,
+        28.900536888258067
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1838295932.506692,
+      "replacement_pv": 4188911825.1621366
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0342",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.455870949435157,
+        9.495075232203648,
+        14.534279514972138,
+        19.57348379774063,
+        24.61268808050912
+      ],
+      "derived_terminal_start": 29.65189236327761,
+      "replacement_cost": 2036036592.676471,
+      "replacement_pv": 4265322668.7902894
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0343",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.647067737097684,
+        9.877468807528702,
+        15.107869877959718,
+        20.338270948390736,
+        25.568672018821754
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2443925032.678158,
+      "replacement_pv": 4967215236.862142
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0344",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.647067737097684,
+        9.877468807528702,
+        15.107869877959718,
+        20.338270948390736,
+        25.568672018821754
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2226405109.8157015,
+      "replacement_pv": 4525111546.807686
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0345",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.764074117657294,
+        10.111481568647921,
+        15.458889019638546,
+        20.806296470629174,
+        26.1537039216198
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2552852544.004692,
+      "replacement_pv": 5094132520.318877
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0346",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.764074117657294,
+        10.111481568647921,
+        15.458889019638546,
+        20.806296470629174,
+        26.1537039216198
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2319654177.031926,
+      "replacement_pv": 4628792919.067298
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0347",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.89403088871471,
+        10.371395110762753,
+        15.848759332810795,
+        21.32612355485884,
+        26.80348777690688
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2658014515.0047774,
+      "replacement_pv": 5197472092.26068
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0348",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.89403088871471,
+        10.371395110762753,
+        15.848759332810795,
+        21.32612355485884,
+        26.80348777690688
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2410064085.548263,
+      "replacement_pv": 4712630707.802715
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0349",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.036149838340684,
+        10.655633010014702,
+        16.27511618168872,
+        21.894599353362736,
+        27.514082525036752
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2759422722.9000807,
+      "replacement_pv": 5278173950.537673
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0350",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.189766422105352,
+        10.962866177544038,
+        16.735965932982722,
+        22.50906568842141,
+        28.28216544386009
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2857160648.7793,
+      "replacement_pv": 5337428632.580763
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0351",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.189766422105352,
+        10.962866177544038,
+        16.735965932982722,
+        22.50906568842141,
+        28.28216544386009
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2576411699.3693485,
+      "replacement_pv": 4812964780.053655
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0352",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.354315546625903,
+        11.29196442658514,
+        17.229613306544376,
+        23.167262186503613,
+        29.10491106646285
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2951367650.3536987,
+      "replacement_pv": 5376604804.497552
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0353",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.354315546625903,
+        11.29196442658514,
+        17.229613306544376,
+        23.167262186503613,
+        29.10491106646285
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2658574391.0544453,
+      "replacement_pv": 4843213566.545816
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0354",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.529312918493203,
+        11.64195917031974,
+        17.754605422146277,
+        23.867251673972813
+      ],
+      "derived_terminal_start": 29.97989792579935,
+      "replacement_cost": 3042224692.790184,
+      "replacement_pv": 4996993526.11509
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0355",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.529312918493203,
+        11.64195917031974,
+        17.754605422146277,
+        23.867251673972813
+      ],
+      "derived_terminal_start": 29.97989792579935,
+      "replacement_cost": 2738372007.6122317,
+      "replacement_pv": 4497901560.842021
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0356",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.714340270418736,
+        12.012013874170806,
+        18.309687477922875,
+        24.607361081674945
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3129942063.080978,
+      "replacement_pv": 5013966558.4274845
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0357",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.714340270418736,
+        12.012013874170806,
+        18.309687477922875,
+        24.607361081674945
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2815966435.1014485,
+      "replacement_pv": 4510997727.975398
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0358",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.909033110297069,
+        12.401399553927472,
+        18.893765997557875,
+        25.386132441188277
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3214749296.661788,
+      "replacement_pv": 5016849647.63896
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0359",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.909033110297069,
+        12.401399553927472,
+        18.893765997557875,
+        25.386132441188277
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2891526573.4633036,
+      "replacement_pv": 4512437124.18929
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0360",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.113072183407425,
+        12.809477700148184,
+        19.505883216888943,
+        26.2022887336297
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 3296886428.375472,
+      "replacement_pv": 5006886486.952254
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0361",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        6.113072183407425,
+        12.809477700148184,
+        19.505883216888943,
+        26.2022887336297
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2965223898.6081295,
+      "replacement_pv": 4503200153.013612
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0362",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.573594210555399,
+        11.730521754444132,
+        17.887449298332864,
+        24.044376842221595
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1231417916.201467,
+      "replacement_pv": 2010547111.2442358
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0363",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2135395676.7479026,
+      "replacement_pv": 4411385849.099057
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0364",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.484869207526976,
+        9.553071748387286,
+        14.621274289247593,
+        19.689476830107903,
+        24.757679370968212
+      ],
+      "derived_terminal_start": 29.82588191182852,
+      "replacement_cost": 832868492.5211693,
+      "replacement_pv": 1736767176.722984
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0365",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.573594210555399,
+        11.730521754444132,
+        17.887449298332864,
+        24.044376842221595
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1231417916.201467,
+      "replacement_pv": 2010547111.2442358
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0366",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        4.5439543748469635,
+        9.671242083027261,
+        14.798529791207557,
+        19.925817499387854,
+        25.053105207568148
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 2135395676.7479026,
+      "replacement_pv": 4411385849.099057
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0367",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.7777178402617295,
+        12.138769013856793,
+        18.499820187451856,
+        24.860871361046918
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1249594879.2197073,
+      "replacement_pv": 1984756083.429031
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0368",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.7777178402617295,
+        12.138769013856793,
+        18.499820187451856,
+        24.860871361046918
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1236946003.4053288,
+      "replacement_pv": 1964665625.602569
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0369",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.827462380136696,
+        12.238258093606726,
+        18.649053807076758,
+        25.059849520546784
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1246390382.4852974,
+      "replacement_pv": 1966474096.045912
+    },
+    {
+      "candidate_id": "20260912-plant-closure:c0370",
+      "mode": "computed",
+      "derived_event_dates_years": [
+        5.827462380136696,
+        12.238258093606726,
+        18.649053807076758,
+        25.059849520546784
+      ],
+      "derived_terminal_start": null,
+      "replacement_cost": 1233864532.9915884,
+      "replacement_pv": 1946711621.2174132
+    }
+  ]
+}

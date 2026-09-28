@@ -1,0 +1,5 @@
+Command: .codex-test/run python -m pytest tests/models/test_facility_account_consumers.py tests/models/test_installed_cooling_equipment.py -q
+Final sealed executable: 3f1d3b0c57c2adfbbb5e43819d444ec1698499ce6bf5459525cd5d8214764fae
+Result: 39 passed, 11 warnings in 40.33s; exit 0.
+Warnings: inherited Pydantic numeric Boolean default serialization for facilities_enabled, inventory_enabled and equipment_enabled. Native proposal validation accepts explicit Boolean facility controls; defaults retain native generated representations.
+Captured from session 50133; this final rerun supersedes the earlier failed account-consumer logs without deleting their history.

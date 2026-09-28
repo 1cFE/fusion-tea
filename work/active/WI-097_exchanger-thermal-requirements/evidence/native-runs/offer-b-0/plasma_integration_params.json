@@ -1,0 +1,17 @@
+{
+  "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+  "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+  "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+  "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+  "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+  "aries_cs_plasma_integration__plasma__field": 5.7,
+  "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+  "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+  "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+  "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+  "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+  "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+  "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+  "aries_cs_plasma_integration__plasma__volume": 444.0,
+  "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+}

@@ -1,0 +1,22 @@
+{
+  "selected-forward": {
+    "numeric_channels_exact_archived_equality": 1050,
+    "predicates_exact_archived_equality": 28,
+    "accounts_pass": 53,
+    "export_rows_exact_archived_equality": 276,
+    "raw_violations": 4
+  },
+  "table5-conditioned": {
+    "numeric_channels_exact_archived_equality": 1050,
+    "predicates_exact_archived_equality": 28,
+    "accounts_pass": 53,
+    "export_rows_exact_archived_equality": 276,
+    "raw_violations": 4
+  },
+  "pytest": {
+    "passed": 190,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

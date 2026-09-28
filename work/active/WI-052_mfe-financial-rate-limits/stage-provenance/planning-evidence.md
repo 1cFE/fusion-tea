@@ -1,0 +1,11 @@
+# Native planning evidence — 2026-09-12
+
+[AGENT] Fresh plan author `/root/mfe_financial_item/plan` executed plan-brief.md using the installed plan-model skill and Codex adapter. The deliverable is ../plan.md with six unstarted phases. The owner production hold remains in force. No blocking question was found and no implementation, generation, test run, source adoption or PM transition was performed.
+
+The author read the pinned spec/design/review, alignment, routing and hold; project context/runtime instructions; model-validation, project-structure, sysml-conventions and toolkit-awareness guidance; the prototype builder, factors, executor and L2 comparison; the retained expert consultations and reviewer evidence. Existing design discovery was reused, not represented as freshly rerun. Shell reads were scoped to `/tmp/fusion-mfe-financial-rate-limits`; the first brief/skill read used absolute paths. No quarantine content or hashes were read.
+
+Read-only inspection confirmed that the local .codex-test/run selects this isolated workdir and retained no-sync runtime. The prototype builder uses an explicit MFE subset and native GenerationConfig; its scratch generation is the reference for the later inspected completion helper. No helper was executed during planning.
+
+Current test callers need care: tests/models/test_mfe_operating_heating.py loads WI-050/implementation/run_acceptance.py, which hard-codes four normative bodies; tests/models/test_mfe_major_radius.py imports WI-051/implementation/regenerate.py, whose four-seed set and hashes describe historical evidence. The plan assigns a new current-package helper and caller adaptation, preserving frozen historical evidence. tests/models/test_lifecycle_calendar.py's held monetary bit-identity assertion also needs the routing-authorized independent tolerance check; its physical assertions remain exact. These are implementation compatibility tasks, not reasons to rewrite the deferred study oracle.
+
+Only plan.md and this scoped planning note were created by this stage. Existing .gitignore, dispatch/runtime setup files and other contributors' changes were preserved. All production checks, complete issue identity matching and independent audit remain future obligations; prototype and review numerical results are cited as recorded evidence only.

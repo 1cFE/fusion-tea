@@ -1,0 +1,14 @@
+{
+  "targeted": {
+    "passed": 233
+  },
+  "broad": {
+    "passed": 580,
+    "failure": 97
+  },
+  "identical_historical_failures": 97,
+  "author_current_first_restored": 95,
+  "author_restored_independently_replayed": 95,
+  "restored_nodes_excluded_for_write_safety": [],
+  "all_current_restored": 95
+}

@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-02",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-02/20260918T195718268273",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "neutronic_fusion_thesis_martinez_arroyo_javier",
+      "path": "knowledge/sources/neutronic_fusion_thesis_martinez_arroyo_javier/",
+      "source_id": "0fd38e685a68e751f8d21f0b3248cb4ac3b1d406d8b1d22ea8229b0689102abc",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

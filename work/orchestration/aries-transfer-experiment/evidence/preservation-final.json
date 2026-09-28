@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-22T05:52:24.979635+00:00",
+  "baseline_head": "1de30cb382908c4da19bc124d4b75833ebe30904",
+  "checked_head": "0b102def075269a9bedec420c43a2f0b857a0d52",
+  "protected_files": 1383,
+  "changed_or_missing": [],
+  "claim": "All pre-experiment protected files preserved; new experiment files intentionally outside this baseline."
+}

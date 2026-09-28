@@ -1,0 +1,41 @@
+{
+  "adoption_sha256": "520cb2fbfdcdb9c8681bc8a07f0387ef4ba498e33d932609abcfb732ad141170",
+  "counts": {
+    "field_row_counts": {
+      "unaffected_by_field_finding": 103,
+      "unknown_unqualified": 173
+    },
+    "numeric_output_count": 1341,
+    "predicate_count": 67,
+    "predicate_counts": {
+      "satisfied": 51,
+      "unavailable": 1,
+      "violated": 15
+    },
+    "row_count": 276,
+    "row_counts": {
+      "available": 267,
+      "structural_evidence_required": 8,
+      "unavailable_dependency": 1
+    }
+  },
+  "design_choices_preserved": true,
+  "engineering_acceptance": false,
+  "first_diagnostic": {
+    "attempt": "diagnostic-1",
+    "kind": "partial_diagnostic",
+    "original_first_forward_replaced": false
+  },
+  "native_execution_started": true,
+  "native_state": "partial",
+  "original_effective_inputs_exact": true,
+  "original_first_forward_replaced": false,
+  "schema_version": "partial-diagnostic-attempt/v1",
+  "source_identity": {
+    "diagnostic_evaluator_version": "v1",
+    "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+    "input_digest": "ca56b9f8d1a0daecef6a08d054ea02e5e4ceaa632b69e309659b96721874422f",
+    "native_source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7"
+  },
+  "state": "partial_assessment_recorded"
+}

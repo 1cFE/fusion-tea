@@ -1,0 +1,33 @@
+# Final independent review
+
+**Verdict: PASS.** [AGENT REVIEW] The corrected answer, frozen study, 45 proposed substantive dispositions and L-001–L-003 are accepted within the limits below. The technical question is answered through the owner's permitted combination of supported account implementation and quantified geometry/engineering evidence gaps. Recommend technical completion and the owner-held formal close after the coordinator mechanically publishes the accepted joins and verifies their coverage. That publication check is still outstanding at this review; no semantic follow-up is required.
+
+## Independence and reused coverage
+
+[AGENT REVIEW] I authored neither the model, study, synthesis nor answer. The original source/math review and corrected integrated implementation review remain applicable. A fresh comparison against 48b65159 confirms no subsequent model, exploration-twin, generated-package or oracle changes. Their reviewed source pairs, guards and exact entering-native controls are reused without recertifying absent physical geometry. This final review checks the remaining study, interpretation, custody and routing scope.
+
+## Frozen evidence and numerical result
+
+[AGENT REVIEW] Independent checks in [check.py](final-review/check.py) verify all 184 snapshot artifacts by SHA256 and against committed ac1b529baeadf06172cfc141ae2666dbc81191b7 bytes. Snapshot SHA256 is 92d2a24565645de602384a530ee6c32776e66b4787af8245b81d3d099df3fbbd. Both SQLite stores contain 28 completed cases including the baseline; all 28 content-addressed evidence records verify. All 27 study exports join native inputs, outputs, reports and proposals exactly. Separately, the integration baseline store and its 20-predicate report verify. All ten integration gates pass under the one frozen candidate pin. The thirteen stratified verification samples cover every observed verdict combination.
+
+[AGENT REVIEW] Fresh isolated replays of the captured current and entering oracles pass 6,102 current scalar comparisons plus 540 exact predicates, and 5,886 entering scalar comparisons plus 540 exact predicates. The entering replay removes only the newly introduced capture input. It is oracle attribution, not an old-native 27-point rerun. Results are [current replay](final-review/current-replay.json), [entering replay](final-review/entering-replay.json) and [custody/account checks](final-review/custody-and-account.json). All five original named native controls also retain every old output and response exactly.
+
+[AGENT REVIEW] The sample matches the released 27-point uncrossed protocol: five bases, five paired source changes, ten radiation variants, six radius perturbations and one explicit failed-burn control. The latter and the informative rejection's R12.9 variant remain account-invalid. Thirteen points pass the valid-account divertor screen; none passes all 20 predicates. The selected sample has no exact-current-boundary sign disagreement. Earlier boundary behavior remains preserved in implementation evidence.
+
+## Scientific interpretation
+
+[AGENT REVIEW] Both quantities remain peaks. Source capture is paired, already included in the reference peak, and never applied twice. A_eq is captured power divided by peak, not independently identified physical wetted area, target sharing or average flux. Radius transfer, source transport and radiation sensitivities remain separate. Direct all-point checks confirm conservation, peak reconstruction and radius-shadow arithmetic. Every profile/radiation variant leaves every non-ledger native output unchanged, including plant heat, target cost, primary-loop demand and economics. These numerical sensitivities therefore supply no costed physical improvement.
+
+[AGENT REVIEW] Recomputed reference requirements are 4.923458% target-power reduction, 5.178415% equivalent-area increase, or 90.492346% total radiation at the stated held assumptions. The informative joint rejection requires 10.369153%, 11.568733%, or 91.036915%, respectively. The answer's rounded figures agree. Named default peaks and separate remaining magnet/current/fit/loop failures agree with native results. No source coefficient was fitted, no acceptance limit changed, and no current or historical combined-feasibility claim was upgraded.
+
+[AGENT REVIEW] One answer correction was required and rechecked: “Modeled first-wall radiation responds” was unsupported. The final row correctly states that total and edge radiation diagnostics increase. A target/first-wall deposition map remains missing. This changed interpretation wording only; frozen numerical artifacts remain intact.
+
+## Dispositions, learnings and closure
+
+[AGENT REVIEW] All 40 latest entering discovery rows match their captured 48b65159 provenance exactly. All 45 proposed IDs are uniquely routed; all five new first sightings match the frozen record's findings. [Coverage evidence](final-review/disposition-coverage.json) records the complete sets. Retained historical model fixes stay completed within their original scope. The two divertor-related older findings receive a bounded partial account extension while geometry, wall accommodation and cooling limits remain open. Other current, fit, procurement, manufacturing and historical-feasibility qualifications are retained. The five new routes accurately distinguish completed account work from unresolved research or engineering seams, without authorizing hidden future implementation.
+
+[AGENT REVIEW] Accept L-001–L-003 as written. They correctly capture the two peak meanings and area gap, conserved heat partition and missing surface qualification, and finite 27-point negative result with conditional necessary reductions. Task scopes, the signed-demand correction, acquisition retry and later test-reference/record-format repairs are recorded honestly. Exactly one candidate pin and one frozen study support this round. No barred source was opened during this review.
+
+## Remaining limits
+
+[AGENT REVIEW] Sixteen native channels remain outside independent oracle coverage. Static L2 retains ten warnings and L6 remains failing with eight additional unsupported-dot diagnostics. Integration explicitly omitted read-set coverage; generated agreement does not repair that omission. The inherited exact-current-boundary native/oracle sign difference and serializer warning remain disclosed. Physical area, peaking, per-target sharing, total radiation deposition, neutral exhaust, breeding accommodation, cooling/support/manufacturing and target/control costs remain unqualified. These gaps are explicit permitted outcomes, not unperformed promises of this bounded goal. Formal goal close and WI-065 archive remain owner-held.

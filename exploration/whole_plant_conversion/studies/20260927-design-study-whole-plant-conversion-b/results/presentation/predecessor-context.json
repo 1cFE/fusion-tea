@@ -1,0 +1,93 @@
+{
+  "interpretation": "Different boundaries, availability and independently selected offers; the difference is not a pure cost add-on.",
+  "source_artifacts": {
+    "supporting/predecessor/matched-study-summary.json": "890211a5a95c7fd7c75aa05d849d4f78549b1835f0b13020d333599e4feeb17d",
+    "supporting/predecessor/selected-native-cases.json": "bff583318dd47aaf1bfadba66c4d3455b08f51f65d71ec930545fefbfbc235fd"
+  },
+  "rows": [
+    {
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "predecessor_case": "steam-q2500-n10-k4-pump225",
+      "predecessor_boundary": "conversion subsystem",
+      "predecessor_availability": 0.85,
+      "predecessor_subsystem_USD2025_MWh": 33.762225705734934,
+      "predecessor_subsystem_net_MW": 937.5789564279194,
+      "whole_case": "nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+      "whole_status": "supported_catalog_minimum",
+      "whole_availability": 0.8,
+      "whole_USD2025_MWh": 408.16380453219807,
+      "whole_net_MW": 663.969189335543
+    },
+    {
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "predecessor_case": "gas-q2500-m2000-r1.5-ua25-25-25",
+      "predecessor_boundary": "conversion subsystem",
+      "predecessor_availability": 0.85,
+      "predecessor_subsystem_USD2025_MWh": 33.76830899306827,
+      "predecessor_subsystem_net_MW": 559.493162917646,
+      "whole_case": "nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+      "whole_status": "supported_catalog_minimum",
+      "whole_availability": 0.8,
+      "whole_USD2025_MWh": 875.3125606972828,
+      "whole_net_MW": 285.8833958252697
+    },
+    {
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "predecessor_case": "steam-q2800-n11-k4-pump225",
+      "predecessor_boundary": "conversion subsystem",
+      "predecessor_availability": 0.85,
+      "predecessor_subsystem_USD2025_MWh": 32.406186895080005,
+      "predecessor_subsystem_net_MW": 1060.283449630589,
+      "whole_case": "nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+      "whole_status": "supported_catalog_minimum",
+      "whole_availability": 0.8,
+      "whole_USD2025_MWh": 370.7013723193559,
+      "whole_net_MW": 746.6446676715221
+    },
+    {
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "predecessor_case": "gas-q2800-m1750-r1.8-ua25-25-25",
+      "predecessor_boundary": "conversion subsystem",
+      "predecessor_availability": 0.85,
+      "predecessor_subsystem_USD2025_MWh": 36.46626686862868,
+      "predecessor_subsystem_net_MW": 518.099044055579,
+      "whole_case": "nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+      "whole_status": "supported_catalog_minimum",
+      "whole_availability": 0.8,
+      "whole_USD2025_MWh": 1230.2836229746085,
+      "whole_net_MW": 204.4602620965121
+    },
+    {
+      "source_MW": 3000.0,
+      "branch": "steam",
+      "predecessor_case": "steam-q3000-n14-k3-pump250",
+      "predecessor_boundary": "conversion subsystem",
+      "predecessor_availability": 0.85,
+      "predecessor_subsystem_USD2025_MWh": 37.114344747286076,
+      "predecessor_subsystem_net_MW": 1144.0025314827728,
+      "whole_case": null,
+      "whole_status": "unsupported",
+      "whole_availability": null,
+      "whole_USD2025_MWh": null,
+      "whole_net_MW": null
+    },
+    {
+      "source_MW": 3000.0,
+      "branch": "gas",
+      "predecessor_case": "gas-q3000-m2000-r1.65-ua25-25-25",
+      "predecessor_boundary": "conversion subsystem",
+      "predecessor_availability": 0.85,
+      "predecessor_subsystem_USD2025_MWh": 27.668710965213776,
+      "predecessor_subsystem_net_MW": 682.8340513826384,
+      "whole_case": null,
+      "whole_status": "unsupported",
+      "whole_availability": null,
+      "whole_USD2025_MWh": null,
+      "whole_net_MW": null
+    }
+  ]
+}

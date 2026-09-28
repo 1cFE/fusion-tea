@@ -1,0 +1,69 @@
+{
+ "schema_version": "study-axis-declaration/v1",
+ "groups": [
+  {
+   "axis": "I_coil",
+   "note": "Peak single-coil current, the WI-035 design lever. Reaches beta_ok and peak_field_ok through the computed field ('Coil Set Axis Field' -> 'Conductor Peak Field') and wp_stress_ok through 'Winding Pack Stress'; also both magnet-capital channels. The retired B axis mapped linearly onto it at fixed geometry (B = k*I).",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__magnet__I_coil",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "R+tie",
+   "note": "Plasma major radius with its declared physical-identity tie, the magnet coil major radius (manifest ties; ANNEX section Declared ties). Since WI-035 the tie also carries the field response: B_axis ~ I_coil/R0, so R reaches the three field-side constraints through magnet__R0 as well as the geometry chain.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__R",
+     "provenance": "fan_out"
+    },
+    {
+     "key": "stellarator_09__stellaris__magnet__R0",
+     "provenance": "tie"
+    }
+   ]
+  },
+  {
+   "axis": "wp_side",
+   "note": "Winding-pack cross-section side, worst coil - the coil-sizing lever of the WI-035 stress limit (sigma ~ 1/side). Swept as a 1-D transect at the baseline point to locate the wp_stress_ok flip.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__magnet__wp_side",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "a",
+   "note": "Plasma minor radius. Proposed and DECLINED: held at the baseline 1.3 m so block 1 is the comparand's a = 1.3 row (20260829-p-pump-fence fence positions subtract exactly).",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__a",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "availability",
+   "note": "Proposed and DECLINED: held at 0.85 (comparand value); traced no_constraint_response in the committed known-answer run and not swept here.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__availability",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "discount_rate",
+   "note": "Proposed and DECLINED: held at 0.07 (comparand value); traced no_constraint_response in the committed known-answer run and not swept here.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__discount_rate",
+     "provenance": "fan_out"
+    }
+   ]
+  }
+ ]
+}

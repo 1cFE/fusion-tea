@@ -1,0 +1,7 @@
+# 1costingFE reference applicability
+
+The read-only reference is revision `02543850089be175ea7c28b92a8b2a4184e1637e`. `1costingfe-driver-identities.json` records a direct call to its pulsed thermal forward implementation for all seven cases. Bank energy and driver electrical draw match the IFE channels within the stated relative tolerance of 1e-12. All non-driver recirculating inputs are set to zero in that reference call solely to isolate driver draw from gross power divided by engineering gain; this is not a claim that those auxiliaries vanish in a plant.
+
+A direct net-power or LCOE equality is not applicable to these unnormalized models. The copied source excerpts show that 1costingFE applies neutron multiplication to neutron power and also thermalizes driver/pump power. The audited IFE model multiplies total fusion power and retains an equal driver/cooling parasitic allowance. The 1costingFE heavy-ion driver capital is linear in beam energy with its own coefficient; this model uses Meier's chamber/rate-dependent formula. Reconciling these thermal, auxiliary, costing and finance conventions would change the comparison meaning reserved to the owner. This record therefore makes only the shared driver-identity comparison, not whole-plant reference parity.
+
+The reference file hashes and the executed reference revision are in the JSON result; relevant source excerpts are copied under `context/`. No external source checkout was edited.

@@ -1,0 +1,527 @@
+........F.F.......................F...............F...............FF.... [ 35%]
+..F......F.......F...........................................F.......... [ 71%]
+.F........FF...F.................F...............FFFFF...                [100%]
+=================================== FAILURES ===================================
+__________________________ test_exact_input_contract ___________________________
+
+    def test_exact_input_contract():
+        from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS, WI058_PARAMETERS, WI058_RETIRED
+        # WI-058 (2026-09-14): k_coil retired from the contract and the seam, c_coil_ref added (the winding
+        # length follows the coil bore); the counts (265 inputs, 118 mapped, 147 unmapped) do not move.
+        added = WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS
+        inputs = {}
+        for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
+            inputs.update(json.loads(path.read_text()))
+>       assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)
+E       AssertionError: assert 490 == (265 + 45)
+E        +  where 490 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})
+E        +  and   45 = len(((((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__magnet__casing__assembly_clearance', 'stellarator_09__stellaris__magnet__casing__interior...is__magnet__winding_pack__ground_insulation', 'stellarator_09__stellaris__magnet__winding_pack__internal_build_x', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation', 'stellarator_09__stellaris__magnet__win...is__magnet__winding_pack__material_factor', 'stellarator_09__stellaris__magnet__winding_pack__orientation_factor', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}))
+
+tests/study/test_major_radius.py:56: AssertionError
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12956/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-reid/pytest-12956/test_current_radius_controls_m0')
+
+    def check_controls(out):
+        out = Path(out)
+        out.mkdir(parents=True, exist_ok=True)
+        frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
+        frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
+        expectations = json.loads((frozen_dir / "expectations.json").read_text())
+        # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was produced with
+        # the R-form (c_coil = k_coil * R). At a = 1.3 the bore ratio is 1.0, so binding the reference
+        # circumference to k_coil * R reproduces the R-form length exactly and the frozen row stays the exact
+        # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in
+        # tests/models/test_winding_length_bore.py).
+        from tests.models.current_mfe_regressions import K_COIL_RETIRED
+        proposals = [WI059_REPLAY, WI059_REPLAY | {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
+        cases, db = route.run_points("radius-controls", proposals, out / "_work")
+>       assert len(cases) == 2 and all(c.state == "completed" for c in cases)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests/study/financial_radius_controls.py:38: AssertionError
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__blanket_t] _
+
+key = 'stellarator_09__stellaris__blanket__blanket_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate] _
+
+key = 'stellarator_09__stellaris__contingency_rate'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__firstwall_t] _
+
+key = 'stellarator_09__stellaris__blanket__first_wall__firstwall_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__fluence_limit] _
+
+key = 'stellarator_09__stellaris__blanket__first_wall__fluence_limit'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__gap1_t] _
+
+key = 'stellarator_09__stellaris__vessel__gap1_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__ht_shield_t] _
+
+key = 'stellarator_09__stellaris__shield__ht_shield_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__plasma__kappa] _
+
+key = 'stellarator_09__stellaris__plasma__kappa'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__reflector_t] _
+
+key = 'stellarator_09__stellaris__blanket__reflector_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__structure_t] _
+
+key = 'stellarator_09__stellaris__structure__structure_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor] _
+
+key = 'stellarator_09__stellaris__tbr_floor'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__vacuum_t] _
+
+key = 'stellarator_09__stellaris__blanket__first_wall__vacuum_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__vessel_t] _
+
+key = 'stellarator_09__stellaris__vessel__vessel_t'
+
+    @pytest.mark.parametrize(
+        "key",
+        json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )["unmapped_native_inputs"],
+        ids=lambda k: renamed(k),
+    )
+    def test_unmapped_native_inputs_remain_explicitly_refused(key):
+        key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
+        reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+        if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
+            assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
+            assert route.validate_proposal({key: 1.0}) is not None
+            return
+>       with pytest.raises(oracle.OracleSeamError, match=key):
+E       Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+
+tests/study/test_major_radius.py:144: Failed
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero] _
+
+overrides = {'magnet_I_coil': 0.0}, message = 'wp_side must be nonzero'
+
+    @pytest.mark.parametrize('overrides,message', INVALID)
+    def test_invalid_public_oracle_inputs_are_deliberate(overrides, message):
+        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        saved = dict(oracle.vs.IN)
+        with pytest.raises(ValueError, match=message):
+>           oracle.evaluate(WI059_REPLAY | {names[name]: value for name, value in overrides.items()})
+
+tests/study/test_winding_consumers.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/oracle_entry.py:855: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:842: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1074: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+p = {'E_fus': 2.817e-12, 'G_stock': 0.0, 'R': 12.7, 'R_ref_divertor': 12.7, ...}
+field = 0.0, legacy_density = 118.8271604938272
+
+    def _current_driven_sizing(p, field, legacy_density):
+        """WI-064 independent inversion: tape capacity per composite area sets density.
+    
+        Required quantities are minimum continuous reference-conductor inventory;
+        extra inventory is a physical multiplier, never an acceptance relaxation.
+        """
+        mode = p['magnet_sizing_mode']
+        multiplier = p['magnet_inventory_multiplier']
+        if mode not in (0, 1) or not math.isfinite(multiplier) or multiplier < 1:
+            raise ValueError('oracle current sizing: invalid mode or inventory multiplier')
+        fractions = [p['magnet_f_' + k] for k in ('copper', 'solder', 'steel', 'helium')]
+        if any(not math.isfinite(v) or v < 0 for v in fractions) or sum(fractions) >= 1:
+            raise ValueError('oracle current sizing: invalid composition')
+        for value in (legacy_density, p['magnet_I_coil'], p['magnet_turn_current']):
+            if not math.isfinite(value) or value <= 0:
+>               raise ValueError('oracle current sizing: invalid loading')
+E               ValueError: oracle current sizing: invalid loading
+
+exploration/stellarator_e2e/verify_stellaris.py:838: ValueError
+
+During handling of the above exception, another exception occurred:
+
+overrides = {'magnet_I_coil': 0.0}, message = 'wp_side must be nonzero'
+
+    @pytest.mark.parametrize('overrides,message', INVALID)
+    def test_invalid_public_oracle_inputs_are_deliberate(overrides, message):
+        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        saved = dict(oracle.vs.IN)
+>       with pytest.raises(ValueError, match=message):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'wp_side must be nonzero'
+E         Actual message: 'oracle current sizing: invalid loading'
+
+tests/study/test_winding_consumers.py:47: AssertionError
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row0] ________
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {}}
+
+    @pytest.mark.parametrize('row', BEFORE['controls'])
+    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
+        actual = oracle._compute(wi059_replay(row['overrides']))
+        # WI-040: independently derive only the additive-account cost increments;
+        # all frozen physics and unrelated output values retain exact comparison.
+        expected, changed = wi040_expected(row)
+        added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}
+>       assert actual.keys() == expected.keys() | added
+E       AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E         
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:84: AssertionError
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row1] ________
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 9.9, 'B_peak': 27.39, 'T_e0': 15.400000000000002, ...}, 'overrides': {'magnet_I_coil': 16940000.0}}
+
+    @pytest.mark.parametrize('row', BEFORE['controls'])
+    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
+        actual = oracle._compute(wi059_replay(row['overrides']))
+        # WI-040: independently derive only the additive-account cost increments;
+        # all frozen physics and unrelated output values retain exact comparison.
+        expected, changed = wi040_expected(row)
+        added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}
+>       assert actual.keys() == expected.keys() | added
+E       AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E         
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:84: AssertionError
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row2] ________
+
+row = {'outputs': {'A': 9.769230769230768, 'B_axis': 8.999999999999998, 'B_peak': 24.899999999999995, 'T_e0': 15.400000000000002, ...}, 'overrides': {'magnet_j_wp': 142.59259259259264}}
+
+    @pytest.mark.parametrize('row', BEFORE['controls'])
+    def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
+        actual = oracle._compute(wi059_replay(row['overrides']))
+        # WI-040: independently derive only the additive-account cost increments;
+        # all frozen physics and unrelated output values retain exact comparison.
+        expected, changed = wi040_expected(row)
+        added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}
+>       assert actual.keys() == expected.keys() | added
+E       AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E         
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:84: AssertionError
+_____________________ test_adapter_coverage_remains_exact ______________________
+
+    def test_adapter_coverage_remains_exact():
+        old_inputs = renamed_keys(BEFORE['input_mapping'])
+        # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil.
+        assert WI058_RETIRED <= old_inputs.keys()
+        old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
+>       assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs
+E       AssertionError: assert {'stellarator...e_limit', ...} == {'stellarator..._direct', ...}
+E         
+E         Omitting 96 identical items, use -vv to show
+E         Left contains 197 more items:
+E         {'stellarator_09__stellaris__blanket__blanket_t': 'blanket_t',
+E          'stellarator_09__stellaris__blanket__first_wall__firstwall_t': 'firstwall_t',
+E          'stellarator_09__stellaris__blanket__first_wall__fluence_limit': 'fluence_limit',
+E          'stellarator_09__stellaris__blanket__first_wall__vacuum_t': 'vacuum_t',...
+E         
+E         ...Full output truncated (197 lines hidden), use '-vv' to show
+
+tests/study/test_winding_consumers.py:103: AssertionError
+_______ test_current_native_winding_route_agrees_with_independent_oracle _______
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12956/test_current_native_winding_ro0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):
+        import study_route as route
+        names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
+        cases, _ = route.run_points('winding-consumer-controls', points, tmp_path)
+>       assert len(cases) == len(points)
+E       AssertionError: assert 0 == 3
+E        +  where 0 = len([])
+E        +  and   3 = len([{'stellarator_09__stellaris__buildings__facilities_capacity_mode': 0.0, 'stellarator_09__stellaris__buildings__facili...ellaris__buildings__facilities_enabled': False, 'stellarator_09__stellaris__cryoplant__inventory_enabled': False, ...}])
+
+tests/study/test_winding_consumers.py:122: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__blanket_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__firstwall_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__fluence_limit]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__gap1_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__ht_shield_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__plasma__kappa]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__reflector_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__structure_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__vacuum_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__vessel_t]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]
+FAILED tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact
+FAILED tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+20 failed, 181 passed in 25.54s

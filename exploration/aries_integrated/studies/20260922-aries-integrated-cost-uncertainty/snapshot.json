@@ -1,0 +1,3710 @@
+{
+  "snapshot_schema_version": "1",
+  "study_id": "20260922-aries-integrated-cost-uncertainty",
+  "package": {
+    "path": "exploration/aries_integrated/aries_integrated",
+    "package_name": "aries_integrated",
+    "repo_commit": "bd9b9aec5fabda5e9a14d53df84f108d52f7f183",
+    "git_clean": true
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "c023c3f9fb82d26533dd1c0025bdbc4cf978598cee01b58d59219539f6c3babb",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "e83bc30a0c29304e20c561dee28c26d5b36c9d563709baf4a2fe50c110e34a22"
+        },
+        {
+          "path": "inputs/integrated_equipment_costs_params.json",
+          "sha256": "f01101299ec8c01d45040d2516e754a3829a486719147618218aaf9d226efaa3"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "1d4b778b6e4799674dd8cccb1056814502f3208352c5af6cbb61c0c1de3414ec"
+        },
+        {
+          "path": "inputs/mfe_plasma_scaling_params.json",
+          "sha256": "5de7534cbb8649f962d9c3c59af5f9420543a522de73fbeaae4d1d99074b5c96"
+        },
+        {
+          "path": "inputs/mfe_viability_params.json",
+          "sha256": "36c21e77fec86bc7a986d33124a3424aced99da7a6096bc8eb477f56e3e5a491"
+        },
+        {
+          "path": "inputs/plant_params.json",
+          "sha256": "3044d5497d80a531ecc46208fa35e8109b060fe2c52d235e060be92a2f43001a"
+        },
+        {
+          "path": "inputs/plasma_integration_params.json",
+          "sha256": "716d2e93ba2294a46860a32c042f3290fc4ed2713ab5a8845a98bdd328d066a0"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "0b17077113461b1fba2c49e036d24cc0edb88acd468b348632aa63f7bed44854"
+        }
+      ]
+    },
+    "recorded_provenance.executable_fingerprint": "01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021",
+    "recorded_provenance.semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+  },
+  "manifest": {
+    "path": "exploration/aries_integrated/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "6f410fa17fd67b4c78123a48166dae689422b35af1503e49c051e2d702b5a7b8",
+    "content_used": {
+      "schema_version": "study-package-manifest/v1",
+      "package": {
+        "name": "aries_integrated",
+        "path": "exploration/aries_integrated/aries_integrated"
+      },
+      "fingerprints": {
+        "indicator_inputs": {
+          "recipe": "indicator-input-fingerprint/v1",
+          "digest": "c023c3f9fb82d26533dd1c0025bdbc4cf978598cee01b58d59219539f6c3babb",
+          "files": [
+            "contracts/model_contract.json",
+            "inputs/integrated_equipment_costs_params.json",
+            "inputs/mfe_account_costs_params.json",
+            "inputs/mfe_plasma_scaling_params.json",
+            "inputs/mfe_viability_params.json",
+            "inputs/plant_params.json",
+            "inputs/plasma_integration_params.json",
+            "pipelines/pipeline.yaml"
+          ]
+        },
+        "recorded_provenance": {
+          "executable_fingerprint": "01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021",
+          "semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+        }
+      },
+      "objective_catalog": [
+        {
+          "name": "aries_integrated_plant__annual_om__evaluate__annual_om",
+          "channel": "aries_integrated_plant__annual_om__evaluate__annual_om"
+        },
+        {
+          "name": "aries_integrated_plant__auxiliary_cooling__estimate__amount",
+          "channel": "aries_integrated_plant__auxiliary_cooling__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__auxiliary_cooling__purchase__cost",
+          "channel": "aries_integrated_plant__auxiliary_cooling__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__blanket_inventory__purchase__capital",
+          "channel": "aries_integrated_plant__blanket_inventory__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__blanket_inventory__purchase__extrapolated",
+          "channel": "aries_integrated_plant__blanket_inventory__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__blanket_inventory__purchase__source_budget",
+          "channel": "aries_integrated_plant__blanket_inventory__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__compressor_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__compressor_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__compressor_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__compressor_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__contingency__evaluate__cost",
+          "channel": "aries_integrated_plant__contingency__evaluate__cost"
+        },
+        {
+          "name": "aries_integrated_plant__contingency_basis__evaluate__total",
+          "channel": "aries_integrated_plant__contingency_basis__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__conversion_equipment__evaluate__total",
+          "channel": "aries_integrated_plant__conversion_equipment__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__conversion_services__estimate__amount",
+          "channel": "aries_integrated_plant__conversion_services__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__conversion_services__purchase__cost",
+          "channel": "aries_integrated_plant__conversion_services__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__core_cost__evaluate__total",
+          "channel": "aries_integrated_plant__core_cost__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__core_first__evaluate__total",
+          "channel": "aries_integrated_plant__core_first__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__annual_operating",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_operating"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__currency_year",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__currency_year"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__direct",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__direct"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__direct_difference",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__direct_difference"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__overnight",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__overnight"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__source_direct",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__source_direct"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__source_inclusive",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__source_inclusive"
+        },
+        {
+          "name": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap",
+          "channel": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap"
+        },
+        {
+          "name": "aries_integrated_plant__deposition__evaluate__divertor_friction",
+          "channel": "aries_integrated_plant__deposition__evaluate__divertor_friction"
+        },
+        {
+          "name": "aries_integrated_plant__deposition__evaluate__he_friction",
+          "channel": "aries_integrated_plant__deposition__evaluate__he_friction"
+        },
+        {
+          "name": "aries_integrated_plant__deposition__evaluate__pbli_friction",
+          "channel": "aries_integrated_plant__deposition__evaluate__pbli_friction"
+        },
+        {
+          "name": "aries_integrated_plant__deposition__evaluate__pump_electric",
+          "channel": "aries_integrated_plant__deposition__evaluate__pump_electric"
+        },
+        {
+          "name": "aries_integrated_plant__direct_cost__evaluate__total",
+          "channel": "aries_integrated_plant__direct_cost__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__direct_source_scope__evaluate__total",
+          "channel": "aries_integrated_plant__direct_source_scope__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+          "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_duty_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__evaluate__area",
+          "channel": "aries_integrated_plant__divertor_hx__evaluate__area"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__evaluate__ua",
+          "channel": "aries_integrated_plant__divertor_hx__evaluate__ua"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__purchase__capital",
+          "channel": "aries_integrated_plant__divertor_hx__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__purchase__extrapolated",
+          "channel": "aries_integrated_plant__divertor_hx__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__divertor_hx__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__divertor_hx__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_hx__purchase__source_budget",
+          "channel": "aries_integrated_plant__divertor_hx__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_inventory__estimate__amount",
+          "channel": "aries_integrated_plant__divertor_inventory__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_inventory__purchase__cost",
+          "channel": "aries_integrated_plant__divertor_inventory__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__evaluate__electric",
+          "channel": "aries_integrated_plant__divertor_pump__evaluate__electric"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported",
+          "channel": "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__evaluate__mode",
+          "channel": "aries_integrated_plant__divertor_pump__evaluate__mode"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__evaluate__operating_flow",
+          "channel": "aries_integrated_plant__divertor_pump__evaluate__operating_flow"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__purchase__capital",
+          "channel": "aries_integrated_plant__divertor_pump__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__purchase__extrapolated",
+          "channel": "aries_integrated_plant__divertor_pump__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__divertor_pump__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__divertor_pump__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__purchase__source_budget",
+          "channel": "aries_integrated_plant__divertor_pump__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__screen__evaluation_defined",
+          "channel": "aries_integrated_plant__divertor_pump__screen__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__divertor_pump__screen__margin",
+          "channel": "aries_integrated_plant__divertor_pump__screen__margin"
+        },
+        {
+          "name": "aries_integrated_plant__electrical_equipment__estimate__amount",
+          "channel": "aries_integrated_plant__electrical_equipment__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__electrical_equipment__purchase__cost",
+          "channel": "aries_integrated_plant__electrical_equipment__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__facilities__estimate__amount",
+          "channel": "aries_integrated_plant__facilities__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__facilities__purchase__cost",
+          "channel": "aries_integrated_plant__facilities__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__fuel__evaluate__burn_rate",
+          "channel": "aries_integrated_plant__fuel__evaluate__burn_rate"
+        },
+        {
+          "name": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+          "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate"
+        },
+        {
+          "name": "aries_integrated_plant__fuel__evaluate__loss_rate",
+          "channel": "aries_integrated_plant__fuel__evaluate__loss_rate"
+        },
+        {
+          "name": "aries_integrated_plant__fuel__evaluate__tbr_required",
+          "channel": "aries_integrated_plant__fuel__evaluate__tbr_required"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_equipment__evaluate__total",
+          "channel": "aries_integrated_plant__fuel_equipment__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__annual_burn",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__annual_burn"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__annual_cost",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__annual_cost"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__annual_decay",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__annual_decay"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__annual_external",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__annual_external"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__annual_loss",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__annual_loss"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__annual_recovery",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__annual_recovery"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__breeding_supported",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__breeding_supported"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__annual__required_stock",
+          "channel": "aries_integrated_plant__fuel_inventory__annual__required_stock"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__atoms__atoms",
+          "channel": "aries_integrated_plant__fuel_inventory__atoms__atoms"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__atoms__stock_kg",
+          "channel": "aries_integrated_plant__fuel_inventory__atoms__stock_kg"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel",
+          "channel": "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__purchase__amount",
+          "channel": "aries_integrated_plant__fuel_inventory__purchase__amount"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined",
+          "channel": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_inventory__screen__margin",
+          "channel": "aries_integrated_plant__fuel_inventory__screen__margin"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_processing_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_services__estimate__amount",
+          "channel": "aries_integrated_plant__fuel_services__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__fuel_services__purchase__cost",
+          "channel": "aries_integrated_plant__fuel_services__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+          "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric"
+        },
+        {
+          "name": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__generator_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__generator_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__generator_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__generator_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__generator_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__generator_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__generator_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__generator_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__generator_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__generator_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__generator_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__generator_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__he_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__he_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+          "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat"
+        },
+        {
+          "name": "aries_integrated_plant__he_duty_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__he_duty_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__he_duty_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__he_duty_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__he_duty_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__he_duty_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__evaluate__area",
+          "channel": "aries_integrated_plant__he_hx__evaluate__area"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__evaluate__ua",
+          "channel": "aries_integrated_plant__he_hx__evaluate__ua"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__purchase__capital",
+          "channel": "aries_integrated_plant__he_hx__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__purchase__extrapolated",
+          "channel": "aries_integrated_plant__he_hx__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__he_hx__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__he_hx__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__he_hx__purchase__source_budget",
+          "channel": "aries_integrated_plant__he_hx__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__evaluate__electric",
+          "channel": "aries_integrated_plant__he_pump__evaluate__electric"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__evaluate__hydraulic_supported",
+          "channel": "aries_integrated_plant__he_pump__evaluate__hydraulic_supported"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__evaluate__mode",
+          "channel": "aries_integrated_plant__he_pump__evaluate__mode"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__evaluate__operating_flow",
+          "channel": "aries_integrated_plant__he_pump__evaluate__operating_flow"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__purchase__capital",
+          "channel": "aries_integrated_plant__he_pump__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__purchase__extrapolated",
+          "channel": "aries_integrated_plant__he_pump__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__he_pump__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__he_pump__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__purchase__source_budget",
+          "channel": "aries_integrated_plant__he_pump__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__screen__evaluation_defined",
+          "channel": "aries_integrated_plant__he_pump__screen__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__he_pump__screen__margin",
+          "channel": "aries_integrated_plant__he_pump__screen__margin"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature"
+        },
+        {
+          "name": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+          "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat"
+        },
+        {
+          "name": "aries_integrated_plant__heat_rejection_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__heat_transport_cost__evaluate__total",
+          "channel": "aries_integrated_plant__heat_transport_cost__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__heating_equipment__estimate__amount",
+          "channel": "aries_integrated_plant__heating_equipment__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__heating_equipment__purchase__cost",
+          "channel": "aries_integrated_plant__heating_equipment__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__impurity_control__estimate__amount",
+          "channel": "aries_integrated_plant__impurity_control__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__impurity_control__purchase__cost",
+          "channel": "aries_integrated_plant__impurity_control__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__indirect_cost__evaluate__cost",
+          "channel": "aries_integrated_plant__indirect_cost__evaluate__cost"
+        },
+        {
+          "name": "aries_integrated_plant__instrumentation_control__estimate__amount",
+          "channel": "aries_integrated_plant__instrumentation_control__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__instrumentation_control__purchase__cost",
+          "channel": "aries_integrated_plant__instrumentation_control__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__inventory_comparison__evaluate__difference",
+          "channel": "aries_integrated_plant__inventory_comparison__evaluate__difference"
+        },
+        {
+          "name": "aries_integrated_plant__inventory_comparison__support__amount",
+          "channel": "aries_integrated_plant__inventory_comparison__support__amount"
+        },
+        {
+          "name": "aries_integrated_plant__known_dry_inventory__evaluate__total",
+          "channel": "aries_integrated_plant__known_dry_inventory__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_comparison__evaluate__difference",
+          "channel": "aries_integrated_plant__lipb_comparison__evaluate__difference"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_comparison__price__amount",
+          "channel": "aries_integrated_plant__lipb_comparison__price__amount"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_inventory__inventory__amount",
+          "channel": "aries_integrated_plant__lipb_inventory__inventory__amount"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_inventory__purchase__capital",
+          "channel": "aries_integrated_plant__lipb_inventory__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_inventory__purchase__extrapolated",
+          "channel": "aries_integrated_plant__lipb_inventory__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__lipb_inventory__purchase__source_budget",
+          "channel": "aries_integrated_plant__lipb_inventory__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_inventory__inventory__total",
+          "channel": "aries_integrated_plant__magnet_inventory__inventory__total"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_inventory__purchase__capital",
+          "channel": "aries_integrated_plant__magnet_inventory__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_inventory__purchase__extrapolated",
+          "channel": "aries_integrated_plant__magnet_inventory__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_inventory__purchase__source_budget",
+          "channel": "aries_integrated_plant__magnet_inventory__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_power_supplies__estimate__amount",
+          "channel": "aries_integrated_plant__magnet_power_supplies__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__magnet_power_supplies__purchase__cost",
+          "channel": "aries_integrated_plant__magnet_power_supplies__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__miscellaneous_equipment__estimate__amount",
+          "channel": "aries_integrated_plant__miscellaneous_equipment__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__miscellaneous_equipment__purchase__cost",
+          "channel": "aries_integrated_plant__miscellaneous_equipment__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__other_reactor_equipment__estimate__amount",
+          "channel": "aries_integrated_plant__other_reactor_equipment__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__other_reactor_equipment__purchase__cost",
+          "channel": "aries_integrated_plant__other_reactor_equipment__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__owner_commissioning__evaluate__amount",
+          "channel": "aries_integrated_plant__owner_commissioning__evaluate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+          "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_duty_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__evaluate__area",
+          "channel": "aries_integrated_plant__pbli_hx__evaluate__area"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__evaluate__ua",
+          "channel": "aries_integrated_plant__pbli_hx__evaluate__ua"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__purchase__capital",
+          "channel": "aries_integrated_plant__pbli_hx__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__purchase__extrapolated",
+          "channel": "aries_integrated_plant__pbli_hx__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__pbli_hx__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__pbli_hx__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_hx__purchase__source_budget",
+          "channel": "aries_integrated_plant__pbli_hx__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__evaluate__electric",
+          "channel": "aries_integrated_plant__pbli_pump__evaluate__electric"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported",
+          "channel": "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__evaluate__mode",
+          "channel": "aries_integrated_plant__pbli_pump__evaluate__mode"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__evaluate__operating_flow",
+          "channel": "aries_integrated_plant__pbli_pump__evaluate__operating_flow"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__purchase__capital",
+          "channel": "aries_integrated_plant__pbli_pump__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__purchase__extrapolated",
+          "channel": "aries_integrated_plant__pbli_pump__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__pbli_pump__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__pbli_pump__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__purchase__source_budget",
+          "channel": "aries_integrated_plant__pbli_pump__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__screen__evaluation_defined",
+          "channel": "aries_integrated_plant__pbli_pump__screen__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__pbli_pump__screen__margin",
+          "channel": "aries_integrated_plant__pbli_pump__screen__margin"
+        },
+        {
+          "name": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance"
+        },
+        {
+          "name": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric"
+        },
+        {
+          "name": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric"
+        },
+        {
+          "name": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude"
+        },
+        {
+          "name": "aries_integrated_plant__primary_heat_cost__evaluate__total",
+          "channel": "aries_integrated_plant__primary_heat_cost__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__primary_piping__estimate__amount",
+          "channel": "aries_integrated_plant__primary_piping__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__primary_piping__purchase__cost",
+          "channel": "aries_integrated_plant__primary_piping__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__primary_support__purchase__capital",
+          "channel": "aries_integrated_plant__primary_support__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__primary_support__purchase__extrapolated",
+          "channel": "aries_integrated_plant__primary_support__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__primary_support__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__primary_support__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__primary_support__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__primary_support__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__primary_support__purchase__source_budget",
+          "channel": "aries_integrated_plant__primary_support__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__reactor_cost__evaluate__total",
+          "channel": "aries_integrated_plant__reactor_cost__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__annual_reserve",
+          "channel": "aries_integrated_plant__replacement__evaluate__annual_reserve"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__event_cost",
+          "channel": "aries_integrated_plant__replacement__evaluate__event_cost"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__event_count",
+          "channel": "aries_integrated_plant__replacement__evaluate__event_count"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__first_event_year",
+          "channel": "aries_integrated_plant__replacement__evaluate__first_event_year"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__interval_years",
+          "channel": "aries_integrated_plant__replacement__evaluate__interval_years"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__last_event_year",
+          "channel": "aries_integrated_plant__replacement__evaluate__last_event_year"
+        },
+        {
+          "name": "aries_integrated_plant__replacement__evaluate__lifetime_total",
+          "channel": "aries_integrated_plant__replacement__evaluate__lifetime_total"
+        },
+        {
+          "name": "aries_integrated_plant__replacement_lipb__evaluate__amount",
+          "channel": "aries_integrated_plant__replacement_lipb__evaluate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__replacement_price__evaluate__amount",
+          "channel": "aries_integrated_plant__replacement_price__evaluate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__replacement_scope__evaluate__total",
+          "channel": "aries_integrated_plant__replacement_scope__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__secondary_transport__estimate__amount",
+          "channel": "aries_integrated_plant__secondary_transport__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__secondary_transport__purchase__cost",
+          "channel": "aries_integrated_plant__secondary_transport__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__shield_inventory__inventory__total",
+          "channel": "aries_integrated_plant__shield_inventory__inventory__total"
+        },
+        {
+          "name": "aries_integrated_plant__shield_inventory__purchase__capital",
+          "channel": "aries_integrated_plant__shield_inventory__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__shield_inventory__purchase__extrapolated",
+          "channel": "aries_integrated_plant__shield_inventory__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__shield_inventory__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__shield_inventory__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__shield_inventory__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__shield_inventory__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__shield_inventory__purchase__source_budget",
+          "channel": "aries_integrated_plant__shield_inventory__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__site_land__estimate__amount",
+          "channel": "aries_integrated_plant__site_land__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__site_land__purchase__cost",
+          "channel": "aries_integrated_plant__site_land__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__source__evaluate__selected_power",
+          "channel": "aries_integrated_plant__source__evaluate__selected_power"
+        },
+        {
+          "name": "aries_integrated_plant__source_budget__evaluate__direct_total",
+          "channel": "aries_integrated_plant__source_budget__evaluate__direct_total"
+        },
+        {
+          "name": "aries_integrated_plant__source_budget__evaluate__inclusive_capital",
+          "channel": "aries_integrated_plant__source_budget__evaluate__inclusive_capital"
+        },
+        {
+          "name": "aries_integrated_plant__source_coil_children__evaluate__total",
+          "channel": "aries_integrated_plant__source_coil_children__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__source_core_children_first__evaluate__total",
+          "channel": "aries_integrated_plant__source_core_children_first__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__source_fuel_children__evaluate__total",
+          "channel": "aries_integrated_plant__source_fuel_children__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__source_reactor_children__evaluate__total",
+          "channel": "aries_integrated_plant__source_reactor_children__evaluate__total"
+        },
+        {
+          "name": "aries_integrated_plant__source_reconciliation__coil_excess_calc__difference",
+          "channel": "aries_integrated_plant__source_reconciliation__coil_excess_calc__difference"
+        },
+        {
+          "name": "aries_integrated_plant__source_reconciliation__core_excess_calc__difference",
+          "channel": "aries_integrated_plant__source_reconciliation__core_excess_calc__difference"
+        },
+        {
+          "name": "aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference",
+          "channel": "aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference"
+        },
+        {
+          "name": "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference",
+          "channel": "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference"
+        },
+        {
+          "name": "aries_integrated_plant__source_replacement_comparison__cost__amount",
+          "channel": "aries_integrated_plant__source_replacement_comparison__cost__amount"
+        },
+        {
+          "name": "aries_integrated_plant__source_replacement_comparison__evaluate__difference",
+          "channel": "aries_integrated_plant__source_replacement_comparison__evaluate__difference"
+        },
+        {
+          "name": "aries_integrated_plant__source_replacement_comparison__mass__amount",
+          "channel": "aries_integrated_plant__source_replacement_comparison__mass__amount"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+          "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__turbine_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__turbine_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__turbine_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__turbine_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__unallocated_source_scope__estimate__amount",
+          "channel": "aries_integrated_plant__unallocated_source_scope__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__unallocated_source_scope__purchase__cost",
+          "channel": "aries_integrated_plant__unallocated_source_scope__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__vacuum_equipment__inventory__total",
+          "channel": "aries_integrated_plant__vacuum_equipment__inventory__total"
+        },
+        {
+          "name": "aries_integrated_plant__vacuum_equipment__purchase__capital",
+          "channel": "aries_integrated_plant__vacuum_equipment__purchase__capital"
+        },
+        {
+          "name": "aries_integrated_plant__vacuum_equipment__purchase__extrapolated",
+          "channel": "aries_integrated_plant__vacuum_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity",
+          "channel": "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio",
+          "channel": "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "aries_integrated_plant__vacuum_equipment__purchase__source_budget",
+          "channel": "aries_integrated_plant__vacuum_equipment__purchase__source_budget"
+        },
+        {
+          "name": "aries_integrated_plant__vf_coils__estimate__amount",
+          "channel": "aries_integrated_plant__vf_coils__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__vf_coils__purchase__cost",
+          "channel": "aries_integrated_plant__vf_coils__purchase__cost"
+        },
+        {
+          "name": "aries_integrated_plant__waste_equipment__estimate__amount",
+          "channel": "aries_integrated_plant__waste_equipment__estimate__amount"
+        },
+        {
+          "name": "aries_integrated_plant__waste_equipment__purchase__cost",
+          "channel": "aries_integrated_plant__waste_equipment__purchase__cost"
+        }
+      ],
+      "ties": [],
+      "baseline": {
+        "point": {
+          "aries_integrated_plant__contingency_basis__evaluate__amount3_in": 0.0,
+          "aries_integrated_plant__contingency_basis__evaluate__amount4_in": 0.0,
+          "aries_integrated_plant__contingency_basis__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__contingency_basis__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__contingency_basis__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__contingency_basis__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__conversion_equipment__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__conversion_equipment__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__conversion_equipment__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__conversion_equipment__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__core_cost__evaluate__amount4_in": 0.0,
+          "aries_integrated_plant__core_cost__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__core_cost__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__core_cost__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__core_cost__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__cost_ledger__evaluate__currency_year_in": 2004.0,
+          "aries_integrated_plant__direct_cost__evaluate__amount3_in": 0.0,
+          "aries_integrated_plant__direct_cost__evaluate__amount4_in": 0.0,
+          "aries_integrated_plant__direct_cost__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__direct_cost__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__direct_cost__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__direct_cost__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__fuel_equipment__evaluate__amount3_in": 0.0,
+          "aries_integrated_plant__fuel_equipment__evaluate__amount4_in": 0.0,
+          "aries_integrated_plant__fuel_equipment__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__fuel_equipment__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__fuel_equipment__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__fuel_equipment__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__heat_transport_cost__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__heat_transport_cost__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__heat_transport_cost__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__inventory_comparison__support__factor_in": 1.0,
+          "aries_integrated_plant__known_dry_inventory__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__known_dry_inventory__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__known_dry_inventory__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__magnet_inventory__inventory__amount3_in": 0.0,
+          "aries_integrated_plant__magnet_inventory__inventory__amount4_in": 0.0,
+          "aries_integrated_plant__magnet_inventory__inventory__amount5_in": 0.0,
+          "aries_integrated_plant__magnet_inventory__inventory__amount6_in": 0.0,
+          "aries_integrated_plant__magnet_inventory__inventory__amount7_in": 0.0,
+          "aries_integrated_plant__magnet_inventory__inventory__amount8_in": 0.0,
+          "aries_integrated_plant__primary_heat_cost__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__replacement_scope__evaluate__amount4_in": 0.0,
+          "aries_integrated_plant__replacement_scope__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__replacement_scope__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__replacement_scope__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__replacement_scope__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__shield_inventory__inventory__amount3_in": 0.0,
+          "aries_integrated_plant__shield_inventory__inventory__amount4_in": 0.0,
+          "aries_integrated_plant__shield_inventory__inventory__amount5_in": 0.0,
+          "aries_integrated_plant__shield_inventory__inventory__amount6_in": 0.0,
+          "aries_integrated_plant__shield_inventory__inventory__amount7_in": 0.0,
+          "aries_integrated_plant__shield_inventory__inventory__amount8_in": 0.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount1_in": 115960000.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount2_in": 13358000.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount3_in": 5318000.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount4_in": 93535000.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount5_in": 0.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount6_in": 0.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__source_coil_children__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount1_in": 59347000.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount2_in": 228627000.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount4_in": 66427000.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount5_in": 73126000.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount6_in": 137135000.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount7_in": 70624000.0,
+          "aries_integrated_plant__source_core_children_first__evaluate__amount8_in": 6561000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount1_in": 14134000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount2_in": 16590000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount3_in": 7067000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount4_in": 3353000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount5_in": 7067000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount6_in": 7067000.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount7_in": 0.0,
+          "aries_integrated_plant__source_fuel_children__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__source_reactor_children__evaluate__amount2_in": 474771000.0,
+          "aries_integrated_plant__source_reactor_children__evaluate__amount3_in": 3735000.0,
+          "aries_integrated_plant__source_reactor_children__evaluate__amount4_in": 6655000.0,
+          "aries_integrated_plant__source_reactor_children__evaluate__amount6_in": 60723000.0,
+          "aries_integrated_plant__source_reactor_children__evaluate__amount7_in": 44558000.0,
+          "aries_integrated_plant__source_reactor_children__evaluate__amount8_in": 0.0,
+          "aries_integrated_plant__vacuum_equipment__inventory__amount3_in": 0.0,
+          "aries_integrated_plant__vacuum_equipment__inventory__amount4_in": 0.0,
+          "aries_integrated_plant__vacuum_equipment__inventory__amount5_in": 0.0,
+          "aries_integrated_plant__vacuum_equipment__inventory__amount6_in": 0.0,
+          "aries_integrated_plant__vacuum_equipment__inventory__amount7_in": 0.0,
+          "aries_integrated_plant__vacuum_equipment__inventory__amount8_in": 0.0,
+          "aries_integrated_plant__annual_om__evaluate__alpha": 0.5,
+          "aries_integrated_plant__annual_om__evaluate__n_mod_in": 1.0,
+          "aries_integrated_plant__annual_om__evaluate__om_ref": 0.0,
+          "aries_integrated_plant__annual_om__evaluate__p_net": 1000.0,
+          "aries_integrated_plant__annual_om__evaluate__ref_net_power": 1000.0,
+          "aries_integrated_plant__indirect_cost__evaluate__construction_time": 6.0,
+          "aries_integrated_plant__indirect_cost__evaluate__reference_construction_time": 6.0,
+          "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+          "aries_integrated_plant__divertor_pump__screen__applicable_in": 1.0,
+          "aries_integrated_plant__divertor_pump__screen__conditions_supported_in": 1.0,
+          "aries_integrated_plant__divertor_pump__screen__demand_available_in": 1.0,
+          "aries_integrated_plant__fuel_inventory__screen__applicable_in": 1.0,
+          "aries_integrated_plant__fuel_inventory__screen__conditions_supported_in": 1.0,
+          "aries_integrated_plant__fuel_inventory__screen__demand_available_in": 1.0,
+          "aries_integrated_plant__he_pump__screen__applicable_in": 1.0,
+          "aries_integrated_plant__he_pump__screen__conditions_supported_in": 1.0,
+          "aries_integrated_plant__he_pump__screen__demand_available_in": 1.0,
+          "aries_integrated_plant__pbli_pump__screen__applicable_in": 1.0,
+          "aries_integrated_plant__pbli_pump__screen__conditions_supported_in": 1.0,
+          "aries_integrated_plant__pbli_pump__screen__demand_available_in": 1.0,
+          "aries_integrated_plant__annual_om__selected_amount": 70000000.0,
+          "aries_integrated_plant__auxiliary_cooling__price_factor": 1.0,
+          "aries_integrated_plant__auxiliary_cooling__reference_cost": 3735000.0,
+          "aries_integrated_plant__auxiliary_cooling__selected_quantity": 1.0,
+          "aries_integrated_plant__blanket_inventory__price_factor": 1.0,
+          "aries_integrated_plant__blanket_inventory__reference_cost": 59347000.0,
+          "aries_integrated_plant__blanket_inventory__reference_quantity": 662500.0,
+          "aries_integrated_plant__blanket_inventory__selected_mass": 662500.0,
+          "aries_integrated_plant__compressor_1__efficiency": 0.89,
+          "aries_integrated_plant__compressor_1__selected_ratio": 1.5182944859378311,
+          "aries_integrated_plant__compressor_2__efficiency": 0.89,
+          "aries_integrated_plant__compressor_2__selected_ratio": 1.5182944859378311,
+          "aries_integrated_plant__compressor_3__efficiency": 0.89,
+          "aries_integrated_plant__compressor_3__selected_ratio": 1.5182944859378311,
+          "aries_integrated_plant__compressor_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__compressor_capacity__demand_available": 1.0,
+          "aries_integrated_plant__compressor_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__compressor_capacity__selected_rating": 1600.0,
+          "aries_integrated_plant__compressor_equipment__price_factor": 1.0,
+          "aries_integrated_plant__compressor_equipment__reference_cost": 78639500.0,
+          "aries_integrated_plant__compressor_equipment__reference_quantity": 1600.0,
+          "aries_integrated_plant__contingency__fraction": 0.2,
+          "aries_integrated_plant__conversion_services__price_factor": 1.0,
+          "aries_integrated_plant__conversion_services__reference_cost": 62911600.0,
+          "aries_integrated_plant__conversion_services__selected_quantity": 1.0,
+          "aries_integrated_plant__cost_accounts__estimate_mode": 0.0,
+          "aries_integrated_plant__cost_accounts__one_module": 1.0,
+          "aries_integrated_plant__cost_ledger__consumables": 5000000.0,
+          "aries_integrated_plant__cost_ledger__import_price": 50.0,
+          "aries_integrated_plant__cost_schedule__availability": 0.85,
+          "aries_integrated_plant__cost_schedule__lipb_makeup_fraction": 0.05,
+          "aries_integrated_plant__cost_schedule__plant_years": 40.0,
+          "aries_integrated_plant__cost_schedule__replacement_factor": 1.0,
+          "aries_integrated_plant__cost_schedule__replacement_life_fpy": 5.0,
+          "aries_integrated_plant__cycle__cp": 5193.0,
+          "aries_integrated_plant__cycle__gamma": 1.6666666666666667,
+          "aries_integrated_plant__cycle__low_temperature": 308.15,
+          "aries_integrated_plant__cycle__recuperator_effectiveness": 0.8,
+          "aries_integrated_plant__cycle__return_pressure": 4.285714285714286,
+          "aries_integrated_plant__cycle__selected_flow": 1400.0,
+          "aries_integrated_plant__cycle__turbine_efficiency": 0.93,
+          "aries_integrated_plant__deposition__auxiliary_heat": 20.0,
+          "aries_integrated_plant__deposition__divertor_recovery": 0.9,
+          "aries_integrated_plant__deposition__exchange_fraction": 0.04,
+          "aries_integrated_plant__deposition__he_recovery": 0.9038461538461539,
+          "aries_integrated_plant__deposition__heat_mode": 0.0,
+          "aries_integrated_plant__deposition__helium_fraction": 0.38,
+          "aries_integrated_plant__deposition__literal_divertor": 374.75,
+          "aries_integrated_plant__deposition__literal_exchange": 111.0,
+          "aries_integrated_plant__deposition__literal_he": 940.0,
+          "aries_integrated_plant__deposition__literal_pbli": 1555.0,
+          "aries_integrated_plant__deposition__neutron_multiplier": 1.16,
+          "aries_integrated_plant__deposition__pbli_recovery": 0.0,
+          "aries_integrated_plant__deposition__radiation_fraction": 0.25,
+          "aries_integrated_plant__divertor_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__divertor_capacity__demand_available": 1.0,
+          "aries_integrated_plant__divertor_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__divertor_capacity__selected_rating": 800.0,
+          "aries_integrated_plant__divertor_duty_equipment__price_factor": 1.0,
+          "aries_integrated_plant__divertor_duty_equipment__reference_cost": 32403166.66666667,
+          "aries_integrated_plant__divertor_duty_equipment__reference_quantity": 800.0,
+          "aries_integrated_plant__divertor_hx__assumed_u": 1000.0,
+          "aries_integrated_plant__divertor_hx__price_factor": 1.0,
+          "aries_integrated_plant__divertor_hx__reference_cost": 58325700.00000001,
+          "aries_integrated_plant__divertor_hx__reference_quantity": 50000.0,
+          "aries_integrated_plant__divertor_hx__selected_area": 50000.0,
+          "aries_integrated_plant__divertor_inventory__price_factor": 1.0,
+          "aries_integrated_plant__divertor_inventory__reference_cost": 5318000.0,
+          "aries_integrated_plant__divertor_inventory__selected_quantity": 1.0,
+          "aries_integrated_plant__divertor_pump__efficiency": 0.8,
+          "aries_integrated_plant__divertor_pump__fixed_power": 10.0,
+          "aries_integrated_plant__divertor_pump__price_factor": 1.0,
+          "aries_integrated_plant__divertor_pump__pump_mode": 0.0,
+          "aries_integrated_plant__divertor_pump__reference_cost": 19441900.0,
+          "aries_integrated_plant__divertor_pump__reference_efficiency": 0.8,
+          "aries_integrated_plant__divertor_pump__reference_flow": 500.0,
+          "aries_integrated_plant__divertor_pump__reference_power": 10.0,
+          "aries_integrated_plant__divertor_pump__reference_quantity": 500.0,
+          "aries_integrated_plant__divertor_pump__selected_flow_capacity": 500.0,
+          "aries_integrated_plant__electrical_equipment__price_factor": 1.0,
+          "aries_integrated_plant__electrical_equipment__reference_cost": 138764000.0,
+          "aries_integrated_plant__electrical_equipment__selected_quantity": 1.0,
+          "aries_integrated_plant__facilities__price_factor": 1.0,
+          "aries_integrated_plant__facilities__reference_cost": 336133000.0,
+          "aries_integrated_plant__facilities__selected_quantity": 1.0,
+          "aries_integrated_plant__fuel__assumed_extraction": 1.0,
+          "aries_integrated_plant__fuel__decay_constant_s": 1.782785958230312e-09,
+          "aries_integrated_plant__fuel__dormant_stock_growth_atoms_s": 0.0,
+          "aries_integrated_plant__fuel__exhaust_recovery": 0.99,
+          "aries_integrated_plant__fuel__mev_joules": 1.6021766339999998e-13,
+          "aries_integrated_plant__fuel__pass_burn_fraction": 0.05,
+          "aries_integrated_plant__fuel__reaction_energy_mev": 17.58,
+          "aries_integrated_plant__fuel__seconds_per_year": 31536000.0,
+          "aries_integrated_plant__fuel__tritium_atom_kg": 5.008267663228036e-27,
+          "aries_integrated_plant__fuel__unused_tbr_placeholder": 0.0,
+          "aries_integrated_plant__fuel_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__fuel_capacity__demand_available": 1.0,
+          "aries_integrated_plant__fuel_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__fuel_capacity__selected_rating": 3e+22,
+          "aries_integrated_plant__fuel_inventory__annual_recovery_kg": 0.0,
+          "aries_integrated_plant__fuel_inventory__deuterium_atom_kg": 3.3435837724e-27,
+          "aries_integrated_plant__fuel_inventory__deuterium_price": 1000.0,
+          "aries_integrated_plant__fuel_inventory__process_residence_s": 1000.0,
+          "aries_integrated_plant__fuel_inventory__selected_tritium_kg": 10.0,
+          "aries_integrated_plant__fuel_inventory__tritium_price": 30000000.0,
+          "aries_integrated_plant__fuel_processing_equipment__price_factor": 1.0,
+          "aries_integrated_plant__fuel_processing_equipment__reference_cost": 16590000.0,
+          "aries_integrated_plant__fuel_processing_equipment__reference_quantity": 3e+22,
+          "aries_integrated_plant__fuel_services__price_factor": 1.0,
+          "aries_integrated_plant__fuel_services__reference_cost": 38689000.0,
+          "aries_integrated_plant__fuel_services__selected_quantity": 1.0,
+          "aries_integrated_plant__generator_auxiliaries__control": 5.0,
+          "aries_integrated_plant__generator_auxiliaries__cryo": 10.0,
+          "aries_integrated_plant__generator_auxiliaries__fuel_base": 5.0,
+          "aries_integrated_plant__generator_auxiliaries__fuel_coefficient": 1e-22,
+          "aries_integrated_plant__generator_auxiliaries__generator_efficiency": 0.98,
+          "aries_integrated_plant__generator_auxiliaries__heating_efficiency": 0.5,
+          "aries_integrated_plant__generator_auxiliaries__motor_efficiency": 0.95,
+          "aries_integrated_plant__generator_auxiliaries__other_electric": 5.0,
+          "aries_integrated_plant__generator_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__generator_capacity__demand_available": 1.0,
+          "aries_integrated_plant__generator_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__generator_capacity__selected_rating": 1800.0,
+          "aries_integrated_plant__generator_equipment__price_factor": 1.0,
+          "aries_integrated_plant__generator_equipment__reference_cost": 47183699.99999999,
+          "aries_integrated_plant__generator_equipment__reference_quantity": 1800.0,
+          "aries_integrated_plant__he_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__he_capacity__demand_available": 1.0,
+          "aries_integrated_plant__he_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__he_capacity__selected_rating": 1500.0,
+          "aries_integrated_plant__he_duty_equipment__price_factor": 1.0,
+          "aries_integrated_plant__he_duty_equipment__reference_cost": 32403166.66666667,
+          "aries_integrated_plant__he_duty_equipment__reference_quantity": 1500.0,
+          "aries_integrated_plant__he_hx__assumed_u": 1000.0,
+          "aries_integrated_plant__he_hx__price_factor": 1.0,
+          "aries_integrated_plant__he_hx__reference_cost": 58325700.00000001,
+          "aries_integrated_plant__he_hx__reference_quantity": 50000.0,
+          "aries_integrated_plant__he_hx__selected_area": 50000.0,
+          "aries_integrated_plant__he_pump__efficiency": 0.8,
+          "aries_integrated_plant__he_pump__fixed_power": 156.0,
+          "aries_integrated_plant__he_pump__price_factor": 1.0,
+          "aries_integrated_plant__he_pump__pump_mode": 0.0,
+          "aries_integrated_plant__he_pump__reference_cost": 19441900.0,
+          "aries_integrated_plant__he_pump__reference_efficiency": 0.8,
+          "aries_integrated_plant__he_pump__reference_flow": 3261.0,
+          "aries_integrated_plant__he_pump__reference_power": 156.0,
+          "aries_integrated_plant__he_pump__reference_quantity": 3261.0,
+          "aries_integrated_plant__he_pump__selected_flow_capacity": 3261.0,
+          "aries_integrated_plant__heat_exchangers__divertor_cp": 5193.0,
+          "aries_integrated_plant__heat_exchangers__divertor_flow": 500.0,
+          "aries_integrated_plant__heat_exchangers__divertor_limit": 973.15,
+          "aries_integrated_plant__heat_exchangers__he_cp": 5193.0,
+          "aries_integrated_plant__heat_exchangers__he_flow": 3261.0,
+          "aries_integrated_plant__heat_exchangers__he_limit": 729.15,
+          "aries_integrated_plant__heat_exchangers__pbli_cp": 190.0,
+          "aries_integrated_plant__heat_exchangers__pbli_flow": 26860.0,
+          "aries_integrated_plant__heat_exchangers__pbli_limit": 1011.15,
+          "aries_integrated_plant__heat_rejection_equipment__price_factor": 1.0,
+          "aries_integrated_plant__heat_rejection_equipment__reference_cost": 56086000.0,
+          "aries_integrated_plant__heat_rejection_equipment__reference_quantity": 2500.0,
+          "aries_integrated_plant__heating_equipment__price_factor": 1.0,
+          "aries_integrated_plant__heating_equipment__reference_cost": 66427000.00000001,
+          "aries_integrated_plant__heating_equipment__selected_quantity": 1.0,
+          "aries_integrated_plant__impurity_control__price_factor": 1.0,
+          "aries_integrated_plant__impurity_control__reference_cost": 6561000.0,
+          "aries_integrated_plant__impurity_control__selected_quantity": 1.0,
+          "aries_integrated_plant__indirect_cost__fraction": 0.2,
+          "aries_integrated_plant__instrumentation_control__price_factor": 1.0,
+          "aries_integrated_plant__instrumentation_control__reference_cost": 44558000.0,
+          "aries_integrated_plant__instrumentation_control__selected_quantity": 1.0,
+          "aries_integrated_plant__intercooler_1__heating_role": 0.0,
+          "aries_integrated_plant__intercooler_1__target_temperature": 308.15,
+          "aries_integrated_plant__intercooler_2__heating_role": 0.0,
+          "aries_integrated_plant__intercooler_2__target_temperature": 308.15,
+          "aries_integrated_plant__inventory_comparison__source_dry_core_mass": 13688000.0,
+          "aries_integrated_plant__inventory_comparison__vf_mass_available": 0.0,
+          "aries_integrated_plant__lipb_comparison__source_unit_rate": 17.1,
+          "aries_integrated_plant__lipb_inventory__external_mass_factor": 2.5,
+          "aries_integrated_plant__lipb_inventory__price_factor": 1.0,
+          "aries_integrated_plant__lipb_inventory__reference_cost": 151327000.0,
+          "aries_integrated_plant__lipb_inventory__reference_quantity": 8830000.0,
+          "aries_integrated_plant__lipb_inventory__selected_core_mass": 3532000.0,
+          "aries_integrated_plant__magnet_inventory__price_factor": 1.0,
+          "aries_integrated_plant__magnet_inventory__reference_cost": 204208000.0,
+          "aries_integrated_plant__magnet_inventory__reference_quantity": 4092200.0,
+          "aries_integrated_plant__magnet_inventory__selected_structure_mass": 3465000.0,
+          "aries_integrated_plant__magnet_inventory__selected_winding_mass": 627200.0,
+          "aries_integrated_plant__magnet_power_supplies__price_factor": 1.0,
+          "aries_integrated_plant__magnet_power_supplies__reference_cost": 70624000.0,
+          "aries_integrated_plant__magnet_power_supplies__selected_quantity": 1.0,
+          "aries_integrated_plant__miscellaneous_equipment__price_factor": 1.0,
+          "aries_integrated_plant__miscellaneous_equipment__reference_cost": 70958000.0,
+          "aries_integrated_plant__miscellaneous_equipment__selected_quantity": 1.0,
+          "aries_integrated_plant__other_reactor_equipment__price_factor": 1.0,
+          "aries_integrated_plant__other_reactor_equipment__reference_cost": 60723000.0,
+          "aries_integrated_plant__other_reactor_equipment__selected_quantity": 1.0,
+          "aries_integrated_plant__owner_commissioning__fraction": 0.05,
+          "aries_integrated_plant__pbli_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__pbli_capacity__demand_available": 1.0,
+          "aries_integrated_plant__pbli_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__pbli_capacity__selected_rating": 1800.0,
+          "aries_integrated_plant__pbli_duty_equipment__price_factor": 1.0,
+          "aries_integrated_plant__pbli_duty_equipment__reference_cost": 32403166.66666667,
+          "aries_integrated_plant__pbli_duty_equipment__reference_quantity": 1800.0,
+          "aries_integrated_plant__pbli_hx__assumed_u": 1000.0,
+          "aries_integrated_plant__pbli_hx__price_factor": 1.0,
+          "aries_integrated_plant__pbli_hx__reference_cost": 58325700.00000001,
+          "aries_integrated_plant__pbli_hx__reference_quantity": 50000.0,
+          "aries_integrated_plant__pbli_hx__selected_area": 50000.0,
+          "aries_integrated_plant__pbli_pump__efficiency": 0.8,
+          "aries_integrated_plant__pbli_pump__fixed_power": 0.01,
+          "aries_integrated_plant__pbli_pump__price_factor": 1.0,
+          "aries_integrated_plant__pbli_pump__pump_mode": 0.0,
+          "aries_integrated_plant__pbli_pump__reference_cost": 19441900.0,
+          "aries_integrated_plant__pbli_pump__reference_efficiency": 0.8,
+          "aries_integrated_plant__pbli_pump__reference_flow": 26860.0,
+          "aries_integrated_plant__pbli_pump__reference_power": 0.01,
+          "aries_integrated_plant__pbli_pump__reference_quantity": 26860.0,
+          "aries_integrated_plant__pbli_pump__selected_flow_capacity": 26860.0,
+          "aries_integrated_plant__plant_ledger__reference_blanket_deposition": 2496.0,
+          "aries_integrated_plant__plant_ledger__reference_fusion": 2436.0,
+          "aries_integrated_plant__plant_ledger__reference_gross": 1253.0,
+          "aries_integrated_plant__plant_ledger__reference_heater_temperature": 628.15,
+          "aries_integrated_plant__plant_ledger__reference_net": 1000.0,
+          "aries_integrated_plant__plant_ledger__reference_turbine_temperature": 980.15,
+          "aries_integrated_plant__precooler__heating_role": 0.0,
+          "aries_integrated_plant__pressure_loss__loss_fraction": 0.045,
+          "aries_integrated_plant__primary_piping__price_factor": 1.0,
+          "aries_integrated_plant__primary_piping__reference_cost": 58325700.0,
+          "aries_integrated_plant__primary_piping__selected_quantity": 1.0,
+          "aries_integrated_plant__primary_support__price_factor": 1.0,
+          "aries_integrated_plant__primary_support__reference_cost": 73126000.0,
+          "aries_integrated_plant__primary_support__reference_quantity": 2909000.0,
+          "aries_integrated_plant__primary_support__selected_mass": 2909000.0,
+          "aries_integrated_plant__rejection_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__rejection_capacity__demand_available": 1.0,
+          "aries_integrated_plant__rejection_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__rejection_capacity__selected_rating": 2500.0,
+          "aries_integrated_plant__secondary_transport__price_factor": 1.0,
+          "aries_integrated_plant__secondary_transport__reference_cost": 85933000.0,
+          "aries_integrated_plant__secondary_transport__selected_quantity": 1.0,
+          "aries_integrated_plant__shield_inventory__price_factor": 1.0,
+          "aries_integrated_plant__shield_inventory__reference_cost": 228627000.0,
+          "aries_integrated_plant__shield_inventory__reference_quantity": 4585000.0,
+          "aries_integrated_plant__shield_inventory__selected_manifold_mass": 1305000.0,
+          "aries_integrated_plant__shield_inventory__selected_shield_mass": 3280000.0,
+          "aries_integrated_plant__site_land__price_factor": 1.0,
+          "aries_integrated_plant__site_land__reference_cost": 12929000.0,
+          "aries_integrated_plant__site_land__selected_quantity": 1.0,
+          "aries_integrated_plant__source__producer_mode": 1.0,
+          "aries_integrated_plant__source__reference_fusion_mw": 2436.0,
+          "aries_integrated_plant__source_budget__account_1": 12929000.0,
+          "aries_integrated_plant__source_budget__account_2": 336133000.0,
+          "aries_integrated_plant__source_budget__account_3": 1538817000.0,
+          "aries_integrated_plant__source_budget__account_4": 314558000.0,
+          "aries_integrated_plant__source_budget__account_5": 138764000.0,
+          "aries_integrated_plant__source_budget__account_6": 70958000.0,
+          "aries_integrated_plant__source_budget__account_7": 151327000.0,
+          "aries_integrated_plant__source_budget__account_8": 56086000.0,
+          "aries_integrated_plant__source_budget__inclusive_multiplier": 1.93,
+          "aries_integrated_plant__source_reconciliation__coil_parent": 222884000.0,
+          "aries_integrated_plant__source_reconciliation__core_parent": 864700000.0,
+          "aries_integrated_plant__source_reconciliation__fuel_parent": 55279000.0,
+          "aries_integrated_plant__source_replacement_comparison__event_cost": 75000000.0,
+          "aries_integrated_plant__source_replacement_comparison__event_mass": 842000.0,
+          "aries_integrated_plant__source_replacement_comparison__events": 13.0,
+          "aries_integrated_plant__source_replacement_comparison__printed_lifetime_cost": 966000000.0,
+          "aries_integrated_plant__turbine_capacity__assumed_supported": 1.0,
+          "aries_integrated_plant__turbine_capacity__demand_available": 1.0,
+          "aries_integrated_plant__turbine_capacity__scenario_applicable": 1.0,
+          "aries_integrated_plant__turbine_capacity__selected_rating": 3500.0,
+          "aries_integrated_plant__turbine_equipment__price_factor": 1.0,
+          "aries_integrated_plant__turbine_equipment__reference_cost": 125823200.0,
+          "aries_integrated_plant__turbine_equipment__reference_quantity": 3500.0,
+          "aries_integrated_plant__unallocated_source_scope__price_factor": 1.0,
+          "aries_integrated_plant__unallocated_source_scope__reference_cost": 28396000.0,
+          "aries_integrated_plant__unallocated_source_scope__selected_quantity": 1.0,
+          "aries_integrated_plant__vacuum_equipment__price_factor": 1.0,
+          "aries_integrated_plant__vacuum_equipment__reference_cost": 137135000.0,
+          "aries_integrated_plant__vacuum_equipment__reference_quantity": 2773000.0,
+          "aries_integrated_plant__vacuum_equipment__selected_cryostat_mass": 1333000.0,
+          "aries_integrated_plant__vacuum_equipment__selected_vessel_mass": 1440000.0,
+          "aries_integrated_plant__vf_coils__price_factor": 1.0,
+          "aries_integrated_plant__vf_coils__reference_cost": 13358000.0,
+          "aries_integrated_plant__vf_coils__selected_quantity": 1.0,
+          "aries_integrated_plant__waste_equipment__price_factor": 1.0,
+          "aries_integrated_plant__waste_equipment__reference_cost": 6655000.0,
+          "aries_integrated_plant__waste_equipment__selected_quantity": 1.0,
+          "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+          "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+          "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+          "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+          "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+          "aries_cs_plasma_integration__plasma__field": 5.7,
+          "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+          "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+          "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+          "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+          "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+          "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+          "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+          "aries_cs_plasma_integration__plasma__volume": 444.0,
+          "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+        },
+        "headline": {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+          "value": 423.10679410931664
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "heat_removal_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "balances_ok",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "oracle": {
+        "kind": "python_callable",
+        "module": "exploration.aries_integrated.studies.oracle_entry",
+        "callable": "evaluate",
+        "sys_path": ".",
+        "source_digest": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "23043f55c058e9679cc85a91fd0860bbfa822fa47524c1d255d50be014f7af29",
+          "files": [
+            {
+              "path": "exploration/aries_integrated/studies/oracle_entry.py",
+              "sha256": "5eb6620c68bdb5bf294622875671e3c7ddc3eb753e65871c0849cc99b7251b77"
+            },
+            {
+              "path": "exploration/aries_integrated/studies/equipment_oracle.py",
+              "sha256": "cf20068b6e8d0c3cbb2114c5cacba97d2ea09eb5e7c682d9770e52ed38450fab"
+            },
+            {
+              "path": "exploration/aries_integrated/studies/equipment_bindings.py",
+              "sha256": "15bb56c1e58b5cb3522be428bcb1a03529d47ec5c0fb38ba5ed5fac5667c6a75"
+            },
+            {
+              "path": "exploration/aries_integrated/studies/interface_data.py",
+              "sha256": "1e4d200e2a9e4764b0fd090d39a4b9571edb3df4e32aaeaa28f8a01556bfbd1b"
+            },
+            {
+              "path": "exploration/aries_integrated/studies/study_route.py",
+              "sha256": "3c37f2047aa196d7bd0343d05bfd9ea77fd510bace3b226889a9f401d9df06d3"
+            }
+          ]
+        }
+      },
+      "absolute_tolerances": [
+        {
+          "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+          "value": 1e-07,
+          "units": "MW",
+          "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+        }
+      ],
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ]
+    }
+  },
+  "stores": [
+    {
+      "store_id": "20260922-aries-integrated-cost-uncertainty",
+      "path": "results/native/20260922-aries-integrated-cost-uncertainty.db",
+      "compatibility_tuple": {
+        "study_id": "20260922-aries-integrated-cost-uncertainty",
+        "executable_fingerprint": "01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021",
+        "model_contract_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f",
+        "study_definition_fingerprint": "99265e67661ead7d526ff911f385f0f4d9af0a5866e8520cba61f2f201f3f37d",
+        "input_schema_version": "input-v1",
+        "evidence_schema_version": "v3",
+        "strategy_identity": "prepared-list/v1",
+        "strategy_config": "39a56b61de7c6f5b307321f7c8461d92661c718265c9aa84855ee8101900f1c8"
+      }
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "arm-declared-sensitivity",
+      "store_id": "20260922-aries-integrated-cost-uncertainty",
+      "effective_executable_fingerprint": {
+        "value": "01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "No runtime adapter; sealed package is the execution identity."
+      },
+      "entry_models": {
+        "integrated_equipment_costs_params": "aries_integrated.schemas.integrated_equipment_costs_params.IntegratedEquipmentCostsParams",
+        "mfe_account_costs_params": "aries_integrated.schemas.mfe_account_costs_params.MfeAccountCostsParams",
+        "mfe_plasma_scaling_params": "aries_integrated.schemas.mfe_plasma_scaling_params.MfePlasmaScalingParams",
+        "mfe_viability_params": "aries_integrated.schemas.mfe_viability_params.MfeViabilityParams",
+        "plant_params": "aries_integrated.schemas.plant_params.PlantParams",
+        "plasma_integration_params": "aries_integrated.schemas.plasma_integration_params.PlasmaIntegrationParams"
+      },
+      "strategy": "prepared-list/v1",
+      "window": {
+        "bounds": [
+          {
+            "axis": "auxiliary_cooling_price",
+            "keys": [
+              "aries_integrated_plant__auxiliary_cooling__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "blanket_inventory_price",
+            "keys": [
+              "aries_integrated_plant__blanket_inventory__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "compressor_equipment_price",
+            "keys": [
+              "aries_integrated_plant__compressor_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "conversion_services_price",
+            "keys": [
+              "aries_integrated_plant__conversion_services__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "divertor_duty_equipment_price",
+            "keys": [
+              "aries_integrated_plant__divertor_duty_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "divertor_hx_price",
+            "keys": [
+              "aries_integrated_plant__divertor_hx__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "divertor_inventory_price",
+            "keys": [
+              "aries_integrated_plant__divertor_inventory__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "divertor_pump_price",
+            "keys": [
+              "aries_integrated_plant__divertor_pump__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "electrical_equipment_price",
+            "keys": [
+              "aries_integrated_plant__electrical_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "facilities_price",
+            "keys": [
+              "aries_integrated_plant__facilities__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "fuel_processing_equipment_price",
+            "keys": [
+              "aries_integrated_plant__fuel_processing_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "fuel_services_price",
+            "keys": [
+              "aries_integrated_plant__fuel_services__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "generator_equipment_price",
+            "keys": [
+              "aries_integrated_plant__generator_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "he_duty_equipment_price",
+            "keys": [
+              "aries_integrated_plant__he_duty_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "he_hx_price",
+            "keys": [
+              "aries_integrated_plant__he_hx__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "he_pump_price",
+            "keys": [
+              "aries_integrated_plant__he_pump__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "heat_rejection_equipment_price",
+            "keys": [
+              "aries_integrated_plant__heat_rejection_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "heating_equipment_price",
+            "keys": [
+              "aries_integrated_plant__heating_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "impurity_control_price",
+            "keys": [
+              "aries_integrated_plant__impurity_control__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "instrumentation_control_price",
+            "keys": [
+              "aries_integrated_plant__instrumentation_control__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "lipb_inventory_price",
+            "keys": [
+              "aries_integrated_plant__lipb_inventory__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "magnet_inventory_price",
+            "keys": [
+              "aries_integrated_plant__magnet_inventory__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "magnet_power_supplies_price",
+            "keys": [
+              "aries_integrated_plant__magnet_power_supplies__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "miscellaneous_equipment_price",
+            "keys": [
+              "aries_integrated_plant__miscellaneous_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "other_reactor_equipment_price",
+            "keys": [
+              "aries_integrated_plant__other_reactor_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "pbli_duty_equipment_price",
+            "keys": [
+              "aries_integrated_plant__pbli_duty_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "pbli_hx_price",
+            "keys": [
+              "aries_integrated_plant__pbli_hx__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "pbli_pump_price",
+            "keys": [
+              "aries_integrated_plant__pbli_pump__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "primary_piping_price",
+            "keys": [
+              "aries_integrated_plant__primary_piping__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "primary_support_price",
+            "keys": [
+              "aries_integrated_plant__primary_support__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "secondary_transport_price",
+            "keys": [
+              "aries_integrated_plant__secondary_transport__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "shield_inventory_price",
+            "keys": [
+              "aries_integrated_plant__shield_inventory__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "site_land_price",
+            "keys": [
+              "aries_integrated_plant__site_land__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "turbine_equipment_price",
+            "keys": [
+              "aries_integrated_plant__turbine_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "unallocated_source_scope_price",
+            "keys": [
+              "aries_integrated_plant__unallocated_source_scope__price_factor"
+            ],
+            "values": [
+              0.5,
+              2.0
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "vacuum_equipment_price",
+            "keys": [
+              "aries_integrated_plant__vacuum_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "vf_coils_price",
+            "keys": [
+              "aries_integrated_plant__vf_coils__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "waste_equipment_price",
+            "keys": [
+              "aries_integrated_plant__waste_equipment__price_factor"
+            ],
+            "values": [
+              0.5,
+              1.5
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Supplied price uncertainty has no market calibration or purchased quality response."
+          },
+          {
+            "axis": "fuel_inventory_tritium_price",
+            "keys": [
+              "aries_integrated_plant__fuel_inventory__tritium_price"
+            ],
+            "values": [
+              10000000.0,
+              100000000.0
+            ],
+            "units": "USD2004/kg",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "fuel_inventory_selected_tritium_kg",
+            "keys": [
+              "aries_integrated_plant__fuel_inventory__selected_tritium_kg"
+            ],
+            "values": [
+              1.0,
+              30.0
+            ],
+            "units": "kg",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "fuel_inventory_deuterium_price",
+            "keys": [
+              "aries_integrated_plant__fuel_inventory__deuterium_price"
+            ],
+            "values": [
+              100.0,
+              10000.0
+            ],
+            "units": "USD2004/kg",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "annual_om_selected_amount",
+            "keys": [
+              "aries_integrated_plant__annual_om__selected_amount"
+            ],
+            "values": [
+              35000000.0,
+              140000000.0
+            ],
+            "units": "USD2004/year",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "cost_ledger_consumables",
+            "keys": [
+              "aries_integrated_plant__cost_ledger__consumables"
+            ],
+            "values": [
+              1000000.0,
+              15000000.0
+            ],
+            "units": "USD2004/year",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "indirect_cost_fraction",
+            "keys": [
+              "aries_integrated_plant__indirect_cost__fraction"
+            ],
+            "values": [
+              0.1,
+              0.3
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "contingency_fraction",
+            "keys": [
+              "aries_integrated_plant__contingency__fraction"
+            ],
+            "values": [
+              0.1,
+              0.4
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "owner_commissioning_fraction",
+            "keys": [
+              "aries_integrated_plant__owner_commissioning__fraction"
+            ],
+            "values": [
+              0.02,
+              0.1
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "cost_schedule_replacement_life_fpy",
+            "keys": [
+              "aries_integrated_plant__cost_schedule__replacement_life_fpy"
+            ],
+            "values": [
+              2.0,
+              8.0
+            ],
+            "units": "full-power years",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "cost_schedule_replacement_factor",
+            "keys": [
+              "aries_integrated_plant__cost_schedule__replacement_factor"
+            ],
+            "values": [
+              0.5,
+              2.0
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "cost_schedule_lipb_makeup_fraction",
+            "keys": [
+              "aries_integrated_plant__cost_schedule__lipb_makeup_fraction"
+            ],
+            "values": [
+              0.0,
+              0.2
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "cost_schedule_availability",
+            "keys": [
+              "aries_integrated_plant__cost_schedule__availability"
+            ],
+            "values": [
+              0.7,
+              0.95
+            ],
+            "units": "dimensionless",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only."
+          },
+          {
+            "axis": "supplied_recovery",
+            "keys": [
+              "aries_integrated_plant__fuel_inventory__annual_recovery_kg"
+            ],
+            "values": [
+              0.0,
+              200.0
+            ],
+            "units": "kg/year",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Independently supplied recovery is not a calculated breeding capability; support remains zero.",
+            "scenario_values": [
+              0.0,
+              100.0,
+              200.0
+            ],
+            "response_limit": "Supplied recovery has no incremental recovery-cost or qualification law at fixed installed scope; it is a boundary scenario, not purchased-capability optimization."
+          },
+          {
+            "axis": "purchase_mode",
+            "keys": [
+              "aries_integrated_plant__cost_accounts__estimate_mode"
+            ],
+            "values": [
+              0,
+              1
+            ],
+            "units": "enumeration",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Fixed budget mode deliberately suppresses selected quantity price response."
+          },
+          {
+            "axis": "adequate_he_area",
+            "keys": [
+              "aries_integrated_plant__he_hx__selected_area"
+            ],
+            "values": [
+              50000.0,
+              75000.0
+            ],
+            "units": "m2",
+            "role": "assumed",
+            "framing": "sensitivity",
+            "window_provenance": "engineered",
+            "missing_response": "Previously tested adequate area is not geometry or hydraulic qualification."
+          }
+        ],
+        "provenance": "engineered"
+      },
+      "verification": {
+        "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/native/20260922-aries-integrated-cost-uncertainty.db --sample-size 113 --out exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/results/verification_summary.json'",
+        "tool_revision": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+          "files": [
+            {
+              "path": "scripts/study/common.py",
+              "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+            },
+            {
+              "path": "scripts/study/identity.py",
+              "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+            },
+            {
+              "path": "scripts/study/manifest.py",
+              "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+            },
+            {
+              "path": "scripts/study/schemas/package_identity.v1.schema.json",
+              "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+            },
+            {
+              "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+              "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+            },
+            {
+              "path": "scripts/study/verify.py",
+              "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+            }
+          ]
+        },
+        "sampling_scheme": {
+          "scheme": "stratified-by-verdict-combination/v1",
+          "seed": "8978da69688d0fe1",
+          "seed_source": "derived",
+          "sample_size_requested": 113,
+          "strata_observed": 3,
+          "sampled_rows": 113,
+          "sampled_case_ids": [
+            "20260922-aries-integrated-cost-uncertainty:c0050",
+            "20260922-aries-integrated-cost-uncertainty:c0001",
+            "20260922-aries-integrated-cost-uncertainty:c0003",
+            "20260922-aries-integrated-cost-uncertainty:c0089",
+            "20260922-aries-integrated-cost-uncertainty:c0087",
+            "20260922-aries-integrated-cost-uncertainty:c0019",
+            "20260922-aries-integrated-cost-uncertainty:c0031",
+            "20260922-aries-integrated-cost-uncertainty:c0111",
+            "20260922-aries-integrated-cost-uncertainty:c0074",
+            "20260922-aries-integrated-cost-uncertainty:c0099",
+            "20260922-aries-integrated-cost-uncertainty:c0009",
+            "20260922-aries-integrated-cost-uncertainty:c0008",
+            "20260922-aries-integrated-cost-uncertainty:c0064",
+            "20260922-aries-integrated-cost-uncertainty:c0093",
+            "20260922-aries-integrated-cost-uncertainty:c0013",
+            "20260922-aries-integrated-cost-uncertainty:c0097",
+            "20260922-aries-integrated-cost-uncertainty:c0052",
+            "20260922-aries-integrated-cost-uncertainty:c0070",
+            "20260922-aries-integrated-cost-uncertainty:c0025",
+            "20260922-aries-integrated-cost-uncertainty:c0091",
+            "20260922-aries-integrated-cost-uncertainty:c0090",
+            "20260922-aries-integrated-cost-uncertainty:c0080",
+            "20260922-aries-integrated-cost-uncertainty:c0100",
+            "20260922-aries-integrated-cost-uncertainty:c0072",
+            "20260922-aries-integrated-cost-uncertainty:c0002",
+            "20260922-aries-integrated-cost-uncertainty:c0078",
+            "20260922-aries-integrated-cost-uncertainty:c0014",
+            "20260922-aries-integrated-cost-uncertainty:c0036",
+            "20260922-aries-integrated-cost-uncertainty:c0110",
+            "20260922-aries-integrated-cost-uncertainty:c0062",
+            "20260922-aries-integrated-cost-uncertainty:c0055",
+            "20260922-aries-integrated-cost-uncertainty:c0005",
+            "20260922-aries-integrated-cost-uncertainty:c0021",
+            "20260922-aries-integrated-cost-uncertainty:c0103",
+            "20260922-aries-integrated-cost-uncertainty:c0098",
+            "20260922-aries-integrated-cost-uncertainty:c0022",
+            "20260922-aries-integrated-cost-uncertainty:c0042",
+            "20260922-aries-integrated-cost-uncertainty:c0020",
+            "20260922-aries-integrated-cost-uncertainty:c0044",
+            "20260922-aries-integrated-cost-uncertainty:c0068",
+            "20260922-aries-integrated-cost-uncertainty:c0027",
+            "20260922-aries-integrated-cost-uncertainty:c0053",
+            "20260922-aries-integrated-cost-uncertainty:c0006",
+            "20260922-aries-integrated-cost-uncertainty:c0112",
+            "20260922-aries-integrated-cost-uncertainty:c0048",
+            "20260922-aries-integrated-cost-uncertainty:c0108",
+            "20260922-aries-integrated-cost-uncertainty:c0077",
+            "20260922-aries-integrated-cost-uncertainty:c0086",
+            "20260922-aries-integrated-cost-uncertainty:c0084",
+            "20260922-aries-integrated-cost-uncertainty:c0069",
+            "20260922-aries-integrated-cost-uncertainty:c0037",
+            "20260922-aries-integrated-cost-uncertainty:c0024",
+            "20260922-aries-integrated-cost-uncertainty:c0095",
+            "20260922-aries-integrated-cost-uncertainty:c0051",
+            "20260922-aries-integrated-cost-uncertainty:c0104",
+            "20260922-aries-integrated-cost-uncertainty:c0060",
+            "20260922-aries-integrated-cost-uncertainty:c0067",
+            "20260922-aries-integrated-cost-uncertainty:c0012",
+            "20260922-aries-integrated-cost-uncertainty:c0105",
+            "20260922-aries-integrated-cost-uncertainty:c0046",
+            "20260922-aries-integrated-cost-uncertainty:c0102",
+            "20260922-aries-integrated-cost-uncertainty:c0107",
+            "20260922-aries-integrated-cost-uncertainty:c0085",
+            "20260922-aries-integrated-cost-uncertainty:c0066",
+            "20260922-aries-integrated-cost-uncertainty:c0028",
+            "20260922-aries-integrated-cost-uncertainty:c0026",
+            "20260922-aries-integrated-cost-uncertainty:c0015",
+            "20260922-aries-integrated-cost-uncertainty:c0039",
+            "20260922-aries-integrated-cost-uncertainty:c0010",
+            "20260922-aries-integrated-cost-uncertainty:c0101",
+            "20260922-aries-integrated-cost-uncertainty:c0033",
+            "20260922-aries-integrated-cost-uncertainty:c0045",
+            "20260922-aries-integrated-cost-uncertainty:c0004",
+            "20260922-aries-integrated-cost-uncertainty:c0075",
+            "20260922-aries-integrated-cost-uncertainty:c0030",
+            "20260922-aries-integrated-cost-uncertainty:c0023",
+            "20260922-aries-integrated-cost-uncertainty:c0016",
+            "20260922-aries-integrated-cost-uncertainty:c0094",
+            "20260922-aries-integrated-cost-uncertainty:c0007",
+            "20260922-aries-integrated-cost-uncertainty:c0059",
+            "20260922-aries-integrated-cost-uncertainty:c0017",
+            "20260922-aries-integrated-cost-uncertainty:c0071",
+            "20260922-aries-integrated-cost-uncertainty:c0088",
+            "20260922-aries-integrated-cost-uncertainty:c0041",
+            "20260922-aries-integrated-cost-uncertainty:c0056",
+            "20260922-aries-integrated-cost-uncertainty:c0011",
+            "20260922-aries-integrated-cost-uncertainty:c0063",
+            "20260922-aries-integrated-cost-uncertainty:c0082",
+            "20260922-aries-integrated-cost-uncertainty:c0040",
+            "20260922-aries-integrated-cost-uncertainty:c0043",
+            "20260922-aries-integrated-cost-uncertainty:c0054",
+            "20260922-aries-integrated-cost-uncertainty:c0109",
+            "20260922-aries-integrated-cost-uncertainty:c0081",
+            "20260922-aries-integrated-cost-uncertainty:c0092",
+            "20260922-aries-integrated-cost-uncertainty:c0073",
+            "20260922-aries-integrated-cost-uncertainty:c0058",
+            "20260922-aries-integrated-cost-uncertainty:c0083",
+            "20260922-aries-integrated-cost-uncertainty:c0029",
+            "20260922-aries-integrated-cost-uncertainty:c0032",
+            "20260922-aries-integrated-cost-uncertainty:c0038",
+            "20260922-aries-integrated-cost-uncertainty:c0065",
+            "20260922-aries-integrated-cost-uncertainty:c0018",
+            "20260922-aries-integrated-cost-uncertainty:c0049",
+            "20260922-aries-integrated-cost-uncertainty:c0106",
+            "20260922-aries-integrated-cost-uncertainty:c0035",
+            "20260922-aries-integrated-cost-uncertainty:c0034",
+            "20260922-aries-integrated-cost-uncertainty:c0061",
+            "20260922-aries-integrated-cost-uncertainty:c0000",
+            "20260922-aries-integrated-cost-uncertainty:c0096",
+            "20260922-aries-integrated-cost-uncertainty:c0079",
+            "20260922-aries-integrated-cost-uncertainty:c0057",
+            "20260922-aries-integrated-cost-uncertainty:c0047",
+            "20260922-aries-integrated-cost-uncertainty:c0076"
+          ]
+        },
+        "tolerance": {
+          "relative": 1e-09,
+          "absolute_tolerances": [
+            {
+              "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+              "value": 1e-07,
+              "units": "MW",
+              "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+            }
+          ],
+          "exact_verdicts": true
+        },
+        "summary_sha256": "5374cc3dd4ed6213b84e26abfc8aa9ded5caf14f0e1208566d2984b40b9774ad"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "analyze_results.py",
+          "sha256": "7634e6f6ba829466727737bb0c1e74e54668712a4470b9d7680d261de72b29f8"
+        },
+        {
+          "path": "axes.json",
+          "sha256": "a4b32320a19f472ad9c744fc854d41b27dd5632489384f33b27fe60088b21b7d"
+        },
+        {
+          "path": "axis-plan.json",
+          "sha256": "640e02688ab5a781b7bc26da2637b2c725f5553aebf91c2d31f249a21b670dbc"
+        },
+        {
+          "path": "cost-results.md",
+          "sha256": "eadffa71898d8828f5a1e55105932173f605d1bfef9cb76310e912a720c6289f"
+        },
+        {
+          "path": "export_stored_results.py",
+          "sha256": "8c7f8820b130fd4344fcc807a4e2ccecd54d3c065138841b46d0b6a59bf7471a"
+        },
+        {
+          "path": "findings.json",
+          "sha256": "eadc253e36a7b7c3ab1949f8212950b50f9a384db93edb24569e2478ecdfd55f"
+        },
+        {
+          "path": "indicator-rulings.json",
+          "sha256": "19e6dba96f126e84585e5b220af1d66fa00a17d21f4687fc35272239f47bb5fd"
+        },
+        {
+          "path": "indicators.json",
+          "sha256": "df6ccff26d5e590adc5145bf1187345c3623550914821a4c78de088ef3e9f520"
+        },
+        {
+          "path": "manifest-prepared.json",
+          "sha256": "6f410fa17fd67b4c78123a48166dae689422b35af1503e49c051e2d702b5a7b8"
+        },
+        {
+          "path": "oracle-window-scan.json",
+          "sha256": "10df82f9c0c65917f192d7957793b33ba1ed63e5cee0215eca1f46f81cae494f"
+        },
+        {
+          "path": "preparation/_work/aries-integrated-baseline-point-v1.db",
+          "sha256": "b991c6590ed97ed2374517c9ed91d6b12e03b12cdf3f7312fdb60966d3d106ce"
+        },
+        {
+          "path": "preparation/_work/artifacts/6d7d989cda369afef58d8560d701a2c91a40314a07ce0576e7ab5953cf9fa44b.json",
+          "sha256": "6d7d989cda369afef58d8560d701a2c91a40314a07ce0576e7ab5953cf9fa44b"
+        },
+        {
+          "path": "preparation/baseline_result.json",
+          "sha256": "ffec4148ee97ab694cb99793a9277be042fcd3f85d14d2be1b18002b9dc042bc"
+        },
+        {
+          "path": "preparation/coverage-check.json",
+          "sha256": "cc529835f3c7647a58401df8cb2cf3c998000ae87736511b624a1360415ee6ee"
+        },
+        {
+          "path": "preparation/package_identity.json",
+          "sha256": "a88a91923a5c123182313c5c9253a758385fe343d10d7511cd91cb478e9657f3"
+        },
+        {
+          "path": "preparation/preflight_results.json",
+          "sha256": "6b9970fdff1814e96a786c693db212f9875be18e2e5ad066a45cba6e79489bbf"
+        },
+        {
+          "path": "preparation-findings.json",
+          "sha256": "1c9c66ad70f2dd39fee4740b4be6622cf4678190202c94aad947279a6bb20561"
+        },
+        {
+          "path": "preparation-readiness.json",
+          "sha256": "5b0de2e1fc1e1454316f6b9c1acd91481881834e522a960ede18756ef7328d83"
+        },
+        {
+          "path": "prerequisite/cost-study-brief.md",
+          "sha256": "0e2af5639ab7a1883c57bf83230cef2c7a0b29f55d229ab817d35701312754b1"
+        },
+        {
+          "path": "prerequisite/financial-handoff.md",
+          "sha256": "13a69aa8a6badbe4353808d6369e5b7e6cf18fb48580fa9b7abc19217ef7b4f2"
+        },
+        {
+          "path": "prerequisite/goal.md",
+          "sha256": "7867362d1f404cb3751d06fc0072b6d6fcea50a8a302d95075b3d133b6408724"
+        },
+        {
+          "path": "prerequisite/integration_return.json",
+          "sha256": "3c9cca0bae561b760f4af0a87da1f3e73398dbf21508e2e893e1b5e5d0d64f57"
+        },
+        {
+          "path": "prerequisite/provenance.json",
+          "sha256": "e7dd22100219f7520040e5eb091b2cf021be4dffe2d4171f4156d027db5ccb09"
+        },
+        {
+          "path": "prerequisite/thermal-report.md",
+          "sha256": "0f3d8959d9391650de259c7558548a9a1726e3a6d35d6d8482fcf58f15c96c04"
+        },
+        {
+          "path": "prerequisite/thermal-results.md",
+          "sha256": "2d2ec45f3798659b6947b5a934fef20adcf2c17ae06fcd0b1478184d7341226f"
+        },
+        {
+          "path": "prerequisite/thermal-study-review.md",
+          "sha256": "61ea1149a514dbe664cb3848a1e6382216ee367c354969ac0c1334ee541ccbba"
+        },
+        {
+          "path": "proposed-points.json",
+          "sha256": "cc4354f061d8c452fb762e1d8c090a92018d8324b4aa40c176cf05e25dcea750"
+        },
+        {
+          "path": "replay-preparation.md",
+          "sha256": "9cb84546f357b8e9ffd1f03de26354a1fda9dc265f4233478906504f574b3346"
+        },
+        {
+          "path": "replay.md",
+          "sha256": "229dcc30e33d50339b1127642487b379f621741257a1d61dc189c791b3954816"
+        },
+        {
+          "path": "report.md",
+          "sha256": "94d71eb2946ad0dc00c394401fb2ef57ec1fde74c0083e15f94d14ebadff2c9c"
+        },
+        {
+          "path": "results/cases.csv",
+          "sha256": "bb3c40fef51424090d979a85ea9de2da4b3636121e955a3dd5247768119c687c"
+        },
+        {
+          "path": "results/cases.json",
+          "sha256": "b830adc77d099ffe9aa76205c126ebed1323b507665b30cf8421c63064446bfc"
+        },
+        {
+          "path": "results/completion-check.json",
+          "sha256": "45ee9d2b741c9f83babe5fae854a347a03318185d5328fbec9443885486cfc06"
+        },
+        {
+          "path": "results/constraint_catalog.json",
+          "sha256": "6428e7de48a7b389a47910544fada4e97eb8b8e6914b52c9c3502718cd37c6b0"
+        },
+        {
+          "path": "results/cost-analysis.json",
+          "sha256": "157b100dca841f2f91d8f852f9ca52a73d981f522bafe84964e3cc311b67fa08"
+        },
+        {
+          "path": "results/execution-context.json",
+          "sha256": "b34c2e887a12ed93a5af7f91b14df011e354ad940af86b14be0f873aac2fc8e5"
+        },
+        {
+          "path": "results/export-failure-diagnosis.json",
+          "sha256": "9203df176267cc3ca1b5c645eb94e4e25725b64480f59ceab6fe7942f172a7af"
+        },
+        {
+          "path": "results/export-failures.txt",
+          "sha256": "682c44f89b24b47b84407afc4775bbab5250ad0f61e589ddd01d43fe53e87e9e"
+        },
+        {
+          "path": "results/export-recovery-attempt1.py",
+          "sha256": "b5580d5c3e8eaf3ff63f1e9ca590a5c6c3af71c233e9327ff1ec64c9cf038d06"
+        },
+        {
+          "path": "results/export-recovery-before.json",
+          "sha256": "88d9d47d916974c35742e2a95d82ff7752cfc3e4c63ea4074c3a1816c0adf262"
+        },
+        {
+          "path": "results/export-recovery-proof.json",
+          "sha256": "c16a92e8ed4fc68d5acdc6c57a9db9b3c6b8b1a890097c2fb43edb617d93ebe3"
+        },
+        {
+          "path": "results/integration/baseline_result.json",
+          "sha256": "ffec4148ee97ab694cb99793a9277be042fcd3f85d14d2be1b18002b9dc042bc"
+        },
+        {
+          "path": "results/integration/clean.json",
+          "sha256": "54438ec0b90a0470e9631d87efbd108aaecfcb897074592199a25bd46e4abecc"
+        },
+        {
+          "path": "results/integration/integration_return.json",
+          "sha256": "3c9cca0bae561b760f4af0a87da1f3e73398dbf21508e2e893e1b5e5d0d64f57"
+        },
+        {
+          "path": "results/integration/manifest_read_coverage.json",
+          "sha256": "6907c097ff9062a554c8d65967f0493d25f4f09944d882c9b7005b89dcba7a77"
+        },
+        {
+          "path": "results/integration/package_identity.json",
+          "sha256": "a88a91923a5c123182313c5c9253a758385fe343d10d7511cd91cb478e9657f3"
+        },
+        {
+          "path": "results/integration/preflight_results.json",
+          "sha256": "6b9970fdff1814e96a786c693db212f9875be18e2e5ad066a45cba6e79489bbf"
+        },
+        {
+          "path": "results/integration/provenance.json",
+          "sha256": "fe2bb74e868ea9b471d0e66546950066d94b7bb8866ede1fbe03ede2c65e1a6c"
+        },
+        {
+          "path": "results/integration/read_coverage.json",
+          "sha256": "91c492dc506291c6f381bc9ba5e9ddbefb04ca62eead59855ba0b4679324b116"
+        },
+        {
+          "path": "results/integration_return_used.json",
+          "sha256": "3c9cca0bae561b760f4af0a87da1f3e73398dbf21508e2e893e1b5e5d0d64f57"
+        },
+        {
+          "path": "results/manifest_used.json",
+          "sha256": "6f410fa17fd67b4c78123a48166dae689422b35af1503e49c051e2d702b5a7b8"
+        },
+        {
+          "path": "results/native/20260922-aries-integrated-cost-uncertainty.db",
+          "sha256": "5af5bbd38b41c118c8fa8749cf66bd214c540c247246feae61b64d32db0591e1"
+        },
+        {
+          "path": "results/native/artifacts/025da47fafa76a7c55f9d3fd37ca94785994310bc341ad8c38255f82b47d8652.json",
+          "sha256": "025da47fafa76a7c55f9d3fd37ca94785994310bc341ad8c38255f82b47d8652"
+        },
+        {
+          "path": "results/native/artifacts/032b8cb0977814eca6dedaddcd2fb9c6e917dc5fce108442710c9e8d62b5ed14.json",
+          "sha256": "032b8cb0977814eca6dedaddcd2fb9c6e917dc5fce108442710c9e8d62b5ed14"
+        },
+        {
+          "path": "results/native/artifacts/046c2e2cdea43f1e57ebd0885d33935756698f0fc33184838c2f0147aea215cc.json",
+          "sha256": "046c2e2cdea43f1e57ebd0885d33935756698f0fc33184838c2f0147aea215cc"
+        },
+        {
+          "path": "results/native/artifacts/049e47c338e024be877200f1b44bd1214db8cc00bfb074418b182b95934a3877.json",
+          "sha256": "049e47c338e024be877200f1b44bd1214db8cc00bfb074418b182b95934a3877"
+        },
+        {
+          "path": "results/native/artifacts/04c3b993c0f5d4a376a55711e402e020c2c41bcfa84f4bcfbe37f3c1c79540ee.json",
+          "sha256": "04c3b993c0f5d4a376a55711e402e020c2c41bcfa84f4bcfbe37f3c1c79540ee"
+        },
+        {
+          "path": "results/native/artifacts/06491f0978c8e892606504d2995b2e8186ccabfecfe8431dd4167dc68cfe039e.json",
+          "sha256": "06491f0978c8e892606504d2995b2e8186ccabfecfe8431dd4167dc68cfe039e"
+        },
+        {
+          "path": "results/native/artifacts/09651ad403c52b38eb57c4e7e36e01a8e052730e399c5f345302ac88ebe3ed24.json",
+          "sha256": "09651ad403c52b38eb57c4e7e36e01a8e052730e399c5f345302ac88ebe3ed24"
+        },
+        {
+          "path": "results/native/artifacts/09bc0981890d1a886fc1ab6b5766ec32cc4e2ea9a56a768998fe1426dd00307d.json",
+          "sha256": "09bc0981890d1a886fc1ab6b5766ec32cc4e2ea9a56a768998fe1426dd00307d"
+        },
+        {
+          "path": "results/native/artifacts/0c4ece4a4a98585ee761b9421d00b832b2eab97a67345163ea22ccfb4aeecf93.json",
+          "sha256": "0c4ece4a4a98585ee761b9421d00b832b2eab97a67345163ea22ccfb4aeecf93"
+        },
+        {
+          "path": "results/native/artifacts/0c97fe128bdd787ee7e103cc9774dffba7c48487d4e5a82ce36770e09ef2ec3c.json",
+          "sha256": "0c97fe128bdd787ee7e103cc9774dffba7c48487d4e5a82ce36770e09ef2ec3c"
+        },
+        {
+          "path": "results/native/artifacts/0fc8775ffd5c0003cc4b0297f0de839c349bbf82115f25344b7ca53b2e74431e.json",
+          "sha256": "0fc8775ffd5c0003cc4b0297f0de839c349bbf82115f25344b7ca53b2e74431e"
+        },
+        {
+          "path": "results/native/artifacts/11d0cceea6fcd7c2f3433cf4d6a53a67b3e8d58157914d3981fff8384a7f2aed.json",
+          "sha256": "11d0cceea6fcd7c2f3433cf4d6a53a67b3e8d58157914d3981fff8384a7f2aed"
+        },
+        {
+          "path": "results/native/artifacts/1431e55f5d0e284e11ac98a6faa932336b9cb6f897505762bb516826401a7c12.json",
+          "sha256": "1431e55f5d0e284e11ac98a6faa932336b9cb6f897505762bb516826401a7c12"
+        },
+        {
+          "path": "results/native/artifacts/204307012ab784c57a603dc3d11470753b74874266d6c0657735d66c8629ef89.json",
+          "sha256": "204307012ab784c57a603dc3d11470753b74874266d6c0657735d66c8629ef89"
+        },
+        {
+          "path": "results/native/artifacts/205b56b4f545eccab033c63b1a6221aacab3a3ac49e9879fed64940c7fec4793.json",
+          "sha256": "205b56b4f545eccab033c63b1a6221aacab3a3ac49e9879fed64940c7fec4793"
+        },
+        {
+          "path": "results/native/artifacts/210a1840237b1e2e9767eae4c4b501cfbd012b28376bbbac61f8f714528a48e8.json",
+          "sha256": "210a1840237b1e2e9767eae4c4b501cfbd012b28376bbbac61f8f714528a48e8"
+        },
+        {
+          "path": "results/native/artifacts/2268f365801f0c790a137bc157da088403d1f4323325877d282baa950c579114.json",
+          "sha256": "2268f365801f0c790a137bc157da088403d1f4323325877d282baa950c579114"
+        },
+        {
+          "path": "results/native/artifacts/258cbb70ca530f32b6ea6744cd406d46da2c6e409bcba41c097a428b5898746a.json",
+          "sha256": "258cbb70ca530f32b6ea6744cd406d46da2c6e409bcba41c097a428b5898746a"
+        },
+        {
+          "path": "results/native/artifacts/27d3acd4e7633816fcc37b3f0d61fb5c8f4f371aac93d774d290a1c962413287.json",
+          "sha256": "27d3acd4e7633816fcc37b3f0d61fb5c8f4f371aac93d774d290a1c962413287"
+        },
+        {
+          "path": "results/native/artifacts/296089789f0fcb1f308794e27641b02353487d5ecb9ff36c6d6c6b231c3529a3.json",
+          "sha256": "296089789f0fcb1f308794e27641b02353487d5ecb9ff36c6d6c6b231c3529a3"
+        },
+        {
+          "path": "results/native/artifacts/2e512178bf75c3621355c72572773c3b6f7528d00756bef20bcaaca58446e13b.json",
+          "sha256": "2e512178bf75c3621355c72572773c3b6f7528d00756bef20bcaaca58446e13b"
+        },
+        {
+          "path": "results/native/artifacts/318d99cfd83983248014b8256d8d929b597edb40e3cdc90ad8fa2c24b3f5677c.json",
+          "sha256": "318d99cfd83983248014b8256d8d929b597edb40e3cdc90ad8fa2c24b3f5677c"
+        },
+        {
+          "path": "results/native/artifacts/3385c13101cca0bd8661ab10d5e25b7268e7b368bcd6c5f072e593d3680222fa.json",
+          "sha256": "3385c13101cca0bd8661ab10d5e25b7268e7b368bcd6c5f072e593d3680222fa"
+        },
+        {
+          "path": "results/native/artifacts/3555ddd251ace0d47839543008c94c6dbf66009a85bd9eca87bef516faf765f5.json",
+          "sha256": "3555ddd251ace0d47839543008c94c6dbf66009a85bd9eca87bef516faf765f5"
+        },
+        {
+          "path": "results/native/artifacts/35942b491d3cebabd63a054a1644eb02936675540df032246a61ececc65c4448.json",
+          "sha256": "35942b491d3cebabd63a054a1644eb02936675540df032246a61ececc65c4448"
+        },
+        {
+          "path": "results/native/artifacts/3658cfe2bec9e4f682aafd7e8542946a1d6680787dfecb2a5b4d673046e166ad.json",
+          "sha256": "3658cfe2bec9e4f682aafd7e8542946a1d6680787dfecb2a5b4d673046e166ad"
+        },
+        {
+          "path": "results/native/artifacts/37956f1c7793b8ba9a339783d30637f050012b8e44d28f80b1155d1245f4348b.json",
+          "sha256": "37956f1c7793b8ba9a339783d30637f050012b8e44d28f80b1155d1245f4348b"
+        },
+        {
+          "path": "results/native/artifacts/402a05ff713dbe185fdae234a5c0260a396f3cba56f9a8e7ed9e86614a906dca.json",
+          "sha256": "402a05ff713dbe185fdae234a5c0260a396f3cba56f9a8e7ed9e86614a906dca"
+        },
+        {
+          "path": "results/native/artifacts/41744f27620ac76cffb6fd6904256b6a3f22f57c6f805728811e388531d0eb44.json",
+          "sha256": "41744f27620ac76cffb6fd6904256b6a3f22f57c6f805728811e388531d0eb44"
+        },
+        {
+          "path": "results/native/artifacts/43212375ce9baf3249d03becba1f0ff1e125e37b51e8a2a16f6942a47708fd35.json",
+          "sha256": "43212375ce9baf3249d03becba1f0ff1e125e37b51e8a2a16f6942a47708fd35"
+        },
+        {
+          "path": "results/native/artifacts/44f529584971317121f94974dbdbde13e3c77362dcd708e0916a1ac46adb1e46.json",
+          "sha256": "44f529584971317121f94974dbdbde13e3c77362dcd708e0916a1ac46adb1e46"
+        },
+        {
+          "path": "results/native/artifacts/453e58ae0e4f388174c38b438dc824660f75ab2a140d4fe87008d587cba12ff2.json",
+          "sha256": "453e58ae0e4f388174c38b438dc824660f75ab2a140d4fe87008d587cba12ff2"
+        },
+        {
+          "path": "results/native/artifacts/469c99653ac79698c33aa9d85d6b5b267ea75a9921f98c7d7456dd7b8d0fa06b.json",
+          "sha256": "469c99653ac79698c33aa9d85d6b5b267ea75a9921f98c7d7456dd7b8d0fa06b"
+        },
+        {
+          "path": "results/native/artifacts/474547d6b5866a9b93f87238e57c2fc7b0e94bfb7ed308f121aa1708f45c0219.json",
+          "sha256": "474547d6b5866a9b93f87238e57c2fc7b0e94bfb7ed308f121aa1708f45c0219"
+        },
+        {
+          "path": "results/native/artifacts/4de8f5bcd26bc0c64fe112cf71dea2fc7812a9e13c17b52bc053801addd3a428.json",
+          "sha256": "4de8f5bcd26bc0c64fe112cf71dea2fc7812a9e13c17b52bc053801addd3a428"
+        },
+        {
+          "path": "results/native/artifacts/4f4de83d3e8c3622b4420c53e02c6d42eb190524936edb3ae44b146026f845da.json",
+          "sha256": "4f4de83d3e8c3622b4420c53e02c6d42eb190524936edb3ae44b146026f845da"
+        },
+        {
+          "path": "results/native/artifacts/524f865db8ae4e35ef7da6bd1df2ec59ab22a325ca09b402f57630e5d60583b4.json",
+          "sha256": "524f865db8ae4e35ef7da6bd1df2ec59ab22a325ca09b402f57630e5d60583b4"
+        },
+        {
+          "path": "results/native/artifacts/532f4bfe25a98847be48977479cb241a2c0c82c241d0e56c8cdfbd1d9c8c1366.json",
+          "sha256": "532f4bfe25a98847be48977479cb241a2c0c82c241d0e56c8cdfbd1d9c8c1366"
+        },
+        {
+          "path": "results/native/artifacts/53fd8eeab6115b802078166ee4dd3ca78636c0e791ea441b4e3bfa784156088f.json",
+          "sha256": "53fd8eeab6115b802078166ee4dd3ca78636c0e791ea441b4e3bfa784156088f"
+        },
+        {
+          "path": "results/native/artifacts/558469ec9ea0abc1c13bdb3bf1462424d92acf0078d937c6f3abe740c5c28f03.json",
+          "sha256": "558469ec9ea0abc1c13bdb3bf1462424d92acf0078d937c6f3abe740c5c28f03"
+        },
+        {
+          "path": "results/native/artifacts/59b3f643b3b37f72fa6154bb3626067e34869a4d897fa09cc821ea13f9ed7556.json",
+          "sha256": "59b3f643b3b37f72fa6154bb3626067e34869a4d897fa09cc821ea13f9ed7556"
+        },
+        {
+          "path": "results/native/artifacts/5e9a21c7f073d55643b9caede25184f94bafe74d69ab16b463438c60a3c18faf.json",
+          "sha256": "5e9a21c7f073d55643b9caede25184f94bafe74d69ab16b463438c60a3c18faf"
+        },
+        {
+          "path": "results/native/artifacts/5f2353e486f45ff80d464590adfb02735082db7d8a15146cfdd521316b1bad06.json",
+          "sha256": "5f2353e486f45ff80d464590adfb02735082db7d8a15146cfdd521316b1bad06"
+        },
+        {
+          "path": "results/native/artifacts/63fd010a7e33844c9c4e9e586c6687c251d6fffa5923a5b3336a813a698099ed.json",
+          "sha256": "63fd010a7e33844c9c4e9e586c6687c251d6fffa5923a5b3336a813a698099ed"
+        },
+        {
+          "path": "results/native/artifacts/647d79aa68a7756142b3e8feb4114bc0d746eb40fb296c97723a04aecedb814b.json",
+          "sha256": "647d79aa68a7756142b3e8feb4114bc0d746eb40fb296c97723a04aecedb814b"
+        },
+        {
+          "path": "results/native/artifacts/64d72f00362a91c2867efb8049925c475fb6cefb1d8d23a7c77b6fbf746b4995.json",
+          "sha256": "64d72f00362a91c2867efb8049925c475fb6cefb1d8d23a7c77b6fbf746b4995"
+        },
+        {
+          "path": "results/native/artifacts/6c0e93d8f03528b12ffcffe91559327145fae2635c1dce2ef86d9d2a250c3372.json",
+          "sha256": "6c0e93d8f03528b12ffcffe91559327145fae2635c1dce2ef86d9d2a250c3372"
+        },
+        {
+          "path": "results/native/artifacts/6d7d989cda369afef58d8560d701a2c91a40314a07ce0576e7ab5953cf9fa44b.json",
+          "sha256": "6d7d989cda369afef58d8560d701a2c91a40314a07ce0576e7ab5953cf9fa44b"
+        },
+        {
+          "path": "results/native/artifacts/70dc0363009b638187042ce019451d07d398296f9c8f29093c92a0d659037b32.json",
+          "sha256": "70dc0363009b638187042ce019451d07d398296f9c8f29093c92a0d659037b32"
+        },
+        {
+          "path": "results/native/artifacts/76c5fb1f8a7290d8731ff631cbd23fefe73ffd4fb5296cae2f4d3b0a422e738d.json",
+          "sha256": "76c5fb1f8a7290d8731ff631cbd23fefe73ffd4fb5296cae2f4d3b0a422e738d"
+        },
+        {
+          "path": "results/native/artifacts/78b3f2fa587b7b724d5a623616073244aa7eba147d9801d6db9b0a84f99d1b17.json",
+          "sha256": "78b3f2fa587b7b724d5a623616073244aa7eba147d9801d6db9b0a84f99d1b17"
+        },
+        {
+          "path": "results/native/artifacts/7936001173fbddc710869a4f876013521c455a06bf00cfa5a7a687b494a79dca.json",
+          "sha256": "7936001173fbddc710869a4f876013521c455a06bf00cfa5a7a687b494a79dca"
+        },
+        {
+          "path": "results/native/artifacts/7bb6081237861967a88d7191c246ad402a8c3eb36b0297265cb0f5d915397692.json",
+          "sha256": "7bb6081237861967a88d7191c246ad402a8c3eb36b0297265cb0f5d915397692"
+        },
+        {
+          "path": "results/native/artifacts/7e6635dc239adac3c9b28e9848238136f97a5ae6fc2d9fc3fc356756b6e554d7.json",
+          "sha256": "7e6635dc239adac3c9b28e9848238136f97a5ae6fc2d9fc3fc356756b6e554d7"
+        },
+        {
+          "path": "results/native/artifacts/8b83745b5dac172da85a3ba0093cf309b3c2c4d5a580ca34c1111566780a5ad8.json",
+          "sha256": "8b83745b5dac172da85a3ba0093cf309b3c2c4d5a580ca34c1111566780a5ad8"
+        },
+        {
+          "path": "results/native/artifacts/8db7393b81a20712438588a2a1971bfdf2ca74ff9b43c93b9bbd3f6fd957ef69.json",
+          "sha256": "8db7393b81a20712438588a2a1971bfdf2ca74ff9b43c93b9bbd3f6fd957ef69"
+        },
+        {
+          "path": "results/native/artifacts/8ffdddc75796a3d56344a96ba431cf4578e6dd858db0095e3f374e8b03b95b06.json",
+          "sha256": "8ffdddc75796a3d56344a96ba431cf4578e6dd858db0095e3f374e8b03b95b06"
+        },
+        {
+          "path": "results/native/artifacts/93cc77c2a72c9e893160b0970cad709c3cda34f4b006983e4c9edcab64fbc204.json",
+          "sha256": "93cc77c2a72c9e893160b0970cad709c3cda34f4b006983e4c9edcab64fbc204"
+        },
+        {
+          "path": "results/native/artifacts/95e770f66b4e81b7ccdd0967d2ac053e84e4ea74bae897c9d3b982f1181240e5.json",
+          "sha256": "95e770f66b4e81b7ccdd0967d2ac053e84e4ea74bae897c9d3b982f1181240e5"
+        },
+        {
+          "path": "results/native/artifacts/9829642387a59baa475149247734f17dd465f8020952d9ba7451f6b1428bacc8.json",
+          "sha256": "9829642387a59baa475149247734f17dd465f8020952d9ba7451f6b1428bacc8"
+        },
+        {
+          "path": "results/native/artifacts/9d6189bc83c476942bddda079ab8ccd1cdda55d103a32fffd7ce162c62f3009c.json",
+          "sha256": "9d6189bc83c476942bddda079ab8ccd1cdda55d103a32fffd7ce162c62f3009c"
+        },
+        {
+          "path": "results/native/artifacts/a03f4ab4a854f9f5eda5f48d3c90cc12b73059b4ff5e21286d70263bad69a929.json",
+          "sha256": "a03f4ab4a854f9f5eda5f48d3c90cc12b73059b4ff5e21286d70263bad69a929"
+        },
+        {
+          "path": "results/native/artifacts/a1089d6431c7826d8c52ae7c2d48ce2341901194062289e2720481709d7a6a69.json",
+          "sha256": "a1089d6431c7826d8c52ae7c2d48ce2341901194062289e2720481709d7a6a69"
+        },
+        {
+          "path": "results/native/artifacts/a31fd955a2274720b6c49a17aa9610e8bb2f7ee646cc81b8cbe4cd71a678b6f6.json",
+          "sha256": "a31fd955a2274720b6c49a17aa9610e8bb2f7ee646cc81b8cbe4cd71a678b6f6"
+        },
+        {
+          "path": "results/native/artifacts/a66b17a86a535374f8b676b67176fef121a5afb7636c60de6912bcaf6919d550.json",
+          "sha256": "a66b17a86a535374f8b676b67176fef121a5afb7636c60de6912bcaf6919d550"
+        },
+        {
+          "path": "results/native/artifacts/a814c6c505f6088f52a5a3f9030acd7bfd70d7ae6be00aa2c9cec01eac08f51e.json",
+          "sha256": "a814c6c505f6088f52a5a3f9030acd7bfd70d7ae6be00aa2c9cec01eac08f51e"
+        },
+        {
+          "path": "results/native/artifacts/ab43160d7156defbdca31e5080e32173bb9307da734bbc7a0fe1a460c9cf15b7.json",
+          "sha256": "ab43160d7156defbdca31e5080e32173bb9307da734bbc7a0fe1a460c9cf15b7"
+        },
+        {
+          "path": "results/native/artifacts/abd57c053e0e586065c31fbba70c4d6d1a876696eef2feefa553d28f3f13c5e9.json",
+          "sha256": "abd57c053e0e586065c31fbba70c4d6d1a876696eef2feefa553d28f3f13c5e9"
+        },
+        {
+          "path": "results/native/artifacts/ae28541546b8e84b09b64e0d0a6c88392a206c9f4be1268f301461b85a2160b6.json",
+          "sha256": "ae28541546b8e84b09b64e0d0a6c88392a206c9f4be1268f301461b85a2160b6"
+        },
+        {
+          "path": "results/native/artifacts/b3a971aedffd45d4c287dd547b00b725aa03de271f57ba97fc31f450c815a883.json",
+          "sha256": "b3a971aedffd45d4c287dd547b00b725aa03de271f57ba97fc31f450c815a883"
+        },
+        {
+          "path": "results/native/artifacts/b643b6114290e8a87effe0c29c70eec355c98eb43e5caf00b5420e394ef1214c.json",
+          "sha256": "b643b6114290e8a87effe0c29c70eec355c98eb43e5caf00b5420e394ef1214c"
+        },
+        {
+          "path": "results/native/artifacts/b72654da85802af13f2b7ff36f8f60daf7f3893c12edcc27cc92de3874cb7518.json",
+          "sha256": "b72654da85802af13f2b7ff36f8f60daf7f3893c12edcc27cc92de3874cb7518"
+        },
+        {
+          "path": "results/native/artifacts/b94c42069ef0adae6ff63c7beb3f4d60d409b275bd4d7aadf44856682c3cbd6b.json",
+          "sha256": "b94c42069ef0adae6ff63c7beb3f4d60d409b275bd4d7aadf44856682c3cbd6b"
+        },
+        {
+          "path": "results/native/artifacts/b9cd492db25d5841483435ca31725dccffd51c167f9767103ce08ca7c3a11635.json",
+          "sha256": "b9cd492db25d5841483435ca31725dccffd51c167f9767103ce08ca7c3a11635"
+        },
+        {
+          "path": "results/native/artifacts/bb05cfddb7666e3f9eda99a91105a18b190a2befab8f70cd809ccad7b2154042.json",
+          "sha256": "bb05cfddb7666e3f9eda99a91105a18b190a2befab8f70cd809ccad7b2154042"
+        },
+        {
+          "path": "results/native/artifacts/bbeacb0f4724ea4abea0f6c6310edeee2232580322804de0840ff61dc3cb6e4b.json",
+          "sha256": "bbeacb0f4724ea4abea0f6c6310edeee2232580322804de0840ff61dc3cb6e4b"
+        },
+        {
+          "path": "results/native/artifacts/bce452de0225cf1b354ed51348220e70f3256d29df259a02733f35a639889fbd.json",
+          "sha256": "bce452de0225cf1b354ed51348220e70f3256d29df259a02733f35a639889fbd"
+        },
+        {
+          "path": "results/native/artifacts/be284ac69c35909b227278d0bde23dcc27c46b6d9a9ec905137b495cd4f6b5d5.json",
+          "sha256": "be284ac69c35909b227278d0bde23dcc27c46b6d9a9ec905137b495cd4f6b5d5"
+        },
+        {
+          "path": "results/native/artifacts/bf3585f9ff6ad9fb1ad1aca95ca94f2722db9fc6cde9d19884a2141a843b4f00.json",
+          "sha256": "bf3585f9ff6ad9fb1ad1aca95ca94f2722db9fc6cde9d19884a2141a843b4f00"
+        },
+        {
+          "path": "results/native/artifacts/c15d01748c9b95392e27a86de7a0715ae1077b4c711a848fea0b660b8528f0a7.json",
+          "sha256": "c15d01748c9b95392e27a86de7a0715ae1077b4c711a848fea0b660b8528f0a7"
+        },
+        {
+          "path": "results/native/artifacts/c213b215d1b4df2c6209a9f37840ec7ff585bd58708a647cd61a7d00e84bc5bf.json",
+          "sha256": "c213b215d1b4df2c6209a9f37840ec7ff585bd58708a647cd61a7d00e84bc5bf"
+        },
+        {
+          "path": "results/native/artifacts/c2785b6ef7fb3a9dcaffb4d04b29e82f41ac887446f83a8889fffcdc19727072.json",
+          "sha256": "c2785b6ef7fb3a9dcaffb4d04b29e82f41ac887446f83a8889fffcdc19727072"
+        },
+        {
+          "path": "results/native/artifacts/c8104df3866ebb68dbaa30b899c572929dce6d30a8bb784e4e24c7cc99624f6a.json",
+          "sha256": "c8104df3866ebb68dbaa30b899c572929dce6d30a8bb784e4e24c7cc99624f6a"
+        },
+        {
+          "path": "results/native/artifacts/c952ed12d58f1130995cb89f85a996e582bbe6ebfa90d8cad781d38ef3876450.json",
+          "sha256": "c952ed12d58f1130995cb89f85a996e582bbe6ebfa90d8cad781d38ef3876450"
+        },
+        {
+          "path": "results/native/artifacts/ca93f496319d848f056a5b71e540e26850b41e922228ce4b7a71c0ba5ed8cf33.json",
+          "sha256": "ca93f496319d848f056a5b71e540e26850b41e922228ce4b7a71c0ba5ed8cf33"
+        },
+        {
+          "path": "results/native/artifacts/cad4eadb461e2c6dd81aa7e20e7d33576e966676f2078bb67e79d63e5bd20941.json",
+          "sha256": "cad4eadb461e2c6dd81aa7e20e7d33576e966676f2078bb67e79d63e5bd20941"
+        },
+        {
+          "path": "results/native/artifacts/cb1cb99f9a0d0dd1128c5839ac89fe95fa773d10ce131517edff1624155101e6.json",
+          "sha256": "cb1cb99f9a0d0dd1128c5839ac89fe95fa773d10ce131517edff1624155101e6"
+        },
+        {
+          "path": "results/native/artifacts/cc9923069c238a75317895e3bedb5b220b30e575e48dae77856181eb73f3c7b8.json",
+          "sha256": "cc9923069c238a75317895e3bedb5b220b30e575e48dae77856181eb73f3c7b8"
+        },
+        {
+          "path": "results/native/artifacts/cf2eddfa552a8e2fd6c8ab7bf307191309290a989e5f44808e76d89b8bbe23a3.json",
+          "sha256": "cf2eddfa552a8e2fd6c8ab7bf307191309290a989e5f44808e76d89b8bbe23a3"
+        },
+        {
+          "path": "results/native/artifacts/d0fb85efe1379a939c8f21c301c41b9361c44c09839e058b9f5f848c310d3512.json",
+          "sha256": "d0fb85efe1379a939c8f21c301c41b9361c44c09839e058b9f5f848c310d3512"
+        },
+        {
+          "path": "results/native/artifacts/d257a79f0fd56615d18816d12f737de552ac8cb8bee74313edd8caef4b695c0a.json",
+          "sha256": "d257a79f0fd56615d18816d12f737de552ac8cb8bee74313edd8caef4b695c0a"
+        },
+        {
+          "path": "results/native/artifacts/d2855eb50576ac6246811be5774cbb1f96b464b887396aa379c60fbf0bc00cac.json",
+          "sha256": "d2855eb50576ac6246811be5774cbb1f96b464b887396aa379c60fbf0bc00cac"
+        },
+        {
+          "path": "results/native/artifacts/d4c827b1a281d4ae4ebd89899c353ce4c1118f1bcdac452f1d69d6ae5153d52e.json",
+          "sha256": "d4c827b1a281d4ae4ebd89899c353ce4c1118f1bcdac452f1d69d6ae5153d52e"
+        },
+        {
+          "path": "results/native/artifacts/d6d8a3089d22f8501d76effeb5bfea3ef82b4d0575758732cff7b489ffb6dc96.json",
+          "sha256": "d6d8a3089d22f8501d76effeb5bfea3ef82b4d0575758732cff7b489ffb6dc96"
+        },
+        {
+          "path": "results/native/artifacts/d6e9c18313b48642337dc92fa3788b75e51f96312a657ae6c23ba9815b45d041.json",
+          "sha256": "d6e9c18313b48642337dc92fa3788b75e51f96312a657ae6c23ba9815b45d041"
+        },
+        {
+          "path": "results/native/artifacts/d72071bef2aa465e8eeca2d643512de61572df940ece591a6c27b58c23261d32.json",
+          "sha256": "d72071bef2aa465e8eeca2d643512de61572df940ece591a6c27b58c23261d32"
+        },
+        {
+          "path": "results/native/artifacts/d9d30f26b5ec6fbebf23b28dd40525e5caeaf04a96e1bbe6b7b1467173598a6d.json",
+          "sha256": "d9d30f26b5ec6fbebf23b28dd40525e5caeaf04a96e1bbe6b7b1467173598a6d"
+        },
+        {
+          "path": "results/native/artifacts/dc3d1febab141ca3e4c00b48977fbd3bd4939417fde66b84c1fd2c48a4658420.json",
+          "sha256": "dc3d1febab141ca3e4c00b48977fbd3bd4939417fde66b84c1fd2c48a4658420"
+        },
+        {
+          "path": "results/native/artifacts/e27309a60a34370462f0abea92805d2ea20892611cc3c3035dead08dd1c678f5.json",
+          "sha256": "e27309a60a34370462f0abea92805d2ea20892611cc3c3035dead08dd1c678f5"
+        },
+        {
+          "path": "results/native/artifacts/e4097bec08e4896c17e04cb3c0a5b8c094858b5c0e9eceb0fb95d09e57161573.json",
+          "sha256": "e4097bec08e4896c17e04cb3c0a5b8c094858b5c0e9eceb0fb95d09e57161573"
+        },
+        {
+          "path": "results/native/artifacts/e63ba716a4ba1cfdf334ac89162f0dbcd47f1acdd8e911637e67bc9c3928d41c.json",
+          "sha256": "e63ba716a4ba1cfdf334ac89162f0dbcd47f1acdd8e911637e67bc9c3928d41c"
+        },
+        {
+          "path": "results/native/artifacts/e6f2ee9f4a5324068677c29aeffac244d3ebbaee6adedf062b6b07df6270e4d8.json",
+          "sha256": "e6f2ee9f4a5324068677c29aeffac244d3ebbaee6adedf062b6b07df6270e4d8"
+        },
+        {
+          "path": "results/native/artifacts/e8203d3dc16fbbd512198cf86b522ff297d53c8350fca8e814fd40abbeaf28c4.json",
+          "sha256": "e8203d3dc16fbbd512198cf86b522ff297d53c8350fca8e814fd40abbeaf28c4"
+        },
+        {
+          "path": "results/native/artifacts/e9e68a9e16db5210ab41de40b7b52ef228347587aa07c16436eeed1da44b632c.json",
+          "sha256": "e9e68a9e16db5210ab41de40b7b52ef228347587aa07c16436eeed1da44b632c"
+        },
+        {
+          "path": "results/native/artifacts/ea34655fad6c5ff617f4896c156c65373494129bbe2cc61d3d761c25f87f48d5.json",
+          "sha256": "ea34655fad6c5ff617f4896c156c65373494129bbe2cc61d3d761c25f87f48d5"
+        },
+        {
+          "path": "results/native/artifacts/ec69f96fb30de08ee33015d48071ef3921cfb86ba15e2654c369c2b0086a3fb7.json",
+          "sha256": "ec69f96fb30de08ee33015d48071ef3921cfb86ba15e2654c369c2b0086a3fb7"
+        },
+        {
+          "path": "results/native/artifacts/ed9b0a7faab9aa09ef4bc86f2f83e33ec1777e6691db40756a08bac864ef8bd8.json",
+          "sha256": "ed9b0a7faab9aa09ef4bc86f2f83e33ec1777e6691db40756a08bac864ef8bd8"
+        },
+        {
+          "path": "results/native/artifacts/ee372523344b7461b601bbede89961d4aebbef9c49f8d5b906973832361d136a.json",
+          "sha256": "ee372523344b7461b601bbede89961d4aebbef9c49f8d5b906973832361d136a"
+        },
+        {
+          "path": "results/native/artifacts/f4c679fd23628484ef7073b61b87a9c0f69c0676d1453ab9492c680fd437651e.json",
+          "sha256": "f4c679fd23628484ef7073b61b87a9c0f69c0676d1453ab9492c680fd437651e"
+        },
+        {
+          "path": "results/native/artifacts/f566c6854466cf983af23be955e7edf7d9d7833de72c4388421de180887d9af9.json",
+          "sha256": "f566c6854466cf983af23be955e7edf7d9d7833de72c4388421de180887d9af9"
+        },
+        {
+          "path": "results/native/artifacts/f6e3075f27d3ab3474a0c820baea640151c72be2d11c3d6bd33fe5a94e9bba18.json",
+          "sha256": "f6e3075f27d3ab3474a0c820baea640151c72be2d11c3d6bd33fe5a94e9bba18"
+        },
+        {
+          "path": "results/native/artifacts/fccf3added06b2cf9afef520b5b0a649cf876feb419b36824a93b47080aea97c.json",
+          "sha256": "fccf3added06b2cf9afef520b5b0a649cf876feb419b36824a93b47080aea97c"
+        },
+        {
+          "path": "results/native/artifacts/fdaf3374025a679bab081bbf77094729f44cf70d8506e1f6ff26cc82da30fa72.json",
+          "sha256": "fdaf3374025a679bab081bbf77094729f44cf70d8506e1f6ff26cc82da30fa72"
+        },
+        {
+          "path": "results/package_identity.json",
+          "sha256": "a88a91923a5c123182313c5c9253a758385fe343d10d7511cd91cb478e9657f3"
+        },
+        {
+          "path": "results/pre-second-recovery-content-check.json",
+          "sha256": "ea0225a12706bbdc701b6f49718806918d97ac797e97421c6476d35d018d1094"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/ANNEX.md",
+          "sha256": "630b355ac04964a3736e5ffa23f1b945224d29f6eca9d4e6b51e4242aaff86f8"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/axes.json",
+          "sha256": "a4b32320a19f472ad9c744fc854d41b27dd5632489384f33b27fe60088b21b7d"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/cost_proposals.py",
+          "sha256": "203b6298e694066ddeba071b25a304a9ccb3d2bb9aa2d52db4686b323c8777ac"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/equipment_bindings.py",
+          "sha256": "15bb56c1e58b5cb3522be428bcb1a03529d47ec5c0fb38ba5ed5fac5667c6a75"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/equipment_oracle.py",
+          "sha256": "cf20068b6e8d0c3cbb2114c5cacba97d2ea09eb5e7c682d9770e52ed38450fab"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/equipment_proposals.py",
+          "sha256": "b3188b4f4830e8cbbcff3d1657b827d7a16f7cfd7bb36952943417fdcc19fd4e"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/execute_study.py",
+          "sha256": "7a475bc4e65d7efe1c3ca6927d478cc9e39f669f24231f0e513ddfd96b4f0627"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/interface_data.py",
+          "sha256": "1e4d200e2a9e4764b0fd090d39a4b9571edb3df4e32aaeaa28f8a01556bfbd1b"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/manifest.json",
+          "sha256": "6f410fa17fd67b4c78123a48166dae689422b35af1503e49c051e2d702b5a7b8"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/oracle_entry.py",
+          "sha256": "5eb6620c68bdb5bf294622875671e3c7ddc3eb753e65871c0849cc99b7251b77"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/prepare_cost_study.py",
+          "sha256": "7e4ff3737993dacde671aacd71a73d55e3692a45d71d57d41731232d196e36a4"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/prepare_equipment_study.py",
+          "sha256": "54d47f70dc2952717ac6ffdb9f4d0397a391356af6ef831a038cf9b5feb74541"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/prepare_metadata.py",
+          "sha256": "4390c4d37c7d3e9cf370b340109a214586ba3a68fa02c91cea381c3318b518c9"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/study_route.py",
+          "sha256": "3c37f2047aa196d7bd0343d05bfd9ea77fd510bace3b226889a9f401d9df06d3"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/test_equipment_proposals.py",
+          "sha256": "96246aef335be85f7ffae6a100c4791863d007764938dc98cb7a13f143b3e1b2"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/test_oracle_entry.py",
+          "sha256": "59cfe3e150a1a96c49944f6749a7beffc2add2d92f0616139e5f7c803f67ff9e"
+        },
+        {
+          "path": "results/sources/exploration/aries_integrated/studies/test_study_route.py",
+          "sha256": "0d88da1db5f875ed7f964e6af02a410d0e8654f639110eec795c603f50a163af"
+        },
+        {
+          "path": "results/sources/scripts/integrate.py",
+          "sha256": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f"
+        },
+        {
+          "path": "results/sources/scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "results/sources/scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "results/sources/scripts/study/indicators.py",
+          "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87"
+        },
+        {
+          "path": "results/sources/scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "results/sources/scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "results/sources/scripts/study/read_coverage.py",
+          "sha256": "3a63ba15c37d889c40420c66317ed8c685089ac1bb778b60fbe7e7c0e808412c"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/axis_declaration.v1.schema.json",
+          "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/indicators.v1.schema.json",
+          "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/study_package_manifest.v1.schema.json",
+          "sha256": "7e70dfa1db56e91e1e628174b7383a8ff96200c55ef7c8fd634afaef7556f1f8"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "results/sources/scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        },
+        {
+          "path": "results/sources/work/active/WI-090_aries-integrated-equipment-and-costs/design.md",
+          "sha256": "bc95cca4e5ec2c1a8a9a9a589511d9c160bc1ddf391276561eff553834f31d04"
+        },
+        {
+          "path": "results/sources/work/active/WI-090_aries-integrated-equipment-and-costs/evidence/account-manifest.json",
+          "sha256": "2f192f0838d37d308fdb7900a1a7c49ccd5eb4814a67889341f82fdf8f1d3822"
+        },
+        {
+          "path": "results/sources/work/active/WI-090_aries-integrated-equipment-and-costs/evidence/financial-handoff.md",
+          "sha256": "13a69aa8a6badbe4353808d6369e5b7e6cf18fb48580fa9b7abc19217ef7b4f2"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/aries-integrated-equipment-costs/evidence/design-review.md",
+          "sha256": "28b54d63654b3c74f541ee125f96079cb16cd8af62912841192ee6e53e4d0d18"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/aries-integrated-equipment-costs/evidence/freeze-study.py",
+          "sha256": "583577a676fb541395776ef80811d462c7f9eea1f5772d7e56bc822108047e4c"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/aries-integrated-equipment-costs/evidence/implementation-review.md",
+          "sha256": "f13332973ba8e60c7738779391998906f5467b7a128b219e98474507a3e281f8"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/aries-integrated-equipment-costs/evidence/source-basis.md",
+          "sha256": "3fb9635b606bc46956e0fd45ecfd68bb40e86020c4ef7acce28023aa0fcd6ca0"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/aries-integrated-equipment-costs/evidence/source-review.md",
+          "sha256": "148a9ddfc4ad7f9d7f2b883cad8e8f44d8066b300e9435e9b1bb8c1170aeb004"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "5374cc3dd4ed6213b84e26abfc8aa9ded5caf14f0e1208566d2984b40b9774ad"
+        },
+        {
+          "path": "sealed-package.tar.gz",
+          "sha256": "1d68d188e953ddb64b980b338a272a9471efff3192285ace0d9643465187ea26"
+        },
+        {
+          "path": "write_readout.py",
+          "sha256": "1e061a496065107e8ed4587a778e788ff63059d17e0453bda14f6da124313211"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "3460e3d7b98b8f8c7da0b3ecc708017ff30e2c3a6b628ea3a46ed0b9b80a0554",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "7e70dfa1db56e91e1e628174b7383a8ff96200c55ef7c8fd634afaef7556f1f8"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    }
+  ],
+  "teax": {
+    "revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "era_pin": null,
+    "identity_evidence": "results/integration_return_used.json"
+  },
+  "indicators": {
+    "path": "indicators.json",
+    "sha256": "df6ccff26d5e590adc5145bf1187345c3623550914821a4c78de088ef3e9f520",
+    "output_schema_version": "study-indicators/v1",
+    "axis_declaration": {
+      "path": "exploration/aries_integrated/studies/axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "digest": "a4b32320a19f472ad9c744fc854d41b27dd5632489384f33b27fe60088b21b7d",
+      "groups_declared": [
+        "adequate_he_area",
+        "annual_om_selected_amount",
+        "auxiliary_cooling_price",
+        "blanket_inventory_price",
+        "compressor_equipment_price",
+        "contingency_fraction",
+        "conversion_services_price",
+        "cost_ledger_consumables",
+        "cost_schedule_availability",
+        "cost_schedule_lipb_makeup_fraction",
+        "cost_schedule_replacement_factor",
+        "cost_schedule_replacement_life_fpy",
+        "divertor_duty_equipment_price",
+        "divertor_hx_price",
+        "divertor_inventory_price",
+        "divertor_pump_price",
+        "electrical_equipment_price",
+        "facilities_price",
+        "fuel_inventory_deuterium_price",
+        "fuel_inventory_selected_tritium_kg",
+        "fuel_inventory_tritium_price",
+        "fuel_processing_equipment_price",
+        "fuel_services_price",
+        "generator_equipment_price",
+        "he_duty_equipment_price",
+        "he_hx_price",
+        "he_pump_price",
+        "heat_rejection_equipment_price",
+        "heating_equipment_price",
+        "impurity_control_price",
+        "indirect_cost_fraction",
+        "instrumentation_control_price",
+        "lipb_inventory_price",
+        "magnet_inventory_price",
+        "magnet_power_supplies_price",
+        "miscellaneous_equipment_price",
+        "other_reactor_equipment_price",
+        "owner_commissioning_fraction",
+        "pbli_duty_equipment_price",
+        "pbli_hx_price",
+        "pbli_pump_price",
+        "primary_piping_price",
+        "primary_support_price",
+        "purchase_mode",
+        "secondary_transport_price",
+        "shield_inventory_price",
+        "site_land_price",
+        "supplied_recovery",
+        "turbine_equipment_price",
+        "unallocated_source_scope_price",
+        "vacuum_equipment_price",
+        "vf_coils_price",
+        "waste_equipment_price"
+      ],
+      "subset": false
+    }
+  },
+  "execution_context": "results/execution-context.json",
+  "case_count": 113,
+  "numeric_outputs_per_case": [
+    460
+  ],
+  "verified_numeric_channels_per_case": 278,
+  "exact_verdicts_per_case": 14,
+  "all_scoped_checks_satisfied_count": 110,
+  "science_qualification": "Conditional scenario only; inherited unsupported scientific checks remain unsupported."
+}

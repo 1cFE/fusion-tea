@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MFG-01",
+  "question": "What admissible primary construction and process evidence supports quantified insulation or fixed cable additions for the present NI pancake coil, and does winding effort have a transferable dependence on conductor section, turns, joints or geometry?",
+  "consumer": "magnet-manufacturing-cost-completeness/T-002",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["Stellaris section 2.9 figure 40", "Wendelstein 7-X magnet production", "Electrical insulation supplier G10 sheet catalog", "ITER coil winding manufacturing process"],
+  "limits": {"max_searches": 10, "max_captures": 5}
+}

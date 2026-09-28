@@ -1,0 +1,319 @@
+{
+  "independent_from": "author code; common original NIST property source",
+  "properties": [
+    {
+      "path": "knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/raw.html",
+      "sha256": "46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234",
+      "rows": 571,
+      "query": "/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=6.2&THigh=455&TLow=171&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+      "anchors": [
+        {
+          "T": 171.0,
+          "P": 6.2,
+          "rho": 899.80471,
+          "v": 0.0011113523,
+          "u": 719.51841,
+          "h": 726.4088,
+          "s": 2.0446026,
+          "phase": "liquid"
+        },
+        {
+          "T": 455.0,
+          "P": 6.2,
+          "rho": 19.68017,
+          "v": 0.05081257,
+          "u": 2997.2083,
+          "h": 3312.2463,
+          "s": 6.7205477,
+          "phase": "vapor"
+        }
+      ]
+    },
+    {
+      "path": "knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/raw.html",
+      "sha256": "89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4",
+      "rows": 603,
+      "query": "/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=0.8&THigh=455&TLow=42&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+      "anchors": [
+        {
+          "T": 42.0,
+          "P": 0.8,
+          "rho": 991.7425,
+          "v": 0.0010083263,
+          "u": 175.7843,
+          "h": 176.59096,
+          "s": 0.59869146,
+          "phase": "liquid"
+        },
+        {
+          "T": 455.0,
+          "P": 0.8,
+          "rho": 2.3990049,
+          "v": 0.4168395,
+          "u": 3051.0947,
+          "h": 3384.5663,
+          "s": 7.7403808,
+          "phase": "vapor"
+        }
+      ]
+    },
+    {
+      "path": "knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/raw.html",
+      "sha256": "02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3",
+      "rows": 162,
+      "query": "/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7732185&Type=SatP&Digits=8&THigh=60&TLow=20&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+      "anchors": [
+        {
+          "T": 20.0,
+          "P": 0.0023393182,
+          "rho": 998.1618,
+          "v": 0.0010018416,
+          "u": 83.911801,
+          "h": 83.914145,
+          "s": 0.29648334,
+          "phase": "liquid"
+        },
+        {
+          "T": 60.0,
+          "P": 0.019946434,
+          "rho": 0.13042522,
+          "v": 7.6672286,
+          "u": 2455.901,
+          "h": 2608.8349,
+          "s": 7.9081489,
+          "phase": "vapor"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "name": "no_reheat_baseline",
+      "outputs": {
+        "gross_MW": 1202.1186144824098,
+        "gross_efficiency": 0.36351948267659173,
+        "bleed_fraction": 0.20500966665692555,
+        "feedwater_C": 171.45500475761446,
+        "steam_kg_s": 1292.0850494078254,
+        "LP_quality": 0.8427341928394526,
+        "feed_and_condensate_pump_MW": 11.313837038735008,
+        "cooling_water_pump_MW": 13.14422154468452,
+        "condenser_MW": 2078.595175923538,
+        "cycle_net_MW": 1177.6605558989902
+      },
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 47.87377227629708,
+        "checked_knots": 551
+      },
+      "reheater": null,
+      "HP_entropy_gain": 0.11091012173346204,
+      "LP_entropy_gain": 0.22240963676399605,
+      "three_percent_allowance_MW": 36.06355843447229,
+      "new_pumps_MW": 24.45805858341953
+    },
+    {
+      "name": "reheat_baseline",
+      "outputs": {
+        "gross_MW": 1219.9981701764734,
+        "gross_efficiency": 0.36892624267355906,
+        "bleed_fraction": 0.20500966665692555,
+        "feedwater_C": 171.45500475761446,
+        "steam_kg_s": 1108.5733942490047,
+        "LP_quality": 0.9728093554034173,
+        "feed_and_condensate_pump_MW": 9.706960647643736,
+        "cooling_water_pump_MW": 13.023180063562142,
+        "condenser_MW": 2058.6399114471737,
+        "cycle_net_MW": 1197.2680294652675
+      },
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 41.07437838721356,
+        "checked_knots": 551
+      },
+      "reheater": {
+        "min_gap_K": 20.000000000000114,
+        "UA_MW_K": 11.186763416840277,
+        "checked_knots": 364
+      },
+      "HP_entropy_gain": 0.11091012173346204,
+      "LP_entropy_gain": 0.30018201739417094,
+      "three_percent_allowance_MW": 36.5999451052942,
+      "new_pumps_MW": 22.730140711205877
+    },
+    {
+      "name": "no_reheat_eta85",
+      "outputs": {
+        "gross_MW": 1144.035670895593,
+        "gross_efficiency": 0.3459552578566438,
+        "bleed_fraction": 0.20306476986537245,
+        "feedwater_C": 171.45500475761446,
+        "steam_kg_s": 1292.0850494078254,
+        "LP_quality": 0.8648914431074781,
+        "feed_and_condensate_pump_MW": 11.31647784908834,
+        "cooling_water_pump_MW": 13.50502464791902,
+        "condenser_MW": 2138.4646642716225,
+        "cycle_net_MW": 1119.2141683985856
+      },
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 47.87377227629708,
+        "checked_knots": 551
+      },
+      "reheater": null,
+      "HP_entropy_gain": 0.16446268128228247,
+      "LP_entropy_gain": 0.33767747216098876,
+      "three_percent_allowance_MW": 34.32107012686779,
+      "new_pumps_MW": 24.82150249700736
+    },
+    {
+      "name": "reheat_cold40",
+      "outputs": {
+        "gross_MW": 1229.1922926686984,
+        "gross_efficiency": 0.3717065362417424,
+        "bleed_fraction": 0.2075065507360933,
+        "feedwater_C": 171.45500475761446,
+        "steam_kg_s": 1109.068123177996,
+        "LP_quality": 0.9690172302295074,
+        "feed_and_condensate_pump_MW": 9.708618311664846,
+        "cooling_water_pump_MW": 12.96608035679649,
+        "condenser_MW": 2049.164963354128,
+        "cycle_net_MW": 1206.517594000237
+      },
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 41.09270886793222,
+        "checked_knots": 551
+      },
+      "reheater": {
+        "min_gap_K": 20.000000000000114,
+        "UA_MW_K": 11.156605030010283,
+        "checked_knots": 364
+      },
+      "HP_entropy_gain": 0.11091012173346204,
+      "LP_entropy_gain": 0.3066500669329013,
+      "three_percent_allowance_MW": 36.87576878006095,
+      "new_pumps_MW": 22.67469866846134
+    },
+    {
+      "name": "reheat_warm50",
+      "outputs": {
+        "gross_MW": 1183.1299088724124,
+        "gross_efficiency": 0.35777731683964026,
+        "bleed_fraction": 0.1948607004022808,
+        "feedwater_C": 171.45500475761446,
+        "steam_kg_s": 1106.5670278913606,
+        "LP_quality": 0.9879652096414684,
+        "feed_and_condensate_pump_MW": 9.699500748975169,
+        "cooling_water_pump_MW": 13.2521437844716,
+        "condenser_MW": 2096.6335061596633,
+        "cycle_net_MW": 1160.1782643389656
+      },
+      "main": {
+        "min_gap_K": 20.0,
+        "UA_MW_K": 41.000039375124004,
+        "checked_knots": 551
+      },
+      "reheater": {
+        "min_gap_K": 20.000000000000114,
+        "UA_MW_K": 11.309070339259172,
+        "checked_knots": 364
+      },
+      "HP_entropy_gain": 0.11091012173346204,
+      "LP_entropy_gain": 0.27527326583110234,
+      "three_percent_allowance_MW": 35.493897266172375,
+      "new_pumps_MW": 22.951644533446768
+    },
+    {
+      "name": "reheat_steam435",
+      "outputs": {
+        "gross_MW": 1212.6276188241804,
+        "gross_efficiency": 0.3666973952184513,
+        "bleed_fraction": 0.20628095718853784,
+        "feedwater_C": 171.45500475761446,
+        "steam_kg_s": 1119.5783248513137,
+        "LP_quality": 0.9683924899174956,
+        "feed_and_condensate_pump_MW": 9.801827003796017,
+        "cooling_water_pump_MW": 13.069552083472132,
+        "condenser_MW": 2066.326974654858,
+        "cycle_net_MW": 1189.7562397369122
+      },
+      "main": {
+        "min_gap_K": 30.0,
+        "UA_MW_K": 39.82340789978981,
+        "checked_knots": 531
+      },
+      "reheater": {
+        "min_gap_K": 30.000000000000057,
+        "UA_MW_K": 8.954071040138885,
+        "checked_knots": 359
+      },
+      "HP_entropy_gain": 0.11043552921823618,
+      "LP_entropy_gain": 0.2964086027579933,
+      "three_percent_allowance_MW": 36.37882856472541,
+      "new_pumps_MW": 22.87137908726815
+    }
+  ],
+  "independent_coarse_refinement_errors": {
+    "main": {
+      "liquid": {
+        "h": 0.002499999999827196,
+        "s": 2.3000000002326715e-06
+      },
+      "vapor": {
+        "h": 0.011299999999664578,
+        "s": 2.2550000000620685e-05
+      }
+    },
+    "bleed": {
+      "liquid": {
+        "h": 0.0008518273078834682,
+        "s": 9.811614246624245e-06
+      },
+      "vapor": {
+        "h": 0.0045999999997548,
+        "s": 1.3250000000297746e-05
+      }
+    },
+    "condenser": {
+      "liquid": {
+        "h": 8.300000000360797e-05,
+        "s": 6.350000000043821e-06
+      },
+      "vapor": {
+        "h": 0.0003500000002532033,
+        "s": 2.455000000090024e-05
+      }
+    }
+  },
+  "reviewed_artifact_sha256": {
+    "cycle-proposal.md": "476c6db47b9060e70f028ab36c10484cde4b4928e7b2711079e2f55448bdf5e3",
+    "cycle-prototype.py": "2c1af0e3d050602f1a49ee75c73e638e312b76f42a2abefd43f5930dc3c1ace5",
+    "cycle-results.json": "2f40da9c9d99eb774177a7144c41d1bdab58019bcd0305e8de7df46d72fdfdb5",
+    "cycle-author-checks.json": "c2704176ff4cabc611f499a6034cffe12e82043d481225a5441225b407b52a95"
+  },
+  "pump_approximation_checks": [
+    {
+      "name": "feedwater",
+      "table_isentropic_kJ_kg": 6.011095415194177,
+      "incompressible_kJ_kg": 6.01983144,
+      "relative_difference": 0.0014533166091059702
+    },
+    {
+      "name": "condensate_40",
+      "status": "outside captured entropy domain; no extrapolation"
+    },
+    {
+      "name": "condensate_42",
+      "table_isentropic_kJ_kg": 0.7986291392168425,
+      "incompressible_kJ_kg": 0.7986622274411642,
+      "relative_difference": 4.143127604150365e-05
+    },
+    {
+      "name": "condensate_50",
+      "table_isentropic_kJ_kg": 0.7977737099920148,
+      "incompressible_kJ_kg": 0.7972176627968783,
+      "relative_difference": -0.0006969986453201349
+    }
+  ]
+}

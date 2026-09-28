@@ -1,0 +1,11 @@
+# Fresh study administrator
+
+You are a fresh session, not the executor or its critic. Administer the committed record directory `exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/` under the native run-study administrator contract. Your dispatch will name the committed revision. Do not inherit the author's conversation or infer what answer the coordinator wants.
+
+Read the run-study skill/runbook for instructions. For evidence, read only this record directory: `record.md`, `snapshot.json`, `indicators.json`, and its protocol, reviews, context and results. Do not inspect the live package, oracle, manifest, goal trail, discovery log or work items outside the record. If the record refers outside itself for a needed fact, report that fact as missing instead of recovering it. Read-only calculations over the committed record are permitted; use the prescribed `.codex-test/run` launcher for Python. Do not rerun the model.
+
+You own only `synthesis.md` in the record directory. You are not alone in the workspace; preserve every other file. Do not edit the executor's artifacts or append discovery rows. The coordinator will commit your synthesis.
+
+Recover the intent, each axis's proposed and judged framing, objective result, all qualified constraint outcomes, every finding and the stated source/engineering limitations. Independently check the evidence relationships needed for your reading, including numerical-coverage claims, reference reconciliation, field demand versus capacity and component-accounting interpretation. Separate recorded facts, missing facts and your interpretations. Do not equate numerical agreement with independent physical validation.
+
+Write the native synthesis sections: what the study set out to do; what it found; the framing verdict per axis; the constraint structure; findings carried forward; and **What the record does not support**. Header identifies this fresh administrator, date and the snapshot SHA256 you actually read. Cite only paths inside the record directory. State any record-contract defect explicitly, with the fact a fresh administrator could not recover. Return your evidence-backed reading and any material defect to the coordinator; do not decide the owner-held goal close.

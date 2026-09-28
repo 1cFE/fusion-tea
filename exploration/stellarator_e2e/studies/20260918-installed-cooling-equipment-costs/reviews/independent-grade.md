@@ -1,0 +1,7 @@
+# Independent final grade: PASS, R7.S3
+
+Coordinator index of the non-author equipment_review assessment,2026-09-18. The actual unchanged review is captured in `../preparation/final-review-source.md`; original relative links in that captured source refer to its recorded origin, `work/orchestration/goals/installed-cooling-equipment-costs/evidence/round3/final-review-and-grade.md`. Its SHA256 is `db897072d31e1adfb8dc8d95d8c2f5eaf13384e1bdf48eb6d01c252621a2d429`.
+
+The reviewer applied the unchanged rubric revision dc0f0b6dc6512b29e1307da647f3a508a1f5356d and assigned R7.S=3. Principal equipment quantities, separate prices, installation, source applicability boundaries, spares, replacement and maintenance satisfy the scoped conceptual criterion. The reviewer independently checked all34 proposal/native input pairs, account sums and annual additions, matched economic changes, source installation denominators and selected dated replacement costs. The correction preserves all native failed conductor-current predicates; full and generic verification now pass.
+
+No technical must-fix remains. This verdict does not claim S4, pressure-qualified equipment, a complete installed-plant price, a physically feasible salt-conversion interface, a passing whole plant or an optimum. Source transfers, incomplete auxiliary/inventory scope and assumed service/outage schedules remain material limitations. Formal goal closure and comparison reveal/replacement are owner decisions. Final snapshot and commit assurance is a separate narrow coordinator/reviewer check after freeze.

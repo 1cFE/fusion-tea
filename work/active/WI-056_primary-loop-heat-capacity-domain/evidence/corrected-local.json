@@ -1,0 +1,246 @@
+{
+  "0.0/0.0/baseline": {
+    "outputs": [
+      8000000.0,
+      1.5,
+      0.0,
+      3.0,
+      773.15,
+      573.15,
+      0.0,
+      0.0,
+      0.0,
+      225.07777777777778,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "0.0/0.0/negative_pair": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/0.0/cp_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/0.0/cp_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/0.0/cp_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/0.0/cp_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/0.0/cp_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/0.0/dT_blanket_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/0.0/dT_blanket_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/0.0/dT_blanket_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/0.0/dT_blanket_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/0.0/dT_blanket_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/2101.7/baseline": {
+    "outputs": [
+      7451145.479837069,
+      1.5,
+      186.99906170332164,
+      3.0,
+      773.15,
+      555.3549710516894,
+      548854.5201629311,
+      224.8432719258831,
+      186.99906170332164,
+      0.23450585189468143,
+      2288.6990617033216,
+      2023.5894473329479,
+      1.0736604219644001
+    ]
+  },
+  "0.0/2101.7/negative_pair": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/2101.7/cp_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/2101.7/cp_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/2101.7/cp_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/2101.7/cp_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/2101.7/cp_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "0.0/2101.7/dT_blanket_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/2101.7/dT_blanket_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/2101.7/dT_blanket_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/2101.7/dT_blanket_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "0.0/2101.7/dT_blanket_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/0.0/baseline": {
+    "outputs": [
+      8000000.0,
+      1.5,
+      0.0,
+      3.0,
+      773.15,
+      573.15,
+      0.0,
+      0.0,
+      0.0,
+      225.07777777777778,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "1.0/0.0/negative_pair": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/0.0/cp_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/0.0/cp_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/0.0/cp_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/0.0/cp_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/0.0/cp_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/0.0/dT_blanket_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/0.0/dT_blanket_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/0.0/dT_blanket_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/0.0/dT_blanket_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/0.0/dT_blanket_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/2101.7/baseline": {
+    "outputs": [
+      7451145.479837069,
+      188.49906170332164,
+      186.99906170332164,
+      189.99906170332164,
+      773.15,
+      555.3549710516894,
+      548854.5201629311,
+      224.8432719258831,
+      186.99906170332164,
+      0.23450585189468143,
+      2288.6990617033216,
+      2023.5894473329479,
+      1.0736604219644001
+    ]
+  },
+  "1.0/2101.7/negative_pair": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/2101.7/cp_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/2101.7/cp_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/2101.7/cp_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/2101.7/cp_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/2101.7/cp_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: cp_in must be finite and positive"
+  },
+  "1.0/2101.7/dT_blanket_in_zero": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/2101.7/dT_blanket_in_negative": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/2101.7/dT_blanket_in_nan": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/2101.7/dT_blanket_in_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  },
+  "1.0/2101.7/dT_blanket_in_negative_inf": {
+    "error": "ValueError",
+    "message": "Primary Coolant Loop: dT_blanket_in must be finite and positive"
+  }
+}

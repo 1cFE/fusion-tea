@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_required_hot_ok__aa9057b8ce236e6b",
+  "margin": 83.30713080530029,
+  "observed": {
+    "margin_in": 83.30713080530029
+  },
+  "status": "satisfied"
+}

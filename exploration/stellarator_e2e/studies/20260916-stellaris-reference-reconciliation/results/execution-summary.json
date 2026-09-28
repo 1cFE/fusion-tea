@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-17T05:14:50.383896+00:00",
+  "finished_at_utc": "2026-09-17T05:15:00.798893+00:00",
+  "elapsed_seconds": 10.414997812360525,
+  "cases": 8,
+  "states": {
+    "completed": 8
+  },
+  "store": "results/study/_work/20260916-stellaris-reference-reconciliation.db",
+  "repo_revision": "d86e5b5746cfb498f59b66ed06059845b9ba1ebe"
+}

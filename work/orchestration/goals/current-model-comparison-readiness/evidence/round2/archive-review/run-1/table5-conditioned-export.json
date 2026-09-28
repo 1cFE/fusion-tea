@@ -1,0 +1,4549 @@
+{
+  "candidate_id": "current-comparison-fixed-point:c0000",
+  "conditioned_input_keys": [
+    "stellarator_09__stellaris__magnet__coil__I_coil",
+    "stellarator_09__stellaris__plasma__R",
+    "stellarator_09__stellaris__plasma__a",
+    "stellarator_09__stellaris__plasma__alpha_T",
+    "stellarator_09__stellaris__plasma__alpha_n",
+    "stellarator_09__stellaris__plasma__f_shape"
+  ],
+  "conditioned_input_roles": {
+    "stellarator_09__stellaris__magnet__coil__I_coil": "derived_from_supplied_field",
+    "stellarator_09__stellaris__plasma__R": "supplied",
+    "stellarator_09__stellaris__plasma__a": "supplied",
+    "stellarator_09__stellaris__plasma__alpha_T": "supplied",
+    "stellarator_09__stellaris__plasma__alpha_n": "supplied",
+    "stellarator_09__stellaris__plasma__f_shape": "derived_from_supplied_volume"
+  },
+  "conditioned_output_roles": {
+    "stellarator_09__stellaris__magnet__field_calc__B_axis": "supplied",
+    "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": "derived_from_supplied_field"
+  },
+  "conditioned_supplied_quantities": {
+    "axis_field": {
+      "independent_prediction_credit": false,
+      "role": "supplied",
+      "unit": "T",
+      "value": 9.0
+    },
+    "plasma_volume": {
+      "independent_prediction_credit": false,
+      "role": "supplied",
+      "unit": "m^3",
+      "value": 425.0
+    }
+  },
+  "constraints": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328": "satisfied",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9": "satisfied",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f": "satisfied",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722": "satisfied",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938": "satisfied",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b": "satisfied",
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": "satisfied",
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": "satisfied",
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": "satisfied",
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": "satisfied",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87": "satisfied",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444": "satisfied",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0": "violated",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "violated",
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339": "violated",
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+  },
+  "execution_status": "completed",
+  "held_fallback": true,
+  "missing_independent_inputs": [
+    "stellarator_09__stellaris__magnet__casing__interior_y",
+    "stellarator_09__stellaris__magnet__coil__I_coil",
+    "stellarator_09__stellaris__magnet__coil__coil_t",
+    "stellarator_09__stellaris__plasma__R",
+    "stellarator_09__stellaris__plasma__T_i0",
+    "stellarator_09__stellaris__plasma__a",
+    "stellarator_09__stellaris__plasma__n_e0"
+  ],
+  "quantities": [
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "subsystems",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "structural_evidence_required",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_order",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "structural_evidence_required",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "cas_coverage",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "structural_evidence_required",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": "supplied",
+      "id": "major_radius",
+      "independent_prediction_credit": false,
+      "model_value": 12.74,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__R"
+      ],
+      "raw_model_value": 12.74,
+      "reference_value": null,
+      "role_at_this_point": "supplied",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": "supplied",
+      "id": "minor_radius",
+      "independent_prediction_credit": false,
+      "model_value": 1.3,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a"
+      ],
+      "raw_model_value": 1.3,
+      "reference_value": null,
+      "role_at_this_point": "supplied",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_sol",
+      "independent_prediction_credit": false,
+      "model_value": 0.1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t"
+      ],
+      "raw_model_value": 0.1,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_sol",
+      "independent_prediction_credit": false,
+      "model_value": 1.4000000000000001,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t"
+      ],
+      "raw_model_value": 1.4000000000000001,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_first_wall",
+      "independent_prediction_credit": false,
+      "model_value": 0.05,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t"
+      ],
+      "raw_model_value": 0.05,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_first_wall",
+      "independent_prediction_credit": false,
+      "model_value": 1.45,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t"
+      ],
+      "raw_model_value": 1.45,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_blanket",
+      "independent_prediction_credit": false,
+      "model_value": 0.8,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__blanket_t"
+      ],
+      "raw_model_value": 0.8,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_blanket",
+      "independent_prediction_credit": false,
+      "model_value": 2.25,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t"
+      ],
+      "raw_model_value": 2.25,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_reflector",
+      "independent_prediction_credit": false,
+      "model_value": 0.2,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__reflector_t"
+      ],
+      "raw_model_value": 0.2,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_reflector",
+      "independent_prediction_credit": false,
+      "model_value": 2.45,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t"
+      ],
+      "raw_model_value": 2.45,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_hot_shield",
+      "independent_prediction_credit": false,
+      "model_value": 0.2,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__shield__ht_shield_t"
+      ],
+      "raw_model_value": 0.2,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_hot_shield",
+      "independent_prediction_credit": false,
+      "model_value": 2.65,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t"
+      ],
+      "raw_model_value": 2.65,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_structure",
+      "independent_prediction_credit": false,
+      "model_value": 0.15,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__structure__structure_t"
+      ],
+      "raw_model_value": 0.15,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_structure",
+      "independent_prediction_credit": false,
+      "model_value": 2.8000000000000003,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t"
+      ],
+      "raw_model_value": 2.8000000000000003,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_vessel_gap",
+      "independent_prediction_credit": false,
+      "model_value": 0.1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__vessel__gap1_t"
+      ],
+      "raw_model_value": 0.1,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_vessel_gap",
+      "independent_prediction_credit": false,
+      "model_value": 2.9,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t"
+      ],
+      "raw_model_value": 2.9,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_vessel",
+      "independent_prediction_credit": false,
+      "model_value": 0.1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__vessel__vessel_t"
+      ],
+      "raw_model_value": 0.1,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_vessel",
+      "independent_prediction_credit": false,
+      "model_value": 3.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t"
+      ],
+      "raw_model_value": 3.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_coil",
+      "independent_prediction_credit": false,
+      "model_value": 0.3,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__coil__coil_t"
+      ],
+      "raw_model_value": 0.3,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_coil",
+      "independent_prediction_credit": false,
+      "model_value": 3.3000000000000003,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t",
+        "stellarator_09__stellaris__magnet__coil__coil_t"
+      ],
+      "raw_model_value": 3.3000000000000003,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_coil_gap",
+      "independent_prediction_credit": false,
+      "model_value": 0.1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__gap2_t"
+      ],
+      "raw_model_value": 0.1,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_coil_gap",
+      "independent_prediction_credit": false,
+      "model_value": 3.4,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t",
+        "stellarator_09__stellaris__magnet__coil__coil_t",
+        "stellarator_09__stellaris__magnet__gap2_t"
+      ],
+      "raw_model_value": 3.4,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "thickness_cold_shield",
+      "independent_prediction_credit": false,
+      "model_value": 0.15,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__shield__lt_shield_t"
+      ],
+      "raw_model_value": 0.15,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outer_radius_cold_shield",
+      "independent_prediction_credit": false,
+      "model_value": 3.5500000000000003,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__a",
+        "stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "stellarator_09__stellaris__blanket__blanket_t",
+        "stellarator_09__stellaris__blanket__reflector_t",
+        "stellarator_09__stellaris__shield__ht_shield_t",
+        "stellarator_09__stellaris__structure__structure_t",
+        "stellarator_09__stellaris__vessel__gap1_t",
+        "stellarator_09__stellaris__vessel__vessel_t",
+        "stellarator_09__stellaris__magnet__coil__coil_t",
+        "stellarator_09__stellaris__magnet__gap2_t",
+        "stellarator_09__stellaris__shield__lt_shield_t"
+      ],
+      "raw_model_value": 3.5500000000000003,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_wall_area",
+      "independent_prediction_credit": false,
+      "model_value": 704.1370563913179,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__wall_area"
+      ],
+      "raw_model_value": 704.1370563913179,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m2"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_shield_vol",
+      "independent_prediction_credit": false,
+      "model_value": 518.6723852882476,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__shield_vol"
+      ],
+      "raw_model_value": 518.6723852882476,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m3"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_structure_vol",
+      "independent_prediction_credit": false,
+      "model_value": 205.58287271425078,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__structure_vol"
+      ],
+      "raw_model_value": 205.58287271425078,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m3"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_r_coil_centre",
+      "independent_prediction_credit": false,
+      "model_value": 3.1500000000000004,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__r_coil_centre"
+      ],
+      "raw_model_value": 3.1500000000000004,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_r_coil",
+      "independent_prediction_credit": false,
+      "model_value": 3.0000000000000004,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__r_coil"
+      ],
+      "raw_model_value": 3.0000000000000004,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_blanket_vol",
+      "independent_prediction_credit": false,
+      "model_value": 1016.5978751649652,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__blanket_vol"
+      ],
+      "raw_model_value": 1016.5978751649652,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m3"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radial_vessel_vol",
+      "independent_prediction_credit": false,
+      "model_value": 148.37173688245664,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__rb__vessel_vol"
+      ],
+      "raw_model_value": 148.37173688245664,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m3"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "mass_copper",
+      "independent_prediction_credit": false,
+      "model_value": 903083.5210012587,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_copper"
+      ],
+      "raw_model_value": 903083.5210012587,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "mass_solder",
+      "independent_prediction_credit": false,
+      "model_value": 290579.8941975287,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_solder"
+      ],
+      "raw_model_value": 290579.8941975287,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "mass_steel",
+      "independent_prediction_credit": false,
+      "model_value": 831217.8141526448,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_steel"
+      ],
+      "raw_model_value": 831217.8141526448,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "mass_helium",
+      "independent_prediction_credit": false,
+      "model_value": 833.6462991830392,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__mass_helium"
+      ],
+      "raw_model_value": 833.6462991830392,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "casing_mass",
+      "independent_prediction_credit": false,
+      "model_value": 63154.71810042903,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__casing_mass__m_casing"
+      ],
+      "raw_model_value": 63154.71810042903,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "support_mass",
+      "independent_prediction_credit": false,
+      "model_value": 11644130.581954248,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__support_mass__m_support"
+      ],
+      "raw_model_value": 11644130.581954248,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg"
+    },
+    {
+      "applicability": "unresolved",
+      "conditioning": null,
+      "id": "coil_mass_complete",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "not_produced",
+      "unit": "kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "vol_winding_pack",
+      "independent_prediction_credit": false,
+      "model_value": 288.61729658077945,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack"
+      ],
+      "raw_model_value": 288.61729658077945,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m3"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "vol_cold_total",
+      "independent_prediction_credit": false,
+      "model_value": 288.61729658077945,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total"
+      ],
+      "raw_model_value": 288.61729658077945,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m3"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_pack_x",
+      "independent_prediction_credit": false,
+      "model_value": 0.523361683675429,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__pack_x"
+      ],
+      "raw_model_value": 0.523361683675429,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_pack_y",
+      "independent_prediction_credit": false,
+      "model_value": 0.5364457257673148,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__pack_y"
+      ],
+      "raw_model_value": 0.5364457257673148,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_required_x",
+      "independent_prediction_credit": false,
+      "model_value": 0.533361683675429,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__required_x"
+      ],
+      "raw_model_value": 0.533361683675429,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_required_y",
+      "independent_prediction_credit": false,
+      "model_value": 0.5464457257673148,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__required_y"
+      ],
+      "raw_model_value": 0.5464457257673148,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_cavity_x",
+      "independent_prediction_credit": false,
+      "model_value": 0.25,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__cavity_x"
+      ],
+      "raw_model_value": 0.25,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_cavity_y",
+      "independent_prediction_credit": false,
+      "model_value": 0.4,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__cavity_y"
+      ],
+      "raw_model_value": 0.4,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_exterior_x",
+      "independent_prediction_credit": false,
+      "model_value": 0.3,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__exterior_x"
+      ],
+      "raw_model_value": 0.3,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_exterior_y",
+      "independent_prediction_credit": false,
+      "model_value": 0.45,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__exterior_y"
+      ],
+      "raw_model_value": 0.45,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_margin_x",
+      "independent_prediction_credit": false,
+      "model_value": -0.283361683675429,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__margin_x"
+      ],
+      "raw_model_value": -0.283361683675429,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fit_margin_y",
+      "independent_prediction_credit": false,
+      "model_value": -0.14644572576731474,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__wp_fit__margin_y"
+      ],
+      "raw_model_value": -0.14644572576731474,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "m"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "p_th",
+      "independent_prediction_credit": false,
+      "model_value": 3234.3793969151698,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__p_th"
+      ],
+      "raw_model_value": 3234.3793969151698,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "p_the",
+      "independent_prediction_credit": false,
+      "model_value": 1193.2474382846854,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__p_the"
+      ],
+      "raw_model_value": 1193.2474382846854,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "p_et",
+      "independent_prediction_credit": false,
+      "model_value": 1193.2474382846854,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__p_et"
+      ],
+      "raw_model_value": 1193.2474382846854,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "p_net",
+      "independent_prediction_credit": false,
+      "model_value": 844.788453332815,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__p_net"
+      ],
+      "raw_model_value": 844.788453332815,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "rec_frac",
+      "independent_prediction_credit": false,
+      "model_value": 0.29202575574164774,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__rec_frac"
+      ],
+      "raw_model_value": 0.29202575574164774,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "q_eng",
+      "independent_prediction_credit": false,
+      "model_value": 3.424355490358494,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__q_eng"
+      ],
+      "raw_model_value": 3.424355490358494,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "recirculating_power",
+      "independent_prediction_credit": false,
+      "model_value": 348.4589849518703,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__pb__p_et",
+        "stellarator_09__stellaris__pb__p_net"
+      ],
+      "raw_model_value": 348.4589849518703,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fusion",
+      "independent_prediction_credit": false,
+      "model_value": 2603.4033373840975,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__plasma__fusion__p_fus"
+      ],
+      "raw_model_value": 2603.4033373840975,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "source_heat",
+      "independent_prediction_credit": false,
+      "model_value": 3063.83320798278,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__source_heat__q_source"
+      ],
+      "raw_model_value": 3063.83320798278,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "operating_wallplug",
+      "independent_prediction_credit": false,
+      "model_value": 88.00761551772018,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__operating_heat__p_wallplug"
+      ],
+      "raw_model_value": 88.00761551772018,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "operating_coupled",
+      "independent_prediction_credit": false,
+      "model_value": 44.00380775886009,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__operating_heat__p_coupled"
+      ],
+      "raw_model_value": 44.00380775886009,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "installed_wallplug",
+      "independent_prediction_credit": false,
+      "model_value": 100.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating__heat__p_wallplug_total"
+      ],
+      "raw_model_value": 100.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "installed_coupled",
+      "independent_prediction_credit": false,
+      "model_value": 50.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating__heat__p_coupled"
+      ],
+      "raw_model_value": 50.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "pump_electric",
+      "independent_prediction_credit": false,
+      "model_value": 164.9947559711432,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_transport__primary_loop__p_elec"
+      ],
+      "raw_model_value": 164.9947559711432,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "recovered_heat",
+      "independent_prediction_credit": false,
+      "model_value": 164.9947559711432,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total"
+      ],
+      "raw_model_value": 164.9947559711432,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "ihx_duty",
+      "independent_prediction_credit": false,
+      "model_value": 3228.8279639539232,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_transport__primary_loop__q_ihx"
+      ],
+      "raw_model_value": 3228.8279639539232,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "refrigeration",
+      "independent_prediction_credit": false,
+      "model_value": 2.5335692982055362,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cryoplant__refrigeration_sum__total"
+      ],
+      "raw_model_value": 2.5335692982055362,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "target_deposited",
+      "independent_prediction_credit": false,
+      "model_value": 53.3753637610982,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__divertor__divheat__p_target_deposited"
+      ],
+      "raw_model_value": 53.3753637610982,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "radiated_total",
+      "independent_prediction_credit": false,
+      "model_value": 485.2305796463474,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__divertor__divheat__p_rad_total"
+      ],
+      "raw_model_value": 485.2305796463474,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "nonrad_uncaptured",
+      "independent_prediction_credit": false,
+      "model_value": 0.5391450884959426,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__divertor__divheat__p_nonrad_uncaptured"
+      ],
+      "raw_model_value": 0.5391450884959426,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220103",
+      "independent_prediction_credit": false,
+      "model_value": 2543147112.3143926,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost"
+      ],
+      "raw_model_value": 2543147112.3143926,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220101",
+      "independent_prediction_credit": false,
+      "model_value": 711886930.6853534,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__blanket_cost__cost"
+      ],
+      "raw_model_value": 711886930.6853534,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220102",
+      "independent_prediction_credit": false,
+      "model_value": 447956061.82581764,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__shield__shield_cost__cost"
+      ],
+      "raw_model_value": 447956061.82581764,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220105",
+      "independent_prediction_credit": false,
+      "model_value": 32117897.087544218,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__structure__structure_cost__cost"
+      ],
+      "raw_model_value": 32117897.087544218,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220106",
+      "independent_prediction_credit": false,
+      "model_value": 112172493.10088828,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__vessel__vessel_cost__cost"
+      ],
+      "raw_model_value": 112172493.10088828,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220104",
+      "independent_prediction_credit": false,
+      "model_value": 264145000.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating__heating_cost__cost"
+      ],
+      "raw_model_value": 264145000.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220107",
+      "independent_prediction_credit": false,
+      "model_value": 84688894.71136011,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost"
+      ],
+      "raw_model_value": 84688894.71136011,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220108",
+      "independent_prediction_credit": false,
+      "model_value": 107906282.62012649,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__divertor__divertor_cost__cost"
+      ],
+      "raw_model_value": 107906282.62012649,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220110",
+      "independent_prediction_credit": false,
+      "model_value": 156228467.20400867,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__remote_handling__cost"
+      ],
+      "raw_model_value": 156228467.20400867,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "C220111",
+      "independent_prediction_credit": false,
+      "model_value": 624434879.5369289,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__installation__cost"
+      ],
+      "raw_model_value": 624434879.5369289,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "coolant",
+      "independent_prediction_credit": false,
+      "model_value": 6465308062.961268,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_transport__cooling_selection__cost"
+      ],
+      "raw_model_value": 6465308062.961268,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "aux_cooling_total",
+      "independent_prediction_credit": false,
+      "model_value": 39011231.875834435,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cryoplant__aux_cooling__cost"
+      ],
+      "raw_model_value": 39011231.875834435,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "waste",
+      "independent_prediction_credit": false,
+      "model_value": 6339383.617953733,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__waste__cost"
+      ],
+      "raw_model_value": 6339383.617953733,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "fuel_handling",
+      "independent_prediction_credit": false,
+      "model_value": 22658709.809438117,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__cost"
+      ],
+      "raw_model_value": 22658709.809438117,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "other_rpe",
+      "independent_prediction_credit": false,
+      "model_value": 10048383.824859917,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__other_rpe__cost"
+      ],
+      "raw_model_value": 10048383.824859917,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "instrumentation",
+      "independent_prediction_credit": false,
+      "model_value": 80749310.39268985,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__inc_cost__cost"
+      ],
+      "raw_model_value": 80749310.39268985,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS21",
+      "independent_prediction_credit": false,
+      "model_value": 800020255.2136705,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__buildings__facility_accounts__cost"
+      ],
+      "raw_model_value": 800020255.2136705,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS23",
+      "independent_prediction_credit": false,
+      "model_value": 242038310.3816656,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__turbine_cost__cost"
+      ],
+      "raw_model_value": 242038310.3816656,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS24",
+      "independent_prediction_credit": false,
+      "model_value": 103096578.66779682,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__electric_plant__electric_cost__cost"
+      ],
+      "raw_model_value": 103096578.66779682,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS25",
+      "independent_prediction_credit": false,
+      "model_value": 113397341.65584585,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost"
+      ],
+      "raw_model_value": 113397341.65584585,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS26",
+      "independent_prediction_credit": false,
+      "model_value": 62752882.7793916,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__misc_plant__misc_cost__cost"
+      ],
+      "raw_model_value": 62752882.7793916,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS27",
+      "independent_prediction_credit": false,
+      "model_value": 23890050.066376682,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__special_materials_capital__special_materials_capital"
+      ],
+      "raw_model_value": 23890050.066376682,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS28",
+      "independent_prediction_credit": false,
+      "model_value": 5000000.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas28_capital"
+      ],
+      "raw_model_value": 5000000.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS29",
+      "independent_prediction_credit": false,
+      "model_value": 1305899452.0333214,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__contingency__cost"
+      ],
+      "raw_model_value": 1305899452.0333214,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS30",
+      "independent_prediction_credit": false,
+      "model_value": 3830638392.6310754,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__indirect__cost"
+      ],
+      "raw_model_value": 3830638392.6310754,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS10",
+      "independent_prediction_credit": false,
+      "model_value": 16901651.819865726,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__facility_preconstruction__cost"
+      ],
+      "raw_model_value": 16901651.819865726,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS40",
+      "independent_prediction_credit": false,
+      "model_value": 37867898.175436854,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__owner__cost"
+      ],
+      "raw_model_value": 37867898.175436854,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS50",
+      "independent_prediction_credit": false,
+      "model_value": 822030413.6735392,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__supplementary__cost"
+      ],
+      "raw_model_value": 822030413.6735392,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS60",
+      "independent_prediction_credit": false,
+      "model_value": 5387463199.208169,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__idc__cost"
+      ],
+      "raw_model_value": 5387463199.208169,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "powercore",
+      "independent_prediction_credit": false,
+      "model_value": 4304020672.345483,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__powercore_capital__powercore_capital"
+      ],
+      "raw_model_value": 4304020672.345483,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "reactor_equipment",
+      "independent_prediction_credit": false,
+      "model_value": 4460249139.549492,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal"
+      ],
+      "raw_model_value": 4460249139.549492,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS22",
+      "independent_prediction_credit": false,
+      "model_value": 11708799101.568466,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas22_capital__cas22_capital"
+      ],
+      "raw_model_value": 11708799101.568466,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "BOP",
+      "independent_prediction_credit": false,
+      "model_value": 521285113.4846999,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__bop_capital__bop_capital"
+      ],
+      "raw_model_value": 521285113.4846999,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS2x",
+      "independent_prediction_credit": false,
+      "model_value": 13058994520.333212,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency"
+      ],
+      "raw_model_value": 13058994520.333212,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS20",
+      "independent_prediction_credit": false,
+      "model_value": 14364893972.366533,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas20_capital__cas20_capital"
+      ],
+      "raw_model_value": 14364893972.366533,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "overnight",
+      "independent_prediction_credit": false,
+      "model_value": 19072332328.66645,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__overnight_capital__overnight_capital"
+      ],
+      "raw_model_value": 19072332328.66645,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "total_capital",
+      "independent_prediction_credit": false,
+      "model_value": 19072332328.66645,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__total_capital__total_capital"
+      ],
+      "raw_model_value": 19072332328.66645,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "non_tape_materials",
+      "independent_prediction_credit": false,
+      "model_value": 33720013.82085919,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__material_cost"
+      ],
+      "raw_model_value": 33720013.82085919,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "tape_procurement",
+      "independent_prediction_credit": false,
+      "model_value": 1546164088.825605,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__winding_procurement__tape_cost"
+      ],
+      "raw_model_value": 1546164088.825605,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "winding_operations",
+      "independent_prediction_credit": false,
+      "model_value": 752778603.7600085,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost"
+      ],
+      "raw_model_value": 752778603.7600085,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "winding_procurement",
+      "independent_prediction_credit": false,
+      "model_value": 2332662706.4064727,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__winding_procurement__cost"
+      ],
+      "raw_model_value": 2332662706.4064727,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "insulation_stock",
+      "independent_prediction_credit": false,
+      "model_value": 890055.4327435713,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__insulation_inventory__stock_cost"
+      ],
+      "raw_model_value": 890055.4327435713,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "supports_cost",
+      "independent_prediction_credit": false,
+      "model_value": 209594350.47517645,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__magnet_structure_cost__cost"
+      ],
+      "raw_model_value": 209594350.47517645,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "cryo_cost",
+      "independent_prediction_credit": false,
+      "model_value": 35453414.53922775,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost"
+      ],
+      "raw_model_value": 35453414.53922775,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "aux_cooling",
+      "independent_prediction_credit": false,
+      "model_value": 3557817.336606687,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cryoplant__aux_cooling__aux_cost"
+      ],
+      "raw_model_value": 3557817.336606687,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "copper_cost",
+      "independent_prediction_credit": false,
+      "model_value": 9933918.731013846,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__cost_copper"
+      ],
+      "raw_model_value": 9933918.731013846,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "solder_cost",
+      "independent_prediction_credit": false,
+      "model_value": 18725293.609753102,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__cost_solder"
+      ],
+      "raw_model_value": 18725293.609753102,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "steel_cost",
+      "independent_prediction_credit": false,
+      "model_value": 4987306.884915869,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__cost_steel"
+      ],
+      "raw_model_value": 4987306.884915869,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "helium_cost",
+      "independent_prediction_credit": false,
+      "model_value": 73494.5951763714,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__material_inventory__cost_helium"
+      ],
+      "raw_model_value": 73494.5951763714,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD"
+    },
+    {
+      "applicability": "unresolved",
+      "conditioning": null,
+      "id": "manufacturing_remainder",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "not_produced",
+      "unit": "USD"
+    },
+    {
+      "applicability": "unresolved",
+      "conditioning": null,
+      "id": "additional_loop_installed",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "not_produced",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS71",
+      "independent_prediction_credit": false,
+      "model_value": 72620215.27673745,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas71_calc__levelized"
+      ],
+      "raw_model_value": 72620215.27673745,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS72",
+      "independent_prediction_credit": false,
+      "model_value": 189989510.73998863,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cooling_annual__cas72_total"
+      ],
+      "raw_model_value": 189989510.73998863,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS70",
+      "independent_prediction_credit": false,
+      "model_value": 262609726.01672608,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas70_calc__cas70"
+      ],
+      "raw_model_value": 262609726.01672608,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS80",
+      "independent_prediction_credit": false,
+      "model_value": 777818.4609695377,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas80_calc__levelized"
+      ],
+      "raw_model_value": 777818.4609695377,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "annual_total",
+      "independent_prediction_credit": false,
+      "model_value": 263387544.4776956,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas70_calc__annual_total"
+      ],
+      "raw_model_value": 263387544.4776956,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "CAS90_1cfe",
+      "independent_prediction_credit": false,
+      "model_value": 1971126952.2085772,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90"
+      ],
+      "raw_model_value": 1971126952.2085772,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "raw_om",
+      "independent_prediction_credit": false,
+      "model_value": 50459893.44251173,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__om_cost__annual_om"
+      ],
+      "raw_model_value": 50459893.44251173,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "raw_fuel",
+      "independent_prediction_credit": false,
+      "model_value": 540509.764689133,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel"
+      ],
+      "raw_model_value": 540509.764689133,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "lcoe_dcf",
+      "independent_prediction_credit": false,
+      "model_value": 340.9799940962989,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__lcoe_calc__lcoe"
+      ],
+      "raw_model_value": 340.9799940962989,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/MWh"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "lcoe_1cfe",
+      "independent_prediction_credit": false,
+      "model_value": 334.4646635051293,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe"
+      ],
+      "raw_model_value": 334.4646635051293,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "USD/MWh"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "achieved_tbr",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__blanket__breeding__tbr_mean"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "coil_life",
+      "independent_prediction_credit": false,
+      "model_value": 10.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__coil__coil_life_fpy"
+      ],
+      "raw_model_value": 10.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "FPY"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "discount_rate",
+      "independent_prediction_credit": false,
+      "model_value": 0.07,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__discount_rate"
+      ],
+      "raw_model_value": 0.07,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "escalation",
+      "independent_prediction_credit": false,
+      "model_value": 0.02,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__inflation_rate"
+      ],
+      "raw_model_value": 0.02,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "construction",
+      "independent_prediction_credit": false,
+      "model_value": 8.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__construction_years"
+      ],
+      "raw_model_value": 8.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "operating_life",
+      "independent_prediction_credit": false,
+      "model_value": 30.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__operational_years"
+      ],
+      "raw_model_value": 30.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "modules",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__n_mod"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "outage",
+      "independent_prediction_credit": false,
+      "model_value": 0.5833333333333334,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__outage_years"
+      ],
+      "raw_model_value": 0.5833333333333334,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "year"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "unplanned",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__unplanned_fraction"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "held",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "required_tbr",
+      "independent_prediction_credit": false,
+      "model_value": 1.1913008372734004,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required"
+      ],
+      "raw_model_value": 1.1913008372734004,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "tbr_margin",
+      "independent_prediction_credit": false,
+      "model_value": -1.1913008372734004,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin"
+      ],
+      "raw_model_value": -1.1913008372734004,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "coil_life_margin",
+      "independent_prediction_credit": false,
+      "model_value": -17.083333333333336,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__calendar__coil_life_margin_fpy"
+      ],
+      "raw_model_value": -17.083333333333336,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "FPY"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "availability",
+      "independent_prediction_credit": false,
+      "model_value": 0.9027777777777779,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__calendar__availability"
+      ],
+      "raw_model_value": 0.9027777777777779,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "productive_fpy",
+      "independent_prediction_credit": false,
+      "model_value": 27.083333333333336,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__calendar__productive_fpy"
+      ],
+      "raw_model_value": 27.083333333333336,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "FPY"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": "derived_from_supplied_field",
+      "id": "peak_field",
+      "independent_prediction_credit": false,
+      "model_value": 24.874239898844756,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak"
+      ],
+      "raw_model_value": 24.874239898844756,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "T"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "target_peak",
+      "independent_prediction_credit": false,
+      "model_value": 10.243756681422887,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__divertor__divheat__q_target_peak"
+      ],
+      "raw_model_value": 10.243756681422887,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW/m2"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "loop_flow",
+      "independent_prediction_credit": false,
+      "model_value": 210.711755383812,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop"
+      ],
+      "raw_model_value": 210.711755383812,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "loop_pressure_drop",
+      "independent_prediction_credit": false,
+      "model_value": 288506.24209077266,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_transport__primary_loop__dp_loop"
+      ],
+      "raw_model_value": 288506.24209077266,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "Pa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_wp_stress_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_cond_strain_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_recirc_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_cycle_domain_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_beta_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_heating_couple_positive_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_divertor_heat_ok",
+      "independent_prediction_credit": false,
+      "model_value": 0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation"
+      ],
+      "raw_model_value": 0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_heating_source_upper_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_net_positive",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_burn_hold_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_wall_load_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_tbr_ok",
+      "independent_prediction_credit": false,
+      "model_value": 0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation"
+      ],
+      "raw_model_value": 0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_heating_couple_upper_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_peak_field_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_reference_conductor_current_ok",
+      "independent_prediction_credit": false,
+      "model_value": 0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0__evaluation"
+      ],
+      "raw_model_value": 0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_sustainment_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_loop_capacity_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_wp_fit_ok",
+      "independent_prediction_credit": false,
+      "model_value": 0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation"
+      ],
+      "raw_model_value": 0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_heating_source_positive_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "constraint_loop_pressure_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "unresolved",
+      "conditioning": null,
+      "id": "vacuum_pumping_cost",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "not_produced",
+      "unit": "USD"
+    },
+    {
+      "applicability": "unresolved",
+      "conditioning": null,
+      "id": "C220109",
+      "independent_prediction_credit": false,
+      "model_value": null,
+      "prediction_availability": "active",
+      "producers": [],
+      "raw_model_value": null,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "not_produced",
+      "unit": "USD"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "facility_capacity_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "facility_outage_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "facility_routes_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "facility_replacement_ready",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "facility_initial_ready",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "cooling_water_heat_direction",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "matched_main_heat_direction",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "matched_reheat_heat_direction",
+      "independent_prediction_credit": false,
+      "model_value": 1,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation"
+      ],
+      "raw_model_value": 1,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__active",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__active"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__condenser_water_gap_K",
+      "independent_prediction_credit": false,
+      "model_value": 7.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__condenser_water_gap_K"
+      ],
+      "raw_model_value": 7.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "K"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__cooling_approach_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__cooling_approach_ok"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__denominator_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 41.54657026315789,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__denominator_kJ_kg"
+      ],
+      "raw_model_value": 41.54657026315789,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__p_cooling_pump_electric_MW",
+      "independent_prediction_credit": false,
+      "model_value": 12.7376225875141,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_electric_MW"
+      ],
+      "raw_model_value": 12.7376225875141,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__p_cooling_pump_shaft_MW",
+      "independent_prediction_credit": false,
+      "model_value": 12.100741458138392,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_shaft_MW"
+      ],
+      "raw_model_value": 12.100741458138392,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__q_cooling_motor_loss_MW",
+      "independent_prediction_credit": false,
+      "model_value": 0.6368811293757073,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__q_cooling_motor_loss_MW"
+      ],
+      "raw_model_value": 0.6368811293757073,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__q_total_rejection_MW",
+      "independent_prediction_credit": false,
+      "model_value": 2063.363698676105,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__q_total_rejection_MW"
+      ],
+      "raw_model_value": 2063.363698676105,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__reference_scenario",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__reference_scenario"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__site_qualified",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__site_qualified"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__water_energy_residual_MW",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__water_energy_residual_MW"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__water_flow_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 49357.28901567159,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__water_flow_kg_s"
+      ],
+      "raw_model_value": 49357.28901567159,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "heat_rejection__cooling_water__water_pump_rise_K",
+      "independent_prediction_credit": false,
+      "model_value": 0.06173231891055762,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__heat_rejection__cooling_water__water_pump_rise_K"
+      ],
+      "raw_model_value": 0.06173231891055762,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "K"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__cycle_selection__eta_selected",
+      "independent_prediction_credit": false,
+      "model_value": 0.368926242673559,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__cycle_selection__eta_selected"
+      ],
+      "raw_model_value": 0.368926242673559,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__cycle_selection__legacy_domain_applicable",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__cycle_selection__legacy_domain_applicable"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__cycle_selection__matched_domain_applicable",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__cycle_selection__matched_domain_applicable"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__active",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__active"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__bleed_fraction",
+      "independent_prediction_credit": false,
+      "model_value": 0.20500966665692555,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__bleed_fraction"
+      ],
+      "raw_model_value": 0.20500966665692555,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__cycle_electric_residual_MW",
+      "independent_prediction_credit": false,
+      "model_value": 9.094947017729282e-13,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__cycle_electric_residual_MW"
+      ],
+      "raw_model_value": 9.094947017729282e-13,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__cycle_shaft_residual_MW",
+      "independent_prediction_credit": false,
+      "model_value": 9.094947017729282e-13,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__cycle_shaft_residual_MW"
+      ],
+      "raw_model_value": 9.094947017729282e-13,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__eta_gross",
+      "independent_prediction_credit": false,
+      "model_value": 0.368926242673559,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__eta_gross"
+      ],
+      "raw_model_value": 0.368926242673559,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_condensate_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 175.89327,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_condensate_kJ_kg"
+      ],
+      "raw_model_value": 175.89327,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_condensate_pumped_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 176.89159778430147,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_condensate_pumped_kJ_kg"
+      ],
+      "raw_model_value": 176.89159778430147,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_feed_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 728.3884893,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_feed_kJ_kg"
+      ],
+      "raw_model_value": 728.3884893,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_heater_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 720.8637,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_heater_kJ_kg"
+      ],
+      "raw_model_value": 720.8637,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_hp_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 2830.288928194147,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_hp_kJ_kg"
+      ],
+      "raw_model_value": 2830.288928194147,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_lp_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 2511.792422476057,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_lp_kJ_kg"
+      ],
+      "raw_model_value": 2511.792422476057,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_main_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 3287.7317,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_main_kJ_kg"
+      ],
+      "raw_model_value": 3287.7317,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__h_reheat_kJ_kg",
+      "independent_prediction_credit": false,
+      "model_value": 3363.213668490404,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__h_reheat_kJ_kg"
+      ],
+      "raw_model_value": 3363.213668490404,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/kg"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__heater_energy_residual_MW",
+      "independent_prediction_credit": false,
+      "model_value": 1.1641532182693482e-13,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__heater_energy_residual_MW"
+      ],
+      "raw_model_value": 1.1641532182693482e-13,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__heater_mass_residual_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__installed_sg_capacity_qualified",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__installed_sg_capacity_qualified"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__lp_moisture_fraction",
+      "independent_prediction_credit": false,
+      "model_value": 0.027190644596582714,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__lp_moisture_fraction"
+      ],
+      "raw_model_value": 0.027190644596582714,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__lp_quality",
+      "independent_prediction_credit": false,
+      "model_value": 0.9728093554034173,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__lp_quality"
+      ],
+      "raw_model_value": 0.9728093554034173,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__main_UA_MW_K",
+      "independent_prediction_credit": false,
+      "model_value": 40.17374614798719,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__main_UA_MW_K"
+      ],
+      "raw_model_value": 40.17374614798719,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW/K"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__main_UA_available",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__main_UA_available"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__main_admission_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__main_admission_ok"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__main_min_gap_K",
+      "independent_prediction_credit": false,
+      "model_value": 20.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__main_min_gap_K"
+      ],
+      "raw_model_value": 20.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "K"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_bleed_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 222.28498213175362,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_bleed_kg_s"
+      ],
+      "raw_model_value": 222.28498213175362,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_condensate_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 861.9808759447708,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_kg_s"
+      ],
+      "raw_model_value": 861.9808759447708,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_condensate_pumped_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 861.9808759447708,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_pumped_kg_s"
+      ],
+      "raw_model_value": 861.9808759447708,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_feed_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 1084.2658580765244,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_feed_kg_s"
+      ],
+      "raw_model_value": 1084.2658580765244,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_heater_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 1084.2658580765244,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_heater_kg_s"
+      ],
+      "raw_model_value": 1084.2658580765244,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_hp_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 1084.2658580765244,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_hp_kg_s"
+      ],
+      "raw_model_value": 1084.2658580765244,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_lp_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 861.9808759447708,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_lp_kg_s"
+      ],
+      "raw_model_value": 861.9808759447708,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_main_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 1084.2658580765244,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_main_kg_s"
+      ],
+      "raw_model_value": 1084.2658580765244,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__mdot_reheat_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 861.9808759447708,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__mdot_reheat_kg_s"
+      ],
+      "raw_model_value": 861.9808759447708,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_condensate_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 0.0082095634,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_MPa"
+      ],
+      "raw_model_value": 0.0082095634,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_condensate_electric_MW",
+      "independent_prediction_credit": false,
+      "model_value": 0.9058310084128112,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_electric_MW"
+      ],
+      "raw_model_value": 0.9058310084128112,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_condensate_pumped_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 0.8,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_pumped_MPa"
+      ],
+      "raw_model_value": 0.8,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_condensate_shaft_MW",
+      "independent_prediction_credit": false,
+      "model_value": 0.8605394579921706,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_shaft_MW"
+      ],
+      "raw_model_value": 0.8605394579921706,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_cycle_net_before_cooling_MW",
+      "independent_prediction_credit": false,
+      "model_value": 1183.7533208265781,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_cycle_net_before_cooling_MW"
+      ],
+      "raw_model_value": 1183.7533208265781,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_cycle_pumps_MW",
+      "independent_prediction_credit": false,
+      "model_value": 9.494117458107075,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_cycle_pumps_MW"
+      ],
+      "raw_model_value": 9.494117458107075,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_feed_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 6.2,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_feed_MPa"
+      ],
+      "raw_model_value": 6.2,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_feedwater_electric_MW",
+      "independent_prediction_credit": false,
+      "model_value": 8.588286449694264,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_electric_MW"
+      ],
+      "raw_model_value": 8.588286449694264,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_feedwater_shaft_MW",
+      "independent_prediction_credit": false,
+      "model_value": 8.15887212720955,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_shaft_MW"
+      ],
+      "raw_model_value": 8.15887212720955,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_gross_MW",
+      "independent_prediction_credit": false,
+      "model_value": 1193.2474382846854,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_gross_MW"
+      ],
+      "raw_model_value": 1193.2474382846854,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_heater_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 0.8,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_heater_MPa"
+      ],
+      "raw_model_value": 0.8,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_hp_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 0.8,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_hp_MPa"
+      ],
+      "raw_model_value": 0.8,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_hp_shaft_MW",
+      "independent_prediction_credit": false,
+      "model_value": 495.9895794929767,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_hp_shaft_MW"
+      ],
+      "raw_model_value": 495.9895794929767,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_lp_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 0.0082095634,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_lp_MPa"
+      ],
+      "raw_model_value": 0.0082095634,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_lp_shaft_MW",
+      "independent_prediction_credit": false,
+      "model_value": 733.9088314374351,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_lp_shaft_MW"
+      ],
+      "raw_model_value": 733.9088314374351,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_main_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 6.2,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_main_MPa"
+      ],
+      "raw_model_value": 6.2,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__p_reheat_MPa",
+      "independent_prediction_credit": false,
+      "model_value": 0.8,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__p_reheat_MPa"
+      ],
+      "raw_model_value": 0.8,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MPa"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_condenser_MW",
+      "independent_prediction_credit": false,
+      "model_value": 2013.500397569959,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_condenser_MW"
+      ],
+      "raw_model_value": 2013.500397569959,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_generator_loss_MW",
+      "independent_prediction_credit": false,
+      "model_value": 24.35198853642214,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_generator_loss_MW"
+      ],
+      "raw_model_value": 24.35198853642214,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_main_MW",
+      "independent_prediction_credit": false,
+      "model_value": 2775.008462461962,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_main_MW"
+      ],
+      "raw_model_value": 2775.008462461962,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_mechanical_loss_MW",
+      "independent_prediction_credit": false,
+      "model_value": 12.298984109304229,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_mechanical_loss_MW"
+      ],
+      "raw_model_value": 12.298984109304229,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_pump_motor_loss_MW",
+      "independent_prediction_credit": false,
+      "model_value": 0.47470587290535526,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_pump_motor_loss_MW"
+      ],
+      "raw_model_value": 0.47470587290535526,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_reheat_MW",
+      "independent_prediction_credit": false,
+      "model_value": 459.370934453207,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_reheat_MW"
+      ],
+      "raw_model_value": 459.370934453207,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__q_rejection_before_cooling_MW",
+      "independent_prediction_credit": false,
+      "model_value": 2050.6260760885907,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__q_rejection_before_cooling_MW"
+      ],
+      "raw_model_value": 2050.6260760885907,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__reheat_UA_MW_K",
+      "independent_prediction_credit": false,
+      "model_value": 10.941472795742495,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_MW_K"
+      ],
+      "raw_model_value": 10.941472795742495,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW/K"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__reheat_UA_available",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_available"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__reheat_admission_ok",
+      "independent_prediction_credit": false,
+      "model_value": 1.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__reheat_admission_ok"
+      ],
+      "raw_model_value": 1.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__reheat_min_gap_K",
+      "independent_prediction_credit": false,
+      "model_value": 20.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__reheat_min_gap_K"
+      ],
+      "raw_model_value": 20.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "K"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_condensate_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 0.5990114,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_condensate_kJ_kgK"
+      ],
+      "raw_model_value": 0.5990114,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_feed_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 2.0490573695799004,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_feed_kJ_kgK"
+      ],
+      "raw_model_value": 2.0490573695799004,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_heater_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 2.0456512,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_heater_kJ_kgK"
+      ],
+      "raw_model_value": 2.0456512,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_hp_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 6.797557321733462,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_hp_kJ_kgK"
+      ],
+      "raw_model_value": 6.797557321733462,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_lp_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 8.01103489567639,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_lp_kJ_kgK"
+      ],
+      "raw_model_value": 8.01103489567639,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_main_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 6.6866472,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_main_kJ_kgK"
+      ],
+      "raw_model_value": 6.6866472,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__s_reheat_kJ_kgK",
+      "independent_prediction_credit": false,
+      "model_value": 7.710852878282219,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__s_reheat_kJ_kgK"
+      ],
+      "raw_model_value": 7.710852878282219,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kJ/(kg K)"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__salt_flow_total_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 10614.161617205533,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__salt_flow_total_kg_s"
+      ],
+      "raw_model_value": 10614.161617205533,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__salt_heat_residual_MW",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__salt_heat_residual_MW"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "MW"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__salt_main_flow_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 9106.658401848836,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__salt_main_flow_kg_s"
+      ],
+      "raw_model_value": 9106.658401848836,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__salt_reheat_flow_kg_s",
+      "independent_prediction_credit": false,
+      "model_value": 1507.5032153566956,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__salt_reheat_flow_kg_s"
+      ],
+      "raw_model_value": 1507.5032153566956,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "kg/s"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_condensate_C",
+      "independent_prediction_credit": false,
+      "model_value": 42.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_condensate_C"
+      ],
+      "raw_model_value": 42.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_feed_C",
+      "independent_prediction_credit": false,
+      "model_value": 171.45500475761446,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_feed_C"
+      ],
+      "raw_model_value": 171.45500475761446,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_heater_C",
+      "independent_prediction_credit": false,
+      "model_value": 170.40649,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_heater_C"
+      ],
+      "raw_model_value": 170.40649,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_hp_C",
+      "independent_prediction_credit": false,
+      "model_value": 195.90861756356085,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_hp_C"
+      ],
+      "raw_model_value": 195.90861756356085,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_lp_C",
+      "independent_prediction_credit": false,
+      "model_value": 42.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_lp_C"
+      ],
+      "raw_model_value": 42.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_main_C",
+      "independent_prediction_credit": false,
+      "model_value": 445.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_main_C"
+      ],
+      "raw_model_value": 445.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__t_reheat_C",
+      "independent_prediction_credit": false,
+      "model_value": 445.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__t_reheat_C"
+      ],
+      "raw_model_value": 445.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "degC"
+    },
+    {
+      "applicability": "conditional",
+      "conditioning": null,
+      "id": "turbine__matched_cycle__turbine_equipment_qualified",
+      "independent_prediction_credit": false,
+      "model_value": 0.0,
+      "prediction_availability": "active",
+      "producers": [
+        "stellarator_09__stellaris__turbine__matched_cycle__turbine_equipment_qualified"
+      ],
+      "raw_model_value": 0.0,
+      "reference_value": null,
+      "role_at_this_point": "derived",
+      "status": "mapped",
+      "unit": "1"
+    }
+  ],
+  "reference_values_loaded": false,
+  "run_kind": "conditioned"
+}

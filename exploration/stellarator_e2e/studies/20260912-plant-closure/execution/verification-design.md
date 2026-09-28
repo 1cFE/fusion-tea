@@ -1,0 +1,9 @@
+# Verification implementation
+
+[AGENT] `verify-all.py` compares all 141 independently computed oracle channels and rederives all 18 qualified predicates for every native case. The oracle reference is the retained pre-execution scan. The generic verifier also reruns a stratified sample directly against the package-owned oracle. The additional 17 scalar checks use explicit torus geometry, winding volume, account sums and finite annual discount sums. Calendar checks use closed-form dates and annual bins with outage overlap subtracted. These are numerical consistency checks against the stated equations, not engineering certification.
+
+The preparatory baseline control passes every implemented check, including calendar, both LCOEs and physical ledgers. `verification-baseline-control.py` reconstructs a temporary export from the already executed baseline; it does not create a native case. Initial development corrected three parameter-name lookups before the first control execution. Both executed controls passed; no tolerance changed.
+
+`freeze-window.py` retains all historical correlations, reports full-predicate anchors by inherited arm and installed-power level, and rechecks actual low/high axis values at any such anchor. Sized edges use the same minimum-loop rule. An uncaught edge remains uncaught; no range extension or optimum is inferred. The script records extra all-live sized witnesses when fixed-loop factorial anchors fail. Every eligible additional probe joins the one native proposal list. This is still the preparation scan; no second native study or store is introduced.
+
+The committed `record.md` is preparatory. Under the native immutability rule its prior text will remain intact, with execution results appended as a dated addendum. The first final snapshot is written only after results and review are available. Earlier committed baseline evidence will remain unchanged.

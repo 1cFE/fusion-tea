@@ -1,0 +1,278 @@
+{
+  "forward_overrides": {
+    "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0,
+    "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+    "stellarator_09__stellaris__plasma__alpha_T": 1.2
+  },
+  "independent_reference_inputs": [
+    {
+      "key": "stellarator_09__stellaris__plasma__R",
+      "unit": "m",
+      "default": 12.7,
+      "reason": "Major radius using the model geometric definition; no equilibrium/topology substitution.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__a",
+      "unit": "m",
+      "default": 1.3,
+      "reason": "Minor radius using the model geometric definition; no optimized shape inference.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__n_e0",
+      "unit": "m^-3",
+      "default": 5.06e+20,
+      "reason": "Peak electron density; average density is not interchangeable.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__T_i0",
+      "unit": "keV",
+      "default": 14.63,
+      "reason": "Peak ion temperature; electron or volume-average temperature is not interchangeable.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+      "unit": "A-turn",
+      "default": 15400000.0,
+      "reason": "Reference-coil ampere-turns; neither turn current nor coil-set aggregate.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+      "unit": "m",
+      "default": 0.3,
+      "reason": "Independently specified radial exterior allocation, not solved from target fit.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+      "unit": "m",
+      "default": 0.4,
+      "reason": "Independently specified transverse clear cavity, not exterior casing width.",
+      "reference_value": null,
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs"
+    }
+  ],
+  "conditioned_seams": [
+    {
+      "id": "held_cycle",
+      "keys": {
+        "stellarator_09__stellaris__turbine__cycle_live": 0.0,
+        "stellarator_09__stellaris__turbine__eta_th_direct": null,
+        "stellarator_09__stellaris__turbine__matched_cycle_enabled": 0.0,
+        "stellarator_09__stellaris__heat_rejection__cooling_water_enabled": 0.0
+      },
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit",
+      "reason": "Supply gross efficiency with matched states and cooling water disabled together; historical auxiliary boundary, no matched pump/state prediction.",
+      "output_roles": {
+        "stellarator_09__stellaris__bop_capital__bop_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__buildings__buildings_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__buildings__facility_accounts__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__buildings__facility_accounts__installed_facility_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__buildings__facility_accounts__layout_buildings_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas20_capital__cas20_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas22_capital__cas22_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas70_calc__annual_total": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas70_calc__cas70": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas71_calc__crf": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas71_calc__levelized": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__contingency__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cooling_annual__annual_om": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__cooling_annual__cas72_total": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__electric_plant__electric_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__facility_preconstruction__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__facility_shipping__exclusion": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__fuel_handling__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_kg_s": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__defined_flag": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__equipment_total": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__flow_kg_s": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__flow_ratio": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__installation_total": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__module_total": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__new_total": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__plant_capacity_kg_s": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__scaling_factor": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_installation": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__heat_transport__coolant__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__heat_transport__cooling_selection__consumables_annual": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__heat_transport__cooling_selection__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__heat_transport__cooling_selection__replacement_annual": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__idc__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__indirect__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__installation__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__lcoe_calc__lcoe": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__misc_plant__misc_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__om_cost__annual_om": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__other_rpe__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__overnight_capital__overnight_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__owner__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__pb__p_et": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__pb__p_net": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__pb__p_the": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__pb__q_eng": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__pb__rec_frac": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__powercore_capital__powercore_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__precon_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__remote_handling__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__shipping_scope__cooling_exclusion": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__shipping_scope__facility_exclusion": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__shipping_scope__remaining_shipping_base": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__structure__structure_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__structure__structure_cost__legacy_cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__supplementary__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__total_capital__total_capital": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__turbine__turbine_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__vessel__vessel_cost__cost": "derived_from_supplied_efficiency",
+        "stellarator_09__stellaris__turbine__cycle_selection__eta_selected": "supplied",
+        "stellarator_09__stellaris__turbine__cycle__eta_th": "supplied"
+      }
+    },
+    {
+      "id": "held_pump",
+      "keys": {
+        "stellarator_09__stellaris__heat_transport__loop_live": 0.0,
+        "stellarator_09__stellaris__heat_transport__p_pump_direct": null,
+        "stellarator_09__stellaris__heat_transport__eta_p_direct": null
+      },
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit",
+      "reason": "Supply primary-loop electrical pumping and recovered fraction; secondary salt pumping electricity and shaft heat remain active under their held energy mode."
+    },
+    {
+      "id": "held_calendar",
+      "keys": {
+        "stellarator_09__stellaris__availability_direct": null
+      },
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit",
+      "reason": "Supply positive availability instead of predicting live outage calendar.",
+      "output_roles": {
+        "stellarator_09__stellaris__calendar__availability": "supplied"
+      }
+    },
+    {
+      "id": "loop_accommodation",
+      "keys": {
+        "stellarator_09__stellaris__heat_transport__n_loops": null
+      },
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit",
+      "reason": "Change representative circuit count and recompute represented equipment and facility layout; qualification and complete installed scope remain unresolved."
+    },
+    {
+      "id": "legacy_inventory",
+      "keys": {
+        "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0
+      },
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit",
+      "reason": "Historical fixed-density inventory diagnostic."
+    },
+    {
+      "id": "finance_scenario",
+      "keys": {
+        "stellarator_09__stellaris__discount_rate": null,
+        "stellarator_09__stellaris__inflation_rate": null,
+        "stellarator_09__stellaris__construction_years": null,
+        "stellarator_09__stellaris__operational_years": null
+      },
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit",
+      "reason": "Separate declared finance/lifetime scenario, not a common-year conversion."
+    },
+    {
+      "id": "table5_geometry_field",
+      "keys": {
+        "stellarator_09__stellaris__plasma__R": 12.74,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__plasma__f_shape": 1.0000070376114356,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15448503.937007876,
+        "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+        "stellarator_09__stellaris__plasma__alpha_T": 1.2
+      },
+      "scope": "separate supplied Stellaris Table 5 control; no independent prediction credit; no holdout data",
+      "reason": "Shape is derived from supplied volume and current from supplied field at supplied radius; historical magnetic anchors stay fixed.",
+      "input_roles": {
+        "stellarator_09__stellaris__plasma__R": "supplied",
+        "stellarator_09__stellaris__plasma__a": "supplied",
+        "stellarator_09__stellaris__plasma__f_shape": "derived_from_supplied_volume",
+        "stellarator_09__stellaris__magnet__coil__I_coil": "derived_from_supplied_field",
+        "stellarator_09__stellaris__plasma__alpha_n": "supplied",
+        "stellarator_09__stellaris__plasma__alpha_T": "supplied"
+      },
+      "supplied_quantities": {
+        "axis_field": {
+          "value": 9.0,
+          "unit": "T",
+          "role": "supplied",
+          "independent_prediction_credit": false
+        },
+        "plasma_volume": {
+          "value": 425.0,
+          "unit": "m^3",
+          "role": "supplied",
+          "independent_prediction_credit": false
+        }
+      },
+      "output_roles": {
+        "stellarator_09__stellaris__magnet__field_calc__B_axis": "supplied",
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": "derived_from_supplied_field"
+      },
+      "derivations": {
+        "shape": "425/(2*pi^2*12.74*1.3^2)",
+        "current": "15.4e6*(12.74/12.7)"
+      },
+      "source": "work/orchestration/goals/stellaris-plasma-power-balance/freeze-recommendation.md"
+    }
+  ],
+  "source_priority": [
+    "same design revision and exact definition first",
+    "explicit applicable erratum supersedes original",
+    "primary design subsystem table/equation before same-revision overview, then secondary summary",
+    "unresolved peer conflict blocks affected input; no averaging or best-fit selection"
+  ],
+  "scope_decision": "owner_accepted_conditional_helium_scenario; unsupported technology correspondence remains unresolved",
+  "module_basis": "single represented module; no automatic plant-count multiplication",
+  "forward_convention": {
+    "profiles": "Held prescribed Stellaris exponents; no independent prediction credit or independent override admission",
+    "geometry": "Retain rounded default R12.7,a1.3,f_shape1.0031567,current15.4MA-turn; no field-target current correction",
+    "scientific_basis": "work/orchestration/goals/stellaris-plasma-power-balance/freeze-recommendation.md"
+  }
+}

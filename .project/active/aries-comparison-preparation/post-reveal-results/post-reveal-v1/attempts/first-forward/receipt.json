@@ -1,0 +1,17 @@
+{
+  "artifacts": {
+    "model-export.json": "3b874cf6963b1a50a12641195939fb23b6b7d6eaecd9bf5173b2af9f63881500",
+    "native-case.json": "b5e12876250be32f552d8d693df81ae76a75984b8fccbc210b7fdef9ac8d519a",
+    "native/adapter-preparation-v1.db": "2e3d380f3d160a83c5c604be2f6f46e3f478eeac513758263f3ed1f988ca70e1",
+    "native/adapter-preparation-v1.db-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "native/adapter-preparation-v1.db-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "request.raw.json": "d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560",
+    "result.json": "8a0e2385b3305ef746d78f9feac262c24b62e46010ca9ed71b81d9eeb98751de",
+    "selection.json": "31907140d87bfe39bcdfd969b5210f2fdd64251275dcb62cb96d21b4f71f382d"
+  },
+  "first_attempt": {
+    "attempt": "first-forward",
+    "pointer_sha256": "8a27f20df4817abf8d6a859e5bdd51e3a6e6ccf642b36fe83556872d987b7825",
+    "schema_version": "first-attempt/v1"
+  }
+}

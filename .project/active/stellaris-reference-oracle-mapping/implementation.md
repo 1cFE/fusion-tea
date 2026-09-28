@@ -1,0 +1,9 @@
+# Oracle mapping repair
+
+[AGENT] Implemented the three reviewed direct mappings and corrected the cache comment. All equations, defaults, predicate criteria and package files are unchanged. The existing native-input refusal test now recognizes these three supported inputs. The new regression exercises actual fusion/volume response, direct-oracle agreement, restored defaults and unknown-key refusal.
+
+The focused new-input/refusal selection passes151 tests. A broader two-file consumer check first produced11 failures: three expected newly supported inputs, plus eight inherited stale inventory/replay/edge expectations. Restoring only the entering mapping in memory reproduces the same eight inherited failures (190passes); no production file was reverted. Original/final logs are in evidence. The three affected refusal expectations were corrected, and the focused selection now passes. These inherited failures are disclosed, not represented as passing or silently repaired in this scope. Final four direct propagation/volume tests also run after the volume-ratio assertion.
+
+Independent source/interface review is `work/orchestration/goals/stellaris-reference-reconciliation/evidence/mapping-control-review.md`; native integration/study will provide current package/oracle comparison. A separate full design/plan would add no responsibility to this three-entry mapping repair; this spec and implementation record retain scope, acceptance and evidence. Coding archival remains separate from scientific technical completion.
+
+Completion: final independent assurance PASS covers mapping semantics, focused checks and all-point native/oracle agreement. Frozen study `a17f51f0` contains eight cases, 1,808 scalar comparisons and 160 predicate comparisons with no mismatch. See the goal final-review.md; historical broader-consumer failures remain disclosed above.

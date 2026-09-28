@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "preparation_freeze_sha256": "d317a0e3d01bb09fc6a619433d6115298bddaa3992d92b54e88dbf763cafc525",
+  "unique_points": 2496,
+  "aliases": 2651,
+  "oracle_points": 3956,
+  "full_catalog_counts": {
+    "('nominal', 'gas', 2500.0)": 125,
+    "('nominal', 'gas', 2800.0)": 125,
+    "('nominal', 'gas', 3000.0)": 125,
+    "('nominal', 'steam', 2500.0)": 24,
+    "('nominal', 'steam', 2800.0)": 24,
+    "('nominal', 'steam', 3000.0)": 24,
+    "('gas-favourable', 'gas', 2500.0)": 125,
+    "('gas-favourable', 'gas', 2800.0)": 125,
+    "('gas-favourable', 'steam', 2500.0)": 24,
+    "('gas-favourable', 'steam', 2800.0)": 24,
+    "('steam-favourable', 'gas', 2500.0)": 125,
+    "('steam-favourable', 'gas', 2800.0)": 125,
+    "('steam-favourable', 'steam', 2500.0)": 24,
+    "('steam-favourable', 'steam', 2800.0)": 24
+  },
+  "predicate_partition": {
+    "steam": 59,
+    "gas": 43,
+    "shared": 23
+  },
+  "dependency_partition_violations": [],
+  "audited_pruning": {
+    "admission-audit.json": {
+      "excluded_by_invariant_failed_predicate": 11735,
+      "still_excluded_after_oracle_evaluation": 189
+    },
+    "interaction-admission-audit.json": {
+      "excluded_by_invariant_failed_predicate": 467,
+      "still_excluded_after_oracle_evaluation": 67
+    }
+  },
+  "additional_price_service_invariant_prunes": 2168,
+  "price_prunes_using_reviewed_net_power_algebra": {
+    "gas_nonpositive_delivery": 12,
+    "steam_price_independent_physical_failure": 120
+  },
+  "source3000_invariant_prunes": 7748,
+  "ranking_groups_with_single_common_input_map": 121
+}

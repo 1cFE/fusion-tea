@@ -1,0 +1,5 @@
+# Targeted depth preservation check
+
+[AGENT] Fresh non-author read-only check, at most six calls. Own `evidence/depth-preservation-review.md`. No model, rubric, assessment or historical edits. Read the original integrated assessment/cell records, rubric v1's correctness-versus-depth rule and R7/R8 criteria, the current unchanged source/contract evidence in `final-current-identity.json`, and this goal's physical applicability findings.
+
+[AGENT] Check whether the source findings or verification/tool changes require changing R7.P/S or R8.P/S under the existing written criteria. Explicitly distinguish depth from physical correctness, installed cost completeness and comparison readiness. Confirm whether unchanged scientific/executable identity supports reusing the other existing cell grades without pretending to freshly regrade all 23. Return exact cell scores/targets, applicability limits, and whether a later cycle implementation requires fresh grading. Preserve legitimate failures; do not weaken any rubric target. No ARIES or barred material.

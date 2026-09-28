@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-038-02",
+  "question": "How does REBCO HTS conductor cost per kiloampere-metre vary with the peak field the winding must operate at, given that engineering current density falls with field?",
+  "consumer": "WI-038",
+  "gap_type": "unsourced_value",
+  "priority": "P0",
+  "where_to_look": [
+    "IEEE Transactions on Applied Superconductivity",
+    "Superconductor Science and Technology",
+    "Fusion Engineering and Design",
+    "fusion magnet cost and systems-code studies",
+    "REBCO tape manufacturer engineering datasheets"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

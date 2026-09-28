@@ -1,0 +1,19 @@
+{
+  "claim": "Conditioned supplied-profile forward evaluation; not ARIES reference prediction",
+  "fingerprint": "4559f1f7871e7b081fdd1e9fec41e4a65d3b78fa186f05fde1be1e984d6d895b",
+  "passed": 14,
+  "refused": 25,
+  "baseline": {
+    "edge_density__edge_density": 5e+19,
+    "integration__thermal_pressure": 724771.480507903,
+    "integration__field_for_beta": 5.7,
+    "integration__density_weighted_temperature": 6.35553998717378,
+    "integration__quadrature_relative_change": 1.5182339612217214e-12,
+    "integration__fusion_power_MW": 1835.4512830147435,
+    "integration__density_mean": 3.619464285713925e+20,
+    "integration__quadrature_intervals": 4096.0,
+    "integration__stored_thermal_MJ": 482.69780601826346,
+    "density_sample__density": 3.851681518554688e+20,
+    "beta_calculation__beta": 0.05606492483679988
+  }
+}

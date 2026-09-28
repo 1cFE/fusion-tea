@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_magnet_cost/magnet_capital_impl.py
++++ production/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
++SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
+ 
+ SysML Expressions:
+     capital_cost = winding_cost + structure_cost_in
+@@ -41,7 +41,7 @@
+ (redefinition envelope)
+ *Basis**: sum of winding-pack and magnet-structure sub-accounts
+ 
+-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
++SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
+ 
+ SysML Expressions:
+     capital_cost = winding_cost + structure_cost_in

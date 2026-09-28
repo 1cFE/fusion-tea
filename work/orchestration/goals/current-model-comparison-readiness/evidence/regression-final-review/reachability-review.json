@@ -1,0 +1,63 @@
+{
+  "status": "pass",
+  "method": "Reviewer independently parsed raw YAML edges and contract IR; repeated set fixed point over modules, exact leaf/class/operator/partition checks, hashes and import audit. No indicator invocation.",
+  "counts": {
+    "availability_direct": {
+      "modules": 64,
+      "channels": 630,
+      "predicates": 6
+    },
+    "interest_rate": {
+      "modules": 97,
+      "channels": 787,
+      "predicates": 8
+    },
+    "R": {
+      "modules": 150,
+      "channels": 966,
+      "predicates": 21
+    },
+    "a": {
+      "modules": 149,
+      "channels": 965,
+      "predicates": 21
+    },
+    "I_coil": {
+      "modules": 145,
+      "channels": 947,
+      "predicates": 21
+    },
+    "p_wallplug_heat": {
+      "modules": 22,
+      "channels": 44,
+      "predicates": 2
+    },
+    "eta_source_heat": {
+      "modules": 111,
+      "channels": 839,
+      "predicates": 15
+    },
+    "eta_couple_heat": {
+      "modules": 111,
+      "channels": 839,
+      "predicates": 15
+    }
+  },
+  "imports": [
+    "collections",
+    "hashlib",
+    "json",
+    "pathlib",
+    "yaml",
+    "hashlib",
+    "json",
+    "pathlib"
+  ],
+  "ledger_hashes": {
+    "derive.py": "7ac3dc3ed977f8deefe0c530355092df4e3a678c8a9a557aad7927f265937815",
+    "check_ledger.py": "67f666039d9984ff871a52e18e8b9092438fbb05afb2088dfca767a8229275a7",
+    "current.expected.json": "9e48dd6ff84dcc331378b690f7b1c0aae5d31ef95d2c4badda7b95f9e1ffca2e",
+    "graph-ledger.json": "a8a24f08d0e5ed630dcf02308d2f47ca1ba0dd91ceaebb9495d503ed92dafbe2",
+    "derivation.md": "63de27ed0425cd567451d686458f3874d2bc06ed5b4e1c97d85f3963573117e7"
+  }
+}

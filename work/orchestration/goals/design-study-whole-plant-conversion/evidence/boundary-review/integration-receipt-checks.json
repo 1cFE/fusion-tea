@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "control_batches": 20,
+  "control_cases": 498,
+  "control_channels": 1192,
+  "control_predicates": 125,
+  "development_statuses": {
+    "pass": 32,
+    "consistent_refusal": 3
+  },
+  "executable": "6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f"
+}

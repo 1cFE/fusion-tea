@@ -1,0 +1,66 @@
+# WI-089 implementation report
+
+Status: closed by owner on 2026-09-22; implementation and independent final review complete
+Created: 2026-09-22
+Updated: 2026-09-22
+
+## Result
+
+One generated native graph now connects selected fusion power to fuel demand, neutron/charged heat deposition, three coolant/exchanger paths, recuperated Brayton conversion and net electricity. The calculated-plasma nominal scenario produces 423.106794 MW net electricity with zero unmet heat and all ten scoped constraints satisfied. Its scientific status is conditional: deposition, hydraulic/material/machine-map, magnet and breeding qualifications remain unsupported. Auxiliary demands retain their named assumptions. This is an executed assumed configuration, not validation of the published ARIES plant.
+
+| Scenario | Selected fusion MW | Heat accepted MW | Unmet removal MW | Gross electric MW | Net electric MW | Main failed checks |
+|---|---:|---:|---:|---:|---:|---|
+| nominal-calculated | 1835.451283 | 2240.389047 | 0 | 655.354927 | 423.106794 | None of the ten scoped checks; scientific support remains conditional |
+| nominal-source-assumed | 2436 | 2759.082152 | 158.725848 | 1028.658530 | 796.005288 | Heat removal |
+| literal-Lyon-source-input | 2436 | 2518.899476 | 398.908524 | 1039.669902 | 807.016660 | Heat removal |
+| literal-Raffray-accounting | 2365 | 2517.615798 | 502.134202 | 1038.516213 | 805.910865 | Heat removal and source/whole-plant energy reconciliation |
+
+The raw baseline values, exact inputs, all ledger terms, native checks and sealed identity are in `evidence/baseline-execution.json`. Source cases' electrical numbers describe the modeled heat-removable subset; positive unmet removal prevents interpreting them as steady operation of the complete supplied source. No failed case was fitted into the calculated nominal.
+
+The Lyon reference supplies 2436 MW fusion, 1253 MW gross electricity and the table's 1-GW-electric basis. Those are comparison values, not calculation targets. Source-mode fusion is conditioned on its input; calculated-mode fusion comes from untouched WI-083 profile assumptions. Electrical results are independently calculated within the documented approximation, not independently validated against Lyon. Raffray branch reconstruction reproduces supplied accounting: 1192 MW helium and 1444 MW PbLi, with the retained -1 MW blanket deposition comparison residual. Its independently exposed full source-energy mismatch is +182.03 MW and whole-plant residual is -182.03 MW; neither is erased.
+
+## Files and identity
+
+The additive canonical files are `models/library/analyses/integrated_heat_electricity.sysml` and `models/designs/aries_cs_integrated/plant.sysml`. The stock generated package is `exploration/aries_integrated/aries_integrated`, package name `aries_integrated`. Its current executable fingerprint after T-007 is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`; the original physical review and forty-case evidence used `469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7`, with exact baseline parity established below. The ten-file staged root is `exploration/aries_integrated/input_models`; its unique adjacent snapshot is `integrated.snapshot.json`. `census.json` was derived by `scripts.integrate.rederived_census`, not authored by hand.
+
+`build.py` stages unchanged reused sources, installs the six new reviewed native calculations and reused component bodies through typed adapters where required, copies the unchanged reaction kernel, regenerates with `--smart-regen --preserve-handwritten`, and verifies byte-for-byte fixed-point regeneration. `evidence/build-hashes.json` retains canonical/staged identity, sixteen completion-copy receipts and reaction-kernel AST identity. Reuse is import/staging for original definitions, package-prefix changes plus the documented typed adapters for reused completions, and equation lineage only for the new heat-driven closure/passive recuperator. The old dual-circuit ledger is staged but not instantiated; the new three-path ledger supplies the integrated boundary.
+
+The generated graph has a real `generator_auxiliaries` owner. Its calculated conversion/loss/demand outputs feed the separate plant ledger. The ledger exposes `conditional_net_result=1`, selected producer mode and unsupported scientific flags beside the net result. Independent low/high scalar equipment checks do not change those flags. Exchanger outputs include transferred/unmet heat, hot-bound margin, both counterflow terminal differences and state definedness. Zero-duty or bypass states have finite zero temperature carriers with definedness zero, never a claimed physical temperature.
+
+## Verification
+
+`evidence/verification.json` records 40 actual native scenarios: 30 evaluated cases and 10 expected refusals. The cases include all four named source/mode scenarios, fixed-hardware density changes, independent flow/ratio/UA changes, eight low/high equipment-rating pairs, unsupported capacity support, no-transfer exchanger states, a passive recuperator bypass with negative shaft work/motor import, and invalid/nonfinite domains. All supplied hardware remains fixed during density changes. Changing only a rating changes its capacity verdict while leaving demand and net electricity unchanged.
+
+Independent verification uses fuel/reaction-energy conservation, heat-capacity state differences on both exchanger sides, counterflow terminal ordering, separate electrical-load aggregation and signed whole-boundary energy identities. The calculated nominal whole-plant residual is -7.54e-9 MW against a declared tolerance greater than 1e-6 MW. The native zero-UA full assembly correctly refuses its cooling-only precooler domain. A separate typed-native ledger test confirms zero-heat efficiency definedness is zero and its deliberately inconsistent energy inputs fail balance; it is not presented as a valid operating point. A manufactured nonconvergence was not injected into the monotone bounded solver; every supported case converges within the hard 100-iteration limit, and the explicit refusal guard remains present.
+
+Three distinct development-harness mistakes were corrected without modifying the model or seal: a refusal-message substring, the generated input-class import location, and RootModel `.root` channel resolution in the direct-ledger probe. Logs and intermediate results are retained as `verification-attempt1.*`, `verification-attempt2.*` and `verification-attempt3.log`. Initial generation's reserved `flow` identifier was renamed `selected_flow`; `generation-attempt1.log` preserves that syntax failure. The direct runner requires the documented TEAx PYTHONPATH, as shown below; an initial invocation without it failed import before model execution.
+
+Complete scoped validation exits 1: levels 1–5 pass; level 6 reports 182 unsupported dotted EXPOSE operators. `evidence/validation.log` and `evidence/l6-issues.json` retain the scope and exact diagnostics. These are the known static EXPOSE limitation, not 182 unexecuted physical calculations; the corresponding generated native graph executes and exposes the tested values. No complete-validator green claim is made. Independent completion PASS is recorded in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/implementation-review.md` against the original fingerprint; the T-007 correction below records the new identity. Source-preservation and independent behavior evidence are distinct: the completion reviewer independently rehashed all 8657 protected entry-manifest files unchanged and replayed an additional density perturbation against the sealed graph.
+
+## Replay
+
+Use the fresh-directory nominal and study replay commands in `work/orchestration/goals/aries-integrated-heat-electricity/answer.md` and the committed study record. They preserve existing receipts. The development build, `run.py` and `verify.py` are authoring workflows that write work-item evidence. Scoped validation uses `.codex-test/run agentic-mbse validate --complete exploration/aries_integrated/input_models`; expect the documented level-6 failure.
+
+The native candidate passes all integration gates at `a8912fa4`; see goal `evidence/integration-attempt3/integration_return.json`. The combined fourteen-point study is frozen at `exploration/aries_integrated/studies/20260922-integrated-heat-electricity/@8e6fb2f2`. All points completed; 420 selected scalar and 140 exact verdict comparisons pass, with six adverse cases retained. The owner retains formal item/goal closure.
+
+## Handoff
+
+The goal coordinator promoted the sole native candidate and committed the combined study with explicit calculated-mode baseline overrides. Preserve the literal source failures and compare only matching source boundaries. Inventory/cost work receives fixed chosen flows, UA, temperature bounds, ratios and offered ratings; it still needs actual equipment geometry/materials, machine/hydraulic maps, cost/installation inventories and qualified breeding/magnet inputs. It must not price unmet demand as installed hardware.
+
+## T-007: Normalize the exact integration regeneration route
+
+The first integration attempt refused at regeneration and restored the reviewed package. The initial build had proven fixed-point generation with `--preserve-handwritten`, but the integration producer also uses `--smart-regen`. That mode validates public function signatures. Thirteen completion functions lacked the precise generated return/input annotations, or accessed `inputs.model_dump()`, which the stock signature scanner interprets as an undeclared input field. In a scratch reproduction, smart regeneration replaced those implementations with stubs and created backups. Gate 2 listed only the changed package contract because handwritten files are checked separately at Gate 3; this was not merely harmless metadata drift. The refusal and scratch field-level diff are retained.
+
+The corrected build adds a typed public adapter around each affected completion. The original function receives a private name; its body, helper functions and original module AST remain unchanged. The adapter imports the generated input class and delegates directly. This is a documented interface adaptation, not prefix-only executable reuse. `evidence/build-hashes.json` identifies each adapted copy; `pre-smart-normalization-build-hashes.json` preserves the original receipt. The build now proves fixed-point identity using the exact integration flags `--overwrite --smart-regen --preserve-handwritten`.
+
+The new executable fingerprint is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`. Exactly thirteen completion files and `contracts/package_contract.json` changed. Model semantic fingerprint `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`, canonical/staged sources, snapshot, input values, schemas, pipeline and census are unchanged. Four native canonical scenarios have exact parity for every output and effective input against the original reviewed seal. The original forty-case and baseline receipts remain untouched at that old identity. `evidence/smart-normalization-verification.json` records original-module AST equality, all changed file hashes, contract field differences and four complete parity runs. The old package can be recovered from commit `71b2867a`; the retained probe script names its temporary checkout used for this check.
+
+The original physical review remains applicable to unchanged calculation bodies and native outputs. The focused corrective review passed in the goal evidence/packaging-review.md. Integration attempt 2 passed both regeneration and handwritten preservation. No physical equation, operating input or engineering claim changed.
+
+## T-009: Complete census identity
+
+The second integration attempt reached the census gate and found the missing `derived_against_semantic_fingerprint` field in the newly authored census. `build.py` now writes both the producer-derived classification and the actual semantic fingerprint using `scripts.integrate.rederived_census` and `scripts.study.manifest.read_semantic_fingerprint`. All 122 entry classifications are unchanged; the sole added field is bound to `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`. Fresh rederivation matches exactly and the package contract hash is unchanged. Evidence: `evidence/census-completion-verification.json`. No shared seam, source, equation or package bytes changed.
+
+Final independent round review PASS is recorded in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/round-review.md`. It confirms the committed study, frozen identities, all finding dispositions and the bounded positive integration conclusion. Formal item/goal closure remains owner-held.
+
+Owner closure: “please close it” (2026-09-22). Native PM archived WI-089; the accepted evidence and qualification limits remain unchanged.

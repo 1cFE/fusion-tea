@@ -1,0 +1,973 @@
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 29%]
+........................................................................ [ 39%]
+........................................................................ [ 49%]
+........................................................................ [ 59%]
+.....................................................F.................. [ 69%]
+........................................................................ [ 78%]
+..................................................................F..F.. [ 88%]
+.........................EEEEEFEFEEE....s.FE............................ [ 98%]
+..........                                                               [100%]
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_the_summary_validates_against_its_schema ________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_summary_validates_aga0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_summary_validates_aga0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_the_summary_is_a_superset_of_the_committed_field_set __
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_summary_is_a_superset0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_summary_is_a_superset0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+___ ERROR at setup of test_parity_holds_at_the_committed_order_of_magnitude ____
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_parity_holds_at_the_commi0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_parity_holds_at_the_commi0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_every_catalog_constraint_is_rederived_with_its_operand_count _
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_every_catalog_constraint_0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_every_catalog_constraint_0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_stratification_covers_every_observed_verdict_combination _
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_stratification_covers_eve0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_stratification_covers_eve0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_the_derived_seed_reproduces_from_the_recorded_fields __
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_derived_seed_reproduc0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_derived_seed_reproduc0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_____ ERROR at setup of test_cas27_is_compared_and_nothing_is_undisclosed ______
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_cas27_is_compared_and_not0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_cas27_is_compared_and_not0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_________ ERROR at setup of test_the_command_carries_no_absolute_paths _________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_command_carries_no_ab0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_command_carries_no_ab0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_the_operand_bindings_digest_is_the_documented_canonicalization _
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_operand_bindings_dige0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_operand_bindings_dige0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+_ ERROR at setup of test_stored_operating_controls_preserve_procurement_and_signed_capacity _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7d43cdb62870>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12842'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="module")
+    def operating_controls(tmp_path_factory, stock_simkit_session_path):
+        """Stored native baseline, installed reserve and physical demand controls."""
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        out = tmp_path_factory.mktemp("operating-controls")
+        baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
+        P = study_route.P
+        proposals = [baseline, {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
+                     {**baseline, f"{P}plasma__f_alpha_fast": 0.96}]
+        cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
+        assert len(cases) == 3 and all(case.state == "completed" for case in cases)
+        ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
+>       summary = verify.build_summary(PACKAGE, MANIFEST, ident, [db], 3, None, [])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:310: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:481: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+
+    def assert_tree_clean(tree: Path | str) -> None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+>           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E           M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E            M exploration/stellarator_e2e/generated/__init__.py
+E            M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E            M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E            M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E            M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E            M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E            M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E           ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+
+scripts/study/common.py:81: ToolError
+=================================== FAILURES ===================================
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/study/financial_radius_controls.py:96: in check_controls
+    summary = verify.build_summary(
+scripts/study/verify.py:481: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def assert_tree_clean(tree: Path | str) -> None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+>           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E           M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E            M exploration/stellarator_e2e/generated/__init__.py
+E            M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E            M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E            M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E            M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E            M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E            M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E            M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E           ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+
+scripts/study/common.py:81: ToolError
+____________________ test_every_constraint_operand_resolves ____________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+oracle_entry = <module 'oracle_entry' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py'>
+
+    def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
+        entries = catalog_entries(real_package_path)
+        assert len(entries) == 20
+        bindings = oracle_entry.operand_bindings()
+        channels = oracle_entry.evaluate(BASELINE_POINT)
+        inputs = package_inputs(real_package_path)
+    
+        assert set(bindings) == {entry["constraint_id"] for entry in entries}
+>       assert len(inputs) == 273 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 310 == (273 + 45)
+E        +  where 310 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})
+E        +  and   45 = len(((((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__magnet__casing__assembly_clearance', 'stellarator_09__stellaris__magnet__casing__interior...is__magnet__winding_pack__ground_insulation', 'stellarator_09__stellaris__magnet__winding_pack__internal_build_x', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation', 'stellarator_09__stellaris__magnet__win...is__magnet__winding_pack__material_factor', 'stellarator_09__stellaris__magnet__winding_pack__orientation_factor', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}))
+
+tests/study/test_operand_bindings.py:104: AssertionError
+_________________ test_the_shim_reproduces_the_pinned_headline _________________
+
+oracle_entry = <module 'oracle_entry' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/studies/oracle_entry.py'>
+
+    def test_the_shim_reproduces_the_pinned_headline(oracle_entry):
+        lcoe = oracle_entry.evaluate(BASELINE_POINT)["stellarator_09__stellaris__lcoe_calc__lcoe"]
+>       assert abs(lcoe - PINNED_LCOE) / PINNED_LCOE < 1e-9, lcoe
+E       AssertionError: 144.74743129583518
+E       assert (0.009130161402850945 / 144.73830113443233) < 1e-09
+E        +  where 0.009130161402850945 = abs((144.74743129583518 - 144.73830113443233))
+
+tests/study/test_operand_bindings.py:152: AssertionError
+___________________ test_stratification_is_a_floor_not_a_cap ___________________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_stratification_is_a_floor0')
+
+    def test_stratification_is_a_floor_not_a_cap(promoted_run, tmp_path):
+        """Asked for one row, every stratum still appears."""
+        out = tmp_path / "summary.json"
+>       run_verify(promoted_run, out, "--sample-size", "1", expect=0)
+
+tests/study/test_verify.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_stratification_is_a_floor0/summary.json')
+expect = 0, extra = ('--sample-size', '1')
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+________________ test_an_explicit_seed_is_recorded_as_explicit _________________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_an_explicit_seed_is_recor0')
+
+    def test_an_explicit_seed_is_recorded_as_explicit(promoted_run, tmp_path):
+        out = tmp_path / "summary.json"
+>       run_verify(promoted_run, out, "--seed", "beef", expect=0)
+
+tests/study/test_verify.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_an_explicit_seed_is_recor0/summary.json')
+expect = 0, extra = ('--seed', 'beef')
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+______________________ test_the_stores_are_never_written _______________________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_stores_are_never_writ0')
+
+    def test_the_stores_are_never_written(promoted_run, tmp_path):
+        import hashlib
+    
+        before = hashlib.sha256(promoted_run["store"].read_bytes()).hexdigest()
+>       run_verify(promoted_run, tmp_path / "summary.json", expect=0)
+
+tests/study/test_verify.py:292: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12842/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12842/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12842/test_the_stores_are_never_writ0/summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12842/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py
+E              M exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py
+E             ?? exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...ucture_cost_output.py\n?? exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_winding_pack_fit.py: 12 warnings
+tests/models/test_winding_pack_cost.py: 2 warnings
+tests/models/test_tape_procurement.py: 11 warnings
+tests/models/test_conductor_current.py: 11 warnings
+tests/study/test_verify.py: 2 warnings
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves
+FAILED tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline
+FAILED tests/study/test_verify.py::test_stratification_is_a_floor_not_a_cap
+FAILED tests/study/test_verify.py::test_an_explicit_seed_is_recorded_as_explicit
+FAILED tests/study/test_verify.py::test_the_stores_are_never_written - Assert...
+ERROR tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+ERROR tests/study/test_verify.py::test_the_summary_is_a_superset_of_the_committed_field_set
+ERROR tests/study/test_verify.py::test_parity_holds_at_the_committed_order_of_magnitude
+ERROR tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+ERROR tests/study/test_verify.py::test_stratification_covers_every_observed_verdict_combination
+ERROR tests/study/test_verify.py::test_the_derived_seed_reproduces_from_the_recorded_fields
+ERROR tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed
+ERROR tests/study/test_verify.py::test_the_command_carries_no_absolute_paths
+ERROR tests/study/test_verify.py::test_the_operand_bindings_digest_is_the_documented_canonicalization
+ERROR tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+6 failed, 713 passed, 1 skipped, 38 warnings, 10 errors in 329.43s (0:05:29)

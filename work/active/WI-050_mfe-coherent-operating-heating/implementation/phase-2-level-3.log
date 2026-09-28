@@ -1,0 +1,26 @@
+['.codex-test/run', 'agentic-mbse', 'validate', '/tmp/wi050-implementation-ccj8kjq5/models', '--level=3']
+
+======================================================================
+SysML Quality Validation
+Models path: /tmp/wi050-implementation-ccj8kjq5/models
+Mode: Fail-fast
+Running: Level 3 only
+======================================================================
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 23 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 5
+   Circular dependencies: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

@@ -1,0 +1,41 @@
+........................................................................ [ 38%]
+........................................................................ [ 76%]
+...........................................F.                            [100%]
+=================================== FAILURES ===================================
+____________ test_native_thickness_changes_breeding_build_and_cost _____________
+
+evaluate = <function evaluate.<locals>.run at 0x7c3ca5767e20>
+
+    @pytest.mark.codegen_available
+    def test_native_thickness_changes_breeding_build_and_cost(evaluate):
+        rows = [evaluate({'blanket__blanket_t': thickness}) for thickness in (.6, .8, 1.)]
+        for suffix in ('rb__blanket_vol', 'rb__r_coil', 'blanket__blanket_cost__cost'):
+            values = [output(row, suffix) for row in rows]
+            assert values[0] < values[1] < values[2], suffix
+        tbr = [output(row, 'blanket__breeding__tbr_mean') for row in rows]
+        assert len(set(tbr)) == 3
+        for row in rows:
+            assert output(row, 'blanket__breeding__defined_flag') == 1
+>           assert output(row, 'fuel_cycle__fuel__tbr_required') == pytest.approx(1.19)
+E           assert 1.1916370741669902 == 1.19 ± 1.2e-06
+E             
+E             comparison failed
+E             Obtained: 1.1916370741669902
+E             Expected: 1.19 ± 1.2e-06
+
+tests/models/test_computed_tritium_breeding.py:237: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_fuel_inventory.py::test_native_inventory_drives_existing_breeding_and_preserves_fuel_cost
+tests/models/test_computed_tritium_breeding.py::test_native_thickness_changes_breeding_build_and_cost
+tests/models/test_computed_tritium_breeding.py::test_unsupported_native_geometry_keeps_cost_diagnostics_but_fails_breeding
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_computed_tritium_breeding.py::test_native_thickness_changes_breeding_build_and_cost
+1 failed, 188 passed, 3 warnings in 11.04s

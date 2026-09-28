@@ -1,0 +1,17 @@
+......................................................F................. [ 55%]
+..........................................................               [100%]
+=================================== FAILURES ===================================
+_ test_resume_refuses_a_required_column_absent_from_persisted_evidence[complete] _
+tests/study/test_numeric_evidence.py:183: in test_resume_refuses_a_required_column_absent_from_persisted_evidence
+    route.run_points(
+exploration/stellarator_e2e/studies/study_route.py:221: in run_points
+    store = StudyStore.create_or_open(db, study.compatibility())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/study/store.py:133: in create_or_open
+    store._check_compatibility(compat)
+../teax/packages/teax-simkit/simkit/study/store.py:151: in _check_compatibility
+    raise IncompatibleStore(f"store bound to {bound} but opened with {compat}")
+E   simkit.study.failures.IncompatibleStore: store bound to Compatibility(study_id='incomplete-resume', executable_fingerprint='cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c', model_contract_fingerprint='15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', study_definition_fingerprint='d16d7246c343541e1e0b52349394f3b7c6aff8e9cc1f00a11344baf877e4ad70', input_schema_version='input-v1', evidence_schema_version='v3', strategy_identity='prepared-list/v1', strategy_config='5f49a3364edad088ed78388dab98e236ddc51c486f271da5a24f75b97e795c27') but opened with Compatibility(study_id='incomplete-resume', executable_fingerprint='1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340', model_contract_fingerprint='15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', study_definition_fingerprint='d16d7246c343541e1e0b52349394f3b7c6aff8e9cc1f00a11344baf877e4ad70', input_schema_version='input-v1', evidence_schema_version='v3', strategy_identity='prepared-list/v1', strategy_config='5f49a3364edad088ed78388dab98e236ddc51c486f271da5a24f75b97e795c27')
+=========================== short test summary info ============================
+FAILED tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[complete]
+1 failed, 129 passed in 15.51s

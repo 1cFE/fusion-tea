@@ -1,0 +1,2 @@
+PASS all 246 surviving parameter records/default values exact; only five binding operands change; fixed anchor edges exact
+PASS exact nine edges, six anchor edges, complete contract census and delta

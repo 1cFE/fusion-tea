@@ -1,0 +1,1410 @@
+{
+  "baseline": {
+    "status": "evaluated",
+    "assemblies_changed": [],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c1-aries-ratios-reselected-ratings": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-1"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 3200.0,
+        "turbine_capacity": 7000.0,
+        "generator_capacity": 3600.0,
+        "rejection_capacity": 5000.0,
+        "he_capacity": 3500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": 748.4804492359631,
+        "turbine_capacity": 3868.0114992139615,
+        "generator_capacity": 2933.1404289784386,
+        "rejection_capacity": 2379.2557385314717,
+        "he_capacity": 198.7867885130063
+      },
+      "violated": []
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c1-ratio1.35-reselected-ratings": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-1"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.35,
+      "ratings": {
+        "compressor_capacity": 3200.0,
+        "turbine_capacity": 7000.0,
+        "generator_capacity": 3600.0,
+        "rejection_capacity": 5000.0,
+        "he_capacity": 3500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 730.2792038084425,
+      "heater_inlet": 497.42231596209564,
+      "accepted_heat": 3023.064546468037,
+      "unmet_heat": 278.14866501895676,
+      "he_hot_bound_margin": 0.0,
+      "compressor_demand": 1719.9343293311676,
+      "turbine_shaft": 2552.085446748319,
+      "gross_electric": 815.5080950688084,
+      "net_electric": 575.2271606643203,
+      "rejected_heat": 2190.913429048047,
+      "margins": {
+        "compressor_capacity": 1480.0656706688324,
+        "turbine_capacity": 4447.914553251681,
+        "generator_capacity": 2784.4919049311916,
+        "rejection_capacity": 2809.086570951953,
+        "he_capacity": 198.7867885130063
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c1-flow1400-aries-ratings": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-1"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 1400.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 769.0098972359744,
+      "heater_inlet": 470.3659816476617,
+      "accepted_heat": 2171.2009951158807,
+      "unmet_heat": 1130.012216371113,
+      "he_hot_bound_margin": 0.0,
+      "compressor_demand": 1372.8509484278607,
+      "turbine_shaft": 1990.769583368765,
+      "gross_electric": 605.5602622420863,
+      "net_electric": 365.2793278375982,
+      "rejected_heat": 1553.2823601692467,
+      "margins": {
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1509.230416631235,
+        "generator_capacity": 1194.4397377579137,
+        "rejection_capacity": 946.7176398307533,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "he_capacity",
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c1-flow4000-reselected-ratings": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-1"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 4000.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 3200.0,
+        "turbine_capacity": 7000.0,
+        "generator_capacity": 3600.0,
+        "rejection_capacity": 5000.0,
+        "he_capacity": 3500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 530.0203208759156,
+      "heater_inlet": 371.0942082486433,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 147.54583224333476,
+      "compressor_demand": 3922.4312812224593,
+      "turbine_shaft": 3920.2480159770876,
+      "gross_electric": 0.0,
+      "net_electric": -242.5791083469847,
+      "rejected_heat": 3303.3964767390707,
+      "margins": {
+        "compressor_capacity": -722.4312812224593,
+        "turbine_capacity": 3079.7519840229124,
+        "generator_capacity": 3600.0,
+        "rejection_capacity": 1696.6035232609293,
+        "he_capacity": 198.7867885130063
+      },
+      "violated": [
+        "compressor_capacity",
+        "checks__net_positive"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c2-stellaris-plasma-alternative-hardware": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-2"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1700.0,
+      "recuperator_effectiveness": 0.95,
+      "network_mode": 1.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1245.9990440222027,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 929.455384263661,
+      "accepted_heat": 3022.096821945587,
+      "unmet_heat": 153.09244081371622,
+      "unmet_by_branch": {
+        "he": 31.178187621303778,
+        "pbli": 23.98222273726583,
+        "divertor": 97.93203045514662
+      },
+      "compressor_demand": 1667.033294519545,
+      "gross_electric": 1229.5923596938799,
+      "net_electric": 982.3008071183417,
+      "margins": {
+        "he_capacity": 254.00095597779728,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 32.96670548045495,
+        "turbine_capacity": 578.2806241601693,
+        "rejection_capacity": 732.5892593735375,
+        "generator_capacity": 570.4076403061201,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c2-ne0-4.2e20": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-2"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 4.2e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 1941.5424640431747,
+      "p_aux_required_published": 66.74756331360436,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02138366551029818,
+      "burn_rate": 6.89314841170443e+20,
+      "exhaust_rate": 1.3096981982238418e+22,
+      "delivered": {
+        "he": 940.2165398987324,
+        "pbli": 1099.6119899354924,
+        "divertor": 320.2313696064762
+      },
+      "turbine_temperature": 822.5863591196594,
+      "accepted_heat": 2360.059899440701,
+      "unmet_heat": 0.0,
+      "unmet_by_branch": {
+        "he": 0.0,
+        "pbli": 0.0,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 741.4820797169932,
+      "net_electric": 509.1623815187694,
+      "margins": {
+        "he_capacity": 559.7834601012676,
+        "pbli_capacity": 700.3880100645076,
+        "divertor_capacity": 479.7686303935238,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1370.534684513983,
+        "rejection_capacity": 896.5544676168504,
+        "generator_capacity": 1058.5179202830068,
+        "fuel_capacity": 1.6903018017761582e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": []
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c2-peaked-profile": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-2"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 1.0,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2013.0692711193433,
+      "p_aux_required_published": -14.90518425818874,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.019896383619606082,
+      "burn_rate": 7.147093357912114e+20,
+      "exhaust_rate": 1.3579477380033017e+22,
+      "delivered": {
+        "he": 969.6598347635664,
+        "pbli": 1140.1219123911512,
+        "divertor": 330.9603906679015
+      },
+      "turbine_temperature": 845.4747099995841,
+      "accepted_heat": 2440.742137822619,
+      "unmet_heat": 0.0,
+      "unmet_by_branch": {
+        "he": 0.0,
+        "pbli": 0.0,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 799.549114030622,
+      "net_electric": 567.1811662926187,
+      "margins": {
+        "he_capacity": 530.3401652364336,
+        "pbli_capacity": 659.8780876088488,
+        "divertor_capacity": 469.0396093320985,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1311.2826086837495,
+        "rejection_capacity": 875.1243050694516,
+        "generator_capacity": 1000.450885969378,
+        "fuel_capacity": 1.6420522619966983e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": []
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c2-flat-temperature": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-2"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 0.5,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 5047.038095263825,
+      "p_aux_required_published": 106.59253716900469,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.03729267230730413,
+      "burn_rate": 1.7918733828633864e+21,
+      "exhaust_rate": 3.404559427440434e+22,
+      "delivered": {
+        "he": 2218.562761534401,
+        "pbli": 2858.4404956336202,
+        "divertor": 786.0557142895739
+      },
+      "turbine_temperature": 950.4156064755284,
+      "accepted_heat": 2810.6624728232255,
+      "unmet_heat": 3052.39649863437,
+      "unmet_by_branch": {
+        "he": 1030.2063581493856,
+        "pbli": 1874.5575780897893,
+        "divertor": 147.63256239519478
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1065.7809045401025,
+      "net_electric": 831.3663451126621,
+      "margins": {
+        "he_capacity": -718.562761534401,
+        "pbli_capacity": -1058.4404956336202,
+        "divertor_capacity": 13.94428571042613,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1039.6175163271369,
+        "rejection_capacity": 776.8690624288924,
+        "generator_capacity": 734.2190954598975,
+        "fuel_capacity": -4.045594274404338e+21,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "fuel_capacity",
+        "he_capacity",
+        "pbli_capacity",
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 8.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.2779484589184416,
+      "capital": 565076150.2402507,
+      "extrapolated": 0.0,
+      "margin": 1.73996662841114,
+      "status": "satisfied"
+    }
+  },
+  "c5-rating-5": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-5"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 5.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 0.798717786824026,
+      "capital": 353172593.90015674,
+      "extrapolated": 0.0,
+      "margin": -1.26003337158886,
+      "status": "violated"
+    }
+  },
+  "c5-rating-12": {
+    "status": "evaluated",
+    "assemblies_changed": [
+      "C-5"
+    ],
+    "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+    "C-1": {
+      "cycle_flow": 2500.0,
+      "ratio": 1.5182944859378311,
+      "ratings": {
+        "compressor_capacity": 1600.0,
+        "turbine_capacity": 3500.0,
+        "generator_capacity": 1800.0,
+        "rejection_capacity": 2500.0,
+        "he_capacity": 1500.0
+      },
+      "loop_mdot": 3009.7557068000247,
+      "loop_T_out": 773.15,
+      "q_ihx": 3301.2132114869937,
+      "loop_p_elec": 175.28093440448808,
+      "loop_capacity_margin": 10.095227292061736,
+      "turbine_temperature": 677.5153177659547,
+      "heater_inlet": 423.23353756256324,
+      "accepted_heat": 3301.2132114869937,
+      "unmet_heat": 0.0,
+      "he_hot_bound_margin": 48.81939377507399,
+      "compressor_demand": 2451.519550764037,
+      "turbine_shaft": 3131.9885007860385,
+      "gross_electric": 666.8595710215615,
+      "net_electric": 426.57863661707336,
+      "rejected_heat": 2620.7442614685283,
+      "margins": {
+        "compressor_capacity": -851.5195507640369,
+        "turbine_capacity": 368.01149921396154,
+        "generator_capacity": 1133.1404289784386,
+        "rejection_capacity": -120.7442614685283,
+        "he_capacity": -1801.2132114869937
+      },
+      "violated": [
+        "compressor_capacity",
+        "he_capacity",
+        "rejection_capacity"
+      ]
+    },
+    "C-2": {
+      "n_e0": 5.06e+20,
+      "alpha_n": 0.33,
+      "alpha_T": 1.19,
+      "cycle_flow": 1400.0,
+      "recuperator_effectiveness": 0.8,
+      "network_mode": 0.0,
+      "p_fus": 2652.56326251759,
+      "p_aux_required_published": 49.07960078792644,
+      "assembly_auxiliary_heat": 20.0,
+      "beta": 0.02530499920898139,
+      "burn_rate": 9.417518585656875e+20,
+      "exhaust_rate": 1.7893285312748063e+22,
+      "delivered": {
+        "he": 1232.9011413827407,
+        "pbli": 1502.305729359462,
+        "divertor": 426.8844893776385
+      },
+      "turbine_temperature": 941.3860663855392,
+      "accepted_heat": 2778.833027800766,
+      "unmet_heat": 383.2583323190754,
+      "unmet_by_branch": {
+        "he": 11.111950256863565,
+        "pbli": 372.14638206221184,
+        "divertor": 0.0
+      },
+      "compressor_demand": 1372.8509484278607,
+      "gross_electric": 1042.8732421666816,
+      "net_electric": 810.0739136354068,
+      "margins": {
+        "he_capacity": 267.09885861725934,
+        "pbli_capacity": 297.694270640538,
+        "divertor_capacity": 373.1155106223615,
+        "compressor_capacity": 227.14905157213934,
+        "turbine_capacity": 1062.992682014301,
+        "rejection_capacity": 785.3233417639071,
+        "generator_capacity": 757.1267578333184,
+        "fuel_capacity": 1.2106714687251937e+22,
+        "he_pump": 0.0,
+        "pbli_pump": 0.0,
+        "divertor_pump": 0.0
+      },
+      "violated": [
+        "checks__heat_removal_ok"
+      ]
+    },
+    "C-4": {
+      "he": {
+        "T_hot": 729.15,
+        "T2_C": 436.0,
+        "eta_fit": 0.40050676588108947,
+        "margin_low": 52.0,
+        "margin_high": 206.0,
+        "domain_product": 10712.0,
+        "status": "satisfied"
+      },
+      "divertor": {
+        "T_hot": 973.15,
+        "T2_C": 680.0,
+        "eta_fit": 0.4538026056384872,
+        "margin_low": 296.0,
+        "margin_high": -38.0,
+        "domain_product": -11248.0,
+        "status": "violated"
+      },
+      "pbli": {
+        "T_hot": 1011.15,
+        "T2_C": 718.0,
+        "eta_fit": 0.460848359086264,
+        "margin_low": 334.0,
+        "margin_high": -76.0,
+        "domain_product": -25384.0,
+        "status": "violated"
+      }
+    },
+    "C-5": {
+      "selected_rating": 12.0,
+      "demand": 6.26003337158886,
+      "quantity_ratio": 1.9169226883776624,
+      "capital": 847614225.3603761,
+      "extrapolated": 1.0,
+      "margin": 5.73996662841114,
+      "status": "satisfied"
+    }
+  }
+}

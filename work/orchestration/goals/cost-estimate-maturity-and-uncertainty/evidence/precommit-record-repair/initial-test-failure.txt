@@ -1,0 +1,8 @@
+Coordinator captured result before any study commit, 2026-09-19.
+Command: .codex-test/run python -m pytest tests/study/test_records.py -q -k cost-estimate-maturity-and-uncertainty
+Result: 1 failed, 2 passed, 94 deselected in 0.09s.
+Failure: test_record_is_closed[20260919-cost-estimate-maturity-and-uncertainty]
+Location: tests/study/test_records.py:28
+csv_arms = {row["arm_id"] for row in csv.DictReader(fh)}
+KeyError: 'arm_id'
+The two passing tests checked matching store fingerprints and finding/discovery-log joins.

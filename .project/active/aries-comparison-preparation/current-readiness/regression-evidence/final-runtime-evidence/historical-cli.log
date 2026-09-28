@@ -1,0 +1,51 @@
+
+=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===
+  total capital $  exec=  17918171013.726093  expect=8905077000.154549   *** DEVIATION
+  LCOE $/MWh       exec=          271.584320  expect=144.74743129583516  *** DEVIATION
+  p_net MW         exec=         1008.898406  expect=1012.6082547175133  *** DEVIATION
+  q_eng            exec=            3.870984  expect=3.9319737437533955  *** DEVIATION
+  rec_frac         exec=            0.258332  expect=0.25432519776833934  *** DEVIATION
+  magnet %         exec=            9.529116  expect=19.170578781069967  *** DEVIATION
+  CAS70 $/yr       exec=    273360371.159998  expect=217687149.51060474  *** DEVIATION
+  CAS80 $/yr       exec=       792505.965114  expect=792505.965114       OK
+  lcoe_1cfe $/MWh (comparison) exec=          266.458931  expect=142.2095176767976   *** DEVIATION
+  magnet capital $ = 1,707,443,242.26
+=== TWENTY VERDICTS (generated ConstraintReport) ===
+  wp_stress_ok   satisfied
+  cond_strain_ok satisfied
+  recirc_ok      satisfied
+  cycle_domain_ok satisfied
+  beta_ok        satisfied
+  heating_couple_positive_ok satisfied
+  divertor_heat_ok violated
+  facility_capacity_ok satisfied
+  facility_outage_ok satisfied
+  heating_source_upper_ok satisfied
+  net_positive   satisfied
+  burn_hold_ok   satisfied
+  wall_load_ok   satisfied
+  tbr_ok         violated
+  heating_couple_upper_ok satisfied
+  peak_field_ok  satisfied
+  reference_conductor_current_ok violated
+  facility_routes_ok satisfied
+  sustainment_ok satisfied
+  loop_capacity_ok satisfied
+  wp_fit_ok      violated
+  facility_replacement_ready satisfied
+  heating_source_positive_ok satisfied
+  loop_pressure_ok satisfied
+  facility_initial_ready satisfied
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 602, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 595, in main
+    anchors_ok, oracle_ok, identity_ok, guards_ok = _run_gate_families()
+                                                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 586, in _run_gate_families
+    _assert_generated_verdicts(outputs)
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 257, in _assert_generated_verdicts
+    assert report.assessed_entry_count == EXPECTED_VERDICT_COUNT, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: assessed_entry_count 25 != 20

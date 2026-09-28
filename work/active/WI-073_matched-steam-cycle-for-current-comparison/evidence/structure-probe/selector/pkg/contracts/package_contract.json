@@ -1,0 +1,44 @@
+{
+  "artifact_hashes": {
+    "IMPLEMENTATION_BACKLOG.md": "01321b3c6df3b9deda31b3ba0360ebf298ef59f628a7305cdafe8c9ea493c009",
+    "__init__.py": "cfc9020eb3b47bcbb3cdffb35decb6e22b876406eb5b20b8b310572fc642de4c",
+    "contracts/generation_manifest.json": "c61827e2740a8153d9e77bb87dd020bc003925c00de753827912579d102df420",
+    "contracts/model_contract.json": "3905d1018a806053209b5ae3ddd442294cf33c324ea457e83c3e1c3e0553121a",
+    "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
+    "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "handwritten/probe/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/probe/legacy_impl.py": "7d1dbfdeb728ed990edf21e6b222917eccff8ba6cc4c1ad1d4a8839cad5ddc91",
+    "handwritten/probe/match_impl.py": "0793524701f5d4cd2c5924f4a7b00c3f0f835af1851f98dd6f2cd193d5d5d444",
+    "handwritten/probe/sink_impl.py": "73253c35091e84104927a622f7b91d9013f77347d722c793a079c4d6832aac77",
+    "handwritten/probe/turbine/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/probe/turbine/property_value_impl.py": "f2a417ad2b1501c3b3f349c7d4b6c6dcf12e254302061f57b3c24b029a457ebd",
+    "inputs/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "inputs/probe_params.json": "13c1cc36ac79df564247849b2c3b7d39f900b2c5cf5d2a72ecf9e274ad1c89a2",
+    "modules/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "modules/probe/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/probe/legacy.py": "6141c15faf50d42f72526695b0f548272a594683f5e7bf2a9fa304e2c7877059",
+    "modules/probe/match.py": "fb63e16c5e5ebd23cdfe0ad5c2023534e3f5f482c6ee96c2f76403b0bab230a9",
+    "modules/probe/sink.py": "a2604099e7ca1d5d832d31f69e2ffe9f50b2a0270cb11bec8d16249b69dfb4de",
+    "modules/probe/turbine/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/probe/turbine/property_value.py": "ad3042824b99feb0052f5bad2c9950a8921232abdf8f7f3205eeba29ba5c63b0",
+    "pipelines/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "pipelines/pipeline.yaml": "964131c82ef01c497b749388ce59c58bde11ce3858ea76a83f5b140ab670b9c3",
+    "primitives.py": "1bc6be58e5290b102d762227c33f138ecc4f9feaa00fa2f4cfd02f87f5f71998",
+    "schemas/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "schemas/match_output.py": "71c2c1453ad0d6ef64b33919bd055724a53261abf9ad163e5322553b957d834d",
+    "schemas/probe_params.py": "7ff07eca7a714dc290323e1bf42296fc0a534c132061f0a1a50de4e3abb0a01f",
+    "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "tests/test_implementations_runnable.py": "55bec533d846749d47d24fc1de2c8681913262942ee06083a160e53fce5d2e9a"
+  },
+  "coverage_policy": {
+    "exclude_globs": [
+      "contracts/package_contract.json",
+      "**/__pycache__/**"
+    ],
+    "runtime_output_globs": []
+  },
+  "executable_fingerprint": "02e3a71972b695f803e2ea435bf517e61466abbe7bb6e1fb5330162c0a985014",
+  "generator_version": "0.1.1",
+  "package_name": "probe_selector",
+  "runtime_contract_version": "2.0.0"
+}

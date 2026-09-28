@@ -1,0 +1,26 @@
+{
+  "0": {
+    "historical_disjoint_complete": true,
+    "same_reviewed_changed_equations": true,
+    "new_names": 815
+  },
+  "1": {
+    "historical_disjoint_complete": true,
+    "same_reviewed_changed_equations": true,
+    "new_names": 815
+  },
+  "3": {
+    "historical_disjoint_complete": true,
+    "same_reviewed_changed_equations": true,
+    "new_names": 815
+  },
+  "mapping": "96 retained input bindings;141 explicitly translated historical output bindings;956 unique outputs",
+  "finance": "16/940 disjoint complete;three additions checked against authored expressions/manual replacement arithmetic",
+  "sha256": {
+    "additional-domain-partitions.json": "f4d143542a500e9172ece1b706b195b7c2c90d2674885405165717311b878ebf",
+    "additional-domain-mapping-ledger.json": "d4dc7b120c85024c25bf3c7463689e88249167e58519d1d1978064e6ca548cef",
+    "additional-financial-dependencies.json": "a996f4b32a17b70ee223b7ccee5cebee31493e7ff51972e236909dcf01bc9706",
+    "additional-consumer-repair-note.md": "d18c15f2c648440fd8399501a303445384dd686d0e12d4c9c2a43a86bb0fabf8"
+  },
+  "release": "Proposed repair released with explicit native three-row coverage and all60 financial scenarios retained; implementation and final receipt review pending."
+}

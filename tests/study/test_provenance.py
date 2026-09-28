@@ -4,6 +4,10 @@ Invariant 8. A tie key and a fan-out key are traced identically; what provenance
 changes is what a cold reader can tell about why the key is in the group.
 """
 
+import json
+
+import pytest
+
 from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool
 
 KNOWN_ANSWERS = DATA_DIR / "axes.known_answers.json"
@@ -35,36 +39,54 @@ def test_provenance_round_trips_from_the_declaration(request):
         assert got == declared[group["axis"]]
 
 
-def test_the_tie_key_is_marked_and_the_others_are_not():
-    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS)
-    tied = {e["key"]: e["provenance"] for e in group_by_axis(doc, "R+tie")["declared_keys"]}
-    assert tied["stellarator_09__stellaris__magnet__R0"] == "tie"
-    assert tied["stellarator_09__stellaris__R"] == "fan_out"
-
-
-def test_a_tie_key_traces_identically_to_a_fan_out_key(package_copy):
-    """Flip the tie key's provenance to fan_out: only the provenance field moves."""
+@pytest.fixture
+def provenance_copy(package_copy):
+    """Test-only provenance annotation; no physical identity is claimed."""
     copy = package_copy(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS)
     copy.edit_axes(
-        lambda data: [
-            key.update(provenance="fan_out")
-            for group in data["groups"]
-            if group["axis"] == "R+tie"
-            for key in group["keys"]
+        lambda d: d["groups"].append(
+            {
+                "axis": "test_tie",
+                "keys": [
+                    {"key": "stellarator_09__stellaris__plasma__R", "provenance": "fan_out"},
+                    {"key": "stellarator_09__stellaris__magnet__coil__I_coil", "provenance": "tie"},
+                ],
+            }
+        )
+    )
+    return copy
+
+
+def test_the_tie_key_is_marked_and_the_others_are_not(provenance_copy):
+    rc, out, err = provenance_copy.run()
+    assert rc == 0, err
+    tied = {
+        e["key"]: e["provenance"]
+        for e in group_by_axis(json.loads(out), "test_tie")["declared_keys"]
+    }
+    assert tied["stellarator_09__stellaris__magnet__coil__I_coil"] == "tie"
+    assert tied["stellarator_09__stellaris__plasma__R"] == "fan_out"
+
+
+def test_a_tie_key_traces_identically_to_a_fan_out_key(provenance_copy):
+    rc, out, err = provenance_copy.run()
+    assert rc == 0, err
+    declared = group_by_axis(json.loads(out), "test_tie")
+    provenance_copy.edit_axes(
+        lambda d: [
+            k.update(provenance="fan_out")
+            for g in d["groups"]
+            if g["axis"] == "test_tie"
+            for k in g["keys"]
         ]
     )
-    rc, out, err = copy.run()
+    rc, out, err = provenance_copy.run()
     assert rc == 0, err
-
-    import json
-
-    as_fan_out = group_by_axis(json.loads(out), "R+tie")
-    as_declared = group_by_axis(run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS), "R+tie")
-    def without_declared_keys(group):
-        return {k: v for k, v in group.items() if k != "declared_keys"}
-
-    assert without_declared_keys(as_fan_out) == without_declared_keys(as_declared)
-    assert [e["provenance"] for e in as_fan_out["declared_keys"]] == ["fan_out"] * 2
+    plain = group_by_axis(json.loads(out), "test_tie")
+    assert {k: v for k, v in declared.items() if k != "declared_keys"} == {
+        k: v for k, v in plain.items() if k != "declared_keys"
+    }
+    assert [e["provenance"] for e in plain["declared_keys"]] == ["fan_out"] * 2
 
 
 def test_entry_type_is_reported_per_declared_key():
@@ -74,10 +96,11 @@ def test_entry_type_is_reported_per_declared_key():
         for group in doc["groups"]
         for entry in group["declared_keys"]
     }
-    # WI-030: the bound beta retired; the swept field and its conductor facts are design attributes
-    assert types["stellarator_09__stellaris__magnet__B"] == "design_attribute"
-    assert types["stellarator_09__stellaris__magnet__R0"] == "design_attribute"
+    # WI-030: the bound beta retired. WI-035: the bound field retired in turn —
+    # the coil-set current lever and its facts are the design attributes now.
+    assert types["stellarator_09__stellaris__magnet__coil__I_coil"] == "design_attribute"
+    assert "stellarator_09__stellaris__magnet__R0" not in types
     # Since the model migration the swept plant attributes are design attributes too
     # (one entry point per authored attribute); the usage-literal class is exercised
     # by the known-answers test on the recirc threshold.
-    assert types["stellarator_09__stellaris__R"] == "design_attribute"
+    assert types["stellarator_09__stellaris__plasma__R"] == "design_attribute"

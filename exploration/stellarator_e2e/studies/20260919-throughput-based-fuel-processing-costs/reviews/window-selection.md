@@ -1,0 +1,3 @@
+# Window selection after oracle scan
+
+Executor check: the complete candidate list ran through the independent oracle after the released baseline/preflight. The engineered finite list separates burn, recovery, density and annual downtime from historical-price, capacity-margin and expenditure-date assumptions. Density changes operating power through the native plasma calculation. Breeding applicability is retained separately from exhaust-processing applicability. All candidates are retained; no point is removed to improve feasibility. This is a sensitivity study and claims no whole-plant feasible anchor or optimum.

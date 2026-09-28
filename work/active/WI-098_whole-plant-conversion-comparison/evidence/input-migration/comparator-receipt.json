@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "namespace_only_cases": 498,
+  "channels_per_case": 872,
+  "predicates_per_case": 84,
+  "injected_errors_detected": 2,
+  "scope": "Comparator harness only; no whole-plant model execution or verification claim."
+}

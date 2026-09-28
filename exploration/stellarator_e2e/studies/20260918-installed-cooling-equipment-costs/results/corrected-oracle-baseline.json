@@ -1,0 +1,9 @@
+{
+  "outcome": "pass",
+  "scalar_comparisons": 359,
+  "predicate_comparisons": 20,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-09,
+  "failures": [],
+  "native_reexecution": false
+}

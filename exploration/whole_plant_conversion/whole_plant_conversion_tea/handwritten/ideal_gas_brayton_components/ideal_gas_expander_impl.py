@@ -1,0 +1,36 @@
+"""Guarded nominal ideal-gas component; normative equations in SysML/spec."""
+import math
+AUTO_IMPLEMENTED = False
+
+def positive(name, value):
+    if value <= 0:
+        raise ValueError(name + ' must be positive')
+
+def finish(values):
+    if not all(math.isfinite(x) for x in values):
+        raise ValueError('nonfinite component output')
+    from whole_plant_conversion_tea.schemas.ideal_gas_expander_output import Ideal_Gas_ExpanderOutput
+    outputs = dict(zip(['temperature_out', 'pressure_out', 'shaft_produced'], values))
+    return tuple(outputs[name] for name in Ideal_Gas_ExpanderOutput.model_fields)
+
+def _reviewed_run_ideal_gas_expander(inputs):
+    for name, value in inputs.model_dump().items():
+        if not math.isfinite(value):
+            raise ValueError(name + " must be finite")
+    for name in ('temperature_in', 'pressure_in', 'exit_pressure_in', 'flow_in', 'cp_in'):
+        positive(name, getattr(inputs, name))
+    if inputs.gamma_in <= 1: raise ValueError('gamma must exceed one')
+    if inputs.pressure_in <= inputs.exit_pressure_in: raise ValueError('expansion inlet pressure must exceed exit pressure')
+    if not 0 < inputs.efficiency_in <= 1: raise ValueError('efficiency must be in (0,1]')
+    temperature = inputs.temperature_in * (1-inputs.efficiency_in*(1-(inputs.exit_pressure_in/inputs.pressure_in)**((inputs.gamma_in-1)/inputs.gamma_in)))
+    positive('outlet temperature', temperature)
+    work = inputs.flow_in * inputs.cp_in * (inputs.temperature_in-temperature)/1e6
+    return finish((temperature, inputs.exit_pressure_in, work))
+
+
+from whole_plant_conversion_tea.modules.ideal_gas_brayton_components.ideal_gas_expander import Ideal_Gas_ExpanderInput
+
+
+def run_ideal_gas_expander(inputs: Ideal_Gas_ExpanderInput) -> tuple[float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_ideal_gas_expander(inputs)

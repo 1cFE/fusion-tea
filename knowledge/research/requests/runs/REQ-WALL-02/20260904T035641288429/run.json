@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-WALL-02",
+  "request_key": "cfbb2e4d87d653d93d60e8b1ddb58a70de35d4ed9b1393702b86d0fd339adfc4",
+  "request_path": "knowledge/research/requests/REQ-WALL-02.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-04T03:56:41.288596+00:00",
+  "override_reason": null
+}

@@ -1,0 +1,291 @@
+[
+  {
+    "definition": "mfe_cooling_equipment",
+    "usage": "equipment",
+    "order_exact": true,
+    "ordered_bindings": [
+      {
+        "formal": "helium_design_shaft_MW_in",
+        "actual_name": "helium_design_shaft_MW_in",
+        "expression": "equipment_helium_design_shaft_MW"
+      },
+      {
+        "formal": "helium_design_suction_Pa_in",
+        "actual_name": "helium_design_suction_Pa_in",
+        "expression": "equipment_helium_design_suction_Pa"
+      },
+      {
+        "formal": "salt_design_flow_kg_s_in",
+        "actual_name": "salt_design_flow_kg_s_in",
+        "expression": "equipment_salt_design_flow_kg_s"
+      },
+      {
+        "formal": "salt_design_head_m_in",
+        "actual_name": "salt_design_head_m_in",
+        "expression": "equipment_salt_design_head_m"
+      },
+      {
+        "formal": "salt_design_eta_p_in",
+        "actual_name": "salt_design_eta_p_in",
+        "expression": "equipment_salt_design_eta_p"
+      },
+      {
+        "formal": "salt_design_eta_motor_in",
+        "actual_name": "salt_design_eta_motor_in",
+        "expression": "equipment_salt_design_eta_motor"
+      },
+      {
+        "formal": "helium_purchased_mass_kg_in",
+        "actual_name": "helium_purchased_mass_kg_in",
+        "expression": "equipment_helium_purchased_mass_kg"
+      },
+      {
+        "formal": "salt_purchased_mass_kg_in",
+        "actual_name": "salt_purchased_mass_kg_in",
+        "expression": "equipment_salt_purchased_mass_kg"
+      },
+      {
+        "formal": "enabled_in",
+        "actual_name": "enabled_in",
+        "expression": "equipment_enabled"
+      },
+      {
+        "formal": "n_mod_in",
+        "actual_name": "n_mod_in",
+        "expression": "'Primary Heat Transport'::n_mod"
+      },
+      {
+        "formal": "n_loops_in",
+        "actual_name": "n_loops_in",
+        "expression": "'Primary Heat Transport'::n_loops"
+      },
+      {
+        "formal": "mdot_loop_in",
+        "actual_name": "mdot_loop_in",
+        "expression": "primary_loop.mdot_loop"
+      },
+      {
+        "formal": "dp_loop_in",
+        "actual_name": "dp_loop_in",
+        "expression": "primary_loop.dp_loop"
+      },
+      {
+        "formal": "helium_suction_K_in",
+        "actual_name": "helium_suction_K_in",
+        "expression": "primary_loop.T_comp_in"
+      },
+      {
+        "formal": "helium_discharge_Pa_in",
+        "actual_name": "helium_discharge_Pa_in",
+        "expression": "loop_p"
+      },
+      {
+        "formal": "helium_hot_K_in",
+        "actual_name": "helium_hot_K_in",
+        "expression": "primary_loop.T_out"
+      },
+      {
+        "formal": "helium_cp_in",
+        "actual_name": "helium_cp_in",
+        "expression": "loop_cp"
+      },
+      {
+        "formal": "helium_gamma_in",
+        "actual_name": "helium_gamma_in",
+        "expression": "loop_gamma"
+      },
+      {
+        "formal": "primary_shaft_MW_in",
+        "actual_name": "primary_shaft_MW_in",
+        "expression": "primary_loop.w_fluid"
+      },
+      {
+        "formal": "primary_electric_MW_in",
+        "actual_name": "primary_electric_MW_in",
+        "expression": "primary_loop.p_elec"
+      },
+      {
+        "formal": "q_ihx_MW_in",
+        "actual_name": "q_ihx_MW_in",
+        "expression": "primary_loop.q_ihx"
+      },
+      {
+        "formal": "layout_multiplier_in",
+        "actual_name": "layout_multiplier_in",
+        "expression": "equipment_layout_multiplier"
+      },
+      {
+        "formal": "tube_wall_in",
+        "actual_name": "tube_wall_in",
+        "expression": "equipment_tube_wall"
+      },
+      {
+        "formal": "shell_wall_in",
+        "actual_name": "shell_wall_in",
+        "expression": "equipment_shell_wall"
+      },
+      {
+        "formal": "accessory_mass_in",
+        "actual_name": "accessory_mass_in",
+        "expression": "equipment_accessory_mass"
+      },
+      {
+        "formal": "secondary_head_in",
+        "actual_name": "secondary_head_in",
+        "expression": "equipment_secondary_head"
+      },
+      {
+        "formal": "eta_p_in",
+        "actual_name": "eta_p_in",
+        "expression": "equipment_eta_p"
+      },
+      {
+        "formal": "eta_motor_in",
+        "actual_name": "eta_motor_in",
+        "expression": "equipment_eta_motor"
+      },
+      {
+        "formal": "machine_life_in",
+        "actual_name": "machine_life_in",
+        "expression": "equipment_machine_life"
+      },
+      {
+        "formal": "bundle_life_in",
+        "actual_name": "bundle_life_in",
+        "expression": "equipment_bundle_life"
+      },
+      {
+        "formal": "years_in",
+        "actual_name": "years_in",
+        "expression": "cooling_years"
+      },
+      {
+        "formal": "discount_in",
+        "actual_name": "discount_in",
+        "expression": "cooling_discount"
+      },
+      {
+        "formal": "makeup_fraction_in",
+        "actual_name": "makeup_fraction_in",
+        "expression": "equipment_makeup_fraction"
+      },
+      {
+        "formal": "inventory_reserve_in",
+        "actual_name": "inventory_reserve_in",
+        "expression": "equipment_inventory_reserve"
+      },
+      {
+        "formal": "removal_multiplier_in",
+        "actual_name": "removal_multiplier_in",
+        "expression": "equipment_removal_multiplier"
+      },
+      {
+        "formal": "saltprice_source_choice_in",
+        "actual_name": "saltprice_source_choice_in",
+        "expression": "equipment_saltprice_source_choice"
+      },
+      {
+        "formal": "costscale_in",
+        "actual_name": "costscale_in",
+        "expression": "equipment_costscale"
+      },
+      {
+        "formal": "stainless_fabrication_usd2017_per_kg_in",
+        "actual_name": "stainless_fabrication_usd2017_per_kg_in",
+        "expression": "equipment_stainless_fabrication_usd2017_per_kg"
+      },
+      {
+        "formal": "sourcefitargument_C_in",
+        "actual_name": "sourcefitargument_C_in",
+        "expression": "cooling_cycle_argument"
+      }
+    ]
+  },
+  {
+    "definition": "mfe_primary_loop",
+    "usage": "primary_loop",
+    "order_exact": true,
+    "ordered_bindings": [
+      {
+        "formal": "q_source_in",
+        "actual_name": "q_source_in",
+        "expression": "q_source"
+      },
+      {
+        "formal": "T_in_in",
+        "actual_name": "T_in_in",
+        "expression": "loop_T_in"
+      },
+      {
+        "formal": "dT_blanket_in",
+        "actual_name": "dT_blanket_in",
+        "expression": "loop_dT_blanket"
+      },
+      {
+        "formal": "cp_in",
+        "actual_name": "cp_in",
+        "expression": "loop_cp"
+      },
+      {
+        "formal": "gamma_in",
+        "actual_name": "gamma_in",
+        "expression": "loop_gamma"
+      },
+      {
+        "formal": "p_loop_in",
+        "actual_name": "p_loop_in",
+        "expression": "loop_p"
+      },
+      {
+        "formal": "n_loops_in",
+        "actual_name": "n_loops_in",
+        "expression": "n_loops"
+      },
+      {
+        "formal": "mdot_loop_ref_in",
+        "actual_name": "mdot_loop_ref_in",
+        "expression": "mdot_loop_ref"
+      },
+      {
+        "formal": "mdot_loop_rated_in",
+        "actual_name": "mdot_loop_rated_in",
+        "expression": "mdot_loop_rated"
+      },
+      {
+        "formal": "dp_loop_ref_in",
+        "actual_name": "dp_loop_ref_in",
+        "expression": "dp_loop_ref"
+      },
+      {
+        "formal": "f_loss_in",
+        "actual_name": "f_loss_in",
+        "expression": "f_loss"
+      },
+      {
+        "formal": "eta_is_in",
+        "actual_name": "eta_is_in",
+        "expression": "eta_is"
+      },
+      {
+        "formal": "eta_drive_in",
+        "actual_name": "eta_drive_in",
+        "expression": "eta_drive"
+      },
+      {
+        "formal": "loop_live_in",
+        "actual_name": "loop_live_in",
+        "expression": "loop_live"
+      },
+      {
+        "formal": "p_pump_direct_in",
+        "actual_name": "p_pump_direct_in",
+        "expression": "p_pump_direct"
+      },
+      {
+        "formal": "eta_p_direct_in",
+        "actual_name": "eta_p_direct_in",
+        "expression": "eta_p_direct"
+      }
+    ]
+  }
+]

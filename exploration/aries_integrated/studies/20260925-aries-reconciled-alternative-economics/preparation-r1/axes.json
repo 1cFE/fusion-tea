@@ -1,0 +1,227 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "source_net_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source_finance__net_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Lyon Table IV prints 1000 MW net (the branch default); 891.0016527219543 is this case's own net, so the branch then substitutes the source capital scope alone."
+    },
+    {
+      "axis": "annual_om",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__annual_om__selected_amount",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E7/F8 allowance 70 M [35, 140]; 80,893,344 is target-derived from Lyon's 14 % of CoE (source-boundary), labelled diagnostic."
+    },
+    {
+      "axis": "plant_years",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__plant_years",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "F3 40 [30, 60]; 47 = 40 full-power years / 0.85 rounded to the integer the model requires."
+    },
+    {
+      "axis": "replacement_life",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_life_fpy",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E8 5 [2, 8]; 3.7673466400138413 = 5 x 1468.361/1948.8 (fluence-scaled applicability point); 2.907407 = source cadence 15.7/5.4 (E8)."
+    },
+    {
+      "axis": "replacement_factor",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E8 1 [0.5, 2]; 1.038330309484732 = 75,000,000 / 72,231,350 (source event price over the selected scope)."
+    },
+    {
+      "axis": "new_feed",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__annual_recovery_kg",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "F7: 0 (no credit), 100 (named scenario), 50, 150; 138.7304019114013 equals this case's gross makeup (purchase floor / self-sufficiency diagnostic)."
+    },
+    {
+      "axis": "supply_service",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__supply_service_annual",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "F7: 0 or 30 M (named scenario); 10 M and 100 M."
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E6 30 M [10 M, 100 M]."
+    },
+    {
+      "axis": "availability",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__availability",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E7/F3 0.85 [0.75, 0.95]."
+    },
+    {
+      "axis": "discount",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__discount_rate",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "F1 0.05 [0, 0.10]; the source rate is not printed."
+    },
+    {
+      "axis": "construction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__construction_years",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "F2 6 [0, 10]."
+    },
+    {
+      "axis": "terminal",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__terminal_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "F4 0.10 [0.05, 0.20]; the source 0.5 mills/kWh (1992 $) is unconvertible."
+    },
+    {
+      "axis": "compressor_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E4 [0.5, 1.5] on the changed equipment."
+    },
+    {
+      "axis": "cycle_side_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__turbine_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__generator_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__electrical_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__heat_rejection_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E4 [0.5, 1.5] applied jointly to the cycle-side allowances sized for the 1253 MW gross source plant, plus a 2.0 corner; the corner designs set the compressor, conversion-services and secondary-transport factors to the same value."
+    },
+    {
+      "axis": "conversion_services_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__conversion_services__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "[ASSUMED] recuperator bound: NTU 4 -> 19 (x 4.75) with capacity rate x 1.214 gives a UA-proportional x 5.8; factors 2, 4, 6 on the whole 62.912 M allowance."
+    },
+    {
+      "axis": "secondary_transport_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__secondary_transport__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Flow-proportional proxy 1700/1400 = 1.214 and the E4 upper bound 1.5."
+    },
+    {
+      "axis": "pbli_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "0 cubic proxy (baseline); 1 declared fixed power."
+    },
+    {
+      "axis": "pbli_pump_fixed_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_pump__fixed_power",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "[ASSUMED] order-of-magnitude bound 10 and 30 MW for PbLi MHD pumping that E3 leaves unmodelled; the baseline 0.01 MW is a placeholder."
+    },
+    {
+      "axis": "compressor_rating",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "1700 (the declared alternative); 1600 adverse control (screen fails by 67.033 MW)."
+    },
+    {
+      "axis": "he_pump_capacity",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__selected_flow_capacity",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "3359 (declared mapping value); 3261 adverse control (screen fails by 98 kg/s)."
+    },
+    {
+      "axis": "estimate_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_accounts__estimate_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "0 selected-quantity estimates; 1 fixed source budgets (the disclosed nonresponse)."
+    }
+  ]
+}

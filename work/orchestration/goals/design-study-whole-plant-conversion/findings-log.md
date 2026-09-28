@@ -1,0 +1,29 @@
+# What this whole-plant integration added
+
+[AGENT] Engineering notes for the project write-up. Numerical conclusions belong to the verified study and answer; the implementation evidence below records what transferred and what required new work.
+
+## What transferred
+
+- The repaired steam and helium Brayton calculations, finite cooler/property checks, return controllers and explicit conversion purchases transferred into the isolated package. All 498 predecessor controls reproduce 872 conversion channels and 84 predicates exactly. Seven local handwritten body copies differ only by package namespace. [Implementation report](../../../active/WI-098_whole-plant-conversion-comparison/report.md), [control comparison](../../../active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/comparison.json).
+- The selected magnet inventory was captured from the native full-system model and independently checked across 93 outputs. The new study preserves the failed alternatives and separates a supplied thermal source from an unqualified plasma operating point. [Configuration](../../../active/WI-098_whole-plant-conversion-comparison/configuration.md), [source review](evidence/capture-boundary-review-r2.md).
+- The stock generation, snapshot, study store and independent-verification tools support the larger assembly without a runtime physics adapter. Native integration proves regeneration and snapshot fixed points before the study uses one promoted package identity. [Integration return](evidence/integration-r2/integration_return.json).
+
+## What needed a new relationship
+
+- Source heat needed an explicit definition before it could determine fuel demand. The model distinguishes supplied hot heat, fusion heat, deposited heating and recovered primary work. A single shared source and finance interface replaces conflicting duplicate inputs; migration rejects unequal old values.
+- Reactor expenditure could not be added as an old aggregate total. The assembly names the common and exclusive purchases, removes replaced conversion allowances, rebuilds overhead membership, and carries separate fuel, imports, service, replacement and terminal accounts into native whole-plant LCOE.
+- Cryogenic heat needed an independent uncertain demand input. The inherited volumetric value did not qualify the enlarged winding pack. Chosen cryoplant ratings and price remain separate from demand; more heat changes electricity and margins without purchasing more plant. Review also removed duplicate coil heat from the auxiliary sink.
+- The captured stress margin initially used a calibration value instead of the selected allowable. Independent verification caught the wrong operand. The corrected executable retains the original failed attempt and unchanged tolerances.
+- Static validation diagnostics required identity-level evidence. The raw validator still reports its literal/alias findings; every identity is mapped to authored bindings and native behavior. Successful execution is reported alongside that disposition, not substituted for a static pass.
+
+[Independent integration review](evidence/implementation-integration-review.md) checks the complete source, power, capital, fuel, lifecycle and selected-equipment boundary. Incorrect unused generated CAS labels remain a documented metadata limitation; presentation uses the explicit reviewed mapping.
+
+## What the system comparison teaches
+
+- Completing the plant boundary changes what drives the choice. Steam's larger conversion purchase buys much more net electricity over which to spread the shared reactor and lifecycle costs. At 2,500 MW source heat, the reranked native minima export 663.97 MW for steam and 285.88 MW for Brayton; whole-plant LCOE is 408.16 and 875.31 USD2025/MWh respectively. The predecessor's subsystem-only costs cannot answer this question.
+- Increasing source heat is not automatically useful for the selected equipment. Both branches fail the selected primary/divertor checks at 3,000 MW. At 2,800 MW the catalog chooses a different Brayton offer because the 2,500 MW winner fails source adequacy. The selected minima are not one conversion plant's load curve.
+- The nominal steam preference survives the separately tested stresses. At 2,800 MW, combined favorable Brayton efficiency and relative quote assumptions reverse it: 397.38 versus 426.74 USD2025/MWh. These are conditional engineering scenarios, not vendor or market confidence bounds.
+- Numerical verification needed an independent accuracy diagnosis. High-precision integration and root solving showed the native cooler result was accurate and the independent oracle stopped too early. A tighter oracle stopping criterion and a wider predeclared cryogenic diagnostic bracket preserve the model equations and acceptance tolerances. The original failed record remains sealed; the replacement passes all 2,496 cases across 1,192 scalar channels and 125 predicates.
+- Every new native case reproduces a prior native execution exactly, including iteration diagnostics: 2,492 unchanged cases plus four reviewed cryogenic replacements. All 54,169 protected baseline files remain unchanged.
+
+[Verified study](../../../../exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/record.md) · [Numerical correction review](evidence/numerical-repair-r2-review.md) · [Exact native replay comparison](evidence/native-replay-comparison.json) · [Preservation](evidence/preservation-after-study.json).

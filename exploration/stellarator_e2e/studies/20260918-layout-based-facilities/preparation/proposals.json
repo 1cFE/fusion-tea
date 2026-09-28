@@ -1,0 +1,485 @@
+[
+  {
+    "id": "default14-legacy",
+    "family": "matched-scope",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__facilities_cost_mode": 0.0
+    },
+    "rationale": "Only facilities cost selection changes within this matched pair; geometry/calendar/cooling held identical."
+  },
+  {
+    "id": "default14-layout",
+    "family": "matched-scope",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__facilities_cost_mode": 1.0
+    },
+    "rationale": "Only facilities cost selection changes within this matched pair; geometry/calendar/cooling held identical."
+  },
+  {
+    "id": "selected18-legacy",
+    "family": "matched-scope",
+    "reference": "selected18",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__plasma__R": 11.251748216682868,
+      "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+      "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+      "stellarator_09__stellaris__buildings__facilities_cost_mode": 0.0
+    },
+    "rationale": "Only facilities cost selection changes within this matched pair; geometry/calendar/cooling held identical."
+  },
+  {
+    "id": "selected18-layout",
+    "family": "matched-scope",
+    "reference": "selected18",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__plasma__R": 11.251748216682868,
+      "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+      "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+      "stellarator_09__stellaris__buildings__facilities_cost_mode": 1.0
+    },
+    "rationale": "Only facilities cost selection changes within this matched pair; geometry/calendar/cooling held identical."
+  },
+  {
+    "id": "R-12.065",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.065
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "R-13.334999999999999",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 13.334999999999999
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "a-1.2349999999999999",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__plasma__a": 1.2349999999999999
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "a-1.3650000000000002",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__plasma__a": 1.3650000000000002
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "circuits-12",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 12
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "circuits-18",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 18
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "circuits-22",
+    "family": "equipment-response",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 22
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "default14-fixed-space",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "selected18-fixed-space",
+    "family": "capacity",
+    "reference": "selected18",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__plasma__R": 11.251748216682868,
+      "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+      "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "teams-1",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__sector_service_teams": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "teams-4",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__sector_service_teams": 4
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "tasks-0.25",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_remove_days": 0.25,
+      "stellarator_09__stellaris__buildings__component_install_days": 0.25
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "tasks-0.75",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_remove_days": 0.75,
+      "stellarator_09__stellaris__buildings__component_install_days": 0.75
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "sector-hold6-mode0",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_hold_days": 2191.5,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "cooling-hold16-mode0",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_hold_days": 5844.0,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "long-process-mode0",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_machine_process_days": 200,
+      "stellarator_09__stellaris__buildings__cooling_bundle_process_days": 400,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "sector-hold6-mode1",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_hold_days": 2191.5,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "cooling-hold16-mode1",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_hold_days": 5844.0,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "long-process-mode1",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_machine_process_days": 200,
+      "stellarator_09__stellaris__buildings__cooling_bundle_process_days": 400,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "late-component_receipt_lead_days",
+    "family": "readiness",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_receipt_lead_days": 30
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "late-initial_receipt_lead_days",
+    "family": "readiness",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__initial_receipt_lead_days": 20
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "late-cooling_receipt_lead_days",
+    "family": "readiness",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_receipt_lead_days": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "late-cooling_initial_receipt_lead_days",
+    "family": "readiness",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_initial_receipt_lead_days": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "three-machine-stations",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_machine_stations": 3
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "narrow-cooling_aisle_width",
+    "family": "route-conflict",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_aisle_width": 5
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "narrow-cooling_cross_width",
+    "family": "route-conflict",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_cross_width": 13
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "provisional_envelope_scale-0.8",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__provisional_envelope_scale": 0.8
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "provisional_envelope_scale-1.2",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__provisional_envelope_scale": 1.2
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "nuclear_wall-1",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__nuclear_wall": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "nuclear_wall-3",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__nuclear_wall": 3
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "conventional_wall-0.2",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__conventional_wall": 0.2
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "conventional_wall-0.5",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__conventional_wall": 0.5
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "civil_rate_multiplier-0.5",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__civil_rate_multiplier": 0.5
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "civil_rate_multiplier-2.0",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__civil_rate_multiplier": 2.0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "rebar-100-75",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__nuclear_rebar_density": 100,
+      "stellarator_09__stellaris__buildings__conventional_rebar_density": 75
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "rebar-200-150",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__nuclear_rebar_density": 200,
+      "stellarator_09__stellaris__buildings__conventional_rebar_density": 150
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "metric-tonne",
+    "family": "assumption-sensitivity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 1000
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "no-cooling-replacement",
+    "family": "initial-demand",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__heat_transport__equipment_machine_life": 30,
+      "stellarator_09__stellaris__heat_transport__equipment_bundle_life": 30
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "no-sector-replacement",
+    "family": "initial-demand",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__blanket__first_wall__fluence_limit": 180
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "lower-packing-mode0",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_material_fraction": 0.25,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 0
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "lower-packing-mode1",
+    "family": "capacity",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__component_material_fraction": 0.25,
+      "stellarator_09__stellaris__buildings__facilities_capacity_mode": 1
+    },
+    "rationale": "AGENT engineered sensitivity; retain every native predicate outcome."
+  },
+  {
+    "id": "wide_helium",
+    "family": "review-counterexample",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__helium_package_width": 8
+    },
+    "rationale": "Reviewer-confirmed failure or missing response; retain the repaired response and all native predicates."
+  },
+  {
+    "id": "long_salt",
+    "family": "review-counterexample",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__salt_package_length": 10
+    },
+    "rationale": "Reviewer-confirmed failure or missing response; retain the repaired response and all native predicates."
+  },
+  {
+    "id": "slow_initial_delivery",
+    "family": "review-counterexample",
+    "reference": "default14",
+    "point": {
+      "stellarator_09__stellaris__buildings__cooling_field_cycle_days": 1
+    },
+    "rationale": "Reviewer-confirmed failure or missing response; retain the repaired response and all native predicates."
+  }
+]

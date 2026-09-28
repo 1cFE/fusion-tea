@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MCR-LEADS-02",
+  "request_key": "c739db0b5859ed4f3623a84b94ec3aa83c9e740056366cd6f6346e910420f5b3",
+  "request_path": "knowledge/research/requests/REQ-MCR-LEADS-02.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-15T13:59:52.089353+00:00",
+  "override_reason": null
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=SatT&Digits=8&TLow=20&THigh=60&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+  "slug": "nist_water_saturation20to60c_matched_cycle_table",
+  "path": "knowledge/sources/nist_water_saturation20to60c_matched_cycle_table/",
+  "source_id": "9403fa902e2663a1189793ee9e476db63bae76c1a767e44f64ec2082ba1d0fd6",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-20T03:02:59.745155+00:00"
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/aries_integrated/aries_integrated",
+    "manifest": "exploration/aries_integrated/studies/manifest.json",
+    "axis_declaration": "exploration/aries_integrated/studies/axes.json",
+    "identity_document": "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/integration/package_identity.json",
+    "baseline_result": "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/integration/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "07379532dfd97175a05504d4fc1cde7fcd0fd1c91a4e1c7aa1b5d599a72face2",
+    "baseline_result": "4094ede55a2549a58b1adff49cf9e94a4eda670cfbb8456f5beaace641e4482c",
+    "identity_document": "97dabc7e09c1cb431e8797dd148a09cb55ca686f8a01b79a4ee5ceb787c10418",
+    "manifest": "1e3d867011d5cd54d3e4780df19e6b75afd180c789f9fbe41a14638732b19e6f"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "9 declared keys across 9 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 14",
+      "warnings": [
+        "fuel_rating: undeclared suffix-sibling aries_integrated_plant__compressor_capacity__selected_rating",
+        "fuel_rating: undeclared suffix-sibling aries_integrated_plant__divertor_capacity__selected_rating",
+        "fuel_rating: undeclared suffix-sibling aries_integrated_plant__generator_capacity__selected_rating",
+        "fuel_rating: undeclared suffix-sibling aries_integrated_plant__pbli_capacity__selected_rating",
+        "fuel_rating: undeclared suffix-sibling aries_integrated_plant__rejection_capacity__selected_rating",
+        "fuel_rating: undeclared suffix-sibling aries_integrated_plant__turbine_capacity__selected_rating",
+        "helium_rating: undeclared suffix-sibling aries_integrated_plant__compressor_capacity__selected_rating",
+        "helium_rating: undeclared suffix-sibling aries_integrated_plant__divertor_capacity__selected_rating",
+        "helium_rating: undeclared suffix-sibling aries_integrated_plant__generator_capacity__selected_rating",
+        "helium_rating: undeclared suffix-sibling aries_integrated_plant__pbli_capacity__selected_rating",
+        "helium_rating: undeclared suffix-sibling aries_integrated_plant__rejection_capacity__selected_rating",
+        "helium_rating: undeclared suffix-sibling aries_integrated_plant__turbine_capacity__selected_rating",
+        "compressor_stage_1_ratio: undeclared suffix-sibling aries_integrated_plant__compressor_2__selected_ratio",
+        "compressor_stage_1_ratio: undeclared suffix-sibling aries_integrated_plant__compressor_3__selected_ratio"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "aries_integrated_plant__plant_ledger__evaluate__net_electric reproduces at relative deviation 0.000e+00; 2/2 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}
