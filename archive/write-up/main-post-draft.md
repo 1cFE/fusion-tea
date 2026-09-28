@@ -59,7 +59,7 @@ The main capability: a "study".
 
 That's really it. Whether costs, energy, physics -- If we follow the primary modeling pattern (try to reflect the actual cause and effect of the modeled system), a forward-pass evaluation should be possible. So we built a pipeline for it: **sysml-codegen** reads the SysML plant model and generates a Python program from it, and **TEAx** runs that program across as many design points as a study asks for.
 
-![Two levels of design iteration: compose the plant in SysML v2, generate the program, evaluate designs. Changing the model regenerates the program; changing parameters reuses it.](main-post-assets/design-iteration.png)
+![Two levels of design iteration: compose the plant in SysML v2, generate the program, evaluate designs. Changing the model regenerates the program; changing parameters reuses it.](../../docs/exploratory-modeling/post-images/design-iteration.png)
 
 Features and limitations:
 
@@ -90,7 +90,7 @@ A goal is a question, plus what would count as answering it. The AI works on it 
 - Round 1: research, ingest what it finds, update the model for system X (and maybe system Y), run a study, then evaluate: is the goal accomplished?
 - Round 2: start from what round 1 found, and go again
 
-![A goal is written first. Each round is one bounded attempt by the AI: an approach, then tasks one at a time, then a record. A reviewer who did not do the work checks it, and the owner decides whether the goal is answered.](harness-assets/goal-loop.png)
+![A goal is written first. Each round is one bounded attempt by the AI: an approach, then tasks one at a time, then a record. A reviewer who did not do the work checks it, and the owner decides whether the goal is answered.](../../docs/exploratory-modeling/post-images/goal-loop.png)
 
 *One goal, pursued in rounds. Nothing builds on a round until someone who didn't do the work has reviewed it.*
 
@@ -121,7 +121,7 @@ Our idea: try to build a hold-out set.
 
 We started with a model that could price the Stellaris design but mostly repeated the paper's numbers back to us. Over about a month, we ran 28 goals against it.
 
-![Calculations grew from 55 to 199, engineering checks from 6 to 67, and parts from 14 to 76 over 28 goals](main-post-assets/model-growth.png)
+![Calculations grew from 55 to 199, engineering checks from 6 to 67, and parts from 14 to 76 over 28 goals](../../docs/exploratory-modeling/post-images/model-growth.png)
 
 *Model size after each goal. The late jumps are the buildings being sized from the equipment they hold, and the plant's equipment becoming design inputs with capacity checks.*
 
@@ -158,19 +158,19 @@ We ran one study for each of the three types of study from Part 2. I'll go into 
 
 **Parameters: compressor pressure.** A compressor setting turned out to be limited by a heat exchanger somewhere else in the plant. We built a hybrid neither paper describes: the Stellaris reactor's helium cooling loop feeding the ARIES Brayton cycle. Then we swept the compressors' pressure ratio on the same equipment. Lowering it raised net electricity from 427 to 621 MW (45% more), until the exchanger between the two loops could no longer take all of the reactor's heat.
 
-![Net electricity rises as compressor pressure ratio falls, until the exchanger can no longer remove all reactor heat](aries-study-assets/parameter-pressure-ratio.png)
+![Net electricity rises as compressor pressure ratio falls, until the exchanger can no longer remove all reactor heat](../../docs/exploratory-modeling/post-images/parameter-pressure-ratio.png)
 
 *Read right to left: output rises as the pressure ratio falls, until the exchanger runs out of capacity (shaded).*
 
 **Components: steam vs helium Brayton.** The cheaper conversion equipment gave the more expensive electricity. We put steam and helium Brayton conversion, each with its own exchangers and cooling equipment, on the same Stellaris-derived reactor. The Brayton equipment was about $1B cheaper, but the plant sold less than half the electricity, so its cost per MWh more than doubled. The physical reason is temperature: the reactor delivers helium at 500 °C, so the Brayton turbine runs at about 413 °C, against 708 °C in ARIES, and its compressors eat most of the turbine's output. An earlier version of the study compared the conversion equipment alone and found the two within $5/MWh of each other. The gap only appeared once the whole plant was counted.
 
-![Steam conversion costs $2.55B against $1.54B for helium Brayton, but sells 664 MW against 286 MW, so its electricity costs $408/MWh against $875/MWh](main-post-assets/steam-vs-brayton.png)
+![Steam conversion costs $2.55B against $1.54B for helium Brayton, but sells 664 MW against 286 MW, so its electricity costs $408/MWh against $875/MWh](../../docs/exploratory-modeling/post-images/steam-vs-brayton.png)
 
 *Read the direction, not the numbers. The absolute costs come from a proof-of-concept model with partly represented physics and assumed prices.*
 
 **Architecture: series vs split flow.** Splitting the flow produced about 6% more electricity, but a few percent more pressure loss would erase the gain. This study stays inside the ARIES plant and changes only how it's connected: the power cycle's helium passes through three heat exchangers, either in series or split between two of them (the split is ARIES's own arrangement). The split carries the same heat with less circulating helium, so the compressors do less work, and net electricity rose from 498 to 528 MW. If the split layout loses 8% of the cycle pressure against 4.5% for series, it falls to 491 MW, below series.
 
-![The split network needs less cycle flow and produces more net electricity than series](aries-study-assets/architecture-nominal-pair.png)
+![The split network needs less cycle flow and produces more net electricity than series](../../docs/exploratory-modeling/post-images/architecture-nominal-pair.png)
 
 *Same reactor heat and equipment; only the connections change.*
 

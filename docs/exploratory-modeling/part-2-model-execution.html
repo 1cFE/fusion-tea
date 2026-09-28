@@ -871,7 +871,7 @@ attribute fit_minimum_margin : Real = wp_fit.minimum_margin;</code></pre>
       <div class="readout" id="graph-readout" aria-live="polite"></div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 5</span>Each arrow connects a calculation's output to another calculation's input. Multiple values exchanged by the same pair share an arrow. Secondary inputs and other plant branches are omitted. Exact nodes, connections, and package identities: <code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 5</span>Each arrow connects a calculation's output to another calculation's input. Multiple values exchanged by the same pair share an arrow. Secondary inputs and other plant branches are omitted. Exact nodes, connections, and package identities: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/graph-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -1363,7 +1363,7 @@ variance = ((1-fraction)*left['std_error'])**2 + (fraction*right['std_error'])**
   </div>
 </details>
 
-<p>Both translated equations and custom methods expose declared inputs and outputs, so codegen can connect them into the same plant calculation network. The implementation note <code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code>, "Implementation preservation", covers how Python bodies are retained when regenerating a package.</p>
+<p>Both translated equations and custom methods expose declared inputs and outputs, so codegen can connect them into the same plant calculation network. The implementation note <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/model-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code></a>, "Implementation preservation", covers how Python bodies are retained when regenerating a package.</p>
 
 <details class="evidence">
   <summary><span class="evidence-kind">In the note</span><span>How Python bodies survive regeneration</span></summary>
@@ -1551,7 +1551,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
       </div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 8</span>The pack-sizing YAML entry drawn as connections: the effective current density arrives from the current-sizing calculation, the coil ampere-turns from the plant input file, and the calculated pack side is read by the fit and volume calculations. Sources: the entry above and the bindings in <code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 8</span>The pack-sizing YAML entry drawn as connections: the effective current density arrives from the current-sizing calculation, the coil ampere-turns from the plant input file, and the calculated pack side is read by the fit and volume calculations. Sources: the entry above and the bindings in <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/graph-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -1606,7 +1606,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
   </div>
 </details>
 
-<p>The long JSON keys identify each input's location in the plant. File-based runs load these settings from JSON; studies can supply the values directly in memory. The input-generation note <code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code>, "Input-generation details", covers file grouping, defaults, and inputs that need values before evaluation.</p>
+<p>The long JSON keys identify each input's location in the plant. File-based runs load these settings from JSON; studies can supply the values directly in memory. The input-generation note <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/model-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code></a>, "Input-generation details", covers file grouping, defaults, and inputs that need values before evaluation.</p>
 
 <details class="evidence">
   <summary><span class="evidence-kind">In the note</span><span>Input generation</span></summary>
@@ -1673,7 +1673,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
   <figcaption><span class="fig-label">Figure 9</span>How a study runs against the generated program, and the two uses of a study that the next two sections show.</figcaption>
 </figure>
 
-<p>The current study runner evaluates grids and prepared lists of candidates. An external optimizer can call the same evaluator; the study-runner note <code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code>, "Study runner capabilities", distinguishes that option from the built-in study strategies.</p>
+<p>The current study runner evaluates grids and prepared lists of candidates. An external optimizer can call the same evaluator; the study-runner note <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/study-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code></a>, "Study runner capabilities", distinguishes that option from the built-in study strategies.</p>
 
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>The study record and the study runner</span></summary>
@@ -1811,7 +1811,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
       </div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 10</span>Three cases evaluated with the same generated program. The second sizes the conductor supply for the required current, with a 1% reserve. The third also enlarges the space allocated to the magnet and its winding pack. None passes every check: all three exceed the modeled divertor heat-load limit. Extracted values and original case identities: <code class="path">archive/write-up/sysml-codegen-assets/magnet-sizing-comparison.csv</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 10</span>Three cases evaluated with the same generated program. The second sizes the conductor supply for the required current, with a 1% reserve. The third also enlarges the space allocated to the magnet and its winding pack. None passes every check: all three exceed the modeled divertor heat-load limit. Extracted values and original case identities: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/magnet-sizing-comparison.csv"><code class="path">archive/write-up/sysml-codegen-assets/magnet-sizing-comparison.csv</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -14093,7 +14093,7 @@ z
       </div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 11</span>This slice contains 256 samples: 44 pass all twenty then-implemented checks with a valid power account, 210 fail at least one check, and two have invalid power accounts. The passing samples span $149.77–152.36/MWh under that snapshot's cost assumptions. Circles identify passing samples in both panels; crosses retain failing results. No feasible region has been interpolated between the points. These samples do not establish a global optimum or the fraction of the whole design space that is feasible. Plot data: <code class="path">archive/write-up/sysml-codegen-assets/feasibility-cost-map.csv</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 11</span>This slice contains 256 samples: 44 pass all twenty then-implemented checks with a valid power account, 210 fail at least one check, and two have invalid power accounts. The passing samples span $149.77–152.36/MWh under that snapshot's cost assumptions. Circles identify passing samples in both panels; crosses retain failing results. No feasible region has been interpolated between the points. These samples do not establish a global optimum or the fraction of the whole design space that is feasible. Plot data: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/feasibility-cost-map.csv"><code class="path">archive/write-up/sysml-codegen-assets/feasibility-cost-map.csv</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -14120,7 +14120,7 @@ z
 
 <p><mark class="skim">The passing samples form a narrow band.</mark> At fixed ampere-turns, reducing radius increases the modeled field and can violate its limit. Increasing radius reduces field and changes the plasma power balance, eventually running into divertor heat or installed-heating limits. <mark class="skim">The cost plot explains why minimizing price alone would not answer the design question: low calculated costs also occur at points that fail engineering checks.</mark></p>
 
-<p>This pattern is conditional on the other inputs held fixed for the sweep. The study evidence <code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code>, "Held inputs for the radius–current map", summarizes those settings and links to the complete record.</p>
+<p>This pattern is conditional on the other inputs held fixed for the sweep. The study evidence <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/study-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code></a>, "Held inputs for the radius–current map", summarizes those settings and links to the complete record.</p>
 
 <p><mark class="skim">These studies turn design choices into engineering feedback.</mark> We can see what a proposed change improves, which limits it violates, and what to investigate next. When that investigation calls for a different component model or additional physics, we revise the model, regenerate the program, and run the next study.</p>
 </section>
@@ -14132,10 +14132,10 @@ z
 <ul>
   <li><a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">Original agentic-mbse post</a>: motivation and the modeling workflow.</li>
   <li><a href="https://github.com/1cFE/sysml-codegen/blob/main/docs/architecture/reference/00-pipeline-overview.md">Codegen pipeline</a> and <a href="https://github.com/rwestwood89/teax/blob/main/docs/evaluation-and-study.md">TEAx evaluation and studies</a>: execution architecture.</li>
-  <li>Stellarator code excerpts and source hashes <code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code>: field, winding fit, handwritten calculations, and blanket specialization.</li>
-  <li>Graph extraction <code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code>: exact generated connections and comparison against both frozen study pipelines.</li>
-  <li>Study extraction <code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code>: selected cases, fixed assumptions, data joins, source hashes, and later-model qualifications.</li>
-  <li>Figure sources and regeneration instructions <code class="path">archive/write-up/sysml-codegen-assets/README.md</code>: PNG and SVG files, plotting code, and retained data.</li>
+  <li>Stellarator code excerpts and source hashes <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/model-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code></a>: field, winding fit, handwritten calculations, and blanket specialization.</li>
+  <li>Graph extraction <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/graph-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code></a>: exact generated connections and comparison against both frozen study pipelines.</li>
+  <li>Study extraction <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/study-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code></a>: selected cases, fixed assumptions, data joins, source hashes, and later-model qualifications.</li>
+  <li>Figure sources and regeneration instructions <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/README.md"><code class="path">archive/write-up/sysml-codegen-assets/README.md</code></a>: PNG and SVG files, plotting code, and retained data.</li>
 </ul>
 </section>
 

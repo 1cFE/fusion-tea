@@ -1,5 +1,5 @@
 # HTML feedback for the write-up pages
-Project-local feedback for conversions run through `html-prompt.md`. Entries are append-only and are written only when the owner asks.
+Project-local feedback on the HTML write-up pages in `docs/exploratory-modeling/`, moved here from the write-up archive on 2026-09-28. Entries are append-only and are written only when the owner asks.
 
 ## Skim accents that the eye catches
 Prefer. Mark the sentence that carries a dense paragraph with a visible colored mark, not italics. Owner's request: "Can you add some accents to make it easier to skim, especially when we have blocks of text?"
