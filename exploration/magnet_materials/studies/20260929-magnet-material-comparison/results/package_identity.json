@@ -1,0 +1,17 @@
+{
+  "schema_version": "study-package-identity/v1",
+  "package": {
+    "name": "magnet_materials_tea",
+    "path": "exploration/magnet_materials/magnet_materials_tea"
+  },
+  "identity": {
+    "kind": "sealed",
+    "recipe": "effective-executable-fingerprint/v1",
+    "sealed_executable_fingerprint": "7075e929abf1133e5dc6d21ac7f65b370e6e88cd322906fc88501270c9592e3f",
+    "allowed_modified_files": [],
+    "adapter_sources": [],
+    "adapter_source_digest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "digest": "7075e929abf1133e5dc6d21ac7f65b370e6e88cd322906fc88501270c9592e3f"
+  },
+  "glue_ledger": []
+}

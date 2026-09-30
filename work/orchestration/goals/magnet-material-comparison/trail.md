@@ -130,3 +130,46 @@ T-005 · WI-099 through the modeling PM · package `exploration/magnet_materials
 - **Decision:** The oracle author found the reference case double-counted the EU DEMO magnet load in the shield stage (A6) and two design ambiguities (A1 guard at T = 0; A2 unrounded construction C) · corrected reference-case.json, design.md § 7 and the contract test value (η(18 kW) = 30.13 %); the shield load is common to both materials and changes no ranking · execution detail · coordinator · files named; evidence-matrix.md correction note.
 - **Decision:** Codegen cannot emit a negative design literal as an entry point (implementation-notes.md deviation 1) · leave `eps_intrinsic` unbound in the design with the value supplied by every case point and the manifest baseline, and never run the package on generated defaults · execution detail (toolchain limitation, recorded) · coordinator, from the implementer's report · study route and manifest.
 - **MR-7:** Compliant in executed behavior for the tested scope: insufficient/sufficient supplied designs for acceptance, fit, copper, steel and capacity pass and fail as designed; field varied with hardware fixed leaves inventory and conductor cost unchanged; unsupported cases carry status 0, a violated acceptance and rankable 0; no supplied quantity is written by any calculation (test evidence in tests/models/test_magnet_materials.py).
+
+### T-006 scope
+
+- **Objective:** Prepare, integrate, execute and verify the native study `20260929-magnet-material-comparison` on the WI-099 package: one promoted pin (integration seam CANDIDATE) and one committed study over the declared 2832-case set, every case verified against the independent oracle.
+- **Why now:** T-005 delivered the package, oracle and case set with baseline agreement; the contract's answer requires a sealed, verified native study.
+- **Scope:** Study runbook steps 1–10, 14–15 in the new record directory, `studies/ANNEX.md` and `DISCOVERY_LOG.md`, and the integration seam out-dir under evidence/integration-r1. Excluded: any change to model, package, oracle or cases (a disagreement stops the task); the goal-level reading, report, figures and answer (next task); commits (coordinator).
+- **Inputs:** goal.md; comparison-contract.md r3; WI-099 design.md § 6; evidence/briefs/t006-study-execute.md.
+- **Done when:** a CANDIDATE pin, all cases executed and verified within tolerance, findings registered, snapshot resolved; or a named blocker.
+- **Stop when:** BLOCKER from the seam, verification disagreement, prerequisite, owner gate or declared limit (this round's one pin and one study).
+
+### T-006 start — 2026-09-29
+
+T-006 · run-study execute mode and `scripts/integrate.py` · exploration/magnet_materials/studies/20260929-magnet-material-comparison/ (record, results, snapshot), studies/ANNEX.md, DISCOVERY_LOG.md, evidence/integration-r1/. One fresh executor owns those paths; the coordinator owns the trail and commits.
+
+### T-006 return — 2026-09-29
+
+- **Outcome:** PREREQUISITE — the integration seam refused a pin.
+- **Evidence:** evidence/integration-r1/integration_return.json (BLOCKER, gate 5 `model-family-spine`, condition `repo-lineage-broken`: `analyses/magnet_conductor_alternatives.sysml` and `designs/magnet_materials/magnet_subsystem.sysml` are unregistered canonical files; gates 0–4 pass, 27 handwritten files preserved, 163 entry points re-derive); the prepared record exploration/magnet_materials/studies/20260929-magnet-material-comparison/ (record.md, axes.json, indicators.json, manifest.json, preflight results, ANNEX.md, DISCOVERY_LOG.md rows #1–#7, results/ with 2310 executed points and full oracle verification) — all unpinned; no native digest.
+- **Reading:** Every package-scope gate passes and the package is at a fixed point, so the refusal is a registration gap in the repository's model-family registry (`tests/model_families.py`), not a package defect. The executor ran the study anyway under a disclosed `without_candidate` deviation; those results are useful evidence that the machinery works (all 2310 points execute; 128 channels × 2310 points agree with the oracle with zero disagreements and every verdict re-derived) but they are not this round's committed study, because the runbook requires a study to run against a promoted pin. Preflight passed all six gates; all seven axis groups are `constraints_reachable`, so no owner ruling was needed.
+- **Decision:** Seam refusal names a repository-scope registration · treat as a prerequisite repair owned by WI-099 (register the `magnet_materials` source collection), re-run the seam, then re-execute and re-verify the study against the CANDIDATE pin rather than adopt the unpinned run · execution detail (seam repair is a named prerequisite, not an absorbed scope expansion) · coordinator · tests/model_families.py (T-007).
+- **Decision:** Two record-local adaptations by the executor (a name-mapping `oracle_entry.py` because the stock manifest names a missing module; the contract's absolute 1e−9 tolerance clause declared in the record manifest) · accept both as disclosed glue with no physics, to be carried into the pinned re-run · execution detail · coordinator · record § 10/§ 13, finding #2.
+- **MR-7:** Unchanged; the executed cases evaluate supplied offers only.
+
+### T-007 scope
+
+- **Objective:** Repair the prerequisite (register the `magnet_materials` model family), obtain the CANDIDATE pin, and re-execute, re-verify and seal the study `20260929-magnet-material-comparison` against it.
+- **Why now:** T-006 returned PREREQUISITE with every package-scope gate passing; the fix is a two-line registry entry.
+- **Scope:** `tests/model_families.py` addition (WI-099); seam re-run to evidence/integration-r2; the executor re-runs steps 5–10 and 14–15 against the pin, replacing the unpinned results; `.gitignore` entries for result files above the repository's size practice, with digests retained in the snapshot. Excluded: any model, package, oracle or case change; the reading, report and answer (next task).
+- **Inputs:** goal.md; T-006 record and integration-r1; evidence/briefs/t006-study-execute.md.
+- **Done when:** CANDIDATE pin recorded in the sealed record and every case verified; or a named blocker.
+- **Stop when:** BLOCKER, verification disagreement, prerequisite, owner gate or declared limit.
+
+### T-007 start — 2026-09-29
+
+T-007 · `tests/model_families.py`, `scripts/integrate.py`, run-study steps 5–10/14–15 · evidence/integration-r2/, the sealed record and snapshot. Coordinator registers the family and commits; the T-006 executor (continuing context) re-runs the seam and the study.
+
+### T-007 return — 2026-09-29
+
+- **Outcome:** COMPLETE.
+- **Evidence:** tests/model_families.py@c4195090a (family registration); evidence/integration-r2/integration_return.json (CANDIDATE, ten gates pass, pin `2d10694e8b9b2f4b84d53cbf4417f99d406f82d177a1181b25582eb0ee7ea6ee`, semantic `4d37dbaf…f2f6`, executable `7075e929…2e3f`, teax `8d877460…`); sealed record exploration/magnet_materials/studies/20260929-magnet-material-comparison/ (record.md, snapshot.json sha256 `9f16a48c…7596a`, results/, verification), studies/ANNEX.md and DISCOVERY_LOG.md — pinned at the sealing commit that follows this entry.
+- **Reading:** The study ran against the promoted pin: 2832 declared cases, 2310 distinct executed points (522 aliases), all completed; the pinned run reproduces the earlier unpinned run exactly. Every non-constant channel of every point agrees with the independent oracle (0 disagreements, 0 verdict mismatches; the worst relative deviation is 3.3e−5 on an acceptance margin of 7.9e−7 K, absolute 2.6e−11 K). Nb₃Sn statuses: 1760 supported, 352 edge, 180 law-only, 540 unsupported; REBCO 2832 supported. 610 matched pairs are rankable (574 on anchor D, 36 on anchor S, the latter only under common-C); REBCO is dearer in 598 of them at the evaluated prices, Nb₃Sn dearer in 12 (REBCO at the 10 USD/m volume price, anchor D, 9–11 T). This is a valid study reading; the round's one pin and one study are spent.
+- **Decision:** The machine-local result files (case dump, native store, artifacts, oracle scan; ≈152 MB) follow the repository's 2026-09-27 practice · keep them out of git with their digests in snapshot.json and record § 17 · execution detail · coordinator · .gitignore@c4195090a.
+- **MR-7:** Compliant in executed behavior across the study: every case evaluates supplied offers; the offer policy is a separate study script; unsupported cases carry no ranking (verification re-derived every verdict).

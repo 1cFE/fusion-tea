@@ -1,0 +1,822 @@
+{
+  "kind": "full-channel-oracle-verification/v1",
+  "record": "20260929-magnet-material-comparison",
+  "oracle": {
+    "adapter": "oracle_entry.py (record-local name mapping)",
+    "source": "exploration/magnet_materials/oracle.py",
+    "source_sha256": "9458e118880bade56b215943146277c4f81525c33adcfbc54c13dfbc9e31cab9",
+    "adapter_sha256": "420bf655601c52787fda9a730505b79031599393c54a4a9f2d3e4be798e4a136",
+    "operand_bindings_digest": "f0546cf981b7d27ec4d3672f9c0a4a847a50ecd5caf3d44319249ef251225186"
+  },
+  "tolerance": {
+    "relative": 1e-09,
+    "absolute_per_unit": 1e-09,
+    "rule": "agree when rel < 1e-9 or abs < 1e-9 (contract r3 section 8); nonfinite must match exactly"
+  },
+  "stored_points_verified": 2310,
+  "declared_cases_covered": 2832,
+  "channels_checked": 128,
+  "channels_checked_list": [
+    "magnet_subsystem__subsystem__duty__turn_current__turn_current",
+    "magnet_subsystem__subsystem__nb3sn__all_pass__all_pass",
+    "magnet_subsystem__subsystem__nb3sn__annualized__annual_electricity",
+    "magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost",
+    "magnet_subsystem__subsystem__nb3sn__annualized__capital_total",
+    "magnet_subsystem__subsystem__nb3sn__area__cable_area",
+    "magnet_subsystem__subsystem__nb3sn__area__cu_margin",
+    "magnet_subsystem__subsystem__nb3sn__area__cu_pass",
+    "magnet_subsystem__subsystem__nb3sn__area__cu_required",
+    "magnet_subsystem__subsystem__nb3sn__area__fit_margin",
+    "magnet_subsystem__subsystem__nb3sn__area__fit_margin_fraction",
+    "magnet_subsystem__subsystem__nb3sn__area__fit_pass",
+    "magnet_subsystem__subsystem__nb3sn__area__gross_area",
+    "magnet_subsystem__subsystem__nb3sn__area__net_area",
+    "magnet_subsystem__subsystem__nb3sn__area__required_envelope_J",
+    "magnet_subsystem__subsystem__nb3sn__area__steel_margin",
+    "magnet_subsystem__subsystem__nb3sn__area__steel_pass",
+    "magnet_subsystem__subsystem__nb3sn__area__steel_required",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__k_integral",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_cold",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_conduction",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_joints",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_leads",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_nuclear",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_radiation",
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_shield",
+    "magnet_subsystem__subsystem__nb3sn__conductor__T_conductor",
+    "magnet_subsystem__subsystem__nb3sn__conductor__T_cs",
+    "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin",
+    "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_pass",
+    "magnet_subsystem__subsystem__nb3sn__conductor__element_area_total",
+    "magnet_subsystem__subsystem__nb3sn__conductor__element_copper_area",
+    "magnet_subsystem__subsystem__nb3sn__conductor__fraction_rule_margin",
+    "magnet_subsystem__subsystem__nb3sn__conductor__ic_cable_op",
+    "magnet_subsystem__subsystem__nb3sn__conductor__ic_strand_op",
+    "magnet_subsystem__subsystem__nb3sn__conductor__operating_fraction",
+    "magnet_subsystem__subsystem__nb3sn__conductor__status_code",
+    "magnet_subsystem__subsystem__nb3sn__conductor__supported",
+    "magnet_subsystem__subsystem__nb3sn__conductor__tcs_defined",
+    "magnet_subsystem__subsystem__nb3sn__conductor__temp_rule_margin",
+    "magnet_subsystem__subsystem__nb3sn__conductor__temperature_margin",
+    "magnet_subsystem__subsystem__nb3sn__inventory__ampere_metres",
+    "magnet_subsystem__subsystem__nb3sn__inventory__conductor_length",
+    "magnet_subsystem__subsystem__nb3sn__inventory__cu_mass",
+    "magnet_subsystem__subsystem__nb3sn__inventory__element_length",
+    "magnet_subsystem__subsystem__nb3sn__inventory__element_mass",
+    "magnet_subsystem__subsystem__nb3sn__inventory__manufacturing_cost",
+    "magnet_subsystem__subsystem__nb3sn__inventory__materials_cost",
+    "magnet_subsystem__subsystem__nb3sn__inventory__sc_cost",
+    "magnet_subsystem__subsystem__nb3sn__inventory__solder_mass",
+    "magnet_subsystem__subsystem__nb3sn__inventory__steel_mass",
+    "magnet_subsystem__subsystem__nb3sn__inventory__winding_capital",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__R_equiv_kW",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_pass",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__carnot_specific_power",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__eta_cold",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__green_extrapolated",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_cold",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_shield",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_total_MW",
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__refrigerator_capital",
+    "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_kAm",
+    "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m",
+    "magnet_subsystem__subsystem__pair__cost_difference",
+    "magnet_subsystem__subsystem__pair__pair_status",
+    "magnet_subsystem__subsystem__pair__rankable",
+    "magnet_subsystem__subsystem__rebco__all_pass__all_pass",
+    "magnet_subsystem__subsystem__rebco__annualized__annual_electricity",
+    "magnet_subsystem__subsystem__rebco__annualized__annualized_cost",
+    "magnet_subsystem__subsystem__rebco__annualized__capital_total",
+    "magnet_subsystem__subsystem__rebco__area__cable_area",
+    "magnet_subsystem__subsystem__rebco__area__cu_margin",
+    "magnet_subsystem__subsystem__rebco__area__cu_pass",
+    "magnet_subsystem__subsystem__rebco__area__cu_required",
+    "magnet_subsystem__subsystem__rebco__area__fit_margin",
+    "magnet_subsystem__subsystem__rebco__area__fit_margin_fraction",
+    "magnet_subsystem__subsystem__rebco__area__fit_pass",
+    "magnet_subsystem__subsystem__rebco__area__gross_area",
+    "magnet_subsystem__subsystem__rebco__area__net_area",
+    "magnet_subsystem__subsystem__rebco__area__required_envelope_J",
+    "magnet_subsystem__subsystem__rebco__area__steel_margin",
+    "magnet_subsystem__subsystem__rebco__area__steel_pass",
+    "magnet_subsystem__subsystem__rebco__area__steel_required",
+    "magnet_subsystem__subsystem__rebco__cold_load__k_integral",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_cold",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_conduction",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_joints",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_leads",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_nuclear",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_radiation",
+    "magnet_subsystem__subsystem__rebco__cold_load__q_shield",
+    "magnet_subsystem__subsystem__rebco__conductor__T_conductor",
+    "magnet_subsystem__subsystem__rebco__conductor__T_cs",
+    "magnet_subsystem__subsystem__rebco__conductor__acceptance_margin",
+    "magnet_subsystem__subsystem__rebco__conductor__acceptance_pass",
+    "magnet_subsystem__subsystem__rebco__conductor__element_area_total",
+    "magnet_subsystem__subsystem__rebco__conductor__element_copper_area",
+    "magnet_subsystem__subsystem__rebco__conductor__fraction_rule_margin",
+    "magnet_subsystem__subsystem__rebco__conductor__ic_cable_op",
+    "magnet_subsystem__subsystem__rebco__conductor__ic_tape_op",
+    "magnet_subsystem__subsystem__rebco__conductor__operating_fraction",
+    "magnet_subsystem__subsystem__rebco__conductor__status_code",
+    "magnet_subsystem__subsystem__rebco__conductor__supported",
+    "magnet_subsystem__subsystem__rebco__conductor__tcs_defined",
+    "magnet_subsystem__subsystem__rebco__conductor__temp_rule_margin",
+    "magnet_subsystem__subsystem__rebco__conductor__temperature_margin",
+    "magnet_subsystem__subsystem__rebco__inventory__ampere_metres",
+    "magnet_subsystem__subsystem__rebco__inventory__conductor_length",
+    "magnet_subsystem__subsystem__rebco__inventory__cu_mass",
+    "magnet_subsystem__subsystem__rebco__inventory__element_length",
+    "magnet_subsystem__subsystem__rebco__inventory__element_mass",
+    "magnet_subsystem__subsystem__rebco__inventory__manufacturing_cost",
+    "magnet_subsystem__subsystem__rebco__inventory__materials_cost",
+    "magnet_subsystem__subsystem__rebco__inventory__sc_cost",
+    "magnet_subsystem__subsystem__rebco__inventory__solder_mass",
+    "magnet_subsystem__subsystem__rebco__inventory__steel_mass",
+    "magnet_subsystem__subsystem__rebco__inventory__winding_capital",
+    "magnet_subsystem__subsystem__rebco__refrigeration__R_equiv_kW",
+    "magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin",
+    "magnet_subsystem__subsystem__rebco__refrigeration__capacity_pass",
+    "magnet_subsystem__subsystem__rebco__refrigeration__carnot_specific_power",
+    "magnet_subsystem__subsystem__rebco__refrigeration__eta_cold",
+    "magnet_subsystem__subsystem__rebco__refrigeration__green_extrapolated",
+    "magnet_subsystem__subsystem__rebco__refrigeration__p_in_cold",
+    "magnet_subsystem__subsystem__rebco__refrigeration__p_in_shield",
+    "magnet_subsystem__subsystem__rebco__refrigeration__p_in_total_MW",
+    "magnet_subsystem__subsystem__rebco__refrigeration__refrigerator_capital"
+  ],
+  "constant_channels_excluded": [
+    "magnet_subsystem__subsystem__nb3sn__eps_min__eps_min",
+    "magnet_subsystem__subsystem__nb3sn__k_a__k_a",
+    "magnet_subsystem__subsystem__nb3sn__k_d__k_d",
+    "magnet_subsystem__subsystem__nb3sn__k_g__k_g",
+    "magnet_subsystem__subsystem__nb3sn__k_i__k_i",
+    "magnet_subsystem__subsystem__rebco__k_a__k_a",
+    "magnet_subsystem__subsystem__rebco__k_d__k_d",
+    "magnet_subsystem__subsystem__rebco__k_g__k_g",
+    "magnet_subsystem__subsystem__rebco__k_i__k_i"
+  ],
+  "constraints_rederived": [
+    "magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77",
+    "magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be",
+    "magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2",
+    "magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93",
+    "magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4",
+    "magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4",
+    "magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f",
+    "magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9",
+    "magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056",
+    "magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312"
+  ],
+  "verdicts_rederived": true,
+  "worst_relative_deviation": {
+    "value": 3.324114504610957e-05,
+    "case_id": "D-18T-common-P-reference-nb3sn_strain_-0.6pct_OST_TFEU9-variant-offer-reference",
+    "channel": "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin"
+  },
+  "worst_absolute_error": {
+    "value": 1.1920928955078125e-07,
+    "case_id": "D-18T-common-P-reference-none-reference-insufficient",
+    "channel": "magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost"
+  },
+  "per_channel_worst": {
+    "magnet_subsystem__subsystem__duty__turn_current__turn_current": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__all_pass__all_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__annualized__annual_electricity": {
+      "rel": 5.799633146189931e-15,
+      "abs": 1.4901161193847656e-08
+    },
+    "magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost": {
+      "rel": 7.433366273626859e-16,
+      "abs": 1.1920928955078125e-07
+    },
+    "magnet_subsystem__subsystem__nb3sn__annualized__capital_total": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__cable_area": {
+      "rel": 3.8053078877812787e-16,
+      "abs": 7.275957614183426e-12
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__cu_margin": {
+      "rel": 1.049327853043733e-06,
+      "abs": 2.8421709430404007e-13
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__cu_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__cu_required": {
+      "rel": 1.0360751570420145e-15,
+      "abs": 2.8421709430404007e-13
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__fit_margin": {
+      "rel": 4.92232205700996e-15,
+      "abs": 1.0913936421275139e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__fit_margin_fraction": {
+      "rel": 4.9304507196966035e-15,
+      "abs": 2.6645352591003757e-15
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__fit_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__gross_area": {
+      "rel": 4.976104419005879e-16,
+      "abs": 1.0913936421275139e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__net_area": {
+      "rel": 4.3478413446971417e-16,
+      "abs": 7.275957614183426e-12
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__required_envelope_J": {
+      "rel": 4.966194006679864e-16,
+      "abs": 2.842170943040401e-14
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__steel_margin": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__steel_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__area__steel_required": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__k_integral": {
+      "rel": 9.817340906398048e-14,
+      "abs": 3.200284481863491e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_cold": {
+      "rel": 6.1831874324915555e-15,
+      "abs": 1.6007106751203537e-10
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_conduction": {
+      "rel": 9.445339830019185e-14,
+      "abs": 8.185452315956354e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_joints": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_leads": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_nuclear": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_radiation": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__cold_load__q_shield": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__T_conductor": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__T_cs": {
+      "rel": 7.98587318293521e-12,
+      "abs": 4.6845194390243705e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin": {
+      "rel": 3.324114504610957e-05,
+      "abs": 4.6845194390243705e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__element_area_total": {
+      "rel": 2.5812290828203125e-16,
+      "abs": 2.9103830456733704e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__element_copper_area": {
+      "rel": 2.5812290828203125e-16,
+      "abs": 1.4551915228366852e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__fraction_rule_margin": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__ic_cable_op": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__ic_strand_op": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__operating_fraction": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__status_code": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__supported": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__tcs_defined": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__temp_rule_margin": {
+      "rel": 3.324114504610957e-05,
+      "abs": 4.6845194390243705e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__conductor__temperature_margin": {
+      "rel": 8.140954001941235e-10,
+      "abs": 4.6845194390243705e-11
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__ampere_metres": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__conductor_length": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__cu_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__element_length": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__element_mass": {
+      "rel": 4.148287638854174e-16,
+      "abs": 2.9802322387695312e-08
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__manufacturing_cost": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__materials_cost": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__sc_cost": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__solder_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__steel_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__inventory__winding_capital": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__R_equiv_kW": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin": {
+      "rel": 3.2169015323616775e-12,
+      "abs": 1.6007106751203537e-10
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__carnot_specific_power": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__eta_cold": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__green_extrapolated": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_cold": {
+      "rel": 6.255383646025304e-15,
+      "abs": 3.166496753692627e-08
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_shield": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_total_MW": {
+      "rel": 5.90359479429011e-15,
+      "abs": 3.197442310920451e-14
+    },
+    "magnet_subsystem__subsystem__nb3sn__refrigeration__refrigerator_capital": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_kAm": {
+      "rel": 2.8567334372690755e-15,
+      "abs": 1.1368683772161603e-13
+    },
+    "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m": {
+      "rel": 2.882413487549559e-15,
+      "abs": 2.842170943040401e-14
+    },
+    "magnet_subsystem__subsystem__pair__cost_difference": {
+      "rel": 2.6879179221109818e-14,
+      "abs": 1.1920928955078125e-07
+    },
+    "magnet_subsystem__subsystem__pair__pair_status": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__pair__rankable": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__all_pass__all_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__annualized__annual_electricity": {
+      "rel": 2.1573374853162343e-15,
+      "abs": 2.2351741790771484e-08
+    },
+    "magnet_subsystem__subsystem__rebco__annualized__annualized_cost": {
+      "rel": 3.903642952494413e-16,
+      "abs": 1.1920928955078125e-07
+    },
+    "magnet_subsystem__subsystem__rebco__annualized__capital_total": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__cable_area": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__cu_margin": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__cu_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__cu_required": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__fit_margin": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__fit_margin_fraction": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__fit_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__gross_area": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__net_area": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__required_envelope_J": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__steel_margin": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__steel_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__area__steel_required": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__k_integral": {
+      "rel": 3.697893677850472e-15,
+      "abs": 1.1368683772161603e-12
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_cold": {
+      "rel": 1.9853754286734317e-14,
+      "abs": 9.74978320300579e-10
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_conduction": {
+      "rel": 1.1221006060088826e-13,
+      "abs": 4.865796654485166e-10
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_joints": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_leads": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_nuclear": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_radiation": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__cold_load__q_shield": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__T_conductor": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__T_cs": {
+      "rel": 5.035908248662684e-16,
+      "abs": 1.4210854715202004e-14
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__acceptance_margin": {
+      "rel": 2.0180794577624898e-12,
+      "abs": 7.105427357601002e-15
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__acceptance_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__element_area_total": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__element_copper_area": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__fraction_rule_margin": {
+      "rel": 2.0180794577624898e-12,
+      "abs": 2.220446049250313e-16
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__ic_cable_op": {
+      "rel": 2.663889548905091e-16,
+      "abs": 2.9103830456733704e-11
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__ic_tape_op": {
+      "rel": 1.9899176837926178e-16,
+      "abs": 5.684341886080802e-14
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__operating_fraction": {
+      "rel": 3.160573764858822e-16,
+      "abs": 2.220446049250313e-16
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__status_code": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__supported": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__tcs_defined": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__temp_rule_margin": {
+      "rel": 1.4389209935396902e-13,
+      "abs": 1.4210854715202004e-14
+    },
+    "magnet_subsystem__subsystem__rebco__conductor__temperature_margin": {
+      "rel": 8.882961607353205e-15,
+      "abs": 1.4210854715202004e-14
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__ampere_metres": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__conductor_length": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__cu_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__element_length": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__element_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__manufacturing_cost": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__materials_cost": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__sc_cost": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__solder_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__steel_mass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__inventory__winding_capital": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__R_equiv_kW": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin": {
+      "rel": 6.981040086729299e-12,
+      "abs": 9.74978320300579e-10
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__capacity_pass": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__carnot_specific_power": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__eta_cold": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__green_extrapolated": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__p_in_cold": {
+      "rel": 1.9740485093638525e-14,
+      "abs": 4.0512531995773315e-08
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__p_in_shield": {
+      "rel": 0.0,
+      "abs": 0.0
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__p_in_total_MW": {
+      "rel": 2.114675293834151e-15,
+      "abs": 3.907985046680551e-14
+    },
+    "magnet_subsystem__subsystem__rebco__refrigeration__refrigerator_capital": {
+      "rel": 0.0,
+      "abs": 0.0
+    }
+  },
+  "verdict_counts": [
+    {
+      "material": "nb3sn",
+      "source_local_identity": "acceptance_ok",
+      "status": "satisfied",
+      "count": 1635
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "acceptance_ok",
+      "status": "violated",
+      "count": 675
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "capacity_ok",
+      "status": "satisfied",
+      "count": 2126
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "capacity_ok",
+      "status": "violated",
+      "count": 184
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "copper_ok",
+      "status": "satisfied",
+      "count": 2224
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "copper_ok",
+      "status": "violated",
+      "count": 86
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "fit_ok",
+      "status": "satisfied",
+      "count": 713
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "fit_ok",
+      "status": "violated",
+      "count": 1597
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "steel_ok",
+      "status": "satisfied",
+      "count": 2258
+    },
+    {
+      "material": "nb3sn",
+      "source_local_identity": "steel_ok",
+      "status": "violated",
+      "count": 52
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "acceptance_ok",
+      "status": "satisfied",
+      "count": 2074
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "acceptance_ok",
+      "status": "violated",
+      "count": 236
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "capacity_ok",
+      "status": "satisfied",
+      "count": 2128
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "capacity_ok",
+      "status": "violated",
+      "count": 182
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "copper_ok",
+      "status": "satisfied",
+      "count": 2262
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "copper_ok",
+      "status": "violated",
+      "count": 48
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "fit_ok",
+      "status": "satisfied",
+      "count": 1578
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "fit_ok",
+      "status": "violated",
+      "count": 732
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "steel_ok",
+      "status": "satisfied",
+      "count": 2268
+    },
+    {
+      "material": "rebco",
+      "source_local_identity": "steel_ok",
+      "status": "violated",
+      "count": 42
+    }
+  ],
+  "disagreements": [],
+  "verdict_mismatches": [],
+  "outcome": "pass"
+}
