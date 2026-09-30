@@ -1,4 +1,4 @@
-"""Policy acceptance for the WI-100 Round 2 declared case set (contract r4 section 5, design section 6.2).
+"""Policy acceptance for the WI-100 Round 2 declared case set (contract r5 section 5, design section 6.2).
 
 The recorded supplied design of a case, re-evaluated with the independent composite oracle
 (exploration/stellarator_materials/oracle_glue.py) and no policy, must reproduce the recorded p_fus,
@@ -181,6 +181,57 @@ def test_resupplied_quantities_equal_the_channels_they_were_read_from(evaluated)
                 op.PIN[purchase] * (d[rating] / op.PIN[rating]) ** op.PURCHASE_EXPONENT
             assert d[purchase] == pytest.approx(expected, rel=REL)
         assert c["flags"]["free_capacity"] == list(op.FREE_CAPACITY)
+        # r5 (P), notes Q14: the IHX count is the smallest meeting 1.05 x required area <= installed area
+        # at its own duty; the cooling facilities follow it
+        n = d[op.IHX_COUNT_KEY]
+        req, inst = ch["heat_transport__equipment__ihx_required_area"], ch["heat_transport__equipment__ihx_installed_area"]
+        assert n == int(n) >= 1 and op.PACKAGE_MARGIN * req <= inst, c["case_id"]
+        floor = c["policy"]["trace"]["ihx_floor"]
+        assert n == max(math.ceil(op.PACKAGE_MARGIN * n * req / inst - 1e-9), floor, 1), c["case_id"]
+        assert floor <= n, c["case_id"]
+        assert d["buildings__selected_cooling_hall_length"] == pytest.approx(
+            op.PACKAGE_MARGIN * ch["buildings__layout__cooling_hall_required_length"], rel=REL)
+        assert d["buildings__selected_cooling_annex_width"] == pytest.approx(
+            op.PACKAGE_MARGIN * ch["buildings__layout__cooling_annex_required_width"], rel=REL)
+        for state in ("clean", "dirty"):
+            for kind in op.COOLING_KINDS:
+                assert d[f"buildings__cooling_{state}_{kind}_positions"] == math.ceil(
+                    op.PACKAGE_MARGIN * ch[f"buildings__layout__cooling_{state}_{kind}_required"] - 1e-9)
+
+
+def test_matched_designs_sit_at_the_least_heating_ladder_value(cases):
+    """Contract r5 section 5 (P), notes Q1: among the ladder values meeting the bounds at matched power, the
+    least required heating (ties to 14.63 keV), read from the recorded ladder of every matched design."""
+    checked = 0
+    for c in cases:
+        if not (_is_design(c) and _design_variant(c)) or c["labels"]["offer_kind"] != "reference":
+            continue
+        trace = c["policy"]["trace"] or {}
+        if trace.get("operating_point") != "matched":
+            continue
+        ok = [r for r in trace["ladder"] if r["matched"] and r.get("within_beta") and r["p_aux"] >= 0.0 and r["evaluable"]]
+        least = min(r["p_aux"] for r in ok)
+        chosen = op.select_matched(trace["ladder"])
+        assert chosen["p_aux"] == least
+        d = _suffix(c)
+        assert (d["plasma__T_i0"], d["plasma__n_e0"]) == (chosen["T"], chosen["n_e0"]), c["case_id"]
+        assert c["labels"]["T_i0_ladder"] == chosen["T"], c["case_id"]
+        checked += 1
+    assert checked > 100
+
+
+def test_divertor_is_carried_as_an_open_gap_with_its_flag(cases, evaluated):
+    """Contract r5 (P), notes Q5: divertor_heat_ok never decides a status; every evaluated design carries
+    divertor_pass and its margin."""
+    for c in cases:
+        if not c.get("expected"):
+            continue
+        assert "divertor_heat_ok" not in c["reasons"], c["case_id"]
+        assert c["flags"]["divertor_pass"] == ("divertor_heat_ok" not in c["expected"]["violated"]), c["case_id"]
+    for c, out in evaluated:
+        assert c["flags"]["divertor_pass"] == (out["verdicts"]["divertor_heat_ok"] == "satisfied")
+        assert c["flags"]["divertor_q_target_margin"] == pytest.approx(
+            out["channels"]["divertor__divheat__q_target_margin"], rel=REL, abs=1e-12)
 
 
 def test_recorded_status_follows_contract_section7_from_the_reevaluation(evaluated):

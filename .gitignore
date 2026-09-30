@@ -99,3 +99,6 @@ exploration/magnet_materials/studies/20260929-magnet-material-comparison/results
 exploration/magnet_materials/studies/20260929-magnet-material-comparison/results/native/
 exploration/magnet_materials/studies/20260929-magnet-material-comparison/results/_work/
 exploration/magnet_materials/studies/baseline/_work/
+# Round 2 (WI-100) declared case list: regenerates from declare_cases.py; its sha256 is recorded in
+# exploration/stellarator_materials/studies/policy-notes.md.
+exploration/stellarator_materials/studies/cases.json

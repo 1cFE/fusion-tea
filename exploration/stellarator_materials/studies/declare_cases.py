@@ -4,7 +4,7 @@ Run from the repository root (about an hour on ten workers; order 10^4 oracle ev
     .codex-test/run python exploration/stellarator_materials/studies/declare_cases.py [--workers N]
         [--cache-dir DIR]
 
-The grid is contract r4 section 5 (work/orchestration/goals/magnet-material-comparison/evidence/
+The grid is contract r5 section 5 (work/orchestration/goals/magnet-material-comparison/evidence/
 plant-contract.md) as the offer policy (offer_policy.py) realizes it; policy-notes.md states every rule:
   - first pass: 9 cells (geometry anchored / helias / arm x f_ren 1.0 / 1.4 / 1.8) x 7 sizes x
     (Nb3Sn 10, 11, 12, 13 T; REBCO equal duty 10, 11, 12 T on the Nb3Sn design's turns; REBCO 18,
@@ -171,12 +171,16 @@ def run_point(task: dict) -> dict:
 
 
 def refresh_point(res: dict) -> dict:
-    """Re-run the re-supply fixed point on every recorded design of a result produced by an earlier
-    policy digest whose magnet and operating-point rules are unchanged, and regenerate its derived cases.
+    """Re-select the ladder value and re-run the re-supply fixed point on every recorded design of a
+    result produced by an earlier policy digest whose magnet sizing and operating-point search are
+    unchanged, and regenerate its derived cases.
 
-    Valid because re-supply (structure, heating, cryo, packages, classes, facilities, schedule) feeds no
-    quantity the magnet sizing or the operating-point search reads (they read B_peak, conductor, fit
-    and plasma channels only). Used once in this run, for the facility campus-clearance amendment (Q12).
+    Valid because re-supply (structure, heating, cryo, packages, IHX count, classes, facilities,
+    schedule) feeds no quantity the magnet sizing or the search reads (they read B_peak, conductor, fit
+    and plasma channels only), and the recorded trace holds every ladder value's matched point, so a
+    changed selection rule re-selects from it without a new search (`offer_policy.select_matched`).
+    Used for the facility campus-clearance amendment (notes Q12) and for the contract r5 rulings
+    (notes, Re-run under r5).
     """
     t0 = time.time()
     ev = op.Evaluator()
@@ -195,14 +199,24 @@ def refresh_point(res: dict) -> dict:
             rec0 = _record_from_case(c)
             m = lb["material"]
             e0 = ev.count
-            final, case, rtrace = op._converge_resupply(ev, m, rec0["design"])
-            trace = dict(c["policy"]["trace"] or {}, **rtrace, refreshed=True)
+            trace0 = dict(c["policy"]["trace"] or {})
+            design, T = rec0["design"], lb["T_i0_ladder"]
+            if trace0.get("operating_point") == "matched" and lb["offer_kind"] == "reference":
+                sel = op.select_matched(trace0["ladder"])  # the current ladder rule on the recorded ladder
+                if sel is None:
+                    raise op.PolicyError(f"{c['case_id']}: recorded matched design without a selectable ladder row")
+                if (sel["T"], sel["n_e0"]) != (design["plasma__T_i0"], design["plasma__n_e0"]):
+                    trace0.setdefault("T_i0_before_reselection", design["plasma__T_i0"])
+                    design = dict(design, **{"plasma__T_i0": sel["T"], "plasma__n_e0": sel["n_e0"]})
+                T = sel["T"]
+            final, case, rtrace = op._converge_resupply(ev, m, design)
+            trace = dict(trace0, **rtrace, refreshed=True)
             kind = "ignited" if (trace.get("operating_point") == "ignited" and lb["offer_kind"] == "reference") \
                 else "reference"
             status, reasons = op.status_of(m, case, kind, rtrace)
             if kind == "ignited" and status == "ignited":
                 reasons = c["reasons"]
-            rec = dict(offer_kind=lb["offer_kind"], design=final, T_i0_ladder=lb["T_i0_ladder"],
+            rec = dict(offer_kind=lb["offer_kind"], design=final, T_i0_ladder=T,
                        power_short=c["policy"]["power_short"], status_expected=status, reasons=reasons, trace=trace,
                        evaluations=(c["policy"]["evaluations"] or 0) + (ev.count - e0),
                        plasma_solves=c["policy"]["plasma_solves"])
@@ -215,10 +229,13 @@ def refresh_point(res: dict) -> dict:
                 and variant == "none"
             out += _emit(lb["cell_geometry"], lb["cell_f_ren"], m, lb["B_peak_target"], (lb["R"], lb["a"]), rec,
                          variant, c["grid_point"], mr7, ev)
+    log = list(res.get("refresh_log", [])) + [dict(from_sha256=res.get("policy_sha256", "pre-digest"),
+                                                   to_sha256=_policy_digest(), evaluations=ev.count,
+                                                   seconds=time.time() - t0)]
     new = dict(res, cases=out, evaluations=res["evaluations"] + ev.count,
                plasma_solves=res["plasma_solves"] + op.MEMO_STATS["misses"] - misses0,
                seconds=res["seconds"] + time.time() - t0, policy_sha256=_policy_digest(),
-               refreshed_from=res.get("policy_sha256", "pre-digest"))
+               refreshed_from=res.get("policy_sha256", "pre-digest"), refresh_log=log)
     return new
 
 
@@ -432,10 +449,12 @@ def _sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def _run(tasks, workers, cache_dir, refreshable=False):
+def _run(tasks, workers, cache_dir, refreshable=lambda task: False):
     """Run tasks, reusing cached results. A cached result from an earlier policy digest is refreshed
-    (re-supply only, `refresh_point`) when `refreshable`, else re-run."""
+    (re-selection and re-supply only, `refresh_point`) when `refreshable(task)`, else re-run.
+    Returns (results, evaluations spent in this call)."""
     done, todo, stale = [], [], []
+    spent = 0
     digest = _policy_digest()
     for t in tasks:
         f = cache_dir / f"{t['task_id']}.json" if cache_dir else None
@@ -443,7 +462,7 @@ def _run(tasks, workers, cache_dir, refreshable=False):
             res = json.loads(f.read_text())
             if res.get("policy_sha256") == digest:
                 done.append(res)
-            elif refreshable:
+            elif refreshable(t):
                 stale.append(res)
             else:
                 todo.append(t)
@@ -456,6 +475,7 @@ def _run(tasks, workers, cache_dir, refreshable=False):
                 if cache_dir:
                     (cache_dir / f"{res['task_id']}.json").write_text(json.dumps(res))
                 done.append(res)
+                spent += res["refresh_log"][-1]["evaluations"]
                 print(f"  refreshed {res['task_id']}", flush=True)
     if todo:
         ctx = mp.get_context("fork")
@@ -464,9 +484,14 @@ def _run(tasks, workers, cache_dir, refreshable=False):
                 if cache_dir:
                     (cache_dir / f"{res['task_id']}.json").write_text(json.dumps(res))
                 done.append(res)
+                spent += res["evaluations"]
                 print(f"  {res['task_id']}: {len(res['cases'])} cases, {res['evaluations']} evals, "
                       f"{res['seconds']:.0f} s", flush=True)
-    return done
+    return done, spent
+
+
+def _is_design_variant_task(task):
+    return task["task_id"].startswith("p2-") and task["variant"] in op.DESIGN_VARIANTS
 
 
 def main(argv=None):
@@ -477,11 +502,11 @@ def main(argv=None):
     if args.cache_dir:
         args.cache_dir.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    p1 = _run(first_pass_tasks(), args.workers, args.cache_dir, refreshable=True)
+    p1, spent1 = _run(first_pass_tasks(), args.workers, args.cache_dir, refreshable=lambda task: True)
     cases = [c for r in p1 for c in r["cases"]]
     rows, structure_cells, exponent_cells = placements(cases)
     p2_tasks = variant_tasks(cases, rows) + [reevaluation_task(structure_cells, exponent_cells, rows)]
-    p2 = _run(p2_tasks, args.workers, args.cache_dir)
+    p2, spent2 = _run(p2_tasks, args.workers, args.cache_dir, refreshable=_is_design_variant_task)
     cases += [c for r in p2 for c in r["cases"]]
     cases = [normalize_inputs(c) for c in cases]
     cases.sort(key=lambda c: c["case_id"])
@@ -489,6 +514,12 @@ def main(argv=None):
                        first_pass_plasma_solves=sum(r["plasma_solves"] for r in p1),
                        second_pass_plasma_solves=sum(r["plasma_solves"] for r in p2))
     evaluations["total"] = evaluations["first_pass"] + evaluations["second_pass"]
+    evaluations["this_run"] = spent1 + spent2  # spent by this invocation (refreshes and fresh tasks)
+    refreshes = Counter()
+    for r in p1 + p2:  # logged refreshes of the results used (the r4 Q12 refresh predates the log)
+        for e in r.get("refresh_log", []):
+            refreshes[(e["from_sha256"], e["to_sha256"])] += e["evaluations"]
+    evaluations["refreshes"] = [dict(from_sha256=k[0], to_sha256=k[1], evaluations=n) for k, n in sorted(refreshes.items())]
     placement = dict(
         structure_mass_cells=[dict(cell=list(k), both_supported=v["both_supported"],
                                    rebco=v["rebco"]["case_id"], nb3sn=v["nb3sn"]["case_id"]) for k, v in structure_cells],
@@ -503,7 +534,7 @@ def main(argv=None):
         policy="exploration/stellarator_materials/studies/offer_policy.py",
         oracle="exploration/stellarator_materials/oracle_glue.py",
         oracle_sha256=_sha(op.ORACLE_PATH), policy_sha256=_sha(HERE / "offer_policy.py"),
-        contract="work/orchestration/goals/magnet-material-comparison/evidence/plant-contract.md (r4) section 5",
+        contract="work/orchestration/goals/magnet-material-comparison/evidence/plant-contract.md (r5) section 5",
         design="work/active/WI-100_stellarator-material-variants/design.md sections 4, 5.1, 5.2, 9 (A1-A8)",
         notes="exploration/stellarator_materials/studies/policy-notes.md",
         layout=("each case: case_id, grid_point, labels (incl. expected p_fus, p_aux_required, beta, B_peak, "

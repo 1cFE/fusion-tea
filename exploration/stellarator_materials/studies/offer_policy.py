@@ -1,9 +1,10 @@
-"""Declared supplied-design offer policy for the WI-100 Round 2 plant study (contract r4 section 5).
+"""Declared supplied-design offer policy for the WI-100 Round 2 plant study (contract r5 section 5).
 
 Author: T-016 fresh policy author, brief
 work/orchestration/goals/magnet-material-comparison/evidence/briefs/t016-policy-cases.md.
-Specification: work/orchestration/goals/magnet-material-comparison/evidence/plant-contract.md (r4)
-sections 3-8; entry keys and channels from work/active/WI-100_stellarator-material-variants/design.md
+Specification: work/orchestration/goals/magnet-material-comparison/evidence/plant-contract.md (r5)
+sections 3-8 (r5 rulings marked "(P)": least-heating ladder choice, divertor_heat_ok carried like
+tbr_ok, the schedule resources and the IHX exchanger count re-supplied; notes Q1, Q5, Q13, Q14); entry keys and channels from work/active/WI-100_stellarator-material-variants/design.md
 sections 4, 5.1, 5.2 and amendments A1-A8. Every rule below is [AGENT] unless it cites the contract.
 
 The policy sits outside the evaluator. The evaluator is the independent composite oracle
@@ -75,6 +76,7 @@ SEARCH_REL_TOL = 2.0e-4  # internal n_e0 search tolerance on p_fus (inside TOL_P
 BETA_SEARCH_REL_TOL = 2.0e-4  # internal tolerance on the beta-fallback density [AGENT]
 AUX_ZERO_TOL_MW = 0.05  # driven-boundary tolerance on p_aux_required for the companion [AGENT]
 LADDER_KEV = (11.0, 13.0, 14.63, 16.0, 18.0)  # T_i0 operating-point ladder, contract section 5 (F1a)
+LADDER_TIE_KEV = 14.63  # r5 (P): equal least required heating goes to 14.63 keV (notes Q1)
 TURN_CURRENT_A = 50_000.0  # held turn current, contract section 5
 TURN_CURRENT_VARIANT_A = 86_000.0  # HELIAS 5-B cable, contract section 5 (Schauer 2013 Table 1)
 BETA_LIMIT = float(PIN["beta_limit"])  # 0.05, contract section 3.1 (supported uses 0.05)
@@ -261,7 +263,9 @@ FREE_CAPACITY = (
     "buildings__component_receipt_lead_days",
 )
 
-MAX_RESUPPLY_ITERATIONS = 8
+MAX_RESUPPLY_ITERATIONS = 12
+#: r5 (P), notes Q14: the IHX exchanger count joins the re-supplied set (the plant's only IHX lever).
+IHX_COUNT_KEY = "heat_transport__n_loops"
 MAX_MAGNET_ITERATIONS = 40
 
 
@@ -816,11 +820,22 @@ def _driven_max(probe: _Probe, T: float, seed: float, beta_cap: float, max_evals
                 limit=limit, evaluable=pl_b["evaluable"])
 
 
+def select_matched(ladder: list) -> dict | None:
+    """Contract r5 section 5 (P), notes Q1: among the ladder temperatures meeting the bounds at matched
+    power (beta <= 0.95 x beta_limit, 0 <= p_aux_required, evaluable), the one with the least required
+    heating; equal heating goes to 14.63 keV, then to the lower temperature. Rows are recorded traces."""
+    ok = [r for r in ladder if r["matched"] and r.get("within_beta") and r["p_aux"] >= 0.0 and r["evaluable"]]
+    if not ok:
+        return None
+    return min(ok, key=lambda r: (r["p_aux"], r["T"] != LADDER_TIE_KEV, r["T"]))
+
+
 def operating_point(evaluate, material, design):
     """Contract section 5 operating-point rule, every ladder value recorded.
 
-    - matched: the lowest ladder T whose matched power has beta <= 0.95 x beta_limit and
-      0 <= p_aux_required (installed heating is re-supplied above it);
+    - matched: among the ladder T whose matched power has beta <= 0.95 x beta_limit,
+      0 <= p_aux_required (installed heating is re-supplied above it) and an evaluable plant, the one
+      with the least required heating, ties to 14.63 keV (contract r5 (P), notes Q1; `select_matched`);
     - ignited: matched power within beta only with p_aux_required < 0 at every ladder value reaching
       it; the companion is the largest driven fusion power over the ladder (F1b);
     - power-short: matched power unattainable within beta at every ladder value; n_e0 at the largest
@@ -835,8 +850,7 @@ def operating_point(evaluate, material, design):
         if row["matched"]:
             row["within_beta"] = row["beta"] <= beta_cap
         ladder.append(row)
-    selected = next((r for r in ladder if r["matched"] and r["within_beta"] and r["p_aux"] >= 0.0
-                     and r["evaluable"]), None)
+    selected = select_matched(ladder)
     public = [{k: v for k, v in r.items() if k != "case"} for r in ladder]
     if selected is not None:
         return dict(kind="matched", T=selected["T"], n_e0=selected["n_e0"], case=selected["case"], ladder=public,
@@ -892,11 +906,33 @@ def _count_up(value: float) -> float:
     return float(math.ceil(PACKAGE_MARGIN * value - 1e-9))
 
 
-def resupply(case: dict, design: dict, exponent: float = PURCHASE_EXPONENT, structure_variant: float = 1.0) -> tuple[dict, dict]:
-    """One re-supply pass from an evaluated case. Returns (new design, trace)."""
+def ihx_count(ch: dict, d: dict, floor: int = 1) -> tuple[float, int]:
+    """IHX exchanger count, contract r5 section 5 (P), notes Q14: the smallest integer count with
+    1.05 x required area per exchanger <= installed area. The required area per exchanger at the
+    evaluated count n is q_ihx / (n U LMTD) (exploration/stellarator_e2e/oracle_cooling.py:259-268), so
+    the count the evaluated duty needs is ceil(1.05 n A_req / A_installed). The circulator work, and so
+    q_ihx, rises as the count falls; a count that fails at its own evaluation raises the floor, so the
+    fixed point is the smallest count that meets the rule at its own duty. Returns (count, floor)."""
+    n = int(round(float(d.get(IHX_COUNT_KEY, PIN[IHX_COUNT_KEY]))))
+    req = ch["heat_transport__equipment__ihx_required_area"]
+    inst = ch["heat_transport__equipment__ihx_installed_area"]
+    if PACKAGE_MARGIN * req > inst:
+        floor = max(floor, n + 1)
+    count = max(math.ceil(PACKAGE_MARGIN * n * req / inst - 1e-9), floor, 1)
+    return float(count), floor
+
+
+def resupply(case: dict, design: dict, exponent: float = PURCHASE_EXPONENT, structure_variant: float = 1.0,
+             state: dict | None = None) -> tuple[dict, dict]:
+    """One re-supply pass from an evaluated case. Returns (new design, trace). `state` carries the IHX
+    count floor across the passes of one fixed point."""
     ch = case["channels"]
     d = dict(design)
     trace = {}
+    state = {} if state is None else state
+    # IHX exchanger count (contract r5 (P), notes Q14); the plant's equations carry its consequences
+    d[IHX_COUNT_KEY], state["ihx_floor"] = ihx_count(ch, d, state.get("ihx_floor", 1))
+    trace["ihx_floor"] = state["ihx_floor"]
     # structure mass, contract section 5 [U]
     d["magnet__m_support"] = og.structure_mass_rule(ch["magnet__stored_energy__W_mag"], structure_variant)
     # installed heating, contract section 5 [U]
@@ -962,12 +998,28 @@ def _facility_resupply(ch: dict, d: dict) -> dict:
     d["buildings__selected_reactor_hall_length"] = hall
     d["buildings__selected_reactor_hall_width"] = hall
     d["buildings__selected_reactor_hall_height"] = PACKAGE_MARGIN * ch["buildings__layout__reactor_hall_required_height"]
+    # r5 (P), notes Q14: the cooling facilities follow the exchanger count, so they become design-dependent
+    # and are re-supplied at requirement x 1.05: the cooling hall length (ceil(circuits / 2) cells), the
+    # spare-unit positions (clean and dirty, per helium circulator, salt pump and bundle), and the annex
+    # depths those positions need. The hall width and height, annex length and height, store widths and the
+    # cooling link have design-independent requirements and keep the pin (Q12).
+    d["buildings__selected_cooling_hall_length"] = PACKAGE_MARGIN * ch["buildings__layout__cooling_hall_required_length"]
+    north, south = annex_requirement(d)  # at the evaluated allocations
+    published = ch["buildings__layout__cooling_annex_required_width"]
+    if abs(north + south - published) > 1e-9 * max(1.0, published):
+        raise PolicyError(f"annex depth split {north} + {south} disagrees with the oracle's requirement {published}")
+    d["buildings__selected_cooling_annex_north_depth"] = PACKAGE_MARGIN * north
+    d["buildings__selected_cooling_annex_width"] = PACKAGE_MARGIN * (north + south)
+    for state in ("clean", "dirty"):
+        for kind in COOLING_KINDS:
+            d[f"buildings__cooling_{state}_{kind}_positions"] = _count_up(
+                ch[f"buildings__layout__cooling_{state}_{kind}_required"])
     # The conventional campus row starts `building_separation` below the south wing, while the cooling
-    # annex (held, design-independent) reaches down to -(annex width - north depth) - wall beside it
+    # annex reaches down to -(annex width - north depth) - wall beside it
     # (oracle_facilities.layout placement). When the maintenance cross is smaller than the reference,
     # the row rises into the annex. The south link is lengthened just enough to keep them apart (Q12).
     tc = PIN["buildings__conventional_wall"]
-    annex_south = (PIN["buildings__selected_cooling_annex_width"] - PIN["buildings__selected_cooling_annex_north_depth"]
+    annex_south = (d["buildings__selected_cooling_annex_width"] - d["buildings__selected_cooling_annex_north_depth"]
                    + tc)
     reach = (hall + 2.0 * t) / 2.0 + d["buildings__selected_sector_wing_south_length"] + 2.0 * t \
         + PIN["buildings__building_separation"]
@@ -990,6 +1042,26 @@ def _facility_resupply(ch: dict, d: dict) -> dict:
     d["buildings__parcel_origin_x_offset"] = (x0 - 0.5 * (PACKAGE_MARGIN - 1.0) * sx) - PIN_PARCEL_X_MIN
     d["buildings__parcel_origin_y_offset"] = (y0 - 0.5 * (PACKAGE_MARGIN - 1.0) * sy) - PIN_PARCEL_Y_MIN
     return dict(schedule, reactor_hall_rule="overlap" if hall > hall_need else "requirement")
+
+
+COOLING_KINDS = ("helium", "salt", "bundle")
+HX_TUBE_LENGTH_M = 11.6  # the exchanger tube length the composite oracle passes the facility layout (hx_tube_length)
+
+
+def annex_requirement(d: dict) -> tuple[float, float]:
+    """North and south annex depths the allocated cooling spare positions need, in the facility oracle's
+    statement order (exploration/stellarator_e2e/oracle_facilities.py:470-477). The oracle publishes only
+    their sum (`cooling_annex_required_width`), which the caller checks this split against."""
+    g = lambda k: float(d.get("buildings__" + k, PIN["buildings__" + k]))  # noqa: E731
+    margin, aisle = g("cooling_package_margin"), g("cooling_aisle_width")
+    pitches = (g("helium_package_length") + 2 * margin, g("salt_package_length") + 2 * margin,
+               HX_TUBE_LENGTH_M + 2 * margin)
+    machine = 2 * (max(g("helium_package_length"), g("salt_package_length")) + 2 * margin)
+    reserve = g("cooling_cross_width") / 2 + g("cooling_airlock_length") + 2 * g("conventional_wall")
+    clean = max(math.ceil(g(f"cooling_clean_{k}_positions") / 2) * p + aisle for k, p in zip(COOLING_KINDS, pitches))
+    dirty = max(max(math.ceil(g(f"cooling_dirty_{k}_positions") / 2) * p + aisle for k, p in zip(COOLING_KINDS, pitches)),
+                machine / 2 + (HX_TUBE_LENGTH_M + 2 * margin) + 10 * margin)
+    return reserve + clean, reserve + dirty
 
 
 def _schedule_resupply(ch: dict, d: dict) -> dict:
@@ -1035,7 +1107,9 @@ def _schedule_resupply(ch: dict, d: dict) -> dict:
 # ---------------------------------------------------------------------------------------------
 # Labels, flags and statuses (contract section 7; design A4)
 # ---------------------------------------------------------------------------------------------
-NOT_FAILING = ("peak_field_ok", "tbr_ok")  # envelope flag; the design-independent open plant gap
+#: Verdicts that do not disqualify `supported`: the envelope flag, and the two open plant gaps carried with
+#: their margins (tbr_ok; divertor_heat_ok by the contract r5 (P) ruling on notes Q5, flag `divertor_pass`).
+NOT_FAILING = ("peak_field_ok", "tbr_ok", "divertor_heat_ok")
 CAPACITY_SCREENS = {"cold": ("cold_stage_capacity_ok", "cryoplant__capacity_ok"),
                     "intercept": ("intercept_stage_capacity_ok",),
                     "teams": ("facility_outage_ok", "facility_initial_ready")}
@@ -1059,6 +1133,9 @@ def flags_of(material: str, case: dict, design: dict, power_short: int) -> dict:
         beta_verdict_0_04=("indeterminate" if math.isnan(beta) else
                            ("satisfied" if beta <= BETA_SECOND_VERDICT else "violated")),
         free_capacity=list(FREE_CAPACITY),
+        divertor_pass=v["divertor_heat_ok"] == "satisfied",  # r5 (P), notes Q5
+        divertor_q_target_margin=ch["divertor__divheat__q_target_margin"],
+        tbr_pass=v["tbr_ok"] == "satisfied",
     )
     if material == "rebco":
         out.update(extrapolated=20.0 < B <= 24.0, beyond_law_extents=24.0 < B <= 25.0,
@@ -1110,11 +1187,12 @@ def _converge_resupply(evaluate, material, design, exponent=PURCHASE_EXPONENT, s
     """Evaluate, re-supply, repeat until the re-supplied design equals the evaluated one."""
     d = dict(design)
     trace = {}
+    state = {}
     for it in range(1, MAX_RESUPPLY_ITERATIONS + 1):
         case = evaluate(d, material)
         if "refusal" in case:
             return d, case, dict(trace, resupply_iterations=it)
-        new, trace = resupply(case, d, exponent, structure_variant)
+        new, trace = resupply(case, d, exponent, structure_variant, state)
         if new == d:
             return d, case, dict(trace, resupply_iterations=it)
         d = new
