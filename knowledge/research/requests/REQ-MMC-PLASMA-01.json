@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-PLASMA-01",
+  "question": "Over what ranges of magnetic field, density, size and beta is the ISS04 stellarator confinement scaling fitted, what does its renormalization factor mean off the fitted point, and what do the Stellaris paper and the stellarator PROCESS papers state about the validity of extrapolating ISS04 and their beta limit to a reactor operating point at 4–5 T on axis instead of 9 T?",
+  "consumer": "goal:magnet-material-comparison/T-011",
+  "gap_type": "undeclared_domain",
+  "priority": "P0",
+  "where_to_look": ["Yamada et al. 2005 Nucl. Fusion 45 1684 (ISS04; author manuscript or open copy)", "Dinklage et al. 2007 Nucl. Fusion 47 1265 (ISS04 renormalization / configuration factor)", "Stellaris design paper Lion et al. 2025 FED (registered) — confinement assumptions, f_ren, beta", "Lion et al. 2021 Nucl. Fusion (registered) — eq. 22 ECRH constraint, beta and confinement constraints", "Warmer et al. 2016 'From W7-X to a HELIAS fusion power plant' (open access) — confinement extrapolation to reactor field"],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

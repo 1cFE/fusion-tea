@@ -13,7 +13,15 @@ Callable by an operator, by another script, or by an agent's Bash tool:
         --title "Paper Title" \\
         --use-for "..." --validation "..." --caveat "..."
 
-Design: `.project/active/goal-research-seam/design.md` (D1–D14).
+It is also the one removal door. `retire` takes a registered slug and a reason,
+removes that entry's four artifacts together under the same lock, and leaves one
+durable line in `knowledge/RETIRED.jsonl`; `verify` then treats the slug as
+expected-absent and reports it if it ever reappears:
+
+    uv run python scripts/source_registry.py retire --slug <slug> --reason "..."
+
+Design: `.project/active/goal-research-seam/design.md` (D1–D14); retirement was
+added under goal magnet-material-comparison Round 2 (brief T-010, R1–R5).
 """
 
 import argparse
@@ -28,7 +36,7 @@ import sys
 import time
 import uuid
 from contextlib import contextmanager
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
@@ -743,14 +751,29 @@ def verify(paths: RegistryPaths | None = None) -> VerifyReport:
     Reports the two windows a hard kill inside the commit lock can leave, plus
     pre-existing drift. Entries listed in the checked-in baseline are reported as
     `legacy` so the first run does not read as a broken tool. Writes nothing.
+
+    A slug recorded in `knowledge/RETIRED.jsonl` is expected absent: its absence is
+    no finding, and any of its artifacts reappearing — a row, a block whose
+    Location names it, or its source directory — is a `retired_reappeared` fault.
+    Prose elsewhere in the index that mentions a retired path (a superseding
+    entry's caveat, say) is history, not reappearance.
     """
     paths = paths or default_paths()
     baseline = _load_baseline(paths)
     rows = load_manifest_rows(paths)
     index_text = paths.index.read_text() if paths.index.exists() else ""
+    retired = set(_load_retired(paths))
 
     findings: list[Finding] = []
     slugs_with_rows = {row["slug"] for row in rows if "slug" in row}
+
+    def reappeared(slug: str, what: str) -> Finding:
+        return Finding(
+            kind="retired_reappeared",
+            klass="fault",
+            path=f"knowledge/sources/{slug}",
+            detail=f"{what} for a slug retired in knowledge/RETIRED.jsonl",
+        )
 
     for entry in sorted(paths.sources.iterdir()) if paths.sources.exists() else []:
         location = f"knowledge/sources/{entry.name}"
@@ -761,6 +784,8 @@ def verify(paths: RegistryPaths | None = None) -> VerifyReport:
                 path=location,
                 detail="not a source directory",
             ))
+        elif entry.name in retired:
+            findings.append(reappeared(entry.name, "source directory"))
         elif entry.name not in slugs_with_rows:
             findings.append(Finding(
                 kind="orphan_source_dir",
@@ -769,12 +794,18 @@ def verify(paths: RegistryPaths | None = None) -> VerifyReport:
                 detail="source directory with no manifest row",
             ))
 
+    for block in _index_blocks(index_text):
+        if block.slug in retired:
+            findings.append(reappeared(block.slug, "SOURCE_INDEX.md block"))
+
     for row in rows:
         slug = row.get("slug")
         if slug is None:
             continue
         location = f"knowledge/sources/{slug}"
-        if not (paths.sources / slug).is_dir():
+        if slug in retired:
+            findings.append(reappeared(slug, "manifest row"))
+        elif not (paths.sources / slug).is_dir():
             findings.append(Finding(
                 kind="unresolvable_path",
                 klass=_klass(location, baseline["orphan_source_dirs"]),
@@ -805,6 +836,345 @@ def _load_baseline(paths: RegistryPaths) -> dict:
 
 def _klass(location: str, baseline_entries: list[str]) -> str:
     return "legacy" if location in baseline_entries else "fault"
+
+
+def _load_retired(paths: RegistryPaths) -> dict[str, dict]:
+    """Every RETIRED.jsonl line, keyed by slug. An absent file means nothing retired."""
+    if not paths.retired.exists():
+        return {}
+    lines = [json.loads(line) for line in paths.retired.read_text().splitlines() if line.strip()]
+    return {line["slug"]: line for line in lines}
+
+
+# --- retire: the one removal door, with its own ladder (T-010 brief, R1–R5) -------
+
+#: A registry slug as `slugify` mints it (plus Zotero's `_<ITEMKEY>` suffix): one
+#: path segment, nothing that could name a directory elsewhere.
+SLUG_RE = re.compile(r"[A-Za-z0-9_]+")
+
+#: Where the registry lives as the hold-out protocol's globs spell it. The guard is
+#: run on this canonical path, not on the injected tree, so a barred slug refuses
+#: whichever tree the caller points at.
+CANONICAL_SOURCES = Path("knowledge/sources")
+
+INDEX_HEADING_RE = re.compile(r"^(?:### |## |# )", re.MULTILINE)
+INDEX_LOCATION_RE = re.compile(r"^- \*\*Location\*\*: knowledge/sources/([^/\s]+)/", re.MULTILINE)
+
+
+class RetirementError(RuntimeError):
+    """A removal rung failed. The ladder has already put everything back."""
+
+
+@dataclass(frozen=True)
+class IndexBlock:
+    """One `### ` block of SOURCE_INDEX.md: its span in the file and the slug it locates."""
+
+    start: int
+    end: int
+    text: str
+    slug: str | None
+
+
+@dataclass(frozen=True)
+class RetirementResult:
+    """The outcome of one retirement attempt.
+
+    `retired` is the only outcome that wrote anything. Every refusal — unknown
+    slug, hold-out hit, a reference from another entry, a precondition — returns
+    with nothing written. `RetirementError` is raised only when a removal rung
+    failed after the ladder ran, and then the ladder has already rolled back.
+    """
+
+    outcome: str
+    reason: str = ""
+    slug: str | None = None
+    removed: dict = field(default_factory=dict)
+    retired_line: dict | None = None
+    rule_id: str | None = None
+    offsets: tuple[int, ...] = ()
+    references: tuple[str, ...] = ()
+
+
+def retire(
+    slug: str, reason: str, *, paths: RegistryPaths | None = None
+) -> RetirementResult:
+    """Remove one registered entry — row, block, directory, raw copy — or nothing.
+
+    Refuses (R3), with nothing written, when the reason is blank, when the slug
+    trips the hold-out guard, when it is not a registry slug, when no manifest
+    row carries it, when its block or directory cannot be identified (that is
+    drift: run `verify`), or when another entry depends on it.
+
+    On a reference from another entry: a `supersedes` claim *about* the retiree
+    ("Supersedes ... knowledge/sources/<slug>/") is the announcement that the
+    retiree was replaced, and retiring it completes that announcement, so such a
+    claim does not block. Any other mention of the slug by another entry does.
+
+    Leaves one line in RETIRED.jsonl (R2): the removed row verbatim under `row`,
+    `retired_at`, `reason`, and the SHA-256 of the removed block text as the
+    writer wrote it (heading through last metadata line, no trailing newline).
+    """
+    paths = paths or default_paths()
+    with _registry_lock(paths):
+        refusal = _retire_refusal(slug, reason, paths)
+        if refusal is not None:
+            return refusal
+        return _remove(slug, reason, paths)
+
+
+def _retire_refusal(slug: str, reason: str, paths: RegistryPaths) -> RetirementResult | None:
+    """Everything checkable before a byte moves. None means proceed. Cheapest first."""
+    if not reason.strip():
+        return RetirementResult(
+            outcome="precondition_failed", reason="caller must supply a non-empty reason",
+        )
+
+    for candidate in (Path(slug), CANONICAL_SOURCES / slug):
+        match = holdout_guard.check_input_path(candidate)
+        if match is not None:
+            return _holdout_retirement_refusal(match)
+    matches = holdout_guard.scan_terms(slug)
+    if matches:
+        return _holdout_retirement_refusal(matches[0])
+
+    if not SLUG_RE.fullmatch(slug):
+        return RetirementResult(
+            outcome="precondition_failed", reason=f"not a registry slug: {slug!r}",
+        )
+
+    rows = [row for row in load_manifest_rows(paths) if row.get("slug") == slug]
+    if not rows:
+        return RetirementResult(outcome="unknown_slug", reason=f"no manifest row carries slug {slug}")
+    if len(rows) > 1:
+        return RetirementResult(
+            outcome="precondition_failed",
+            reason=f"{len(rows)} manifest rows carry slug {slug}; run verify and resolve the drift first",
+        )
+
+    index_text = paths.index.read_text() if paths.index.exists() else ""
+    blocks = [block for block in _index_blocks(index_text) if block.slug == slug]
+    if len(blocks) != 1:
+        return RetirementResult(
+            outcome="precondition_failed",
+            reason=f"{len(blocks)} SOURCE_INDEX.md blocks locate {slug}; expected exactly one — "
+                   "run verify and resolve the drift first",
+        )
+    if not (paths.sources / slug).is_dir():
+        return RetirementResult(
+            outcome="precondition_failed",
+            reason=f"source directory knowledge/sources/{slug}/ does not exist; run verify",
+        )
+
+    references = _references_to(slug, paths, index_text)
+    if references:
+        return RetirementResult(
+            outcome="referenced",
+            reason="another registry entry references this slug: " + "; ".join(references),
+            slug=slug,
+            references=tuple(references),
+        )
+    return None
+
+
+def _holdout_retirement_refusal(match: holdout_guard.Match) -> RetirementResult:
+    """The rule that fired and where — never the content that fired it (R-D4, D12)."""
+    return RetirementResult(
+        outcome="holdout_hit",
+        reason=f"{match.rule_id} matched {match.count}x",
+        rule_id=match.rule_id,
+        offsets=match.offsets,
+    )
+
+
+def _index_blocks(index_text: str) -> list[IndexBlock]:
+    """Every `### ` block: from its heading to the next heading of any level.
+
+    A block's span includes the blank lines that separate it from what follows,
+    so removing the span leaves the file as it was before the block was inserted.
+    Its `text` is what the writer wrote — heading through last metadata line.
+    """
+    headings = [m.start() for m in INDEX_HEADING_RE.finditer(index_text)]
+    blocks = []
+    for i, start in enumerate(headings):
+        if not index_text.startswith("### ", start):
+            continue
+        end = headings[i + 1] if i + 1 < len(headings) else len(index_text)
+        span = index_text[start:end]
+        located = INDEX_LOCATION_RE.search(span)
+        blocks.append(IndexBlock(
+            start=start, end=end, text=span.rstrip("\n"),
+            slug=located.group(1) if located else None,
+        ))
+    return blocks
+
+
+def _references_to(slug: str, paths: RegistryPaths, index_text: str) -> list[str]:
+    """Other entries that depend on `slug`, as `<where> (<their slug>)` labels.
+
+    A mention on a line that says the other entry *supersedes* the retiree is a
+    supersession claim about it, not a dependency on it, and is left out.
+    """
+    mention = re.compile(r"(?<![A-Za-z0-9_])" + re.escape(slug) + r"(?![A-Za-z0-9_])")
+    supersedes = re.compile(r"\bsupersedes\b", re.IGNORECASE)
+    found = []
+    for row in load_manifest_rows(paths):
+        other = row.get("slug")
+        if other == slug or other is None:
+            continue
+        for key, value in row.items():
+            if key == "slug" or not isinstance(value, str) or not mention.search(value):
+                continue
+            if key == "supersedes" and value.strip() == slug:
+                continue
+            found.append(f"manifest row field {key} ({other})")
+    for block in _index_blocks(index_text):
+        if block.slug == slug:
+            continue
+        for line in block.text.splitlines():
+            hit = mention.search(line)
+            if hit is None:
+                continue
+            if supersedes.search(line[:hit.start()]):
+                continue
+            found.append(f"SOURCE_INDEX.md block ({block.slug or block.text.splitlines()[0]})")
+            break
+    return found
+
+
+def _remove(slug: str, reason: str, paths: RegistryPaths) -> RetirementResult:
+    """The ladder, under the lock: park, rewrite, record — or put everything back.
+
+    The directory and the raw copy are parked in staging by rename (reversible)
+    and destroyed only after every rung succeeded. The manifest and the index are
+    rewritten from byte snapshots that rollback writes straight back. The
+    RETIRED.jsonl line is last: the durable record exists only for a removal that
+    completed.
+    """
+    rows = load_manifest_rows(paths)
+    row = next(r for r in rows if r.get("slug") == slug)
+    index_text = paths.index.read_text()
+    block = next(b for b in _index_blocks(index_text) if b.slug == slug)
+    source_dir = paths.sources / slug
+    raw_copy = _retired_raw_copy(row, rows, paths)
+
+    manifest_bytes = paths.manifest.read_bytes()
+    index_bytes = paths.index.read_bytes()
+    retired_existed = paths.retired.exists()
+    retired_mark = paths.retired.stat().st_size if retired_existed else 0
+
+    staging = paths.staging / uuid.uuid4().hex
+    parked_dir = staging / "sources" / slug
+    parked_raw = staging / "raw" / raw_copy.name if raw_copy is not None else None
+    line = {
+        "slug": slug,
+        "retired_at": datetime.now(timezone.utc).isoformat(),
+        "reason": reason,
+        "index_block_sha256": hashlib.sha256(block.text.encode("utf-8")).hexdigest(),
+        "row": row,
+    }
+
+    parked_dir.parent.mkdir(parents=True, exist_ok=True)
+    moved_dir = moved_raw = False
+    try:
+        source_dir.rename(parked_dir)
+        moved_dir = True
+        if raw_copy is not None:
+            parked_raw.parent.mkdir(parents=True, exist_ok=True)
+            raw_copy.rename(parked_raw)
+            moved_raw = True
+        _write_manifest_without(slug, manifest_bytes, paths)
+        _write_index_without(block, index_text, paths)
+        _append_retired_line(line, paths)
+    except Exception as error:
+        _roll_back_retirement(
+            manifest_bytes, index_bytes, retired_existed, retired_mark,
+            (parked_dir, source_dir) if moved_dir else None,
+            (parked_raw, raw_copy) if moved_raw else None,
+            paths,
+        )
+        shutil.rmtree(staging, ignore_errors=True)
+        raise RetirementError(f"retire failed for {slug}: {error}") from error
+
+    shutil.rmtree(staging, ignore_errors=True)
+    return RetirementResult(
+        outcome="retired",
+        slug=slug,
+        removed={
+            "manifest_row": row,
+            "index_block": block.text,
+            "source_dir": f"knowledge/sources/{slug}/",
+            "raw_copy": f"knowledge/raw/{raw_copy.name}" if raw_copy is not None else None,
+        },
+        retired_line=line,
+    )
+
+
+def _retired_raw_copy(row: dict, rows: list[dict], paths: RegistryPaths) -> Path | None:
+    """The `knowledge/raw/` copy this row owns, if the design stored one and no other row shares it.
+
+    Only a local-PDF row records the name it was stored under (`origin_path`);
+    the Zotero batch records its item key and not the file, so its raw copy is
+    left where it is.
+    """
+    origin = row.get("origin_path")
+    if not origin:
+        return None
+    name = Path(origin).name
+    shared = any(
+        r is not row and r.get("origin_path") and Path(r["origin_path"]).name == name
+        for r in rows
+    )
+    candidate = paths.raw / name
+    return candidate if candidate.is_file() and not shared else None
+
+
+def _write_manifest_without(slug: str, manifest_bytes: bytes, paths: RegistryPaths) -> None:
+    """Rewrite the manifest with every other line byte-identical."""
+    kept = []
+    for raw_line in manifest_bytes.splitlines(keepends=True):
+        text = raw_line.decode("utf-8")
+        if text.strip() and json.loads(text).get("slug") == slug:
+            continue
+        kept.append(raw_line)
+    paths.manifest.write_bytes(b"".join(kept))
+
+
+def _write_index_without(block: IndexBlock, index_text: str, paths: RegistryPaths) -> None:
+    """Cut the block's span out; the rest of the index is untouched."""
+    paths.index.write_text(index_text[:block.start] + index_text[block.end:])
+
+
+def _append_retired_line(line: dict, paths: RegistryPaths) -> None:
+    with open(paths.retired, "a") as handle:
+        handle.write(json.dumps(line) + "\n")
+        handle.flush()
+
+
+def _roll_back_retirement(
+    manifest_bytes: bytes,
+    index_bytes: bytes,
+    retired_existed: bool,
+    retired_mark: int,
+    parked_dir: tuple[Path, Path] | None,
+    parked_raw: tuple[Path, Path] | None,
+    paths: RegistryPaths,
+) -> None:
+    """Undo the rungs in reverse. Each step is a no-op if its rung never ran."""
+    if retired_existed:
+        with open(paths.retired, "r+b") as handle:
+            handle.truncate(retired_mark)
+    else:
+        paths.retired.unlink(missing_ok=True)
+    paths.index.write_bytes(index_bytes)
+    paths.manifest.write_bytes(manifest_bytes)
+    if parked_raw is not None:
+        parked, original = parked_raw
+        if parked.exists():
+            parked.rename(original)
+    if parked_dir is not None:
+        parked, original = parked_dir
+        if parked.exists():
+            parked.rename(original)
 
 
 # --- receipts: what a run can count on, written by the door itself (D8) ----------
@@ -895,6 +1265,15 @@ def _build_parser() -> argparse.ArgumentParser:
                      help="The triage decision recorded on the receipt (default: keeper)")
 
     sub.add_parser("verify", help="Report registry drift. Never repairs, never writes.")
+
+    ret = sub.add_parser(
+        "retire",
+        help="Retire one registered source: remove its manifest row, index block, source "
+             "directory and raw copy together, and record the removal in knowledge/RETIRED.jsonl",
+    )
+    ret.add_argument("--slug", required=True, help="The registry slug to retire")
+    ret.add_argument("--reason", required=True,
+                     help="Why it is retired; recorded verbatim on the RETIRED.jsonl line")
     return parser
 
 
@@ -902,6 +1281,8 @@ def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
     if args.command == "verify":
         return _run_verify()
+    if args.command == "retire":
+        return _run_retire(args.slug, args.reason)
     source = UrlSource(url=args.url) if args.url else LocalPdfSource(path=args.local_pdf)
     result = register(
         source,
@@ -925,6 +1306,31 @@ def _run_verify() -> int:
     faults = sum(1 for f in report.findings if f.klass == "fault")
     print(f"\n{faults} fault(s), {legacy} legacy entry(ies)")
     return 1 if report.has_faults else 0
+
+
+def _run_retire(slug: str, reason: str) -> int:
+    """Print what was removed and the RETIRED.jsonl line (R4), or the refusal."""
+    result = retire(slug, reason)
+    if result.outcome != "retired":
+        payload = {"outcome": result.outcome, "reason": result.reason}
+        if result.rule_id:
+            payload["rule_id"] = result.rule_id
+            payload["offsets"] = list(result.offsets)
+        if result.references:
+            payload["references"] = list(result.references)
+        print(json.dumps(payload, indent=2))
+        return 1
+    removed = result.removed
+    print(f"retired {result.slug}")
+    print(f"  removed manifest row:   {json.dumps(removed['manifest_row'])}")
+    print(f"  removed source dir:     {removed['source_dir']}")
+    print(f"  removed raw copy:       {removed['raw_copy'] or '(none stored outside the source dir)'}")
+    print("  removed index block:")
+    for line in removed["index_block"].splitlines():
+        print(f"    {line}")
+    print("  RETIRED.jsonl line:")
+    print(f"    {json.dumps(result.retired_line)}")
+    return 0
 
 
 def _result_as_json(result: RegistrationResult) -> dict:

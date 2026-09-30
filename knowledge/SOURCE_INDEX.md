@@ -1641,22 +1641,6 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 9b4eaf61b7f494610982ba1408fbdf9694c0e7e3f22706c27d84ea831c4c3509
 - **Date Added**: 2026-09-25
 
-### Green 2015 The cost of coolers for cooling superconducting devices at 4.2 K 20 K 40 K and 77 K
-- **Type**: url
-- **Location**: knowledge/sources/green_2015_the_cost_of_coolers_for_cooling_superconducting/
-- **Use for**: Large 4.5 K helium refrigerator efficiency law eta(percent of Carnot) = 15.5 R(kW)^0.23 (Eq.2, Fig.2, machines to 2007, 300 K rejection) and capital cost C(M$2015) ~ 3.1 R(kW)^0.65 (Eq.1, Fig.1, >100 W); small-cooler efficiency fits at 4.2 K (3.1+0.91 ln R), 20 K (0.2+2.17 ln R), 40 K (-2.8+2.95 ln R) with R in W (Fig.3) and cooler cost fits C(k$)=40 R^0.323 (4.2 K), 9.29 R^0.412 (20 K) (Fig.5); efficiency definition Eq.3-4. Serves RQ-1 cryogenic recirculating power and refrigerator cost for REBCO 20 K vs Nb3Sn 4.5 K magnet arms (goal magnet-material-comparison).
-- **Validation**: Check Eq.1 and Eq.2 on printed page 2 (PDF p3) against Fig.1 and Fig.2 axes; cooler fits on printed page 5 (PDF p6) under Fig.3 and printed page 7 (PDF p8) under Fig.5; Eq.3-4 efficiency definitions printed page 4 (PDF p5) render only as images.
-- **Caveat**: Large-refrigerator data are 4.5 K only, not new since 2007, some machines LN2 precooled; 20 K data are small commercial coolers of watts to about 1 kW, not large helium plants; list prices mid-2015 single unit; vendor ratings not measured plant performance.
-
-#### Extended Metadata
-- **Source URL**: https://iopscience.iop.org/article/10.1088/1757-899X/101/1/012001/pdf
-- **Source ID**: 621dab69f29850ba1769b2eb0899b1a22acb45b4aaac99deab0cac5a5bbefcc3
-- **Raw SHA256**: 621dab69f29850ba1769b2eb0899b1a22acb45b4aaac99deab0cac5a5bbefcc3
-- **Raw Artifact SHA256**: 621dab69f29850ba1769b2eb0899b1a22acb45b4aaac99deab0cac5a5bbefcc3
-- **Extracted Path**: knowledge/sources/green_2015_the_cost_of_coolers_for_cooling_superconducting/
-- **Extract SHA256**: 9daa9a948e9599d80759e91f7b0128a91bc59fcdb20b4a383bd5bb11fb4acb2f
-- **Date Added**: 2026-09-29
-
 ### Critical current scaling and the pivot-point in Nb3Sn strands (Tsui and Hampshire, Supercond. Sci. Technol. 25 (2012) 054008)
 - **Type**: url
 - **Location**: knowledge/sources/critical_current_scaling_and_the_pivot_point_in_nb3sn/

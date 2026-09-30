@@ -233,11 +233,109 @@
       }
     ]
   },
+  "absolute_tolerances": [
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin",
+      "value": 1e-09,
+      "units": "K under the temperature rule, 1 under the fraction rule",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__conductor__supported",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__fit_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__cu_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__steel_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin",
+      "value": 1e-09,
+      "units": "W",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost",
+      "value": 1e-09,
+      "units": "USD2021/yr",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__conductor__acceptance_margin",
+      "value": 1e-09,
+      "units": "K under the temperature rule, 1 under the fraction rule",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__conductor__supported",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__fit_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__cu_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__steel_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin",
+      "value": 1e-09,
+      "units": "W",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__annualized__annualized_cost",
+      "value": 1e-09,
+      "units": "USD2021/yr",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__pair__cost_difference",
+      "value": 1e-09,
+      "units": "USD2021/yr",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit)"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m",
+      "value": 1e-09,
+      "units": "USD2021/m",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit)"
+    }
+  ],
   "oracle": {
     "kind": "python_callable",
     "module": "exploration.magnet_materials.studies.oracle_entry",
     "callable": "evaluate",
     "sys_path": ".",
-    "note": "Adapter not present at build time. The coordinator binds the independently authored oracle (exploration/magnet_materials/oracle.py) through this module when preparing the study."
+    "note": "Package-owned oracle seam. evaluate(point) takes the generated entry map of one case and returns the independently authored oracle's value (exploration/magnet_materials/oracle.py, evaluate_case) for every non-constant package channel; operand_bindings() names the package channel each constraint's predicate operand is bound to. Both mappings read studies/interface_data.py and add no arithmetic. The nine constant formula channels (nb3sn/rebco eps_min, k_a, k_d, k_g, k_i) are fixed design values the oracle carries and no case can move; constant_channels() lists them and absolute_tolerances excludes them. Written under goal magnet-material-comparison Round 2 (finding 20260929-magnet-material-comparison#2)."
   }
 }

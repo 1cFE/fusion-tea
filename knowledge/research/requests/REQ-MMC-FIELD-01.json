@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-FIELD-01",
+  "question": "What permitted primary evidence fixes the winding-pack term of the stellarator peak-field relation (Lion et al. 2021 eq. 39, B_max = B_axis·[a0(C)·R/(R−a_coil) + a1(C)·R/√A_wp] or the printed form) for the Stellaris/HELIAS coil sets: printed a0, a1 values, a second (B_max, A_wp) anchor for the same coil set, the explicit cuboid-beam Biot–Savart formula of its appendix A, or a sourced self-field form for a rectangular winding pack (e.g. tokamak PROCESS TF peak-field treatment)?",
+  "consumer": "goal:magnet-material-comparison/T-011",
+  "gap_type": "missing_relationship",
+  "priority": "P0",
+  "where_to_look": ["Lion, Warmer, Wolf 2021 Nucl. Fusion 61 126021 (registered: a_general_stellarator_version_of_the_systems_code_process) — eq. 38–39, Table 1, appendix A", "Lion 2023 thesis (registered: systems_code_models_for_stellarator_fusion_power_plants_and)", "Stellaris design paper Lion et al. 2025 FED (registered) — winding pack dimensions, peak field, any pack-size scan", "PROCESS documentation / Kovari et al. 2014 for the tokamak TF peak-field and ripple treatment (open access)", "Schauer, Egorov, Bykov 2013 Fusion Eng. Des. 'HELIAS 5-B magnet system' (open access if available)"],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}
