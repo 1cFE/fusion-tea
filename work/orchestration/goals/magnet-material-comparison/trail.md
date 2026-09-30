@@ -364,3 +364,25 @@ T-014 · fresh checker on briefs/t014-check-field-relations.md · evidence/check
 - **Evidence:** work/active/WI-100_stellarator-material-variants/design.md (fresh modeler, Opus 5.5; to contract r4). Pinned at the commit that follows this entry.
 - **Decision (placement):** The design's § 1.1 premise conflict: spec R5 (reference package byte-identical) and the audit/contract placement of the seam edits in the canonical library cannot both hold, because the twin rule (`tests/models/test_model_family_spines.py:291-304`) forces a regeneration of `stellarator_e2e`, which would change every sealed study's executable fingerprint · keep every seam edit inside the derived package's staged source copies as a recorded hunk set (15 hunks in 5 files plus 2 body copies, each value-neutral at the reference), canonical, twin and Stellaris design file untouched; port to canonical at the reference's next regeneration as a later work item · execution detail (isolation over canonical placement; the goal invariant asks for preserved behavior and additive isolated variants) · coordinator · spec R3/R5 amended; contract § 6 r4a note (CPI variant also covers the Green refrigerator capital).
 - **Next:** fresh design review on briefs/t013-design-review.md, including the design's probe P1 (rebound cryoplant seams resolved by codegen when the consumer is in the plant definition) and the three-instance wording deviation (the reference is the staged Stellaris file itself).
+
+### T-013 return — 2026-09-30
+
+- **Outcome:** COMPLETE; WI-100 design reviewed and released for implementation.
+- **Evidence:** work/active/WI-100_stellarator-material-variants/spec.md (R3/R5 amended), design.md (fresh modeler, Opus 5.5; corrections D1–D18 applied in place with a § 8 change list), evidence/design-review-wi100.md (fresh reviewer, Opus 5.5: PASS WITH CORRECTIONS, 9 corrections, 10 notes; `## Recheck` PASS WITH CORRECTIONS with R1–R2 on the probe-P1 fallbacks and notes R3–R6, all carried into the implementation and oracle briefs as binding amendments). Pinned at the commit that follows this entry.
+- **Reading:** The design realizes the audit's seam inside the derived package's staged copies (15 value-neutral hunks in 5 files plus 2 body copies, plus the contingent H6 `winding_account` seam), with the reference instance being the staged unchanged Stellaris file and two material instances in a derived design file; five toolchain probes (P1 cross-part seam consumers, P2 double retype, P3 def-level literals as keys, P4 auto-implemented conditional calc, P5 per-case cost of three instances) run on scratch copies before implementation; the reviewer confirmed every plant binding, MR-7 compliance (no cycle, no output bound back, no demand-sizing) and a working precedent for retyping a sub-part in the pinned instance (`stellarator_plant.sysml:560`).
+- **Decision:** The recheck's two fallback corrections and four notes apply only if probe P1 fails and to naming; they are carried as binding amendments in briefs/t015-implementer.md and t015-glue-oracle.md rather than a third design pass · execution detail · coordinator · the review's § Recheck.
+- **Process note:** the design author made one scripted text edit with bare `python3` (nothing executed); recorded as reported.
+- **MR-7:** Design § 4 role table reviewed: every policy-proposed quantity supplied and checked; `B_max` an envelope flag; the conductor status alone decides `unsupported`.
+
+### T-015 scope
+
+- **Objective:** Implement WI-100 (probes, package build, regression, route, tests, family registration) and, independently and in parallel, the glue oracle with its channel-ownership map and pure-oracle tests.
+- **Why now:** The design is released; the two tracks are independent by construction (the oracle author reads design and contract only).
+- **Scope:** implementer owns `exploration/stellarator_materials/` (except the oracle files), `tests/models/test_stellarator_materials.py`, `tests/model_families.py` (one addition), WI-100 `implementation-notes.md`, `build/`, `prototype/`; oracle author owns `exploration/stellarator_materials/oracle_glue.py`, `oracle-reuse.json`, `oracle-notes.md`, `tests/models/test_stellarator_materials_oracle.py`. Excluded: the offer policy and case declaration (next task, after the oracle), the seam run, the study.
+- **Inputs:** design.md + review § Recheck; contract r4; briefs t015-implementer.md, t015-glue-oracle.md.
+- **Done when:** probes deposited, package built with the reference bit-for-bit, tests pass, family registered; oracle written with tests passing and the ownership map complete; or a probe refusal the fallbacks cannot absorb is reported.
+- **Stop when:** prerequisite, strategy blocker (a seam step infeasible), owner gate or declared limit.
+
+### T-015 start — 2026-09-30
+
+T-015 · implementer (Opus 5.5) on briefs/t015-implementer.md · glue-oracle author (Opus 5.5) on briefs/t015-glue-oracle.md · parallel; neither reads the other's files.

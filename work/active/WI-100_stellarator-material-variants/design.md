@@ -10,7 +10,7 @@ Related Artifacts:
 
 # WI-100 design: plant-level conductor material variants on the Stellaris plant
 
-Author: T-013 fresh modeler, brief `work/orchestration/goals/magnet-material-comparison/evidence/briefs/t013-design.md`. Governing contract: `evidence/plant-contract.md` **r4** (released 2026-09-30; cited "contract § n"). Spec: `spec.md` R1–R7. Evidence: `evidence/plant-chain-audit.md` §§ 2, 4, 6 (cited "audit"). Nothing is implemented by this document; a fresh reviewer checks it before implementation. Every choice here is `[AGENT]` unless marked otherwise.
+Author: T-013 fresh modeler, brief `work/orchestration/goals/magnet-material-comparison/evidence/briefs/t013-design.md`. Governing contract: `evidence/plant-contract.md` **r4** (released 2026-09-30; cited "contract § n"). Spec: `spec.md` R1–R7. Evidence: `evidence/plant-chain-audit.md` §§ 2, 4, 6 (cited "audit"). Nothing is implemented by this document. Review: `evidence/design-review-wi100.md`, PASS WITH CORRECTIONS. Corrections D1–D9 and notes D10–D18 are applied in place, each marked with its finding id; § 8 lists them. Every choice here is `[AGENT]` unless marked otherwise.
 
 ## 0. The design in one screen
 
@@ -19,6 +19,7 @@ Author: T-013 fresh modeler, brief `work/orchestration/goals/magnet-material-com
 - Five plant library files need value-neutral edits: a gate on the plant REBCO law, a pack-arm slot on the peak-field calc, and four `default` seams on the cryoplant. **These edits live only in the derived package's staged source copies, not in the canonical library** (§ 1.1 explains why: the repository's twin rule makes any canonical edit a change under `exploration/stellarator_e2e/**`).
 - The package `exploration/stellarator_materials/` has three instances. The reference instance is the unchanged Stellaris design file, staged byte-for-byte, so its keys equal the pin's and the WI-098 parity comparison applies with no key map. The two material instances sit in one new design file, generated from the Stellaris file by a declared edit list.
 - Regression: the reference instance must reproduce the pin's 1,352 outputs and 67 verdicts bit-for-bit, with a declared delta of three new neutral entry keys and one new output. Protected paths are hash-checked before and after every build and test.
+- On every case the route fills the unselected material instance from the manifest baseline point and asserts its outputs equal the recorded baseline (D4). The reference and the unselected instance are therefore two regression witnesses on every case.
 
 ## 1. Placement and isolation
 
@@ -34,7 +35,7 @@ The contract (§ 9) and the audit (§ 6 steps 1–4) put the gate, the slot and 
 
 **Alternative (option X, not used).** Edit canonical and twin together and re-derive the WI-080 census receipts. This follows the audit literally but breaks R5 as written and cascades into test re-pins. It needs an owner ruling on R5.
 
-The SysML text of every hunk is the same under X and Y. Only its location and the build's staging step differ, so a reviewer who prefers X changes § 1.2 and § 1.6 only. **Dependency flagged:** R5's wording and contract § 9's phrase "per the audit's seam proposal" both need the reviewer's or owner's confirmation of Y.
+The SysML text of every hunk is the same under X and Y. Only its location and the build's staging step differ. **Ruled:** option Y is accepted. Spec R5 is amended, contract § 9 records the staged-hunk placement and the staged-Stellaris reference instance, and the ruling is in trail § T-013 (review D19, K1).
 
 ### 1.2 Files
 
@@ -54,7 +55,7 @@ The SysML text of every hunk is the same under X and Y. Only its location and th
 | `tests/models/test_stellarator_materials.py` | new tests | § 6 |
 | `work/active/WI-100_stellarator-material-variants/build/` | evidence (force-added; `.gitignore:4`) | logs, `build-hashes.json`, `regression/baseline-parity.json`, `regression/preservation.json`, body diffs, probe results |
 
-Bodies reused: the 51 manual stellarator_e2e bodies whose stubs the derived generation emits, copied from `exploration/stellarator_e2e/generated/handwritten/` with the WI-093 prefix rewrite `stellarator_tea.` → `stellarator_materials_tea.` (`exploration/component_alternatives/build.py:78-120`, reversibility asserted). The two bodies of § 1.3 replace their originals. Six Round 1 bodies from `exploration/magnet_materials/bodies/magnet_conductor_alternatives/` (Nb₃Sn surface, REBCO surface, area screen, inventory, cold-stage load, refrigeration screen) get the WI-099 typed adapter (`exploration/magnet_materials/build.py:79-107`). The two unused Round 1 bodies (annualized cost, pair comparison) are not installed; contract § 6 adds nothing from Round 1's annualization. The glue calcs are expression calcs that codegen auto-implements, so they need no body (probe P4 confirms this for the conditional one).
+Bodies reused: the 51 manual stellarator_e2e bodies whose stubs the derived generation emits, copied from `exploration/stellarator_e2e/generated/handwritten/` with the WI-093 prefix rewrite `stellarator_tea.` → `stellarator_materials_tea.` (`exploration/component_alternatives/build.py:78-120`, reversibility asserted). The two bodies of § 1.3 replace their originals. Six Round 1 bodies from `exploration/magnet_materials/bodies/magnet_conductor_alternatives/` (Nb₃Sn surface, REBCO surface, area screen, inventory, cold-stage load, refrigeration screen) get the WI-099 typed adapter (`exploration/magnet_materials/build.py:79-107`). The two unused Round 1 bodies (annualized cost, pair comparison) are not installed; contract § 6 adds nothing from Round 1's annualization. Five glue calcs are arithmetic expression calcs that codegen auto-implements, so they need no body. The sixth, `'REBCO Shape Branch'`, uses an `if` expression. The library's codegen-envelope comment lists "no exp/if/lookup" (`models/library/analyses/mfe_account_costs.sysml:58-59`), and no `if` expression appears anywhere under `models/`. So expect its handwritten fallback: `bodies/magnet_material_variants/rebco_shape_branch_impl.py`, a three-line `calculate` (`shape_mode = 1.0 if B_peak > B_knot_max else 0.0`) with the WI-099 typed adapter. It is included in the § 1.6 step 4 body-set assertion whenever codegen emits a manual stub (probe P4, D15).
 
 ### 1.3 Staged-copy hunks (value-neutral), with the reason each is neutral
 
@@ -62,13 +63,15 @@ Bodies reused: the 51 manual stellarator_e2e bodies whose stubs the derived gene
 |---|---|---|---|
 | H1 | `analyses/mfe_conductor_current.sysml` ('REBCO Conductor Current', `:3-38`) | append `in attribute enabled : Real default 1.0;` after `:26`; append `out attribute evaluation_defined : Real;` after `:37`; one doc sentence on the gate | appended last, so positional bindings keep their prefix (`work/active/WI-099_magnet-conductor-alternatives/implementation-notes.md:26`); at `enabled = 1` body B1 runs the unchanged arithmetic |
 | H2 | `cost_structure/mfe_power_core.sysml` ('Magnet System') | add `attribute rebco_law_enabled : Real default 1.0;` after `:108`; append `in enabled = rebco_law_enabled;` to the `conductor_current` usage after `:209`; append `in wp_side_in = winding_pack.wp_side; in arm_slope_in = coil.arm_slope; in arm_x_ref_in = coil.arm_x_ref;` to `peak_field_calc` after `:173` | new values reach only the gate and the slot, both identity at their defaults |
-| H3 | `structure/mfe_magnet_parts.sysml` ('Modular Coil', `:4-54`) | add `attribute arm_slope : Real default 0.0;` and `attribute arm_x_ref : Real default 35.278;` after `:50` | slope 0 disables the arm |
+| H3 | `structure/mfe_magnet_parts.sysml` ('Modular Coil', `:4-54`) | add `attribute arm_slope : Real default 0.0;` and `attribute arm_x_ref : Real default 0.0;` after `:50`. The library default is neutral (MR-3); 35.278 is a Stellaris anchor and is bound only in the material instances (E7) (D6) | slope 0 disables the arm for any finite `arm_x_ref` |
 | H4 | `analyses/mfe_plasma_scaling.sysml` ('Conductor Peak Field', `:420-494`) | append `in attribute wp_side_in : Real default 1.0; in attribute arm_slope_in : Real default 0.0; in attribute arm_x_ref_in : Real default 0.0;` after `:486`; amend the doc at `:440-442` ("not carried" → "carried only through the optional arm slot, off by default") and add the arm equation and its domain | `ratio_eff = peak_ratio + 0.0·(x − x0)` equals `peak_ratio` exactly in IEEE-754 for finite x, so `(B_axis·ratio_eff)·bore_norm` keeps its bits (`:449-454` order preserved) |
 | H5 | `structure/mfe_plant_systems.sysml` ('Cryoplant', `:463-652`) | `:485` `cold_load_W_required` `=` → `default`; add `attribute intercept_load_W_required : Real default inventory.q_inventory_shield;` and `attribute intercept_demand_available : Boolean default inventory_enabled;`; re-point `:500` to `intercept_load_W_required` and `:503` to `intercept_demand_available`; `:586` `p_elec` and `:587` `p_drive` `=` → `default` | `=` → `default` has no numeric effect (WI-057 D5, `work/active/WI-057_stellaris-structural-decomposition/design.md:55`); the re-pointed reads resolve to the same channels (`exploration/stellarator_e2e/generated/pipelines/pipeline.yaml:1792-1793`) |
 | B1 | `handwritten/mfe_conductor_current/rebco_conductor_current_impl.py` | first statement: refuse `enabled ∉ {0, 1}`; if `enabled == 0`, return every output 0.0 (including `evaluation_defined`) before any domain check; else run the existing body unchanged and add `evaluation_defined = 1.0` | WI-080 pattern (`models/library/analyses/mfe_viability.sysml:106-118`); arithmetic at 1 unchanged |
 | B2 | `handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py` | after the two existing clearance guards, refuse nonfinite arm inputs and `wp_side_in ≤ 0`; `ratio = peak_ratio_in + arm_slope_in·(R_in/wp_side_in − arm_x_ref_in)`; refuse `ratio ≤ 0`; return `(B_axis_in·ratio)·bore_norm` | the new guards are satisfied at every evaluable reference design; return order kept |
 
 This is 15 textual edits in 5 staged files plus 2 body copies. The audit's step 2 promoted all eleven `conductor_*` EXPOSEs (`mfe_power_core.sysml:136-146`) to `default`. This design promotes none of them, because their only asserted consumer, `reference_conductor_current_ok` (`models/designs/stellarator_09/stellarator_plant.sysml:2200-2202`), is an instance-level constraint, and the material copies re-point it (§ 2.10 E6). This also avoids the unproven "`default` on an asserted EXPOSE" path. The audit's step 4 re-pointed the thermal-inventory outputs into the cold-load sum. This design instead puts the seams at the demand side (`:485`, `:500`, `:503`) and at the exports (`:586`, `:587`), because Round 1's cold load already includes nuclear and joint heat, and feeding it into `'Cold Load Sum'` (`models/library/analyses/mfe_cryo_inventory.sysml:79`) would count those twice.
+
+**Contingent hunk H6 (D1).** It is applied only if probe P1 shows that the rollup's owner-qualified read `in winding_cost = 'Magnet System'::winding_cost;` (`mfe_power_core.sysml:361`) does not follow a variant rebinding. No variant in the repository has rebound `winding_cost`. WI-057's executed swap rebound `structure_cost`, which the rollup reads bare. H6 adds `attribute winding_account : Real default winding_procurement.cost;` to 'Magnet System' and re-points `:361` to `in winding_cost = winding_account;`. The new name differs from the formal, so the read is bare. The material variants then rebind both `winding_account` and `winding_cost` to `winding_sum.cost`, so the EXPOSE and the rollup agree. H6 is neutral at the reference because the new seam's default is the same producer the rollup reads today, and the regression proves it. The owner-qualified reads `'Cryoplant'::inventory_enabled` (`mfe_plant_systems.sysml:589, 624`) need no fallback: the base default and the variant's final value are both `false`, so either resolution gives false.
 
 ### 1.4 Protected paths and how the protection is proven
 
@@ -78,18 +81,19 @@ Protected: `models/**` (all canonical, including `models/designs/stellarator_09/
 
 - **Pin.** The pin is `work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/baseline.json`: 1,352 outputs and 67 verdicts plus the headline, at executable fingerprint `83ea3b6c…` (`exploration/stellarator_e2e/studies/manifest.json`, `recorded_provenance`). The magnet probe already reproduced it exactly (`…/magnet-probe/report.md:12`; `baseline-parity.json`).
 - **Inputs.** The pin's full input map is `…/magnet-probe/baseline-inputs.json` (704 keys, `stellarator_09__stellaris__` prefix). The reference instance is the staged, unchanged `part stellaris`, so its keys and prefix are identical and no key map is needed.
-- **Comparison.** The regression script adapts `…/magnet-probe/summarize.py:6`'s `parity` dictionary. It runs one evaluation of the derived manifest's baseline point: the reference at pin inputs plus the three new keys at their neutral defaults, and the material instances at their design defaults. It then compares reference-prefix outputs and verdicts with the pin.
-- **Acceptance.** `missing = []`, `unequal = {}`, `verdict_unequal = {}`. `added` equals the declared delta exactly: output `stellarator_09__stellaris__magnet__conductor_current__evaluation_defined = 1.0`. Any surfaced alias channel for the H5 seams must equal its source channel and be added to the declaration. The entry-key delta must equal `{magnet__rebco_law_enabled: 1.0, magnet__coil__arm_slope: 0.0, magnet__coil__arm_x_ref: 35.278}`. The reference headline is recomputed from its 67 verdicts, because the package headline covers 213.
+- **Comparison.** The regression script adapts `…/magnet-probe/summarize.py:6`'s `parity` dictionary. It runs one evaluation of the derived manifest's baseline point: the reference at pin inputs plus the three new keys at their neutral defaults, and both material instances at the manifest baseline point, which includes `eps_intrinsic_in = −0.003` (D4). It then compares reference-prefix outputs and verdicts with the pin, and records every material-prefix output as the baseline record the route's per-case witness uses (D4).
+- **Acceptance.** `missing = []`, `unequal = {}`, `verdict_unequal = {}`. `added` equals the declared delta exactly: output `stellarator_09__stellaris__magnet__conductor_current__evaluation_defined = 1.0`. Any surfaced alias channel for the H5 seams (and H6, if applied) must equal its source channel and be added to the declaration. The entry-key delta must equal `{magnet__rebco_law_enabled: 1.0, magnet__coil__arm_slope: 0.0, magnet__coil__arm_x_ref: 0.0}` (D6). The reference headline is recomputed from its 67 verdicts, because the package headline covers 213.
 - **Constraint ids.** They carry a 16-hex suffix. They are expected to be identical because no constraint or bound operand in the reference changes. If the suffix recipe moves anyway, compare by the suffix-stripped name, require it unique, and record the id map.
 - **Continuous check.** The reference instance runs in every case, so the derived route also asserts on every completed case that reference-prefix outputs equal the pin. The comparison is cheap, and it turns every study case into a regression witness.
+- **Unselected material instance (D4).** A case varies exactly one material prefix. The route fills the other material prefix with the manifest baseline point, never with package defaults, so the Nb₃Sn instance never runs at `eps_intrinsic_in = 0.0`. It then asserts that prefix's outputs equal the baseline record bit for bit, a second witness per case. If the Nb₃Sn baseline point refuses, every REBCO case would fail. So the build's step 5 must execute the manifest point successfully before any study runs (K22).
 
 ### 1.6 Build steps (`exploration/stellarator_materials/build.py`)
 
 1. Hash the protected trees. Assert twin == canonical for the 42 MFE files.
 2. Stage, in twin layout, into `input_models/`: the 42 twin files, `models/library/analyses/magnet_conductor_alternatives.sysml`, and the two new SysML files. Apply `seam_hunks.json`: each `old` must occur exactly once, and reversing each hunk must reproduce the source bytes. Record source, patched and hunk digests. Refuse if `author_materials_design.py` output differs from the committed design file.
 3. Check positional bindings for every usage of a hunked or new definition (extending `exploration/magnet_materials/build.py:54-72` to the staged tree).
-4. Run `sysml-codegen generate --package-name stellarator_materials_tea`. Install bodies (§ 1.2) and assert that the installed set equals the emitted manual-stub set. Regenerate with `--smart-regen --preserve-handwritten`, prove a fixed point, write the snapshot and the census (`scripts.integrate.rederived_census`), and write `build-hashes.json`.
-5. Run the regression (§ 1.5) and write `preservation.json`. Run `execute_baseline` on the manifest point to prove that all three instances evaluate without refusal at their defaults.
+4. Run `sysml-codegen generate --package-name stellarator_materials_tea`. Install bodies (§ 1.2), including the `'REBCO Shape Branch'` fallback body when a manual stub is emitted (D15), and assert that the installed set equals the emitted manual-stub set. Regenerate with `--smart-regen --preserve-handwritten`, prove a fixed point, write the snapshot and the census (`scripts.integrate.rederived_census`), and write `build-hashes.json`.
+5. Run the regression (§ 1.5) and write `preservation.json`. Run `execute_baseline` on the manifest point to prove that all three instances evaluate without refusal at the manifest baseline point (D4), and record the material-prefix baseline outputs.
 
 ## 2. Definitions
 
@@ -107,11 +111,11 @@ Units: A, T, K, m, kg, W unless named. Round 1 areas are mm², Round 1 money is 
 ### 2.2 Pack-arm slot on `'Conductor Peak Field'` (H2–H4, B2)
 
 - New inputs: `wp_side_in` [m], default 1.0; `arm_slope_in` [1], default 0.0; `arm_x_ref_in` [1], default 0.0.
-- Bindings: `winding_pack.wp_side`, `coil.arm_slope` (`default 0.0`), `coil.arm_x_ref` (`default 35.278`).
+- Bindings: `winding_pack.wp_side`, `coil.arm_slope` (`default 0.0`), `coil.arm_x_ref` (`default 0.0`, neutral; D6).
 - Equations: `x = R/wp_side` (square pack, so `√A_wp = wp_side`); `ratio_eff = peak_ratio + arm_slope·(x − arm_x_ref)`; `B_peak = (B_axis·ratio_eff)·bore_norm`, with `bore_norm` unchanged (`mfe_plasma_scaling.sysml:426-428`).
 - Domain refusals: nonfinite arm inputs, `wp_side ≤ 0`, `ratio_eff ≤ 0`, plus today's two clearances (`:465`).
-- At `arm_slope = 0` the result is bit-identical to today's for any finite `arm_x_ref`. On the arm cells the instance supplies `arm_slope = 0.0641`, `arm_x_ref = 35.278` (contract § 3.2 r4, marked C).
-- Stress (`mfe_power_core.sysml:264-269`), the ceiling (`models/designs/generic_mfe/mfe_plant.sysml:856-859`) and both conductor laws read this `B_peak`, so the arm reaches every field consumer together.
+- At `arm_slope = 0` the result is bit-identical to today's for any finite `arm_x_ref`. Both material instances bind `arm_x_ref = 35.278` (E7), citing contract § 3.2 r4 and `check-field-relations.md` § Relation 2 (D6). `arm_slope` stays 0.0 except on the arm cells, where the policy supplies 0.0641 (contract § 3.2 r4, marked C).
+- Stress (`mfe_power_core.sysml:264-269`), the ceiling (`models/designs/generic_mfe/mfe_plant.sysml:856-859`) and both conductor laws read this `B_peak`, so the arm reaches every field consumer together. The Round 1 calcs read it through `peak_field_calc.B_peak`, the calc output (D13).
 - Citation: contract § 3.2 r4 (C); `evidence/check-field-relations.md` § Relation 2; label [D] on Helias 5, [U] on transfer.
 - **r4 dependency.** Spec R3 and audit step 3 name the slot `(a1_ratio, A_wp, A_wp_ref)` in a multiplicative form. r4 prints the additive form with constants (35.278, 0.0641), so the entry keys are `arm_slope` and `arm_x_ref`, and spec R3's wording should follow.
 
@@ -131,8 +135,8 @@ Units: A, T, K, m, kg, W unless named. Round 1 areas are mm², Round 1 money is 
 |---|---|---|---|---|
 | `'Material Winding Adapter'` | `reference_turns_in` [1] (1.0), `f_set_in` [1] (0), `c_coil_in` [m] (0), `wp_side_in` [m] (0) | `turn_length = f_set·c_coil` [m]; `pack_area_per_turn = wp_side·wp_side·1e6/reference_turns` [mm²] | positivity is enforced upstream by `'Winding Operating State'` (`mfe_power_core.sysml:187-191`) and downstream by the area screen (`available_area > 0`) | plant conductor-length identity `models/library/analyses/mfe_winding_pack_cost.sysml:44`; contract § 5 pack-side rule; `[AGENT]` |
 | `'Material Winding Cost'` | `superconductor_cost_in`, `materials_cost_in`, `helium_cost_in`, `winding_operations_cost_in` [$] (0) | `cost = sum` [$] | none | contract § 6 (one basis; plant helium and winding operations kept, N3, N4); `[AGENT]` |
-| `'Pack Field Checks'` | `B_peak_in` [T], `I_coil_in` [A·turn], `R_in` [m] (0), `wp_side_in` [m] (1.0), `mu0_in` (1.25663706212e-6) | `R_over_sqrt_A_wp = R/wp_side`; `ampere_floor = mu0·I_coil/(4·wp_side)` [T]; `ampere_floor_margin = B_peak − ampere_floor` [T] | none (inputs positive upstream) | contract § 3.2 and § 7 r4 (C); `check-field-relations.md` § Relation 1 (13.44 T against 24.6 T at coil 0); μ0 as `mfe_magnet_field.sysml:52-53` |
-| `'REBCO Shape Branch'` | `B_peak_in` [T], `B_knot_max_in` [T] (0) | `shape_mode = if B_peak > B_knot_max? 1.0 else 0.0` | none | contract § 4 (measured shape to 20 T, power-law continuation above, continuous at 20 T because g20 = 1 = (20/20)^−α); `[AGENT]` |
+| `'Pack Field Checks'` | `B_peak_in` [T], `I_coil_in` [A·turn], `R_in` [m] (0), `wp_side_in` [m] (1.0), `mu0_in` (1.25663706212e-6; left unbound, so it becomes the calc-usage entry key `magnet__pack_field__mu0_in`, held, and named in the § 5.1 partition; D5) | `R_over_sqrt_A_wp = R/wp_side`; `ampere_floor = mu0·I_coil/(4·wp_side)` [T]; `ampere_floor_margin = B_peak − ampere_floor` [T] | none (inputs positive upstream) | contract § 3.2 and § 7 r4 (C); `check-field-relations.md` § Relation 1 (13.44 T against 24.6 T at coil 0); μ0 as `mfe_magnet_field.sysml:52-53` |
+| `'REBCO Shape Branch'` | `B_peak_in` [T], `B_knot_max_in` [T] (0) | `shape_mode = if B_peak > B_knot_max? 1.0 else 0.0` | none | contract § 4 (measured shape to 20 T, power-law continuation above, continuous at 20 T because g20 = 1 = (20/20)^−α); `[AGENT]`; handwritten fallback body expected (§ 1.2, D15) |
 | `'Staged Static Loads'` | `n_coils_in`, `c_coil_in` [m], `wp_side_in` [m], `t_case_in` [m], `shield_area_ratio_in` (1.0), `eps_eff_in`, `sigma_SB_in`, `q_MLI_in` [W/m²], `g_per_coil_in`, `k_c_in`, `k_s_in`, `T_cold_in`, `T_shield_in` (77), `T_amb_in` (300), `T_conduction_ref_in` [K], `p_fixed_MW_in` [MW] | `area_cold = n_coils·c_coil·4·(wp_side + 2·t_case)`; `q_radiation = area_cold·eps_eff·sigma_SB·(T_shield⁴ − T_cold⁴)`; `conduction_ref = n_coils·g_per_coil·k_c·(T_shield − T_conduction_ref)`; `shield_static = shield_area_ratio·area_cold·q_MLI − q_radiation + n_coils·g_per_coil·k_s·(T_amb − T_shield) − conduction_ref`; `p_joint_ref = p_fixed_MW·1e6` [W] | none; these are the plant's own static-term equations evaluated without the 10–30 K guard of its thermal-inventory body | plant equations `mfe_cryo_inventory.sysml:11-16` (WI-059 D3–D4); at 20 K they reproduce the pin's 266.68 W, 590.28 W and 7,561.69 W; `[AGENT]` |
 | `'Staged Drive Power'` | `q_leads_in`, `q_shield_in`, `shield_static_in`, `q_joints_in` [W], `joint_drive_fraction_in` [1] (0) | `p_drive = (q_leads + (q_shield − shield_static) + joint_drive_fraction·q_joints)·1e-6` [MW] | none | plant drive definition `mfe_cryo_inventory.sysml:17`; reproduces the pin's 0.0502673 MW at 20 K |
 
@@ -146,13 +150,13 @@ New constraint def `'Ampere Floor'`: `in attribute margin_in : Real; margin_in >
   - Construction names: `cabling_factor`, `cable_void`, `cu_space`, `steel_area`, `misc_area`, `solder_area` [mm²], `ins_fraction`, `J_cu_rule` [A/mm²], `cu_void`, `cu_per_kA_rule` [mm²/kA], `steel_per_kA_rule` [mm²/kA], `B_steel_ref` [T], `steel_B_scaling`.
   - Inventory names: `element_density` [kg/m³], `element_price_per_m` [USD2021/m].
   - Round 1's `T_supply` is not redeclared. It is the plant's `winding_pack.T_inventory = cryoplant.T_cold_cryo` (`mfe_plant.sysml:126`), so the plant has one temperature. Round 1's `rho_*`/`price_*` bind to the plant's `winding_pack` densities and prices (`stellarator_plant.sysml:380-400`), per contract § 6. Round 1's `manufacturing_per_m` is bound to the literal 0.0, because the plant's winding operations are added separately.
-- **Redefinitions:** `:>> rebco_law_enabled = 0.0;` and `:>> winding_cost = winding_sum.cost;` (the WI-057 seam, `mfe_power_core.sysml:129`).
-- **Calc usages.** Bindings are in definition order. Calc inputs read producing calc outputs directly (WI-057 D4); EXPOSEs are only for outside readers.
-  - `conductor : 'Nb3Sn Cable Critical Surface'` binds formals 1–26: `n_strands_in = n_elements`, `turn_current_in = coil.turn_current`, `B_peak_in = B_peak`, `T_supply_in = winding_pack.T_inventory`, the rest to the attributes above. `eps_intrinsic_in` stays unbound (§ 7 K6).
+- **Redefinitions:** `:>> rebco_law_enabled = 0.0;` and `:>> winding_cost = winding_sum.cost;` (the WI-057 seam, `mfe_power_core.sysml:129`). Whether the rollup's owner-qualified read (`:361`) follows this rebinding is checked by probe P1 and test 4(a). If it does not, contingent hunk H6 applies and the variant also sets `:>> winding_account = winding_sum.cost;` (§ 1.3, D1).
+- **Calc usages.** Bindings are in definition order. Calc inputs read producing calc outputs directly (WI-057 D4); EXPOSEs are only for outside readers. So every `B_peak_in` below binds `peak_field_calc.B_peak`, the same source the plant's stress calc reads (`mfe_power_core.sysml:266`), not the `B_peak` EXPOSE (D13).
+  - `conductor : 'Nb3Sn Cable Critical Surface'` binds formals 1–26: `n_strands_in = n_elements`, `turn_current_in = coil.turn_current`, `B_peak_in = peak_field_calc.B_peak`, `T_supply_in = winding_pack.T_inventory`, the rest to the attributes above. `eps_intrinsic_in` stays unbound (§ 7 K6).
   - `adapter : 'Material Winding Adapter'`: `coil.reference_turns`, `coil.f_set`, `coil.c_coil`, `winding_pack.wp_side`.
-  - `area : 'Winding Turn Area Screen'`: `turn_current_in = coil.turn_current`, `B_peak_in = B_peak`, `available_area_in = adapter.pack_area_per_turn`, `element_area_in = conductor.element_area_total`, `element_copper_area_in = conductor.element_copper_area`, construction attributes.
+  - `area : 'Winding Turn Area Screen'`: `turn_current_in = coil.turn_current`, `B_peak_in = peak_field_calc.B_peak`, `available_area_in = adapter.pack_area_per_turn`, `element_area_in = conductor.element_area_total`, `element_copper_area_in = conductor.element_copper_area`, construction attributes.
   - `inventory : 'Winding Inventory and Cost'`: `n_elements_in = n_elements`, `element_area_in = conductor.element_area_total`, `turns_in = coil.reference_turns`, `coils_in = coil.n_coils`, `turn_length_in = adapter.turn_length`, `turn_current_in = coil.turn_current`, areas, plant densities and prices, `element_price_per_m_in = element_price_per_m`, `manufacturing_per_m_in = 0.0`.
-  - `pack_field : 'Pack Field Checks'`: `B_peak`, `coil.I_coil`, `coil.R0`, `winding_pack.wp_side`.
+  - `pack_field : 'Pack Field Checks'`: `peak_field_calc.B_peak`, `coil.I_coil`, `coil.R0`, `winding_pack.wp_side`; `mu0_in` left unbound (D5).
   - `winding_sum : 'Material Winding Cost'`: `inventory.sc_cost`, `inventory.materials_cost`, `material_inventory.cost_helium` (`mfe_power_core.sysml:307-323`), `winding_procurement.winding_fabrication_cost` (`:324-337`).
 - **EXPOSEs (outside readers):** `conductor_supported = conductor.supported`, `conductor_status_code = conductor.status_code`, `conductor_acceptance_margin = conductor.acceptance_margin`, `conductor_T_cs = conductor.T_cs`, `conductor_operating_fraction = conductor.operating_fraction`, `superconductor_cost = inventory.sc_cost`, `element_length = inventory.element_length`, `ampere_floor_margin = pack_field.ampere_floor_margin`, `R_over_sqrt_A_wp = pack_field.R_over_sqrt_A_wp`.
 - **Asserted:**
@@ -170,7 +174,7 @@ New constraint def `'Ampere Floor'`: `in attribute margin_in : Real; margin_in >
 Same structure as § 2.5, with these differences:
 
 - The REBCO attributes (Round 1 § 6 names) are `tape_width` [m], `tape_thickness` [m], `tape_copper_fraction`, `anchor_ic` [A/tape at 20 T, 20 K], `g8`, `g10`, `g12`, `g15`, `g20`, `alpha`, `T_star` [K], `degradation`, and the bounds `B_knot_min`, `B_knot_max`, `B_law_min`, `B_law_max` [T], `T_law_min`, `T_law_max` [K]. Top-level `tape_width` and `tape_thickness` are distinct from the dormant plant `winding_pack.tape_width` (6 mm).
-- A `shape_branch : 'REBCO Shape Branch'` usage (`B_peak`, `B_knot_max`) feeds `shape_mode_in` of `conductor : 'REBCO Cable Critical Surface'`. `shape_mode` is therefore calculated, not supplied (MR-7 call-out, § 4).
+- A `shape_branch : 'REBCO Shape Branch'` usage (`peak_field_calc.B_peak`, `B_knot_max`; D13) feeds `shape_mode_in` of `conductor : 'REBCO Cable Critical Surface'`. `shape_mode` is therefore calculated, not supplied (MR-7 call-out, § 4).
 - REBCO status is 1 on 8–20 T (knots) and on 20–25 T (power law, `B_law_max` 25 T per contract § 4 F10). It is 0 above 25 T. Below 8 T the knot branch returns NaN outputs with status 0 (`work/active/WI-099_magnet-conductor-alternatives/implementation-notes.md:29`); the contract grid does not go there.
 - The flags `extrapolated` (20–24 T), `beyond_law_extents` (24–25 T) and `above_stellaris_envelope` (> 24.9 T) are study-side labels computed from `B_peak`.
 
@@ -191,6 +195,7 @@ Same structure as § 2.5, with these differences:
   - `staged_drive : 'Staged Drive Power'` binds `cold_stage.q_leads`, `cold_stage.q_shield`, `static_loads.shield_static`, `cold_stage.q_joints`, `joint_drive_fraction`.
 - **EXPOSEs:** `staged_q_cold`, `staged_q_shield`, `refrigeration_eta_cold`, `refrigeration_green_extrapolated`.
 - **Asserted:** `capacity_ok : 'Refrigerator Capacity'` (`refrigeration.capacity_margin`). This duplicates `cold_stage_capacity_ok` by construction (§ 7 K17).
+- **Uncosted intercept rating (D17).** The Green law prices only the cold rating (`magnet_conductor_alternatives.sysml:204`), so `rated_intercept_W` has no cost response in the material instances. Per contract § 5, every design therefore carries a `free_capacity` flag naming `cryoplant__rated_intercept_W` (§ 4, § 5.2), and the policy sets it.
 - **Physics at the reference (20 K, 50 kA).** `q_cold` = 4,847.9 (nuclear) + 266.68 (radiation) + 590.28 (conduction) + 8,729.06 (leads) + 7,500 (joints) = 21,933.9 W, the pin's `cold_load_W_demand_conversion__demand` to rounding. `q_shield` = 41,599.95 W, the pin's intercept demand. At 4.5 K, conduction scales by the NIST integral ratio (≈ 326/307). Radiation follows the plant's area law. Joints scale with I² (Round 1 anchor D form).
 - Citation: Round 1 design § 2.5–2.6; contract § 6; audit § 6 step 6.
 
@@ -209,20 +214,21 @@ Same structure as § 2.5, with these differences:
 | # | Edit | Anchor |
 |---|---|---|
 | E1 | rename to `part rebco_material` / `part nb3sn_material` | `:35` |
-| E2 | rewrite the seven self-references `stellaris.` → `<name>.`, count asserted equal to 7, no doc text touched | `:562-568` |
+| E2 | rewrite the seven self-references with the word-boundary pattern `(?<![\w])stellaris\.` → `<name>.`, count asserted equal to 7. A plain `stellaris.` replace would also hit "run_stellaris.py" in the doc at `:75` and give 8 (D11); no doc text is touched | `:562-568` |
 | E3 | retype `part :>> magnet : 'Round1 REBCO Magnet System' {` / `'Nb3Sn Magnet System'` | `:115` |
 | E4 | retype `part :>> cryoplant : 'Staged Cryoplant' {` | `:1342` |
 | E5 | delete the cryoplant `purchase_cost_per_module` and `inventory_enabled` bindings, now final in the variant | `:1350-1353` |
 | E6 | re-point `reference_conductor_current_ok` to `in margin_fraction_in = magnet.conductor_acceptance_margin;`, keeping 67 plant verdicts meaningful | `:2200-2202` |
-| E7 | add the variant attribute bindings, citing the Round 1 values by path, e.g. Nb₃Sn law `models/designs/magnet_materials/magnet_subsystem.sysml:71-100`, bounds `:238-261`, Green and NIST `:210-235, 268-293`, REBCO `:484-521, 660-677` with `B_law_max = 25.0` per contract § 4 F10; add `T_conduction_ref = 20.0` [INHERITED: plant `k_c` basis, `stellarator_plant.sysml:1387`] and `I_joint_ref = 50000.0` [INHERITED: `:1416` with `:202`] | magnet and cryoplant blocks |
-| E8 | material values: `T_cold_cryo` 20.0 / 4.5 and `rated_cryogenic_cold_K` to match; `B_max` 25.0 / 13.0; `eps_cond_allow` 0.004 / 0.003 [U]; default-design supplied quantities from `reference_designs.json` | `:1422, :1343, :436, :428` |
+| E7 | add the variant attribute bindings, citing the Round 1 values by path, e.g. Nb₃Sn law `models/designs/magnet_materials/magnet_subsystem.sysml:71-100`, bounds `:238-261`, Green and NIST `:210-235, 268-293`, REBCO `:484-521, 660-677` with `B_law_max = 25.0` per contract § 4 F10. Also add `arm_x_ref = 35.278` on the coil (contract § 3.2 r4; `check-field-relations.md` § Relation 2; D6), `T_conduction_ref = 20.0` (basis: inherited plant `k_c` basis, `stellarator_plant.sysml:1387`) and `I_joint_ref = 50000.0` (basis: inherited, `:1416` with `:202`). The docs of these two, and of every other attribute that feeds a glue calc, state the basis in words with no bracketed token, because a bracket in a formula operand's doc causes `SI_RENDERING_COLLISION` (WI-099 `implementation-notes.md:27`; D14) | magnet and cryoplant blocks |
+| E8 | material values: `T_cold_cryo` 20.0 / 4.5 and `rated_cryogenic_cold_K` to match; `B_max` 25.0 / 13.0; `eps_cond_allow` 0.004 / 0.003 (basis written in words, "unsourced allowable", with no bracket; D14); default-design supplied quantities from `reference_designs.json` | `:1422, :1343, :436, :428` |
 | E9 | package header: the nine stellarator imports (`:2-10`) plus `private import magnet_material_variants::*;` and a doc saying these are material-variant copies | file header |
 
 Default designs `[AGENT]`:
 
 - **REBCO.** The contract § 6 basis-bridge design: the Stellaris supplied design, construction C at 50 kA and 24.9 T, and `n_elements` equal to the composition-implied count in 4 mm units (169.06). It is expected to fail acceptance; it is a reconciliation point, not a ranked design.
+  - **Count basis (D12).** 169.06 is 1.5 × `parallel_tapes_reference` (112.709). The plant's tape metres correspond to `parallel_tapes_set` (113.739, which is 170.61 in 4 mm units). So the bridge's conductor metres are f_set/f_wp_vol = 0.991 of the plant's. The bridge reports this 0.9 % as a quantity-basis difference, not as a price effect.
 - **Nb₃Sn.** The anchored-cell equal-duty 12 T design at R 12.7 m: 149 turns at 50 kA, construction P, strand count from the Round 1 offer rule, ratings from the fixed list. Its default must evaluate without refusal (§ 1.6 step 5; § 7 K22).
-- `eps_intrinsic_in` is supplied by the manifest point, not by the file (K6).
+- `eps_intrinsic_in` is supplied by the manifest point, not by the file (K6). The route applies the manifest point to whichever material prefix a case does not vary (D4).
 
 ## 3. Binding table (plant-side anchors)
 
@@ -233,9 +239,9 @@ Default designs `[AGENT]`:
 | `wp_side` | supplied, `stellarator_plant.sysml:447` | `adapter` (pack share, so `pack_area_ok`), `pack_field` (Ampère floor, R/√A_wp), peak-field slot; `static_loads` via `cryoplant.wp_side` | `mfe_plant.sysml:104`; `mfe_power_core.sysml:252-269`; fit `:211-221` |
 | `coil_t` | supplied, `stellarator_plant.sysml:305` | through the radial build to `r_coil_centre`, which sets `bore_norm` and `c_coil`, which sets `adapter.turn_length` and `static_loads` | `mfe_plant.sysml:325, 134`; `mfe_power_core.sysml:245-249`; fit `:217` |
 | `c_coil`, `f_set` | calculated (`mfe_power_core.sysml:113`) / supplied `stellarator_plant.sysml:231` | `adapter.turn_length = f_set·c_coil`, the plant's conductor length per turn (321,600 m total at the reference, audit § 4) | `mfe_winding_pack_cost.sysml:44` |
-| `B_peak` | calculated, `mfe_power_core.sysml:123`, `:167-174` + slot | `conductor.B_peak_in`, `area.B_peak_in` (steel rule), `pack_field`, `shape_branch` | pipeline `:1961-1991, 2056` |
+| `B_peak` | calculated, `peak_field_calc` `mfe_power_core.sysml:167-174` + slot (EXPOSE `:123`) | `peak_field_calc.B_peak` feeds `conductor.B_peak_in`, `area.B_peak_in` (steel rule), `pack_field`, `shape_branch` (D13) | pipeline `:1961-1991, 2056, 4604` |
 | `T_cold_cryo` | supplied per material, `stellarator_plant.sysml:1422` | `winding_pack.T_inventory` feeds `conductor.T_supply_in` and the plant helium (`mfe_power_core.sysml:321`); `cold_stage` and `refrigeration` `T_supply_in`; `static_loads.T_cold_in` | `mfe_plant.sysml:126` |
-| `winding_cost` | seam `mfe_power_core.sysml:129` | rebound to `winding_sum.cost` | rollup `:360-364` |
+| `winding_cost` | seam `mfe_power_core.sysml:129` | rebound to `winding_sum.cost`; the rollup reads it owner-qualified (`:361`), checked by P1 and test 4(a), with fallback H6 (D1) | rollup `:360-364` |
 | `structure_cost` | seam `:149`, unchanged, prices supplied `m_support` | — | `stellarator_plant.sysml:116`; `mfe_magnet_cost.sysml:157-178` |
 | plant REBCO law | usage `mfe_power_core.sysml:192-210` | gated off (`rebco_law_enabled = 0`) | pipeline `:1974-2001` |
 | `conductor_margin_fraction` | EXPOSE `:144`, unchanged | not read in material instances; E6 re-points the constraint | `stellarator_plant.sysml:2200-2202`; pipeline `:4644-4650` |
@@ -264,7 +270,7 @@ Default designs `[AGENT]`:
 | gross area, pack share, cu/steel requirements | calculated / requirement | `area`, `adapter` | new; checked by `pack_area_ok`, `copper_ok`, `steel_ok` |
 | `m_support` | chosen (policy rule [U]) | `magnet` | none |
 | `p_wallplug_heat` | chosen (policy rule [U]) | heating | none |
-| `rated_cold_W`, `rated_intercept_W`, rated temperatures | installed capacity (chosen) | cryoplant | none |
+| `rated_cold_W`, `rated_intercept_W`, rated temperatures | installed capacity (chosen) | cryoplant | none in role. `rated_intercept_W` has no cost response in material instances, so it carries the `free_capacity` flag (D17) |
 | `q_cold`, `q_shield`, drive | calculated demand | `cold_stage`, `staged_drive` | new basis; checked by `cold_stage_capacity_ok`, `intercept_stage_capacity_ok`, `capacity_ok`, `magnet_tf_electric_capacity_ok` |
 | cryo electricity | calculated (Green η at the installed rating) | `refrigeration` | new basis |
 | cryo `purchase_cost_per_module` | **calculated** from the chosen rating (Green law) | variant | **call-out**: a supplied price becomes a calculated binding (contract § 6) |
@@ -272,7 +278,7 @@ Default designs `[AGENT]`:
 | plant REBCO law inputs, `tape_width` 6 mm, `tape_price_per_m`, `f_copper`/`f_solder`/`f_steel`, `f_carnot_cryo`, `p_cryo` | **dormant** | plant | **call-out**: still executed and reported, but they reach no priced or checked channel |
 | `f_helium` | chosen (held 0.08 [AGENT]) | winding pack | prices plant helium only |
 | package ratings, building dimensions, turbine/heat-rejection/power-supply/divertor purchase costs, 22 `*_class_MW(e)` | chosen (policy: demand × 1.05, scaling [U]) | instance | none in the model |
-| `f_ren`, `beta_limit`, `peak_ratio`, `k_link`, `arm_slope`, `arm_x_ref` | held assumption axes | instance | arm new |
+| `f_ren`, `beta_limit`, `peak_ratio`, `k_link`, `arm_slope`, `arm_x_ref` | held assumption axes | instance | arm new; `arm_x_ref` library default 0.0, bound 35.278 in material instances (D6) |
 | `B_max` | supplied envelope, a flag not a limit | winding pack | per material |
 
 Nothing calculated is bound back as an input. The only model-side value derived from demand is the Green capital, and it prices the chosen rating rather than sizing it. Every demand-to-capacity rule (ratings × 1.05, heating, structure mass, classes, pack side, turns) lives in the external policy script. The recorded supplied design is evaluated without the policy. MR-7 status for this scope: compliant by construction, to be confirmed by the § 6 tests.
@@ -298,23 +304,46 @@ Nothing calculated is bound back as an input. The only model-side value derived 
 | § 4 prices, strain | `magnet__element_price_per_m`; Nb₃Sn `magnet__conductor__eps_intrinsic_in` (**required**, K6) |
 | material and cryo facts | leaf and 'Staged Cryoplant' attributes of § 2.5–2.7 (held; variants per contract § 5) |
 
-`prepare_interface.py` derives the exact list from `stellarator_materials_tea/contracts/model_contract.json`, matches every family above, and fails closed on a key matching no family (WI-099 `prepare_interface.py` precedent).
+**Complete key partition (D5).** `prepare_interface.py` derives the exact list from `stellarator_materials_tea/contracts/model_contract.json`. It assigns every key under each prefix to exactly one class of the partition below and fails closed on any key outside it (WI-099 `prepare_interface.py` precedent):
+
+- **Varied:** the families in the table above.
+- **Held plant keys:** every suffix of the pin's 704 entry keys (`…/magnet-probe/baseline-inputs.json`, of which 47 are `library_default` and 55 `usage_literal`) that is not in a varied family, e.g. `plasma__kappa`. About 700 per material prefix, minus the varied ones. The retired keys of `study_route.py:184-189` stay refused.
+- **Removed:** `cryoplant__purchase_cost_per_module` and `cryoplant__inventory_enabled`. They are absent in material prefixes, or refused if emitted (K11).
+- **New variant attributes:** the leaf and 'Staged Cryoplant' attributes of § 2.5–2.7, with `magnet__coil__arm_slope` and `magnet__coil__arm_x_ref` counted as varied.
+- **Named calc-usage keys:** `magnet__conductor__eps_intrinsic_in` (Nb₃Sn, required) and `magnet__pack_field__mu0_in` (held; μ0 is left unbound). Plus any other unbound trailing formal that the positional-binding report of § 1.6 step 3 lists by name.
+- **Reference prefix:** exactly the pin's 704 plus the three declared new keys.
+
+Any key that fits no class is a build failure, not a silent pass.
 
 ### 5.2 Output channels the study reads (after `M`)
 
 - **Headline:** `lcoe_calc__lcoe`.
-- **Decomposition** (contract § 8 groups):
+- **Decomposition** (contract § 8 groups; each capital account appears once, and the groups close to LCOE; D2):
   - Conductor purchase: `magnet__inventory__sc_cost`.
   - Other winding materials and operations: `magnet__inventory__materials_cost`, `magnet__material_inventory__cost_helium`, `magnet__winding_procurement__winding_fabrication_cost`, `magnet__insulation_inventory__stock_cost`.
   - Structure: `magnet__magnet_structure_cost__cost`.
-  - Refrigeration capital: `cryoplant__refrigeration__refrigerator_capital` (= `cryoplant__aux_cooling__cryo_cost`). Refrigeration electricity: `cryoplant__refrigeration__p_in_total_MW`.
-  - Heating: `heating__heating_cost__cost`, `operating_heat__p_wallplug`.
+  - Refrigeration capital: `cryoplant__aux_cooling__cryo_cost` (= `cryoplant__refrigeration__refrigerator_capital` in material instances). Refrigeration electricity: `cryoplant__refrigeration__p_in_total_MW`.
+  - Heating: `heating__heating_cost__cost` (capital); `operating_heat__p_wallplug` (draw).
   - Radial build: `{blanket,shield,structure,vessel}__*_cost__cost`.
-  - Packages: `turbine__turbine_cost__cost`, `electric_plant__electric_cost__cost`, `heat_rejection__heat_rejection_cost__cost`, `power_supplies__power_supplies_cost__cost`, `divertor__divertor_cost__cost`, `cryoplant__aux_cooling__cost`.
-  - Buildings: `buildings__facility_accounts__cost`.
-  - Fuel and O&M: `cas71_calc__levelized`, `calendar__cas72_annual`, `cas80_calc__levelized`, `fuel_cycle__fuel_calc__annual_fuel`.
-  - Capital: `magnet__magnet_capital_rollup__capital_cost`, `overnight_capital__overnight_capital`, `total_capital__total_capital`.
-  - Energy: `pb__p_net`, `pb__p_et`, `pb__p_th`.
+  - Packages and plant accounts:
+    - `turbine__turbine_cost__cost`, `electric_plant__electric_cost__cost`, `heat_rejection__heat_rejection_cost__cost`, `misc_plant__misc_cost__cost`, `power_supplies__power_supplies_cost__cost`, `divertor__divertor_cost__cost`;
+    - `cryoplant__aux_cooling__aux_cost`, the aux-cooling part only. `aux_cooling__cost` = `aux_cost` + `cryo_cost` (`mfe_account_costs.sysml:35-36`), so it is not listed; that removes the double count (D2).
+    - heat transport: `heat_transport__cooling_selection__cost`, the selected account (`coolant_capital = heat_transport.coolant_cost = cooling_selection.cost`, `mfe_plant.sysml:550`, `mfe_plant_systems.sysml:302`). `heat_transport__coolant__cost` is the legacy operand of that selection (`mfe_plant_systems.sysml:389`), so it is reported only (D2).
+  - Fuel-cycle capital: `fuel_cycle__processing_cost__cost`, the account (`fuel_handling_capital = fuel_cycle.fuel_handling_cost = processing_cost.cost`, `mfe_plant.sysml:553`, `mfe_plant_systems.sysml:728`). `fuel_cycle__fuel_handling__cost` is its legacy operand (`:872`), so it is reported only (D2).
+  - CAS22 tail: `remote_handling__cost`, `installation__cost`, `waste__cost`, `other_rpe__cost`, `inc_cost__cost`.
+  - Buildings and other direct: `buildings__facility_accounts__cost`, `special_materials_capital__special_materials_capital`, the supplied `cas28_capital`.
+  - Multipliers and owner accounts: `contingency__cost`, `indirect__cost`, `owner__cost`, `supplementary__cost`, `facility_preconstruction__cost` (= `preconstruction_capital`, `mfe_plant.sysml:299`).
+  - Reported only, not in `total_capital`: `idc__cost` (`mfe_plant.sysml:672-681`), `precon_cost__cost` (the legacy operand of `facility_preconstruction`, `:295`), and the two legacy operands above.
+  - Annual: `cas71_calc__levelized`, `cooling_annual__cas72_total` (the `calendar__cas72_annual` replacements plus cooling replacements), `cas80_calc__levelized`, and their sum `cas70_calc__annual_total` (`mfe_account_costs.sysml:898`). `fuel_cycle__fuel_calc__annual_fuel` is reported as a fuel operand.
+  - Rollups: `magnet__magnet_capital_rollup__capital_cost`, `powercore_capital__powercore_capital`, `cas22_capital__cas22_capital`, `cas20_capital__cas20_capital`, `overnight_capital__overnight_capital`, `total_capital__total_capital`.
+  - LCOE denominator: `pb__p_net`, `pb__p_et`, `pb__p_th`, and `calendar__availability`, which moves with wall load, so with R and `p_fus`.
+- **Operands the policy reads back (D18):**
+  - the demand and margin of every WI-080 screen, `*_capability__margin` (32 channels, e.g. `turbine__turbine_gross_capability__margin`, `cryoplant__intercept_stage_capability__margin`), with their demand operands;
+  - the facility operands `buildings__layout__geometry_fit_margin_m`, `buildings__layout__occupancy_area_margin_m2`, `buildings__layout__parcel_fit_margin_m`;
+  - installed coupled heating `heating__heat__p_coupled`;
+  - `magnet__stored_energy__W_mag`.
+  All are recorded anyway; naming them lets the policy acceptance test (§ 6.2) check each re-supplied value against the channel it was read from.
+- **`free_capacity` (D17):** every material design names `cryoplant__rated_intercept_W` as capacity with no cost response. The policy adds any further package quantity whose plant cost does not respond.
 - **Plasma and field:** `plasma__fusion__p_fus`, `plasma__sustain__p_aux_required`, `plasma__beta_calc__beta`, `magnet__field_calc__B_axis`, `magnet__peak_field_calc__B_peak`, `magnet__stored_energy__W_mag` (the policy's structure-mass input), `magnet__wp_stress__sigma_wp`, `magnet__cond_strain__eps_cond`, `magnet__wp_fit__minimum_margin`.
 - **Magnet:** `magnet__conductor__{T_conductor, ic_cable_op, operating_fraction, T_cs, tcs_defined, acceptance_margin, status_code, supported, acceptance_pass}`, `magnet__area__{gross_area, fit_margin, fit_margin_fraction, cu_margin, steel_margin}`, `magnet__inventory__{conductor_length, element_length}`, `magnet__pack_field__{R_over_sqrt_A_wp, ampere_floor, ampere_floor_margin}`, `magnet__conductor_current__evaluation_defined` (0 by design).
 - **Cryo:** `cryoplant__cold_stage__{q_nuclear, q_radiation, q_conduction, q_leads, q_joints, q_cold, q_shield}`, `cryoplant__refrigeration__{eta_cold, p_in_cold, p_in_shield, R_equiv_kW, capacity_margin, green_extrapolated}`, `cryoplant__{cold,intercept}_stage_capability__margin`, `cryoplant__staged_drive__p_drive`.
@@ -335,61 +364,99 @@ Changed or added:
 - `BOOLEAN_KEYS` recomputed per prefix from the new contract. The material prefixes drop `cryoplant__inventory_enabled` and may gain `cryoplant__intercept_demand_available` (K10) (in place of `:124-179`).
 - New refusals: any reference-prefix key (the reference is pinned); keys from both material prefixes in one proposal (one material per case); `magnet__rebco_law_enabled` or `cryoplant__inventory_enabled` under a material prefix if codegen emits them (K11); a Nb₃Sn proposal without `magnet__conductor__eps_intrinsic_in` (K6).
 - The per-case reference-parity assertion (§ 1.5).
+- **Unselected-prefix fill (D4).** Every proposal is completed with the manifest baseline point for the material prefix it does not vary, including `eps_intrinsic_in = −0.003` for Nb₃Sn. The completed case asserts that prefix's outputs equal the baseline record. A proposal naming both material prefixes is refused.
 - A new `manifest.json` (package identity; per-material `lcoe` objectives; baseline point = material defaults plus `eps_intrinsic_in = -0.003`) and a new `oracle_entry.py` (§ 6.3).
+- **No test flag in production (D8).** Tests that must set reference-prefix or final keys use the direct evaluator of § 6.1, not the route. The route has no bypass switch.
 
 ## 6. Verification
 
-### 6.1 Build- and model-level tests (`tests/models/test_stellarator_materials.py`, through the generated package via the route)
+### 6.1 Build- and model-level tests (`tests/models/test_stellarator_materials.py`)
+
+**Evaluators (D8).** Tests run through the route unless marked **[direct]**. A direct test uses the package's prepared evaluator: the route's own `prepare()` (stock strict loader and `PreparedEvaluator`, the pattern of `study_route.py:230-247`) called on typed inputs, without `validate_proposal`. The production route refuses reference-prefix and final keys and has no bypass flag.
 
 1. **Reference bit-for-bit** (§ 1.5) and protected paths unchanged (§ 1.4).
-2. **Gating.** In the reference, `rebco_law_enabled = 1` is identity (covered by test 1). With `rebco_law_enabled = 0` on the reference, all 11 law outputs are 0 and `evaluation_defined` is 0, with no exception. `reference_conductor_current_ok` then reads 0 ≥ 0 and is satisfied, which documents why E6 re-points it. `enabled = 0.5` refuses.
-3. **Pack-arm slot.** At `arm_slope = 0`, `B_peak` is bitwise equal to `(B_axis·peak_ratio)·bore_norm` for randomized R, `wp_side` and `arm_x_ref` ∈ {0, 35.278, 1e3}. At (0.0641, 35.278) and the reference pack, B_peak = 24.9·(1 + 0.0641·(35.2777… − 35.278)/2.7667) ≈ 24.89987 T. A larger pack (x = 30) lowers the peak, which is the sign check.
+2. **Gating [direct] (D8).** In the reference, `rebco_law_enabled = 1` is identity (covered by test 1). With `rebco_law_enabled = 0` on the reference, all 11 law outputs are 0 and `evaluation_defined` is 0, with no exception. `reference_conductor_current_ok` then reads 0 ≥ 0 and is satisfied, which documents why E6 re-points it. `enabled = 0.5` refuses.
+3. **Pack-arm slot.**
+   - **[direct] on the reference (D8):** at `arm_slope = 0`, `B_peak` is bitwise equal to `(B_axis·peak_ratio)·bore_norm` for randomized R, `wp_side` and `arm_x_ref` ∈ {0, 35.278, 1e3}.
+   - **Through the route on a material instance:** at (0.0641, 35.278) and the reference pack, B_peak = 24.9·(1 + 0.0641·(35.2777… − 35.278)/2.7667) ≈ 24.89987 T. A larger pack (x = 30) lowers the peak, which is the sign check.
 4. **Staged cryo insertion.**
-   - (a) In a material instance, `pb`'s `p_cryo` operand equals `cryoplant__refrigeration__p_in_total_MW` and `tf_power` equals `p_tf + staged_drive.p_drive`, checked on both pipeline wiring and values.
-   - (b) Identity under the reference selection: the REBCO-material instance at the bridge design with `eta_mode = 1`, `eta_const = 0.20` reproduces the pin's `cryo_elec__p_elec` 1.5353731658, `shield_elec__p_elec` 0.6023889434, `refrigeration_sum__total` 2.1377621092 MW, cold demand 21,933.9024 W, intercept demand 41,599.9539 W and drive 0.0502673272 MW, each to relative 1e-9.
+   - (a) **Wiring and values.** In a material instance, `pb`'s `p_cryo` operand equals `cryoplant__refrigeration__p_in_total_MW`, and `tf_power` equals `p_tf + staged_drive.p_drive`. The `magnet_capital_rollup` input `winding_cost` reads `magnet__winding_sum__cost` in both material instances and `magnet__winding_procurement__cost` in the reference (D1). Each is checked on the generated pipeline wiring and on values. If the rollup reads the base producer in a material instance, contingent hunk H6 is applied and the test re-run (§ 1.3).
+   - (b) **Identity under the reference selection.** The REBCO-material instance at the bridge design with `eta_mode = 1`, `eta_const = 0.20` reproduces the pin channels through the map below, each to relative 1e-9 (D9). The plant's own `cryo_elec`, `shield_elec` and `inventory` channels in the material instance are the dormant chain; they are not compared with the pin.
+
+| Material-instance channel (after `M`) | Pin channel (after `stellarator_09__stellaris__`) | Pin value |
+|---|---|---|
+| `cryoplant__refrigeration__p_in_cold` | `cryoplant__cryo_elec__p_elec` | 1.5353731658 MW |
+| `cryoplant__refrigeration__p_in_shield` | `cryoplant__shield_elec__p_elec` | 0.6023889434 MW |
+| `cryoplant__refrigeration__p_in_total_MW` | `cryoplant__refrigeration_sum__total` | 2.1377621092 MW |
+| `cryoplant__cold_stage__q_cold` | `cryoplant__cold_load_W_demand_conversion__demand` | 21,933.9024 W |
+| `cryoplant__cold_stage__q_shield` | `cryoplant__inventory__q_inventory_shield` | 41,599.9539 W |
+| `cryoplant__staged_drive__p_drive` | `cryoplant__inventory__p_drive` | 0.0502673272 MW |
+
    - (c) With the default Green η, only `p_in_cold`, `p_net` and their downstream channels move against (b).
+   - (d) **Bridge parity (D9).** At the bridge design with `eta_mode = 1` and `eta_const = 0.20`, every REBCO-material channel whose suffix exists in the reference must equal that reference channel bit for bit, unless it is in a declared changed set. The changed set is the conductor, inventory and winding-cost channels; the cryo loads, electricity, drive and capital; the cold-stage, intercept-stage and TF-electric screen margins, which are ulp-level at the bridge (K16); the dormant plant REBCO-law, inventory and cold-chain channels; and their rollups, `p_net` and LCOE. This proves the ≈ 2,400-line copies are faithful outside the edited rows. The drift check alone proves only that they are reproducible.
 5. **MR-7 pairs.** Each pair is one insufficient and one sufficient supplied design, with the design unchanged by evaluation:
    - acceptance: `n_elements` ⌊0.9 n⌋ against n, for Nb₃Sn at 12 T and REBCO at 24.9 T;
    - `pack_area_ok`: `wp_side` 0.999·√(turns·gross) against the policy value;
    - fit: `coil_t` and `interior_y` below and above;
    - capacity: `rated_cold_W` one list step below against at; `rated_intercept_W`; `power_supplies__rated_tf_MWe`;
-   - `ampere_floor_ok`: `peak_ratio` 2.12 with R 22 m and a small pack against the reference.
+   - `copper_ok` and `steel_ok`: `cu_space` and `steel_area` 1 % below against at their rule value (D16);
+   - `ampere_floor_ok`: one design at `peak_ratio` 2.12 and R 22 m, varying only `wp_side` across the binding value, roughly 0.48 m (D16).
    In each pair, inventory and cost must follow the supplied design only.
 6. **Hardware fixed, demand varied.** `turn_current` ±10 % moves B_peak, the margins, leads and joints, but leaves `element_length`, `sc_cost`, `materials_cost`, the pack volume and the ratings unchanged.
 7. **Unsupported, one per conductor, status only.** Nb₃Sn at 15 T gives `status_code 0` and `supported 0`, with `acceptance_ok` violated and no exception. REBCO at 26 T gives the same, with finite outputs. A domain refusal (`R − a_coil ≤ 0`) is recorded as a failed evaluation with its refusal text, filed `unsupported`.
 8. **Anchors through the plant instances.**
    - Stellaris Table 7: the REBCO-material instance with construction C at 50 kA and 24.9 T gives `area__gross_area` = 420.779220779 mm² to relative 1e-6, equal to the pack share 0.1296e6/308.
-   - EU DEMO layer 1: the Nb₃Sn-material instance with `turn_current` 104,950 A, 147 turns (so the field stays moderate), 399 strands of 1 mm, J_Cu 93.4, steel 9.3635 mm²/kA and `steel_B_scaling = 0` gives 2,577.2011 mm² to relative 1e-6 (WI-099 implementation-notes.md:21).
+   - EU DEMO layer 1: the Nb₃Sn-material instance with `turn_current` 104,950 A, **70 turns** (7.35 MA, so B_peak ≈ 24.9 T × 70/147 ≈ 11.9 T at the reference geometry, inside the Nb₃Sn law), 399 strands of 1 mm, J_Cu 93.4, steel 9.3635 mm²/kA and `steel_B_scaling = 0` gives 2,577.2011 mm² to relative 1e-6 (WI-099 implementation-notes.md:21). The test also asserts that every recorded output is finite (D7). The earlier 147 turns carried the reference's 15.4 MA, so about 24.9 T. That is above `B_law_max` 14.5 T (`magnet_subsystem.sysml:241`) and above Bc2* at 5.2 K, where Round 1 returns Ic = 0 and an infinite operating fraction (WI-099 implementation-notes.md:31). The area result does not depend on B because `steel_B_scaling` is 0.
 9. **Pack share.** `pack_area_ok`'s margin equals `(wp_side²·1e6 − turns·gross)/turns` to 1e-12 relative.
-10. **Build.** Positional-binding report; fixed point; body set equals stub set; B1 and B2 whole-body diffs show only the declared statements.
+10. **Build.** Positional-binding report; fixed point; body set equals stub set (including the shape-branch fallback, D15); B1 and B2 whole-body diffs show only the declared statements.
+11. **Cheap checks (D16).**
+    - REBCO band edges: the shape switch is continuous between 20.0 T and 20.01 T (`ic_cable_op` relative change below 1e-3); status is 1 at 25.0 T and 0 at 25.01 T.
+    - Nb₃Sn strain separation: changing `eps_cond_allow` moves only `cond_strain_ok`; changing `eps_intrinsic_in` moves only the `conductor__*` channels and their dependents.
+    - A 13.08 T Nb₃Sn case with `B_max` 13.0 violates `peak_field_ok`, and the study reads it as `envelope_flag`, not as `failed`.
+12. **Unselected-prefix witness (D4).** A REBCO case leaves every Nb₃Sn-prefix output equal to the baseline record, with `eps_intrinsic_in = −0.003` in its recorded inputs. A Nb₃Sn case leaves the REBCO prefix equal to its record.
+13. **Decomposition closure (D2).** On each material instance, recompute the rollups from the § 5.2 groups through the plant's own identities, each to relative 1e−9:
+    - magnet capital = conductor purchase + other winding materials and operations + insulation stock + structure (`mfe_magnet_cost.sysml:203`, with `winding_sum` per § 2.4);
+    - `powercore_capital` (`mfe_plant.sysml:461-464`) and `bop_capital` (`:467-469`);
+    - `cas22_capital` (`:561-564`, with the account bindings `:549-556`);
+    - `cas2x_pre_contingency`, including `cas28_capital` (`:572-574`);
+    - `cas20_capital` (`:586`);
+    - `overnight_capital` and `total_capital` (`:669-671, 688-690`), with IDC reported only;
+    - `cas70_calc__annual_total` (`mfe_account_costs.sysml:898`);
+    - `lcoe_calc__lcoe` from `total_capital`, `annual_om`, `p_net`, `availability` and the finance inputs (`mfe_plant.sysml:799-807`; `mfe_lcoe_dcf.sysml:12-17`).
+    The same test runs on the reference, with `magnet__winding_procurement__cost` as its winding term. Every listed capital channel must enter the sum to `total_capital` exactly once or be declared reported-only. A residual, or an unlisted account needed to close, fails the test.
 
 ### 6.2 Policy acceptance (study-owned, listed for completeness)
 
-Contract § 5 tolerances on every recorded design: `p_fus` ± 0.5 %, `B_peak` ± 0.1 T, `p_aux_required` reproduced without the policy.
+Contract § 5 tolerances on every recorded design: `p_fus` ± 0.5 %, `B_peak` ± 0.1 T, `p_aux_required` reproduced without the policy. Each re-supplied rating, class, heating and structure mass is also checked against the channel it was read from (§ 5.2 read-back list, D18).
 
 ### 6.3 Oracle partition (relative 1e−9, every recorded channel of every case)
 
 | Oracle | Author | Channels |
 |---|---|---|
-| Plant oracles: `exploration/stellarator_e2e/studies/oracle_entry.py` over `verify_stellaris.py` and the `oracle_*.py` family | existing | all reference-prefix channels; in material instances, every channel whose producer is an unchanged plant calc: plasma, sustainment, beta, wall, divertor, radial build, field and bore, stress and strain, fit, stored energy, conversion and heat transport, buildings, fuel cycle, the plant's own magnet sub-accounts (helium, winding operations, insulation, structure), and the dormant plant REBCO law, inventory and cold chain |
-| Round 1 oracle `exploration/magnet_materials/oracle.py` | existing (WI-099) | `magnet__conductor__*`, `magnet__area__*`, `magnet__inventory__*`, `cryoplant__cold_stage__*`, `cryoplant__refrigeration__*` from the recorded calc inputs |
-| New glue oracle `exploration/stellarator_materials/oracle_glue.py` | separate author, from this design and contract r4 only | `adapter`, `winding_sum`, `pack_field`, `shape_branch`, `static_loads`, `staged_drive`; the seam insertions (`p_cryo`, `p_tf_extra`, cold and intercept demands, cryo capital, `winding_cost`); `pack_area_ok`, `ampere_floor_ok`, `capacity_ok`; the peak-ratio arm; the re-pointed `reference_conductor_current_ok` operand; the structure-mass rule as a recorded-design check (`m_support = 11,615.6 t × W_mag/111 GJ` × variant) |
+| Plant oracles: `exploration/stellarator_e2e/studies/oracle_entry.py` over `verify_stellaris.py` and the `oracle_*.py` family | existing | all reference-prefix channels. In material instances, every channel whose producer is an unchanged plant calc and whose operands do not include `B_peak`: plasma, sustainment, beta, wall, divertor, radial build, `B_axis` and bore, fit, stored energy, conversion and heat transport, buildings, fuel cycle, the plant's own magnet sub-accounts (helium, winding operations, insulation, structure), and the dormant plant inventory and cold chain. It does not own `B_peak` or any of its readers, and it does not own the gated plant REBCO law (D3) |
+| Round 1 oracle `exploration/magnet_materials/oracle.py` | existing (WI-099) | `magnet__conductor__*`, `magnet__area__*`, `magnet__inventory__*`, `cryoplant__cold_stage__*`, `cryoplant__refrigeration__*` from the recorded calc inputs. The `B_peak_in` operand of the laws and of the area steel rule is taken from the glue oracle's `B_peak` leg, not recomputed (D3) |
+| New glue oracle `exploration/stellarator_materials/oracle_glue.py` | separate author, from this design and contract r4 only | `adapter`, `winding_sum`, `pack_field`, `shape_branch`, `static_loads`, `staged_drive`; the seam insertions (`p_cryo`, `p_tf_extra`, cold and intercept demands, cryo capital, `winding_cost`); `pack_area_ok`, `ampere_floor_ok`, `capacity_ok`; the re-pointed `reference_conductor_current_ok` operand; the structure-mass rule as a recorded-design check (`m_support = 11,615.6 t × W_mag/111 GJ` × variant). **In material instances (D3):** `magnet__peak_field_calc__B_peak` with the arm; the `B_peak` readers outside Round 1, built on that leg: `wp_stress`, `cond_strain`, `peak_field_ok`, `pack_field` (both Round 1 laws and the area steel rule stay with the Round 1 oracle, on the same leg); and the gated plant REBCO law, `magnet__conductor_current__*`, which must read 0 on every output with `evaluation_defined = 0` |
 | Downstream aggregation in material instances (power balance, capital rollups, DCF, LCOE) | new oracle author, composing the plant oracle's function-level pieces by import with the rebound legs taken from the Round 1 and glue oracles | `pb__*`, `*_capital__*`, `cas7x/8x`, `lcoe_calc__lcoe`. The reuse boundary is recorded in `oracle-reuse.json` (WI-096 precedent). Protected oracle files are not edited, and any piece reachable only through `_compute` is re-derived and listed |
+| Unselected material instance (D4) | none; witnessed | Its channels are covered by the baseline-record equality of test 12 and § 5.3, not by an oracle run. `oracle-reuse.json` lists this exclusion |
+
+**Channel-to-oracle list (D3).** `oracle-reuse.json` carries the explicit channel-to-oracle map for all three prefixes, generated from the contract's output list and checked complete at build: every recorded channel has exactly one owner or the D4 witness. A channel with no owner, or with two, fails the build.
 
 ## 7. Clarifications and risks (each resolution `[AGENT]`)
 
-- **K1, placement conflict** (§ 1.1). Option Y is proposed; the reviewer or owner confirms, or rules X. **Contract/spec dependency.**
-- **K2, r4 arm parameterization.** The r4 additive form differs from spec R3 and audit step 3; the keys are `arm_slope` and `arm_x_ref`. Default `arm_x_ref` 35.278 reproduces 24.9 T to 5e-6 relative. Supplying the exact 12.7/0.35999999999999993 needs no model change. **r3→r4 dependency.**
+- **K1, placement conflict** (§ 1.1). Ruled: option Y is accepted by the coordinator and spec R5; contract § 9 records it (D19).
+- **K2, r4 arm parameterization.** The r4 additive form differs from spec R3 and audit step 3; the keys are `arm_slope` and `arm_x_ref`. The library default of `arm_x_ref` is 0.0, which is an identity at slope 0 (D6). The material instances bind 35.278 (E7), which reproduces 24.9 T to 5e-6 relative. Supplying the exact 12.7/0.35999999999999993 needs no model change.
 - **K3, `ampere_floor_ok` (r4 C) only in material instances.** Adding it to the reference would change the pinned 67. **r3→r4 dependency.**
 - **K4, three instances, but the reference is the staged, unchanged Stellaris file** rather than a copy inside the new file. This gives exact key identity with the pin and zero transcription. It deviates from contract § 9's wording.
 - **K5, one-level specialization.** Grandparent template calcs are dropped through an intermediate def (`stellarator_plant.sysml:22-31`), so the common usages are duplicated in both leaves.
 - **K6, negative literals are not entry points** (`…/WI-099…/implementation-notes.md:25`). Nb₃Sn `eps_intrinsic_in` is left unbound as the last formal. The manifest point supplies −0.003, and the route refuses a Nb₃Sn proposal without it. The fixed negative values (`eps_min`, NIST `k_a`, `k_d`, `k_g`, `k_i`) are constant channels, as intended.
-- **K7, retyping a `part` instance.** The Stellaris instance is a usage, so the material instances are copies. Each copy retypes two sub-parts (magnet and cryoplant), while WI-057 Stage E proved one. **Probe P2** on a scratch tree comes before implementation.
-- **K8, riskiest step: cross-part consumers of rebound seams.** `p_elec` feeds `pb.p_cryo` (`mfe_plant.sysml:395`) and `p_drive` feeds `power_supplies.p_tf_extra` (`:192`). Stage E proved only an in-definition consumer of a rebound seam. **Probe P1** checks the pipeline wiring. Fallback: route the staged electricity through the direct term `p_cryo` (`mfe_plant_systems.sysml:560, 644`) with the plant cold-chain inputs zeroed in the copy. The cost is that `direct_electric_capability` (`:510-516`) then screens the staged electricity, so its rating must be supplied.
+- **K7, retyping a `part` instance.** The Stellaris instance is a usage, so the material instances are copies. Each copy retypes two sub-parts (magnet and cryoplant). A stronger precedent exists (D10): the pinned instance already retypes a sub-part, `part :>> blanket : 'Transport Calculated Blanket'` (`stellarator_plant.sysml:560`); that variant rebinds `tbr` (`mfe_subsystems.sysml:131`), and a consumer in the plant definition, `fuel_cycle.tbr = blanket.tbr` (`mfe_plant.sysml:114`), resolves to the variant's producer (`pipeline.yaml:2341`). Its base default is a literal, not an expression, so **probe P2** still runs on a scratch tree before implementation.
+- **K8, riskiest step: cross-part consumers of rebound seams.** `p_elec` feeds `pb.p_cryo` (`mfe_plant.sysml:395`) and `p_drive` feeds `power_supplies.p_tf_extra` (`:192`). The blanket precedent of K7 shows a cross-part consumer following a rebound producer (D10), but with a literal base default. **Probe P1** checks the pipeline wiring, extended by D1 to the rollup's owner-qualified `winding_cost` read (fallback H6). Fallbacks (D10):
+  - `p_elec`: route the staged electricity through the direct term `p_cryo` (`mfe_plant_systems.sysml:560, 644`) and bind `f_uplift_cryo = 0` in the copy. That zeros the dormant plant cold chain without zeroing `q_nuc_cryo`, which the staged load also reads. The variant's `p_cryo` default is rebound to the staged electricity. The probe confirms the plant body accepts `f_uplift_cryo = 0`. The cost is that `direct_electric_capability` (`:510-516`) then screens the staged electricity, so its rating must be supplied.
+  - `p_drive`: in the copy, redefine `power_supplies.p_tf_extra` to read the staged calc output `cryoplant.staged_drive.p_drive` directly, in place of the `cryoplant.p_drive` seam read (`mfe_plant.sysml:192`). The staged output is a new name, not a rebound seam, so the read is unambiguous. If used, § 4 records it as a call-out: the operand stays calculated, but its producer changes.
 - **K9, `default` on asserted EXPOSEs.** Avoided: E6 re-points the only asserted reader, and the `conductor_*` EXPOSEs stay `=`.
 - **K10, Boolean seam** (`intercept_demand_available default inventory_enabled`, an attribute-to-attribute default). Covered by probe P1. The literal `true` rebinding may surface as a Boolean entry key, like `cold_stage_capability__demand_available_in` (`study_route.py:132`); the route then lists it.
 - **K11, def-level literals in specializations** (`rebco_law_enabled = 0.0`, `inventory_enabled = false`). They may or may not be emitted as entry keys (**probe P3**). The route refuses them under material prefixes either way.
-- **K12, body installation.** Six Round 1 bodies get the WI-099 typed adapter. The 51 stellarator bodies are prefix-rewritten, and the build asserts the body set equals the stub set. B1 and B2 carry whole-body diffs. The conditional glue calc is assumed auto-implemented (**probe P4**; fallback: a three-line handwritten body).
+- **K12, body installation.** Six Round 1 bodies get the WI-099 typed adapter. The 51 stellarator bodies are prefix-rewritten, and the build asserts the body set equals the stub set. B1 and B2 carry whole-body diffs. The conditional glue calc is expected to need the three-line handwritten fallback body (D15): the codegen envelope lists "no exp/if/lookup" (`mfe_account_costs.sysml:58-59`), and no SysML file uses an `if` expression. **Probe P4** confirms, and the body-set assertion includes it (§ 1.6 step 4).
 - **K13, cold-stage basis.**
   - Radiation and support conduction use the plant's formulas, and the NIST integral scales conduction to 4.5 K. Round 1's fixed anchor constants are not used, so the terms keep the geometry response.
   - `shield_static` subtracts conduction on the 20 K basis, which differs by ≤ 0.1 % of the intercept load at 4.5 K.
@@ -400,11 +467,43 @@ Contract § 5 tolerances on every recorded design: `p_fus` ± 0.5 %, `B_peak` ±
 - **K17, `capacity_ok` duplicates `cold_stage_capacity_ok`.** Both are kept for contract § 7 fidelity, and the failure reasons name both.
 - **K18, Round 1 `fit_ok` not asserted.** `pack_area_ok` is the same inequality at the pack share.
 - **K19, REBCO `shape_mode` calculated** (§ 4 call-out). Below 8 T the knot branch returns NaN with status 0, and the grid avoids it. **K20:** NaN operands can make `reference_conductor_current_ok` indeterminate; those cases are already `unsupported`.
-- **K21, cost and coupling of three instances per evaluation.** Every case evaluates three plants, and any instance's refusal fails the case (defaults must evaluate, § 1.6). **Probe P5** measures the per-case time. Fallback: split into per-instance packages from the same staged tree, which changes only the build and route, not the model.
-- **K22, Nb₃Sn default design.** It sits at about 4.3 T axis with the Stellaris plasma, where sustainment convergence is not established. The build executes the defaults. If they refuse, the defaults become the first policy-recorded Nb₃Sn design that evaluates.
+- **K21, cost and coupling of three instances per evaluation.** Every case evaluates three plants, and any instance's refusal fails the case (defaults must evaluate, § 1.6). The unselected material instance always runs at the manifest baseline point, with `eps_intrinsic_in = −0.003`, never at 0.0 (D4). **Probe P5** measures the per-case time. Fallback: split into per-instance packages from the same staged tree, which changes only the build and route, not the model.
+- **K22, Nb₃Sn default design.** It sits at about 4.3 T axis with the Stellaris plasma, where sustainment convergence is not established. The build executes the defaults. If they refuse, the sequencing is (D4, review ruling): build with the policy supplying every Nb₃Sn key, then regenerate the defaults from the first policy-recorded Nb₃Sn design that evaluates. Until then, no REBCO case can pass, because the unselected Nb₃Sn instance runs at those defaults.
 - **K23, dormant plant channels stay in the outputs** (plant REBCO law zeros, composition-implied tape metres and tape cost, plant cold chain, inventory zeros). The study reads the variant channels, and the dormant set is listed in the route.
 - **K24, helium.** The plant keeps its ideal-gas basis at 4.5 K, roughly 15 % high (contract § 6 N3), and `f_helium` is held at 0.08 for both materials. It is a sub-M$ account and is disclosed.
 - **K25, refusals are not status outputs.** `R − a_coil ≤ 0` and sustainment non-convergence raise, so the route records them as `unsupported (domain refusal)` with the text (contract § 7 item 1).
-- **K26, spec wording.** Spec R3 (names) and R5 (the phrase "shared-library edits") should be amended to r4 and to option Y once ruled; the spec is not edited here.
+- **K26, spec wording.** Resolved: spec R3 and R5 are amended, and spec line 14 reads r4 (D19, coordinator).
 
 Probes P1–P5 run on scratch copies with results deposited under `work/active/WI-100_stellarator-material-variants/prototype/` before implementation (WI-057 prototype discipline). A probe refusal that the stated fallback cannot absorb stops implementation and returns to the reviewer.
+
+- **P1 (K8, K10, D1):** the generated pipeline wiring of three cross-part reads of rebound seams, and of the Boolean seam:
+  - `pb.p_cryo` reads the staged electricity (fallback: direct term with `f_uplift_cryo = 0`, K8);
+  - `power_supplies.p_tf_extra` reads the staged drive (fallback: direct read of `staged_drive.p_drive`, K8);
+  - the rollup input `magnet_capital_rollup.winding_cost`, read owner-qualified at `mfe_power_core.sysml:361`, reads `magnet__winding_sum__cost` in material instances and `magnet__winding_procurement__cost` in the reference (fallback: hunk H6, § 1.3).
+- **P2 (K7):** two sub-part retypes in one copied instance.
+- **P3 (K11):** whether def-level literals in the specializations are emitted as entry keys.
+- **P4 (K12, D15):** whether `'REBCO Shape Branch'` auto-implements; the handwritten fallback is expected.
+- **P5 (K21):** per-case time for three plant instances.
+
+## 8. Review changes
+
+Changes made for `evidence/design-review-wi100.md` (PASS WITH CORRECTIONS). D19 was done by the coordinator.
+
+- **D1:** added contingent hunk H6 (`winding_account` seam, `:361` re-pointed) in § 1.3; noted in § 2.5 and § 3; added the owner-qualified `winding_cost` read to test 4(a) and probe P1; recorded that the `'Cryoplant'::inventory_enabled` reads need no fallback.
+- **D2:** rewrote the § 5.2 decomposition. `aux_cooling__cost` is replaced by `aux_cost`. Heat transport, fuel cycle, CAS22 tail, buildings, multiplier and owner accounts, annual accounts and `calendar__availability` are added. The legacy selection operands and IDC are marked reported-only. Added closure test 13.
+- **D3:** § 6.3 moves `B_peak` in material instances, its non-Round-1 readers and the gated plant REBCO law to the glue oracle. The Round 1 oracle takes the glue's `B_peak` leg. Added the explicit channel-to-oracle list.
+- **D4:** the unselected prefix is filled from the manifest baseline point with `eps_intrinsic_in = −0.003` (§ 0, § 1.5, § 1.6, § 2.10, § 5.3); added witness test 12, the § 6.3 exclusion row, and K21 and K22.
+- **D5:** added the complete key partition in § 5.1; `pack_field__mu0_in` is a named calc-usage key (§ 2.4, § 2.5).
+- **D6:** H3 default is 0.0; E7 binds 35.278; § 1.5 key delta, § 2.2, § 4 and K2 updated.
+- **D7:** test 8 uses 70 turns (about 11.9 T) and asserts finite outputs.
+- **D8:** § 6.1 names the direct evaluator for tests 2 and 3; § 5.3 has no bypass flag.
+- **D9:** added bridge-parity test 4(d) and the test 4(b) channel map.
+- **D10:** K7 cites the blanket retype precedent; K8 fallbacks use `f_uplift_cryo = 0` and give a `p_drive` fallback.
+- **D11:** E2 uses the word-boundary pattern.
+- **D12:** added the count-basis note in § 2.10.
+- **D13:** every `B_peak_in` binds `peak_field_calc.B_peak` (§ 2.5, § 2.6, § 3).
+- **D14:** E7 and E8 docs state their basis in words, with no brackets.
+- **D15:** fallback body in § 1.2, § 1.6 step 4, test 10, K12 and P4.
+- **D16:** test 5 adds copper and steel pairs and the `wp_side` Ampère pair; added cheap-checks test 11.
+- **D17:** added `free_capacity` for `rated_intercept_W` (§ 2.7, § 4, § 5.2).
+- **D18:** § 5.2 names the operands the policy reads back; § 6.2 checks them.
