@@ -58,4 +58,14 @@ Deliverables (brief § Deliverables and answer contract): native goal/trail/lear
 
 ## Amendments
 
-None.
+### Amendment 1 — 2026-09-30 — Round 2 question and scope (owner-originated)
+
+[OWNER-VERBATIM] Round 2 question: “Can REBCO’s additional field or winding-space capability improve the plant enough to offset its higher magnet cost, measured in LCOE?” Full brief preserved at [evidence/owner-brief-round2.md](evidence/owner-brief-round2.md) (SHA-256 `2dfaa54d69ee8192…`).
+
+What this amends, each traced to the brief:
+
+- **Question and answer contract.** Round 1's matched-duty subsystem answer stands. Round 2 answers the LCOE question above: “Investigate the chain conductor choice → achievable field and winding geometry → plant performance and equipment → LCOE.” Answered when the brief's four shown items exist (a matched-duty comparison connected to Round 1; the best supported plant design points per material; an LCOE breakdown; the REBCO price at which the whole-plant preference changes, where a supported crossing exists), with interaction results, figures, replay evidence and a short narrative; or when a credible LCOE comparison cannot be established and the missing relationship is named as partial completion (“subsystem savings alone do not answer this round”).
+- **Invariant “Comparison”, superseded in part.** “Economics stay inside the declared magnet/refrigeration subsystem; full-plant LCOE is out of scope” no longer applies: “All accounting must return to LCOE … Use consistent whole-plant accounting for both alternatives.” The sentence “A fixed-duty calculation is not a reactor redesign” is replaced for Round 2 by the brief's “Let each material have explicit design choices suited to it” within “a bounded search with justified ranges.” The invariant's last sentence is strengthened: “Resolve the known field/geometry limitations wherever the result depends on them. Do not infer plant benefits from a conductor field limit alone.” All other Round 1 invariants stand, including MR-7: “Preserve the distinction between a supplied design and calculated requirements; no silent resizing to make constraints pass.”
+- **Reserved gates, narrowed.** “Model updates and source acquisition are authorized where needed”, and “Select one coherent plant model and explain why it supports this comparison.” A bounded per-material design search is authorized; full reactor optimization and a new detailed electromagnetic/mechanical solver remain reserved. Cleanup is authorized: “Fix the missing package oracle_entry and retire the bogus source registration.” Unchanged: “Keep the article unchanged”; “Formal closure remains with me”; no publish, push, merge, purchase or vendor/author contact.
+- **Review.** “obtain focused independent review of the new physical relationships, comparison assumptions, and integrated accounting.”
+- **Limits.** Unchanged (round limit 4; one pin and one study per round).
