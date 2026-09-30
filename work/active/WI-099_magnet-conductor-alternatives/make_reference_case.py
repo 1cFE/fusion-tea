@@ -32,7 +32,7 @@ duty = dict(coils=16.0, turns=142.0, turn_length=55.6, available_area=1296 * 411
 econ = dict(crf=0.08, availability=0.8, electricity_price=60.0, hours=8760.0, usd2015_to_2021=271.0 / 237.0)
 common_cold = dict(nuclear_density=35.5, cold_volume=16 * 1.296 * 0.411 * 55.6, radiation_ref=1300.0, conduction_ref=4600.0,
                    T_conduction_ref=4.0, n_leads=4.0, f_lead=1.25, L0=L0, p_joint_ref=256 * 1e-9 * Iref**2, I_joint_ref=Iref,
-                   shield_static=1107900.0, load_multiplier=1.0)
+                   shield_static=1102000.0, load_multiplier=1.0)
 refr = dict(eta_mode=0.0, eta_const=0.24, green_a=0.155, green_b=0.23, f_carnot_shield=0.20, capital_mode=0.0,
             green_c=3.1e6, green_d=0.65, T_green=4.5)
 inv = dict(element_density=8900.0, rho_cu=8940.0, rho_steel=8000.0, rho_solder=8390.0, price_cu=11.0, price_steel=6.0,

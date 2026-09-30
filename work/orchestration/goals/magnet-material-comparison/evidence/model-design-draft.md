@@ -17,7 +17,7 @@ All currents A, fields T, temperatures K, areas mm² unless named, lengths m, ma
 
 Inputs: `n_strands`, `strand_diameter` (m), `strand_copper_fraction` (0.5), `turn_current`, `B_peak`, `T_supply`, `nuclear_rise` (0.7 K), `margin_rise` (1.5 K), `eps_intrinsic` (fraction), `p`, `q`, `C1` (A·T per strand), `Ca1`, `Ca2`, `eps0a` (fraction), `Bc20`, `Tc0`, `fraction_rule` (0.8), `acceptance_rule` (0 temperature, 1 fraction), domain bounds `B_law_min` 8, `B_law_max` 14.5, `B_design_max` 12.2, `B_edge_max` 13.5, `T_law_min` 4.2, `T_law_max` 12, `eps_min` −0.010, `eps_max` 0.002.
 
-Equations (Tsui & Hampshire 2012 eq. 6–7): ε_sh = Ca2·ε0a/√(Ca1² − Ca2²); s(ε) = 1 + [Ca1(√(ε_sh² + ε0a²) − √((ε − ε_sh)² + ε0a²)) − Ca2·ε]/(1 − Ca1·ε0a); Tc*(ε) = Tc0·s^(1/3); t = T/Tc*; Bc2*(T, ε) = Bc20·s·(1 − t^1.52); b = B/Bc2*; Ic_strand = (C1/B)·s·(1 − t^1.52)(1 − t²)·b^p(1 − b)^q for 0 < t < 1 and 0 < b < 1, else 0 (Breschi Table III form; Tsui's C in A T m⁻² converts as C1 = C × (π/4)d²). Ic_cable(T) = n·Ic_strand(B, T, ε). If Ca2 = 0 the strain shift ε_sh is 0.
+Equations (Tsui & Hampshire 2012 eq. 6–7): ε_sh = Ca2·ε0a/√(Ca1² − Ca2²); s(ε) = 1 + [Ca1(√(ε_sh² + ε0a²) − √((ε − ε_sh)² + ε0a²)) − Ca2·ε]/(1 − Ca1·ε0a); Tc*(ε) = Tc0·s^(1/3); t = T/Tc*; Bc2*(T, ε) = Bc20·s·(1 − t^1.52); b = B/Bc2*; Ic_strand = (C1/B)·s·(1 − t^1.52)(1 − t²)·b^p(1 − b)^q for 0 ≤ t < 1 and 0 < b < 1, else 0 (A1: T = 0 allowed so the Tcs bracket starts at a finite Ic) (Breschi Table III form; Tsui's C in A T m⁻² converts as C1 = C × (π/4)d²). Ic_cable(T) = n·Ic_strand(B, T, ε). If Ca2 = 0 the strain shift ε_sh is 0.
 
 Derived: T_conductor = T_supply + nuclear_rise (D4). Outputs: `T_conductor`, `ic_strand_op`, `ic_cable_op` (at T_conductor), `operating_fraction` = I/ic_cable_op, `T_cs` (bisection on [0, T_zero] where T_zero is the temperature at which b = 1, tolerance 1e−10 K; if n·Ic(B, 0) < I then `T_cs` = 0 and `tcs_defined` = 0), `tcs_defined`, `temperature_margin` = T_cs − T_conductor, `temp_rule_margin` = T_cs − (T_supply + nuclear_rise + margin_rise), `fraction_rule_margin` = fraction_rule − operating_fraction, `acceptance_margin` (the selected rule's margin), `status_code` (0 unsupported, 1 supported, 2 edge, 3 law-only; contract § 2), `supported` (1 if status ≠ 0), `acceptance_pass` (1 if supported and acceptance_margin ≥ 0), `element_area_total` = n·(π/4)d²·1e6, `element_copper_area` = strand_copper_fraction × element_area_total.
 
@@ -119,3 +119,11 @@ Every case supplies all of the following design attributes; the package route ma
   - refrigeration: `rating_cold`, `eta_mode`, `eta_const`, `green_a`, `green_b`, `f_carnot_shield`, `capital_mode`, `green_c`, `green_d`, `T_green`.
 
 Domain bounds, T_shield (77 K), T_amb (300 K) and the NIST coefficients are fixed design values, not case inputs. Each case record also carries non-model labels (anchor, pairing, rule family, variant, offer kind) for the study.
+
+
+## 7. Post-review clarifications (2026-09-29, coordinator; from the independent oracle author's notes A1, A2, A6, A7)
+
+- A1: the Nb₃Sn validity guard is 0 ≤ t < 1 (see § 2.1).
+- A2: construction C uses the unrounded Stellaris Table 7 calibration, per_kA = fraction × (0.36² m² × 1e6 / 308 mm²)/50 kA (copper 0.35, solder 0.12, helium 0.08, steel 0.36), with cabling_factor 1, cable_void 0 and ins_fraction 0; its anchor test is relative 1e−6 against 420.779220779 mm² at 50 kA and 24.9 T.
+- A6: anchor D shield_static is the EU DEMO shields' own load, 912.6 + 189.4 = 1102.0 kW (Končar Table 1); the 1107.9 kW total includes the 5.9 kW that reaches the 4 K magnets, already counted in the cold stage.
+- A7: anchor S turn length is 321600/(48 × 308) = 21.753246753 m exactly.
