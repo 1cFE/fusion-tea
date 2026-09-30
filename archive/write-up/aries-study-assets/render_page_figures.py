@@ -188,7 +188,7 @@ def how_close():
                weight="semibold" if r == 5 else "normal", color=fs.INK)
     c.text(10.35, pub["lcoe"], f"ARIES, published: ${pub['lcoe']:.1f}", va="bottom", fontsize=T, color=fs.INK,
            clip_on=False)
-    c.text(10.35, pub["lcoe"] - 2, "its discount rate is not published", va="top", fontsize=L, color=fs.MUTED,
+    c.text(10.35, pub["lcoe"] - 2, "historical ARIES costing uses 4.35%", va="top", fontsize=L, color=fs.MUTED,
            clip_on=False)
     c.set(xlim=(-0.4, 10.4), ylim=(0, 128))
     c.set_xticks(xs, [f"{r}%" for r in xs])
@@ -456,7 +456,8 @@ INLINE = {
                        "all tritium bought: our model 686, of which 627 is purchased tritium and 58 everything else, "
                        "against ARIES's published 77.6. Our model with ARIES's tritium assumption and accounting "
                        "conventions, at real discount rates of 0, 3, 5, 8 and 10%: 32, 46, 59, 85 and 105, against "
-                       "ARIES's 77.6, whose discount rate is not published.", ""),
+                       "ARIES's published 77.6. Historical ARIES costing uses a 4.35% discount rate, with other "
+                       "financial assumptions that differ.", ""),
     "page-pressure-ratio": ("pr", "Net electricity rises as compressor pressure ratio falls, until the exchanger can "
                             "no longer remove all reactor heat", ' data-marks="pr"'),
     "page-flow-boundary": ("fb", "Pressure ratio and net electricity at the exchanger limit across seven cycle flows",

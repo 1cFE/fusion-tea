@@ -1,0 +1,90 @@
+{
+  "scope": "Independent financial arithmetic on frozen inputs/outputs; not a new native model run or ARIES-CS reproduction.",
+  "source": "exploration/aries_integrated/studies/20260925-aries-reconciled-alternative-economics/results/cases.json",
+  "source_sha256": "798f7438f8fbfcff6c413255bedf534eb4e56109651fd2f88f21a3f7696a6692",
+  "checks": [
+    {
+      "case": "diag-L7-aligned-combined-at-1000",
+      "source_branch": false,
+      "stored": 59.31303109216603,
+      "reconstructed": 59.31303109216602,
+      "absolute_difference": 7.105427357601002e-15
+    },
+    {
+      "case": "diag-L7-aligned-combined-at-1000",
+      "source_branch": true,
+      "stored": 53.05805431377387,
+      "reconstructed": 53.05805431377386,
+      "absolute_difference": 1.4210854715202004e-14
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.00",
+      "source_branch": false,
+      "stored": 31.885074935820537,
+      "reconstructed": 31.885074935820526,
+      "absolute_difference": 1.0658141036401503e-14
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.00",
+      "source_branch": true,
+      "stored": 30.65860623966404,
+      "reconstructed": 30.65860623966404,
+      "absolute_difference": 0.0
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.03",
+      "source_branch": false,
+      "stored": 46.007978415974335,
+      "reconstructed": 46.00797841597434,
+      "absolute_difference": 7.105427357601002e-15
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.03",
+      "source_branch": true,
+      "stored": 42.739783870349754,
+      "reconstructed": 42.739783870349754,
+      "absolute_difference": 0.0
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.08",
+      "source_branch": false,
+      "stored": 84.68661991294312,
+      "reconstructed": 84.68661991294314,
+      "absolute_difference": 2.842170943040401e-14
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.08",
+      "source_branch": true,
+      "stored": 70.74508283755603,
+      "reconstructed": 70.74508283755604,
+      "absolute_difference": 1.4210854715202004e-14
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.10",
+      "source_branch": false,
+      "stored": 104.89780577717126,
+      "reconstructed": 104.89780577717129,
+      "absolute_difference": 2.842170943040401e-14
+    },
+    {
+      "case": "diag-L8-aligned-discount-0.10",
+      "source_branch": true,
+      "stored": 83.40366025318423,
+      "reconstructed": 83.40366025318424,
+      "absolute_difference": 1.4210854715202004e-14
+    }
+  ],
+  "diagnostics_USD2004_per_MWh": {
+    "alternative_same_rate_5pct": 59.31303109216602,
+    "alternative_same_rate_4_35pct": 54.65669085008629,
+    "alternative_operating_4_35pct_construction_6_05pct": 56.52211673758751,
+    "source_capital_1000MW_5pct": 53.05805431377386,
+    "source_capital_1000MW_4_35pct": 49.542941576206424
+  },
+  "limits": [
+    "Retains existing 47-year life and dated cashflows.",
+    "O&M is inherited from a diagnostic derived from 14% of the published 77.6; not independent reproduction.",
+    "Separate construction-rate case still uses our midpoint convention, not reconstructed source construction financing.",
+    "Does not implement ARIES fixed-charge taxation/depreciation methodology."
+  ]
+}

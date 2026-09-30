@@ -1,0 +1,16 @@
+{
+  "s0-published": {},
+  "s1-supplied-sized-side": {
+    "stellarator_09__stellaris__magnet__winding_pack__wp_side": 0.5253087270279885
+  },
+  "s2-same-winding-enlarged": {
+    "stellarator_09__stellaris__magnet__casing__interior_y": 0.6,
+    "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+    "stellarator_09__stellaris__magnet__winding_pack__wp_side": 0.5253087270279885
+  },
+  "s3-c0007-winding-enlarged": {
+    "stellarator_09__stellaris__magnet__casing__interior_y": 0.6,
+    "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+    "stellarator_09__stellaris__magnet__winding_pack__wp_side": 0.5278095832116102
+  }
+}
