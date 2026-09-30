@@ -1,0 +1,17 @@
+{
+ "package": "stellarator_materials_reference_tea",
+ "prefix": "stellarator_09__stellaris__",
+ "cases": 20,
+ "states": [
+  "completed"
+ ],
+ "prepare_s": 1.3381965160369873,
+ "run_s_including_prepare": 30.257580041885376,
+ "per_case_s": 1.5128790020942688,
+ "lcoe": [
+  318.7377471541504,
+  318.6520002990667,
+  318.56819678852685
+ ],
+ "failures": []
+}

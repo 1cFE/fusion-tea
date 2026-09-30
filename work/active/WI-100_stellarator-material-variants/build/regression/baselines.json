@@ -1,0 +1,33 @@
+{
+  "reference": {
+    "lcoe": 318.7377471541504,
+    "violated": [
+      "divertor_heat_ok",
+      "facility_occupancy_ok",
+      "reference_conductor_current_ok",
+      "tbr_ok",
+      "water_electric_capacity_ok",
+      "wp_fit_ok"
+    ],
+    "baseline_result": "exploration/stellarator_materials/studies/reference/baseline/baseline_result.json"
+  },
+  "rebco": {
+    "lcoe": 412.4334208430638,
+    "violated": [
+      "acceptance_ok",
+      "divertor_heat_ok",
+      "facility_occupancy_ok",
+      "pack_area_ok",
+      "reference_conductor_current_ok",
+      "tbr_ok",
+      "water_electric_capacity_ok",
+      "wp_fit_ok"
+    ],
+    "baseline_result": "exploration/stellarator_materials/studies/rebco/baseline/baseline_result.json"
+  },
+  "nb3sn": {
+    "refusal": "EvaluationFailed: module_execution: ValueError: nonpositive IHX terminal approach",
+    "manifest": null,
+    "note": "design K22: the default refuses; the offer policy supplies the first evaluating design"
+  }
+}

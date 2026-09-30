@@ -1,0 +1,32 @@
+"""Native completion of mfe_plasma_scaling::'Conductor Peak Field'.
+
+Authority: models/library/analyses/mfe_plasma_scaling.sysml, normative
+positive live/reference clearance and anchored bore equations (WI-053).
+Input-domain rejection precedes all division; engineering limits remain
+separate evaluated predicates. Valid arithmetic retains its original order.
+"""
+import math
+from stellarator_tea.modules.mfe_plasma_scaling.conductor_peak_field import Conductor_Peak_FieldInput
+
+AUTO_IMPLEMENTED = False
+
+
+def run_conductor_peak_field(inputs: Conductor_Peak_FieldInput) -> float:
+    """Return signed conductor field, refusing invalid clearance first."""
+    if not inputs.R_in - inputs.a_coil_in > 0:
+        raise ValueError('Conductor Peak Field: live clearance R_in - a_coil_in must be > 0')
+    if not inputs.R_ref_in - inputs.a_coil_ref_in > 0:
+        raise ValueError('Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0')
+    # WI-100 pack-size arm slot (design section 2.2, body B2): refused after the two clearance checks.
+    for key in ('wp_side_in', 'arm_slope_in', 'arm_x_ref_in'):
+        if not math.isfinite(getattr(inputs, key)):
+            raise ValueError(f'Conductor Peak Field: arm input {key} must be finite')
+    if not inputs.wp_side_in > 0:
+        raise ValueError('Conductor Peak Field: wp_side_in must be > 0')
+    bore_factor = inputs.R_in / (inputs.R_in - inputs.a_coil_in)
+    bore_factor_ref = inputs.R_ref_in / (inputs.R_ref_in - inputs.a_coil_ref_in)
+    bore_norm = bore_factor / bore_factor_ref
+    ratio = inputs.peak_ratio_in + inputs.arm_slope_in * (inputs.R_in / inputs.wp_side_in - inputs.arm_x_ref_in)
+    if not ratio > 0:
+        raise ValueError(f'Conductor Peak Field: effective peak ratio must be > 0; actual={ratio!r}')
+    return (inputs.B_axis_in * ratio) * bore_norm

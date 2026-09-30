@@ -1,0 +1,6 @@
+{
+  "stellarator_09_materials__rebco_material__cryoplant__intercept_demand_available": 1.0,
+  "stellarator_09_materials__rebco_material__cryoplant__inventory_enabled": 0.0,
+  "stellarator_09_materials__rebco_material__magnet__pack_field__mu0_in": 1.25663706212e-06,
+  "stellarator_09_materials__rebco_material__magnet__rebco_law_enabled": 0.0
+}

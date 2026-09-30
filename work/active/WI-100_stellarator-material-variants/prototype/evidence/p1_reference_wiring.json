@@ -1,0 +1,87 @@
+{
+ "package": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/wi100/p1/pkg",
+ "prefix": "stellarator_09__stellaris__",
+ "reads": {
+  "stellarator_09__stellaris__turbine__turbine_cost": {
+   "purchase_cost_in": "stellarator_plant_params.stellarator_09__stellaris__turbine__purchase_cost_per_module"
+  },
+  "stellarator_09__stellaris__divertor__divertor_cost": {
+   "purchase_cost_in": "stellarator_plant_params.stellarator_09__stellaris__divertor__purchase_cost_per_module"
+  },
+  "stellarator_09__stellaris__cryoplant__aux_cooling": {
+   "purchase_cost_in": "stellarator_plant_params.stellarator_09__stellaris__cryoplant__purchase_cost_per_module"
+  },
+  "stellarator_09__stellaris__heat_rejection__heat_rejection_cost": {
+   "purchase_cost_in": "stellarator_plant_params.stellarator_09__stellaris__heat_rejection__purchase_cost_per_module"
+  },
+  "stellarator_09__stellaris__power_supplies__power_supplies_cost": {
+   "purchase_cost_in": "stellarator_plant_params.stellarator_09__stellaris__power_supplies__purchase_cost_per_module"
+  },
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability": {
+   "demand_available_in": "stellarator_plant_params.stellarator_09__stellaris__cryoplant__inventory_enabled",
+   "demand_in": "stellarator_09__stellaris__cryoplant__inventory__q_inventory_shield"
+  },
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability": {
+   "demand_in": "stellarator_09__stellaris__cryoplant__cold_load_W_demand_conversion__demand.root",
+   "demand_available_in": "mfe_viability_params.stellarator_09__stellaris__cryoplant__cold_stage_capability__demand_available_in"
+  },
+  "stellarator_09__stellaris__magnet__magnet_capital_rollup": {
+   "winding_cost": "stellarator_09__stellaris__magnet__winding_procurement__cost"
+  },
+  "stellarator_09__stellaris__pb": {
+   "p_cryo": "stellarator_09__stellaris__cryoplant__refrigeration_sum__total.root"
+  }
+ },
+ "entry_keys_matching": {
+  "stellarator_09__stellaris__magnet__coil__arm_slope": {
+   "entry_type": "design_attribute",
+   "default": 0.0,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__magnet__coil__arm_x_ref": {
+   "entry_type": "design_attribute",
+   "default": 0.0,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__magnet__rebco_law_enabled": {
+   "entry_type": "design_attribute",
+   "default": 1.0,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__cryoplant__inventory_enabled": {
+   "entry_type": "design_attribute",
+   "default": 1.0,
+   "python_type": "bool"
+  },
+  "stellarator_09__stellaris__cryoplant__purchase_cost_per_module": {
+   "entry_type": "design_attribute",
+   "default": 31478692.121086925,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__divertor__purchase_cost_per_module": {
+   "entry_type": "design_attribute",
+   "default": 109109123.15593052,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__fuel_cycle__inventory_enabled": {
+   "entry_type": "design_attribute",
+   "default": 1.0,
+   "python_type": "bool"
+  },
+  "stellarator_09__stellaris__heat_rejection__purchase_cost_per_module": {
+   "entry_type": "design_attribute",
+   "default": 115939531.80564217,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__power_supplies__purchase_cost_per_module": {
+   "entry_type": "design_attribute",
+   "default": 86013482.74180616,
+   "python_type": "float"
+  },
+  "stellarator_09__stellaris__turbine__purchase_cost_per_module": {
+   "entry_type": "design_attribute",
+   "default": 247464428.83859593,
+   "python_type": "float"
+  }
+ }
+}

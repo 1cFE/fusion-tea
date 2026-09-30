@@ -1,0 +1,17 @@
+{
+ "package": "stellarator_materials_tea",
+ "prefix": "stellarator_09_probe__probe_a__",
+ "cases": 20,
+ "states": [
+  "completed"
+ ],
+ "prepare_s": 1.3819611072540283,
+ "run_s_including_prepare": 29.76398015022278,
+ "per_case_s": 1.4881990075111389,
+ "lcoe": [
+  318.354499670718,
+  318.26851425040843,
+  318.1844678782449
+ ],
+ "failures": []
+}

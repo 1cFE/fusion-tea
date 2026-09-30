@@ -287,3 +287,8 @@ SOURCE_COLLECTIONS["magnet_materials"] = (
     'analyses/magnet_conductor_alternatives.sysml',
     'designs/magnet_materials/magnet_subsystem.sysml',
 )
+
+# WI-100 derived stellarator material packages (goal magnet-material-comparison). The build stages the MFE
+# twin (equal to these canonical files) and Round 1's conductor library; the variants library and the materials
+# design file live in the package's own tree (exploration/stellarator_materials/models/), outside models/.
+SOURCE_COLLECTIONS["stellarator_materials"] = MFE.owned + ("analyses/magnet_conductor_alternatives.sysml",)
