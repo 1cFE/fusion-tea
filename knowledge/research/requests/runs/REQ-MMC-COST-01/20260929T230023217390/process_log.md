@@ -1,0 +1,14 @@
+# Research run REQ-MMC-COST-01
+
+**Question:** Which permitted primary public sources state Nb3Sn and REBCO conductor prices with physical purchase units (USD per kA-m at stated field and temperature, per kg, or per m), amount purchased, currency year and scope (strand, cable, jacketed conductor, winding, installed magnet), and helium refrigerator capital cost per unit cooling capacity at 4.5 K and near 20 K?
+
+**Consumer:** goal:magnet-material-comparison/T-002  ·  **Request key:** `7de9ba6a3d231bf63701994faa6ada7cac47ea435b8de682535335aff66a42de`
+
+- searched: `Cooley Ghosh Scanlan 2005 costs of high-field superconducting strands particle accelerator magnets Nb3Sn USD per kA m 12 T 4.2 K OSTI`
+- searched: `osti.gov: costs of high-field superconducting strands Nb3Sn price per kA-m; M. A. Green cost of coolers 4 K 20 K`
+- candidate https://arxiv.org/pdf/2205.04441 — **keeper** Chislett-McDonald, Surrey, Naish, Turner, Hampshire 2022 arXiv: fusion tokamak costing states Nb3Sn 8.0 and REBCO ~80 USD/kA m at 6 T 4.2 K (2021 USD), Jc-scaling cost equation, and cryoplant capital 88 M USD at 4.5 K vs 20 M USD at 20 K; tokamak study, not ARIES-CS derived
+- candidate https://www.osti.gov/etdeweb/biblio/20592577 — **rejected** ETDEWEB bibliographic record of Cooley Ghosh Scanlan 2005 SUST; no full text on OSTI, publisher version paywalled; superseded for this purpose by Cooley and Pong 2016 open slides
+- candidate https://indico.cern.ch/event/438866/contributions/1085142/attachments/1257973/1858756/Cost_drivers_for_VHEPP_magnet_conductors-v2.pdf — **keeper** Cooley and Pong, FCC Week 2016 Rome, CERN Indico slides: REBCO baseline 80 USD/m for 400 A at 20 T 4.2 K = 200 USD/kA-m (DOE EERE FOA); Nb3Sn present >20 USD/kA-m at 16 T 4.2 K, 1.5-2 MUSD/ton, ITER TF 384 t needed >500 t produced; primary for the price conditions cited by arXiv:2205.04441 ref 137
+- searched: `Strobridge 1974 NBS technical note 655 cryogenic refrigerators updated survey capital cost versus refrigeration capacity nvlpubs.nist.gov`
+- candidate https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote655.pdf — **keeper** Strobridge 1974 NBS TN 655 (NIST, public): refrigerator and liquefier capital cost C = 6000 P^0.7 USD with P installed input power kW, for 1.8-90 K units, no dollar-year adjustment; with efficiency-vs-capacity charts gives capital cost per unit cooling at 4.5 K vs 20 K; replaces the registered Green 2015 capture, which holds an IOP bot-check page, not the paper
+- failed https://arxiv.org/pdf/2205.04441 — run capture limit (3) spent: two capture attempts failed on a registry PDF decode error; open-access arXiv keeper (Nb3Sn 8.0 and REBCO ~80 USD/kA m at 6 T 4.2 K, 2021 USD; Jc-scaled cost Eq 9; cryoplant 88 vs 20 MUSD 1990) for a follow-up run, register with --local-pdf (queued)

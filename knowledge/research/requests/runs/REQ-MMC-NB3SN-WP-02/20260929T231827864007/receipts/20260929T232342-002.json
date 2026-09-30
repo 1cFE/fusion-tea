@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/nb3sn-highfield/efcp150901.pdf",
+  "slug": "design_manufacture_and_test_of_a_82_ka_react_wind_tf",
+  "path": "knowledge/sources/design_manufacture_and_test_of_a_82_ka_react_wind_tf/",
+  "source_id": "e002622f82c732e8f59a1dd0d152735ab6825bf1839b5b23e5156da42d7b24a0",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:23:42.109926+00:00"
+}

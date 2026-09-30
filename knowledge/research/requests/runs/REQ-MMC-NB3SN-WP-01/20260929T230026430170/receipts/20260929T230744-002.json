@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://www-pub.iaea.org/MTCD/meetings/PDFplus/2010/cn180/cn180_papers/itr_p1-50.pdf",
+  "slug": "technology_development_for_the_manufacture_of_nb3sn",
+  "path": "knowledge/sources/technology_development_for_the_manufacture_of_nb3sn/",
+  "source_id": "2ef47cc42fd9e0fe780c9f507bc8e522b211445f7f242d1e08f1ca1d698e8105",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:07:44.087237+00:00"
+}

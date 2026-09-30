@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/rebco-wp/wpmag16576.pdf",
+  "slug": "bruzzone_wesche_uglietti_bykovsky_2016_high_temperature",
+  "path": "knowledge/sources/bruzzone_wesche_uglietti_bykovsky_2016_high_temperature/",
+  "source_id": "67dceefc8339532166c2475237df616db42b3d7915f844ce0ae6ca651cd26bd8",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:23:27.540448+00:00"
+}

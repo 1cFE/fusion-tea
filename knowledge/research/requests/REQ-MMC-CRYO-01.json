@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-CRYO-01",
+  "question": "Which permitted primary public sources give large helium refrigerator electrical input per watt of cooling, or fraction of Carnot, separately at 4.2-4.5 K and at 15-25 K with the temperature stages and load allocation explicit, and the magnet cold-load categories (nuclear heating, thermal radiation, support conduction, AC and joint losses, current leads) for fusion superconducting magnets at those temperatures?",
+  "consumer": "goal:magnet-material-comparison/T-002",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["registered ITER cryoplant pages and DI-009 sources", "Strobridge / Kittel refrigerator efficiency survey", "CERN LHC 4.5 K refrigerator performance papers", "EU DEMO and ITER magnet cryogenic heat-load papers", "20 K helium or hydrogen refrigeration for HTS fusion magnets (open access, OSTI, arXiv)"],
+  "limits": {"max_searches": 8, "max_captures": 3}
+}

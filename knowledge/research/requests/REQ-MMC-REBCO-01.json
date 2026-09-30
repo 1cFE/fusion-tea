@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-REBCO-01",
+  "question": "Which permitted primary public sources give REBCO coated-conductor critical current versus field (worst-case or stated orientation) and temperature over roughly 8-20 T near 15-25 K, and a fusion REBCO cable or winding construction with its conversion from tape to cable and winding-pack current density (stabilizer, substrate, jacket, insulation, cooling, degradation), sufficient to compute winding-pack capability at a common lower field?",
+  "consumer": "goal:magnet-material-comparison/T-002",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["registered Molodyk et al. 2021 Sci. Rep. and magneto-angular fit source", "Wimbush and Strickland public HTS critical-current database (Robinson Research Institute)", "Senatore et al. field and temperature scaling of REBCO (Supercond. Sci. Technol.)", "SPARC TFMC and VIPER cable open-access papers (Hartwig et al.)", "EUROfusion/EPFL HTS fusion conductor papers, arXiv, OSTI"],
+  "limits": {"max_searches": 8, "max_captures": 3}
+}

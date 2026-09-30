@@ -1,0 +1,28 @@
+{
+  "request_id": "REQ-MMC-COST-02",
+  "run": "knowledge/research/requests/runs/REQ-MMC-COST-02/20260929T231817213136",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "chislett_mcdonald_surrey_naish_turner_and_hampshire_2022",
+      "path": "knowledge/sources/chislett_mcdonald_surrey_naish_turner_and_hampshire_2022/",
+      "source_id": "9bb092e6a9576f45aebc30f95b5f734c941241705fff2e6cf5df499c33288810",
+      "pre_existing": false
+    },
+    {
+      "slug": null,
+      "path": null,
+      "source_id": "7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3",
+      "pre_existing": true
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://durham-repository.worktribe.com/output/1425342/optimal-design-of-a-toroidal-field-magnet-system-and-cost-of-electricity-implications-for-a-tokamak-using-high-temperature-superconductors",
+      "reason": "Lee, Jenkins, Surrey and Hampshire 2015 FED 98-99 1072 (ref [138] of Chislett-McDonald 2022, origin of the Nb3Sn 8.0 USD/kA.m at 6 T 4.2 K price): Durham institutional repository record returns a Cloudflare bot check (HTTP 403) to curl and WebFetch; a person with a browser can check for and download the accepted manuscript. Publisher copy (ScienceDirect) is paywalled."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://indico.cern.ch/event/438866/contributions/1085142/attachments/1257973/1858756/Cost_drivers_for_VHEPP_magnet_conductors-v2.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe2 in position 11: invalid continuation byte",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:06:21.153420+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "request_id": "REQ-MMC-REBCO-WP-02",
+  "run": "knowledge/research/requests/runs/REQ-MMC-REBCO-WP-02/20260929T231824452743",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "bruzzone_wesche_uglietti_bykovsky_2016_high_temperature",
+      "path": "knowledge/sources/bruzzone_wesche_uglietti_bykovsky_2016_high_temperature/",
+      "source_id": "67dceefc8339532166c2475237df616db42b3d7915f844ce0ae6ca651cd26bd8",
+      "pre_existing": false
+    },
+    {
+      "slug": "hartwig_et_al_2020_viper_insulated_soldered_rebco_cable",
+      "path": "knowledge/sources/hartwig_et_al_2020_viper_insulated_soldered_rebco_cable/",
+      "source_id": "08efdb80ad384cdab3a7191b00643ce82989ada7ab9fde51b1c024989079423c",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://iopscience.iop.org/article/10.1088/1741-4326/aad835/pdf",
+      "reason": "open-access publisher PDF returned a Radware bot-check captcha page to curl; an operator with a browser can download it"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

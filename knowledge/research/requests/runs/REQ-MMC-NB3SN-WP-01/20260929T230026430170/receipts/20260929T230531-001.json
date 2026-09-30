@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://cris.unibo.it/retrieve/e1dcb339-aef2-7715-e053-1705fe0a6cc9/Breschi%20paper-Nb3Sn_production_revised_BW_d.pdf",
+  "slug": "performance_analysis_of_the_toroidal_field_iter_production",
+  "path": "knowledge/sources/performance_analysis_of_the_toroidal_field_iter_production/",
+  "source_id": "af2d13b70e4be67e8b636e81aecb3ab365e1a1220bd1465ffac13570d0645cde",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:05:31.025729+00:00"
+}

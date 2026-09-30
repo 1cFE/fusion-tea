@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-NB3SN-LAW-01",
+  "question": "Which permitted primary public sources give a fusion-grade Nb3Sn strand critical-current scaling law Jc or Ic(B, T, strain) with fitted parameters, current-density basis (non-copper or strand), electric-field criterion, and measured and fitted field/temperature/strain domain covering roughly 4-6 K and 8-14 T?",
+  "consumer": "goal:magnet-material-comparison/T-002",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["NIST extrapolative scaling expression publication (Ekin et al.)", "Bottura and Bordini ITER Nb3Sn Jc(B,T,eps) parameterization", "Godeke Nb3Sn property review (Supercond. Sci. Technol.)", "ITER strand benchmarking and qualification reports (open access)", "CERN, EPFL infoscience, OSTI and arXiv open copies"],
+  "limits": {"max_searches": 8, "max_captures": 3}
+}

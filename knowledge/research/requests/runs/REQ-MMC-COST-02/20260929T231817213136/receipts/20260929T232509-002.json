@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "duplicate",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cost02/hts_acc.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": "7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3",
+  "triage": "keeper",
+  "reason": "same bytes already registered (source_id 7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3)",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:25:09.533629+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MMC-NB3SN-WP-01",
+  "request_key": "c6720113ab22ad66b8c623fd57918af1538e40590a1de2bfe675b7e7be7af556",
+  "request_path": "knowledge/research/requests/REQ-MMC-NB3SN-WP-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-29T23:00:26.430455+00:00",
+  "override_reason": null
+}

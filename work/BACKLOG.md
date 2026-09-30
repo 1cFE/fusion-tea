@@ -534,6 +534,12 @@ standalone:
   priority: P0
   status: backlog
   completed: null
+- id: WI-099
+  name: Magnet conductor alternatives at matched duty
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -663,3 +669,4 @@ standalone:
 | WI-096 | Matched Conversion Subsystems | standard | P1 | backlog |  |
 | WI-097 | exchanger thermal requirements | standard | P1 | backlog |  |
 | WI-098 | Whole Plant Conversion Comparison | standard | P0 | backlog |  |
+| WI-099 | Magnet conductor alternatives at matched duty | standard | P1 | backlog |  |

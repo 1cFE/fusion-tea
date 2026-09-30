@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-CRYO-02",
+  "question": "Which permitted primary sources give fusion superconducting-magnet cold-load magnitudes at about 4-5 K (thermal radiation from shields, support conduction, nuclear heating, joints) and a citable stored copy of Green 2015 large 4.5 K refrigerator efficiency and capital-cost laws?",
+  "consumer": "goal:magnet-material-comparison/T-003",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["Green 2015 IOP Conf. Ser. Mater. Sci. Eng. 101 012001 publisher PDF (local copy from REQ-MMC-CRYO-01 triage)", "Koncar et al. EUROfusion WPPMI-CPR(17) 17578 DEMO thermal shield heat loads", "EU DEMO and ITER magnet cryogenic heat-load budget papers (open access)"],
+  "limits": {"max_searches": 5, "max_captures": 3}
+}

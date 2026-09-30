@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MMC-COST-02",
+  "request_key": "4664ce0ba121abf33ab20d30f5d8de5d0687b1a7ca3aabbf74fbf83c44c8bf7f",
+  "request_path": "knowledge/research/requests/REQ-MMC-COST-02.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-29T23:18:17.213352+00:00",
+  "override_reason": null
+}

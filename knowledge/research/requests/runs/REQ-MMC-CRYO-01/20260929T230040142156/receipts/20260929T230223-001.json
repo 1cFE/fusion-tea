@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://iopscience.iop.org/article/10.1088/1757-899X/101/1/012001/pdf",
+  "slug": "green_2015_the_cost_of_coolers_for_cooling_superconducting",
+  "path": "knowledge/sources/green_2015_the_cost_of_coolers_for_cooling_superconducting/",
+  "source_id": "621dab69f29850ba1769b2eb0899b1a22acb45b4aaac99deab0cac5a5bbefcc3",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:02:23.643383+00:00"
+}

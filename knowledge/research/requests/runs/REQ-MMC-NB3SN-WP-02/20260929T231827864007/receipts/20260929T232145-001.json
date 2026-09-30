@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/nb3sn-highfield/mitchell2021.pdf",
+  "slug": "superconductors_for_fusion_a_roadmap_mitchell_et_al_sust",
+  "path": "knowledge/sources/superconductors_for_fusion_a_roadmap_mitchell_et_al_sust/",
+  "source_id": "c2f0baef076627920979b3c5828795b4720ad3a2c5b95bc72feba19949182f73",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:21:45.494692+00:00"
+}

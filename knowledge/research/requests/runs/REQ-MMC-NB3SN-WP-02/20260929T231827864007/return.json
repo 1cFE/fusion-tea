@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-MMC-NB3SN-WP-02",
+  "run": "knowledge/research/requests/runs/REQ-MMC-NB3SN-WP-02/20260929T231827864007",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "superconductors_for_fusion_a_roadmap_mitchell_et_al_sust",
+      "path": "knowledge/sources/superconductors_for_fusion_a_roadmap_mitchell_et_al_sust/",
+      "source_id": "c2f0baef076627920979b3c5828795b4720ad3a2c5b95bc72feba19949182f73",
+      "pre_existing": false
+    },
+    {
+      "slug": "design_manufacture_and_test_of_a_82_ka_react_wind_tf",
+      "path": "knowledge/sources/design_manufacture_and_test_of_a_82_ka_react_wind_tf/",
+      "source_id": "e002622f82c732e8f59a1dd0d152735ab6825bf1839b5b23e5156da42d7b24a0",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

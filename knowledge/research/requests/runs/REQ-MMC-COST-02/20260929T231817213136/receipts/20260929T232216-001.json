@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cost02/chislett2022.pdf",
+  "slug": "chislett_mcdonald_surrey_naish_turner_and_hampshire_2022",
+  "path": "knowledge/sources/chislett_mcdonald_surrey_naish_turner_and_hampshire_2022/",
+  "source_id": "9bb092e6a9576f45aebc30f95b5f734c941241705fff2e6cf5df499c33288810",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:22:16.443360+00:00"
+}

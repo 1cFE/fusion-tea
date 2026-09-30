@@ -1,0 +1,38 @@
+{
+  "request_id": "REQ-MMC-NB3SN-LAW-01",
+  "run": "knowledge/research/requests/runs/REQ-MMC-NB3SN-LAW-01/20260929T230024793397",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "critical_current_scaling_and_the_pivot_point_in_nb3sn",
+      "path": "knowledge/sources/critical_current_scaling_and_the_pivot_point_in_nb3sn/",
+      "source_id": "1bcbda5c4065fadc0fe53a843cf3d66823fc6a635f4ca23b9d6fc82d70e4c293",
+      "pre_existing": false
+    },
+    {
+      "slug": "critical_current_scaling_laws_for_advanced_nb3sn",
+      "path": "knowledge/sources/critical_current_scaling_laws_for_advanced_nb3sn/",
+      "source_id": "78d8735b0c2a6da112aa9f7bb181faa2bca7b32893ecd98565623209f17f4e6f",
+      "pre_existing": false
+    },
+    {
+      "slug": "a_general_scaling_relation_for_the_critical_current_density",
+      "path": "knowledge/sources/a_general_scaling_relation_for_the_critical_current_density/",
+      "source_id": "1a17594bf57a447b345a5ed5fb0f64aa55a6414381304f819ffe04b856fb88df",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www.nist.gov/publications/extrapolative-scaling-expression-fitting-equation-extrapolating-full-icbte-data",
+      "reason": "NIST lead (Ekin et al., IEEE TAS 27(4) 2017, doi:10.1109/TASC.2017.2647852): NIST page is abstract-only with no full-text PDF; full text is at IEEE Xplore (paywalled). Abstract names no fusion strand parameter set. Owner could obtain the IEEE PDF."
+    },
+    {
+      "candidate": "https://cds.cern.ch/record/1192836",
+      "reason": "Bottura and Bordini, Jc(B,T,eps) parameterization for the ITER Nb3Sn production, IEEE TAS 19(3) 2009: CERN CDS record is behind an Anubis bot-protection proof-of-work page that the fetcher cannot pass; IEEE version paywalled. A person with a browser can download the CDS preprint."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

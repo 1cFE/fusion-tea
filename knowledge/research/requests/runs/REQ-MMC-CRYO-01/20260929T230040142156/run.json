@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MMC-CRYO-01",
+  "request_key": "21914ebf51cfa949e6008226333ef7ef3c628fbad61f69ea02eec9b5fb3ae695",
+  "request_path": "knowledge/research/requests/REQ-MMC-CRYO-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-29T23:00:40.142372+00:00",
+  "override_reason": null
+}

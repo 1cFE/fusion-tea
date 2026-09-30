@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cryoloads/koncar17578.pdf",
+  "slug": "koncar_et_al_2017_heat_loads_and_design_temperature",
+  "path": "knowledge/sources/koncar_et_al_2017_heat_loads_and_design_temperature/",
+  "source_id": "33581ffa8e86e86d4a107eca2147a9b6c29f7b4536ae400d0b61a836d6fe9903",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:20:57.414500+00:00"
+}

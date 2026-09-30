@@ -1,0 +1,30 @@
+{
+  "request_id": "REQ-MMC-COST-01",
+  "run": "knowledge/research/requests/runs/REQ-MMC-COST-01/20260929T230023217390",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "cooley_and_pong_2016_cost_drivers_for_very_high_energy_p_p",
+      "path": "knowledge/sources/cooley_and_pong_2016_cost_drivers_for_very_high_energy_p_p/",
+      "source_id": "6dc05bd1bf952e4786a74ec028f9a57af766a5b5a697aa62fcc8ac40d8344a62",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://indico.cern.ch/event/438866/contributions/1085142/attachments/1257973/1858756/Cost_drivers_for_VHEPP_magnet_conductors-v2.pdf",
+      "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe2 in position 11: invalid continuation byte"
+    },
+    {
+      "candidate": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote655.pdf",
+      "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xec in position 10: invalid continuation byte"
+    },
+    {
+      "candidate": "https://arxiv.org/pdf/2205.04441",
+      "reason": "run capture limit (3) spent: two capture attempts failed on a registry PDF decode error; open-access arXiv keeper (Nb3Sn 8.0 and REBCO ~80 USD/kA m at 6 T 4.2 K, 2021 USD; Jc-scaled cost Eq 9; cryoplant 88 vs 20 MUSD 1990) for a follow-up run, register with --local-pdf"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

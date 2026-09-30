@@ -1,0 +1,11 @@
+{
+  "char_count": 51941,
+  "heading_count": 21,
+  "heading_by_level": {
+    "2": 21
+  },
+  "table_row_count": 19,
+  "math_symbol_count": 11,
+  "figure_ref_count": 32,
+  "extraction_time_seconds": 33.58135986328125
+}
