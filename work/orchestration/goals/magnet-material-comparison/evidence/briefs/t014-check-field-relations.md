@@ -1,0 +1,23 @@
+# T-014 brief — focused independent check of the two derived field relations
+
+You are a fresh checker for goal `magnet-material-comparison`, Round 2, in `/home/reid/1cfe/fusion-tea`. The plant contract (`evidence/plant-contract.md` r3, § 3.2 and § 9) uses two relations that were derived by single authors, not printed in any source. STUDY_POLICY § 11 requires a focused independent source/math check of each against the original evidence before the study runs. You did none of the derivations. Check them; do not extend them.
+
+## Relation 1 — the exact Ampère floor on the peak field
+
+Claim (`evidence/sources/field-term.md`, row "Ampère lower bound" and § Equations): for a square winding pack of side `s` (area `A_wp = s²`) carrying total coil current `I_coil` (ampere-turns of one coil), the maximum field on the pack surface satisfies `B_max ≥ μ0 I_coil / (4 √A_wp)` = `μ0 I_coil / (4 s)`; at Stellaris coil 0 (I 15.4 MA, s 0.36 m) this gives 13.4 T against the printed 24.6 T.
+
+Check: (a) re-derive the bound from Ampère's law on the pack perimeter (the line integral of B around the pack boundary equals μ0 I_coil; the maximum of |B| on a closed curve of length 4s is at least the mean), stating every assumption (which component of B, straight-conductor approximation, whether the external field from the other coils can lower the surface maximum below the self-field bound — it cannot lower the mean of the tangential component, but say so precisely); (b) confirm the arithmetic at coil 0 and at one more Table 8 coil (Stellaris PDF page 23, render the page from `knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf` with PyMuPDF as the research briefs describe, and view the image); (c) state whether the bound applies to `B_peak` as the model defines it (peak on the conductor inside the pack, `mfe_plasma_scaling.sysml:420-447`) or to the surface maximum, and whether that distinction matters for a floor.
+
+## Relation 2 — the pack-size arm's re-anchoring
+
+Claim (`plant-contract.md` § 3.2; `field-term.md` § Gaps): from three printed Helias-5 PROCESS points (Lion 2021 Table 2; Lion 2023 thesis Table 4.3 advanced and conservative) with peak/axis ratios 2.051/2.167/1.997 at `R/√A_wp` 29.8/31.5/28.9, a fit `ratio ≈ 0.15 + 0.064·R/√A_wp` (residuals ≤ 0.003) is re-anchored at the Stellaris point as `peak_ratio(A_wp) = 2.7667 + 0.064 × (R/√A_wp − 35.3)`.
+
+Check: (a) reproduce the three (ratio, `R/√A_wp`) points from the printed tables (render the pages: Lion 2021 `knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/` PDF page with Table 2; thesis `knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/` Table 4.3 page; the field-term note names the pages and the scratch renders it made) — confirm each B_max, B_axis, R and winding-pack dimensions and whether `A_wp` there is the whole pack cross-section; (b) refit and report slope, intercept and residuals, and the slope's uncertainty from three points (state it honestly; with three points and one free slope it is a two-parameter fit with one residual degree of freedom); (c) state whether the three points share one coil set (the thesis's two rows are the same Helias 5 coil set at two operating points? the 2021 row may be a different scan) — this decides whether the slope is a pack-size response at fixed coil set or a mixture; (d) say whether re-anchoring the slope at Stellaris (35.3, 2.7667) is arithmetic that follows from the fit or an added assumption, and whether the eq. 39 form (`B_max ∝ [a0 + a1 R/√A_wp]`) implies the ratio is linear in `R/√A_wp` at fixed bore (it does, at fixed `R/(R − a_coil)`); (e) compute the arm's prediction at the contract's grid extremes (R 10 m with a 0.30 m pack; R 22 m with a 0.36 m pack; R 12.7 with a 0.53 m pack) and say whether the `arm_extrapolated` domain 25–40 is a sensible statement of where the fit was made.
+
+## Rules
+
+Read-only except your note. Run Python only as `.codex-test/run python ...` from the repository root (PyMuPDF is available in the sealed environment). Clean room: never open `knowledge/holdout/**` beyond PROTOCOL.md or the barred paths in `evidence/briefs/t009-plant-chain-audit.md`. Do not commit.
+
+## Write and return
+
+`work/orchestration/goals/magnet-material-comparison/evidence/check-field-relations.md`: for each relation, PASS / PASS WITH CORRECTIONS / FAIL, the re-derivation or refit, the numbers you reproduced with page and table, the corrections you require to the contract text, and what you did not check. Return at most 250 words: the two verdicts and the corrections.

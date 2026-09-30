@@ -333,3 +333,20 @@ T-013 · WI-100 registered through `agentic-mbse pm add-item` immediately after 
 - **Reading:** The r1 draft would have decided the map for reasons that are not the question: the held plasma temperature made enhanced-confinement and high-field REBCO designs burn-hold failures; the plant's ~35 captured equipment ratings were held while thermal power moved; and the "matched-duty connection" compared the materials at different fields. r2 adds an operating-point ladder with matched fusion power and an `ignited` status with a driven companion design, re-supplies every screened package rating and the power classes per design with a declared [U] purchase scaling and a `free_capacity` flag, adds equal-duty REBCO points and smaller plants to the grid, makes evidence labels per design with the cell label the weaker of the two plus a policy-assumption column, labels the HELIAS-class geometry [U] with a `k_link` variant, gives the pack arm a domain flag, treats `B_max` as a supplied envelope flag, adds the basis bridge and the money-year bias, measures the break-even from two evaluated prices, and adds figures, replay, narrative and the focused checks. The recheck confirmed by scaling on the recorded reference that the ladder makes 18 T REBCO designs driven under enhanced confinement while 24.9 T stays ignited everywhere, so `ignited` will be a common labelled status at the top of the field grid.
 - **Decision:** The five r2 corrections (money-year direction depends on the sign of the non-conductor difference; `peak_field_ok` carried as `envelope_flag`, not `failed`; "selected building and parcel dimensions"; order-10⁴ policy evaluations; purchase-exponent variants 0.5/1.0) and the garbled companion phrase · applied as r3 by the coordinator without a further reviewer pass, as the recheck itself ruled them objectively verifiable · execution detail · coordinator · plant-contract.md r3 header.
 - **MR-7:** The contract keeps every policy-proposed quantity supplied and checked; the model resizes nothing; the conductor status alone decides `unsupported`; `B_max` is an envelope flag.
+
+### T-014 scope
+
+- **Objective:** Focused independent check (STUDY_POLICY § 11; contract § 9) of the two derived field relations the contract uses: the Ampère floor on the peak field and the pack-size arm's three-point fit and re-anchoring.
+- **Why now:** Both are single-author derivations that the study will evaluate on every case; the check must land before the study and is independent of the design.
+- **Scope:** one evidence note by a fresh checker; corrections to the contract text if required. Excluded: any new derivation, model change or research capture.
+- **Inputs:** briefs/t014-check-field-relations.md; sources/field-term.md; the registered Lion 2021, Lion 2023 and Stellaris PDFs.
+- **Done when:** each relation has a verdict with reproduced numbers; corrections applied to the contract or the relation withdrawn.
+- **Stop when:** a relation fails and the contract needs a replacement (report), or declared limit.
+
+### T-014 start — 2026-09-30
+
+T-014 · fresh checker on briefs/t014-check-field-relations.md · evidence/check-field-relations.md. Runs in parallel with the T-013 design draft.
+
+### Owner instruction — 2026-09-30 — subagent model
+
+[OWNER-VERBATIM] “continue, but use opus 5.5 for all subagent work”. The owner stopped the running T-013 design draft and T-014 check before either wrote a file. Both restart on Opus 5.5 (`model: opus`) with identical briefs, inputs, scope and meaning; every later worker, oracle author, executor and reviewer of this goal runs on Opus 5.5. Until this entry, subagents inherited the session model (Fable 5.1). Not a retry: neither stopped task produced an outcome.
