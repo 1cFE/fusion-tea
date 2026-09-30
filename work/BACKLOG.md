@@ -540,6 +540,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-100
+  name: Plant-level conductor material variants on the Stellaris plant
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -670,3 +676,4 @@ standalone:
 | WI-097 | exchanger thermal requirements | standard | P1 | backlog |  |
 | WI-098 | Whole Plant Conversion Comparison | standard | P0 | backlog |  |
 | WI-099 | Magnet conductor alternatives at matched duty | standard | P1 | backlog |  |
+| WI-100 | Plant-level conductor material variants on the Stellaris plant | standard | P1 | backlog |  |

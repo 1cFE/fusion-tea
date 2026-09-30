@@ -312,3 +312,16 @@ T-011 · three fresh research workers in parallel, one request each · evidence/
 ### T-012 start — 2026-09-30
 
 T-012 · plant-contract.md r1 written by the coordinator · fresh reviewer dispatched on briefs/t012-plant-contract-review.md. Design drafting (next task) waits for the review's blocking findings.
+
+### T-013 scope
+
+- **Objective:** Open WI-100 (plant-level conductor material variants on the Stellaris plant) through the modeling PM and produce its reviewed design: the isolated derived package `exploration/stellarator_materials/` per the audit's seam proposal and the plant contract § 9, with the material variants, staged cryoplant, supplied element count and `pack_area_ok`, the pack-arm slot, the three-instance design file, the reference bit-for-bit regression, and the study interface (entry keys for every contract § 5 supplied quantity, including the package ratings, purchase costs and power classes).
+- **Why now:** The plant contract r2 fixes the physics and accounting; the seam mechanics (WI-057 retype, WI-096 isolation, WI-080 enabled/evaluation_defined pattern) do not depend on the recheck's remaining details; the design and the contract recheck can be reviewed together.
+- **Scope:** `work/active/WI-100_*/spec.md` and `design.md` (coordinator spec; fresh modeler design); a fresh design review. Excluded: implementation, bodies, package build, studies.
+- **Inputs:** plant-contract.md r2; plant-chain-audit.md § 2, § 6; WI-099 design and library; WI-057, WI-096, WI-080 designs; briefs/t013-design.md.
+- **Done when:** the design names every file, definition, binding, entry key and test, with MR-7 roles, and the review returns PASS or its findings are applied.
+- **Stop when:** a seam step proves infeasible in the toolchain (report), owner gate, or declared limit.
+
+### T-013 start — 2026-09-30
+
+T-013 · WI-100 registered through `agentic-mbse pm add-item` immediately after this line · spec.md by the coordinator · design.md by a fresh modeler on briefs/t013-design.md · fresh design review after the contract recheck lands.
