@@ -386,3 +386,22 @@ T-014 · fresh checker on briefs/t014-check-field-relations.md · evidence/check
 ### T-015 start — 2026-09-30
 
 T-015 · implementer (Opus 5.5) on briefs/t015-implementer.md · glue-oracle author (Opus 5.5) on briefs/t015-glue-oracle.md · parallel; neither reads the other's files.
+
+### T-015 interim — glue oracle returned — 2026-09-30
+
+- **Evidence:** exploration/stellarator_materials/oracle_glue.py, oracle-reuse.json (generated map: per material ≈ 1,423 channels — plant 1,288, Round 1 57, glue 45, composed 33; 73 verdicts), oracle-notes.md (G1–G12), tests/models/test_stellarator_materials_oracle.py (23 passed). Pinned at the commit that follows this entry.
+- **Reading:** The plant's `verify_stellaris.compute()` refuses every material instance (it always runs the plant REBCO law), so the oracle composes the plant chain from function-level pieces and re-derived equations; with the reference legs it matches `compute()` on all 1,362 outputs bit for bit, and at the REBCO bridge point all 1,288 plant-owned channels match. The D2 breakdown closes to 1.6e−16; the arm at slope 0 is identity; the Ampère floor at coil 0 is 13.44 T.
+- **Decision:** G1 is a design defect (NIST `k_c` clashes with the inherited `Cryoplant::k_c`, giving 27.83 W instead of 590.28 W of conduction) · design § 9 amendments A1–A8 appended by the coordinator and relayed to the implementer · execution detail · coordinator · design.md § 9.
+
+### T-016 scope
+
+- **Objective:** The study's declared offer policy (contract § 5) and the case declaration, using the composite oracle as the evaluator; policy acceptance tests.
+- **Why now:** The oracle exists; the policy is independent of the package build and takes the longest wall-clock of the remaining steps (order 10⁴ evaluations).
+- **Scope:** `exploration/stellarator_materials/studies/{offer_policy.py, declare_cases.py, cases.json, policy-notes.md}`, `tests/study/test_stellarator_materials_policy.py`. Excluded: package files, seam, execution.
+- **Inputs:** contract r4 §§ 3–8; design § 5, § 9; oracle_glue.py; briefs/t016-policy-cases.md.
+- **Done when:** the case set covers the contract grid with counts by label near the estimate, the acceptance tests pass, and the notes list every ambiguity.
+- **Stop when:** the oracle cannot evaluate a required region (report), owner gate or declared limit.
+
+### T-016 start — 2026-09-30
+
+T-016 · fresh policy author (Opus 5.5) on briefs/t016-policy-cases.md · runs in parallel with the T-015 implementer; reads only the oracle files and, when present, `studies/interface_data.py`.

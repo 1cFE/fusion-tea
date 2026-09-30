@@ -507,3 +507,16 @@ Changes made for `evidence/design-review-wi100.md` (PASS WITH CORRECTIONS). D19 
 - **D16:** test 5 adds copper and steel pairs and the `wp_side` Ampère pair; added cheap-checks test 11.
 - **D17:** added `free_capacity` for `rated_intercept_W` (§ 2.7, § 4, § 5.2).
 - **D18:** § 5.2 names the operands the policy reads back; § 6.2 checks them.
+
+## 9. Coordinator amendments after the independent oracle author's findings (2026-09-30)
+
+The glue-oracle author (T-015, from this design and contract r4 only) reported twelve ambiguities (`exploration/stellarator_materials/oracle-notes.md` G1–G12). These amend the design; the implementer applies them (`[AGENT]`, coordinator).
+
+- **A1 (G1, defect).** In `'Staged Cryoplant'` the NIST 316 conductivity coefficients bound into the Round 1 `'Magnet Cold Stage Load'` calc must not reuse the inherited attribute names of `'Cryoplant'` (`k_c` is the plant's support conductance, `mfe_plant_systems.sysml:554, 608`). Name the nine NIST attributes `nist_k_a` … `nist_k_i` on the variant and bind them to the calc's `k_a` … `k_i` inputs; keep `Cryoplant::k_c` for `'Staged Static Loads'`' `k_c_in`. Test: the staged conduction at the pin reproduces 590.28 W (§ 2.4 `'Staged Static Loads'` row), not 27.83 W.
+- **A2 (G6).** The staged cold load's nuclear term includes the plant's `q_nuc_structure` term (zero at the pin, a live key), bound from the same plant attribute the reference cryoplant reads, so the seam is complete under any supplied value.
+- **A3 (G4).** The structure-mass rule as a recorded-design check compares `m_support` with `11,615.6 t × W_mag/111 GJ` at relative tolerance 1e−6 (the anchor is a rounded value; the pinned mass differs by 3.86e−7).
+- **A4 (G10).** The Nb₃Sn `extrapolated` flag is the Round 1 law's own status: set when `conductor__status_code` is 2 (edge) or 3 (law-only); `unsupported` when it is 0. The REBCO bands follow contract § 4 as written (`extrapolated` 20–24 T, `beyond_law_extents` 24–25 T) from the evaluated `B_peak`.
+- **A5 (G8).** The B2 guard `ratio_eff ≤ 0` refusing a non-positive `peak_ratio` at slope 0 is accepted as intended (a non-positive ratio is a domain error).
+- **A6 (G3, D12).** The basis bridge's count is the composition-implied tape count at the plant's own basis (`parallel_tapes_set`, 6 mm, 20 $/m); the 0.991 = `f_set/f_wp_vol` factor between the set count and the reference-coil count is reported in the bridge, not absorbed.
+- **A7 (G5).** `acceptance_ok`, `copper_ok`, `steel_ok` are owned by the Round 1 oracle in `oracle-reuse.json`.
+- **A8 (G2, G7, G11).** § 6.3's statement that the plant oracle owns material-instance channels is corrected by the oracle author's map: `verify_stellaris.compute()` refuses every material instance (it always runs the plant REBCO law), so the plant chain is composed from function-level pieces and re-derived equations (1,235 imported, 144 re-derived, 45 glue, per material); if the K8/R1–R2 fallbacks are taken the ownership map is regenerated; `cas28_capital` is an input; test 4(a)'s pipeline-wiring checks are package tests, not oracle tests.
