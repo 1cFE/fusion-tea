@@ -293,3 +293,22 @@ T-011 · three fresh research workers in parallel, one request each · evidence/
 - **Reading (Nb₃Sn anchors):** HELIAS 5-B (Schauer 2013 Table 1): 50 coils, R 22 m, a 1.8 m, 5.9 T axis, 12.5 T on coils (ratio 2.12), 86 kA Nb₃Sn/Nb₃Al cable, pack 0.75 × 0.71 m (0.53 m², 4.1× Stellaris), 3000 MW "estimated for a plasma axis field of 5 T" (not self-consistent at 5.9 T). HSR50a (2011): 5.6/12.3 T, 13.4 MA per coil, 4.7 K, field "limited mainly by structural integrity". Every HELIAS-line and ITER design sits at peak/axis 2.0–2.2 against Stellaris 2.77; k_link 0.92–0.97 vs 0.773. Self-consistent Nb₃Sn points are PROCESS outputs at 5.5–7.1 T; none at 4.3–4.7 T. Using HELIAS 5-B as the Nb₃Sn anchor re-anchors ≈ 25 held constants (listed in the note). Queued: Schauer 2009/2010 "Extrapolation of the W7-X magnet system to reactor size"; Muldrew 2021 HELIAS 5-B PROCESS point (not captured, limit).
 - **Decision:** Option (a) of the T-009 gate (same coil set at ≤ 4.7 T axis) can only be run under a supplied confinement enhancement the sources give for other configurations (1.33–1.8), so the two materials would be compared under different confinement assumptions; option (b) is a sourced but different configuration; option (c) remains fully supported · restated to the owner with a revised recommendation (this session's report) · reserved gate · owner · dependent work stays parked.
 - **MR-7:** Research only; no model change.
+
+### Owner ruling on the T-009 gate — 2026-09-30
+
+[OWNER-VERBATIM] “we need to focus on getting some insight. Across explicit assumptions about confinement and coil geometry, when does each material give lower LCOE—and are those conditions supported by evidence?”
+
+[AGENT] Reading of the ruling, applied from here: the Nb₃Sn plant basis is not chosen among (a)/(b)/(c); instead confinement (the renormalization factor and beta limit) and coil geometry (the peak/axis field ratio and the pack-size term) become explicit, declared assumption axes. For each assumption cell the round finds the best supported plant design per material inside a bounded search, compares LCOE, and labels the cell with the evidence support of its assumptions (directly supported at Stellaris; sourced analogue from another configuration; derived; assumption). The deliverable is that map with its evidence labels, the LCOE decomposition behind it, and the REBCO price at which the preference changes per cell. Recorded as goal.md Amendment 2. Dependent work resumes.
+
+### T-012 scope
+
+- **Objective:** Write the plant comparison contract (r1) that makes the owner's refined question executable on the Stellaris plant: assumption axes with evidence labels, materials in the plant, supplied-design policy and bounded grid, single accounting basis, statuses, reporting, package and verification plan; obtain a fresh review and release r2.
+- **Why now:** The owner's ruling resolved the T-009 gate; the T-011 evidence fixes what each assumption value can be labelled; no design or implementation may start before the contract is reviewed (brief: "focused independent review of … comparison assumptions").
+- **Scope:** evidence/plant-contract.md (coordinator), evidence/plant-contract-review.md (fresh reviewer), one revision round. Excluded: model, package or study changes.
+- **Inputs:** owner-brief-round2.md, goal.md Amendments 1–2, plant-chain-audit.md, sources/{field-term,plasma-validity,nb3sn-stellarator}.md, Round 1 comparison-contract.md r3, briefs/t012-plant-contract-review.md.
+- **Done when:** the review returns RELEASE, or its blocking and must-fix findings are applied and rechecked.
+- **Stop when:** BLOCK on a premise the owner must rule on, or declared limit.
+
+### T-012 start — 2026-09-30
+
+T-012 · plant-contract.md r1 written by the coordinator · fresh reviewer dispatched on briefs/t012-plant-contract-review.md. Design drafting (next task) waits for the review's blocking findings.

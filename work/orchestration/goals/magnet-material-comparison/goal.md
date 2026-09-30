@@ -69,3 +69,9 @@ What this amends, each traced to the brief:
 - **Reserved gates, narrowed.** “Model updates and source acquisition are authorized where needed”, and “Select one coherent plant model and explain why it supports this comparison.” A bounded per-material design search is authorized; full reactor optimization and a new detailed electromagnetic/mechanical solver remain reserved. Cleanup is authorized: “Fix the missing package oracle_entry and retire the bogus source registration.” Unchanged: “Keep the article unchanged”; “Formal closure remains with me”; no publish, push, merge, purchase or vendor/author contact.
 - **Review.** “obtain focused independent review of the new physical relationships, comparison assumptions, and integrated accounting.”
 - **Limits.** Unchanged (round limit 4; one pin and one study per round).
+
+### Amendment 2 — 2026-09-30 — Round 2 question refined to an assumption map (owner-originated)
+
+[OWNER-VERBATIM] “we need to focus on getting some insight. Across explicit assumptions about confinement and coil geometry, when does each material give lower LCOE—and are those conditions supported by evidence?”
+
+[AGENT] Effect on the answer contract: Round 2 is answered when a map over explicit confinement assumptions (renormalization factor, beta limit) and coil-geometry assumptions (peak/axis field ratio, pack-size term) shows, per cell, which material gives the lower whole-plant LCOE at its best supported design point, at which REBCO price the preference changes, and what evidence supports that cell's assumptions; with the LCOE decomposition, failed/unsupported cases retained, figures and replay evidence, and the narrative the Round 2 brief asks for. The brief's other terms stand (Amendment 1).
