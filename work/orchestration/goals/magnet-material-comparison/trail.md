@@ -350,3 +350,11 @@ T-014 · fresh checker on briefs/t014-check-field-relations.md · evidence/check
 ### Owner instruction — 2026-09-30 — subagent model
 
 [OWNER-VERBATIM] “continue, but use opus 5.5 for all subagent work”. The owner stopped the running T-013 design draft and T-014 check before either wrote a file. Both restart on Opus 5.5 (`model: opus`) with identical briefs, inputs, scope and meaning; every later worker, oracle author, executor and reviewer of this goal runs on Opus 5.5. Until this entry, subagents inherited the session model (Fable 5.1). Not a retry: neither stopped task produced an outcome.
+
+### T-014 return — 2026-09-30
+
+- **Outcome:** COMPLETE; both relations PASS WITH CORRECTIONS; contract r4 released with the corrections applied.
+- **Evidence:** evidence/check-field-relations.md; evidence/plant-contract.md (r4, § 3.2 and § 7 marked `(C)`). Pinned at the commit that follows this entry.
+- **Reading:** The Ampère floor is exact for any coil shape (the other coils cannot lower the mean tangential field around the pack), applies to the surface and interior peak alike, and reproduces on all six Stellaris Table 8 coils (13.44 T against 24.6 T at coil 0; 11.73 against 19.5 T at coil 5); it binds on the anchored and HELIAS-class cells at large R and small pack, never under the arm. The pack-arm fit reproduces (slope 0.0641, intercept 0.143, residuals ≤ 0.004; slope range 0.058–0.071 from table rounding, 0.034–0.095 formal); the three points are consistent with one Helias 5 coil set; the sign comes from the fitted slope, not the printed equation; the anchor is 35.278; the 25–40 flag band is an agent-chosen tolerance, not a fitted domain; the slope is [D] on Helias 5 and its transfer to Stellaris [U].
+- **Decision:** A design whose modeled peak field lies below the floor has an impossible field that would favour small REBCO packs · new check `ampere_floor_ok`, filed `failed` (checker's recommendation) · execution detail · coordinator · contract r4 § 3.2, § 7.
+- **MR-7:** No supplied quantity changes; the floor is a check on a calculated field.
