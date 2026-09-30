@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-COST-02",
+  "question": "Which permitted primary sources price Nb3Sn and REBCO fusion conductor at a common stated field and temperature, with currency year and scope, such as the Chislett-McDonald et al. 2022 fusion tokamak costing study?",
+  "consumer": "goal:magnet-material-comparison/T-003",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["Chislett-McDonald, Surrey, Naish, Turner and Hampshire 2022 arXiv:2205.04441", "Durham superconductivity group publications", "open fusion-magnet costing studies comparing LTS and HTS"],
+  "limits": {"max_searches": 4, "max_captures": 2}
+}

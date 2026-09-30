@@ -1,0 +1,591 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "duty",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__duty__B_peak",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__duty__B_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__duty__I_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__duty__available_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__duty__coils",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__duty__turns",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__duty__turn_length",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Specified magnetic duty and anchor geometry (contract r3 section 2). B_peak is the field point; the model derives turn_current = I_ref*B_peak/B_ref as a channel, so the duty axis reaches every current-dependent calculation through that derived channel. The anchor attributes select anchor D or S and its turn-length sensitivity; no field is computed from winding size."
+    },
+    {
+      "axis": "nb3sn-offer",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__n_elements",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__cabling_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__cable_void",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__cu_space",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__steel_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__misc_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__solder_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__ins_fraction",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__rating_cold",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "The supplied Nb3Sn winding offer: element count, construction areas and packing, insulation fraction and installed cold-stage refrigerator rating (contract section 5, MR-7 chosen role). Proposed by the declared offer policy outside the evaluator; never resized by it."
+    },
+    {
+      "axis": "rebco-offer",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__rebco__n_elements",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__cabling_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__cable_void",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__cu_space",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__steel_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__misc_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__solder_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__ins_fraction",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__rating_cold",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "The supplied REBCO winding offer, same quantities as nb3sn-offer."
+    },
+    {
+      "axis": "nb3sn-conductor-assumptions",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__T_supply",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__nuclear_rise",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__margin_rise",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__fraction_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__acceptance_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__strand_diameter",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__strand_copper_fraction",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__p",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__q",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__C1",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__Ca1",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__Ca2",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__eps0a",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__Bc20",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__Tc0",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__conductor__eps_intrinsic_in",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__J_cu_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__cu_void",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__cu_per_kA_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__steel_per_kA_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__B_steel_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__steel_B_scaling",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__element_density",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__rho_cu",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__rho_steel",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__rho_solder",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Nb3Sn conductor law parameters (strand grade, strain), operating temperatures and margin rule, allowance-rule inputs for copper and steel, and material densities."
+    },
+    {
+      "axis": "rebco-conductor-assumptions",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__rebco__T_supply",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__nuclear_rise",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__margin_rise",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__fraction_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__acceptance_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__tape_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__tape_thickness",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__tape_copper_fraction",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__anchor_ic",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__shape_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__g8",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__g10",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__g12",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__g15",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__g20",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__alpha",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__T_star",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__degradation",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__J_cu_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__cu_void",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__cu_per_kA_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__steel_per_kA_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__B_steel_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__steel_B_scaling",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__element_density",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__rho_cu",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__rho_steel",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__rho_solder",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "REBCO tape law (anchor, shape, T*, degradation), operating temperatures and margin rule, allowance-rule inputs for copper and steel, and material densities."
+    },
+    {
+      "axis": "cryogenic-assumptions",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__nuclear_density",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__cold_volume",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__radiation_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__conduction_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__T_conduction_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__n_leads",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__f_lead",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__L0",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__p_joint_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__I_joint_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__shield_static",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__load_multiplier",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__eta_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__eta_const",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__green_a",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__green_b",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__f_carnot_shield",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__capital_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__green_c",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__green_d",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__T_green",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__nuclear_density",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__cold_volume",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__radiation_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__conduction_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__T_conduction_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__n_leads",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__f_lead",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__L0",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__p_joint_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__I_joint_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__shield_static",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__load_multiplier",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__eta_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__eta_const",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__green_a",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__green_b",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__f_carnot_shield",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__capital_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__green_c",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__green_d",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__T_green",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Cold-stage and intercept load terms, lead and joint parameters, load multiplier, refrigerator efficiency and capital basis (contract section 6). Both material parts carry their own copy."
+    },
+    {
+      "axis": "economic-assumptions",
+      "keys": [
+        {
+          "key": "magnet_subsystem__subsystem__economics__crf",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__economics__availability",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__economics__electricity_price",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__economics__hours",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__economics__usd2015_to_2021",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__price_cu",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__price_steel",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__price_solder",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__element_price_per_m",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__nb3sn__manufacturing_per_m",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__price_cu",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__price_steel",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__price_solder",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__element_price_per_m",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "magnet_subsystem__subsystem__rebco__manufacturing_per_m",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Finance and electricity conventions plus conductor, material and manufacturing prices (contract section 7)."
+    }
+  ]
+}

@@ -188,7 +188,7 @@
   },
   {
    "slug": "burn-control",
-   "title": "Ruling out plasmas the heating cannot hold",
+   "title": "Checking that the plasma power balance closes",
    "closed": "2026-09-07",
    "shas": [
     "a7afd8f1",
@@ -198,7 +198,7 @@
    "question_grade": "AGENT",
    "question_grade_detail": "agent-worded; proposed",
    "question_source": "work/orchestration/goals/burn-control/goal.md § Question",
-   "result": "The sustainment check became two-sided: the heating a point needs must be zero or positive, and no more than what is installed. No number changed; at all 7,712 re-run points the new check failed exactly the ignited ones. The cheapest feasible machine stayed at 202 $/MWh, and the machine as designed needs 49 of its 50 MW.",
+   "result": "The sustainment check became two-sided: the heating a point needs must be zero or positive, and no more than what is installed. No number changed; at all 7,712 re-run points the new check failed exactly those whose self-heating exceeded their modeled losses, and a point needing zero heating passes. The cheapest feasible machine stayed at 202 $/MWh, and the machine as designed needs 49 of its 50 MW.",
    "result_source": "work/orchestration/goals/burn-control/trail.md § Goal close — 2026-09-07",
    "model_change": "WI-043 added a tenth check (burn_hold_ok) that fails any point whose required heating is negative; a second commit only narrowed that check's explanatory text and changed no generated file or fingerprint.",
    "work_items": [

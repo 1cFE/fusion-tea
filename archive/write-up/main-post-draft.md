@@ -22,13 +22,13 @@ For this reason, I will refer to this as *exploratory modeling*.
 
 The motivation: how much useful feedback can we get before we start building? Can this methodology actually advance our understanding of the system, like what engineering limitations are holding us back? And could it allow us to discover new routes to better cost?
 
-One note on how to read what follows. This is a proof of concept. Where I share results, read them as things the model *suggests*, not conclusions about fusion plants. I have spent the majority of time building the system and letting Claude/Codex run; and very little time sanity-checking the outputs. 
+One note on how to read what follows: This is a proof of concept. I have spent the majority of time building the system and letting Claude/Codex run; and very little time sanity-checking the outputs. In putting together this write-up, my colleagues found mistakes in assumptions and how results were interpreted. It is no surprise, **tools like this still require a domain expert to wield effectively.** Where I share results, read them as things the model suggests, not conclusions about fusion plants.
 
 **The short version:**
 
 - An AI-driven modeling loop grew a stellarator TEA model from 55 calculations to 199 over 28 passes (what we call "goals"), with about 95% of the work done without me stepping in.
 - We held out a second stellarator design, ARIES-CS, to test how readily the models could be extended. The model's structure carried over; many of its component models had to be written new.
-- On the combined model, we were able to demonstrate executing trade studies to try to answer real engineering questions. For instance, one study found that the cheaper power-conversion equipment gave the more expensive electricity. It's a proof-of-concept result, so treat it as a question worth asking, not an answer.
+- We then ran trade studies on the combined model: sweep a parameter, swap a component, rewire the plant. We got some results on first-order effects. Where it gets interesting is following a choice into the rest of the plant. In a follow-up magnet study, the cheaper conductor won outright for the same job, but it needed more winding space as the field rose and, in the space we gave it, stopped fitting first. Whether the expensive conductor's headroom pays for itself is a question about the whole plant, not the magnet.
 
 Below I summarize the concept, outcomes, and learnings in 5 parts. I have links to pages with additional detail. 
 
@@ -59,7 +59,7 @@ The main capability: a "study".
 
 That's really it. Whether costs, energy, physics -- If we follow the primary modeling pattern (try to reflect the actual cause and effect of the modeled system), a forward-pass evaluation should be possible. So we built a pipeline for it: **sysml-codegen** reads the SysML plant model and generates a Python program from it, and **TEAx** runs that program across as many design points as a study asks for.
 
-![Two levels of design iteration: compose the plant in SysML v2, generate the program, evaluate designs. Changing the model regenerates the program; changing parameters reuses it.](main-post-assets/design-iteration.png)
+![Two levels of design iteration: compose the plant in SysML v2, generate the program, evaluate designs. Changing the model regenerates the program; changing parameters reuses it.](../../docs/exploratory-modeling/post-images/design-iteration.png)
 
 Features and limitations:
 
@@ -90,7 +90,7 @@ A goal is a question, plus what would count as answering it. The AI works on it 
 - Round 1: research, ingest what it finds, update the model for system X (and maybe system Y), run a study, then evaluate: is the goal accomplished?
 - Round 2: start from what round 1 found, and go again
 
-![A goal is written first. Each round is one bounded attempt by the AI: an approach, then tasks one at a time, then a record. A reviewer who did not do the work checks it, and the owner decides whether the goal is answered.](harness-assets/goal-loop.png)
+![A goal is written first. Each round is one bounded attempt by the AI: an approach, then tasks one at a time, then a record. A reviewer who did not do the work checks it, and the owner decides whether the goal is answered.](../../docs/exploratory-modeling/post-images/goal-loop.png)
 
 *One goal, pursued in rounds. Nothing builds on a round until someone who didn't do the work has reviewed it.*
 
@@ -121,17 +121,17 @@ Our idea: try to build a hold-out set.
 
 We started with a model that could price the Stellaris design but mostly repeated the paper's numbers back to us. Over about a month, we ran 28 goals against it.
 
-![Calculations grew from 55 to 199, engineering checks from 6 to 67, and parts from 14 to 76 over 28 goals](main-post-assets/model-growth.png)
+![Calculations grew from 55 to 199, engineering checks from 6 to 67, and parts from 14 to 76 over 28 goals](../../docs/exploratory-modeling/post-images/model-growth.png)
 
 *Model size after each goal. The late jumps are the buildings being sized from the equipment they hold, and the plant's equipment becoming design inputs with capacity checks.*
 
 Looking back, the goals mostly did one of a few things:
 
 - **Replace typed-in numbers with physics.** The magnetic field, for example, went from a number copied from the paper to a calculation from coil count, coil current and plant radius.
-- **Make the model push back.** In one sweep, most of the "feasible" designs (1,113 of 1,839) turned out to be ignited plasmas the model had no way to control. That became the next goal and a new constraint.
-- **Make cost follow the design.** The cooling system's $205M allowance became $8.2B of sized pumps, piping and exchangers once cost had to follow the hardware.
+- **Make the model push back.** A sweep exposed a missing limit: operating points kept passing even when plasma self-heating exceeded the modeled losses. The model checked whether heating was sufficient, but not whether there was already too much heat to balance. Adding that constraint narrowed the passing set from 1,839 points to 726.
+- **Make cost follow the design.** Investigating the cooling cost revealed a single $205M allowance. We decomposed the system into pumps, piping and heat exchangers and added costing functions for each. The estimate jumped to $8.2B, mostly in piping and exchangers. That unexpectedly high figure prompted a closer look at the cooling configuration: we had modeled an all-helium blanket, while the reviewer pointed to a helium/water split in Stellaris. The cost breakdown helped identify what to investigate and improve next.
 
-The [Stellaris evolution viewer](https://scoring.1cf.energy/exploratory-modeling/part-4a-modeling-stellaris.html) lets you step through all 28 goals, see what each one changed, and open any calculation in the model.
+The pattern across these goals is what interests me: improving one part of the model reveals new information, gives us something to investigate, and points to the next improvement. You can follow that process in the [Stellaris evolution viewer](https://scoring.1cf.energy/exploratory-modeling/part-4a-modeling-stellaris.html), stepping through all 28 goals to see what each changed and opening the calculations behind it.
 
 ### Question 1: can the model reproduce ARIES?
 
@@ -143,34 +143,38 @@ We answered this in two steps.
 - **Conductor.** ARIES uses Nb3Sn superconductor at about 4 K. The library only had a REBCO model at 20 K.
 - **Heat removal and power conversion.** ARIES cools the reactor with separate helium and liquid-metal (PbLi) circuits, and makes electricity with a helium Brayton cycle, a gas-turbine cycle. Our plant had one helium circuit feeding a steam cycle.
 
-**After adding what ARIES needed: largely yes.** We added a hollow plasma density profile, a blanket with separate helium and PbLi circuits, the helium Brayton cycle with ARIES's heat-exchanger layout, and ARIES's equipment and costs. These plugged into the existing library, and the Stellaris model was untouched: it still reproduced all 1,352 of its outputs exactly. The results came close, for reasons we can name:
+**After extending the library: a partial reconstruction.** We added a hollow plasma density profile, a blanket with separate helium and PbLi circuits, the helium Brayton cycle with ARIES's heat-exchanger layout, and ARIES's equipment and costs. These plugged into the existing library, and the Stellaris model was untouched: it still reproduced all 1,352 of its outputs exactly. But the remaining differences matter:
 
-- **Power: about 11% low.** From ARIES's 2,436 MW of fusion power, our model produces 891 MW of net electricity against the published 1,000 MW. Most of the gap is temperature: our turbine inlet reaches 628 °C, against 708 °C in ARIES.
-- **Cost: close only on ARIES's own assumptions.** ARIES assumes its blanket breeds all the tritium the plant needs. Our model can't yet calculate that for the ARIES blanket, so it has to buy tritium, and fuel swamps every other cost. Adopting ARIES's assumption and accounting conventions puts us in the same range as its published $77.6/MWh (we get about $59/MWh at a 5% discount rate; ARIES doesn't publish its rate). Much of our equipment cost came from ARIES's own accounts, so this is an accounting check, not an independent estimate.
+- **Power: an unresolved gap.** At ARIES's published 2,436 MW of fusion power, our best tested steady alternative produces 891 MW net, against the published 1,000 MW. In our model, accepting all the reactor heat requires increased cycle flow and a larger compressor. The resulting turbine inlet temperature is 628 °C, against 708 °C in ARIES.
+- **Cost: sensitive to the accounting assumptions.** ARIES assumes its blanket breeds all the tritium the plant needs. Our model can't yet calculate that for the ARIES blanket. If we give it no breeding credit and price purchased tritium instead, fuel swamps every other cost. Adopting ARIES's self-sufficiency assumption and aligning several accounting conventions brings the estimate closer to its published $77.6/MWh. We get about $59/MWh using our assumed 5% discount rate. Historical ARIES costing uses 4.35%, though other financial assumptions also differ. Much of our equipment cost came from ARIES's own accounts, so this is an accounting check, not an independent estimate.
 
-We stopped for time before closing every gap. The ARIES magnets and conductor, breeding, the cycle temperature and ARIES's financing are still open.
+The ARIES magnets and conductor, breeding, and cycle-temperature reconciliation remain incomplete. The financial comparison also retains differences beyond the discount rate.
 
 ### Question 2: can it explore designs neither plant covers?
 
 This is really the test of whether all this was worth building. Reproducing a published plant is useful, but it's still close to translation. Everything in Parts 1 to 3 (composable SysML v2, the three types of studies, a harness that runs goals largely on its own) was built so we could ask about designs nobody has written down yet. With both plants' parts in one library, a component from one can be combined with components from the other, so the design space is larger than either plant.
 
-We ran one study for each of the three types of study from Part 2. I'll go into some of the details, because this is where the model starts to give the kind of feedback we were after. The caveat from the top applies most here: these are things the model suggests, not conclusions.
+We ran one study for each of the three types of study from Part 2. I'll go into some of the details, because this is where the model starts to give the kind of feedback we were after. The caveat from the top applies most here: these are things the model suggests, not conclusions. In each case, the next steps to get better findings became clear when analyzing the results.
 
-**Parameters: compressor pressure.** A compressor setting turned out to be limited by a heat exchanger somewhere else in the plant. We built a hybrid neither paper describes: the Stellaris reactor's helium cooling loop feeding the ARIES Brayton cycle. Then we swept the compressors' pressure ratio on the same equipment. Lowering it raised net electricity from 427 to 621 MW (45% more), until the exchanger between the two loops could no longer take all of the reactor's heat.
+**Parameters: compressor pressure.** A compressor setting turned out to be limited by a heat exchanger somewhere else in the plant. We built a hybrid neither paper describes: the Stellaris reactor's helium cooling loop feeding the ARIES Brayton cycle. Then we swept the compressors' pressure ratio on the same equipment. Lowering it raised net electricity from 427 to 621 MW (45% more), until the exchanger between the two loops could no longer take all of the reactor's heat. The exchanger was fixed equipment in this sweep, so sizing it is the next step.
 
-![Net electricity rises as compressor pressure ratio falls, until the exchanger can no longer remove all reactor heat](aries-study-assets/parameter-pressure-ratio.png)
+![Net electricity rises as compressor pressure ratio falls, until the exchanger can no longer remove all reactor heat](../../docs/exploratory-modeling/post-images/parameter-pressure-ratio.png)
 
 *Read right to left: output rises as the pressure ratio falls, until the exchanger runs out of capacity (shaded).*
 
-**Components: steam vs helium Brayton.** The cheaper conversion equipment gave the more expensive electricity. We put steam and helium Brayton conversion, each with its own exchangers and cooling equipment, on the same Stellaris-derived reactor. The Brayton equipment was about $1B cheaper, but the plant sold less than half the electricity, so its cost per MWh more than doubled. The physical reason is temperature: the reactor delivers helium at 500 °C, so the Brayton turbine runs at about 413 °C, against 708 °C in ARIES, and its compressors eat most of the turbine's output. An earlier version of the study compared the conversion equipment alone and found the two within $5/MWh of each other. The gap only appeared once the whole plant was counted.
+**Components: steam vs helium Brayton.** The power conversion system turns the reactor's heat into electricity. Stellaris uses a steam cycle and ARIES uses a helium Brayton cycle, so with both in the library we could put either one on the same reactor. We used the Stellaris-derived reactor, which delivers 500 °C helium, and swapped only the conversion system with its own exchangers and cooling equipment.
 
-![Steam conversion costs $2.55B against $1.54B for helium Brayton, but sells 664 MW against 286 MW, so its electricity costs $408/MWh against $875/MWh](main-post-assets/steam-vs-brayton.png)
+The result was the expected one. 500 °C is a steam temperature and a Brayton turbine wants a hotter source, so steam exported 664 MW against 286 MW for Brayton, at $408 against $875 per MWh. Per kilowatt of conversion output the equipment costs about the same. Brayton just produced less. What the study did prove is that the swap works: we can take out one conversion system, put in another with its own equipment, and get a whole-plant answer.
 
-*Read the direction, not the numbers. The absolute costs come from a proof-of-concept model with partly represented physics and assumed prices.*
+To get something more interesting, each cycle needs to be designed for its own source temperature rather than run on the other plant's heat supply, and the 100 MW of plasma heating both plants assume needs to be settled, since a burning plasma may not need it. That's the next study.
 
-**Architecture: series vs split flow.** Splitting the flow produced about 6% more electricity, but a few percent more pressure loss would erase the gain. This study stays inside the ARIES plant and changes only how it's connected: the power cycle's helium passes through three heat exchangers, either in series or split between two of them (the split is ARIES's own arrangement). The split carries the same heat with less circulating helium, so the compressors do less work, and net electricity rose from 498 to 528 MW. If the split layout loses 8% of the cycle pressure against 4.5% for series, it falls to 491 MW, below series.
+![Results for the fixed 500 °C source: steam and Brayton conversion purchases are $2.55B and $1.54B; whole-plant net exports are 664 and 286 MW; modeled LCOE is $408 and $875/MWh](../../docs/exploratory-modeling/post-images/steam-vs-brayton.png)
 
-![The split network needs less cycle flow and produces more net electricity than series](aries-study-assets/architecture-nominal-pair.png)
+*Results for the selected equipment and fixed 500 °C heat source. Both plants include the same assumed reactor loads. The costs and the preference depend on these choices; the study does not compare equally optimized plants.*
+
+**Architecture: series vs split flow.** Splitting the flow produced about 6% more electricity, but a few percent more pressure loss would erase the gain. This study stays inside the ARIES plant and changes only how it's connected: the power cycle's helium passes through three heat exchangers, either in series or split between two of them (the split is ARIES's own arrangement). The split carries the same heat with less circulating helium, so the compressors do less work, and net electricity rose from 498 to 528 MW. If the split layout loses 8% of the cycle pressure against 4.5% for series, it falls to 491 MW, below series. The model doesn't calculate that loss from the piping. We supply it as a number, so calculating it is the next step.
+
+![The split network needs less cycle flow and produces more net electricity than series](../../docs/exploratory-modeling/post-images/architecture-nominal-pair.png)
 
 *Same reactor heat and equipment; only the connections change.*
 
@@ -180,7 +184,7 @@ We ran one study for each of the three types of study from Part 2. I'll go into 
 
 What I take from this is encouraging, but it's a proof of concept. The results suggest the model's structure generalizes: a second plant plugged into the same library, and the combined library could pose design questions that neither plant could on its own. They also show the limits. Much of the component library didn't carry over, and every number in these studies depends on physics and prices we have only partly represented.
 
-I wouldn't make a design decision from any of these study outcomes. What I would take from them is that the model points at the right *kinds* of questions: a compressor setting limited by an exchanger elsewhere in the plant, a conversion choice that only shows up at whole-plant scale, a pressure-loss budget that decides a layout. That's the feedback we were after.
+The studies are imperfect. My colleagues found mistakes in the assumptions and in how we read the results, and I expect readers will find more. A tool like this needs a domain expert holding it.
 
 We also leaned on ground truth more than I'd like. Many of the issues we caught were found by comparing the model against a published design. Whether the harness's own checks are enough in a domain with nothing published to compare against is still an open question.
 
@@ -188,19 +192,24 @@ We also leaned on ground truth more than I'd like. Many of the issues we caught 
 
 What does this mean for fusion, and beyond?
 
-I think this is an interesting possible path forward. Today the approach is held back by its execution: a one-way chain of calculations can't solve a coupled system. With more sophisticated computing behind it (e.g. solvers for coupled systems), this could be a practical way to explore a plant's design space before anyone commits to hardware. The supporting write-up also describes how we can replace simple calculations with more sophisticated surrogate or reduced-order-models. 
+Today the approach is held back by its execution: a one-way chain of calculations can't solve a coupled system. With more sophisticated computing behind it (e.g. solvers for coupled systems), this could be a practical way to explore a plant's design space before anyone commits to hardware. The supporting write-up also describes how we can replace simple calculations with more sophisticated surrogate or reduced-order-models.
 
-But beyond a mechanical TEA system, I see a few other trends that could come together like this. 
+The demo showed the SysMLv2 harness can support the iterative modeling a useful TEA needs. Another study suggested this methodology could help build real systems-level intuition. It compared two magnet conductors, REBCO and Nb₃Sn, given the same job: a tokamak-class winding at 10 T. The first-order answer is a price: the Nb₃Sn magnet costs about a sixth as much per year, refrigeration included, and REBCO only breaks even if tape falls to about $11 a metre. But the conductor changes more than the price. Nb₃Sn needs more conductor as the field rises, and in the space we allowed, packed the way we assumed, it stopped fitting at 12 T. REBCO still fit. So what REBCO's premium could buy is a higher field or a smaller magnet, and both reach the plasma, the radial build and the buildings. Whether that pays back in the cost of electricity is a question about the whole plant -- a "goal" I want to set next. 
+
+This is where it starts to feel like a search problem to me: each choice opens a branch of consequences, the model can evaluate each branch, and the work becomes choosing which branch to follow next. And I see other powerful trends that could converge with our methodology. 
 
 **The Context Layer**
+
 As more parts of the engineering process become AI-native, the importance of context and connective tissue grows. Using a system-level representation (structural and behavioral) to "hang" data, references, and links feels natural: the source behind each number, the study that stressed it, the decision that changed it. 
 
 You can imagine this functioning as an intuitive knowledge graph, organized around the thing you are building rather than around documents. Our repository is a rough version of this: every number in the model cites a source, and every study records which version of the model it ran against.
 
 **Shared Semantics**
+
 The other benefit of using the SysMLv2 specification is interoprability. What if parts catalogues were accomplied by model representations (maybe CAD and SysMLv2) instead of just spec sheets? With better data sharing, more engineering challenges could turn into reasoning-guided search problems. 
 
 **Systems as Code**
+
 Sepaking of search problems, when the system definition is text, you get the software loop for free: diff it, review it, regenerate and rerun. That's what made fast iteration possible here, for the AI and for us.
 
 

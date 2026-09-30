@@ -1,0 +1,23 @@
+# Research run REQ-MMC-CRYO-01
+
+**Question:** Which permitted primary public sources give large helium refrigerator electrical input per watt of cooling, or fraction of Carnot, separately at 4.2-4.5 K and at 15-25 K with the temperature stages and load allocation explicit, and the magnet cold-load categories (nuclear heating, thermal radiation, support conduction, AC and joint losses, current leads) for fusion superconducting magnets at those temperatures?
+
+**Consumer:** goal:magnet-material-comparison/T-002  ·  **Request key:** `21914ebf51cfa949e6008226333ef7ef3c628fbad61f69ea02eec9b5fb3ae695`
+
+- searched: `Green 2015 cost of coolers for cooling superconducting devices 4.2 K 20 K 40 K 77 K IOP Conf Ser Mater Sci Eng 101 012001`
+- candidate https://iopscience.iop.org/article/10.1088/1757-899X/101/1/012001/pdf — **keeper** Open-access CC-BY CEC 2015 paper; Eq.2 large 4.5 K refrigerator efficiency vs capacity (percent of Carnot), Fig.3 cooler efficiency fits at 4.2/20/40/77 K, Eq.1 and Fig.5 cost fits
+- searched: `measured performance LHC 18 kW 4.5 K helium refrigerators electrical input COP percent Carnot CERN`
+- searched: `EU DEMO cryoplant heat loads magnets nuclear heating thermal radiation current leads AC losses 4.5 K pre-conceptual design`
+- candidate https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17578_submitted-4.pdf — **keeper** Koncar et al. EUROfusion preprint (ISFNT-13): DEMO Table 1 thermal radiation and support conduction heat loads to 4 K magnets vs thermal-shield temperature, Eq.5 Carnot factor, refrigeration power optimisation Table 2
+- candidate https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_18079_submitted-4.pdf — **rejected** Koncar et al. NENE2017 companion; thermal-shield design requirements, same heat-load model as 17578 without refrigeration-power analysis; 17578 preferred
+- failed https://hal.univ-grenoble-alpes.fr/hal-04830433v1/file/RD1_Hoa%20et%20al.pdf — HAL repository returned an Anubis access-denied bot wall to the triage fetch; Hoa et al. DEMO cryogenic system paper may carry a full magnet heat-load budget; a person with a browser can retrieve it (queued)
+- searched: `HTS fusion magnet 20 K cryogenic refrigeration power comparison 4.5 K LTS heat load nuclear heating current leads cryoplant`
+- searched: `ESS target moderator cryoplant helium refrigerator 15 K 20 kW performance test electrical input power percent Carnot`
+- candidate https://dspace.mit.edu/handle/1721.1/144277 — **rejected** Hamilton 2021 MIT SM thesis on SPARC 20 K TF cooling channels; thesis-grade, focused on channel heat transfer rather than refrigerator efficiency or a sourced cold-load budget; lower priority than primary surveys under the 3-capture limit
+- searched: `Strobridge Cryogenic refrigerators an updated survey NBS Technical Note 655 percent Carnot refrigeration capacity`
+- candidate https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote655.pdf — **keeper** Strobridge NBS TN 655 (1974) open NIST legacy scan: Fig.1 percent of Carnot vs refrigeration capacity for 1.8-9 K, 10-30 K and 30-90 K refrigerators; Eq.2 efficiency definition; the classic survey named in the request
+- searched: `ITER magnet cryogenic heat load budget 4.5 K nuclear heating AC losses current leads kW osti open access`
+- failed https://www.osti.gov/biblio/416705 — Yoshida, Kalinin, Stoner 1996 ITER magnet cryogenic requirements (CEC/ICMC 95): OSTI has no digital full text; publisher volume (Advances in Cryogenic Engineering 41) not open; may carry ITER magnet heat-load budget by category (queued)
+- failed https://indico.global/event/12526/contributions/135338/contribution.pdf — indico.global returned an Anubis bot-protection wall to the triage fetch; appeared in two searches for DEMO/ITER magnet cryogenic heat loads; a person with a browser can retrieve it (queued)
+- failed https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17578_submitted-4.pdf — Keeper not captured: run max_captures (3) spent (one spent on a failed URL capture of Strobridge). Open EUROfusion preprint, Koncar et al. DEMO thermal-shield heat loads: Table 1 radiation and support conduction to 4 K magnets, Table 2 refrigeration power vs shield temperature; register in a follow-up run (queued)
+- failed https://iopscience.iop.org/article/10.1088/1757-899X/101/1/012001/pdf — Registration returned registered, but the stored capture (knowledge/sources/green_2015_the_cost_of_coolers_for_cooling_superconducting/raw.html, output.md) is a Radware bot-manager captcha page, not the paper; the source entry is not citable. Re-capture the open-access publisher PDF with --local-pdf and supersede the entry (queued)

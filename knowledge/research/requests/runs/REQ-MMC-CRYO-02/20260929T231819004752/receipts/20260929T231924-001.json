@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cryoloads/green2015_iop_publisher.pdf",
+  "slug": "green_2015_cost_of_coolers_at_4_2_20_40_and_77_k_publisher",
+  "path": "knowledge/sources/green_2015_cost_of_coolers_at_4_2_20_40_and_77_k_publisher/",
+  "source_id": "a612649c84d471b10a7cf5e8c01e9ee0a800b2b108f43ad4b5629d34c8587c48",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:19:24.818011+00:00"
+}

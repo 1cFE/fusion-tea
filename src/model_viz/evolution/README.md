@@ -91,11 +91,11 @@ From the repository root:
 
 ```bash
 uv run --no-sync python src/model_viz/evolution/build.py \
-  --article archive/write-up/stellaris-evolution.md \
+  --article src/model_viz/evolution/part-4a-modeling-stellaris.md \
   -o docs/exploratory-modeling/part-4a-modeling-stellaris.html
 ```
 
-The markdown source stays in the write-up archive; the page is published in `docs/exploratory-modeling/` beside `write-up.css` and the other parts. Open it directly, or serve the repository. The viewer and its snapshots are embedded; only the shared CSS and its permitted fonts are external to the HTML. The original standalone command still works without `--article`.
+The markdown source is `part-4a-modeling-stellaris.md`, beside this README; the page is published in `docs/exploratory-modeling/` beside `write-up.css` and the other parts. Open it directly, or serve the repository. The viewer and its snapshots are embedded; only the shared CSS and its permitted fonts are external to the HTML. The original standalone command still works without `--article`.
 
 Imported from `feat/model-viz-evolution@6a4d241d`: evolution work in `becf7ea3` and `6a4d241d`, with its structural/v2 dependencies at `b814d7d6`. The viewer and exporter sources are unchanged from that revision. The integration changes only the evolution layer, adds article rendering and tests, and leaves the source markdown and shared stylesheet unchanged.
 

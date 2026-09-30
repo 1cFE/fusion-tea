@@ -1,0 +1,1315 @@
+{
+  "kind": "study-summary/v1",
+  "declared_cases": 2832,
+  "stored_points": 2310,
+  "counts": {
+    "anchor": {
+      "D": 1800,
+      "S": 1032
+    },
+    "point_class": {
+      "edge": 352,
+      "extension": 720,
+      "matched": 1760
+    },
+    "pairing": {
+      "common-C": 192,
+      "common-P": 1320,
+      "native": 1320
+    },
+    "rule_family": {
+      "both-fraction": 192,
+      "both-temperature": 192,
+      "reference": 2448
+    },
+    "offer_kind": {
+      "generous": 144,
+      "insufficient": 144,
+      "reference": 1416,
+      "variant-offer": 1128
+    },
+    "refrigerator_kind": {
+      "insufficient": 144,
+      "reference": 2688
+    },
+    "B_peak": {
+      "8": 352,
+      "9": 352,
+      "10": 352,
+      "11": 352,
+      "12": 352,
+      "13": 352,
+      "14": 180,
+      "16": 180,
+      "18": 180,
+      "20": 180
+    },
+    "variant": {
+      "capital_capacity_basis_20K": 64,
+      "cold_load_x0.5": 64,
+      "cold_load_x2": 64,
+      "combined_unfavourable_20K": 64,
+      "crf_0.05": 64,
+      "crf_0.11": 64,
+      "cu_density_common_100": 64,
+      "cu_density_material_93.4_100": 64,
+      "electricity_120": 64,
+      "electricity_30": 64,
+      "eta_constant_0.24": 64,
+      "eta_input_power_20K": 64,
+      "manufacturing_both": 64,
+      "manufacturing_nb3sn_only": 64,
+      "nb3sn_strain_-0.6pct": 64,
+      "nb3sn_strain_-0.6pct_BEAS_TFEU10-12": 64,
+      "nb3sn_strain_-0.6pct_OST_TFEU9": 64,
+      "nb3sn_strand_BEAS_II_Tsui": 64,
+      "nb3sn_strand_BEAS_TFEU10-12": 64,
+      "nb3sn_strand_OST_TFEU9": 64,
+      "nb3sn_tcs_6.5K": 64,
+      "none": 576,
+      "price_nb3sn_13.5": 64,
+      "price_nb3sn_5.4": 64,
+      "price_rebco_10_volume": 64,
+      "price_rebco_30_target": 64,
+      "rebco_Tstar_17K": 64,
+      "rebco_Tstar_33K": 64,
+      "rebco_anchor_225A": 64,
+      "rebco_degradation_0.80": 64,
+      "rebco_degradation_0.95": 64,
+      "rebco_shape_power_law": 64,
+      "steel_base_layer1_9.3635": 64,
+      "steel_base_layer8_16.24": 64,
+      "steel_no_field_scaling": 64,
+      "turn_length_D_45m": 40,
+      "turn_length_D_60m": 40
+    },
+    "anchor_x_pairing": {
+      "D|common-C": 120,
+      "D|common-P": 840,
+      "D|native": 840,
+      "S|common-C": 72,
+      "S|common-P": 480,
+      "S|native": 480
+    }
+  },
+  "constraint_outcomes": {
+    "magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Refrigerator Capacity'",
+      "source_local_identity": "capacity_ok",
+      "owner": "rebco",
+      "declared_cases": {
+        "satisfied": 2650,
+        "violated": 182
+      },
+      "stored_points": {
+        "satisfied": 2128,
+        "violated": 182
+      }
+    },
+    "magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Winding Fit'",
+      "source_local_identity": "fit_ok",
+      "owner": "rebco",
+      "declared_cases": {
+        "satisfied": 1932,
+        "violated": 900
+      },
+      "stored_points": {
+        "satisfied": 1578,
+        "violated": 732
+      }
+    },
+    "magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Protection Copper Allowance'",
+      "source_local_identity": "copper_ok",
+      "owner": "rebco",
+      "declared_cases": {
+        "satisfied": 2784,
+        "violated": 48
+      },
+      "stored_points": {
+        "satisfied": 2262,
+        "violated": 48
+      }
+    },
+    "magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Structural Steel Allowance'",
+      "source_local_identity": "steel_ok",
+      "owner": "rebco",
+      "declared_cases": {
+        "satisfied": 2790,
+        "violated": 42
+      },
+      "stored_points": {
+        "satisfied": 2268,
+        "violated": 42
+      }
+    },
+    "magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Conductor Acceptance'",
+      "source_local_identity": "acceptance_ok",
+      "owner": "rebco",
+      "declared_cases": {
+        "satisfied": 2596,
+        "violated": 236
+      },
+      "stored_points": {
+        "satisfied": 2074,
+        "violated": 236
+      }
+    },
+    "magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Refrigerator Capacity'",
+      "source_local_identity": "capacity_ok",
+      "owner": "nb3sn",
+      "declared_cases": {
+        "satisfied": 2648,
+        "violated": 184
+      },
+      "stored_points": {
+        "satisfied": 2126,
+        "violated": 184
+      }
+    },
+    "magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Protection Copper Allowance'",
+      "source_local_identity": "copper_ok",
+      "owner": "nb3sn",
+      "declared_cases": {
+        "satisfied": 2746,
+        "violated": 86
+      },
+      "stored_points": {
+        "satisfied": 2224,
+        "violated": 86
+      }
+    },
+    "magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Winding Fit'",
+      "source_local_identity": "fit_ok",
+      "owner": "nb3sn",
+      "declared_cases": {
+        "satisfied": 843,
+        "violated": 1989
+      },
+      "stored_points": {
+        "satisfied": 713,
+        "violated": 1597
+      }
+    },
+    "magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Conductor Acceptance'",
+      "source_local_identity": "acceptance_ok",
+      "owner": "nb3sn",
+      "declared_cases": {
+        "satisfied": 2045,
+        "violated": 787
+      },
+      "stored_points": {
+        "satisfied": 1635,
+        "violated": 675
+      }
+    },
+    "magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4": {
+      "definition_qualified_name": "magnet_conductor_alternatives::'Structural Steel Allowance'",
+      "source_local_identity": "steel_ok",
+      "owner": "nb3sn",
+      "declared_cases": {
+        "satisfied": 2780,
+        "violated": 52
+      },
+      "stored_points": {
+        "satisfied": 2258,
+        "violated": 52
+      }
+    }
+  },
+  "materials": {
+    "nb3sn": {
+      "status": {
+        "edge": 352,
+        "law-only": 180,
+        "supported": 1760,
+        "unsupported": 540
+      },
+      "all_pass": 634,
+      "check_failures": {
+        "acceptance": 787,
+        "fit": 1989,
+        "cu": 86,
+        "steel": 52,
+        "capacity": 184
+      },
+      "near_threshold": {
+        "acceptance": 2332,
+        "fit": 6,
+        "copper": 2360,
+        "steel": 2740,
+        "capacity": 324
+      },
+      "green_extrapolated": 1187,
+      "status_by_anchor_field": {
+        "D-10T": {
+          "supported": 180
+        },
+        "D-11T": {
+          "supported": 180
+        },
+        "D-12T": {
+          "supported": 180
+        },
+        "D-13T": {
+          "edge": 180
+        },
+        "D-14T": {
+          "law-only": 180
+        },
+        "D-16T": {
+          "unsupported": 180
+        },
+        "D-18T": {
+          "unsupported": 180
+        },
+        "D-20T": {
+          "unsupported": 180
+        },
+        "D-8T": {
+          "supported": 180
+        },
+        "D-9T": {
+          "supported": 180
+        },
+        "S-10T": {
+          "supported": 172
+        },
+        "S-11T": {
+          "supported": 172
+        },
+        "S-12T": {
+          "supported": 172
+        },
+        "S-13T": {
+          "edge": 172
+        },
+        "S-8T": {
+          "supported": 172
+        },
+        "S-9T": {
+          "supported": 172
+        }
+      }
+    },
+    "rebco": {
+      "status": {
+        "supported": 2832
+      },
+      "all_pass": 1598,
+      "check_failures": {
+        "acceptance": 236,
+        "fit": 900,
+        "cu": 48,
+        "steel": 42,
+        "capacity": 182
+      },
+      "near_threshold": {
+        "acceptance": 2416,
+        "fit": 5,
+        "copper": 2800,
+        "steel": 2770,
+        "capacity": 331
+      },
+      "green_extrapolated": 1129,
+      "status_by_anchor_field": {
+        "D-10T": {
+          "supported": 180
+        },
+        "D-11T": {
+          "supported": 180
+        },
+        "D-12T": {
+          "supported": 180
+        },
+        "D-13T": {
+          "supported": 180
+        },
+        "D-14T": {
+          "supported": 180
+        },
+        "D-16T": {
+          "supported": 180
+        },
+        "D-18T": {
+          "supported": 180
+        },
+        "D-20T": {
+          "supported": 180
+        },
+        "D-8T": {
+          "supported": 180
+        },
+        "D-9T": {
+          "supported": 180
+        },
+        "S-10T": {
+          "supported": 172
+        },
+        "S-11T": {
+          "supported": 172
+        },
+        "S-12T": {
+          "supported": 172
+        },
+        "S-13T": {
+          "supported": 172
+        },
+        "S-8T": {
+          "supported": 172
+        },
+        "S-9T": {
+          "supported": 172
+        }
+      }
+    }
+  },
+  "objective": {
+    "rankable_pairs": 610,
+    "rankable_by_anchor": {
+      "D": 574,
+      "S": 36
+    },
+    "rankable_by_pairing": {
+      "common-C": 78,
+      "common-P": 266,
+      "native": 266
+    },
+    "rankable_by_point_class": {
+      "edge": 12,
+      "extension": 6,
+      "matched": 592
+    },
+    "rankable_by_B_peak": {
+      "8": 146,
+      "9": 144,
+      "10": 144,
+      "11": 144,
+      "12": 14,
+      "13": 12,
+      "14": 6
+    },
+    "cost_difference_sign": {
+      "rebco_dearer": 598,
+      "nb3sn_dearer": 12
+    },
+    "cost_difference_USD_per_yr": {
+      "n": 610,
+      "min": -12178899.834827997,
+      "median": 206360933.96313316,
+      "max": 483444316.77957535
+    },
+    "breakeven_rebco_price_USD_per_m": {
+      "n": 610,
+      "min": 6.621998690474982,
+      "median": 11.247617739058782,
+      "max": 24.62935316613106
+    },
+    "annualized_nb3sn_USD_per_yr": {
+      "n": 610,
+      "min": 13434334.99502339,
+      "median": 45701711.84477456,
+      "max": 169457209.55451673
+    },
+    "annualized_rebco_USD_per_yr": {
+      "n": 610,
+      "min": 33111621.766701847,
+      "median": 245958452.49356025,
+      "max": 618622462.7820921
+    },
+    "nb3sn_dearer_cases": [
+      {
+        "case_id": "D-9T-common-P-reference-price_rebco_10_volume-reference-reference",
+        "cost_difference": -99448.94669856131,
+        "breakeven_rebco_price_per_m": 10.034050950500102
+      },
+      {
+        "case_id": "D-9T-common-P-reference-price_rebco_10_volume-variant-offer-reference",
+        "cost_difference": -99448.94669856131,
+        "breakeven_rebco_price_per_m": 10.034050950500102
+      },
+      {
+        "case_id": "D-9T-native-reference-price_rebco_10_volume-reference-reference",
+        "cost_difference": -578650.2980755419,
+        "breakeven_rebco_price_per_m": 10.198127715885855
+      },
+      {
+        "case_id": "D-9T-native-reference-price_rebco_10_volume-variant-offer-reference",
+        "cost_difference": -578650.2980755419,
+        "breakeven_rebco_price_per_m": 10.198127715885855
+      },
+      {
+        "case_id": "D-10T-common-P-reference-price_rebco_10_volume-reference-reference",
+        "cost_difference": -4312019.863178983,
+        "breakeven_rebco_price_per_m": 11.247617739058782
+      },
+      {
+        "case_id": "D-10T-common-P-reference-price_rebco_10_volume-variant-offer-reference",
+        "cost_difference": -4312019.863178983,
+        "breakeven_rebco_price_per_m": 11.247617739058782
+      },
+      {
+        "case_id": "D-10T-native-reference-price_rebco_10_volume-reference-reference",
+        "cost_difference": -4882951.578453511,
+        "breakeven_rebco_price_per_m": 11.41280819698089
+      },
+      {
+        "case_id": "D-10T-native-reference-price_rebco_10_volume-variant-offer-reference",
+        "cost_difference": -4882951.578453511,
+        "breakeven_rebco_price_per_m": 11.41280819698089
+      },
+      {
+        "case_id": "D-11T-common-P-reference-price_rebco_10_volume-reference-reference",
+        "cost_difference": -11508732.295910448,
+        "breakeven_rebco_price_per_m": 12.81885682207338
+      },
+      {
+        "case_id": "D-11T-common-P-reference-price_rebco_10_volume-variant-offer-reference",
+        "cost_difference": -11508732.295910448,
+        "breakeven_rebco_price_per_m": 12.81885682207338
+      },
+      {
+        "case_id": "D-11T-native-reference-price_rebco_10_volume-reference-reference",
+        "cost_difference": -12178899.834827997,
+        "breakeven_rebco_price_per_m": 12.983002297911856
+      },
+      {
+        "case_id": "D-11T-native-reference-price_rebco_10_volume-variant-offer-reference",
+        "cost_difference": -12178899.834827997,
+        "breakeven_rebco_price_per_m": 12.983002297911856
+      }
+    ],
+    "baseline_case": {
+      "case_id": "D-10T-common-P-reference-none-reference-reference",
+      "cost_difference": 237622172.77682102,
+      "breakeven_rebco_price_per_m": 11.247617739058782,
+      "annualized_nb3sn": 48522166.95201374,
+      "annualized_rebco": 286144339.72883475
+    }
+  },
+  "reference_offer_pairs": [
+    {
+      "anchor": "D",
+      "B_peak": 8.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 3237.9320603334163,
+      "rebco_fit_margin_mm2": 3306.6916605492956,
+      "nb3sn_n": 232.0,
+      "rebco_n": 240.0,
+      "nb3sn_p_in_total_MW": 21.64303151295553,
+      "rebco_p_in_total_MW": 17.33349157278842,
+      "rankable": 1,
+      "cost_difference": 171824211.19346112,
+      "breakeven_rebco_price_per_m": 9.15649962694026
+    },
+    {
+      "anchor": "D",
+      "B_peak": 9.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 3133.0830245273937,
+      "rebco_fit_margin_mm2": 3237.3395765492955,
+      "nb3sn_n": 320.0,
+      "rebco_n": 289.0,
+      "nb3sn_p_in_total_MW": 21.837356534489597,
+      "rebco_p_in_total_MW": 17.39674984183252,
+      "rankable": 1,
+      "cost_difference": 204269533.1413741,
+      "breakeven_rebco_price_per_m": 10.058869474414777
+    },
+    {
+      "anchor": "D",
+      "B_peak": 10.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 3010.269775969317,
+      "rebco_fit_margin_mm2": 3164.9703315492957,
+      "nb3sn_n": 438.0,
+      "rebco_n": 342.0,
+      "nb3sn_p_in_total_MW": 22.039219575542234,
+      "rebco_p_in_total_MW": 17.46161520133235,
+      "rankable": 1,
+      "cost_difference": 237520829.7322348,
+      "breakeven_rebco_price_per_m": 11.276939816453563
+    },
+    {
+      "anchor": "D",
+      "B_peak": 11.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 2862.6269932332975,
+      "rebco_fit_margin_mm2": 3088.4639265492956,
+      "nb3sn_n": 599.0,
+      "rebco_n": 404.0,
+      "nb3sn_p_in_total_MW": 21.586176173164965,
+      "rebco_p_in_total_MW": 17.38891663979014,
+      "rankable": 1,
+      "cost_difference": 274143747.95459557,
+      "breakeven_rebco_price_per_m": 12.853423445675546
+    },
+    {
+      "anchor": "D",
+      "B_peak": 12.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 2680.1207445430346,
+      "rebco_fit_margin_mm2": 3008.716362549296,
+      "nb3sn_n": 822.0,
+      "rebco_n": 471.0,
+      "nb3sn_p_in_total_MW": 21.782242521775665,
+      "rebco_p_in_total_MW": 17.45262460343506,
+      "rankable": 1,
+      "cost_difference": 310226634.9568851,
+      "breakeven_rebco_price_per_m": 14.824395289527828
+    },
+    {
+      "anchor": "D",
+      "B_peak": 13.0,
+      "pairing": "common-C",
+      "nb3sn_status": "edge",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 2445.851772696338,
+      "rebco_fit_margin_mm2": 2925.0556375492956,
+      "nb3sn_n": 1139.0,
+      "rebco_n": 546.0,
+      "nb3sn_p_in_total_MW": 21.985011296656616,
+      "rebco_p_in_total_MW": 17.517761510751807,
+      "rankable": 1,
+      "cost_difference": 345175448.69321173,
+      "breakeven_rebco_price_per_m": 17.443254042895155
+    },
+    {
+      "anchor": "D",
+      "B_peak": 14.0,
+      "pairing": "common-C",
+      "nb3sn_status": "law-only",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 2132.886892714717,
+      "rebco_fit_margin_mm2": 2837.9297545492955,
+      "nb3sn_n": 1601.0,
+      "rebco_n": 627.0,
+      "nb3sn_p_in_total_MW": 22.194482497807815,
+      "rebco_p_in_total_MW": 17.584327361740385,
+      "rankable": 1,
+      "cost_difference": 373250062.95557535,
+      "breakeven_rebco_price_per_m": 21.09403931453329
+    },
+    {
+      "anchor": "D",
+      "B_peak": 16.0,
+      "pairing": "common-C",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 1042.2013523920646,
+      "rebco_fit_margin_mm2": 2652.6105055492953,
+      "nb3sn_n": 3393.0,
+      "rebco_n": 810.0,
+      "nb3sn_p_in_total_MW": 22.633532178920955,
+      "rebco_p_in_total_MW": 17.72174589473303,
+      "rankable": 0,
+      "cost_difference": 376195413.3144137,
+      "breakeven_rebco_price_per_m": 34.042608377791396
+    },
+    {
+      "anchor": "D",
+      "B_peak": 18.0,
+      "pairing": "common-C",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -1822.940993559465,
+      "rebco_fit_margin_mm2": 2451.8626195492957,
+      "nb3sn_n": 8529.0,
+      "rebco_n": 1024.0,
+      "nb3sn_p_in_total_MW": 23.099391565115095,
+      "rebco_p_in_total_MW": 17.864880202412998,
+      "rankable": 0,
+      "cost_difference": 133842557.26539993,
+      "breakeven_rebco_price_per_m": 67.06634823121445
+    },
+    {
+      "anchor": "D",
+      "B_peak": 20.0,
+      "pairing": "common-C",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -14070.90170020095,
+      "rebco_fit_margin_mm2": 2237.0300945492954,
+      "nb3sn_n": 31416.0,
+      "rebco_n": 1263.0,
+      "nb3sn_p_in_total_MW": 23.59206065639022,
+      "rebco_p_in_total_MW": 18.01373028478028,
+      "rankable": 0,
+      "cost_difference": -1523419855.2074652,
+      "breakeven_rebco_price_per_m": 199.35569759182104
+    },
+    {
+      "anchor": "D",
+      "B_peak": 8.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 1676.0757491476948,
+      "rebco_fit_margin_mm2": 1716.977392970706,
+      "nb3sn_n": 232.0,
+      "rebco_n": 240.0,
+      "nb3sn_p_in_total_MW": 21.64303151295553,
+      "rebco_p_in_total_MW": 17.33349157278842,
+      "rankable": 1,
+      "cost_difference": 171875551.21324912,
+      "breakeven_rebco_price_per_m": 9.135332023808303
+    },
+    {
+      "anchor": "D",
+      "B_peak": 9.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 1278.646916261328,
+      "rebco_fit_margin_mm2": 1348.51706020936,
+      "nb3sn_n": 320.0,
+      "rebco_n": 289.0,
+      "nb3sn_p_in_total_MW": 21.837356534489597,
+      "rebco_p_in_total_MW": 17.39674984183252,
+      "rankable": 1,
+      "cost_difference": 204342017.93330142,
+      "breakeven_rebco_price_per_m": 10.034050950500102
+    },
+    {
+      "anchor": "D",
+      "B_peak": 10.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 841.9705043393224,
+      "rebco_fit_margin_mm2": 954.7511505472826,
+      "nb3sn_n": 438.0,
+      "rebco_n": 342.0,
+      "nb3sn_p_in_total_MW": 22.039219575542234,
+      "rebco_p_in_total_MW": 17.46161520133235,
+      "rankable": 1,
+      "cost_difference": 237622172.77682102,
+      "breakeven_rebco_price_per_m": 11.247617739058782
+    },
+    {
+      "anchor": "D",
+      "B_peak": 11.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 359.45018444089646,
+      "rebco_fit_margin_mm2": 534.0792970525313,
+      "nb3sn_n": 599.0,
+      "rebco_n": 404.0,
+      "nb3sn_p_in_total_MW": 21.586176173164965,
+      "rebco_p_in_total_MW": 17.38891663979014,
+      "rankable": 1,
+      "cost_difference": 274284875.3840896,
+      "breakeven_rebco_price_per_m": 12.818856822073371
+    },
+    {
+      "anchor": "D",
+      "B_peak": 12.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -178.55482815564892,
+      "rebco_fit_margin_mm2": 87.78179091155289,
+      "nb3sn_n": 822.0,
+      "rebco_n": 471.0,
+      "nb3sn_p_in_total_MW": 21.782242521775665,
+      "rebco_p_in_total_MW": 17.45262460343506,
+      "rankable": 0,
+      "cost_difference": 310423617.8230926,
+      "breakeven_rebco_price_per_m": 14.783011101402067
+    },
+    {
+      "anchor": "D",
+      "B_peak": 13.0,
+      "pairing": "common-P",
+      "nb3sn_status": "edge",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -788.2816444915597,
+      "rebco_fit_margin_mm2": -385.101585937834,
+      "nb3sn_n": 1139.0,
+      "rebco_n": 546.0,
+      "nb3sn_p_in_total_MW": 21.985011296656616,
+      "rebco_p_in_total_MW": 17.517761510751807,
+      "rankable": 0,
+      "cost_difference": 345452636.1143346,
+      "breakeven_rebco_price_per_m": 17.39301888523451
+    },
+    {
+      "anchor": "D",
+      "B_peak": 14.0,
+      "pairing": "common-P",
+      "nb3sn_status": "law-only",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -1495.6081577085497,
+      "rebco_fit_margin_mm2": -883.9306872470997,
+      "nb3sn_n": 1601.0,
+      "rebco_n": 627.0,
+      "nb3sn_p_in_total_MW": 22.194482497807815,
+      "rebco_p_in_total_MW": 17.584327361740385,
+      "rankable": 0,
+      "cost_difference": 373645266.7895552,
+      "breakeven_rebco_price_per_m": 21.031668631129193
+    },
+    {
+      "anchor": "D",
+      "B_peak": 16.0,
+      "pairing": "common-P",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -3422.7686866344056,
+      "rebco_fit_margin_mm2": -1960.386281307442,
+      "nb3sn_n": 3393.0,
+      "rebco_n": 810.0,
+      "nb3sn_p_in_total_MW": 22.633532178920955,
+      "rebco_p_in_total_MW": 17.72174589473303,
+      "rankable": 0,
+      "cost_difference": 377053592.56963134,
+      "breakeven_rebco_price_per_m": 33.93777009768954
+    },
+    {
+      "anchor": "D",
+      "B_peak": 18.0,
+      "pairing": "common-P",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -7976.064533656351,
+      "rebco_fit_margin_mm2": -3142.8652824559194,
+      "nb3sn_n": 8529.0,
+      "rebco_n": 1024.0,
+      "nb3sn_p_in_total_MW": 23.099391565115095,
+      "rebco_p_in_total_MW": 17.864880202412998,
+      "rankable": 0,
+      "cost_difference": 135471344.93533504,
+      "breakeven_rebco_price_per_m": 66.9089530576714
+    },
+    {
+      "anchor": "D",
+      "B_peak": 20.0,
+      "pairing": "common-P",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -29327.963051635914,
+      "rebco_fit_margin_mm2": -4429.447257189405,
+      "nb3sn_n": 31416.0,
+      "rebco_n": 1263.0,
+      "nb3sn_p_in_total_MW": 23.59206065639022,
+      "rebco_p_in_total_MW": 18.01373028478028,
+      "rankable": 0,
+      "cost_difference": -1521615069.0124354,
+      "breakeven_rebco_price_per_m": 199.21429762609557
+    },
+    {
+      "anchor": "D",
+      "B_peak": 8.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 1676.0757491476948,
+      "rebco_fit_margin_mm2": 3306.6916605492956,
+      "nb3sn_n": 232.0,
+      "rebco_n": 240.0,
+      "nb3sn_p_in_total_MW": 21.64303151295553,
+      "rebco_p_in_total_MW": 17.33349157278842,
+      "rankable": 1,
+      "cost_difference": 171480376.0070298,
+      "breakeven_rebco_price_per_m": 9.298263630912857
+    },
+    {
+      "anchor": "D",
+      "B_peak": 9.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 1278.646916261328,
+      "rebco_fit_margin_mm2": 3237.3395765492955,
+      "nb3sn_n": 320.0,
+      "rebco_n": 289.0,
+      "nb3sn_p_in_total_MW": 21.837356534489597,
+      "rebco_p_in_total_MW": 17.39674984183252,
+      "rankable": 1,
+      "cost_difference": 203862816.58192447,
+      "breakeven_rebco_price_per_m": 10.198127715885846
+    },
+    {
+      "anchor": "D",
+      "B_peak": 10.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 841.9705043393224,
+      "rebco_fit_margin_mm2": 3164.9703315492957,
+      "nb3sn_n": 438.0,
+      "rebco_n": 342.0,
+      "nb3sn_p_in_total_MW": 22.039219575542234,
+      "rebco_p_in_total_MW": 17.46161520133235,
+      "rankable": 1,
+      "cost_difference": 237051241.0615465,
+      "breakeven_rebco_price_per_m": 11.412808196980876
+    },
+    {
+      "anchor": "D",
+      "B_peak": 11.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 359.45018444089646,
+      "rebco_fit_margin_mm2": 3088.4639265492956,
+      "nb3sn_n": 599.0,
+      "rebco_n": 404.0,
+      "nb3sn_p_in_total_MW": 21.586176173164965,
+      "rebco_p_in_total_MW": 17.38891663979014,
+      "rankable": 1,
+      "cost_difference": 273614707.84517205,
+      "breakeven_rebco_price_per_m": 12.983002297911852
+    },
+    {
+      "anchor": "D",
+      "B_peak": 12.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -178.55482815564892,
+      "rebco_fit_margin_mm2": 3008.716362549296,
+      "nb3sn_n": 822.0,
+      "rebco_n": 471.0,
+      "nb3sn_p_in_total_MW": 21.782242521775665,
+      "rebco_p_in_total_MW": 17.45262460343506,
+      "rankable": 0,
+      "cost_difference": 309646549.99131703,
+      "breakeven_rebco_price_per_m": 14.946265510050978
+    },
+    {
+      "anchor": "D",
+      "B_peak": 13.0,
+      "pairing": "native",
+      "nb3sn_status": "edge",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -788.2816444915597,
+      "rebco_fit_margin_mm2": 2925.0556375492956,
+      "nb3sn_n": 1139.0,
+      "rebco_n": 546.0,
+      "nb3sn_p_in_total_MW": 21.985011296656616,
+      "rebco_p_in_total_MW": 17.517761510751807,
+      "rankable": 0,
+      "cost_difference": 344561122.7789518,
+      "breakeven_rebco_price_per_m": 17.554589395101445
+    },
+    {
+      "anchor": "D",
+      "B_peak": 14.0,
+      "pairing": "native",
+      "nb3sn_status": "law-only",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -1495.6081577085497,
+      "rebco_fit_margin_mm2": 2837.9297545492955,
+      "nb3sn_n": 1601.0,
+      "rebco_n": 627.0,
+      "nb3sn_p_in_total_MW": 22.194482497807815,
+      "rebco_p_in_total_MW": 17.584327361740385,
+      "rankable": 0,
+      "cost_difference": 372631683.2329385,
+      "breakeven_rebco_price_per_m": 21.191631398890607
+    },
+    {
+      "anchor": "D",
+      "B_peak": 16.0,
+      "pairing": "native",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -3422.7686866344056,
+      "rebco_fit_margin_mm2": 2652.6105055492953,
+      "nb3sn_n": 3393.0,
+      "rebco_n": 810.0,
+      "nb3sn_p_in_total_MW": 22.633532178920955,
+      "rebco_p_in_total_MW": 17.72174589473303,
+      "rankable": 0,
+      "cost_difference": 375773113.688565,
+      "breakeven_rebco_price_per_m": 34.094198026681724
+    },
+    {
+      "anchor": "D",
+      "B_peak": 18.0,
+      "pairing": "native",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -7976.064533656351,
+      "rebco_fit_margin_mm2": 2451.8626195492957,
+      "nb3sn_n": 8529.0,
+      "rebco_n": 1024.0,
+      "nb3sn_p_in_total_MW": 23.099391565115095,
+      "rebco_p_in_total_MW": 17.864880202412998,
+      "rankable": 0,
+      "cost_difference": 133893750.12569487,
+      "breakeven_rebco_price_per_m": 67.06140129474198
+    },
+    {
+      "anchor": "D",
+      "B_peak": 20.0,
+      "pairing": "native",
+      "nb3sn_status": "unsupported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -29327.963051635914,
+      "rebco_fit_margin_mm2": 2237.0300945492954,
+      "nb3sn_n": 31416.0,
+      "rebco_n": 1263.0,
+      "nb3sn_p_in_total_MW": 23.59206065639022,
+      "rebco_p_in_total_MW": 18.01373028478028,
+      "rankable": 0,
+      "cost_difference": -1523520238.8643641,
+      "breakeven_rebco_price_per_m": 199.36356237141877
+    },
+    {
+      "anchor": "S",
+      "B_peak": 8.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 302.2707186255248,
+      "rebco_fit_margin_mm2": 318.2442117792208,
+      "nb3sn_n": 54.0,
+      "rebco_n": 56.0,
+      "nb3sn_p_in_total_MW": 2.6163043130375994,
+      "rebco_p_in_total_MW": 0.7616091641462897,
+      "rankable": 1,
+      "cost_difference": 102564239.45557363,
+      "breakeven_rebco_price_per_m": 8.812800217957616
+    },
+    {
+      "anchor": "S",
+      "B_peak": 9.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 278.26093312415594,
+      "rebco_fit_margin_mm2": 302.3324607792208,
+      "nb3sn_n": 74.0,
+      "rebco_n": 67.0,
+      "nb3sn_p_in_total_MW": 2.7778078654236382,
+      "rebco_p_in_total_MW": 0.810986350545095,
+      "rankable": 1,
+      "cost_difference": 121041252.5612033,
+      "breakeven_rebco_price_per_m": 9.781333211969937
+    },
+    {
+      "anchor": "S",
+      "B_peak": 10.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 250.0657955473079,
+      "rebco_fit_margin_mm2": 285.7080697792208,
+      "nb3sn_n": 101.0,
+      "rebco_n": 79.0,
+      "nb3sn_p_in_total_MW": 2.7104664534485696,
+      "rebco_p_in_total_MW": 0.8123035493199202,
+      "rankable": 1,
+      "cost_difference": 139969660.7305851,
+      "breakeven_rebco_price_per_m": 11.134644848057434
+    },
+    {
+      "anchor": "S",
+      "B_peak": 11.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 216.1010027197755,
+      "rebco_fit_margin_mm2": 268.1470407792208,
+      "nb3sn_n": 138.0,
+      "rebco_n": 93.0,
+      "nb3sn_p_in_total_MW": 2.8703481774567563,
+      "rebco_p_in_total_MW": 0.8613910314943387,
+      "rankable": 1,
+      "cost_difference": 161122945.9677788,
+      "breakeven_rebco_price_per_m": 12.66072779258161
+    },
+    {
+      "anchor": "S",
+      "B_peak": 12.0,
+      "pairing": "common-C",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 173.7260450162164,
+      "rebco_fit_margin_mm2": 249.6493727792208,
+      "nb3sn_n": 190.0,
+      "rebco_n": 109.0,
+      "nb3sn_p_in_total_MW": 3.035727902896056,
+      "rebco_p_in_total_MW": 0.911650676410416,
+      "rankable": 1,
+      "cost_difference": 183303532.27632043,
+      "breakeven_rebco_price_per_m": 14.636047016808007
+    },
+    {
+      "anchor": "S",
+      "B_peak": 13.0,
+      "pairing": "common-C",
+      "nb3sn_status": "edge",
+      "nb3sn_all_pass": 1,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": 119.77231208621993,
+      "rebco_fit_margin_mm2": 230.43906577922078,
+      "nb3sn_n": 263.0,
+      "rebco_n": 126.0,
+      "nb3sn_p_in_total_MW": 3.2066056297664702,
+      "rebco_p_in_total_MW": 0.963082484068152,
+      "rankable": 1,
+      "cost_difference": 203218235.6562099,
+      "breakeven_rebco_price_per_m": 17.31175605843245
+    },
+    {
+      "anchor": "S",
+      "B_peak": 8.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -57.51332947968666,
+      "rebco_fit_margin_mm2": -48.03726605381746,
+      "nb3sn_n": 54.0,
+      "rebco_n": 56.0,
+      "nb3sn_p_in_total_MW": 2.6163043130375994,
+      "rebco_p_in_total_MW": 0.7616091641462897,
+      "rankable": 0,
+      "cost_difference": 102594647.98240325,
+      "breakeven_rebco_price_per_m": 8.791694441850979
+    },
+    {
+      "anchor": "S",
+      "B_peak": 9.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -148.9286089066788,
+      "rebco_fit_margin_mm2": -132.8251503683113,
+      "nb3sn_n": 74.0,
+      "rebco_n": 67.0,
+      "nb3sn_p_in_total_MW": 2.7778078654236382,
+      "rebco_p_in_total_MW": 0.810986350545095,
+      "rankable": 0,
+      "cost_difference": 121083909.3068759,
+      "breakeven_rebco_price_per_m": 9.756587104777012
+    },
+    {
+      "anchor": "S",
+      "B_peak": 10.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -249.43032112656493,
+      "rebco_fit_margin_mm2": -223.4676700613299,
+      "nb3sn_n": 101.0,
+      "rebco_n": 79.0,
+      "nb3sn_p_in_total_MW": 2.7104664534485696,
+      "rebco_p_in_total_MW": 0.8123035493199202,
+      "rankable": 0,
+      "cost_difference": 140029140.9979923,
+      "breakeven_rebco_price_per_m": 11.10538043662605
+    },
+    {
+      "anchor": "S",
+      "B_peak": 11.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -360.540693374495,
+      "rebco_fit_margin_mm2": -320.28489825713865,
+      "nb3sn_n": 138.0,
+      "rebco_n": 93.0,
+      "nb3sn_p_in_total_MW": 2.8703481774567563,
+      "rebco_p_in_total_MW": 0.8613910314943387,
+      "rankable": 0,
+      "cost_difference": 161205728.07902837,
+      "breakeven_rebco_price_per_m": 12.626130069148388
+    },
+    {
+      "anchor": "S",
+      "B_peak": 12.0,
+      "pairing": "common-P",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -484.7967732267451,
+      "rebco_fit_margin_mm2": -423.27683495573757,
+      "nb3sn_n": 190.0,
+      "rebco_n": 109.0,
+      "nb3sn_p_in_total_MW": 3.035727902896056,
+      "rebco_p_in_total_MW": 0.911650676410416,
+      "rankable": 0,
+      "cost_difference": 183419434.9194999,
+      "breakeven_rebco_price_per_m": 14.594717453622124
+    },
+    {
+      "anchor": "S",
+      "B_peak": 13.0,
+      "pairing": "common-P",
+      "nb3sn_status": "edge",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 0,
+      "nb3sn_fit_margin_mm2": -625.2430217066949,
+      "rebco_fit_margin_mm2": -532.1234070328615,
+      "nb3sn_n": 263.0,
+      "rebco_n": 126.0,
+      "nb3sn_p_in_total_MW": 3.2066056297664702,
+      "rebco_p_in_total_MW": 0.963082484068152,
+      "rankable": 0,
+      "cost_difference": 203381187.15439996,
+      "breakeven_rebco_price_per_m": 17.261489195145316
+    },
+    {
+      "anchor": "S",
+      "B_peak": 8.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -57.51332947968666,
+      "rebco_fit_margin_mm2": 318.2442117792208,
+      "nb3sn_n": 54.0,
+      "rebco_n": 56.0,
+      "nb3sn_p_in_total_MW": 2.6163043130375994,
+      "rebco_p_in_total_MW": 0.7616091641462897,
+      "rankable": 0,
+      "cost_difference": 102362960.73404868,
+      "breakeven_rebco_price_per_m": 8.95250259996844
+    },
+    {
+      "anchor": "S",
+      "B_peak": 9.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -148.9286089066788,
+      "rebco_fit_margin_mm2": 302.3324607792208,
+      "nb3sn_n": 74.0,
+      "rebco_n": 67.0,
+      "nb3sn_p_in_total_MW": 2.7778078654236382,
+      "rebco_p_in_total_MW": 0.810986350545095,
+      "rankable": 0,
+      "cost_difference": 120802913.90079649,
+      "breakeven_rebco_price_per_m": 9.919598659688674
+    },
+    {
+      "anchor": "S",
+      "B_peak": 10.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -249.43032112656493,
+      "rebco_fit_margin_mm2": 285.7080697792208,
+      "nb3sn_n": 101.0,
+      "rebco_n": 79.0,
+      "nb3sn_p_in_total_MW": 2.7104664534485696,
+      "rebco_p_in_total_MW": 0.8123035493199202,
+      "rankable": 0,
+      "cost_difference": 139694327.081856,
+      "breakeven_rebco_price_per_m": 11.270109558095598
+    },
+    {
+      "anchor": "S",
+      "B_peak": 11.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -360.540693374495,
+      "rebco_fit_margin_mm2": 268.1470407792208,
+      "nb3sn_n": 138.0,
+      "rebco_n": 93.0,
+      "nb3sn_p_in_total_MW": 2.8703481774567563,
+      "rebco_p_in_total_MW": 0.8613910314943387,
+      "rankable": 0,
+      "cost_difference": 160812686.49300677,
+      "breakeven_rebco_price_per_m": 12.790396767420134
+    },
+    {
+      "anchor": "S",
+      "B_peak": 12.0,
+      "pairing": "native",
+      "nb3sn_status": "supported",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -484.7967732267451,
+      "rebco_fit_margin_mm2": 249.6493727792208,
+      "nb3sn_n": 190.0,
+      "rebco_n": 109.0,
+      "nb3sn_p_in_total_MW": 3.035727902896056,
+      "rebco_p_in_total_MW": 0.911650676410416,
+      "rankable": 0,
+      "cost_difference": 182963756.48887253,
+      "breakeven_rebco_price_per_m": 14.757207194791334
+    },
+    {
+      "anchor": "S",
+      "B_peak": 13.0,
+      "pairing": "native",
+      "nb3sn_status": "edge",
+      "nb3sn_all_pass": 0,
+      "rebco_all_pass": 1,
+      "nb3sn_fit_margin_mm2": -625.2430217066949,
+      "rebco_fit_margin_mm2": 230.43906577922078,
+      "nb3sn_n": 263.0,
+      "rebco_n": 126.0,
+      "nb3sn_p_in_total_MW": 3.2066056297664702,
+      "rebco_p_in_total_MW": 0.963082484068152,
+      "rankable": 0,
+      "cost_difference": 202858361.5268348,
+      "breakeven_rebco_price_per_m": 17.422769113622493
+    }
+  ]
+}

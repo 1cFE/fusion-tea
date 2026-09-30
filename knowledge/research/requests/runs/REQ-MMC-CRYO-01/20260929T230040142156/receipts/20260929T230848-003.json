@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/nbstechnicalnote655.pdf",
+  "slug": "strobridge_1974_cryogenic_refrigerators_an_updated_survey",
+  "path": "knowledge/sources/strobridge_1974_cryogenic_refrigerators_an_updated_survey/",
+  "source_id": "4f4262e9e79693491d33f979a979aee0ebc23b9224beb16b6d16f81903fa2c4b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:08:48.195655+00:00"
+}

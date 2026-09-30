@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://arxiv.org/pdf/1512.01930",
+  "slug": "field_and_temperature_scaling_of_the_critical_current",
+  "path": "knowledge/sources/field_and_temperature_scaling_of_the_critical_current/",
+  "source_id": "7ad34fc68efe87d0199399e15cdd063a8089db12940f663559f045df28f84895",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:04:52.793292+00:00"
+}

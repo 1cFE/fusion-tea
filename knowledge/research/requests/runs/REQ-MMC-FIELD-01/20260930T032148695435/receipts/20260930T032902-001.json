@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://ukaea.github.io/PROCESS/eng-models/tf-coil-superconducting/",
+  "slug": "ukaea_process_superconducting_tf_coil_model_documentation",
+  "path": "knowledge/sources/ukaea_process_superconducting_tf_coil_model_documentation/",
+  "source_id": "92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-30T03:29:02.029205+00:00"
+}

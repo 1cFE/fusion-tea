@@ -915,8 +915,8 @@
       </li>
       <li class="dg-box">
         <div class="dg-label"><a href="#round-2-task-3">Task 3 · Study</a></div>
-        <p class="st-r">Most of the earlier driven points now ignite.</p>
-        <p class="dg-note">The earlier study had classed 681 points as driven, meaning they need some external heating within what the design supplies. At the new pin 510 of them ignite, meaning fusion heating alone exceeds the losses. The model checks only that the plasma needs no more heating than the design supplies, so an ignited point passes the check, but the model does not represent how that burn would be controlled.</p>
+        <p class="st-r">Most of the earlier driven points now have more self-heating than the modeled losses.</p>
+        <p class="dg-note">The earlier study had classed 681 points as driven, meaning they need some external heating within what the design supplies. At the new pin, 510 of them produce more fusion self-heating than the modeled losses at their selected temperature and density, so the heating they require is negative. The model checked only that the required heating was no more than the design supplies, not whether there was too much heat to balance, so these points still passed. Evaluating them with burn control would need mechanisms the model does not represent.</p>
       </li>
     </ol>
   </div>
@@ -953,7 +953,7 @@
 </div>
 </details>
 <p><strong>How the round ended.</strong> The study's reading and its dispositions passed their check on the second submission, and the round stopped on that reading. A fresh reviewer recounted the study's numbers with their own script, raised eight precision-level findings that reopened no task, and recommended closing the goal.</p>
-<p><strong>The close.</strong> The owner closed the goal on 6 September and declined to ask the paper's author about the remaining 2.7 points. An answer would not change what the model says, because its 519.9 MJ is already above both the printed value and what the paper's rules give, and the verdict is the same across that range. The ignited points became the next goal, <code>burn-control</code>, and the minor-radius edge became the goal after that, <code>minor-radius</code>.</p>
+<p><strong>The close.</strong> The owner closed the goal on 6 September and declined to ask the paper's author about the remaining 2.7 points. An answer would not change what the model says, because its 519.9 MJ is already above both the printed value and what the paper's rules give, and the verdict is the same across that range. The points with more self-heating than the modeled losses became the next goal, <code>burn-control</code>. That goal added a check that marks them as failing under the model's assumptions, narrowing the passing points in round 2's study from 1,839 to 726. The minor-radius edge became the goal after that, <code>minor-radius</code>.</p>
 <p>In <a href="#figure-6">Figure 6</a>, the model's values sit below the axis and the paper's above it. Start with the model's move below the axis, then compare where it lands with the paper's values above.</p>
 <figure class="figure wide" id="figure-6">
   <div class="plate"><div class="energy-scroll"><svg class="fig-energy" role="img" aria-label="Stored energy in megajoules on one axis. From the paper: printed 504.65, its own rules 518.3, implied by its beta 567, and readings of its plotted profiles and printed peaks from 527 to 575. From the model: 551 before the fix and 519.9 after it." xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="194.4pt" viewBox="0 0 734.4 194.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -1561,15 +1561,15 @@ def n_e(u: float) -&gt; float:
 </ul>
 </div>
 </details>
-<p><strong>What the checks establish.</strong> The code checks show that the model is well formed and that the program computes it correctly. The agent reviews show that the study's design and its conclusions fit the evidence, and on this goal they produced the corrections that mattered.</p>
+<p><strong>What the checks establish.</strong> The code checks show that the model is well formed and that the program computes it correctly. The agent reviews check whether the study's design and its conclusions fit the evidence, and on this goal they caught the errors described above.</p>
 <p>These checks show that the work is consistent with the model and its sources. <mark class="skim">They do not show that the model predicts a real plant correctly, which is what the hold-out test in <a href="part-4b-aries-test.html">Part 4b</a> is designed to test.</mark></p>
 </section>
 <section>
 <h2 id="8-where-the-harness-stands"><span class="num">8</span>Where the harness stands</h2>
-<p>We built the harness so that an AI could carry engineering work across many sessions and have that work build on itself. <mark class="skim">Our assessment has three parts: the harness is still being refined, it runs our demo's goals almost on its own, and its analysis has been credible but has leaned on a published design to check against.</mark> That last part leaves our biggest open question.</p>
+<p>We built the harness so that an AI could carry engineering work across many sessions and have that work build on itself. <mark class="skim">Our assessment has three parts: the harness is still being refined, it runs our demo's goals almost on its own, and its analysis still needs a domain expert and has leaned on a published design to check against.</mark> That last part leaves our biggest open question.</p>
 <p><strong>It is still being refined.</strong> We continued to develop the harness as we used it and found issues. Many of those fixes were new rules written into the agents' instructions. As much as possible, moving these prompt-rules into deterministic scripts improves scalability.</p>
 <p><strong>It runs goals almost on its own.</strong> We estimate that about 95 percent of the work on our demo's goals ran without us. The stored-energy goal was an early one, and the owner stepped in at four points: approving the goal, leaving the research decision to the agent, ruling on the fix, and closing the goal. Agents did everything else, including the research request, the work item, the regenerated program and its pin, the 7,712-point study, and six reviews by fresh agents. Later goals needed even less. The four goals that built the integrated ARIES model in <a href="part-4b-aries-test.html">Part 4b</a> ran seven rounds between them, and the owner's only input was a written brief at the start and the decision to close at the end.</p>
-<p><strong>Its analysis has been credible, but it has leaned on ground truth.</strong> Many of the issues we caught were found by comparing the model with a published design, such as the Stellaris paper.</p>
+<p><strong>Its analysis still needs a domain expert, and it has leaned on ground truth.</strong> Our colleagues found mistakes in the model's assumptions and in how we read the results. Many of the issues we caught were found by comparing the model with a published design, such as the Stellaris paper.</p>
 <p><strong>The open question.</strong> Our biggest open question is whether the harness's own checks are enough in a domain with no published design to compare against. The checks in <a href="#7-checks-code-and-fresh-reviewers">section 7</a> test the work against the model and its sources, so they do not test whether the model's own assumptions are right. <a href="part-4b-aries-test.html">Part 4b</a> describes the hold-out test we designed to probe this: the model was built without the ARIES-CS publications and then compared with them.</p>
 </section>
 

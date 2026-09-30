@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MMC-FIELD-01",
+  "request_key": "837099d4ad5ea84f6efa926a450d30f0d40299b24d674b473b0d9fbd34c44703",
+  "request_path": "knowledge/research/requests/REQ-MMC-FIELD-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-30T03:21:48.695669+00:00",
+  "override_reason": null
+}

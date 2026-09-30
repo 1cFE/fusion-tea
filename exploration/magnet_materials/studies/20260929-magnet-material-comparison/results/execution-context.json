@@ -1,0 +1,22 @@
+{
+  "study_id": "20260929-magnet-material-comparison",
+  "command": [
+    "execute_study.py",
+    "--integration-return",
+    "work/orchestration/goals/magnet-material-comparison/evidence/integration-r2/integration_return.json"
+  ],
+  "repo_commit": "c4195090aba1beef344c983a61364d355eab5a34",
+  "integration_class": "CANDIDATE",
+  "integration_return": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r2/integration_return.json",
+  "without_candidate": false,
+  "executable_fingerprint": "7075e929abf1133e5dc6d21ac7f65b370e6e88cd322906fc88501270c9592e3f",
+  "semantic_fingerprint": "4d37dbaf827df325d2a0dd19ee4c44c623cf3e67ed7f44552a1ae46b2ef1c2f6",
+  "pin": "2d10694e8b9b2f4b84d53cbf4417f99d406f82d177a1181b25582eb0ee7ea6ee",
+  "store": "exploration/magnet_materials/studies/20260929-magnet-material-comparison/results/native/20260929-magnet-material-comparison.db",
+  "elapsed_seconds": 51.6,
+  "cases": 2832,
+  "unique_points": 2310,
+  "stored_cases": 2310,
+  "completed": 2832,
+  "route": "exploration/magnet_materials/studies/study_route.py:run_cases (stock StudyRunner + PreparedListStrategy)"
+}

@@ -1,0 +1,15 @@
+# Research run REQ-MMC-PLASMA-01
+
+**Question:** Over what ranges of magnetic field, density, size and beta is the ISS04 stellarator confinement scaling fitted, what does its renormalization factor mean off the fitted point, and what do the Stellaris paper and the stellarator PROCESS papers state about the validity of extrapolating ISS04 and their beta limit to a reactor operating point at 4–5 T on axis instead of 9 T?
+
+**Consumer:** goal:magnet-material-comparison/T-011  ·  **Request key:** `35a7fb945c3e5bca3e6a3cd1bd5e9e667c2750317b6950e2511a085fcb231d12`
+
+- searched: `Yamada 2005 Nucl. Fusion 45 1684 ISS04 characterization of energy confinement net-current free plasmas international stellarator database open copy`
+- searched: `Dinklage 2007 Nucl. Fusion 47 1265 ISS04 configuration factor renormalization open copy`
+- searched: `Warmer 2016 From W7-X to a HELIAS fusion power plant open access confinement extrapolation`
+- searched: `Lion 2023 TU Berlin thesis depositonce-18188 PDF re-fetch for Table 4.1/4.3 page inspection`
+- candidate https://www-pub.iaea.org/MTCD/Meetings/PDFplus/fusion-20-preprints/EX_1-5.pdf — **keeper** IAEA FEC 2004 EX/1-5 preprint of the ISS04 database study (Yamada et al.): defines the renormalization factor f_ren, lists the nine-device database, prints the preliminary ISS04v3 fit and per-device f_ren (Fig. 3); open official IAEA page
+- candidate https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2PR16_15201_submitted.pdf — **keeper** Warmer et al. 2016 EUROfusion preprint WPS2-PR(16) 15201 of the PPCF paper: HELIAS 5-B Table 1, f_ren definition and 1-D transport statement, beta-limit range, PROCESS design windows at 4-5.6 T with f_ren <= 1.8 / 1.5
+- failed https://pure.mpg.de/pubman/item/item_2136980_1/component/file_2136979/Yamada.pdf — Yamada et al. 2005 Nucl. Fusion 45 1684 (published ISS04: 0.134 a^2.28 R^0.64 P^-0.61 n^0.54 B^0.84 iota^0.41 and the database parameter-range table). MPG repository serves an Anubis bot-check (HTTP 403) to the tooling; the KURENAI copy (repository.kulib.kyoto-u.ac.jp/handle/2433/34838) is a JS-only page with no reachable bitstream; the ANU copy is embargoed to 2037. A person with a browser can fetch the MPG or KURENAI PDF. (queued)
+- failed https://openresearch-repository.anu.edu.au/items/018d8d84-42db-4ecb-9374-b17ee61c63bc/full — Dinklage et al. 2007 Nucl. Fusion 47 1265 'Physical model assessment of the energy confinement time scaling in stellarators' (ISS04 configuration factor vs effective ripple). ANU repository is request-a-copy only; IOP version is paywalled. Needed for the f_ren-vs-configuration relation; owner may hold access. (queued)
+- candidate https://depositonce.tu-berlin.de/bitstreams/4ae67bcc-f986-40d1-844f-87a4185c21d4/download — **keeper** Lion 2023 TU Berlin thesis PDF re-fetched only for page inspection of Tables 4.1, 4.3, 4.6 (pp. 98, 102, 118); already registered as knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/ (pre-existing, not re-registered)

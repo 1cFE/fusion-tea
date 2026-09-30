@@ -1,0 +1,10 @@
+{
+  "outcome": "pass",
+  "scope": "static pipeline references and model contract",
+  "paths": [
+    "/home/reid/1cfe/fusion-tea/exploration/magnet_materials/magnet_materials_tea/contracts/model_contract.json",
+    "/home/reid/1cfe/fusion-tea/exploration/magnet_materials/magnet_materials_tea/inputs/magnet_conductor_alternatives_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/magnet_materials/magnet_materials_tea/inputs/magnet_subsystem_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/magnet_materials/magnet_materials_tea/pipelines/pipeline.yaml"
+  ]
+}

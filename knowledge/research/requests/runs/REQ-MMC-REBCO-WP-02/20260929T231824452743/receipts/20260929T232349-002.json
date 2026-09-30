@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/rebco-wp/viper2020.pdf",
+  "slug": "hartwig_et_al_2020_viper_insulated_soldered_rebco_cable",
+  "path": "knowledge/sources/hartwig_et_al_2020_viper_insulated_soldered_rebco_cable/",
+  "source_id": "08efdb80ad384cdab3a7191b00643ce82989ada7ab9fde51b1c024989079423c",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:23:49.626648+00:00"
+}

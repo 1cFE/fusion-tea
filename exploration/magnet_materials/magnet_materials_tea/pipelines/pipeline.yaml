@@ -1,0 +1,795 @@
+# Generated Pipeline Configuration for magnet_materials_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for magnet_materials_tea"
+  output_folder: "magnet_materials_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      magnet_conductor_alternatives_params: MagnetConductorAlternativesParams ../inputs/magnet_conductor_alternatives_params.json
+      magnet_subsystem_params: MagnetSubsystemParams ../inputs/magnet_subsystem_params.json
+
+
+  # source: computed_attribute (magnet_subsystem.subsystem.rebco.k_iModule)
+  magnet_subsystem__subsystem__rebco__k_i:
+    module_type: magnet_subsystem.subsystem.rebco.k_iModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__rebco__k_i__k_i
+
+  # source: computed_attribute (magnet_subsystem.subsystem.rebco.k_aModule)
+  magnet_subsystem__subsystem__rebco__k_a:
+    module_type: magnet_subsystem.subsystem.rebco.k_aModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__rebco__k_a__k_a
+
+  # source: computed_attribute (magnet_subsystem.subsystem.rebco.k_gModule)
+  magnet_subsystem__subsystem__rebco__k_g:
+    module_type: magnet_subsystem.subsystem.rebco.k_gModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__rebco__k_g__k_g
+
+  # source: computed_attribute (magnet_subsystem.subsystem.rebco.k_dModule)
+  magnet_subsystem__subsystem__rebco__k_d:
+    module_type: magnet_subsystem.subsystem.rebco.k_dModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__rebco__k_d__k_d
+
+  # source: computed_attribute (magnet_subsystem.subsystem.nb3sn.k_iModule)
+  magnet_subsystem__subsystem__nb3sn__k_i:
+    module_type: magnet_subsystem.subsystem.nb3sn.k_iModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_i__k_i
+
+  # source: computed_attribute (magnet_subsystem.subsystem.nb3sn.eps_minModule)
+  magnet_subsystem__subsystem__nb3sn__eps_min:
+    module_type: magnet_subsystem.subsystem.nb3sn.eps_minModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__nb3sn__eps_min__eps_min
+
+  # source: computed_attribute (magnet_subsystem.subsystem.nb3sn.k_dModule)
+  magnet_subsystem__subsystem__nb3sn__k_d:
+    module_type: magnet_subsystem.subsystem.nb3sn.k_dModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_d__k_d
+
+  # source: computed_attribute (magnet_subsystem.subsystem.nb3sn.k_gModule)
+  magnet_subsystem__subsystem__nb3sn__k_g:
+    module_type: magnet_subsystem.subsystem.nb3sn.k_gModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_g__k_g
+
+  # source: computed_attribute (magnet_subsystem.subsystem.nb3sn.k_aModule)
+  magnet_subsystem__subsystem__nb3sn__k_a:
+    module_type: magnet_subsystem.subsystem.nb3sn.k_aModule
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_a__k_a
+
+  # source: computed_attribute (magnet_subsystem.subsystem.duty.turn_currentModule)
+  magnet_subsystem__subsystem__duty__turn_current:
+    module_type: magnet_subsystem.subsystem.duty.turn_currentModule
+    inputs:
+      I_ref: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__I_ref
+      B_peak: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__B_peak
+      B_ref: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__B_ref
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__duty__turn_current__turn_current
+
+  # magnet_conductor_alternatives.REBCO_Cable_Critical_SurfaceModule
+  magnet_subsystem__subsystem__rebco__conductor:
+    module_type: magnet_conductor_alternatives.REBCO_Cable_Critical_SurfaceModule
+    inputs:
+      T_supply_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_supply
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      T_law_min_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_law_min
+      fraction_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__fraction_rule
+      B_law_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__B_law_max
+      B_knot_min_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__B_knot_min
+      T_law_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_law_max
+      n_tapes_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__n_elements
+      B_knot_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__B_knot_max
+      margin_rise_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__margin_rise
+      shape_mode_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__shape_mode
+      B_peak_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__B_peak
+      B_law_min_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__B_law_min
+      acceptance_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__acceptance_rule
+      g20_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__g20
+      tape_thickness_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__tape_thickness
+      g15_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__g15
+      g10_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__g10
+      alpha_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__alpha
+      g8_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__g8
+      degradation_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__degradation
+      anchor_ic_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__anchor_ic
+      T_star_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_star
+      tape_width_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__tape_width
+      nuclear_rise_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__nuclear_rise
+      tape_copper_fraction_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__tape_copper_fraction
+      g12_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__g12
+    outputs:
+      acceptance_margin: float magnet_subsystem__subsystem__rebco__conductor__acceptance_margin
+      acceptance_pass: float magnet_subsystem__subsystem__rebco__conductor__acceptance_pass
+      tcs_defined: float magnet_subsystem__subsystem__rebco__conductor__tcs_defined
+      status_code: float magnet_subsystem__subsystem__rebco__conductor__status_code
+      ic_tape_op: float magnet_subsystem__subsystem__rebco__conductor__ic_tape_op
+      temperature_margin: float magnet_subsystem__subsystem__rebco__conductor__temperature_margin
+      operating_fraction: float magnet_subsystem__subsystem__rebco__conductor__operating_fraction
+      element_area_total: float magnet_subsystem__subsystem__rebco__conductor__element_area_total
+      T_conductor: float magnet_subsystem__subsystem__rebco__conductor__T_conductor
+      ic_cable_op: float magnet_subsystem__subsystem__rebco__conductor__ic_cable_op
+      element_copper_area: float magnet_subsystem__subsystem__rebco__conductor__element_copper_area
+      fraction_rule_margin: float magnet_subsystem__subsystem__rebco__conductor__fraction_rule_margin
+      supported: float magnet_subsystem__subsystem__rebco__conductor__supported
+      T_cs: float magnet_subsystem__subsystem__rebco__conductor__T_cs
+      temp_rule_margin: float magnet_subsystem__subsystem__rebco__conductor__temp_rule_margin
+
+  # magnet_conductor_alternatives.Winding_Turn_Area_ScreenModule
+  magnet_subsystem__subsystem__rebco__area:
+    module_type: magnet_conductor_alternatives.Winding_Turn_Area_ScreenModule
+    inputs:
+      ins_fraction_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__ins_fraction
+      cu_void_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cu_void
+      element_copper_area_in: float magnet_subsystem__subsystem__rebco__conductor__element_copper_area
+      J_cu_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__J_cu_rule
+      steel_per_kA_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__steel_per_kA_rule
+      solder_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__solder_area
+      B_steel_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__B_steel_ref
+      misc_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__misc_area
+      cu_per_kA_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cu_per_kA_rule
+      element_area_in: float magnet_subsystem__subsystem__rebco__conductor__element_area_total
+      steel_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__steel_area
+      cabling_factor_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cabling_factor
+      available_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__available_area
+      cable_void_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cable_void
+      B_peak_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__B_peak
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      steel_B_scaling_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__steel_B_scaling
+      cu_space_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cu_space
+    outputs:
+      net_area: float magnet_subsystem__subsystem__rebco__area__net_area
+      fit_margin: float magnet_subsystem__subsystem__rebco__area__fit_margin
+      steel_margin: float magnet_subsystem__subsystem__rebco__area__steel_margin
+      fit_margin_fraction: float magnet_subsystem__subsystem__rebco__area__fit_margin_fraction
+      steel_pass: float magnet_subsystem__subsystem__rebco__area__steel_pass
+      cu_required: float magnet_subsystem__subsystem__rebco__area__cu_required
+      cu_pass: float magnet_subsystem__subsystem__rebco__area__cu_pass
+      steel_required: float magnet_subsystem__subsystem__rebco__area__steel_required
+      gross_area: float magnet_subsystem__subsystem__rebco__area__gross_area
+      cable_area: float magnet_subsystem__subsystem__rebco__area__cable_area
+      cu_margin: float magnet_subsystem__subsystem__rebco__area__cu_margin
+      required_envelope_J: float magnet_subsystem__subsystem__rebco__area__required_envelope_J
+      fit_pass: float magnet_subsystem__subsystem__rebco__area__fit_pass
+
+  # magnet_conductor_alternatives.Magnet_Cold_Stage_LoadModule
+  magnet_subsystem__subsystem__rebco__cold_load:
+    module_type: magnet_conductor_alternatives.Magnet_Cold_Stage_LoadModule
+    inputs:
+      T_supply_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_supply
+      k_f_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__k_f
+      shield_static_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__shield_static
+      T_shield_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_shield
+      L0_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__L0
+      k_d_in: float magnet_subsystem__subsystem__rebco__k_d__k_d.root
+      T_conduction_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_conduction_ref
+      f_lead_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__f_lead
+      radiation_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__radiation_ref
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      k_e_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__k_e
+      p_joint_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__p_joint_ref
+      conduction_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__conduction_ref
+      k_i_in: float magnet_subsystem__subsystem__rebco__k_i__k_i.root
+      I_joint_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__I_joint_ref
+      k_g_in: float magnet_subsystem__subsystem__rebco__k_g__k_g.root
+      k_c_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__k_c
+      load_multiplier_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__load_multiplier
+      cold_volume_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cold_volume
+      n_leads_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__n_leads
+      k_h_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__k_h
+      nuclear_density_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__nuclear_density
+      k_a_in: float magnet_subsystem__subsystem__rebco__k_a__k_a.root
+      k_b_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__k_b
+      T_amb_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_amb
+    outputs:
+      q_cold: float magnet_subsystem__subsystem__rebco__cold_load__q_cold
+      q_conduction: float magnet_subsystem__subsystem__rebco__cold_load__q_conduction
+      q_shield: float magnet_subsystem__subsystem__rebco__cold_load__q_shield
+      q_nuclear: float magnet_subsystem__subsystem__rebco__cold_load__q_nuclear
+      q_radiation: float magnet_subsystem__subsystem__rebco__cold_load__q_radiation
+      q_leads: float magnet_subsystem__subsystem__rebco__cold_load__q_leads
+      k_integral: float magnet_subsystem__subsystem__rebco__cold_load__k_integral
+      q_joints: float magnet_subsystem__subsystem__rebco__cold_load__q_joints
+
+  # magnet_conductor_alternatives.Staged_Refrigeration_ScreenModule
+  magnet_subsystem__subsystem__rebco__refrigeration:
+    module_type: magnet_conductor_alternatives.Staged_Refrigeration_ScreenModule
+    inputs:
+      T_amb_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_amb
+      green_a_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__green_a
+      capital_mode_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__capital_mode
+      q_shield_in: float magnet_subsystem__subsystem__rebco__cold_load__q_shield
+      rating_cold_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__rating_cold
+      eta_const_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__eta_const
+      T_shield_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_shield
+      f_carnot_shield_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__f_carnot_shield
+      green_b_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__green_b
+      T_green_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_green
+      eta_mode_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__eta_mode
+      green_c_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__green_c
+      green_d_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__green_d
+      q_cold_in: float magnet_subsystem__subsystem__rebco__cold_load__q_cold
+      usd2015_to_2021_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__usd2015_to_2021
+      T_supply_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__T_supply
+    outputs:
+      p_in_total_MW: float magnet_subsystem__subsystem__rebco__refrigeration__p_in_total_MW
+      eta_cold: float magnet_subsystem__subsystem__rebco__refrigeration__eta_cold
+      green_extrapolated: float magnet_subsystem__subsystem__rebco__refrigeration__green_extrapolated
+      R_equiv_kW: float magnet_subsystem__subsystem__rebco__refrigeration__R_equiv_kW
+      refrigerator_capital: float magnet_subsystem__subsystem__rebco__refrigeration__refrigerator_capital
+      carnot_specific_power: float magnet_subsystem__subsystem__rebco__refrigeration__carnot_specific_power
+      p_in_cold: float magnet_subsystem__subsystem__rebco__refrigeration__p_in_cold
+      capacity_pass: float magnet_subsystem__subsystem__rebco__refrigeration__capacity_pass
+      capacity_margin: float magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin
+      p_in_shield: float magnet_subsystem__subsystem__rebco__refrigeration__p_in_shield
+
+  # magnet_conductor_alternatives.Winding_Inventory_and_CostModule
+  magnet_subsystem__subsystem__rebco__inventory:
+    module_type: magnet_conductor_alternatives.Winding_Inventory_and_CostModule
+    inputs:
+      coils_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__coils
+      element_price_per_m_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__element_price_per_m
+      price_steel_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__price_steel
+      element_density_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__element_density
+      n_elements_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__n_elements
+      element_area_in: float magnet_subsystem__subsystem__rebco__conductor__element_area_total
+      turn_length_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__turn_length
+      rho_solder_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__rho_solder
+      turns_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__turns
+      manufacturing_per_m_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__manufacturing_per_m
+      cu_space_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cu_space
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      rho_steel_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__rho_steel
+      rho_cu_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__rho_cu
+      price_solder_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__price_solder
+      solder_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__solder_area
+      price_cu_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__price_cu
+      cu_void_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__cu_void
+      steel_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__steel_area
+    outputs:
+      cu_mass: float magnet_subsystem__subsystem__rebco__inventory__cu_mass
+      sc_cost: float magnet_subsystem__subsystem__rebco__inventory__sc_cost
+      winding_capital: float magnet_subsystem__subsystem__rebco__inventory__winding_capital
+      manufacturing_cost: float magnet_subsystem__subsystem__rebco__inventory__manufacturing_cost
+      conductor_length: float magnet_subsystem__subsystem__rebco__inventory__conductor_length
+      element_length: float magnet_subsystem__subsystem__rebco__inventory__element_length
+      materials_cost: float magnet_subsystem__subsystem__rebco__inventory__materials_cost
+      element_mass: float magnet_subsystem__subsystem__rebco__inventory__element_mass
+      steel_mass: float magnet_subsystem__subsystem__rebco__inventory__steel_mass
+      solder_mass: float magnet_subsystem__subsystem__rebco__inventory__solder_mass
+      ampere_metres: float magnet_subsystem__subsystem__rebco__inventory__ampere_metres
+
+  # magnet_conductor_alternatives.Subsystem_Annualized_CostModule
+  magnet_subsystem__subsystem__rebco__annualized:
+    module_type: magnet_conductor_alternatives.Subsystem_Annualized_CostModule
+    inputs:
+      electricity_price_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__electricity_price
+      p_in_total_MW_in: float magnet_subsystem__subsystem__rebco__refrigeration__p_in_total_MW
+      refrigerator_capital_in: float magnet_subsystem__subsystem__rebco__refrigeration__refrigerator_capital
+      availability_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__availability
+      winding_capital_in: float magnet_subsystem__subsystem__rebco__inventory__winding_capital
+      hours_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__hours
+      crf_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__crf
+    outputs:
+      capital_total: float magnet_subsystem__subsystem__rebco__annualized__capital_total
+      annualized_cost: float magnet_subsystem__subsystem__rebco__annualized__annualized_cost
+      annual_electricity: float magnet_subsystem__subsystem__rebco__annualized__annual_electricity
+
+  # source: computed_attribute (magnet_subsystem.subsystem.rebco.all_passModule)
+  magnet_subsystem__subsystem__rebco__all_pass:
+    module_type: magnet_subsystem.subsystem.rebco.all_passModule
+    inputs:
+      acceptance_pass: float magnet_subsystem__subsystem__rebco__conductor__acceptance_pass
+      fit_pass: float magnet_subsystem__subsystem__rebco__area__fit_pass
+      cu_pass: float magnet_subsystem__subsystem__rebco__area__cu_pass
+      steel_pass: float magnet_subsystem__subsystem__rebco__area__steel_pass
+      capacity_pass: float magnet_subsystem__subsystem__rebco__refrigeration__capacity_pass
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__rebco__all_pass__all_pass
+
+  # magnet_conductor_alternatives.Magnet_Cold_Stage_LoadModule
+  magnet_subsystem__subsystem__nb3sn__cold_load:
+    module_type: magnet_conductor_alternatives.Magnet_Cold_Stage_LoadModule
+    inputs:
+      load_multiplier_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__load_multiplier
+      k_f_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__k_f
+      T_supply_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_supply
+      k_e_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__k_e
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      k_a_in: float magnet_subsystem__subsystem__nb3sn__k_a__k_a.root
+      T_shield_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_shield
+      nuclear_density_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__nuclear_density
+      k_i_in: float magnet_subsystem__subsystem__nb3sn__k_i__k_i.root
+      k_g_in: float magnet_subsystem__subsystem__nb3sn__k_g__k_g.root
+      radiation_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__radiation_ref
+      cold_volume_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cold_volume
+      p_joint_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__p_joint_ref
+      f_lead_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__f_lead
+      I_joint_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__I_joint_ref
+      conduction_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__conduction_ref
+      shield_static_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__shield_static
+      T_amb_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_amb
+      L0_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__L0
+      k_c_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__k_c
+      T_conduction_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_conduction_ref
+      k_h_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__k_h
+      n_leads_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__n_leads
+      k_d_in: float magnet_subsystem__subsystem__nb3sn__k_d__k_d.root
+      k_b_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__k_b
+    outputs:
+      q_cold: float magnet_subsystem__subsystem__nb3sn__cold_load__q_cold
+      q_conduction: float magnet_subsystem__subsystem__nb3sn__cold_load__q_conduction
+      q_shield: float magnet_subsystem__subsystem__nb3sn__cold_load__q_shield
+      q_nuclear: float magnet_subsystem__subsystem__nb3sn__cold_load__q_nuclear
+      q_radiation: float magnet_subsystem__subsystem__nb3sn__cold_load__q_radiation
+      q_leads: float magnet_subsystem__subsystem__nb3sn__cold_load__q_leads
+      k_integral: float magnet_subsystem__subsystem__nb3sn__cold_load__k_integral
+      q_joints: float magnet_subsystem__subsystem__nb3sn__cold_load__q_joints
+
+  # magnet_conductor_alternatives.Nb3Sn_Cable_Critical_SurfaceModule
+  magnet_subsystem__subsystem__nb3sn__conductor:
+    module_type: magnet_conductor_alternatives.Nb3Sn_Cable_Critical_SurfaceModule
+    inputs:
+      Ca2_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__Ca2
+      p_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__p
+      strand_copper_fraction_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__strand_copper_fraction
+      eps0a_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__eps0a
+      eps_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__eps_max
+      fraction_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__fraction_rule
+      B_peak_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__B_peak
+      margin_rise_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__margin_rise
+      acceptance_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__acceptance_rule
+      B_edge_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__B_edge_max
+      C1_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__C1
+      eps_min_in: float magnet_subsystem__subsystem__nb3sn__eps_min__eps_min.root
+      B_law_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__B_law_max
+      n_strands_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__n_elements
+      Tc0_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__Tc0
+      B_law_min_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__B_law_min
+      Bc20_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__Bc20
+      eps_intrinsic_in: float magnet_conductor_alternatives_params.magnet_subsystem__subsystem__nb3sn__conductor__eps_intrinsic_in
+      q_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__q
+      nuclear_rise_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__nuclear_rise
+      B_design_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__B_design_max
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      T_law_min_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_law_min
+      T_supply_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_supply
+      T_law_max_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_law_max
+      strand_diameter_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__strand_diameter
+      Ca1_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__Ca1
+    outputs:
+      temperature_margin: float magnet_subsystem__subsystem__nb3sn__conductor__temperature_margin
+      element_copper_area: float magnet_subsystem__subsystem__nb3sn__conductor__element_copper_area
+      acceptance_pass: float magnet_subsystem__subsystem__nb3sn__conductor__acceptance_pass
+      T_cs: float magnet_subsystem__subsystem__nb3sn__conductor__T_cs
+      acceptance_margin: float magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin
+      status_code: float magnet_subsystem__subsystem__nb3sn__conductor__status_code
+      temp_rule_margin: float magnet_subsystem__subsystem__nb3sn__conductor__temp_rule_margin
+      fraction_rule_margin: float magnet_subsystem__subsystem__nb3sn__conductor__fraction_rule_margin
+      supported: float magnet_subsystem__subsystem__nb3sn__conductor__supported
+      ic_cable_op: float magnet_subsystem__subsystem__nb3sn__conductor__ic_cable_op
+      operating_fraction: float magnet_subsystem__subsystem__nb3sn__conductor__operating_fraction
+      tcs_defined: float magnet_subsystem__subsystem__nb3sn__conductor__tcs_defined
+      ic_strand_op: float magnet_subsystem__subsystem__nb3sn__conductor__ic_strand_op
+      T_conductor: float magnet_subsystem__subsystem__nb3sn__conductor__T_conductor
+      element_area_total: float magnet_subsystem__subsystem__nb3sn__conductor__element_area_total
+
+  # magnet_conductor_alternatives.Winding_Inventory_and_CostModule
+  magnet_subsystem__subsystem__nb3sn__inventory:
+    module_type: magnet_conductor_alternatives.Winding_Inventory_and_CostModule
+    inputs:
+      element_area_in: float magnet_subsystem__subsystem__nb3sn__conductor__element_area_total
+      solder_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__solder_area
+      steel_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__steel_area
+      cu_space_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cu_space
+      price_cu_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__price_cu
+      price_steel_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__price_steel
+      manufacturing_per_m_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__manufacturing_per_m
+      coils_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__coils
+      cu_void_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cu_void
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      rho_solder_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__rho_solder
+      price_solder_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__price_solder
+      rho_steel_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__rho_steel
+      n_elements_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__n_elements
+      element_price_per_m_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__element_price_per_m
+      turns_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__turns
+      element_density_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__element_density
+      turn_length_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__turn_length
+      rho_cu_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__rho_cu
+    outputs:
+      cu_mass: float magnet_subsystem__subsystem__nb3sn__inventory__cu_mass
+      sc_cost: float magnet_subsystem__subsystem__nb3sn__inventory__sc_cost
+      winding_capital: float magnet_subsystem__subsystem__nb3sn__inventory__winding_capital
+      manufacturing_cost: float magnet_subsystem__subsystem__nb3sn__inventory__manufacturing_cost
+      conductor_length: float magnet_subsystem__subsystem__nb3sn__inventory__conductor_length
+      element_length: float magnet_subsystem__subsystem__nb3sn__inventory__element_length
+      materials_cost: float magnet_subsystem__subsystem__nb3sn__inventory__materials_cost
+      element_mass: float magnet_subsystem__subsystem__nb3sn__inventory__element_mass
+      steel_mass: float magnet_subsystem__subsystem__nb3sn__inventory__steel_mass
+      solder_mass: float magnet_subsystem__subsystem__nb3sn__inventory__solder_mass
+      ampere_metres: float magnet_subsystem__subsystem__nb3sn__inventory__ampere_metres
+
+  # magnet_conductor_alternatives.Winding_Turn_Area_ScreenModule
+  magnet_subsystem__subsystem__nb3sn__area:
+    module_type: magnet_conductor_alternatives.Winding_Turn_Area_ScreenModule
+    inputs:
+      ins_fraction_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__ins_fraction
+      turn_current_in: float magnet_subsystem__subsystem__duty__turn_current__turn_current.root
+      steel_B_scaling_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__steel_B_scaling
+      solder_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__solder_area
+      cu_space_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cu_space
+      misc_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__misc_area
+      cu_void_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cu_void
+      available_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__available_area
+      element_area_in: float magnet_subsystem__subsystem__nb3sn__conductor__element_area_total
+      steel_per_kA_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__steel_per_kA_rule
+      steel_area_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__steel_area
+      B_peak_in: float magnet_subsystem_params.magnet_subsystem__subsystem__duty__B_peak
+      cabling_factor_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cabling_factor
+      B_steel_ref_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__B_steel_ref
+      element_copper_area_in: float magnet_subsystem__subsystem__nb3sn__conductor__element_copper_area
+      J_cu_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__J_cu_rule
+      cu_per_kA_rule_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cu_per_kA_rule
+      cable_void_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__cable_void
+    outputs:
+      net_area: float magnet_subsystem__subsystem__nb3sn__area__net_area
+      fit_margin: float magnet_subsystem__subsystem__nb3sn__area__fit_margin
+      steel_margin: float magnet_subsystem__subsystem__nb3sn__area__steel_margin
+      fit_margin_fraction: float magnet_subsystem__subsystem__nb3sn__area__fit_margin_fraction
+      steel_pass: float magnet_subsystem__subsystem__nb3sn__area__steel_pass
+      cu_required: float magnet_subsystem__subsystem__nb3sn__area__cu_required
+      cu_pass: float magnet_subsystem__subsystem__nb3sn__area__cu_pass
+      steel_required: float magnet_subsystem__subsystem__nb3sn__area__steel_required
+      gross_area: float magnet_subsystem__subsystem__nb3sn__area__gross_area
+      cable_area: float magnet_subsystem__subsystem__nb3sn__area__cable_area
+      cu_margin: float magnet_subsystem__subsystem__nb3sn__area__cu_margin
+      required_envelope_J: float magnet_subsystem__subsystem__nb3sn__area__required_envelope_J
+      fit_pass: float magnet_subsystem__subsystem__nb3sn__area__fit_pass
+
+  # magnet_conductor_alternatives.Staged_Refrigeration_ScreenModule
+  magnet_subsystem__subsystem__nb3sn__refrigeration:
+    module_type: magnet_conductor_alternatives.Staged_Refrigeration_ScreenModule
+    inputs:
+      capital_mode_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__capital_mode
+      green_a_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__green_a
+      T_supply_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_supply
+      T_green_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_green
+      rating_cold_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__rating_cold
+      q_shield_in: float magnet_subsystem__subsystem__nb3sn__cold_load__q_shield
+      green_d_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__green_d
+      usd2015_to_2021_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__usd2015_to_2021
+      T_shield_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_shield
+      q_cold_in: float magnet_subsystem__subsystem__nb3sn__cold_load__q_cold
+      T_amb_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__T_amb
+      eta_mode_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__eta_mode
+      f_carnot_shield_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__f_carnot_shield
+      eta_const_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__eta_const
+      green_c_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__green_c
+      green_b_in: float magnet_subsystem_params.magnet_subsystem__subsystem__nb3sn__green_b
+    outputs:
+      p_in_total_MW: float magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_total_MW
+      eta_cold: float magnet_subsystem__subsystem__nb3sn__refrigeration__eta_cold
+      green_extrapolated: float magnet_subsystem__subsystem__nb3sn__refrigeration__green_extrapolated
+      R_equiv_kW: float magnet_subsystem__subsystem__nb3sn__refrigeration__R_equiv_kW
+      refrigerator_capital: float magnet_subsystem__subsystem__nb3sn__refrigeration__refrigerator_capital
+      carnot_specific_power: float magnet_subsystem__subsystem__nb3sn__refrigeration__carnot_specific_power
+      p_in_cold: float magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_cold
+      capacity_pass: float magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_pass
+      capacity_margin: float magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin
+      p_in_shield: float magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_shield
+
+  # magnet_conductor_alternatives.Subsystem_Annualized_CostModule
+  magnet_subsystem__subsystem__nb3sn__annualized:
+    module_type: magnet_conductor_alternatives.Subsystem_Annualized_CostModule
+    inputs:
+      p_in_total_MW_in: float magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_total_MW
+      availability_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__availability
+      crf_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__crf
+      electricity_price_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__electricity_price
+      hours_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__hours
+      winding_capital_in: float magnet_subsystem__subsystem__nb3sn__inventory__winding_capital
+      refrigerator_capital_in: float magnet_subsystem__subsystem__nb3sn__refrigeration__refrigerator_capital
+    outputs:
+      capital_total: float magnet_subsystem__subsystem__nb3sn__annualized__capital_total
+      annualized_cost: float magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost
+      annual_electricity: float magnet_subsystem__subsystem__nb3sn__annualized__annual_electricity
+
+  # source: computed_attribute (magnet_subsystem.subsystem.nb3sn.all_passModule)
+  magnet_subsystem__subsystem__nb3sn__all_pass:
+    module_type: magnet_subsystem.subsystem.nb3sn.all_passModule
+    inputs:
+      acceptance_pass: float magnet_subsystem__subsystem__nb3sn__conductor__acceptance_pass
+      fit_pass: float magnet_subsystem__subsystem__nb3sn__area__fit_pass
+      cu_pass: float magnet_subsystem__subsystem__nb3sn__area__cu_pass
+      steel_pass: float magnet_subsystem__subsystem__nb3sn__area__steel_pass
+      capacity_pass: float magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_pass
+    outputs:
+      root: RootModel[float] magnet_subsystem__subsystem__nb3sn__all_pass__all_pass
+
+  # magnet_conductor_alternatives.Matched_Pair_ComparisonModule
+  magnet_subsystem__subsystem__pair:
+    module_type: magnet_conductor_alternatives.Matched_Pair_ComparisonModule
+    inputs:
+      crf_in: float magnet_subsystem_params.magnet_subsystem__subsystem__economics__crf
+      status_nb3sn_in: float magnet_subsystem__subsystem__nb3sn__conductor__status_code
+      rebco_element_length_in: float magnet_subsystem__subsystem__rebco__inventory__element_length
+      annualized_rebco_in: float magnet_subsystem__subsystem__rebco__annualized__annualized_cost
+      annualized_nb3sn_in: float magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost
+      status_rebco_in: float magnet_subsystem__subsystem__rebco__conductor__status_code
+      rebco_price_per_m_in: float magnet_subsystem_params.magnet_subsystem__subsystem__rebco__element_price_per_m
+      all_pass_nb3sn_in: float magnet_subsystem__subsystem__nb3sn__all_pass__all_pass.root
+      all_pass_rebco_in: float magnet_subsystem__subsystem__rebco__all_pass__all_pass.root
+      rebco_ic_tape_op_in: float magnet_subsystem__subsystem__rebco__conductor__ic_tape_op
+    outputs:
+      breakeven_rebco_price_per_m: float magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m
+      breakeven_rebco_price_per_kAm: float magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_kAm
+      pair_status: float magnet_subsystem__subsystem__pair__pair_status
+      cost_difference: float magnet_subsystem__subsystem__pair__cost_difference
+      rankable: float magnet_subsystem__subsystem__pair__rankable
+
+  # magnet_subsystem.SubsystemRebcoCapacityOkConstraintModule
+  magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f:
+    module_type: magnet_subsystem.SubsystemRebcoCapacityOkConstraintModule
+    inputs:
+      capacity_margin_in: float magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f__evaluation
+
+  # magnet_subsystem.SubsystemRebcoFitOkConstraintModule
+  magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056:
+    module_type: magnet_subsystem.SubsystemRebcoFitOkConstraintModule
+    inputs:
+      fit_margin_in: float magnet_subsystem__subsystem__rebco__area__fit_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056__evaluation
+
+  # magnet_subsystem.SubsystemRebcoCopperOkConstraintModule
+  magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9:
+    module_type: magnet_subsystem.SubsystemRebcoCopperOkConstraintModule
+    inputs:
+      cu_margin_in: float magnet_subsystem__subsystem__rebco__area__cu_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9__evaluation
+
+  # magnet_subsystem.SubsystemRebcoSteelOkConstraintModule
+  magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312:
+    module_type: magnet_subsystem.SubsystemRebcoSteelOkConstraintModule
+    inputs:
+      steel_margin_in: float magnet_subsystem__subsystem__rebco__area__steel_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312__evaluation
+
+  # magnet_subsystem.SubsystemRebcoAcceptanceOkConstraintModule
+  magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4:
+    module_type: magnet_subsystem.SubsystemRebcoAcceptanceOkConstraintModule
+    inputs:
+      margin_in: float magnet_subsystem__subsystem__rebco__conductor__acceptance_margin
+      supported_in: float magnet_subsystem__subsystem__rebco__conductor__supported
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4__evaluation
+
+  # magnet_subsystem.SubsystemNb3snCapacityOkConstraintModule
+  magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be:
+    module_type: magnet_subsystem.SubsystemNb3snCapacityOkConstraintModule
+    inputs:
+      capacity_margin_in: float magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be__evaluation
+
+  # magnet_subsystem.SubsystemNb3snCopperOkConstraintModule
+  magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2:
+    module_type: magnet_subsystem.SubsystemNb3snCopperOkConstraintModule
+    inputs:
+      cu_margin_in: float magnet_subsystem__subsystem__nb3sn__area__cu_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2__evaluation
+
+  # magnet_subsystem.SubsystemNb3snFitOkConstraintModule
+  magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93:
+    module_type: magnet_subsystem.SubsystemNb3snFitOkConstraintModule
+    inputs:
+      fit_margin_in: float magnet_subsystem__subsystem__nb3sn__area__fit_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93__evaluation
+
+  # magnet_subsystem.SubsystemNb3snAcceptanceOkConstraintModule
+  magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77:
+    module_type: magnet_subsystem.SubsystemNb3snAcceptanceOkConstraintModule
+    inputs:
+      margin_in: float magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin
+      supported_in: float magnet_subsystem__subsystem__nb3sn__conductor__supported
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77__evaluation
+
+  # magnet_subsystem.SubsystemNb3snSteelOkConstraintModule
+  magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4:
+    module_type: magnet_subsystem.SubsystemNb3snSteelOkConstraintModule
+    inputs:
+      steel_margin_in: float magnet_subsystem__subsystem__nb3sn__area__steel_margin
+    outputs:
+      evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      magnet_subsystem_subsystem_rebco_capacity_ok_ea481269af095f7f: ConstraintEvaluation magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f__evaluation
+      magnet_subsystem_subsystem_rebco_fit_ok_977ffb782260e056: ConstraintEvaluation magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056__evaluation
+      magnet_subsystem_subsystem_rebco_copper_ok_b9db08c2aa4dd8f9: ConstraintEvaluation magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9__evaluation
+      magnet_subsystem_subsystem_rebco_steel_ok_4f587fec2c667312: ConstraintEvaluation magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312__evaluation
+      magnet_subsystem_subsystem_rebco_acceptance_ok_904ca5528ef92aa4: ConstraintEvaluation magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4__evaluation
+      magnet_subsystem_subsystem_nb3sn_capacity_ok_c900a95e873755be: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be__evaluation
+      magnet_subsystem_subsystem_nb3sn_copper_ok_a4ff5a6abedecdd2: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2__evaluation
+      magnet_subsystem_subsystem_nb3sn_fit_ok_768d741c21386f93: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93__evaluation
+      magnet_subsystem_subsystem_nb3sn_acceptance_ok_6ecc44a52542ba77: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77__evaluation
+      magnet_subsystem_subsystem_nb3sn_steel_ok_5d849655e24deaf4: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      magnet_subsystem__subsystem__rebco__k_i__k_i: RootModel[float] magnet_subsystem__subsystem__rebco__k_i__k_i.json
+      magnet_subsystem__subsystem__rebco__k_a__k_a: RootModel[float] magnet_subsystem__subsystem__rebco__k_a__k_a.json
+      magnet_subsystem__subsystem__rebco__k_g__k_g: RootModel[float] magnet_subsystem__subsystem__rebco__k_g__k_g.json
+      magnet_subsystem__subsystem__rebco__k_d__k_d: RootModel[float] magnet_subsystem__subsystem__rebco__k_d__k_d.json
+      magnet_subsystem__subsystem__nb3sn__k_i__k_i: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_i__k_i.json
+      magnet_subsystem__subsystem__nb3sn__eps_min__eps_min: RootModel[float] magnet_subsystem__subsystem__nb3sn__eps_min__eps_min.json
+      magnet_subsystem__subsystem__nb3sn__k_d__k_d: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_d__k_d.json
+      magnet_subsystem__subsystem__nb3sn__k_g__k_g: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_g__k_g.json
+      magnet_subsystem__subsystem__nb3sn__k_a__k_a: RootModel[float] magnet_subsystem__subsystem__nb3sn__k_a__k_a.json
+      magnet_subsystem__subsystem__duty__turn_current__turn_current: RootModel[float] magnet_subsystem__subsystem__duty__turn_current__turn_current.json
+      magnet_subsystem__subsystem__rebco__conductor__acceptance_margin: float subsystem__rebco__acceptance_margin.json
+      magnet_subsystem__subsystem__rebco__conductor__acceptance_pass: float subsystem__rebco__acceptance_pass.json
+      magnet_subsystem__subsystem__rebco__conductor__tcs_defined: float magnet_subsystem__subsystem__rebco__conductor__tcs_defined.json
+      magnet_subsystem__subsystem__rebco__conductor__status_code: float subsystem__rebco__status_code.json
+      magnet_subsystem__subsystem__rebco__conductor__ic_tape_op: float subsystem__rebco__ic_tape_op.json
+      magnet_subsystem__subsystem__rebco__conductor__temperature_margin: float magnet_subsystem__subsystem__rebco__conductor__temperature_margin.json
+      magnet_subsystem__subsystem__rebco__conductor__operating_fraction: float magnet_subsystem__subsystem__rebco__conductor__operating_fraction.json
+      magnet_subsystem__subsystem__rebco__conductor__element_area_total: float subsystem__rebco__element_area.json
+      magnet_subsystem__subsystem__rebco__conductor__T_conductor: float magnet_subsystem__subsystem__rebco__conductor__T_conductor.json
+      magnet_subsystem__subsystem__rebco__conductor__ic_cable_op: float magnet_subsystem__subsystem__rebco__conductor__ic_cable_op.json
+      magnet_subsystem__subsystem__rebco__conductor__element_copper_area: float subsystem__rebco__element_copper_area.json
+      magnet_subsystem__subsystem__rebco__conductor__fraction_rule_margin: float magnet_subsystem__subsystem__rebco__conductor__fraction_rule_margin.json
+      magnet_subsystem__subsystem__rebco__conductor__supported: float subsystem__rebco__supported.json
+      magnet_subsystem__subsystem__rebco__conductor__T_cs: float magnet_subsystem__subsystem__rebco__conductor__T_cs.json
+      magnet_subsystem__subsystem__rebco__conductor__temp_rule_margin: float magnet_subsystem__subsystem__rebco__conductor__temp_rule_margin.json
+      magnet_subsystem__subsystem__rebco__area__net_area: float magnet_subsystem__subsystem__rebco__area__net_area.json
+      magnet_subsystem__subsystem__rebco__area__fit_margin: float subsystem__rebco__fit_margin.json
+      magnet_subsystem__subsystem__rebco__area__steel_margin: float subsystem__rebco__steel_margin.json
+      magnet_subsystem__subsystem__rebco__area__fit_margin_fraction: float magnet_subsystem__subsystem__rebco__area__fit_margin_fraction.json
+      magnet_subsystem__subsystem__rebco__area__steel_pass: float subsystem__rebco__steel_pass.json
+      magnet_subsystem__subsystem__rebco__area__cu_required: float magnet_subsystem__subsystem__rebco__area__cu_required.json
+      magnet_subsystem__subsystem__rebco__area__cu_pass: float subsystem__rebco__cu_pass.json
+      magnet_subsystem__subsystem__rebco__area__steel_required: float magnet_subsystem__subsystem__rebco__area__steel_required.json
+      magnet_subsystem__subsystem__rebco__area__gross_area: float magnet_subsystem__subsystem__rebco__area__gross_area.json
+      magnet_subsystem__subsystem__rebco__area__cable_area: float magnet_subsystem__subsystem__rebco__area__cable_area.json
+      magnet_subsystem__subsystem__rebco__area__cu_margin: float subsystem__rebco__cu_margin.json
+      magnet_subsystem__subsystem__rebco__area__required_envelope_J: float magnet_subsystem__subsystem__rebco__area__required_envelope_J.json
+      magnet_subsystem__subsystem__rebco__area__fit_pass: float subsystem__rebco__fit_pass.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_cold: float subsystem__rebco__q_cold.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_conduction: float magnet_subsystem__subsystem__rebco__cold_load__q_conduction.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_shield: float subsystem__rebco__q_shield.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_nuclear: float magnet_subsystem__subsystem__rebco__cold_load__q_nuclear.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_radiation: float magnet_subsystem__subsystem__rebco__cold_load__q_radiation.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_leads: float magnet_subsystem__subsystem__rebco__cold_load__q_leads.json
+      magnet_subsystem__subsystem__rebco__cold_load__k_integral: float magnet_subsystem__subsystem__rebco__cold_load__k_integral.json
+      magnet_subsystem__subsystem__rebco__cold_load__q_joints: float magnet_subsystem__subsystem__rebco__cold_load__q_joints.json
+      magnet_subsystem__subsystem__rebco__refrigeration__p_in_total_MW: float subsystem__rebco__p_in_total_MW.json
+      magnet_subsystem__subsystem__rebco__refrigeration__eta_cold: float magnet_subsystem__subsystem__rebco__refrigeration__eta_cold.json
+      magnet_subsystem__subsystem__rebco__refrigeration__green_extrapolated: float magnet_subsystem__subsystem__rebco__refrigeration__green_extrapolated.json
+      magnet_subsystem__subsystem__rebco__refrigeration__R_equiv_kW: float magnet_subsystem__subsystem__rebco__refrigeration__R_equiv_kW.json
+      magnet_subsystem__subsystem__rebco__refrigeration__refrigerator_capital: float subsystem__rebco__refrigerator_capital.json
+      magnet_subsystem__subsystem__rebco__refrigeration__carnot_specific_power: float magnet_subsystem__subsystem__rebco__refrigeration__carnot_specific_power.json
+      magnet_subsystem__subsystem__rebco__refrigeration__p_in_cold: float magnet_subsystem__subsystem__rebco__refrigeration__p_in_cold.json
+      magnet_subsystem__subsystem__rebco__refrigeration__capacity_pass: float subsystem__rebco__capacity_pass.json
+      magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin: float subsystem__rebco__capacity_margin.json
+      magnet_subsystem__subsystem__rebco__refrigeration__p_in_shield: float magnet_subsystem__subsystem__rebco__refrigeration__p_in_shield.json
+      magnet_subsystem__subsystem__rebco__inventory__cu_mass: float magnet_subsystem__subsystem__rebco__inventory__cu_mass.json
+      magnet_subsystem__subsystem__rebco__inventory__sc_cost: float magnet_subsystem__subsystem__rebco__inventory__sc_cost.json
+      magnet_subsystem__subsystem__rebco__inventory__winding_capital: float subsystem__rebco__winding_capital.json
+      magnet_subsystem__subsystem__rebco__inventory__manufacturing_cost: float magnet_subsystem__subsystem__rebco__inventory__manufacturing_cost.json
+      magnet_subsystem__subsystem__rebco__inventory__conductor_length: float magnet_subsystem__subsystem__rebco__inventory__conductor_length.json
+      magnet_subsystem__subsystem__rebco__inventory__element_length: float subsystem__rebco__element_length.json
+      magnet_subsystem__subsystem__rebco__inventory__materials_cost: float magnet_subsystem__subsystem__rebco__inventory__materials_cost.json
+      magnet_subsystem__subsystem__rebco__inventory__element_mass: float magnet_subsystem__subsystem__rebco__inventory__element_mass.json
+      magnet_subsystem__subsystem__rebco__inventory__steel_mass: float magnet_subsystem__subsystem__rebco__inventory__steel_mass.json
+      magnet_subsystem__subsystem__rebco__inventory__solder_mass: float magnet_subsystem__subsystem__rebco__inventory__solder_mass.json
+      magnet_subsystem__subsystem__rebco__inventory__ampere_metres: float magnet_subsystem__subsystem__rebco__inventory__ampere_metres.json
+      magnet_subsystem__subsystem__rebco__annualized__capital_total: float magnet_subsystem__subsystem__rebco__annualized__capital_total.json
+      magnet_subsystem__subsystem__rebco__annualized__annualized_cost: float subsystem__rebco__annualized_cost.json
+      magnet_subsystem__subsystem__rebco__annualized__annual_electricity: float magnet_subsystem__subsystem__rebco__annualized__annual_electricity.json
+      magnet_subsystem__subsystem__rebco__all_pass__all_pass: RootModel[float] magnet_subsystem__subsystem__rebco__all_pass__all_pass.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_cold: float subsystem__nb3sn__q_cold.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_conduction: float magnet_subsystem__subsystem__nb3sn__cold_load__q_conduction.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_shield: float subsystem__nb3sn__q_shield.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_nuclear: float magnet_subsystem__subsystem__nb3sn__cold_load__q_nuclear.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_radiation: float magnet_subsystem__subsystem__nb3sn__cold_load__q_radiation.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_leads: float magnet_subsystem__subsystem__nb3sn__cold_load__q_leads.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__k_integral: float magnet_subsystem__subsystem__nb3sn__cold_load__k_integral.json
+      magnet_subsystem__subsystem__nb3sn__cold_load__q_joints: float magnet_subsystem__subsystem__nb3sn__cold_load__q_joints.json
+      magnet_subsystem__subsystem__nb3sn__conductor__temperature_margin: float magnet_subsystem__subsystem__nb3sn__conductor__temperature_margin.json
+      magnet_subsystem__subsystem__nb3sn__conductor__element_copper_area: float subsystem__nb3sn__element_copper_area.json
+      magnet_subsystem__subsystem__nb3sn__conductor__acceptance_pass: float subsystem__nb3sn__acceptance_pass.json
+      magnet_subsystem__subsystem__nb3sn__conductor__T_cs: float magnet_subsystem__subsystem__nb3sn__conductor__T_cs.json
+      magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin: float subsystem__nb3sn__acceptance_margin.json
+      magnet_subsystem__subsystem__nb3sn__conductor__status_code: float subsystem__nb3sn__status_code.json
+      magnet_subsystem__subsystem__nb3sn__conductor__temp_rule_margin: float magnet_subsystem__subsystem__nb3sn__conductor__temp_rule_margin.json
+      magnet_subsystem__subsystem__nb3sn__conductor__fraction_rule_margin: float magnet_subsystem__subsystem__nb3sn__conductor__fraction_rule_margin.json
+      magnet_subsystem__subsystem__nb3sn__conductor__supported: float subsystem__nb3sn__supported.json
+      magnet_subsystem__subsystem__nb3sn__conductor__ic_cable_op: float magnet_subsystem__subsystem__nb3sn__conductor__ic_cable_op.json
+      magnet_subsystem__subsystem__nb3sn__conductor__operating_fraction: float magnet_subsystem__subsystem__nb3sn__conductor__operating_fraction.json
+      magnet_subsystem__subsystem__nb3sn__conductor__tcs_defined: float magnet_subsystem__subsystem__nb3sn__conductor__tcs_defined.json
+      magnet_subsystem__subsystem__nb3sn__conductor__ic_strand_op: float magnet_subsystem__subsystem__nb3sn__conductor__ic_strand_op.json
+      magnet_subsystem__subsystem__nb3sn__conductor__T_conductor: float magnet_subsystem__subsystem__nb3sn__conductor__T_conductor.json
+      magnet_subsystem__subsystem__nb3sn__conductor__element_area_total: float subsystem__nb3sn__element_area.json
+      magnet_subsystem__subsystem__nb3sn__inventory__cu_mass: float magnet_subsystem__subsystem__nb3sn__inventory__cu_mass.json
+      magnet_subsystem__subsystem__nb3sn__inventory__sc_cost: float magnet_subsystem__subsystem__nb3sn__inventory__sc_cost.json
+      magnet_subsystem__subsystem__nb3sn__inventory__winding_capital: float subsystem__nb3sn__winding_capital.json
+      magnet_subsystem__subsystem__nb3sn__inventory__manufacturing_cost: float magnet_subsystem__subsystem__nb3sn__inventory__manufacturing_cost.json
+      magnet_subsystem__subsystem__nb3sn__inventory__conductor_length: float magnet_subsystem__subsystem__nb3sn__inventory__conductor_length.json
+      magnet_subsystem__subsystem__nb3sn__inventory__element_length: float subsystem__nb3sn__element_length.json
+      magnet_subsystem__subsystem__nb3sn__inventory__materials_cost: float magnet_subsystem__subsystem__nb3sn__inventory__materials_cost.json
+      magnet_subsystem__subsystem__nb3sn__inventory__element_mass: float magnet_subsystem__subsystem__nb3sn__inventory__element_mass.json
+      magnet_subsystem__subsystem__nb3sn__inventory__steel_mass: float magnet_subsystem__subsystem__nb3sn__inventory__steel_mass.json
+      magnet_subsystem__subsystem__nb3sn__inventory__solder_mass: float magnet_subsystem__subsystem__nb3sn__inventory__solder_mass.json
+      magnet_subsystem__subsystem__nb3sn__inventory__ampere_metres: float magnet_subsystem__subsystem__nb3sn__inventory__ampere_metres.json
+      magnet_subsystem__subsystem__nb3sn__area__net_area: float magnet_subsystem__subsystem__nb3sn__area__net_area.json
+      magnet_subsystem__subsystem__nb3sn__area__fit_margin: float subsystem__nb3sn__fit_margin.json
+      magnet_subsystem__subsystem__nb3sn__area__steel_margin: float subsystem__nb3sn__steel_margin.json
+      magnet_subsystem__subsystem__nb3sn__area__fit_margin_fraction: float magnet_subsystem__subsystem__nb3sn__area__fit_margin_fraction.json
+      magnet_subsystem__subsystem__nb3sn__area__steel_pass: float subsystem__nb3sn__steel_pass.json
+      magnet_subsystem__subsystem__nb3sn__area__cu_required: float magnet_subsystem__subsystem__nb3sn__area__cu_required.json
+      magnet_subsystem__subsystem__nb3sn__area__cu_pass: float subsystem__nb3sn__cu_pass.json
+      magnet_subsystem__subsystem__nb3sn__area__steel_required: float magnet_subsystem__subsystem__nb3sn__area__steel_required.json
+      magnet_subsystem__subsystem__nb3sn__area__gross_area: float magnet_subsystem__subsystem__nb3sn__area__gross_area.json
+      magnet_subsystem__subsystem__nb3sn__area__cable_area: float magnet_subsystem__subsystem__nb3sn__area__cable_area.json
+      magnet_subsystem__subsystem__nb3sn__area__cu_margin: float subsystem__nb3sn__cu_margin.json
+      magnet_subsystem__subsystem__nb3sn__area__required_envelope_J: float magnet_subsystem__subsystem__nb3sn__area__required_envelope_J.json
+      magnet_subsystem__subsystem__nb3sn__area__fit_pass: float subsystem__nb3sn__fit_pass.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_total_MW: float subsystem__nb3sn__p_in_total_MW.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__eta_cold: float magnet_subsystem__subsystem__nb3sn__refrigeration__eta_cold.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__green_extrapolated: float magnet_subsystem__subsystem__nb3sn__refrigeration__green_extrapolated.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__R_equiv_kW: float magnet_subsystem__subsystem__nb3sn__refrigeration__R_equiv_kW.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__refrigerator_capital: float subsystem__nb3sn__refrigerator_capital.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__carnot_specific_power: float magnet_subsystem__subsystem__nb3sn__refrigeration__carnot_specific_power.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_cold: float magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_cold.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_pass: float subsystem__nb3sn__capacity_pass.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin: float subsystem__nb3sn__capacity_margin.json
+      magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_shield: float magnet_subsystem__subsystem__nb3sn__refrigeration__p_in_shield.json
+      magnet_subsystem__subsystem__nb3sn__annualized__capital_total: float magnet_subsystem__subsystem__nb3sn__annualized__capital_total.json
+      magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost: float subsystem__nb3sn__annualized_cost.json
+      magnet_subsystem__subsystem__nb3sn__annualized__annual_electricity: float magnet_subsystem__subsystem__nb3sn__annualized__annual_electricity.json
+      magnet_subsystem__subsystem__nb3sn__all_pass__all_pass: RootModel[float] magnet_subsystem__subsystem__nb3sn__all_pass__all_pass.json
+      magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m: float magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m.json
+      magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_kAm: float magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_kAm.json
+      magnet_subsystem__subsystem__pair__pair_status: float magnet_subsystem__subsystem__pair__pair_status.json
+      magnet_subsystem__subsystem__pair__cost_difference: float magnet_subsystem__subsystem__pair__cost_difference.json
+      magnet_subsystem__subsystem__pair__rankable: float magnet_subsystem__subsystem__pair__rankable.json
+      magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f__evaluation.json
+      magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056__evaluation.json
+      magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9__evaluation.json
+      magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312__evaluation.json
+      magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4__evaluation.json
+      magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be__evaluation.json
+      magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2__evaluation.json
+      magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93__evaluation.json
+      magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77__evaluation.json
+      magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4__evaluation: ConstraintEvaluation magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

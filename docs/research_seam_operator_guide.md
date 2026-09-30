@@ -256,6 +256,29 @@ So: **read what you register.** The scan catches the obvious case. Judgement is 
 
 ---
 
+## Retiring a source
+
+```bash
+uv run python scripts/source_registry.py retire --slug <slug> --reason "<why>"
+```
+
+It is the one removal door, the counterpart of `register`. Under the same lock it removes exactly one entry's four artifacts together — the manifest row, the `SOURCE_INDEX.md` block, `knowledge/sources/<slug>/`, and the `knowledge/raw/` copy when the row records one (local PDFs; a URL source keeps its `raw.html` inside its directory) — or removes nothing. A failure at any rung puts everything back byte for byte.
+
+**What it leaves.** One line appended to `knowledge/RETIRED.jsonl`: `slug`, `retired_at` (UTC), `reason` verbatim, `index_block_sha256` (the removed block as the writer wrote it, heading through last metadata line), and the removed manifest row verbatim under `row`. The command prints the row, the block, the paths and the line, so the removal is in your terminal as well as on disk.
+
+**When it refuses.** Non-zero exit, nothing written:
+
+| outcome | means |
+|---|---|
+| `unknown_slug` | No manifest row carries that slug. |
+| `holdout_hit` | The slug names a barred path or term — the same guard `register` runs, on `knowledge/sources/<slug>` and on the slug itself. The owner's route is the protocol's §6 log, not this tool. |
+| `referenced` | Another entry mentions the slug, in a manifest field or in its index block. One exception: a line saying the other entry **supersedes** the retiree is the announcement that it was replaced, and retiring it completes that announcement, so it does not block. Any other mention does. |
+| `precondition_failed` | A blank reason, a slug that is not a registry slug, or drift — no block, two blocks, or no directory for the slug. Run `verify` first. |
+
+**What `verify` does with it.** A retired slug is expected absent: its absence is no finding. If any of its artifacts comes back — a row, a block whose Location names it, or its directory — `verify` reports `retired_reappeared` as a fault. A superseding entry's caveat still naming the retired path is prose, not reappearance.
+
+---
+
 ## Filed upstream
 
 Two changes this seam needs live in `agentic-mbse`, which is pinned by SHA here. Both are filed in `~/1cfe/agentic-mbse/.project/backlog/BACKLOG.md`:

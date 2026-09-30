@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-REBCO-WP-02",
+  "question": "Which permitted open sources give an insulated or cable-in-conduit fusion REBCO conductor or winding construction with material composition, tape count and conductor or winding-pack current density at about 12-20 T near 20 K?",
+  "consumer": "goal:magnet-material-comparison/T-003",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["Bruzzone et al. 2018 High temperature superconductors for fusion magnets, Nucl. Fusion 58 103001 (open access)", "EPFL/SPC REBCO DEMO CS and TF conductor papers (Uglietti, Wesche, Bykovsky) open manuscripts", "VIPER and PIT-VIPER cable papers (open access)"],
+  "limits": {"max_searches": 5, "max_captures": 2}
+}

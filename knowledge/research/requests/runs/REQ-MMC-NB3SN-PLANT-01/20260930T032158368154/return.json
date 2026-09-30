@@ -1,0 +1,38 @@
+{
+  "request_id": "REQ-MMC-NB3SN-PLANT-01",
+  "run": "knowledge/research/requests/runs/REQ-MMC-NB3SN-PLANT-01/20260930T032158368154",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "helias_5_b_magnet_system_structure_and_maintenance_concept",
+      "path": "knowledge/sources/helias_5_b_magnet_system_structure_and_maintenance_concept/",
+      "source_id": "45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb",
+      "pre_existing": false
+    },
+    {
+      "slug": "coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer",
+      "path": "knowledge/sources/coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer/",
+      "source_id": "cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513",
+      "pre_existing": false
+    },
+    {
+      "slug": null,
+      "path": null,
+      "source_id": "c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd",
+      "pre_existing": true
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://w3.pppl.gov/conferences/2009/ISHW09/presentations/papers_post/C14_Schauer_F.pdf",
+      "reason": "HTTP 403 from this environment on every attempt (WebFetch and curl). ISHW 2009 paper 'Extrapolation of the W7-X magnet system to reactor size' (Schauer et al.), the HSR50a 12 T winding-pack design cited as ref [8] by Schauer 2011 and ref [3] by Schauer 2013. Operator with a browser may fetch it."
+    },
+    {
+      "candidate": "https://pure.mpg.de/pubman/item/item_2140699_1",
+      "reason": "Schauer et al. 2010 Contrib. Plasma Phys. 50 750 'Extrapolation of the W7-X Magnet System to Reactor Size': IPP repository record has no public file; publisher (Wiley) copy is paywalled."
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_captures",
+  "reason": "at least one source is registered and citable"
+}

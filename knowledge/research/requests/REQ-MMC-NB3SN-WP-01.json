@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-NB3SN-WP-01",
+  "question": "Which permitted primary public sources give a fusion Nb3Sn cable-in-conduit conductor and winding-pack construction (strand count and diameter, copper to non-copper ratio, void fraction, jacket, insulation and cooling-channel dimensions), its operating current, peak field and temperature, cabling or effective-strain degradation and current-sharing-temperature margin, sufficient to convert strand performance into conductor and winding-pack engineering current density?",
+  "consumer": "goal:magnet-material-comparison/T-002",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["ITER TF conductor design and qualification papers (Mitchell, Devred, Bruzzone, Breschi)", "SULTAN test results for ITER TF and EU DEMO conductors", "EU DEMO TF winding pack (registered Dematte and Bruzzone; Corato et al.)", "registered Coil Concepts for DEMO and Next Step Reactors (IAEA 2018)", "EPFL infoscience, OSTI, ITER open documents, arXiv"],
+  "limits": {"max_searches": 8, "max_captures": 3}
+}

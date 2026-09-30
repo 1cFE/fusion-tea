@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MMC-NB3SN-LAW-01",
+  "request_key": "66c3f287c5a20db4f98713a468b300753226cc0af9ef81028d0c93a3be2198d2",
+  "request_path": "knowledge/research/requests/REQ-MMC-NB3SN-LAW-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-29T23:00:24.793611+00:00",
+  "override_reason": null
+}

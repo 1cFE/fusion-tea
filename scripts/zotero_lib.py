@@ -24,6 +24,7 @@ MANIFEST_PATH = Path("knowledge/MANIFEST.jsonl")
 STAGING_DIR = Path("knowledge/.staging")
 LOCK_PATH = Path("knowledge/.registry.lock")
 BASELINE_PATH = Path("knowledge/.registry_baseline.json")
+RETIRED_PATH = Path("knowledge/RETIRED.jsonl")
 
 
 @dataclass(frozen=True)
@@ -41,6 +42,7 @@ class RegistryPaths:
     staging: Path
     lock: Path
     baseline: Path
+    retired: Path
 
     @classmethod
     def under(cls, knowledge_dir: Path) -> "RegistryPaths":
@@ -52,6 +54,7 @@ class RegistryPaths:
             staging=knowledge_dir / ".staging",
             lock=knowledge_dir / ".registry.lock",
             baseline=knowledge_dir / ".registry_baseline.json",
+            retired=knowledge_dir / "RETIRED.jsonl",
         )
 
 
@@ -65,6 +68,7 @@ def default_paths() -> RegistryPaths:
         staging=STAGING_DIR,
         lock=LOCK_PATH,
         baseline=BASELINE_PATH,
+        retired=RETIRED_PATH,
     )
 
 

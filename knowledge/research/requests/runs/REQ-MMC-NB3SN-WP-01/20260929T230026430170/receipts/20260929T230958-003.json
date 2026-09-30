@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://infoscience.epfl.ch/server/api/core/bitstreams/8e304698-bc8e-48a1-97fb-27650b531793/content",
+  "slug": "advance_in_the_conceptual_design_of_the_european_demo",
+  "path": "knowledge/sources/advance_in_the_conceptual_design_of_the_european_demo/",
+  "source_id": "97d49b9470eda8449372b3c05496c726afc9c0363fd6d4a33ae7b5037b4302e2",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:09:58.970881+00:00"
+}

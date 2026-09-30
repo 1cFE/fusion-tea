@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-NB3SN-PLANT-01",
+  "question": "Which permitted primary sources give a complete Nb3Sn (or NbTi/Nb3Sn) stellarator reactor design point — axis field, peak field on the coil, coil count, major and minor radius, winding-pack dimensions and current, conductor type, fusion power — usable as a sourced second coil-set anchor for the peak/axis field ratio and as an existence proof of a low-temperature-superconductor stellarator plant (HELIAS 5-B, HELIAS 4/5, HSR5/22, HSR4/18)?",
+  "consumer": "goal:magnet-material-comparison/T-011",
+  "gap_type": "missing_anchor",
+  "priority": "P1",
+  "where_to_look": ["Schauer, Egorov, Bykov 2013 Fusion Eng. Des. 88 1619 'HELIAS 5-B magnet system'", "Warmer et al. 2016 Plasma Phys. Control. Fusion / IEEE 'From W7-X to a HELIAS fusion power plant' (open access)", "Beidler et al. 2001 'The Helias reactor' (registered: the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16)", "Sagara / Wolf / Warmer HELIAS magnet and reactor papers on pure.mpg.de (author manuscripts)"],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

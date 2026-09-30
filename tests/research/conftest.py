@@ -64,7 +64,7 @@ def _build_tree(root: Path, baseline: dict) -> KnowledgeTree:
 
 
 # Every RegistryPaths field, and the module constant `default_paths()` builds it
-# from. All seven must be redirected or the suite is not hermetic: any code path
+# from. All eight must be redirected or the suite is not hermetic: any code path
 # that reaches `default_paths()` — the Zotero callers do — would otherwise stage
 # into the real repository's `knowledge/.staging` and take the real registry lock.
 _PATH_CONSTANTS = {
@@ -75,6 +75,7 @@ _PATH_CONSTANTS = {
     "staging": "STAGING_DIR",
     "lock": "LOCK_PATH",
     "baseline": "BASELINE_PATH",
+    "retired": "RETIRED_PATH",
 }
 assert set(_PATH_CONSTANTS) == set(f.name for f in fields(zotero_lib.RegistryPaths))
 

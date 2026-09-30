@@ -1641,6 +1641,374 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 9b4eaf61b7f494610982ba1408fbdf9694c0e7e3f22706c27d84ea831c4c3509
 - **Date Added**: 2026-09-25
 
+### Critical current scaling and the pivot-point in Nb3Sn strands (Tsui and Hampshire, Supercond. Sci. Technol. 25 (2012) 054008)
+- **Type**: url
+- **Location**: knowledge/sources/critical_current_scaling_and_the_pivot_point_in_nb3sn/
+- **Use for**: Nb3Sn strand critical-current law in the ITER scaling-law (Bottura) form with nine fitted parameters for three ITER TF-class strands: OST internal-tin and Bruker EAS bronze-route BEAS I and BEAS II. Table 5 (full data range) and Table 8 (reduced range at ITER operating temperatures and fields) print p, q, C (A T m^-2), Ca1, Ca2, eps0,a, epsM, Bc2*(0,0) and Tc*(0) per strand, e.g. BEAS II Table 8: p=0.539, q=2.022, C=2.675e10 A T m^-2, Bc2*(0,0)=34.47 T, Tc*(0)=15.62 K. Engineering Jc at a 10 uV/m (0.1 uV/cm) criterion, measured 1-14.5 T, 4.2-12 K, applied strain -1.1% to about 0.5%. Table 1 reprints the ITER TF strand specification (Ic > 190 A at 12 T, 4.22 K, 10 uV/m; Cu/non-Cu 1.0). Serves the magnet-material comparison's Nb3Sn Jc(B,T,eps) arm (RQ-1, RQ-3).
+- **Validation**: Check the parameter values against Tables 5 and 8 (printed pages 8 and 11), the ITER scaling-law equations (2)-(7) in section 3 (printed pages 6-8) for the exact functional form and strain function, the 10 uV/m criterion and engineering-Jc definition in section 2 (printed page 4), the measured domain in the introduction (printed page 2), and the ITER TF specification in Table 1 (printed page 2).
+- **Caveat**: Publisher PDF hosted on the Durham superconductivity group website (institutional, not the IOP open-access channel). Jc is engineering (whole-strand area), not non-Cu; conversion needs the Cu/non-Cu ratio. Strands are single samples from ITER-qualification-era billets, not the ITER production average; fit is least accurate near Bc2 and at large compressive strain; parameters are fit constants, not physical constants, and the ITER form's p, q and Bc2* trade against each other.
+
+#### Extended Metadata
+- **Source URL**: https://superconductivitydurham.webspace.durham.ac.uk/wp-content/uploads/sites/226/2021/04/TsuiSuSTApril2012.pdf
+- **Source ID**: 1bcbda5c4065fadc0fe53a843cf3d66823fc6a635f4ca23b9d6fc82d70e4c293
+- **Raw SHA256**: 1bcbda5c4065fadc0fe53a843cf3d66823fc6a635f4ca23b9d6fc82d70e4c293
+- **Raw Artifact SHA256**: 1bcbda5c4065fadc0fe53a843cf3d66823fc6a635f4ca23b9d6fc82d70e4c293
+- **Extracted Path**: knowledge/sources/critical_current_scaling_and_the_pivot_point_in_nb3sn/
+- **Extract SHA256**: 4f02b5f4b9b7730def36155bfd6af6e15ebbb9d98caef17acafb0bf4d4c17535
+- **Date Added**: 2026-09-29
+
+### Field and temperature scaling of the critical current density in commercial REBCO coated conductors
+- **Type**: url
+- **Location**: knowledge/sources/field_and_temperature_scaling_of_the_critical_current/
+- **Use for**: REBCO critical-current-density scaling in field and temperature at fixed field angle, for the REBCO arm of the magnet-material comparison (goal magnet-material-comparison T-002; RQ-1 magnet cost drivers): Jc(T,B) = Jc(T=0,B=0) exp(-T/T*) B^-alpha (eq. 2); exponential temperature law (eq. 1) holding to about 50 K at theta = 0 and 45 deg; power-law field regime 0.5-19 T for T <= 30 K; alpha(theta=0) nearly constant over 5-40 K, about 0.55 for SuperOx and Bruker HTS up to about 0.75 for SuperPower; T* of 20-30 K at 0.5 T and field-dependent (Fig. 3); Table I tape constructions for six manufacturers (e.g. SuperOx IBAD/PLD, 60 um Hastelloy, 10 um electroplated Cu per side, 4.0 x 0.09 mm).
+- **Validation**: Check eq. (1) with its validity statement in sec. 4.1, eq. (2) with its range (0.1 T to about 60% of Birr) in sec. 5, the power-law range 0.5-19 T for T <= 30 K and the alpha values 0.55-0.75 in sec. 4.2 and Fig. 5, the T* values per manufacturer in Fig. 3, Table I tape dimensions, and the 0.1 uV/cm criterion and ~250 A transport current limit above 4.2 K in sec. 3.
+- **Caveat**: arXiv preprint (arXiv:1512.01930) of Supercond. Sci. Technol. 29 (2016) 014002; 2015-vintage commercial tapes, not the 2021 SuperOx fusion YBCO production; Jc is per REBCO-layer cross-section, not engineering current density; below about 8 T the Jc values come from magnetization normalized to one transport point (40 K, 7 T), above 8 T from transport; alpha and T* are read from figures, vary by manufacturer and batch, and T* varies with field, so the law is a per-tape fit form, not a universal parameter set.
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/pdf/1512.01930
+- **Source ID**: 7ad34fc68efe87d0199399e15cdd063a8089db12940f663559f045df28f84895
+- **Raw SHA256**: 7ad34fc68efe87d0199399e15cdd063a8089db12940f663559f045df28f84895
+- **Raw Artifact SHA256**: 7ad34fc68efe87d0199399e15cdd063a8089db12940f663559f045df28f84895
+- **Extracted Path**: knowledge/sources/field_and_temperature_scaling_of_the_critical_current/
+- **Extract SHA256**: 77414d3fb8ad5de4bdf1a539d7d90bd56b958419550a29a6a74df437d8ce38fe
+- **Date Added**: 2026-09-29
+
+### The SPARC Toroidal Field Model Coil Program
+- **Type**: url
+- **Location**: knowledge/sources/the_sparc_toroidal_field_model_coil_program/
+- **Use for**: A built and tested fusion REBCO winding at 20 K and its winding-pack current density, for the REBCO arm of the magnet-material comparison (goal magnet-material-comparison T-002; RQ-1 magnet cost drivers): TFMC winding-pack current density 153 A/mm2 at 40.5 kA terminal current, 256 turns, 10.4 MA-turns, 20.1 T peak field on conductor, 20 K supercritical helium at 10-20 bar, 270 km REBCO, 16 no-insulation stack-in-plate pancakes (soldered REBCO tape stacks in spiral grooves of Nitronic-40 plates, single-pass coolant channels on the back side) in a Nitronic-50 case; the 2021 SPARC TF coil design for comparison at 94 A/mm2, 31.3 kA, 200 turns, 6.3 MA-turns, 23 T peak (Table I).
+- **Validation**: Check Table I (parameter comparison TFMC vs SPARC TF coil, 2021) for current density, turns, amp-turns, terminal current, total REBCO length, coolant, operating temperature and peak field; the winding-pack construction description in sec. VI.A; the NINT selection rationale in sec. V.C and Table II; and the 20.1 T / 40.5 kA / 815 kN/m test result in the abstract and sec. VI.
+- **Caveat**: arXiv version (arXiv:2308.12301, submitted Aug 2023) of Hartwig et al., IEEE Trans. Appl. Supercond. 34(2) 2024; a program overview, so the winding-pack current density is stated without its area definition and without tape count per stack, tape grading, copper or solder fractions, which are in companion papers not captured here; the winding is no-insulation (no turn insulation), so its current density does not transfer to an insulated or cable-in-conduit REBCO winding; SPARC TF values are 2021 design values, not measurements.
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/pdf/2308.12301
+- **Source ID**: 949d4db39c65a02a611f7e825864b635adb86287a84af69c721207928729042d
+- **Raw SHA256**: 949d4db39c65a02a611f7e825864b635adb86287a84af69c721207928729042d
+- **Raw Artifact SHA256**: 949d4db39c65a02a611f7e825864b635adb86287a84af69c721207928729042d
+- **Extracted Path**: knowledge/sources/the_sparc_toroidal_field_model_coil_program/
+- **Extract SHA256**: dc921cafdd183e6f1cade2fbd40bf9bca1034741900dc3f8c9da69bb9e2398e1
+- **Date Added**: 2026-09-29
+
+### Critical current scaling laws for advanced Nb3Sn superconducting strands for fusion applications with six free parameters (Lu, Taylor and Hampshire, Supercond. Sci. Technol. 21 (2008) 105016)
+- **Type**: url
+- **Location**: knowledge/sources/critical_current_scaling_laws_for_advanced_nb3sn/
+- **Use for**: Nb3Sn strand critical-current laws for three advanced ITER internal-tin strands (OST, OKSC, OCSI): Durham scaling-law parameters (Tables 2-4, 6, 7) and proposed ITER (Bottura-form) scaling parameters with nine free parameters (Tables 9-11), e.g. OST Table 9: p=0.500, q=1.737, C=3.791e10, Bc20max*(0,0)=29.41 T, Tc0max*(0)=16.22 K, eps0,a=0.215%, with fit RMS in Ic per law in Table 8. Engineering Jc at 10 uV/m (0.1 uV/cm), measured B<=15 T in Durham and B<=28 T in Grenoble, 2.35-14 K, intrinsic strain -1.1% to 0.5%. Prints the ITER non-Cu Jc specification (~750-800 A/mm^2 at 4.2 K, 12 T) and a measured OST Ic(4.2 K, 12 T) of about 296 A for validation. Serves the magnet-material comparison's Nb3Sn Jc(B,T,eps) arm (RQ-1, RQ-3).
+- **Validation**: Check parameters against Tables 9-11 (page 9) and Tables 2-4, 6, 7 (pages 4, 7, 8), the scaling-law equations and strain functions in sections 4.1 and 4.3 (pages 7-9), the 10 uV/m criterion and statement that Jc is engineering not non-Cu (page 3), the measured domain in the abstract (page 1), and the ITER specification and 296 A Ic statement (page 2).
+- **Caveat**: Publisher PDF hosted on the Durham superconductivity group website (institutional, not the IOP open-access channel). Jc is engineering (whole-strand area), not non-Cu. Strands are advanced pre-production ITER internal-tin samples, one sample per strand, not the ITER TF production average. The proposed ITER scaling fit has a larger RMS error than the Durham law (Table 8) and its parameters trade against each other; values are fit constants, not physical constants.
+
+#### Extended Metadata
+- **Source URL**: https://superconductivitydurham.webspace.durham.ac.uk/wp-content/uploads/sites/226/2021/04/LuSUST2008.pdf
+- **Source ID**: 78d8735b0c2a6da112aa9f7bb181faa2bca7b32893ecd98565623209f17f4e6f
+- **Raw SHA256**: 78d8735b0c2a6da112aa9f7bb181faa2bca7b32893ecd98565623209f17f4e6f
+- **Raw Artifact SHA256**: 78d8735b0c2a6da112aa9f7bb181faa2bca7b32893ecd98565623209f17f4e6f
+- **Extracted Path**: knowledge/sources/critical_current_scaling_laws_for_advanced_nb3sn/
+- **Extract SHA256**: 722b1d1bc7f936b26d2ed21a4a07de61d46beff1fcc98e4639fabb32f30eb5b2
+- **Date Added**: 2026-09-29
+
+### Performance analysis of the toroidal field ITER production conductors (Breschi, Macioce, Devred, SuST 2017)
+- **Type**: url
+- **Location**: knowledge/sources/performance_analysis_of_the_toroidal_field_iter_production/
+- **Use for**: ITER TF Nb3Sn CICC second construction for the magnet-material comparison (goal magnet-material-comparison T-002): 68 kA design current shared over 900 superconducting strands (75.5 A per strand); ITER TF current-sharing-temperature acceptance floor 5.7 K + 0.1 K error bar at operating current and field; SULTAN effective strain of production conductors -0.92 % to -0.55 % before and -0.97 % to -0.63 % after electromagnetic cycling; strand-in-CICC retains about 51 % of its critical current at uniform -0.5 % strain and about 37 % of the free-wire value; per-sample void fraction and critical-surface parameters (Tables I-III) behind the t, b, p, q parameters that the EU DEMO R&W design cites.
+- **Validation**: Check against the stored PDF: 900 strands and 75.5 A per strand in section 3.2 (first paragraph of the strand-vs-conductor comparison); the 5.7 K + 0.1 K Tcs floor in the Introduction; the effective-strain ranges in section 3.3 and Fig. 13; the 51 % and 37 % retention figures in section 3.2 and Fig. 10; per-sample petal void fraction in Table I and critical-surface parameters in Table III (tables are at the end of the manuscript and must be read from the page image, not the text extraction); conductor cross-section in Fig. 1.
+- **Caveat**: Author accepted manuscript (CC BY-NC-ND) on the University of Bologna CRIS repository, not the IOP version of record (Supercond. Sci. Technol. 30 (2017) 055007, DOI 10.1088/1361-6668/aa6785); page and table numbering follow the manuscript. Results are SULTAN short-sample tests at SULTAN field and current, not coil operation; the strain and retention figures are sample- and supplier-dependent ranges, not a single design value.
+
+#### Extended Metadata
+- **Source URL**: https://cris.unibo.it/retrieve/e1dcb339-aef2-7715-e053-1705fe0a6cc9/Breschi%20paper-Nb3Sn_production_revised_BW_d.pdf
+- **Source ID**: af2d13b70e4be67e8b636e81aecb3ab365e1a1220bd1465ffac13570d0645cde
+- **Raw SHA256**: af2d13b70e4be67e8b636e81aecb3ab365e1a1220bd1465ffac13570d0645cde
+- **Raw Artifact SHA256**: af2d13b70e4be67e8b636e81aecb3ab365e1a1220bd1465ffac13570d0645cde
+- **Extracted Path**: knowledge/sources/performance_analysis_of_the_toroidal_field_iter_production/
+- **Extract SHA256**: 045ce1859eb9d58b00673999fa0c6c8dcb280d4bb4492eee587ddabac913b931
+- **Date Added**: 2026-09-29
+
+### A general scaling relation for the critical current density in Nb3Sn (Godeke, ten Haken, ten Kate and Larbalestier, arXiv cond-mat/0608404; Supercond. Sci. Technol. 19 (2006) R100)
+- **Type**: url
+- **Location**: knowledge/sources/a_general_scaling_relation_for_the_critical_current_density/
+- **Use for**: The general Nb3Sn Jc(H,T,eps) scaling relation (eq. 47) with fixed exponents p=0.5, q=2 and Hc2*(T)/Hc2*(0) ~ 1 - t^1.52, the deformation function s(eps) (eq. 22) with parameters Ca1, Ca2, eps0,a, epsm, and a fitted parameter set for a Furukawa bronze-route ITER-type wire (Table 1: Ca1=47.6, Ca2=6.4, eps0,a=0.273, mu0Hc2m*(0)=30.7 T, Tcm*(0)=16.8 K, C1=46.3) at Ec=5e-4 V/m, with measured axial thermal pre-compression on three setups (Table 2). Also documents deficiencies of the Summers/Ekin relations in Jc(T). Serves the magnet-material comparison's Nb3Sn Jc(B,T,eps) arm (RQ-1, RQ-3) as the functional-form authority behind the ITER parameterization.
+- **Validation**: Check eq. 47 and the definitions of C1, t, h, Hc2*(T,eps) and Tc*(eps) on arXiv page 28, Table 1 and Table 2 on page 29, the strain function s(eps) at eq. 22, the non-Cu basis of Fp and C (page 22), and the measurement criteria of the Furukawa data sets (pages 19-21, 26-27).
+- **Caveat**: arXiv preprint (v1, 2006) of the SuST topical review; the published version may differ in detail. The Table 1 fit is to one Furukawa ITER-type bronze wire at a high 5e-4 V/m (5 uV/cm) criterion, higher than the standard 10 uV/m, and the paper itself says a singular parameter set for this wire is compromised by setup differences. C1 units must be read from the original. Pre-dates ITER TF production strands.
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/pdf/cond-mat/0608404v1
+- **Source ID**: 1a17594bf57a447b345a5ed5fb0f64aa55a6414381304f819ffe04b856fb88df
+- **Raw SHA256**: 1a17594bf57a447b345a5ed5fb0f64aa55a6414381304f819ffe04b856fb88df
+- **Raw Artifact SHA256**: 1a17594bf57a447b345a5ed5fb0f64aa55a6414381304f819ffe04b856fb88df
+- **Extracted Path**: knowledge/sources/a_general_scaling_relation_for_the_critical_current_density/
+- **Extract SHA256**: 3f07dcfd6183a74bb43ae2fec9b934d5c8f5a370b17510ea200443433142ce1e
+- **Date Added**: 2026-09-29
+
+### Cooley and Pong 2016 Cost drivers for very high energy p-p collider magnet conductors FCC Week
+- **Type**: local_pdf
+- **Location**: knowledge/sources/cooley_and_pong_2016_cost_drivers_for_very_high_energy_p_p/
+- **Use for**: Conductor purchase prices with the field and temperature that define kA-m: REBCO baseline 80 USD per m for a tape carrying 400 A at 20 T 4.2 K (100 A at 77 K self-field), i.e. 200 USD/kA-m, with projected 68 and 23 USD/kA-m at 20 T 4.2 K for advanced tape (slides 3-4); Nb3Sn present conductor above 20 USD/kA-m at 16 T 4.2 K versus FCC target below 5 USD/kA-m (slides 2, 8, 18); Nb3Sn 1.5 to 2 MUSD per ton for 6000 t (slide 5); ITER TF needed 384 t and over 500 t was produced, about 30 percent mapping loss (slide 13). Serves the magnet-material-comparison conductor price leg (RQ-1).
+- **Validation**: Render slides 3, 4, 5, 8, 13 and 18 of the stored PDF and check each price, unit and stated field and temperature; the REBCO 200 USD/kA-m is 80 USD/m divided by 0.4 kA on slide 3. Original URL: https://indico.cern.ch/event/438866/contributions/1085142/attachments/1257973/1858756/Cost_drivers_for_VHEPP_magnet_conductors-v2.pdf (CERN Indico, FCC Week 2016 Rome); downloaded 2026-09-29 because the URL capture failed with a decode error, sha256 6dc05bd1bf952e4786a74ec028f9a57af766a5b5a697aa62fcc8ac40d8344a62.
+- **Caveat**: Conference slides, not peer reviewed; 2016 US dollars implied, no currency year stated; REBCO price is a DOE funding-announcement baseline, not a stated purchase; Nb3Sn prices are HEP accelerator-grade strand (RRP/PIT) at 16 T, not ITER-type fusion strand, and tonnage prices do not state scope beyond conductor.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cooley_pong_2016_fcc_cost_drivers.pdf
+- **Source ID**: 6dc05bd1bf952e4786a74ec028f9a57af766a5b5a697aa62fcc8ac40d8344a62
+- **Raw SHA256**: 6dc05bd1bf952e4786a74ec028f9a57af766a5b5a697aa62fcc8ac40d8344a62
+- **Raw Artifact SHA256**: 6dc05bd1bf952e4786a74ec028f9a57af766a5b5a697aa62fcc8ac40d8344a62
+- **Extracted Path**: knowledge/sources/cooley_and_pong_2016_cost_drivers_for_very_high_energy_p_p/
+- **Extract SHA256**: f1df20be7cbdb4455e461a3760f9c138d56b59afbcb145ecf88b289212c6b4fd
+- **Date Added**: 2026-09-29
+
+### Technology Development for the Manufacture of Nb3Sn Conductors for ITER Toroidal Field Coils (Takahashi et al., IAEA FEC 2010 ITR/P1-50)
+- **Type**: url
+- **Location**: knowledge/sources/technology_development_for_the_manufacture_of_nb3sn/
+- **Use for**: ITER TF Nb3Sn cable-in-conduit conductor construction for the magnet-material comparison (goal magnet-material-comparison T-002): 900 Nb3Sn strands plus 522 copper strands cabled around a central spiral, wrapped in 0.1 mm stainless tape, inside a circular stainless jacket 2 mm thick with 43.7 mm outer diameter; operating current 68 kA; maximum TF field 11.8 T; strand specification 0.820 +/- 0.005 mm diameter, Cu to non-Cu volume ratio 1.0 +/- 0.1, minimum critical current 190 A at 4.22 K and 12 T, hysteresis loss at most 500 mJ/cm3 over +/-3 T. With these, strand, non-copper and conductor current densities at 68 kA can be derived.
+- **Validation**: Check against the stored PDF: construction sentence (900 Nb3Sn + 522 Cu strands, 2 mm jacket, 0.1 mm tape, 68 kA, 11.8 T) in section 1 Introduction on page 1; 43.7 mm outer diameter on the Fig. 1 drawing (page 1); strand values in Table 1 Strand specification on page 3 (read from the page image, not only the text extraction).
+- **Caveat**: IAEA Fusion Energy Conference 2010 contributed paper by JAEA (Japanese Domestic Agency) with ITER Organization co-authors; describes the Japanese procurement, so strand-supplier details are Japan-specific, while the conductor layout is the common ITER TF design. Gives no void fraction, central-spiral dimensions, turn insulation, winding-pack dimensions or current-sharing-temperature margin; the critical-current criterion (electric field) is not stated in the table.
+
+#### Extended Metadata
+- **Source URL**: https://www-pub.iaea.org/MTCD/meetings/PDFplus/2010/cn180/cn180_papers/itr_p1-50.pdf
+- **Source ID**: 2ef47cc42fd9e0fe780c9f507bc8e522b211445f7f242d1e08f1ca1d698e8105
+- **Raw SHA256**: 2ef47cc42fd9e0fe780c9f507bc8e522b211445f7f242d1e08f1ca1d698e8105
+- **Raw Artifact SHA256**: 2ef47cc42fd9e0fe780c9f507bc8e522b211445f7f242d1e08f1ca1d698e8105
+- **Extracted Path**: knowledge/sources/technology_development_for_the_manufacture_of_nb3sn/
+- **Extract SHA256**: e2db1a89be31f6d69db362442a13b9aed9540f4ebe8320b3086b54da69ffce0f
+- **Date Added**: 2026-09-29
+
+### Strobridge 1974 Cryogenic Refrigerators An Updated Survey NBS Technical Note 655
+- **Type**: local_pdf
+- **Location**: knowledge/sources/strobridge_1974_cryogenic_refrigerators_an_updated_survey/
+- **Use for**: Retrieved https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote655.pdf on 2026-09-29 (URL capture failed on a PDF decode error). Fig.1 (printed p5): percent of Carnot vs refrigeration capacity 0.2 W to 1e6 W for 144 refrigerators and liquefiers in bands 1.8-9 K, 10-30 K, 30-90 K with one author-drawn average curve; printed p4 and p6 text: 10-30 K and 30-90 K data refute higher efficiency at higher temperature, losses relative to ideal proportionally the same; Eq.1 Carnot specific power, Eq.2 percent-Carnot definition (T0 nominally 300 K); Table 1 reversible refrigeration 70.4 W/W at 4.2 K and 13.7 W/W at 20.4 K. Serves RQ-1 fraction-of-Carnot basis at 4.5 K vs 20 K for REBCO vs Nb3Sn magnet arms.
+- **Validation**: Scanned legacy PDF with thin OCR extraction: read Fig.1 on printed page 5 (PDF page 11) from the page image; Table 1 and Eq.1-2 on printed pages 2-4 (PDF pages 8-10); state any curve value as a graph reading with its reading uncertainty.
+- **Caveat**: 1974 survey, pre-dates modern large turbine helium plants; efficiency uses installed drive power and excludes LN2 precooling for units under 10 kW; the largest 10-30 K units are hydrogen liquefiers, not helium refrigerators; curve is the author's judged average through wide scatter.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/nbstechnicalnote655.pdf
+- **Source ID**: 4f4262e9e79693491d33f979a979aee0ebc23b9224beb16b6d16f81903fa2c4b
+- **Raw SHA256**: 4f4262e9e79693491d33f979a979aee0ebc23b9224beb16b6d16f81903fa2c4b
+- **Raw Artifact SHA256**: 4f4262e9e79693491d33f979a979aee0ebc23b9224beb16b6d16f81903fa2c4b
+- **Extracted Path**: knowledge/sources/strobridge_1974_cryogenic_refrigerators_an_updated_survey/
+- **Extract SHA256**: 1568b2bc2d16a768acde5edac6316e29d6a3db4de739d558538a1f6e293dbbe2
+- **Date Added**: 2026-09-29
+
+### Advance in the conceptual design of the European DEMO magnet system (Sedlak et al., SuST 2020)
+- **Type**: url
+- **Location**: knowledge/sources/advance_in_the_conceptual_design_of_the_european_demo/
+- **Use for**: EU DEMO Nb3Sn TF conductor design basis for the magnet-material comparison (goal magnet-material-comparison T-002): required current-sharing temperature 6.7 K built from 4.5 K helium inlet temperature + 0.7 K nuclear heat load + 1.5 K temperature margin; TF conductor peak field 12.0 T in the 2018 baseline; React-and-Wind RW2 prototype Tcs 7.16 K at 63.3 kA and 12.23 T with assessed effective strain -0.27 % after cycling; wind-and-react WP#2 strain distribution mean -0.42 % with sigma 0.09 % after 1150 cycles, against sigma 0.13-0.20 % for ITER TF and CS conductors; four TF winding-pack variants (WP#1 R&W layer-wound to WP#4 W&R pancake round CICC). Supplies the inlet temperature and temperature-margin basis that the Dematte-Bruzzone R&W conductor design leaves implicit.
+- **Validation**: Check against the stored PDF (accepted manuscript pagination): Tcs 6.7 K budget and RW2 7.16 K, 63.3 kA, 12.23 T and -0.27 % in the section on the WP#1 React-and-Wind conductor prototype (near Fig. 1); peak field 12.0 T in the abstract and introduction; strain mean -0.42 %, sigma 0.09 % and ITER sigma 0.13-0.20 % in section 5.3 Strain distribution measurements (near Fig. 8); PF 1.5 K margin on 4.5 K inlet in the PF coil section; 4.5 K inlet assumption in the thermal-hydraulic section.
+- **Caveat**: Author accepted manuscript (EUCAS 2019 paper) on EPFL infoscience, not the IOP version of record (Supercond. Sci. Technol. 33 (2020) 044013, DOI 10.1088/1361-6668/ab75a9). Review-level overview of the pre-conceptual design phase: winding-pack variants are described qualitatively, with no per-turn dimension, insulation-thickness or winding-pack current-density table; prototype SULTAN results are for 63.3 kA (2015 baseline), not the 66 kA or 105 kA designs.
+
+#### Extended Metadata
+- **Source URL**: https://infoscience.epfl.ch/server/api/core/bitstreams/8e304698-bc8e-48a1-97fb-27650b531793/content
+- **Source ID**: 97d49b9470eda8449372b3c05496c726afc9c0363fd6d4a33ae7b5037b4302e2
+- **Raw SHA256**: 97d49b9470eda8449372b3c05496c726afc9c0363fd6d4a33ae7b5037b4302e2
+- **Raw Artifact SHA256**: 97d49b9470eda8449372b3c05496c726afc9c0363fd6d4a33ae7b5037b4302e2
+- **Extracted Path**: knowledge/sources/advance_in_the_conceptual_design_of_the_european_demo/
+- **Extract SHA256**: d69ca85ef66d7944e55fb8e60ab73debe3596520ba0500e86a418e9f8c46bebe
+- **Date Added**: 2026-09-29
+
+### Green 2015 cost of coolers at 4.2, 20, 40 and 77 K (publisher PDF)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/green_2015_cost_of_coolers_at_4_2_20_40_and_77_k_publisher/
+- **Use for**: Large 4.5 K helium refrigerator laws for the magnet-material comparison (REBCO near 20 K vs Nb3Sn near 4.5 K cryoplant cost): capital cost C(M$2015) ~ 3.1 R(kW)^0.65 (Eq. 1, stated for refrigerators >100 W, 2007 data escalated 20 percent) and efficiency eta(percent of Carnot) = 15.5 R(kW)^0.23 (Eq. 2), R = refrigeration at 4.5 K, data about 0.01-40 kW, no machines after 2007, some LN2-precooled. Small commercial cooler fits (60 Hz, 300 K rejection, 72 coolers from 8 vendors, mid-2015 list prices): efficiency eta(percent) = 3.1 + 0.91 ln R at 4.2 K, 0.2 + 2.17 ln R at 20 K, -2.8 + 2.95 ln R at 40 K; cost C(k$) = 40 R(W)^0.323 at 4.2 K, 9.29 R(W)^0.412 at 20 K, 3.15 R(W)^0.56 at 40 K, 1.81 R(W)^0.57 at 77 K. Serves the cryogenic cost-per-watt part of the comparison.
+- **Validation**: Eqs. 1-2 and Figs. 1-2 on printed p2 (PDF p3); cooler efficiency Eqs. 3-4 on printed p4 (PDF p5); cooler efficiency Fig. 3 and ln fits on printed p5 (PDF p6); cooler cost Fig. 5 and power-law fits on printed p7 (PDF p8). Equations are typeset text in the PDF; read exponents and data ranges from the rendered page images, not the extraction.
+- **Caveat**: Conference paper (CEC 2015), CC-BY 3.0, single author. Large-refrigerator laws carry no data after 2007 and the largest plotted machine is about 35-40 kW at 4.5 K, so use above that is extrapolation; Fig. 2 mixes LN2-precooled machines; no large-plant law at 20 K is given, only small coolers up to about 400 W. Cooler costs are single-unit list prices. Local copy of the publisher PDF downloaded from https://iopscience.iop.org/article/10.1088/1757-899X/101/1/012001/pdf (sha256 a612649c84d471b10a7cf5e8c01e9ee0a800b2b108f43ad4b5629d34c8587c48, 9 pages; PDF p1 is the IOP cover page). Supersedes the defective registration knowledge/sources/green_2015_the_cost_of_coolers_for_cooling_superconducting/, which stored a Radware bot-check page, not the paper.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cryoloads/green2015_iop_publisher.pdf
+- **Source ID**: a612649c84d471b10a7cf5e8c01e9ee0a800b2b108f43ad4b5629d34c8587c48
+- **Raw SHA256**: a612649c84d471b10a7cf5e8c01e9ee0a800b2b108f43ad4b5629d34c8587c48
+- **Raw Artifact SHA256**: a612649c84d471b10a7cf5e8c01e9ee0a800b2b108f43ad4b5629d34c8587c48
+- **Extracted Path**: knowledge/sources/green_2015_cost_of_coolers_at_4_2_20_40_and_77_k_publisher/
+- **Extract SHA256**: 40c6f358006341ae340b8daac8aa4ac3ea1e5cb6e0dc158627525c289ffe26bd
+- **Date Added**: 2026-09-29
+
+### Koncar et al. 2017 heat loads and design temperature optimization of DEMO thermal shields (EUROfusion WPPMI-CPR(17) 17578)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/koncar_et_al_2017_heat_loads_and_design_temperature/
+- **Use for**: Static cold-load magnitudes on EU DEMO superconducting magnets at 4 K for the magnet-material comparison: base case (vacuum vessel 473 K, both thermal shields 80 K) gives 5.9 kW total on the magnets = 1.3 kW thermal radiation from the 80 K shields + 4.4 kW thermal-anchor conduction (80 K to TF coils, the largest term) + 0.2 kW shield-support conduction; shields carry 912.6 kW (VVTS) and 189.4 kW (CTS), total 1,107.9 kW (Table 1). At 100 K shields: 3.3 kW radiation and about 6 kW conduction on magnets; at about 120 K radiation 6.7 kW exceeds conduction (Sec. 3.1, Fig. 1). Carnot factor (293-T)/T = 72.2 at 4 K and 2.6 at 80 K (Eq. 5); real cryoplant 'up to 5 times' the theoretical power; theoretical minimum total refrigeration 2,563.9 kW at optimal shield temperature 123 K (Table 2, Case 1). Nuclear heating explicitly excluded.
+- **Validation**: Table 1 spans PDF p4-p5 (printed page numbers absent); Eq. 1-5 on PDF p3-p4; Sec. 3.1 text and Fig. 1 on PDF p5; Table 2 and Fig. 3 on PDF p5-p6. Equations are typeset as text but render poorly in extraction; check against the rendered pages. Figs. 1-3 label axes in kW but plot values in W (Fig. 1 reaches 70,000 while the text gives 3.3 kW at 100 K).
+- **Caveat**: EUROfusion submitted preprint for ISFNT-13 (2017), not the published Fusion Eng. Des. version; analytical calculation validated against the authors' earlier numerical models, not measurement; early DEMO configuration (2017 baseline); magnet total only, no per-area radiation, no magnet surface area, no nuclear heating, no joint or AC losses; magnets at 4 K. Figure axis unit labels are wrong (W plotted as kW); Table 2 Case 4 prints '2.789' where 2,789 kW is meant. Local copy downloaded from https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17578_submitted-4.pdf.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cryoloads/koncar17578.pdf
+- **Source ID**: 33581ffa8e86e86d4a107eca2147a9b6c29f7b4536ae400d0b61a836d6fe9903
+- **Raw SHA256**: 33581ffa8e86e86d4a107eca2147a9b6c29f7b4536ae400d0b61a836d6fe9903
+- **Raw Artifact SHA256**: 33581ffa8e86e86d4a107eca2147a9b6c29f7b4536ae400d0b61a836d6fe9903
+- **Extracted Path**: knowledge/sources/koncar_et_al_2017_heat_loads_and_design_temperature/
+- **Extract SHA256**: 345e0143e9d09cc815d042a40816898f0a0a38f4f2e909daf3acb3d977da2922
+- **Date Added**: 2026-09-29
+
+### Superconductors for fusion: a roadmap (Mitchell et al., SuST 2021)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/superconductors_for_fusion_a_roadmap_mitchell_et_al_sust/
+- **Use for**: Fusion Nb3Sn TF design points and margin basis for the magnet-material comparison (goal magnet-material-comparison T-003): EU DEMO max TF 12 T vs ITER 11.8 T, 16 vs 18 coils, 5.3 T on axis at R 9.1 m vs 6.2 m, 150 GJ vs 41 GJ, 35 s vs 11 s discharge (sec. 3 Table 1, p.20); EU DEMO TF option 1 (R&W layer-wound, graded) capable of ~20% higher field (p.20); JA DEMO TF conductor 83 kA in 13.7 T under 800 MPa vs ITER TF 68 kA in 11.8 T under 670 MPa, cited to Tobita et al. 2019 (sec. 6, p.38); ITER TF thermal strain -0.7% to -0.5%, R&W -0.3% (p.38, p.66); 118 kA / 12 T EU DEMO TF R&W conductor 73 x 46 mm, 126 turns per coil (sec. 8, p.48-49); EU DEMO R&W conductor Tcs 7.42 K at 10.9 T, 68 kA with 132 mm2 Nb3Sn vs ITER TF 238 mm2, Tcs 6.3-6.5 K; 12-layer graded R&W WP 6.2-12.2 T, 222 t vs 835 t strands (sec. 12, p.66-67); ITER-2008 Jc parameters (C 21851, Bc20max 29.39 T, Tc0max 16.48 K, p 0.556, q 1.698, Ca1 45.74, Ca2 4.431, eps0a 0.00232, epsmax -0.00061) and Nb3Sn amount vs temperature margin at 12 T (137% at 1 K), ITER TF margin 0.7 K (sec. 9, p.51-52); CFETR TF max field about 15 T with high-Jc/ITER-grade Nb3Sn/NbTi grading (sec. 2, p.14); REBCO: CFS Je > 700 A/mm2 at 20 K, 20 T worst angle (p.27), Tokamak Energy Jwp ~75 (CICC) vs ~350 A/mm2 (stacked pancakes) and NI stack > 24 T at 21 K with Jwp > 700 A/mm2 (sec. 5, p.34-35). Serves RQ-1 (magnet cost drivers LTS vs HTS).
+- **Validation**: Rendered and inspected in the stored PDF: p.20 Table 1 (DEMO vs ITER); p.38 first paragraph (83 kA / 13.7 T / 800 MPa and strain ranges); p.49 Fig. 2 (73 x 46 mm cartoon, 118 kA / 12 T); p.52 Fig. 1 (parameter box and margin points); p.67 text and Fig. 1 (grading 6.2-12.2 T, 222 vs 835 t); p.15 Fig. 1 (CFETR TF WP 805.4/929.5 x 1151.4 mm). Page numbers are the manuscript page numbers printed at page foot, which equal PDF page indices.
+- **Caveat**: Accepted-manuscript (v11, 15 Mar 2021) of a multi-author review of short articles, not a primary design report; downloaded from https://infoscience.epfl.ch/server/api/core/bitstreams/5b1da360-8a7f-4b56-ac11-05a81fd4344e/content (EPFL infoscience) and registered from a local copy. The 83 kA / 13.7 T design point is the JA DEMO (Tobita et al., Fusion Sci. Technol. 75 (2019) 372), not EU DEMO; the 118 kA conductor is a cartoon of a proposal. No current densities or insulation are printed for any Nb3Sn winding pack. The reference list cites an ARIES-I-class REBCO TF paper; it was not opened or used.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/nb3sn-highfield/mitchell2021.pdf
+- **Source ID**: c2f0baef076627920979b3c5828795b4720ad3a2c5b95bc72feba19949182f73
+- **Raw SHA256**: c2f0baef076627920979b3c5828795b4720ad3a2c5b95bc72feba19949182f73
+- **Raw Artifact SHA256**: c2f0baef076627920979b3c5828795b4720ad3a2c5b95bc72feba19949182f73
+- **Extracted Path**: knowledge/sources/superconductors_for_fusion_a_roadmap_mitchell_et_al_sust/
+- **Extract SHA256**: f3ed6aa6317888934abc0d419af4efacc3e44835853fc83f50a9aca18d09748b
+- **Date Added**: 2026-09-29
+
+### Chislett-McDonald, Surrey, Naish, Turner and Hampshire 2022, Training and Upgrading Tokamak Power Plants with Remountable Superconducting Magnets (arXiv:2205.04441v1)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/chislett_mcdonald_surrey_naish_turner_and_hampshire_2022/
+- **Use for**: Conductor prices in USD/kA.m at reference 6 T, 4.2 K, stated as 2021 costs: Nb-Ti (commercial and quaternary) 1.7, Nb3Sn strand 8.0 (from Lee et al. 2015 FED), REBCO tape about 80 now, 30 near-future target, 10 with increased demand (from Cooley and Pong 2016); Jc-scaled cost law Cost(B,T)=Cost(Bref,Tref)*Jc(Bref,Tref)/Jc(B,T) (Eq 9) with the Durham whole-strand/whole-tape Jc law (Eq 8) and fit parameters for Nb-Ti, Nb3Sn and REBCO (Table 7); PROCESS capital-cost breakdown in 1990 M USD for cost-optimised 100 MWe plants at 4.5 K with REBCO, Nb3Sn and Nb-Ti TF/CS (Table 2: TF cable 130 vs 98, cryogenics system 88 vs 95) and power balance (Table 3: cryoplant 44 vs 50 MWe); 89 kW total 4.5 K heat load; statement that cryoplant capital scales about linearly with cooling power, 88 M USD at 4.5 K to 20 M USD at 20 K; REBCO Jc about 1.7x lower at 20 K than 4.5 K. Serves the magnet-material-comparison cost evidence class.
+- **Validation**: Prices and Eq 9: PDF p17 last paragraph and p18 first paragraph (section 5.3). Eq 8 and strand/tape Jc basis, 100 kA operating current at 50 % of cable Ic, 69/31 Cu/SC and 33 % / 20 % helium void: p17 top. Table 7 Jc fit parameters: p54. Table 2 capital costs (all 1990 M USD): p49. Table 3 power balance: p50. 4.5 K choice, 89 kW, 20 K Jc factor 1.7, 84 M USD extra direct cost, cryoplant 88 to 20 M USD: p6 section 3.2 and p7 top. Cost-model trust checks: p18 second paragraph. Currency conversion 1 USD 1990 = 2.13 USD 2021 (CPI) or 3.28 (IHS-CERA): p2-3. References [137]-[140]: p42.
+- **Caveat**: arXiv preprint v1 (2022-05-09), original URL https://arxiv.org/pdf/2205.04441, not peer-review verified here. Prices are strand/tape only (no cabling, jacket, winding, insulation) and are secondary: Nb3Sn from Lee et al. 2015 FED, REBCO from Cooley and Pong 2016 slides whose own figures are 200/68/23 USD/kA.m at 20 T 4.2 K; the 6 T values appear re-referenced by Eq 9. Prices are stated in 2021 costs while PROCESS Table 2 outputs are 1990 M USD; the paper does not say whether prices were deflated before input. Cryoplant capital and all plant costs are PROCESS cost-model outputs, not independent vendor data; the linear cryoplant capital scaling is asserted without a fit. All magnets modelled at 4.5 K; no REBCO design point at 20 K is costed in tables.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cost02/chislett2022.pdf
+- **Source ID**: 9bb092e6a9576f45aebc30f95b5f734c941241705fff2e6cf5df499c33288810
+- **Raw SHA256**: 9bb092e6a9576f45aebc30f95b5f734c941241705fff2e6cf5df499c33288810
+- **Raw Artifact SHA256**: 9bb092e6a9576f45aebc30f95b5f734c941241705fff2e6cf5df499c33288810
+- **Extracted Path**: knowledge/sources/chislett_mcdonald_surrey_naish_turner_and_hampshire_2022/
+- **Extract SHA256**: e3938e04f11a7aeaaf91bc1be47f2bf429cfaad416e2f6b3d001959c8047a4b4
+- **Date Added**: 2026-09-29
+
+### Bruzzone Wesche Uglietti Bykovsky 2016 High Temperature Superconductors for Fusion at the Swiss Plasma Center (EUROfusion preprint WPMAG-CP(16) 16576)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/bruzzone_wesche_uglietti_bykovsky_2016_high_temperature/
+- **Use for**: Forced-flow REBCO cable-in-conduit prototypes for EU DEMO (magnet-material comparison, REBCO winding side): Table II 60 kA / 12 T / 5 K TF prototype flat cable = 20 twisted-stack strands of 6.2 mm diameter, 16 coated-conductor tapes each (4 mm wide, 0.1 mm thick; 320 tapes), 5 mm copper core, 320 mm strand twist pitch, 1000 m cable pitch; Fig. 3 Tcs versus operating current at B = 8, 10, 12 T with Ec = 1 uV/cm for SuperOx and SuperPower sections, giving about 36-38 kA at 12 T and 20 K and Ic 38.5-39.2 kA near 17.5 K at 12 T; DC performance degraded about 10 percent (SuperPower) and 20 percent (SuperOx) after cyclic electromagnetic loading; Table I requirements TF 60 kA / 12 T / 4.5 K inlet / 100 A/mm2 in copper and CS 50 kA / 18 T / 4.5 K / 120 A/mm2 in copper; Table III 53 kA / 18 T CS prototype layouts (rectangular: 10 strands x 28 tapes 3.3 mm, 240 mm2 copper, 924 mm total tape width; round: 4 strands x 46 tapes 5.0 mm, 250 mm2 copper, 920 mm total tape width).
+- **Validation**: Stored preprint pages: Table I on printed page 3 (PDF page 5); Table II and Fig. 3 on printed page 4 (PDF page 6); Table III on printed page 5 (PDF page 7); degradation sentence at top of printed page 4. Fig. 3 values are figure reads; check against the rendered page.
+- **Caveat**: Preprint of the IAEA FEC 2016 paper (later published in Nucl. Fusion 57 (2017) 046008), downloaded from https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPMAGCP16_16576_submitted.pdf; not the journal version. Designs are for 4.5-5 K operation; 20 K values come from test data in the Fig. 3 curves, whose field B is the EDIPO background field, not the peak conductor field. No jacket, insulation or helium fraction is given, so conductor-level current density needs an assumed envelope. Prototype conductors, not a coil winding pack.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/rebco-wp/wpmag16576.pdf
+- **Source ID**: 67dceefc8339532166c2475237df616db42b3d7915f844ce0ae6ca651cd26bd8
+- **Raw SHA256**: 67dceefc8339532166c2475237df616db42b3d7915f844ce0ae6ca651cd26bd8
+- **Raw Artifact SHA256**: 67dceefc8339532166c2475237df616db42b3d7915f844ce0ae6ca651cd26bd8
+- **Extracted Path**: knowledge/sources/bruzzone_wesche_uglietti_bykovsky_2016_high_temperature/
+- **Extract SHA256**: 7d59a2bd3dc3f01746275a0c10cdf38aaa0db097cfbf5a18b597ce3ea38345db
+- **Date Added**: 2026-09-29
+
+### ITER Final Design Report 2001 Plant Description Document chapter 3.2 cryoplant and cryodistribution
+- **Type**: local_pdf
+- **Location**: knowledge/sources/iter_final_design_report_2001_plant_description_document/
+- **Use for**: Fusion magnet-system 4.5 K heat-load budget for the magnet-material comparison (ITER FDR 2001 design): static heat load to the magnet system 11.8 kW (thermal radiation from 80 K shields plus conduction through gravity supports), averaged pulsed heat load to the magnet system 10.9 kW (electromagnetic losses plus nuclear heating, averaged over 1,800 s repetition with 400 s burn), He circulating pumps 11.4 kW, cold compressors 4.3 kW, current-lead liquefaction 0.1 kg/s, cryopumps 4 kW + 0.07 kg/s, small users 0.8 kW; LHe plant design point 43.2 kW + 0.17 kg/s (Table 3.2.1.2-1); four 18 kW-equivalent LHe modules; 80 K thermal shields cooled by 80 K He in, 100 K out. Magnet system = 18 TF coils, CS, 6 PF coils, correction coils and structures.
+- **Validation**: Table 3.2.1.2-1 and its notes on PDD chapter 3.2 page 4 (PDF p4); the static/pulsed load definitions continue at the top of page 5; 80 K loop description on page 5. Text layer is clean; check numbers against the rendered page.
+- **Caveat**: ITER Final Design Report (G A0 FDR 1 01-07-13 R1.0, July 2001) design-stage budget, not the as-built ITER cryoplant (installed 75 kW at 4.5 K per iter.org); static and pulsed magnet loads are not split into radiation, conduction, nuclear heating, AC loss or joints; ITER is a pulsed machine so the pulsed term does not transfer to a steady-state reactor. Local copy downloaded from https://www.fusion.qst.go.jp/ITER/FDR/PDD/PDD_3_2_Cryoplant.pdf (QST, Japanese ITER domestic agency).
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cryoloads/pdd32.pdf
+- **Source ID**: 0d0a31cfb1d88d72ad4e212c932cfb921a8509d8b8725cc004c0fbdcd04a2790
+- **Raw SHA256**: 0d0a31cfb1d88d72ad4e212c932cfb921a8509d8b8725cc004c0fbdcd04a2790
+- **Raw Artifact SHA256**: 0d0a31cfb1d88d72ad4e212c932cfb921a8509d8b8725cc004c0fbdcd04a2790
+- **Extracted Path**: knowledge/sources/iter_final_design_report_2001_plant_description_document/
+- **Extract SHA256**: 383b5b5111c715bdf2ea49376414c84cbbc3083fee939a7566d5621898bb64eb
+- **Date Added**: 2026-09-29
+
+### Design, Manufacture and Test of a 82 kA React&Wind TF Conductor for DEMO (Bruzzone et al., EUROfusion CP(15)09/01)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/design_manufacture_and_test_of_a_82_ka_react_wind_tf/
+- **Use for**: EU DEMO (2012-2013 PROCESS baseline) high-grade Nb3Sn TF conductor above 13 T for the magnet-material comparison (goal magnet-material-comparison T-003): design operating field 13.50 T and current 82.4 kA; double-layer winding with six Nb3Sn grades and NbTi for B <= 6 T, graded for a roughly constant 1.5 K temperature margin; strand 1.5 mm, Cu:non-Cu 1, Jc >= 1000 A/mm2 at 12 T, 4.2 K specified (WST average up to 15 % higher); cable (1Cu+6+12) x 17 = 306 Nb3Sn strands + 17 Cu, flat 11.9 x 62.6 mm, void fraction 15 % specified vs about 27 % as built; with 48 Cu wires 2.9 mm the cable is 17.8 x 68.5 mm; conduit 100 x 34 mm; bending strain limit +/-0.1 % gives cable thickness <= 14.3 mm at Rht 7.18 m; thermal strain estimate -0.28 %, scaling-law fit -0.33 %, strain distribution 0.05 %; Beff = Bbackground + 0.0084 Iop (kA); take-off field about 30 uV/m; n = 13. Derived: non-Cu J 305 A/mm2 and bare-conductor J 24.2 A/mm2 at 82.4 kA. Serves RQ-1 (magnet cost drivers LTS vs HTS).
+- **Validation**: Rendered and inspected in the stored PDF: PDF p.3 (paper p.1) abstract and sec. II for 13.50 T, 82.4 kA, 1.5 K, Jc spec, Rht and 14.3 mm; PDF p.4 (paper p.2) Fig. 1 for strand count, cable size, void fraction and Cu wires, Fig. 3 for the 100 x 17(+17) mm conduit drawing, sec. II.C for 100 mm x 34 mm; PDF p.5-6 (paper p.3-4) sec. III text for strain, Beff formula, n-index and test currents (Figs. 6 and 8 plotted Tcs values were not read off).
+- **Caveat**: EUROfusion conference preprint (MT-24, Seoul, Oct 2015), downloaded from https://scipub.euro-fusion.org/wp-content/uploads/2015/11/EFCP150901.pdf and registered from a local copy; the published IEEE Trans. Appl. Supercond. version may differ. Design requirements come from the PROCESS system code run of July 2012 and the 2013 CAD model, so the 13.5 T point is not independent of PROCESS and was superseded by the 2018 EU DEMO baseline at 12 T. The conductor was tested only to 70 kA DC at 12.35 T background (quench above 82.1 kA from termination artifacts); 82.4 kA at 13.5 T was not demonstrated. No winding-pack dimensions, turn count or insulation are given.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/nb3sn-highfield/efcp150901.pdf
+- **Source ID**: e002622f82c732e8f59a1dd0d152735ab6825bf1839b5b23e5156da42d7b24a0
+- **Raw SHA256**: e002622f82c732e8f59a1dd0d152735ab6825bf1839b5b23e5156da42d7b24a0
+- **Raw Artifact SHA256**: e002622f82c732e8f59a1dd0d152735ab6825bf1839b5b23e5156da42d7b24a0
+- **Extracted Path**: knowledge/sources/design_manufacture_and_test_of_a_82_ka_react_wind_tf/
+- **Extract SHA256**: 816de9be58ea623d57ccf6cfb4034d4f7861686719a68ceccc619adb4057bf2c
+- **Date Added**: 2026-09-29
+
+### Hartwig et al 2020 VIPER insulated soldered REBCO cable (accepted manuscript, SuST 33 11LT01)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/hartwig_et_al_2020_viper_insulated_soldered_rebco_cable/
+- **Use for**: Insulated, VPI-soldered twisted-stack REBCO cable for fusion magnets (magnet-material comparison, REBCO winding side): Fig. 1 cross-section with four HTS stacks 4.0 mm wide in a twisted copper former with central cooling channel, copper jacket and optional stainless-steel jacket, outer diameter 27.7 mm; Delta pair (4 stacks) Ic 31.5 kA at B = 10.9 T and T = 20 K and Ic about 45.5 kA at 10.9 T and 10 K; SULTAN tests at 4.5-20 K and background field up to 10.9 T; fabrication degraded cable Ic by less than 5 percent from the design value; IxB cycling degradation asymptoted at 2.0-4.1 percent for all eight cables (Table 1: up to 382 kN/m and 75 MPa per stack, up to 2000 cycles); Delta stable up to 0.8 MW/m3 heating at 10.9 T, 20 K.
+- **Validation**: Stored manuscript: Fig. 1 and caption on page 2 (dimension labels 4.0 mm and 27.7 mm are in the drawing); fabrication-degradation sentence on page 3; Table 1 on page 3; Delta Ic 45.5 kA on page 4 section 3.1; 20 K Ic 31.5 kA on page 6 section 3.2.
+- **Caveat**: Author accepted manuscript from MIT DSpace handle 1721.1/133134 (bitstream URL https://dspace.mit.edu/bitstream/1721.1/133134/2/SST_VIPER_Overview_Final.pdf returned an AWS WAF human-verification page; the same file was fetched from the public DSpace REST content endpoint); manuscript title reads 'industrially mature' where the journal title reads 'industrially scalable'. No tape count per stack, tape manufacturer, or area breakdown is given; the Fig. 1 design may not be drawn to scale and is not stated to be identical to the tested Delta cable. B is the SULTAN background field. Short straight cable samples, not a coil winding pack; no winding-pack insulation or case fraction.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/rebco-wp/viper2020.pdf
+- **Source ID**: 08efdb80ad384cdab3a7191b00643ce82989ada7ab9fde51b1c024989079423c
+- **Raw SHA256**: 08efdb80ad384cdab3a7191b00643ce82989ada7ab9fde51b1c024989079423c
+- **Raw Artifact SHA256**: 08efdb80ad384cdab3a7191b00643ce82989ada7ab9fde51b1c024989079423c
+- **Extracted Path**: knowledge/sources/hartwig_et_al_2020_viper_insulated_soldered_rebco_cable/
+- **Extract SHA256**: d94148c0991fb7efc105278ea1e6f4d48a52bee1f028233ee74bba420da9fbad
+- **Date Added**: 2026-09-29
+
+### UKAEA PROCESS superconducting TF coil model documentation: on-coil ripple peak field fit (peak_tf_with_ripple)
+- **Type**: url
+- **Location**: knowledge/sources/ukaea_process_superconducting_tf_coil_model_documentation/
+- **Use for**: The only located sourced dependence of a TF winding-pack peak field on winding-pack size for a discrete coil set: the on-coil ripple peaking factor f_rip = B_rip/B_nom = A0 + A1 exp(-t) + A2 z + A3 z t, with t the winding-pack toroidal thickness relative to its maximum at the inboard leg and z the radial thickness relative to the same, fitted to FIESTA field calculations for 16, 18 and 20 TF coils only, over t in 0.35-0.99 and z in 0.2-0.7, and a default 9 percent increase (1.09) outside those coil counts; B_nom is the axisymmetric Ampere's-law peak mu0 I_TF N /(2 pi R_TF,peak). Serves REQ-MMC-FIELD-01 (goal magnet-material-comparison, plant-chain deficiency D1) as the tokamak-PROCESS analogue of Lion 2021 eq. 39's winding-pack term.
+- **Validation**: Open the section 'On-coil ripple (peak_tf_with_ripple)': check the peaking-factor definition, the fitted form, the definitions of t and z, the 16/18/20-coil restriction, the t and z ranges and the 1.09 default; take the A0-A3 coefficient values from the PROCESS source (process/tf_coil.py or the documented table) if the page does not print them. Compare B_nom with Kovari 2016 Part 2 eq. 32-33 (knowledge/raw/kovari2016.pdf, journal p. 13).
+- **Caveat**: Live documentation page of a code, not a peer-reviewed source; its fits are to FIESTA calculations for planar tokamak TF coils of 16-20 coils with an EU-DEMO-like radial build, so the peaking factor does not transfer to a 48-coil non-planar stellarator set; coefficient values may be absent from the page and must then be read from the code; the page can change without notice, so the captured snapshot is the citable object.
+
+#### Extended Metadata
+- **Source URL**: https://ukaea.github.io/PROCESS/eng-models/tf-coil-superconducting/
+- **Source ID**: 92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60
+- **Raw SHA256**: 92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60
+- **Raw Artifact SHA256**: 92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60
+- **Extracted Path**: knowledge/sources/ukaea_process_superconducting_tf_coil_model_documentation/
+- **Extract SHA256**: 30591f76e82182139b47b225a6632a9f971ef6b430904bc2c496818659d0f4d3
+- **Date Added**: 2026-09-29
+
+### Confinement Study of Net-Current Free Toroidal Plasmas Based on Extended International Stellarator Database (Yamada et al., IAEA FEC 2004, EX/1-5)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/confinement_study_of_net_current_free_toroidal_plasmas/
+- **Use for**: Conference precursor of ISS04 (Yamada et al. 2005 Nucl. Fusion 45 1684). Defines the ISS04 renormalization factor f_ren as a configuration-dependent enhancement factor: 'One renormalization factor is defined by the averaged value of experimental enhancement factors for each configuration (subset)', with the leading coefficient fixed so that f_ren = 1 for W7-AS at iota < 0.48 (p. 4). Prints the preliminary fit Eq. (3) ISS04v3: tau_E = 0.148 a^2.33 R^0.64 P^-0.61 n_e^0.55 B^0.85 iota_2/3^0.41, RMSE 0.026, and its dimensionless form tau/tau_Bohm ~ rho*^-0.90 beta^-0.01 nu_b*^-0.14 (p. 4); Fig. 3 gives per-device f_ren (ATF, Heliotron E, CHS, Heliotron J, TJ-II, W7-AS low/high iota, LHD Rax 3.9/3.6) spanning about 0.4-1.2 (p. 4). Database composition: about 2500 points from nine stellarators (ATF, CHS, Heliotron E, Heliotron J, HSX, LHD, TJ-II, W7-A, W7-AS), 1747 used, largest device LHD R/a = 3.9 m/0.6 m (p. 2); iota range 1.3-2.2 from TJ-II (p. 3); Fig. 1 shows the database in rho*, nu_b* against a 'Reactor' point, LHD 3-10x closer to reactor regime (p. 2). Serves REQ-MMC-PLASMA-01 (ISS04 fitted domain and meaning of f_ren off the fitted point).
+- **Validation**: Check Eq. (3) and the f_ren definition paragraph on p. 4; Fig. 3 (p. 4) for per-device f_ren; Section 2 p. 2 for the database composition and LHD size; Fig. 1 (p. 2) for the rho*-nu_b* coverage. Exponents are set as separate text runs in the PDF extraction; read them from the rendered page.
+- **Caveat**: IAEA FEC 2004 preprint, not the peer-reviewed 2005 Nuclear Fusion paper: the fit printed here is ISS04v3 (0.148, a^2.33, n^0.55, B^0.85), which differs slightly from the published ISS04 (0.134, a^2.28, n^0.54, B^0.84) used by Stellaris Eq. A.7. It prints no per-parameter table of the database's B, n, a, R, beta or P ranges, only device names, the LHD size and dimensionless coverage in a figure. The journal version (pure.mpg.de, KURENAI, ANU) was unreachable to the tooling.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/yamada2004_iaea.pdf
+- **Source ID**: 1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a
+- **Raw SHA256**: 1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a
+- **Raw Artifact SHA256**: 1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a
+- **Extracted Path**: knowledge/sources/confinement_study_of_net_current_free_toroidal_plasmas/
+- **Extract SHA256**: 516caf91202ad8a43e42916a9927896056783ed18f11325bd108b31de749638b
+- **Date Added**: 2026-09-29
+
+### HELIAS 5-B magnet system structure and maintenance concept (Schauer, Egorov, Bykov, Fusion Eng. Des. 88 (2013) 1619-1622)
+- **Type**: url
+- **Location**: knowledge/sources/helias_5_b_magnet_system_structure_and_maintenance_concept/
+- **Use for**: Establishes the engineering design point of the Nb3Sn HELIAS 5-B stellarator reactor, the second coil-set anchor for the peak/axis field ratio: Table 1 prints major radius 22 m, average minor radius 1.8 m, plasma volume 1407 m3, 50 coils, average field on axis 5.9 T, max. field at coils 12.5 T (ratio 2.12), cable current 86 kA, superconducting strand current 76 A, superconductor Nb3Sn or Nb3Al, stored energy 160 GJ (3.2 GJ per coil), fusion power 3000 MW (footnote b: estimated for a plasma axis field of 5 T), alongside the ITER TF values (6.2 m, 2.0 m, 837 m3, 18 coils, 5.3 T, 11.8 T, 68 kA, 76 A, Nb3Sn, 41 GJ, 2.3 GJ, 500 MW). Section 2 prints the cable jacket 53x53 mm2 with 6 mm wall, winding pack 750x709 mm2 including ground insulation, and casing outer dimensions 1000x920 mm2. The introduction states the field increase above 12 T forced the switch from NbTi to Nb3Sn and that the magnet parameters are comparable to the ITER TF system. Serves REQ-MMC-NB3SN-PLANT-01 and RQ-2.
+- **Validation**: The file is an image-only scan of the author manuscript (4 pages, no text layer): render page 1 and read Table 1 (right column, with footnotes a and b) for every number above; page 2, section 2, first paragraph for the jacket 53x53 mm2, winding pack 750x709 mm2 and casing 1000x920 mm2; page 4 references [3] and [4] for the companion papers that print the winding-pack and 12 T design.
+- **Caveat**: Author manuscript from the IPP repository (pure.mpg.de) of a 4-page SOFT 2012 conference paper; page numbering and typesetting differ from the Elsevier version. The 3000 MW fusion power is estimated for 5 T on axis, not for the 5.9 T of the same table. The maximum field 12.5 T is stated without the winding-pack model behind it, without a dependence on pack size, and without stating whether it is a conductor, stress, or configuration limit. Number of turns and ampere-turns per coil are not printed here (see the 2011 winding-pack paper). No plasma performance or confinement self-consistency at 5.9 T is shown.
+
+#### Extended Metadata
+- **Source URL**: https://pure.mpg.de/rest/items/item_2145357_1/component/file_2145356/content
+- **Source ID**: 45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb
+- **Raw SHA256**: 45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb
+- **Raw Artifact SHA256**: 45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb
+- **Extracted Path**: knowledge/sources/helias_5_b_magnet_system_structure_and_maintenance_concept/
+- **Extract SHA256**: 4c5a96f802e0999c60ecfe2cc48a3d72b12cda0630761224a1c31f943d18ec2b
+- **Date Added**: 2026-09-29
+
+### From W7-X to a HELIAS Fusion Power Plant: Motivation and Options for an Intermediate-Step Burning-Plasma Stellarator (Warmer et al., EUROfusion preprint WPS2-PR(16) 15201, 2016)
+- **Type**: url
+- **Location**: knowledge/sources/from_w7_x_to_a_helias_fusion_power_plant_motivation_and/
+- **Use for**: Sourced low-field HELIAS-class operating points and the meaning of the ISS04 renormalization factor away from experiments. Table 1 (p. 5): HELIAS 5-B R/a 22/1.8 m, volume 1400 m3, field on axis 5-6 T, volume-averaged thermal beta 5 %, 3000 MW fusion, 600 MW heating, nT-tau ~50e20 m-3 keV s, W7-X at 2.5 T and 5 % beta. Defines f_ren = tau_E/tau_E^ISS04 as a configuration-dependent enhancement/degradation factor like the tokamak H-factor (p. 6) and states that detailed 1-D transport simulations [43] found f_ren 'quite different for W7-X and a HELIAS' and that transport regimes change from W7-X to a power plant (p. 7). Dimensionless transformation relations for the HELIAS line, Eq. (2)-(4): rho* ~ B*^-0.8104 P*^0.1934 n*^-0.2302, nu* ~ B*^0.2418 P*^-0.7737 n*^1.9207, beta* ~ B*^-0.6209 P*^0.3868 n*^0.5397 (p. 6). Beta limit (p. 10): linear stability ~4.5 %, experiments operate above it, optimized HELIAS limit predicted 5-6 % [53]. PROCESS design windows: Option A R 12-15 m, B_t 4-5.6 T, NbTi, 500 MW fusion, f_ren <= 1.8, beta 3-5 %, 50 MW heating at beta 4.5 %, and a degradation from f_ren 1.8 to 1.6 doubles required heating (p. 10); Option C R 15-20 m, B_t 4.5-5.6 T, Nb3Sn, A = 12, f_ren <= 1.5 from 1-D transport, not ignited under those constraints, beta 4-5 % at 50-100 MW heating (pp. 11-12). Serves REQ-MMC-PLASMA-01.
+- **Validation**: Table 1 on p. 5 for HELIAS 5-B parameters; p. 6 lines 289-294 for the f_ren definition and Eq. (2)-(4); p. 7 lines 388-396 for the 1-D transport statement; p. 10 lines 661-677 for the beta-limit discussion and Fig. 4 caption; Table 2 on p. 10 for Option A/C sub-goals; p. 12 lines 845-855 for the Option C ranges. Figures 4 and 6 carry the beta and heating isocontours.
+- **Caveat**: EUROfusion preprint of a paper 'to be submitted' to Plasma Physics and Controlled Fusion (published as PPCF 58 (2016) 074006); page and line numbers are the preprint's. HELIAS 5-B numbers are quoted from Schauer 2013 [13] and are an engineering-study snapshot. The f_ren bounds (<= 1.8, <= 1.5) are systems-study inputs taken from 1-D transport simulations in [43], not measured values; the beta-limit ranges are cited predictions, not a field-dependent law. No ISS04 database ranges are printed.
+
+#### Extended Metadata
+- **Source URL**: https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2PR16_15201_submitted.pdf
+- **Source ID**: c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd
+- **Raw SHA256**: c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd
+- **Raw Artifact SHA256**: c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd
+- **Extracted Path**: knowledge/sources/from_w7_x_to_a_helias_fusion_power_plant_motivation_and/
+- **Extract SHA256**: cdedebecf160174ecce92c38a9646b4366fd94a8493c2f37b55e76275f74632f
+- **Date Added**: 2026-09-29
+
+### Coil winding pack FE-analysis for a HELIAS reactor (Schauer, Egorov, Bykov, Fusion Eng. Des. 86 (2011) 636-639)
+- **Type**: url
+- **Location**: knowledge/sources/coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer/
+- **Use for**: Establishes the winding pack and conductor of the 12 T Nb3Sn HELIAS reactor HSR50a, the ancestor of HELIAS 5-B, and so the ampere-turns behind its peak field: Table 2 prints cable current 86 kA, 156 cable turns (so 13.4 MA per coil), operation temperature 4.7 K, 1134 superconducting and 657 copper strands, cable section without channel 1489 mm2, square jacket 53x53 mm, conductor insulation 1.5 mm, double-pancake insulation 3 mm, ground insulation 7 mm, embedding 4 mm, against ITER TFC (68 kA, 134 turns, 4.7 K, 900/522 strands, 1178 mm2, 44 mm round). Table 1 prints HSR50a: R 22 m, a 1.8 m, 1407 m3, 50 coils, 5.6 T average axis field, 12.3 T max field on coils (ratio 2.20), Nb3Al/Nb3Sn, 152 GJ, 3000 MW, against ITER (5.3 T, 11.8 T). The introduction states the upgrade from HSR5/22 to HSR50a raised the axis field from about 5 T to about 5.6 T and the conductor field from about 10 T to about 12 T, that 12 T was chosen with the maximal field limited mainly by structural integrity, that HSR5 coil centre-line lengths are within 3 percent below the ITER TFC circumference of 34.5 m, that the local peak forces per coil unit length are about 20 percent above ITER, and that the winding pack cross section is about 0.5 m2. Serves REQ-MMC-NB3SN-PLANT-01 and RQ-2.
+- **Validation**: Author manuscript with a text layer: page 2, Table 1 (Main data of ITER and HSR50a) for the axis field 5.6 T, max field 12.3 T, 50 coils and 152 GJ; page 3, Table 2 (Winding pack data for ITER TFC and HSR50a) for 86 kA, 156 turns, 4.7 K, strand counts and jacket 53x53 mm; page 1 introduction for the 5 T to 5.6 T and 10 T to 12 T statements and the structural-integrity limit sentence; page 2 for the 34.5 m ITER TFC circumference and the 20 percent force statement. The Table 2 extraction is interleaved with figure captions; read the page image.
+- **Caveat**: Author manuscript from the IPP repository of a 4-page SOFT 2010 conference paper; page layout differs from the Elsevier version. HSR50a is the earlier upscaled-W7-X coil set, not the re-shaped HELIAS 5-B coils of the 2013 paper (which prints 5.9 T and 12.5 T for the same 50-coil, 22 m machine), so the peak/axis ratios 2.20 and 2.12 belong to two slightly different configurations. The 12.3 T maximum is stated as a design choice with no printed winding-pack model, no scan against pack size or current density, and no plasma self-consistency at 5.6 T. The 13.4 MA per coil is derived from 86 kA x 156 turns, not printed.
+
+#### Extended Metadata
+- **Source URL**: https://pure.mpg.de/rest/items/item_2140095_1/component/file_2140094/content
+- **Source ID**: cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513
+- **Raw SHA256**: cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513
+- **Raw Artifact SHA256**: cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513
+- **Extracted Path**: knowledge/sources/coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer/
+- **Extract SHA256**: 85fff62caa720cb3dde0de4f979807b22177a4f7f1971b143495cdb4f1cdc181
+- **Date Added**: 2026-09-29
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

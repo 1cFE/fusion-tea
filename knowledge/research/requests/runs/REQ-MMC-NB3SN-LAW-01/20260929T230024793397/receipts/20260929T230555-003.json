@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://arxiv.org/pdf/cond-mat/0608404v1",
+  "slug": "a_general_scaling_relation_for_the_critical_current_density",
+  "path": "knowledge/sources/a_general_scaling_relation_for_the_critical_current_density/",
+  "source_id": "1a17594bf57a447b345a5ed5fb0f64aa55a6414381304f819ffe04b856fb88df",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:05:55.856106+00:00"
+}

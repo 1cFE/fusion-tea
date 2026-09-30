@@ -33,7 +33,7 @@ def test_default_paths_lands_inside_the_temp_tree(knowledge_tree):
 def test_both_modules_see_the_same_redirected_constants(knowledge_tree):
     """`zotero_ingest` imported the constants by value, so it is patched separately."""
     for constant in ("SOURCES_DIR", "SOURCE_INDEX_PATH", "MANIFEST_PATH", "RAW_DIR",
-                     "STAGING_DIR", "LOCK_PATH", "BASELINE_PATH"):
+                     "STAGING_DIR", "LOCK_PATH", "BASELINE_PATH", "RETIRED_PATH"):
         assert getattr(zotero_ingest, constant) == getattr(zotero_lib, constant)
 
 

@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MMC-COST-01",
+  "question": "Which permitted primary public sources state Nb3Sn and REBCO conductor prices with physical purchase units (USD per kA-m at stated field and temperature, per kg, or per m), amount purchased, currency year and scope (strand, cable, jacketed conductor, winding, installed magnet), and helium refrigerator capital cost per unit cooling capacity at 4.5 K and near 20 K?",
+  "consumer": "goal:magnet-material-comparison/T-002",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["registered HTS Potential and Needs for Future Accelerator Magnets (REBCO USD per kA-m)", "ITER conductor procurement and cost reports", "Green and Strauss cost of superconducting magnets and cryogenics", "US Snowmass / DOE HTS conductor cost roadmaps and CERN FCC Nb3Sn cost targets", "Green or Byrns helium refrigerator cost scaling"],
+  "limits": {"max_searches": 8, "max_captures": 3}
+}

@@ -1,0 +1,40 @@
+{
+  "request_id": "REQ-MMC-REBCO-01",
+  "run": "knowledge/research/requests/runs/REQ-MMC-REBCO-01/20260929T230028415083",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "field_and_temperature_scaling_of_the_critical_current",
+      "path": "knowledge/sources/field_and_temperature_scaling_of_the_critical_current/",
+      "source_id": "7ad34fc68efe87d0199399e15cdd063a8089db12940f663559f045df28f84895",
+      "pre_existing": false
+    },
+    {
+      "slug": "the_sparc_toroidal_field_model_coil_program",
+      "path": "knowledge/sources/the_sparc_toroidal_field_model_coil_program/",
+      "source_id": "949d4db39c65a02a611f7e825864b635adb86287a84af69c721207928729042d",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://dspace.mit.edu/bitstream/1721.1/133134/2/SST_VIPER_Overview_Final.pdf",
+      "reason": "blocked by bot verification: MIT DSpace author copy returns a Human Verification page and the IOP open-access PDF (10.1088/1361-6668/abb8c0) returns a Radware captcha to scripted download; open access, so a person can download the PDF and register it with --local-pdf. Hartwig et al. VIPER cable SuST 33 (2020) 11LT01: REBCO tape-stack-to-cable construction, 20 K cable Ic and cycling degradation."
+    },
+    {
+      "candidate": "https://figshare.com/collections/A_high_temperature_superconducting_HTS_wire_critical_current_database/2861821",
+      "reason": "not capturable by the registry: the Wimbush-Strickland Robinson HTS wire critical-current database (CC BY 4.0, reachable) publishes each tape as figshare xlsx data files and PNG plots, and source_registry.py captures only a stored raw.html or raw.pdf; triage of the SuperOx record (10.6084/m9.figshare.3759315) shows 15-90 K in 5 K steps and angle data at fields up to 7 T only, on GdBCO rather than the 2021 fusion YBCO; useful for Ic temperature dependence near 20 K below 8 T. Owner decision needed on a dataset capture path."
+    },
+    {
+      "candidate": "https://doi.org/10.1109/TASC.2024.3356571",
+      "reason": "IEEE Xplore returns an empty response to scripted fetch and no arXiv or repository copy was found; open-access status not verifiable from here. Design, Fabrication, and Assembly of the SPARC TFMC (IEEE TAS 34(2) 2024) should carry the tape count per stack, tape grading, copper and solder fractions needed to convert tape Ic to the 153 A/mm2 winding-pack current density; a person can retrieve it and register with --local-pdf."
+    },
+    {
+      "candidate": "https://infoscience.epfl.ch/record/265230",
+      "reason": "EPFL Infoscience lists an author manuscript PDF of Uglietti, A review of commercial HTS materials for large magnets: from wires and tapes to cables and conductors, SuST 32 (2019) 053001, but scripted bitstream download returns 404; a person can download it in a browser and register with --local-pdf. Expected to give tape-to-cable current-density conversions for fusion REBCO cable designs."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

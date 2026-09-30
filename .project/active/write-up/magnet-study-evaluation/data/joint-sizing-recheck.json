@@ -1,0 +1,56 @@
+{
+  "source": "exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing",
+  "snapshot_file_sha256": "330e0ac2411ce50ff59bd109bcce8c18a5c3d97141cb013a7b870c1689990154",
+  "tapes_entering_to_installed": [
+    112.70871985157702,
+    239.98370132052918
+  ],
+  "tape_length_ratio": 2.129238107189551,
+  "tape_count_ratio": 2.1292381071895505,
+  "magnet_subtotal_delta_usd": [
+    844610559.3542728,
+    143230908.73757172
+  ],
+  "lcoe_delta_usd_per_MWh": [
+    18.446797672982882,
+    3.5496939546959823
+  ],
+  "reference_field_margin_T": 3.552713678800501e-15,
+  "accommodated_field_excess_T": 0.39734042553191173,
+  "bore_ratio_accommodated": 1.0159574468085106,
+  "omitted_pack_term_share_reversing_field_step": 0.04940244006932062,
+  "pack_area_m2_entering_to_accommodated": [
+    0.12959999999999994,
+    0.27858295613001366
+  ],
+  "cohort": {
+    "default_cases_by_input_rule": 324,
+    "analysis_flagged_default_ids": 324,
+    "flag_ids_matched": 324,
+    "default_all20_passes": 0,
+    "default_violation_counts": {
+      "divertor_heat_ok": 247,
+      "loop_capacity_ok": 232,
+      "burn_hold_ok": 190,
+      "wp_fit_ok": 170,
+      "peak_field_ok": 157,
+      "wall_load_ok": 94,
+      "sustainment_ok": 75,
+      "recirc_ok": 1,
+      "beta_ok": 0,
+      "cond_strain_ok": 0,
+      "cycle_domain_ok": 0,
+      "heating_couple_positive_ok": 0,
+      "heating_couple_upper_ok": 0,
+      "heating_source_positive_ok": 0,
+      "heating_source_upper_ok": 0,
+      "loop_pressure_ok": 0,
+      "net_positive": 0,
+      "reference_conductor_current_ok": 0,
+      "tbr_ok": 0,
+      "wp_stress_ok": 0
+    },
+    "all_unique_native_cases": 347,
+    "all_cases_all20_passes": 1
+  }
+}

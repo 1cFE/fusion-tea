@@ -281,3 +281,9 @@ SOURCE_COLLECTIONS["component_alternatives"] = (
 
 # WI-098 isolated conditional whole-plant comparison.
 SOURCE_COLLECTIONS["whole_plant_conversion"] = tuple(p for p in SOURCE_COLLECTIONS["component_alternatives"] if not p.startswith("designs/")) + ("analyses/mfe_fuel_cycle.sysml", "analyses/whole_plant_conversion_accounts.sysml", "designs/whole_plant_conversion/plant.sysml")
+
+# WI-099 isolated matched-duty magnet conductor alternatives (goal magnet-material-comparison).
+SOURCE_COLLECTIONS["magnet_materials"] = (
+    'analyses/magnet_conductor_alternatives.sysml',
+    'designs/magnet_materials/magnet_subsystem.sysml',
+)

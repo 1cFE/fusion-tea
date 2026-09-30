@@ -1,0 +1,32 @@
+{
+  "request_id": "REQ-MMC-PLASMA-01",
+  "run": "knowledge/research/requests/runs/REQ-MMC-PLASMA-01/20260930T032155284324",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "confinement_study_of_net_current_free_toroidal_plasmas",
+      "path": "knowledge/sources/confinement_study_of_net_current_free_toroidal_plasmas/",
+      "source_id": "1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a",
+      "pre_existing": false
+    },
+    {
+      "slug": "from_w7_x_to_a_helias_fusion_power_plant_motivation_and",
+      "path": "knowledge/sources/from_w7_x_to_a_helias_fusion_power_plant_motivation_and/",
+      "source_id": "c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://pure.mpg.de/pubman/item/item_2136980_1/component/file_2136979/Yamada.pdf",
+      "reason": "Yamada et al. 2005 Nucl. Fusion 45 1684 (published ISS04: 0.134 a^2.28 R^0.64 P^-0.61 n^0.54 B^0.84 iota^0.41 and the database parameter-range table). MPG repository serves an Anubis bot-check (HTTP 403) to the tooling; the KURENAI copy (repository.kulib.kyoto-u.ac.jp/handle/2433/34838) is a JS-only page with no reachable bitstream; the ANU copy is embargoed to 2037. A person with a browser can fetch the MPG or KURENAI PDF."
+    },
+    {
+      "candidate": "https://openresearch-repository.anu.edu.au/items/018d8d84-42db-4ecb-9374-b17ee61c63bc/full",
+      "reason": "Dinklage et al. 2007 Nucl. Fusion 47 1265 'Physical model assessment of the energy confinement time scaling in stellarators' (ISS04 configuration factor vs effective ripple). ANU repository is request-a-copy only; IOP version is paywalled. Needed for the f_ren-vs-configuration relation; owner may hold access."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

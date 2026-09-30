@@ -682,7 +682,7 @@ attribute fit_minimum_margin : Real = wp_fit.minimum_margin;</code></pre>
 
 <p>Codegen now identifies the calculations used by the assembled plant and determines where each one gets its inputs.</p>
 
-<p>Those connections determine what must be calculated first. The program cannot check winding-pack clearance until it knows the pack dimensions, and it cannot calculate those dimensions until it knows how much conductor is needed. TEAx will use these dependencies to order the calculations when it runs the program.</p>
+<p>Those connections determine what must be calculated first. The program cannot check winding-pack clearance until it knows the pack dimensions, and in the version shown here it could not calculate those dimensions until it knew how much conductor the current needed. TEAx will use these dependencies to order the calculations when it runs the program.</p>
 
 <p>SysML organizes the model around physical components. Codegen constructs a second view organized around calculations: each calculation is a node, and a connection from one calculation's output to another's input is an edge. This is the <strong>computational graph</strong>. It tells the execution system which results must be available before a calculation can run. The following figure shows the magnet branch of the generated stellarator graph.</p>
 
@@ -871,7 +871,7 @@ attribute fit_minimum_margin : Real = wp_fit.minimum_margin;</code></pre>
       <div class="readout" id="graph-readout" aria-live="polite"></div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 5</span>Each arrow connects a calculation's output to another calculation's input. Multiple values exchanged by the same pair share an arrow. Secondary inputs and other plant branches are omitted. Exact nodes, connections, and package identities: <code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 5</span>Each arrow connects a calculation's output to another calculation's input. Multiple values exchanged by the same pair share an arrow. Secondary inputs and other plant branches are omitted. Exact nodes, connections, and package identities: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/graph-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -910,7 +910,9 @@ attribute fit_minimum_margin : Real = wp_fit.minimum_margin;</code></pre>
 
 <p>The pack dimensions feed two branches: one checks whether the pack fits, while the other calculates material quantities and their procurement cost. A separate check determines whether the resulting conductor supply can carry the required current. <mark class="skim">Following the arrows shows how a change in field can affect both the physical fit and the cost of the magnet.</mark></p>
 
-<p>This execution order depends on the model author declaring each calculation's inputs and outputs. If two calculations each need the other's result before they can run, neither can start. <mark class="skim">The pipeline therefore requires a network without circular dependencies.</mark> It does not rearrange equations or build a solver automatically; a coupled calculation needs a numerical method supplied by the author.</p>
+<p>This graph is the model as it stood on 19 September. The next day we removed the two sizing calculations, because they chose the winding's size from the current instead of evaluating a size the designer supplies (<a href="#271-see-how-a-local-change-affects-the-rest-of-the-design">section 2.7.1</a>). The pack side is now a supplied input: the fit and volume calculations read it directly, the cost calculations follow from the volume, and the current check reports whether that winding carries its current. Codegen resolves and orders those connections the same way.</p>
+
+<p>This execution order depends on the model author declaring each calculation's inputs and outputs. If two calculations each need the other's result before they can run, neither can start. <mark class="skim">The pipeline therefore requires a network without circular dependencies (a directed acyclic graph, or DAG).</mark> It does not rearrange equations or build a solver automatically; a coupled calculation needs a numerical method supplied by the author. The direction of the connections also fixes which values a study can set: a value one calculation produces cannot also be supplied as a design choice.</p>
 
 <p>Codegen constructs this network in three steps.</p>
 
@@ -958,7 +960,7 @@ attribute fit_minimum_margin : Real = wp_fit.minimum_margin;</code></pre>
   <summary><h4 id="233-resolve-each-input-to-its-supplier"><span class="num">2.3.3</span>Resolve each input to its supplier</h4></summary>
   <div class="detail-body">
     <p>Codegen now follows the model's connections to find the value supplying each calculation input. The radius connection from <a href="#21-modeling-a-component-separate-its-equations-from-the-plants-choices">section 2.1</a> shows how this works: the field calculation reads <code>coil.R0</code>, and the plant connects that attribute to <code>plasma.R</code>. Following the chain reaches the plant's plasma-radius parameter, so the generated field calculation reads that input directly.</p>
-    <p>The pack-sizing calculation illustrates the other case. Its effective current density, the current per unit winding-pack area, comes from the current-sizing calculation. Following that connection reaches a calculated output, so codegen adds an edge from current sizing to pack sizing. The program must calculate the density before it can use it to calculate pack dimensions.</p>
+    <p>The pack-sizing calculation in the version shown here illustrates the other case. Its effective current density, the current per unit winding-pack area, came from the current-sizing calculation. Following that connection reaches a calculated output, so codegen adds an edge from current sizing to pack sizing. The program must calculate the density before it can use it to calculate pack dimensions.</p>
     <p>In both cases, codegen uses the declaration identified by SysIDE together with its location in the assembled plant to find the supplying value. It follows connections through attributes until it reaches either an external input or a calculation output. Several calculations that reach the same supplier remain connected to that same value.</p>
     <p>A missing or ambiguous supplier stops generation with a diagnostic. A broken connection cannot silently become an adjustable study parameter. Once the connections are resolved, codegen has the calculation network it needs to generate the executable program.</p>
   </div>
@@ -1363,7 +1365,7 @@ variance = ((1-fraction)*left['std_error'])**2 + (fraction*right['std_error'])**
   </div>
 </details>
 
-<p>Both translated equations and custom methods expose declared inputs and outputs, so codegen can connect them into the same plant calculation network. The implementation note <code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code>, "Implementation preservation", covers how Python bodies are retained when regenerating a package.</p>
+<p>Both translated equations and custom methods expose declared inputs and outputs, so codegen can connect them into the same plant calculation network. The implementation note <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/model-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code></a>, "Implementation preservation", covers how Python bodies are retained when regenerating a package.</p>
 
 <details class="evidence">
   <summary><span class="evidence-kind">In the note</span><span>How Python bodies survive regeneration</span></summary>
@@ -1551,7 +1553,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
       </div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 8</span>The pack-sizing YAML entry drawn as connections: the effective current density arrives from the current-sizing calculation, the coil ampere-turns from the plant input file, and the calculated pack side is read by the fit and volume calculations. Sources: the entry above and the bindings in <code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 8</span>The pack-sizing YAML entry drawn as connections: the effective current density arrives from the current-sizing calculation, the coil ampere-turns from the plant input file, and the calculated pack side is read by the fit and volume calculations. Sources: the entry above and the bindings in <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/graph-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -1572,15 +1574,15 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
   outputs:
     root: RootModel[float] stellarator_09__stellaris__magnet__field_calc__B_axis</code></pre>
     </div>
-    <p>The package has grown since: the current generated pipeline holds 269 entries, and after the 20 September model changes the coil ampere-turns are calculated rather than supplied, so this entry no longer appears in it. The excerpts on this page are the 17 September package, the one the studies in <a href="#27-running-a-study-compare-feasibility-and-cost-across-design-points">section 2.7</a> ran.</p>
+    <p>The package has grown since: the current generated pipeline holds 269 entries. After the 20 September model changes, the coil ampere-turns are calculated from the supplied turns and current per turn, so this field entry now reads them from that calculation. The pack-sizing entry above no longer exists, because the pack side is now a supplied input. The excerpts on this page are the 17 September package, the one the studies in <a href="#27-running-a-study-compare-feasibility-and-cost-across-design-points">section 2.7</a> ran.</p>
   </div>
 </details>
 
-<p><mark class="skim">TEAx uses these connections to run each calculation after the results it needs are available.</mark> It gathers the inputs, calls the Python function, and makes the outputs available to the next calculations. It computes field before current-based sizing, sizing before pack dimensions, and dimensions before the fit check.</p>
+<p><mark class="skim">TEAx uses these connections to run each calculation after the results it needs are available.</mark> It gathers the inputs, calls the Python function, and makes the outputs available to the next calculations. In the 17 September package, it computed field before current-based sizing, sizing before pack dimensions, and dimensions before the fit check.</p>
 
 <h4 id="262-exposing-the-free-input-parameters"><span class="num">2.6.2</span>Exposing the free input parameters</h4>
 
-<p>The connected calculations still need starting values. In our example, the program calculates magnetic field, but the study supplies radius and coil ampere-turns. These externally supplied values form the program's input interface. <mark class="skim">Changing them lets us evaluate a new design point without regenerating the program.</mark></p>
+<p>The connected calculations still need starting values. In our example, the program calculates magnetic field, but the 17 September study supplied radius and coil ampere-turns; the current model calculates the ampere-turns from the supplied turns and current per turn. These externally supplied values form the program's input interface. <mark class="skim">Changing them lets us evaluate a new design point without regenerating the program.</mark></p>
 
 <p>Codegen identifies these externally supplied values while resolving the graph and exposes them as public inputs. The model's authored values provide their initial settings. Values supplied by another calculation remain connected to that calculation's output.</p>
 
@@ -1606,7 +1608,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
   </div>
 </details>
 
-<p>The long JSON keys identify each input's location in the plant. File-based runs load these settings from JSON; studies can supply the values directly in memory. The input-generation note <code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code>, "Input-generation details", covers file grouping, defaults, and inputs that need values before evaluation.</p>
+<p>The long JSON keys identify each input's location in the plant. File-based runs load these settings from JSON; studies can supply the values directly in memory. The input-generation note <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/model-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code></a>, "Input-generation details", covers file grouping, defaults, and inputs that need values before evaluation.</p>
 
 <details class="evidence">
   <summary><span class="evidence-kind">In the note</span><span>Input generation</span></summary>
@@ -1673,7 +1675,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
   <figcaption><span class="fig-label">Figure 9</span>How a study runs against the generated program, and the two uses of a study that the next two sections show.</figcaption>
 </figure>
 
-<p>The current study runner evaluates grids and prepared lists of candidates. An external optimizer can call the same evaluator; the study-runner note <code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code>, "Study runner capabilities", distinguishes that option from the built-in study strategies.</p>
+<p>The current study runner evaluates grids and prepared lists of candidates. An external optimizer can call the same evaluator; the study-runner note <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/study-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code></a>, "Study runner capabilities", distinguishes that option from the built-in study strategies.</p>
 
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>The study record and the study runner</span></summary>
@@ -1696,7 +1698,9 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
 
 <h4 id="271-see-how-a-local-change-affects-the-rest-of-the-design"><span class="num">2.7.1</span>See how a local change affects the rest of the design</h4>
 
-<p>The reference magnet has insufficient current capacity, and its winding pack does not fit inside the casing. The 15 September joint magnet-sizing study <code class="path">exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/report.md</code> evaluated changes intended to address those problems. The three cases below compare the original design, a design with enough conductor to carry the current, and a design with more space for that conductor.</p>
+<p>With the tape performance we assume, the published Stellaris winding cannot carry its current: its tape would run at about 1.7 times its estimated critical current, where we allow 0.8. The winding also does not fit the radial space our model allocates for it. The 15 September joint magnet-sizing study <code class="path">exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/report.md</code> evaluated two changes intended to fix this: enough tape to carry the current, then more space for the larger winding.</p>
+
+<p>In that study, the model chose the amount of tape from the current requirement. We removed that option on 20 September, because a calculation that sizes equipment takes the choice away from the designer (<a href="part-4b-aries-test.html#2-one-false-start-before-the-main-assessment">Part 4b, section 2</a>). The model now evaluates the winding a designer supplies, both its size and the space allocated for it, and reports any shortfall instead of resizing it. The three cases below are the September study's results: the original design, a design with enough tape to carry the current, and a design with more space for that tape.</p>
 
 <p>Read <a href="#fig-cases">Figure 10</a> left to right. Each card is one evaluated case: its electricity cost, the conductor it needs, and four of its check results. Between the cards is the one change made, with what it fixed and what it cost or broke. The small drawing on each card uses the vocabulary of <a href="#fig-fit">Figure 4</a>: the clear cavity with the required envelope inside it, or spilling out of it.</p>
 
@@ -1741,7 +1745,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
             <ul>
               <li>Fixes the current check.</li>
               <li>Tape ×2.1; magnet subtotal +$0.84 billion; cost +$18.45/MWh.</li>
-              <li>The pack grows from 0.370 × 0.379 to 0.535 × 0.548 m, so it fits even less.</li>
+              <li>The required envelope grows from 0.370 × 0.379 to 0.535 × 0.548 m, so it fits even less.</li>
             </ul>
           </div>
         </div>
@@ -1811,7 +1815,7 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
       </div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 10</span>Three cases evaluated with the same generated program. The second sizes the conductor supply for the required current, with a 1% reserve. The third also enlarges the space allocated to the magnet and its winding pack. None passes every check: all three exceed the modeled divertor heat-load limit. Extracted values and original case identities: <code class="path">archive/write-up/sysml-codegen-assets/magnet-sizing-comparison.csv</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 10</span>Three cases evaluated with the same generated program. The second lets the model size the conductor supply for the required current, with a 1% reserve, an option since removed. The third also enlarges the space allocated to the magnet and its winding pack. None passes every check: all three exceed the modeled divertor heat-load limit. Extracted values and original case identities: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/magnet-sizing-comparison.csv"><code class="path">archive/write-up/sysml-codegen-assets/magnet-sizing-comparison.csv</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -1837,7 +1841,9 @@ part :&gt;&gt; blanket : 'Transport Calculated Blanket' {
   </div>
 </details>
 
-<p>Sizing the conductor supply to carry the required current fixes the current-capacity problem but increases pack size and cost. Enlarging the allocated space fixes the fit problem, but the changed radial geometry raises peak conductor field to 25.30 T, above the retained 24.9 T limit.</p>
+<p>In the study, sizing the conductor supply to carry the required current fixed the current-capacity problem but increased pack size and cost. Enlarging the allocated space fixed the fit problem, but the changed radial geometry raised peak conductor field to 25.30 T, above the retained 24.9 T limit.</p>
+
+<p>The 24.9 T limit is Stellaris's published peak field, held as a ceiling. The model is calibrated so the published design sits exactly on it, so any rise in field fails the check. The field calculation also responds only to coil position and leaves out a term that would lower the field for a larger winding, so the model does not establish which way the real field moves.</p>
 
 <p><mark class="skim">Evaluating the connected model shows why fixing one limit does not necessarily produce an acceptable design.</mark> Each proposed change must be checked against its effects on the rest of the plant.</p>
 
@@ -14093,7 +14099,7 @@ z
       </div>
     </div>
   </div>
-  <figcaption><span class="fig-label">Figure 11</span>This slice contains 256 samples: 44 pass all twenty then-implemented checks with a valid power account, 210 fail at least one check, and two have invalid power accounts. The passing samples span $149.77–152.36/MWh under that snapshot's cost assumptions. Circles identify passing samples in both panels; crosses retain failing results. No feasible region has been interpolated between the points. These samples do not establish a global optimum or the fraction of the whole design space that is feasible. Plot data: <code class="path">archive/write-up/sysml-codegen-assets/feasibility-cost-map.csv</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 11</span>This slice contains 256 samples: 44 pass all twenty then-implemented checks with a valid power account, 210 fail at least one check, and two have invalid power accounts. The passing samples span $149.77–152.36/MWh under that snapshot's cost assumptions. Circles identify passing samples in both panels; crosses retain failing results. No feasible region has been interpolated between the points. These samples do not establish a global optimum or the fraction of the whole design space that is feasible. Plot data: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/feasibility-cost-map.csv"><code class="path">archive/write-up/sysml-codegen-assets/feasibility-cost-map.csv</code></a>.</figcaption>
 </figure>
 
 <details class="evidence">
@@ -14120,7 +14126,7 @@ z
 
 <p><mark class="skim">The passing samples form a narrow band.</mark> At fixed ampere-turns, reducing radius increases the modeled field and can violate its limit. Increasing radius reduces field and changes the plasma power balance, eventually running into divertor heat or installed-heating limits. <mark class="skim">The cost plot explains why minimizing price alone would not answer the design question: low calculated costs also occur at points that fail engineering checks.</mark></p>
 
-<p>This pattern is conditional on the other inputs held fixed for the sweep. The study evidence <code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code>, "Held inputs for the radius–current map", summarizes those settings and links to the complete record.</p>
+<p>This pattern is conditional on the other inputs held fixed for the sweep. The study evidence <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/study-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code></a>, "Held inputs for the radius–current map", summarizes those settings and links to the complete record.</p>
 
 <p><mark class="skim">These studies turn design choices into engineering feedback.</mark> We can see what a proposed change improves, which limits it violates, and what to investigate next. When that investigation calls for a different component model or additional physics, we revise the model, regenerate the program, and run the next study.</p>
 </section>
@@ -14132,10 +14138,10 @@ z
 <ul>
   <li><a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">Original agentic-mbse post</a>: motivation and the modeling workflow.</li>
   <li><a href="https://github.com/1cFE/sysml-codegen/blob/main/docs/architecture/reference/00-pipeline-overview.md">Codegen pipeline</a> and <a href="https://github.com/rwestwood89/teax/blob/main/docs/evaluation-and-study.md">TEAx evaluation and studies</a>: execution architecture.</li>
-  <li>Stellarator code excerpts and source hashes <code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code>: field, winding fit, handwritten calculations, and blanket specialization.</li>
-  <li>Graph extraction <code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code>: exact generated connections and comparison against both frozen study pipelines.</li>
-  <li>Study extraction <code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code>: selected cases, fixed assumptions, data joins, source hashes, and later-model qualifications.</li>
-  <li>Figure sources and regeneration instructions <code class="path">archive/write-up/sysml-codegen-assets/README.md</code>: PNG and SVG files, plotting code, and retained data.</li>
+  <li>Stellarator code excerpts and source hashes <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/model-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/model-evidence.md</code></a>: field, winding fit, handwritten calculations, and blanket specialization.</li>
+  <li>Graph extraction <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/graph-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/graph-evidence.md</code></a>: exact generated connections and comparison against both frozen study pipelines.</li>
+  <li>Study extraction <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/study-evidence.md"><code class="path">archive/write-up/sysml-codegen-assets/study-evidence.md</code></a>: selected cases, fixed assumptions, data joins, source hashes, and later-model qualifications.</li>
+  <li>Figure sources and regeneration instructions <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/sysml-codegen-assets/README.md"><code class="path">archive/write-up/sysml-codegen-assets/README.md</code></a>: PNG and SVG files, plotting code, and retained data.</li>
 </ul>
 </section>
 

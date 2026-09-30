@@ -1,8 +1,8 @@
-/* write-up.css: the shared style for the HTML supports in docs/write-up/.
+/* write-up.css: the shared style for the HTML supports in docs/exploratory-modeling/.
    Every page links this file. A change here changes every page, so propose it in a page plan.
    It follows the 1cf.energy blog (Manrope, its warm grey-beige, navy and bright-blue accents), tuned for long
    technical reading: a lighter reading surface, darker body text, normal weight and spacing. The rail keeps the
-   blog's exact background. Light theme only. Figures use the same fonts through fonts/ and figure_style.py. */
+   blog's exact background. Light theme only. */
 
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Manrope:wght@300..700&display=swap");
 

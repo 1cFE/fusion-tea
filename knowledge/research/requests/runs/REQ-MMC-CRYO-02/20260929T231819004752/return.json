@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-MMC-CRYO-02",
+  "run": "knowledge/research/requests/runs/REQ-MMC-CRYO-02/20260929T231819004752",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "green_2015_cost_of_coolers_at_4_2_20_40_and_77_k_publisher",
+      "path": "knowledge/sources/green_2015_cost_of_coolers_at_4_2_20_40_and_77_k_publisher/",
+      "source_id": "a612649c84d471b10a7cf5e8c01e9ee0a800b2b108f43ad4b5629d34c8587c48",
+      "pre_existing": false
+    },
+    {
+      "slug": "koncar_et_al_2017_heat_loads_and_design_temperature",
+      "path": "knowledge/sources/koncar_et_al_2017_heat_loads_and_design_temperature/",
+      "source_id": "33581ffa8e86e86d4a107eca2147a9b6c29f7b4536ae400d0b61a836d6fe9903",
+      "pre_existing": false
+    },
+    {
+      "slug": "iter_final_design_report_2001_plant_description_document",
+      "path": "knowledge/sources/iter_final_design_report_2001_plant_description_document/",
+      "source_id": "0d0a31cfb1d88d72ad4e212c932cfb921a8509d8b8725cc004c0fbdcd04a2790",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPMAGCPR17_18607_submitted-4.pdf",
+      "reason": "open keeper not captured because max_captures (3) was spent: Lewandowska et al. 2017 EU-DEMO LTS TF WP thermal-hydraulics; gives nuclear heat density law 50 W/m3 exp(-r/lambda) from the TF case plasma-facing edge (Eq. 1, decay length is an equation image) and joint resistance 1 nOhm"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

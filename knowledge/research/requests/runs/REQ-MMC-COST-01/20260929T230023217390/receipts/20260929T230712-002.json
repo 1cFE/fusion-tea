@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cooley_pong_2016_fcc_cost_drivers.pdf",
+  "slug": "cooley_and_pong_2016_cost_drivers_for_very_high_energy_p_p",
+  "path": "knowledge/sources/cooley_and_pong_2016_cost_drivers_for_very_high_energy_p_p/",
+  "source_id": "6dc05bd1bf952e4786a74ec028f9a57af766a5b5a697aa62fcc8ac40d8344a62",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:07:12.824202+00:00"
+}

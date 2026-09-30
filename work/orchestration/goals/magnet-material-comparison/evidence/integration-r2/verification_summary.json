@@ -1,0 +1,333 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea/exploration/magnet_materials/magnet_materials_tea",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea/exploration/magnet_materials/studies/20260929-magnet-material-comparison/manifest.json",
+    "--identity",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r2/package_identity.json",
+    "--store",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r2/_work/magnet-materials-baseline-point-v1.db",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r2/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/magnet_materials/magnet_materials_tea",
+    "package_name": "magnet_materials_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "7075e929abf1133e5dc6d21ac7f65b370e6e88cd322906fc88501270c9592e3f",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/magnet_materials/studies/20260929-magnet-material-comparison/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "0ff297cea5c8ca3caedd68cd61ee7f0b71cb18545849563cc736bca9d25cfa70"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": "exploration/magnet_materials/studies/20260929-magnet-material-comparison",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "f0546cf981b7d27ec4d3672f9c0a4a847a50ecd5caf3d44319249ef251225186"
+  },
+  "stores": [
+    {
+      "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r2/_work/magnet-materials-baseline-point-v1.db",
+      "study_id": "magnet-materials-baseline-point-v1",
+      "compatibility": {
+        "digest": "90d5b3db5778f8a605dfd2efa2282a9d7aa6122b034635783867f6ddcc120ead",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "7075e929abf1133e5dc6d21ac7f65b370e6e88cd322906fc88501270c9592e3f",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "4d37dbaf827df325d2a0dd19ee4c44c623cf3e67ed7f44552a1ae46b2ef1c2f6",
+        "strategy_config": "372324025f1aa6e9c726d2ddffe5a1e9f975d1c84950f8986489b91764f01b7f",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "7a18446058ed4dda33c8606bbaf3e4287737572aa90811b863872c359d09bd86",
+        "study_id": "magnet-materials-baseline-point-v1"
+      },
+      "cases_total": 1,
+      "cases_completed": 1,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "8de8263d1e8ba4db",
+        "seed_source": "derived",
+        "sample_size_requested": 12,
+        "strata_observed": 1,
+        "sampled_rows": 1,
+        "sampled_case_ids": [
+          "magnet-materials-baseline-point-v1:c0000"
+        ]
+      },
+      "worst_channel_rel_dev": 3.38808363552216e-07,
+      "worst_at": {
+        "case_id": "magnet-materials-baseline-point-v1:c0000",
+        "channel": "magnet_subsystem__subsystem__nb3sn__area__cu_margin",
+        "value": 3.355492026457796e-07
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost",
+      "objective": "annualized_nb3sn"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__cu_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__fit_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__steel_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__conductor__supported",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m",
+      "objective": "breakeven_rebco_price_per_m"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__pair__cost_difference",
+      "objective": "cost_difference"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__annualized__annualized_cost",
+      "objective": "annualized_rebco"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__cu_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__fit_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__steel_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__conductor__acceptance_margin",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__conductor__supported",
+      "objective": null
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "magnet_subsystem__subsystem__nb3sn__acceptance_ok__6ecc44a52542ba77",
+      "source_local_identity": "acceptance_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__nb3sn__capacity_ok__c900a95e873755be",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__nb3sn__copper_ok__a4ff5a6abedecdd2",
+      "source_local_identity": "copper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__nb3sn__fit_ok__768d741c21386f93",
+      "source_local_identity": "fit_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__nb3sn__steel_ok__5d849655e24deaf4",
+      "source_local_identity": "steel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__rebco__acceptance_ok__904ca5528ef92aa4",
+      "source_local_identity": "acceptance_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__rebco__capacity_ok__ea481269af095f7f",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__rebco__copper_ok__b9db08c2aa4dd8f9",
+      "source_local_identity": "copper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__rebco__fit_ok__977ffb782260e056",
+      "source_local_identity": "fit_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "magnet_subsystem__subsystem__rebco__steel_ok__4f587fec2c667312",
+      "source_local_identity": "steel_ok",
+      "operands_resolved": 1
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 3.38808363552216e-07,
+  "outcome": "pass",
+  "absolute_tolerances": [
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__conductor__acceptance_margin",
+      "value": 1e-09,
+      "units": "K under the temperature rule, 1 under the fraction rule",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__conductor__supported",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__fit_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__cu_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__area__steel_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__refrigeration__capacity_margin",
+      "value": 1e-09,
+      "units": "W",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__nb3sn__annualized__annualized_cost",
+      "value": 1e-09,
+      "units": "USD2021/yr",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__conductor__acceptance_margin",
+      "value": 1e-09,
+      "units": "K under the temperature rule, 1 under the fraction rule",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__conductor__supported",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__fit_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__cu_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__area__steel_margin",
+      "value": 1e-09,
+      "units": "mm^2",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__refrigeration__capacity_margin",
+      "value": 1e-09,
+      "units": "W",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__rebco__annualized__annualized_cost",
+      "value": 1e-09,
+      "units": "USD2021/yr",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit); margins at allowance are of order 1e-7 mm^2 (design D1), where a relative test alone measures rounding, not disagreement"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__pair__cost_difference",
+      "value": 1e-09,
+      "units": "USD2021/yr",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit)"
+    },
+    {
+      "channel": "magnet_subsystem__subsystem__pair__breakeven_rebco_price_per_m",
+      "value": 1e-09,
+      "units": "USD2021/m",
+      "basis": "comparison-contract.md r3 section 8: oracle agreement relative 1e-9 (absolute 1e-9 per unit)"
+    }
+  ]
+}

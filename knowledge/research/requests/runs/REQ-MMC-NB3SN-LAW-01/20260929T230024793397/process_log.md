@@ -1,0 +1,17 @@
+# Research run REQ-MMC-NB3SN-LAW-01
+
+**Question:** Which permitted primary public sources give a fusion-grade Nb3Sn strand critical-current scaling law Jc or Ic(B, T, strain) with fitted parameters, current-density basis (non-copper or strand), electric-field criterion, and measured and fitted field/temperature/strain domain covering roughly 4-6 K and 8-14 T?
+
+**Consumer:** goal:magnet-material-comparison/T-002  ·  **Request key:** `66c3f287c5a20db4f98713a468b300753226cc0af9ef81028d0c93a3be2198d2`
+
+- searched: `Bottura Bordini "Jc(B,T,ε) parameterization for the ITER Nb3Sn production" pdf`
+- searched: `NIST publication page: extrapolative scaling expression fitting equation extrapolating full Ic(B,T,e) data (Ekin et al. 2017)`
+- searched: `Ekin Cheggour Goodrich Splett Bordini Richter Bottura "extrapolative scaling expression" Nb3Sn pdf tsapps.nist.gov`
+- searched: `Lu Taylor Hampshire "Critical current scaling laws for advanced Nb3Sn superconducting strands for fusion applications" pdf durham`
+- failed https://www.nist.gov/publications/extrapolative-scaling-expression-fitting-equation-extrapolating-full-icbte-data — NIST lead (Ekin et al., IEEE TAS 27(4) 2017, doi:10.1109/TASC.2017.2647852): NIST page is abstract-only with no full-text PDF; full text is at IEEE Xplore (paywalled). Abstract names no fusion strand parameter set. Owner could obtain the IEEE PDF. (queued)
+- failed https://cds.cern.ch/record/1192836 — Bottura and Bordini, Jc(B,T,eps) parameterization for the ITER Nb3Sn production, IEEE TAS 19(3) 2009: CERN CDS record is behind an Anubis bot-protection proof-of-work page that the fetcher cannot pass; IEEE version paywalled. A person with a browser can download the CDS preprint. (queued)
+- searched: `EU DEMO TF Nb3Sn strand Jc(B,T,eps) parameterization Bottura "Ca1" "Ca2" "eps0,a" Bc2m Tcm open access Fusion Engineering and Design`
+- candidate https://superconductivitydurham.webspace.durham.ac.uk/wp-content/uploads/sites/226/2021/04/TsuiSuSTApril2012.pdf — **keeper** Tsui and Hampshire, SuST 25 (2012) 054008, publisher PDF on Durham group site: ITER scaling law (Bottura form) nine-parameter fits, Tables 5 and 8, for OST internal-tin and two Bruker EAS bronze-route ITER TF strands; 10 uV/m criterion; engineering Jc; measured 1-14.5 T, 4.2-12 K, applied strain -1.1 to ~0.5%.
+- candidate https://superconductivitydurham.webspace.durham.ac.uk/wp-content/uploads/sites/226/2021/04/LuSUST2008.pdf — **keeper** Lu, Taylor, Hampshire, SuST 21 (2008) 105016, publisher PDF on Durham group site: Durham and proposed ITER scaling parameters (Tables 2-4, 6-7, 9-11) for three advanced ITER internal-tin strands (OST, OKSC, OCSI); 10 uV/m; engineering Jc; B<=28 T, 2.35-14 K, intrinsic strain -1.1 to 0.5%; Ic(4.2 K,12 T) ~296 A.
+- candidate https://arxiv.org/abs/cond-mat/0608404 — **keeper** Godeke, ten Haken, ten Kate, Larbalestier, A general scaling relation for the critical current density in Nb3Sn, SuST 19 (2006) R100, arXiv preprint: named Godeke candidate; general Jc(H,T,eps) relation with parameter Table 1 for a Furukawa ITER-type bronze wire, non-Cu basis.
+- candidate https://scipub.euro-fusion.org/wp-content/uploads/2015/11/EFCP150901.pdf — **rejected** Bruzzone et al., EUROfusion CP(15)09/01, DEMO 82 kA react-and-wind TF conductor design and test: conductor-level, prints no strand Jc(B,T,eps) law parameters; belongs to the nb3sn-winding class if anywhere.

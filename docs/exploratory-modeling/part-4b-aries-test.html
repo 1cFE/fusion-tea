@@ -276,7 +276,7 @@
 
 <section>
 <h2 id="3-question-1-can-the-model-reproduce-aries"><span class="num">3</span>Question 1: can the model reproduce ARIES?</h2>
-<p>We answered this in three steps: the existing library alone, the library after adding what ARIES needed, and a comparison of the result with ARIES's published power and cost.</p>
+<p>We answered this in two steps: the existing library alone, then the library after adding what ARIES needed, which we compared with ARIES's published power and cost.</p>
 
 <section>
 <h3 id="31-with-the-existing-library"><span class="num">3.1</span>With the existing library</h3>
@@ -660,7 +660,7 @@ z
 <figure class="figure wide" id="figure-5">
   <div class="plate"><div class="chart-scroll">
 <!-- inline:page-how-close -->
-<svg role="img" aria-label="Three panels. Net electricity from 2,436 MW of fusion: our model 891 MW with a 628 °C turbine inlet, ARIES 1,000 MW with 708 °C. Cost of electricity in 2004 dollars per MWh with all tritium bought: our model 686, of which 627 is purchased tritium and 58 everything else, against ARIES's published 77.6. Our model with ARIES's tritium assumption and accounting conventions, at real discount rates of 0, 3, 5, 8 and 10%: 32, 46, 59, 85 and 105, against ARIES's 77.6, whose discount rate is not published." xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="396pt" viewBox="0 0 734.4 396" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg role="img" aria-label="Three panels. Net electricity from 2,436 MW of fusion: our model 891 MW with a 628 °C turbine inlet, ARIES 1,000 MW with 708 °C. Cost of electricity in 2004 dollars per MWh with all tritium bought: our model 686, of which 627 is purchased tritium and 58 everything else, against ARIES's published 77.6. Our model with ARIES's tritium assumption and accounting conventions, at real discount rates of 0, 3, 5, 8 and 10%: 32, 46, 59, 85 and 105, against ARIES's published 77.6. Historical ARIES costing uses a 4.35% discount rate, with other financial assumptions that differ." xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="396pt" viewBox="0 0 734.4 396" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -1278,7 +1278,7 @@ z
     <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="493.952" y="272.2545" transform="rotate(-0 493.952 272.2545)">ARIES, published: $77.6</text>
    </g>
    <g id="hc-text_47">
-    <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: start; fill: #5f5f5f" x="493.952" y="283.49325" transform="rotate(-0 493.952 283.49325)">its discount rate is not published</text>
+    <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: start; fill: #5f5f5f" x="493.952" y="283.49325" transform="rotate(-0 493.952 283.49325)">historical ARIES costing uses 4.35%</text>
    </g>
    <g id="hc-text_48">
     <text style="font-weight: 600; font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="113.832" y="211.76" transform="rotate(-0 113.832 211.76)">Our model with ARIES's tritium assumption and accounting conventions</text>
@@ -1302,15 +1302,15 @@ z
   <figcaption><span class="fig-label">Figure 5</span>Our 891 MW case against ARIES's published power and cost, in 2004 dollars. Data: <code class="path">exploration/aries_integrated/studies/20260925-aries-reconciled-alternative-economics/results/attribution.json</code> and that study's <code>cases.json</code>.</figcaption>
 </figure>
 <ul>
-<li><strong>Power balance: our model produced about 11% less electricity from the same fusion power.</strong> Given ARIES's 2,436 MW of fusion power, our best steady case produced <strong>891 MW net against the published 1,000 MW</strong>. Power-balance assessment <code class="path">work/orchestration/goals/aries-reference-heat-electricity-reconciliation/answer.md</code>
+<li><strong>Power: an unresolved gap.</strong> Given ARIES's 2,436 MW of fusion power, our best tested steady alternative produced <strong>891 MW net against the published 1,000 MW</strong>. Power-balance assessment <code class="path">work/orchestration/goals/aries-reference-heat-electricity-reconciliation/answer.md</code>
 <ul>
 <li>Beyond using the published inputs, removing all the heat took two changes. We corrected an error in our ARIES model, which had connected the cycle's three heat exchangers in series where ARIES splits the flow between two of them. And we raised the cycle flow and compressor rating above what the sources state.</li>
-<li>The remaining gap is the cycle temperature: our turbine inlet reached 628 °C against the published 708 °C. An independent reviewer found that the published circuit heat loads and temperatures cannot all hold under the paper's stated exchanger temperature differences, and our sources do not say how ARIES reached its temperature. The gap remains unresolved.</li>
+<li>The higher flow carries the same heat in more helium, so the turbine inlet reached 628 °C against the published 708 °C. A large share of the heat, about 42%, arrives through the relatively cool blanket-helium circuit. An independent reviewer found that the published circuit heat loads and temperatures cannot all hold under the paper's stated exchanger temperature differences, and our sources do not say how ARIES reached its temperature. The gap remains unresolved.</li>
 </ul>
 </li>
 <li><strong>Cost: almost all of the difference is the tritium assumption.</strong> ARIES reported <strong>$77.6/MWh</strong> in 2004 dollars. For the 891 MW case our model gives <strong>$686/MWh</strong>, more than 90% of it tritium: the model cannot yet calculate ARIES's breeding, so it buys all its tritium at an assumed $30 million per kilogram. ARIES assumes the blanket breeds all the tritium the plant needs. Cost assessment <code class="path">work/orchestration/goals/aries-reconciled-alternative-economics/answer.md</code>
 <ul>
-<li>With that assumption and ARIES's other accounting conventions, we calculate about <strong>$59/MWh at a 5% real discount rate</strong>, and $32 to $105/MWh between 0 and 10%. ARIES's figure falls in that range, but its financing rate is not published, so the remaining difference is unresolved.</li>
+<li>With that assumption and ARIES's other accounting conventions, we calculate about <strong>$59/MWh at our assumed 5% real discount rate</strong>, and $32 to $105/MWh between 0 and 10%. Historical ARIES costing uses 4.35%, though other financial assumptions also differ, so the remaining difference is unresolved.</li>
 <li>Much of our equipment cost came from ARIES's own accounts, so this is an accounting comparison, not an independent check of their estimate.</li>
 </ul>
 </li>
@@ -1333,7 +1333,7 @@ z
       </table>
     </div>
     <ul>
-      <li><strong>The remaining 109 MW is all thermal efficiency:</strong> 0.391 against ARIES's 0.43, from a 628 °C turbine inlet against 708 °C. Auxiliary power and total heat agree within the comparison's tolerances.</li>
+      <li><strong>The remaining 109 MW is in conversion efficiency:</strong> 0.391 against ARIES's 0.43. Auxiliary power and total heat agree within the comparison's tolerances. Our turbine inlet is 628 °C against 708 °C. The extra flow needed to accept all the heat lowers it, and the published data do not show how ARIES reached 708 °C.</li>
       <li><strong>The reviewer's finding.</strong> Taking the printed loads and temperatures together, the blanket-helium loop carries 42% of the heat over 21% of the temperature climb the cycle gas needs. With those values, none of the exchanger arrangements checked brings the cycle gas to 707 °C.</li>
       <li><strong>What the sources leave open.</strong> The cycle references ARIES cites take the turbine inlet temperature as a given input from a single heat source. The paper that might say how ARIES combined its three loops is closed access, and the owner deferred buying it.</li>
       <li><strong>Our per-branch exchangers are generous to ARIES.</strong> They run with 4 to 5 K between the streams, against the printed 30 °C, so imposing 30 K would widen the gap. The 891 MW case is the best tested steady case, not an upper bound or a reconstruction of ARIES.</li>
@@ -1358,15 +1358,15 @@ z
         </tbody>
       </table>
     </div>
-    <p>ARIES's financing rate and schedule, its decommissioning allowance, an independent operating cost and its treatment of tritium are not recoverable from the printed pages. Three costs of the 891 MW case are bounded rather than priced: the higher-effectiveness recuperator, the cycle-side allowances at the higher flow, and PbLi pumping.</p>
+    <p>Historical ARIES costing uses a 4.35% real discount rate. How ARIES-CS applied its financing is not recoverable from the printed pages, and neither are its decommissioning allowance, an independent operating cost or its treatment of tritium. Three costs of the 891 MW case are bounded rather than priced: the higher-effectiveness recuperator, the cycle-side allowances at the higher flow, and PbLi pumping.</p>
   </div>
 </details>
 </section>
 
 <section>
 <h3 id="34-the-answer-to-question-1"><span class="num">3.4</span>The answer to question 1</h3>
-<p><strong>Not with the library as built, but largely yes once we added what ARIES needed.</strong> We made the big changes: a hollow plasma density profile, a blanket with separate helium and PbLi circuits, a helium Brayton cycle, ARIES's split exchanger network, and ARIES's equipment and costs. <mark class="skim">They assembled with the existing components into an ARIES plant the model can run, and the Stellaris model was unchanged.</mark> The numbers came close for reasons we can name: power is 11% low because our power cycle runs cooler than ARIES's, and our cost reaches ARIES's range only once we adopt its assumption that the blanket breeds its own tritium.</p>
-<p>We then stopped, for time, before closing every gap. <mark class="skim">The ARIES magnets and conductor, breeding for the ARIES geometry, the cycle temperature and ARIES's financing remain open, each recorded with what it would take to close.</mark> And because we made the comparison after reading ARIES, it explains the differences rather than predicting them blind.</p>
+<p><strong>Not with the library as built, and only partly once we added what ARIES needed.</strong> We made the big changes: a hollow plasma density profile, a blanket with separate helium and PbLi circuits, a helium Brayton cycle, ARIES's split exchanger network, and ARIES's equipment and costs. <mark class="skim">They assembled with the existing components into an ARIES plant the model can run, and the Stellaris model was unchanged.</mark> The remaining differences matter. Our best tested steady case produces 891 MW net against ARIES's 1,000 MW, and we could not reconcile the published heat and temperature data with ARIES's 708 °C turbine inlet. Our cost comes near ARIES's only once we adopt its assumption that the blanket breeds its own tritium.</p>
+<p>We then stopped, for time, before closing every gap. <mark class="skim">The ARIES magnets and conductor, breeding for the ARIES geometry and the cycle-temperature reconciliation remain open, and the financial comparison differs in more than the discount rate. Each is recorded with what it would take to close.</mark> And because we made the comparison after reading ARIES, it describes the differences rather than predicting them blind.</p>
 </section>
 </section>
 
@@ -2021,7 +2021,7 @@ Q 169.380147 230.887971 87.870144 229.975523
 </svg>
 <!-- /inline:page-pressure-ratio -->
   </div></div>
-  <figcaption><span class="fig-label">Figure 6</span>The last part of that range, near the limit, with pressure ratio falling from right to left. Blue points pass every implemented check; the red point fails heat removal and the return-temperature requirement. Data: <code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 6</span>The last part of that range, near the limit, with pressure ratio falling from right to left. Blue points pass every implemented check; the red point fails heat removal and the return-temperature requirement. Data: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/parameter-figure-data.json"><code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code></a>.</figcaption>
 </figure>
 <div class="live pr-live" id="pr-live" hidden>
   <div class="live-head"><span class="live-kind">Read a point</span><span>Each point is one stored case at 2,500 kg/s</span></div>
@@ -2749,10 +2749,10 @@ z
 </svg>
 <!-- /inline:page-flow-boundary -->
   </div></div>
-  <figcaption><span class="fig-label">Figure 7</span>Each point is the limiting ratio at one flow. The best two, 2,500 and 2,750 kg/s, are within 3 MW of each other. Data: <code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 7</span>Each point is the limiting ratio at one flow. The best two, 2,500 and 2,750 kg/s, are within 3 MW of each other. Data: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/parameter-figure-data.json"><code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code></a>.</figcaption>
 </figure>
-<p>Every cost except fuel is fixed in this sweep, so more electricity lowers the cost excluding fuel <strong>from $133 to $91.5/MWh</strong> in 2004 dollars. <mark class="skim">The output is low for the 3,300 MW of heat the loop delivers because the cycle runs cool: its turbine inlet is about 450 °C, against 708 °C in the ARIES design.</mark> The components study below shows what that costs. These results use fixed machine efficiencies rather than vendor performance maps, and the bypass hardware is not modeled.</p>
-<p>Evidence: final parameter-study assessment <code class="path">work/orchestration/goals/design-study-parameters/answer.md</code>, verified case results <code class="path">exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/readout.md</code>, figure data <code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code> and reproducible renderer <code class="path">archive/write-up/aries-study-assets/render_parameters.py</code>.</p>
+<p>Every cost except fuel is fixed in this sweep, so more electricity lowers the cost excluding fuel <strong>from $133 to $91.5/MWh</strong> in 2004 dollars. <mark class="skim">The output is low for the 3,300 MW of heat the loop delivers because the cycle runs cool: its turbine inlet is about 450 °C, against 708 °C in the ARIES design.</mark> The components study below shows the same effect on a different plant. These results use fixed machine efficiencies rather than vendor performance maps, and the bypass hardware is not modeled. The exchanger was fixed equipment in this sweep, so sizing it is the next step.</p>
+<p>Evidence: final parameter-study assessment <code class="path">work/orchestration/goals/design-study-parameters/answer.md</code>, verified case results <code class="path">exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/readout.md</code>, figure data <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/parameter-figure-data.json"><code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code></a> and reproducible renderer <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/render_parameters.py"><code class="path">archive/write-up/aries-study-assets/render_parameters.py</code></a>.</p>
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>The plant, the best points and what the study does not claim</span></summary>
   <div class="evidence-body" data-added>
@@ -2769,8 +2769,8 @@ z
 
 <section>
 <h3 id="42-components-steam-or-helium-brayton-conversion"><span class="num">4.2</span>Components: steam or helium Brayton conversion?</h3>
-<p>Which power-conversion system gives cheaper electricity from the same reactor? We built steam and helium Brayton alternatives from the expanded library, with their connecting exchangers and cooling equipment, and attached each to the same Stellaris-derived reactor, whose primary helium leaves at 500 °C. For each, we calculated the whole plant: electricity exported after internal use, capital, fuel, operation and equipment replacement.</p>
-<p><mark class="skim"><strong>Steam gave the lower LCOE at both supported heat loads, because it exported more than twice as much electricity.</strong></mark></p>
+<p>How do the tested steam and helium Brayton options compare on a reactor that supplies helium at a fixed 500 °C? At that temperature steam works well and a Brayton turbine needs a hotter source, so this comparison favors steam. We built steam and helium Brayton alternatives from the expanded library, with their connecting exchangers and cooling equipment, and attached each to the same Stellaris-derived reactor. For each, we calculated the whole plant: electricity exported after internal use, capital, fuel, operation and equipment replacement.</p>
+<p><mark class="skim"><strong>At this 500 °C source, steam gave the lower LCOE at both supported heat loads, because it exported more than twice as much electricity.</strong></mark></p>
 <div class="table-wrap">
 <table>
 <thead>
@@ -2783,7 +2783,8 @@ z
 </table>
 </div>
 <p>Costs are in 2025 dollars, at 80% availability over 30 years and a 5% real discount rate. Equipment was selected separately at each heat load from a fixed list of priced options, so the rows are different selections, not one plant at rising heat. At 3,000 MW the selected cooling and divertor hardware failed their checks, so neither option gave a supported plant.</p>
-<p>The difference starts with temperature. <mark class="skim">A gas cycle spends much of its turbine's work driving its compressors, and that share grows as the turbine inlet gets cooler.</mark> From 500 °C helium, the Brayton turbine inlet was about 413 °C, against about 708 °C in the ARIES design, and the compressors took about 1,900 MW of the turbine's 2,478 MW. At 2,500 MW, Brayton delivered 559 MW after its conversion equipment's own use, against 938 MW for steam. Both plants then spent another 274 MW on reactor circulation, heating, refrigeration and other services, leaving 664 MW and 286 MW to sell.</p>
+<p>The two options also had different freedoms within that list: the steam turbine was held at its supported temperatures, while the Brayton cycle's flow and pressure ratio could vary. So neither was optimized on equal terms, and the result does not rank the two technologies in general.</p>
+<p>The difference starts with temperature. <mark class="skim">A gas cycle spends much of its turbine's work driving its compressors, and that share grows as the turbine inlet gets cooler.</mark> From 500 °C helium, the Brayton turbine inlet was about 413 °C, against about 708 °C in the ARIES design, and the compressors took about 1,900 MW of the turbine's 2,478 MW. At 2,500 MW, Brayton delivered 559 MW after its conversion equipment's own use, against 938 MW for steam. Both plants then spent another 274 MW on reactor circulation, heating, refrigeration and other services, leaving 664 MW and 286 MW to sell. That 274 MW includes 100 MW of electricity for plasma heating, which we supplied as an assumption. A burning plasma may not need it.</p>
 <p data-added>In Figure 8, each bar is one plant. Its full length is the electricity the plant generates, and the blue part is what remains for sale after the plant's own use.</p>
 <figure class="figure wide" id="figure-8">
   <div class="plate"><div class="chart-scroll">
@@ -3169,7 +3170,7 @@ z
   </div></div>
   <figcaption><span class="fig-label">Figure 8</span>Blue is electricity available for sale; orange and green show internal consumption. &quot;Gas&quot; denotes helium Brayton, with its compressor work already subtracted. Data: <code class="path">exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/matched-account-table.csv</code>.</figcaption>
 </figure>
-<p>Steam's conversion equipment cost $2.55 billion, against $1.54 billion for Brayton, but both plants needed the same $10.23 billion of other purchases. Steam spread those common costs, and later reactor replacements, over more than twice as many MWh. <strong>The cheaper conversion equipment produced the more expensive electricity.</strong> An earlier version of this study compared the conversion equipment alone and found the two within $5/MWh of each other at these heat loads. <mark class="skim">Only the whole-plant view showed the gap.</mark></p>
+<p>Steam's conversion equipment cost $2.55 billion, against $1.54 billion for Brayton. Per kilowatt the two cost about the same: about $2,720 for steam and $2,750 for Brayton, dividing each by its conversion subsystem's net output of 938 and 559 MW. An earlier version of this study, which costed the conversion equipment alone, likewise found the two within $5/MWh of each other. Both plants also needed the same $10.23 billion of other purchases, and steam spread those common costs, and later reactor replacements, over more than twice as many MWh. <mark class="skim"><strong>So the LCOE gap comes from Brayton's lower output at this source temperature, not from its equipment price.</strong></mark></p>
 <p data-added>In Figure 9, each bar is one plant's LCOE, split by where the money goes; the first segment is the capital to build the plant.</p>
 <figure class="figure wide" id="figure-9">
   <div class="plate"><div class="chart-scroll">
@@ -3601,7 +3602,7 @@ z
   </div></div>
   <figcaption><span class="fig-label">Figure 9</span>Capital and replacement costs dominate. A similar reactor expense becomes a much larger cost per MWh when the plant exports less electricity. Data: <code class="path">exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/matched-account-table.csv</code>.</figcaption>
 </figure>
-<p>What would change the choice? Steam stayed cheaper under every tested change in prices, reactor cost and operating assumptions taken one at a time. <mark class="skim">Only a combination reversed it, at 2,800 MW: Brayton machine efficiencies three points higher, steam turbine efficiencies three points lower, Brayton equipment at half price and steam equipment 50% dearer.</mark> Brayton then cost $397/MWh against steam's $427/MWh, an assumed scenario rather than a vendor offer. Sensitivity results <code class="path">exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/preference-sensitivity.svg</code></p>
+<p>What would change the result at this 500 °C source? Steam stayed cheaper under every tested change in prices, reactor cost and operating assumptions taken one at a time. <mark class="skim">Only a combination reversed it, at 2,800 MW: Brayton machine efficiencies three points higher, steam turbine efficiencies three points lower, Brayton equipment at half price and steam equipment 50% dearer.</mark> Brayton then cost $397/MWh against steam's $427/MWh, an assumed scenario rather than a vendor offer. The next study is to design each cycle for its own source temperature and to settle the heating assumption. Sensitivity results <code class="path">exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/preference-sensitivity.svg</code></p>
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>Every tested change, at both heat loads</span></summary>
   <div class="evidence-body" data-added>
@@ -4751,7 +4752,7 @@ z
   <summary><span class="evidence-kind">In the record</span><span>The reactor, the assumptions and the earlier comparison</span></summary>
   <div class="evidence-body" data-added>
     <ul>
-      <li><strong>The reactor held fixed:</strong> a Stellaris-derived stellarator with a 12.7 m major radius, 1.3 m minor radius and 48 coils, and 14 primary helium paths at 8 MPa rising from 300 to 500 °C. Its 50 MW of deposited heating draws 100 MW of electricity.</li>
+      <li><strong>The reactor held fixed:</strong> a Stellaris-derived stellarator with a 12.7 m major radius, 1.3 m minor radius and 48 coils, and 14 primary helium paths at 8 MPa rising from 300 to 500 °C. Its 50 MW of deposited heating, drawing 100 MW of electricity, is a supplied assumption. It is not established that a burning plasma needs it.</li>
       <li><strong>Why Brayton exports less at 2,800 MW than at 2,500 MW:</strong> the Brayton offer selected at 2,500 MW fails the reactor-interface check at 2,800 MW, so the list selects a different operating offer there.</li>
       <li><strong>Verification:</strong> every one of the 2,496 cases passes an independent recalculation of 1,192 channels and 125 check verdicts, including cases that fail engineering checks. Passing verification does not make those cases feasible.</li>
     </ul>
@@ -5202,12 +5203,12 @@ L 671.976 170.28
 </svg>
 <!-- /inline:page-architecture-pair -->
   </div></div>
-  <figcaption><span class="fig-label">Figure 12</span>Both layouts use the same revised exchangers: 18,000 m² each for blanket helium and PbLi, and 2,000 m² for the divertor. Cost excludes recurring fuel purchases; the bypass and any extra piping and controls are not priced. Data: <code class="path">archive/write-up/aries-study-assets/architecture-figure-data.json</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 12</span>Both layouts use the same revised exchangers: 18,000 m² each for blanket helium and PbLi, and 2,000 m² for the divertor. Cost excludes recurring fuel purchases; the bypass and any extra piping and controls are not priced. Data: <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/architecture-figure-data.json"><code class="path">archive/write-up/aries-study-assets/architecture-figure-data.json</code></a>.</figcaption>
 </figure>
 <p><strong>The split lets the cycle take the same heat with less circulating helium.</strong> In series, the divertor exchanger warms the entire stream before it reaches the PbLi exchanger. Splitting avoids that preheating, so the network needs about 1,246 kg/s of cycle flow where series needs 1,291 kg/s. Less flow means less compressor work and more electricity to export. <mark class="skim">At equal flow, when both remove all the heat, they produce exactly the same electricity: the split gives no separate efficiency bonus.</mark> With costs unchanged, the extra electricity lowers the cost excluding fuel <strong>from $104.29 to $98.24/MWh</strong> in 2004 dollars.</p>
-<p>The study also shows what would reverse the choice. If the network loses 8% of the cycle pressure against 4.5% for series, its output falls to 491 MW, below series at 498 MW. <mark class="skim">The network's real pressure losses and its extra piping and controls therefore decide whether it is worth building.</mark></p>
-<p><strong>Changing connections can cut the circulation needed to carry the reactor heat, and so raise output, but added pressure loss can erase the gain.</strong> The model puts numbers on both: a reason to prefer the network, and a concrete thing to check before choosing it.</p>
-<p>Evidence: final architecture assessment and replay <code class="path">work/orchestration/goals/design-study-exchanger-architecture/answer.md</code>, verified sensitivities <code class="path">work/orchestration/goals/design-study-exchanger-architecture/evidence/r3-data/sensitivity-coverage.csv</code>, figure data <code class="path">archive/write-up/aries-study-assets/architecture-figure-data.json</code> and renderer <code class="path">archive/write-up/aries-study-assets/render_architecture.py</code>.</p>
+<p>The study also shows what would reverse the choice. If the network loses 8% of the cycle pressure against 4.5% for series, its output falls to 491 MW, below series at 498 MW. The model does not calculate this loss from the piping. Each layout's loss is a supplied fraction, 4.5% in the nominal case, so calculating it is the next step. <mark class="skim">The network's real pressure losses and its extra piping and controls therefore decide whether it is worth building.</mark></p>
+<p><strong>Changing connections can cut the circulation needed to carry the reactor heat, and so raise output, but added pressure loss can erase the gain.</strong> The study gives the gain and the supplied loss that would erase it: a reason to prefer the network, and a concrete thing to calculate before choosing it.</p>
+<p>Evidence: final architecture assessment and replay <code class="path">work/orchestration/goals/design-study-exchanger-architecture/answer.md</code>, verified sensitivities <code class="path">work/orchestration/goals/design-study-exchanger-architecture/evidence/r3-data/sensitivity-coverage.csv</code>, figure data <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/architecture-figure-data.json"><code class="path">archive/write-up/aries-study-assets/architecture-figure-data.json</code></a> and renderer <a href="https://github.com/1cFE/fusion-tea/blob/16acbb7681f326719e3997f9be0d6d3e730cf294/archive/write-up/aries-study-assets/render_architecture.py"><code class="path">archive/write-up/aries-study-assets/render_architecture.py</code></a>.</p>
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>What changes the preference</span></summary>
   <div class="evidence-body" data-added>
@@ -5234,10 +5235,10 @@ L 671.976 170.28
 
 <section>
 <h3 id="44-the-answer-to-question-2"><span class="num">4.4</span>The answer to question 2</h3>
-<p><strong>Yes.</strong> Each study answered a design question for the whole plant and found what limits the choice:</p>
+<p><strong>Yes, within the physics and prices we represent.</strong> Each study evaluated a design question across the whole plant and showed what limits the result:</p>
 <ul>
 <li><strong>Parameters:</strong> an exchanger elsewhere in the plant limits the compressor setting, and the best setting raised output 45% with the same equipment.</li>
-<li><strong>Components:</strong> conversion options that tie when their equipment is costed alone differ by more than 2× in LCOE once the whole plant is counted.</li>
+<li><strong>Components:</strong> the conversion system can be swapped with its own equipment and evaluated as a whole plant. On a fixed 500 °C source, which favors steam, steam exported more than twice as much electricity and so gave the lower LCOE. This does not rank the technologies in general.</li>
 <li><strong>Architecture:</strong> splitting the exchanger flow gains 6%, but a few percent more pressure loss erases the gain.</li>
 </ul>
 <p><mark class="skim">Two of the studies combine components from both plants, which neither original model could do.</mark> The results are conditional on the represented physics and assumed prices, and each says where the design is limited and what to check before choosing it.</p>
@@ -5249,15 +5250,16 @@ L 671.976 170.28
 <p>Across both supports, two things seem to be working:</p>
 <ul>
 <li><strong>The harness.</strong> Over the 28 goals in <a href="part-4a-modeling-stellaris.html">Part 4a</a>, the model grew from 55 calculations, 6 checks and 14 parts to 199, 67 and 76, and most of that growth came in the last eight goals. Goals also seemed to finish faster as we refined the harness.</li>
-<li><strong>The modeling framework.</strong> With two design points, it held up and produced studies. ARIES assembled from the same library once we added what it needed, the Stellaris model stayed unchanged, and the combined library ran the three studies in <a href="#4-question-2-can-the-combined-model-explore-designs-neither-plant-covers">section 4</a>.</li>
+<li><strong>The modeling framework.</strong> With two design points, it held up and produced studies. ARIES assembled from the same library once we added what it needed, the Stellaris model stayed unchanged, and the combined library ran the three studies in <a href="#4-question-2-can-the-combined-model-explore-designs-neither-plant-covers">section 4</a>. Much of the component library did not carry over: ARIES needed new plasma, blanket, conversion and cost definitions, and still lacks its own magnet and conductor models.</li>
 </ul>
-<p>With these positive indications, we would love to see this get pushed further:</p>
+<p>The studies are imperfect. Reviewers found mistakes in our assumptions and in how we read the results, and many of the issues we caught came from comparing the model with a published design. Whether the harness's own checks are enough where there is no published design to compare against is still open.</p>
+<p>Even so, we would love to see this get pushed further:</p>
 <ul>
 <li><strong>Across design sets.</strong> Stellaris and ARIES are both stellarators. More diverse designs would show how far the library carries.</li>
 <li><strong>In detail.</strong> Every result here depends on detail we left out or assumed, such as the ARIES magnets and breeding, and the machines' off-design performance.</li>
 <li><strong>Toward more interesting knowledge transfer.</strong> For example, AI could reconcile data across sources and build strong component models from first principles where the primary source papers don't have the detail.</li>
 </ul>
-<p><mark class="skim">With this further push, we may find a way to have AI function as a force of leverage for highly technical concept design work on fusion and more.</mark></p>
+<p><mark class="skim">With this further push, we may find a way for AI to extend what engineers can do in highly technical concept design, in fusion and beyond.</mark></p>
 </section>
 
 </article>

@@ -13,7 +13,7 @@ def article(tmp_path_factory):
     output = tmp_path_factory.mktemp("article") / "part-4a-modeling-stellaris.html"
     subprocess.run([
         sys.executable, str(BUILDER), "--article",
-        str(REPO / "archive/write-up/stellaris-evolution.md"),
+        str(REPO / "src/model_viz/evolution/part-4a-modeling-stellaris.md"),
         "--stylesheet", (REPO / "docs/exploratory-modeling/write-up.css").as_uri(),
         "-o", str(output),
     ], check=True, capture_output=True)

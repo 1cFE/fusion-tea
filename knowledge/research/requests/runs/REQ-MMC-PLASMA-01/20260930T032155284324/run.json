@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MMC-PLASMA-01",
+  "request_key": "35a7fb945c3e5bca3e6a3cd1bd5e9e667c2750317b6950e2511a085fcb231d12",
+  "request_path": "knowledge/research/requests/REQ-MMC-PLASMA-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-30T03:21:55.284539+00:00",
+  "override_reason": null
+}

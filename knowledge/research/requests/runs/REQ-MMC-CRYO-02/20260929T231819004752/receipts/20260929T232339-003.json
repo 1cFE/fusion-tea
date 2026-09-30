@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/cryoloads/pdd32.pdf",
+  "slug": "iter_final_design_report_2001_plant_description_document",
+  "path": "knowledge/sources/iter_final_design_report_2001_plant_description_document/",
+  "source_id": "0d0a31cfb1d88d72ad4e212c932cfb921a8509d8b8725cc004c0fbdcd04a2790",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:23:39.120749+00:00"
+}

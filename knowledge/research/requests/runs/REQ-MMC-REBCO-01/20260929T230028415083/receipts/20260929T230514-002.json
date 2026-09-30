@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://arxiv.org/pdf/2308.12301",
+  "slug": "the_sparc_toroidal_field_model_coil_program",
+  "path": "knowledge/sources/the_sparc_toroidal_field_model_coil_program/",
+  "source_id": "949d4db39c65a02a611f7e825864b635adb86287a84af69c721207928729042d",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:05:14.838373+00:00"
+}

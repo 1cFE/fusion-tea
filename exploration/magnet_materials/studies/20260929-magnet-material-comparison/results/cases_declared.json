@@ -1,0 +1,107 @@
+{
+  "path": "exploration/magnet_materials/studies/cases.json",
+  "sha256": "f50eecd8a79e17b247194c9895ab3e2418b068cafe87ae4cd76d40d894cf82ba",
+  "n_cases": 2832,
+  "header": {
+    "contract": "work/orchestration/goals/magnet-material-comparison/evidence/comparison-contract.md (r3)",
+    "counts": {
+      "B_peak": {
+        "10.0": 352,
+        "11.0": 352,
+        "12.0": 352,
+        "13.0": 352,
+        "14.0": 180,
+        "16.0": 180,
+        "18.0": 180,
+        "20.0": 180,
+        "8.0": 352,
+        "9.0": 352
+      },
+      "anchor": {
+        "D": 1800,
+        "S": 1032
+      },
+      "carried_reference_offers": 6,
+      "offer_kind": {
+        "generous": 144,
+        "insufficient": 144,
+        "reference": 1416,
+        "variant-offer": 1128
+      },
+      "offer_kind_x_refrigerator_kind": {
+        "generous|reference": 144,
+        "insufficient|reference": 144,
+        "reference|insufficient": 144,
+        "reference|reference": 1272,
+        "variant-offer|reference": 1128
+      },
+      "pairing": {
+        "common-C": 192,
+        "common-P": 1320,
+        "native": 1320
+      },
+      "point_class": {
+        "edge": 352,
+        "extension": 720,
+        "matched": 1760
+      },
+      "refrigerator_kind": {
+        "insufficient": 144,
+        "reference": 2688
+      },
+      "rule_family": {
+        "both-fraction": 192,
+        "both-temperature": 192,
+        "reference": 2448
+      },
+      "variant": {
+        "capital_capacity_basis_20K": 64,
+        "cold_load_x0.5": 64,
+        "cold_load_x2": 64,
+        "combined_unfavourable_20K": 64,
+        "crf_0.05": 64,
+        "crf_0.11": 64,
+        "cu_density_common_100": 64,
+        "cu_density_material_93.4_100": 64,
+        "electricity_120": 64,
+        "electricity_30": 64,
+        "eta_constant_0.24": 64,
+        "eta_input_power_20K": 64,
+        "manufacturing_both": 64,
+        "manufacturing_nb3sn_only": 64,
+        "nb3sn_strain_-0.6pct": 64,
+        "nb3sn_strain_-0.6pct_BEAS_TFEU10-12": 64,
+        "nb3sn_strain_-0.6pct_OST_TFEU9": 64,
+        "nb3sn_strand_BEAS_II_Tsui": 64,
+        "nb3sn_strand_BEAS_TFEU10-12": 64,
+        "nb3sn_strand_OST_TFEU9": 64,
+        "nb3sn_tcs_6.5K": 64,
+        "none": 576,
+        "price_nb3sn_13.5": 64,
+        "price_nb3sn_5.4": 64,
+        "price_rebco_10_volume": 64,
+        "price_rebco_30_target": 64,
+        "rebco_Tstar_17K": 64,
+        "rebco_Tstar_33K": 64,
+        "rebco_anchor_225A": 64,
+        "rebco_degradation_0.80": 64,
+        "rebco_degradation_0.95": 64,
+        "rebco_shape_power_law": 64,
+        "steel_base_layer1_9.3635": 64,
+        "steel_base_layer8_16.24": 64,
+        "steel_no_field_scaling": 64,
+        "turn_length_D_45m": 40,
+        "turn_length_D_60m": 40
+      },
+      "variant_offer_identical_to_reference": 506
+    },
+    "design": "work/active/WI-099_magnet-conductor-alternatives/design.md (sections 2, 5 D1, 6)",
+    "generated_by": "exploration/magnet_materials/studies/declare_cases.py",
+    "layout": "each case: case_id, labels, duty, economics, nb3sn, rebco (all design section-6 inputs), policy (trace, not a model input)",
+    "n_cases": 2832,
+    "notes": "exploration/magnet_materials/studies/oracle-notes.md",
+    "oracle": "exploration/magnet_materials/oracle.py",
+    "policy": "exploration/magnet_materials/studies/offer_policy.py",
+    "schema": "wi099-cases-v1"
+  }
+}

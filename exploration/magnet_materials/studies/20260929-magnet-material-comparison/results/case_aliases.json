@@ -1,0 +1,1542 @@
+{
+  "unique_points": 2310,
+  "declared_cases": 2832,
+  "alias_groups": 506,
+  "aliased_cases": 522,
+  "aliases": {
+    "D-8T-native-reference-none-reference-reference": [
+      "D-8T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-8T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-8T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-8T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-8T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-8T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-8T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-8T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-8T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-8T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-8T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-8T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-8T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-8T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-electricity_30-reference-reference": [
+      "D-8T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-8T-native-reference-electricity_30-reference-reference": [
+      "D-8T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-electricity_120-reference-reference": [
+      "D-8T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-8T-native-reference-electricity_120-reference-reference": [
+      "D-8T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-crf_0.05-reference-reference": [
+      "D-8T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-8T-native-reference-crf_0.05-reference-reference": [
+      "D-8T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-crf_0.11-reference-reference": [
+      "D-8T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-8T-native-reference-crf_0.11-reference-reference": [
+      "D-8T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-8T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-8T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-8T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-8T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-8T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-8T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-8T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-8T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-8T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-8T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-8T-native-reference-manufacturing_both-reference-reference": [
+      "D-8T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-8T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-8T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-8T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-8T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-8T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-8T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-8T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-8T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-8T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-8T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-8T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-8T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-8T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-9T-native-reference-none-reference-reference": [
+      "D-9T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-9T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-9T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-9T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-9T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-9T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-9T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-9T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-9T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-9T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-9T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-9T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-9T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-9T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-electricity_30-reference-reference": [
+      "D-9T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-9T-native-reference-electricity_30-reference-reference": [
+      "D-9T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-electricity_120-reference-reference": [
+      "D-9T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-9T-native-reference-electricity_120-reference-reference": [
+      "D-9T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-crf_0.05-reference-reference": [
+      "D-9T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-9T-native-reference-crf_0.05-reference-reference": [
+      "D-9T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-crf_0.11-reference-reference": [
+      "D-9T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-9T-native-reference-crf_0.11-reference-reference": [
+      "D-9T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-9T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-9T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-9T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-9T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-9T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-9T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-9T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-9T-native-reference-manufacturing_both-reference-reference": [
+      "D-9T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-9T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-9T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-9T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-9T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-9T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-9T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-9T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-9T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-9T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-9T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-9T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-9T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-9T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-10T-native-reference-none-reference-reference": [
+      "D-10T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-10T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-10T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-10T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-10T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-10T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-10T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-10T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-10T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-10T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-10T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-10T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-10T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-10T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-electricity_30-reference-reference": [
+      "D-10T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-10T-native-reference-electricity_30-reference-reference": [
+      "D-10T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-electricity_120-reference-reference": [
+      "D-10T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-10T-native-reference-electricity_120-reference-reference": [
+      "D-10T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-crf_0.05-reference-reference": [
+      "D-10T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-10T-native-reference-crf_0.05-reference-reference": [
+      "D-10T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-crf_0.11-reference-reference": [
+      "D-10T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-10T-native-reference-crf_0.11-reference-reference": [
+      "D-10T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-10T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-10T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-10T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-10T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-10T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-10T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-10T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-10T-native-reference-manufacturing_both-reference-reference": [
+      "D-10T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-10T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-10T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-10T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-10T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-10T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-10T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-10T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-10T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-10T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-10T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-10T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-10T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-10T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-11T-native-reference-none-reference-reference": [
+      "D-11T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-11T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-11T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-11T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-11T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-11T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-11T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-11T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-11T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-11T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-11T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-11T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-11T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-11T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-electricity_30-reference-reference": [
+      "D-11T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-11T-native-reference-electricity_30-reference-reference": [
+      "D-11T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-electricity_120-reference-reference": [
+      "D-11T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-11T-native-reference-electricity_120-reference-reference": [
+      "D-11T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-crf_0.05-reference-reference": [
+      "D-11T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-11T-native-reference-crf_0.05-reference-reference": [
+      "D-11T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-crf_0.11-reference-reference": [
+      "D-11T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-11T-native-reference-crf_0.11-reference-reference": [
+      "D-11T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-11T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-11T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-11T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-11T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-11T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-11T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-11T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-11T-native-reference-manufacturing_both-reference-reference": [
+      "D-11T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-11T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-11T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-11T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-11T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-11T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-11T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-11T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-11T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-11T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-11T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-11T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-11T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-11T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-12T-native-reference-none-reference-reference": [
+      "D-12T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-12T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-12T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-12T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-12T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-12T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-12T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-12T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-12T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-12T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-12T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-12T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-12T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-12T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-electricity_30-reference-reference": [
+      "D-12T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-12T-native-reference-electricity_30-reference-reference": [
+      "D-12T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-electricity_120-reference-reference": [
+      "D-12T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-12T-native-reference-electricity_120-reference-reference": [
+      "D-12T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-crf_0.05-reference-reference": [
+      "D-12T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-12T-native-reference-crf_0.05-reference-reference": [
+      "D-12T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-crf_0.11-reference-reference": [
+      "D-12T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-12T-native-reference-crf_0.11-reference-reference": [
+      "D-12T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-12T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-12T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-12T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-12T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-12T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-12T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-12T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-12T-native-reference-manufacturing_both-reference-reference": [
+      "D-12T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-12T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-12T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-12T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-12T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-12T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-12T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-12T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-12T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-12T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-12T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-12T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-12T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-12T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-13T-native-reference-none-reference-reference": [
+      "D-13T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-13T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-13T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-13T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-13T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-13T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-13T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-13T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-13T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-13T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-13T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-13T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-13T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-13T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-electricity_30-reference-reference": [
+      "D-13T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-13T-native-reference-electricity_30-reference-reference": [
+      "D-13T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-electricity_120-reference-reference": [
+      "D-13T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-13T-native-reference-electricity_120-reference-reference": [
+      "D-13T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-crf_0.05-reference-reference": [
+      "D-13T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-13T-native-reference-crf_0.05-reference-reference": [
+      "D-13T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-crf_0.11-reference-reference": [
+      "D-13T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-13T-native-reference-crf_0.11-reference-reference": [
+      "D-13T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-13T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-13T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-13T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-13T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-13T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-13T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-13T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-13T-native-reference-manufacturing_both-reference-reference": [
+      "D-13T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-13T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-13T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-13T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-13T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-13T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-13T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-13T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-13T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-13T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-13T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-13T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-13T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-13T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-14T-native-reference-none-reference-reference": [
+      "D-14T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-14T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-14T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-14T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-14T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-14T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-14T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-14T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-14T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-14T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-14T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-14T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-14T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-14T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-electricity_30-reference-reference": [
+      "D-14T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-14T-native-reference-electricity_30-reference-reference": [
+      "D-14T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-electricity_120-reference-reference": [
+      "D-14T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-14T-native-reference-electricity_120-reference-reference": [
+      "D-14T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-crf_0.05-reference-reference": [
+      "D-14T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-14T-native-reference-crf_0.05-reference-reference": [
+      "D-14T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-crf_0.11-reference-reference": [
+      "D-14T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-14T-native-reference-crf_0.11-reference-reference": [
+      "D-14T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-14T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-14T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-14T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-14T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-14T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-14T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-14T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-14T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-14T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-14T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-14T-native-reference-manufacturing_both-reference-reference": [
+      "D-14T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-14T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-14T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-14T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-14T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-14T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-14T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-14T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-14T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-14T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-14T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-14T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-14T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-14T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-16T-native-reference-none-reference-reference": [
+      "D-16T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-16T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-16T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-16T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-16T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-16T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-16T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-16T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-16T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-16T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-16T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-16T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-16T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-16T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-electricity_30-reference-reference": [
+      "D-16T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-16T-native-reference-electricity_30-reference-reference": [
+      "D-16T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-electricity_120-reference-reference": [
+      "D-16T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-16T-native-reference-electricity_120-reference-reference": [
+      "D-16T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-crf_0.05-reference-reference": [
+      "D-16T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-16T-native-reference-crf_0.05-reference-reference": [
+      "D-16T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-crf_0.11-reference-reference": [
+      "D-16T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-16T-native-reference-crf_0.11-reference-reference": [
+      "D-16T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-16T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-16T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-16T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-16T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-16T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-16T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-16T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-16T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-16T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-16T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-16T-native-reference-manufacturing_both-reference-reference": [
+      "D-16T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-16T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-16T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-16T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-16T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-16T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-16T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-16T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-16T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-16T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-16T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-16T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-16T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-16T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-18T-native-reference-none-reference-reference": [
+      "D-18T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-18T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-18T-native-reference-cu_density_common_100-reference-reference": [
+      "D-18T-native-reference-cu_density_common_100-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-18T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-18T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-18T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-18T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-18T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-18T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-18T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-18T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-18T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-18T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-18T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-18T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-electricity_30-reference-reference": [
+      "D-18T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-18T-native-reference-electricity_30-reference-reference": [
+      "D-18T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-electricity_120-reference-reference": [
+      "D-18T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-18T-native-reference-electricity_120-reference-reference": [
+      "D-18T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-crf_0.05-reference-reference": [
+      "D-18T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-18T-native-reference-crf_0.05-reference-reference": [
+      "D-18T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-crf_0.11-reference-reference": [
+      "D-18T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-18T-native-reference-crf_0.11-reference-reference": [
+      "D-18T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-18T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-18T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-18T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-18T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-18T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-18T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-18T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-18T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-18T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-18T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-18T-native-reference-manufacturing_both-reference-reference": [
+      "D-18T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-18T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-18T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-18T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-18T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-18T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-18T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-18T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-18T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-18T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-18T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-18T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-18T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-18T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-20T-native-reference-none-reference-reference": [
+      "D-20T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "D-20T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-nb3sn_strain_-0.6pct-reference-reference": [
+      "D-20T-common-P-reference-nb3sn_strain_-0.6pct-variant-offer-reference"
+    ],
+    "D-20T-native-reference-nb3sn_strain_-0.6pct-reference-reference": [
+      "D-20T-native-reference-nb3sn_strain_-0.6pct-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-nb3sn_strain_-0.6pct_OST_TFEU9-reference-reference": [
+      "D-20T-common-P-reference-nb3sn_strain_-0.6pct_OST_TFEU9-variant-offer-reference"
+    ],
+    "D-20T-native-reference-nb3sn_strain_-0.6pct_OST_TFEU9-reference-reference": [
+      "D-20T-native-reference-nb3sn_strain_-0.6pct_OST_TFEU9-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-nb3sn_strain_-0.6pct_BEAS_TFEU10-12-reference-reference": [
+      "D-20T-common-P-reference-nb3sn_strain_-0.6pct_BEAS_TFEU10-12-variant-offer-reference"
+    ],
+    "D-20T-native-reference-nb3sn_strain_-0.6pct_BEAS_TFEU10-12-reference-reference": [
+      "D-20T-native-reference-nb3sn_strain_-0.6pct_BEAS_TFEU10-12-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-rebco_shape_power_law-reference-reference": [
+      "D-20T-common-P-reference-rebco_shape_power_law-variant-offer-reference"
+    ],
+    "D-20T-native-reference-rebco_shape_power_law-reference-reference": [
+      "D-20T-native-reference-rebco_shape_power_law-variant-offer-reference"
+    ],
+    "D-20T-native-reference-cu_density_common_100-reference-reference": [
+      "D-20T-native-reference-cu_density_common_100-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "D-20T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-20T-native-reference-eta_constant_0.24-reference-reference": [
+      "D-20T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "D-20T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-20T-native-reference-eta_input_power_20K-reference-reference": [
+      "D-20T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-20T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-20T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "D-20T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "D-20T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-20T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "D-20T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-electricity_30-reference-reference": [
+      "D-20T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-20T-native-reference-electricity_30-reference-reference": [
+      "D-20T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-electricity_120-reference-reference": [
+      "D-20T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-20T-native-reference-electricity_120-reference-reference": [
+      "D-20T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-crf_0.05-reference-reference": [
+      "D-20T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-20T-native-reference-crf_0.05-reference-reference": [
+      "D-20T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-crf_0.11-reference-reference": [
+      "D-20T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-20T-native-reference-crf_0.11-reference-reference": [
+      "D-20T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-turn_length_D_45m-reference-reference": [
+      "D-20T-common-P-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-20T-native-reference-turn_length_D_45m-reference-reference": [
+      "D-20T-native-reference-turn_length_D_45m-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-turn_length_D_60m-reference-reference": [
+      "D-20T-common-P-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-20T-native-reference-turn_length_D_60m-reference-reference": [
+      "D-20T-native-reference-turn_length_D_60m-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-20T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-20T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "D-20T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-manufacturing_both-reference-reference": [
+      "D-20T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-20T-native-reference-manufacturing_both-reference-reference": [
+      "D-20T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "D-20T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-20T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "D-20T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "D-20T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-20T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "D-20T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "D-20T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-20T-native-reference-price_rebco_30_target-reference-reference": [
+      "D-20T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "D-20T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "D-20T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "D-20T-native-reference-price_rebco_10_volume-reference-reference": [
+      "D-20T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-8T-native-reference-none-reference-reference": [
+      "S-8T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "S-8T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-rebco_Tstar_17K-reference-reference": [
+      "S-8T-common-P-reference-rebco_Tstar_17K-variant-offer-reference"
+    ],
+    "S-8T-native-reference-rebco_Tstar_17K-reference-reference": [
+      "S-8T-native-reference-rebco_Tstar_17K-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "S-8T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-8T-native-reference-eta_constant_0.24-reference-reference": [
+      "S-8T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "S-8T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-8T-native-reference-eta_input_power_20K-reference-reference": [
+      "S-8T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-8T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-8T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-8T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "S-8T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-8T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "S-8T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-electricity_30-reference-reference": [
+      "S-8T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-8T-native-reference-electricity_30-reference-reference": [
+      "S-8T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-electricity_120-reference-reference": [
+      "S-8T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-8T-native-reference-electricity_120-reference-reference": [
+      "S-8T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-crf_0.05-reference-reference": [
+      "S-8T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-8T-native-reference-crf_0.05-reference-reference": [
+      "S-8T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-crf_0.11-reference-reference": [
+      "S-8T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-8T-native-reference-crf_0.11-reference-reference": [
+      "S-8T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-8T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-8T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-8T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-manufacturing_both-reference-reference": [
+      "S-8T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-8T-native-reference-manufacturing_both-reference-reference": [
+      "S-8T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "S-8T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-8T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "S-8T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "S-8T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-8T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "S-8T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "S-8T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-8T-native-reference-price_rebco_30_target-reference-reference": [
+      "S-8T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-8T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "S-8T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-8T-native-reference-price_rebco_10_volume-reference-reference": [
+      "S-8T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-9T-native-reference-none-reference-reference": [
+      "S-9T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "S-9T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "S-9T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-9T-native-reference-eta_constant_0.24-reference-reference": [
+      "S-9T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "S-9T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-9T-native-reference-eta_input_power_20K-reference-reference": [
+      "S-9T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-9T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-9T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-9T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "S-9T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-9T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "S-9T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-electricity_30-reference-reference": [
+      "S-9T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-9T-native-reference-electricity_30-reference-reference": [
+      "S-9T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-electricity_120-reference-reference": [
+      "S-9T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-9T-native-reference-electricity_120-reference-reference": [
+      "S-9T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-crf_0.05-reference-reference": [
+      "S-9T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-9T-native-reference-crf_0.05-reference-reference": [
+      "S-9T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-crf_0.11-reference-reference": [
+      "S-9T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-9T-native-reference-crf_0.11-reference-reference": [
+      "S-9T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-9T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-9T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-9T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-manufacturing_both-reference-reference": [
+      "S-9T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-9T-native-reference-manufacturing_both-reference-reference": [
+      "S-9T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "S-9T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-9T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "S-9T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "S-9T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-9T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "S-9T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "S-9T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-9T-native-reference-price_rebco_30_target-reference-reference": [
+      "S-9T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-9T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "S-9T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-9T-native-reference-price_rebco_10_volume-reference-reference": [
+      "S-9T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-10T-native-reference-none-reference-reference": [
+      "S-10T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "S-10T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "S-10T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-10T-native-reference-eta_constant_0.24-reference-reference": [
+      "S-10T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "S-10T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-10T-native-reference-eta_input_power_20K-reference-reference": [
+      "S-10T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-10T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-10T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-10T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "S-10T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-10T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "S-10T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-electricity_30-reference-reference": [
+      "S-10T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-10T-native-reference-electricity_30-reference-reference": [
+      "S-10T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-electricity_120-reference-reference": [
+      "S-10T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-10T-native-reference-electricity_120-reference-reference": [
+      "S-10T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-crf_0.05-reference-reference": [
+      "S-10T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-10T-native-reference-crf_0.05-reference-reference": [
+      "S-10T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-crf_0.11-reference-reference": [
+      "S-10T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-10T-native-reference-crf_0.11-reference-reference": [
+      "S-10T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-10T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-10T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-10T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-manufacturing_both-reference-reference": [
+      "S-10T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-10T-native-reference-manufacturing_both-reference-reference": [
+      "S-10T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "S-10T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-10T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "S-10T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "S-10T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-10T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "S-10T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "S-10T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-10T-native-reference-price_rebco_30_target-reference-reference": [
+      "S-10T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-10T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "S-10T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-10T-native-reference-price_rebco_10_volume-reference-reference": [
+      "S-10T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-11T-native-reference-none-reference-reference": [
+      "S-11T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "S-11T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "S-11T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-11T-native-reference-eta_constant_0.24-reference-reference": [
+      "S-11T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "S-11T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-11T-native-reference-eta_input_power_20K-reference-reference": [
+      "S-11T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-11T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-11T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-11T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "S-11T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-11T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "S-11T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-electricity_30-reference-reference": [
+      "S-11T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-11T-native-reference-electricity_30-reference-reference": [
+      "S-11T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-electricity_120-reference-reference": [
+      "S-11T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-11T-native-reference-electricity_120-reference-reference": [
+      "S-11T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-crf_0.05-reference-reference": [
+      "S-11T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-11T-native-reference-crf_0.05-reference-reference": [
+      "S-11T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-crf_0.11-reference-reference": [
+      "S-11T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-11T-native-reference-crf_0.11-reference-reference": [
+      "S-11T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-11T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-11T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-11T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-manufacturing_both-reference-reference": [
+      "S-11T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-11T-native-reference-manufacturing_both-reference-reference": [
+      "S-11T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "S-11T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-11T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "S-11T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "S-11T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-11T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "S-11T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "S-11T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-11T-native-reference-price_rebco_30_target-reference-reference": [
+      "S-11T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-11T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "S-11T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-11T-native-reference-price_rebco_10_volume-reference-reference": [
+      "S-11T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-12T-native-reference-none-reference-reference": [
+      "S-12T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "S-12T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "S-12T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-12T-native-reference-eta_constant_0.24-reference-reference": [
+      "S-12T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "S-12T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-12T-native-reference-eta_input_power_20K-reference-reference": [
+      "S-12T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-12T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-12T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-12T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "S-12T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-12T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "S-12T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-electricity_30-reference-reference": [
+      "S-12T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-12T-native-reference-electricity_30-reference-reference": [
+      "S-12T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-electricity_120-reference-reference": [
+      "S-12T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-12T-native-reference-electricity_120-reference-reference": [
+      "S-12T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-crf_0.05-reference-reference": [
+      "S-12T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-12T-native-reference-crf_0.05-reference-reference": [
+      "S-12T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-crf_0.11-reference-reference": [
+      "S-12T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-12T-native-reference-crf_0.11-reference-reference": [
+      "S-12T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-12T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-12T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-12T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-manufacturing_both-reference-reference": [
+      "S-12T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-12T-native-reference-manufacturing_both-reference-reference": [
+      "S-12T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "S-12T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-12T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "S-12T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "S-12T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-12T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "S-12T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "S-12T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-12T-native-reference-price_rebco_30_target-reference-reference": [
+      "S-12T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-12T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "S-12T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-12T-native-reference-price_rebco_10_volume-reference-reference": [
+      "S-12T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-13T-native-reference-none-reference-reference": [
+      "S-13T-native-reference-cu_density_material_93.4_100-reference-reference",
+      "S-13T-native-reference-cu_density_material_93.4_100-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-eta_constant_0.24-reference-reference": [
+      "S-13T-common-P-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-13T-native-reference-eta_constant_0.24-reference-reference": [
+      "S-13T-native-reference-eta_constant_0.24-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-eta_input_power_20K-reference-reference": [
+      "S-13T-common-P-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-13T-native-reference-eta_input_power_20K-reference-reference": [
+      "S-13T-native-reference-eta_input_power_20K-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-13T-common-P-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-13T-native-reference-capital_capacity_basis_20K-reference-reference": [
+      "S-13T-native-reference-capital_capacity_basis_20K-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-combined_unfavourable_20K-reference-reference": [
+      "S-13T-common-P-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-13T-native-reference-combined_unfavourable_20K-reference-reference": [
+      "S-13T-native-reference-combined_unfavourable_20K-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-electricity_30-reference-reference": [
+      "S-13T-common-P-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-13T-native-reference-electricity_30-reference-reference": [
+      "S-13T-native-reference-electricity_30-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-electricity_120-reference-reference": [
+      "S-13T-common-P-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-13T-native-reference-electricity_120-reference-reference": [
+      "S-13T-native-reference-electricity_120-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-crf_0.05-reference-reference": [
+      "S-13T-common-P-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-13T-native-reference-crf_0.05-reference-reference": [
+      "S-13T-native-reference-crf_0.05-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-crf_0.11-reference-reference": [
+      "S-13T-common-P-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-13T-native-reference-crf_0.11-reference-reference": [
+      "S-13T-native-reference-crf_0.11-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-13T-common-P-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-13T-native-reference-manufacturing_nb3sn_only-reference-reference": [
+      "S-13T-native-reference-manufacturing_nb3sn_only-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-manufacturing_both-reference-reference": [
+      "S-13T-common-P-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-13T-native-reference-manufacturing_both-reference-reference": [
+      "S-13T-native-reference-manufacturing_both-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-price_nb3sn_5.4-reference-reference": [
+      "S-13T-common-P-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-13T-native-reference-price_nb3sn_5.4-reference-reference": [
+      "S-13T-native-reference-price_nb3sn_5.4-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-price_nb3sn_13.5-reference-reference": [
+      "S-13T-common-P-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-13T-native-reference-price_nb3sn_13.5-reference-reference": [
+      "S-13T-native-reference-price_nb3sn_13.5-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-price_rebco_30_target-reference-reference": [
+      "S-13T-common-P-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-13T-native-reference-price_rebco_30_target-reference-reference": [
+      "S-13T-native-reference-price_rebco_30_target-variant-offer-reference"
+    ],
+    "S-13T-common-P-reference-price_rebco_10_volume-reference-reference": [
+      "S-13T-common-P-reference-price_rebco_10_volume-variant-offer-reference"
+    ],
+    "S-13T-native-reference-price_rebco_10_volume-reference-reference": [
+      "S-13T-native-reference-price_rebco_10_volume-variant-offer-reference"
+    ]
+  }
+}

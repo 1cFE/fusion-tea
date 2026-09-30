@@ -1,0 +1,101 @@
+{
+ "note": "coordinator screen of contract r1; unchecked inputs; not study evidence",
+ "available_mm2_per_turn": 420.8,
+ "rows": [
+  {
+   "B_T": 8,
+   "I_kA": 16.064,
+   "nb3sn": {
+    "ic_strand_6p7K_A": 238.93,
+    "ic_strand_5p2K_A": 305.43,
+    "n": 68,
+    "gross_mm2": 376.8,
+    "fit_margin_mm2": 44.0,
+    "strand_km": 21869
+   },
+   "rebco": {
+    "ic_tape_20K_A": 417.78,
+    "n": 54,
+    "gross_mm2": 358.5,
+    "fit_margin_mm2": 62.3,
+    "tape_km": 17366
+   }
+  },
+  {
+   "B_T": 9,
+   "I_kA": 18.072,
+   "nb3sn": {
+    "ic_strand_6p7K_A": 197.54,
+    "ic_strand_5p2K_A": 258.1,
+    "n": 92,
+    "gross_mm2": 450.3,
+    "fit_margin_mm2": -29.6,
+    "strand_km": 29587
+   },
+   "rebco": {
+    "ic_tape_20K_A": 389.76,
+    "n": 65,
+    "gross_mm2": 423.0,
+    "fit_margin_mm2": -2.2,
+    "tape_km": 20904
+   }
+  },
+  {
+   "B_T": 10,
+   "I_kA": 20.08,
+   "nb3sn": {
+    "ic_strand_6p7K_A": 162.5,
+    "ic_strand_5p2K_A": 217.79,
+    "n": 124,
+    "gross_mm2": 532.1,
+    "fit_margin_mm2": -111.4,
+    "strand_km": 39878
+   },
+   "rebco": {
+    "ic_tape_20K_A": 366.3,
+    "n": 77,
+    "gross_mm2": 492.0,
+    "fit_margin_mm2": -71.2,
+    "tape_km": 24763
+   }
+  },
+  {
+   "B_T": 11,
+   "I_kA": 22.088,
+   "nb3sn": {
+    "ic_strand_6p7K_A": 132.56,
+    "ic_strand_5p2K_A": 183.08,
+    "n": 167,
+    "gross_mm2": 623.7,
+    "fit_margin_mm2": -203.0,
+    "strand_km": 53707
+   },
+   "rebco": {
+    "ic_tape_20K_A": 340.64,
+    "n": 91,
+    "gross_mm2": 565.7,
+    "fit_margin_mm2": -144.9,
+    "tape_km": 29266
+   }
+  },
+  {
+   "B_T": 12,
+   "I_kA": 24.096,
+   "nb3sn": {
+    "ic_strand_6p7K_A": 106.83,
+    "ic_strand_5p2K_A": 152.95,
+    "n": 226,
+    "gross_mm2": 727.7,
+    "fit_margin_mm2": -307.0,
+    "strand_km": 72682
+   },
+   "rebco": {
+    "ic_tape_20K_A": 318.78,
+    "n": 105,
+    "gross_mm2": 643.5,
+    "fit_margin_mm2": -222.7,
+    "tape_km": 33768
+   }
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "capture_failed",
+  "candidate": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote655.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xec in position 10: invalid continuation byte",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-29T23:07:03.866492+00:00"
+}
