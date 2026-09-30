@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://pure.mpg.de/rest/items/item_2140095_1/component/file_2140094/content",
+  "slug": "coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer",
+  "path": "knowledge/sources/coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer/",
+  "source_id": "cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-30T03:30:53.832129+00:00"
+}

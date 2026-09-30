@@ -1929,6 +1929,86 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: d94148c0991fb7efc105278ea1e6f4d48a52bee1f028233ee74bba420da9fbad
 - **Date Added**: 2026-09-29
 
+### UKAEA PROCESS superconducting TF coil model documentation: on-coil ripple peak field fit (peak_tf_with_ripple)
+- **Type**: url
+- **Location**: knowledge/sources/ukaea_process_superconducting_tf_coil_model_documentation/
+- **Use for**: The only located sourced dependence of a TF winding-pack peak field on winding-pack size for a discrete coil set: the on-coil ripple peaking factor f_rip = B_rip/B_nom = A0 + A1 exp(-t) + A2 z + A3 z t, with t the winding-pack toroidal thickness relative to its maximum at the inboard leg and z the radial thickness relative to the same, fitted to FIESTA field calculations for 16, 18 and 20 TF coils only, over t in 0.35-0.99 and z in 0.2-0.7, and a default 9 percent increase (1.09) outside those coil counts; B_nom is the axisymmetric Ampere's-law peak mu0 I_TF N /(2 pi R_TF,peak). Serves REQ-MMC-FIELD-01 (goal magnet-material-comparison, plant-chain deficiency D1) as the tokamak-PROCESS analogue of Lion 2021 eq. 39's winding-pack term.
+- **Validation**: Open the section 'On-coil ripple (peak_tf_with_ripple)': check the peaking-factor definition, the fitted form, the definitions of t and z, the 16/18/20-coil restriction, the t and z ranges and the 1.09 default; take the A0-A3 coefficient values from the PROCESS source (process/tf_coil.py or the documented table) if the page does not print them. Compare B_nom with Kovari 2016 Part 2 eq. 32-33 (knowledge/raw/kovari2016.pdf, journal p. 13).
+- **Caveat**: Live documentation page of a code, not a peer-reviewed source; its fits are to FIESTA calculations for planar tokamak TF coils of 16-20 coils with an EU-DEMO-like radial build, so the peaking factor does not transfer to a 48-coil non-planar stellarator set; coefficient values may be absent from the page and must then be read from the code; the page can change without notice, so the captured snapshot is the citable object.
+
+#### Extended Metadata
+- **Source URL**: https://ukaea.github.io/PROCESS/eng-models/tf-coil-superconducting/
+- **Source ID**: 92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60
+- **Raw SHA256**: 92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60
+- **Raw Artifact SHA256**: 92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60
+- **Extracted Path**: knowledge/sources/ukaea_process_superconducting_tf_coil_model_documentation/
+- **Extract SHA256**: 30591f76e82182139b47b225a6632a9f971ef6b430904bc2c496818659d0f4d3
+- **Date Added**: 2026-09-29
+
+### Confinement Study of Net-Current Free Toroidal Plasmas Based on Extended International Stellarator Database (Yamada et al., IAEA FEC 2004, EX/1-5)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/confinement_study_of_net_current_free_toroidal_plasmas/
+- **Use for**: Conference precursor of ISS04 (Yamada et al. 2005 Nucl. Fusion 45 1684). Defines the ISS04 renormalization factor f_ren as a configuration-dependent enhancement factor: 'One renormalization factor is defined by the averaged value of experimental enhancement factors for each configuration (subset)', with the leading coefficient fixed so that f_ren = 1 for W7-AS at iota < 0.48 (p. 4). Prints the preliminary fit Eq. (3) ISS04v3: tau_E = 0.148 a^2.33 R^0.64 P^-0.61 n_e^0.55 B^0.85 iota_2/3^0.41, RMSE 0.026, and its dimensionless form tau/tau_Bohm ~ rho*^-0.90 beta^-0.01 nu_b*^-0.14 (p. 4); Fig. 3 gives per-device f_ren (ATF, Heliotron E, CHS, Heliotron J, TJ-II, W7-AS low/high iota, LHD Rax 3.9/3.6) spanning about 0.4-1.2 (p. 4). Database composition: about 2500 points from nine stellarators (ATF, CHS, Heliotron E, Heliotron J, HSX, LHD, TJ-II, W7-A, W7-AS), 1747 used, largest device LHD R/a = 3.9 m/0.6 m (p. 2); iota range 1.3-2.2 from TJ-II (p. 3); Fig. 1 shows the database in rho*, nu_b* against a 'Reactor' point, LHD 3-10x closer to reactor regime (p. 2). Serves REQ-MMC-PLASMA-01 (ISS04 fitted domain and meaning of f_ren off the fitted point).
+- **Validation**: Check Eq. (3) and the f_ren definition paragraph on p. 4; Fig. 3 (p. 4) for per-device f_ren; Section 2 p. 2 for the database composition and LHD size; Fig. 1 (p. 2) for the rho*-nu_b* coverage. Exponents are set as separate text runs in the PDF extraction; read them from the rendered page.
+- **Caveat**: IAEA FEC 2004 preprint, not the peer-reviewed 2005 Nuclear Fusion paper: the fit printed here is ISS04v3 (0.148, a^2.33, n^0.55, B^0.85), which differs slightly from the published ISS04 (0.134, a^2.28, n^0.54, B^0.84) used by Stellaris Eq. A.7. It prints no per-parameter table of the database's B, n, a, R, beta or P ranges, only device names, the LHD size and dimensionless coverage in a figure. The journal version (pure.mpg.de, KURENAI, ANU) was unreachable to the tooling.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/yamada2004_iaea.pdf
+- **Source ID**: 1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a
+- **Raw SHA256**: 1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a
+- **Raw Artifact SHA256**: 1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a
+- **Extracted Path**: knowledge/sources/confinement_study_of_net_current_free_toroidal_plasmas/
+- **Extract SHA256**: 516caf91202ad8a43e42916a9927896056783ed18f11325bd108b31de749638b
+- **Date Added**: 2026-09-29
+
+### HELIAS 5-B magnet system structure and maintenance concept (Schauer, Egorov, Bykov, Fusion Eng. Des. 88 (2013) 1619-1622)
+- **Type**: url
+- **Location**: knowledge/sources/helias_5_b_magnet_system_structure_and_maintenance_concept/
+- **Use for**: Establishes the engineering design point of the Nb3Sn HELIAS 5-B stellarator reactor, the second coil-set anchor for the peak/axis field ratio: Table 1 prints major radius 22 m, average minor radius 1.8 m, plasma volume 1407 m3, 50 coils, average field on axis 5.9 T, max. field at coils 12.5 T (ratio 2.12), cable current 86 kA, superconducting strand current 76 A, superconductor Nb3Sn or Nb3Al, stored energy 160 GJ (3.2 GJ per coil), fusion power 3000 MW (footnote b: estimated for a plasma axis field of 5 T), alongside the ITER TF values (6.2 m, 2.0 m, 837 m3, 18 coils, 5.3 T, 11.8 T, 68 kA, 76 A, Nb3Sn, 41 GJ, 2.3 GJ, 500 MW). Section 2 prints the cable jacket 53x53 mm2 with 6 mm wall, winding pack 750x709 mm2 including ground insulation, and casing outer dimensions 1000x920 mm2. The introduction states the field increase above 12 T forced the switch from NbTi to Nb3Sn and that the magnet parameters are comparable to the ITER TF system. Serves REQ-MMC-NB3SN-PLANT-01 and RQ-2.
+- **Validation**: The file is an image-only scan of the author manuscript (4 pages, no text layer): render page 1 and read Table 1 (right column, with footnotes a and b) for every number above; page 2, section 2, first paragraph for the jacket 53x53 mm2, winding pack 750x709 mm2 and casing 1000x920 mm2; page 4 references [3] and [4] for the companion papers that print the winding-pack and 12 T design.
+- **Caveat**: Author manuscript from the IPP repository (pure.mpg.de) of a 4-page SOFT 2012 conference paper; page numbering and typesetting differ from the Elsevier version. The 3000 MW fusion power is estimated for 5 T on axis, not for the 5.9 T of the same table. The maximum field 12.5 T is stated without the winding-pack model behind it, without a dependence on pack size, and without stating whether it is a conductor, stress, or configuration limit. Number of turns and ampere-turns per coil are not printed here (see the 2011 winding-pack paper). No plasma performance or confinement self-consistency at 5.9 T is shown.
+
+#### Extended Metadata
+- **Source URL**: https://pure.mpg.de/rest/items/item_2145357_1/component/file_2145356/content
+- **Source ID**: 45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb
+- **Raw SHA256**: 45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb
+- **Raw Artifact SHA256**: 45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb
+- **Extracted Path**: knowledge/sources/helias_5_b_magnet_system_structure_and_maintenance_concept/
+- **Extract SHA256**: 4c5a96f802e0999c60ecfe2cc48a3d72b12cda0630761224a1c31f943d18ec2b
+- **Date Added**: 2026-09-29
+
+### From W7-X to a HELIAS Fusion Power Plant: Motivation and Options for an Intermediate-Step Burning-Plasma Stellarator (Warmer et al., EUROfusion preprint WPS2-PR(16) 15201, 2016)
+- **Type**: url
+- **Location**: knowledge/sources/from_w7_x_to_a_helias_fusion_power_plant_motivation_and/
+- **Use for**: Sourced low-field HELIAS-class operating points and the meaning of the ISS04 renormalization factor away from experiments. Table 1 (p. 5): HELIAS 5-B R/a 22/1.8 m, volume 1400 m3, field on axis 5-6 T, volume-averaged thermal beta 5 %, 3000 MW fusion, 600 MW heating, nT-tau ~50e20 m-3 keV s, W7-X at 2.5 T and 5 % beta. Defines f_ren = tau_E/tau_E^ISS04 as a configuration-dependent enhancement/degradation factor like the tokamak H-factor (p. 6) and states that detailed 1-D transport simulations [43] found f_ren 'quite different for W7-X and a HELIAS' and that transport regimes change from W7-X to a power plant (p. 7). Dimensionless transformation relations for the HELIAS line, Eq. (2)-(4): rho* ~ B*^-0.8104 P*^0.1934 n*^-0.2302, nu* ~ B*^0.2418 P*^-0.7737 n*^1.9207, beta* ~ B*^-0.6209 P*^0.3868 n*^0.5397 (p. 6). Beta limit (p. 10): linear stability ~4.5 %, experiments operate above it, optimized HELIAS limit predicted 5-6 % [53]. PROCESS design windows: Option A R 12-15 m, B_t 4-5.6 T, NbTi, 500 MW fusion, f_ren <= 1.8, beta 3-5 %, 50 MW heating at beta 4.5 %, and a degradation from f_ren 1.8 to 1.6 doubles required heating (p. 10); Option C R 15-20 m, B_t 4.5-5.6 T, Nb3Sn, A = 12, f_ren <= 1.5 from 1-D transport, not ignited under those constraints, beta 4-5 % at 50-100 MW heating (pp. 11-12). Serves REQ-MMC-PLASMA-01.
+- **Validation**: Table 1 on p. 5 for HELIAS 5-B parameters; p. 6 lines 289-294 for the f_ren definition and Eq. (2)-(4); p. 7 lines 388-396 for the 1-D transport statement; p. 10 lines 661-677 for the beta-limit discussion and Fig. 4 caption; Table 2 on p. 10 for Option A/C sub-goals; p. 12 lines 845-855 for the Option C ranges. Figures 4 and 6 carry the beta and heating isocontours.
+- **Caveat**: EUROfusion preprint of a paper 'to be submitted' to Plasma Physics and Controlled Fusion (published as PPCF 58 (2016) 074006); page and line numbers are the preprint's. HELIAS 5-B numbers are quoted from Schauer 2013 [13] and are an engineering-study snapshot. The f_ren bounds (<= 1.8, <= 1.5) are systems-study inputs taken from 1-D transport simulations in [43], not measured values; the beta-limit ranges are cited predictions, not a field-dependent law. No ISS04 database ranges are printed.
+
+#### Extended Metadata
+- **Source URL**: https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2PR16_15201_submitted.pdf
+- **Source ID**: c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd
+- **Raw SHA256**: c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd
+- **Raw Artifact SHA256**: c9a2ef8115a64287ae84fb998f15a4147beaeb0e2d44ab129a1ef41a76f39dbd
+- **Extracted Path**: knowledge/sources/from_w7_x_to_a_helias_fusion_power_plant_motivation_and/
+- **Extract SHA256**: cdedebecf160174ecce92c38a9646b4366fd94a8493c2f37b55e76275f74632f
+- **Date Added**: 2026-09-29
+
+### Coil winding pack FE-analysis for a HELIAS reactor (Schauer, Egorov, Bykov, Fusion Eng. Des. 86 (2011) 636-639)
+- **Type**: url
+- **Location**: knowledge/sources/coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer/
+- **Use for**: Establishes the winding pack and conductor of the 12 T Nb3Sn HELIAS reactor HSR50a, the ancestor of HELIAS 5-B, and so the ampere-turns behind its peak field: Table 2 prints cable current 86 kA, 156 cable turns (so 13.4 MA per coil), operation temperature 4.7 K, 1134 superconducting and 657 copper strands, cable section without channel 1489 mm2, square jacket 53x53 mm, conductor insulation 1.5 mm, double-pancake insulation 3 mm, ground insulation 7 mm, embedding 4 mm, against ITER TFC (68 kA, 134 turns, 4.7 K, 900/522 strands, 1178 mm2, 44 mm round). Table 1 prints HSR50a: R 22 m, a 1.8 m, 1407 m3, 50 coils, 5.6 T average axis field, 12.3 T max field on coils (ratio 2.20), Nb3Al/Nb3Sn, 152 GJ, 3000 MW, against ITER (5.3 T, 11.8 T). The introduction states the upgrade from HSR5/22 to HSR50a raised the axis field from about 5 T to about 5.6 T and the conductor field from about 10 T to about 12 T, that 12 T was chosen with the maximal field limited mainly by structural integrity, that HSR5 coil centre-line lengths are within 3 percent below the ITER TFC circumference of 34.5 m, that the local peak forces per coil unit length are about 20 percent above ITER, and that the winding pack cross section is about 0.5 m2. Serves REQ-MMC-NB3SN-PLANT-01 and RQ-2.
+- **Validation**: Author manuscript with a text layer: page 2, Table 1 (Main data of ITER and HSR50a) for the axis field 5.6 T, max field 12.3 T, 50 coils and 152 GJ; page 3, Table 2 (Winding pack data for ITER TFC and HSR50a) for 86 kA, 156 turns, 4.7 K, strand counts and jacket 53x53 mm; page 1 introduction for the 5 T to 5.6 T and 10 T to 12 T statements and the structural-integrity limit sentence; page 2 for the 34.5 m ITER TFC circumference and the 20 percent force statement. The Table 2 extraction is interleaved with figure captions; read the page image.
+- **Caveat**: Author manuscript from the IPP repository of a 4-page SOFT 2010 conference paper; page layout differs from the Elsevier version. HSR50a is the earlier upscaled-W7-X coil set, not the re-shaped HELIAS 5-B coils of the 2013 paper (which prints 5.9 T and 12.5 T for the same 50-coil, 22 m machine), so the peak/axis ratios 2.20 and 2.12 belong to two slightly different configurations. The 12.3 T maximum is stated as a design choice with no printed winding-pack model, no scan against pack size or current density, and no plasma self-consistency at 5.6 T. The 13.4 MA per coil is derived from 86 kA x 156 turns, not printed.
+
+#### Extended Metadata
+- **Source URL**: https://pure.mpg.de/rest/items/item_2140095_1/component/file_2140094/content
+- **Source ID**: cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513
+- **Raw SHA256**: cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513
+- **Raw Artifact SHA256**: cb8f2f078dd4ef6b682972c89978114deb124b37336748c0b10d47e50b6a1513
+- **Extracted Path**: knowledge/sources/coil_winding_pack_fe_analysis_for_a_helias_reactor_schauer/
+- **Extract SHA256**: 85fff62caa720cb3dde0de4f979807b22177a4f7f1971b143495cdb4f1cdc181
+- **Date Added**: 2026-09-29
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

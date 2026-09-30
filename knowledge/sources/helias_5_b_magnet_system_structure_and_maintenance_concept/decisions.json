@@ -1,0 +1,34 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "request_id": "REQ-MMC-FIELD-01",
+  "run": "knowledge/research/requests/runs/REQ-MMC-FIELD-01/20260930T032148695435",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "ukaea_process_superconducting_tf_coil_model_documentation",
+      "path": "knowledge/sources/ukaea_process_superconducting_tf_coil_model_documentation/",
+      "source_id": "92c2db23180aceeca9532a26da6af1ac5d93ae30b3163898123b5a7a91d32e60",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://pure.mpg.de/pubman/item/item_2536884_1",
+      "reason": "MPG PuRe record returned HTTP 403 to the fetcher; may hold an author copy of Schauer 2013 HELIAS 5-B magnet system; needs a person to open"
+    },
+    {
+      "candidate": "https://doi.org/10.1016/j.fusengdes.2013.01.035",
+      "reason": "Schauer, Egorov, Bykov 2013 FED 88 1619-1622 'HELIAS 5-B magnet system structure and maintenance concept': Elsevier, no open-access copy located within the search limit; paywalled"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

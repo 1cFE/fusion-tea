@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/yamada2004_iaea.pdf",
+  "slug": "confinement_study_of_net_current_free_toroidal_plasmas",
+  "path": "knowledge/sources/confinement_study_of_net_current_free_toroidal_plasmas/",
+  "source_id": "1e08bd6180dd021f84df9f5a88eb8866de8add0791d7a2348b14d2243092276a",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-30T03:29:26.735461+00:00"
+}

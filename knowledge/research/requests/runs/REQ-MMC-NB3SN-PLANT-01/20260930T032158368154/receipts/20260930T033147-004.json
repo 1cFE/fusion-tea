@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "limit_reached",
+  "candidate": "https://scientific-publications.ukaea.uk/wp-content/uploads/MULDREW_2021_HELIASUNCERT.PDF",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "run has spent its max_captures limit of 3",
+  "rule_id": null,
+  "captured": false,
+  "at": "2026-09-30T03:31:47.692760+00:00"
+}

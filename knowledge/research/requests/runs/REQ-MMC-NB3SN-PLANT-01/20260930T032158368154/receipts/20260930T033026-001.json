@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://pure.mpg.de/rest/items/item_2145357_1/component/file_2145356/content",
+  "slug": "helias_5_b_magnet_system_structure_and_maintenance_concept",
+  "path": "knowledge/sources/helias_5_b_magnet_system_structure_and_maintenance_concept/",
+  "source_id": "45004c42ef407d8d1b0a0d6acebca2297f34fd1d930aad6294e9f53230660eeb",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-30T03:30:26.474002+00:00"
+}
