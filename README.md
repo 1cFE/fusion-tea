@@ -478,3 +478,7 @@ Ensure all sibling repos are cloned to the correct locations (see Repository Set
 - [Project Status](modeling_pm/OVERVIEW.md)
 - [Work Items](modeling_pm/backlog/BACKLOG.md)
 - [Sensmetry Syside Documentation](https://docs.sensmetry.com/)
+
+## License
+
+Original code and associated documentation in this repository are available under the [MIT License](LICENSE), copyright 2026 Astera Institute, consistent with [Astera's Open Science Policy](https://astera.org/open-science-policy/). Third-party material retains its original copyright and license.
