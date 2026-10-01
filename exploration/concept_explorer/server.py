@@ -45,9 +45,11 @@ logger = logging.getLogger(__name__)
 
 import uvicorn  # noqa: E402
 from fastapi import Depends, FastAPI, HTTPException, Request  # noqa: E402
+from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import FileResponse  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound  # noqa: E402
+from starlette.types import ASGIApp  # noqa: E402
 
 from exploration.concept_explorer.models import (  # noqa: E402
     FUEL_DISPLAY,
@@ -968,6 +970,19 @@ def concept_page(concept_id: str, state: _State = Depends(get_state)) -> FileRes
 # ---------------------------------------------------------------------------
 
 
+class _ExplorerApp(FastAPI):
+    def build_middleware_stack(self) -> ASGIApp:
+        # Wrap the complete stack so unexpected 500s also reach the frontend.
+        # Keep the FastAPI object itself intact for lifespan, state and callers.
+        return CORSMiddleware(
+            super().build_middleware_stack(),
+            allow_origins=["https://1cf.energy", "https://static.1cf.energy"],
+            allow_methods=["GET", "POST"],
+            allow_headers=["Content-Type"],
+            allow_credentials=False,
+        )
+
+
 def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     """Return a configured FastAPI application rooted at *base_dir*.
 
@@ -1204,7 +1219,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             body.apply_analyst_overrides,
         )
 
-    app = FastAPI(title="Fusion TEA Concept Explorer", lifespan=lifespan)
+    app = _ExplorerApp(title="Fusion TEA Concept Explorer", lifespan=lifespan)
 
     # Static assets (CSS, JS, vendor libs, images)
     if static_dir.is_dir():
