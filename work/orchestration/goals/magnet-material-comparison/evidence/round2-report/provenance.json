@@ -1,0 +1,19 @@
+{
+  "snapshot_sha256": "d494d0e92768ff6ed2498c32f9d24fc1cee9e8562cf863e269f92a01eed46de7",
+  "sources": {
+    "results/summary.json": "b0d95cc09e75e9e368fa35c324dce28125c099861d3385356864dc171e1f41f5",
+    "results/cases.csv": "f5ddeb13032f3aa2a9de8231962fbbc5064547b7778a1de31d010f13a784e9f1"
+  },
+  "outputs": {
+    "map.csv": "d1a538e1aafd9caef968c9d5a1e9093a44e34d016d0f599e9bae7e62e7a3bdb9",
+    "assumption-map.png": "e5c11be4c0e0c0ad039f6f5d193f5d0821dff9666f59b22057e0ceb9139747a8",
+    "interactions.csv": "b04f7afc1d6f1056d8c48abe90eab1bd246f8e687ef1eec7d2566413cc68b374",
+    "assumption-map.svg": "52a4ebd99cf29eabe832430c3485618dec465e3405a884bd11db6f5a0d8fcb62",
+    "field-size-interactions.png": "5685c5de6d1fa867c057f4651f947b923d5b9b9025e003bd1576de5440faaab2",
+    "lcoe-decomposition.svg": "ffe14103c4f4c6c2350cecf023ec48c5a0d31cea8aacd6705b63d63f51908d91",
+    "decomposition.csv": "1a03ab94eaaef588b04c809c2485098cd28136038d98311f43347a9357162db1",
+    "lcoe-decomposition.png": "53d184e659bfce3540493c14e0ff3228b2691fe009ba66699b55012a1e41518b",
+    "field-size-interactions.svg": "a51de4660ac4c4bd7b3416277a1ed60290fe673007830e635d0a6e9b7fa1461d"
+  },
+  "assertions": "2921 unique retained cases; selected case/LCOE parity; decomposition closure <1e-9"
+}

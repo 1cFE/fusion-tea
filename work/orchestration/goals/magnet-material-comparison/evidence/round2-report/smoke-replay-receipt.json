@@ -1,0 +1,10 @@
+{
+  "scope": "first two declared cases per material; replay-path smoke check, not full fresh replay",
+  "path": "/tmp/magnet-plant-replay-smoke.jRmY5x",
+  "verification_sha256": "db5fd1e4a6c04ac1e9f39c56eea078ee045bc7cfa8a368e028fb7cbc3fbe9678",
+  "case_count": 4,
+  "scalar_comparisons": 5690,
+  "runtime": "uv run --no-sync; existing .venv; editable agentic-mbse at /home/reid/1cfe/agentic-mbse/src",
+  "outcome": "pass",
+  "serialization_warnings": "Pydantic bool annotations received numeric 0/1 values; retained without changing model inputs or outputs."
+}

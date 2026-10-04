@@ -466,3 +466,35 @@ T-017 · fresh study executor (Opus 5.5) on briefs/t017-study-execute.md · reco
 ### Review availability — 2026-10-04
 
 [AGENT] A fresh read-only Opus review was attempted with `evidence/briefs/t017-resume-audit.md`, preserving the earlier owner model instruction. The sandboxed CLI produced no outcome and was interrupted; an escalation to permit the external review was rejected by automatic approval review because it could export repository contents to an unapproved destination. No reviewer verdict exists. The owner has been asked to permit a fresh Codex reviewer, explicitly approve the external review, or retain an Opus review handoff. Independent local reporting may proceed; dependent scientific follow-up and final round assurance remain parked pending required review.
+
+### T-018 scope — 2026-10-04
+
+- **Objective:** Read the committed Round 2 record, produce the evidence-labelled assumption map, LCOE decomposition and field/size/confinement interactions from retained cases, trace figures to case ids and data, provide replay commands and a proposed narrative, and draft the goal answer with proposed finding dispositions.
+- **Why now:** T-017 has a sealed factual deposit. The owner's question needs both numerical preference and evidence support; neither follows from execution alone.
+- **Scope:** Coordinator-authored `evidence/round2-report/`, `answer.md` with the exact Round 1 answer retained as `answer-round1.md`, and the study's optional `synthesis.md`. No changes to sealed snapshot, results, indicators, executable units, models, case generator, oracle, sources or article. No semantic follow-up on proposed dispositions before required review.
+- **Inputs:** committed study `20260930-magnet-material-plant-map@a9683fa1d`, contract r5a §§ 3, 7–10, prior source/contract/design reviews and Round 1 answer.
+- **Done when:** the draft contains the owner's requested map, traceable interactions, accounting and exclusions, figures/data/renderer and replay guidance; the required fresh review releases the integrated answer and proposed dispositions, or a named review handoff is deposited.
+- **Stop when:** missing sealed evidence changes the interpretation, owner gate, review unavailable, or declared limit.
+
+### T-018 start — 2026-10-04
+
+[AGENT] Coordinator executes local reporting directly. Required independent review remains pending the owner's reviewer-model/destination decision; draft conclusions and proposed dispositions are not accepted learnings.
+
+### T-018 return — 2026-10-04
+
+- **Outcome:** PREREQUISITE: local reporting is complete as a draft, but required independent integration/interpretation review has no authorized available reviewer under the retained Opus instruction.
+- **Evidence:** `answer.md`, exact retained `answer-round1.md`, `evidence/round2-report/README.md`, three figure pairs with case-linked CSVs and `provenance.json`, `proposed-narrative.md`, `proposed-dispositions.md`, and the four-case `smoke-replay-{receipt,verification}.json`. Reporting assertions, artifact hashes and local links pass; figures were visually inspected. The smoke replay exercises the current no-sync runtime and the declared replay route; it is not full-study re-verification. Numeric boolean serialization warnings are retained in the receipt.
+- **Reading:** The conditional price map is available, and every comparative cell carries unsupported physical-transfer evidence. No source-supported material selection or full engineering pass is established. Proposed routes address every current study sighting, but none is appended as an accepted disposition or learning before review.
+- **Decision:** Field interaction labels on equal-duty REBCO cases name the Nb₃Sn target and differ from actual REBCO peak · field panels use only own-sized designs, with actual peaks and duty class retained in the data · execution detail · coordinator [AGENT] · `evidence/round2-report/render.py` and README.
+- **Decision:** External review rejected and earlier Opus-only instruction still applies · retain draft status and park final assurance/semantic follow-up pending owner reviewer choice · reserved gate · owner decision pending · brief and handoff below. No silent model substitution.
+- **MR-7:** No supplied-design roles or model assignments changed; reporting reads retained case outcomes only. Existing implementation and policy evidence remains scoped numerical evidence, not independent physical qualification.
+
+### Stop — 2026-10-04
+
+Kind: handoff
+
+What is true on disk: T-017's numerical study is sealed; T-018's conditional answer, figures, replay and proposed dispositions are prepared as a draft. Round 2 remains open; no final round result/review or accepted learning delta exists. Models, packages, policy, oracle and article remain unchanged.
+
+What the owner must see: a fresh authorized reviewer is needed. Earlier instruction requires Opus 5.5; automatic approval review rejected the external Claude CLI invocation because repository contents could be exported to an unapproved destination. Owner may authorize a fresh Codex reviewer, explicitly approve that external review, or arrange an Opus session. The run-goal rule is “If a required independent review is unavailable, park dependent work.” No reviewer choice is inferred from elapsed time.
+
+The material to review: `evidence/briefs/t017-resume-audit.md` plus `answer.md`, `evidence/round2-report/`, native sealed study at `a9683fa1d`, original source/contract/design reviews, and all three CANDIDATE receipts. Broaden the existing brief to include the draft answer's evidence labels, interactions, exclusions, proposed dispositions and learning delta. Resume at GOAL_RUNBOOK § Review scope and evidence reuse / § The pre-execution disposition checkpoint; after review resolves, finalize the answer/dispositions, write Round 2 result and record assurance coverage. Formal goal and work-item closure remain owner-held. Use only `uv run --no-sync`; no push or merge.
