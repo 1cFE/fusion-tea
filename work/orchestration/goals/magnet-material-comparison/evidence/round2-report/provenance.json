@@ -8,12 +8,12 @@
     "map.csv": "d1a538e1aafd9caef968c9d5a1e9093a44e34d016d0f599e9bae7e62e7a3bdb9",
     "assumption-map.png": "e5c11be4c0e0c0ad039f6f5d193f5d0821dff9666f59b22057e0ceb9139747a8",
     "interactions.csv": "b04f7afc1d6f1056d8c48abe90eab1bd246f8e687ef1eec7d2566413cc68b374",
-    "assumption-map.svg": "52a4ebd99cf29eabe832430c3485618dec465e3405a884bd11db6f5a0d8fcb62",
+    "assumption-map.svg": "e295b7cc895d6779937058d34b07e77e4ea1edc799038f8b267ab283fcfa3bb9",
     "field-size-interactions.png": "5685c5de6d1fa867c057f4651f947b923d5b9b9025e003bd1576de5440faaab2",
-    "lcoe-decomposition.svg": "ffe14103c4f4c6c2350cecf023ec48c5a0d31cea8aacd6705b63d63f51908d91",
+    "lcoe-decomposition.svg": "e31268ad6d8a7a76c5249ae9721dc0c9b76fdae7231ba98d6a12fadbfe518190",
     "decomposition.csv": "1a03ab94eaaef588b04c809c2485098cd28136038d98311f43347a9357162db1",
     "lcoe-decomposition.png": "53d184e659bfce3540493c14e0ff3228b2691fe009ba66699b55012a1e41518b",
-    "field-size-interactions.svg": "a51de4660ac4c4bd7b3416277a1ed60290fe673007830e635d0a6e9b7fa1461d"
+    "field-size-interactions.svg": "ad3295c6fb6832f5fda8dca4c882a35243aed379b9d3f62ee447577bd83084c5"
   },
   "assertions": "2921 unique retained cases; selected case/LCOE parity; decomposition closure <1e-9"
 }

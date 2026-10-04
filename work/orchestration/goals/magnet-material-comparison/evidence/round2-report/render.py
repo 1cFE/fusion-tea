@@ -27,7 +27,9 @@ def write_csv(name, rows):
 
 
 def save(fig, name):
-    fig.savefig(HERE / f"{name}.svg", bbox_inches="tight")
+    svg_path = HERE / f"{name}.svg"
+    fig.savefig(svg_path, bbox_inches="tight", metadata={"Date": None})
+    svg_path.write_text("\n".join(line.rstrip() for line in svg_path.read_text().splitlines()) + "\n")
     fig.savefig(HERE / f"{name}.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
@@ -86,7 +88,8 @@ def main():
     write_csv("map.csv", maps)
     write_csv("interactions.csv", interactions)
     write_csv("decomposition.csv", terms)
-    plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
+    plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False,
+                         "svg.hashsalt": "magnet-material-plant-map-20260930"})
     fig, ax = plt.subplots(figsize=(10, 6))
     values = np.full((3, 3), np.nan)
     for row in maps:
