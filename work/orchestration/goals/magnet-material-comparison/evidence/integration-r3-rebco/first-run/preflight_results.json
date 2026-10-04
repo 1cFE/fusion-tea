@@ -1,0 +1,96 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea",
+    "manifest": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_rebco.json",
+    "axis_declaration": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/axes_rebco.json",
+    "identity_document": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/package_identity.json",
+    "baseline_result": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "7c220bf90e9291ff38d0f867f332a8973e4ff1c5d629000c7f3bb4fdfb186ddb",
+    "baseline_result": "93937a9823700cd4fbc6dea728b333b0199285d623f7ad22b1187c3c17264c98",
+    "identity_document": "85f72b18fd213f331e608ec73e3901c013e9f498d2b78a12825332ff7f179a6b",
+    "manifest": "fb87e344ab20c7759e796f3da2d66417beeb20a6ae155219cbfefeb7030cf97c"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "216 declared keys across 7 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 1",
+      "warnings": [
+        "winding-offer: undeclared suffix-sibling stellarator_09_materials__rebco_material__magnet__winding_pack__cabling_factor"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest f441442c116ed0bdb1cd438ccfd282146b312b20db928039da61b59719624fe6 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "stellarator_09_materials__rebco_material__lcoe_calc__lcoe reproduces at relative deviation 0.000e+00; 73/73 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

@@ -1,0 +1,23 @@
+{
+  "outcome": "pass",
+  "scope": "static pipeline references and model contract",
+  "paths": [
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/contracts/model_contract.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/magnet_conductor_alternatives_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/magnet_material_variants_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_account_costs_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_cryo_plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_fuel_cycle_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_magnet_cost_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_magnet_field_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_magnet_parts_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plant_systems_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plasma_scaling_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plasma_sustainment_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_vacuum_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_viability_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/nb3sn_material_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/pipelines/pipeline.yaml"
+  ]
+}

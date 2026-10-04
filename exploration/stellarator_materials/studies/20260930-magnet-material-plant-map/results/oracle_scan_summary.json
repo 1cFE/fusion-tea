@@ -1,0 +1,1018 @@
+{
+ "cases": 2921,
+ "by_status": {
+  "failed": 1638,
+  "supported": 1081,
+  "ignited": 175,
+  "capacity-limited": 23,
+  "unsupported": 4
+ },
+ "by_material": {
+  "nb3sn": {
+   "failed": 480,
+   "supported": 289,
+   "ignited": 35,
+   "capacity-limited": 2
+  },
+  "rebco": {
+   "failed": 1158,
+   "supported": 792,
+   "ignited": 140,
+   "capacity-limited": 21,
+   "unsupported": 4
+  }
+ },
+ "by_cell_material": {
+  "anchored|1.0|nb3sn": {
+   "failed": 135
+  },
+  "anchored|1.0|rebco": {
+   "failed": 164,
+   "supported": 60
+  },
+  "anchored|1.4|nb3sn": {
+   "failed": 92,
+   "supported": 27
+  },
+  "anchored|1.4|rebco": {
+   "failed": 124,
+   "supported": 72,
+   "ignited": 12
+  },
+  "anchored|1.8|nb3sn": {
+   "failed": 67,
+   "supported": 52,
+   "ignited": 5
+  },
+  "anchored|1.8|rebco": {
+   "failed": 112,
+   "supported": 84,
+   "ignited": 16
+  },
+  "arm|1.0|nb3sn": {
+   "failed": 42,
+   "supported": 14
+  },
+  "arm|1.0|rebco": {
+   "failed": 152,
+   "supported": 44,
+   "capacity-limited": 21
+  },
+  "arm|1.4|nb3sn": {
+   "failed": 28,
+   "supported": 28,
+   "ignited": 2
+  },
+  "arm|1.4|rebco": {
+   "failed": 106,
+   "supported": 111,
+   "ignited": 8
+  },
+  "arm|1.8|nb3sn": {
+   "failed": 10,
+   "supported": 46,
+   "ignited": 14
+  },
+  "arm|1.8|rebco": {
+   "failed": 28,
+   "supported": 189,
+   "ignited": 38
+  },
+  "helias|1.0|nb3sn": {
+   "failed": 52,
+   "supported": 18,
+   "capacity-limited": 2
+  },
+  "helias|1.0|rebco": {
+   "failed": 152,
+   "supported": 88,
+   "ignited": 4
+  },
+  "helias|1.4|nb3sn": {
+   "failed": 30,
+   "supported": 40
+  },
+  "helias|1.4|rebco": {
+   "failed": 155,
+   "ignited": 34,
+   "supported": 83
+  },
+  "helias|1.8|nb3sn": {
+   "failed": 24,
+   "supported": 64,
+   "ignited": 14
+  },
+  "helias|1.8|rebco": {
+   "failed": 165,
+   "ignited": 28,
+   "supported": 61,
+   "unsupported": 4
+  }
+ },
+ "by_offer_kind": {
+  "nb3sn|companion": {
+   "supported": 35,
+   "failed": 4
+  },
+  "nb3sn|generous": {
+   "failed": 8
+  },
+  "nb3sn|insufficient": {
+   "failed": 8
+  },
+  "nb3sn|reference": {
+   "failed": 460,
+   "supported": 254,
+   "ignited": 35,
+   "capacity-limited": 2
+  },
+  "rebco|companion": {
+   "supported": 87,
+   "failed": 53
+  },
+  "rebco|generous": {
+   "failed": 14
+  },
+  "rebco|insufficient": {
+   "failed": 14
+  },
+  "rebco|reference": {
+   "failed": 1077,
+   "supported": 705,
+   "ignited": 140,
+   "capacity-limited": 21,
+   "unsupported": 4
+  }
+ },
+ "by_variant": {
+  "nb3sn|cpi_2021_2026": {
+   "failed": 148,
+   "supported": 104,
+   "ignited": 14
+  },
+  "nb3sn|k_link_0.95": {
+   "failed": 11,
+   "supported": 17,
+   "ignited": 2
+  },
+  "nb3sn|m_support_x0.5": {
+   "supported": 2
+  },
+  "nb3sn|m_support_x2": {
+   "supported": 2
+  },
+  "nb3sn|nb3sn_price_13.5": {
+   "failed": 66,
+   "supported": 18,
+   "ignited": 1
+  },
+  "nb3sn|nb3sn_price_5.4": {
+   "failed": 66,
+   "supported": 18,
+   "ignited": 1
+  },
+  "nb3sn|none": {
+   "failed": 164,
+   "supported": 104,
+   "ignited": 14
+  },
+  "nb3sn|purchase_exp_0.5": {
+   "supported": 1
+  },
+  "nb3sn|purchase_exp_1.0": {
+   "supported": 1
+  },
+  "nb3sn|strain_-0.6": {
+   "failed": 14,
+   "supported": 7,
+   "ignited": 1
+  },
+  "nb3sn|turn_current_86kA": {
+   "failed": 11,
+   "supported": 15,
+   "capacity-limited": 2,
+   "ignited": 2
+  },
+  "rebco|common-P": {
+   "capacity-limited": 7,
+   "failed": 2,
+   "supported": 12,
+   "ignited": 2
+  },
+  "rebco|common-P+price_10": {
+   "capacity-limited": 7,
+   "failed": 2,
+   "supported": 12,
+   "ignited": 2
+  },
+  "rebco|common-P+price_30": {
+   "capacity-limited": 7,
+   "failed": 2,
+   "supported": 12,
+   "ignited": 2
+  },
+  "rebco|cpi_2021_2026": {
+   "failed": 266,
+   "supported": 171,
+   "ignited": 29
+  },
+  "rebco|k_link_0.95": {
+   "failed": 9,
+   "supported": 12,
+   "ignited": 3
+  },
+  "rebco|k_link_0.95+price_10": {
+   "failed": 9,
+   "supported": 12,
+   "ignited": 3
+  },
+  "rebco|k_link_0.95+price_30": {
+   "failed": 9,
+   "supported": 12,
+   "ignited": 3
+  },
+  "rebco|m_support_x0.5": {
+   "supported": 2
+  },
+  "rebco|m_support_x2": {
+   "supported": 2
+  },
+  "rebco|none": {
+   "failed": 294,
+   "supported": 171,
+   "ignited": 29,
+   "unsupported": 4
+  },
+  "rebco|price_10": {
+   "failed": 266,
+   "supported": 171,
+   "ignited": 29
+  },
+  "rebco|price_30": {
+   "failed": 266,
+   "supported": 171,
+   "ignited": 29
+  },
+  "rebco|purchase_exp_0.5": {
+   "supported": 1
+  },
+  "rebco|purchase_exp_1.0": {
+   "supported": 1
+  },
+  "rebco|turn_current_86kA": {
+   "failed": 11,
+   "supported": 10,
+   "ignited": 3
+  },
+  "rebco|turn_current_86kA+price_10": {
+   "failed": 11,
+   "supported": 10,
+   "ignited": 3
+  },
+  "rebco|turn_current_86kA+price_30": {
+   "failed": 11,
+   "supported": 10,
+   "ignited": 3
+  }
+ },
+ "refusals": [
+  {
+   "case_id": "helias-1.8-rebco-22T-R22-a2.2-reference-none",
+   "text": "RuntimeError: oracle sustainment: non-positive fuel"
+  },
+  {
+   "case_id": "helias-1.8-rebco-24.9T-R18-a1.8-reference-none",
+   "text": "RuntimeError: oracle sustainment: non-positive fuel"
+  },
+  {
+   "case_id": "helias-1.8-rebco-24.9T-R22-a1.8-reference-none",
+   "text": "RuntimeError: oracle sustainment: non-positive fuel"
+  },
+  {
+   "case_id": "helias-1.8-rebco-24.9T-R22-a2.2-reference-none",
+   "text": "RuntimeError: oracle sustainment: non-positive fuel"
+  }
+ ],
+ "near_threshold_rule": "|operand - threshold| <= 0.02 x scale per status-deciding check (statuses.py)",
+ "near_threshold_counts": {
+  "nb3sn": {
+   "acceptance_ok": 790,
+   "pack_area_ok": 754,
+   "divertor_heat_ok": 72,
+   "net_positive": 6,
+   "wall_load_ok": 10,
+   "recirc_ok": 6
+  },
+  "rebco": {
+   "acceptance_ok": 2083,
+   "pack_area_ok": 1303,
+   "ampere_floor_ok": 73,
+   "wall_load_ok": 129,
+   "divertor_heat_ok": 257,
+   "net_positive": 4,
+   "recirc_ok": 19,
+   "wp_stress_ok": 12
+  }
+ },
+ "near_threshold_cases": {
+  "rebco": 2098,
+  "nb3sn": 793
+ },
+ "flag_counts": {
+  "nb3sn": {
+   "power_short": 582,
+   "green_extrapolated": 543,
+   "envelope_flag": 227,
+   "extrapolated": 228,
+   "divertor_pass": 495,
+   "arm_extrapolated": 126
+  },
+  "rebco": {
+   "power_short": 1222,
+   "extrapolated": 689,
+   "divertor_pass": 1300,
+   "beyond_law_extents": 277,
+   "above_stellaris_envelope": 277,
+   "green_extrapolated": 207,
+   "arm_extrapolated": 498
+  }
+ },
+ "status_vs_policy_mismatches": [
+  {
+   "case_id": "anchored-1.4-rebco-20T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-20T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-20T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-22T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-22T-R18-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-22T-R18-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-22T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-22T-R22-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.4-rebco-22T-R22-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-nb3sn-13T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-nb3sn-13T-R22-a1.8-reference-nb3sn_price_13.5",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-nb3sn-13T-R22-a1.8-reference-nb3sn_price_5.4",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-20T-R12.7-a1.3-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-20T-R12.7-a1.3-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-20T-R12.7-a1.3-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-20T-R15-a1.5-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-20T-R15-a1.5-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-20T-R15-a1.5-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-22T-R12.7-a1.3-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-22T-R12.7-a1.3-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-22T-R12.7-a1.3-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-24.9T-R10-a1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-24.9T-R10-a1-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "anchored-1.8-rebco-24.9T-R10-a1-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R10-a1-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R10-a1-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R11-a1.1-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R11-a1.1-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R12.7-a1.3-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R12.7-a1.3-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R15-a1.5-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R15-a1.5-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R18-a1.8-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R18-a1.8-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R22-a1.8-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R22-a1.8-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R22-a2.2-reference-common-P+price_10",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1-rebco-24.9T-R22-a2.2-reference-common-P+price_30",
+   "derived": "capacity-limited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-nb3sn-13T-R10-a1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-rebco-24.9T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-rebco-24.9T-R18-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-rebco-24.9T-R18-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-rebco-24.9T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-rebco-24.9T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.4-rebco-24.9T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-11T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-12T-R15-a1.5-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-12T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-13T-R11-a1.1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-13T-R12.7-a1.3-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-13T-R15-a1.5-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-nb3sn-13T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-11T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-11T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-11T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R15-a1.5-reference-common-P+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R15-a1.5-reference-common-P+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R15-a1.5-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R15-a1.5-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R15-a1.5-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R22-a2.2-reference-common-P+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R22-a2.2-reference-common-P+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-12T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-20T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-20T-R18-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-20T-R18-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-20T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-20T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-20T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R11-a1.1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R11-a1.1-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R11-a1.1-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R15-a1.5-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R15-a1.5-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R15-a1.5-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R18-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "arm-1.8-rebco-22T-R18-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1-rebco-22T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1-rebco-22T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1-rebco-22T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-k_link_0.95+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-k_link_0.95+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-turn_current_86kA+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R10-a1-reference-turn_current_86kA+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-k_link_0.95+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-k_link_0.95+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-turn_current_86kA+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R18-a1.8-reference-turn_current_86kA+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-k_link_0.95+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-k_link_0.95+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-turn_current_86kA+price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-18T-R22-a1.8-reference-turn_current_86kA+price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-20T-R15-a1.5-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-20T-R15-a1.5-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.4-rebco-20T-R15-a1.5-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-nb3sn-10T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-nb3sn-11T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-nb3sn-11T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-nb3sn-13T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-nb3sn-13T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-10T-R22-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-10T-R22-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-10T-R22-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-11T-R18-a1.8-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-11T-R18-a1.8-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-11T-R18-a1.8-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-11T-R22-a2.2-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-11T-R22-a2.2-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-11T-R22-a2.2-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-18T-R11-a1.1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-18T-R11-a1.1-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-18T-R11-a1.1-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-18T-R12.7-a1.3-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-18T-R12.7-a1.3-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-18T-R12.7-a1.3-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-20T-R11-a1.1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-20T-R11-a1.1-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-20T-R11-a1.1-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-22T-R10-a1-reference-cpi_2021_2026",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-22T-R10-a1-reference-price_10",
+   "derived": "ignited",
+   "policy": "failed"
+  },
+  {
+   "case_id": "helias-1.8-rebco-22T-R10-a1-reference-price_30",
+   "derived": "ignited",
+   "policy": "failed"
+  }
+ ],
+ "ignited_without_negative_heating": [],
+ "elapsed_seconds": 770.8,
+ "workers": 8,
+ "cases_file": {
+  "path": "exploration/stellarator_materials/studies/cases.json",
+  "sha256": "f07133acdd561610287ff9dea01f641bf48b1562ec417254c85484ea8645e583"
+ },
+ "oracle": {
+  "module": "exploration.stellarator_materials.studies.20260930-magnet-material-plant-map.oracle_entry",
+  "oracle_glue_sha256": "8ae8c750dab321235417929ab2f9c2d86ddf66fa645e526589af96303b59a786"
+ }
+}

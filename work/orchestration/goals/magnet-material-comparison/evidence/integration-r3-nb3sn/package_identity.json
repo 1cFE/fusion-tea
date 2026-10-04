@@ -1,0 +1,17 @@
+{
+  "schema_version": "study-package-identity/v1",
+  "package": {
+    "name": "stellarator_materials_nb3sn_tea",
+    "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea"
+  },
+  "identity": {
+    "kind": "sealed",
+    "recipe": "effective-executable-fingerprint/v1",
+    "sealed_executable_fingerprint": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482",
+    "allowed_modified_files": [],
+    "adapter_sources": [],
+    "adapter_source_digest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "digest": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482"
+  },
+  "glue_ledger": []
+}

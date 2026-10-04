@@ -1,0 +1,27 @@
+{
+ "study_id": "20260930-magnet-material-plant-map-nb3sn",
+ "unit": "nb3sn",
+ "command": [
+  "execute_study.py",
+  "--unit",
+  "nb3sn",
+  "--integration-return",
+  "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/integration_return.json"
+ ],
+ "repo_commit": "97fabad313934e9d06f6c9a131f54cdfa09bb2e7",
+ "integration_return": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/integration_return.json",
+ "integration_class": "CANDIDATE",
+ "executable_fingerprint": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482",
+ "semantic_fingerprint": "8b2212e2a2baa972b52d6eee7d392c8e711b367221724a56530f75a6bd5972b7",
+ "pin": "804bc4d45e7e5c7ad019906c2fe5c542dff8aa87bee69e7eeff2e66b04cb8f99",
+ "manifest_sha256": "e641a9a0c62608aef2f26791a3753be962fcf9d2e00b157fa5153455671237af",
+ "store": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/nb3sn/20260930-magnet-material-plant-map-nb3sn.db",
+ "elapsed_seconds": 1371.7,
+ "declared_cases": 806,
+ "stored_cases": 806,
+ "completed": 806,
+ "execution_failed": 0,
+ "other_states": [],
+ "route": "exploration/stellarator_materials/studies/study_route.py:run_points (stock StudyRunner + PreparedListStrategy)",
+ "proposal_mapping": "Nb3Sn magnet__eps_min dropped after checking it equals the package constant (oracle_scan.proposal)"
+}

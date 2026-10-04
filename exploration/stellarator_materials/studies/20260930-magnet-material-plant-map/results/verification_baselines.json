@@ -1,0 +1,39 @@
+{
+ "rule": "|d| <= max(1e-9 |oracle|, 1e-9) (r5a)",
+ "units": {
+  "reference": {
+   "compared": 1353,
+   "uncovered": [],
+   "disagreements": [],
+   "worst_relative": {
+    "value": 1.0,
+    "channel": "stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s"
+   }
+  },
+  "rebco": {
+   "compared": 1423,
+   "uncovered": [
+    "stellarator_09_materials__rebco_material__cryoplant__static_loads__nuclear_density_eff",
+    "stellarator_09_materials__rebco_material__cryoplant__static_loads__q_structure_nuclear"
+   ],
+   "disagreements": [],
+   "worst_relative": {
+    "value": 1.0,
+    "channel": "stellarator_09_materials__rebco_material__turbine__matched_cycle__heater_mass_residual_kg_s"
+   }
+  },
+  "nb3sn": {
+   "compared": 1422,
+   "uncovered": [
+    "stellarator_09_materials__nb3sn_material__cryoplant__static_loads__nuclear_density_eff",
+    "stellarator_09_materials__nb3sn_material__cryoplant__static_loads__q_structure_nuclear"
+   ],
+   "disagreements": [],
+   "worst_relative": {
+    "value": 1.0,
+    "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__cooling_water__water_energy_residual_MW"
+   }
+  }
+ },
+ "outcome": "pass"
+}
