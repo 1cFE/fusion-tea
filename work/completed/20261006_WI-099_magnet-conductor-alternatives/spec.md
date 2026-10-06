@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: null
 Owner: reid
 Created: 2026-09-29
-Updated: 2026-09-29
+Updated: '2026-10-06'
 ---
 
 # WI-099: magnet conductor alternatives at matched duty
@@ -26,7 +26,7 @@ Add genuinely different, source-cited REBCO and Nb₃Sn conductor definitions an
 
 ## Scope and stage status
 
-[AGENT] Spec and design are combined with the goal's reviewed contract; a separate plan document adds nothing because implementation is one package build with a fixed test list. Stage records: design reviewed (contract-review.md § Recheck r3 and design review, D1–D7 applied, D1 diff recheck requested). Implementation, oracle and case declaration are delegated under goal task T-005 (briefs in the goal's `evidence/briefs/`). This item owns model meaning and executable checks; the goal's native study owns exploration and reporting. Formal item closure remains with the owner.
+[AGENT] Implemented and independently checked within the declared subsystem scope; formal item closure remains with the owner. Spec and design are combined with the goal's reviewed contract; a separate plan document adds nothing because implementation is one package build with a fixed test list. Design corrections and rechecks, implementation and oracle, sealed 2,310-case numerical study, and independent final interpretation review are recorded in the goal's T-005/T-007/T-008 returns and Round 1 review, with `evidence/final-review.md` and the sealed `20260929-magnet-material-comparison` record. T-010 resolves the earlier missing stock oracle-entry/manifest seam with five acceptance tests. R1–R6 evidence and remaining conditional scientific scope are indexed in the goal's `evidence/pr-readiness/tracking-audit.md`. This item owns model meaning and executable checks; the goal's native study owns exploration and reporting.
 
 ## Reference case
 

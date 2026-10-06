@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: null
 Owner: reid
 Created: 2026-09-30
-Updated: 2026-09-30
+Updated: '2026-10-06'
 ---
 
 # WI-100: plant-level conductor material variants on the Stellaris plant
@@ -27,4 +27,4 @@ Let the Stellaris plant model evaluate a supplied Nb₃Sn winding at 4.5 K and a
 
 ## Scope and stage status
 
-[AGENT] Spec and design are combined with the goal's plant contract; implementation, oracle and policy are delegated under goal tasks with briefs in the goal's `evidence/briefs/`. This item owns model meaning and executable checks; the goal's native study owns exploration and reporting. Formal item closure remains with the owner.
+[AGENT] Implemented, numerically verified and independently reviewed within the declared conditional package scope; formal item closure remains with the owner. Spec and design are combined with the goal's plant contract; implementation, oracle and policy returns are recorded in T-015/T-016/T-017, with [integrated review](../../orchestration/goals/magnet-material-comparison/evidence/pr-readiness/independent-review.md) and [acceptance evidence index](../../orchestration/goals/magnet-material-comparison/evidence/pr-readiness/tracking-audit.md). R1 uses the reviewed K21 fallback of three executable units. R5 preserves all 1,352 legacy outputs and 67 legacy verdicts bit for bit while adding neutral controls and `evaluation_defined`; the enlarged output map is not claimed identical. R7 retains the disclosed exclusion of constants and two static-load channels without oracle legs. This stage note records delivered evidence rather than unconditional certification of every physical requirement. This item owns model meaning and executable checks; the goal's native study owns exploration and reporting.

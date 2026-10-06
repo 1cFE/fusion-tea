@@ -1,6 +1,6 @@
 # Proposed narrative — Round 2
 
-[AGENT] Draft, pending independent review. This passage is not inserted into the article.
+[AGENT] Proposed publication passage, independently reviewed on 2026-10-05 within the conditional study's scope. This passage is not inserted into the published article.
 
 The subsystem study showed why cheaper refrigeration alone was not enough to justify REBCO at the supplied tape price. We then asked whether its field or winding-space capability could improve the rest of the plant enough to pay for the conductor. The plant study made confinement and coil geometry explicit assumptions and gave each material its own supplied design. It retained 2,921 cases, including failures and domain refusals, and checked the computed results against an independently assembled oracle.
 

@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: complete
 Created: 2026-09-26
-Updated: 2026-09-26
+Updated: '2026-10-06'
 Related Artifacts:
-  - spec.md
-  - design.md
+- spec.md
+- design.md
 ---
 
 # WI-096 implementation plan

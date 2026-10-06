@@ -1,11 +1,11 @@
 ---
-Status: proposed
+Status: complete
 Created: 2026-09-26
-Updated: 2026-09-26
+Updated: '2026-10-06'
 Related Artifacts:
-  - spec.md
-  - ../../orchestration/goals/design-study-component-alternatives/comparison-contract.md
-  - ../../orchestration/goals/design-study-component-alternatives/evidence/feasibility-review.md
+- spec.md
+- ../../orchestration/goals/design-study-component-alternatives/comparison-contract.md
+- ../../orchestration/goals/design-study-component-alternatives/evidence/feasibility-review.md
 ---
 
 # WI-096 design: matched conversion subsystems

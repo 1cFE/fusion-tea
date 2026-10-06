@@ -1,7 +1,7 @@
 ---
-Status: proposed for independent review
+Status: complete
 Created: 2026-09-27
-Updated: 2026-09-27
+Updated: '2026-10-06'
 Related Artifacts: spec.md; evidence/development-probe.py; evidence/development-followup.py
 ---
 

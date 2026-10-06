@@ -1,7 +1,7 @@
 ---
-Status: implementation verified; integration review pending
+Status: implementation and integration verified; owner item closure pending
 Created: 2026-09-27
-Updated: 2026-09-27
+Updated: 2026-10-05
 Related Artifacts:
   Spec: spec.md
   Design: design.md
@@ -11,7 +11,7 @@ Related Artifacts:
 
 # WI-098 whole-plant comparison implementation
 
-The isolated native package now calculates complete declared plant power and lifecycle cost for the same supplied reactor inventory with steam and helium Brayton conversion. The retained matched offers at 2500 and 2800 MW source pass all 125 implemented predicates. These are development controls, not the final catalog comparison. Main-study execution remains behind independent integration review.
+The isolated native package calculates complete declared plant power and lifecycle cost for the same supplied reactor inventory with steam and helium Brayton conversion. The retained matched development offers at 2500 and 2800 MW source pass all 125 implemented predicates. Independent integration review and the final 2,496-case catalog comparison are complete, as recorded in [Retained controls and whole-plant study](#retained-controls-and-whole-plant-study). The goal is owner-closed; formal item closure remains pending.
 
 The source is conditional. The altered 48 kA magnet geometry has no reconstructed plasma-sustainment or global manufactured-fit claim. Source, nuclear-transport and global-construction qualification remain zero. The effective hot-source multiplier excludes cryogenic deposition; uncertain cold heating is an explicit independent demand scenario. These qualifications remain part of the result, even when every implemented equipment check passes.
 

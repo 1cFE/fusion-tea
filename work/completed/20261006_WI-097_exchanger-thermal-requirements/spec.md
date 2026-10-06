@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: null
 Owner: reid
 Created: 2026-09-27
-Updated: 2026-09-27
+Updated: '2026-10-06'
 ---
 
 # WI-097: exchanger thermal requirements

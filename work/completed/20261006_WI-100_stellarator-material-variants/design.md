@@ -1,11 +1,11 @@
 ---
-Status: proposed
+Status: complete
 Created: 2026-09-30
-Updated: 2026-09-30
+Updated: '2026-10-06'
 Related Artifacts:
-  - spec.md
-  - ../../orchestration/goals/magnet-material-comparison/evidence/plant-contract.md
-  - ../../orchestration/goals/magnet-material-comparison/evidence/plant-chain-audit.md
+- spec.md
+- ../../orchestration/goals/magnet-material-comparison/evidence/plant-contract.md
+- ../../orchestration/goals/magnet-material-comparison/evidence/plant-chain-audit.md
 ---
 
 # WI-100 design: plant-level conductor material variants on the Stellaris plant

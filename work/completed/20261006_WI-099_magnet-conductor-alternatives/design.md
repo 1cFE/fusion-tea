@@ -1,3 +1,8 @@
+---
+Status: complete
+Updated: '2026-10-06'
+---
+
 # WI design: matched-duty magnet conductor alternatives
 
 Status: reviewed (contract-review.md § Recheck r3 and design review), amended for D1–D7; D1–D7 recheck PASS (contract-review.md § Recheck D1–D7). Released for implementation 2026-09-29. Governing contract: `work/orchestration/goals/magnet-material-comparison/evidence/comparison-contract.md` (released revision; cited as “contract § n”). This design fixes the model structure, equations, interface names and bindings. Numbers and their sources come from the contract and evidence notes; every attribute in SysML carries an MR-4 citation to those sources.

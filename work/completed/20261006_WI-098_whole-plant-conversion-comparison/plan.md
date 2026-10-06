@@ -1,3 +1,8 @@
+---
+Status: complete
+Updated: '2026-10-06'
+---
+
 # WI-098 implementation plan
 
 [AGENT] Persistent native checklist. Scope and acceptance are in spec.md; implementation waits for the independent design gate.

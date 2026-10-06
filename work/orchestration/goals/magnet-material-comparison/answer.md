@@ -1,6 +1,6 @@
 # REBCO versus Nb₃Sn: subsystem result and conditional plant map
 
-[AGENT] Round 2 draft answer, 2026-10-04. Numerical execution is sealed at `a9683fa1d`; independent integrated interpretation review is pending. Formal goal closure remains owner-held. The exact independently reviewed Round 1 answer is preserved at [answer-round1.md](answer-round1.md).
+[AGENT] Round 2 answer, reviewed 2026-10-05 and owner-closed 2026-10-06 with its conditional scope retained. Numerical execution is sealed at `a9683fa1d`; [independent integration/interpretation review](evidence/pr-readiness/independent-review.md) passes after the accounting-attribution correction below. The exact independently reviewed Round 1 answer is preserved at [answer-round1.md](answer-round1.md).
 
 [OWNER-VERBATIM] “Across explicit assumptions about confinement and coil geometry, when does each material give lower LCOE—and are those conditions supported by evidence?” [Goal Amendment 2](goal.md).
 
@@ -18,7 +18,7 @@ Evidence: [sealed study](../../../../exploration/stellarator_materials/studies/2
 
 [AGENT] The plant basis changes before any optimization: the untouched reference is 318.74 USD/MWh, while the material REBCO instance at the same supplied design is 412.43. The +93.70 difference includes conductor-basis +57.44, capital multipliers +28.77 and CAS22 tail +8.04, offset by refrigerator capital −0.34 and net electricity −0.21. Comparing a new-material point to 318.74 without this bridge would misattribute a purchasing-basis change to physics. The bridge is an accounting reconciliation; it is not a passing magnet design (the small pack-area residual remains reported).
 
-[AGENT] Of 189 retained equal-duty base pairs, 27 have both designs passing the ranking checks at the same operating point. REBCO is dearer in all 27 by 122.8–370.7 USD/MWh at 80 USD2021/m tape. Up to 38% of a pair's difference is carried by capital multipliers and CAS22 tail, so a plant comparison cannot be reduced to conductor purchase minus cryo electricity alone. Sealed record § 3, “Before the map.”
+[AGENT] Of 189 retained equal-duty base pairs, 27 have both designs passing the ranking checks at the same operating point. REBCO is dearer in all 27 by 122.8–370.7 USD/MWh at 80 USD2021/m tape. Capital multipliers and CAS22 tail together carry up to 40.5% of a pair's difference. The net contribution of all non-magnet groups, including offsets, reaches 38.1%. A plant comparison therefore cannot be reduced to conductor purchase minus cryo electricity alone. [Reporting correction](evidence/round2-report/README.md#equal-duty-accounting-correction) to sealed record § 3, “Before the map.”
 
 ## The assumption map
 
@@ -72,6 +72,6 @@ Evidence: [sealed study](../../../../exploration/stellarator_materials/studies/2
 
 ## Completion and delivery
 
-[AGENT] Round 1's subsystem answer remains independently reviewed. Round 2's conditional numerical map, accounting, interaction figures, failed-case retention and replay instructions are delivered as a draft. Source-supported physical preference is not established. Independent coupled integration/interpretation review, finding-disposition acceptance and final round assurance remain pending; no goal closure is claimed.
+[AGENT] Round 1's subsystem answer remains independently reviewed. Round 2's conditional numerical map, accounting, interaction figures, failed-case retention and replay instructions are delivered and independently reviewed. Source-supported physical preference is not established. The reviewed dispositions and learning delta are recorded with Round 2 assurance in [the trail](trail.md). The owner formally closed the goal and WI-096–100 on 2026-10-06; [closure evidence](evidence/closure/README.md) records archived paths and runtime relocation. [PR stopping-point checks](evidence/pr-readiness/README.md) distinguish retained full-run verification, current four-case replay and clean-checkout prerequisites.
 
 [Replay and rebuild instructions](evidence/round2-report/README.md#numerical-replay), [provenance hashes](evidence/round2-report/provenance.json), [proposed narrative](evidence/round2-report/proposed-narrative.md), and [proposed finding dispositions](evidence/round2-report/proposed-dispositions.md). The article remains unchanged.

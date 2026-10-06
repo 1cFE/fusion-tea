@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-29. The owner requested this goal and its execution through the initiating brief, preserved verbatim at [evidence/owner-brief.md](evidence/owner-brief.md) (SHA-256 `eb5536f2…7cb6`). The slug was supplied in the brief; no further naming confirmation was requested.
+`closed` — 2026-10-06, by explicit owner authorization after the reviewed conditional answer and Round 2 assurance. The initial grounding was 2026-09-29, through [evidence/owner-brief.md](evidence/owner-brief.md) (SHA-256 `eb5536f2…7cb6`). See `trail.md` § Goal closure for authority and retained qualifications.
 
 ## Question
 
@@ -75,3 +75,7 @@ What this amends, each traced to the brief:
 [OWNER-VERBATIM] “we need to focus on getting some insight. Across explicit assumptions about confinement and coil geometry, when does each material give lower LCOE—and are those conditions supported by evidence?”
 
 [AGENT] Effect on the answer contract: Round 2 is answered when a map over explicit confinement assumptions (renormalization factor, beta limit) and coil-geometry assumptions (peak/axis field ratio, pack-size term) shows, per cell, which material gives the lower whole-plant LCOE at its best supported design point, at which REBCO price the preference changes, and what evidence supports that cell's assumptions; with the LCOE decomposition, failed/unsupported cases retained, figures and replay evidence, and the narrative the Round 2 brief asks for. The brief's other terms stand (Amendment 1).
+
+### Stage record — 2026-10-05 — reviewed conditional answer
+
+[AGENT] Round 2 has a reviewed conditional answer and closed-round result in `trail.md`. [Independent integration/interpretation review](evidence/pr-readiness/independent-review.md) accepts the Amendment 2 assumption map after an accounting-attribution correction. All comparative configurations retain U physical-transfer evidence; source-supported plant material selection is not established. [PR stopping-point evidence](evidence/pr-readiness/README.md) records accepted dispositions, review coverage, tracking and bounded reproducibility checks. No new round is opened. Formal goal and WI-099/100 closure remain owner-held; the original grounded status above is the initial state, not a claim of formal closure.
