@@ -16,7 +16,6 @@ from viewer_harness import (
 
 try:
     from playwright.sync_api import Error as PlaywrightError
-    from playwright.sync_api import sync_playwright
 except ImportError as exc:  # plan PD4: fail the viewer tests loudly, not the whole collection
     _PLAYWRIGHT_IMPORT_ERROR: ImportError | None = exc
 else:
@@ -24,18 +23,15 @@ else:
 
 
 @pytest.fixture(scope="session")
-def browser():
+def browser(playwright_manager):
     if _PLAYWRIGHT_IMPORT_ERROR is not None:
         pytest.fail(f"{INSTALL_HELP}\nImport failed: {_PLAYWRIGHT_IMPORT_ERROR}")
-    manager = sync_playwright().start()
     try:
-        chromium = manager.chromium.launch()
+        chromium = playwright_manager.chromium.launch()
     except PlaywrightError as exc:
-        manager.stop()
         pytest.fail(f"{INSTALL_HELP}\nChromium launch failed: {exc}")
     yield chromium
     chromium.close()
-    manager.stop()
 
 
 @pytest.fixture(scope="session")
