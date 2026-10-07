@@ -84,3 +84,7 @@ The same combined three-group command now exits 0: **261 passed in 206.52 second
 Targeted `uv run --no-sync ruff check` and `uv run --no-sync ruff format --check` pass on all four changed fixture files. `git diff --check` also passes. Formatting was applied while the browser run was underway; `ast.dump` comparison verified exact syntax-tree equivalence for all four files against their lifecycle-fixed pre-format versions. That reference is `/tmp/20261006-pre-pr-browser-asts.json`. No test logic changed in the formatting finish.
 
 The browser gate now passes in one pytest process. The full pytest gate remains blocked by the expired Syside license; the browser result does not replace that missing full-suite result.
+
+## 2026-10-07 completed retry supersedes the license blocker
+
+The project `.env` key now imports SysIDE successfully. After correcting temporary browser-overlay metadata pollution and restarting the full suite, the complete run exits 1: 5,717 passed, 148 failed, 24 errors, 58 skipped, one xfailed and 660 warnings in 7,377.55 seconds. No `License expired` appears in the completed log. [Retry record](20261007-pre-pr-test-retry.md) supplies the command, receipt and failure inventory. The gate is now FAILED on tests, not blocked on license collection.
