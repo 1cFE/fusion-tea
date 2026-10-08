@@ -1,6 +1,6 @@
 # Design: Concept Explorer API Contract Gate
 
-**Status:** Draft, revision 1 (applies `design-review.md` Resolutions)
+**Status:** Draft, revision 2 (applies `design-review.md` Resolutions and Round 2 resolutions)
 **Owner:** Reid W
 **Created:** 2026-10-08 14:56 PDT · **Revised:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate` (worktree `../fusion-tea-explorer-api-gate`), at `64683cb39`
@@ -14,7 +14,7 @@ A GitHub Actions gate records what the website's pinned explorer frontend gets f
 ## Related Artifacts
 
 - **Spec:** `spec.md`, as amended at `cc4b0f25d`. An unlisted new concept counts as a break, and GitHub-runner timing is an owner acceptance step.
-- **Reviews:** `spec-review.md` (Resolutions), `design-review.md` (Resolutions: this revision applies them), `product-lens.md` (spec and design dispositions).
+- **Reviews:** `spec-review.md` (Resolutions), `design-review.md` (Resolutions and Round 2 resolutions: this revision applies both), `product-lens.md` (spec and design dispositions).
 - **Orchestration:** `briefs/00_align.md` (reserved gates), `briefs/design-answers-1.md` (orchestrator answers, 2026-10-08), `briefs/design-revision-1.md`.
 - **Hosting item:** `.project/completed/20260821_explorer-web-hosting/spec.md` (FR-6) and `RUNBOOK.md`.
 - **Deployment docs:** `exploration/concept_explorer/README.md` §9, `CLAUDE.md` § Live Deployments from `main`.
@@ -67,9 +67,9 @@ Nothing on the fusion-tea side notices today.
   A concept missing from one of them loses its cells, band or bar, and the page doesn't fail.
 - **Nulls.** Every Optional field the JavaScript reads is null-checked. The crash points are required fields arriving null or with another type, for example `tornado.js:294` and `index_page.js:149`.
 - **Never-populated paths.** `narrative` is null for every served concept: only the omitted `27` and `34` carry one. The JavaScript calls `.toLowerCase()` on `risks[].severity` (`concept_page.js:318-319,801`). `illustration` is also null everywhere. So nothing recorded from the pin says what may appear under these paths.
-- **Literal value reads.** Enum values are matched literally, for example status, model type and palette keys (`index_page.js:260,263`; `concept_page.js:465`; `ontology_palette.js:36-117`). Two plain-string fields are compared to literals as well, and a mismatch there silently drops content:
-  - `fit_grade === "None"` (`caveat_marker.js:53`);
-  - `overrides[].account` is matched to CAS codes (`override_panel.js:153-155`).
+- **Literal value reads.** Enum values are matched literally, for example status, model type and palette keys (`index_page.js:260,263`; `concept_page.js:465`; `ontology_palette.js:36-117`). One plain-string field is compared to a literal as well, and a mismatch there silently drops content:
+  - `fit_grade === "None"` (`caveat_marker.js:53`). The pinned JavaScript knows the full set from the Archetype Fit palette: `High`, `Med`, `Low`, `None` (`ontology_palette.js:108-113`).
+  - `overrides[].account` (`override_panel.js:153-155`) looks similar but isn't a literal read. It is compared to an account key from the same concept response.
 - **Maps.** Six response fields are declared `dict[str, X]` (Appendix B). The only literal-key reads into them are the fixed CAS22 codes (`cas_breakdown.js:20-24`), and each of those reads checks the key exists first.
 
 **What the server does.**
@@ -100,7 +100,7 @@ The website's frozen frontend can only depend on what the API sent it when it wa
 On every push, the gate makes the same kinds of requests against the checkout's server. It fails when:
 
 - a recorded field is gone, changed type, or is null where the pin never sent null;
-- a value falls outside the values the pin used where the JavaScript compares strings literally;
+- a value falls outside the literal values the pinned JavaScript compares against;
 - a path the pin never populated starts carrying data;
 - a request the frontend sends is now rejected, or a concept stops producing a request it produced at the pin;
 - a website concept leaves a joined list, or a concept the website doesn't list appears where the frontend links it;
@@ -175,7 +175,8 @@ Decisions marked "orchestrator" were made by the orchestrator on 2026-10-08, und
 
 ```
 record  (each re-pin, local, full clone):
-  git archive <pin> -- runtime paths ─► scratch tree ─► venv(tree's requirements-serve.txt + resolved test tools)
+  git archive <pin> -- runtime paths + requirements-serve.txt ─► scratch tree ─► venv(tree's requirements-serve.txt
+                                                                + test tools resolved with --exclude-newer <pin time>)
   └─► observe(scratch tree) ─► contract.txt   (+ fetch( coverage, JS blob SHAs vs the previous header)
 
 check   (every push, CI and local; gate.sh under `timeout 480`, install retried):
@@ -203,7 +204,7 @@ drift   (daily schedule, never on push):
   - Everything else is a *record*: pydantic models, plus untyped `dict` and `dict[str, Any]` such as findings, the tree and `narrative.risks[]`.
   - The `MAP_KEYS_READ` table makes cited literal map-key reads required. It is empty at this pin.
   - A string whose schema is an enum is recorded with the pinned enum's full value list.
-  - The `LITERAL_READS` table records the values observed at the pin for the two silent-data string paths, `fit_grade` and `overrides[].account`.
+  - The `LITERAL_READS` table holds the values the pinned JavaScript compares a plain string against, cited to the JavaScript and not observed from data. It has one entry: `fit_grade` → `High`, `Med`, `Low`, `None` (N1; Appendix B).
 - **Check reads no schema.** It flattens with the map paths, enum lists and literal-value sets stored in `contract.txt`.
 - **Preflights and CORS headers are judged only by the fixed CORS rule.**
 
@@ -216,20 +217,21 @@ drift   (daily schedule, never on push):
 | Rule | Fails when | Waive? | Criterion-1 case |
 |---|---|---|---|
 | Status | a request the pinned frontend sends doesn't return the recorded status (200 today) | yes | path or method changed; field newly required; value rejected |
-| Shape | a recorded path now has a kind the pin never sent there | yes | field removed or renamed; type change; null where a value was always sent |
-| Unpopulated | a path the pin only ever sent as null, absent or empty now carries a value (C1) | yes, with evidence citing the JS lines that read it | shape under `narrative`, `illustration` and similar |
-| Enum / Literal | a value falls outside the pinned enum, or outside the `LITERAL_READS` set | yes | enum value renamed; `fit_grade` or account format changed |
+| Shape | a recorded path now has a kind the pin never sent there. A path recorded only as null, absent or empty never reports here, only as Unpopulated (N3). | yes | field removed or renamed; type change; null where a value was always sent |
+| Unpopulated | a path the pin only ever sent as null, absent or empty now carries a value (C1) | yes, but `check` rejects the waiver unless its evidence cites at least one `file.js:N` that reads the path (N4) | shape under `narrative`, `illustration` and similar |
+| Enum / Literal | a value falls outside the pinned enum, or outside the cited `LITERAL_READS` set | yes | enum value renamed; `fit_grade` outside `High`/`Med`/`Low`/`None` |
 | Concepts | a pinned ID leaves the manifest, registry, tree or cost landscape; or an ID the contract doesn't list appears in the manifest or any parameter's `concepts[]` (D9) | yes | concept dropped; new concept the website doesn't list |
-| Coverage | a concept in a template's pinned coverage set no longer produces that request (M2) | yes | sliders, toggle or findings silently gone |
+| Coverage | a concept in a template's pinned coverage set no longer qualifies (M2, N5): it no longer produces a slider or toggle request, or its findings response no longer carries non-null HTML | yes | sliders, toggle or findings silently gone |
 | CORS | a response lacks `access-control-allow-origin: https://1cf.energy`, or a preflight fails. This rule is fixed, not recorded. | **no** | website origin removed |
-| Image | a non-null `illustration` whose `/static/images/concepts/<file>` doesn't return 200 (`concept_page.js:121-124`, `index_page.js:105-111`) | yes | the one asset loaded from the API origin |
 | Files | a touched path tracked at the reference commit is missing from the tree, or `.dockerignore` excludes it | **no** | silently missing data; image-content breaks |
+
+**The Image rule is deferred** (round 2). No concept has an illustration today, and `static/images/` doesn't exist. The first non-null `illustration` already fails Unpopulated. Its waiver must confirm the image resolves at `/static/images/concepts/<file>`, the one asset the website loads from the API origin (`concept_page.js:121-124`, `index_page.js:105-111`). The Image rule is the follow-up to add with that waiver.
 
 **Which concepts count as "producing" a request.** The pinned frontend's rules decide (Appendix A):
 
 - *slider:* costingfe, with sensitivities;
 - *toggle:* `analyst_override_count > 0`;
-- *findings:* a non-null `analysis_html` or `exec_summary_html`, so the page shows the section.
+- *findings:* every concept is requested, so coverage means the response carries a non-null `analysis_html` or `exec_summary_html`, which makes the page show the section.
 
 The disappearance rule doesn't apply to parameter `concepts[]` lists. A concept leaving one parameter's list is ordinary model work.
 
@@ -237,7 +239,7 @@ The disappearance rule doesn't apply to parameter `concepts[]` lists. A concept 
 
 ## Required Invariants
 
-- **I1. The contract is a function of the pin and the recorder code only.** Recording twice gives byte-identical files. Re-recording after a break leaves the contract unchanged, and check still fails. A two-commit git fixture tests the record code path. Full-path purity at the real pin is verified by the branch-level byte-for-byte reproduction and at each re-pin, not in CI: a depth-1 blobless checkout lacks the pin's blobs.
+- **I1. The contract is a function of the pin and the recorder code only.** Recording twice gives byte-identical files, even a month apart. That holds because record mode resolves its test tools with `--exclude-newer` set to the pin's commit time (N2). Re-recording after a break leaves the contract unchanged, and check still fails. A two-commit git fixture tests the record code path. Full-path purity at the real pin is verified by the branch-level byte-for-byte reproduction and at each re-pin, not in CI: a depth-1 blobless checkout lacks the pin's blobs.
 - **I2. Every request the pinned frontend sends is represented.**
   - Recording fails if a `fetch(` site in the pinned `static/js/` or `templates/` is uncited, or if a cite points at nothing.
   - Recording fails if any cited file's blob SHA differs from the previous header (M5). The message is "a developer must re-verify Appendix A". After re-verifying, the developer reruns with `--js-reverified`.
@@ -283,6 +285,7 @@ Outside that directory, the work adds the self-tests (`tests/test_website_contra
 - **The 5.6 GB build context and image.** It has its own backlog row.
 - **Named residuals.** None of these is checked:
   - literal string reads that only change wording (m1; listed in Appendix B);
+  - `overrides[].account` no longer matching its cost-model account key (N1). Catching that would need a new kind of rule, a join within one response, for an unlikely break. And while HEAD's `static/js` equals the pin's, the same mismatch would also show on `concepts.1cf.energy`;
   - in-range slider values other than baselines, since only one range-endpoint body is sent (m8);
   - B1's per-concept nulls.
 - **A token-based pin read.** It is owner-reserved.
@@ -294,7 +297,7 @@ Outside that directory, the work adds the self-tests (`tests/test_website_contra
   - keep those with a finite range where high > low;
   - use the baseline, or `range[0]` when the baseline isn't finite.
 
-  For the first eligible concept only, add one more body with its first slidered parameter at `range[1]` (m8). The concept-page state body reuses the slider map.
+  For the first eligible concept only, add one more body with its first slidered parameter at `range[1]` (m8). It is its own template, `POST /api/compute:slider-range`, so its failure key never collides with that concept's baseline body (N5). The concept-page state body reuses the slider map.
 - **Booleans aren't numbers.** In Python, `bool` is a subclass of `int`, so test for it first. Ints and floats are both `number`.
 - **The audit hook can't be removed.** Install it once per process and toggle it per `observe`. Read the contract and the waivers before turning it on. Set `PYTHONDONTWRITEBYTECODE=1`. Rendering writes the gitignored `exploration/concept_explorer/dist/`.
 - **PyYAML reads the key `on` as `True`.** The workflow self-test must look up both keys.
@@ -306,7 +309,6 @@ Outside that directory, the work adds the self-tests (`tests/test_website_contra
 ## Potential Risks
 
 - **Compute and import time are unmeasured.** Phase 1 measures them locally, and the owner confirms the runner time.
-- **`LITERAL_READS` on `overrides[].account` trips when an analyst adds an override on an account no concept used at the pin.** That is a false block. Phase 1 counts it, and if it's frequent, it counts against the pass line.
 - **The request list's derivation rules may live in an uncited JS file.** I2's blob check only sees cited files, so the cites must include every file a rule comes from (Appendix A).
 - **Infrastructure failures hold deploys.** Recovery is a new push. Whether re-running a failed gate deploys is an owner acceptance question.
 - **Waivers pile up.** Stale ones print warnings, and the re-pin step deletes them. A waived Unpopulated path is not protected until the next re-pin records it.
@@ -335,7 +337,7 @@ Outside that directory, the work adds the self-tests (`tests/test_website_contra
 
 - **Commits.** Select every commit since 2026-04-01 that touches `exploration/concept_explorer/` (code or data) or `omit_list.yaml`, and pair each with its parent. A pair whose diff touches only tests, docs, `static/` or `templates/` can't change a response. Such pairs are reported but don't count as replayable, so they can't dilute the pass line.
 - **Replay mode.** Each side of a pair runs from its own commit's runtime-path extract, which includes that commit's `archetype_fit.csv` (m13), if it loads under the scratch serving venv. A data-only commit whose tree won't load falls back to today's code with the omit-list monkeypatch. The report states which mode each pair used.
-- **Endpoints.** Every endpoint except compute, whose results depend on the `1costingfe` version of that time.
+- **Endpoints.** Every endpoint except compute, whose results depend on the `1costingfe` version of that time. So Phase 1 doesn't measure one source of false blocks: a `1costingfe` upgrade that changes the shape of compute's response (N8). That stays unmeasured until an upgrade happens.
 - **Scoring.** Score each rule separately, and judge each trip against Appendix C and the pinned JavaScript: real break or false block. Concepts-rule trips are not false blocks. Time every endpoint, including compute at HEAD.
 
 **The pass line.** All four must hold:
@@ -348,6 +350,8 @@ Outside that directory, the work adds the self-tests (`tests/test_website_contra
 Fewer than 12 replayable pairs means Phase 1 is inconclusive, not passed. An inconclusive or failed Phase 1 stops implementation and goes back to the orchestrator, who reports the false-block rate to the owner either way.
 
 **Self-tests.** They run inside the gate on a richer fixture, and the full table is in Appendix D. The fixture has sensitivities with parameter metadata, an analyst override, a registry and tree, and an analysis file. Each test records a contract from the unbroken fixture, makes one deliberate change, and asserts that the CLI's own `check` entry point reports the named failure. A guard asserts every request-list entry yields at least one instance on the fixture.
+
+The break tests record in-process with `observe(fixture_tree)` (N7). Only the purity test runs `git archive` plus the recording subprocess, and it reuses the gate's venv. No test builds a second venv inside `pytest`.
 
 **Verifiable on this branch, by implementation:**
 
@@ -365,8 +369,10 @@ Fewer than 12 replayable pairs means Phase 1 is inconclusive, not passed. An inc
 
 - **Fixed:**
   - D1–D12 and I1–I8;
-  - the rules table, including which rules can be waived;
+  - the rules table, including which rules can be waived, and that never-populated paths report only as Unpopulated (N3);
   - the coverage and joined-list sets;
+  - `LITERAL_READS` with one cited entry, `fit_grade` (N1);
+  - record mode resolving test tools with `--exclude-newer` at the pin's commit time (N2);
   - the waiver key grammar (Appendix E);
   - the three-module split;
   - two ADRs, with (a)'s split grade.
@@ -376,13 +382,19 @@ Fewer than 12 replayable pairs means Phase 1 is inconclusive, not passed. An inc
   - the drift schedule time;
   - the compute trim, if needed;
   - the fixture's exact contents.
+- **Deferred:** the Image rule. Add it with the first `illustration` waiver.
+- **Unmeasured by Phase 1:** compute-shape false blocks from a `1costingfe` upgrade (N8).
 - **Do first:** Phase 1. Nothing else is built until it passes its line. The orchestrator reports its false-block rate to the owner.
 
 ---
 
 ## Appendix A — The request list (pinned frontend, `10f7b9b`)
 
-Each row is one entry in `contract.py`'s request list. The cites cover all 23 `fetch(` sites (I2). Every file cited here or in Appendix B's tables has its blob SHA recorded in the header (M5). That includes `tornado.js` (derivation rules), `caveat_marker.js` and `override_panel.js` (literal reads).
+Each row is one entry in `contract.py`'s request list. The cites cover all 23 `fetch(` sites (I2). Every JavaScript file cited here or in Appendix B has its blob SHA recorded in the header (M5, N6). That includes:
+
+- `tornado.js`, for the derivation rules;
+- the join and link sites listed below the table;
+- `caveat_marker.js` and `ontology_palette.js`, for `fit_grade`.
 
 | Request | Instances at check time; coverage set | `fetch(` sites |
 |---|---|---|
@@ -392,25 +404,26 @@ Each row is one entry in `contract.py`'s request list. The cites cover all 23 `f
 | `GET /api/cost-landscape` | 1 | `cost_landscape_page.js:576`, `comparison.js:702` |
 | `GET /api/parameter_index` | 1 | `concept_page.js:388` |
 | `GET /api/concepts/{id}` | each contract concept | `concept_page.js:386`, `comparison.js:153` |
-| `GET /api/concepts/{id}/findings` | each contract concept; coverage = concepts with non-null HTML (`concept_page.js:838-862`) | `concept_page.js:837` |
+| `GET /api/concepts/{id}/findings` | each contract concept; coverage = concepts whose response carries non-null HTML (`concept_page.js:838-862`) | `concept_page.js:837` |
 | `GET /api/parameters/{name}` | each key of the current `parameter_index.parameters`. Bare-only names 404 and are tolerated (`concept_page.js:685-698`). | `concept_page.js:684` |
-| `POST /api/compute`, slider: `{concept_id, overrides: {slidered params: baseline}, apply_analyst_overrides: true}`, plus one range-endpoint body for the first eligible concept | costingfe concepts with `has_sensitivities` and non-null `cost_model.sensitivities` (`concept_page.js:465-469`; rule `tornado.js:113-115,452-461`); coverage = same | `concept_page.js:618` |
-| `POST /api/compute`, toggle: `{concept_id, overrides: {}, apply_analyst_overrides: false}` | costingfe concepts with `analyst_override_count > 0` (`concept_page.js:763-768`); coverage = same | `concept_page.js:720` |
+| `POST /api/compute:slider`: `{concept_id, overrides: {slidered params: baseline}, apply_analyst_overrides: true}` | costingfe concepts with `has_sensitivities` and non-null `cost_model.sensitivities` (`concept_page.js:465-469`; rule `tornado.js:113-115,452-461`); coverage = same | `concept_page.js:618` |
+| `POST /api/compute:slider-range`: the slider body with its first slidered parameter at `range[1]` (m8, N5) | the first eligible slider concept only; no coverage set | `concept_page.js:618` |
+| `POST /api/compute:toggle`: `{concept_id, overrides: {}, apply_analyst_overrides: false}` | costingfe concepts with `analyst_override_count > 0` (`concept_page.js:763-768`); coverage = same | `concept_page.js:720` |
 | `POST /api/state`, concept page: `{current_concept_id, slider_overrides, comparison_set: []}` | first contract concept | `concept_page.js:348` |
 | `POST /api/state`, compare page: `{current_concept_id: null, slider_overrides: {}, comparison_set: [first two], timestamp: ""}` | 1 | `comparison.js:133` |
 | `OPTIONS` preflight for `/api/compute` and `/api/state` | 1 each, check only | implied by cross-origin JSON POSTs |
 
-**Joined lists whose pinned IDs must stay:**
+**Joined lists whose pinned IDs must stay,** with the join sites (N6):
 
-- manifest `.concepts[].concept_id`;
-- registry `.concepts[].concept_id`;
-- tree leaf `concepts[]`;
-- cost landscape `.concepts[].concept_id`.
+- manifest `.concepts[].concept_id`, the row spine (`matrix_data.js:54-62`);
+- registry `.concepts[].concept_id` (`matrix_data.js:47-62`, `view_categorical.js:86-88`);
+- tree leaf `concepts[]` (`matrix_data.js:154-162`);
+- cost landscape `.concepts[].concept_id` (`cost_landscape_page.js:592-598`).
 
-**Lists checked for unlisted IDs, because they build links:**
+**Lists checked for unlisted IDs, because they build links,** with the link sites (N6):
 
-- the manifest;
-- every `/api/parameters/{name}` `concepts[]`.
+- the manifest (`matrix_page.js:122`, `index_page.js:94`, `cost_landscape_page.js:460`);
+- every `/api/parameters/{name}` `concepts[]` (`parameter_card.js:258`).
 
 **Endpoints the frontend never calls,** so they're not in the contract: `GET /api/state`, `/api/health`, and the taxonomy `concepts/{id}`, `similarity`, `compare` and `constellation` routes.
 
@@ -434,10 +447,15 @@ These are recorded as records:
 
 **`MAP_KEYS_READ`** is empty at this pin. The 18 `CAS22_ORDER` codes are read only behind an existence check, and a missing code drops one bar on both sites.
 
-**`LITERAL_READS`** has two entries. Each records its observed values at the pin:
+**`LITERAL_READS`** has one entry (N1). Its allowed set comes from the pinned JavaScript, not from observed data:
 
-- `fit_grade` (manifest and concept; `models.py:505,563`): compared to `"None"` at `caveat_marker.js:53`. A mismatch hides the low-fit warning.
-- `overrides[].account` (`models.py:419`): matched to CAS codes at `override_panel.js:153-155`. A mismatch shows "No analyst override recorded".
+- `fit_grade`, at `GET /api/manifest .concepts[].fit_grade` and `GET /api/concepts/{id} .fit_grade` (`models.py:505,563`):
+  - allowed: `High`, `Med`, `Low`, `None`, from the Archetype Fit palette (`ontology_palette.js:108-113`), which the matrix facet uses (`ontology_palette.js:161`);
+  - `caveat_marker.js:53` compares it to `"None"`, so a renamed value hides the low-fit warning;
+  - null is handled separately (`concept_page.js:144`) and stays with the Shape rule;
+  - the pinned `archetype_fit.csv` uses exactly these four values, so nothing changes today.
+
+`overrides[].account` is not in the table. `override_panel.js:153-155` compares it to `focusAccount`, which is data from the same concept response: the clicked ★'s cost-model key, or the matched record's own account. So no fixed value set applies. It is a named residual in Non-Goals.
 
 **Literal reads not checked.** These are named residuals (m1), because they change only wording or grouping:
 
@@ -471,13 +489,13 @@ Condensed from the inventory of `10f7b9b`.
 
 ## Appendix D — Self-tests (`test_website_contract.py`)
 
-The tests use the richer fixture, laid out as a repo root under `tmp/exploration/`. It is built on the fake costing model from `test_state_and_compute.py`, as `test_cors.py:21` does.
+The tests use the richer fixture, laid out as a repo root under `tmp/exploration/`. It is built on the fake costing model from `test_state_and_compute.py`, as `test_cors.py:21` does. Break tests record in-process with `observe(fixture_tree)`. Only the purity test uses `git archive` and the recording subprocess, reusing the gate's venv (N7).
 
 | Group | Cases |
 |---|---|
-| Breaks that must fail | field removed; field renamed; number turned into a string; required value turned null; always-null field turns into an object (Unpopulated, C1); enum value renamed; `fit_grade` value outside the literal set; route removed (404); POST turned into PUT; new required `ComputeRequest` field (422); `ExplorerState` rejecting `current_concept_id: null` or `timestamp: ""` (422); concept omitted by monkeypatching `_OMIT_LIST_PATH`; concept dropped from the registry or tree only; slider coverage lost (sensitivities nulled for one concept); unlisted concept in the manifest or a parameter's `concepts[]`; `https://1cf.energy` dropped by monkeypatching `_ExplorerApp` |
+| Breaks that must fail | field removed; field renamed; number turned into a string; required value turned null; always-null field turns into an object (reported as Unpopulated only, never also as Shape; C1, N3); enum value renamed; `fit_grade` value outside `High`/`Med`/`Low`/`None`; route removed (404); POST turned into PUT; new required `ComputeRequest` field (422); `ExplorerState` rejecting `current_concept_id: null` or `timestamp: ""` (422); concept omitted by monkeypatching `_OMIT_LIST_PATH`; concept dropped from the registry or tree only; slider coverage lost (sensitivities nulled for one concept); unlisted concept in the manifest or a parameter's `concepts[]`; `https://1cf.energy` dropped by monkeypatching `_ExplorerApp` |
 | Changes that must pass | new response field; new optional request field; new map key; concept leaves one parameter's `concepts[]`; new concept with a waiver |
-| Waivers | a waiver clears exactly its key; a waiver missing its reason is an error; Files and CORS failures ignore waivers |
+| Waivers | a waiver clears exactly its key; a waiver missing its reason is an error; an `unpopulated` waiver whose evidence has no `file.js:N` cite is an error (N4); Files and CORS failures ignore waivers |
 | Purity (I1) | two-commit git fixture: record commit A, break and commit B, check fails, re-record A gives the same bytes |
 | Machinery | every request-list entry yields at least one instance; the file audit catches a tracked file missing from the tree and a touched path that `.dockerignore` excludes, using the current file's patterns; the matcher refuses `?`, `[...]` and `\`; the committed `{*}` paths equal Appendix B; the `fetch(` coverage check fails on a synthetic extra `fetch(`; a changed JS blob fails recording without `--js-reverified` |
 | Workflows (I4, I5) | the gate workflow has no filters; the drift workflow has no `push` trigger; the push-triggered workflows equal the reviewed list |
@@ -494,11 +512,12 @@ The tests use the richer fixture, laid out as a repo root under `tmp/exploration
 | Enum / Literal | `enum <template> <path>` or `literal <template> <path>` | `literal GET /api/manifest .concepts[].fit_grade` |
 | Concepts | `concept-missing <list> <id>` or `concept-unlisted <list> <id>` | `concept-unlisted manifest 40`, `concept-unlisted parameters/{name} 40` |
 | Coverage | `coverage <template> <id>` | `coverage GET /api/concepts/{id}/findings 05` |
-| Image | `image <file>` | `image tokamak-01.png` |
 
 How the pieces work:
 
 - **Instances.** The instance is the concept ID or parameter name, and it is omitted for single-instance templates.
+- **Compute templates.** Compute has three template names: `POST /api/compute:slider`, `POST /api/compute:slider-range` and `POST /api/compute:toggle`. So no two bodies share a key (N5).
+- **Unpopulated waivers** must have at least one `file.js:N` cite in `evidence`, naming JavaScript that reads the path. `check` rejects one without (N4). An `illustration` waiver must also confirm that the image resolves (the deferred Image rule).
 - **Paths** are written exactly as in `contract.txt`. They are segments joined by `.`, where `{*}` (a map) and `[]` (an array) are part of the segment they follow, as in `params{*}` and `concepts[]`.
 - **Wildcards.** In a waiver, `*` matches exactly one whole token: one instance, or one whole path segment including any `{*}` or `[]`. There are no partial-segment globs. So `shape GET /api/concepts/{id} .cost_model.*.cost_m_usd` covers every CAS account.
 - **What can't be waived.** CORS and Files keys are printed but never matched.
@@ -512,7 +531,7 @@ How the pieces work:
 | App startup | 2–5 s | hosting plan: "healthy in ~1s" |
 | GETs, including 37 findings renders | 10–20 s | markdown per concept |
 | About 34 module imports and 30–60 compute calls | 10 s – 2.5 min | each import runs module-level forwards; numpy `1costingfe`; unmeasured |
-| `pytest` (CORS and self-tests) | 20–45 s | richer fixture plus a git fixture |
+| `pytest` (CORS and self-tests) | 20–45 s | break tests record in-process; one purity test runs `git archive` and a subprocess in the gate's venv (N7) |
 | **Total** | **about 1–4.5 min** | the step `timeout 480` ends a hang as a failure |
 
 ## Appendix G — `contract.txt` format, file audit and drift
@@ -521,7 +540,7 @@ How the pieces work:
 
 1. the pin, and the command that regenerates the file;
 2. the record-mode test-tool versions (m6);
-3. the blob SHA of every file cited in Appendices A and B (M5);
+3. the blob SHA of every JavaScript file cited in Appendices A and B (M5, N6);
 4. the contract concepts;
 5. each joined list's concept set, with `=` when it equals the contract concepts (M1);
 6. each concept-keyed template's coverage set (M2);
@@ -538,7 +557,7 @@ js         static/js/concept_page.js <blob-sha>
 concepts   01 02 03 … 37 39
 list       cost-landscape  01 04 05 …
 coverage   POST /api/compute:slider  01 04 05 …
-literal    GET /api/concepts/{id} .fit_grade  A B C None
+literal    GET /api/concepts/{id} .fit_grade  High Med Low None
 GET  /api/concepts/{id}  .narrative                             null
 GET  /api/concepts/{id}  .cost_model.cas22_detail{*}.cost_m_usd number
 GET  /api/manifest       .concepts[].status                     enum:ConceptStatus
@@ -568,11 +587,11 @@ GET  /api/manifest       .concepts[].status                     enum:ConceptStat
 
 **What `gate.sh` does, in order:**
 
-1. Adds the paths in `runtime_paths.txt` when the checkout is sparse.
+1. Adds the paths in `runtime_paths.txt` when the checkout is sparse. In record mode it instead extracts those paths from the pin with `git archive`, and names the root `requirements-serve.txt` explicitly, since it sits outside the three runtime directories (N2).
 2. Builds a Python 3.12 venv with `uv`, retrying the install up to 3 times (M8).
 3. Installs the serving set plus test tools:
    - check mode pins `pytest` and `httpx` in `gate.sh`;
-   - record mode installs the extract's serving set, lets `uv` resolve compatible test tools, and writes their versions to the header (m6).
+   - record mode installs the extract's serving set, and resolves the test tools with `uv pip install --exclude-newer <pin commit timestamp>`. The versions then depend only on the pin and match the pin's Starlette. Record mode writes them to the header (m6, N2).
 4. Runs `contract.py check`, then `pytest` on `test_cors.py` and `test_website_contract.py`. Both always run, and the script exits non-zero if either fails.
 
 **Workflows:**
