@@ -1,0 +1,3626 @@
+{
+ "f84b36afb": {
+  "failures": [
+   "concept-missing manifest 01",
+   "concept-missing manifest 02",
+   "concept-missing manifest 03",
+   "concept-missing manifest 04",
+   "concept-missing manifest 05",
+   "concept-missing manifest 06",
+   "concept-missing manifest 07",
+   "concept-missing manifest 08",
+   "concept-missing manifest 09",
+   "concept-missing manifest 10",
+   "concept-missing manifest 11",
+   "concept-missing manifest 12",
+   "concept-missing manifest 14",
+   "concept-missing manifest 15",
+   "concept-missing manifest 17a",
+   "concept-missing manifest 21",
+   "concept-missing manifest 22",
+   "concept-missing manifest 28",
+   "concept-missing manifest 35",
+   "concept-unlisted manifest 19",
+   "concept-unlisted parameters/{name} 19",
+   "unpopulated GET /api/concepts/{id} .narrative"
+  ],
+  "read_path_changes": [
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "02",
+    "path": ".narrative",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": [
+     "unpopulated GET /api/concepts/{id} .narrative"
+    ]
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "02",
+    "path": ".narrative.risks",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "02",
+    "path": ".narrative.risks[].severity",
+    "before": [],
+    "after": [
+     "string"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "08",
+    "path": ".narrative",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": [
+     "unpopulated GET /api/concepts/{id} .narrative"
+    ]
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "08",
+    "path": ".narrative.risks",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "08",
+    "path": ".narrative.risks[].severity",
+    "before": [],
+    "after": [
+     "string"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".narrative",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": [
+     "unpopulated GET /api/concepts/{id} .narrative"
+    ]
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".narrative.risks",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".narrative.risks[].severity",
+    "before": [],
+    "after": [
+     "string"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "35",
+    "path": ".narrative",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": [
+     "unpopulated GET /api/concepts/{id} .narrative"
+    ]
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "35",
+    "path": ".narrative.risks",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "35",
+    "path": ".narrative.risks[].severity",
+    "before": [],
+    "after": [
+     "string"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "B",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "Li2O_mass_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "Li2O_unit_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "M_blanket",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "M_ion",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "R0",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "R_major_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "R_minor_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "R_w",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "T_e",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "T_edge",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "W_shield_mass_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "W_shield_unit_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "Z_eff",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "acoustic_driver_efficiency",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "acoustic_freq_kHz",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "acoustic_power_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "availability",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "b_max",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_coverage",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_energy_capture",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_energy_multiplication",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_unit_cost_dd",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "chamber_inner_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "chamber_length",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "concrete_cost_per_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "concrete_mass_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "construction_time_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "core_lifetime_FPY",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "cryo_system_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "d2o_annual_replenishment_frac",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "d2o_unit_cost_per_m3",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dd_f_He3",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dd_f_T",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dd_neutron_fraction",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "deuterium_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dhe3_dd_frac",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dhe3_f_T",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "disruption_damage",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "disruption_downtime",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "disruption_rate_base",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "disruption_steepness",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_cost_per_module_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_efficiency",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_eta",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_rep_rate_Hz",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_stored_energy_MJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dt_fuel_mass_per_pulse_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "duty_cycle",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "electrode_replacement_cost_per_module_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "electrode_system_cost_per_module_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "elon",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "elongation",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_aux",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_de",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_p",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_pin",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_th",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_GW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_dec",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_neutron_dd",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_rad",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_rep",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_sub",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fuel_cost_per_shot_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fusion_energy_per_pulse_MJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fusion_gain_Q",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fusion_yield_MJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "heating_system_cost_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "ht_shield_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "icrh_cost_per_MW_wallplug",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "inflation_rate",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "inner_vessel_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "inner_vessel_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "lambda_q",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "li_inventory_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "lipb_blanket_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "lipb_blanket_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "magnet_engineering_multiplier",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "maintenance_availability",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "mn",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "n_e",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_base_cost_M_per_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_cost_per_MW_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_fixed_M_per_MWe_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_coils",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_cool",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_cryo",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_d2o_circulation_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_ecrh",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_fuel_handling_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_fus",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_heat_overhead_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_house",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_house_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_input",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_li_pump_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_lipb_pump_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_nbi",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_other_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_pump",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_target",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_target_factory_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_trit",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_trit_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_tritium_handling_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_vacuum_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "plasma_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "plasma_volume",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "projectile_cost_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "q95",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "q_eng",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "r_coil",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "r_plasma_outer_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_Ic_kA",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_price_kAm",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_tape_core_km",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_tape_top_km",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "remote_handling_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "remote_handling_scale",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rep_rate_Hz",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "replacement_tape_multiplier",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sacrificial_handling_M_USD_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sacrificial_tape_km_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_coil_capital_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_coil_cryo_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_coil_lifetime_FPY",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "shield_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "shield_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "structure_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "structure_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "structure_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "target_cost_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tau_ratio",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "thermal_efficiency",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "transducer_cost_per_kW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tritium_startup_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tritium_surplus_kg_per_year",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_inner_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_structural_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_wall_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "01",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 01"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "02",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 02"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "03",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 03"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "04",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 04"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "05",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 05"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "06",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 06"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "07",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 07"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "08",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 08"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "09",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 09"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "10",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 10"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "11",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 11"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "12",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 12"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "14",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 14"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "15",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 15"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "17a",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 17a"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "21",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 21"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "22",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 22"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "28",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 28"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "35",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 35"
+    ]
+   }
+  ],
+  "parameters_gone": 148,
+  "parameters_gone_still_requested": [
+   "B",
+   "Li2O_mass_t",
+   "Li2O_unit_cost_per_kg",
+   "M_blanket",
+   "M_ion",
+   "R0",
+   "R_major_m",
+   "R_minor_m",
+   "R_w",
+   "T_e",
+   "T_edge",
+   "W_shield_mass_t",
+   "W_shield_unit_cost_per_kg",
+   "Z_eff",
+   "acoustic_driver_efficiency",
+   "acoustic_freq_kHz",
+   "acoustic_power_MW",
+   "availability",
+   "b_max",
+   "blanket_coverage",
+   "blanket_energy_capture",
+   "blanket_energy_multiplication",
+   "blanket_t",
+   "blanket_thickness_m",
+   "blanket_unit_cost",
+   "blanket_unit_cost_dd",
+   "chamber_inner_radius_m",
+   "chamber_length",
+   "concrete_cost_per_t",
+   "concrete_mass_t",
+   "construction_time_yr",
+   "core_lifetime_FPY",
+   "cryo_system_cost_M_USD",
+   "d2o_annual_replenishment_frac",
+   "d2o_unit_cost_per_m3",
+   "dd_f_He3",
+   "dd_f_T",
+   "dd_neutron_fraction",
+   "deuterium_cost_per_kg",
+   "dhe3_dd_frac",
+   "dhe3_f_T",
+   "disruption_damage",
+   "disruption_downtime",
+   "disruption_rate_base",
+   "disruption_steepness",
+   "driver_cost_M_USD",
+   "driver_cost_per_module_M",
+   "driver_efficiency",
+   "driver_eta",
+   "driver_rep_rate_Hz",
+   "driver_stored_energy_MJ",
+   "dt_fuel_mass_per_pulse_kg",
+   "duty_cycle",
+   "electrode_replacement_cost_per_module_M",
+   "electrode_system_cost_per_module_M",
+   "elon",
+   "elongation",
+   "eta_aux",
+   "eta_de",
+   "eta_p",
+   "eta_pin",
+   "eta_th",
+   "f_GW",
+   "f_dec",
+   "f_neutron_dd",
+   "f_rad",
+   "f_rep",
+   "f_sub",
+   "fuel_cost_per_shot_USD",
+   "fusion_energy_per_pulse_MJ",
+   "fusion_gain_Q",
+   "fusion_yield_MJ",
+   "heating_system_cost_M",
+   "ht_shield_t",
+   "icrh_cost_per_MW_wallplug",
+   "inflation_rate",
+   "inner_vessel_cost_M_USD",
+   "inner_vessel_thickness_m",
+   "lambda_q",
+   "li_inventory_cost_M_USD",
+   "lipb_blanket_thickness_m",
+   "lipb_blanket_unit_cost",
+   "magnet_engineering_multiplier",
+   "maintenance_availability",
+   "mn",
+   "n_e",
+   "om_base_cost_M_per_yr",
+   "om_cost_per_MW_yr",
+   "om_fixed_M_per_MWe_yr",
+   "p_coils",
+   "p_cool",
+   "p_cryo",
+   "p_d2o_circulation_MW",
+   "p_ecrh",
+   "p_fuel_handling_MW",
+   "p_fus",
+   "p_heat_overhead_MW",
+   "p_house",
+   "p_house_MW",
+   "p_input",
+   "p_li_pump_MW",
+   "p_lipb_pump_MW",
+   "p_nbi",
+   "p_other_MW",
+   "p_pump",
+   "p_target",
+   "p_target_factory_MW",
+   "p_trit",
+   "p_trit_MW",
+   "p_tritium_handling_MW",
+   "p_vacuum_MW",
+   "plasma_t",
+   "plasma_volume",
+   "projectile_cost_USD",
+   "q95",
+   "q_eng",
+   "r_coil",
+   "r_plasma_outer_m",
+   "rebco_Ic_kA",
+   "rebco_price_kAm",
+   "rebco_tape_core_km",
+   "rebco_tape_top_km",
+   "remote_handling_cost_M_USD",
+   "remote_handling_scale",
+   "rep_rate_Hz",
+   "replacement_tape_multiplier",
+   "sacrificial_handling_M_USD_yr",
+   "sacrificial_tape_km_yr",
+   "sc_coil_capital_M",
+   "sc_coil_cryo_MW",
+   "sc_coil_lifetime_FPY",
+   "shield_thickness_m",
+   "shield_unit_cost",
+   "structure_t",
+   "structure_thickness_m",
+   "structure_unit_cost",
+   "target_cost_USD",
+   "tau_ratio",
+   "thermal_efficiency",
+   "transducer_cost_per_kW",
+   "tritium_startup_kg",
+   "tritium_surplus_kg_per_year",
+   "vessel_inner_radius_m",
+   "vessel_structural_cost_M_USD",
+   "vessel_t",
+   "vessel_thickness_m",
+   "vessel_unit_cost",
+   "vessel_wall_thickness_m"
+  ],
+  "instances_compared": {
+   "GET /api/concepts/{id}": 19,
+   "GET /api/concepts/{id}/findings": 0,
+   "GET /api/parameters/{name}": 10,
+   "GET /api/manifest": 0,
+   "GET /api/taxonomy/registry": 38,
+   "GET /api/cost-landscape": 0
+  }
+ },
+ "7c639d73d": {
+  "failures": [
+   "shape GET /api/concepts/{id} .narrative"
+  ],
+  "read_path_changes": [
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "01",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": [
+     "shape GET /api/concepts/{id} .narrative"
+    ]
+   }
+  ],
+  "parameters_gone": 0,
+  "parameters_gone_still_requested": [],
+  "instances_compared": {
+   "GET /api/concepts/{id}": 38,
+   "GET /api/concepts/{id}/findings": 0,
+   "GET /api/parameters/{name}": 249,
+   "GET /api/manifest": 38,
+   "GET /api/taxonomy/registry": 40,
+   "GET /api/cost-landscape": 0
+  }
+ },
+ "c36b7201e": {
+  "failures": [
+   "concept-missing manifest 26",
+   "concept-missing manifest 27",
+   "concept-missing manifest 34",
+   "concept-missing registry 26",
+   "concept-missing registry 27",
+   "concept-missing registry 38",
+   "concept-missing tree 26",
+   "concept-missing tree 27",
+   "concept-missing tree 38",
+   "concept-unlisted manifest 37",
+   "concept-unlisted parameters/{name} 37",
+   "shape GET /api/concepts/{id} .sources.analysis",
+   "status GET /api/concepts/{id} 26",
+   "status GET /api/concepts/{id} 27",
+   "status GET /api/concepts/{id} 34"
+  ],
+  "read_path_changes": [
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "01",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "02",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "02",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "03",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "03",
+    "path": ".parameter_metadata",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "empty"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "03",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "04",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "04",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "05",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "05",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "06",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "06",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "07",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "07",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "08",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "08",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "09",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "09",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "10",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "10",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "11",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "11",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "12",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "13",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "13",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "13",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "13",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "13",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "14",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "14",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "15",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "15",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "15",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "15",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "15",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "16",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "16",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "17a",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "17a",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "17b",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "18",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "18",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "18",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "18",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "18",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "19",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "19",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "19",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "19",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "19",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "20a",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "20a",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "20b",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "20b",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "21",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "21",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "22",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "22",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "22",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "22",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "22",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "23",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "23",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "24",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "24",
+    "path": ".parameter_metadata",
+    "before": [
+     "empty"
+    ],
+    "after": [
+     "object"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "24",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "24",
+    "path": ".parameter_metadata{*}.range",
+    "before": [],
+    "after": [
+     "array"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "24",
+    "path": ".parameter_metadata{*}.baseline",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "25",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "25",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "28",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "28",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "29",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "29",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "30",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "30",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "31",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "31",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "32",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "32",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "33",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "33",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "35",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "35",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "36",
+    "path": ".analyst_override_count",
+    "before": [],
+    "after": [
+     "number"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "36",
+    "path": ".narrative",
+    "before": [
+     "object"
+    ],
+    "after": [
+     "null"
+    ],
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "26",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 26",
+     "concept-missing registry 26",
+     "concept-missing tree 26",
+     "status GET /api/concepts/{id} 26"
+    ]
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "27",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 27",
+     "concept-missing registry 27",
+     "concept-missing tree 27",
+     "status GET /api/concepts/{id} 27"
+    ]
+   },
+   {
+    "template": "GET /api/concepts/{id}",
+    "instance": "34",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 34",
+     "status GET /api/concepts/{id} 34"
+    ]
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "Li2O_mass_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "Li2O_unit_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "Q_engineering",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "R_major_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "R_minor_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "W_shield_mass_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "W_shield_unit_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "acoustic_driver_efficiency",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "acoustic_freq_kHz",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "acoustic_power_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "b11_cost_per_kg_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "b11_kg_per_module_year",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "b_max",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "beam_supply_efficiency",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_cost_override_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_coverage",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_energy_capture",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_energy_multiplication",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_inner_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "blanket_unit_cost_dd",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_bus_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_cryo_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_dec_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_electronics_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_ground_control_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_heating_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_hts_coil_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "c_transmitter_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "cap_annual_replacement_frac",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "cap_bank_cost_M_NOAK",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "cathode_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "cathode_lifetime_FPY",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "coil_system_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "concrete_cost_per_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "concrete_mass_t",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "converter_inner_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "converter_length_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "cryo_system_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "d2o_annual_replenishment_frac",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "d2o_unit_cost_per_m3",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dd_neutron_fraction",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dec_cost_M_NOAK",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "deuterium_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "device_length_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "device_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "device_structure_cost_M_NOAK",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_cost_per_module_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_coupling_eff",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_eta",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_rep_rate_Hz",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "driver_stored_energy_MJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "dt_fuel_mass_per_pulse_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "duty_cycle",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "e_stored_kJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "ebeam_system_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "electrode_cost_per_set_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "electrode_replacement_cost_per_module_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "electrode_replacement_months",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "electrode_system_cost_per_module_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "elongation",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_aux",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_beam",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_icc",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_icrh",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_nbi",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_nbi_couple",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_nbi_source",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_rectenna",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_transmitter",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "eta_xray",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_charged_particle",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_ion_beam",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_neutron",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "f_neutron_dd",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "foak_multiplier",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "frc_axial_length_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "frc_separatrix_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fuel_burnup_fraction",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fuel_cost_per_shot_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fusion_energy_per_pulse_MJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fusion_gain_Q",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "fusion_yield_MJ",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "he3_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "heating_system_cost_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "hv_power_supply_cost_per_kW_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "icc_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "icrh_cost_per_MW_wallplug",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "inner_vessel_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "inner_vessel_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "launch_cost_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "li_inventory_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "lipb_blanket_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "lipb_blanket_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_bus_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_cryo_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_dec_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_fuel_system_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_heating_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_hts_coil_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "m_transmitter_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "magnet_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "magnet_engineering_multiplier",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "maintenance_availability",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "nbi_cost_per_MW_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_base_cost_M_per_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_cost_per_MW_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_cost_scaling",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_fixed_M_per_MWe_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_fixed_base_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "om_frac_of_capex",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "orbital_om_frac_annual",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_beam_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_control_kW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_cooling_kW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_d2o_circulation_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_fuel_handling_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_fuel_inject_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_fus",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_heat_overhead_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_input_module_kW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_lhcd",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_li_pump_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_lipb_pump_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_magnet_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_misc_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_nbi_plasma_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_other_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_target_factory_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_tritium_handling_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_vac_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "p_vacuum_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "plasma_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "projectile_cost_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "q_plasma",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "r_coil",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "r_plasma_outer_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_Ic_kA",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_price_kAm",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_tape_core_km",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rebco_tape_top_km",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rectenna_cost_per_MW_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "remote_handling_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "remote_handling_scale",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "rep_rate_Hz",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "replacement_tape_multiplier",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sacrificial_handling_M_USD_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sacrificial_tape_km_yr",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_coil_capital_M",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_coil_cryo_MW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_coil_lifetime_FPY",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "sc_magnet_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "shield_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "shielding_cost_per_m3_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "structure_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "target_cost_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "thermal_efficiency",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "transducer_cost_per_kW",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tritium_consumed_g_per_MJ_fusion",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tritium_price_per_g_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tritium_startup_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "tritium_surplus_kg_per_year",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "u_b11_per_kg",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_inner_radius_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_structural_cost_M_USD",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_unit_cost",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/parameters/{name}",
+    "instance": "vessel_wall_thickness_m",
+    "path": "(instance gone)",
+    "caught_by": []
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "26",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 26",
+     "concept-missing registry 26",
+     "concept-missing tree 26",
+     "status GET /api/concepts/{id} 26"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "27",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 27",
+     "concept-missing registry 27",
+     "concept-missing tree 27",
+     "status GET /api/concepts/{id} 27"
+    ]
+   },
+   {
+    "template": "GET /api/manifest",
+    "instance": "34",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 34",
+     "status GET /api/concepts/{id} 34"
+    ]
+   },
+   {
+    "template": "GET /api/taxonomy/registry",
+    "instance": "26",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 26",
+     "concept-missing registry 26",
+     "concept-missing tree 26",
+     "status GET /api/concepts/{id} 26"
+    ]
+   },
+   {
+    "template": "GET /api/taxonomy/registry",
+    "instance": "27",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing manifest 27",
+     "concept-missing registry 27",
+     "concept-missing tree 27",
+     "status GET /api/concepts/{id} 27"
+    ]
+   },
+   {
+    "template": "GET /api/taxonomy/registry",
+    "instance": "38",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing registry 38",
+     "concept-missing tree 38"
+    ]
+   }
+  ],
+  "parameters_gone": 167,
+  "parameters_gone_still_requested": [],
+  "instances_compared": {
+   "GET /api/concepts/{id}": 35,
+   "GET /api/concepts/{id}/findings": 0,
+   "GET /api/parameters/{name}": 83,
+   "GET /api/manifest": 35,
+   "GET /api/taxonomy/registry": 37,
+   "GET /api/cost-landscape": 0
+  }
+ },
+ "8d597849b": {
+  "failures": [
+   "concept-missing registry 34",
+   "concept-missing tree 34",
+   "enum GET /api/taxonomy/registry .concepts[].magnet_type",
+   "shape GET /api/taxonomy/registry .concepts[].energy_capture",
+   "shape GET /api/taxonomy/tree .root.children[].children",
+   "shape GET /api/taxonomy/tree .root.children[].field"
+  ],
+  "read_path_changes": [
+   {
+    "template": "GET /api/taxonomy/registry",
+    "instance": "34",
+    "path": "(instance gone)",
+    "caught_by": [
+     "concept-missing registry 34",
+     "concept-missing tree 34"
+    ]
+   }
+  ],
+  "parameters_gone": 0,
+  "parameters_gone_still_requested": [],
+  "instances_compared": {
+   "GET /api/concepts/{id}": 38,
+   "GET /api/concepts/{id}/findings": 0,
+   "GET /api/parameters/{name}": 249,
+   "GET /api/manifest": 38,
+   "GET /api/taxonomy/registry": 37,
+   "GET /api/cost-landscape": 0
+  }
+ },
+ "8e2808860": {
+  "failures": [
+   "concept-unlisted manifest 01",
+   "concept-unlisted manifest 02",
+   "concept-unlisted manifest 03",
+   "concept-unlisted manifest 04",
+   "concept-unlisted manifest 05",
+   "concept-unlisted manifest 06",
+   "concept-unlisted manifest 07",
+   "concept-unlisted manifest 08",
+   "concept-unlisted manifest 09",
+   "concept-unlisted manifest 10",
+   "concept-unlisted manifest 11",
+   "concept-unlisted manifest 12",
+   "concept-unlisted manifest 13",
+   "concept-unlisted manifest 14",
+   "concept-unlisted manifest 15",
+   "concept-unlisted manifest 16",
+   "concept-unlisted manifest 17a",
+   "concept-unlisted manifest 17b",
+   "concept-unlisted manifest 18",
+   "concept-unlisted manifest 20a",
+   "concept-unlisted manifest 20b",
+   "concept-unlisted manifest 21",
+   "concept-unlisted manifest 22",
+   "concept-unlisted manifest 23",
+   "concept-unlisted manifest 24",
+   "concept-unlisted manifest 25",
+   "concept-unlisted manifest 26",
+   "concept-unlisted manifest 27",
+   "concept-unlisted manifest 28",
+   "concept-unlisted manifest 29",
+   "concept-unlisted manifest 30",
+   "concept-unlisted manifest 31",
+   "concept-unlisted manifest 32",
+   "concept-unlisted manifest 33",
+   "concept-unlisted manifest 34",
+   "concept-unlisted manifest 35",
+   "concept-unlisted manifest 36",
+   "concept-unlisted parameters/{name} 01",
+   "concept-unlisted parameters/{name} 02",
+   "concept-unlisted parameters/{name} 03",
+   "concept-unlisted parameters/{name} 04",
+   "concept-unlisted parameters/{name} 05",
+   "concept-unlisted parameters/{name} 06",
+   "concept-unlisted parameters/{name} 07",
+   "concept-unlisted parameters/{name} 08",
+   "concept-unlisted parameters/{name} 09",
+   "concept-unlisted parameters/{name} 10",
+   "concept-unlisted parameters/{name} 11",
+   "concept-unlisted parameters/{name} 12",
+   "concept-unlisted parameters/{name} 13",
+   "concept-unlisted parameters/{name} 14",
+   "concept-unlisted parameters/{name} 15",
+   "concept-unlisted parameters/{name} 16",
+   "concept-unlisted parameters/{name} 17a",
+   "concept-unlisted parameters/{name} 17b",
+   "concept-unlisted parameters/{name} 18",
+   "concept-unlisted parameters/{name} 20a",
+   "concept-unlisted parameters/{name} 20b",
+   "concept-unlisted parameters/{name} 21",
+   "concept-unlisted parameters/{name} 22",
+   "concept-unlisted parameters/{name} 23",
+   "concept-unlisted parameters/{name} 24",
+   "concept-unlisted parameters/{name} 25",
+   "concept-unlisted parameters/{name} 26",
+   "concept-unlisted parameters/{name} 27",
+   "concept-unlisted parameters/{name} 28",
+   "concept-unlisted parameters/{name} 29",
+   "concept-unlisted parameters/{name} 30",
+   "concept-unlisted parameters/{name} 31",
+   "concept-unlisted parameters/{name} 32",
+   "concept-unlisted parameters/{name} 33",
+   "concept-unlisted parameters/{name} 34",
+   "concept-unlisted parameters/{name} 35",
+   "concept-unlisted parameters/{name} 36",
+   "shape GET /api/manifest .concepts[].company",
+   "unpopulated GET /api/manifest .concepts[].confidence"
+  ],
+  "read_path_changes": [],
+  "parameters_gone": 0,
+  "parameters_gone_still_requested": [],
+  "instances_compared": {
+   "GET /api/concepts/{id}": 1,
+   "GET /api/concepts/{id}/findings": 0,
+   "GET /api/parameters/{name}": 37,
+   "GET /api/manifest": 1,
+   "GET /api/taxonomy/registry": 38,
+   "GET /api/cost-landscape": 0
+  }
+ }
+}

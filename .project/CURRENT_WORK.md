@@ -1,3 +1,12 @@
+# Explorer API contract gate — Phase 1 done at its hard stop — 2026-10-08
+
+[AGENT] Phase 1 built the real contract core (`exploration/concept_explorer/website_contract/contract.py`) and replayed history with it.
+- The verdict is a narrow pass: 4 of 23 replayable non-concept-adding pairs carry a false block (17%), at most 2 waiver lines per pair, no misclassified maps, and 28 replayable pairs against a floor of 12.
+- Counting one replay artifact (`e553f70e1`) as a false block would make the rate 22%, a fail. The orchestrator should confirm the judgment.
+- All three identity checks report zero failure keys.
+- Compute is about 25 s locally, nearly all module import, and the gate projects to about 2.6 minutes.
+- Report: [phase1/report.md](active/explorer-api-contract-gate/phase1/report.md). Next: the orchestrator's go-ahead for Phase 2. Nothing is pushed.
+
 # Explorer API contract gate — spec drafted, product lens disposed — 2026-10-08
 
 [OWNER] Asked to guard the dependency `1cf.energy/tools/concepts/` has on the live Concept Explorer API. [AGENT] Added deployment docs (`CLAUDE.md` § Live Deployments from `main`, `exploration/concept_explorer/README.md` §9) and drafted [`explorer-api-contract-gate`](active/explorer-api-contract-gate/spec.md). The product lens found no blocker, and its six findings are dispositioned in `product-lens.md`. The owner selected gating Railway deploys on new website-contract tests plus the CORS test only. The red explorer suite (32 failed / 306 passed) is a separate BACKLOG row. Work lives on branch `feat/explorer-api-contract-gate` (worktree `../fusion-tea-explorer-api-gate`, from `origin/main` `f96ad312c`), uncommitted. The same doc edits also sit uncommitted in the main checkout, where the scoring-repair session protects them. Next: owner review of the spec, then `/_my_design`.

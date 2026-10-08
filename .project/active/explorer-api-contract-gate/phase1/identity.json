@@ -1,0 +1,1833 @@
+{
+ "f96-vs-f96-with-compute": {
+  "record": {
+   "mode": "record",
+   "code_root": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "tree": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "startup_seconds": 0.3977376241236925,
+   "observe_seconds": 26.27168861962855,
+   "templates": {
+    "GET /api/manifest": {
+     "count": 1,
+     "total_seconds": 0.0010089017450809479,
+     "slowest_seconds": 0.0010089017450809479,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/registry": {
+     "count": 1,
+     "total_seconds": 0.0012207739055156708,
+     "slowest_seconds": 0.0012207739055156708,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/tree": {
+     "count": 1,
+     "total_seconds": 0.0009050536900758743,
+     "slowest_seconds": 0.0009050536900758743,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/cost-landscape": {
+     "count": 1,
+     "total_seconds": 0.0010143686085939407,
+     "slowest_seconds": 0.0010143686085939407,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameter_index": {
+     "count": 1,
+     "total_seconds": 0.001393485814332962,
+     "slowest_seconds": 0.001393485814332962,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}": {
+     "count": 37,
+     "total_seconds": 0.04851161688566208,
+     "slowest_seconds": 0.0016480106860399246,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}/findings": {
+     "count": 37,
+     "total_seconds": 0.9913421235978603,
+     "slowest_seconds": 0.05854299105703831,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameters/{name}": {
+     "count": 99,
+     "total_seconds": 0.08858281373977661,
+     "slowest_seconds": 0.0013353116810321808,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:concept": {
+     "count": 1,
+     "total_seconds": 0.0012119803577661514,
+     "slowest_seconds": 0.0012119803577661514,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:compare": {
+     "count": 1,
+     "total_seconds": 0.0009047277271747589,
+     "slowest_seconds": 0.0009047277271747589,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider": {
+     "count": 33,
+     "total_seconds": 24.93766662478447,
+     "slowest_seconds": 0.9132872391492128,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider-range": {
+     "count": 1,
+     "total_seconds": 0.004915321245789528,
+     "slowest_seconds": 0.004915321245789528,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:toggle": {
+     "count": 15,
+     "total_seconds": 0.03857340291142464,
+     "slowest_seconds": 0.002864532172679901,
+     "statuses": [
+      200
+     ]
+    }
+   },
+   "compute_calls": [
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.8946593627333641
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.6941375508904457
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "05",
+     "status": 200,
+     "seconds": 0.8353508077561855
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.82459538243711
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "07",
+     "status": 200,
+     "seconds": 0.6728766560554504
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.6483367700129747
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.8453107103705406
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "10",
+     "status": 200,
+     "seconds": 0.8300008792430162
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "11",
+     "status": 200,
+     "seconds": 0.8951572701334953
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.8426953684538603
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "13",
+     "status": 200,
+     "seconds": 0.8227393608540297
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.6785357277840376
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "15",
+     "status": 200,
+     "seconds": 0.6745486352592707
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.7091488000005484
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17b",
+     "status": 200,
+     "seconds": 0.23167642205953598
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.8288299012929201
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "19",
+     "status": 200,
+     "seconds": 0.833097605034709
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20a",
+     "status": 200,
+     "seconds": 0.8405360598117113
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20b",
+     "status": 200,
+     "seconds": 0.8402311354875565
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "21",
+     "status": 200,
+     "seconds": 0.8933710046112537
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.9132872391492128
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.7052885964512825
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.68703268840909
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "25",
+     "status": 200,
+     "seconds": 0.6805755328387022
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "28",
+     "status": 200,
+     "seconds": 0.8613695986568928
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.8876131027936935
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "30",
+     "status": 200,
+     "seconds": 0.6853508595377207
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.7089834995567799
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "32",
+     "status": 200,
+     "seconds": 0.6921623181551695
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "33",
+     "status": 200,
+     "seconds": 0.8684315606951714
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.855785209685564
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "37",
+     "status": 200,
+     "seconds": 0.22795536555349827
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "39",
+     "status": 200,
+     "seconds": 0.8279956430196762
+    },
+    {
+     "template": "POST /api/compute:slider-range",
+     "instance": null,
+     "status": 200,
+     "seconds": 0.004915321245789528
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.0026888269931077957
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.002745235338807106
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.002657901495695114
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.0024243928492069244
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.002594694495201111
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.0023652277886867523
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.002419508993625641
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.0026271138340234756
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.002513151615858078
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.0026105139404535294
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.0023840200155973434
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.0027270205318927765
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.002864532172679901
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.002512570470571518
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.0024386923760175705
+    }
+   ],
+   "contract": "/tmp/eacg-phase1/runs/f96-vs-f96-with-compute/contract.txt"
+  },
+  "check": {
+   "mode": "check",
+   "code_root": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "tree": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "startup_seconds": 0.3962812777608633,
+   "observe_seconds": 26.403307342901826,
+   "templates": {
+    "GET /api/manifest": {
+     "count": 1,
+     "total_seconds": 0.0029632747173309326,
+     "slowest_seconds": 0.0029632747173309326,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/registry": {
+     "count": 1,
+     "total_seconds": 0.0016475189477205276,
+     "slowest_seconds": 0.0016475189477205276,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/tree": {
+     "count": 1,
+     "total_seconds": 0.0011382028460502625,
+     "slowest_seconds": 0.0011382028460502625,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/cost-landscape": {
+     "count": 1,
+     "total_seconds": 0.0012922324240207672,
+     "slowest_seconds": 0.0012922324240207672,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameter_index": {
+     "count": 1,
+     "total_seconds": 0.0019268598407506943,
+     "slowest_seconds": 0.0019268598407506943,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}": {
+     "count": 37,
+     "total_seconds": 0.04714903235435486,
+     "slowest_seconds": 0.0020498577505350113,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}/findings": {
+     "count": 37,
+     "total_seconds": 1.0838457439094782,
+     "slowest_seconds": 0.06163135543465614,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameters/{name}": {
+     "count": 99,
+     "total_seconds": 0.09200930409133434,
+     "slowest_seconds": 0.0017427969723939896,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:concept": {
+     "count": 1,
+     "total_seconds": 0.0010328367352485657,
+     "slowest_seconds": 0.0010328367352485657,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:compare": {
+     "count": 1,
+     "total_seconds": 0.0008079148828983307,
+     "slowest_seconds": 0.0008079148828983307,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider": {
+     "count": 33,
+     "total_seconds": 25.090900031849742,
+     "slowest_seconds": 0.9352788161486387,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider-range": {
+     "count": 1,
+     "total_seconds": 0.005030771717429161,
+     "slowest_seconds": 0.005030771717429161,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:toggle": {
+     "count": 15,
+     "total_seconds": 0.03785916790366173,
+     "slowest_seconds": 0.00292200967669487,
+     "statuses": [
+      200
+     ]
+    }
+   },
+   "compute_calls": [
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.9005545806139708
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.70643050968647
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "05",
+     "status": 200,
+     "seconds": 0.8407232277095318
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.840494267642498
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "07",
+     "status": 200,
+     "seconds": 0.6780435796827078
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.6528749000281096
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.8555138390511274
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "10",
+     "status": 200,
+     "seconds": 0.8458203934133053
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "11",
+     "status": 200,
+     "seconds": 0.9024153929203749
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.850697448477149
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "13",
+     "status": 200,
+     "seconds": 0.8228083197027445
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.6806532312184572
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "15",
+     "status": 200,
+     "seconds": 0.6723036151379347
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.7050246577709913
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17b",
+     "status": 200,
+     "seconds": 0.23812702111899853
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.8300246372818947
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "19",
+     "status": 200,
+     "seconds": 0.8302337992936373
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20a",
+     "status": 200,
+     "seconds": 0.8414844963699579
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20b",
+     "status": 200,
+     "seconds": 0.8484192583709955
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "21",
+     "status": 200,
+     "seconds": 0.8778132889419794
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.9352788161486387
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.7050319649279118
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.6833850834518671
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "25",
+     "status": 200,
+     "seconds": 0.6838793475180864
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "28",
+     "status": 200,
+     "seconds": 0.873335225507617
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.9047435969114304
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "30",
+     "status": 200,
+     "seconds": 0.6929472107440233
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.7128097210079432
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "32",
+     "status": 200,
+     "seconds": 0.6970614865422249
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "33",
+     "status": 200,
+     "seconds": 0.8667092304676771
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.8599746264517307
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "37",
+     "status": 200,
+     "seconds": 0.22771555744111538
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "39",
+     "status": 200,
+     "seconds": 0.8275677002966404
+    },
+    {
+     "template": "POST /api/compute:slider-range",
+     "instance": null,
+     "status": 200,
+     "seconds": 0.005030771717429161
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.002638857811689377
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.0024629365652799606
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.002378338947892189
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.0025850720703601837
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.0025661755353212357
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.0023579373955726624
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.0025472119450569153
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.0027014072984457016
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.0026090536266565323
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.0027046389877796173
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.0024236682802438736
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.0024033263325691223
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.00292200967669487
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.002187473699450493
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.0023710597306489944
+    }
+   ],
+   "failures": [],
+   "details": {}
+  }
+ },
+ "pin-vs-f96-no-compute": {
+  "record": {
+   "mode": "record",
+   "code_root": "/tmp/eacg-phase1/extracts/10f7b9b1f1466d2057a211bf25f09fc35d80a12b",
+   "tree": "/tmp/eacg-phase1/extracts/10f7b9b1f1466d2057a211bf25f09fc35d80a12b",
+   "startup_seconds": 0.42637653835117817,
+   "observe_seconds": 1.3476233649998903,
+   "templates": {
+    "GET /api/manifest": {
+     "count": 1,
+     "total_seconds": 0.0009452067315578461,
+     "slowest_seconds": 0.0009452067315578461,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/registry": {
+     "count": 1,
+     "total_seconds": 0.0010646115988492966,
+     "slowest_seconds": 0.0010646115988492966,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/tree": {
+     "count": 1,
+     "total_seconds": 0.0010030902922153473,
+     "slowest_seconds": 0.0010030902922153473,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/cost-landscape": {
+     "count": 1,
+     "total_seconds": 0.0011861231178045273,
+     "slowest_seconds": 0.0011861231178045273,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameter_index": {
+     "count": 1,
+     "total_seconds": 0.001756398007273674,
+     "slowest_seconds": 0.001756398007273674,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}": {
+     "count": 37,
+     "total_seconds": 0.047003086656332016,
+     "slowest_seconds": 0.001591430976986885,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}/findings": {
+     "count": 37,
+     "total_seconds": 1.047448344528675,
+     "slowest_seconds": 0.05879675969481468,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameters/{name}": {
+     "count": 99,
+     "total_seconds": 0.08765649236738682,
+     "slowest_seconds": 0.0013710018247365952,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:concept": {
+     "count": 1,
+     "total_seconds": 0.0013566110283136368,
+     "slowest_seconds": 0.0013566110283136368,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:compare": {
+     "count": 1,
+     "total_seconds": 0.0011276118457317352,
+     "slowest_seconds": 0.0011276118457317352,
+     "statuses": [
+      200
+     ]
+    }
+   },
+   "compute_calls": [],
+   "contract": "/tmp/eacg-phase1/runs/pin-vs-f96-no-compute/contract.txt"
+  },
+  "check": {
+   "mode": "check",
+   "code_root": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "tree": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "startup_seconds": 0.39711643755435944,
+   "observe_seconds": 1.1862276624888182,
+   "templates": {
+    "GET /api/manifest": {
+     "count": 1,
+     "total_seconds": 0.002936355769634247,
+     "slowest_seconds": 0.002936355769634247,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/registry": {
+     "count": 1,
+     "total_seconds": 0.001646360382437706,
+     "slowest_seconds": 0.001646360382437706,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/tree": {
+     "count": 1,
+     "total_seconds": 0.001141522079706192,
+     "slowest_seconds": 0.001141522079706192,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/cost-landscape": {
+     "count": 1,
+     "total_seconds": 0.0012950152158737183,
+     "slowest_seconds": 0.0012950152158737183,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameter_index": {
+     "count": 1,
+     "total_seconds": 0.001933632418513298,
+     "slowest_seconds": 0.001933632418513298,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}": {
+     "count": 37,
+     "total_seconds": 0.048113444820046425,
+     "slowest_seconds": 0.0020151156932115555,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}/findings": {
+     "count": 37,
+     "total_seconds": 1.0077341049909592,
+     "slowest_seconds": 0.05957389809191227,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameters/{name}": {
+     "count": 99,
+     "total_seconds": 0.09041102230548859,
+     "slowest_seconds": 0.0015099626034498215,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:concept": {
+     "count": 1,
+     "total_seconds": 0.0012000110000371933,
+     "slowest_seconds": 0.0012000110000371933,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:compare": {
+     "count": 1,
+     "total_seconds": 0.0009913370013237,
+     "slowest_seconds": 0.0009913370013237,
+     "statuses": [
+      200
+     ]
+    }
+   },
+   "compute_calls": [],
+   "failures": [],
+   "details": {}
+  }
+ },
+ "pin-vs-f96-with-compute": {
+  "record": {
+   "mode": "record",
+   "code_root": "/tmp/eacg-phase1/extracts/10f7b9b1f1466d2057a211bf25f09fc35d80a12b",
+   "tree": "/tmp/eacg-phase1/extracts/10f7b9b1f1466d2057a211bf25f09fc35d80a12b",
+   "startup_seconds": 0.42860177904367447,
+   "observe_seconds": 25.829196758568287,
+   "templates": {
+    "GET /api/manifest": {
+     "count": 1,
+     "total_seconds": 0.0010285917669534683,
+     "slowest_seconds": 0.0010285917669534683,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/registry": {
+     "count": 1,
+     "total_seconds": 0.0011926386505365372,
+     "slowest_seconds": 0.0011926386505365372,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/tree": {
+     "count": 1,
+     "total_seconds": 0.0011183060705661774,
+     "slowest_seconds": 0.0011183060705661774,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/cost-landscape": {
+     "count": 1,
+     "total_seconds": 0.0010824333876371384,
+     "slowest_seconds": 0.0010824333876371384,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameter_index": {
+     "count": 1,
+     "total_seconds": 0.0014838222414255142,
+     "slowest_seconds": 0.0014838222414255142,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}": {
+     "count": 37,
+     "total_seconds": 0.04349451884627342,
+     "slowest_seconds": 0.0015349816530942917,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}/findings": {
+     "count": 37,
+     "total_seconds": 1.063114257529378,
+     "slowest_seconds": 0.05961952544748783,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameters/{name}": {
+     "count": 99,
+     "total_seconds": 0.08367778174579144,
+     "slowest_seconds": 0.001444326713681221,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:concept": {
+     "count": 1,
+     "total_seconds": 0.001156684011220932,
+     "slowest_seconds": 0.001156684011220932,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:compare": {
+     "count": 1,
+     "total_seconds": 0.0010800156742334366,
+     "slowest_seconds": 0.0010800156742334366,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider": {
+     "count": 33,
+     "total_seconds": 24.423792850226164,
+     "slowest_seconds": 0.8912364430725574,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider-range": {
+     "count": 1,
+     "total_seconds": 0.005387447774410248,
+     "slowest_seconds": 0.005387447774410248,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:toggle": {
+     "count": 15,
+     "total_seconds": 0.03870194032788277,
+     "slowest_seconds": 0.0029401499778032303,
+     "statuses": [
+      200
+     ]
+    }
+   },
+   "compute_calls": [
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.8693323694169521
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.684661628678441
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "05",
+     "status": 200,
+     "seconds": 0.8233867716044188
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.8066372200846672
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "07",
+     "status": 200,
+     "seconds": 0.6613079234957695
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.6386159807443619
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.832079391926527
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "10",
+     "status": 200,
+     "seconds": 0.8197467271238565
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "11",
+     "status": 200,
+     "seconds": 0.8783141989260912
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.8219258207827806
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "13",
+     "status": 200,
+     "seconds": 0.7991246040910482
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.6532494518905878
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "15",
+     "status": 200,
+     "seconds": 0.6559661198407412
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.6826880406588316
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17b",
+     "status": 200,
+     "seconds": 0.22450517676770687
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.8019807059317827
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "19",
+     "status": 200,
+     "seconds": 0.8075781352818012
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20a",
+     "status": 200,
+     "seconds": 0.8191834427416325
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20b",
+     "status": 200,
+     "seconds": 0.8199411928653717
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "21",
+     "status": 200,
+     "seconds": 0.8692608159035444
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.8783380500972271
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.6817788798362017
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.6670688446611166
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "25",
+     "status": 200,
+     "seconds": 0.6790328044444323
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "28",
+     "status": 200,
+     "seconds": 0.8521038684993982
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.8912364430725574
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "30",
+     "status": 200,
+     "seconds": 0.6850259881466627
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.6986615248024464
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "32",
+     "status": 200,
+     "seconds": 0.682585671544075
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "33",
+     "status": 200,
+     "seconds": 0.8538090493530035
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.8482995945960283
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "37",
+     "status": 200,
+     "seconds": 0.22231624834239483
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "39",
+     "status": 200,
+     "seconds": 0.8140501640737057
+    },
+    {
+     "template": "POST /api/compute:slider-range",
+     "instance": null,
+     "status": 200,
+     "seconds": 0.005387447774410248
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.002922607585787773
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.0027076546102762222
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.002515982836484909
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.0026390869170427322
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.0027909185737371445
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.0025378502905368805
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.0025770124047994614
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.0026660580188035965
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.0023499950766563416
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.0026177726686000824
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.0021924059838056564
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.0022478140890598297
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.0029401499778032303
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.002606308087706566
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.002390323206782341
+    }
+   ],
+   "contract": "/tmp/eacg-phase1/runs/pin-vs-f96-with-compute/contract.txt"
+  },
+  "check": {
+   "mode": "check",
+   "code_root": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "tree": "/tmp/eacg-phase1/extracts/f96ad312c63e8c66695971b12feab971f3ba6eb3",
+   "startup_seconds": 0.4464405793696642,
+   "observe_seconds": 25.62162958830595,
+   "templates": {
+    "GET /api/manifest": {
+     "count": 1,
+     "total_seconds": 0.003930756822228432,
+     "slowest_seconds": 0.003930756822228432,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/registry": {
+     "count": 1,
+     "total_seconds": 0.001791084185242653,
+     "slowest_seconds": 0.001791084185242653,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/taxonomy/tree": {
+     "count": 1,
+     "total_seconds": 0.0012531057000160217,
+     "slowest_seconds": 0.0012531057000160217,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/cost-landscape": {
+     "count": 1,
+     "total_seconds": 0.001392807811498642,
+     "slowest_seconds": 0.001392807811498642,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameter_index": {
+     "count": 1,
+     "total_seconds": 0.002195458859205246,
+     "slowest_seconds": 0.002195458859205246,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}": {
+     "count": 37,
+     "total_seconds": 0.05101178027689457,
+     "slowest_seconds": 0.002345200628042221,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/concepts/{id}/findings": {
+     "count": 37,
+     "total_seconds": 1.0494208801537752,
+     "slowest_seconds": 0.059022169560194016,
+     "statuses": [
+      200
+     ]
+    },
+    "GET /api/parameters/{name}": {
+     "count": 99,
+     "total_seconds": 0.09236668609082699,
+     "slowest_seconds": 0.0013350490480661392,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:concept": {
+     "count": 1,
+     "total_seconds": 0.0014209188520908356,
+     "slowest_seconds": 0.0014209188520908356,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/state:compare": {
+     "count": 1,
+     "total_seconds": 0.0011469107121229172,
+     "slowest_seconds": 0.0011469107121229172,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider": {
+     "count": 33,
+     "total_seconds": 24.33417957276106,
+     "slowest_seconds": 0.910336947068572,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:slider-range": {
+     "count": 1,
+     "total_seconds": 0.006266959011554718,
+     "slowest_seconds": 0.006266959011554718,
+     "statuses": [
+      200
+     ]
+    },
+    "POST /api/compute:toggle": {
+     "count": 15,
+     "total_seconds": 0.039224110543727875,
+     "slowest_seconds": 0.002884458750486374,
+     "statuses": [
+      200
+     ]
+    }
+   },
+   "compute_calls": [
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.910336947068572
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.7194552682340145
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "05",
+     "status": 200,
+     "seconds": 0.8602668233215809
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.8002437017858028
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "07",
+     "status": 200,
+     "seconds": 0.6703428328037262
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.6335419174283743
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.8211635537445545
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "10",
+     "status": 200,
+     "seconds": 0.8210616391152143
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "11",
+     "status": 200,
+     "seconds": 0.8660672716796398
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.8223704248666763
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "13",
+     "status": 200,
+     "seconds": 0.7997144348919392
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.6597611531615257
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "15",
+     "status": 200,
+     "seconds": 0.656761983409524
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.6845991723239422
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "17b",
+     "status": 200,
+     "seconds": 0.22377227805554867
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.8048195783048868
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "19",
+     "status": 200,
+     "seconds": 0.8058134205639362
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20a",
+     "status": 200,
+     "seconds": 0.8196573369204998
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "20b",
+     "status": 200,
+     "seconds": 0.8205122407525778
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "21",
+     "status": 200,
+     "seconds": 0.8377082068473101
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.9066277928650379
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.6788677759468555
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.6638054717332125
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "25",
+     "status": 200,
+     "seconds": 0.6620103474706411
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "28",
+     "status": 200,
+     "seconds": 0.830874240025878
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.8663427866995335
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "30",
+     "status": 200,
+     "seconds": 0.6678670439869165
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.6893753036856651
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "32",
+     "status": 200,
+     "seconds": 0.6647868547588587
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "33",
+     "status": 200,
+     "seconds": 0.8263470027595758
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.8247381374239922
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "37",
+     "status": 200,
+     "seconds": 0.21923633106052876
+    },
+    {
+     "template": "POST /api/compute:slider",
+     "instance": "39",
+     "status": 200,
+     "seconds": 0.795330299064517
+    },
+    {
+     "template": "POST /api/compute:slider-range",
+     "instance": null,
+     "status": 200,
+     "seconds": 0.006266959011554718
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "01",
+     "status": 200,
+     "seconds": 0.0027246493846178055
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "04",
+     "status": 200,
+     "seconds": 0.0027995947748422623
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "06",
+     "status": 200,
+     "seconds": 0.0027566812932491302
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "08",
+     "status": 200,
+     "seconds": 0.002757379785180092
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "09",
+     "status": 200,
+     "seconds": 0.0024795159697532654
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "12",
+     "status": 200,
+     "seconds": 0.0024785418063402176
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "14",
+     "status": 200,
+     "seconds": 0.002707280218601227
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "17a",
+     "status": 200,
+     "seconds": 0.002646785229444504
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "18",
+     "status": 200,
+     "seconds": 0.0026089362800121307
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "22",
+     "status": 200,
+     "seconds": 0.0028178133070468903
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "23",
+     "status": 200,
+     "seconds": 0.0023365169763565063
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "24",
+     "status": 200,
+     "seconds": 0.002252727746963501
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "29",
+     "status": 200,
+     "seconds": 0.002884458750486374
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "31",
+     "status": 200,
+     "seconds": 0.0025288090109825134
+    },
+    {
+     "template": "POST /api/compute:toggle",
+     "instance": "36",
+     "status": 200,
+     "seconds": 0.0024444200098514557
+    }
+   ],
+   "failures": [],
+   "details": {}
+  }
+ }
+}

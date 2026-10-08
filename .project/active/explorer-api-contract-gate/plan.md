@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** Draft
+**Status:** In Progress. Phase 1 complete at its hard stop; Phase 2 waits for the orchestrator's go-ahead.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -159,13 +159,13 @@ Also add one smoke test: `observe` on the existing compute fixture (`test_state_
 
 #### 1. `exploration/concept_explorer/website_contract/contract.py` (NEW) and `__init__.py` (NEW)
 
-- [ ] Module-level imports are standard library only. Import the server, FastAPI's `TestClient` and pydantic inside `observe`. This lets `python3 contract.py extract` run before any venv exists (Phase 3), and keeps `-I` path setup simple.
-- [ ] The request list as data, with every cite from Appendix A, plus `MAP_KEYS_READ = {}` and `LITERAL_READS` with its one `fit_grade` entry.
-- [ ] `observe(tree, concept_ids=None, skip=())`: build `create_app(base_dir=tree/"exploration/concept_explorer")` in a `TestClient` with `EXPLORER_SKIP_WARMUP=1`; send every request with `Origin: https://1cf.energy`; return raw 2xx bodies, statuses, response headers and per-template timings. Concept IDs come from the argument at check time and from the manifest at record time. Request instances are derived from the current responses. Order compute requests per concept. `skip` lets the replay drop compute templates.
-- [ ] `classify(openapi)`: map paths (objects whose `additionalProperties` is a schema object, never `true`), enum paths and their value lists. Resolve `$ref` and the `anyOf` that pydantic emits for Optional fields when walking.
-- [ ] `flatten(bodies, map_paths)`: path → set of kinds, using the absent semantics in decision 9. Only 2xx bodies are flattened.
-- [ ] `record(...)` → contract text, and `parse(text)` / `render(contract)`, per the grammar below.
-- [ ] `check(observation, contract)` → failure keys for Status (with decision 8), Shape (never for a path recorded only as null, absent or empty, N3), Unpopulated, Enum / Literal, Concepts and Coverage. Waivers, CORS and Files arrive in Phases 2 and 4.
+- [x] Module-level imports are standard library only. Import the server, FastAPI's `TestClient` and pydantic inside `observe`. This lets `python3 contract.py extract` run before any venv exists (Phase 3), and keeps `-I` path setup simple.
+- [x] The request list as data, with every cite from Appendix A, plus `MAP_KEYS_READ = {}` and `LITERAL_READS` with its one `fit_grade` entry. (`MAP_KEYS_READ` left out while empty; see Phase 1 notes.)
+- [x] `observe(tree, concept_ids=None, skip=())`: build `create_app(base_dir=tree/"exploration/concept_explorer")` in a `TestClient` with `EXPLORER_SKIP_WARMUP=1`; send every request with `Origin: https://1cf.energy`; return raw 2xx bodies, statuses, response headers and per-template timings. Concept IDs come from the argument at check time and from the manifest at record time. Request instances are derived from the current responses. Order compute requests per concept. `skip` lets the replay drop compute templates. (Built as `serve(base_dir)` plus `observe(client, concept_ids, skip)`, with headers kept from Phase 2; see Phase 1 notes.)
+- [x] `classify(openapi)`: map paths (objects whose `additionalProperties` is a schema object, never `true`), enum paths and their value lists. Resolve `$ref` and the `anyOf` that pydantic emits for Optional fields when walking.
+- [x] `flatten(bodies, map_paths)`: path → set of kinds, using the absent semantics in decision 9. Only 2xx bodies are flattened.
+- [x] `record(...)` → contract text, and `parse(text)` / `render(contract)`, per the grammar below.
+- [x] `check(observation, contract)` → failure keys for Status (with decision 8), Shape (never for a path recorded only as null, absent or empty, N3), Unpopulated, Enum / Literal, Concepts and Coverage. Waivers, CORS and Files arrive in Phases 2 and 4.
 
 **`contract.txt` grammar** (decision 1). UTF-8, LF line endings, a trailing newline, no timestamps. Tokens are separated by single spaces. A template is two tokens (`GET /api/concepts/{id}`, `POST /api/compute:slider`).
 
@@ -179,56 +179,57 @@ concepts <id> ...                           sorted
 list <name> = | <id> ...                    manifest, registry, tree, cost-landscape; "=" when equal to concepts
 coverage <template> <id> ...                findings, slider, toggle templates
 status <template> <code> ...                every template
-enum <EnumName> <value> ...                 values sorted
-literal <template> <path> <value> ...       the fit_grade entries
+enum <EnumName> <value>                     one line per value; the value is the rest of the line
+literal <template> <path> <value>           one line per allowed value; the value is the rest of the line
+map <template> <path>                       every schema map path of every sent template
 <template> <path> <kind>[,<kind>...]        body, sorted as plain strings
 ```
 
-- Header lines come in the order above (Appendix G's order, with `status` added for the Status rule).
+- Header lines come in the order above (Appendix G's order, with `status` added for the Status rule and `map` for check's map paths). Each group's lines are sorted as plain strings.
 - Kinds are written in a fixed order: `object,array,string,number,boolean,null,absent,empty`. An enum path writes `enum:<EnumName>` in place of `string`.
 - Paths: the root is `.`; record fields are `.a.b`; arrays add `[]` and maps add `{*}` to the segment they follow (`.concepts[]`, `.params{*}`, a root array is `.[]`).
-- Fail loudly if a record key, enum value or concept ID contains whitespace, `.`, `[`, `]`, `{` or `}`. A data-driven key like that most likely means a misclassified map.
+- Fail loudly if a record key or concept ID contains whitespace, `.`, `[`, `]`, `{` or `}`. A data-driven key like that most likely means a misclassified map. Enum and literal values may contain spaces (the pin's taxonomy enums do, e.g. `HTS (wound)`), so they only fail when empty, multi-line, or carrying leading or trailing whitespace.
 
 #### 2. Replay harness `.project/active/explorer-api-contract-gate/phase1/replay.py` (NEW, not shipped; decision 7)
 
-- [ ] **Selection** (decision 6): `git log --first-parent --since=2026-04-01 --format=%H f96ad312c -- exploration/concept_explorer/`. This finds 39 candidates as of `9dd752521` if you also exclude tests, static, templates and Markdown. Label each pair: *non-response* (diff touches only tests, docs, `static/`, `templates/`), *no parent tree* (the parent has no `exploration/concept_explorer/server.py`, e.g. `e5a2cb23e`), or a candidate.
-- [ ] **Extract** each commit's runtime paths that exist at that commit (check with `git ls-tree`; on the first-parent chain, `archive/concept_analysis_pre_rework` first appears at `7c639d73d`, 2026-06-04) using `git archive <sha> -- <paths> | tar -x -C <dir>`. Cache by SHA, delete when done. Each extract is about 21 MB.
-- [ ] **Side runner.** Each side runs in its own subprocess: `"$SCRATCH/venv/bin/python" -I -B`. With `-I`, the script's directory is not on `sys.path`, so the runner inserts the code root and the `website_contract` directory explicitly. Per-process caches make this necessary: `_load_model_module` (`server.py:182`), the `lib` helper import (`server.py:143-147`) and the `exploration.*` modules all stay loaded.
+- [x] **Selection** (decision 6): `git log --first-parent --since=2026-04-01 --format=%H f96ad312c -- exploration/concept_explorer/`. This finds 39 candidates as of `9dd752521` if you also exclude tests, static, templates and Markdown. Label each pair: *non-response* (diff touches only tests, docs, `static/`, `templates/`), *no parent tree* (the parent has no `exploration/concept_explorer/server.py`, e.g. `e5a2cb23e`), or a candidate.
+- [x] **Extract** each commit's runtime paths that exist at that commit (check with `git ls-tree`; on the first-parent chain, `archive/concept_analysis_pre_rework` first appears at `7c639d73d`, 2026-06-04) using `git archive <sha> -- <paths> | tar -x -C <dir>`. Cache by SHA, delete when done. Each extract is about 44 MB (measured; the 21 MB figure was a slip).
+- [x] **Side runner.** Each side runs in its own subprocess: `"$SCRATCH/venv/bin/python" -I -B`. With `-I`, the script's directory is not on `sys.path`, so the runner inserts the code root and the `website_contract` directory explicitly. Per-process caches make this necessary: `_load_model_module` (`server.py:182`), the `lib` helper import (`server.py:143-147`) and the `exploration.*` modules all stay loaded.
   - *Own-tree mode:* code root and tree are the commit's extract.
   - *Fallback mode*, only for data-only pairs (the diff stays within `data/` and `omit_list.yaml`) whose own tree won't load: code root is the `f96ad312c` extract, tree is the commit's extract, and `models._OMIT_LIST_PATH` (`models.py:632`) points at the commit's omit list. Both sides of a pair use the same mode. Note: `server.py:40` sets `_PROJECT_ROOT` from the code root, so helper imports come from `f96ad312c` in this mode. That doesn't matter, because compute is excluded.
   - Otherwise the pair is *unloadable*; record the first line of the error.
-- [ ] **Record the parent, check the child**, compute templates skipped, CORS rule off (older commits had no CORS), JS checks off. Write per pair: mode, failure keys by rule, diff size (`git diff --shortstat` over the response-capable paths), side timings.
-- [ ] **HEAD timing run:** own-tree at `f96ad312c` with compute included. Time app startup, each template (total and slowest request), and per concept the first compute call (module import plus forward) separately from later calls. Note the machine (`nproc`, CPU model).
-- [ ] **Identity checks:** `f96ad312c` against itself gives zero keys; the pin `10f7b9b` against `f96ad312c` gives zero keys (the first proof point).
-- [ ] Write `phase1/report.md`: one row per pair with mode, keys, judgment and cite.
+- [x] **Record the parent, check the child**, compute templates skipped, CORS rule off (older commits had no CORS), JS checks off. Write per pair: mode, failure keys by rule, diff size (`git diff --shortstat` over the response-capable paths), side timings.
+- [x] **HEAD timing run:** own-tree at `f96ad312c` with compute included. Time app startup, each template (total and slowest request), and per concept the first compute call (module import plus forward) separately from later calls. Note the machine (`nproc`, CPU model).
+- [x] **Identity checks:** `f96ad312c` against itself gives zero keys; the pin `10f7b9b` against `f96ad312c` gives zero keys (the first proof point).
+- [x] Write `phase1/report.md`: one row per pair with mode, keys, judgment and cite.
 
 #### 3. Judge, score and report
 
-- [ ] For each trip key, judge it against [Appendix C](design.md#appendix-c--what-the-pinned-javascript-reads-for-waiver-evidence) and the pinned JavaScript (`git show 10f7b9b:exploration/concept_explorer/static/js/<file>`): *real break* or *false block*, with a `file.js:N` cite. Concepts-rule trips are neither; count them separately.
-- [ ] Per pair, count the waiver lines a person would write for its false blocks, using Appendix E's one-token `*` wildcard.
-- [ ] For each trip, say whether its nearest container was recorded as a map or a record, and whether that classification was right.
-- [ ] Spot-check the 5 pairs with the largest diffs: compare the raw parent and child responses at the paths Appendix C lists as read, and confirm the rules let no break through.
-- [ ] Apply the pass line from [Validation Approach](design.md#validation-approach), all four conditions, and the floor of 12 replayable pairs. Replayable means own-tree or fallback with both sides run.
-- [ ] Resolve and record the check-mode `pytest` and `httpx` versions (decision 2).
+- [x] For each trip key, judge it against [Appendix C](design.md#appendix-c--what-the-pinned-javascript-reads-for-waiver-evidence) and the pinned JavaScript (`git show 10f7b9b:exploration/concept_explorer/static/js/<file>`): *real break* or *false block*, with a `file.js:N` cite. Concepts-rule trips are neither; count them separately.
+- [x] Per pair, count the waiver lines a person would write for its false blocks, using Appendix E's one-token `*` wildcard.
+- [x] For each trip, say whether its nearest container was recorded as a map or a record, and whether that classification was right.
+- [x] Spot-check the 5 pairs with the largest diffs: compare the raw parent and child responses at the paths Appendix C lists as read, and confirm the rules let no break through.
+- [x] Apply the pass line from [Validation Approach](design.md#validation-approach), all four conditions, and the floor of 12 replayable pairs. Replayable means own-tree or fallback with both sides run.
+- [x] Resolve and record the check-mode `pytest` and `httpx` versions (decision 2).
 
 ### Validation
 
 **Automated:**
-- [ ] Phase 1 tests pass in the scratch venv.
-- [ ] `test_cors.py` passes in the scratch venv (a baseline for later phases).
-- [ ] Both identity checks report zero failure keys.
+- [x] Phase 1 tests pass in the scratch venv.
+- [x] `test_cors.py` passes in the scratch venv (a baseline for later phases).
+- [x] Both identity checks report zero failure keys.
 
 **Manual:**
-- [ ] In a scratch copy of the `f96ad312c` extract, rename one field in one `data/<id>.json` the server passes through, then check it against the pin's contract. Expect a `shape` key for the old name. Delete the copy.
-- [ ] `phase1/report.md` exists, and every replayable pair has a mode and a judgment for every key.
+- [x] In a scratch copy of the `f96ad312c` extract, rename one field in one `data/<id>.json` the server passes through, then check it against the pin's contract. Expect a `shape` key for the old name. Delete the copy.
+- [x] `phase1/report.md` exists, and every replayable pair has a mode and a judgment for every key.
 
 ### Hard stop
 
 Whatever the result, stop here.
 
-- [ ] Fill **Phase 1 Results** in Implementation Notes: per-rule trip counts, false-block rate, replayable-pair count, mode per pair (or a pointer to the report table), compute timings, the pass-line verdict per condition, and the chosen tool versions.
-- [ ] Commit the core, the Phase 1 tests, the harness and the report.
-- [ ] Report to the orchestrator: pass, fail or inconclusive, the false-block rate, and anything that surprised you. Then end the session.
+- [x] Fill **Phase 1 Results** in Implementation Notes: per-rule trip counts, false-block rate, replayable-pair count, mode per pair (or a pointer to the report table), compute timings, the pass-line verdict per condition, and the chosen tool versions.
+- [x] Commit the core, the Phase 1 tests, the harness and the report.
+- [x] Report to the orchestrator: pass, fail or inconclusive, the false-block rate, and anything that surprised you. Then end the session.
 - [ ] Do not start Phase 2 until the orchestrator records a go-ahead in Implementation Notes. The orchestrator reports the false-block rate to the owner before Phase 2 starts.
 
 **What We Know After This Phase:** whether the gate's rules are usable on real history, whether compute fits, and that the core gives zero failures where the API is unchanged.
@@ -627,22 +628,97 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 
 ## Implementation Notes
 
-[TO BE FILLED DURING IMPLEMENTATION]
-
 ### Phase 1 Results
 
-**Completed:**
-**Replayable pairs:** (count; floor is 12)
-**Mode per pair:** (own-tree / fallback / unloadable / non-response / no parent tree; table in `phase1/report.md`)
-**Per-rule trip counts:** Status · Shape · Unpopulated · Enum/Literal · Concepts · Coverage
-**False-block rate:** (pairs with a false block ÷ replayable pairs that don't add a concept)
-**Max waiver lines in one pair:**
-**Misclassified map/record trips:**
-**Spot check of 5 largest diffs:**
-**Pass-line verdict:** (each of the four conditions, then pass / fail / inconclusive)
-**Compute timings at `f96ad312c`:** (startup; per template; per-concept first call vs later calls; machine)
-**Check-mode tool versions:** pytest== · httpx==
+**Completed:** 2026-10-08. Full evidence is in [`phase1/report.md`](phase1/report.md), with raw data in `phase1/results.json`, `phase1/identity.json` and `phase1/spotcheck.json`.
+
+**Replayable pairs:** 28, against a floor of 12.
+
+**Mode per pair:** own-tree 28, fallback 0, unloadable 10, non-response 1, no parent tree 1. The per-pair table is in the report.
+- All 10 unloadable pairs fail with `UnicodeDecodeError`. Between `df8f6ccf1` and `02124c13a` (2026-06-08 to 06-15), `concept_registry.json` held stray Latin-1 bytes, and every server version reads it under the locale's UTF-8.
+- The two data-only pairs in that window tried fallback mode and failed the same way.
+
+**Per-rule trip counts**, in keys and pairs over the 28 replayable pairs:
+- Status: 6 keys in 3 pairs.
+- Shape: 7 keys in 5 pairs.
+- Unpopulated: 7 keys in 4 pairs.
+- Enum: 1 key in 1 pair. Literal: 0.
+- Concepts: 125 keys in 9 pairs (`concept-missing` 41, `concept-unlisted` 84).
+- Coverage: 1 key in 1 pair.
+
+**False-block rate:** 4 of 23 = 17%. The 23 are the replayable pairs that don't add a concept. The four false-block pairs are `fd76070c2`, `7c639d73d`, `8d597849b` and `22e15bd07`.
+- One judgment swings this. `e553f70e1`'s `status GET /api/cost-landscape` is judged a replay artifact: the route didn't exist at the parent, and the 10f7b9b request list is newer than that parent. Counted as a false block instead, the rate is 5 of 23 = 22%.
+- Ignoring the concept-adding exclusion, 8 of 28 pairs carry a false block.
+- No false block appears after 2026-06-08.
+
+**Max waiver lines in one pair:** 2 with the one-token wildcard, in `fd76070c2` and `8d597849b`. Written without wildcards, `fd76070c2` needs 4.
+
+**Misclassified map/record trips:** none. Every shape-type trip sits under a correctly classified record, and no `{*}` path tripped.
+
+**Spot check of 5 largest diffs:** the pairs were `f84b36afb`, `7c639d73d`, `c36b7201e`, `8d597849b` and `8e2808860`. No crash-type break or dead link got through. Two silent content losses of kinds the design already names got through:
+- In `c36b7201e`, 33 concepts' `narrative` went null. This is the B1 union residual.
+- In `f84b36afb`, 148 parameter names left a stale on-disk `parameter_index.json`. The pinned page tolerates the 404s, and today's server can't produce this.
+
+**Pass-line verdict:** pass, narrowly.
+1. False-block rate: pass at 17%. It fails at 22% if the artifact counts.
+2. Waiver lines: pass, at most 2.
+3. Misclassification: pass, none.
+4. Spot check: pass, with the two named residuals above.
+5. Floor: pass, 28 pairs against 12.
+
+**Compute timings at `f96ad312c`** (Intel i7-9750H, `nproc` 12, four runs):
+- App startup: 0.40–0.45 s.
+- Non-compute requests: 1.1–1.4 s. Findings is the slowest template at about 1.0 s total, 0.06 s for its slowest request.
+- First compute call per concept: 33 concepts, 24.3–25.1 s total, median 0.80–0.83 s, max 0.94 s. This is nearly all `model_setup.py` import.
+- Later compute calls: about 3 ms each, 0.04 s for all 16.
+- Whole observe with compute: 25.6–26.4 s.
+- Projection to a GitHub runner, using 2× observe plus Appendix F's upper bounds: about 2.6 minutes.
+- Trimming toggle bodies would save about 0.05 s, so no trim is indicated.
+
+**Check-mode tool versions:** `pytest==9.1.1`, `httpx==0.28.1`. These were resolved in the scratch venv alongside `requirements-serve.txt`: Starlette 1.3.1, FastAPI 0.137.1.
+
+**Changes made:**
+- `exploration/concept_explorer/website_contract/__init__.py` and `contract.py` (new). Contents:
+  - the request list with cites (`REQUESTS`, `JOINED_LISTS`, `LINKED_LISTS`, `LITERAL_READS`);
+  - `serve`, `manifest_concept_ids` and `observe`;
+  - the derivation helpers `page_sliders` and `sends_toggle`;
+  - `flatten`, `classify` and `record`;
+  - `render` and `parse`;
+  - `check` and its rule functions.
+- `exploration/concept_explorer/tests/test_website_contract.py` (new): five tests.
+  - the plan's two stencil tests;
+  - an observe smoke test on the compute fixture, asserting every template's statuses;
+  - an unchanged-server identity test on the fixture;
+  - a test of `page_sliders` against the tornado rules.
+- `.project/active/explorer-api-contract-gate/phase1/` (new): `replay.py` (subcommands `pairs`, `identity`, `spotcheck`), `side.py`, `report.md` and the three JSON results.
+- Validation:
+  - `test_website_contract.py` plus `test_cors.py`: 32 passed in the scratch venv.
+  - All three identity runs gave 0 keys: `f96ad312c` vs itself with compute, and pin vs `f96ad312c` with and without compute.
+  - Rename test: renaming `model_type` in `data/04.json` gave `shape … .model_type` on the concept and manifest templates, plus slider and toggle coverage keys for 04. Renaming `label` in `decision_tree.json` gave `shape GET /api/taxonomy/tree .root.children[].label`.
+  - `ruff check` is clean on the shipped files.
+
 **Issues / deviations:**
+- **Grammar slip, fixed above: enum values carry spaces.** The pin's taxonomy enums include values like `HTS (wound)`, `~1 Hz` and `N/A (no tritium)`. The plan's "fail on whitespace in an enum value" would have failed on the pin itself.
+  - `enum` and `literal` lines are now one value per line, with the value as the rest of the line.
+  - The strict character check applies to record keys and concept IDs only.
+- **Grammar slip, fixed above: map paths need their own lines.** The design says check reads its map paths from `contract.txt`, but the grammar had no line for them. Deriving them from `{*}` body lines misreads a map the pin only ever sent empty: an unchanged empty map would report `unpopulated`. `map <template> <path>` lines now carry them.
+- **For Phase 3: Appendix B's six maps are seven.** The `POST /api/state` response is declared `dict[str, str]`, so the design's rule records it as a map (`POST /api/state:* .{*}`). Phase 3's "`{*}` paths equal Appendix B's six fields" test needs that entry.
+- **For Phase 2: N4 doesn't fit an unread path.** N4 (an Unpopulated waiver must cite JS that reads the path) can't be satisfied literally for a path nothing reads, such as `cost_model.cas71` in `fd76070c2`. Consider wording it as "the JS that reads the path or its parent".
+- **`observe` split into two steps.** `serve(base_dir)` is a context manager yielding the TestClient, and `observe(client, concept_ids, skip)` sends the requests. Record gets its IDs from `manifest_concept_ids(client)`; check passes the contract's IDs. This replaces the plan's `observe(tree, concept_ids=None, …)`, whose `None` would have chosen between two ID sources. The caller now makes that choice.
+- **Left out until a reader exists.**
+  - Response headers: Phase 2's CORS rule adds them to `Response`.
+  - `MAP_KEYS_READ`: empty at this pin (Appendix B), and an empty table with no rule reading it would be dead code. The first cited literal map-key read adds both.
+- **Interpretations of the derivation rules.**
+  - A concept counts for `POST /api/compute:slider` only if its slider map is non-empty, beyond Appendix A's costingfe and sensitivities gate. Otherwise a concept whose ranges all vanished would still qualify, and Coverage would miss its lost sliders.
+  - Findings coverage tests for truthy HTML (`concept_page.js:844-857`), not just non-null.
+  - Derivation reads response fields defensively (`.get`, type checks), so a shape break reaches the rules as a failure key instead of crashing `observe`.
+- **"Data-only" for fallback eligibility** counts non-response paths too (explorer tests, docs, static, templates and unserved Markdown), since fallback uses the commit's own tree for those.
+- **Selection labels.** Everything outside those non-response paths counts as response-capable, including all of `concept_analysis`.
+- **Not measured, as the plan expected.**
+  - 27 first-parent commits since 2026-04-01 touch only `concept_analysis` or the archive. 19 of them touch served files (`analysis.md`, `synthesis.md`, `archetype_fit.csv`, `model_setup.py`).
+  - `1costingfe`-upgrade compute shapes (N8).
+- **Scratch.** Extracts and runs were built under `/tmp/eacg-phase1` and deleted at the end of the session.
+
 **Orchestrator go-ahead for Phase 2:** (date, and what the owner was told)
 
 ### Phase 2 Completion
