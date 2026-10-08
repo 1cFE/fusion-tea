@@ -26,19 +26,20 @@ Verifiable on this branch:
 - [ ] A fusion-tea change that would break the website's concept explorer fails the gate. "Would break" covers at least:
   - removing or renaming a response field the website's frontend reads, changing its type, or making it null where the frontend expects a value;
   - changing a path, method or request-body field the frontend sends, newly requiring one, or rejecting a value it sends today (the comparison page sends `current_concept_id: null` and `timestamp: ""`);
-  - no longer serving one of the website's concept IDs;
+  - no longer serving one of the website's concept IDs, or serving a concept the website doesn't list (the pinned frontend links every served concept, and the website has no page for it, so it shows a dead link);
   - removing a website origin from the CORS allowlist.
 
   Each case has a kept self-test that makes the break deliberately and shows the gate's command failing, so the evidence survives later re-pins.
-- [ ] Additive changes pass: a new response field, a new optional request field, or a new concept the website doesn't list yet.
+- [ ] Additive changes pass: a new response field or a new optional request field.
 - [ ] The gate is a GitHub Actions workflow that runs on every push to `main`, with no path or branch filter that could skip a run, because a skipped run never blocks. It is green on this branch's head.
-- [ ] The gate workflow finishes in under 5 minutes on a GitHub-hosted runner, so it adds at most that to each deploy.
+- [ ] The gate's steps, timed locally, project to under 5 minutes on a GitHub-hosted runner, so it adds at most that to each deploy.
 - [ ] When the website re-pins to a newer fusion-tea commit, a written step moves the gate's contract to the new pin, and a person can follow it without reading the gate's code.
 - [ ] `RUNBOOK.md` covers the gate: how a skipped deploy looks in Railway, how to get a deploy out after fixing the failure, and how to turn "Wait for CI" on and off.
 
 Owner acceptance after merge (needs owner-only steps):
 
 - [ ] After the owner turns on "Wait for CI", Railway shows a push to `main` waiting on the gate, then deploying once it passes. Turning the setting on doesn't hold back the first deploy, because the gate is green on the merge commit.
+- [ ] On its first pushed run, the gate finishes in under 5 minutes on a GitHub-hosted runner.
 - [ ] Optional: one deliberate break on a pushed scratch branch fails the check in GitHub.
 
 The failure path on `main`, a failing push being skipped, is never observed, since nobody should push a break to production. It rests on Railway's documented behavior.
@@ -76,7 +77,6 @@ The failure path on `main`, a failing push being skipped, is never observed, sin
 - **ADR for the FR-6 change.** Whether to record the change to hosting FR-6 as an ADR (`.project/scripts/adr.sh new`).
 - **How the contract is derived.** Candidates: the API's response schemas at the pin (9 of the 11 website endpoints have pydantic response models), the fields the pinned JavaScript reads (listed by hand or extracted), or both. Optional fields in a schema accept null, so a schema alone misses the null case in success criterion 1. Under the false-block decision above, design shows how it knows the contract misses no field the pinned JavaScript reads. Also whether to run the same contract against current `static/js`.
 - **Concept illustrations.** The website loads them from `concepts.1cf.energy/static/images/concepts/<illustration>` (pinned `concept_page.js:124`, `index_page.js:108`). Today every `illustration` in `data/` is null and `static/images/` doesn't exist, so nothing depends on it yet. Design decides whether the contract checks that a non-null illustration resolves.
-- **New concepts.** Pass silently, or pass with a visible notice that the website needs a re-pin.
 - **Depth for `POST /api/compute` and `POST /api/state`.** Compute needs `1costingfe`. The serving set's numpy-only build should make that practical in CI.
 - **Gate environment.** Recommendation: the serving dependency set (`requirements-serve.txt`) plus test tools, so the gate tests what Railway ships. The full project environment is heavier and its lock is not regenerable (BACKLOG row "`uv.lock` on main is not regenerable").
 - **Branch protection on `main`.** Whether to also require the check before merge. That is a separate GitHub setting from "Wait for CI".
