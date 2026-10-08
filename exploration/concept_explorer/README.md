@@ -714,7 +714,7 @@ fusion-tea main ──push──► Railway service "1cfe-fusion-tea-explorer"
 
 The website runs JavaScript from an older commit against the current API. It keeps working only while these hold:
 
-- **API response fields.** The pinned JavaScript calls `/api/manifest`, `/api/concepts/{id}`, `/api/concepts/{id}/findings`, `/api/compute`, `/api/cost-landscape`, `/api/parameter_index`, `/api/parameters/{name}`, `/api/state` (GET and POST), `/api/taxonomy/tree` and `/api/taxonomy/registry`. Adding fields is safe. Removing or renaming a field that JavaScript reads breaks the website, while `concepts.1cf.energy` keeps working because it serves the new JavaScript.
+- **API response fields.** The pinned JavaScript calls `/api/manifest`, `/api/concepts/{id}`, `/api/concepts/{id}/findings`, `/api/compute`, `/api/cost-landscape`, `/api/parameter_index`, `/api/parameters/{name}`, `/api/state` (POST only), `/api/taxonomy/tree` and `/api/taxonomy/registry`. Adding fields is safe. Removing or renaming a field that JavaScript reads breaks the website, while `concepts.1cf.energy` keeps working because it serves the new JavaScript.
 - **CORS allowlist.** `_ExplorerApp` in `server.py` allows browser calls from `https://1cf.energy` and `https://static.1cf.energy`. `tests/test_cors.py` covers it.
 - **Served concept IDs.** The website builds one page per concept from a hardcoded list of 37 IDs (`src/data/concepts.mjs` in the website repo). Dropping a concept from this app leaves a website page whose API calls fail. A new concept gets no website page until that list and the pin are updated.
 
