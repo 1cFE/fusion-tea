@@ -1,0 +1,453 @@
+{
+  "entry_commit": "998a67e98",
+  "original_failures": 44,
+  "original_node_outcomes": {
+    "passed": 42,
+    "owner_authorized_retirement": 2
+  },
+  "outcome_counts": {
+    "passed": 357,
+    "skipped": 41
+  },
+  "duration_seconds": 332.732,
+  "attributions": [
+    {
+      "original_node": "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_all_concepts_within_tolerance",
+      "original_kind": "FAILED",
+      "current_node": null,
+      "outcome": "owner_authorized_retirement",
+      "reason": "Obsolete normalized corpus calibration snapshot; current component arithmetic and normalization properties remain tested."
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_corpus_mean_drift_under_threshold",
+      "original_kind": "FAILED",
+      "current_node": null,
+      "outcome": "owner_authorized_retirement",
+      "reason": "Obsolete normalized corpus calibration snapshot; current component arithmetic and normalization properties remain tested."
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]",
+      "original_kind": "FAILED",
+      "current_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]",
+      "outcome": "passed"
+    }
+  ],
+  "tested_source_hashes": {
+    "tests/scoring_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/scoring_v2/conftest.py": "9d787d7e3040e58e9f6f950e6bd0af4ac6fada0af4bac7a0abad105e48d4d5cf",
+    "tests/scoring_v2/test_cost_model.py": "491c3cbde98fca6e555db883aae9549941e61553df812bafffe56b7269a53a2d",
+    "tests/scoring_v2/test_customization.py": "7a0ba0b92181b7e3a7f8e656ab7c30b060a3d1d63202d427e86944fddd51ddb6",
+    "tests/scoring_v2/test_data_availability.py": "fd391f2fa45938d2942d41b094746bee84c0318578f186d12ea7ac2d09667c46",
+    "tests/scoring_v2/test_extract.py": "8bdb1a7c41986d1b9a78192999405e5f9b3291f8efa0ef01c100443397dec218",
+    "tests/scoring_v2/test_modularity.py": "1aa7ffb6eb030867182b53b6d6c40e6366bc6412f6a9a4c7682fe0234883074c",
+    "tests/scoring_v2/test_normalization.py": "2c7cdc2f4b1cd4a1bd0dce0c36b334cccd2332779aa643362e8b78af8da107b5",
+    "tests/scoring_v2/test_plant_complexity.py": "9f9d6d57a71410aeef34e91fe21ae8d3a647a198d8e390ea007cff5d93946ec5",
+    "tests/scoring_v2/test_score_explorer_build.py": "f0342e391565c2c3d51e7cccb64f474bfb36eacb1ecb1d2873055d1fa78e29d6",
+    "tests/scoring_v2/test_score_framework.py": "8fb1b2c4b276af92c7c2e8f511b88a459ddc2473a128c01526a857ac234cfc68",
+    "tests/scoring_v2/test_spec_conformance.py": "6f09d1b4a9a317d7319e5bd204bf2e92e468ddb703342a536439e5bf087b6869",
+    "tests/scoring_v2/test_supply_chain.py": "59172d7b6664b398e55d174cf49cd55e785cba70e581204555478d56b93d2190",
+    "tests/scoring_v2/test_technical_feasibility.py": "91a73540340c9e94951bac8c0ab796165297bfc8b19961cebcf241d853fb1e29",
+    "tests/scoring_v2/test_upper_cf.py": "7869dccdaffdfe4ff0f9b11d4743cb2d9c86886d40d18404edc54af29759642e"
+  },
+  "protected_paths_verified": 84,
+  "protected_hashes": {
+    "CLAUDE.md": "215376ff7ad32e400e8e786fc005e397f782ed198251b0ec7cd81770e9cf9e6f",
+    "exploration/concept_explorer/README.md": "b017d8609a0fbd66eefb54cdbce34ef8177a52ec4977e5f34ea231e0e39ecd42",
+    "tools/score_explorer/data/weights.json": "f7e868913d0b1c30cc92522a3ece91c8f845b613799b85172aeefe8da92d2e9a",
+    "tools/score_explorer/data/concepts.json": "915d63d7d55fa3ff2035d587e3fcb92eed6b88299d0f6d8ff7c6f4d9742fccb3",
+    "exploration/scoring_v2/schema.yaml": "373a3dbdab7802de2efcf47d4779951de5cfa050aacb58a07bb0da02e1069ce3",
+    "exploration/scoring_v2/lookup_customization.yaml": "34d5e3607ab2777619cb3ea094291e091ef2d173ae19d9ac4ba82f08db86202a",
+    "exploration/scoring_v2/lookup_bottlenecks.yaml": "cb5ee16379dc6c317aefac8d1d947a959a27259a87dfda2c6a0e17c911691bc9",
+    "exploration/scoring_v2/lookup_modularity.yaml": "16ebd94a08c03e48ea4f2ab9a536c8afefec404ac0b3d92bf8986047bdb35698",
+    "exploration/scoring_v2/lookup_triple_product.yaml": "4de89f6780664baa82d61931d19df174cde815ac51840e2df0c4c3f8696e6225",
+    "exploration/scoring_v2/lookup_upper_cf_penalties.yaml": "a0b5e977933ec9ca74c0ddf16b9dd73b99f1e2c27848ebc0dcb7710c4bdee6c2",
+    "exploration/scoring_v2/lookup_plant_subsystems.yaml": "60fa2a2a56d8191eaf7a0794499b13ab5ff71b69b1e0da9ee8d289a5fca2d269",
+    "exploration/scoring_v2/features/25-heavy-ion-beam-icf.yaml": "161c2a9ead2f0442cac0dc5fe5ad430b77169ac85f1396d8a8917eca52b3b599",
+    "exploration/scoring_v2/features/36-helical-coil-stellarator.yaml": "93604ea2f83e70438d888a664e773de954cb214d9c823c99e6b0cf9191b8c26f",
+    "exploration/scoring_v2/features/29-negative-triangularity-tokamak.yaml": "be354cc5e3242b7b1d29408c192c78a367e6dba09082ae930a13bcd49ae2dd54",
+    "exploration/scoring_v2/features/20a-type-one-stellarator.yaml": "926a28f24657ba96b5c69bec79baad53f1988c41fdd1c07b9864173bb282856c",
+    "exploration/scoring_v2/features/26-laser-icf-indirect-drive.yaml": "243de76dd185b7c80fa34ea0b13f66b544293f8dacbfd97f745732a19bfe0a08",
+    "exploration/scoring_v2/features/11-magnetic-mirror.yaml": "b133a39ccdf402572ee8fd777479565fa728edf7bf7f2cf6e92e683f3cab8a7b",
+    "exploration/scoring_v2/features/02-acoustic-icf-sonofusion.yaml": "74672480d1796a403290092af8ba4b6b458d904b2bcea3946df0353443fe9314",
+    "exploration/scoring_v2/features/33-state-backed-tokamak-best.yaml": "e7bc0e96873d19b0e07ef645da011d089e664c881458654383d82ad0b1a3b8f7",
+    "exploration/scoring_v2/features/04-laser-icf.yaml": "424e6f482b548b321ece293fff2d8044b1f76356523d0b250e0a78c88db215e9",
+    "exploration/scoring_v2/features/03-laser-icf-liquid-jet-target.yaml": "9ff8f00c56cd08b73a264ce86fa9c8581265b1c8bb107d097b4e1c3c8a885e82",
+    "exploration/scoring_v2/features/24-dense-plasma-focus.yaml": "35ff12b22ecd85628838ba072e8e86094382e0f401ffc325da26c4f8ff873e9f",
+    "exploration/scoring_v2/features/08-frc-w-direct-conversion.yaml": "99da21a014ebd50e3df11567340d0b51d587cb5383b31dddd3e159185e9b929e",
+    "exploration/scoring_v2/features/19-orbital-levitated-dipole.yaml": "b87792b483e85b1cc2151c8cf86fdbc2bc5e1830f1a0031c35a005b62f17e6ff",
+    "exploration/scoring_v2/features/18-p-b11-frc.yaml": "ed882ecd745ce12b1e0155b30dec177f501c1d0e80bde0280e70346497138fd3",
+    "exploration/scoring_v2/features/30-laser-icf-nif-commercialization.yaml": "89f6810aced2d512cfd432cfbaed7e2939f4137b90629ef7152e5c583bf23624",
+    "exploration/scoring_v2/features/28-hts-tokamak-full-hts.yaml": "e3e7ac00d79e7d87fe265b1a460d3f2254bfdd7ecfb7792960218e7f80280c6b",
+    "exploration/scoring_v2/features/37-magnetized-target-inertial-fusion-mtif.yaml": "ab20b408e3e62463813855c5c9753696e7f84fe6dcd5b71d2caf841f14f537a5",
+    "exploration/scoring_v2/features/13-electrostatic-hybrid.yaml": "9a6304c1376779fb2714672efd3e1edd3be58b501fa1adc300a2c0cbfb92318e",
+    "exploration/scoring_v2/features/14-magnetized-target-fusion-pneumatic-compression.yaml": "ed570a30a7b6ce8ebc0e40a63ef785d2dabda958bf1a09deec81a27513575087",
+    "exploration/scoring_v2/features/12-levitated-dipole.yaml": "cffbfe5ba2d9e8d5e9c143ec5f1bb0c9b3127b97ced8e5f084d94ad34a56451b",
+    "exploration/scoring_v2/features/17b-laser-icf-fast-ignition.yaml": "fec271314cfe3e74db362c0b73ba6876e93befedec121ff60dd3ec5b7b916109",
+    "exploration/scoring_v2/features/07-maglif.yaml": "5a8683a3493eb647c95aed6f154bf3a447f8c9c425bcaa73640ffd4a3775d48a",
+    "exploration/scoring_v2/features/32-laser-icf-french-national.yaml": "b585bad9485331377039f0b617e5bbf5b55adc221dd89940e13d73081fa576f1",
+    "exploration/scoring_v2/features/38-particle-accelerator-driven-fusion.yaml": "7f8231fdae0affbcd25405871774f022d73294a18e13fa5871bcc68eafe0678f",
+    "exploration/scoring_v2/features/15-sheared-flow-stabilized-z-pinch.yaml": "c2a906c52b031a710c198fbf11c1a65ee7fc4d51faaa97db8a5a89077c5b99e5",
+    "exploration/scoring_v2/features/20b-renaissance-stellarator.yaml": "ed44a7ead99a2d7e53b9392b1833a34c3b4a4c6b1d0e69d1ee72524896d6fc30",
+    "exploration/scoring_v2/features/21-spherical-tokamak-hts.yaml": "74b28995edffb1f16b756b1424bb317d72e801a3235eb7e5aacec202ba3934d3",
+    "exploration/scoring_v2/features/10-large-scale-stellarator.yaml": "0b4606c5fb457221eb286f7936b4bef41557ca78ada8a5196ee876862fe30fd0",
+    "exploration/scoring_v2/features/22-projectile-icf.yaml": "4862cd58fae333fa688104260979077a1554679f93b710928133972285285a98",
+    "exploration/scoring_v2/features/23-laser-icf-nanostructured-target.yaml": "af5c07ffcab1fd5088f1589dafa3e62b3f27014e0b31b6b55bd5231ce1a12f94",
+    "exploration/scoring_v2/features/16-muon-catalyzed-fusion.yaml": "daa91d66fc1c52f03c89c6bdfeada1d809c6f54742d8b8bcfdb72265d0e4c64f",
+    "exploration/scoring_v2/features/17a-laser-icf-hybrid-drive.yaml": "80516fd253680c23f8cf801d5efce274490491fe0b5e8b23fe40358f9a2cc4fb",
+    "exploration/scoring_v2/features/27-polywell.yaml": "8a453b2ebfb60b0f3eaed6257b784156fa8b958144f3b79aa6cb0e3e621ee841",
+    "exploration/scoring_v2/features/35-polomac-magnetic-confinement.yaml": "da63d98ca78752b8cb6e3453f6c8b65fd9652f2ee3369c233b26b70aee2b90cd",
+    "exploration/scoring_v2/features/31-laser-icf-oec-architecture.yaml": "27974e3a30fdee6d52a1652ab0f4597fd34b02c4c7b3ef6f33407d2460ad9fd6",
+    "exploration/scoring_v2/features/09-qi-stellarator-hts.yaml": "2e184d4db51b3701ce0081ba2b19cbd78b947185fc2f79612dda896745b2c899",
+    "exploration/scoring_v2/features/05-planar-coil-stellarator.yaml": "8e7dbebe4e6eb51b9dabcf64ed44d8bedb0f56378c19eb0a1200e7c46d6fe9cb",
+    "exploration/scoring_v2/features/01-hts-compact-tokamak.yaml": "d7ab91c7b3d4b610c5c725d16aa7146af443ff4800c7bf2633ecfd11ec587023",
+    "exploration/scoring_v2/features/39-spherical-tokamak-cs-free-p-b11.yaml": "b60ebc20ca039f13063c5b39f3f877eae996808d956fcdca57821e46481c87f6",
+    "exploration/scoring_v2/features/06-magnetic-mirror.yaml": "c68fe757888669d46711819701ae042c71d388c38cbf7b9f66b58a6f12831df6",
+    "exploration/scoring_v2/weights/default.yaml": "8dd232f7df51d12e12ff1a238553158171cd62b829df140eee45d5365cac09b0",
+    "exploration/scoring_v2/scores/table.csv": "079cd4620e75ac481eb75ea9ef3a83d654dd9c7227ab525ff52436f017f6732c",
+    "exploration/concept_explorer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exploration/concept_explorer/similarity.py": "74c662857c9a2351475717fe1edf8991272fcc3a1798cef60bac5b7d9727850d",
+    "exploration/concept_explorer/findings.py": "3b92d8b29dd874fa4c7d9699d2c50ed8d7bcaeb738edf8804e276abec2535ba9",
+    "exploration/concept_explorer/extract_explorer_data.py": "19ed7822ef2ab623211ef3f2763a404189917448e96952f1b4bcd37af7db9566",
+    "exploration/concept_explorer/seed_registry.py": "7c1fdfc4fd9b2f096ee4d077609f12978e971488964636e81dded108ba76223f",
+    "exploration/concept_explorer/taxonomy_models.py": "b774b93e4ef9e8109ab3ded1b8c4947cf6c43ddf5d90f9eff2c976a19780ad4d",
+    "exploration/concept_explorer/models.py": "a26a6585f1b9f2b6c4de027e4d5da6a19b75d5a0842c3b2df96f97dcd77da086",
+    "exploration/concept_explorer/server.py": "5df63b0ee46f156448294aaeee722ad77804fcca59913c4bb0b8dbf57135635e",
+    "exploration/concept_explorer/tests/test_taxonomy_models.py": "88bed2bf38ef7152dcac751b7c0e38195a91159623bcb72cbeed9eb6cd9c4a30",
+    "exploration/concept_explorer/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exploration/concept_explorer/tests/test_model_setup_resolution.py": "470c9b65220266aa6cce4105fccb59753d7831e23dad8a7888a2e74dac46a9fc",
+    "exploration/concept_explorer/tests/test_slider_override_semantics.py": "b8ba4d47ea4a8e36ae6a414d00136ad814cb11f95848a6c765f6742d48403474",
+    "exploration/concept_explorer/tests/test_similarity.py": "ec188b95280ef4ceadab4a2d0d92c7c0ed82cc88bae5d2e199ba7969c7afa7ef",
+    "exploration/concept_explorer/tests/test_palette.py": "b1bcce7f77339cb7815dba7b843552ad2a85a2e0f786208a8ad403f383b533b4",
+    "exploration/concept_explorer/tests/test_extraction.py": "5383ea476c56dfc6233e57c18221b8575a857e5285a7ef2924b6b4d15cc6913a",
+    "exploration/concept_explorer/tests/test_models.py": "4e86fbb374e664378425c7288da8b0b60a69927407e367d5272119bd8c25dc68",
+    "exploration/concept_explorer/tests/test_identity_frontend.py": "60541f20c8b714c29992d83d495609d73fc26cfdcaec1f02c276b41c509f8e7e",
+    "exploration/concept_explorer/tests/test_identity.py": "022e4b5683f593b9831155a7492968bfb998999dd0e3f950cd46b7a2c6fce521",
+    "exploration/concept_explorer/tests/test_state_and_compute.py": "eccda0d39422411b4a6b622e81ee56df2afee677e4aba395f452648c9e6e683d",
+    "exploration/concept_explorer/tests/test_integration_manual.py": "4237e3e5862911a5b63742bc73b146fcaaf413fa8a90dd5b51703b03aa2098cc",
+    "exploration/concept_explorer/tests/test_matrix_frontend.py": "135d96d64d65c48923e18b667ccf3090f79e570b4a6bf210691d75932f531e29",
+    "exploration/concept_explorer/tests/test_server.py": "017f60db140519a581d08b536fc8253cd241277568316ed43d695c11a82d13aa",
+    "exploration/concept_explorer/tests/test_views_manual.py": "ce53627377e6476c87f28299bf1dab00b7557493cad599802dc2523f3cf1a735",
+    "exploration/concept_explorer/tests/test_taxonomy_server.py": "bf976fd52b6ab4c5dfa1d93fea8bcaf50b8982d8554995cdead752a0271727ff",
+    "exploration/concept_explorer/tests/test_extract_adapter.py": "01da9a4b523f12abfb14340d2d8aa3b032193c27f08dbbd772a7263d3cc36c7f",
+    "exploration/concept_explorer/tests/test_cost_landscape_api.py": "b618bf053e12990e1969acbc214e635680e289fbba43d64c93052e05ab13e214",
+    "exploration/concept_explorer/tests/test_caveat.py": "1806d13d580d2567c504847248f651bb1d811731d0d2c72a6713dfb39165c446",
+    "exploration/concept_explorer/tests/test_cost_landscape_decomposition.py": "001febe614f7ce74ea1f4cd22fdcb561fe075421b203127ae27bd8e5a356d448",
+    ".project/backlog/BACKLOG.md": "1998383713887fb754ec52a9851535ef3c16d0e143c9d98aa4ddbb964e093b26",
+    ".project/active/explorer-api-contract-gate/product-lens.md": "1e5f9c6ca929fceaebfffd6c19f0ea360165fc0719a8ab40c1cad4c47cb87661",
+    ".project/active/explorer-api-contract-gate/spec.md": "c40b4d35c44f0c9c3de1872aadb03a35e28c29444bcf3291a1664a38aed4c4bc"
+  },
+  "artifacts": [
+    {
+      "path": "/tmp/20261008-scoring-suite.xml",
+      "sha256": "012ed9df282e1d5147c5ea124cc0af9138ffa10f1896474e7f33d162c9eb7e2c",
+      "bytes": 74075
+    },
+    {
+      "path": "/tmp/20261008-scoring-suite.log",
+      "sha256": "8fa71abc1bac33be886606f93afd9a4296b6499168139f1c347591cb457c6acc",
+      "bytes": 6176
+    },
+    {
+      "path": "/tmp/20261008-scoring-protected-hashes.json",
+      "sha256": "0169cfb44343d41de9df957e1f209614e355f1880b5a4509bcdf43f47ef1b965",
+      "bytes": 10868
+    }
+  ],
+  "command": "bash /tmp/fusion-tea-study-repair-tests.sh -q -ra --tb=short --junitxml=/tmp/20261008-scoring-suite.xml tests/scoring_v2",
+  "limitations": [
+    "Full scoring suite only; no fresh full-repository gate.",
+    "Eight recorded comparison-candidate failures and repository-wide style policy remain pending.",
+    "Published scoring data and explorer API are preserved; no regeneration or deployment claim."
+  ],
+  "additional_retired_obsolete_nodes": [
+    "tests/scoring_v2/test_modularity.py::test_known_drift_concepts_still_drift",
+    "tests/scoring_v2/test_modularity.py::test_predicted_scores_yaml_coverage",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-01-hts-compact-tokamak-2.43]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-02-acoustic-icf-sonofusion-3.73]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-03-laser-icf-liquid-jet-target-3.63]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-04-laser-icf-3.63]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-05-planar-coil-stellarator-2.05]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-06-magnetic-mirror-2.52]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-07-maglif-3.94]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-08-frc-w-direct-conversion-4.55]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-09-qi-stellarator-hts-1.36]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-10-large-scale-stellarator-1.11]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-11-magnetic-mirror-3.18]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-12-levitated-dipole-1.12]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-13-electrostatic-hybrid-4.55]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-14-magnetized-target-fusion-pneumatic-compression-4.14]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-15-sheared-flow-stabilized-z-pinch-3.32]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-16-muon-catalyzed-fusion-1.0]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-17a-laser-icf-hybrid-drive-1.27]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-17b-laser-icf-fast-ignition-3.63]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-18-p-b11-frc-2.5]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-19-orbital-levitated-dipole-1.26]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-20a-type-one-stellarator-1.29]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-20b-renaissance-stellarator-1.27]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-21-spherical-tokamak-hts-2.38]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-22-projectile-icf-2.19]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-23-laser-icf-nanostructured-target-3.42]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-24-dense-plasma-focus-2.63]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-25-heavy-ion-beam-icf-1.27]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-26-laser-icf-indirect-drive-2.91]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-27-polywell-3.73]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-28-hts-tokamak-full-hts-2.22]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-29-negative-triangularity-tokamak-2.36]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-30-laser-icf-nif-commercialization-3.11]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-31-laser-icf-oec-architecture-3.22]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-32-laser-icf-french-national-2.91]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-33-state-backed-tokamak-best-1.0]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-35-polomac-magnetic-confinement-1.13]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-36-helical-coil-stellarator-1.0]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-37-magnetized-target-inertial-fusion-mtif-3.73]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-38-particle-accelerator-driven-fusion-1.0]",
+    "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[modularity-39-spherical-tokamak-cs-free-p-b11-2.32]"
+  ],
+  "retirement_authority": "Owner authorized clearing out old useless tests after discussing the limited value of historical calibration."
+}
