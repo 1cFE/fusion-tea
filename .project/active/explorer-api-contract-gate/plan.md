@@ -747,7 +747,7 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
   - The first set's pairs, identity and spot check were re-run with the final harness. The failure keys and spot-check changes are identical.
 - **Scratch.** Extracts and runs were built under `/tmp/eacg-phase1` and `/tmp/eacg-phase1b`, and deleted at the end of each session.
 
-**Orchestrator go-ahead for Phase 2:** (date, and what the owner was told)
+**Orchestrator go-ahead for Phase 2:** Given 2026-10-08 by the orchestrator (agent-grade). Combined verdict: pass on all four conditions and the floor. False blocks 4 of 27 pairs that don't add a concept (15%), none after 2026-06-08. The owner was told, before Phase 1, that three kinds of harmless push will wait (false blocks, new concepts, infrastructure failures), with the orchestrator's recommendation to accept them and continue unless the owner objects. The owner raised no objection, and is told the measured rate with this go-ahead. If the owner later rejects false blocks, the Shape and Unpopulated rules are where the change lands.
 
 ### Phase 2 Completion
 **Decided before Phase 2 (orchestrator, 2026-10-08): Unpopulated waiver evidence.** This replaces N4's cite-only wording.
