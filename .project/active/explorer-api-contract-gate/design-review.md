@@ -225,3 +225,127 @@ No third round. After the design agent revises, the orchestrator runs one focuse
 
 **Overall:** Revise
 **Next Steps:** Record resolutions above, then return to the design agent (or re-run `/_my_design`) pointed at this review. C1 and M1–M8 change rules, the contract format, the test plan or the owner-facing promise, so they should land in `design.md` before `/_my_plan`. M7 needs the owner flag before planning. The minors can be carried as plan notes. The reviewer does not edit the design.
+
+---
+
+## Round 2
+
+**Design:** `design.md` revision 1, at `f754809ae`
+**Date:** 2026-10-08
+**Scope:** whether round 1's Resolutions landed, new defects the revision introduced, and over-build. The product lens was not re-run; its round-1 findings are dispositioned above. Claims below were checked against the design text and the pinned JS (`git show 10f7b9b:…`).
+
+### Summary
+
+All 21 resolutions landed. The revision is sound, and its size is proportionate to the risk. Three small text fixes remain before planning:
+
+- drop `overrides[].account` from `LITERAL_READS`, and take `fit_grade`'s set from the pinned JS (the orchestrator's question, answered below);
+- make record mode's test-tool resolution depend only on the pin, or I1 stops holding;
+- say which of Shape and Unpopulated reports a never-populated path.
+
+Each is checkable by reading, so no third review is needed.
+
+### 1. Did each resolution land?
+
+- **C1.** Landed: the Unpopulated rule, the restated property 1, and the self-test in Appendix D. It overlaps with Shape (N3).
+- **M1.** Landed: four joined lists, the unlisted check on the manifest and parameter `concepts[]`, no disappearance check on parameter lists, and the `parameter_card.js:258` attribution.
+- **M2.** Landed: coverage sets for findings, slider and toggle; B1 re-worded to "no crash" with its residual named; the every-entry-yields-an-instance guard. One wording problem (N5).
+- **M3.** Landed: the richer fixture, the two-commit git fixture, the CI purity caveat in I1, and the monkeypatch targets.
+- **M4.** Landed. D7, the rules table, I3 and Appendix E agree that Files and CORS can't be waived.
+- **M5.** Landed with a gap. The blob-SHA set is "every file cited in Appendices A and B", but the join and link sites behind the Concepts rule (`matrix_data.js`, `view_categorical.js`, `parameter_card.js`) are cited only in Research Findings (N6).
+- **M6.** Landed: the selection, own-tree replay with a reported fallback, `archetype_fit.csv` replayed with the tree, per-rule scoring, the pass line, the floor of 12, and stop-and-report.
+- **M7.** Landed. The Point lists the three exceptions and both new-concept paths. ADR (a) splits its grade and names both FR-6 clauses.
+- **M8.** Landed: the install retry, `timeout 480` under `timeout-minutes: 10`, push-based recovery, the re-run acceptance question, the `CLAUDE.md` line, `.github/workflows` in the sparse set, and the I4 and I5 self-tests.
+- **m1.** Landed as written, but the resolution was wrong for one of its two paths (N1, and the orchestrator's question below).
+- **m2.** Landed (D12, 700–800 lines).
+- **m3.** Landed (B4's blind spot).
+- **m4.** Landed (Appendix G).
+- **m5.** Landed (Architecture, the map definition).
+- **m6.** Landed, and introduced a defect (N2).
+- **m7.** Landed (observe step 2, Implementation Notes, Appendix F).
+- **m8.** Landed, with a key collision (N5).
+- **m9.** Landed (Appendix G, Drift).
+- **m10.** Landed (Appendix E).
+- **m12.** Landed (the Image row).
+- **m13.** Landed (Phase 1 replays the CSV with the tree).
+
+### 2. New defects
+
+**Must fix before planning**
+
+- **N1. `LITERAL_READS` takes its sets from observed data, and one of its two entries isn't a literal read.** The full answer is under the orchestrator's question below. The fix touches Core Concept's second failure bullet, the rules table's Enum / Literal row, Appendix B, Appendix D's test case, Appendix G's example line and the Potential Risks entry.
+- **N2. Record mode's test tools make the contract depend on the date, which breaks I1.** Appendix H step 3 has record mode "let `uv` resolve compatible test tools" and write their versions to the header. The serving set is fully pinned: `requirements-serve.txt` at the pin is `uv pip compile` output. But an unbounded resolve of `httpx` and `pytest` picks newer versions as they are released. So recording the same pin a month apart writes a different `tools` line. That contradicts I1 ("Recording twice gives byte-identical files"), and the branch-level byte-for-byte check holds only on the day it runs. **Fix:** resolve with `uv pip install --exclude-newer <pin's commit timestamp>`. The versions then depend only on the pin, and they are contemporary with the pin's Starlette, which is what m6 wanted. Related: at the pin, `requirements-serve.txt` sits at the repo root, outside the three runtime directories, so the record extract must name it explicitly.
+- **N3. Shape and Unpopulated both fire on the same event.** `.narrative` is recorded as `null`. When it becomes an object, Shape fires ("a kind the pin never sent there"), and so does Unpopulated. The user then writes two waivers, and the `shape` one clears without the JS-cite evidence that Unpopulated exists to force. **Fix:** one sentence. A path whose recorded kinds are only null, absent or empty reports as Unpopulated, never as Shape.
+
+**Plan notes (don't block)**
+
+- **N4.** Unpopulated's "with evidence citing the JS lines" is no different in practice from any other waiver, since I6 requires evidence on all of them. Either have `check` require a `file.js:N` cite in the evidence of `unpopulated` waivers, or drop the special wording.
+- **N5.** Two key details. The Coverage row says "no longer produces that request", but findings are requested for every concept, so for findings coverage means the response has non-null HTML; re-word the row. And m8's range-endpoint body shares the key `status POST /api/compute:slider <id>` with that concept's baseline body; give it its own template name.
+- **N6.** List the joined-list and link sites in Appendix A so their files get blob SHAs (M5), plus `ontology_palette.js` once it backs `fit_grade` (N1).
+- **N7.** The 20–45 s self-test estimate assumes the break tests record in-process with `observe(fixture_tree)`, and only the purity test runs `git archive` plus a subprocess that reuses the gate's venv. Say so, or the record path builds a second venv inside `pytest`.
+- **N8.** Phase 1 skips compute, so it can't measure false blocks from a `1costingfe` upgrade that changes compute's response shape. Name that as unmeasured, next to the model-churn caveat.
+
+### 3. Is it over-built?
+
+Mostly no. Each rule maps to a concrete website break, and most rules are a set comparison over data `observe` already collects. The 700–800 lines come from request derivation, serialization, the audit and the matcher, not from the number of rules.
+
+| Rule | Website break it prevents | False-block exposure | Verdict |
+|---|---|---|---|
+| Status | a POST the page sends is rejected (the compare page's `null` and `""`), a route is renamed, a concept 404s | near zero: a changed status is a real break | keep |
+| Shape | a crash or blank section from a removed, renamed, retyped or newly null field (`elasticity`, `confinement_family`) | removing a field the JS never reads (Appendix C); Phase 1 measures it | keep |
+| Unpopulated | the `.toLowerCase()` crash on `risks[].severity` once narratives ship | the first population of each always-null or always-empty path; rare | keep |
+| Enum | wrong palettes; `model_type === "costingfe"` gates sliders and the toggle (`concept_page.js:465,763`) | a new enum value on an existing concept | keep |
+| Literal: `fit_grade` | the "Archetype fit: None" warning disappears | none, once the set comes from the JS | keep |
+| Literal: `overrides[].account` | nothing a value set can catch (N1) | every override on an account not used at the pin | **remove** |
+| Concepts | dead links (D9), a dropped concept, lost matrix cells, bands or bars | new concepts, by the owner-surfaced design | keep |
+| Coverage | a concept silently loses its sliders, tornado, toggle or findings | a concept changing model type; Phase 1 measures it | keep |
+| CORS | every request from `1cf.energy` fails | none | keep |
+| Image | a broken illustration | none, and nothing to catch today: every `illustration` is null and `static/images/` doesn't exist | **defer** |
+| Files | silently null findings or compute in Railway's image; the gate's own soundness on a sparse checkout | a one-time edit when the matcher meets syntax it refuses | keep |
+
+- **Defer the Image rule.** Unpopulated already blocks the first non-null `illustration`. Whoever writes that waiver is at the right moment to add the rule. Criterion 1 doesn't list images, so deferring it doesn't weaken it.
+- **Keep drift.** It isn't part of criterion 1, but it keeps the contract tied to the website's real pin, and it is the disposition of product-lens spec-F5. It is small and uses only the standard library.
+- **Keep the `.dockerignore` matcher.** A `.dockerignore` edit that drops the data directory is a fusion-tea change that breaks the website. Removing the matcher would weaken criterion 1.
+
+### Orchestrator's question: what belongs in `LITERAL_READS`
+
+The orchestrator's view holds for both paths.
+
+**`fit_grade` stays, with its set taken from the JS.**
+
+- `caveat_marker.js:53` compares it to the literal `"None"`.
+- The full set the pinned JS knows is the Archetype Fit palette in `ontology_palette.js:108-113`: `High`, `Med`, `Low`, `None`. The matrix filter facet uses it (`ontology_palette.js:161`).
+- Null is handled separately ("Archetype fit not recorded", `concept_page.js:144`) and stays with Shape.
+- The pinned `archetype_fit.csv` uses exactly those four values (19 High, 11 Low, 5 Med, 5 None), so behavior doesn't change today. The gain is that the set becomes a cited fact about the JS, covered by the M5 blob check. A future pin whose CSV happens to lack `Med` can't narrow it.
+- Paths: `GET /api/manifest .concepts[].fit_grade` and `GET /api/concepts/{id} .fit_grade` (`models.py:505,563`).
+
+**`overrides[].account` comes out.**
+
+- `override_panel.js:153-155` compares each record's lowercased `account` to `focusAccount`. That is data, not a literal. It is either the cost-model key of the ★ that was clicked (`cas_breakdown.js:120,308,325`, through `concept_page.js:425-431`) or the matched record's own `account` (`view_capex.js:180-185`). Both sides come from the same concept response.
+- So the observed set (15 codes at the pin) blocks every override on a new account, and still misses the real break: the two sides no longer matching.
+- The check that would fit is a same-response join: every cost-model account with `overridden: true` has a record whose `account` matches its key, ignoring case. I'd name it a residual instead. It needs a new kind of rule for an unlikely break, and while HEAD's `static/js` equals the pin's, the same mismatch would also show on `concepts.1cf.energy`.
+
+**So `LITERAL_READS` has one entry:** `fit_grade` → `{High, Med, Low, None}`, citing `caveat_marker.js:53` and `ontology_palette.js:108-113`. Core Concept's second failure bullet becomes "a value falls outside the literal values the pinned JavaScript compares against", and Appendix G's example `literal` line shows those four values.
+
+### Verdict
+
+**Revise, then go to `/_my_plan` without another review.** Must fix:
+
+1. **N1.** `LITERAL_READS` holds only `fit_grade`, with the cited JS set. `overrides[].account` moves to the named residuals.
+2. **N2.** Record mode resolves test tools with `--exclude-newer` at the pin's commit time, and the record extract includes the root `requirements-serve.txt`.
+3. **N3.** A path recorded only as null, absent or empty reports as Unpopulated, not Shape.
+
+Recommended in the same edit: defer the Image rule. N4–N8 can be carried as plan notes. All three must-fixes are text changes the orchestrator can verify by reading `design.md`.
+
+### Round 2 resolutions
+
+Recorded 2026-10-08 by the orchestrator (agent-grade). All land in `design.md` before `/_my_plan`; no third review. The orchestrator checks the edits by reading the revised design.
+
+- **N1 · Accepted.** `LITERAL_READS` holds one entry: `fit_grade`, allowed set High, Med, Low, None, cited to `caveat_marker.js:53` and `ontology_palette.js:108-113`. `overrides[].account` moves to the named residuals with the reason (a same-response join; the same mismatch would show on `concepts.1cf.energy`).
+- **N2 · Accepted.** Record mode installs test tools with `uv pip install --exclude-newer <pin commit timestamp>`, so recording the same pin later is byte-identical. The record extract names `requirements-serve.txt` at the repo root explicitly.
+- **N3 · Accepted.** A path recorded only as null, absent or empty reports as Unpopulated, never as Shape.
+- **Image rule · Deferred.** No concept has an illustration, and Unpopulated already blocks the first one. The Unpopulated waiver for `illustration` must confirm the image resolves, and the design notes the Image rule as the follow-up to add then.
+- **N4 · Accepted.** `check` requires a `file.js:N` cite in the evidence of `unpopulated` waivers.
+- **N5 · Accepted.** Re-word the Coverage row for findings (non-null HTML). Give the m8 range-endpoint body its own template name.
+- **N6 · Accepted.** List the joined-list and link sites in Appendix A so their files get blob SHAs, plus `ontology_palette.js` for `fit_grade`.
+- **N7 · Accepted.** State that break tests record in-process with `observe(fixture_tree)`; only the purity test runs `git archive` plus a subprocess, reusing the gate's venv.
+- **N8 · Accepted.** Name compute-shape changes from a `1costingfe` upgrade as unmeasured by Phase 1, next to the model-churn caveat.
