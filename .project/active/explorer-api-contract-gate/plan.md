@@ -284,7 +284,7 @@ A repo root at `tmp/` laid out as `tmp/exploration/...`, so `archive_root` (`ser
 
 #### 3. Code in `contract.py`
 
-- [ ] `waivers.toml` loading (`tomllib`): each `[[waiver]]` needs `match`, `reason`, `evidence`, `date`. A missing or empty field is a configuration error with its own exit code. An `unpopulated` waiver whose `evidence` lacks a `file.js:N` cite is an error (N4). Matching uses Appendix E's one-token `*`. CORS and Files keys are printed but never matched. Waivers that match nothing print a "stale" warning.
+- [ ] `waivers.toml` loading (`tomllib`): each `[[waiver]]` needs `match`, `reason`, `evidence`, `date`. A missing or empty field is a configuration error with its own exit code. An `unpopulated` waiver whose `evidence` has neither a `file.js:N` cite of the JS that reads the path nor `unread:` followed by the search terms is an error (orchestrator decision, 2026-10-08, replacing N4's cite-only wording; see Phase 2 notes). Matching uses Appendix E's one-token `*`. CORS and Files keys are printed but never matched. Waivers that match nothing print a "stale" warning.
 - [ ] The CORS rule: every response carries `access-control-allow-origin: https://1cf.energy`; `OPTIONS` preflights for `/api/compute` and `/api/state` (with `Access-Control-Request-Method: POST`, `Access-Control-Request-Headers: content-type`) succeed with that header. Check only, never recorded.
 - [ ] `main(argv)` with a `check` subcommand: `--tree` (default: the repo root containing this file), `--contract`, `--waivers`. It inserts `--tree` at `sys.path[0]` before importing the server. It prints one key per failure, then a summary, and returns non-zero on any unwaived failure.
 - [ ] `exploration/concept_explorer/website_contract/waivers.toml` (NEW): a header comment pointing at Appendix E's grammar and the RUNBOOK, and no entries.
@@ -576,7 +576,7 @@ No new tests. This phase runs the full suite inside `gate.sh`.
   ```
   The `file://` URL is needed for `--depth` to apply. The `-u` option is stored as the clone's `remote.origin.uploadpack`, so the clone and its later lazy blob fetches (including `gate.sh`'s `sparse-checkout add`) can filter, without changing the shared repository's config.
 - [ ] Run `time timeout 480 "$CI/repo/exploration/concept_explorer/website_contract/gate.sh"` from `$CI/repo`. Record each `step` line and the total.
-- [ ] **Projection to a GitHub-hosted runner** `[AGENT]` assumption: twice the local time of the venv, observe and pytest steps, plus Appendix F's upper bounds for runner start and checkout. Record the local `nproc` and CPU model. If the projection exceeds 5 minutes, apply the compute trim and rerun. The owner's first pushed run confirms the real time.
+- [ ] **Projection to a GitHub-hosted runner** `[AGENT]` assumption: twice the local time of the venv, observe and pytest steps, plus Appendix F's upper bounds for runner start and checkout, re-estimating checkout for the measured 44 MB of runtime blobs (see Phase 7 notes). Record the local `nproc` and CPU model. If the projection exceeds 5 minutes, apply the compute trim and rerun. The owner's first pushed run confirms the real time.
 - [ ] **Re-pin step, followed literally** from the RUNBOOK text for the current pin. Expect no diff in `contract.txt` or `waivers.toml`.
 - [ ] Fill the criteria table below with evidence.
 - [ ] Hand the Owner Acceptance list to the orchestrator unchecked.
@@ -647,7 +647,7 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - Coverage: 1 key in 1 pair.
 
 **False-block rate:** 4 of 23 = 17%. The 23 are the replayable pairs that don't add a concept. The four false-block pairs are `fd76070c2`, `7c639d73d`, `8d597849b` and `22e15bd07`.
-- One judgment swings this. `e553f70e1`'s `status GET /api/cost-landscape` is judged a replay artifact: the route didn't exist at the parent, and the 10f7b9b request list is newer than that parent. Counted as a false block instead, the rate is 5 of 23 = 22%.
+- `e553f70e1`'s `status GET /api/cost-landscape` is a replay artifact. The route didn't exist at the parent, and the 10f7b9b request list is newer than that parent. **The orchestrator confirmed this on 2026-10-08:** at the real pin every template records exactly 200, so a route appearing relative to the pin can't happen. Counted as a false block instead, the rate would be 5 of 23 = 22%.
 - Ignoring the concept-adding exclusion, 8 of 28 pairs carry a false block.
 - No false block appears after 2026-06-08.
 
@@ -659,12 +659,36 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - In `c36b7201e`, 33 concepts' `narrative` went null. This is the B1 union residual.
 - In `f84b36afb`, 148 parameter names left a stale on-disk `parameter_index.json`. The pinned page tolerates the 404s, and today's server can't produce this.
 
-**Pass-line verdict:** pass, narrowly.
-1. False-block rate: pass at 17%. It fails at 22% if the artifact counts.
+**Second set** (orchestrator request, 2026-10-08). These are the commits that change what the server reads under `exploration/concept_analysis/` or `archive/concept_analysis_pre_rework/` without touching the explorer. Full detail is in the report's "Second set" section, with raw data in `phase1/results-analysis.json`, `results-findings.json` and `results-analysis-compute.json`.
+- **Selection.** First-parent commits on `f96ad312c` since 2026-04-01 touching those paths, minus the first set: 27 commits.
+- **How "files the server reads" was determined.** Each pair is judged by its own servers.
+  - `side.py` installs an audit hook (`open`, `os.listdir`, `os.scandir`) before importing the server, covering startup and the full observe on both sides.
+  - Served data: a changed non-Python file a side's server opened, or a concept directory added or removed under a listed data directory.
+  - Compute code: a Python module the server imported (`scripts/lib`, used only by compute), or a concept's top-level `model_setup.py`.
+  - At `f96ad312c` the server reads, outside compute, `analyses/*/analysis.md`, `analyses/*/synthesis.md` and `tables/archetype_fit.csv`, and lists `analyses/`. Compute adds the `model_setup.py` files (`phase1/audit-f96.json`).
+- **Labels:** 0 served and loadable, 14 compute-only, 8 not served, 5 unloadable (the Latin-1 window).
+- **Same method:** the second set adds **no replayable pair**.
+- **Findings-only replay** of the 4 unloadable pairs whose changes reach only findings inputs: `8598403ca`, `237c26f6c`, `243a837fb` and `b722bc8e8`.
+  - Method: each side computes the findings route with that tree's own `findings.py`, scored by the real core. The computed bodies equal the real server's responses at `f96ad312c` and `428c011ba`.
+  - Result: 0 keys.
+  - One B1 residual: concept 28's executive summary went null in `8598403ca`, uncaught. Its `analysis_html` remained, and other concepts already had null summaries.
+- **Second-set per-rule trips:** Status 0, Shape 0, Unpopulated 0, Enum/Literal 0, Concepts 0, Coverage 0.
+- **Compute supplement**, outside the pass line: the 14 compute-only pairs re-run with compute. Nothing was measurable.
+  - 12 pairs predate `model_type` in the data, so the pinned gate sends no compute requests.
+  - 2 pairs (`ebcdb1422`, `22d61f2bf`) had compute broken on `main` itself until `428c011ba` (2026-06-18), giving a 500 on both sides.
+  - Model-code churn's compute effect stays unmeasured. By code (`models.py:247-369`), it can change the compute shape only through `cas71`/`cas72` presence or an import failure (a Status 500).
+
+**Pass-line verdict on the combined set:** pass.
+- Same-method combined set, which is the design's "replayable": 28 pairs, all from the first set.
+- Counting the 4 findings-only pairs: 32 pairs.
+
+1. False-block rate: pass. 4 of 23 = 17% same method, or 4 of 27 = 15% counting the findings-only pairs.
 2. Waiver lines: pass, at most 2.
 3. Misclassification: pass, none.
-4. Spot check: pass, with the two named residuals above.
-5. Floor: pass, 28 pairs against 12.
+4. Spot check: pass, with the two first-set residuals.
+   - Counting the findings-only pairs, `237c26f6c` (18,643 lines) enters the top 5 in place of `8e2808860`.
+   - Its per-concept findings comparison shows only gains.
+5. Floor: pass. 28 same method, 32 counting the findings-only pairs.
 
 **Compute timings at `f96ad312c`** (Intel i7-9750H, `nproc` 12, four runs):
 - App startup: 0.40–0.45 s.
@@ -690,7 +714,7 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
   - an observe smoke test on the compute fixture, asserting every template's statuses;
   - an unchanged-server identity test on the fixture;
   - a test of `page_sliders` against the tornado rules.
-- `.project/active/explorer-api-contract-gate/phase1/` (new): `replay.py` (subcommands `pairs`, `identity`, `spotcheck`), `side.py`, `report.md` and the three JSON results.
+- `.project/active/explorer-api-contract-gate/phase1/` (new): `replay.py` (subcommands `pairs`, `identity`, `spotcheck`, `served`, `findings`), `side.py`, `report.md`, the first-set results (`results.json`, `identity.json`, `spotcheck.json`), the second-set results (`results-analysis.json`, `results-findings.json`, `results-analysis-compute.json`) and `audit-f96.json`.
 - Validation:
   - `test_website_contract.py` plus `test_cors.py`: 32 passed in the scratch venv.
   - All three identity runs gave 0 keys: `f96ad312c` vs itself with compute, and pin vs `f96ad312c` with and without compute.
@@ -714,14 +738,24 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
   - Derivation reads response fields defensively (`.get`, type checks), so a shape break reaches the rules as a failure key instead of crashing `observe`.
 - **"Data-only" for fallback eligibility** counts non-response paths too (explorer tests, docs, static, templates and unserved Markdown), since fallback uses the commit's own tree for those.
 - **Selection labels.** Everything outside those non-response paths counts as response-capable, including all of `concept_analysis`.
-- **Not measured, as the plan expected.**
-  - 27 first-parent commits since 2026-04-01 touch only `concept_analysis` or the archive. 19 of them touch served files (`analysis.md`, `synthesis.md`, `archetype_fit.csv`, `model_setup.py`).
+- **Not measured.**
+  - Compute effects of the 14 compute-only commits (see Second set).
   - `1costingfe`-upgrade compute shapes (N8).
-- **Scratch.** Extracts and runs were built under `/tmp/eacg-phase1` and deleted at the end of the session.
+- **Harness additions for the second set.**
+  - `side.py` gained the read audit and a `--findings-only` mode.
+  - `replay.py` gained the `served` and `findings` commands.
+  - The first set's pairs, identity and spot check were re-run with the final harness. The failure keys and spot-check changes are identical.
+- **Scratch.** Extracts and runs were built under `/tmp/eacg-phase1` and `/tmp/eacg-phase1b`, and deleted at the end of each session.
 
 **Orchestrator go-ahead for Phase 2:** (date, and what the owner was told)
 
 ### Phase 2 Completion
+**Decided before Phase 2 (orchestrator, 2026-10-08): Unpopulated waiver evidence.** This replaces N4's cite-only wording.
+- An `unpopulated` waiver's `evidence` must carry one of two forms: a `file.js:N` cite of the JS that reads the path, or `unread:` followed by the search terms that show no pinned JS file reads it.
+- `check` validates that one of the two forms is present. A waiver with neither is a configuration error.
+- The Appendix D waiver test covers both forms passing and neither failing.
+- Prompted by Phase 1: the `fd76070c2` false block on `cost_model.cas71`/`cas72` is a path no pinned JS reads.
+
 **Completed:**
 **Actual Changes:**
 **Issues:**
@@ -755,6 +789,8 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 **Deviations:**
 
 ### Phase 7 Completion
+**Checkout estimate (orchestrator, 2026-10-08):** use the measured extract size, about 44 MB of blobs for the three runtime paths (Phase 1, `du --apparent-size` on `git archive` output), not Appendix F's 21 MB.
+
 **Completed:**
 **Step times and projection:**
 **Criteria table filled:**

@@ -8,12 +8,17 @@ depends on the 1costingfe of the time), as are CORS and the JavaScript checks.
     replay.py pairs     --python VENV_PY --work DIR --out results.json
     replay.py identity  --python VENV_PY --work DIR --out identity.json
     replay.py spotcheck --python VENV_PY --work DIR --out spotcheck.json --children SHA,SHA,...
+    replay.py served    --python VENV_PY --work DIR --out results-analysis.json [options]
+    replay.py findings  --python VENV_PY --work DIR --out results-findings.json --children ...
 
 `pairs` labels every selected commit and replays the candidates. `identity` runs the
 timing and identity checks: f96ad312c against itself with compute, and the pin 10f7b9b
 against f96ad312c with and without compute. `spotcheck` re-runs chosen pairs with raw
-dumps and compares each concept at the paths the pinned JavaScript reads. Standard library
-only; git is read-only.
+dumps and compares each concept at the paths the pinned JavaScript reads. `served` replays
+the second set: commits that change concept_analysis or the archive but not the explorer,
+labelled by what each pair's own servers read (side.py audits it). `findings` replays
+pairs on the findings route alone, for unloadable servers whose change reaches only
+findings. Standard library only; git is read-only.
 """
 
 from __future__ import annotations
@@ -21,6 +26,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -109,7 +115,7 @@ def replay_pair(
     python: str, work: Path, child: str, parent: str, mode: str, skip_compute: bool
 ) -> dict:
     """Record `parent`, check `child` against it, in mode `own-tree` or `fallback` (data-only)."""
-    runs = work / "runs" / f"{child[:9]}-{mode}"
+    runs = work / "runs" / f"{child[:9]}-{mode}{'' if skip_compute else '-compute'}"
     runs.mkdir(parents=True, exist_ok=True)
     parent_tree, child_tree = extract(parent, work), extract(child, work)
     flags = ["--skip-compute"] if skip_compute else []
@@ -245,6 +251,191 @@ def identity(python: str, work: Path) -> dict:
             "check": checked,
         }
     return results
+
+
+# Second set: commits that change what the server reads under concept_analysis or the
+# archive without touching the explorer, which the first selection missed.
+ANALYSIS_PATHS = ("exploration/concept_analysis/", "archive/concept_analysis_pre_rework/")
+# Listings under scripts/ are the import system resolving `lib` (server.py:143-147), not data.
+IMPORT_LISTINGS = ("exploration/concept_analysis/scripts",)
+# What f96ad312c's server reads there outside compute, from its audited run. Used only to
+# estimate a label for a pair whose servers didn't load.
+F96_DATA_READS = ("/analysis.md", "/synthesis.md", "tables/archetype_fit.csv")
+COMPUTE_MODULE = re.compile(r"exploration/concept_analysis/analyses/[^/]+/model_setup\.py")
+
+
+def served(python: str, work: Path, children: list[str], skip_compute: bool) -> list[dict]:
+    """Replay the second set, labelling each pair by what its own servers read.
+
+    With no `children`, select every first-parent commit since SINCE that changes
+    ANALYSIS_PATHS and isn't in the first set (which selected on the explorer).
+    """
+    if not children:
+        log = ("log", "--first-parent", f"--since={SINCE}", "--format=%H", BRANCH_POINT, "--")
+        first = set(git(*log, EXPLORER).split())
+        children = [c for c in git(*log, *ANALYSIS_PATHS).split() if c not in first]
+    children = [git("rev-parse", c).strip() for c in children]
+    for child in children:
+        for sha in (child, git("rev-parse", child + "^1").strip()):
+            if git("ls-tree", sha, "--", EXPLORER + "server.py").strip():
+                extract(sha, work)
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return list(pool.map(lambda c: run_served_pair(python, work, c, skip_compute), children))
+
+
+def run_served_pair(python: str, work: Path, child: str, skip_compute: bool) -> dict:
+    parent = git("rev-parse", child + "^1").strip()
+    status_lines = git("diff", "--name-status", parent, child, "--", *ANALYSIS_PATHS).splitlines()
+    changed = {line.split("\t")[-1]: line[0] for line in status_lines}
+    entry = {
+        "child": child,
+        "parent": parent,
+        "subject": git("log", "-1", "--format=%ad %s", "--date=short", child).strip(),
+        "changed_files": len(changed),
+        "diff": git("diff", "--shortstat", parent, child, "--", *ANALYSIS_PATHS).strip(),
+    }
+    if not git("ls-tree", parent, "--", EXPLORER + "server.py").strip():
+        return entry | {"label": "no parent tree"}
+    replay = replay_pair(python, work, child, parent, "own-tree", skip_compute)
+    if "failures" not in replay:
+        estimate = any(p.endswith(F96_DATA_READS) for p in changed)
+        return (
+            entry
+            | replay
+            | {
+                "mode": "unloadable",
+                "label": "unloadable",
+                "label_estimate": "served (f96 patterns)"
+                if estimate
+                else "not served (f96 patterns)",
+            }
+        )
+    runs = work / "runs" / f"{child[:9]}-own-tree{'' if skip_compute else '-compute'}"
+    sides = [json.loads((runs / name).read_text()) for name in ("record.json", "check.json")]
+    reads = classify_reads(changed, sides, parent, child)
+    label = "served" if reads["served"] else "compute-only" if reads["code"] else "not served"
+    return entry | replay | {"label": label, "reads": reads}
+
+
+def classify_reads(changed: dict[str, str], sides: list[dict], parent: str, child: str) -> dict:
+    """Which changed files either side's server read as data, read as code, or didn't read.
+
+    Data: a non-Python file it opened, or a file added or deleted directly under a data
+    directory it listed (a concept directory appearing or going). Code: a Python file it
+    imported, or a concept's top-level model_setup.py, which compute imports
+    (server.py:1149-1155); the iter-*/ snapshots beside it are never read.
+    """
+    data_reads = {p for s in sides for p in s["reads"] if not p.endswith((".py", ".pyc"))}
+    code_reads = {p for s in sides for p in s["reads"] if p.endswith(".py")}
+    listings = {
+        d
+        for s in sides
+        for d in s["listed"]
+        if d.startswith(ANALYSIS_PATHS) or d + "/" in ANALYSIS_PATHS
+        if not d.startswith(IMPORT_LISTINGS)
+    }
+
+    def changes_a_listing(path: str) -> bool:
+        for directory in listings:
+            if path.startswith(directory + "/"):
+                entry = path[len(directory) + 1 :].split("/")[0]
+                before = _entries(parent, directory)
+                after = _entries(child, directory)
+                if (entry in before) != (entry in after):
+                    return True
+        return False
+
+    return {
+        "served": sorted(
+            p for p, s in changed.items() if p in data_reads or (s in "AD" and changes_a_listing(p))
+        ),
+        "code": sorted(p for p in changed if p in code_reads or COMPUTE_MODULE.fullmatch(p)),
+        "data_read_count": len(data_reads),
+        "listed": sorted(listings),
+        "code_read": sorted(p for p in code_reads if p.startswith(ANALYSIS_PATHS)),
+    }
+
+
+def findings(python: str, work: Path, children: list[str]) -> list[dict]:
+    """Replay pairs on the findings route alone, for servers that can't start.
+
+    Uses side.py --findings-only. Valid only for a pair whose change reaches nothing but
+    the findings route's inputs, and whose two sides serve the same concepts.
+    """
+    sys.path.insert(0, str(ROOT / EXPLORER / "website_contract"))
+    import contract as c
+
+    results = []
+    for child in [git("rev-parse", sha).strip() for sha in children]:
+        parent = git("rev-parse", child + "^1").strip()
+        runs = work / "runs" / f"{child[:9]}-findings"
+        runs.mkdir(parents=True, exist_ok=True)
+        parent_tree, child_tree = extract(parent, work), extract(child, work)
+        recorded = side(
+            python,
+            "record",
+            parent_tree,
+            parent_tree,
+            runs / "record.json",
+            "--pin",
+            parent,
+            "--findings-only",
+            "--dump",
+            str(runs / "parent.json"),
+        )
+        (runs / "contract.txt").write_text(recorded["contract"])
+        checked = side(
+            python,
+            "check",
+            child_tree,
+            child_tree,
+            runs / "check.json",
+            "--contract",
+            str(runs / "contract.txt"),
+            "--findings-only",
+            "--dump",
+            str(runs / "child.json"),
+        )
+        if recorded["concept_ids"] != checked["concept_ids"]:
+            raise RuntimeError(f"{child[:9]}: the two sides serve different concepts")
+        # Per-concept kind changes at the fields the page reads, as `spotcheck` does.
+        old, new = (
+            _by_instance(json.loads((runs / name).read_text()), c.FINDINGS)
+            for name in ("parent.json", "child.json")
+        )
+        changes = []
+        for concept_id in sorted(old):
+            before, after = c.flatten([old[concept_id]], ()), c.flatten([new[concept_id]], ())
+            for path in (".exec_summary_html", ".analysis_html", ".analysis_from_archive"):
+                if before.get(path) != after.get(path):
+                    changes.append(
+                        {
+                            "instance": concept_id,
+                            "path": path,
+                            "before": sorted(before.get(path, set())),
+                            "after": sorted(after.get(path, set())),
+                        }
+                    )
+        results.append(
+            {
+                "child": child,
+                "parent": parent,
+                "subject": git("log", "-1", "--format=%ad %s", "--date=short", child).strip(),
+                "mode": "findings-only",
+                "concepts": len(recorded["concept_ids"]),
+                "failures": checked["failures"],
+                "details": checked["details"],
+                "read_path_changes": changes,
+            }
+        )
+    return results
+
+
+def _entries(sha: str, directory: str) -> set[str]:
+    return {
+        line.rsplit("/", 1)[-1]
+        for line in git("ls-tree", "--name-only", sha, directory + "/").split()
+    }
 
 
 # Spot check: paths the pinned JavaScript reads (design Appendix C crash points and
@@ -425,20 +616,26 @@ def _by_instance(dump: dict, template: str) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("pairs", "identity", "spotcheck"))
+    parser.add_argument("command", choices=("pairs", "identity", "spotcheck", "served", "findings"))
     parser.add_argument("--python", required=True, help="the scratch serving venv's python")
     parser.add_argument(
         "--work", type=Path, required=True, help="scratch directory for extracts and runs"
     )
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--children", default="", help="spotcheck: comma-separated child SHAs")
+    parser.add_argument("--children", default="", help="comma-separated child SHAs")
+    parser.add_argument("--with-compute", action="store_true", help="served: include compute")
     args = parser.parse_args()
     if args.command == "pairs":
         result = pairs(args.python, args.work)
     elif args.command == "identity":
         result = identity(args.python, args.work)
-    else:
+    elif args.command == "spotcheck":
         result = spotcheck(args.python, args.work, args.children.split(","))
+    elif args.command == "served":
+        children = [c for c in args.children.split(",") if c]
+        result = served(args.python, args.work, children, skip_compute=not args.with_compute)
+    else:
+        result = findings(args.python, args.work, args.children.split(","))
     args.out.write_text(json.dumps(result, indent=1) + "\n")
     return 0
 

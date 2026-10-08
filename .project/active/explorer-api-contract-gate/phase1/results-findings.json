@@ -1,0 +1,305 @@
+[
+ {
+  "child": "8598403cab3614001f6301556c09bd074febe23c",
+  "parent": "55eba26245e8e74678f5ff6c0261225d99dc0d2d",
+  "subject": "2026-06-08 chore(concept-analysis): regen 30 syntheses under current contract (Phase 1+2)",
+  "mode": "findings-only",
+  "concepts": 38,
+  "failures": [],
+  "details": {},
+  "read_path_changes": [
+   {
+    "instance": "02",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "03",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "04",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "05",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "07",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "15",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "17a",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "20b",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "21",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "22",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "23",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "25",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "28",
+    "path": ".exec_summary_html",
+    "before": [
+     "string"
+    ],
+    "after": [
+     "null"
+    ]
+   },
+   {
+    "instance": "30",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "32",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "33",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "36",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "39",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   }
+  ]
+ },
+ {
+  "child": "237c26f6c8377cf12c1380e55a38335eeb227c5a",
+  "parent": "243a837fb47f2bb9fb6f2a71a47a325d5e8e11b2",
+  "subject": "2026-06-09 phase 3: regen 8 concepts via source-planting (06, 08, 12, 13, 18, 20a + sync 10, 17b)",
+  "mode": "findings-only",
+  "concepts": 38,
+  "failures": [],
+  "details": {},
+  "read_path_changes": [
+   {
+    "instance": "06",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "08",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "10",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "12",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "13",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "18",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   },
+   {
+    "instance": "20a",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   }
+  ]
+ },
+ {
+  "child": "243a837fb47f2bb9fb6f2a71a47a325d5e8e11b2",
+  "parent": "cde34d03f8dfe3f2d1ddca88bd084da8694f0408",
+  "subject": "2026-06-09 phase 3 progress: regen 09 (Proxima Stellaris) + 11 (Realta CoSMo) via source-planting",
+  "mode": "findings-only",
+  "concepts": 38,
+  "failures": [],
+  "details": {},
+  "read_path_changes": [
+   {
+    "instance": "09",
+    "path": ".exec_summary_html",
+    "before": [
+     "null"
+    ],
+    "after": [
+     "string"
+    ]
+   }
+  ]
+ },
+ {
+  "child": "b722bc8e8310d8b730d91bb08a8d34771d9de89c",
+  "parent": "5ef119ea73041e402364ff6c65ceab035b3acb92",
+  "subject": "2026-06-09 phase 3 progress: regen 10 (Large-Scale Stellarator) via source-planting",
+  "mode": "findings-only",
+  "concepts": 38,
+  "failures": [],
+  "details": {},
+  "read_path_changes": []
+ }
+]

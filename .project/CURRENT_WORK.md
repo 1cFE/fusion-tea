@@ -1,10 +1,10 @@
 # Explorer API contract gate — Phase 1 done at its hard stop — 2026-10-08
 
 [AGENT] Phase 1 built the real contract core (`exploration/concept_explorer/website_contract/contract.py`) and replayed history with it.
-- The verdict is a narrow pass: 4 of 23 replayable non-concept-adding pairs carry a false block (17%), at most 2 waiver lines per pair, no misclassified maps, and 28 replayable pairs against a floor of 12.
-- Counting one replay artifact (`e553f70e1`) as a false block would make the rate 22%, a fail. The orchestrator should confirm the judgment.
-- All three identity checks report zero failure keys.
-- Compute is about 25 s locally, nearly all module import, and the gate projects to about 2.6 minutes.
+- The verdict is a pass on the combined set. The false-block rate is 4 of 23 (17%) over the design's replayable pairs, or 4 of 27 (15%) counting four findings-only pairs. At most 2 waiver lines per pair, no misclassified maps, and 28 (or 32) replayable pairs against a floor of 12.
+- The orchestrator confirmed `e553f70e1` as a replay artifact.
+- The second set covers explorer-free commits that change what the server reads under `concept_analysis`/archive: 27 commits, judged by each commit's own audited server reads. It adds no pair that replays the same way, and its four findings-only pairs trip nothing. Compute effects of model-code churn stay unmeasurable by replay.
+- Decided for later phases: Unpopulated waiver evidence may be `unread:` plus search terms (Phase 2), and the checkout estimate uses the 44 MB extract (Phase 7).
 - Report: [phase1/report.md](active/explorer-api-contract-gate/phase1/report.md). Next: the orchestrator's go-ahead for Phase 2. Nothing is pushed.
 
 # Explorer API contract gate — spec drafted, product lens disposed — 2026-10-08
