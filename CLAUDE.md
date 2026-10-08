@@ -250,6 +250,13 @@ Source selection is iterative — sources are ingested as the investigation iden
 
 **agentic-mbse**: MBSE workflow commands, 6-level model validation, and PDF extraction (v4 pipeline with quality gates and ensemble table detection). Installed as editable dependency. Source code at `~/1cfe/agentic-mbse`.
 
+## Live Deployments from `main`
+
+A push to `main` publishes to public sites. No CI runs first.
+
+- **Concept Explorer** (`exploration/concept_explorer/`): Railway rebuilds it from `Dockerfile` and `railway.toml` and serves it at `concepts.1cf.energy`. The public website page `1cf.energy/tools/concepts/` runs a frozen copy of the explorer's frontend against this live API. A change to API response fields, the CORS allowlist or the set of served concepts can break the website even when the explorer itself still works. Read [§9 of the explorer README](exploration/concept_explorer/README.md#9-deployment-and-downstream-consumers) before changing the explorer's API, its data files or which concepts it serves.
+- **`docs/`**: GitHub Pages publishes it to `scoring.1cf.energy`.
+
 ## Browser / UI Inspection
 
 For any task that involves seeing what a page renders, verifying a UI change took effect, or reproducing a click-driven bug (concept explorer, HTML explainers, anything served on localhost), use the **`browser-inspect` skill** at `.claude/skills/browser-inspect/SKILL.md`. The skill wraps `scripts/browser_inspect.py`, a Playwright driver that takes chained step flags (`--goto`, `--shot`, `--click`, `--read`, `--eval`, `--wait-for`, etc.) in command-line order, and writes both PNGs and JSON sidecars (URL, title, console messages, page errors) under `/tmp/browser_inspect/<session>/`. Read the JSON sidecar even when the screenshot looks fine — console errors are invisible in pixels and frequently explain "why is this chart blank."

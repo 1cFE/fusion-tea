@@ -17,6 +17,8 @@ uv run python exploration/concept_explorer/server.py
 
 See [§8 Running It](#8-running-it) for tests, custom ports, and prerequisites.
 
+**This app is live.** Every push to `main` redeploys it to `concepts.1cf.energy`, and the public website at `1cf.energy/tools/concepts/` depends on its API. See [§9 Deployment and Downstream Consumers](#9-deployment-and-downstream-consumers) before changing the API, the data files or the served concept set.
+
 ## 1. System Overview
 
 The Concept Explorer is a server-rendered web application for inspecting, comparing, and building intuition about the economics of fusion energy concepts. It transforms the raw output of the concept analysis pipeline (thousands of lines of markdown, model code, and tables) into interactive profiles with sensitivity visualizations, cost breakdowns, and cross-concept comparison.
@@ -682,3 +684,40 @@ uv run python -m pytest exploration/concept_explorer/tests/ -v
 - costingfe-backed concepts require the `1costingfe` package in the environment
 - Narrative extraction requires the `claude` CLI
 - Plotly is vendored at `static/vendor/plotly-basic.min.js` (no CDN dependency)
+
+## 9. Deployment and Downstream Consumers
+
+Pushing to `main` deploys this app to production. Two public pages depend on it, and no tests run before the deploy.
+
+### What runs where
+
+```
+fusion-tea main ──push──► Railway service "1cfe-fusion-tea-explorer"
+                            └─► concepts.1cf.energy   (this app: pages + /api/*)
+                                       ▲
+                                       │ browser fetches, cross-origin
+                                       │
+1cFE/website ──► 1cf.energy/tools/concepts/   (frozen copy of static/ + templates/,
+                                               pinned to one fusion-tea commit)
+```
+
+- **`concepts.1cf.energy`** is this FastAPI app. Railway rebuilds it from the repo-root `Dockerfile` and `railway.toml` on every push to `main`. Setup, dependency bumps and troubleshooting are in `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`.
+- **`1cf.energy/tools/concepts/`** comes from the `1cFE/website` repo (private). It serves a copy of this app's `static/` and `templates/` taken at one fusion-tea commit, recorded in that repo's `src/vendor/concepts/provenance.json`. Its JavaScript fetches all data, findings, compute results and explorer state from the live API at `concepts.1cf.energy`. The website's side is documented in its `docs/concepts-integration.md`.
+
+### What a push to `main` changes
+
+- **Data, findings and compute results** change on both sites at once.
+- **Frontend changes** (`static/`, `templates/`) reach `concepts.1cf.energy` only. The website keeps its pinned copy until someone re-imports it (see below).
+- **In-memory state resets.** Each deploy restarts the single server process, which clears `/api/state` and the compute cache. Both sites share that state.
+
+### Changes that break the website
+
+The website runs JavaScript from an older commit against the current API. It keeps working only while these hold:
+
+- **API response fields.** The pinned JavaScript calls `/api/manifest`, `/api/concepts/{id}`, `/api/concepts/{id}/findings`, `/api/compute`, `/api/cost-landscape`, `/api/parameter_index`, `/api/parameters/{name}`, `/api/state` (GET and POST), `/api/taxonomy/tree` and `/api/taxonomy/registry`. Adding fields is safe. Removing or renaming a field that JavaScript reads breaks the website, while `concepts.1cf.energy` keeps working because it serves the new JavaScript.
+- **CORS allowlist.** `_ExplorerApp` in `server.py` allows browser calls from `https://1cf.energy` and `https://static.1cf.energy`. `tests/test_cors.py` covers it.
+- **Served concept IDs.** The website builds one page per concept from a hardcoded list of 37 IDs (`src/data/concepts.mjs` in the website repo). Dropping a concept from this app leaves a website page whose API calls fail. A new concept gets no website page until that list and the pin are updated.
+
+### Updating the website's copy
+
+After a frontend change lands on `main`, someone with access to `1cFE/website` runs `npm run import:concepts /path/to/fusion-tea <full-commit-sha>` there, then `npm run check` and the browser checks listed in that repo's `src/vendor/concepts/README.md`. The import refuses to run if the concept ID list changed.
