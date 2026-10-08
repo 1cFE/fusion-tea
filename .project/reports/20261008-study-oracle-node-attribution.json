@@ -1,0 +1,343 @@
+{
+  "original_failure_count": 38,
+  "basis": "October 7 completed-gate inventory, unchanged INVALID expression AST, current retired-entry diagnostics and explicit combined-case supplemental execution; coherent outcomes pending.",
+  "invalid_list_ast_matches_head": true,
+  "attributions": [
+    {
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_I_coil]"
+      ],
+      "original_case_index": 0,
+      "original_overrides": {
+        "magnet_I_coil": "-1.0"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_combined_retired_public_sizing_inputs_are_refused"
+      ],
+      "original_case_index": 1,
+      "original_overrides": {
+        "magnet_I_coil": -1.0,
+        "magnet_j_wp": -2.0
+      },
+      "evidence": "Identical combined payload is submitted publicly under current key names together with the unchanged WI059_REPLAY fixture. Current retired-key refusal is checked exactly, including both sorted keys; oracle parameter state must remain unchanged.",
+      "targeted_supplement": {
+        "result": "1 passed in 0.12s",
+        "log": "/tmp/study-combined-retired-supplement.txt",
+        "scope": "Appended after parent coherent suite collection; targeted supplementary evidence only."
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_I_coil]"
+      ],
+      "original_case_index": 2,
+      "original_overrides": {
+        "magnet_I_coil": "nan"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_I_coil]"
+      ],
+      "original_case_index": 3,
+      "original_overrides": {
+        "magnet_I_coil": "inf"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_I_coil]"
+      ],
+      "original_case_index": 4,
+      "original_overrides": {
+        "magnet_I_coil": "-inf"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_j_wp]"
+      ],
+      "original_case_index": 5,
+      "original_overrides": {
+        "magnet_j_wp": "-1.0"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_j_wp]"
+      ],
+      "original_case_index": 6,
+      "original_overrides": {
+        "magnet_j_wp": "0.0"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_j_wp]"
+      ],
+      "original_case_index": 7,
+      "original_overrides": {
+        "magnet_j_wp": "nan"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_j_wp]"
+      ],
+      "original_case_index": 8,
+      "original_overrides": {
+        "magnet_j_wp": "inf"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_j_wp]"
+      ],
+      "original_case_index": 9,
+      "original_overrides": {
+        "magnet_j_wp": "-inf"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-oracle current sizing: invalid loading]",
+      "kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_I_coil]"
+      ],
+      "original_case_index": 10,
+      "original_overrides": {
+        "magnet_I_coil": "0.0"
+      },
+      "evidence": "Same invalid local name/value; old supported-entry validation becomes deliberate retired-entry rejection before numeric conversion. Current supplied-state guards are separately covered by 15 nodes."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]"
+      ],
+      "evidence": "INVALID literal/ordering unchanged. Valid missing counterpart now explicitly 1 A or 1 A/mm2 because global current oracle no longer declares retired inputs; decisive invalid overrides unchanged."
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact"
+      ]
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle",
+      "kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle"
+      ]
+    }
+  ]
+}

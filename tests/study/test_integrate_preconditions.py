@@ -33,28 +33,40 @@ SEAM = REPO_ROOT / "scripts" / "integrate.py"
 def request_argv(out_dir: Path) -> list[str]:
     """A complete, resolvable request. Gate 0 accepts it; no producer runs past it."""
     return [
-        "--audited-work", "exploration/stellarator_e2e/generated@HEAD",
-        "--models-root", str(REAL_MODELS),
-        "--package", str(REAL_PACKAGE),
-        "--manifest", str(REAL_MANIFEST),
-        "--groups", str(AXES),
-        "--route-sys-path", str(ROUTE_SYS_PATH),
-        "--route-module", "study_route",
-        "--route-callable", "execute_baseline",
-        "--out-dir", str(out_dir),
+        "--audited-work",
+        "exploration/stellarator_e2e/generated@HEAD",
+        "--models-root",
+        str(REAL_MODELS),
+        "--package",
+        str(REAL_PACKAGE),
+        "--manifest",
+        str(REAL_MANIFEST),
+        "--groups",
+        str(AXES),
+        "--route-sys-path",
+        str(ROUTE_SYS_PATH),
+        "--route-module",
+        "study_route",
+        "--route-callable",
+        "execute_baseline",
+        "--out-dir",
+        str(out_dir),
     ]
 
 
 def drop_flag(argv: list[str], flag: str) -> list[str]:
     index = argv.index(flag)
-    return argv[:index] + argv[index + 2:]
+    return argv[:index] + argv[index + 2 :]
 
 
 def run_seam_raw(argv: list[str], env: dict[str, str] | None = None):
     """Invoke the seam as a caller does: a subprocess, read back by exit code and JSON."""
     done = subprocess.run(
         [sys.executable, str(SEAM), *argv],
-        capture_output=True, text=True, cwd=str(REPO_ROOT), env=env,
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
+        env=env,
     )
     return done
 
@@ -137,7 +149,11 @@ def test_the_return_document_is_complete_on_every_exit_path(tmp_path):
     assert document["candidate"] is None
     assert document["exit_code"] == 1
     assert set(document["toolchain"]) == {
-        "agentic_mbse", "sysml_codegen", "costingfe", "teax_revision", "teax_module_path",
+        "agentic_mbse",
+        "sysml_codegen",
+        "costingfe",
+        "teax_revision",
+        "teax_module_path",
     }
     assert [gate["gate"] for gate in document["gates"]] == [g.name for g in integrate.GATES]
     assert all(gate["scope"] in ("repo", "request") for gate in document["gates"])
@@ -147,8 +163,12 @@ def test_the_condition_slug_set_is_closed():
     """A slug the guide does not enumerate cannot reach a caller: the constructor refuses."""
     with pytest.raises(ValueError, match="closed set"):
         integrate.SeamBlocker(
-            gate="preconditions", producer="scripts/integrate.py", scope="request",
-            mode="could_not_run", condition="not-a-real-slug", detail="",
+            gate="preconditions",
+            producer="scripts/integrate.py",
+            scope="request",
+            mode="could_not_run",
+            condition="not-a-real-slug",
+            detail="",
         )
 
 
@@ -163,7 +183,10 @@ def independently_can_import_simkit(env: dict[str, str]) -> bool:
     """
     done = subprocess.run(
         [sys.executable, "-c", "import simkit"],
-        capture_output=True, text=True, cwd=str(REPO_ROOT), env=env,
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
+        env=env,
     )
     return done.returncode == 0
 
@@ -171,13 +194,23 @@ def independently_can_import_simkit(env: dict[str, str]) -> bool:
 def test_simkit_probe_agrees_with_the_verify_subprocess(full_env):
     """Gate 8's residual is only narrow while this holds (design D15)."""
     env = integrate.seam_env()
-    assert (integrate.simkit_module_path(env) is not None) is (
-        independently_can_import_simkit(env)
-    )
+    assert (integrate.simkit_module_path(env) is not None) is (independently_can_import_simkit(env))
 
 
-def test_simkit_probe_refuses_without_the_teax_root(full_env, monkeypatch):
+def test_simkit_probe_refuses_without_the_teax_root(monkeypatch):
+    """Absence requires removing both the explicit checkout and inherited import paths."""
     monkeypatch.delenv("STOP_PARSER_TEAX_ROOT", raising=False)
+    monkeypatch.delenv("PYTHONPATH", raising=False)
     env = integrate.seam_env()
     assert integrate.simkit_module_path(env) is None
     assert independently_can_import_simkit(env) is False
+
+
+def test_simkit_probe_finds_inherited_path_without_explicit_teax_root(full_env, monkeypatch):
+    """The probe reports imports the producer can perform, including inherited ones."""
+    teax_root = full_env["STOP_PARSER_TEAX_ROOT"]
+    monkeypatch.delenv("STOP_PARSER_TEAX_ROOT", raising=False)
+    monkeypatch.setenv("PYTHONPATH", str(Path(teax_root) / integrate.TEAX_SIMKIT_SUBPATH))
+    env = integrate.seam_env()
+    assert integrate.simkit_module_path(env) is not None
+    assert independently_can_import_simkit(env) is True

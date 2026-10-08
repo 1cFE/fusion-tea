@@ -18,21 +18,30 @@ from tests.study.conftest import read_return, run_seam_raw
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 CANDIDATE_FIELDS = (
-    "package", "manifest", "pin", "semantic_fingerprint", "executable_fingerprint",
-    "identity_document", "baseline_result", "verification_summary",
+    "package",
+    "manifest",
+    "pin",
+    "semantic_fingerprint",
+    "executable_fingerprint",
+    "identity_document",
+    "baseline_result",
+    "verification_summary",
 )
 
 
-@pytest.fixture
-def candidate_run(integration_workspace, tmp_path):
+@pytest.fixture(scope="module")
+def candidate_run(integration_success_workspace, tmp_path_factory):
     """One full, passing invocation. Shared by the assertions below so it runs once."""
-    out = tmp_path / "out"
+    integration_workspace = integration_success_workspace
+    out = tmp_path_factory.mktemp("integration-success") / "out"
     entry = integrate.package_digests(integration_workspace.package)
     done = run_seam_raw(integration_workspace.request_argv(out))
     document = read_return(done, out)
     assert done.returncode == 0, json.dumps(document["blocker"], indent=2)
     return {
-        "document": document, "out": out, "entry": entry,
+        "document": document,
+        "out": out,
+        "entry": entry,
         "workspace": integration_workspace,
     }
 
@@ -51,8 +60,13 @@ def test_every_candidate_field_resolves(candidate_run):
     """R-E3: a bare number with no home is not evidence."""
     candidate = candidate_run["document"]["candidate"]
     assert set(candidate) == set(CANDIDATE_FIELDS)
-    for field in ("package", "manifest", "identity_document", "baseline_result",
-                  "verification_summary"):
+    for field in (
+        "package",
+        "manifest",
+        "identity_document",
+        "baseline_result",
+        "verification_summary",
+    ):
         assert (REPO_ROOT / candidate[field]).exists(), field
     for field in ("pin", "semantic_fingerprint", "executable_fingerprint"):
         assert len(candidate[field]) == 64, field

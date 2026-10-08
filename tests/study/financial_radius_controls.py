@@ -1,25 +1,44 @@
-from tests.models.current_mfe_regressions import CURRENT_NUMERIC, CURRENT_PREDICATES, PARTITIONS, assert_historical_native
 """Current radius controls: exact frozen physics, independently checked finance roundoff."""
-
-from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS, WI062_CHANNELS, WI063_CHANNELS
 
 import json
 import math
 import sys
 from collections.abc import Mapping
 from pathlib import Path
-from tests.study.structure_ledger import renamed, renamed_keys
 
+from tests.models.current_mfe_regressions import (
+    CURRENT_NUMERIC,
+    CURRENT_PREDICATES,
+    MR7_CHANNELS,
+    MR7_RADIUS_CASING,
+    MR7_RETIRED_CHANNELS,
+    PARTITIONS,
+    WI061_CHANNELS,
+    WI061_MAPPED_PARAMETERS,
+    WI061_PARAMETERS,
+    WI062_CHANNELS,
+    WI063_CHANNELS,
+    assert_current_predicates,
+    assert_historical_native,
+)
+from tests.study.structure_ledger import renamed, renamed_keys
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / "exploration/stellarator_e2e/studies")]
 import oracle_entry as oracle  # noqa: E402 — runtime import path established above
 import study_route as route  # noqa: E402 — runtime import path established above
 
-from tests.study.financial_channels import FINANCIAL_CHANNELS
-from tests.models.current_mfe_regressions import (WI040_CHANNELS, WI040_CHANGED_ECONOMICS, LIVE_CONDUCTOR_CHANNELS, WI060_CHANNELS, WI059_CHANNELS, WI059_REPLAY, wi059_native_additions)
-
 from scripts.study import common, verify  # noqa: E402 — runtime import path established above
+from tests.models.current_mfe_regressions import (
+    LIVE_CONDUCTOR_CHANNELS,
+    WI040_CHANGED_ECONOMICS,
+    WI040_CHANNELS,
+    WI059_CHANNELS,
+    WI059_REPLAY,
+    WI060_CHANNELS,
+    wi059_native_additions,
+)
+from tests.study.financial_channels import FINANCIAL_CHANNELS
 
 
 def check_controls(out):
@@ -28,13 +47,25 @@ def check_controls(out):
     frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
     frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
     expectations = json.loads((frozen_dir / "expectations.json").read_text())
-    # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was produced with
+    # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was
+    # produced with
     # the R-form (c_coil = k_coil * R). At a = 1.3 the bore ratio is 1.0, so binding the reference
-    # circumference to k_coil * R reproduces the R-form length exactly and the frozen row stays the exact
-    # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in
+    # circumference to k_coil * R reproduces the R-form length exactly and the frozen row
+    # stays the exact
+    # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is
+    # tested in
     # tests/models/test_winding_length_bore.py).
     from tests.models.current_mfe_regressions import K_COIL_RETIRED
-    proposals = [WI059_REPLAY, WI059_REPLAY | {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
+
+    proposals = [
+        WI059_REPLAY,
+        WI059_REPLAY
+        | {
+            route.P + "plasma__R": 14.0,
+            route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0,
+            route.P + "magnet__casing__m_casing": MR7_RADIUS_CASING,
+        },
+    ]
     cases, db = route.run_points("radius-controls", proposals, out / "_work")
     assert len(cases) == 2 and all(c.state == "completed" for c in cases)
     comparisons = {}
@@ -43,20 +74,28 @@ def check_controls(out):
         expected = frozen["cases"][old_name]["native"]
         # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.
         frozen_outputs = renamed_keys(expected["outputs"])
-        channels=oracle.evaluate(proposal)
-        partition=PARTITIONS['fixture_partitions']['radius-'+old_name]
-        changed=set(partition['changed_current_equation_channels'])
-        additions=set(partition['added_channels'])
-        assert set(frozen_outputs)==set(partition['unaffected_exact_channels']) | changed
-        expected_outputs=dict(frozen_outputs)
-        expected_outputs.update({k:channels[k] for k in changed | additions})
-        assert set(case.outputs)==set(expected_outputs)==CURRENT_NUMERIC
-        for key,value in expected_outputs.items():
+        channels = oracle.evaluate(proposal)
+        partition = PARTITIONS["fixture_partitions"]["radius-" + old_name]
+        changed = set(partition["changed_current_equation_channels"])
+        additions = (set(partition["added_channels"]) | MR7_CHANNELS) - MR7_RETIRED_CHANNELS
+        assert set(frozen_outputs) == set(partition["unaffected_exact_channels"]) | changed
+        changed -= MR7_RETIRED_CHANNELS
+        expected_outputs = {
+            k: v for k, v in frozen_outputs.items() if k not in MR7_RETIRED_CHANNELS
+        }
+        expected_outputs.update({k: channels[k] for k in changed | additions})
+        assert set(case.outputs) == set(expected_outputs) == CURRENT_NUMERIC
+        for key, value in expected_outputs.items():
             if key in changed | additions | FINANCIAL_CHANNELS:
-                assert math.isclose(case.outputs[key],value,rel_tol=1e-9,abs_tol=0.0),(name,key,case.outputs[key],value)
+                assert math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0), (
+                    name,
+                    key,
+                    case.outputs[key],
+                    value,
+                )
             else:
-                assert case.outputs[key]==value,(name,key,case.outputs[key],value)
-        assert set(channels)==CURRENT_NUMERIC
+                assert case.outputs[key] == value, (name, key, case.outputs[key], value)
+        assert set(channels) == CURRENT_NUMERIC
         rows = {}
         for key, value in channels.items():
             assert math.isclose(value, case.outputs[key], rel_tol=1e-9, abs_tol=1e-9), (
@@ -81,9 +120,20 @@ def check_controls(out):
             "oracle_channels": rows,
         }
         assert set(case.verdicts) == CURRENT_PREDICATES
+        from types import SimpleNamespace
+
+        assert_current_predicates(
+            SimpleNamespace(
+                outputs=case.outputs, responses=dict(case.verdicts, headline=case.headline)
+            ),
+            proposal,
+            channels,
+        )
     ratios = {}
     for suffix, expected in expectations["ratios"].items():
         key = renamed(route.P + suffix)  # WI-057
+        if key in MR7_RETIRED_CHANNELS:
+            continue
         actual = comparisons["R14"]["outputs"][key] / comparisons["baseline"]["outputs"][key]
         assert math.isclose(actual, expected, rel_tol=1e-9, abs_tol=1e-9), key
         ratios[key] = {"expected": expected, "actual": actual}

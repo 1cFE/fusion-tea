@@ -7,10 +7,19 @@ a record reader can see the difference mechanically instead of trusting a runboo
 
 import hashlib
 
-from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool
+from tests.study.conftest import KNOWN_ANSWER_DECLARATION, REAL_MANIFEST, REAL_PACKAGE, run_tool
 
-KNOWN_ANSWERS = DATA_DIR / "axes.known_answers.json"
-ALL_AXES = ["I_coil", "R", "a", "availability_direct", "interest_rate"]
+KNOWN_ANSWERS = KNOWN_ANSWER_DECLARATION
+ALL_AXES = [
+    "R",
+    "a",
+    "availability_direct",
+    "discount_rate",
+    "loop_flow_ceiling",
+    "pack_side",
+    "processor_capacity",
+    "turn_current",
+]
 
 
 def test_a_full_run_covers_the_whole_declaration():
@@ -28,16 +37,16 @@ def test_a_group_run_is_visibly_narrower():
 
 
 def test_several_groups_can_be_selected():
-    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("I_coil", "R"))
+    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("turn_current", "R"))
     assert doc["axis_declaration"]["subset"] is True
-    assert [g["axis"] for g in doc["groups"]] == ["I_coil", "R"]
+    assert [g["axis"] for g in doc["groups"]] == ["R", "turn_current"]
 
 
 def test_a_subset_group_is_byte_identical_to_its_full_run_counterpart():
     """The debugging aid answers the same question, just about fewer axes."""
     full = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS)
-    subset = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("I_coil",))
-    assert next(g for g in full["groups"] if g["axis"] == "I_coil") == subset["groups"][0]
+    subset = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("turn_current",))
+    assert next(g for g in full["groups"] if g["axis"] == "turn_current") == subset["groups"][0]
 
 
 def test_the_axis_declaration_digest_matches_the_file_bytes():
@@ -45,4 +54,7 @@ def test_the_axis_declaration_digest_matches_the_file_bytes():
     expected = hashlib.sha256(KNOWN_ANSWERS.read_bytes()).hexdigest()
     assert doc["axis_declaration"]["digest"] == expected
     assert doc["axis_declaration"]["schema_version"] == "study-axis-declaration/v1"
-    assert doc["axis_declaration"]["path"] == "tests/study/data/axes.known_answers.json"
+    assert (
+        doc["axis_declaration"]["path"]
+        == "exploration/stellarator_e2e/studies/axes.supplied_design.json"
+    )

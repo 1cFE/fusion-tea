@@ -1,0 +1,1392 @@
+{
+  "original_study_failures": 86,
+  "original_study_setup_errors": 24,
+  "original_node_outcomes": {
+    "passed": 109,
+    "xfail": 1
+  },
+  "coherent_outcome_counts": {
+    "passed": 1863,
+    "xfail": 1,
+    "skipped": 1
+  },
+  "supplemental_outcomes": {
+    "tests/study/test_winding_consumers.py::test_combined_retired_public_sizing_inputs_are_refused": "passed"
+  },
+  "attributions": [
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_known_answers.py::test_fixture_binding",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_fixture_binding"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_known_answers.py::test_current_heating_reachability",
+      "mapping_kind": "historical_target_rename",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_historical_heating_reachability"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_byte_determinism_across_working_directories",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_byte_determinism_across_working_directories"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_not_derivable_is_byte_equal",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_not_derivable_is_byte_equal"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_constraint_completeness",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_constraint_completeness"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_output_contract.py::test_the_report_carries_no_timestamp",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_report_carries_no_timestamp"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_subset_flag.py::test_several_groups_can_be_selected",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_several_groups_can_be_selected"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_advisory_never_changes_the_trace",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_advisory_never_changes_the_trace"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_combined_retired_public_sizing_inputs_are_refused"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "supplemental"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_j_wp]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_j_wp]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_j_wp]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_j_wp]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_j_wp]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-oracle current sizing: invalid loading]",
+      "mapping_kind": "retired_public_input_contract_replacement",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "FAILED",
+      "original_node": "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle",
+      "mapping_kind": "unchanged_node",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[availability_direct]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[availability_direct]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[interest_rate]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[interest_rate]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[R]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[R]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[a]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[a]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[I_coil]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_known_answers.py::test_current_availability_has_structural_breeding_and_facility_paths",
+      "mapping_kind": "historical_target_rename",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_historical_availability_has_structural_breeding_and_facility_paths"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest"
+      ],
+      "outcomes": [
+        "passed"
+      ],
+      "scope": "coherent_suite"
+    },
+    {
+      "original_kind": "ERROR",
+      "original_node": "tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero",
+      "mapping_kind": "same_node_id",
+      "current_nodes": [
+        "tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero"
+      ],
+      "outcomes": [
+        "xfail"
+      ],
+      "scope": "coherent_suite"
+    }
+  ],
+  "entering_commit": "582f6f932",
+  "coherent_suite": {
+    "command": "bash /tmp/fusion-tea-study-repair-tests.sh -q -ra --tb=short --junitxml=/tmp/20261008-study-suite.xml tests/study",
+    "exit_code": 0,
+    "duration_seconds": 3843.04,
+    "warnings": 79,
+    "runtime": "uv run --no-sync; exported integration.env; project .env license set before pytest; STUDY_REQUIRE_TEAX=1; serialized archive aliases; no browser overlay"
+  },
+  "artifacts": {
+    "/tmp/20261008-study-suite.log": {
+      "sha256": "4c0d5a78115c3ea5268ef378d67ec5afbac053b44416768e8092e9d61622308c",
+      "bytes": 407170
+    },
+    "/tmp/20261008-study-suite.xml": {
+      "sha256": "2021e16b753a416af4eec7a9be00ec97a28b80487faf40aafc367d4cade1c346",
+      "bytes": 319113
+    },
+    "/tmp/20261008-study-suite-source-hashes.json": {
+      "sha256": "773b1083b4e1325d2c242d664c96bc6a0750148b4da14a75cb2d8728313aa3ee",
+      "bytes": 2168
+    },
+    "/tmp/study-combined-retired-supplement.txt": {
+      "sha256": "3be6ffcaecf85b5bd3eef3693ab214b0e7c9eb4e36d117fcf1825652de5eb298",
+      "bytes": 98
+    }
+  },
+  "collected_source_hashes": {
+    "scripts/study/indicators.py": "41fdc42c6e6720bab5e3370df24df82085ea94161f6f19f4e5b79a6a06a028e0",
+    "tests/study/conftest.py": "62c3e55302914e844e7124a04d39c2638331bada6116c97076ddc6bad5a8676c",
+    "tests/study/financial_radius_controls.py": "29865fc2cdf157ae363fd54f8d863afdf91da84b21cd383bbfab3e145b782d1b",
+    "tests/study/test_domain_consumers.py": "1efa057c2dbe315b2fe4c6f9a220fa4f0c192e040bc4317ec54feb4965125180",
+    "tests/study/test_financial_consumers.py": "ca0d3bb8628263a7775f74a4cbff9a1b9c13a08771a825f6545991cb97be78c8",
+    "tests/study/test_integrate_preconditions.py": "23c4324e22a5e7098394c881b8bf7f8a4ede4d6187dd68591fc10efb0d3da444",
+    "tests/study/test_integrate_success.py": "0ea7aa43c32755c960806a78ff175f6c4a4cab5fdd72cacdb0cfc2e945bdedd3",
+    "tests/study/test_known_answers.py": "baebddc8bc9fba6f403c83ef9da417bee3d4aa05f91228d80df2b81fdac7ca73",
+    "tests/study/test_major_radius.py": "96e6778d11fbf953d16e9e4542c96e76b2ef8364496dcf955c92b670cbc52560",
+    "tests/study/test_native_publication.py": "5e8d9e7fe5855bf15816914cd29e548ca7a127995cde794812f34df431c1708f",
+    "tests/study/test_operand_bindings.py": "d290365acbc3490dc659525214bda327e0db296dbd36f1966e4ca47588aa55f8",
+    "tests/study/test_output_contract.py": "9979b6e5bf8e3c498125b30d38fb01a60d5c951c8feb16e9bff6ca997812730d",
+    "tests/study/test_preflight_gates.py": "664d99ad8ba28bb0107b6bf3650147276b4e4d6dab7cf9adf046b3f95113980b",
+    "tests/study/test_primary_loop_consumers.py": "3ac37937c89cfbe197392dbff6596941fe3ba5bf0e8ab21526e6f592b2622bdc",
+    "tests/study/test_provenance.py": "c9a5b220a8d3dee053b0487f8027fc706b44c86af47948fb828512a52a0beba6",
+    "tests/study/test_single_point_gate.py": "761020a96bb0e46b7b78d0a779d063fd9250fc661711ffbab72c96ce41d2fa31",
+    "tests/study/test_subset_flag.py": "d55ac6cf5b5466bc37177588f7b2cea2a4c4fc0561a4065714bde1072d83025b",
+    "tests/study/test_verify.py": "868ca914da1c229f6ec9ff36dd0ec80f62d3876275786ac4609e46017919eb46",
+    "tests/study/test_warnings.py": "d1247369411de24f7be8c340592c08f74c3f3f4dfde646df09e051113bf063ff",
+    "tests/study/test_winding_consumers.py": "d0426baef6bca18fbbf14d2d45a5f2f1886c366196871536084f29156cc2670a"
+  },
+  "supplement_scope": "One standalone test appended after coherent collection; separate one-test PASS in 0.12 seconds. Removing the append recovers the captured winding source hash. Not counted in 1863 coherent passes.",
+  "limitations": [
+    "Existing optional proof-of-life store unavailable; one skip.",
+    "Existing historical single-point CLI incompatibility; exact refusal guards pass before strict xfail.",
+    "No fresh full-repository gate claimed; other October 7 failure groups and repository-wide style policy remain pending."
+  ]
+}
