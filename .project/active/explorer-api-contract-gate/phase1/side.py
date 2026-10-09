@@ -17,6 +17,9 @@ tree it opened for reading, and every directory it listed, from importing the se
 the last response. Record adds the contract text; check adds the failure keys and, for
 each shape-type key, the pinned and observed kinds. A side that can't load or observe
 writes its traceback instead and exits 1.
+
+Timings and --skip-compute live here, not in the gate: `HarnessClient` times each request
+`observe` sends and, with --skip-compute, leaves compute unsent.
 """
 
 from __future__ import annotations
@@ -25,10 +28,12 @@ import argparse
 import importlib.metadata
 import json
 import os
+import re
 import sys
 import time
 import traceback
 from pathlib import Path
+from typing import Any
 
 WEBSITE_CONTRACT = (
     Path(__file__).resolve().parents[4] / "exploration" / "concept_explorer" / "website_contract"
@@ -40,6 +45,52 @@ NON_CONCEPT_FILES = {
     "decision_tree.json",
 }
 COMPUTE = ("POST /api/compute:slider", "POST /api/compute:slider-range", "POST /api/compute:toggle")
+COMPUTE_ROUTE = "/api/compute"
+
+
+class _Unsent:
+    """What `observe` gets for a compute request under --skip-compute. It records status 0,
+    and the side then drops the compute templates, so nothing judges these responses."""
+
+    status_code = 0
+    headers: dict[str, str] = {}
+
+
+class HarnessClient:
+    """The TestClient as `observe` calls it, plus what only the replay needs: every request's
+    method, route, body, status and seconds (`calls`), and compute left unsent on request."""
+
+    def __init__(self, client: Any, skip_compute: bool) -> None:
+        self._client = client
+        self._skip_compute = skip_compute
+        self.calls: list[dict] = []
+
+    def get(self, url: str, **kwargs: Any) -> Any:
+        return self._send("GET", url, kwargs)
+
+    def post(self, url: str, **kwargs: Any) -> Any:
+        if self._skip_compute and url == COMPUTE_ROUTE:
+            return _Unsent()
+        return self._send("POST", url, kwargs)
+
+    def _send(self, method: str, url: str, kwargs: dict) -> Any:
+        start = time.perf_counter()
+        response = self._client.request(method, url, **kwargs)
+        seconds = time.perf_counter() - start
+        self.calls.append(
+            {
+                "route": f"{method} {_route_of(url)}",
+                "body": kwargs.get("json"),
+                "status": response.status_code,
+                "seconds": seconds,
+            }
+        )
+        return response
+
+
+def _route_of(url: str) -> str:
+    """'/api/concepts/04/findings' -> '/api/concepts/{}/findings', for timing by route."""
+    return re.sub(r"^/api/(concepts|parameters)/[^/]+", r"/api/\1/{}", url)
 
 
 def main() -> int:
@@ -112,22 +163,24 @@ def run(args: argparse.Namespace, result: dict) -> None:
     contract = parse(args.contract.read_text()) if args.mode == "check" else None
     if args.findings_only:
         observation = observe_findings(args.tree, result)
+        calls: list[dict] = []
         schema = rules.Schema(frozenset(), {}, {})  # the findings response is an untyped dict
     else:
-        observation, schema = observe_served(args, contract, result)
+        observation, calls, schema = observe_served(args, contract, result)
     result["templates"] = {
-        template: {
-            "count": len(responses),
-            "total_seconds": sum(r.seconds for r in responses),
-            "slowest_seconds": max((r.seconds for r in responses), default=0.0),
-            "statuses": sorted({r.status for r in responses}),
-        }
+        template: {"count": len(responses), "statuses": sorted({r.status for r in responses})}
         for template, responses in observation.items()
     }
+    result["routes"] = route_timings(calls)
     result["compute_calls"] = [
-        {"template": t, "instance": r.instance, "status": r.status, "seconds": r.seconds}
-        for t in COMPUTE
-        for r in observation.get(t, [])
+        {
+            "concept_id": call["body"]["concept_id"],
+            "apply_analyst_overrides": call["body"]["apply_analyst_overrides"],
+            "status": call["status"],
+            "seconds": call["seconds"],
+        }
+        for call in calls
+        if call["route"] == f"POST {COMPUTE_ROUTE}"
     ]
     if args.dump is not None:
         args.dump.write_text(
@@ -151,8 +204,26 @@ def run(args: argparse.Namespace, result: dict) -> None:
     result["details"] = details
 
 
-def observe_served(args: argparse.Namespace, contract, result: dict) -> tuple[dict, object]:
-    """Serve the tree and observe it, auditing what the server reads; return it and the schema."""
+def route_timings(calls: list[dict]) -> dict[str, dict]:
+    """Per route: how many requests, their total seconds and the slowest one's."""
+    timings: dict[str, dict] = {}
+    for call in calls:
+        entry = timings.setdefault(
+            call["route"], {"count": 0, "total_seconds": 0.0, "slowest_seconds": 0.0}
+        )
+        entry["count"] += 1
+        entry["total_seconds"] += call["seconds"]
+        entry["slowest_seconds"] = max(entry["slowest_seconds"], call["seconds"])
+    return timings
+
+
+def observe_served(
+    args: argparse.Namespace, contract, result: dict
+) -> tuple[dict, list[dict], object]:
+    """Serve the tree and observe it, auditing what the server reads.
+
+    Returns the observation (compute templates dropped under --skip-compute), every
+    request's timing, and the schema when recording."""
     import contract_rules as rules
     import frontend_requests as fr
 
@@ -166,7 +237,6 @@ def observe_served(args: argparse.Namespace, contract, result: dict) -> tuple[di
         import exploration.concept_explorer.models as models
 
         models._OMIT_LIST_PATH = args.omit_list
-    skip = COMPUTE if args.skip_compute else ()
     schema = None
     start = time.perf_counter()
     with fr.serve(args.tree / "exploration" / "concept_explorer") as client:
@@ -177,11 +247,15 @@ def observe_served(args: argparse.Namespace, contract, result: dict) -> tuple[di
             concept_ids = fr.manifest_concept_ids(client)
         else:
             concept_ids = list(contract.concepts)
-        observation = fr.observe(client, concept_ids, skip)
+        harness_client = HarnessClient(client, args.skip_compute)
+        observation = fr.observe(harness_client, concept_ids)
         result["observe_seconds"] = time.perf_counter() - observe_start
+    if args.skip_compute:
+        for template in COMPUTE:
+            del observation[template]
     result["reads"] = under(args.tree, opened)
     result["listed"] = under(args.tree, listed)
-    return observation, schema
+    return observation, harness_client.calls, schema
 
 
 def observe_findings(tree: Path, result: dict) -> dict:
@@ -221,7 +295,7 @@ def observe_findings(tree: Path, result: dict) -> dict:
             "analysis_html": payload.analysis_html,
             "analysis_from_archive": payload.analysis_from_archive,
         }
-        responses.append(Response(concept_id, None, 200, body, 0.0, allow_origin=None))
+        responses.append(Response(concept_id, None, 200, body, allow_origin=None))
     result["concept_ids"] = concept_ids
     return {FINDINGS: responses}
 

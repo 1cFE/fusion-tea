@@ -58,7 +58,7 @@ from waivers import UNWAIVABLE, Verdict, WaiverError, apply_waivers, load_waiver
 REPO_ROOT = _HERE.parents[2]  # the checkout this file belongs to
 CONTRACT_PATH = _HERE / "contract.txt"
 WAIVERS_PATH = _HERE / "waivers.toml"
-TEST_TOOLS = ("httpx", "pytest")  # their record-mode versions form the tools line (m6)
+TEST_TOOLS = _HERE / "test_tools.txt"  # name==version per line, shared with gate.sh
 
 EXIT_FAILED = 1  # an unwaived failure, or a recording refused
 EXIT_CONFIG = 2  # waivers.toml or .dockerignore uses syntax the gate can't read
@@ -157,7 +157,7 @@ def _record_command(args: argparse.Namespace) -> int:
         print(refusal)
         return EXIT_FAILED
     tracked = tracked_paths(args.repo, args.pin)
-    tools = [f"{name}=={importlib.metadata.version(name)}" for name in TEST_TOOLS]
+    tools = [f"{name}=={importlib.metadata.version(name)}" for name in _test_tool_names()]
     sys.path.insert(0, str(tree))  # import the pin's own server (I1)
     with touched_paths(tree) as touched:
         require_own_server(tree)
@@ -175,6 +175,12 @@ def _record_command(args: argparse.Namespace) -> int:
     print(f"recorded {args.contract} from {args.pin}")
     print(" ".join(["concepts", *contract.concepts]))
     return 0
+
+
+def _test_tool_names() -> list[str]:
+    """The tools in test_tools.txt; record writes their installed versions to the header (m6)."""
+    lines = TEST_TOOLS.read_text(encoding="utf-8").splitlines()
+    return [line.split("==")[0] for line in lines if line and not line.startswith("#")]
 
 
 def _frontend_refusal(tree: Path, contract_path: Path, reverified: bool) -> str:

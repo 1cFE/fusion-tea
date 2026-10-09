@@ -147,17 +147,8 @@ def record(
     observation: Observation, schema: Schema, pin: str, tools: Iterable[str], js: Mapping[str, str]
 ) -> Contract:
     """The contract an observation of the pinned server establishes."""
-    maps = frozenset((template, path) for template, path in schema.maps if template in observation)
-    for template, responses in observation.items():
-        map_paths = {path for t, path in maps if t == template}
-        unwritable = unwritable_keys(bodies(responses), map_paths)
-        if unwritable:
-            where = ", ".join(f"{key!r} under {path}" for path, key in unwritable)
-            raise ValueError(
-                f"{template}: record keys can't be written as paths: {where}. A data-driven "
-                "key like this most likely means a map was classified as a record"
-            )
-    shapes = shapes_of(observation, maps, schema.enum_paths)
+    _refuse_unwritable_keys(observation, schema.maps)
+    shapes = shapes_of(observation, schema.maps, schema.enum_paths)
     used_enums = {
         kind.removeprefix("enum:")
         for kinds in shapes.values()
@@ -180,9 +171,25 @@ def record(
         },
         enums={name: schema.enums[name] for name in used_enums},
         literals=dict(LITERAL_READS),
-        maps=maps,
+        maps=schema.maps,
         shapes=shapes,
     )
+
+
+def _refuse_unwritable_keys(observation: Observation, maps: Collection[tuple[str, str]]) -> None:
+    """Raise if a record key can't be written as a path: the contract couldn't hold it.
+
+    Check skips such a key as new; a recording mustn't silently leave it out.
+    """
+    for template, responses in observation.items():
+        map_paths = {path for t, path in maps if t == template}
+        unwritable = unwritable_keys(bodies(responses), map_paths)
+        if unwritable:
+            where = ", ".join(f"{key!r} under {path}" for path, key in unwritable)
+            raise ValueError(
+                f"{template}: record keys can't be written as paths: {where}. A data-driven "
+                "key like this most likely means a map was classified as a record"
+            )
 
 
 def shapes_of(

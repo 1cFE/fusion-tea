@@ -68,19 +68,19 @@ def unwritable_keys(bodies: Iterable[Any], map_paths: Collection[str]) -> list[t
             for path, value in _nodes(body, ".", map_paths)
             if isinstance(value, dict) and path not in map_paths
             for key in value
-            if not is_path_segment(key)
+            if not _is_path_segment(key)
         }
     )
 
 
-def is_path_segment(key: str) -> bool:
+def _is_path_segment(key: str) -> bool:
     """Whether a record key can be written as a path segment."""
     return not PATH_BREAKERS.search(key)
 
 
 def field_path(path: str, key: str) -> str:
     """The path of record field `key` under `path`; fails on a key a path can't hold."""
-    if not is_path_segment(key):
+    if not _is_path_segment(key):
         raise ValueError(
             f"record key {key!r} under {path} can't be written as a path; "
             "a data-driven key like this most likely means a map was classified as a record"
@@ -98,7 +98,7 @@ def _nodes(value: Any, path: str, map_paths: Collection[str]) -> Iterator[tuple[
             children = (
                 (field_path(path, key), child)
                 for key, child in value.items()
-                if is_path_segment(key)
+                if _is_path_segment(key)
             )
     elif isinstance(value, list):
         children = ((path + "[]", child) for child in value)

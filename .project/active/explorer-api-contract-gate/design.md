@@ -181,7 +181,7 @@ record  (each re-pin, local, full clone):
   └─► observe(scratch tree) ─► contract.txt   (+ fetch( coverage, JS blob SHAs vs the previous header)
 
 check   (every push, CI and local; gate.sh under `timeout 480`, install retried):
-  sparse checkout ─► venv(requirements-serve.txt + test tools pinned in gate.sh)
+  sparse checkout ─► venv(requirements-serve.txt + test tools pinned in test_tools.txt)
   ├─► observe(checkout) ─► rules vs contract.txt and waivers.toml, plus file audit ─► exit code
   └─► pytest test_cors.py test_website_contract.py
 
@@ -270,6 +270,7 @@ Everything about the contract lives in **`exploration/concept_explorer/website_c
 | `contract.txt` | The recording. Written only by the recorder. |
 | `waivers.toml` | Hand-written. Each entry has `match`, `reason`, `evidence` and `date`. Starts empty. |
 | `runtime_paths.txt` | The three runtime directories, matching the "MUST survive" list in the `.dockerignore` header (lines 9-13). |
+| `test_tools.txt` | The test tools, pinned for check mode; record mode takes their names from it (audit A8). |
 | `gate.sh` | The one command: `gate.sh` checks, and `gate.sh record <sha>` re-records. |
 
 The orchestrator split D12's single `contract.py` into a thin `contract.py` and the six modules under it on 2026-10-08, when it reached 1323 lines; the CLI and behavior are unchanged, and `file_audit.py` and `drift.py` stay as D12 has them.
@@ -602,7 +603,7 @@ GET  /api/manifest       .concepts[].status                     enum:ConceptStat
 1. Adds the paths in `runtime_paths.txt` when the checkout is sparse. In record mode it instead extracts those paths from the pin with `git archive`, and names the root `requirements-serve.txt` explicitly, since it sits outside the three runtime directories (N2).
 2. Builds a Python 3.12 venv with `uv`, retrying the install up to 3 times (M8).
 3. Installs the serving set plus test tools:
-   - check mode pins `pytest` and `httpx` in `gate.sh`;
+   - check mode installs `pytest` and `httpx` at the versions pinned in `test_tools.txt`, the one list of test tools (audit A8);
    - record mode installs the extract's serving set, and resolves the test tools with `uv pip install --exclude-newer <pin commit timestamp>`. The versions then depend only on the pin and match the pin's Starlette. Record mode writes them to the header (m6, N2).
 4. Runs `contract.py check`, then `pytest` on `test_cors.py` and `test_website_contract.py`. Both always run, and the script exits non-zero if either fails.
 

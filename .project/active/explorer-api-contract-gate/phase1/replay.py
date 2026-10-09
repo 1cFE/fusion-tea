@@ -163,6 +163,7 @@ def _summary(side_result: dict) -> dict:
         "startup_seconds": round(side_result["startup_seconds"], 2),
         "observe_seconds": round(side_result["observe_seconds"], 2),
         "templates": side_result["templates"],
+        "routes": side_result["routes"],
         "compute_calls": side_result["compute_calls"],
     }
 

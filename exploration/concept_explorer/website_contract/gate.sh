@@ -14,8 +14,7 @@ export LC_NUMERIC=C  # step timings use a decimal point
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(cd "$HERE/../../.." && pwd)"
 CONTRACT_PY="$HERE/contract.py"
-# Check-mode test tools, resolved once against the serving set (plan decision 2).
-CHECK_TOOLS=(pytest==9.1.1 httpx==0.28.1)
+TEST_TOOLS="$HERE/test_tools.txt"  # pinned for check mode; names only for record mode
 SELF_TESTS=(
   exploration/concept_explorer/tests/test_cors.py
   exploration/concept_explorer/tests/test_website_contract.py
@@ -58,7 +57,7 @@ check_mode() {
     step sparse-checkout git sparse-checkout add "${paths[@]}"
   fi
   step venv uv venv -q --python 3.12 "$WORK/venv"
-  step install retry uv pip install -q --python "$PY" -r requirements-serve.txt "${CHECK_TOOLS[@]}"
+  step install retry uv pip install -q --python "$PY" -r requirements-serve.txt -r "$TEST_TOOLS"
   # The contract check and the self-tests always both run.
   step contract "$PY" -I -B "$CONTRACT_PY" check || failed=1
   step self-tests "$PY" -B -m pytest -p no:cacheprovider -q "${SELF_TESTS[@]}" || failed=1
@@ -71,14 +70,15 @@ record_mode() {
   shift
   [[ "$sha" =~ ^[0-9a-f]{40}$ ]] || usage
   cd "$REPO"
-  local cutoff
+  local cutoff tools
   cutoff="$(git show -s --format=%cI "$sha")"
+  mapfile -t tools < <(grep -v -e '^#' -e '^$' "$TEST_TOOLS" | cut -d= -f1)
   step venv uv venv -q --python 3.12 "$WORK/venv"
   step extract "$PY" -I -B "$CONTRACT_PY" extract "$sha" "$WORK/tree"
   # The pin's own serving set, fully pinned, so it installs without a cutoff. The test
   # tools resolve as of the pin's commit time, so recording depends only on the pin (N2).
   step install retry uv pip install -q --python "$PY" -r "$WORK/tree/requirements-serve.txt"
-  step install-tools retry uv pip install -q --python "$PY" --exclude-newer "$cutoff" pytest httpx
+  step install-tools retry uv pip install -q --python "$PY" --exclude-newer "$cutoff" "${tools[@]}"
   step record "$PY" -I -B "$CONTRACT_PY" record --tree "$WORK/tree" --pin "$sha" "$@"
   # Check this checkout against the new contract, which also reports stale waivers.
   "$HERE/gate.sh"

@@ -11,9 +11,8 @@ from __future__ import annotations
 
 import math
 import os
-import time
 import urllib.parse
-from collections.abc import Callable, Collection, Iterable, Iterator, Mapping, Sequence
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
@@ -151,7 +150,6 @@ class Response:
     sent: Mapping[str, Any] | None  # the JSON body the request carried; None for a GET or preflight
     status: int
     body: Any  # parsed JSON when the status is 2xx, else None
-    seconds: float
     allow_origin: str | None  # the access-control-allow-origin header, if any
 
     @property
@@ -164,7 +162,7 @@ def _is_success(status: int) -> bool:
 
 
 # Template -> its responses, in request order. A template that was sent zero times
-# has an empty list; a skipped template has no entry.
+# has an empty list.
 Observation = dict[str, list[Response]]
 
 
@@ -180,25 +178,22 @@ def serve(base_dir: Path) -> Iterator[Any]:
         yield client
 
 
-def observe(client: Any, concept_ids: Sequence[str], skip: Collection[str] = ()) -> Observation:
+def observe(client: Any, concept_ids: Sequence[str]) -> Observation:
     """Send every request the pinned frontend makes, as the pinned JavaScript derives them.
 
     Concept-keyed requests go to `concept_ids` in order. Parameter names, slider bodies
-    and which concepts get compute requests come from the current responses. Templates
-    in `skip` are not sent.
+    and which concepts get compute requests come from the current responses.
     """
-    observation: Observation = {template: [] for template in REQUESTS if template not in skip}
+    observation: Observation = {template: [] for template in REQUESTS}
     origin = {"Origin": WEBSITE_ORIGIN}
 
     def send(
         template: str, instance: str | None, sent: Mapping[str, Any] | None, call: Callable[[], Any]
     ) -> Any:
-        if template not in observation:
-            return None
-        response, seconds = _timed(call)
+        response = call()
         body = response.json() if _is_success(response.status_code) else None
         observation[template].append(
-            Response(instance, sent, response.status_code, body, seconds, _allow_origin(response))
+            Response(instance, sent, response.status_code, body, _allow_origin(response))
         )
         return body
 
@@ -272,18 +267,11 @@ def preflight(client: Any) -> Observation:
     }
     observation: Observation = {}
     for template in PREFLIGHTS:
-        response, seconds = _timed(client.options, route(template), headers=headers)
+        response = client.options(route(template), headers=headers)
         observation[template] = [
-            Response(None, None, response.status_code, None, seconds, _allow_origin(response))
+            Response(None, None, response.status_code, None, _allow_origin(response))
         ]
     return observation
-
-
-def _timed(call: Callable[..., Any], *args: Any, **kwargs: Any) -> tuple[Any, float]:
-    """`call(*args, **kwargs)` and the seconds it took."""
-    start = time.perf_counter()
-    result = call(*args, **kwargs)
-    return result, time.perf_counter() - start
 
 
 def _allow_origin(response: Any) -> str | None:
