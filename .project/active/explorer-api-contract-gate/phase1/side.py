@@ -4,7 +4,7 @@ Run in its own process, `python -I -B side.py ...`, because the explorer's modul
 caches (`_load_model_module`, the `lib` helper import, `exploration.*`) live per
 process. With -I nothing is on sys.path but the venv, so this script inserts the
 code root (the extract whose server is imported) and the worktree's website_contract
-directory (whose contract.py is under test).
+directory (whose modules are under test).
 
     side.py record --code-root CR --tree T --pin SHA --out OUT [options]
     side.py check  --code-root CR --tree T --contract C --out OUT [options]
@@ -106,14 +106,15 @@ def under(tree: Path, paths: list[str]) -> list[str]:
 
 def run(args: argparse.Namespace, result: dict) -> None:
     sys.path[:0] = [str(args.code_root), str(WEBSITE_CONTRACT)]
-    import contract as c
+    import contract_rules as rules
+    from contract_text import parse, render
 
-    contract = c.parse(args.contract.read_text()) if args.mode == "check" else None
+    contract = parse(args.contract.read_text()) if args.mode == "check" else None
     if args.findings_only:
-        observation = observe_findings(c, args.tree, result)
-        schema = c.Schema(frozenset(), {}, {})  # the findings response is an untyped dict
+        observation = observe_findings(args.tree, result)
+        schema = rules.Schema(frozenset(), {}, {})  # the findings response is an untyped dict
     else:
-        observation, schema = observe_served(c, args, contract, result)
+        observation, schema = observe_served(args, contract, result)
     result["templates"] = {
         template: {
             "count": len(responses),
@@ -137,10 +138,10 @@ def run(args: argparse.Namespace, result: dict) -> None:
 
     if args.mode == "record":
         tools = [f"{name}=={importlib.metadata.version(name)}" for name in ("httpx", "pytest")]
-        result["contract"] = c.render(c.record(observation, schema, args.pin, tools, js={}))
+        result["contract"] = render(rules.record(observation, schema, args.pin, tools, js={}))
         return
-    result["failures"] = c.check(observation, contract)
-    shapes = c.observed_shapes(observation, contract)
+    result["failures"] = rules.check(observation, contract)
+    shapes = rules.observed_shapes(observation, contract)
     details = {}
     for key in result["failures"]:
         rule, method, route, *rest = key.split(" ")
@@ -150,8 +151,11 @@ def run(args: argparse.Namespace, result: dict) -> None:
     result["details"] = details
 
 
-def observe_served(c, args: argparse.Namespace, contract, result: dict) -> tuple[dict, object]:
+def observe_served(args: argparse.Namespace, contract, result: dict) -> tuple[dict, object]:
     """Serve the tree and observe it, auditing what the server reads; return it and the schema."""
+    import contract_rules as rules
+    import frontend_requests as fr
+
     opened, listed = audit_reads()
 
     import exploration.concept_explorer.server as server
@@ -165,22 +169,22 @@ def observe_served(c, args: argparse.Namespace, contract, result: dict) -> tuple
     skip = COMPUTE if args.skip_compute else ()
     schema = None
     start = time.perf_counter()
-    with c.serve(args.tree / "exploration" / "concept_explorer") as client:
+    with fr.serve(args.tree / "exploration" / "concept_explorer") as client:
         result["startup_seconds"] = time.perf_counter() - start
         observe_start = time.perf_counter()
         if args.mode == "record":
-            schema = c.classify(client.get("/openapi.json").json())
-            concept_ids = c.manifest_concept_ids(client)
+            schema = rules.classify(client.get("/openapi.json").json())
+            concept_ids = fr.manifest_concept_ids(client)
         else:
             concept_ids = list(contract.concepts)
-        observation = c.observe(client, concept_ids, skip)
+        observation = fr.observe(client, concept_ids, skip)
         result["observe_seconds"] = time.perf_counter() - observe_start
     result["reads"] = under(args.tree, opened)
     result["listed"] = under(args.tree, listed)
     return observation, schema
 
 
-def observe_findings(c, tree: Path, result: dict) -> dict:
+def observe_findings(tree: Path, result: dict) -> dict:
     """The findings route's responses for every served concept, without starting the server.
 
     For a tree whose server can't start (the 2026-06-08..15 Latin-1 registry) but whose change
@@ -188,6 +192,7 @@ def observe_findings(c, tree: Path, result: dict) -> dict:
     (server.py api_get_findings): live analyses root, archive root when it is a directory.
     """
     import yaml
+    from frontend_requests import FINDINGS, Response
 
     from exploration.concept_explorer.findings import build_findings
 
@@ -216,9 +221,9 @@ def observe_findings(c, tree: Path, result: dict) -> dict:
             "analysis_html": payload.analysis_html,
             "analysis_from_archive": payload.analysis_from_archive,
         }
-        responses.append(c.Response(concept_id, 200, body, 0.0))
+        responses.append(Response(concept_id, 200, body, 0.0, allow_origin=None))
     result["concept_ids"] = concept_ids
-    return {c.FINDINGS: responses}
+    return {FINDINGS: responses}
 
 
 if __name__ == "__main__":

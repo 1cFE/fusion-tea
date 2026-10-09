@@ -166,8 +166,8 @@ Decisions marked "orchestrator" were made by the orchestrator on 2026-10-08, und
   - `gate.sh` runs under `timeout 480`, which turns a hang into a failure;
   - the job's `timeout-minutes: 10` is only a backstop.
 - **D11. `notify_visualization.yml` can no longer fail:** its `curl` gets `|| echo "::warning::…"`. The self-test for I4 holds future push workflows to the same rule.
-- **D12. The contract code is three modules** (orchestrator, m2):
-  - `contract.py`: the API contract;
+- **D12. The contract code is three concerns** (orchestrator, m2; the first split by concern on 2026-10-08, see Component Overview):
+  - `contract.py` and the modules it imports: the API contract;
   - `file_audit.py`: the audit and the `.dockerignore` matcher;
   - `drift.py`: standard library only, for the runner's bare `python3`.
 
@@ -252,18 +252,25 @@ The disappearance rule doesn't apply to parameter `concepts[]` lists. A concept 
 
 ## Component Overview
 
-Everything about the contract lives in **`exploration/concept_explorer/website_contract/`**, so there is one obvious place to look. Expect roughly 700–800 lines of Python across the three modules (m2).
+Everything about the contract lives in **`exploration/concept_explorer/website_contract/`**, so there is one obvious place to look. The API contract came to about 1,430 lines, not the 700–800 expected (m2).
 
 | File | Purpose |
 |---|---|
-| `contract.py` | The cited request list (Appendix A), plus `MAP_KEYS_READ`, `LITERAL_READS`, `observe`, `record`, `check`, the rules, the waivers and the `contract.txt` read/write. It takes the tree to observe as an argument. |
+| `contract.py` | The command line: `check`, `extract` and `record`, and the printed report. It puts its own directory on `sys.path`, because the modules import each other as top-level modules; no module name may shadow one the server imports (self-tested). |
+| `frontend_requests.py` | The cited request list (Appendix A), `LITERAL_READS`, `observe` and the preflights, and the concept lists and features the frontend takes from the responses. It takes the tree to observe as an argument. |
+| `json_shapes.py` | Flattening bodies to "path → kinds". |
+| `contract_text.py` | The `Contract` and the `contract.txt` read/write. |
+| `contract_rules.py` | Map and enum classification from `/openapi.json`, `record`, `check` and the rules, CORS included. |
+| `waivers.py` | Reading `waivers.toml` and applying it. |
+| `pin_source.py` | The pin extract, the `fetch(` cite check (I2) and the JS blob check (M5). |
 | `file_audit.py` | The audit hooks, the tracked-path check and the `.dockerignore` matcher. |
 | `drift.py` | The public-pin check. Standard library only. |
-| `__init__.py` | Makes the modules importable by the self-tests. |
 | `contract.txt` | The recording. Written only by the recorder. |
 | `waivers.toml` | Hand-written. Each entry has `match`, `reason`, `evidence` and `date`. Starts empty. |
 | `runtime_paths.txt` | The three runtime directories, matching the "MUST survive" list in the `.dockerignore` header (lines 9-13). |
 | `gate.sh` | The one command: `gate.sh` checks, and `gate.sh record <sha>` re-records. |
+
+The orchestrator split D12's single `contract.py` into a thin `contract.py` and the six modules under it on 2026-10-08, when it reached 1323 lines; the CLI and behavior are unchanged, and `file_audit.py` and `drift.py` stay as D12 has them.
 
 Outside that directory, the work adds the self-tests (`tests/test_website_contract.py`, Appendix D) and two workflows, makes the D11 change, and edits the RUNBOOK, README §9, `CLAUDE.md` and the `railway.toml` header. The `gate.sh` steps and every file change are listed in Appendix H.
 
@@ -374,7 +381,7 @@ The break tests record in-process with `observe(fixture_tree)` (N7). Only the pu
   - `LITERAL_READS` with one cited entry, `fit_grade` (N1);
   - record mode resolving test tools with `--exclude-newer` at the pin's commit time (N2);
   - the waiver key grammar (Appendix E);
-  - the three-module split;
+  - the module layout (D12, as split in Component Overview);
   - two ADRs, with (a)'s split grade.
 - **Open for the plan:**
   - the exact serialization of `contract.txt` within the header and line structure above;
@@ -390,7 +397,7 @@ The break tests record in-process with `observe(fixture_tree)` (N7). Only the pu
 
 ## Appendix A — The request list (pinned frontend, `10f7b9b`)
 
-Each row is one entry in `contract.py`'s request list. The cites cover all 23 `fetch(` sites (I2). Every JavaScript file cited here or in Appendix B has its blob SHA recorded in the header (M5, N6). That includes:
+Each row is one entry in `frontend_requests.py`'s request list. The cites cover all 23 `fetch(` sites (I2). Every JavaScript file cited here or in Appendix B has its blob SHA recorded in the header (M5, N6). That includes:
 
 - `tornado.js`, for the derivation rules;
 - the join and link sites listed below the table;

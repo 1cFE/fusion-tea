@@ -9,6 +9,7 @@ the gate's own `check` entry point (design Appendix D).
 
 from __future__ import annotations
 
+import importlib.metadata
 import json
 import re
 import shutil
@@ -56,16 +57,28 @@ from exploration.concept_explorer.taxonomy_models import (
     TaxonomyConfidence,
 )
 from exploration.concept_explorer.tests import test_state_and_compute as compute_tests
-from exploration.concept_explorer.website_contract import contract as c
+
+# The gate's modules import each other as top-level modules, the way contract.py runs them.
+WEBSITE_CONTRACT = Path(__file__).resolve().parents[1] / "website_contract"
+sys.path.insert(0, str(WEBSITE_CONTRACT))
+
+import contract as c  # noqa: E402
+import frontend_requests as fr  # noqa: E402
+from contract_rules import record_tree  # noqa: E402
+from contract_text import parse, render  # noqa: E402
+from json_shapes import flatten  # noqa: E402
+from pin_source import SERVING_SET, cite_errors, extract, js_blobs  # noqa: E402
+from waivers import waiver_matches  # noqa: E402
 
 PIN = "0" * 40
+CHECKOUT = c.REPO_ROOT  # this checkout; its static/js equals the pin's
 
 # ---------------------------------------------------------------------------
 # The fixture: a repo root laid out as <root>/exploration/..., so the server's
 # sibling-tree lookups (analyses, tables, archive) resolve inside it.
 # ---------------------------------------------------------------------------
 
-DATA = c.EXPLORER / "data"
+DATA = fr.EXPLORER / "data"
 ANALYSES = Path("exploration/concept_analysis/analyses")
 FIT_TABLE = Path("exploration/concept_analysis/tables/archetype_fit.csv")
 
@@ -226,7 +239,7 @@ def build_fixture(root: Path) -> None:
         },
     }
     (root / DATA / "decision_tree.json").write_text(json.dumps(tree))
-    (root / c.EXPLORER / "omit_list.yaml").write_text("{}\n")
+    (root / fr.EXPLORER / "omit_list.yaml").write_text("{}\n")
 
     (root / ANALYSES / "04-fake").mkdir(parents=True)
     (root / ANALYSES / "04-fake" / "model_setup.py").write_text(
@@ -243,7 +256,7 @@ def build_fixture(root: Path) -> None:
 def fixture_root(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     root = tmp_path / "repo"
     build_fixture(root)
-    monkeypatch.setattr(models_module, "_OMIT_LIST_PATH", root / c.EXPLORER / "omit_list.yaml")
+    monkeypatch.setattr(models_module, "_OMIT_LIST_PATH", root / fr.EXPLORER / "omit_list.yaml")
     monkeypatch.setenv("EXPLORER_SKIP_WARMUP", "1")
     monkeypatch.setattr(sys, "path", list(sys.path))  # `check` puts its tree first
     return root
@@ -252,7 +265,7 @@ def fixture_root(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 def record_in_process(root: Path) -> Path:
     """Record the fixture's contract in this process (N7) and return the file's path."""
     path = root.parent / "contract.txt"
-    path.write_text(c.render(c.record_tree(root, PIN, tools=[], js={})))
+    path.write_text(render(record_tree(root, PIN, tools=[], js={})))
     return path
 
 
@@ -381,7 +394,7 @@ def recorded_text(fixture_root: Path) -> str:
 
 def test_flatten_kinds_and_containers() -> None:
     body = {"a": 1, "b": True, "c": None, "d": [], "m": {"x": {"v": 1.5}}, "r": [{"k": "s"}, {}]}
-    s = c.flatten([body], map_paths={".m"})
+    s = flatten([body], map_paths={".m"})
     assert s[".a"] == {"number"} and s[".b"] == {"boolean"}  # bool tested before int
     assert s[".c"] == {"null"} and s[".d"] == {"empty"}
     assert s[".m{*}.v"] == {"number"}  # map recorded by value shape
@@ -389,7 +402,7 @@ def test_flatten_kinds_and_containers() -> None:
 
 
 def test_contract_text_is_deterministic(recorded_text: str) -> None:
-    assert c.render(c.parse(recorded_text)) == recorded_text
+    assert render(parse(recorded_text)) == recorded_text
 
 
 def test_page_sliders_follow_the_tornado_rules() -> None:
@@ -410,11 +423,11 @@ def test_page_sliders_follow_the_tornado_rules() -> None:
         },
         "parameter_metadata": metadata,
     }
-    sliders = c.page_sliders(concept)
+    sliders = fr.page_sliders(concept)
     # Top 15 by |elasticity|: "shared" (|-20|, the financial entry wins) then e15..e2.
     assert list(sliders) == ["shared", "e15", *[f"e{i}" for i in range(13, 1, -1)]]
     assert sliders["e15"] == 0.0 and sliders["shared"] == 2.0
-    assert c.page_sliders({**concept, "model_type": "standalone"}) == {}
+    assert fr.page_sliders({**concept, "model_type": "standalone"}) == {}
 
 
 # ---------------------------------------------------------------------------
@@ -423,15 +436,15 @@ def test_page_sliders_follow_the_tornado_rules() -> None:
 
 
 def test_every_request_list_entry_yields_an_instance(fixture_root: Path) -> None:
-    with c.serve(fixture_root / c.EXPLORER) as client:
-        observation = c.observe(client, ["01", "04", "05"])
-        preflights = c.preflight(client)
-    assert set(observation) == set(c.REQUESTS)
+    with fr.serve(fixture_root / fr.EXPLORER) as client:
+        observation = fr.observe(client, ["01", "04", "05"])
+        preflights = fr.preflight(client)
+    assert set(observation) == set(fr.REQUESTS)
     statuses = {t: {r.status for r in rs} for t, rs in {**observation, **preflights}.items()}
-    assert statuses == {template: {200} for template in [*c.REQUESTS, *c.PREFLIGHTS]}
-    coverage = c.coverage_sets(observation)
+    assert statuses == {template: {200} for template in [*fr.REQUESTS, *fr.PREFLIGHTS]}
+    coverage = fr.coverage_sets(observation)
     # Narrower than the concept set, so a coverage loss is distinguishable.
-    assert coverage == {c.FINDINGS: {"04"}, c.SLIDER: {"04", "05"}, c.TOGGLE: {"04"}}
+    assert coverage == {fr.FINDINGS: {"04"}, fr.SLIDER: {"04", "05"}, fr.TOGGLE: {"04"}}
 
 
 def test_unchanged_server_passes_its_own_recording(
@@ -439,6 +452,17 @@ def test_unchanged_server_passes_its_own_recording(
 ) -> None:
     run = run_check(fixture_root, record_in_process(fixture_root), capsys)
     assert (run.code, run.failed) == (0, set())
+
+
+def test_no_gate_module_shadows_a_module_the_server_imports() -> None:
+    """contract.py puts its directory on sys.path, and a module imported once is shared, so
+    a gate module named like the standard library, an installed package, the server's
+    `exploration` package or a concept-analysis helper would change the server under test."""
+    gate_modules = {path.stem for path in WEBSITE_CONTRACT.glob("*.py")}
+    helpers = CHECKOUT / "exploration/concept_analysis/scripts"
+    taken = set(sys.stdlib_module_names) | set(importlib.metadata.packages_distributions())
+    taken |= {path.stem for path in helpers.iterdir()} | {"exploration"}
+    assert gate_modules >= {"contract", "frontend_requests"} and not gate_modules & taken
 
 
 # ---------------------------------------------------------------------------
@@ -648,7 +672,7 @@ def test_omitted_concept_fails(
     monkeypatch.setattr(models_module, "_OMIT_LIST_PATH", omit_list)
     run = run_check(fixture_root, contract_path, capsys)
     assert run.code == c.EXIT_FAILED
-    assert {f"concept-missing {name} 05" for name in c.JOINED_LISTS} <= run.failed
+    assert {f"concept-missing {name} 05" for name in fr.JOINED_LISTS} <= run.failed
 
 
 def _drop_05_from_registry(body: dict[str, Any]) -> None:
@@ -758,7 +782,7 @@ def test_website_origin_dropped_from_cors_fails(
     monkeypatch.setattr(server_module, "_ExplorerApp", _StaticOnlyCorsApp)
     run = run_check(fixture_root, contract_path, capsys)
     assert run.code == c.EXIT_FAILED
-    assert run.failed == {f"cors {t}" for t in [*c.REQUESTS, *c.PREFLIGHTS]}
+    assert run.failed == {f"cors {t}" for t in [*fr.REQUESTS, *fr.PREFLIGHTS]}
 
 
 # ---------------------------------------------------------------------------
@@ -961,14 +985,12 @@ def test_cors_failures_ignore_waivers(
 def test_waiver_wildcards_match_one_whole_token_or_segment(
     match: str, key: str, matches: bool
 ) -> None:
-    assert c.waiver_matches(match, key) is matches
+    assert waiver_matches(match, key) is matches
 
 
 # ---------------------------------------------------------------------------
 # Recording at the pin: purity (I1), the cited JavaScript (I2, M5), Appendix B
 # ---------------------------------------------------------------------------
-
-CHECKOUT = c.REPO_ROOT  # this checkout; its static/js equals the pin's
 
 
 def git(repo: Path, *args: str) -> str:
@@ -985,10 +1007,10 @@ def two_commit_repo(tmp_path: Path) -> tuple[Path, str, str]:
     extract's own server (decision 11); the static/js makes the real cites resolve."""
     repo = tmp_path / "repo"
     build_fixture(repo)
-    for source in (CHECKOUT / c.EXPLORER).glob("*.py"):
-        shutil.copy(source, repo / c.EXPLORER / source.name)
-    shutil.copytree(CHECKOUT / c.STATIC_JS, repo / c.STATIC_JS)
-    shutil.copy(CHECKOUT / c.SERVING_SET, repo / c.SERVING_SET)
+    for source in (CHECKOUT / fr.EXPLORER).glob("*.py"):
+        shutil.copy(source, repo / fr.EXPLORER / source.name)
+    shutil.copytree(CHECKOUT / fr.STATIC_JS, repo / fr.STATIC_JS)
+    shutil.copy(CHECKOUT / SERVING_SET, repo / SERVING_SET)
     git(repo, "init", "-q")
     git(repo, "add", "-A")
     git(repo, "commit", "-q", "-m", "A")
@@ -1006,7 +1028,7 @@ def _contract_cli(*args: str) -> subprocess.CompletedProcess[str]:
 
 def _extracted(repo: Path, sha: str) -> Path:
     tree = Path(tempfile.mkdtemp(dir=repo.parent)) / "tree"
-    c.extract(repo, sha, tree)
+    extract(repo, sha, tree)
     return tree
 
 
@@ -1036,9 +1058,9 @@ def test_rerecording_after_a_break_gives_identical_bytes(
     first = record_from_git(repo, a, contract_path, "--js-reverified")  # no earlier header
     assert first.returncode == 0, first.stdout + first.stderr
     recorded = contract_path.read_bytes()
-    contract = c.parse(recorded.decode())
+    contract = parse(recorded.decode())
     assert (contract.pin, contract.concepts) == (a, ("01", "04", "05"))
-    assert contract.js == c.js_blobs(CHECKOUT)
+    assert contract.js == js_blobs(CHECKOUT)
     checked = check_from_git(repo, b, contract_path)
     assert checked.returncode == c.EXIT_FAILED, checked.stdout + checked.stderr
     assert "FAIL concept-missing registry 05" in checked.stdout.splitlines()
@@ -1057,19 +1079,19 @@ def test_committed_map_paths_trace_to_appendix_b() -> None:
         ".cas22_detail",  # CostModelData.cas22_detail, models.py:163
         ".params",  # CostModelData.params, models.py:174
     }
-    expected = {(c.CONCEPT, ".cost_model" + path) for path in cost_model}
-    expected |= {(t, path) for t in (c.SLIDER, c.SLIDER_RANGE, c.TOGGLE) for path in cost_model}
-    expected.add((c.CONCEPT, ".parameter_metadata"))  # ConceptData, models.py:483
-    expected.add((c.PARAMETER_INDEX, ".parameters"))  # ParameterIndex, models.py:594
+    expected = {(fr.CONCEPT, ".cost_model" + path) for path in cost_model}
+    expected |= {(t, path) for t in (fr.SLIDER, fr.SLIDER_RANGE, fr.TOGGLE) for path in cost_model}
+    expected.add((fr.CONCEPT, ".parameter_metadata"))  # ConceptData, models.py:483
+    expected.add((fr.PARAMETER_INDEX, ".parameters"))  # ParameterIndex, models.py:594
     # The POST /api/state response is declared dict[str, str] (server.py:851).
-    expected |= {(c.STATE_CONCEPT, "."), (c.STATE_COMPARE, ".")}
-    assert set(c.parse(c.CONTRACT_PATH.read_text()).maps) == expected
+    expected |= {(fr.STATE_CONCEPT, "."), (fr.STATE_COMPARE, ".")}
+    assert set(parse(c.CONTRACT_PATH.read_text()).maps) == expected
 
 
 def _frontend_copy(tmp_path: Path) -> Path:
     """A repo-shaped tree holding a copy of this checkout's static/js."""
     tree = tmp_path / "tree"
-    shutil.copytree(CHECKOUT / c.STATIC_JS, tree / c.STATIC_JS)
+    shutil.copytree(CHECKOUT / fr.STATIC_JS, tree / fr.STATIC_JS)
     return tree
 
 
@@ -1077,8 +1099,8 @@ def test_an_uncited_fetch_fails_recording(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
     tree = _frontend_copy(tmp_path)
-    assert c.cite_errors(tree) == []  # the cite tables match this checkout's frontend
-    page = tree / c.STATIC_JS / "index_page.js"
+    assert cite_errors(tree) == []  # the cite tables match this checkout's frontend
+    page = tree / fr.STATIC_JS / "index_page.js"
     page.write_text(page.read_text() + 'fetch("/api/new");\n')
     lines = len(page.read_text().splitlines())
     argv = ["record", "--tree", str(tree), "--pin", PIN, "--contract", str(tmp_path / "c.txt")]
@@ -1088,9 +1110,9 @@ def test_an_uncited_fetch_fails_recording(
 
 
 def _changed_tornado(tree: Path, contract_path: Path) -> None:
-    header = [f"pin {PIN}", *(f"js {p} {sha}" for p, sha in sorted(c.js_blobs(tree).items()))]
+    header = [f"pin {PIN}", *(f"js {p} {sha}" for p, sha in sorted(js_blobs(tree).items()))]
     contract_path.write_text("\n".join(header) + "\n")
-    tornado = tree / c.STATIC_JS / "tornado.js"
+    tornado = tree / fr.STATIC_JS / "tornado.js"
     tornado.write_text(tornado.read_text() + "// a changed derivation rule\n")
 
 
@@ -1099,7 +1121,7 @@ def _changed_tornado(tree: Path, contract_path: Path) -> None:
     [
         pytest.param(
             _changed_tornado,
-            f"{c.STATIC_JS.as_posix()}/tornado.js: blob changed since the last recording",
+            f"{fr.STATIC_JS.as_posix()}/tornado.js: blob changed since the last recording",
             id="changed-blob",
         ),
         pytest.param(

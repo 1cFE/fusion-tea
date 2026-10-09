@@ -363,7 +363,8 @@ def findings(python: str, work: Path, children: list[str]) -> list[dict]:
     the findings route's inputs, and whose two sides serve the same concepts.
     """
     sys.path.insert(0, str(ROOT / EXPLORER / "website_contract"))
-    import contract as c
+    from frontend_requests import FINDINGS
+    from json_shapes import flatten
 
     results = []
     for child in [git("rev-parse", sha).strip() for sha in children]:
@@ -400,12 +401,12 @@ def findings(python: str, work: Path, children: list[str]) -> list[dict]:
             raise RuntimeError(f"{child[:9]}: the two sides serve different concepts")
         # Per-concept kind changes at the fields the page reads, as `spotcheck` does.
         old, new = (
-            _by_instance(json.loads((runs / name).read_text()), c.FINDINGS)
+            _by_instance(json.loads((runs / name).read_text()), FINDINGS)
             for name in ("parent.json", "child.json")
         )
         changes = []
         for concept_id in sorted(old):
-            before, after = c.flatten([old[concept_id]], ()), c.flatten([new[concept_id]], ())
+            before, after = flatten([old[concept_id]], ()), flatten([new[concept_id]], ())
             for path in (".exec_summary_html", ".analysis_html", ".analysis_from_archive"):
                 if before.get(path) != after.get(path):
                     changes.append(
@@ -495,7 +496,9 @@ def spotcheck(python: str, work: Path, children: list[str]) -> dict:
     Each change carries the failure keys that caught it, if any.
     """
     sys.path.insert(0, str(ROOT / EXPLORER / "website_contract"))
-    import contract as c
+    from contract_text import parse
+    from frontend_requests import page_sliders
+    from json_shapes import flatten
 
     report = {}
     for child in children:
@@ -528,7 +531,7 @@ def spotcheck(python: str, work: Path, children: list[str]) -> dict:
             "--dump",
             str(runs / "child.json"),
         )
-        contract = c.parse(recorded["contract"])
+        contract = parse(recorded["contract"])
         before, after = (
             json.loads((runs / name).read_text()) for name in ("parent.json", "child.json")
         )
@@ -537,8 +540,8 @@ def spotcheck(python: str, work: Path, children: list[str]) -> dict:
             map_paths = {p for t, p in contract.maps if t == template}
             old, new = _by_instance(before, template), _by_instance(after, template)
             for instance in sorted(old.keys() & new.keys(), key=str):
-                old_kinds = c.flatten([old[instance]], map_paths)
-                new_kinds = c.flatten([new[instance]], map_paths)
+                old_kinds = flatten([old[instance]], map_paths)
+                new_kinds = flatten([new[instance]], map_paths)
                 for path in paths:
                     gained = new_kinds.get(path, set()) - old_kinds.get(path, set())
                     if gained:
@@ -576,7 +579,7 @@ def spotcheck(python: str, work: Path, children: list[str]) -> dict:
         tornado_names = {
             name
             for body in _by_instance(after, "GET /api/concepts/{id}").values()
-            for name in c.page_sliders(body) or _sensitivity_names(body)
+            for name in page_sliders(body) or _sensitivity_names(body)
         }
         gone = set(_by_instance(before, "GET /api/parameters/{name}")) - set(
             _by_instance(after, "GET /api/parameters/{name}")

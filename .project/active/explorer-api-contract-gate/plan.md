@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phases 1–3 complete; Phase 4 next.
+**Status:** In Progress. Phases 1–3 complete, and `contract.py` split by concern; Phase 4 next.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -108,7 +108,7 @@ The design left five items open for the plan and fixed everything else ([Next-St
 4. **Compute trim.** Decided from measured times, using the design's rule (toggle bodies first; floor of one slider body per eligible concept). Phase 1 measures; Phase 3 decides; Phase 7 confirms.
 5. **Fixture contents.** Fixed in Phase 2.
 6. **Phase 1 commit selection uses first-parent history.** The design says "every commit ... paired with its parent". The plan takes the first-parent chain of `f96ad312c` (`origin/main` at branch point), so each pair is one change to `main`, the unit a push deploys. This avoids counting a PR's commits and then its merge twice, and it can't flatter the result: a merge pair carries the PR's whole diff. Not used: all non-merge commits, which measures smaller steps than any push.
-7. **The Phase 1 harness lives with the work item**, at `.project/active/explorer-api-contract-gate/phase1/`, not in the shipped package. The design fixes three shipped modules (D12); the harness is evidence for the go/no-go, kept so the audit can re-run it.
+7. **The Phase 1 harness lives with the work item**, at `.project/active/explorer-api-contract-gate/phase1/`, not in the shipped package. The design fixes the shipped modules (D12, as split in the design's Component Overview); the harness is evidence for the go/no-go, kept so the audit can re-run it.
 8. **Status rule for templates whose pin returned a non-200.** `GET /api/parameters/{name}` may record `{200, 404}`, because bare-only names 404 and the frontend tolerates it ([Appendix A](design.md#appendix-a--the-request-list-pinned-frontend-10f7b9b)). The rule then fails when any instance returns a status outside the recorded set, *or* when 200 is in the set and no instance returns 200. So a removed route still fails.
 9. **What "absent" means in Shape.** A record field gets kind `absent` only when its parent was observed as an object without that key. A path whose parent was never observed as an object (it went null everywhere, say) is unobserved, not absent. The parent's own kinds then decide, which keeps the rule consistent with bet B1.
 10. **Files rule judges only touched paths tracked at the reference commit** (or directories holding tracked files). Untracked touches, such as bytecode-cache lookups and the generated `dist/`, are ignored. Otherwise `**/__pycache__/` in `.dockerignore` would fail every run.
@@ -881,6 +881,38 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
   - `LC_NUMERIC=C` keeps the timings' decimal point fixed.
   - Record mode runs `gate.sh` again for decision 12, so the check uses a fresh venv with HEAD's serving set and the pinned check-mode tools.
 - **The map test asserts exact `(template, path)` pairs**, 32 of them, rather than the six field names, so a map moving between templates also shows.
+
+### Refactor before Phase 4: `contract.py` split by concern
+**Decided (orchestrator, 2026-10-08):** split the 1323-line `contract.py` before Phase 4, replacing D12's single module. No behavior change; no module name may shadow a standard-library or third-party module.
+
+**Completed:** 2026-10-08.
+
+**Modules**, each a top-level module in `website_contract/`:
+
+| Module | Lines | Holds |
+|---|---|---|
+| `contract.py` | 173 | the CLI (`check`, `extract`, `record`), the report, the path constants and exit codes |
+| `frontend_requests.py` | 429 | the cite tables, `observe`, the preflights, the derivation rules, and the joined, linked and coverage sets |
+| `json_shapes.py` | 97 | `flatten`, the kinds, `strings_at` |
+| `contract_text.py` | 166 | `Contract`, `render`, `parse` |
+| `contract_rules.py` | 317 | `classify`, `record`, `check` and its rules, CORS, `record_tree` and `check_tree` |
+| `waivers.py` | 108 | loading and applying `waivers.toml` |
+| `pin_source.py` | 140 | `extract`, the `fetch(` cite check, the JS blob check, the decision-11 server check |
+
+**How the modules load.** `gate.sh` runs `contract.py` under `python -I`, which leaves the script's directory off `sys.path`, and the server must come from the tree's own `exploration` package. So the modules import each other as top-level modules, and `contract.py` puts its own directory on `sys.path` before importing them. `__init__.py` is deleted: the self-tests also import the modules top-level, so no module loads twice under two names.
+
+**Changes:**
+- `website_contract/`: `contract.py` rewritten as the CLI; six new modules; `__init__.py` deleted. Code moved verbatim, except that names now used across modules lost their leading underscore (`route`, `bodies`, `strings_at`, `field_path`, `line_value`, `failure_key`, `rule_of`, `require_own_server`), and two local names that would shadow imported functions were renamed.
+- One printed message changed: a recording refused for uncited `fetch(` sites now names `frontend_requests.py` as where the cite tables live.
+- `tests/test_website_contract.py`: imports the modules top-level, and gains `test_no_gate_module_shadows_a_module_the_server_imports`. It fails if a module name in `website_contract/` is a standard-library module, an installed distribution's top-level module, an entry in `exploration/concept_analysis/scripts/` (the server puts it on `sys.path` for `lib`), or `exploration`. 82 tests in all.
+- `phase1/side.py` and `phase1/replay.py` import the new modules, so the audit can still re-run them. This also fixes a break in `side.py --findings-only` from Phase 2, which added `Response.allow_origin` without updating the harness.
+- `design.md`: D12, the Component Overview table, the Next-Stage Handoff line and Appendix A's module name.
+
+**Validation:**
+- `test_cors.py` and `test_website_contract.py`: 82 passed in a scratch serving venv.
+- `gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b`: `contract.txt` byte-identical to the committed file (`cmp`). Its closing check-mode run is green: 0 failing, 82 passed. Steps: record 26.8 s; check: contract 27.8 s, self-tests 14.4 s, total 42.8 s.
+- The harness's three modes ran on the worktree: record, check against that recording (0 keys), and findings-only (37 concepts).
+- `ruff check` and `ruff format --check` are clean on the gate, the tests and the harness.
 
 ### Phase 4 Completion
 **Completed:**
