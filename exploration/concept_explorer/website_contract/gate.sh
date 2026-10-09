@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # The website contract gate: does this checkout still serve what the website's pinned
-# explorer frontend needs? Design: .project/active/explorer-api-contract-gate/design.md.
+# explorer frontend needs? Design: .project/completed/20261009_explorer-api-contract-gate/design.md.
 #
 #   gate.sh                                  check this checkout (CI runs this on every push)
 #   gate.sh record <sha> [--js-reverified]   re-record contract.txt from the website's pin,

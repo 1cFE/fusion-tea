@@ -31,7 +31,7 @@ Verifiable on this branch:
 
   Each case has a kept self-test that makes the break deliberately and shows the gate's command failing, so the evidence survives later re-pins. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08); request-body renames by the Request fields rule, `audit.md`, Round 2 (2026-10-08).
 - [x] Additive changes pass: a new response field or a new optional request field. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
-- [ ] The gate is a GitHub Actions workflow that runs on every push to `main`, with no path or branch filter that could skip a run, because a skipped run never blocks. It is green on this branch's head. Branch part met: no filter (self-tested), and `gate.sh` green from a CI-shaped clone of `758577a18`. The GitHub-hosted run needs a push, so this box waits for owner acceptance. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
+- [x] The gate is a GitHub Actions workflow that runs on every push to `main`, with no path or branch filter that could skip a run, because a skipped run never blocks. It is green on this branch's head. Branch part met: no filter (self-tested), and `gate.sh` green from a CI-shaped clone of `758577a18`. The GitHub-hosted run needed a push: on 2026-10-09 the owner had the branch pushed, and its first run passed at `2c9a64ef9` (GitHub run 37941883591, 0 failing, 135 passed). The close commit's run is recorded in CURRENT_WORK. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
 - [x] The gate's steps, timed locally, project to under 5 minutes on a GitHub-hosted runner, so it adds at most that to each deploy. Local 56 s; projected 2.9 min (3.5 min conservative). Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
 - [x] When the website re-pins to a newer fusion-tea commit, a written step moves the gate's contract to the new pin, and a person can follow it without reading the gate's code. RUNBOOK "Deploy gate", "Re-pinning"; followed literally with no diff. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
 - [x] `RUNBOOK.md` covers the gate: how a skipped deploy looks in Railway, how to get a deploy out after fixing the failure, and how to turn "Wait for CI" on and off. Railway's exact wording is marked for the owner to confirm. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
@@ -39,7 +39,7 @@ Verifiable on this branch:
 Owner acceptance after merge (needs owner-only steps):
 
 - [ ] After the owner turns on "Wait for CI", Railway shows a push to `main` waiting on the gate, then deploying once it passes. Turning the setting on doesn't hold back the first deploy, because the gate is green on the merge commit.
-- [ ] On its first pushed run, the gate finishes in under 5 minutes on a GitHub-hosted runner.
+- [x] On its first pushed run, the gate finishes in under 5 minutes on a GitHub-hosted runner. Met 2026-10-09 on the branch push: job `gate` took 60 s, `gate.sh` 51.5 s (GitHub run 37941883591 at `2c9a64ef9`).
 - [ ] Optional: one deliberate break on a pushed scratch branch fails the check in GitHub.
 - [ ] The owner's ruling on how strict the gate is (false blocks): whether to soften the Shape and Unpopulated rules, which the orchestrator parked with the owner. See ADR 0011 (`.project/adr/0011-explorer-deploys-wait-for-website-contract.md`).
 

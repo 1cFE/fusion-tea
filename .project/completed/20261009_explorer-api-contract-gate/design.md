@@ -147,7 +147,7 @@ Decisions marked "orchestrator" were made by the orchestrator on 2026-10-08, und
 - **D3. Request instances are derived at check time from current responses,** using the pinned frontend's own rules (Appendix A). Concept IDs come from the contract. Coverage sets per concept-keyed template stop the request set from shrinking silently (M2).
   - *Rejected:* replaying the pinned instances. A renamed parameter would 404 on a request the website no longer makes.
 - **D4. The gate runs in-process against the checkout, in the serving set,** with `uv` and Python 3.12 to match `Dockerfile:9` (orchestrator).
-  - *Rejected:* building the Docker image. Agents have no Docker, and the 5 GB context doesn't fit the budget.
+  - *Rejected:* building the Docker image. The 5 GB context doesn't fit the budget. (This run also believed agents had no Docker. Corrected 2026-10-09: the user is in the `docker` group and `sg docker -c …` reaches the daemon; see `.project/execution/ENTRIES.md` [docker]. The rejection stands on the budget alone.)
 - **D5. CI checks out only the runtime paths in `runtime_paths.txt`, plus `.github/workflows` for the workflow self-test (M8),** sparse and blobless. The file audit fails on any touched path the tree lacks.
   - *Rejected:* a full checkout, 5.6 GB per push.
   - *Rejected:* trusting the contract to notice missing files, because those reads degrade to null.
@@ -649,7 +649,7 @@ GET  /api/manifest       .concepts[].status                     enum:ConceptStat
   - `exploration/concept_analysis`: 9.3 MB;
   - `archive/concept_analysis_pre_rework`: 7.9 MB.
 - **Build context.** `.dockerignore` keeps nearly the whole tree (`.dockerignore:15-37`), so Railway's build context and image carry about 5 GB. The hosting plan measured 78 MB (`plan.md:101`). This has its own backlog row.
-- **Tooling.** Agents in this run have no Docker. The implement stage has Python through `uv`.
+- **Tooling.** Agents in this run believed they had no Docker; in fact `sg docker -c …` works (corrected 2026-10-09, `.project/execution/ENTRIES.md` [docker]). The implement stage has Python through `uv`.
 - **Railway "Wait for CI"** (spec `[HARD]`, Railway docs read 2026-10-08):
   - it waits on push-triggered workflows;
   - a failed run skips the deploy;

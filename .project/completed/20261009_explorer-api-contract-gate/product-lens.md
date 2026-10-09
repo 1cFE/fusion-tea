@@ -66,3 +66,10 @@ Resolves:
 - design-F4: FIXED — authority: AGENT — basis: `CLAUDE.md:258`; `test_push_workflows_equal_the_reviewed_list`.
 - design-F5: FIXED — authority: AGENT — basis: ADR-0011 splits the grade.
 Gate: DISPOSED (audit-F1, audit-F2, audit-F3). No BLOCK.
+
+## close — 2026-10-09 — dispositions of the audit block
+Resolves:
+- audit-F1: FIXED — authority: AGENT — basis: the spec's owner-acceptance list carries the strictness ruling as its last item (`spec.md`, "Owner acceptance after merge"), citing ADR-0011.
+- audit-F2: FIXED — authority: AGENT — basis: audit fix A6; `CLAUDE.md` § Live Deployments and README §9 now say "Wait for CI" starts off and failing pushes are held only once it is on; ADR-0011 names both FR-6 clauses.
+- audit-F3: DEFERRED — authority: AGENT — basis: the product register records only implemented behavior, and the promise is not implemented until the owner turns on "Wait for CI" and sees a gated deploy (owner-acceptance items 1 and 2); a `check` stamp at close would be unsupported. File it then. Draft: title "A fusion-tea push that would break 1cf.energy/tools/concepts/ doesn't deploy"; provenance `[AGENT] (ratified by owner, 2026-10-08)`; Authority `[OWNER-VERBATIM]` 2026-10-08 "...so we don't break anything" and "what would tests look like to protect the API?" (spec Problem), option "3" and the Align intent (`briefs/00_align.md`), ADR-0011, ADR-0012; Scope: the three orchestrator-grade holds listed in ADR-0011.
+Gate: DISPOSED (audit-F1, audit-F2 fixed; audit-F3 deferred to owner acceptance). No BLOCK.

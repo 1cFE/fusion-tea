@@ -4,7 +4,7 @@ The public page 1cf.energy/tools/concepts/ runs a copy of the explorer frontend 
 at one fusion-tea commit (the pin), against the live API. Record observes the pin's own
 server and writes contract.txt; check observes the checkout's server with the same
 requests and reports, as failure keys, every change the pinned frontend could break on.
-Design: .project/active/explorer-api-contract-gate/design.md.
+Design: .project/completed/20261009_explorer-api-contract-gate/design.md.
 
     contract.py check [--tree ROOT] [--contract FILE] [--waivers FILE]
     contract.py extract SHA DEST

@@ -4,6 +4,24 @@ Historical record of completed work.
 
 ---
 
+## [2026-10-09] - Explorer API contract gate
+
+**Type**: Item
+**Duration**: 2 days (2026-10-08 to 2026-10-09)
+
+### Summary
+
+Built a GitHub Actions deploy gate that fails any fusion-tea push that would break `1cf.energy/tools/concepts/`, which runs the explorer frontend frozen at `10f7b9b` against the live API. It replays the frozen frontend's requests against the pushed code, compares the answers with a contract recorded from the pinned commit and runs the CORS tests. A failure clears only by a fix or a reasoned waiver. Once the owner turns on Railway's "Wait for CI", a failing push doesn't deploy. The audit certified it in round 2, and the first GitHub-hosted run passed in 60 s.
+
+### Deliverables
+
+- Archived item: `.project/completed/20261009_explorer-api-contract-gate/` (spec, product-lens, design, design review, plan, audit, the phase 1 history replay and every stage brief).
+- Gate: `.github/workflows/website-contract.yml` and `exploration/concept_explorer/website_contract/` (contract, rules, waivers, `gate.sh`), with self-tests in `exploration/concept_explorer/tests/test_website_contract.py`.
+- Drift check: `.github/workflows/website-pin-drift.yml`.
+- Docs: hosting RUNBOOK "Deploy gate", including how to back it out; `exploration/concept_explorer/README.md` §9; `CLAUDE.md` § Live Deployments; ADRs 0011 and 0012; execution entries [starlette.testclient] and [docker].
+
+---
+
 ## [2026-09-22] - Integrated ARIES equipment and costs (WI-090)
 
 **Type**: Modeling item and goal

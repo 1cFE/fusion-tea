@@ -1,7 +1,7 @@
 # The deploy gate for concepts.1cf.energy. The public page 1cf.energy/tools/concepts/ runs a
 # frozen copy of the explorer frontend against the API this repo deploys, and this job fails
 # when a push would break that copy. Railway's "Wait for CI" then skips the deploy.
-# Design: .project/active/explorer-api-contract-gate/design.md (D10, Appendix H).
+# Design: .project/completed/20261009_explorer-api-contract-gate/design.md (D10, Appendix H).
 #
 # Keep it unskippable: no path, branch or tag filter and no concurrency cancel, because a
 # skipped or cancelled run never blocks a deploy (a self-test checks the triggers). gate.sh
