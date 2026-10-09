@@ -124,13 +124,15 @@ Replaying fusion-tea's history from April to October 2026 found false blocks in 
 **Find out why.**
 
 1. Open the failed run: click the red ✗, then **Details**. Or open the repo's **Actions** tab, then **website-contract**, then the run.
-2. Open the log of the step that runs `gate.sh`, and scroll to the end. Ignore the `UserWarning` and `RuntimeWarning` lines from the cost models. They are normal.
+2. Open the log of the step labelled `Run timeout 480 exploration/concept_explorer/website_contract/gate.sh`, and scroll to the end. Ignore the `UserWarning` and `RuntimeWarning` lines from the cost models. They are normal.
 3. Look at how far it got. Each stage prints `step <name> <seconds>s`.
    - A step before `gate.sh` failed (checkout or `setup-uv`), or the log ends before `step contract`, or shows `attempt 3 of 3 failed`: infrastructure.
    - The step ended with `exit code 124`, or the job was cancelled at 10 minutes: it ran out of time. Infrastructure.
-   - `configuration error in …/waivers.toml` or `…/.dockerignore`: a line the gate can't read. Fix that line and push.
+   - `configuration error in …/waivers.toml`: a waiver the gate can't read. The message names the waiver and what's wrong with it. Fix it and push.
+   - `configuration error in …/.dockerignore`: a pattern the gate's matcher doesn't implement, using `?`, `[`, `]`, `\` or a `!` on its own. Rewrite it without those characters and push.
    - Lines starting `FAIL `: the contract check found something. Go to step 4.
-   - A pytest line `FAILED …/test_cors.py::…`: the CORS allowlist changed. A real break.
+   - A Python traceback in the contract step, or a pytest line starting `ERROR`: the server no longer starts or imports. A real break: fix the code.
+   - A pytest line `FAILED …/test_cors.py::…`: the CORS allowlist changed. If `https://1cf.energy` lost access, it's a real break. If the allowlist was changed on purpose, ask a developer.
    - A pytest line `FAILED …/test_website_contract.py::…`: the gate's own self-tests failed. If the test name mentions workflows, see **Rules the gate enforces**. Otherwise ask a developer; it is not something a waiver can clear.
 4. Read each `FAIL` line. After `FAIL` comes a *failure key*: the rule, then the request, then a field path or a concept ID. For example, `FAIL shape GET /api/concepts/{id} .confinement_family` means the concept response's `confinement_family` field no longer has the kind of value the website got at the pin. Under the keys, the gate prints one line per failing rule saying what it means. The rules:
 
@@ -198,7 +200,7 @@ A false block is a failure the website can't notice: the push removed or changed
 
 **`cors` and `files` failures can't be waived.** The gate prints a waiver for them as `STALE`, and the failure stays. Fix them instead:
 
-- `cors <request>`: put `https://1cf.energy` back in the allowlist (`_ExplorerApp` in `exploration/concept_explorer/server.py`).
+- `cors <request>`: the website's origin lost access, or a preflight (the browser's `OPTIONS` check before a `POST`) stopped succeeding. Put `https://1cf.energy` back in the allowlist (`_ExplorerApp` in `exploration/concept_explorer/server.py`) and keep `POST` with a `content-type` header allowed.
 - `files missing <path>`: the server reads a file outside the directories the gate checks out. Add its directory to `exploration/concept_explorer/website_contract/runtime_paths.txt` and to the "MUST survive" list at the top of `.dockerignore`.
 - `files dockerignore <path>`: `.dockerignore` keeps a file the server reads out of Railway's image. Fix `.dockerignore`.
 
@@ -238,14 +240,14 @@ There are two ways through. Pick by which site matters more until the website ad
    [[waiver]]
    match = "shape GET /api/manifest .concepts[].fit_grade"
    reason = "Concept 40 has no archetype-fit row yet, so its fit_grade is null. The pinned pages show no fit marker and group it as unspecified."
-   evidence = "caveat_marker.js:53 compares fit_grade only to \"None\"; matrix_data.js:220 groups null as unspecified; concept_page.js:144 handles null"
+   evidence = "index_page.js:157 and matrix_page.js:125 pass it to caveatMarker, which compares it only to \"None\" (caveat_marker.js:53); matrix_data.js:220 groups null as unspecified"
    date = 2026-10-08
    ```
    For any other `shape` key, judge it as in **Clearing a false block**. If you can't show the pinned pages handle the empty field, take option 1 instead.
 3. Commit and push.
 
 - Cost: the website's index, matrix and cost-landscape pages, and its parameter cards, link to the concept, and the link leads nowhere until the website re-pins.
-- Cost: each `shape` waiver covers that field for every concept. While it stands, a website concept losing its fit grade also passes the gate.
+- Cost: each `shape` waiver covers that field for every concept. While the `fit_grade` waiver stands, a website concept losing its fit grade in the manifest also passes the gate. The concept response's own `fit_grade` is still checked.
 - At the re-pin these waivers print as `STALE`. Delete them then.
 
 ### Emergency bypass
@@ -253,7 +255,7 @@ There are two ways through. Pick by which site matters more until the website ad
 Use it only when a deploy must go out now and the gate can't be made green in time. For example: GitHub Actions is down (Railway skips a deploy still waiting after 2 hours), or a real failure will take days to fix and something else is urgent. The cost: whatever goes out is unchecked. If it breaks the website, the website breaks. Only the owner can do this.
 
 1. In Railway, open service `1cfe-fusion-tea-explorer`, then **Settings**. In the source section showing `1cFE/fusion-tea` / `main`, turn **Wait for CI** off.
-2. Start a deploy: push a new commit (an empty commit works), or redeploy from the Railway dashboard. With the setting off, Railway deploys without waiting.
+2. Start a deploy: push a new commit to `main` (an empty commit works). With the setting off, Railway deploys it without waiting.
 3. Confirm it's live: `python scripts/smoke_explorer.py https://concepts.1cf.energy` prints `SMOKE OK`.
 4. Turn **Wait for CI** back on.
 5. Fix or waive the failure on `main` soon. Until the gate is green again, every later push is held.
@@ -271,11 +273,15 @@ You need: read access to `1cFE/website`, a full clone of fusion-tea, and `uv`. I
    ```
    It takes the pinned commit's files, installs that commit's own dependencies in a throwaway environment, rewrites `contract.txt`, then checks your branch against the new recording.
 3. Find the line `concepts 01 02 …` printed after `recorded …/contract.txt from <sha>`. It must list exactly the IDs in `provenance.json`'s `conceptIds`. If it doesn't, stop and ask a developer: the website and its pinned commit disagree about which concepts exist.
-4. If recording stops with "a developer must re-verify Appendix A", or lists `fetch(` lines that aren't cited, stop. The website's JavaScript changed, so the list of requests the gate replays may be out of date. A developer compares the request list in `exploration/concept_explorer/website_contract/frontend_requests.py` with the new JavaScript (the design's Appendix A), updates it, and reruns step 2 with `--js-reverified` added at the end.
+4. Recording can refuse, and then writes nothing. Stop in either case:
+   - "a developer must re-verify Appendix A", or a list of `fetch(` lines that aren't cited: the website's JavaScript changed, so the list of requests the gate replays may be out of date. A developer compares the request list in `exploration/concept_explorer/website_contract/frontend_requests.py` with the new JavaScript (the design's Appendix A), updates it, and reruns step 2 with `--js-reverified` added at the end.
+   - `FAIL files missing …` and "add their directories to runtime_paths.txt": the pinned server reads a directory the gate doesn't take from the pin. Ask a developer.
 5. The check at the end of step 2 prints `STALE <match>` for each waiver that matches nothing any more. Delete each one from `waivers.toml`.
 6. Run `exploration/concept_explorer/website_contract/gate.sh`. Its summary line should read `website contract (pin <first 9 characters>): 0 failing, 0 waived, 0 stale waivers` (or count only waivers you mean to keep), and its pytest line should show `passed` and no failures. Review `git diff` of `contract.txt`: expect the new `pin` line and lines for whatever the API gained or lost between the old and new pins. Commit `contract.txt` and `waivers.toml`, and merge.
 
 If step 6 shows `FAIL` lines, `main` already serves something the website's new frontend can't use. Treat each one as in **When a deploy didn't happen**.
+
+If step 6's self-tests fail with `test_committed_map_paths_trace_to_appendix_b`, the API at the new pin has a different set of map fields (`dict` fields in the response models). Stop and ask a developer to check the new set and update that test.
 
 ### A red drift run
 
@@ -302,16 +308,16 @@ Railway waits only on workflows that run on push. A failed one skips the deploy.
 These are for the owner after the deploy gate merges to `main`. None of them needs a secret, token or API key.
 
 1. **Turn on "Wait for CI"** (above), once the `gate` check is green on the merge commit. That way it doesn't hold back the first deploy. Then push an ordinary change and watch Railway wait on `gate`, then deploy. Record here the wording Railway shows for a waiting deploy and, the first time it happens, for a skipped one.
-2. **Optional, recommended: require the check on `main`.** In GitHub, open the repo's **Settings**, then a branch rule or ruleset for `main`, and require the status check `gate`. A pull request then can't merge while the gate fails.
-3. **Optional: watch it fail once.** Push a scratch branch with one deliberate break, for example the `model_type` field renamed in `exploration/concept_explorer/data/04.json`. Its `gate` check should fail with `FAIL shape GET /api/concepts/{id} .model_type`. A branch other than `main` never deploys. Delete the branch afterwards.
+2. **Optional, recommended: require the check on `main`.** In GitHub, open the repo's **Settings**, then a branch rule or ruleset for `main`, and require the status check `gate`. A pull request then can't merge while the gate fails. GitHub also rejects a direct push to `main` from anyone not allowed to bypass the rule, so with it on, fixes, waivers and empty commits go through a pull request.
+3. **Optional: watch it fail once.** Push a scratch branch with one deliberate break, for example the `model_type` field renamed in `exploration/concept_explorer/data/04.json`. Its `gate` check should fail, with `FAIL shape GET /api/concepts/{id} .model_type` among its `FAIL` lines. A branch other than `main` never deploys. Delete the branch afterwards.
 4. **Optional: add the re-pin to the website's checklist.** In `1cFE/website`'s re-pin checklist (`src/vendor/concepts/README.md`), add one line: "re-pin fusion-tea's deploy gate (fusion-tea RUNBOOK, Deploy gate, Re-pinning)".
 
 ### Rules the gate enforces
 
 - **Never edit `contract.txt` by hand.** It is a recording. The re-pin step is the only way to change it.
 - **`cors` and `files` failures are never waived.** Fix them.
-- **No workflow that runs on push may be able to fail.** "Wait for CI" waits for every one of them, so any failure skips the deploy. The self-test `test_push_workflows_equal_the_reviewed_list` fails the gate when a push-triggered workflow is added. Before adding the new workflow to that test's list, make sure it can't fail, the way `notify_visualization.yml` ends its `curl` with `|| echo "::warning::…"`.
-- **The gate must run on every push.** `website-contract.yml` keeps no `paths`, `branches` or `tags` filter and no `concurrency` cancel, because a skipped or cancelled run doesn't block a deploy. A self-test checks this too.
+- **No workflow that runs on push may be able to fail.** "Wait for CI" waits for every one of them, so any failure skips the deploy. The self-test `test_push_workflows_equal_the_reviewed_list` fails the gate when a push-triggered workflow is added. Before adding the new workflow to the set in that test (`exploration/concept_explorer/tests/test_website_contract.py`), make sure it can't fail, the way `notify_visualization.yml` ends its `curl` with `|| echo "::warning::…"`.
+- **The gate must run on every push.** `website-contract.yml` keeps no `paths`, `branches` or `tags` filter, because a skipped run doesn't block a deploy. It also has no `concurrency` cancel, because Railway's handling of a cancelled run is undocumented. A self-test checks the trigger filters.
 
 **What the gate doesn't check.** Numbers such as LCOE values (`scripts/parity_explorer.py` compares those). `concepts.1cf.energy`'s own, newer frontend. A concept losing optional content that another concept already lacked at the pin: the website page shows less but doesn't crash.
 

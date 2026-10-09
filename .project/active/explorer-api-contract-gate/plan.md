@@ -1026,11 +1026,23 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
   - The check gave exactly `concept-unlisted manifest 40`, `concept-unlisted parameters/{name} 40` and `shape GET /api/manifest .concepts[].fit_grade`.
   - The RUNBOOK's two waivers cleared all three: 0 failing, 3 waived, exit 0.
   - The RUNBOOK's omit-list line instead gave 0 failing, exit 0.
-- Every pinned JavaScript cite in the RUNBOOK's waiver examples was read at `10f7b9b`: `caveat_marker.js:53`, `matrix_data.js:220` (null grouped as unspecified), `concept_page.js:144`. `data_grounded`, the false-block example, has no reader in the pinned `static/js`.
+- Every pinned JavaScript cite in the RUNBOOK's waiver examples was read at `10f7b9b`: the manifest's `fit_grade` readers `index_page.js:157` and `matrix_page.js:125` pass it to `caveatMarker`, which compares it only to `"None"` (`caveat_marker.js:53`), and `matrix_data.js:220` groups null as unspecified. `data_grounded`, the false-block example, has no reader in the pinned `static/js`.
+- **Independent cold read** of the RUNBOOK section, by a subagent reading as a non-code reader and checking every concrete claim against the gate's code. It confirmed the messages, key formats, waiver rules, record output, drift messages, self-test names, the replay figures and every JavaScript cite. It found nine issues and two minor ones, all fixed in a follow-up commit:
+  - requiring the `gate` check on `main` (owner step 2) makes GitHub reject direct pushes, so the RUNBOOK now says fixes then go through a pull request;
+  - the re-pin step now covers a recording refused with `files missing`, and the map-path self-test failing at a new pin;
+  - a server that no longer starts (a traceback, or a pytest `ERROR` line) is now named as a real break;
+  - the emergency bypass no longer offers a dashboard redeploy, which could redeploy old code;
+  - a `.dockerignore` configuration error now says which characters to remove;
+  - the gate step's label in the GitHub log, and where the reviewed workflow list lives, are now named;
+  - the trial break on a scratch branch prints several `FAIL` lines, not one;
+  - the rules list no longer claims a cancelled run can't block (undocumented) or that a self-test checks `concurrency` (it checks the trigger filters);
+  - the `fit_grade` waiver's cost and evidence now name the manifest only; the concept response's `fit_grade` is still checked;
+  - minor: `test_cors.py` also fails when the allowlist widens, and a `cors` key also fires on a failed preflight.
+  - Outside the RUNBOOK, the `waivers.toml` example `unpopulated … .cost_model.cas71` could never fire, because `cas71` is recorded as `object`. It is now a `shape` example.
 
 **Issues:**
 - **Bringing an omitted concept back takes an order the design doesn't spell out.** The design says "omit it until the website re-pins", but the website can only list a concept its pinned commit serves. The RUNBOOK gives this sequence: remove the omit-list line on a branch, the website imports that branch commit, then re-pin the gate to it and merge both together. Whichever site updates first, the other shows a broken page or a dead link for that concept until the second lands. This is agent-grade, for the orchestrator to check.
-- **A new concept's Shape waivers are path-wide.** `shape GET /api/manifest .concepts[].fit_grade` also hides a website concept's fit grade going null while it stands. The pinned pages handle null there, so that is a loss of content, not a crash. The RUNBOOK states this cost.
+- **A new concept's Shape waivers are path-wide.** `shape GET /api/manifest .concepts[].fit_grade` also hides a website concept's manifest fit grade going null while it stands; the concept response's `fit_grade` is still checked. The pinned pages handle null there, so that is a loss of content, not a crash. The RUNBOOK states this cost.
 - **Unconfirmed lines left for the owner:** Railway's wording for a waiting and a skipped deploy, and whether re-running a failed gate deploys. Each is marked in the RUNBOOK, with a step asking the owner to record it.
 
 **Deviations:**

@@ -12,7 +12,7 @@
 # cors and files keys are never waived: fix the allowlist, runtime_paths.txt or .dockerignore.
 #
 # [[waiver]]
-# match = "unpopulated GET /api/concepts/{id} .cost_model.cas71"
+# match = "shape GET /api/concepts/{id} .cost_model.cas71"
 # reason = "The pinned concept page never reads cas71."
 # evidence = "unread: cas71 (git grep at 10f7b9b, exploration/concept_explorer/static/js)"
 # date = 2026-10-08
