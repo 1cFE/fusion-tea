@@ -19,12 +19,14 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.error
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import pytest
+import yaml
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import Field
@@ -66,6 +68,7 @@ WEBSITE_CONTRACT = Path(__file__).resolve().parents[1] / "website_contract"
 sys.path.insert(0, str(WEBSITE_CONTRACT))
 
 import contract as c  # noqa: E402
+import drift  # noqa: E402
 import file_audit  # noqa: E402
 import frontend_requests as fr  # noqa: E402
 from contract_rules import record_tree  # noqa: E402
@@ -1325,3 +1328,71 @@ def test_recording_fails_when_the_extract_lacks_a_file_the_pin_reads(
     assert run.returncode == c.EXIT_FAILED, run.stdout + run.stderr
     assert f"FAIL files missing {FIT_TABLE_KEY}" in run.stdout.splitlines()
     assert not contract_path.exists()
+
+
+# ---------------------------------------------------------------------------
+# Workflows (I4, I5) and the drift check (D8, Appendix G)
+# ---------------------------------------------------------------------------
+
+WORKFLOWS = CHECKOUT / ".github" / "workflows"
+
+
+def _triggers(workflow: Path) -> dict[str, Any]:
+    """A workflow's events by name, each with its filters (None when it has none)."""
+    document = yaml.safe_load(workflow.read_text())
+    on = document.get("on", document.get(True))  # PyYAML reads the key `on` as True
+    if isinstance(on, str):
+        return {on: None}
+    if isinstance(on, list):
+        return dict.fromkeys(on)
+    return dict(on)
+
+
+def test_the_gate_workflow_has_no_filters() -> None:
+    """A skipped run never blocks a deploy, so nothing may skip the gate (I5, D10)."""
+    on = _triggers(WORKFLOWS / "website-contract.yml")
+    assert set(on) >= {"push", "pull_request", "workflow_dispatch"}
+    filters = {"paths", "paths-ignore", "branches", "branches-ignore", "tags", "tags-ignore"}
+    assert not set(on["push"] or {}) & filters
+
+
+def test_the_drift_workflow_never_runs_on_push() -> None:
+    """Railway waits on push workflows; drift must never hold a deploy (I5, D8)."""
+    assert set(_triggers(WORKFLOWS / "website-pin-drift.yml")) == {"schedule", "workflow_dispatch"}
+
+
+def test_push_workflows_equal_the_reviewed_list() -> None:
+    """Any failing push workflow skips the deploy, so each is reviewed to fail only on
+    purpose (I4): the gate fails on a break; notify_visualization.yml can't fail (D11)."""
+    workflows = [*WORKFLOWS.glob("*.yml"), *WORKFLOWS.glob("*.yaml")]
+    push = {workflow.name for workflow in workflows if "push" in _triggers(workflow)}
+    assert push == {"website-contract.yml", "notify_visualization.yml"}
+
+
+def _source_link(sha: str) -> str:
+    url = f"https://github.com/1cFE/fusion-tea/tree/{sha}/exploration/concept_explorer"
+    return f'<p>Frontend source: <a href="{url}">fusion-tea</a></p>'
+
+
+@pytest.mark.parametrize(
+    ("answer", "verdict"),
+    [
+        pytest.param(drift.Page(200, _source_link(PIN)), drift.Drift.PASS, id="links-the-pin"),
+        pytest.param(drift.Page(200, _source_link("f" * 40)), drift.Drift.FAIL, id="another-sha"),
+        pytest.param(drift.Page(200, "<p>Concept 01</p>"), drift.Drift.FAIL, id="no-link"),
+        pytest.param(drift.Page(503, ""), drift.Drift.WARN, id="not-200"),
+        pytest.param(urllib.error.URLError("unreachable"), drift.Drift.WARN, id="network-error"),
+    ],
+)
+def test_drift_verdicts(answer: drift.Page | OSError, verdict: drift.Drift) -> None:
+    requested = []
+
+    def fetch(url: str) -> drift.Page:
+        requested.append(url)
+        if isinstance(answer, OSError):
+            raise answer
+        return answer
+
+    result, message = drift.public_pin_drift(PIN, "01", fetch)
+    assert (result, requested) == (verdict, ["https://1cf.energy/tools/concepts/concept/01/"])
+    assert message.startswith(requested[0])

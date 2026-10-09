@@ -1,3 +1,13 @@
+# Explorer API contract gate — contract.py split; Phases 4 and 5 done — 2026-10-08
+
+[AGENT] Three commits on `feat/explorer-api-contract-gate`, none pushed.
+- **Split** (orchestrator decision): `contract.py` is now a 226-line CLI over six top-level modules (`frontend_requests`, `json_shapes`, `contract_text`, `contract_rules`, `waivers`, `pin_source`). A self-test fails if any module name shadows one the server imports. `gate.sh record 10f7b9b…` still reproduces `contract.txt` byte for byte.
+- **Phase 4:** `file_audit.py` records what the server reads, lists or stats. The unwaivable Files rule fails on each such path tracked at HEAD that the tree lacks or `.dockerignore` excludes. Record applies the missing half against the pin. The matcher ports Docker's own matching code and agrees with Docker's older algorithm on all 100,919 tracked paths for the current file. An over-broad `.dockerignore` fails with exactly one `files` key.
+- **Phase 5:** `website-contract.yml` (no filters; `setup-uv@v10.2.0`, since setup-uv has no major tags after v7), `website-pin-drift.yml` (daily 15:23 UTC, never on push), `drift.py`, and the D11 change to `notify_visualization.yml`. Drift against the live site passes, naming `10f7b9b…`.
+- **Now:** `gate.sh` on HEAD is green: 0 failing, 119 self-tests, about 54 s locally. Details: plan Phase 4 and 5 Completion.
+
+Next: Phase 6 (RUNBOOK, README §9, `CLAUDE.md`, `railway.toml` header, two ADRs). The RUNBOOK should say Files failures can't be waived, and that new concepts usually trip Shape too (Phase 3 notes).
+
 # Explorer API contract gate — Phase 3 done: contract recorded at the pin — 2026-10-08
 
 [AGENT] `website_contract/contract.txt` is recorded at `10f7b9b` (37 concepts, 13 cited JS blobs, 778 lines). `gate.sh record 10f7b9b…` reproduces it byte for byte, and `gate.sh` on the branch is green against it with real compute: 0 failing, 81 self-tests pass, 45 s locally, about 2.4 min projected. No compute trim. Open for the orchestrator:

@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phases 1–4 complete, after `contract.py` was split by concern; Phase 5 next.
+**Status:** In Progress. Phases 1–5 complete, after `contract.py` was split by concern; Phase 6 next.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -483,24 +483,24 @@ def test_push_workflows_equal_reviewed_list():
 
 #### 1. Tests (write first)
 
-- [ ] Appendix D Workflows group: gate has no filters; drift has no `push` trigger; push-triggered workflows equal the reviewed list.
-- [ ] `drift.py` verdicts, with the fetch injected: a 200 page linking the pin passes; a 200 page linking another SHA fails; a 200 page with no link fails; a non-200 or a network error warns and passes.
+- [x] Appendix D Workflows group: gate has no filters; drift has no `push` trigger; push-triggered workflows equal the reviewed list.
+- [x] `drift.py` verdicts, with the fetch injected: a 200 page linking the pin passes; a 200 page linking another SHA fails; a 200 page with no link fails; a non-200 or a network error warns and passes.
 
 #### 2. Files
 
-- [ ] `.github/workflows/website-contract.yml` (NEW) per Appendix H: job `gate`, `ubuntu-24.04`, `actions/checkout@v4` with `filter: blob:none` and sparse paths `exploration/concept_explorer/website_contract` and `.github/workflows`, `astral-sh/setup-uv` (its current major tag, found with `gh release view -R astral-sh/setup-uv`; if offline, say so in the notes) with caching, `timeout 480 exploration/concept_explorer/website_contract/gate.sh`, `timeout-minutes: 10`, no `concurrency`.
-- [ ] `.github/workflows/website-pin-drift.yml` (NEW): `schedule` at `'23 15 * * *'` (decision 3) and `workflow_dispatch` only; sparse checkout of the `website_contract` directory; `python3 exploration/concept_explorer/website_contract/drift.py`.
-- [ ] `exploration/concept_explorer/website_contract/drift.py` (NEW), standard library only, per Appendix G.
-- [ ] `.github/workflows/notify_visualization.yml`: append `|| echo "::warning::visualization dispatch failed"` to the `curl` command (D11).
+- [x] `.github/workflows/website-contract.yml` (NEW) per Appendix H: job `gate`, `ubuntu-24.04`, `actions/checkout@v4` with `filter: blob:none` and sparse paths `exploration/concept_explorer/website_contract` and `.github/workflows`, `astral-sh/setup-uv` (its current major tag, found with `gh release view -R astral-sh/setup-uv`; if offline, say so in the notes) with caching, `timeout 480 exploration/concept_explorer/website_contract/gate.sh`, `timeout-minutes: 10`, no `concurrency`.
+- [x] `.github/workflows/website-pin-drift.yml` (NEW): `schedule` at `'23 15 * * *'` (decision 3) and `workflow_dispatch` only; sparse checkout of the `website_contract` directory; `python3 exploration/concept_explorer/website_contract/drift.py`.
+- [x] `exploration/concept_explorer/website_contract/drift.py` (NEW), standard library only, per Appendix G.
+- [x] `.github/workflows/notify_visualization.yml`: append `|| echo "::warning::visualization dispatch failed"` to the `curl` command (D11).
 
 ### Validation
 
 **Automated:**
-- [ ] `test_website_contract.py` passes, including the workflow and drift tests.
-- [ ] Both new workflow files parse with `yaml.safe_load`. Run `actionlint` too if it happens to be installed; it is not required.
+- [x] `test_website_contract.py` passes, including the workflow and drift tests.
+- [x] Both new workflow files parse with `yaml.safe_load`. Run `actionlint` too if it happens to be installed; it is not required.
 
 **Manual:**
-- [ ] Run `python3 exploration/concept_explorer/website_contract/drift.py` once against the live site (a read-only GET of a public page). Expect a pass naming `10f7b9b…`. If it warns or turns red, record the response and surface it to the orchestrator as evidence against B6; don't adjust drift to make it pass.
+- [x] Run `python3 exploration/concept_explorer/website_contract/drift.py` once against the live site (a read-only GET of a public page). Expect a pass naming `10f7b9b…`. If it warns or turns red, record the response and surface it to the orchestrator as evidence against B6; don't adjust drift to make it pass.
 
 **What We Know Works After This Phase:** the workflow can't be skipped by a filter, nothing else can fail a push, and drift agrees with the live site today.
 
@@ -964,11 +964,39 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - **The audit window is in the CLI commands, not in `observe` or `record_tree`.** Record's window also covers the decision-11 server import, so its import-time reads are audited. In-process self-tests call `record_tree` without the audit.
 
 ### Phase 5 Completion
-**Completed:**
+**Completed:** 2026-10-08.
+
 **Actual Changes:**
-**Drift run result:**
+- `.github/workflows/website-contract.yml` (new): job `gate` on `ubuntu-24.04`. Triggers `push` with no filter, `pull_request` and `workflow_dispatch`; no `concurrency`; `timeout-minutes: 10`; `permissions: contents: read`. Steps:
+  - `actions/checkout@v4` with `filter: blob:none` and cone-mode sparse paths `exploration/concept_explorer/website_contract` and `.github/workflows`;
+  - `astral-sh/setup-uv@v10.2.0` with `enable-cache: true` and `cache-dependency-glob: requirements-serve.txt`;
+  - `timeout 480 exploration/concept_explorer/website_contract/gate.sh`.
+- `.github/workflows/website-pin-drift.yml` (new): `schedule` at `'23 15 * * *'` (decision 3) and `workflow_dispatch` only. It sparse-checks out `website_contract` and runs `python3 exploration/concept_explorer/website_contract/drift.py`.
+- `website_contract/drift.py` (new, 95 lines, standard library only). It reads the pin and the first concept from `contract.txt` through `contract_text.parse`, which is also standard library only, and fetches `https://1cf.energy/tools/concepts/concept/<id>/` with a browser-like user agent.
+  - Red: a 200 page with no `github.com/1cFE/fusion-tea/tree/<40-hex sha>/exploration/concept_explorer` link, or one whose linked SHAs aren't exactly the pin.
+  - Warning and exit 0: any other status, or no response (`OSError`, or `http.client.HTTPException`, which isn't one).
+  - Messages carry GitHub's `::error::` and `::warning::` prefixes.
+- `.github/workflows/notify_visualization.yml`: the `curl` gets `|| echo "::warning::visualization dispatch failed"` (D11). Its only edit.
+- `tests/test_website_contract.py`, 8 more tests (119 with `test_cors.py`):
+  - Workflows: the gate has no `push` filter and has all three triggers; drift's triggers are exactly `schedule` and `workflow_dispatch`; the push-triggered workflows (`*.yml` and `*.yaml`) equal `website-contract.yml` and `notify_visualization.yml`. PyYAML's `on: True` key and the string and list forms of `on` are handled.
+  - Drift, with the fetch injected: links the pin, passes; links another SHA, fails; no link, fails; a 503, warns; a network error, warns. Each requests the first concept's page.
+
+**Validation:**
+- `test_cors.py` and `test_website_contract.py`: 119 passed.
+- All three workflow files parse with `yaml.safe_load`. `actionlint` isn't installed.
+- `notify_visualization.yml`: its `run` block parses with `bash -n`. Run under the runner's shell (`bash -eo pipefail`) with `curl` made to fail, it prints the warning and exits 0.
+- `gate.sh` on the worktree: 0 failing, 119 passed. Steps: venv 0.0 s, install 0.8 s, contract 31.9 s, self-tests 21.0 s, total 53.8 s.
+- `ruff check` and `ruff format --check` are clean.
+
+**Drift run result:** `python3 drift.py` (Python 3.12.3) against the live site, once: `https://1cf.energy/tools/concepts/concept/01/ links the pinned fusion-tea 10f7b9b1f1466d2057a211bf25f09fc35d80a12b`, exit 0. B6 holds today.
+
 **Issues:**
+- **`actions/checkout`'s `filter` input says it "overrides sparse-checkout".** I read v4's `src/git-source-provider.ts`: `filter` only replaces the `blob:none` fetch filter that sparse checkout would set anyway, and the sparse checkout still applies. So the planned pair is right, and `filter: blob:none` is just explicit. v7 is the latest major; v4 is still maintained (v4.4.0, 2026-07-20) and runs on node20. Phase 7's CI-shaped clone measures the checkout.
+
 **Deviations:**
+- **Plan slip: `setup-uv` has no "current major tag".** Since v8 it publishes only full version tags; the moving tags stop at `v7`. The workflow pins the latest release, `v10.2.0` (2026-09-21, from `gh release list -R astral-sh/setup-uv`). Updating it is a manual bump.
+- **`permissions: contents: read`** on both new workflows, which the design didn't mention. Neither needs more.
+- **Drift matches full 40-character SHAs only**, as the live page links. A short-SHA link would read as "no link" and turn red.
 
 ### Phase 6 Completion
 **Completed:**
