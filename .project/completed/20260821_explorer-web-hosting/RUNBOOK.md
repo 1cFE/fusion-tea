@@ -314,6 +314,16 @@ These are for the owner after the deploy gate merges to `main`. None of them nee
 3. **Optional: watch it fail once.** Push a scratch branch with one deliberate break, for example the `model_type` field renamed in `exploration/concept_explorer/data/04.json`. Its `gate` check should fail, with `FAIL shape GET /api/concepts/{id} .model_type` among its `FAIL` lines. A branch other than `main` never deploys. Delete the branch afterwards.
 4. **Optional: add the re-pin to the website's checklist.** In `1cFE/website`'s re-pin checklist (`src/vendor/concepts/README.md`), add one line: "re-pin fusion-tea's deploy gate (fusion-tea RUNBOOK, Deploy gate, Re-pinning)".
 
+### Backing out the deploy gate
+
+The gate changes when Railway deploys, not what it deploys. Merging it adds two workflows, files the server never loads (`exploration/concept_explorer/website_contract/` and one test file) and a comment in `railway.toml`. The server, its data and its frontend are unchanged. So the likely problem is the gate holding a deploy it shouldn't, not the explorer breaking.
+
+Three ways back, cheapest first. Only the owner can do the first two.
+
+1. **Stop the gate holding deploys.** Turn **Wait for CI** off (see **Turning "Wait for CI" on and off**). Railway deploys every push to `main` at once, as it did before the gate. The gate keeps running and showing ✓ or ✗ in GitHub, but holds nothing. Turn the setting back on to undo.
+2. **Put the last good version back live.** Use this if `concepts.1cf.energy` is broken after a deploy, whatever caused it. In Railway, open service `1cfe-fusion-tea-explorer`, then **Deployments**. Click the three dots at the end of the last deployment that worked, choose the rollback and confirm. Railway restores that deployment's image and its variables. A deployment older than the plan's retention period has no rollback option. Confirm with `python scripts/smoke_explorer.py https://concepts.1cf.energy`, which should print `SMOKE OK`. A rollback doesn't change `main`, and the next push deploys `main` again, so fix or revert the cause on `main` as well.
+3. **Take the gate out of the code.** Turn **Wait for CI** off first and leave it off. After the revert most pushes run no workflow at all, which is how deploys worked before the gate. Then revert the gate's merge on `main`, through a pull request or a push: `git revert -m 1 <merge commit>` if it merged as a merge commit, or `git revert <commit>` if it was squashed. The revert removes the workflows, the gate's code, its docs and ADRs 0011 and 0012, and restores the previous `notify_visualization.yml`. Nothing the explorer or the website serves changes. Record why in a new ADR (`.project/scripts/adr.sh new`), since the revert removes the old ones.
+
 ### Rules the gate enforces
 
 - **Never edit `contract.txt` by hand.** It is a recording. The re-pin step is the only way to change it.
