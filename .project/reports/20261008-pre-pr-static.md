@@ -1,6 +1,6 @@
 # PR gate static rerun — 2026-10-08
 
-[AGENT] Repository-wide Ruff lint and formatting still fail at gate entry `f9e1d6564d16c29c6d4e1c20f4a8920eb32cb135`. No autofix was applied. The [full default pytest rerun](20261008-pre-pr-rerun.md) passes independently, with source/evidence preservation verified. This report proposes a style exception for this PR; owner acceptance is pending.
+[AGENT] Repository-wide Ruff lint and formatting still fail at gate entry `f9e1d6564d16c29c6d4e1c20f4a8920eb32cb135`. No autofix was applied. The [full default pytest rerun](20261008-pre-pr-rerun.md) passes independently, with source/evidence preservation verified. The proposed style exception is ratified by the owner on 2026-10-09; repository-wide Ruff results remain FAIL.
 
 ## Results
 
@@ -21,9 +21,9 @@ Thirty-five changed files exceed 5 MB. Twenty-seven have byte-identical baseline
 
 The dry merge against verified remote main exits zero, with virtual merged tree `9da86abb56a343d42163219accc7c540079c1f07`. No index, reference or working file was changed.
 
-## Proposed disposition
+## Accepted disposition
 
-[AGENT] Accept the recorded inherited style debt and sealed/generated evidence style findings as exceptions for this PR. Preserve their bytes and retain the repository-wide checks as FAIL with these exact counts. Require the fresh full pytest result and source/evidence preservation receipts before calling the branch qualified. Any new test failure or newly introduced mutable-code issue still requires resolution. This exception would close the style question for this delivery; it would not change Ruff configuration or declare these files clean.
+[AGENT] Accept the recorded inherited style debt and sealed/generated evidence style findings as exceptions for this PR (ratified by owner, 2026-10-09). [OWNER-VERBATIM] “ok I accept those.” The acceptance covers the documented inherited findings, including the 138 residual findings in changed live tests, and the generated/sealed evidence findings. The complete default suite and source/evidence preservation checks pass. The branch gate is qualified with these exceptions; repository-wide Ruff checks remain FAIL with the exact counts above. This decision applies to this PR and does not change Ruff configuration or declare the files clean.
 
 ## Receipts
 
