@@ -135,3 +135,13 @@ The rules for writing an entry are in `README.md`, in this directory. Do not rew
 
 **Fact:** In the pinned integration toolchain, smart regeneration can replace handwritten completions with stubs when public function annotations do not match the generated signature or when its scanner treats `inputs.model_dump()` as an input field. WI-089 uses typed public adapters that delegate to unchanged reviewed bodies, and proves the exact `--smart-regen --preserve-handwritten` command is byte-stable.
 **Evidence:** `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/evidence/smart-normalization-verification.json`; `work/orchestration/goals/aries-integrated-heat-electricity/evidence/packaging-review.md@143a556c`.
+
+## [starlette.testclient] 2026-10-09
+
+**Fact:** Starlette 1.3.1, the version `requirements-serve.txt` pins, has its test client import `httpx2` first and fall back to `httpx` with a `StarletteDeprecationWarning`. The website-contract gate runs on that fallback: its request driver and `test_cors.py` use FastAPI's `TestClient`, and the gate installs `httpx==0.28.1` from `exploration/concept_explorer/website_contract/test_tools.txt`. A Starlette release that drops the fallback breaks the gate's contract step as well as its self-tests, so a Starlette bump needs `test_tools.txt` changed with it.
+**Evidence:** `starlette/testclient.py:32-51` in the 1.3.1 wheel, read 2026-10-09; `requirements-serve.txt:47` pins `starlette==1.3.1` and lists no `httpx2`; `website_contract/frontend_requests.py:173` imports `fastapi.testclient.TestClient`. The warning was first noticed in the gate's runs during `.project/completed/20261009_explorer-api-contract-gate/`.
+
+## [docker] 2026-10-09
+
+**Fact:** `docker` fails in agent shells with "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock". The user `reid` is listed in the `docker` group, but the shell's process groups don't include it. `sg docker -c '<command>'` runs the command with the group and reaches the daemon.
+**Evidence:** 2026-10-09: `docker info` gave the permission error; `id` showed no `docker` group while `getent group docker` printed `docker:x:126:reid`; `sg docker -c 'docker info --format {{.ServerVersion}}'` printed `29.1.3`. The explorer-api-contract-gate run had planned around "agents have no Docker" (`.project/completed/20261009_explorer-api-contract-gate/design.md:652`).

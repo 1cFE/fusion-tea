@@ -1,0 +1,6 @@
+# The repo directories the explorer server reads at runtime. gate.sh adds them to a
+# sparse checkout before checking, and `contract.py extract` takes them from the pin.
+# Keep in step with the "MUST survive" list at the top of .dockerignore.
+exploration/concept_explorer
+exploration/concept_analysis
+archive/concept_analysis_pre_rework

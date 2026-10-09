@@ -1,0 +1,26 @@
+# Daily check that the public website still runs the explorer frontend the deploy gate's
+# contract is pinned to (design D8). Red means the website re-pinned and contract.txt needs
+# re-recording (RUNBOOK, Deploy gate); a website outage only warns.
+#
+# Never add a push trigger: Railway waits on push-triggered workflows, and this one must
+# never hold a deploy (a self-test checks the triggers).
+name: website-pin-drift
+
+on:
+  schedule:
+    - cron: '23 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: exploration/concept_explorer/website_contract
+      - run: python3 exploration/concept_explorer/website_contract/drift.py

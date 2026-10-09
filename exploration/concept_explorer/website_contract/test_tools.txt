@@ -1,0 +1,5 @@
+# The gate's test tools: the one list of them, read by gate.sh and contract.py.
+# Check mode installs these exact versions (plan decision 2). Record mode resolves the same
+# names as of the pin's commit time and writes their versions to contract.txt's tools line.
+httpx==0.28.1
+pytest==9.1.1

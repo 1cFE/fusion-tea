@@ -17,6 +17,8 @@ uv run python exploration/concept_explorer/server.py
 
 See [§8 Running It](#8-running-it) for tests, custom ports, and prerequisites.
 
+**This app is live.** Every push to `main` redeploys it to `concepts.1cf.energy`, and the public website at `1cf.energy/tools/concepts/` depends on its API. See [§9 Deployment and Downstream Consumers](#9-deployment-and-downstream-consumers) before changing the API, the data files or the served concept set.
+
 ## 1. System Overview
 
 The Concept Explorer is a server-rendered web application for inspecting, comparing, and building intuition about the economics of fusion energy concepts. It transforms the raw output of the concept analysis pipeline (thousands of lines of markdown, model code, and tables) into interactive profiles with sensitivity visualizations, cost breakdowns, and cross-concept comparison.
@@ -682,3 +684,53 @@ uv run python -m pytest exploration/concept_explorer/tests/ -v
 - costingfe-backed concepts require the `1costingfe` package in the environment
 - Narrative extraction requires the `claude` CLI
 - Plotly is vendored at `static/vendor/plotly-basic.min.js` (no CDN dependency)
+
+## 9. Deployment and Downstream Consumers
+
+Pushing to `main` deploys this app to production. Two public pages depend on it. A deploy gate checks each push first. It holds back a push that would break the website only once the owner turns on Railway's "Wait for CI"; until then a red gate is a warning only (see [The deploy gate](#the-deploy-gate)).
+
+### What runs where
+
+```
+fusion-tea main ──push──► Railway service "1cfe-fusion-tea-explorer"
+                            └─► concepts.1cf.energy   (this app: pages + /api/*)
+                                       ▲
+                                       │ browser fetches, cross-origin
+                                       │
+1cFE/website ──► 1cf.energy/tools/concepts/   (frozen copy of static/ + templates/,
+                                               pinned to one fusion-tea commit)
+```
+
+- **`concepts.1cf.energy`** is this FastAPI app. Railway rebuilds it from the repo-root `Dockerfile` and `railway.toml` on every push to `main`, and once "Wait for CI" is on, only on a push that passes the deploy gate. Setup, dependency bumps and troubleshooting are in `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`.
+- **`1cf.energy/tools/concepts/`** comes from the `1cFE/website` repo (private). It serves a copy of this app's `static/` and `templates/` taken at one fusion-tea commit, recorded in that repo's `src/vendor/concepts/provenance.json`. Its JavaScript fetches all data, findings, compute results and explorer state from the live API at `concepts.1cf.energy`. The website's side is documented in its `docs/concepts-integration.md`.
+
+### What a push to `main` changes
+
+- **Data, findings and compute results** change on both sites at once.
+- **Frontend changes** (`static/`, `templates/`) reach `concepts.1cf.energy` only. The website keeps its pinned copy until someone re-imports it (see below).
+- **In-memory state resets.** Each deploy restarts the single server process, which clears `/api/state` and the compute cache. Both sites share that state.
+
+### Changes that break the website
+
+The website runs JavaScript from an older commit against the current API. It keeps working only while these hold:
+
+- **API response fields.** The pinned JavaScript calls `/api/manifest`, `/api/concepts/{id}`, `/api/concepts/{id}/findings`, `/api/compute`, `/api/cost-landscape`, `/api/parameter_index`, `/api/parameters/{name}`, `/api/state` (POST only), `/api/taxonomy/tree` and `/api/taxonomy/registry`. Adding fields is safe. Removing or renaming a field that JavaScript reads breaks the website, while `concepts.1cf.energy` keeps working because it serves the new JavaScript.
+- **Request bodies.** The pinned JavaScript posts fixed bodies to `/api/compute` (`concept_id`, `overrides`, `apply_analyst_overrides`) and `/api/state`. Renaming or removing one of the `/api/compute` fields breaks the website's sliders or override toggle, even though the server still accepts the request: it ignores a field its request model doesn't declare. The deploy gate checks every sent field against the server's request models. A renamed `/api/state` field also fails the gate, but it is a false block cleared by a waiver, because neither site reads state back.
+- **CORS allowlist.** `_ExplorerApp` in `server.py` allows browser calls from `https://1cf.energy` and `https://static.1cf.energy`. `tests/test_cors.py` covers it, and the deploy gate runs it on every push.
+- **Served concept IDs.** The website builds one page per concept from a hardcoded list of 37 IDs (`src/data/concepts.mjs` in the website repo). Dropping a concept from this app leaves a website page whose API calls fail. A new concept gets no website page until that list and the pin are updated, and the deploy gate fails on it until then (see below).
+
+### Updating the website's copy
+
+After a frontend change lands on `main`, someone with access to `1cFE/website` runs `npm run import:concepts /path/to/fusion-tea <full-commit-sha>` there, then `npm run check` and the browser checks listed in that repo's `src/vendor/concepts/README.md`. The import refuses to run if the concept ID list changed. Then re-pin the deploy gate to the same commit (below).
+
+### The deploy gate
+
+Every push runs the `website-contract` workflow (`.github/workflows/website-contract.yml`). It replays the requests the website's frozen frontend makes against the pushed code, and compares the answers with a recording taken at the website's pinned commit (`website_contract/contract.txt`). It also runs `tests/test_cors.py`. With Railway's "Wait for CI" on, a failed run skips the deploy, and `concepts.1cf.energy` keeps serving the previous version. The owner turns that setting on after the gate merges (RUNBOOK, "Owner setup steps"). Until then a failed run is a warning only, and the push still deploys. The decisions behind it are ADRs 0011 and 0012 in `.project/adr/`. Operating steps are in the RUNBOOK's "Deploy gate" section.
+
+- **Run it locally** before pushing an API or data change: `exploration/concept_explorer/website_contract/gate.sh`. It needs `uv` and takes about a minute.
+- **A failure the website can't notice** (a false block, such as removing a field the frozen frontend never reads) clears with one entry in `website_contract/waivers.toml`. The RUNBOOK says how to judge it and write the entry.
+- **A new concept fails the gate**, because the website's frozen pages would link to a page the website doesn't have. There are two ways through:
+  - Add it to `omit_list.yaml` until the website re-pins. The website stays whole, but `concepts.1cf.energy` hides the concept too.
+  - Or waive it: `concept-unlisted * <id>`, plus one waiver for each field the new concept leaves empty (for example `fit_grade`, when it has no archetype-fit row). The concept shows on `concepts.1cf.energy` at once, but the website shows a dead link to it until it re-pins, and each field waiver also stops the gate from noticing that field go empty for other concepts.
+- **When the website re-pins**, re-record the contract at the new commit with `gate.sh record <full-sha>`. The six steps are in the RUNBOOK. They need no code reading unless the frontend's JavaScript changed.
+- **Never** edit `contract.txt` by hand, waive a `cors` or `files` failure, or add a push-triggered workflow that can fail.

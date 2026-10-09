@@ -1,0 +1,18 @@
+# Waivers for the website contract gate: each clears the failure keys its `match` names.
+# Write one only for a false block, a failure the website's pinned frontend can't notice.
+# How to judge one, and the new-concept and re-pin steps: RUNBOOK, "Deploy gate".
+#
+# match:    a failure key exactly as `gate.sh` prints it after FAIL. `*` stands for one
+#           whole token or one whole path segment (with its {*} or []), never for the rule.
+# reason:   why the pinned frontend doesn't depend on what changed.
+# evidence: where that shows. An unpopulated waiver cites the pinned JavaScript that reads
+#           the path (file.js:N), or says "unread:" and the search terms that found no reader.
+# date:     a TOML date.
+#
+# cors and files keys are never waived: fix the allowlist, runtime_paths.txt or .dockerignore.
+#
+# [[waiver]]
+# match = "shape GET /api/concepts/{id} .cost_model.cas71"
+# reason = "The pinned concept page never reads cas71."
+# evidence = "unread: cas71 (git grep at 10f7b9b, exploration/concept_explorer/static/js)"
+# date = 2026-10-08

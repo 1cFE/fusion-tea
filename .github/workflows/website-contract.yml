@@ -1,0 +1,36 @@
+# The deploy gate for concepts.1cf.energy. The public page 1cf.energy/tools/concepts/ runs a
+# frozen copy of the explorer frontend against the API this repo deploys, and this job fails
+# when a push would break that copy. Railway's "Wait for CI" then skips the deploy.
+# Design: .project/completed/20261009_explorer-api-contract-gate/design.md (D10, Appendix H).
+#
+# Keep it unskippable: no path, branch or tag filter and no concurrency cancel, because a
+# skipped or cancelled run never blocks a deploy (a self-test checks the triggers). gate.sh
+# runs under `timeout 480` so a hang ends as a failure; timeout-minutes is only a backstop.
+name: website-contract
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      # Only the gate and the workflows; gate.sh adds the runtime paths it serves from.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            exploration/concept_explorer/website_contract
+            .github/workflows
+      # setup-uv publishes no moving major tag after v7, so the release is pinned.
+      - uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements-serve.txt
+      - run: timeout 480 exploration/concept_explorer/website_contract/gate.sh

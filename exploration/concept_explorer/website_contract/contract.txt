@@ -1,0 +1,778 @@
+# Recorded from fusion-tea 10f7b9b1f1466d2057a211bf25f09fc35d80a12b. Do not edit; clear false blocks in waivers.toml.
+# Regenerate: exploration/concept_explorer/website_contract/gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b
+pin 10f7b9b1f1466d2057a211bf25f09fc35d80a12b
+tools httpx==0.28.1 pytest==9.1.1
+js exploration/concept_explorer/static/js/cas_breakdown.js 13cdf8033d6e6a8febb1a28acaa09cd7cdbc903b
+js exploration/concept_explorer/static/js/caveat_marker.js 300bf52544df339bd2a702e4750db3ae8344eb58
+js exploration/concept_explorer/static/js/comparison.js a635fb1bdf6c9d0986ed168da77ac1775d22264b
+js exploration/concept_explorer/static/js/concept_page.js baf74f6ae3ec1a2bd034cbe8484e1b1ce1770535
+js exploration/concept_explorer/static/js/cost_landscape_page.js af74dc2248618b991baa99a0a09474529ddf04bd
+js exploration/concept_explorer/static/js/index_page.js 05f43166bffa254937f10d7ed0872c16ac96bbe2
+js exploration/concept_explorer/static/js/matrix_data.js 9a4a54f91244b13efcbc826687f02b41c7207649
+js exploration/concept_explorer/static/js/matrix_page.js cec207ba4b51507ec1f79402eac5fc03c20e6e4c
+js exploration/concept_explorer/static/js/ontology_palette.js e432853ac24bcd254ae54b3fc56de688a1874f54
+js exploration/concept_explorer/static/js/parameter_card.js 584a04499d44604a09b2135b18762a62b5b3ac44
+js exploration/concept_explorer/static/js/tornado.js c02d1e37c5231d7407a33ff46b3202f57e41dd2e
+js exploration/concept_explorer/static/js/view_categorical.js 6461adb1d3f6502e7f4702b148a7aafed82400df
+js exploration/concept_explorer/static/js/view_sensitivity.js 656960ce520809af4f073ae74fccbb0278c8c6f9
+concepts 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17a 17b 18 19 20a 20b 21 22 23 24 25 28 29 30 31 32 33 35 36 37 39
+list cost-landscape 01 04 05 07 08 09 10 11 12 13 14 15 17a 17b 18 20a 20b 21 22 23 24 25 29 30 31 32 33 36 37 39
+list manifest =
+list registry =
+list tree =
+coverage GET /api/concepts/{id}/findings 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17a 17b 18 19 20a 20b 21 22 23 24 25 28 29 30 31 32 33 35 36 37 39
+coverage POST /api/compute:slider 01 04 05 06 07 08 09 10 11 12 13 14 15 17a 17b 18 19 20a 20b 21 22 23 24 25 28 29 30 31 32 33 36 37 39
+coverage POST /api/compute:toggle 01 04 06 08 09 12 14 17a 18 22 23 24 29 31 36
+status GET /api/concepts/{id} 200
+status GET /api/concepts/{id}/findings 200
+status GET /api/cost-landscape 200
+status GET /api/manifest 200
+status GET /api/parameter_index 200
+status GET /api/parameters/{name} 200
+status GET /api/taxonomy/registry 200
+status GET /api/taxonomy/tree 200
+status POST /api/compute:slider 200
+status POST /api/compute:slider-range 200
+status POST /api/compute:toggle 200
+status POST /api/state:compare 200
+status POST /api/state:concept 200
+enum BlanketConfig Liquid metal
+enum BlanketConfig Molten salt
+enum BlanketConfig N/A (no tritium)
+enum BlanketConfig N/A (non-power)
+enum BlanketConfig Other/hybrid
+enum BlanketConfig Solid breeder
+enum BlanketConfig TBD
+enum ConceptStatus approved
+enum ConceptStatus in_progress
+enum Confidence high
+enum Confidence low
+enum Confidence medium
+enum Confidence unknown
+enum ConfinementFamily IFE
+enum ConfinementFamily MFE
+enum ConfinementFamily MIF
+enum ConfinementFamily NONSTANDARD
+enum CostComponent capital
+enum CostComponent fixed_om
+enum CostComponent fuel
+enum CostComponent replacement
+enum DriverType DPSSL Laser
+enum DriverType Electrostatic
+enum DriverType Gas Laser
+enum DriverType Ion/particle beam
+enum DriverType Magnetic
+enum DriverType Magnetic pinch
+enum DriverType Mechanical/kinetic
+enum DriverType Other
+enum DriverType TBD
+enum EnergyCapture Direct (charged particle)
+enum EnergyCapture Direct (inductive)
+enum EnergyCapture Hybrid (thermal + direct)
+enum EnergyCapture TBD
+enum EnergyCapture Thermal (sCO2)
+enum EnergyCapture Thermal (steam)
+enum EnergyCapture Thermal (unspecified)
+enum FuelType DD
+enum FuelType DHe3
+enum FuelType DT
+enum FuelType OTHER
+enum FuelType PB11
+enum HeatingType ECRH
+enum HeatingType ICRH
+enum HeatingType N/A (compression-driven)
+enum HeatingType N/A (non-thermal)
+enum HeatingType NBI
+enum HeatingType Ohmic
+enum HeatingType TBD
+enum IFEDriver Acoustic
+enum IFEDriver Heavy ion beam
+enum IFEDriver Laser
+enum IFEDriver Projectile
+enum LaserApproach Direct drive
+enum LaserApproach Fast ignition
+enum LaserApproach Hybrid drive
+enum LaserApproach Indirect drive
+enum LaserApproach Liquid jet
+enum LaserApproach Ultrashort pulse
+enum MFETopology Compact Toroid
+enum MFETopology Dipole
+enum MFETopology Open/Linear
+enum MFETopology Stellarator
+enum MFETopology Tokamak
+enum MIFMethod FRC compression
+enum MIFMethod Magnetized target
+enum MagnetType Electrostatic
+enum MagnetType HTS (3D stellarator)
+enum MagnetType HTS (levitated dipole)
+enum MagnetType HTS (planar array)
+enum MagnetType HTS (wound)
+enum MagnetType LTS
+enum MagnetType LTS+HTS
+enum MagnetType N/A
+enum MagnetType None
+enum MagnetType Resistive
+enum MagnetType TBD
+enum MagnetType Unknown
+enum ModelType costingfe
+enum ModelType standalone
+enum NonStandardMechanism Electrostatic
+enum NonStandardMechanism Muon-catalyzed
+enum NonStandardMechanism Plasma focus
+enum OperationMode Pulsed
+enum OperationMode Quasi-steady
+enum OperationMode Steady-state
+enum OperationMode TBD
+enum ParameterCategory concept-unique
+enum ParameterCategory high-risk
+enum ParameterCategory key-innovation
+enum ParameterCategory shared-baseline
+enum ParameterCategory unclassified
+enum ParameterCategory well-established
+enum PrimaryHeating Acoustic implosion
+enum PrimaryHeating Electromagnetic pinch (DPF)
+enum PrimaryHeating Electrostatic acceleration
+enum PrimaryHeating Heavy ion beam
+enum PrimaryHeating Laser (direct drive)
+enum PrimaryHeating Laser (fast ignition)
+enum PrimaryHeating Laser (indirect drive)
+enum PrimaryHeating Laser (ultrashort pulse)
+enum PrimaryHeating Magnetic compression
+enum PrimaryHeating Mechanical compression
+enum PrimaryHeating Muon catalysis
+enum PrimaryHeating NBI
+enum PrimaryHeating Ohmic (self-pinch)
+enum PrimaryHeating Projectile impact
+enum PrimaryHeating Pulsed power implosion
+enum PrimaryHeating RF (ECRH)
+enum PrimaryHeating RF (ICRH)
+enum PrimaryHeating RF + NBI
+enum PrimaryHeating TBD
+enum PrimaryHeating Unknown
+enum RepetitionRate High (>10 Hz)
+enum RepetitionRate Sub-Hz
+enum RepetitionRate Unknown
+enum RepetitionRate kHz
+enum RepetitionRate ~1 Hz
+enum RepetitionRate ~10 Hz
+enum StellaratorType Helical coil
+enum StellaratorType Modular
+enum StellaratorType Planar coil
+enum StellaratorType QI
+enum TaxonomyConfidence high
+enum TaxonomyConfidence low
+enum TaxonomyConfidence medium
+enum TaxonomyConfidence medium-high
+enum TaxonomyConfidence medium-low
+enum TokamakShape Compact
+enum TokamakShape Negative triangularity
+enum TokamakShape Spherical
+enum TokamakShape Standard
+literal GET /api/concepts/{id} .fit_grade High
+literal GET /api/concepts/{id} .fit_grade Low
+literal GET /api/concepts/{id} .fit_grade Med
+literal GET /api/concepts/{id} .fit_grade None
+literal GET /api/manifest .concepts[].fit_grade High
+literal GET /api/manifest .concepts[].fit_grade Low
+literal GET /api/manifest .concepts[].fit_grade Med
+literal GET /api/manifest .concepts[].fit_grade None
+map GET /api/concepts/{id} .cost_model.cas22_detail
+map GET /api/concepts/{id} .cost_model.params
+map GET /api/concepts/{id} .cost_model.sensitivities.engineering
+map GET /api/concepts/{id} .cost_model.sensitivities.financial
+map GET /api/concepts/{id} .cost_model.sensitivities_bare.engineering
+map GET /api/concepts/{id} .cost_model.sensitivities_bare.financial
+map GET /api/concepts/{id} .parameter_metadata
+map GET /api/parameter_index .parameters
+map POST /api/compute:slider .cas22_detail
+map POST /api/compute:slider .params
+map POST /api/compute:slider .sensitivities.engineering
+map POST /api/compute:slider .sensitivities.financial
+map POST /api/compute:slider .sensitivities_bare.engineering
+map POST /api/compute:slider .sensitivities_bare.financial
+map POST /api/compute:slider-range .cas22_detail
+map POST /api/compute:slider-range .params
+map POST /api/compute:slider-range .sensitivities.engineering
+map POST /api/compute:slider-range .sensitivities.financial
+map POST /api/compute:slider-range .sensitivities_bare.engineering
+map POST /api/compute:slider-range .sensitivities_bare.financial
+map POST /api/compute:toggle .cas22_detail
+map POST /api/compute:toggle .params
+map POST /api/compute:toggle .sensitivities.engineering
+map POST /api/compute:toggle .sensitivities.financial
+map POST /api/compute:toggle .sensitivities_bare.engineering
+map POST /api/compute:toggle .sensitivities_bare.financial
+map POST /api/state:compare .
+map POST /api/state:concept .
+GET /api/concepts/{id} . object
+GET /api/concepts/{id} .analyst_name string
+GET /api/concepts/{id} .analyst_override_count number
+GET /api/concepts/{id} .asterisk_in_comparison boolean
+GET /api/concepts/{id} .company string
+GET /api/concepts/{id} .company_url string,null
+GET /api/concepts/{id} .concept_id string
+GET /api/concepts/{id} .confinement_family enum:ConfinementFamily
+GET /api/concepts/{id} .cost_model object
+GET /api/concepts/{id} .cost_model.cas10 object
+GET /api/concepts/{id} .cost_model.cas10.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas10.name string
+GET /api/concepts/{id} .cost_model.cas10.overridden boolean
+GET /api/concepts/{id} .cost_model.cas21 object
+GET /api/concepts/{id} .cost_model.cas21.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas21.name string
+GET /api/concepts/{id} .cost_model.cas21.overridden boolean
+GET /api/concepts/{id} .cost_model.cas22 object
+GET /api/concepts/{id} .cost_model.cas22.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas22.name string
+GET /api/concepts/{id} .cost_model.cas22.overridden boolean
+GET /api/concepts/{id} .cost_model.cas22_detail object
+GET /api/concepts/{id} .cost_model.cas22_detail{*} object
+GET /api/concepts/{id} .cost_model.cas22_detail{*}.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas22_detail{*}.name string
+GET /api/concepts/{id} .cost_model.cas22_detail{*}.overridden boolean
+GET /api/concepts/{id} .cost_model.cas23 object
+GET /api/concepts/{id} .cost_model.cas23.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas23.name string
+GET /api/concepts/{id} .cost_model.cas23.overridden boolean
+GET /api/concepts/{id} .cost_model.cas24 object
+GET /api/concepts/{id} .cost_model.cas24.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas24.name string
+GET /api/concepts/{id} .cost_model.cas24.overridden boolean
+GET /api/concepts/{id} .cost_model.cas25 object
+GET /api/concepts/{id} .cost_model.cas25.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas25.name string
+GET /api/concepts/{id} .cost_model.cas25.overridden boolean
+GET /api/concepts/{id} .cost_model.cas26 object
+GET /api/concepts/{id} .cost_model.cas26.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas26.name string
+GET /api/concepts/{id} .cost_model.cas26.overridden boolean
+GET /api/concepts/{id} .cost_model.cas27 object
+GET /api/concepts/{id} .cost_model.cas27.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas27.name string
+GET /api/concepts/{id} .cost_model.cas27.overridden boolean
+GET /api/concepts/{id} .cost_model.cas28 object
+GET /api/concepts/{id} .cost_model.cas28.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas28.name string
+GET /api/concepts/{id} .cost_model.cas28.overridden boolean
+GET /api/concepts/{id} .cost_model.cas29 object
+GET /api/concepts/{id} .cost_model.cas29.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas29.name string
+GET /api/concepts/{id} .cost_model.cas29.overridden boolean
+GET /api/concepts/{id} .cost_model.cas30 object
+GET /api/concepts/{id} .cost_model.cas30.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas30.name string
+GET /api/concepts/{id} .cost_model.cas30.overridden boolean
+GET /api/concepts/{id} .cost_model.cas40 object
+GET /api/concepts/{id} .cost_model.cas40.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas40.name string
+GET /api/concepts/{id} .cost_model.cas40.overridden boolean
+GET /api/concepts/{id} .cost_model.cas50 object
+GET /api/concepts/{id} .cost_model.cas50.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas50.name string
+GET /api/concepts/{id} .cost_model.cas50.overridden boolean
+GET /api/concepts/{id} .cost_model.cas60 object
+GET /api/concepts/{id} .cost_model.cas60.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas60.name string
+GET /api/concepts/{id} .cost_model.cas60.overridden boolean
+GET /api/concepts/{id} .cost_model.cas70 object
+GET /api/concepts/{id} .cost_model.cas70.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas70.name string
+GET /api/concepts/{id} .cost_model.cas70.overridden boolean
+GET /api/concepts/{id} .cost_model.cas71 object
+GET /api/concepts/{id} .cost_model.cas71.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas71.name string
+GET /api/concepts/{id} .cost_model.cas71.overridden boolean
+GET /api/concepts/{id} .cost_model.cas72 object
+GET /api/concepts/{id} .cost_model.cas72.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas72.name string
+GET /api/concepts/{id} .cost_model.cas72.overridden boolean
+GET /api/concepts/{id} .cost_model.cas80 object
+GET /api/concepts/{id} .cost_model.cas80.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas80.name string
+GET /api/concepts/{id} .cost_model.cas80.overridden boolean
+GET /api/concepts/{id} .cost_model.cas90 object
+GET /api/concepts/{id} .cost_model.cas90.cost_m_usd number
+GET /api/concepts/{id} .cost_model.cas90.name string
+GET /api/concepts/{id} .cost_model.cas90.overridden boolean
+GET /api/concepts/{id} .cost_model.headline object
+GET /api/concepts/{id} .cost_model.headline.capacity_factor number
+GET /api/concepts/{id} .cost_model.headline.lcoe_per_mwh number
+GET /api/concepts/{id} .cost_model.headline.overnight_cost_per_kw number
+GET /api/concepts/{id} .cost_model.headline.p_net_mw number
+GET /api/concepts/{id} .cost_model.headline.q_eng number
+GET /api/concepts/{id} .cost_model.params object
+GET /api/concepts/{id} .cost_model.params{*} number
+GET /api/concepts/{id} .cost_model.sensitivities object
+GET /api/concepts/{id} .cost_model.sensitivities.engineering object
+GET /api/concepts/{id} .cost_model.sensitivities.engineering{*} object
+GET /api/concepts/{id} .cost_model.sensitivities.engineering{*}.baseline number
+GET /api/concepts/{id} .cost_model.sensitivities.engineering{*}.elasticity number
+GET /api/concepts/{id} .cost_model.sensitivities.financial object
+GET /api/concepts/{id} .cost_model.sensitivities.financial{*} object
+GET /api/concepts/{id} .cost_model.sensitivities.financial{*}.baseline number
+GET /api/concepts/{id} .cost_model.sensitivities.financial{*}.elasticity number
+GET /api/concepts/{id} .cost_model.sensitivities_bare object,null
+GET /api/concepts/{id} .cost_model.sensitivities_bare.engineering object
+GET /api/concepts/{id} .cost_model.sensitivities_bare.engineering{*} object
+GET /api/concepts/{id} .cost_model.sensitivities_bare.engineering{*}.baseline number
+GET /api/concepts/{id} .cost_model.sensitivities_bare.engineering{*}.elasticity number
+GET /api/concepts/{id} .cost_model.sensitivities_bare.financial object
+GET /api/concepts/{id} .cost_model.sensitivities_bare.financial{*} object
+GET /api/concepts/{id} .cost_model.sensitivities_bare.financial{*}.baseline number
+GET /api/concepts/{id} .cost_model.sensitivities_bare.financial{*}.elasticity number
+GET /api/concepts/{id} .data_grounded boolean
+GET /api/concepts/{id} .fit_grade string
+GET /api/concepts/{id} .fuel enum:FuelType
+GET /api/concepts/{id} .has_cost_model boolean
+GET /api/concepts/{id} .has_sensitivities boolean
+GET /api/concepts/{id} .illustration null
+GET /api/concepts/{id} .model_type enum:ModelType
+GET /api/concepts/{id} .name string
+GET /api/concepts/{id} .narrative null
+GET /api/concepts/{id} .overrides array,empty
+GET /api/concepts/{id} .overrides[] object
+GET /api/concepts/{id} .overrides[].account string
+GET /api/concepts/{id} .overrides[].account_name string
+GET /api/concepts/{id} .overrides[].blocked_by string,null
+GET /api/concepts/{id} .overrides[].cost_basis string
+GET /api/concepts/{id} .overrides[].enabled boolean
+GET /api/concepts/{id} .overrides[].provenance string
+GET /api/concepts/{id} .overrides[].rationale string
+GET /api/concepts/{id} .overrides[].source string
+GET /api/concepts/{id} .overrides[].value number
+GET /api/concepts/{id} .parameter_metadata object,empty
+GET /api/concepts/{id} .parameter_metadata{*} object
+GET /api/concepts/{id} .parameter_metadata{*}.baseline number
+GET /api/concepts/{id} .parameter_metadata{*}.category enum:ParameterCategory
+GET /api/concepts/{id} .parameter_metadata{*}.confidence enum:Confidence
+GET /api/concepts/{id} .parameter_metadata{*}.display_multiplier number
+GET /api/concepts/{id} .parameter_metadata{*}.display_name string
+GET /api/concepts/{id} .parameter_metadata{*}.display_unit string
+GET /api/concepts/{id} .parameter_metadata{*}.modeling_note null
+GET /api/concepts/{id} .parameter_metadata{*}.range array
+GET /api/concepts/{id} .parameter_metadata{*}.range[] number
+GET /api/concepts/{id} .parameter_metadata{*}.source null
+GET /api/concepts/{id} .status enum:ConceptStatus
+GET /api/concepts/{id}/findings . object
+GET /api/concepts/{id}/findings .analysis_from_archive boolean
+GET /api/concepts/{id}/findings .analysis_html string
+GET /api/concepts/{id}/findings .exec_summary_html string,null
+GET /api/cost-landscape . object
+GET /api/cost-landscape .concepts array
+GET /api/cost-landscape .concepts[] object
+GET /api/cost-landscape .concepts[].components object
+GET /api/cost-landscape .concepts[].components.capital number
+GET /api/cost-landscape .concepts[].components.fixed_om number
+GET /api/cost-landscape .concepts[].components.fuel number
+GET /api/cost-landscape .concepts[].components.om_combined number
+GET /api/cost-landscape .concepts[].components.replacement number
+GET /api/cost-landscape .concepts[].concept_id string
+GET /api/cost-landscape .concepts[].lcoe number
+GET /api/cost-landscape .concepts[].overrides array,empty
+GET /api/cost-landscape .concepts[].overrides[] object
+GET /api/cost-landscape .concepts[].overrides[].account string
+GET /api/cost-landscape .concepts[].overrides[].blocked_by string,null
+GET /api/cost-landscape .concepts[].overrides[].component enum:CostComponent
+GET /api/cost-landscape .concepts[].overrides[].enabled boolean
+GET /api/cost-landscape .concepts[].overrides[].rationale_short string
+GET /api/cost-landscape .concepts[].overrides[].source string
+GET /api/cost-landscape .generated_at string
+GET /api/manifest . object
+GET /api/manifest .concepts array
+GET /api/manifest .concepts[] object
+GET /api/manifest .concepts[].asterisk_in_comparison boolean
+GET /api/manifest .concepts[].company string
+GET /api/manifest .concepts[].company_url string,null
+GET /api/manifest .concepts[].concept_id string
+GET /api/manifest .concepts[].confidence enum:Confidence,null
+GET /api/manifest .concepts[].confinement_family enum:ConfinementFamily
+GET /api/manifest .concepts[].data_file string
+GET /api/manifest .concepts[].data_grounded boolean
+GET /api/manifest .concepts[].fit_grade string
+GET /api/manifest .concepts[].has_cost_model boolean
+GET /api/manifest .concepts[].has_sensitivities boolean
+GET /api/manifest .concepts[].illustration null
+GET /api/manifest .concepts[].lcoe_per_mwh number
+GET /api/manifest .concepts[].model_type enum:ModelType
+GET /api/manifest .concepts[].name string
+GET /api/manifest .concepts[].status enum:ConceptStatus
+GET /api/manifest .generated_at string
+GET /api/parameter_index . object
+GET /api/parameter_index .parameters object
+GET /api/parameter_index .parameters{*} object
+GET /api/parameter_index .parameters{*}.category enum:ParameterCategory
+GET /api/parameter_index .parameters{*}.concepts array
+GET /api/parameter_index .parameters{*}.concepts[] object
+GET /api/parameter_index .parameters{*}.concepts[].concept_id string
+GET /api/parameter_index .parameters{*}.concepts[].elasticity number
+GET /api/parameter_index .parameters{*}.concepts[].name string
+GET /api/parameter_index .parameters{*}.display_name string
+GET /api/parameter_index .parameters{*}.param_name string
+GET /api/parameters/{name} . object
+GET /api/parameters/{name} .category enum:ParameterCategory
+GET /api/parameters/{name} .concepts array
+GET /api/parameters/{name} .concepts[] object
+GET /api/parameters/{name} .concepts[].concept_id string
+GET /api/parameters/{name} .concepts[].elasticity number
+GET /api/parameters/{name} .concepts[].name string
+GET /api/parameters/{name} .display_name string
+GET /api/parameters/{name} .param_name string
+GET /api/taxonomy/registry . object
+GET /api/taxonomy/registry .concepts array
+GET /api/taxonomy/registry .concepts[] object
+GET /api/taxonomy/registry .concepts[].blanket_config enum:BlanketConfig,null
+GET /api/taxonomy/registry .concepts[].company string
+GET /api/taxonomy/registry .concepts[].concept_id string
+GET /api/taxonomy/registry .concepts[].confidence enum:TaxonomyConfidence
+GET /api/taxonomy/registry .concepts[].confinement_family enum:ConfinementFamily
+GET /api/taxonomy/registry .concepts[].driver_technology string
+GET /api/taxonomy/registry .concepts[].driver_type enum:DriverType
+GET /api/taxonomy/registry .concepts[].energy_capture enum:EnergyCapture
+GET /api/taxonomy/registry .concepts[].fuel enum:FuelType
+GET /api/taxonomy/registry .concepts[].heating_type string
+GET /api/taxonomy/registry .concepts[].heating_type_parsed array
+GET /api/taxonomy/registry .concepts[].heating_type_parsed[] enum:HeatingType
+GET /api/taxonomy/registry .concepts[].ife_driver enum:IFEDriver,null
+GET /api/taxonomy/registry .concepts[].laser_approach enum:LaserApproach,null
+GET /api/taxonomy/registry .concepts[].magnet_type enum:MagnetType,null
+GET /api/taxonomy/registry .concepts[].mfe_topology enum:MFETopology,null
+GET /api/taxonomy/registry .concepts[].mif_method enum:MIFMethod,null
+GET /api/taxonomy/registry .concepts[].name string
+GET /api/taxonomy/registry .concepts[].non_standard_mechanism enum:NonStandardMechanism,null
+GET /api/taxonomy/registry .concepts[].operation_mode enum:OperationMode
+GET /api/taxonomy/registry .concepts[].primary_heating enum:PrimaryHeating
+GET /api/taxonomy/registry .concepts[].repetition_rate enum:RepetitionRate,null
+GET /api/taxonomy/registry .concepts[].slug string
+GET /api/taxonomy/registry .concepts[].stellarator_type enum:StellaratorType,null
+GET /api/taxonomy/registry .concepts[].tokamak_shape enum:TokamakShape,null
+GET /api/taxonomy/registry .generated_from string
+GET /api/taxonomy/registry .version string
+GET /api/taxonomy/tree . object
+GET /api/taxonomy/tree .root object
+GET /api/taxonomy/tree .root.children array
+GET /api/taxonomy/tree .root.children[] object
+GET /api/taxonomy/tree .root.children[].children array,absent
+GET /api/taxonomy/tree .root.children[].children[] object
+GET /api/taxonomy/tree .root.children[].children[].children array,absent
+GET /api/taxonomy/tree .root.children[].children[].children[] object
+GET /api/taxonomy/tree .root.children[].children[].children[].concepts array
+GET /api/taxonomy/tree .root.children[].children[].children[].concepts[] string
+GET /api/taxonomy/tree .root.children[].children[].children[].label string
+GET /api/taxonomy/tree .root.children[].children[].children[].value string
+GET /api/taxonomy/tree .root.children[].children[].concepts array,absent
+GET /api/taxonomy/tree .root.children[].children[].concepts[] string
+GET /api/taxonomy/tree .root.children[].children[].field string,absent
+GET /api/taxonomy/tree .root.children[].children[].label string
+GET /api/taxonomy/tree .root.children[].children[].value string
+GET /api/taxonomy/tree .root.children[].concepts array,absent
+GET /api/taxonomy/tree .root.children[].concepts[] string
+GET /api/taxonomy/tree .root.children[].field string,absent
+GET /api/taxonomy/tree .root.children[].label string
+GET /api/taxonomy/tree .root.children[].value string
+GET /api/taxonomy/tree .root.field string
+GET /api/taxonomy/tree .root.label string
+GET /api/taxonomy/tree .version string
+POST /api/compute:slider . object
+POST /api/compute:slider .cas10 object
+POST /api/compute:slider .cas10.cost_m_usd number
+POST /api/compute:slider .cas10.name string
+POST /api/compute:slider .cas10.overridden boolean
+POST /api/compute:slider .cas21 object
+POST /api/compute:slider .cas21.cost_m_usd number
+POST /api/compute:slider .cas21.name string
+POST /api/compute:slider .cas21.overridden boolean
+POST /api/compute:slider .cas22 object
+POST /api/compute:slider .cas22.cost_m_usd number
+POST /api/compute:slider .cas22.name string
+POST /api/compute:slider .cas22.overridden boolean
+POST /api/compute:slider .cas22_detail object
+POST /api/compute:slider .cas22_detail{*} object
+POST /api/compute:slider .cas22_detail{*}.cost_m_usd number
+POST /api/compute:slider .cas22_detail{*}.name string
+POST /api/compute:slider .cas22_detail{*}.overridden boolean
+POST /api/compute:slider .cas23 object
+POST /api/compute:slider .cas23.cost_m_usd number
+POST /api/compute:slider .cas23.name string
+POST /api/compute:slider .cas23.overridden boolean
+POST /api/compute:slider .cas24 object
+POST /api/compute:slider .cas24.cost_m_usd number
+POST /api/compute:slider .cas24.name string
+POST /api/compute:slider .cas24.overridden boolean
+POST /api/compute:slider .cas25 object
+POST /api/compute:slider .cas25.cost_m_usd number
+POST /api/compute:slider .cas25.name string
+POST /api/compute:slider .cas25.overridden boolean
+POST /api/compute:slider .cas26 object
+POST /api/compute:slider .cas26.cost_m_usd number
+POST /api/compute:slider .cas26.name string
+POST /api/compute:slider .cas26.overridden boolean
+POST /api/compute:slider .cas27 object
+POST /api/compute:slider .cas27.cost_m_usd number
+POST /api/compute:slider .cas27.name string
+POST /api/compute:slider .cas27.overridden boolean
+POST /api/compute:slider .cas28 object
+POST /api/compute:slider .cas28.cost_m_usd number
+POST /api/compute:slider .cas28.name string
+POST /api/compute:slider .cas28.overridden boolean
+POST /api/compute:slider .cas29 object
+POST /api/compute:slider .cas29.cost_m_usd number
+POST /api/compute:slider .cas29.name string
+POST /api/compute:slider .cas29.overridden boolean
+POST /api/compute:slider .cas30 object
+POST /api/compute:slider .cas30.cost_m_usd number
+POST /api/compute:slider .cas30.name string
+POST /api/compute:slider .cas30.overridden boolean
+POST /api/compute:slider .cas40 object
+POST /api/compute:slider .cas40.cost_m_usd number
+POST /api/compute:slider .cas40.name string
+POST /api/compute:slider .cas40.overridden boolean
+POST /api/compute:slider .cas50 object
+POST /api/compute:slider .cas50.cost_m_usd number
+POST /api/compute:slider .cas50.name string
+POST /api/compute:slider .cas50.overridden boolean
+POST /api/compute:slider .cas60 object
+POST /api/compute:slider .cas60.cost_m_usd number
+POST /api/compute:slider .cas60.name string
+POST /api/compute:slider .cas60.overridden boolean
+POST /api/compute:slider .cas70 object
+POST /api/compute:slider .cas70.cost_m_usd number
+POST /api/compute:slider .cas70.name string
+POST /api/compute:slider .cas70.overridden boolean
+POST /api/compute:slider .cas71 object
+POST /api/compute:slider .cas71.cost_m_usd number
+POST /api/compute:slider .cas71.name string
+POST /api/compute:slider .cas71.overridden boolean
+POST /api/compute:slider .cas72 object
+POST /api/compute:slider .cas72.cost_m_usd number
+POST /api/compute:slider .cas72.name string
+POST /api/compute:slider .cas72.overridden boolean
+POST /api/compute:slider .cas80 object
+POST /api/compute:slider .cas80.cost_m_usd number
+POST /api/compute:slider .cas80.name string
+POST /api/compute:slider .cas80.overridden boolean
+POST /api/compute:slider .cas90 object
+POST /api/compute:slider .cas90.cost_m_usd number
+POST /api/compute:slider .cas90.name string
+POST /api/compute:slider .cas90.overridden boolean
+POST /api/compute:slider .headline object
+POST /api/compute:slider .headline.capacity_factor number
+POST /api/compute:slider .headline.lcoe_per_mwh number
+POST /api/compute:slider .headline.overnight_cost_per_kw number
+POST /api/compute:slider .headline.p_net_mw number
+POST /api/compute:slider .headline.q_eng number
+POST /api/compute:slider .params object
+POST /api/compute:slider .params{*} number
+POST /api/compute:slider .sensitivities object
+POST /api/compute:slider .sensitivities.engineering object
+POST /api/compute:slider .sensitivities.engineering{*} object
+POST /api/compute:slider .sensitivities.engineering{*}.baseline number
+POST /api/compute:slider .sensitivities.engineering{*}.elasticity number
+POST /api/compute:slider .sensitivities.financial object
+POST /api/compute:slider .sensitivities.financial{*} object
+POST /api/compute:slider .sensitivities.financial{*}.baseline number
+POST /api/compute:slider .sensitivities.financial{*}.elasticity number
+POST /api/compute:slider .sensitivities_bare null
+POST /api/compute:slider-range . object
+POST /api/compute:slider-range .cas10 object
+POST /api/compute:slider-range .cas10.cost_m_usd number
+POST /api/compute:slider-range .cas10.name string
+POST /api/compute:slider-range .cas10.overridden boolean
+POST /api/compute:slider-range .cas21 object
+POST /api/compute:slider-range .cas21.cost_m_usd number
+POST /api/compute:slider-range .cas21.name string
+POST /api/compute:slider-range .cas21.overridden boolean
+POST /api/compute:slider-range .cas22 object
+POST /api/compute:slider-range .cas22.cost_m_usd number
+POST /api/compute:slider-range .cas22.name string
+POST /api/compute:slider-range .cas22.overridden boolean
+POST /api/compute:slider-range .cas22_detail object
+POST /api/compute:slider-range .cas22_detail{*} object
+POST /api/compute:slider-range .cas22_detail{*}.cost_m_usd number
+POST /api/compute:slider-range .cas22_detail{*}.name string
+POST /api/compute:slider-range .cas22_detail{*}.overridden boolean
+POST /api/compute:slider-range .cas23 object
+POST /api/compute:slider-range .cas23.cost_m_usd number
+POST /api/compute:slider-range .cas23.name string
+POST /api/compute:slider-range .cas23.overridden boolean
+POST /api/compute:slider-range .cas24 object
+POST /api/compute:slider-range .cas24.cost_m_usd number
+POST /api/compute:slider-range .cas24.name string
+POST /api/compute:slider-range .cas24.overridden boolean
+POST /api/compute:slider-range .cas25 object
+POST /api/compute:slider-range .cas25.cost_m_usd number
+POST /api/compute:slider-range .cas25.name string
+POST /api/compute:slider-range .cas25.overridden boolean
+POST /api/compute:slider-range .cas26 object
+POST /api/compute:slider-range .cas26.cost_m_usd number
+POST /api/compute:slider-range .cas26.name string
+POST /api/compute:slider-range .cas26.overridden boolean
+POST /api/compute:slider-range .cas27 object
+POST /api/compute:slider-range .cas27.cost_m_usd number
+POST /api/compute:slider-range .cas27.name string
+POST /api/compute:slider-range .cas27.overridden boolean
+POST /api/compute:slider-range .cas28 object
+POST /api/compute:slider-range .cas28.cost_m_usd number
+POST /api/compute:slider-range .cas28.name string
+POST /api/compute:slider-range .cas28.overridden boolean
+POST /api/compute:slider-range .cas29 object
+POST /api/compute:slider-range .cas29.cost_m_usd number
+POST /api/compute:slider-range .cas29.name string
+POST /api/compute:slider-range .cas29.overridden boolean
+POST /api/compute:slider-range .cas30 object
+POST /api/compute:slider-range .cas30.cost_m_usd number
+POST /api/compute:slider-range .cas30.name string
+POST /api/compute:slider-range .cas30.overridden boolean
+POST /api/compute:slider-range .cas40 object
+POST /api/compute:slider-range .cas40.cost_m_usd number
+POST /api/compute:slider-range .cas40.name string
+POST /api/compute:slider-range .cas40.overridden boolean
+POST /api/compute:slider-range .cas50 object
+POST /api/compute:slider-range .cas50.cost_m_usd number
+POST /api/compute:slider-range .cas50.name string
+POST /api/compute:slider-range .cas50.overridden boolean
+POST /api/compute:slider-range .cas60 object
+POST /api/compute:slider-range .cas60.cost_m_usd number
+POST /api/compute:slider-range .cas60.name string
+POST /api/compute:slider-range .cas60.overridden boolean
+POST /api/compute:slider-range .cas70 object
+POST /api/compute:slider-range .cas70.cost_m_usd number
+POST /api/compute:slider-range .cas70.name string
+POST /api/compute:slider-range .cas70.overridden boolean
+POST /api/compute:slider-range .cas71 object
+POST /api/compute:slider-range .cas71.cost_m_usd number
+POST /api/compute:slider-range .cas71.name string
+POST /api/compute:slider-range .cas71.overridden boolean
+POST /api/compute:slider-range .cas72 object
+POST /api/compute:slider-range .cas72.cost_m_usd number
+POST /api/compute:slider-range .cas72.name string
+POST /api/compute:slider-range .cas72.overridden boolean
+POST /api/compute:slider-range .cas80 object
+POST /api/compute:slider-range .cas80.cost_m_usd number
+POST /api/compute:slider-range .cas80.name string
+POST /api/compute:slider-range .cas80.overridden boolean
+POST /api/compute:slider-range .cas90 object
+POST /api/compute:slider-range .cas90.cost_m_usd number
+POST /api/compute:slider-range .cas90.name string
+POST /api/compute:slider-range .cas90.overridden boolean
+POST /api/compute:slider-range .headline object
+POST /api/compute:slider-range .headline.capacity_factor number
+POST /api/compute:slider-range .headline.lcoe_per_mwh number
+POST /api/compute:slider-range .headline.overnight_cost_per_kw number
+POST /api/compute:slider-range .headline.p_net_mw number
+POST /api/compute:slider-range .headline.q_eng number
+POST /api/compute:slider-range .params object
+POST /api/compute:slider-range .params{*} number
+POST /api/compute:slider-range .sensitivities object
+POST /api/compute:slider-range .sensitivities.engineering object
+POST /api/compute:slider-range .sensitivities.engineering{*} object
+POST /api/compute:slider-range .sensitivities.engineering{*}.baseline number
+POST /api/compute:slider-range .sensitivities.engineering{*}.elasticity number
+POST /api/compute:slider-range .sensitivities.financial object
+POST /api/compute:slider-range .sensitivities.financial{*} object
+POST /api/compute:slider-range .sensitivities.financial{*}.baseline number
+POST /api/compute:slider-range .sensitivities.financial{*}.elasticity number
+POST /api/compute:slider-range .sensitivities_bare null
+POST /api/compute:toggle . object
+POST /api/compute:toggle .cas10 object
+POST /api/compute:toggle .cas10.cost_m_usd number
+POST /api/compute:toggle .cas10.name string
+POST /api/compute:toggle .cas10.overridden boolean
+POST /api/compute:toggle .cas21 object
+POST /api/compute:toggle .cas21.cost_m_usd number
+POST /api/compute:toggle .cas21.name string
+POST /api/compute:toggle .cas21.overridden boolean
+POST /api/compute:toggle .cas22 object
+POST /api/compute:toggle .cas22.cost_m_usd number
+POST /api/compute:toggle .cas22.name string
+POST /api/compute:toggle .cas22.overridden boolean
+POST /api/compute:toggle .cas22_detail object
+POST /api/compute:toggle .cas22_detail{*} object
+POST /api/compute:toggle .cas22_detail{*}.cost_m_usd number
+POST /api/compute:toggle .cas22_detail{*}.name string
+POST /api/compute:toggle .cas22_detail{*}.overridden boolean
+POST /api/compute:toggle .cas23 object
+POST /api/compute:toggle .cas23.cost_m_usd number
+POST /api/compute:toggle .cas23.name string
+POST /api/compute:toggle .cas23.overridden boolean
+POST /api/compute:toggle .cas24 object
+POST /api/compute:toggle .cas24.cost_m_usd number
+POST /api/compute:toggle .cas24.name string
+POST /api/compute:toggle .cas24.overridden boolean
+POST /api/compute:toggle .cas25 object
+POST /api/compute:toggle .cas25.cost_m_usd number
+POST /api/compute:toggle .cas25.name string
+POST /api/compute:toggle .cas25.overridden boolean
+POST /api/compute:toggle .cas26 object
+POST /api/compute:toggle .cas26.cost_m_usd number
+POST /api/compute:toggle .cas26.name string
+POST /api/compute:toggle .cas26.overridden boolean
+POST /api/compute:toggle .cas27 object
+POST /api/compute:toggle .cas27.cost_m_usd number
+POST /api/compute:toggle .cas27.name string
+POST /api/compute:toggle .cas27.overridden boolean
+POST /api/compute:toggle .cas28 object
+POST /api/compute:toggle .cas28.cost_m_usd number
+POST /api/compute:toggle .cas28.name string
+POST /api/compute:toggle .cas28.overridden boolean
+POST /api/compute:toggle .cas29 object
+POST /api/compute:toggle .cas29.cost_m_usd number
+POST /api/compute:toggle .cas29.name string
+POST /api/compute:toggle .cas29.overridden boolean
+POST /api/compute:toggle .cas30 object
+POST /api/compute:toggle .cas30.cost_m_usd number
+POST /api/compute:toggle .cas30.name string
+POST /api/compute:toggle .cas30.overridden boolean
+POST /api/compute:toggle .cas40 object
+POST /api/compute:toggle .cas40.cost_m_usd number
+POST /api/compute:toggle .cas40.name string
+POST /api/compute:toggle .cas40.overridden boolean
+POST /api/compute:toggle .cas50 object
+POST /api/compute:toggle .cas50.cost_m_usd number
+POST /api/compute:toggle .cas50.name string
+POST /api/compute:toggle .cas50.overridden boolean
+POST /api/compute:toggle .cas60 object
+POST /api/compute:toggle .cas60.cost_m_usd number
+POST /api/compute:toggle .cas60.name string
+POST /api/compute:toggle .cas60.overridden boolean
+POST /api/compute:toggle .cas70 object
+POST /api/compute:toggle .cas70.cost_m_usd number
+POST /api/compute:toggle .cas70.name string
+POST /api/compute:toggle .cas70.overridden boolean
+POST /api/compute:toggle .cas71 object
+POST /api/compute:toggle .cas71.cost_m_usd number
+POST /api/compute:toggle .cas71.name string
+POST /api/compute:toggle .cas71.overridden boolean
+POST /api/compute:toggle .cas72 object
+POST /api/compute:toggle .cas72.cost_m_usd number
+POST /api/compute:toggle .cas72.name string
+POST /api/compute:toggle .cas72.overridden boolean
+POST /api/compute:toggle .cas80 object
+POST /api/compute:toggle .cas80.cost_m_usd number
+POST /api/compute:toggle .cas80.name string
+POST /api/compute:toggle .cas80.overridden boolean
+POST /api/compute:toggle .cas90 object
+POST /api/compute:toggle .cas90.cost_m_usd number
+POST /api/compute:toggle .cas90.name string
+POST /api/compute:toggle .cas90.overridden boolean
+POST /api/compute:toggle .headline object
+POST /api/compute:toggle .headline.capacity_factor number
+POST /api/compute:toggle .headline.lcoe_per_mwh number
+POST /api/compute:toggle .headline.overnight_cost_per_kw number
+POST /api/compute:toggle .headline.p_net_mw number
+POST /api/compute:toggle .headline.q_eng number
+POST /api/compute:toggle .params object
+POST /api/compute:toggle .params{*} number
+POST /api/compute:toggle .sensitivities object
+POST /api/compute:toggle .sensitivities.engineering object
+POST /api/compute:toggle .sensitivities.engineering{*} object
+POST /api/compute:toggle .sensitivities.engineering{*}.baseline number
+POST /api/compute:toggle .sensitivities.engineering{*}.elasticity number
+POST /api/compute:toggle .sensitivities.financial object
+POST /api/compute:toggle .sensitivities.financial{*} object
+POST /api/compute:toggle .sensitivities.financial{*}.baseline number
+POST /api/compute:toggle .sensitivities.financial{*}.elasticity number
+POST /api/compute:toggle .sensitivities_bare null
+POST /api/state:compare . object
+POST /api/state:compare .{*} string
+POST /api/state:concept . object
+POST /api/state:concept .{*} string
