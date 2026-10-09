@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phase 1 complete at its hard stop; Phase 2 waits for the orchestrator's go-ahead.
+**Status:** In Progress. Phases 1–2 complete; Phase 3 next.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -230,7 +230,7 @@ Whatever the result, stop here.
 - [x] Fill **Phase 1 Results** in Implementation Notes: per-rule trip counts, false-block rate, replayable-pair count, mode per pair (or a pointer to the report table), compute timings, the pass-line verdict per condition, and the chosen tool versions.
 - [x] Commit the core, the Phase 1 tests, the harness and the report.
 - [x] Report to the orchestrator: pass, fail or inconclusive, the false-block rate, and anything that surprised you. Then end the session.
-- [ ] Do not start Phase 2 until the orchestrator records a go-ahead in Implementation Notes. The orchestrator reports the false-block rate to the owner before Phase 2 starts.
+- [x] Do not start Phase 2 until the orchestrator records a go-ahead in Implementation Notes. The orchestrator reports the false-block rate to the owner before Phase 2 starts.
 
 **What We Know After This Phase:** whether the gate's rules are usable on real history, whether compute fits, and that the core gives zero failures where the API is unchanged.
 
@@ -278,25 +278,25 @@ A repo root at `tmp/` laid out as `tmp/exploration/...`, so `archive_root` (`ser
 
 #### 2. Break helpers, in the test file
 
-- [ ] **Prefer real changes where the server allows them:** edit fixture data (sensitivities nulled for coverage, a `40.json` for an unlisted concept), monkeypatch `_OMIT_LIST_PATH` (omit a concept), and monkeypatch `server_module._ExplorerApp` (narrowed allowlist, as `test_cors.py` would).
-- [ ] **For request-model breaks**, monkeypatch `server_module.ComputeRequest` or `ExplorerState` with a subclass before `create_app`. This gives a real 422, provided the routes resolve their string annotations (`from __future__ import annotations`) at registration inside `create_app`. Check that first; if they don't, fall back to the middleware below.
-- [ ] **For response-shape breaks** that fixture data can't express (pydantic fills defaults), use one `rewrite_json` helper: a monkeypatched `create_app` that wraps the app in a tiny ASGI middleware rewriting one route's JSON body, or returning a fixed status (route removed → 404, POST turned into PUT → 405).
+- [x] **Prefer real changes where the server allows them:** edit fixture data (sensitivities nulled for coverage, a `40.json` for an unlisted concept), monkeypatch `_OMIT_LIST_PATH` (omit a concept), and monkeypatch `server_module._ExplorerApp` (narrowed allowlist, as `test_cors.py` would).
+- [x] **For request-model breaks**, monkeypatch `server_module.ComputeRequest` or `ExplorerState` with a subclass before `create_app`. This gives a real 422, provided the routes resolve their string annotations (`from __future__ import annotations`) at registration inside `create_app`. Check that first; if they don't, fall back to the middleware below.
+- [x] **For response-shape breaks** that fixture data can't express (pydantic fills defaults), use one `rewrite_json` helper: a monkeypatched `create_app` that wraps the app in a tiny ASGI middleware rewriting one route's JSON body, or returning a fixed status (route removed → 404, POST turned into PUT → 405).
 
 #### 3. Code in `contract.py`
 
-- [ ] `waivers.toml` loading (`tomllib`): each `[[waiver]]` needs `match`, `reason`, `evidence`, `date`. A missing or empty field is a configuration error with its own exit code. An `unpopulated` waiver whose `evidence` has neither a `file.js:N` cite of the JS that reads the path nor `unread:` followed by the search terms is an error (orchestrator decision, 2026-10-08, replacing N4's cite-only wording; see Phase 2 notes). Matching uses Appendix E's one-token `*`. CORS and Files keys are printed but never matched. Waivers that match nothing print a "stale" warning.
-- [ ] The CORS rule: every response carries `access-control-allow-origin: https://1cf.energy`; `OPTIONS` preflights for `/api/compute` and `/api/state` (with `Access-Control-Request-Method: POST`, `Access-Control-Request-Headers: content-type`) succeed with that header. Check only, never recorded.
-- [ ] `main(argv)` with a `check` subcommand: `--tree` (default: the repo root containing this file), `--contract`, `--waivers`. It inserts `--tree` at `sys.path[0]` before importing the server. It prints one key per failure, then a summary, and returns non-zero on any unwaived failure.
-- [ ] `exploration/concept_explorer/website_contract/waivers.toml` (NEW): a header comment pointing at Appendix E's grammar and the RUNBOOK, and no entries.
+- [x] `waivers.toml` loading (`tomllib`): each `[[waiver]]` needs `match`, `reason`, `evidence`, `date`. A missing or empty field is a configuration error with its own exit code. An `unpopulated` waiver whose `evidence` has neither a `file.js:N` cite of the JS that reads the path nor `unread:` followed by the search terms is an error (orchestrator decision, 2026-10-08, replacing N4's cite-only wording; see Phase 2 notes). Matching uses Appendix E's one-token `*`. CORS and Files keys are printed but never matched. Waivers that match nothing print a "stale" warning.
+- [x] The CORS rule: every response carries `access-control-allow-origin: https://1cf.energy`; `OPTIONS` preflights for `/api/compute` and `/api/state` (with `Access-Control-Request-Method: POST`, `Access-Control-Request-Headers: content-type`) succeed with that header. Check only, never recorded.
+- [x] `main(argv)` with a `check` subcommand: `--tree` (default: the repo root containing this file), `--contract`, `--waivers`. It inserts `--tree` at `sys.path[0]` before importing the server. It prints one key per failure, then a summary, and returns non-zero on any unwaived failure.
+- [x] `exploration/concept_explorer/website_contract/waivers.toml` (NEW): a header comment pointing at Appendix E's grammar and the RUNBOOK, and no entries.
 
 ### Validation
 
 **Automated:**
-- [ ] `test_website_contract.py` and `test_cors.py` pass in the scratch venv.
-- [ ] Every break case in Appendix D's first group fails through `c.main(["check", ...])` with the named key. Every change in the second group exits 0.
+- [x] `test_website_contract.py` and `test_cors.py` pass in the scratch venv.
+- [x] Every break case in Appendix D's first group fails through `c.main(["check", ...])` with the named key. Every change in the second group exits 0.
 
 **Manual:**
-- [ ] Read the printed output of one failing test. A person who has never seen the code should be able to tell which request, path and rule failed.
+- [x] Read the printed output of one failing test. A person who has never seen the code should be able to tell which request, path and rule failed.
 
 **What We Know Works After This Phase:** every criterion-1 break case (fields, requests, concepts, CORS) has a kept self-test that fails the CLI; additive changes pass; waivers behave.
 
@@ -632,6 +632,8 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 
 **Completed:** 2026-10-08. Full evidence is in [`phase1/report.md`](phase1/report.md), with raw data in `phase1/results.json`, `phase1/identity.json` and `phase1/spotcheck.json`.
 
+**Corrected during Phase 2 (2026-10-08).** A core bug let a field removed from every response pass silently; see Phase 2 Completion. Re-running the first set with the fixed core changed two pairs, and the figures below are the corrected ones. Condition 1 now passes only on the combined count.
+
 **Replayable pairs:** 28, against a floor of 12.
 
 **Mode per pair:** own-tree 28, fallback 0, unloadable 10, non-response 1, no parent tree 1. The per-pair table is in the report.
@@ -640,18 +642,18 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 
 **Per-rule trip counts**, in keys and pairs over the 28 replayable pairs:
 - Status: 6 keys in 3 pairs.
-- Shape: 7 keys in 5 pairs.
+- Shape: 11 keys in 6 pairs.
 - Unpopulated: 7 keys in 4 pairs.
 - Enum: 1 key in 1 pair. Literal: 0.
 - Concepts: 125 keys in 9 pairs (`concept-missing` 41, `concept-unlisted` 84).
 - Coverage: 1 key in 1 pair.
 
-**False-block rate:** 4 of 23 = 17%. The 23 are the replayable pairs that don't add a concept. The four false-block pairs are `fd76070c2`, `7c639d73d`, `8d597849b` and `22e15bd07`.
-- `e553f70e1`'s `status GET /api/cost-landscape` is a replay artifact. The route didn't exist at the parent, and the 10f7b9b request list is newer than that parent. **The orchestrator confirmed this on 2026-10-08:** at the real pin every template records exactly 200, so a route appearing relative to the pin can't happen. Counted as a false block instead, the rate would be 5 of 23 = 22%.
-- Ignoring the concept-adding exclusion, 8 of 28 pairs carry a false block.
-- No false block appears after 2026-06-08.
+**False-block rate:** 5 of 23 = 22%. The 23 are the replayable pairs that don't add a concept. The five false-block pairs are `84422dd08`, `fd76070c2`, `7c639d73d`, `8d597849b` and `22e15bd07`.
+- `e553f70e1`'s `status GET /api/cost-landscape` is a replay artifact. The route didn't exist at the parent, and the 10f7b9b request list is newer than that parent. **The orchestrator confirmed this on 2026-10-08:** at the real pin every template records exactly 200, so a route appearing relative to the pin can't happen. Counted as a false block instead, the rate would be 6 of 23 = 26%.
+- Ignoring the concept-adding exclusion, 9 of 28 pairs carry a false block.
+- No false block appears after 2026-06-15 (`84422dd08`, which removed `sources`, a field no pinned JS reads).
 
-**Max waiver lines in one pair:** 2 with the one-token wildcard, in `fd76070c2` and `8d597849b`. Written without wildcards, `fd76070c2` needs 4.
+**Max waiver lines in one pair:** 2 with the one-token wildcard, in `fd76070c2` and `8d597849b`. Written without wildcards, `8d597849b` needs 6 and `fd76070c2` needs 4.
 
 **Misclassified map/record trips:** none. Every shape-type trip sits under a correctly classified record, and no `{*}` path tripped.
 
@@ -678,11 +680,11 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
   - 2 pairs (`ebcdb1422`, `22d61f2bf`) had compute broken on `main` itself until `428c011ba` (2026-06-18), giving a 500 on both sides.
   - Model-code churn's compute effect stays unmeasured. By code (`models.py:247-369`), it can change the compute shape only through `cas71`/`cas72` presence or an import failure (a Status 500).
 
-**Pass-line verdict on the combined set:** pass.
+**Pass-line verdict on the combined set:** pass, narrowly; condition 1 fails on the same-method count alone.
 - Same-method combined set, which is the design's "replayable": 28 pairs, all from the first set.
 - Counting the 4 findings-only pairs: 32 pairs.
 
-1. False-block rate: pass. 4 of 23 = 17% same method, or 4 of 27 = 15% counting the findings-only pairs.
+1. False-block rate: split. 5 of 23 = 22% same method (**fail**), or 5 of 27 = 19% counting the findings-only pairs (pass).
 2. Waiver lines: pass, at most 2.
 3. Misclassification: pass, none.
 4. Spot check: pass, with the two first-set residuals.
@@ -756,10 +758,41 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - The Appendix D waiver test covers both forms passing and neither failing.
 - Prompted by Phase 1: the `fd76070c2` false block on `cost_model.cas71`/`cas72` is a path no pinned JS reads.
 
-**Completed:**
+**Completed:** 2026-10-08.
+
 **Actual Changes:**
+- `website_contract/contract.py`:
+  - `Response` gained `allow_origin`, the `access-control-allow-origin` header. `observe` fills it, through a new `_timed` helper.
+  - The CORS rule: `preflight(client)` sends the two preflights; `cors_failures(observation)` fails any response without the website's origin and any preflight that isn't a 200.
+  - `record_tree(tree, …)` and `check_tree(tree, contract)`: serve a repo-shaped tree and record, or check with CORS included. Phase 3's `record` command reuses `record_tree`.
+  - Waivers: `load_waivers`, `waiver_matches`, `apply_waivers` and a `Verdict` (failing, waived, stale).
+  - The CLI: `main(argv)` with `check` (`--tree`, `--contract`, `--waivers`, each defaulting to this checkout); `report` prints `FAIL`, `WAIVED` and `STALE` lines, a one-line meaning per failing rule, and a summary. Exit codes: 0 pass, 1 an unwaived failure (`EXIT_FAILED`), 2 a malformed `waivers.toml` (`EXIT_CONFIG`).
+  - **Core fix**, in `observed_shapes`: a pinned record field that no object at its parent path carries any more is now `absent`. See Issues.
+- `website_contract/waivers.toml` (new): the grammar in a header comment, one commented example, no entries.
+- `tests/test_website_contract.py`: 49 tests.
+  - The decision-5 fixture, `build_fixture`: concepts `01` (standalone), `04` and `05` (costingfe, sharing `availability`), registry and tree built from the server's models (the tree has no model, so it is a plain dict), an analyst override, `04`'s `analysis.md`, and fit grades `High`, `Med` and `None`.
+  - Helpers: `record_in_process`, `run_check` (always passes an explicit `waivers.toml`, so a real waiver can't mask a self-test), `rewrite_json` and `answer_with_status` (one ASGI middleware around `create_app`).
+  - Machinery: every request-list entry and both preflights return 200 with at least one instance, and the coverage sets are narrower than the concept set (findings `{04}`, slider `{04, 05}`, toggle `{04}`).
+  - Breaks that must fail, each through `c.main(["check", …])` with its named key: field removed, renamed, number to string, required value null, always-null field turning into an object (Unpopulated only), enum value renamed, `fit_grade` outside the palette, route removed, POST turned into PUT, new required `ComputeRequest` field, `ExplorerState` rejecting `null` or `""`, concept omitted, concept dropped from the registry or the tree, coverage lost for sliders, toggle and findings, unlisted concept, website origin dropped from CORS.
+  - Changes that must pass: new response field, new optional request field, new map key, concept leaving a parameter's `concepts[]`, new concept with a waiver.
+  - Waivers: clears exactly its key; stale waivers warn and pass; seven malformed entries are configuration errors (no reason, empty evidence, no date, unknown field, partial glob, `*` as the rule, an unpopulated waiver without a cite); both unpopulated evidence forms pass; CORS ignores waivers; wildcard matching cases.
+- Kept from Phase 1: the flatten test, the determinism test (now on the richer fixture), the tornado test, and the unchanged-server identity test (now through the CLI). The Phase 1 smoke test on the two-concept compute fixture is replaced by the stronger Machinery guard on the new fixture.
+- Validation: `test_website_contract.py` and `test_cors.py`, 76 passed in a scratch serving venv (`pytest==9.1.1`, `httpx==0.28.1`). `ruff check` and `ruff format --check` are clean.
+- Manual: the output of a failing run reads `FAIL shape GET /api/concepts/{id} .confinement_family`, then `shape: a response path now carries a JSON kind the website never received there`. Rule, request and path are each named in words.
+
 **Issues:**
+- **Core bug from Phase 1, fixed: a field removed from every response passed.** Flattening never saw the key, so it never recorded `absent`, and Shape skipped paths the observation didn't have. Phase 1's rename test missed it because it renamed `model_type` in one concept only. The fix is on the check side: a pinned record field whose parent object was observed without it is `absent` (decision 9 unchanged).
+- **The fix changes Phase 1's measurement. The orchestrator needs to see this.** Re-running the first set with the fixed core changed two pairs and nothing else:
+  - `84422dd08` (2026-06-15) gains `shape GET /api/concepts/{id} .sources`. The pinned JS never reads `sources` (only a comment mentions it, `concept_page.js:461`), so this is a fifth false-block pair, fixed by one waiver line.
+  - `8d597849b` gains three registry fields that left the model (`neutron_management`, `plasma_state`, `tritium_breeding`), all unread at the pin. It was already a false-block pair and still needs 2 waiver lines.
+  - The false-block rate becomes **5 of 23 = 22% on the design's same-method count, which fails condition 1**, and 5 of 27 = 19% counting the findings-only pairs, which passes. The orchestrator's go-ahead used the combined count (it cited "4 of 27, 15%, none after 2026-06-08"), which still passes. The owner was told 15% and "none since June 8"; the corrected figures are 19% and "none since June 15".
+  - I continued with Phases 2 and 3, because the go-ahead's own basis still passes and neither phase depends on the rate. `phase1/results.json`, `phase1/report.md` and the Phase 1 Results above carry the corrected figures.
+- **A new concept trips Shape on `company_url` unless it gets a company entry.** Every fixture concept has an entry in `server.py:397` (`_COMPANIES`), so a new concept without one turns `company_url` null where the fixture's pin never had null. The "new concept" tests add a `_COMPANIES` entry with the data file and fit row, the way a real concept arrives. At the real pin this depends on whether every pinned concept has a URL (Phase 3 shows it).
+
 **Deviations:**
+- **Waiver grammar interpretations.** `*` may stand for any one whole token or path segment except the rule, the first token. Keeping the rule literal makes the evidence requirement and the unwaivable rules decidable from the match alone. A `*` inside a segment (`cas*`) is a configuration error rather than a never-matching waiver. A waiver must have exactly the four fields, and `date` must be a TOML date.
+- **CORS keys are per template**, `cors <template>` with no instance, since one narrowed allowlist fails every response. Appendix E had no CORS key shape.
+- **A waiver that names only CORS keys is reported `STALE`**, with the CORS failure still printed. Appendix E: CORS keys are "printed but never matched".
 
 ### Phase 3 Completion
 **Completed:**

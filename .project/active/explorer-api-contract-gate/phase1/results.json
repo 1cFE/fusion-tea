@@ -9,85 +9,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.62,
-   "observe_seconds": 1.68,
+   "startup_seconds": 0.56,
+   "observe_seconds": 1.74,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001998716965317726,
-     "slowest_seconds": 0.001998716965317726,
+     "total_seconds": 0.0010107941925525665,
+     "slowest_seconds": 0.0010107941925525665,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0018286891281604767,
-     "slowest_seconds": 0.0018286891281604767,
+     "total_seconds": 0.0013115257024765015,
+     "slowest_seconds": 0.0013115257024765015,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0010847002267837524,
-     "slowest_seconds": 0.0010847002267837524,
+     "total_seconds": 0.0011177994310855865,
+     "slowest_seconds": 0.0011177994310855865,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0011490359902381897,
-     "slowest_seconds": 0.0011490359902381897,
+     "total_seconds": 0.0011640600860118866,
+     "slowest_seconds": 0.0011640600860118866,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0018105078488588333,
-     "slowest_seconds": 0.0018105078488588333,
+     "total_seconds": 0.0019782111048698425,
+     "slowest_seconds": 0.0019782111048698425,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 37,
-     "total_seconds": 0.05092800408601761,
-     "slowest_seconds": 0.0021078549325466156,
+     "total_seconds": 0.05192751623690128,
+     "slowest_seconds": 0.002142656594514847,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 37,
-     "total_seconds": 1.3031502813100815,
-     "slowest_seconds": 0.07536275684833527,
+     "total_seconds": 1.3259615059942007,
+     "slowest_seconds": 0.09677691385149956,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.11520412191748619,
-     "slowest_seconds": 0.0014759600162506104,
+     "total_seconds": 0.10651393048465252,
+     "slowest_seconds": 0.0017567258328199387,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001505788415670395,
-     "slowest_seconds": 0.001505788415670395,
+     "total_seconds": 0.0012514200061559677,
+     "slowest_seconds": 0.0012514200061559677,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.00118279829621315,
-     "slowest_seconds": 0.00118279829621315,
+     "total_seconds": 0.001038484275341034,
+     "slowest_seconds": 0.001038484275341034,
      "statuses": [
       200
      ]
@@ -96,85 +96,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.6,
-   "observe_seconds": 1.89,
+   "startup_seconds": 0.51,
+   "observe_seconds": 1.66,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.004257466644048691,
-     "slowest_seconds": 0.004257466644048691,
+     "total_seconds": 0.010916193947196007,
+     "slowest_seconds": 0.010916193947196007,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0023858118802309036,
-     "slowest_seconds": 0.0023858118802309036,
+     "total_seconds": 0.0022914689034223557,
+     "slowest_seconds": 0.0022914689034223557,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001766478642821312,
-     "slowest_seconds": 0.001766478642821312,
+     "total_seconds": 0.003614218905568123,
+     "slowest_seconds": 0.003614218905568123,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.002208506688475609,
-     "slowest_seconds": 0.002208506688475609,
+     "total_seconds": 0.004230000078678131,
+     "slowest_seconds": 0.004230000078678131,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0037354230880737305,
-     "slowest_seconds": 0.0037354230880737305,
+     "total_seconds": 0.0060870591551065445,
+     "slowest_seconds": 0.0060870591551065445,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 37,
-     "total_seconds": 0.15568803250789642,
-     "slowest_seconds": 0.010148223489522934,
+     "total_seconds": 0.0841651912778616,
+     "slowest_seconds": 0.007955575361847878,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 37,
-     "total_seconds": 1.556073410436511,
-     "slowest_seconds": 0.07742783054709435,
+     "total_seconds": 1.3839329555630684,
+     "slowest_seconds": 0.11963251978158951,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.1210344135761261,
-     "slowest_seconds": 0.002120569348335266,
+     "total_seconds": 0.11916498467326164,
+     "slowest_seconds": 0.00167112797498703,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017961673438549042,
-     "slowest_seconds": 0.0017961673438549042,
+     "total_seconds": 0.001316586509346962,
+     "slowest_seconds": 0.001316586509346962,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0015372373163700104,
-     "slowest_seconds": 0.0015372373163700104,
+     "total_seconds": 0.0011583082377910614,
+     "slowest_seconds": 0.0011583082377910614,
      "statuses": [
       200
      ]
@@ -195,85 +195,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.64,
-   "observe_seconds": 1.7,
+   "startup_seconds": 0.65,
+   "observe_seconds": 1.65,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0013241320848464966,
-     "slowest_seconds": 0.0013241320848464966,
+     "total_seconds": 0.0011752787977457047,
+     "slowest_seconds": 0.0011752787977457047,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0017180964350700378,
-     "slowest_seconds": 0.0017180964350700378,
+     "total_seconds": 0.0014370232820510864,
+     "slowest_seconds": 0.0014370232820510864,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0013105608522891998,
-     "slowest_seconds": 0.0013105608522891998,
+     "total_seconds": 0.0013988111168146133,
+     "slowest_seconds": 0.0013988111168146133,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0012528132647275925,
-     "slowest_seconds": 0.0012528132647275925,
+     "total_seconds": 0.0013196300715208054,
+     "slowest_seconds": 0.0013196300715208054,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0020200032740831375,
-     "slowest_seconds": 0.0020200032740831375,
+     "total_seconds": 0.001646239310503006,
+     "slowest_seconds": 0.001646239310503006,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 37,
-     "total_seconds": 0.047488005831837654,
-     "slowest_seconds": 0.0018021557480096817,
+     "total_seconds": 0.0572989396750927,
+     "slowest_seconds": 0.002401711419224739,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 37,
-     "total_seconds": 1.3600579760968685,
-     "slowest_seconds": 0.07612013630568981,
+     "total_seconds": 1.3210540022701025,
+     "slowest_seconds": 0.09419377520680428,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.1096752230077982,
-     "slowest_seconds": 0.001682305708527565,
+     "total_seconds": 0.10445303656160831,
+     "slowest_seconds": 0.0015258006751537323,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.002040848135948181,
-     "slowest_seconds": 0.002040848135948181,
+     "total_seconds": 0.0015000440180301666,
+     "slowest_seconds": 0.0015000440180301666,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014643128961324692,
-     "slowest_seconds": 0.0014643128961324692,
+     "total_seconds": 0.001236969605088234,
+     "slowest_seconds": 0.001236969605088234,
      "statuses": [
       200
      ]
@@ -282,85 +282,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.69,
-   "observe_seconds": 1.7,
+   "startup_seconds": 0.55,
+   "observe_seconds": 1.63,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.005574246868491173,
-     "slowest_seconds": 0.005574246868491173,
+     "total_seconds": 0.007267162203788757,
+     "slowest_seconds": 0.007267162203788757,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002054743468761444,
-     "slowest_seconds": 0.002054743468761444,
+     "total_seconds": 0.005455123260617256,
+     "slowest_seconds": 0.005455123260617256,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015271399170160294,
-     "slowest_seconds": 0.0015271399170160294,
+     "total_seconds": 0.00143490731716156,
+     "slowest_seconds": 0.00143490731716156,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0017149914056062698,
-     "slowest_seconds": 0.0017149914056062698,
+     "total_seconds": 0.005102436989545822,
+     "slowest_seconds": 0.005102436989545822,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002570711076259613,
-     "slowest_seconds": 0.002570711076259613,
+     "total_seconds": 0.0025789961218833923,
+     "slowest_seconds": 0.0025789961218833923,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 37,
-     "total_seconds": 0.05069447495043278,
-     "slowest_seconds": 0.0022258255630731583,
+     "total_seconds": 0.1042366474866867,
+     "slowest_seconds": 0.005470952019095421,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 37,
-     "total_seconds": 1.4856448713690042,
-     "slowest_seconds": 0.1156126968562603,
+     "total_seconds": 1.3502582721412182,
+     "slowest_seconds": 0.10284897685050964,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.11027671210467815,
-     "slowest_seconds": 0.0017699208110570908,
+     "total_seconds": 0.11270111426711082,
+     "slowest_seconds": 0.0018742233514785767,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0014334004372358322,
-     "slowest_seconds": 0.0014334004372358322,
+     "total_seconds": 0.0017620082944631577,
+     "slowest_seconds": 0.0017620082944631577,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0010826028883457184,
-     "slowest_seconds": 0.0010826028883457184,
+     "total_seconds": 0.001085672527551651,
+     "slowest_seconds": 0.001085672527551651,
      "statuses": [
       200
      ]
@@ -381,85 +381,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.64,
-   "observe_seconds": 1.64,
+   "startup_seconds": 0.55,
+   "observe_seconds": 1.76,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0012663006782531738,
-     "slowest_seconds": 0.0012663006782531738,
+     "total_seconds": 0.00136561319231987,
+     "slowest_seconds": 0.00136561319231987,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0013542268425226212,
-     "slowest_seconds": 0.0013542268425226212,
+     "total_seconds": 0.0019899550825357437,
+     "slowest_seconds": 0.0019899550825357437,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0009553767740726471,
-     "slowest_seconds": 0.0009553767740726471,
+     "total_seconds": 0.001497361809015274,
+     "slowest_seconds": 0.001497361809015274,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0011366866528987885,
-     "slowest_seconds": 0.0011366866528987885,
+     "total_seconds": 0.0015716105699539185,
+     "slowest_seconds": 0.0015716105699539185,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0016887933015823364,
-     "slowest_seconds": 0.0016887933015823364,
+     "total_seconds": 0.0020278170704841614,
+     "slowest_seconds": 0.0020278170704841614,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 37,
-     "total_seconds": 0.050224218517541885,
-     "slowest_seconds": 0.0018338076770305634,
+     "total_seconds": 0.05181546323001385,
+     "slowest_seconds": 0.0018130838871002197,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 37,
-     "total_seconds": 1.303924661129713,
-     "slowest_seconds": 0.07690290734171867,
+     "total_seconds": 1.3425789289176464,
+     "slowest_seconds": 0.08954504691064358,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.1110910177230835,
-     "slowest_seconds": 0.0015982557088136673,
+     "total_seconds": 0.11382793448865414,
+     "slowest_seconds": 0.002052050083875656,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001683080568909645,
-     "slowest_seconds": 0.001683080568909645,
+     "total_seconds": 0.0015220455825328827,
+     "slowest_seconds": 0.0015220455825328827,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013835746794939041,
-     "slowest_seconds": 0.0013835746794939041,
+     "total_seconds": 0.0011266767978668213,
+     "slowest_seconds": 0.0011266767978668213,
      "statuses": [
       200
      ]
@@ -468,85 +468,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.69,
-   "observe_seconds": 1.64,
+   "startup_seconds": 0.66,
+   "observe_seconds": 1.58,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.010238097980618477,
-     "slowest_seconds": 0.010238097980618477,
+     "total_seconds": 0.0036857016384601593,
+     "slowest_seconds": 0.0036857016384601593,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.005807105451822281,
-     "slowest_seconds": 0.005807105451822281,
+     "total_seconds": 0.0018381234258413315,
+     "slowest_seconds": 0.0018381234258413315,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015542283654212952,
-     "slowest_seconds": 0.0015542283654212952,
+     "total_seconds": 0.003643324598670006,
+     "slowest_seconds": 0.003643324598670006,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0017031487077474594,
-     "slowest_seconds": 0.0017031487077474594,
+     "total_seconds": 0.004477420821785927,
+     "slowest_seconds": 0.004477420821785927,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002587737515568733,
-     "slowest_seconds": 0.002587737515568733,
+     "total_seconds": 0.00592060387134552,
+     "slowest_seconds": 0.00592060387134552,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 37,
-     "total_seconds": 0.056337784975767136,
-     "slowest_seconds": 0.0023902244865894318,
+     "total_seconds": 0.10162868350744247,
+     "slowest_seconds": 0.008780136704444885,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 37,
-     "total_seconds": 1.4048645123839378,
-     "slowest_seconds": 0.08326165191829205,
+     "total_seconds": 1.3046236019581556,
+     "slowest_seconds": 0.08051122166216373,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.12235963344573975,
-     "slowest_seconds": 0.0018043965101242065,
+     "total_seconds": 0.11521579511463642,
+     "slowest_seconds": 0.001451520249247551,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0018408354371786118,
-     "slowest_seconds": 0.0018408354371786118,
+     "total_seconds": 0.0016255173832178116,
+     "slowest_seconds": 0.0016255173832178116,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001397283747792244,
-     "slowest_seconds": 0.001397283747792244,
+     "total_seconds": 0.0011934470385313034,
+     "slowest_seconds": 0.0011934470385313034,
      "statuses": [
       200
      ]
@@ -567,85 +567,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.59,
-   "observe_seconds": 1.75,
+   "startup_seconds": 0.63,
+   "observe_seconds": 1.72,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014293137937784195,
-     "slowest_seconds": 0.0014293137937784195,
+     "total_seconds": 0.0012349430471658707,
+     "slowest_seconds": 0.0012349430471658707,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.001409074291586876,
-     "slowest_seconds": 0.001409074291586876,
+     "total_seconds": 0.001682136207818985,
+     "slowest_seconds": 0.001682136207818985,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001163499429821968,
-     "slowest_seconds": 0.001163499429821968,
+     "total_seconds": 0.001263342797756195,
+     "slowest_seconds": 0.001263342797756195,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0013583078980445862,
-     "slowest_seconds": 0.0013583078980445862,
+     "total_seconds": 0.0010957326740026474,
+     "slowest_seconds": 0.0010957326740026474,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0023336373269557953,
-     "slowest_seconds": 0.0023336373269557953,
+     "total_seconds": 0.0022319909185171127,
+     "slowest_seconds": 0.0022319909185171127,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.04845629446208477,
-     "slowest_seconds": 0.0018294844776391983,
+     "total_seconds": 0.05725657939910889,
+     "slowest_seconds": 0.0018850676715373993,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.3586555644869804,
-     "slowest_seconds": 0.07605554722249508,
+     "total_seconds": 1.3619187697768211,
+     "slowest_seconds": 0.07739291526377201,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 111,
-     "total_seconds": 0.12010594457387924,
-     "slowest_seconds": 0.001668708398938179,
+     "total_seconds": 0.126127727329731,
+     "slowest_seconds": 0.0017533935606479645,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0012479927390813828,
-     "slowest_seconds": 0.0012479927390813828,
+     "total_seconds": 0.0018697958439588547,
+     "slowest_seconds": 0.0018697958439588547,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001095132902264595,
-     "slowest_seconds": 0.001095132902264595,
+     "total_seconds": 0.0012620370835065842,
+     "slowest_seconds": 0.0012620370835065842,
      "statuses": [
       200
      ]
@@ -654,53 +654,53 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.69,
-   "observe_seconds": 1.79,
+   "startup_seconds": 0.66,
+   "observe_seconds": 1.58,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.008876912295818329,
-     "slowest_seconds": 0.008876912295818329,
+     "total_seconds": 0.0037813596427440643,
+     "slowest_seconds": 0.0037813596427440643,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.004125980660319328,
-     "slowest_seconds": 0.004125980660319328,
+     "total_seconds": 0.0020954497158527374,
+     "slowest_seconds": 0.0020954497158527374,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.005979117006063461,
-     "slowest_seconds": 0.005979117006063461,
+     "total_seconds": 0.0015345681458711624,
+     "slowest_seconds": 0.0015345681458711624,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.003409016877412796,
-     "slowest_seconds": 0.003409016877412796,
+     "total_seconds": 0.0016558803617954254,
+     "slowest_seconds": 0.0016558803617954254,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.006351986899971962,
-     "slowest_seconds": 0.006351986899971962,
+     "total_seconds": 0.0025809910148382187,
+     "slowest_seconds": 0.0025809910148382187,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.0601214412599802,
-     "slowest_seconds": 0.0023821983486413956,
+     "total_seconds": 0.06276267580688,
+     "slowest_seconds": 0.002846948802471161,
      "statuses": [
       200,
       404
@@ -708,8 +708,8 @@
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.5502217076718807,
-     "slowest_seconds": 0.08774367719888687,
+     "total_seconds": 1.334816636517644,
+     "slowest_seconds": 0.08076098933815956,
      "statuses": [
       200,
       404
@@ -717,24 +717,24 @@
     },
     "GET /api/parameters/{name}": {
      "count": 99,
-     "total_seconds": 0.11098870262503624,
-     "slowest_seconds": 0.001660740002989769,
+     "total_seconds": 0.12357145175337791,
+     "slowest_seconds": 0.0018472522497177124,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001606479287147522,
-     "slowest_seconds": 0.001606479287147522,
+     "total_seconds": 0.0018231645226478577,
+     "slowest_seconds": 0.0018231645226478577,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012472812086343765,
-     "slowest_seconds": 0.0012472812086343765,
+     "total_seconds": 0.0014136098325252533,
+     "slowest_seconds": 0.0014136098325252533,
      "statuses": [
       200
      ]
@@ -771,85 +771,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.61,
-   "observe_seconds": 2.08,
+   "startup_seconds": 0.64,
+   "observe_seconds": 1.84,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001835111528635025,
-     "slowest_seconds": 0.001835111528635025,
+     "total_seconds": 0.0014934875071048737,
+     "slowest_seconds": 0.0014934875071048737,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0020145028829574585,
-     "slowest_seconds": 0.0020145028829574585,
+     "total_seconds": 0.0015829894691705704,
+     "slowest_seconds": 0.0015829894691705704,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0014209374785423279,
-     "slowest_seconds": 0.0014209374785423279,
+     "total_seconds": 0.0014712214469909668,
+     "slowest_seconds": 0.0014712214469909668,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0017633959650993347,
-     "slowest_seconds": 0.0017633959650993347,
+     "total_seconds": 0.001545121893286705,
+     "slowest_seconds": 0.001545121893286705,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0031176675111055374,
-     "slowest_seconds": 0.0031176675111055374,
+     "total_seconds": 0.0022916067391633987,
+     "slowest_seconds": 0.0022916067391633987,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06083360128104687,
-     "slowest_seconds": 0.0020736753940582275,
+     "total_seconds": 0.09611315466463566,
+     "slowest_seconds": 0.036169666796922684,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.478911504149437,
-     "slowest_seconds": 0.08872419036924839,
+     "total_seconds": 1.3317615445703268,
+     "slowest_seconds": 0.0764282587915659,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.16207328997552395,
-     "slowest_seconds": 0.0019805319607257843,
+     "total_seconds": 0.150846840813756,
+     "slowest_seconds": 0.0018195752054452896,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016161203384399414,
-     "slowest_seconds": 0.0016161203384399414,
+     "total_seconds": 0.001729002222418785,
+     "slowest_seconds": 0.001729002222418785,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0011732373386621475,
-     "slowest_seconds": 0.0011732373386621475,
+     "total_seconds": 0.0013682041317224503,
+     "slowest_seconds": 0.0013682041317224503,
      "statuses": [
       200
      ]
@@ -858,85 +858,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.61,
-   "observe_seconds": 1.72,
+   "startup_seconds": 0.56,
+   "observe_seconds": 1.7,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.006006529554724693,
-     "slowest_seconds": 0.006006529554724693,
+     "total_seconds": 0.007276015356183052,
+     "slowest_seconds": 0.007276015356183052,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.004069974645972252,
-     "slowest_seconds": 0.004069974645972252,
+     "total_seconds": 0.010223129764199257,
+     "slowest_seconds": 0.010223129764199257,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.007121147587895393,
-     "slowest_seconds": 0.007121147587895393,
+     "total_seconds": 0.005276085808873177,
+     "slowest_seconds": 0.005276085808873177,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0018656905740499496,
-     "slowest_seconds": 0.0018656905740499496,
+     "total_seconds": 0.001662539318203926,
+     "slowest_seconds": 0.001662539318203926,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.004258478060364723,
-     "slowest_seconds": 0.004258478060364723,
+     "total_seconds": 0.007540065795183182,
+     "slowest_seconds": 0.007540065795183182,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.11406227014958858,
-     "slowest_seconds": 0.006048237904906273,
+     "total_seconds": 0.08439170755445957,
+     "slowest_seconds": 0.006460679695010185,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.3992177583277225,
-     "slowest_seconds": 0.10691249743103981,
+     "total_seconds": 1.4108926970511675,
+     "slowest_seconds": 0.13284721411764622,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 111,
-     "total_seconds": 0.14240216836333275,
-     "slowest_seconds": 0.0017292369157075882,
+     "total_seconds": 0.12732131034135818,
+     "slowest_seconds": 0.0018221605569124222,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0018793605268001556,
-     "slowest_seconds": 0.0018793605268001556,
+     "total_seconds": 0.002293212339282036,
+     "slowest_seconds": 0.002293212339282036,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014687664806842804,
-     "slowest_seconds": 0.0014687664806842804,
+     "total_seconds": 0.001306222751736641,
+     "slowest_seconds": 0.001306222751736641,
      "statuses": [
       200
      ]
@@ -957,85 +957,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.67,
-   "observe_seconds": 1.82,
+   "startup_seconds": 0.55,
+   "observe_seconds": 1.95,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001575494185090065,
-     "slowest_seconds": 0.001575494185090065,
+     "total_seconds": 0.0012898221611976624,
+     "slowest_seconds": 0.0012898221611976624,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0019298307597637177,
-     "slowest_seconds": 0.0019298307597637177,
+     "total_seconds": 0.0016894098371267319,
+     "slowest_seconds": 0.0016894098371267319,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015420932322740555,
-     "slowest_seconds": 0.0015420932322740555,
+     "total_seconds": 0.0012921281158924103,
+     "slowest_seconds": 0.0012921281158924103,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0015055220574140549,
-     "slowest_seconds": 0.0015055220574140549,
+     "total_seconds": 0.0013836678117513657,
+     "slowest_seconds": 0.0013836678117513657,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002521844580769539,
-     "slowest_seconds": 0.002521844580769539,
+     "total_seconds": 0.0025147274136543274,
+     "slowest_seconds": 0.0025147274136543274,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06152510084211826,
-     "slowest_seconds": 0.0023280400782823563,
+     "total_seconds": 0.09889929741621017,
+     "slowest_seconds": 0.038390399888157845,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.3293080478906631,
-     "slowest_seconds": 0.06916272826492786,
+     "total_seconds": 1.332001568749547,
+     "slowest_seconds": 0.07465077191591263,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.159650644287467,
-     "slowest_seconds": 0.0017587225884199142,
+     "total_seconds": 0.14775503985583782,
+     "slowest_seconds": 0.001667821779847145,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0018520783632993698,
-     "slowest_seconds": 0.0018520783632993698,
+     "total_seconds": 0.001314764842391014,
+     "slowest_seconds": 0.001314764842391014,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0015914402902126312,
-     "slowest_seconds": 0.0015914402902126312,
+     "total_seconds": 0.0009788461029529572,
+     "slowest_seconds": 0.0009788461029529572,
      "statuses": [
       200
      ]
@@ -1044,85 +1044,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.56,
-   "observe_seconds": 1.85,
+   "startup_seconds": 0.57,
+   "observe_seconds": 1.72,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.010378602892160416,
-     "slowest_seconds": 0.010378602892160416,
+     "total_seconds": 0.01444794237613678,
+     "slowest_seconds": 0.01444794237613678,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.005403658375144005,
-     "slowest_seconds": 0.005403658375144005,
+     "total_seconds": 0.0020300429314374924,
+     "slowest_seconds": 0.0020300429314374924,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015321280807256699,
-     "slowest_seconds": 0.0015321280807256699,
+     "total_seconds": 0.00525926798582077,
+     "slowest_seconds": 0.00525926798582077,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.004858905449509621,
-     "slowest_seconds": 0.004858905449509621,
+     "total_seconds": 0.0015942566096782684,
+     "slowest_seconds": 0.0015942566096782684,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.00646258145570755,
-     "slowest_seconds": 0.00646258145570755,
+     "total_seconds": 0.005327502265572548,
+     "slowest_seconds": 0.005327502265572548,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.12981772795319557,
-     "slowest_seconds": 0.008085090667009354,
+     "total_seconds": 0.08245838433504105,
+     "slowest_seconds": 0.010429278016090393,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.4750078860670328,
-     "slowest_seconds": 0.13348087295889854,
+     "total_seconds": 1.4002693556249142,
+     "slowest_seconds": 0.10526445880532265,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.15725170820951462,
-     "slowest_seconds": 0.0017705038189888,
+     "total_seconds": 0.15635593980550766,
+     "slowest_seconds": 0.0020351186394691467,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001953035593032837,
-     "slowest_seconds": 0.001953035593032837,
+     "total_seconds": 0.0016219373792409897,
+     "slowest_seconds": 0.0016219373792409897,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014513637870550156,
-     "slowest_seconds": 0.0014513637870550156,
+     "total_seconds": 0.0012352317571640015,
+     "slowest_seconds": 0.0012352317571640015,
      "statuses": [
       200
      ]
@@ -1143,85 +1143,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.58,
-   "observe_seconds": 1.95,
+   "startup_seconds": 0.64,
+   "observe_seconds": 1.85,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0029755868017673492,
-     "slowest_seconds": 0.0029755868017673492,
+     "total_seconds": 0.001682516187429428,
+     "slowest_seconds": 0.001682516187429428,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002015862613916397,
-     "slowest_seconds": 0.002015862613916397,
+     "total_seconds": 0.0021802950650453568,
+     "slowest_seconds": 0.0021802950650453568,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.005360554903745651,
-     "slowest_seconds": 0.005360554903745651,
+     "total_seconds": 0.0015411954373121262,
+     "slowest_seconds": 0.0015411954373121262,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0016540512442588806,
-     "slowest_seconds": 0.0016540512442588806,
+     "total_seconds": 0.0016974322497844696,
+     "slowest_seconds": 0.0016974322497844696,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.005797328427433968,
-     "slowest_seconds": 0.005797328427433968,
+     "total_seconds": 0.0030360911041498184,
+     "slowest_seconds": 0.0030360911041498184,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06272531114518642,
-     "slowest_seconds": 0.002093834802508354,
+     "total_seconds": 0.09351006709039211,
+     "slowest_seconds": 0.03569468483328819,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.4067258071154356,
-     "slowest_seconds": 0.07345136627554893,
+     "total_seconds": 1.3470715396106243,
+     "slowest_seconds": 0.0727277435362339,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.17355965822935104,
-     "slowest_seconds": 0.001809101551771164,
+     "total_seconds": 0.14515015110373497,
+     "slowest_seconds": 0.0016657952219247818,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016250796616077423,
-     "slowest_seconds": 0.0016250796616077423,
+     "total_seconds": 0.0016904175281524658,
+     "slowest_seconds": 0.0016904175281524658,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001349281519651413,
-     "slowest_seconds": 0.001349281519651413,
+     "total_seconds": 0.0013788007199764252,
+     "slowest_seconds": 0.0013788007199764252,
      "statuses": [
       200
      ]
@@ -1230,85 +1230,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.66,
-   "observe_seconds": 1.78,
+   "startup_seconds": 0.64,
+   "observe_seconds": 1.74,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.003762243315577507,
-     "slowest_seconds": 0.003762243315577507,
+     "total_seconds": 0.008889192715287209,
+     "slowest_seconds": 0.008889192715287209,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0017977580428123474,
-     "slowest_seconds": 0.0017977580428123474,
+     "total_seconds": 0.005214143544435501,
+     "slowest_seconds": 0.005214143544435501,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015631001442670822,
-     "slowest_seconds": 0.0015631001442670822,
+     "total_seconds": 0.003490077331662178,
+     "slowest_seconds": 0.003490077331662178,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0017797332257032394,
-     "slowest_seconds": 0.0017797332257032394,
+     "total_seconds": 0.0029372479766607285,
+     "slowest_seconds": 0.0029372479766607285,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003250524401664734,
-     "slowest_seconds": 0.003250524401664734,
+     "total_seconds": 0.0066353436559438705,
+     "slowest_seconds": 0.0066353436559438705,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06119162775576115,
-     "slowest_seconds": 0.0019724108278751373,
+     "total_seconds": 0.1317946258932352,
+     "slowest_seconds": 0.0095708929002285,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.4913608320057392,
-     "slowest_seconds": 0.17756670899689198,
+     "total_seconds": 1.3615833688527346,
+     "slowest_seconds": 0.09995827078819275,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.16586912795901299,
-     "slowest_seconds": 0.001941761001944542,
+     "total_seconds": 0.16214163973927498,
+     "slowest_seconds": 0.001957489177584648,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016964785754680634,
-     "slowest_seconds": 0.0016964785754680634,
+     "total_seconds": 0.0017406940460205078,
+     "slowest_seconds": 0.0017406940460205078,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0011132638901472092,
-     "slowest_seconds": 0.0011132638901472092,
+     "total_seconds": 0.0012417230755090714,
+     "slowest_seconds": 0.0012417230755090714,
      "statuses": [
       200
      ]
@@ -1329,85 +1329,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.67,
-   "observe_seconds": 1.93,
+   "startup_seconds": 0.73,
+   "observe_seconds": 1.8,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014344528317451477,
-     "slowest_seconds": 0.0014344528317451477,
+     "total_seconds": 0.0013812612742185593,
+     "slowest_seconds": 0.0013812612742185593,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0018832236528396606,
-     "slowest_seconds": 0.0018832236528396606,
+     "total_seconds": 0.001690838485956192,
+     "slowest_seconds": 0.001690838485956192,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0011734720319509506,
-     "slowest_seconds": 0.0011734720319509506,
+     "total_seconds": 0.0014050770550966263,
+     "slowest_seconds": 0.0014050770550966263,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0012528877705335617,
-     "slowest_seconds": 0.0012528877705335617,
+     "total_seconds": 0.0014580171555280685,
+     "slowest_seconds": 0.0014580171555280685,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0023555252701044083,
-     "slowest_seconds": 0.0023555252701044083,
+     "total_seconds": 0.0023380592465400696,
+     "slowest_seconds": 0.0023380592465400696,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.05645396560430527,
-     "slowest_seconds": 0.0019115656614303589,
+     "total_seconds": 0.08777405507862568,
+     "slowest_seconds": 0.035208459943532944,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.4444855116307735,
-     "slowest_seconds": 0.08085161820054054,
+     "total_seconds": 1.3476496636867523,
+     "slowest_seconds": 0.07337989285588264,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.15366551652550697,
-     "slowest_seconds": 0.0018122754991054535,
+     "total_seconds": 0.1602544542402029,
+     "slowest_seconds": 0.0019040387123823166,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017586592584848404,
-     "slowest_seconds": 0.0017586592584848404,
+     "total_seconds": 0.001924147829413414,
+     "slowest_seconds": 0.001924147829413414,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001416800543665886,
-     "slowest_seconds": 0.001416800543665886,
+     "total_seconds": 0.0013347230851650238,
+     "slowest_seconds": 0.0013347230851650238,
      "statuses": [
       200
      ]
@@ -1417,84 +1417,84 @@
   },
   "check": {
    "startup_seconds": 0.69,
-   "observe_seconds": 1.67,
+   "observe_seconds": 1.75,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.007366068661212921,
-     "slowest_seconds": 0.007366068661212921,
+     "total_seconds": 0.010362908244132996,
+     "slowest_seconds": 0.010362908244132996,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002000998705625534,
-     "slowest_seconds": 0.002000998705625534,
+     "total_seconds": 0.004961604252457619,
+     "slowest_seconds": 0.004961604252457619,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.002593429759144783,
-     "slowest_seconds": 0.002593429759144783,
+     "total_seconds": 0.002972988411784172,
+     "slowest_seconds": 0.002972988411784172,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.004162909463047981,
-     "slowest_seconds": 0.004162909463047981,
+     "total_seconds": 0.0029381364583969116,
+     "slowest_seconds": 0.0029381364583969116,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.005703439936041832,
-     "slowest_seconds": 0.005703439936041832,
+     "total_seconds": 0.0073412321507930756,
+     "slowest_seconds": 0.0073412321507930756,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.07385681197047234,
-     "slowest_seconds": 0.007370609790086746,
+     "total_seconds": 0.07719249464571476,
+     "slowest_seconds": 0.005192844197154045,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.3609206769615412,
-     "slowest_seconds": 0.07498917169868946,
+     "total_seconds": 1.4489723891019821,
+     "slowest_seconds": 0.09205596335232258,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.17105556651949883,
-     "slowest_seconds": 0.0019362401217222214,
+     "total_seconds": 0.14814241789281368,
+     "slowest_seconds": 0.001886218786239624,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017516016960144043,
-     "slowest_seconds": 0.0017516016960144043,
+     "total_seconds": 0.0015102028846740723,
+     "slowest_seconds": 0.0015102028846740723,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013936199247837067,
-     "slowest_seconds": 0.0013936199247837067,
+     "total_seconds": 0.001020144671201706,
+     "slowest_seconds": 0.001020144671201706,
      "statuses": [
       200
      ]
@@ -1515,85 +1515,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.61,
-   "observe_seconds": 1.86,
+   "startup_seconds": 0.55,
+   "observe_seconds": 2.01,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001344233751296997,
-     "slowest_seconds": 0.001344233751296997,
+     "total_seconds": 0.0015040617436170578,
+     "slowest_seconds": 0.0015040617436170578,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.001932946965098381,
-     "slowest_seconds": 0.001932946965098381,
+     "total_seconds": 0.0015069451183080673,
+     "slowest_seconds": 0.0015069451183080673,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0013992208987474442,
-     "slowest_seconds": 0.0013992208987474442,
+     "total_seconds": 0.001268148422241211,
+     "slowest_seconds": 0.001268148422241211,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0016224775463342667,
-     "slowest_seconds": 0.0016224775463342667,
+     "total_seconds": 0.001757100224494934,
+     "slowest_seconds": 0.001757100224494934,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0029388517141342163,
-     "slowest_seconds": 0.0029388517141342163,
+     "total_seconds": 0.002448445186018944,
+     "slowest_seconds": 0.002448445186018944,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.05862219072878361,
-     "slowest_seconds": 0.0021052174270153046,
+     "total_seconds": 0.06426696479320526,
+     "slowest_seconds": 0.0022115446627140045,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.4676032327115536,
-     "slowest_seconds": 0.11034667305648327,
+     "total_seconds": 1.5104066785424948,
+     "slowest_seconds": 0.0783043410629034,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.14877869002521038,
-     "slowest_seconds": 0.0020218919962644577,
+     "total_seconds": 0.161136357113719,
+     "slowest_seconds": 0.001698952168226242,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001345185562968254,
-     "slowest_seconds": 0.001345185562968254,
+     "total_seconds": 0.0018923189491033554,
+     "slowest_seconds": 0.0018923189491033554,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0011077392846345901,
-     "slowest_seconds": 0.0011077392846345901,
+     "total_seconds": 0.0013403184711933136,
+     "slowest_seconds": 0.0013403184711933136,
      "statuses": [
       200
      ]
@@ -1602,85 +1602,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.6,
-   "observe_seconds": 1.98,
+   "startup_seconds": 0.64,
+   "observe_seconds": 2.06,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.006899595260620117,
-     "slowest_seconds": 0.006899595260620117,
+     "total_seconds": 0.0037294812500476837,
+     "slowest_seconds": 0.0037294812500476837,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.00495004840195179,
-     "slowest_seconds": 0.00495004840195179,
+     "total_seconds": 0.002150503918528557,
+     "slowest_seconds": 0.002150503918528557,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.00488259457051754,
-     "slowest_seconds": 0.00488259457051754,
+     "total_seconds": 0.0014189593493938446,
+     "slowest_seconds": 0.0014189593493938446,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.004677731543779373,
-     "slowest_seconds": 0.004677731543779373,
+     "total_seconds": 0.0016965195536613464,
+     "slowest_seconds": 0.0016965195536613464,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.006737677380442619,
-     "slowest_seconds": 0.006737677380442619,
+     "total_seconds": 0.003139389678835869,
+     "slowest_seconds": 0.003139389678835869,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.10449919290840626,
-     "slowest_seconds": 0.008890712633728981,
+     "total_seconds": 0.06614118814468384,
+     "slowest_seconds": 0.00242425873875618,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 1.609324747696519,
-     "slowest_seconds": 0.10158083401620388,
+     "total_seconds": 1.7586286552250385,
+     "slowest_seconds": 0.16170201264321804,
      "statuses": [
       200
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 132,
-     "total_seconds": 0.18322535045444965,
-     "slowest_seconds": 0.005202639847993851,
+     "total_seconds": 0.17034731805324554,
+     "slowest_seconds": 0.001791432499885559,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016987379640340805,
-     "slowest_seconds": 0.0016987379640340805,
+     "total_seconds": 0.0020833127200603485,
+     "slowest_seconds": 0.0020833127200603485,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012465231120586395,
-     "slowest_seconds": 0.0012465231120586395,
+     "total_seconds": 0.0014935042709112167,
+     "slowest_seconds": 0.0014935042709112167,
      "statuses": [
       200
      ]
@@ -1688,8 +1688,19 @@
    },
    "compute_calls": []
   },
-  "failures": [],
-  "details": {}
+  "failures": [
+   "shape GET /api/concepts/{id} .sources"
+  ],
+  "details": {
+   "shape GET /api/concepts/{id} .sources": {
+    "pinned": [
+     "object"
+    ],
+    "now": [
+     "absent"
+    ]
+   }
+  }
  },
  {
   "child": "02124c13a9a86e83cec00b54303b661bbe132295",
@@ -1830,85 +1841,85 @@
   "data_only": false,
   "mode": "unloadable",
   "record": {
-   "startup_seconds": 0.58,
-   "observe_seconds": 0.48,
+   "startup_seconds": 0.56,
+   "observe_seconds": 0.56,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0010854341089725494,
-     "slowest_seconds": 0.0010854341089725494,
+     "total_seconds": 0.0012172292917966843,
+     "slowest_seconds": 0.0012172292917966843,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0014082565903663635,
-     "slowest_seconds": 0.0014082565903663635,
+     "total_seconds": 0.001611640676856041,
+     "slowest_seconds": 0.001611640676856041,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0016215164214372635,
-     "slowest_seconds": 0.0016215164214372635,
+     "total_seconds": 0.0013993922621011734,
+     "slowest_seconds": 0.0013993922621011734,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0020858775824308395,
-     "slowest_seconds": 0.0020858775824308395,
+     "total_seconds": 0.0014330223202705383,
+     "slowest_seconds": 0.0014330223202705383,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002279665321111679,
-     "slowest_seconds": 0.002279665321111679,
+     "total_seconds": 0.002365387976169586,
+     "slowest_seconds": 0.002365387976169586,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.05886925011873245,
-     "slowest_seconds": 0.0022776033729314804,
+     "total_seconds": 0.06483608670532703,
+     "slowest_seconds": 0.0024286508560180664,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.06259296461939812,
-     "slowest_seconds": 0.03652349300682545,
+     "total_seconds": 0.059362687170505524,
+     "slowest_seconds": 0.004604831337928772,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.14574318565428257,
-     "slowest_seconds": 0.0016921143978834152,
+     "total_seconds": 0.2027456946671009,
+     "slowest_seconds": 0.006025657057762146,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016967914998531342,
-     "slowest_seconds": 0.0016967914998531342,
+     "total_seconds": 0.0021324679255485535,
+     "slowest_seconds": 0.0021324679255485535,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013008136302232742,
-     "slowest_seconds": 0.0013008136302232742,
+     "total_seconds": 0.0016256384551525116,
+     "slowest_seconds": 0.0016256384551525116,
      "statuses": [
       200
      ]
@@ -1931,84 +1942,84 @@
   "mode": "own-tree",
   "record": {
    "startup_seconds": 0.58,
-   "observe_seconds": 0.53,
+   "observe_seconds": 0.48,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.005340090021491051,
-     "slowest_seconds": 0.005340090021491051,
+     "total_seconds": 0.0014897510409355164,
+     "slowest_seconds": 0.0014897510409355164,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.007500661537051201,
-     "slowest_seconds": 0.007500661537051201,
+     "total_seconds": 0.0019003301858901978,
+     "slowest_seconds": 0.0019003301858901978,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015845708549022675,
-     "slowest_seconds": 0.0015845708549022675,
+     "total_seconds": 0.0013783816248178482,
+     "slowest_seconds": 0.0013783816248178482,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0017442312091588974,
-     "slowest_seconds": 0.0017442312091588974,
+     "total_seconds": 0.001682911068201065,
+     "slowest_seconds": 0.001682911068201065,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003120996057987213,
-     "slowest_seconds": 0.003120996057987213,
+     "total_seconds": 0.0030270367860794067,
+     "slowest_seconds": 0.0030270367860794067,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06332873366773129,
-     "slowest_seconds": 0.0020325537770986557,
+     "total_seconds": 0.09653971716761589,
+     "slowest_seconds": 0.03605569154024124,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.060463396832346916,
-     "slowest_seconds": 0.034429166465997696,
+     "total_seconds": 0.027666447684168816,
+     "slowest_seconds": 0.0009567625820636749,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.134935412555933,
-     "slowest_seconds": 0.0016714353114366531,
+     "total_seconds": 0.13745247013866901,
+     "slowest_seconds": 0.0016272347420454025,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017490200698375702,
-     "slowest_seconds": 0.0017490200698375702,
+     "total_seconds": 0.0015782341361045837,
+     "slowest_seconds": 0.0015782341361045837,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001474522054195404,
-     "slowest_seconds": 0.001474522054195404,
+     "total_seconds": 0.0010959748178720474,
+     "slowest_seconds": 0.0010959748178720474,
      "statuses": [
       200
      ]
@@ -2017,85 +2028,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.59,
-   "observe_seconds": 0.41,
+   "startup_seconds": 0.71,
+   "observe_seconds": 0.36,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.011226644739508629,
-     "slowest_seconds": 0.011226644739508629,
+     "total_seconds": 0.008094141259789467,
+     "slowest_seconds": 0.008094141259789467,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0042115021497011185,
-     "slowest_seconds": 0.0042115021497011185,
+     "total_seconds": 0.008539754897356033,
+     "slowest_seconds": 0.008539754897356033,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0028007887303829193,
-     "slowest_seconds": 0.0028007887303829193,
+     "total_seconds": 0.003972483798861504,
+     "slowest_seconds": 0.003972483798861504,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.00464308075606823,
-     "slowest_seconds": 0.00464308075606823,
+     "total_seconds": 0.005233354866504669,
+     "slowest_seconds": 0.005233354866504669,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0028993822634220123,
-     "slowest_seconds": 0.0028993822634220123,
+     "total_seconds": 0.005199901759624481,
+     "slowest_seconds": 0.005199901759624481,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.12649750895798206,
-     "slowest_seconds": 0.008086904883384705,
+     "total_seconds": 0.08159779012203217,
+     "slowest_seconds": 0.011246608570218086,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.05540868639945984,
-     "slowest_seconds": 0.0045386143028736115,
+     "total_seconds": 0.05323956348001957,
+     "slowest_seconds": 0.00446336530148983,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1634756550192833,
-     "slowest_seconds": 0.004918782040476799,
+     "total_seconds": 0.15753313899040222,
+     "slowest_seconds": 0.0018404629081487656,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001628100872039795,
-     "slowest_seconds": 0.001628100872039795,
+     "total_seconds": 0.0015621259808540344,
+     "slowest_seconds": 0.0015621259808540344,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0010509081184864044,
-     "slowest_seconds": 0.0010509081184864044,
+     "total_seconds": 0.001320505514740944,
+     "slowest_seconds": 0.001320505514740944,
      "statuses": [
       200
      ]
@@ -2116,85 +2127,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.67,
-   "observe_seconds": 0.44,
+   "startup_seconds": 0.59,
+   "observe_seconds": 0.53,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0010720603168010712,
-     "slowest_seconds": 0.0010720603168010712,
+     "total_seconds": 0.0011727642267942429,
+     "slowest_seconds": 0.0011727642267942429,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0014676637947559357,
-     "slowest_seconds": 0.0014676637947559357,
+     "total_seconds": 0.0013217534869909286,
+     "slowest_seconds": 0.0013217534869909286,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0011007282882928848,
-     "slowest_seconds": 0.0011007282882928848,
+     "total_seconds": 0.00102977454662323,
+     "slowest_seconds": 0.00102977454662323,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0011550001800060272,
-     "slowest_seconds": 0.0011550001800060272,
+     "total_seconds": 0.0012210644781589508,
+     "slowest_seconds": 0.0012210644781589508,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0020146947354078293,
-     "slowest_seconds": 0.0020146947354078293,
+     "total_seconds": 0.002206096425652504,
+     "slowest_seconds": 0.002206096425652504,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.053853632882237434,
-     "slowest_seconds": 0.0019459370523691177,
+     "total_seconds": 0.10041520372033119,
+     "slowest_seconds": 0.04276922345161438,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.0625116229057312,
-     "slowest_seconds": 0.036447251215577126,
+     "total_seconds": 0.02721516415476799,
+     "slowest_seconds": 0.0009109210222959518,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.14978869818150997,
-     "slowest_seconds": 0.0017429646104574203,
+     "total_seconds": 0.21471168845891953,
+     "slowest_seconds": 0.006940796971321106,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001985570415854454,
-     "slowest_seconds": 0.001985570415854454,
+     "total_seconds": 0.0017087943851947784,
+     "slowest_seconds": 0.0017087943851947784,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001461545005440712,
-     "slowest_seconds": 0.001461545005440712,
+     "total_seconds": 0.001328781247138977,
+     "slowest_seconds": 0.001328781247138977,
      "statuses": [
       200
      ]
@@ -2203,85 +2214,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.63,
-   "observe_seconds": 0.32,
+   "startup_seconds": 0.61,
+   "observe_seconds": 0.3,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.004734568297863007,
-     "slowest_seconds": 0.004734568297863007,
+     "total_seconds": 0.005989404395222664,
+     "slowest_seconds": 0.005989404395222664,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0021164994686841965,
-     "slowest_seconds": 0.0021164994686841965,
+     "total_seconds": 0.005912201479077339,
+     "slowest_seconds": 0.005912201479077339,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001492949202656746,
-     "slowest_seconds": 0.001492949202656746,
+     "total_seconds": 0.005122506991028786,
+     "slowest_seconds": 0.005122506991028786,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0016248486936092377,
-     "slowest_seconds": 0.0016248486936092377,
+     "total_seconds": 0.005026664584875107,
+     "slowest_seconds": 0.005026664584875107,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0029663965106010437,
-     "slowest_seconds": 0.0029663965106010437,
+     "total_seconds": 0.006577547639608383,
+     "slowest_seconds": 0.006577547639608383,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.10222122631967068,
-     "slowest_seconds": 0.005446525290608406,
+     "total_seconds": 0.07520703971385956,
+     "slowest_seconds": 0.005664831027388573,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.027799194678664207,
-     "slowest_seconds": 0.0010059289634227753,
+     "total_seconds": 0.028086023405194283,
+     "slowest_seconds": 0.0008944608271121979,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1434615422040224,
-     "slowest_seconds": 0.0015739984810352325,
+     "total_seconds": 0.1358415987342596,
+     "slowest_seconds": 0.0016132555902004242,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017610136419534683,
-     "slowest_seconds": 0.0017610136419534683,
+     "total_seconds": 0.0016819555312395096,
+     "slowest_seconds": 0.0016819555312395096,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013941731303930283,
-     "slowest_seconds": 0.0013941731303930283,
+     "total_seconds": 0.001142820343375206,
+     "slowest_seconds": 0.001142820343375206,
      "statuses": [
       200
      ]
@@ -2302,85 +2313,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.7,
-   "observe_seconds": 0.44,
+   "startup_seconds": 0.63,
+   "observe_seconds": 0.48,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001310085877776146,
-     "slowest_seconds": 0.001310085877776146,
+     "total_seconds": 0.0020236819982528687,
+     "slowest_seconds": 0.0020236819982528687,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0019010752439498901,
-     "slowest_seconds": 0.0019010752439498901,
+     "total_seconds": 0.0025316309183835983,
+     "slowest_seconds": 0.0025316309183835983,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001554921269416809,
-     "slowest_seconds": 0.001554921269416809,
+     "total_seconds": 0.0016285888850688934,
+     "slowest_seconds": 0.0016285888850688934,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0016608759760856628,
-     "slowest_seconds": 0.0016608759760856628,
+     "total_seconds": 0.0017589908093214035,
+     "slowest_seconds": 0.0017589908093214035,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0025645550340414047,
-     "slowest_seconds": 0.0025645550340414047,
+     "total_seconds": 0.002680080011487007,
+     "slowest_seconds": 0.002680080011487007,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.0629193652421236,
-     "slowest_seconds": 0.0022052228450775146,
+     "total_seconds": 0.06637566722929478,
+     "slowest_seconds": 0.002393539994955063,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.025165660306811333,
-     "slowest_seconds": 0.0008608680218458176,
+     "total_seconds": 0.023714615032076836,
+     "slowest_seconds": 0.0008061956614255905,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.16289192251861095,
-     "slowest_seconds": 0.036770639941096306,
+     "total_seconds": 0.1608398761600256,
+     "slowest_seconds": 0.03396781161427498,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017883386462926865,
-     "slowest_seconds": 0.0017883386462926865,
+     "total_seconds": 0.0016358718276023865,
+     "slowest_seconds": 0.0016358718276023865,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001460101455450058,
-     "slowest_seconds": 0.001460101455450058,
+     "total_seconds": 0.0013253912329673767,
+     "slowest_seconds": 0.0013253912329673767,
      "statuses": [
       200
      ]
@@ -2389,85 +2400,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.58,
-   "observe_seconds": 0.31,
+   "startup_seconds": 0.94,
+   "observe_seconds": 0.33,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.019449222832918167,
-     "slowest_seconds": 0.019449222832918167,
+     "total_seconds": 0.0036090537905693054,
+     "slowest_seconds": 0.0036090537905693054,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.00202975794672966,
-     "slowest_seconds": 0.00202975794672966,
+     "total_seconds": 0.0025449004024267197,
+     "slowest_seconds": 0.0025449004024267197,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0014915447682142258,
-     "slowest_seconds": 0.0014915447682142258,
+     "total_seconds": 0.0017158836126327515,
+     "slowest_seconds": 0.0017158836126327515,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0052423179149627686,
-     "slowest_seconds": 0.0052423179149627686,
+     "total_seconds": 0.0018606539815664291,
+     "slowest_seconds": 0.0018606539815664291,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0032350942492485046,
-     "slowest_seconds": 0.0032350942492485046,
+     "total_seconds": 0.003484519198536873,
+     "slowest_seconds": 0.003484519198536873,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.0786307118833065,
-     "slowest_seconds": 0.011254709213972092,
+     "total_seconds": 0.0683949664235115,
+     "slowest_seconds": 0.002915177494287491,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.027537602931261063,
-     "slowest_seconds": 0.0016427040100097656,
+     "total_seconds": 0.03593219444155693,
+     "slowest_seconds": 0.0011701621115207672,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.13743962533771992,
-     "slowest_seconds": 0.0015133339911699295,
+     "total_seconds": 0.17893359623849392,
+     "slowest_seconds": 0.001976463943719864,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0019218064844608307,
-     "slowest_seconds": 0.0019218064844608307,
+     "total_seconds": 0.002025030553340912,
+     "slowest_seconds": 0.002025030553340912,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012180488556623459,
-     "slowest_seconds": 0.0012180488556623459,
+     "total_seconds": 0.00159510038793087,
+     "slowest_seconds": 0.00159510038793087,
      "statuses": [
       200
      ]
@@ -2493,85 +2504,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.69,
-   "observe_seconds": 0.45,
+   "startup_seconds": 0.67,
+   "observe_seconds": 0.48,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0013853516429662704,
-     "slowest_seconds": 0.0013853516429662704,
+     "total_seconds": 0.0013853460550308228,
+     "slowest_seconds": 0.0013853460550308228,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0017821993678808212,
-     "slowest_seconds": 0.0017821993678808212,
+     "total_seconds": 0.0016402620822191238,
+     "slowest_seconds": 0.0016402620822191238,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0013683754950761795,
-     "slowest_seconds": 0.0013683754950761795,
+     "total_seconds": 0.0011934731155633926,
+     "slowest_seconds": 0.0011934731155633926,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0014291554689407349,
-     "slowest_seconds": 0.0014291554689407349,
+     "total_seconds": 0.0014140550047159195,
+     "slowest_seconds": 0.0014140550047159195,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0018864292651414871,
-     "slowest_seconds": 0.0018864292651414871,
+     "total_seconds": 0.0024201739579439163,
+     "slowest_seconds": 0.0024201739579439163,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.054885877296328545,
-     "slowest_seconds": 0.0019592177122831345,
+     "total_seconds": 0.05866376869380474,
+     "slowest_seconds": 0.0019034724682569504,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.029520954936742783,
-     "slowest_seconds": 0.0010208524763584137,
+     "total_seconds": 0.028282545506954193,
+     "slowest_seconds": 0.0009390916675329208,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1816144473850727,
-     "slowest_seconds": 0.03444121591746807,
+     "total_seconds": 0.17676814459264278,
+     "slowest_seconds": 0.03594784997403622,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0018447265028953552,
-     "slowest_seconds": 0.0018447265028953552,
+     "total_seconds": 0.001656368374824524,
+     "slowest_seconds": 0.001656368374824524,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001280544325709343,
-     "slowest_seconds": 0.001280544325709343,
+     "total_seconds": 0.0012886133044958115,
+     "slowest_seconds": 0.0012886133044958115,
      "statuses": [
       200
      ]
@@ -2580,85 +2591,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.62,
-   "observe_seconds": 0.31,
+   "startup_seconds": 0.64,
+   "observe_seconds": 0.32,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.014279423281550407,
-     "slowest_seconds": 0.014279423281550407,
+     "total_seconds": 0.007269907742738724,
+     "slowest_seconds": 0.007269907742738724,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.004647534340620041,
-     "slowest_seconds": 0.004647534340620041,
+     "total_seconds": 0.006252560764551163,
+     "slowest_seconds": 0.006252560764551163,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015446599572896957,
-     "slowest_seconds": 0.0015446599572896957,
+     "total_seconds": 0.0017187073826789856,
+     "slowest_seconds": 0.0017187073826789856,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0022868365049362183,
-     "slowest_seconds": 0.0022868365049362183,
+     "total_seconds": 0.005344755947589874,
+     "slowest_seconds": 0.005344755947589874,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0031123273074626923,
-     "slowest_seconds": 0.0031123273074626923,
+     "total_seconds": 0.005218757316470146,
+     "slowest_seconds": 0.005218757316470146,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.059292033314704895,
-     "slowest_seconds": 0.003028605133295059,
+     "total_seconds": 0.07025153376162052,
+     "slowest_seconds": 0.006778286769986153,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.028782503679394722,
-     "slowest_seconds": 0.0009346548467874527,
+     "total_seconds": 0.028983095660805702,
+     "slowest_seconds": 0.0009898766875267029,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1587935872375965,
-     "slowest_seconds": 0.00192306749522686,
+     "total_seconds": 0.1567303780466318,
+     "slowest_seconds": 0.0019269287586212158,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016007758677005768,
-     "slowest_seconds": 0.0016007758677005768,
+     "total_seconds": 0.0019401311874389648,
+     "slowest_seconds": 0.0019401311874389648,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012269336730241776,
-     "slowest_seconds": 0.0012269336730241776,
+     "total_seconds": 0.0019112173467874527,
+     "slowest_seconds": 0.0019112173467874527,
      "statuses": [
       200
      ]
@@ -2683,85 +2694,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.71,
-   "observe_seconds": 0.43,
+   "startup_seconds": 0.66,
+   "observe_seconds": 0.56,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001750929281115532,
-     "slowest_seconds": 0.001750929281115532,
+     "total_seconds": 0.001775108277797699,
+     "slowest_seconds": 0.001775108277797699,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0018093232065439224,
-     "slowest_seconds": 0.0018093232065439224,
+     "total_seconds": 0.00188453309237957,
+     "slowest_seconds": 0.00188453309237957,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0013997480273246765,
-     "slowest_seconds": 0.0013997480273246765,
+     "total_seconds": 0.0015765372663736343,
+     "slowest_seconds": 0.0015765372663736343,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0017367377877235413,
-     "slowest_seconds": 0.0017367377877235413,
+     "total_seconds": 0.0014678630977869034,
+     "slowest_seconds": 0.0014678630977869034,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002632947638630867,
-     "slowest_seconds": 0.002632947638630867,
+     "total_seconds": 0.0026192162185907364,
+     "slowest_seconds": 0.0026192162185907364,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.05513768270611763,
-     "slowest_seconds": 0.0022226274013519287,
+     "total_seconds": 0.05886620469391346,
+     "slowest_seconds": 0.0024538300931453705,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.024764077737927437,
-     "slowest_seconds": 0.0008708089590072632,
+     "total_seconds": 0.03017549403011799,
+     "slowest_seconds": 0.0011017397046089172,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1819148100912571,
-     "slowest_seconds": 0.034254634752869606,
+     "total_seconds": 0.24408863484859467,
+     "slowest_seconds": 0.08141679503023624,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001649884507060051,
-     "slowest_seconds": 0.001649884507060051,
+     "total_seconds": 0.0018147900700569153,
+     "slowest_seconds": 0.0018147900700569153,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013254806399345398,
-     "slowest_seconds": 0.0013254806399345398,
+     "total_seconds": 0.0014194976538419724,
+     "slowest_seconds": 0.0014194976538419724,
      "statuses": [
       200
      ]
@@ -2771,84 +2782,84 @@
   },
   "check": {
    "startup_seconds": 0.69,
-   "observe_seconds": 0.29,
+   "observe_seconds": 0.37,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.00784778967499733,
-     "slowest_seconds": 0.00784778967499733,
+     "total_seconds": 0.007163027301430702,
+     "slowest_seconds": 0.007163027301430702,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0046786051243543625,
-     "slowest_seconds": 0.0046786051243543625,
+     "total_seconds": 0.005632456392049789,
+     "slowest_seconds": 0.005632456392049789,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0015563536435365677,
-     "slowest_seconds": 0.0015563536435365677,
+     "total_seconds": 0.008357159793376923,
+     "slowest_seconds": 0.008357159793376923,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0034640319645404816,
-     "slowest_seconds": 0.0034640319645404816,
+     "total_seconds": 0.0019553713500499725,
+     "slowest_seconds": 0.0019553713500499725,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003377225250005722,
-     "slowest_seconds": 0.003377225250005722,
+     "total_seconds": 0.00606180727481842,
+     "slowest_seconds": 0.00606180727481842,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.06429363042116165,
-     "slowest_seconds": 0.0030398014932870865,
+     "total_seconds": 0.11662787012755871,
+     "slowest_seconds": 0.009518908336758614,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.02880004607141018,
-     "slowest_seconds": 0.0010403674095869064,
+     "total_seconds": 0.023643136024475098,
+     "slowest_seconds": 0.0010123904794454575,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.14770024083554745,
-     "slowest_seconds": 0.0020091570913791656,
+     "total_seconds": 0.156535092741251,
+     "slowest_seconds": 0.0019762516021728516,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015987157821655273,
-     "slowest_seconds": 0.0015987157821655273,
+     "total_seconds": 0.002080848440527916,
+     "slowest_seconds": 0.002080848440527916,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001164579764008522,
-     "slowest_seconds": 0.001164579764008522,
+     "total_seconds": 0.0014511439949274063,
+     "slowest_seconds": 0.0014511439949274063,
      "statuses": [
       200
      ]
@@ -2874,85 +2885,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.58,
-   "observe_seconds": 0.46,
+   "startup_seconds": 0.61,
+   "observe_seconds": 0.5,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014845281839370728,
-     "slowest_seconds": 0.0014845281839370728,
+     "total_seconds": 0.0015204641968011856,
+     "slowest_seconds": 0.0015204641968011856,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0019083935767412186,
-     "slowest_seconds": 0.0019083935767412186,
+     "total_seconds": 0.002173272892832756,
+     "slowest_seconds": 0.002173272892832756,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0012362729758024216,
-     "slowest_seconds": 0.0012362729758024216,
+     "total_seconds": 0.0013869795948266983,
+     "slowest_seconds": 0.0013869795948266983,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0015832874923944473,
-     "slowest_seconds": 0.0015832874923944473,
+     "total_seconds": 0.0014934800565242767,
+     "slowest_seconds": 0.0014934800565242767,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0024007856845855713,
-     "slowest_seconds": 0.0024007856845855713,
+     "total_seconds": 0.002526618540287018,
+     "slowest_seconds": 0.002526618540287018,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.05592785403132439,
-     "slowest_seconds": 0.001919543370604515,
+     "total_seconds": 0.06327571161091328,
+     "slowest_seconds": 0.004107292741537094,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.027743522077798843,
-     "slowest_seconds": 0.0009252410382032394,
+     "total_seconds": 0.02651177905499935,
+     "slowest_seconds": 0.0009095501154661179,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1660156399011612,
-     "slowest_seconds": 0.039380038157105446,
+     "total_seconds": 0.19207589142024517,
+     "slowest_seconds": 0.03620009869337082,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0013489574193954468,
-     "slowest_seconds": 0.0013489574193954468,
+     "total_seconds": 0.0017950944602489471,
+     "slowest_seconds": 0.0017950944602489471,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013790912926197052,
-     "slowest_seconds": 0.0013790912926197052,
+     "total_seconds": 0.001309998333454132,
+     "slowest_seconds": 0.001309998333454132,
      "statuses": [
       200
      ]
@@ -2961,85 +2972,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.63,
-   "observe_seconds": 0.33,
+   "startup_seconds": 0.75,
+   "observe_seconds": 0.28,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.007209105417132378,
-     "slowest_seconds": 0.007209105417132378,
+     "total_seconds": 0.007442627102136612,
+     "slowest_seconds": 0.007442627102136612,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002102859318256378,
-     "slowest_seconds": 0.002102859318256378,
+     "total_seconds": 0.005022117868065834,
+     "slowest_seconds": 0.005022117868065834,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.006444202736020088,
-     "slowest_seconds": 0.006444202736020088,
+     "total_seconds": 0.0015929602086544037,
+     "slowest_seconds": 0.0015929602086544037,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.001729654148221016,
-     "slowest_seconds": 0.001729654148221016,
+     "total_seconds": 0.0016383267939090729,
+     "slowest_seconds": 0.0016383267939090729,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002813061699271202,
-     "slowest_seconds": 0.002813061699271202,
+     "total_seconds": 0.0024180784821510315,
+     "slowest_seconds": 0.0024180784821510315,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.06362924352288246,
-     "slowest_seconds": 0.005846017971634865,
+     "total_seconds": 0.05862983874976635,
+     "slowest_seconds": 0.0029446016997098923,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.05362163670361042,
-     "slowest_seconds": 0.0049354806542396545,
+     "total_seconds": 0.02824690192937851,
+     "slowest_seconds": 0.0009404681622982025,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.16504967585206032,
-     "slowest_seconds": 0.004297081381082535,
+     "total_seconds": 0.14548813737928867,
+     "slowest_seconds": 0.002139503136277199,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016071368008852005,
-     "slowest_seconds": 0.0016071368008852005,
+     "total_seconds": 0.0020012371242046356,
+     "slowest_seconds": 0.0020012371242046356,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001303255558013916,
-     "slowest_seconds": 0.001303255558013916,
+     "total_seconds": 0.001393655315041542,
+     "slowest_seconds": 0.001393655315041542,
      "statuses": [
       200
      ]
@@ -3102,85 +3113,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.7,
+   "startup_seconds": 0.66,
    "observe_seconds": 0.51,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014072712510824203,
-     "slowest_seconds": 0.0014072712510824203,
+     "total_seconds": 0.0017742868512868881,
+     "slowest_seconds": 0.0017742868512868881,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0017686765640974045,
-     "slowest_seconds": 0.0017686765640974045,
+     "total_seconds": 0.0017091725021600723,
+     "slowest_seconds": 0.0017091725021600723,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001368710771203041,
-     "slowest_seconds": 0.001368710771203041,
+     "total_seconds": 0.0013477150350809097,
+     "slowest_seconds": 0.0013477150350809097,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.001765100285410881,
-     "slowest_seconds": 0.001765100285410881,
+     "total_seconds": 0.0017396081238985062,
+     "slowest_seconds": 0.0017396081238985062,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0023860298097133636,
-     "slowest_seconds": 0.0023860298097133636,
+     "total_seconds": 0.002711031585931778,
+     "slowest_seconds": 0.002711031585931778,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.05677851475775242,
-     "slowest_seconds": 0.0020018406212329865,
+     "total_seconds": 0.06155083701014519,
+     "slowest_seconds": 0.0020466018468141556,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.026904795318841934,
-     "slowest_seconds": 0.0008614584803581238,
+     "total_seconds": 0.02335849031805992,
+     "slowest_seconds": 0.0008742697536945343,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.20473120361566544,
-     "slowest_seconds": 0.03769277036190033,
+     "total_seconds": 0.22430716268718243,
+     "slowest_seconds": 0.03678528778254986,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001701289787888527,
-     "slowest_seconds": 0.001701289787888527,
+     "total_seconds": 0.006305644288659096,
+     "slowest_seconds": 0.006305644288659096,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014573503285646439,
-     "slowest_seconds": 0.0014573503285646439,
+     "total_seconds": 0.001543411985039711,
+     "slowest_seconds": 0.001543411985039711,
      "statuses": [
       200
      ]
@@ -3189,85 +3200,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.72,
-   "observe_seconds": 0.24,
+   "startup_seconds": 0.69,
+   "observe_seconds": 0.33,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.008233131840825081,
-     "slowest_seconds": 0.008233131840825081,
+     "total_seconds": 0.008422283455729485,
+     "slowest_seconds": 0.008422283455729485,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0021457448601722717,
-     "slowest_seconds": 0.0021457448601722717,
+     "total_seconds": 0.0042022764682769775,
+     "slowest_seconds": 0.0042022764682769775,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0024843141436576843,
-     "slowest_seconds": 0.0024843141436576843,
+     "total_seconds": 0.00707162544131279,
+     "slowest_seconds": 0.00707162544131279,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0020373910665512085,
-     "slowest_seconds": 0.0020373910665512085,
+     "total_seconds": 0.0019748862832784653,
+     "slowest_seconds": 0.0019748862832784653,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0024841465055942535,
-     "slowest_seconds": 0.0024841465055942535,
+     "total_seconds": 0.003336545079946518,
+     "slowest_seconds": 0.003336545079946518,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.0571318157017231,
-     "slowest_seconds": 0.0030045490711927414,
+     "total_seconds": 0.06826201826334,
+     "slowest_seconds": 0.007960332557559013,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.023236695677042007,
-     "slowest_seconds": 0.000895695760846138,
+     "total_seconds": 0.03028230555355549,
+     "slowest_seconds": 0.0016325563192367554,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1209848951548338,
-     "slowest_seconds": 0.0017603356391191483,
+     "total_seconds": 0.16941047087311745,
+     "slowest_seconds": 0.001861676573753357,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0012063365429639816,
-     "slowest_seconds": 0.0012063365429639816,
+     "total_seconds": 0.0020642559975385666,
+     "slowest_seconds": 0.0020642559975385666,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0009797010570764542,
-     "slowest_seconds": 0.0009797010570764542,
+     "total_seconds": 0.0018141325563192368,
+     "slowest_seconds": 0.0018141325563192368,
      "statuses": [
       200
      ]
@@ -3288,85 +3299,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.58,
-   "observe_seconds": 0.44,
+   "startup_seconds": 0.68,
+   "observe_seconds": 0.53,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014212466776371002,
-     "slowest_seconds": 0.0014212466776371002,
+     "total_seconds": 0.0015747174620628357,
+     "slowest_seconds": 0.0015747174620628357,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0015214551240205765,
-     "slowest_seconds": 0.0015214551240205765,
+     "total_seconds": 0.0017512105405330658,
+     "slowest_seconds": 0.0017512105405330658,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0016528032720088959,
-     "slowest_seconds": 0.0016528032720088959,
+     "total_seconds": 0.0018155630677938461,
+     "slowest_seconds": 0.0018155630677938461,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0007281843572854996,
-     "slowest_seconds": 0.0007281843572854996,
+     "total_seconds": 0.0008288435637950897,
+     "slowest_seconds": 0.0008288435637950897,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0022799931466579437,
-     "slowest_seconds": 0.0022799931466579437,
+     "total_seconds": 0.0023771431297063828,
+     "slowest_seconds": 0.0023771431297063828,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.06178895942866802,
-     "slowest_seconds": 0.002156134694814682,
+     "total_seconds": 0.06169653497636318,
+     "slowest_seconds": 0.0021783430129289627,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.027924606576561928,
-     "slowest_seconds": 0.0009660311043262482,
+     "total_seconds": 0.030364414677023888,
+     "slowest_seconds": 0.0011260416358709335,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.13550581224262714,
-     "slowest_seconds": 0.001553315669298172,
+     "total_seconds": 0.23007397167384624,
+     "slowest_seconds": 0.0714167132973671,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016224700957536697,
-     "slowest_seconds": 0.0016224700957536697,
+     "total_seconds": 0.001350264996290207,
+     "slowest_seconds": 0.001350264996290207,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012158993631601334,
-     "slowest_seconds": 0.0012158993631601334,
+     "total_seconds": 0.0011385194957256317,
+     "slowest_seconds": 0.0011385194957256317,
      "statuses": [
       200
      ]
@@ -3375,85 +3386,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.54,
-   "observe_seconds": 0.33,
+   "startup_seconds": 0.7,
+   "observe_seconds": 0.26,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0035895295441150665,
-     "slowest_seconds": 0.0035895295441150665,
+     "total_seconds": 0.003708716481924057,
+     "slowest_seconds": 0.003708716481924057,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0020090024918317795,
-     "slowest_seconds": 0.0020090024918317795,
+     "total_seconds": 0.002236846834421158,
+     "slowest_seconds": 0.002236846834421158,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0014555305242538452,
-     "slowest_seconds": 0.0014555305242538452,
+     "total_seconds": 0.0015977639704942703,
+     "slowest_seconds": 0.0015977639704942703,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0016923584043979645,
-     "slowest_seconds": 0.0016923584043979645,
+     "total_seconds": 0.0018007978796958923,
+     "slowest_seconds": 0.0018007978796958923,
      "statuses": [
       200
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0029766522347927094,
-     "slowest_seconds": 0.0029766522347927094,
+     "total_seconds": 0.0029716435819864273,
+     "slowest_seconds": 0.0029716435819864273,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.08721351064741611,
-     "slowest_seconds": 0.00547349639236927,
+     "total_seconds": 0.05990567244589329,
+     "slowest_seconds": 0.0029570702463388443,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.04940164089202881,
-     "slowest_seconds": 0.00452648289501667,
+     "total_seconds": 0.026041634380817413,
+     "slowest_seconds": 0.0009597092866897583,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.14906270988285542,
-     "slowest_seconds": 0.0019098799675703049,
+     "total_seconds": 0.13456246256828308,
+     "slowest_seconds": 0.0016256049275398254,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015748478472232819,
-     "slowest_seconds": 0.0015748478472232819,
+     "total_seconds": 0.0013283509761095047,
+     "slowest_seconds": 0.0013283509761095047,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0015814565122127533,
-     "slowest_seconds": 0.0015814565122127533,
+     "total_seconds": 0.0012358129024505615,
+     "slowest_seconds": 0.0012358129024505615,
      "statuses": [
       200
      ]
@@ -3476,85 +3487,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.63,
-   "observe_seconds": 0.47,
+   "startup_seconds": 0.58,
+   "observe_seconds": 0.57,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014246664941310883,
-     "slowest_seconds": 0.0014246664941310883,
+     "total_seconds": 0.0014262739568948746,
+     "slowest_seconds": 0.0014262739568948746,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0016498323529958725,
-     "slowest_seconds": 0.0016498323529958725,
+     "total_seconds": 0.0018654558807611465,
+     "slowest_seconds": 0.0018654558807611465,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001792900264263153,
-     "slowest_seconds": 0.001792900264263153,
+     "total_seconds": 0.0014326758682727814,
+     "slowest_seconds": 0.0014326758682727814,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0006700977683067322,
-     "slowest_seconds": 0.0006700977683067322,
+     "total_seconds": 0.000779544934630394,
+     "slowest_seconds": 0.000779544934630394,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0021669901907444,
-     "slowest_seconds": 0.0021669901907444,
+     "total_seconds": 0.0028692055493593216,
+     "slowest_seconds": 0.0028692055493593216,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.07975319214165211,
-     "slowest_seconds": 0.006567513570189476,
+     "total_seconds": 0.0627130325883627,
+     "slowest_seconds": 0.00223359651863575,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.05072534456849098,
-     "slowest_seconds": 0.004307234659790993,
+     "total_seconds": 0.028687775135040283,
+     "slowest_seconds": 0.0009983517229557037,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.15620342269539833,
-     "slowest_seconds": 0.004055267199873924,
+     "total_seconds": 0.2159743495285511,
+     "slowest_seconds": 0.0381977092474699,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001782851293683052,
-     "slowest_seconds": 0.001782851293683052,
+     "total_seconds": 0.0013927537947893143,
+     "slowest_seconds": 0.0013927537947893143,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014159176498651505,
-     "slowest_seconds": 0.0014159176498651505,
+     "total_seconds": 0.001088688150048256,
+     "slowest_seconds": 0.001088688150048256,
      "statuses": [
       200
      ]
@@ -3563,85 +3574,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.56,
-   "observe_seconds": 0.36,
+   "startup_seconds": 0.63,
+   "observe_seconds": 0.31,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.009345188736915588,
-     "slowest_seconds": 0.009345188736915588,
+     "total_seconds": 0.0034241657704114914,
+     "slowest_seconds": 0.0034241657704114914,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002222759649157524,
-     "slowest_seconds": 0.002222759649157524,
+     "total_seconds": 0.00716828741133213,
+     "slowest_seconds": 0.00716828741133213,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.00439438596367836,
-     "slowest_seconds": 0.00439438596367836,
+     "total_seconds": 0.0015835277736186981,
+     "slowest_seconds": 0.0015835277736186981,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0007941685616970062,
-     "slowest_seconds": 0.0007941685616970062,
+     "total_seconds": 0.0019100643694400787,
+     "slowest_seconds": 0.0019100643694400787,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003021055832505226,
-     "slowest_seconds": 0.003021055832505226,
+     "total_seconds": 0.005104631185531616,
+     "slowest_seconds": 0.005104631185531616,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.08608889393508434,
-     "slowest_seconds": 0.011391356587409973,
+     "total_seconds": 0.08283459208905697,
+     "slowest_seconds": 0.005432285368442535,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.028211411088705063,
-     "slowest_seconds": 0.0009240619838237762,
+     "total_seconds": 0.028045330196619034,
+     "slowest_seconds": 0.0009433049708604813,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.19760808162391186,
-     "slowest_seconds": 0.006483551114797592,
+     "total_seconds": 0.13919982872903347,
+     "slowest_seconds": 0.001768535003066063,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001348717138171196,
-     "slowest_seconds": 0.001348717138171196,
+     "total_seconds": 0.0012539364397525787,
+     "slowest_seconds": 0.0012539364397525787,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013556908816099167,
-     "slowest_seconds": 0.0013556908816099167,
+     "total_seconds": 0.001213259994983673,
+     "slowest_seconds": 0.001213259994983673,
      "statuses": [
       200
      ]
@@ -3662,85 +3673,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.72,
-   "observe_seconds": 0.4,
+   "startup_seconds": 0.64,
+   "observe_seconds": 0.47,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.001354128122329712,
-     "slowest_seconds": 0.001354128122329712,
+     "total_seconds": 0.0014923308044672012,
+     "slowest_seconds": 0.0014923308044672012,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0018300414085388184,
-     "slowest_seconds": 0.0018300414085388184,
+     "total_seconds": 0.0018957164138555527,
+     "slowest_seconds": 0.0018957164138555527,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0018111784011125565,
-     "slowest_seconds": 0.0018111784011125565,
+     "total_seconds": 0.001848837360739708,
+     "slowest_seconds": 0.001848837360739708,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0006771199405193329,
-     "slowest_seconds": 0.0006771199405193329,
+     "total_seconds": 0.0007294565439224243,
+     "slowest_seconds": 0.0007294565439224243,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0027591735124588013,
-     "slowest_seconds": 0.0027591735124588013,
+     "total_seconds": 0.0024783406406641006,
+     "slowest_seconds": 0.0024783406406641006,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.054580409079790115,
-     "slowest_seconds": 0.0019440092146396637,
+     "total_seconds": 0.06631823442876339,
+     "slowest_seconds": 0.00483371876180172,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.023993831127882004,
-     "slowest_seconds": 0.000941205769777298,
+     "total_seconds": 0.04742361605167389,
+     "slowest_seconds": 0.004416078329086304,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.1388233844190836,
-     "slowest_seconds": 0.0022273845970630646,
+     "total_seconds": 0.1416443306952715,
+     "slowest_seconds": 0.001979021355509758,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0014303307980298996,
-     "slowest_seconds": 0.0014303307980298996,
+     "total_seconds": 0.0017307624220848083,
+     "slowest_seconds": 0.0017307624220848083,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001064695417881012,
-     "slowest_seconds": 0.001064695417881012,
+     "total_seconds": 0.0014091841876506805,
+     "slowest_seconds": 0.0014091841876506805,
      "statuses": [
       200
      ]
@@ -3749,85 +3760,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.61,
-   "observe_seconds": 0.34,
+   "startup_seconds": 0.73,
+   "observe_seconds": 0.32,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0064381081610918045,
-     "slowest_seconds": 0.0064381081610918045,
+     "total_seconds": 0.008936513215303421,
+     "slowest_seconds": 0.008936513215303421,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.007306771352887154,
-     "slowest_seconds": 0.007306771352887154,
+     "total_seconds": 0.005751246586441994,
+     "slowest_seconds": 0.005751246586441994,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.004326175898313522,
-     "slowest_seconds": 0.004326175898313522,
+     "total_seconds": 0.002110106870532036,
+     "slowest_seconds": 0.002110106870532036,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0028096362948417664,
-     "slowest_seconds": 0.0028096362948417664,
+     "total_seconds": 0.0009551029652357101,
+     "slowest_seconds": 0.0009551029652357101,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003192353993654251,
-     "slowest_seconds": 0.003192353993654251,
+     "total_seconds": 0.010275783017277718,
+     "slowest_seconds": 0.010275783017277718,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 36,
-     "total_seconds": 0.07496090978384018,
-     "slowest_seconds": 0.005527118220925331,
+     "total_seconds": 0.06996327638626099,
+     "slowest_seconds": 0.005014915019273758,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 36,
-     "total_seconds": 0.027994800359010696,
-     "slowest_seconds": 0.0012160073965787888,
+     "total_seconds": 0.026421312242746353,
+     "slowest_seconds": 0.0008947961032390594,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.17726067267358303,
-     "slowest_seconds": 0.002140551805496216,
+     "total_seconds": 0.1622823029756546,
+     "slowest_seconds": 0.008599983528256416,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015550032258033752,
-     "slowest_seconds": 0.0015550032258033752,
+     "total_seconds": 0.0019339434802532196,
+     "slowest_seconds": 0.0019339434802532196,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001596495509147644,
-     "slowest_seconds": 0.001596495509147644,
+     "total_seconds": 0.002269946038722992,
+     "slowest_seconds": 0.002269946038722992,
      "statuses": [
       200
      ]
@@ -3848,85 +3859,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.72,
-   "observe_seconds": 0.53,
+   "startup_seconds": 0.74,
+   "observe_seconds": 0.63,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014357715845108032,
-     "slowest_seconds": 0.0014357715845108032,
+     "total_seconds": 0.001456262543797493,
+     "slowest_seconds": 0.001456262543797493,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002203969284892082,
-     "slowest_seconds": 0.002203969284892082,
+     "total_seconds": 0.002048783004283905,
+     "slowest_seconds": 0.002048783004283905,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.002013731747865677,
-     "slowest_seconds": 0.002013731747865677,
+     "total_seconds": 0.0016403496265411377,
+     "slowest_seconds": 0.0016403496265411377,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0007468685507774353,
-     "slowest_seconds": 0.0007468685507774353,
+     "total_seconds": 0.0007231291383504868,
+     "slowest_seconds": 0.0007231291383504868,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0025511234998703003,
-     "slowest_seconds": 0.0025511234998703003,
+     "total_seconds": 0.002724943682551384,
+     "slowest_seconds": 0.002724943682551384,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.05665494501590729,
-     "slowest_seconds": 0.001931462436914444,
+     "total_seconds": 0.06373430788516998,
+     "slowest_seconds": 0.002187298610806465,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.03046349063515663,
-     "slowest_seconds": 0.0011042263358831406,
+     "total_seconds": 0.030821647495031357,
+     "slowest_seconds": 0.0009753908962011337,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 250,
-     "total_seconds": 0.27286766842007637,
-     "slowest_seconds": 0.0017705652862787247,
+     "total_seconds": 0.353192949667573,
+     "slowest_seconds": 0.007179591804742813,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015487931668758392,
-     "slowest_seconds": 0.0015487931668758392,
+     "total_seconds": 0.0017397962510585785,
+     "slowest_seconds": 0.0017397962510585785,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014936160296201706,
-     "slowest_seconds": 0.0014936160296201706,
+     "total_seconds": 0.0012781750410795212,
+     "slowest_seconds": 0.0012781750410795212,
      "statuses": [
       200
      ]
@@ -3935,53 +3946,53 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.69,
-   "observe_seconds": 0.3,
+   "startup_seconds": 0.66,
+   "observe_seconds": 0.34,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.004325913265347481,
-     "slowest_seconds": 0.004325913265347481,
+     "total_seconds": 0.007476091384887695,
+     "slowest_seconds": 0.007476091384887695,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.004243781790137291,
-     "slowest_seconds": 0.004243781790137291,
+     "total_seconds": 0.0023550987243652344,
+     "slowest_seconds": 0.0023550987243652344,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.00530630350112915,
-     "slowest_seconds": 0.00530630350112915,
+     "total_seconds": 0.006038578227162361,
+     "slowest_seconds": 0.006038578227162361,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0008959714323282242,
-     "slowest_seconds": 0.0008959714323282242,
+     "total_seconds": 0.0009247306734323502,
+     "slowest_seconds": 0.0009247306734323502,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.004539739340543747,
-     "slowest_seconds": 0.004539739340543747,
+     "total_seconds": 0.004948584362864494,
+     "slowest_seconds": 0.004948584362864494,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.07388310134410858,
-     "slowest_seconds": 0.006671890616416931,
+     "total_seconds": 0.08998041972517967,
+     "slowest_seconds": 0.00816301815211773,
      "statuses": [
       200,
       404
@@ -3989,32 +4000,32 @@
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.029342852532863617,
-     "slowest_seconds": 0.0010047685354948044,
+     "total_seconds": 0.030750272795557976,
+     "slowest_seconds": 0.0010176412761211395,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 120,
-     "total_seconds": 0.15030241012573242,
-     "slowest_seconds": 0.001853112131357193,
+     "total_seconds": 0.1702414732426405,
+     "slowest_seconds": 0.002071237191557884,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0017522089183330536,
-     "slowest_seconds": 0.0017522089183330536,
+     "total_seconds": 0.001845628023147583,
+     "slowest_seconds": 0.001845628023147583,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0014039874076843262,
-     "slowest_seconds": 0.0014039874076843262,
+     "total_seconds": 0.001778196543455124,
+     "slowest_seconds": 0.001778196543455124,
      "statuses": [
       200
      ]
@@ -4061,85 +4072,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.64,
-   "observe_seconds": 0.64,
+   "startup_seconds": 0.68,
+   "observe_seconds": 0.61,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0032265018671751022,
-     "slowest_seconds": 0.0032265018671751022,
+     "total_seconds": 0.0015316084027290344,
+     "slowest_seconds": 0.0015316084027290344,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.005378140136599541,
-     "slowest_seconds": 0.005378140136599541,
+     "total_seconds": 0.0019292477518320084,
+     "slowest_seconds": 0.0019292477518320084,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.004395512863993645,
-     "slowest_seconds": 0.004395512863993645,
+     "total_seconds": 0.0016406215727329254,
+     "slowest_seconds": 0.0016406215727329254,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.004585152491927147,
-     "slowest_seconds": 0.004585152491927147,
+     "total_seconds": 0.0007487274706363678,
+     "slowest_seconds": 0.0007487274706363678,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0068437084555625916,
-     "slowest_seconds": 0.0068437084555625916,
+     "total_seconds": 0.0025765523314476013,
+     "slowest_seconds": 0.0025765523314476013,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06797528639435768,
-     "slowest_seconds": 0.0052501969039440155,
+     "total_seconds": 0.0639763381332159,
+     "slowest_seconds": 0.002565477043390274,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.027244625613093376,
-     "slowest_seconds": 0.0008960645645856857,
+     "total_seconds": 0.027638662606477737,
+     "slowest_seconds": 0.0009327959269285202,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 250,
-     "total_seconds": 0.33301445096731186,
-     "slowest_seconds": 0.0020793117582798004,
+     "total_seconds": 0.30083961226046085,
+     "slowest_seconds": 0.0017304718494415283,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.002058621495962143,
-     "slowest_seconds": 0.002058621495962143,
+     "total_seconds": 0.0015436280518770218,
+     "slowest_seconds": 0.0015436280518770218,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001365726813673973,
-     "slowest_seconds": 0.001365726813673973,
+     "total_seconds": 0.001524902880191803,
+     "slowest_seconds": 0.001524902880191803,
      "statuses": [
       200
      ]
@@ -4148,85 +4159,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.73,
-   "observe_seconds": 0.45,
+   "startup_seconds": 0.65,
+   "observe_seconds": 0.47,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.007411738857626915,
-     "slowest_seconds": 0.007411738857626915,
+     "total_seconds": 0.008577432483434677,
+     "slowest_seconds": 0.008577432483434677,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002546565607190132,
-     "slowest_seconds": 0.002546565607190132,
+     "total_seconds": 0.0036280155181884766,
+     "slowest_seconds": 0.0036280155181884766,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.003016747534275055,
-     "slowest_seconds": 0.003016747534275055,
+     "total_seconds": 0.004899471998214722,
+     "slowest_seconds": 0.004899471998214722,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0011464357376098633,
-     "slowest_seconds": 0.0011464357376098633,
+     "total_seconds": 0.004074398428201675,
+     "slowest_seconds": 0.004074398428201675,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.00651104561984539,
-     "slowest_seconds": 0.00651104561984539,
+     "total_seconds": 0.006696190685033798,
+     "slowest_seconds": 0.006696190685033798,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.072969701141119,
-     "slowest_seconds": 0.00486687570810318,
+     "total_seconds": 0.08364454843103886,
+     "slowest_seconds": 0.009331878274679184,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.02688487432897091,
-     "slowest_seconds": 0.0008161086589097977,
+     "total_seconds": 0.024072682484984398,
+     "slowest_seconds": 0.0008356496691703796,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 250,
-     "total_seconds": 0.30313000828027725,
-     "slowest_seconds": 0.0017684977501630783,
+     "total_seconds": 0.3076997175812721,
+     "slowest_seconds": 0.0017974991351366043,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0013310406357049942,
-     "slowest_seconds": 0.0013310406357049942,
+     "total_seconds": 0.0013426914811134338,
+     "slowest_seconds": 0.0013426914811134338,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0011557620018720627,
-     "slowest_seconds": 0.0011557620018720627,
+     "total_seconds": 0.0011562537401914597,
+     "slowest_seconds": 0.0011562537401914597,
      "statuses": [
       200
      ]
@@ -4247,85 +4258,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.66,
-   "observe_seconds": 0.58,
+   "startup_seconds": 0.75,
+   "observe_seconds": 0.7,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0011807586997747421,
-     "slowest_seconds": 0.0011807586997747421,
+     "total_seconds": 0.0013245046138763428,
+     "slowest_seconds": 0.0013245046138763428,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.001636989414691925,
-     "slowest_seconds": 0.001636989414691925,
+     "total_seconds": 0.0017169155180454254,
+     "slowest_seconds": 0.0017169155180454254,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0016903281211853027,
-     "slowest_seconds": 0.0016903281211853027,
+     "total_seconds": 0.0017675049602985382,
+     "slowest_seconds": 0.0017675049602985382,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.00064864382147789,
-     "slowest_seconds": 0.00064864382147789,
+     "total_seconds": 0.0008096341043710709,
+     "slowest_seconds": 0.0008096341043710709,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0028531141579151154,
-     "slowest_seconds": 0.0028531141579151154,
+     "total_seconds": 0.0025529097765684128,
+     "slowest_seconds": 0.0025529097765684128,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06341931782662868,
-     "slowest_seconds": 0.0025239866226911545,
+     "total_seconds": 0.06272091902792454,
+     "slowest_seconds": 0.0022688843309879303,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.02165694534778595,
-     "slowest_seconds": 0.0007988493889570236,
+     "total_seconds": 0.03159248270094395,
+     "slowest_seconds": 0.0009062439203262329,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 250,
-     "total_seconds": 0.2782024685293436,
-     "slowest_seconds": 0.0017856527119874954,
+     "total_seconds": 0.41842062398791313,
+     "slowest_seconds": 0.023174522444605827,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015117451548576355,
-     "slowest_seconds": 0.0015117451548576355,
+     "total_seconds": 0.0035173967480659485,
+     "slowest_seconds": 0.0035173967480659485,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012273024767637253,
-     "slowest_seconds": 0.0012273024767637253,
+     "total_seconds": 0.007006432861089706,
+     "slowest_seconds": 0.007006432861089706,
      "statuses": [
       200
      ]
@@ -4339,80 +4350,80 @@
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.008859047666192055,
-     "slowest_seconds": 0.008859047666192055,
+     "total_seconds": 0.006553832441568375,
+     "slowest_seconds": 0.006553832441568375,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.00240151584148407,
-     "slowest_seconds": 0.00240151584148407,
+     "total_seconds": 0.005486080422997475,
+     "slowest_seconds": 0.005486080422997475,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0036197304725646973,
-     "slowest_seconds": 0.0036197304725646973,
+     "total_seconds": 0.0038353167474269867,
+     "slowest_seconds": 0.0038353167474269867,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0009067431092262268,
-     "slowest_seconds": 0.0009067431092262268,
+     "total_seconds": 0.003997575491666794,
+     "slowest_seconds": 0.003997575491666794,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.006944872438907623,
-     "slowest_seconds": 0.006944872438907623,
+     "total_seconds": 0.003981828689575195,
+     "slowest_seconds": 0.003981828689575195,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.11997637897729874,
-     "slowest_seconds": 0.008944066241383553,
+     "total_seconds": 0.08323622308671474,
+     "slowest_seconds": 0.007961330935359001,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.03889528661966324,
-     "slowest_seconds": 0.003989150747656822,
+     "total_seconds": 0.026784850284457207,
+     "slowest_seconds": 0.0008537471294403076,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 250,
-     "total_seconds": 0.318974781781435,
-     "slowest_seconds": 0.0023287665098905563,
+     "total_seconds": 0.3697613477706909,
+     "slowest_seconds": 0.005488147959113121,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001666901633143425,
-     "slowest_seconds": 0.001666901633143425,
+     "total_seconds": 0.0018317513167858124,
+     "slowest_seconds": 0.0018317513167858124,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0016551762819290161,
-     "slowest_seconds": 0.0016551762819290161,
+     "total_seconds": 0.001449592411518097,
+     "slowest_seconds": 0.001449592411518097,
      "statuses": [
       200
      ]
@@ -4433,85 +4444,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.69,
-   "observe_seconds": 0.63,
+   "startup_seconds": 0.74,
+   "observe_seconds": 0.56,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0011974386870861053,
-     "slowest_seconds": 0.0011974386870861053,
+     "total_seconds": 0.0010603424161672592,
+     "slowest_seconds": 0.0010603424161672592,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0038380231708288193,
-     "slowest_seconds": 0.0038380231708288193,
+     "total_seconds": 0.0016048084944486618,
+     "slowest_seconds": 0.0016048084944486618,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.008182592689990997,
-     "slowest_seconds": 0.008182592689990997,
+     "total_seconds": 0.002226371318101883,
+     "slowest_seconds": 0.002226371318101883,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0009913984686136246,
-     "slowest_seconds": 0.0009913984686136246,
+     "total_seconds": 0.0008721295744180679,
+     "slowest_seconds": 0.0008721295744180679,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003644373267889023,
-     "slowest_seconds": 0.003644373267889023,
+     "total_seconds": 0.002576325088739395,
+     "slowest_seconds": 0.002576325088739395,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.11159179918467999,
-     "slowest_seconds": 0.009409282356500626,
+     "total_seconds": 0.0639401488006115,
+     "slowest_seconds": 0.002251138910651207,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.03063644841313362,
-     "slowest_seconds": 0.001166466623544693,
+     "total_seconds": 0.027017639949917793,
+     "slowest_seconds": 0.0008645728230476379,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 249,
-     "total_seconds": 0.27520808205008507,
-     "slowest_seconds": 0.0020112283527851105,
+     "total_seconds": 0.299445329234004,
+     "slowest_seconds": 0.0018331240862607956,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001808851957321167,
-     "slowest_seconds": 0.001808851957321167,
+     "total_seconds": 0.0016122721135616302,
+     "slowest_seconds": 0.0016122721135616302,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001489168033003807,
-     "slowest_seconds": 0.001489168033003807,
+     "total_seconds": 0.0017676204442977905,
+     "slowest_seconds": 0.0017676204442977905,
      "statuses": [
       200
      ]
@@ -4520,85 +4531,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.62,
-   "observe_seconds": 0.55,
+   "startup_seconds": 0.73,
+   "observe_seconds": 0.46,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.010037397965788841,
-     "slowest_seconds": 0.010037397965788841,
+     "total_seconds": 0.0044085793197155,
+     "slowest_seconds": 0.0044085793197155,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.004644008353352547,
-     "slowest_seconds": 0.004644008353352547,
+     "total_seconds": 0.008438147604465485,
+     "slowest_seconds": 0.008438147604465485,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.003308003768324852,
-     "slowest_seconds": 0.003308003768324852,
+     "total_seconds": 0.0017072074115276337,
+     "slowest_seconds": 0.0017072074115276337,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0037887729704380035,
-     "slowest_seconds": 0.0037887729704380035,
+     "total_seconds": 0.0009379349648952484,
+     "slowest_seconds": 0.0009379349648952484,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.006956534460186958,
-     "slowest_seconds": 0.006956534460186958,
+     "total_seconds": 0.00626756064593792,
+     "slowest_seconds": 0.00626756064593792,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.11645299382507801,
-     "slowest_seconds": 0.006428467109799385,
+     "total_seconds": 0.06550483964383602,
+     "slowest_seconds": 0.006454901769757271,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.029990283772349358,
-     "slowest_seconds": 0.0011954475194215775,
+     "total_seconds": 0.026993686333298683,
+     "slowest_seconds": 0.0009134523570537567,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 250,
-     "total_seconds": 0.33961161226034164,
-     "slowest_seconds": 0.005448704585433006,
+     "total_seconds": 0.3119940981268883,
+     "slowest_seconds": 0.0018689893186092377,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015938561409711838,
-     "slowest_seconds": 0.0015938561409711838,
+     "total_seconds": 0.0016575437039136887,
+     "slowest_seconds": 0.0016575437039136887,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013079475611448288,
-     "slowest_seconds": 0.0013079475611448288,
+     "total_seconds": 0.0013132020831108093,
+     "slowest_seconds": 0.0013132020831108093,
      "statuses": [
       200
      ]
@@ -4631,85 +4642,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.56,
-   "observe_seconds": 0.58,
+   "startup_seconds": 0.52,
+   "observe_seconds": 0.68,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0015251673758029938,
-     "slowest_seconds": 0.0015251673758029938,
+     "total_seconds": 0.0014204047620296478,
+     "slowest_seconds": 0.0014204047620296478,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.001772809773683548,
-     "slowest_seconds": 0.001772809773683548,
+     "total_seconds": 0.0017083752900362015,
+     "slowest_seconds": 0.0017083752900362015,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001364443451166153,
-     "slowest_seconds": 0.001364443451166153,
+     "total_seconds": 0.0015062522143125534,
+     "slowest_seconds": 0.0015062522143125534,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0008269287645816803,
-     "slowest_seconds": 0.0008269287645816803,
+     "total_seconds": 0.0010210219770669937,
+     "slowest_seconds": 0.0010210219770669937,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0026334207504987717,
-     "slowest_seconds": 0.0026334207504987717,
+     "total_seconds": 0.0025895796716213226,
+     "slowest_seconds": 0.0025895796716213226,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06071455590426922,
-     "slowest_seconds": 0.0022144950926303864,
+     "total_seconds": 0.06132585182785988,
+     "slowest_seconds": 0.0020092036575078964,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.030017351731657982,
-     "slowest_seconds": 0.000988095998764038,
+     "total_seconds": 0.027709422633051872,
+     "slowest_seconds": 0.0008814968168735504,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 249,
-     "total_seconds": 0.305686067789793,
-     "slowest_seconds": 0.004552619531750679,
+     "total_seconds": 0.40444179624319077,
+     "slowest_seconds": 0.010956907644867897,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0019300691783428192,
-     "slowest_seconds": 0.0019300691783428192,
+     "total_seconds": 0.0017072558403015137,
+     "slowest_seconds": 0.0017072558403015137,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013851560652256012,
-     "slowest_seconds": 0.0013851560652256012,
+     "total_seconds": 0.0014302972704172134,
+     "slowest_seconds": 0.0014302972704172134,
      "statuses": [
       200
      ]
@@ -4718,85 +4729,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.67,
-   "observe_seconds": 0.52,
+   "startup_seconds": 0.64,
+   "observe_seconds": 0.62,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.011086588725447655,
-     "slowest_seconds": 0.011086588725447655,
+     "total_seconds": 0.0074335671961307526,
+     "slowest_seconds": 0.0074335671961307526,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0038432516157627106,
-     "slowest_seconds": 0.0038432516157627106,
+     "total_seconds": 0.006480855867266655,
+     "slowest_seconds": 0.006480855867266655,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.007910449057817459,
-     "slowest_seconds": 0.007910449057817459,
+     "total_seconds": 0.0033942610025405884,
+     "slowest_seconds": 0.0033942610025405884,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0013274084776639938,
-     "slowest_seconds": 0.0013274084776639938,
+     "total_seconds": 0.000851847231388092,
+     "slowest_seconds": 0.000851847231388092,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.015828385949134827,
-     "slowest_seconds": 0.015828385949134827,
+     "total_seconds": 0.009152980521321297,
+     "slowest_seconds": 0.009152980521321297,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 38,
-     "total_seconds": 0.06504581309854984,
-     "slowest_seconds": 0.003417758271098137,
+     "total_seconds": 0.08360061049461365,
+     "slowest_seconds": 0.006979020312428474,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 38,
-     "total_seconds": 0.028371667489409447,
-     "slowest_seconds": 0.0008967593312263489,
+     "total_seconds": 0.028566105291247368,
+     "slowest_seconds": 0.0009188931435346603,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 249,
-     "total_seconds": 0.349862826988101,
-     "slowest_seconds": 0.008231652900576591,
+     "total_seconds": 0.44149795919656754,
+     "slowest_seconds": 0.008959772065281868,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016893837600946426,
-     "slowest_seconds": 0.0016893837600946426,
+     "total_seconds": 0.0018836352974176407,
+     "slowest_seconds": 0.0018836352974176407,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.001286698505282402,
-     "slowest_seconds": 0.001286698505282402,
+     "total_seconds": 0.001617269590497017,
+     "slowest_seconds": 0.001617269590497017,
      "statuses": [
       200
      ]
@@ -4809,6 +4820,9 @@
    "concept-missing tree 34",
    "enum GET /api/taxonomy/registry .concepts[].magnet_type",
    "shape GET /api/taxonomy/registry .concepts[].energy_capture",
+   "shape GET /api/taxonomy/registry .concepts[].neutron_management",
+   "shape GET /api/taxonomy/registry .concepts[].plasma_state",
+   "shape GET /api/taxonomy/registry .concepts[].tritium_breeding",
    "shape GET /api/taxonomy/tree .root.children[].children",
    "shape GET /api/taxonomy/tree .root.children[].field"
   ],
@@ -4820,6 +4834,32 @@
     "now": [
      "enum:EnergyCapture",
      "null"
+    ]
+   },
+   "shape GET /api/taxonomy/registry .concepts[].neutron_management": {
+    "pinned": [
+     "enum:NeutronManagement"
+    ],
+    "now": [
+     "absent"
+    ]
+   },
+   "shape GET /api/taxonomy/registry .concepts[].plasma_state": {
+    "pinned": [
+     "enum:PlasmaState",
+     "null"
+    ],
+    "now": [
+     "absent"
+    ]
+   },
+   "shape GET /api/taxonomy/registry .concepts[].tritium_breeding": {
+    "pinned": [
+     "enum:TritiumBreeding",
+     "null"
+    ],
+    "now": [
+     "absent"
     ]
    },
    "shape GET /api/taxonomy/tree .root.children[].children": {
@@ -4852,85 +4892,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.59,
-   "observe_seconds": 0.18,
+   "startup_seconds": 0.53,
+   "observe_seconds": 0.21,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0011131931096315384,
-     "slowest_seconds": 0.0011131931096315384,
+     "total_seconds": 0.0011825021356344223,
+     "slowest_seconds": 0.0011825021356344223,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0013541467487812042,
-     "slowest_seconds": 0.0013541467487812042,
+     "total_seconds": 0.001647844910621643,
+     "slowest_seconds": 0.001647844910621643,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0011236127465963364,
-     "slowest_seconds": 0.0011236127465963364,
+     "total_seconds": 0.001323264092206955,
+     "slowest_seconds": 0.001323264092206955,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0006722286343574524,
-     "slowest_seconds": 0.0006722286343574524,
+     "total_seconds": 0.00067920982837677,
+     "slowest_seconds": 0.00067920982837677,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0016348399221897125,
-     "slowest_seconds": 0.0016348399221897125,
+     "total_seconds": 0.0016346145421266556,
+     "slowest_seconds": 0.0016346145421266556,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 1,
-     "total_seconds": 0.0017058532685041428,
-     "slowest_seconds": 0.0017058532685041428,
+     "total_seconds": 0.0017592646181583405,
+     "slowest_seconds": 0.0017592646181583405,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 1,
-     "total_seconds": 0.0008002948015928268,
-     "slowest_seconds": 0.0008002948015928268,
+     "total_seconds": 0.0008762087672948837,
+     "slowest_seconds": 0.0008762087672948837,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 37,
-     "total_seconds": 0.03831952437758446,
-     "slowest_seconds": 0.001413237303495407,
+     "total_seconds": 0.0530251320451498,
+     "slowest_seconds": 0.0018979087471961975,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015032384544610977,
-     "slowest_seconds": 0.0015032384544610977,
+     "total_seconds": 0.0019304193556308746,
+     "slowest_seconds": 0.0019304193556308746,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013307351619005203,
-     "slowest_seconds": 0.0013307351619005203,
+     "total_seconds": 0.0016328059136867523,
+     "slowest_seconds": 0.0016328059136867523,
      "statuses": [
       200
      ]
@@ -4939,85 +4979,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.55,
-   "observe_seconds": 0.31,
+   "startup_seconds": 0.68,
+   "observe_seconds": 0.44,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0032465513795614243,
-     "slowest_seconds": 0.0032465513795614243,
+     "total_seconds": 0.008756589144468307,
+     "slowest_seconds": 0.008756589144468307,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.002092421054840088,
-     "slowest_seconds": 0.002092421054840088,
+     "total_seconds": 0.0051157791167497635,
+     "slowest_seconds": 0.0051157791167497635,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.001425011083483696,
-     "slowest_seconds": 0.001425011083483696,
+     "total_seconds": 0.002144739031791687,
+     "slowest_seconds": 0.002144739031791687,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0007675886154174805,
-     "slowest_seconds": 0.0007675886154174805,
+     "total_seconds": 0.0019905604422092438,
+     "slowest_seconds": 0.0019905604422092438,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.003528088331222534,
-     "slowest_seconds": 0.003528088331222534,
+     "total_seconds": 0.007490264251828194,
+     "slowest_seconds": 0.007490264251828194,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 1,
-     "total_seconds": 0.002167191356420517,
-     "slowest_seconds": 0.002167191356420517,
+     "total_seconds": 0.007985435426235199,
+     "slowest_seconds": 0.007985435426235199,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 1,
-     "total_seconds": 0.0007756315171718597,
-     "slowest_seconds": 0.0007756315171718597,
+     "total_seconds": 0.000879364088177681,
+     "slowest_seconds": 0.000879364088177681,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 249,
-     "total_seconds": 0.28468609787523746,
-     "slowest_seconds": 0.0026643499732017517,
+     "total_seconds": 0.386696171015501,
+     "slowest_seconds": 0.006039664149284363,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0015699677169322968,
-     "slowest_seconds": 0.0015699677169322968,
+     "total_seconds": 0.001268640160560608,
+     "slowest_seconds": 0.001268640160560608,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012976471334695816,
-     "slowest_seconds": 0.0012976471334695816,
+     "total_seconds": 0.0010082609951496124,
+     "slowest_seconds": 0.0010082609951496124,
      "statuses": [
       200
      ]
@@ -5134,85 +5174,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.49,
-   "observe_seconds": 0.39,
+   "startup_seconds": 0.7,
+   "observe_seconds": 0.42,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0014448463916778564,
-     "slowest_seconds": 0.0014448463916778564,
+     "total_seconds": 0.0016690250486135483,
+     "slowest_seconds": 0.0016690250486135483,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0012682247906923294,
-     "slowest_seconds": 0.0012682247906923294,
+     "total_seconds": 0.0022649522870779037,
+     "slowest_seconds": 0.0022649522870779037,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0012624748051166534,
-     "slowest_seconds": 0.0012624748051166534,
+     "total_seconds": 0.0018016118556261063,
+     "slowest_seconds": 0.0018016118556261063,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0005591809749603271,
-     "slowest_seconds": 0.0005591809749603271,
+     "total_seconds": 0.000940391793847084,
+     "slowest_seconds": 0.000940391793847084,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0017858520150184631,
-     "slowest_seconds": 0.0017858520150184631,
+     "total_seconds": 0.0027840640395879745,
+     "slowest_seconds": 0.0027840640395879745,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 19,
-     "total_seconds": 0.02447628043591976,
-     "slowest_seconds": 0.001991795375943184,
+     "total_seconds": 0.0316500011831522,
+     "slowest_seconds": 0.002224268391728401,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 19,
-     "total_seconds": 0.012727851048111916,
-     "slowest_seconds": 0.0007722899317741394,
+     "total_seconds": 0.015794411301612854,
+     "slowest_seconds": 0.000992320477962494,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 158,
-     "total_seconds": 0.15847849659621716,
-     "slowest_seconds": 0.0017292890697717667,
+     "total_seconds": 0.1922167595475912,
+     "slowest_seconds": 0.0018615946173667908,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0012150872498750687,
-     "slowest_seconds": 0.0012150872498750687,
+     "total_seconds": 0.0014839023351669312,
+     "slowest_seconds": 0.0014839023351669312,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0010785646736621857,
-     "slowest_seconds": 0.0010785646736621857,
+     "total_seconds": 0.0012289751321077347,
+     "slowest_seconds": 0.0012289751321077347,
      "statuses": [
       200
      ]
@@ -5221,85 +5261,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.47,
-   "observe_seconds": 0.1,
+   "startup_seconds": 0.5,
+   "observe_seconds": 0.15,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0028610359877347946,
-     "slowest_seconds": 0.0028610359877347946,
+     "total_seconds": 0.008904479444026947,
+     "slowest_seconds": 0.008904479444026947,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.001834183931350708,
-     "slowest_seconds": 0.001834183931350708,
+     "total_seconds": 0.002187594771385193,
+     "slowest_seconds": 0.002187594771385193,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0013031978160142899,
-     "slowest_seconds": 0.0013031978160142899,
+     "total_seconds": 0.0039004310965538025,
+     "slowest_seconds": 0.0039004310965538025,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0007029511034488678,
-     "slowest_seconds": 0.0007029511034488678,
+     "total_seconds": 0.0009421482682228088,
+     "slowest_seconds": 0.0009421482682228088,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0013155434280633926,
-     "slowest_seconds": 0.0013155434280633926,
+     "total_seconds": 0.004752788692712784,
+     "slowest_seconds": 0.004752788692712784,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 19,
-     "total_seconds": 0.02971864491701126,
-     "slowest_seconds": 0.002920331433415413,
+     "total_seconds": 0.05989379249513149,
+     "slowest_seconds": 0.008566053584218025,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 19,
-     "total_seconds": 0.013384582474827766,
-     "slowest_seconds": 0.0007795877754688263,
+     "total_seconds": 0.013573836535215378,
+     "slowest_seconds": 0.0008087456226348877,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 37,
-     "total_seconds": 0.040446262806653976,
-     "slowest_seconds": 0.0016048047691583633,
+     "total_seconds": 0.046695100143551826,
+     "slowest_seconds": 0.0014678966253995895,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.00124419666826725,
-     "slowest_seconds": 0.00124419666826725,
+     "total_seconds": 0.001659901812672615,
+     "slowest_seconds": 0.001659901812672615,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0012417081743478775,
-     "slowest_seconds": 0.0012417081743478775,
+     "total_seconds": 0.0014161933213472366,
+     "slowest_seconds": 0.0014161933213472366,
      "statuses": [
       200
      ]
@@ -5353,85 +5393,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.41,
-   "observe_seconds": 0.4,
+   "startup_seconds": 0.52,
+   "observe_seconds": 0.37,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0012432727962732315,
-     "slowest_seconds": 0.0012432727962732315,
+     "total_seconds": 0.0010285265743732452,
+     "slowest_seconds": 0.0010285265743732452,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0015466995537281036,
-     "slowest_seconds": 0.0015466995537281036,
+     "total_seconds": 0.0012465473264455795,
+     "slowest_seconds": 0.0012465473264455795,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0012964550405740738,
-     "slowest_seconds": 0.0012964550405740738,
+     "total_seconds": 0.0010819211602210999,
+     "slowest_seconds": 0.0010819211602210999,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0009557511657476425,
-     "slowest_seconds": 0.0009557511657476425,
+     "total_seconds": 0.000582035630941391,
+     "slowest_seconds": 0.000582035630941391,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002041079103946686,
-     "slowest_seconds": 0.002041079103946686,
+     "total_seconds": 0.0017650015652179718,
+     "slowest_seconds": 0.0017650015652179718,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 19,
-     "total_seconds": 0.027337100356817245,
-     "slowest_seconds": 0.0018120277673006058,
+     "total_seconds": 0.023706983774900436,
+     "slowest_seconds": 0.0016148164868354797,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 19,
-     "total_seconds": 0.013442501425743103,
-     "slowest_seconds": 0.0008007083088159561,
+     "total_seconds": 0.012631319463253021,
+     "slowest_seconds": 0.0007705632597208023,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 145,
-     "total_seconds": 0.16796930506825447,
-     "slowest_seconds": 0.0019685253500938416,
+     "total_seconds": 0.15856044553220272,
+     "slowest_seconds": 0.001795060932636261,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.001775277778506279,
-     "slowest_seconds": 0.001775277778506279,
+     "total_seconds": 0.0014464929699897766,
+     "slowest_seconds": 0.0014464929699897766,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0013971459120512009,
-     "slowest_seconds": 0.0013971459120512009,
+     "total_seconds": 0.001279270276427269,
+     "slowest_seconds": 0.001279270276427269,
      "statuses": [
       200
      ]
@@ -5440,85 +5480,85 @@
    "compute_calls": []
   },
   "check": {
-   "startup_seconds": 0.4,
-   "observe_seconds": 0.25,
+   "startup_seconds": 0.47,
+   "observe_seconds": 0.28,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.005614398047327995,
-     "slowest_seconds": 0.005614398047327995,
+     "total_seconds": 0.006074672564864159,
+     "slowest_seconds": 0.006074672564864159,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.004422659054398537,
-     "slowest_seconds": 0.004422659054398537,
+     "total_seconds": 0.004754679277539253,
+     "slowest_seconds": 0.004754679277539253,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.006512453779578209,
-     "slowest_seconds": 0.006512453779578209,
+     "total_seconds": 0.004133354872465134,
+     "slowest_seconds": 0.004133354872465134,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0007609855383634567,
-     "slowest_seconds": 0.0007609855383634567,
+     "total_seconds": 0.0038149990141391754,
+     "slowest_seconds": 0.0038149990141391754,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002207614481449127,
-     "slowest_seconds": 0.002207614481449127,
+     "total_seconds": 0.0022736508399248123,
+     "slowest_seconds": 0.0022736508399248123,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 19,
-     "total_seconds": 0.053205618634819984,
-     "slowest_seconds": 0.008500413969159126,
+     "total_seconds": 0.05548327974975109,
+     "slowest_seconds": 0.007383318617939949,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 19,
-     "total_seconds": 0.011574745178222656,
-     "slowest_seconds": 0.0008261408656835556,
+     "total_seconds": 0.01298644207417965,
+     "slowest_seconds": 0.0007416754961013794,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 158,
-     "total_seconds": 0.1576370969414711,
-     "slowest_seconds": 0.0020171236246824265,
+     "total_seconds": 0.17327167466282845,
+     "slowest_seconds": 0.002576945349574089,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0016872696578502655,
-     "slowest_seconds": 0.0016872696578502655,
+     "total_seconds": 0.0015813745558261871,
+     "slowest_seconds": 0.0015813745558261871,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0011082421988248825,
-     "slowest_seconds": 0.0011082421988248825,
+     "total_seconds": 0.0012680180370807648,
+     "slowest_seconds": 0.0012680180370807648,
      "statuses": [
       200
      ]
@@ -5550,85 +5590,85 @@
   "data_only": false,
   "mode": "own-tree",
   "record": {
-   "startup_seconds": 0.5,
-   "observe_seconds": 0.32,
+   "startup_seconds": 0.49,
+   "observe_seconds": 0.37,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.0011898726224899292,
-     "slowest_seconds": 0.0011898726224899292,
+     "total_seconds": 0.0010652728378772736,
+     "slowest_seconds": 0.0010652728378772736,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0016180891543626785,
-     "slowest_seconds": 0.0016180891543626785,
+     "total_seconds": 0.0013733915984630585,
+     "slowest_seconds": 0.0013733915984630585,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.0017613749951124191,
-     "slowest_seconds": 0.0017613749951124191,
+     "total_seconds": 0.0011761728674173355,
+     "slowest_seconds": 0.0011761728674173355,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.000810692086815834,
-     "slowest_seconds": 0.000810692086815834,
+     "total_seconds": 0.0005790591239929199,
+     "slowest_seconds": 0.0005790591239929199,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.002531062811613083,
-     "slowest_seconds": 0.002531062811613083,
+     "total_seconds": 0.00169326551258564,
+     "slowest_seconds": 0.00169326551258564,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 18,
-     "total_seconds": 0.025975031778216362,
-     "slowest_seconds": 0.0019004028290510178,
+     "total_seconds": 0.02149977721273899,
+     "slowest_seconds": 0.0015494860708713531,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 18,
-     "total_seconds": 0.012732280418276787,
-     "slowest_seconds": 0.0008442569524049759,
+     "total_seconds": 0.011083856225013733,
+     "slowest_seconds": 0.0006883833557367325,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 113,
-     "total_seconds": 0.12162010557949543,
-     "slowest_seconds": 0.001794811338186264,
+     "total_seconds": 0.1621556654572487,
+     "slowest_seconds": 0.0076490286737680435,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0011867880821228027,
-     "slowest_seconds": 0.0011867880821228027,
+     "total_seconds": 0.0013921745121479034,
+     "slowest_seconds": 0.0013921745121479034,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0009750816971063614,
-     "slowest_seconds": 0.0009750816971063614,
+     "total_seconds": 0.0012334194034337997,
+     "slowest_seconds": 0.0012334194034337997,
      "statuses": [
       200
      ]
@@ -5638,84 +5678,84 @@
   },
   "check": {
    "startup_seconds": 0.35,
-   "observe_seconds": 0.2,
+   "observe_seconds": 0.19,
    "templates": {
     "GET /api/manifest": {
      "count": 1,
-     "total_seconds": 0.002482350915670395,
-     "slowest_seconds": 0.002482350915670395,
+     "total_seconds": 0.004238784313201904,
+     "slowest_seconds": 0.004238784313201904,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/registry": {
      "count": 1,
-     "total_seconds": 0.0026510003954172134,
-     "slowest_seconds": 0.0026510003954172134,
+     "total_seconds": 0.0015835613012313843,
+     "slowest_seconds": 0.0015835613012313843,
      "statuses": [
       200
      ]
     },
     "GET /api/taxonomy/tree": {
      "count": 1,
-     "total_seconds": 0.002301182597875595,
-     "slowest_seconds": 0.002301182597875595,
+     "total_seconds": 0.001139974221587181,
+     "slowest_seconds": 0.001139974221587181,
      "statuses": [
       200
      ]
     },
     "GET /api/cost-landscape": {
      "count": 1,
-     "total_seconds": 0.0006642285734415054,
-     "slowest_seconds": 0.0006642285734415054,
+     "total_seconds": 0.0006212107837200165,
+     "slowest_seconds": 0.0006212107837200165,
      "statuses": [
       404
      ]
     },
     "GET /api/parameter_index": {
      "count": 1,
-     "total_seconds": 0.0018152762204408646,
-     "slowest_seconds": 0.0018152762204408646,
+     "total_seconds": 0.0017950069159269333,
+     "slowest_seconds": 0.0017950069159269333,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}": {
      "count": 18,
-     "total_seconds": 0.023025421425700188,
-     "slowest_seconds": 0.0016750562936067581,
+     "total_seconds": 0.02239767089486122,
+     "slowest_seconds": 0.00159483402967453,
      "statuses": [
       200
      ]
     },
     "GET /api/concepts/{id}/findings": {
      "count": 18,
-     "total_seconds": 0.012437555938959122,
-     "slowest_seconds": 0.0008630063384771347,
+     "total_seconds": 0.011632516980171204,
+     "slowest_seconds": 0.0007242970168590546,
      "statuses": [
       404
      ]
     },
     "GET /api/parameters/{name}": {
      "count": 145,
-     "total_seconds": 0.14593183062970638,
-     "slowest_seconds": 0.0018198825418949127,
+     "total_seconds": 0.13844755291938782,
+     "slowest_seconds": 0.002213982865214348,
      "statuses": [
       200
      ]
     },
     "POST /api/state:concept": {
      "count": 1,
-     "total_seconds": 0.0013418309390544891,
-     "slowest_seconds": 0.0013418309390544891,
+     "total_seconds": 0.0011484958231449127,
+     "slowest_seconds": 0.0011484958231449127,
      "statuses": [
       200
      ]
     },
     "POST /api/state:compare": {
      "count": 1,
-     "total_seconds": 0.0008887182921171188,
-     "slowest_seconds": 0.0008887182921171188,
+     "total_seconds": 0.0010361801832914352,
+     "slowest_seconds": 0.0010361801832914352,
      "statuses": [
       200
      ]

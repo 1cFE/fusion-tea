@@ -4,22 +4,24 @@
 
 ## Verdict
 
-**Pass, on the combined set.** The report covers two selections:
+**Split on condition 1, after a core fix (corrected 2026-10-08, during Phase 2).** It passes counting the four findings-only pairs, and fails on the design's same-method count. The report covers two selections:
 
 - **The first set:** commits that touch the explorer. 28 replayable pairs.
 - **The second set:** commits that change files the server reads under `concept_analysis/` or the archive but don't touch the explorer. See [Second set](#second-set-concept-analysis-and-archive-commits).
 
 The second set adds no pair that replays the same way, and its four findings-only pairs trip nothing. So the combined numbers equal the first set's, or improve when those four are counted.
 
+**Correction.** Phase 2's self-test "field removed" found a core bug: a field removed from every response reported nothing, because flattening never saw the key and Shape skipped unobserved paths. Check now marks a pinned record field `absent` when its parent object is observed without it (`observed_shapes`, `contract.py`). Re-running the first set with the fixed core changed two pairs and nothing else: `84422dd08` gains `shape GET /api/concepts/{id} .sources`, a new false-block pair, and `8d597849b` gains three registry fields. [`results.json`](results.json) is the re-run.
+
 | Condition | Combined result | Same method only (design's "replayable": own-tree or fallback) | Counting the 4 findings-only pairs |
 |---|---|---|---|
 | Floor: at least 12 replayable pairs | **pass** | 28 | 32 |
-| 1. False blocks in at most 1 in 5 replayable pairs that don't add a concept | **pass** | 4 of 23 = 17% | 4 of 27 = 15% |
-| 2. No pair needs more than 3 waiver lines | **pass** | at most 2 (4 without wildcards, in `fd76070c2`) | at most 2 |
+| 1. False blocks in at most 1 in 5 replayable pairs that don't add a concept | **split** | **fail**: 5 of 23 = 22% | pass: 5 of 27 = 19% |
+| 2. No pair needs more than 3 waiver lines | **pass** | at most 2 (6 without wildcards, in `8d597849b`) | at most 2 |
 | 3. No trip from a misclassified map or record | **pass** | none | none |
 | 4. The 5 largest diffs show no break the rules let through | **pass, with two named residuals** | the first set's top 5 (see [Spot check](#spot-check-of-the-5-largest-diffs)) | `237c26f6c` replaces `8e2808860` in the top 5. 7 concepts gained an executive summary and none lost content |
 
-**`e553f70e1` is a replay artifact: confirmed by the orchestrator, 2026-10-08.** The parent had no `/api/cost-landscape` route (404) and the child added it (200), so the Status rule fired. A route appearing relative to the pin can't happen against the real pin, where every template records exactly `200`. So the trip stays out of the false-block count. (Counting it would give 5 of 23 = 22%.)
+**`e553f70e1` is a replay artifact: confirmed by the orchestrator, 2026-10-08.** The parent had no `/api/cost-landscape` route (404) and the child added it (200), so the Status rule fired. A route appearing relative to the pin can't happen against the real pin, where every template records exactly `200`. So the trip stays out of the false-block count. (Counting it would give 6 of 23 = 26%.)
 
 ## What ran
 
@@ -96,7 +98,7 @@ Keys are failure keys by rule. Every pair's keys and kinds are in `results.json`
 | 7 | `4a72b762f` | 2026-06-24 | fix(explorer): unblock regen + hide plasma-physics sliders f | own-tree | 1, +177/−9 | 0 |
 | 8 | `cc79fd0d3` | 2026-06-18 | fix(explorer): drop deprecated kwargs (b_center, r_bore) bef | own-tree | 1, +7/−0 | 0 |
 | 9 | `428c011ba` | 2026-06-18 | fix(explorer): restore slider compute end-to-end after PR #8 | own-tree | 2, +20/−1 | 0 |
-| 10 | `84422dd08` | 2026-06-15 | Merge pull request #82 from 1cFE/fix/explorer-derive-model-s | own-tree | 44, +65/−188 | 0 |
+| 10 | `84422dd08` | 2026-06-15 | Merge pull request #82 from 1cFE/fix/explorer-derive-model-s | own-tree | 44, +65/−188 | shape 1 |
 | 11 | `02124c13a` | 2026-06-15 | fix(explorer): re-encode stray Latin-1 × bytes in concept_re | unloadable | 1, +2/−2 | UnicodeDecodeError (fallback also failed) |
 | 12 | `9b9338732` | 2026-06-12 | fix(scoring): rewrite DA axis on design_point.csv + cost_mod | unloadable | 2, +6/−4 | UnicodeDecodeError |
 | 13 | `9fe1fc880` | 2026-06-11 | fix(explorer): correct concept 09 company mapping to Proxima | unloadable | 1, +1/−1 | UnicodeDecodeError |
@@ -121,7 +123,7 @@ Keys are failure keys by rule. Every pair's keys and kinds are in `results.json`
 | 32 | `f1c60dce0` | 2026-06-07 | Merge pull request #50 from 1cFE/fix/explorer-extractor-resi | own-tree | 1, +147/−93 | 0 |
 | 33 | `23f8110f1` | 2026-06-05 | Merge pull request #49 from 1cFE/fix/explorer-rework-unblock | own-tree | 2, +35/−14 | 0 |
 | 34 | `7c639d73d` | 2026-06-04 | Merge pull request #44 from 1cFE/concept-analysis-rework | own-tree | 1929, +102898/−84556 | shape 1 |
-| 35 | `8d597849b` | 2026-05-19 | Merge pull request #16 from 1cFE/ontology-update | own-tree | 126, +20556/−805 | shape 3, enum 1, concept-missing 2 |
+| 35 | `8d597849b` | 2026-05-19 | Merge pull request #16 from 1cFE/ontology-update | own-tree | 126, +20556/−805 | shape 6, enum 1, concept-missing 2 |
 | 36 | `8e2808860` | 2026-05-09 | Merge pull request #14 from 1cFE/sensitivity-sliders | own-tree | 176, +15734/−1063 | shape 1, unpopulated 1, concept-unlisted 74 |
 | 37 | `f84b36afb` | 2026-04-20 | Merge pull request #11 from 1cFE/concept-analysis-runs | own-tree | 869, +183940/−4813 | unpopulated 1, concept-missing 19, concept-unlisted 2 |
 | 38 | `22e15bd07` | 2026-04-20 | Scaling 1gw (#9) | own-tree | 48, +5786/−4477 | shape 1 |
@@ -131,7 +133,7 @@ Keys are failure keys by rule. Every pair's keys and kinds are in `results.json`
 **Per-rule trip counts** (keys, then pairs, over the 28 replayable pairs):
 
 - Status: 6 keys in 3 pairs.
-- Shape: 7 keys in 5 pairs.
+- Shape: 11 keys in 6 pairs.
 - Unpopulated: 7 keys in 4 pairs.
 - Enum: 1 key in 1 pair. Literal: 0.
 - Concepts: 125 keys in 9 pairs. That is `concept-missing` 41 keys in 6 pairs, plus `concept-unlisted` 84 keys in 5 pairs.
@@ -152,6 +154,7 @@ Keys are failure keys by rule. Every pair's keys and kinds are in `results.json`
 | `80c56d9f6` | `concept-unlisted {manifest,parameters/{name}} {26,39}` | Concepts (adds concepts) | new data files | — | — |
 | `f881a241e` | `concept-missing cost-landscape {06,19,28}` | Concepts | deliberate DATA_GROUNDED hide; the bar drops (`cost_landscape_page.js:592-598`) | — | — |
 | `532759ca1` | `concept-missing cost-landscape {02,03,16,35}` | Concepts | deliberate freeform hide | — | — |
+| `84422dd08` | `shape GET /api/concepts/{id} .sources` (gains `absent`: the field left every concept) | False block | the pinned JS never reads `sources`; its only mention is a comment, `concept_page.js:461` | root: record (`ConceptData`), right | 1 |
 | `fd76070c2` | `unpopulated GET /api/concepts/{id} .cost_model.cas71`, `… .cas72` | False block | no pinned JS file reads `cas71` or `cas72` (grep over `static/js`); Appendix C lists them as never read | `.cost_model`: record (`CostModelData`), right | 1: `unpopulated GET /api/concepts/{id} .cost_model.*` |
 | | `unpopulated GET /api/cost-landscape .concepts[].components.fixed_om`, `… .replacement` | False block | read with a null check, and the split is drawn when both are numbers (`cost_landscape_page.js:145-149`) | `.concepts[].components`: record (`CostComponents`), right | 1: `unpopulated GET /api/cost-landscape .concepts[].components.*` |
 | `e553f70e1` | `status GET /api/cost-landscape` | Artifact (confirmed by the orchestrator, 2026-10-08) | the route didn't exist at the parent (404); the 10f7b9b request list is newer than the parent | — | — |
@@ -161,7 +164,8 @@ Keys are failure keys by rule. Every pair's keys and kinds are in `results.json`
 | `7c639d73d` | `shape GET /api/concepts/{id} .narrative` (gains `null`, concept 01) | False block | null-checked (`concept_page.js:507,789,798`) | root: record (`ConceptData`), right | 1 |
 | `8d597849b` | `concept-missing {registry,tree} 34` | Concepts | dropped from the taxonomy | — | — |
 | | `enum GET /api/taxonomy/registry .concepts[].magnet_type` | Real break | the child serves `"None"` for 6 concepts, a value the parent's `MagnetType` lacked. The matrix shows a value missing from its palette as a grey "unrecognized value" chip that can't be filtered (`matrix_page.js:103-106`). The 10f7b9b palette does carry `None` (`ontology_palette.js:59`) | `.concepts[]`: record (`ConceptTaxonomy`), right | — |
-| | `shape GET /api/taxonomy/registry .concepts[].energy_capture` (gains `null`) | False block | rendered as "not recorded" (`matrix_page.js:107-109`) and "N/A" (`view_categorical.js:125`) | `.concepts[]`: record, right | 1 |
+| | `shape GET /api/taxonomy/registry .concepts[].energy_capture` (gains `null`) | False block | rendered as "not recorded" (`matrix_page.js:107-109`) and "N/A" (`view_categorical.js:125`) | `.concepts[]`: record, right | 1, with the next row: `shape GET /api/taxonomy/registry .concepts[].*` |
+| | `shape GET /api/taxonomy/registry .concepts[].neutron_management`, `… .plasma_state`, `… .tritium_breeding` (gain `absent`: the fields left the model) | False block | no pinned JS file names any of the three (`git grep` over `static/js` and `templates` at `10f7b9b`) | `.concepts[]`: record, right | (the line above) |
 | | `shape GET /api/taxonomy/tree .root.children[].children`, `… .field` (gain `absent`) | False block | the walk reads `node.children \|\| []` and `node.concepts \|\| []` (`matrix_data.js:149-175`); `field` is never read (Appendix C) | tree node: record (untyped `dict`, fixed keys), right | 1: `shape GET /api/taxonomy/tree .root.children[].*` |
 | `8e2808860` | `concept-unlisted {manifest,parameters/{name}}` × 37 IDs | Concepts (adds concepts) | the parent's on-disk `manifest.json` (served as-is then) listed only `19` after a partial extraction | — | — |
 | | `shape GET /api/manifest .concepts[].company` (gains `null`) | False block | guarded (`index_page.js:125`, `matrix_page.js:130`) | manifest entry: record, right | 1 |
@@ -174,9 +178,9 @@ Keys are failure keys by rule. Every pair's keys and kinds are in `results.json`
 
 **Counting.** 5 replayable pairs add a concept: `80c56d9f6`, `c36b7201e`, `8e2808860`, `f84b36afb`, `3e1458964`. That leaves 23 pairs in the denominator.
 
-- **False-block rate: 4 / 23 = 17%.** The pairs are `fd76070c2`, `7c639d73d`, `8d597849b` and `22e15bd07`.
-- Counting the `e553f70e1` artifact: 5 / 23 = 22%. The orchestrator confirmed it is an artifact, so it stays out.
-- Ignoring the concept-adding exclusion: 8 of 28 replayable pairs carry a false block (29%).
+- **False-block rate: 5 / 23 = 22%.** The pairs are `84422dd08`, `fd76070c2`, `7c639d73d`, `8d597849b` and `22e15bd07`.
+- Counting the `e553f70e1` artifact: 6 / 23 = 26%. The orchestrator confirmed it is an artifact, so it stays out.
+- Ignoring the concept-adding exclusion: 9 of 28 replayable pairs carry a false block (32%).
 - **Max waiver lines per pair for false blocks:** 2 (`fd76070c2` and `8d597849b`).
 - **Real breaks caught:** `bd4c403d3` and `c36b7201e` (dropped concepts' pages 404), and `8d597849b` (enum value outside the palette).
 
@@ -320,7 +324,7 @@ Over 22 loadable pairs and 4 findings-only pairs, every rule recorded zero trips
 3. **Appendix B undercounts maps.** The `POST /api/state` response is declared `dict[str, str]`, so the design's own rule makes it a map (`POST /api/state:* .{*}`). Phase 3's self-test, "the committed `{*}` paths equal Appendix B's six fields", needs that seventh entry.
 4. **N4 doesn't fit unread paths: resolved.** N4 requires an Unpopulated waiver to cite JavaScript that reads the path, but the `fd76070c2` false block on `cas71`/`cas72` is a path nothing reads. Orchestrator decision (2026-10-08), recorded in the plan's Phase 2 notes: the evidence carries either a `file.js:N` cite of the JS that reads the path, or `unread:` followed by the search terms that show no pinned JS file reads it.
 5. **The extract is about 44 MB, not 21 MB.** Measured with `du --apparent-size` on `git archive` output of the three runtime paths: `concept_analysis` 23 MB and the archive 25 MB. Recorded in the plan's Phase 7 notes for the checkout estimate.
-6. **Hold rate is high in history, and zero for false blocks lately.** 13 of 28 replayable pairs would have held. Most of those are concept-set changes from the April–June build-out (Concepts rule) or real breaks. The newest false-block pair is `fd76070c2` (2026-06-08). None of the 14 replayable pairs after it has a false block. The only hold since hosting started (`bd4c403d3`) is a real concept drop.
+6. **Hold rate is high in history, and zero for false blocks lately.** 14 of 28 replayable pairs would have held. Most of those are concept-set changes from the April–June build-out (Concepts rule) or real breaks. The newest false-block pair is `84422dd08` (2026-06-15), which removed a field nothing pinned reads. None of the 8 replayable pairs after it has a false block. The only hold since hosting started (`bd4c403d3`) is a real concept drop.
 7. **Compute timing.** Compute is about 24 s locally, nearly all module import (see the timing section). The planned trim would save nothing.
 8. **The second set adds nothing the same method can replay.**
    - Every loadable explorer-free commit either changes nothing its own server reads (8), or changes only compute code (14).

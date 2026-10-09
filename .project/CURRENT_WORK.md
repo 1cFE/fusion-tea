@@ -1,7 +1,11 @@
+# Explorer API contract gate — Phase 2 done; Phase 1 rate corrected — 2026-10-08
+
+[AGENT] Phase 2 added waivers, the CORS rule and the `contract.py check` CLI, with Appendix D's break, pass and waiver self-tests (49, plus `test_cors.py`: 76 pass). Its "field removed" test found a core bug: a field removed from every response passed silently. Fixed in `observed_shapes`. Re-running Phase 1's first set with the fix adds one false-block pair, `84422dd08` (2026-06-15, `sources` removed, unread at the pin). The false-block rate is now 5 of 23 (22%, fails condition 1) on the design's count, or 5 of 27 (19%, passes) on the combined count the go-ahead used. The orchestrator should tell the owner the corrected figure. Details: plan Phase 2 Completion. Next: Phase 3. Nothing is pushed.
+
 # Explorer API contract gate — Phase 1 done at its hard stop — 2026-10-08
 
 [AGENT] Phase 1 built the real contract core (`exploration/concept_explorer/website_contract/contract.py`) and replayed history with it.
-- The verdict is a pass on the combined set. The false-block rate is 4 of 23 (17%) over the design's replayable pairs, or 4 of 27 (15%) counting four findings-only pairs. At most 2 waiver lines per pair, no misclassified maps, and 28 (or 32) replayable pairs against a floor of 12.
+- The verdict is a pass on the combined set. The false-block rate is 5 of 23 (22%) over the design's replayable pairs, or 5 of 27 (19%) counting four findings-only pairs (corrected during Phase 2; first reported as 17% and 15%). At most 2 waiver lines per pair, no misclassified maps, and 28 (or 32) replayable pairs against a floor of 12.
 - The orchestrator confirmed `e553f70e1` as a replay artifact.
 - The second set covers explorer-free commits that change what the server reads under `concept_analysis`/archive: 27 commits, judged by each commit's own audited server reads. It adds no pair that replays the same way, and its four findings-only pairs trip nothing. Compute effects of model-code churn stay unmeasurable by replay.
 - Decided for later phases: Unpopulated waiver evidence may be `unread:` plus search terms (Phase 2), and the checkout estimate uses the 44 MB extract (Phase 7).

@@ -6,16 +6,22 @@ server and writes contract.txt; check observes the checkout's server with the sa
 requests and reports, as failure keys, every change the pinned frontend could break on.
 Design: .project/active/explorer-api-contract-gate/design.md.
 
+    contract.py check [--tree ROOT] [--contract FILE] [--waivers FILE]
+
 Module-level imports are standard library only. The server and FastAPI load inside
 `serve`, so this file can run before a serving venv exists.
 """
 
 from __future__ import annotations
 
+import argparse
+import datetime
 import math
 import os
 import re
+import sys
 import time
+import tomllib
 import urllib.parse
 from collections import defaultdict
 from collections.abc import Callable, Collection, Iterable, Iterator, Mapping, Sequence
@@ -123,6 +129,7 @@ LITERAL_READS: dict[tuple[str, str], tuple[str, ...]] = {
 }
 
 WEBSITE_ORIGIN = "https://1cf.energy"
+EXPLORER = Path("exploration/concept_explorer")  # the explorer app, relative to a repo root
 
 # ---------------------------------------------------------------------------
 # Observe: serve a tree and send every request the pinned frontend makes
@@ -135,6 +142,7 @@ class Response:
     status: int
     body: Any  # parsed JSON when the status is 2xx, else None
     seconds: float
+    allow_origin: str | None  # the access-control-allow-origin header, if any
 
     @property
     def ok(self) -> bool:
@@ -182,11 +190,11 @@ def observe(client: Any, concept_ids: Sequence[str], skip: Collection[str] = ())
     def send(template: str, instance: str | None, call: Callable[[], Any]) -> Any:
         if template not in observation:
             return None
-        start = time.perf_counter()
-        response = call()
-        seconds = time.perf_counter() - start
+        response, seconds = _timed(call)
         body = response.json() if _is_success(response.status_code) else None
-        observation[template].append(Response(instance, response.status_code, body, seconds))
+        observation[template].append(
+            Response(instance, response.status_code, body, seconds, _allow_origin(response))
+        )
         return body
 
     def get(template: str, instance: str | None, url: str) -> Any:
@@ -242,6 +250,17 @@ def observe(client: Any, concept_ids: Sequence[str], skip: Collection[str] = ())
         if sends_toggle(concept):
             post(TOGGLE, concept_id, _compute_body(concept_id, {}, apply_overrides=False))
     return observation
+
+
+def _timed(call: Callable[..., Any], *args: Any, **kwargs: Any) -> tuple[Any, float]:
+    """`call(*args, **kwargs)` and the seconds it took."""
+    start = time.perf_counter()
+    result = call(*args, **kwargs)
+    return result, time.perf_counter() - start
+
+
+def _allow_origin(response: Any) -> str | None:
+    return response.headers.get("access-control-allow-origin")
 
 
 def page_sliders(concept: Mapping[str, Any]) -> dict[str, float]:
@@ -763,8 +782,24 @@ def check(observation: Observation, contract: Contract) -> list[str]:
 def observed_shapes(
     observation: Observation, contract: Contract
 ) -> dict[tuple[str, str], frozenset[str]]:
-    """The observation's shapes, flattened with the contract's map and enum paths."""
-    return shapes_of(observation, contract.maps, _enum_paths(contract))
+    """The observation's shapes, flattened with the contract's map and enum paths.
+
+    A pinned record field that no object at its parent path carries any more is
+    `absent`. Flattening alone can't say so, because it never saw the key.
+    """
+    shapes = shapes_of(observation, contract.maps, _enum_paths(contract))
+    for template, path in contract.shapes.keys() - shapes.keys():
+        parent = _record_parent(path)
+        if parent is not None and "object" in shapes.get((template, parent), ()):
+            shapes[(template, path)] = frozenset({"absent"})
+    return shapes
+
+
+def _record_parent(path: str) -> str | None:
+    """'.a.b' -> '.a' and '.b' -> '.'; None for an array or map element path."""
+    if path == "." or path.endswith(("[]", "{*}")):
+        return None
+    return path.rsplit(".", 1)[0] or "."
 
 
 def _enum_paths(contract: Contract) -> dict[tuple[str, str], str]:
@@ -843,3 +878,236 @@ def coverage_failures(observation: Observation, contract: Contract) -> set[str]:
 
 def _key(rule: str, template: str, detail: str | None) -> str:
     return " ".join([rule, template] + ([detail] if detail is not None else []))
+
+
+def _rule(key: str) -> str:
+    """The rule a failure key reports: its first token."""
+    return key.split(" ", 1)[0]
+
+
+# ---------------------------------------------------------------------------
+# CORS: the fixed rule (rules table). Checked on every response, never recorded,
+# because the pinned server had no CORS.
+# ---------------------------------------------------------------------------
+
+PREFLIGHTS = ("OPTIONS /api/compute", "OPTIONS /api/state")
+
+
+def preflight(client: Any) -> Observation:
+    """Send the preflight a browser sends before each of the website's JSON POSTs."""
+    headers = {
+        "Origin": WEBSITE_ORIGIN,
+        "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "content-type",
+    }
+    observation: Observation = {}
+    for template in PREFLIGHTS:
+        response, seconds = _timed(client.options, _route(template), headers=headers)
+        observation[template] = [
+            Response(None, response.status_code, None, seconds, _allow_origin(response))
+        ]
+    return observation
+
+
+def cors_failures(observation: Observation) -> set[str]:
+    """A response the website's origin may not read, or a preflight that didn't succeed."""
+    return {
+        _key("cors", template, None)
+        for template, responses in observation.items()
+        for r in responses
+        if r.allow_origin != WEBSITE_ORIGIN or (template in PREFLIGHTS and r.status != 200)
+    }
+
+
+# ---------------------------------------------------------------------------
+# Record and check a whole tree
+# ---------------------------------------------------------------------------
+
+
+def record_tree(tree: Path, pin: str, tools: Iterable[str], js: Mapping[str, str]) -> Contract:
+    """Serve the explorer in repo root `tree` and record the contract its responses establish."""
+    with serve(tree / EXPLORER) as client:
+        schema = classify(client.get("/openapi.json").json())
+        observation = observe(client, manifest_concept_ids(client))
+    return record(observation, schema, pin, tools, js)
+
+
+def check_tree(tree: Path, contract: Contract) -> list[str]:
+    """Every failure key the explorer in repo root `tree` earns, CORS included, sorted."""
+    with serve(tree / EXPLORER) as client:
+        observation = observe(client, contract.concepts)
+        preflights = preflight(client)
+    return sorted(set(check(observation, contract)) | cors_failures({**observation, **preflights}))
+
+
+# ---------------------------------------------------------------------------
+# Waivers (D7, Appendix E): hand-written; each clears the failure keys its match names
+# ---------------------------------------------------------------------------
+
+UNWAIVABLE = frozenset({"cors"})  # rules whose keys are printed but never matched (M4)
+_WAIVER_FIELDS = ("match", "reason", "evidence", "date")
+# An unpopulated waiver must show the pinned JavaScript was read: a file.js:N cite of
+# the JS that reads the path, or "unread:" and the search terms that found no reader
+# (orchestrator, 2026-10-08, replacing N4's cite-only wording).
+_JS_CITE = re.compile(r"\b[\w-]+\.js:\d+")
+_UNREAD = re.compile(r"\bunread:\s*\S")
+_MATCH_PARTS = re.compile(r"([ .])")  # a key's separators: tokens by spaces, paths by dots
+
+
+class WaiverError(ValueError):
+    """waivers.toml breaks the waiver grammar."""
+
+
+@dataclass(frozen=True)
+class Waiver:
+    match: str
+    reason: str
+    evidence: str
+    date: datetime.date
+
+
+def load_waivers(path: Path) -> list[Waiver]:
+    """Read waivers.toml, raising WaiverError on anything outside the grammar."""
+    try:
+        document = tomllib.loads(path.read_text(encoding="utf-8"))
+    except tomllib.TOMLDecodeError as error:
+        raise WaiverError(str(error)) from error
+    entries = document.get("waiver", [])
+    if set(document) - {"waiver"} or not isinstance(entries, list):
+        raise WaiverError("write each waiver as a [[waiver]] table, and nothing else")
+    return [_waiver(entry, f"waiver {number}") for number, entry in enumerate(entries, 1)]
+
+
+def _waiver(entry: Mapping[str, Any], where: str) -> Waiver:
+    if set(entry) != set(_WAIVER_FIELDS):
+        raise WaiverError(
+            f"{where}: needs exactly the fields {', '.join(_WAIVER_FIELDS)}, "
+            f"has {', '.join(sorted(entry)) or 'none'}"
+        )
+    for field in ("match", "reason", "evidence"):
+        if not isinstance(entry[field], str) or not entry[field].strip():
+            raise WaiverError(f"{where}: {field} must be a non-empty string")
+    if not isinstance(entry["date"], datetime.date):
+        raise WaiverError(f"{where}: date must be a TOML date, like 2026-10-08")
+    waiver = Waiver(**entry)
+    _check_match(waiver.match, where)
+    if waiver.match.startswith("unpopulated ") and not (
+        _JS_CITE.search(waiver.evidence) or _UNREAD.search(waiver.evidence)
+    ):
+        raise WaiverError(
+            f"{where}: an unpopulated waiver's evidence must cite the JavaScript that reads "
+            "the path (file.js:N), or say 'unread:' and the search terms that found no reader"
+        )
+    return waiver
+
+
+def _check_match(match: str, where: str) -> None:
+    """A match is a failure key, with `*` standing for one whole token or path segment."""
+    tokens = match.split(" ")
+    if "" in tokens:
+        raise WaiverError(f"{where}: match {match!r} must be tokens separated by single spaces")
+    if "*" in tokens[0]:
+        raise WaiverError(f"{where}: match {match!r} must name its rule; * can't stand for it")
+    for part in _MATCH_PARTS.split(match):
+        if "*" in part.replace("{*}", "") and part != "*":
+            raise WaiverError(f"{where}: * must be a whole token or path segment, not {part!r}")
+
+
+def waiver_matches(match: str, key: str) -> bool:
+    """Whether a waiver's match names `key`: equal parts, each `*` standing for any one."""
+    pattern = "".join(
+        "[^ .]+" if part == "*" else re.escape(part) for part in _MATCH_PARTS.split(match)
+    )
+    return re.fullmatch(pattern, key) is not None
+
+
+@dataclass(frozen=True)
+class Verdict:
+    failing: tuple[str, ...]  # failure keys no waiver clears
+    waived: tuple[str, ...]  # failure keys a waiver clears
+    stale: tuple[Waiver, ...]  # waivers that match no waivable failure
+
+
+def apply_waivers(failures: Sequence[str], waivers: Sequence[Waiver]) -> Verdict:
+    """Split failures into waived and failing; CORS keys are never waived."""
+    waivable = [key for key in failures if _rule(key) not in UNWAIVABLE]
+    waived = {key for key in waivable if any(waiver_matches(w.match, key) for w in waivers)}
+    return Verdict(
+        failing=tuple(key for key in failures if key not in waived),
+        waived=tuple(key for key in failures if key in waived),
+        stale=tuple(w for w in waivers if not any(waiver_matches(w.match, k) for k in waivable)),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Command line (gate.sh runs `contract.py check` on every push)
+# ---------------------------------------------------------------------------
+
+EXIT_FAILED = 1  # an unwaived failure
+EXIT_CONFIG = 2  # waivers.toml breaks the grammar
+_HERE = Path(__file__).resolve().parent
+
+# What each rule's failure means, printed under the keys for a reader without the code.
+_RULE_MEANINGS = {
+    "status": "a request the website sends no longer gets the status it got at the pin",
+    "shape": "a response path now carries a JSON kind the website never received there",
+    "unpopulated": "a path the pin only sent empty now carries data; read the pinned JS first",
+    "enum": "a value outside the enum the pinned website knows",
+    "literal": "a value outside the set the pinned JavaScript compares against",
+    "concept-missing": "a website concept left a list the website joins by concept ID",
+    "concept-unlisted": "a concept the website doesn't list appears where it builds links",
+    "coverage": "a concept no longer gets a feature (findings, sliders, toggle) it had at the pin",
+    "cors": "the website's origin may not read this response; fix the allowlist, never waive",
+}
+
+
+def main(argv: Sequence[str]) -> int:
+    parser = argparse.ArgumentParser(prog="contract.py", description=__doc__.split("\n")[0])
+    commands = parser.add_subparsers(required=True)
+    check_parser = commands.add_parser("check", help="check a checkout against contract.txt")
+    check_parser.add_argument("--tree", type=Path, default=_HERE.parents[2], help="repo root")
+    check_parser.add_argument("--contract", type=Path, default=_HERE / "contract.txt")
+    check_parser.add_argument("--waivers", type=Path, default=_HERE / "waivers.toml")
+    check_parser.set_defaults(command=_check_command)
+    args = parser.parse_args(argv)
+    return args.command(args)
+
+
+def _check_command(args: argparse.Namespace) -> int:
+    contract = parse(args.contract.read_text(encoding="utf-8"))
+    try:
+        waivers = load_waivers(args.waivers)
+    except WaiverError as error:
+        print(f"configuration error in {args.waivers}: {error}")
+        return EXIT_CONFIG
+    tree = args.tree.resolve()
+    sys.path.insert(0, str(tree))  # import the server from the tree under check
+    verdict = apply_waivers(check_tree(tree, contract), waivers)
+    print(report(verdict, contract.pin))
+    return EXIT_FAILED if verdict.failing else 0
+
+
+def report(verdict: Verdict, pin: str) -> str:
+    """One line per failure key, waived key and stale waiver, then what the rules mean."""
+    lines = [f"FAIL {key}" for key in verdict.failing]
+    lines += [f"WAIVED {key}" for key in verdict.waived]
+    lines += [f"STALE {w.match}" for w in verdict.stale]
+    rules = sorted({_rule(key) for key in verdict.failing})
+    if rules:
+        lines += ["", "Each key is the rule, the request, then a path or instance. Rules failing:"]
+        lines += [f"  {rule}: {_RULE_MEANINGS[rule]}" for rule in rules]
+        lines += [
+            "A false block clears with a [[waiver]] in "
+            "exploration/concept_explorer/website_contract/waivers.toml (RUNBOOK, Deploy gate)."
+        ]
+    if verdict.stale:
+        lines.append("Delete each STALE waiver: it matches no failure any more.")
+    lines.append(
+        f"website contract (pin {pin[:9]}): {len(verdict.failing)} failing, "
+        f"{len(verdict.waived)} waived, {len(verdict.stale)} stale waivers"
+    )
+    return "\n".join(lines)
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
