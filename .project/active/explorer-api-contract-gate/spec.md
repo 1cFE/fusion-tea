@@ -1,6 +1,6 @@
 # Spec: Concept Explorer API Contract Gate
 
-**Status:** Implementation Complete (Phases 1–7 of 7); audit 2026-10-08: needs work (`audit.md`, Blocker B1); audit fixes applied 2026-10-08 (`plan.md`, Audit fixes), re-audit pending; owner acceptance pending
+**Status:** Implementation Complete (Phases 1–7 of 7); certified 2026-10-08 (`audit.md`, Round 2, after fixing Blocker B1); owner acceptance pending
 **Owner:** Reid W
 **Created:** 2026-10-08 11:59
 **Complexity:** MEDIUM
@@ -23,13 +23,13 @@ The owner asked for this dependency to be guarded (2026-10-08): "would it make s
 
 Verifiable on this branch:
 
-- [ ] A fusion-tea change that would break the website's concept explorer fails the gate. Audit 2026-10-08: not met for a renamed request-body field that the server silently ignores (`audit.md`, Blocker B1). "Would break" covers at least:
+- [x] A fusion-tea change that would break the website's concept explorer fails the gate. "Would break" covers at least:
   - removing or renaming a response field the website's frontend reads, changing its type, or making it null where the frontend expects a value;
   - changing a path, method or request-body field the frontend sends, newly requiring one, or rejecting a value it sends today (the comparison page sends `current_concept_id: null` and `timestamp: ""`);
   - no longer serving one of the website's concept IDs, or serving a concept the website doesn't list (the pinned frontend links every served concept, and the website has no page for it, so it shows a dead link);
   - removing a website origin from the CORS allowlist.
 
-  Each case has a kept self-test that makes the break deliberately and shows the gate's command failing, so the evidence survives later re-pins. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
+  Each case has a kept self-test that makes the break deliberately and shows the gate's command failing, so the evidence survives later re-pins. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08); request-body renames by the Request fields rule, `audit.md`, Round 2 (2026-10-08).
 - [x] Additive changes pass: a new response field or a new optional request field. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
 - [ ] The gate is a GitHub Actions workflow that runs on every push to `main`, with no path or branch filter that could skip a run, because a skipped run never blocks. It is green on this branch's head. Branch part met: no filter (self-tested), and `gate.sh` green from a CI-shaped clone of `758577a18`. The GitHub-hosted run needs a push, so this box waits for owner acceptance. Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).
 - [x] The gate's steps, timed locally, project to under 5 minutes on a GitHub-hosted runner, so it adds at most that to each deploy. Local 56 s; projected 2.9 min (3.5 min conservative). Evidence: `plan.md`, Phase 7, "Spec criteria, verifiable on this branch" (2026-10-08).

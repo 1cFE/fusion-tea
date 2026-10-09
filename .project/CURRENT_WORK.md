@@ -1,3 +1,13 @@
+# Explorer API contract gate — re-audited: certified — 2026-10-08
+
+[AGENT] `/_my_audit` round 2 verdict **Certify** ([audit.md, Round 2](active/explorer-api-contract-gate/audit.md)). Nothing committed by the audit.
+- **B1 fixed:** both round-1 renames now fail with three `request-field` keys each. So do a renamed state field, a request model taking arbitrary extra fields, and a field moved into a nested model. The design amendment matches the code. Spec criterion 1 is checked.
+- **A1, A3–A8 fixed and verified**, by mutation checks of the new tests and a re-run of the Phase 1 identity checks (0 keys). A9 is left for close.
+- **No regressions:** `gate.sh` green on HEAD (133 passed, 62.5 s); the re-record at the pin is byte-identical; the scope diff against `f96ad312c` is empty for the explorer's API, data and frontend. Timing re-projects to 3.2 min (3.7 conservative).
+- **Advisory R2-1 to R2-4:** A2 is only partly fixed (a key with a space on some, not all, objects at a path still crashes the check, fail-closed); a field kept declared but unread passes (a schema check's limit); the docs call a renamed state field a break when it is a false block; `_properties`' `anyOf` handling is untested.
+
+Next: `/_my_close`, then `/_my_pre_pr`. Owner acceptance stays open.
+
 # Explorer API contract gate — audit fixes applied; re-audit next — 2026-10-08
 
 [AGENT] Four commits on `feat/explorer-api-contract-gate`, none pushed. Detail: [plan.md, Audit fixes](active/explorer-api-contract-gate/plan.md).

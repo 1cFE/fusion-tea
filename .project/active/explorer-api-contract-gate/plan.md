@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** Complete. Phases 1–7 done, after `contract.py` was split by concern. Audit fixes applied (B1, A1–A8; see Implementation Notes). Next: re-audit; owner acceptance after merge.
+**Status:** Complete. Phases 1–7 done, after `contract.py` was split by concern. Audit fixes applied (B1, A1–A8; see Implementation Notes). Certified 2026-10-08 (`audit.md`, Round 2). Next: owner acceptance after merge.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`

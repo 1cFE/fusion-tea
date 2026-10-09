@@ -175,3 +175,100 @@ Two turned nothing red: the "no 200" status clause and the preflight-status clau
 - The `.dockerignore` matcher against real Docker. No Docker here; I relied on its cited test cases.
 - Every line of the 1,398-line self-test file. I read the break and pass groups and mutation-checked a sample.
 - Whether the website's frozen JavaScript has crash points beyond the design's Appendix C.
+
+---
+
+## Round 2
+
+**Verdict:** Certify
+**Audited:** 2026-10-08
+**Branch:** `feat/explorer-api-contract-gate`
+**Commit:** `ad095351b` (fixes `ab252b1f6..0d92ae7a2`)
+**Scope:** a focused re-audit per `briefs/reaudit.md`: B1, A1–A8, regressions and certification. The product-lens pass was skipped; it ran in round 1, and its findings are A5, A6 and A9.
+
+### Summary
+
+B1 is fixed. The new Request fields rule catches both of my round-1 renames, and every bypass the brief asked me to try fails the gate wherever it would break the website. A1 and A3–A8 are fixed and verified. A2 is only partly fixed: a new key with a space still crashes the check when some objects at a path carry it and others don't (R2-1, advisory). There are no regressions: the gate is green on HEAD, recording at the pin is byte-identical, and the explorer's API, data and frontend are untouched. Spec criterion 1 is now checked.
+
+### B1: fixed
+
+The rule reads each POST route's request-body properties from the served app's own `/openapi.json` (`contract_rules.py:102-124`). It fails each top-level field the pinned frontend sends that the route doesn't declare, as `request-field <template> <field>` (`contract_rules.py:325-336`). `check_tree` runs it beside the recorded rules and CORS (`contract_rules.py:374`).
+
+I made each change below in a scratch clone of `ad095351b` and ran `contract.py check` against the committed contract.
+
+| Change | Does the website break? | Gate | Keys |
+|---|---|---|---|
+| Round-1 break: `ComputeRequest.apply_analyst_overrides` renamed `use_analyst_overrides`, default `True`; the server reads the new name | Yes. The override toggle does nothing on 15 concepts | Fails, exit 1 | 3: `request-field POST /api/compute:{slider,slider-range,toggle} apply_analyst_overrides` |
+| Round-1 break: `ComputeRequest.overrides` renamed `param_overrides`, default `{}` | Yes. No slider on the 33 slider concepts changes the LCOE | Fails, exit 1 | 3: the same templates, `overrides` |
+| A state-body field renamed: `ExplorerState.slider_overrides` to `sliders` | No. No JavaScript on either site calls `GET /api/state`, so state is write-only | Fails, exit 1: a false block | 2: `request-field POST /api/state:{concept,compare} slider_overrides` |
+| `ComputeRequest` accepts arbitrary extra fields (`extra="allow"`), plus the `apply_analyst_overrides` rename | Yes. The old name lands in the extras, which the server never reads | Fails, exit 1 | 3 |
+| `ComputeRequest` accepts extra fields and drops the declared field; the handler reads it back from the extras | No | Fails, exit 1: a false block | 3 |
+| `apply_analyst_overrides` moved into a nested `options: ComputeOptions` with a default | Yes. The toggle does nothing | Fails, exit 1 | 3 |
+| Extra probe: the compute route hidden from OpenAPI (`include_in_schema=False`) | No | Fails closed, exit 1 | 9: every compute field |
+| Extra probe: the compute handler takes an untyped `dict` body and builds the model itself | No | Fails closed, exit 1 | 9 |
+| Extra probe: the old field stays declared but unread, and a new field carries the toggle | Yes. The toggle does nothing | **Passes**, 0 failing | none (R2-2) |
+
+Every change that breaks the website fails the gate, except the last. That one is out of reach of a schema check: the field the website sends is still declared, and only the server's behavior changed. Catching it would mean comparing response values, and the spec makes "Checking numeric results" a non-goal. So B1 as round 1 stated it, a renamed request-body field that the server silently ignores, is closed.
+
+The three false blocks fail closed and clear with one waiver line each. That is the trade the spec accepts: missing a real break is worse than a false block.
+
+**The design amendment says what the code does.** I checked the rules-table row (`design.md:221`), the Architecture line (`design.md:209`), Core Concept's failure list (`design.md:106`), Appendix D's rename cases and Appendix E's key shape. The rule is waivable as designed, and `contract.txt` is unchanged, shown by the byte-identical re-record. One understatement: the design says the rule resolves `$ref`, and the code also unions `anyOf` and `allOf` alternatives (`contract_rules.py:117-124`). The plan's Audit fixes note says so. It is harmless.
+
+**Self-tests.** `test_a_renamed_request_field_fails` (`test_website_contract.py:761`) renames each of the seven sent fields to an optional name. With the rule disabled, all seven went red.
+
+### Round-1 advisories
+
+- **A1: fixed, verified.** Disabling the "no 200 at all" clause turned `test_a_template_with_no_200_left_fails_status` red (`test_website_contract.py:652`). Disabling the preflight-status clause turned `test_a_refused_preflight_fails_cors` red (`test_website_contract.py:913`).
+- **A2: partly fixed.** The case the test covers is fixed: removing the check-time skip turned the `new-key-that-cannot-be-a-path` pass case red, and removing the record-time refusal turned `test_recording_fails_on_a_key_that_cannot_be_a_path` red. A key on some but not all objects at a path still crashes the check (R2-1).
+- **A3: fixed, verified.** Removing the load-time rejection turned both `test_a_cors_or_files_waiver_is_a_configuration_error` cases red (`test_website_contract.py:1098`). Making the waiver hint unconditional turned `test_the_waiver_hint_prints_only_for_a_waivable_failure[unwaivable-only]` red (`test_website_contract.py:1119`). A `*` can't stand for the rule (`waivers.py:86`), so rejecting by rule name covers every waiver that can only match `cors` or `files` keys.
+- **A4: fixed, verified.** `skip`, `Response.seconds` and `_timed` are gone from `website_contract/`. The harness times requests and leaves compute unsent through its own client wrapper (`phase1/side.py`, `HarnessClient`). I re-ran `replay.py identity`: all three identity checks gave 0 failure keys, with 49 compute calls in each run that includes compute.
+- **A5: fixed.** The owner's ruling on how strict the gate is sits in both owner-acceptance lists (`spec.md:44`, `plan.md:612`), pointing at ADR 0011.
+- **A6: fixed.** README §9 (`README.md:690`, `:704`, `:728`) and `CLAUDE.md:258` say the gate holds deploys only once "Wait for CI" is on. The RUNBOOK's decision note names both FR-6 clauses (`RUNBOOK.md:342`).
+- **A7: fixed.** The bring-back sequence says to merge with a merge commit, and why (`RUNBOOK.md:228`).
+- **A8: fixed.** `website_contract/test_tools.txt` is the one list. Check mode installs from it (`gate.sh:60`), record mode takes its names (`gate.sh:75`), and `contract.py` writes the header's `tools` line from it (`contract.py:180-183`). The re-record reproduced the `tools` line byte for byte.
+- **A9:** left for `/_my_close`, as the orchestrator decided.
+
+A note on the mutation runs: my mutation clone was sparse and had no `.github/`, so the three workflow self-tests failed in every run, including an unmutated baseline. I counted only failures beyond those three.
+
+### Regressions
+
+- **Gate on HEAD.** `gate.sh` on `ad095351b`, exit 0: `0 failing, 0 waived, 0 stale waivers` and `133 passed`. Steps: venv 0.1 s, install 0.6 s, contract 31.5 s, self-tests 30.3 s, total 62.5 s, warm `uv` cache.
+- **Re-record at the pin.** `gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b`, exit 0, record step 30.5 s. `cmp` against the committed `contract.txt`: identical. The concepts line is the website's 37 IDs. The closing check was green (133 passed, total 65.3 s), and `git status` was clean afterwards.
+- **Scope against `f96ad312c`.** No change to `static/`, `templates/`, `data/`, the explorer's top-level `*.py`, `omit_list.yaml`, `Dockerfile`, `.dockerignore`, `requirements-serve.*`, `exploration/concept_analysis` or `archive`. Inside `exploration/concept_explorer/`, only `website_contract/`, `tests/test_website_contract.py` and `README.md` changed. The fixes changed no workflow.
+- **Timing, spec criterion 4.** The self-tests grew by about 9 s. The plan's projection with the new step times: 63 + 2 × (0.1 + 2.6) + 2 × 31.4 + 2 × 29.5 ≈ 190 s (3.2 min), and about 225 s (3.7 min) with the conservative allowances. Still under 5 minutes, with less margin than Phase 7's 2.9 and 3.5 minutes.
+- **Dead code and duplication.** Nothing new that needs action. The fixes removed a duplicate route lookup (`_operation`, now shared by `classify` and `request_fields`) and read `/openapi.json` through one helper (`_openapi`). Two small overlaps are acceptable: `_properties` repeats `classify`'s `$ref` and `anyOf` walk in a few lines, and `test_tools.txt` has two tiny readers, one in bash and one in Python. `apply_waivers` still drops `cors` and `files` keys, which `load_waivers` now never passes it; it is a cheap guard with its own test.
+
+### New advisories
+
+None of these blocks certification.
+
+**R2-1. A2's fix misses one case: a new key with a space crashes the check when only some objects at a path carry it.**
+- **What happens.** `flatten` counts every key toward its "absent" marking (`json_shapes.py:39`). When a key appears in fewer objects than the path has, it calls `field_path` on that key (`json_shapes.py:43`), which raises for a key holding a space or dot.
+- **What I did.** I added `"display name"` to one of the tree root's five children: a `ValueError` traceback, exit 1. The same key on all five children passes. The new self-test covers only the passing kind, a key on the single root object.
+- **Impact.** The partial case is the likelier one in real data: a new key on one tree node or one `narrative.risks[]` entry. It fails closed, so it can't let a break through. But it holds the deploy on an additive change, and the RUNBOOK reads a traceback as "the server no longer starts or imports. A real break" (`RUNBOOK.md:134`).
+- **What should change.** Skip unwritable keys when counting at `json_shapes.py:39`, and add a pass case with the key on one of several objects.
+
+**R2-2. A field the server still declares but no longer reads passes the gate.** If a change keeps `apply_analyst_overrides` declared but reads a new field instead, the website's toggle stops working and the gate stays green. A schema check can't see this, and catching it would mean comparing response values, which the spec excludes. Record it as a known limit in the design's Request fields row, so nobody reads the rule as "the server uses every field it declares". No code change.
+
+**R2-3. The docs call a renamed state field a website break, but it is a false block.** No JavaScript on either site calls `GET /api/state`, so nothing reads back what the website posts. README §9 says a renamed field "breaks the website's ... saved state" (`README.md:718`). The RUNBOOK's test for a `request-field` key calls it "a real break" when "the server now reads the value under another name" (`RUNBOOK.md:179`), which a renamed state field meets. The error is in the safe direction: someone would undo a harmless change instead of waiving it. Say that a `POST /api/state` field is a false block, because the website never reads state back.
+
+**R2-4. The `anyOf` and `allOf` handling in `_properties` is untested** (`contract_rules.py:122-123`). Removing it turned no test red. Both request bodies are plain `$ref`s today, so it is unused. If a body later became optional (`ComputeRequest | None`), the rule would need it; without it, every field would fail, which fails closed. Add one self-test with an optional body, or drop the loop.
+
+### Certification
+
+B1 holds, so this round certifies.
+
+**Marked:**
+- **Spec:** criterion 1 checked, with this round as its evidence; its "not met" note replaced. Status line updated. Criteria 2, 4, 5 and 6 stay checked, re-verified by the green gate, the 133 self-tests including the additive pass cases, the timing re-projection, the re-record and the RUNBOOK lines the fixes touched. Criterion 2 keeps the narrow exception in R2-1, as round 1 kept it for A2. Criterion 3 and the four owner-acceptance boxes stay unchecked; each needs a push or an owner-only setting.
+- **Plan:** phase boxes stay checked. Owner-acceptance boxes stay unchecked. Status line updated.
+- **No epic:** this is a single item.
+- **`CURRENT_WORK.md`:** updated to "certified".
+
+**Not checked:**
+- The GitHub-hosted run, its real time, and Railway's "Wait for CI" behavior. These need a push or the owner.
+- Re-pin step 1, which needs the private website repo.
+- The `.dockerignore` matcher against real Docker.
+- The Phase 1 history replay itself (`replay.py pairs`). I re-ran only its identity checks.
+- Every line of the 1,524-line self-test file. I read the new and changed tests and mutation-checked eight clauses.
+- The product-lens pass, skipped per the brief.
+- What the server does with a declared field's value (R2-2).
