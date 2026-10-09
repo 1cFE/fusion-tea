@@ -1,74 +1,14 @@
-# Explorer API contract gate — re-audited: certified — 2026-10-08
+# Explorer API contract gate — certified; ready for close — 2026-10-08
 
-[AGENT] `/_my_audit` round 2 verdict **Certify** ([audit.md, Round 2](active/explorer-api-contract-gate/audit.md)). Nothing committed by the audit.
-- **B1 fixed:** both round-1 renames now fail with three `request-field` keys each. So do a renamed state field, a request model taking arbitrary extra fields, and a field moved into a nested model. The design amendment matches the code. Spec criterion 1 is checked.
-- **A1, A3–A8 fixed and verified**, by mutation checks of the new tests and a re-run of the Phase 1 identity checks (0 keys). A9 is left for close.
-- **No regressions:** `gate.sh` green on HEAD (133 passed, 62.5 s); the re-record at the pin is byte-identical; the scope diff against `f96ad312c` is empty for the explorer's API, data and frontend. Timing re-projects to 3.2 min (3.7 conservative).
-- **Advisory R2-1 to R2-4:** A2 is only partly fixed (a key with a space on some, not all, objects at a path still crashes the check, fail-closed); a field kept declared but unread passes (a schema check's limit); the docs call a renamed state field a break when it is a false block; `_properties`' `anyOf` handling is untested.
+[AGENT] Orchestrated run (`/_my_orchestrate`, Opus 5.5 stages), from spec review through re-audit, on branch `feat/explorer-api-contract-gate` in worktree `../fusion-tea-explorer-api-gate`. Nothing pushed. The brief each stage received is in [briefs/](active/explorer-api-contract-gate/briefs/), and the commit log is the decision trail.
+- **What it does:** a GitHub Actions gate (`website-contract.yml`) fails any push that would break `1cf.energy/tools/concepts/`, which runs the explorer frontend frozen at `10f7b9b`. It replays the pinned frontend's requests against the checkout's server and compares against `website_contract/contract.txt`, recorded from the pin. Failures clear only by fixing the code or by a reasoned waiver. Runbook: hosting [RUNBOOK.md](completed/20260821_explorer-web-hosting/RUNBOOK.md) "Deploy gate". ADRs 0011 and 0012.
+- **Verified by the orchestrator at `fd032cf5b`:** `gate.sh` green (0 failing, 135 passed, 54 s locally; projected about 3.2 min on a GitHub runner); `gate.sh record 10f7b9b…` byte-identical; explorer API, data and frontend untouched since `f96ad312c`. Audit round 2 certified; its advisories R2-1 to R2-4 are fixed.
+- **False-block rate on history:** 5 of 23 replayable pushes on the design's count (22%), 5 of 27 combined (19%), none after 2026-06-15. The 20% line was an orchestrator proxy. Whether harmless pushes may be held at all is parked on the owner (ADR 0011).
+- **Owner, after merge** (plan's owner-acceptance list): first green GitHub run; turn on Railway "Wait for CI" for `1cfe-fusion-tea-explorer`; confirm the run is under 5 minutes; confirm Railway's skipped-deploy wording and whether a re-run deploys; the strictness ruling. Optional: branch protection requiring `gate`, a scratch-branch break, the re-pin line in the website's checklist.
+- **Merge notes:** the main checkout holds older uncommitted copies of this item's `CLAUDE.md` § Live Deployments and README §9 edits, the BACKLOG row and the spec directory. Expect a small conflict in those two doc sections. Take this branch's version.
+- **Follow-ups:** BACKLOG rows "Concept Explorer test suite is red" and "Explorer image ships ~5 GB of study records". Starlette warns that `httpx` with its test client is deprecated (use `httpx2`); harmless while the serving set and `test_tools.txt` stay pinned, but whoever next bumps Starlette must update the gate's test tools.
 
-Next: `/_my_close`, then `/_my_pre_pr`. Owner acceptance stays open.
-
-# Explorer API contract gate — audit fixes applied; re-audit next — 2026-10-08
-
-[AGENT] Four commits on `feat/explorer-api-contract-gate`, none pushed. Detail: [plan.md, Audit fixes](active/explorer-api-contract-gate/plan.md).
-- **B1:** a new waivable Request fields rule checks every field the website sends in its POST bodies against the server's own request schema. The audit's two renames now fail with three `request-field` keys each. Seven self-tests rename each sent field. The design is amended.
-- **A1–A8:** tests for the two untested clauses; unwritable new keys skipped in check, refused in record; `cors`/`files` waivers are configuration errors; harness-only `skip` and timings moved into the harness; the strictness ruling on both owner lists; "Wait for CI" starts off in README §9 and `CLAUDE.md`; merge-commit caution; one `test_tools.txt`. A9 is left for close.
-- **Verified:** CI-shaped `gate.sh` green (0 failing, 133 passed, 64.8 s); record at the pin byte-identical; harness identity checks 0 keys.
-
-Next: re-audit, including spec criterion 1. Owner acceptance stays open.
-
-# Explorer API contract gate — audited: needs work — 2026-10-08
-
-[AGENT] `/_my_audit` verdict **Needs Work**, one blocker ([audit.md](active/explorer-api-contract-gate/audit.md)).
-- **Blocker B1:** renaming a request-body field the website sends passes the gate when the server gives the new name a default. Pydantic drops the old name, so the response is unchanged. Probed both ways: `apply_analyst_overrides` and `overrides` renamed, 0 failing. The website's override toggle or sliders would silently stop working. Spec criterion 1 is unchecked until a rule and self-tests cover it, which needs a design amendment ("Check reads no schema").
-- **Verified by re-running:** the gate on HEAD is green (119 passed, 54 s), and the record at the pin is byte-identical. Four of my own breaks are caught: a deep compute type change, a new registry enum value, a `.dockerignore` exclude and a missing file. 13 of 15 rule mutations turn a self-test red. The RUNBOOK's waiver, new-concept and re-pin examples all behave as written, and the scope diff is empty.
-- **Advisory A1–A9:** two rule clauses have no test; a key with a space crashes the check unwaivably; a `cors` waiver prints a wrong "delete it" message; harness-only `skip` and timings sit in the shipped module; the owner's strictness ruling is untracked; README §9 and `CLAUDE.md` assume "Wait for CI" is already on; the concept-return sequence needs "merge with a merge commit".
-
-Next: fix B1 (design amendment, then code and self-tests), then a targeted re-check of B1. Owner acceptance stays open.
-
-# Explorer API contract gate — Phases 6 and 7 done; implementation complete — 2026-10-08
-
-[AGENT] Three commits on `feat/explorer-api-contract-gate`, none pushed.
-- **Phase 6:** the hosting RUNBOOK has a "Deploy gate" section for someone who never reads the gate's code: held deploys and the four kinds of failure, waivers, both new-concept paths with their costs, the emergency bypass, the six-step re-pin, red drift runs, "Wait for CI" on and off, and the owner's setup steps (no secrets). README §9, `CLAUDE.md` and the `railway.toml` header point at it. ADR 0011 (deploys wait for the gate; split grade; the two FR-6 clauses) and ADR 0012 (the contract is recorded from the pin) state the 5-of-23 / 5-of-27 false-block rate. An independent cold read found nine gaps in the RUNBOOK; all fixed.
-- **Phase 7:** `gate.sh` from a fresh shallow, sparse, blobless clone of the branch head, cold `uv` cache: green, 0 failing, 119 passed, 56 s. Projected 2.9 min on a GitHub runner (3.5 min conservative). The RUNBOOK's re-pin step, followed literally for the current pin, gives no diff.
-- **Spec:** criteria 1, 2, 4, 5 and 6 checked with evidence. Criterion 3 waits on a pushed run.
-
-Next: `/_my_audit`. Then, after merge, the owner acceptance list in the plan: the first GitHub run, turning on "Wait for CI", Railway's wording, and what a re-run does.
-
-# Explorer API contract gate — contract.py split; Phases 4 and 5 done — 2026-10-08
-
-[AGENT] Three commits on `feat/explorer-api-contract-gate`, none pushed.
-- **Split** (orchestrator decision): `contract.py` is now a 226-line CLI over six top-level modules (`frontend_requests`, `json_shapes`, `contract_text`, `contract_rules`, `waivers`, `pin_source`). A self-test fails if any module name shadows one the server imports. `gate.sh record 10f7b9b…` still reproduces `contract.txt` byte for byte.
-- **Phase 4:** `file_audit.py` records what the server reads, lists or stats. The unwaivable Files rule fails on each such path tracked at HEAD that the tree lacks or `.dockerignore` excludes. Record applies the missing half against the pin. The matcher ports Docker's own matching code and agrees with Docker's older algorithm on all 100,919 tracked paths for the current file. An over-broad `.dockerignore` fails with exactly one `files` key.
-- **Phase 5:** `website-contract.yml` (no filters; `setup-uv@v10.2.0`, since setup-uv has no major tags after v7), `website-pin-drift.yml` (daily 15:23 UTC, never on push), `drift.py`, and the D11 change to `notify_visualization.yml`. Drift against the live site passes, naming `10f7b9b…`.
-- **Now:** `gate.sh` on HEAD is green: 0 failing, 119 self-tests, about 54 s locally. Details: plan Phase 4 and 5 Completion.
-
-Next: Phase 6 (RUNBOOK, README §9, `CLAUDE.md`, `railway.toml` header, two ADRs). The RUNBOOK should say Files failures can't be waived, and that new concepts usually trip Shape too (Phase 3 notes).
-
-# Explorer API contract gate — Phase 3 done: contract recorded at the pin — 2026-10-08
-
-[AGENT] `website_contract/contract.txt` is recorded at `10f7b9b` (37 concepts, 13 cited JS blobs, 778 lines). `gate.sh record 10f7b9b…` reproduces it byte for byte, and `gate.sh` on the branch is green against it with real compute: 0 failing, 81 self-tests pass, 45 s locally, about 2.4 min projected. No compute trim. Open for the orchestrator:
-- `contract.py` is 1323 lines; plan Phase 3 Completion proposes a four-module split (changes D12).
-- New concepts will usually also trip Shape (`company`, `fit_grade`, `fuel`, LCOE were never null at the pin); Phase 6's RUNBOOK should say so.
-- The corrected Phase 1 rate (below).
-Next: Phase 4 (file audit). Nothing is pushed.
-
-# Explorer API contract gate — Phase 2 done; Phase 1 rate corrected — 2026-10-08
-
-[AGENT] Phase 2 added waivers, the CORS rule and the `contract.py check` CLI, with Appendix D's break, pass and waiver self-tests (49, plus `test_cors.py`: 76 pass). Its "field removed" test found a core bug: a field removed from every response passed silently. Fixed in `observed_shapes`. Re-running Phase 1's first set with the fix adds one false-block pair, `84422dd08` (2026-06-15, `sources` removed, unread at the pin). The false-block rate is now 5 of 23 (22%, fails condition 1) on the design's count, or 5 of 27 (19%, passes) on the combined count the go-ahead used. The orchestrator should tell the owner the corrected figure. Details: plan Phase 2 Completion. Next: Phase 3. Nothing is pushed.
-
-# Explorer API contract gate — Phase 1 done at its hard stop — 2026-10-08
-
-[AGENT] Phase 1 built the real contract core (`exploration/concept_explorer/website_contract/contract.py`) and replayed history with it.
-- The verdict is a pass on the combined set. The false-block rate is 5 of 23 (22%) over the design's replayable pairs, or 5 of 27 (19%) counting four findings-only pairs (corrected during Phase 2; first reported as 17% and 15%). At most 2 waiver lines per pair, no misclassified maps, and 28 (or 32) replayable pairs against a floor of 12.
-- The orchestrator confirmed `e553f70e1` as a replay artifact.
-- The second set covers explorer-free commits that change what the server reads under `concept_analysis`/archive: 27 commits, judged by each commit's own audited server reads. It adds no pair that replays the same way, and its four findings-only pairs trip nothing. Compute effects of model-code churn stay unmeasurable by replay.
-- Decided for later phases: Unpopulated waiver evidence may be `unread:` plus search terms (Phase 2), and the checkout estimate uses the 44 MB extract (Phase 7).
-- Report: [phase1/report.md](active/explorer-api-contract-gate/phase1/report.md). Next: the orchestrator's go-ahead for Phase 2. Nothing is pushed.
-
-# Explorer API contract gate — spec drafted, product lens disposed — 2026-10-08
-
-[OWNER] Asked to guard the dependency `1cf.energy/tools/concepts/` has on the live Concept Explorer API. [AGENT] Added deployment docs (`CLAUDE.md` § Live Deployments from `main`, `exploration/concept_explorer/README.md` §9) and drafted [`explorer-api-contract-gate`](active/explorer-api-contract-gate/spec.md). The product lens found no blocker, and its six findings are dispositioned in `product-lens.md`. The owner selected gating Railway deploys on new website-contract tests plus the CORS test only. The red explorer suite (32 failed / 306 passed) is a separate BACKLOG row. Work lives on branch `feat/explorer-api-contract-gate` (worktree `../fusion-tea-explorer-api-gate`, from `origin/main` `f96ad312c`), uncommitted. The same doc edits also sit uncommitted in the main checkout, where the scoring-repair session protects them. Next: owner review of the spec, then `/_my_design`.
+Next: `/_my_close`, then `/_my_pre_pr` (owner).
 
 # Write-up — main post revised, support pages corrected — 2026-09-30
 
