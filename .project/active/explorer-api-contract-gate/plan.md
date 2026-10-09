@@ -1135,6 +1135,7 @@ Re-pin step 2, `gate.sh record 10f7b9b…` in the worktree: `extract` 0.9, `inst
 - `check_tree` and `record_tree` read `/openapi.json` through one `_openapi` helper that raises on a non-200, instead of parsing whatever came back.
 - The harness's timing output changed shape: per route (`routes`), and compute calls by concept ID and toggle flag. The committed Phase 1 results keep the old per-template shape.
 - Spec criterion 1 is not re-checked; that is the re-audit's call.
+- **Round 2 advisories** (`audit.md` Round 2; `briefs/implement_r2_fixes.md`): R2-1, `flatten` no longer counts unwritable keys toward `absent`, so a new key with a space on one of several tree nodes passes (red without the fix); R2-3, README §9 and the RUNBOOK call a renamed `POST /api/state` field a false block; R2-4, `test_an_optional_request_body_declares_its_model_fields` (red without `_properties`' `anyOf`/`allOf` branch); R2-2 named in the design's Non-Goals. `gate.sh` green: 0 failing, 135 passed, 54.6 s; `gate.sh record 10f7b9b…` byte-identical.
 
 ---
 

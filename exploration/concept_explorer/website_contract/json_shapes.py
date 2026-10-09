@@ -35,7 +35,7 @@ def flatten(bodies: Iterable[Any], map_paths: Collection[str]) -> dict[str, set[
             kinds[path].add(_kind(value, is_map))
             if isinstance(value, dict) and not is_map:
                 objects_seen[path] += 1
-                for key in value:
+                for key in filter(_is_path_segment, value):
                     fields_seen[path][key] += 1
     for path, seen in objects_seen.items():
         for key, count in fields_seen[path].items():

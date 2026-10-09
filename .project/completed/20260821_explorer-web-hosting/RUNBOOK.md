@@ -176,7 +176,7 @@ A false block is a failure the website can't notice: the push removed or changed
    - No hits, or only comments: nothing reads it. A false block.
    - Hits: read each one. If the code checks the value before using it (`!= null`, `if (x)`), a false block. If it would crash or show a wrong value, a real break: fix the change instead.
    - The design's Appendix C lists the fields the frozen copy never reads and the ones that crash it. It is in `design.md` of the `explorer-api-contract-gate` work item, under `.project/active/` (or `.project/completed/` once the item closes).
-   - For a `request-field` key, the last word is a field the website sends. It is a false block only if the server never needed it, such as `timestamp`, which the server sets itself. If the server now reads the value under another name, the website's request does nothing: a real break.
+   - For a `request-field` key, the last word is a field the website sends. It is a false block only if the server never needed it, such as `timestamp`, which the server sets itself. If the server now reads the value under another name, the website's request does nothing: a real break. The exception is a `POST /api/state` field, which is always a false block cleared by a waiver, because neither site reads state back.
    - If you can't tell, don't waive. Ask someone who reads JavaScript, or undo the change.
 2. **Add a waiver** at the end of `exploration/concept_explorer/website_contract/waivers.toml`:
    ```toml

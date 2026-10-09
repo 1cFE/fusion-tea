@@ -297,7 +297,8 @@ Outside that directory, the work adds the self-tests (`tests/test_website_contra
   - literal string reads that only change wording (m1; listed in Appendix B);
   - `overrides[].account` no longer matching its cost-model account key (N1). Catching that would need a new kind of rule, a join within one response, for an unlikely break. And while HEAD's `static/js` equals the pin's, the same mismatch would also show on `concepts.1cf.energy`;
   - in-range slider values other than baselines, since only one range-endpoint body is sent (m8);
-  - B1's per-concept nulls.
+  - B1's per-concept nulls;
+  - a server that keeps declaring a request field but stops reading it passes Request fields, because catching it needs value comparison (audit R2-2).
 - **A token-based pin read.** It is owner-reserved.
 
 ## Implementation Notes

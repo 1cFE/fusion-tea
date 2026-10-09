@@ -72,7 +72,7 @@ import contract as c  # noqa: E402
 import drift  # noqa: E402
 import file_audit  # noqa: E402
 import frontend_requests as fr  # noqa: E402
-from contract_rules import record_tree  # noqa: E402
+from contract_rules import record_tree, request_fields  # noqa: E402
 from contract_text import parse, render  # noqa: E402
 from json_shapes import flatten  # noqa: E402
 from pin_source import SERVING_SET, cite_errors, extract, js_blobs  # noqa: E402
@@ -775,6 +775,18 @@ def test_a_renamed_request_field_fails(
     assert {f"request-field {template} {field}" for template in templates} <= run.failed
 
 
+def test_an_optional_request_body_declares_its_model_fields() -> None:
+    """A body typed `ComputeRequest | None` reaches the schema as an anyOf (audit R2-4)."""
+    app = FastAPI()
+
+    @app.post("/api/compute")
+    def compute(body: ComputeRequest | None = None) -> None:
+        """Never called: only the schema FastAPI derives for it matters."""
+
+    declared = request_fields(app.openapi())
+    assert declared[fr.SLIDER] == frozenset(ComputeRequest.model_fields)
+
+
 def test_omitted_concept_fails(
     fixture_root: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
@@ -949,6 +961,15 @@ def _add_unwritable_tree_key(root: Path) -> None:
     edit_json(root / DATA / "decision_tree.json", lambda body: body["root"].update({"a b": "c"}))
 
 
+def _add_unwritable_key_to_one_tree_node(root: Path) -> None:
+    """The same key on one of the root's two child nodes, so the other lacks it (audit R2-1)."""
+
+    def change(body: dict[str, Any]) -> None:
+        body["root"]["children"][1]["a b"] = "c"
+
+    edit_json(root / DATA / "decision_tree.json", change)
+
+
 def _new_response_field(monkeypatch: pytest.MonkeyPatch) -> None:
     rewrite_json(monkeypatch, "GET", "/api/concepts/{id}", lambda body: {**body, "new_field": 1})
 
@@ -965,6 +986,11 @@ def _new_optional_request_field(monkeypatch: pytest.MonkeyPatch) -> None:
         pytest.param(_add_cas22_account, None, id="new-map-key"),
         pytest.param(_drop_availability_from_05, None, id="concept-leaves-a-parameter"),
         pytest.param(_add_unwritable_tree_key, None, id="new-key-that-cannot-be-a-path"),
+        pytest.param(
+            _add_unwritable_key_to_one_tree_node,
+            None,
+            id="new-key-that-cannot-be-a-path-on-one-node",
+        ),
     ],
 )
 def test_additive_change_passes(
