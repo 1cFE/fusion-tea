@@ -519,6 +519,8 @@ The tests use the richer fixture, laid out as a repo root under `tmp/exploration
 | Enum / Literal | `enum <template> <path>` or `literal <template> <path>` | `literal GET /api/manifest .concepts[].fit_grade` |
 | Concepts | `concept-missing <list> <id>` or `concept-unlisted <list> <id>` | `concept-unlisted manifest 40`, `concept-unlisted parameters/{name} 40` |
 | Coverage | `coverage <template> <id>` | `coverage GET /api/concepts/{id}/findings 05` |
+| CORS | `cors <template>` (Phase 2) | `cors GET /api/manifest` |
+| Files | `files missing <path>` or `files dockerignore <path>` (Phase 4) | `files dockerignore exploration/concept_analysis/tables/archetype_fit.csv` |
 
 How the pieces work:
 

@@ -13,7 +13,7 @@ from typing import Any
 
 from contract_rules import rule_of
 
-UNWAIVABLE = frozenset({"cors"})  # rules whose keys are printed but never matched (M4)
+UNWAIVABLE = frozenset({"cors", "files"})  # rules whose keys are printed, never matched (M4)
 _WAIVER_FIELDS = ("match", "reason", "evidence", "date")
 # An unpopulated waiver must show the pinned JavaScript was read: a file.js:N cite of
 # the JS that reads the path, or "unread:" and the search terms that found no reader
@@ -98,7 +98,7 @@ class Verdict:
 
 
 def apply_waivers(failures: Sequence[str], waivers: Sequence[Waiver]) -> Verdict:
-    """Split failures into waived and failing; CORS keys are never waived."""
+    """Split failures into waived and failing; CORS and Files keys are never waived."""
     waivable = [key for key in failures if rule_of(key) not in UNWAIVABLE]
     waived = {key for key in waivable if any(waiver_matches(w.match, key) for w in waivers)}
     return Verdict(

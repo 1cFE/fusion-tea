@@ -3,14 +3,17 @@
 These run inside the gate. Most use a small repo-shaped fixture: three concepts with
 sensitivities, an analyst override, a taxonomy registry and tree, findings text and
 archetype-fit grades, served by the fake costing model from test_state_and_compute.py.
-Each break test records a contract from the unbroken fixture, makes one change, and runs
-the gate's own `check` entry point (design Appendix D).
+The fixture is a committed git repository with a .dockerignore, so the Files rule judges
+it as it judges the real tree. Each break test records a
+contract from the unbroken fixture, makes one change, and runs the gate's own `check`
+entry point (design Appendix D).
 """
 
 from __future__ import annotations
 
 import importlib.metadata
 import json
+import py_compile
 import re
 import shutil
 import subprocess
@@ -63,6 +66,7 @@ WEBSITE_CONTRACT = Path(__file__).resolve().parents[1] / "website_contract"
 sys.path.insert(0, str(WEBSITE_CONTRACT))
 
 import contract as c  # noqa: E402
+import file_audit  # noqa: E402
 import frontend_requests as fr  # noqa: E402
 from contract_rules import record_tree  # noqa: E402
 from contract_text import parse, render  # noqa: E402
@@ -182,6 +186,19 @@ def _taxonomy(concept_id: str, family: ConfinementFamily, **fields: Any) -> Conc
     )
 
 
+# The fixture's build-context rules, in the shape of the repo's .dockerignore. A fixed
+# copy, so editing the real file can fail the gate's Files rule but never these tests.
+_FIXTURE_DOCKERIGNORE = """\
+.git
+knowledge
+archive/*
+!archive/concept_analysis_pre_rework
+**/iter-*/
+**/__pycache__/
+*.pyc
+"""
+
+
 def build_fixture(root: Path) -> None:
     """Write the fixture repo under `root`: 01 standalone, 04 and 05 costingfe."""
     concepts = [
@@ -250,12 +267,29 @@ def build_fixture(root: Path) -> None:
     (root / ANALYSES / "05-fake" / "model_setup.py").write_text(compute_tests._FAKE_MODULE_PY)
     (root / FIT_TABLE).parent.mkdir(parents=True)
     (root / FIT_TABLE).write_text("concept_id,fit_grade\n01-fake,High\n04-fake,Med\n05-fake,None\n")
+    (root / file_audit.DOCKERIGNORE).write_text(_FIXTURE_DOCKERIGNORE)
+
+
+def git(repo: Path, *args: str) -> str:
+    """Run git in `repo` without the user's hooks or commit signing."""
+    command = ["git", "-C", str(repo), "-c", "user.name=t", "-c", "user.email=t@t"]
+    command += ["-c", "commit.gpgsign=false", "-c", "core.hooksPath=/dev/null", *args]
+    return subprocess.run(command, check=True, capture_output=True, text=True).stdout.strip()
+
+
+def commit_all(repo: Path, message: str) -> str:
+    """Commit everything in `repo`, creating the repository if needed; return the SHA."""
+    git(repo, "init", "-q")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", message)
+    return git(repo, "rev-parse", "HEAD")
 
 
 @pytest.fixture
 def fixture_root(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     root = tmp_path / "repo"
     build_fixture(root)
+    commit_all(root, "fixture")  # the Files rule judges paths tracked at HEAD
     monkeypatch.setattr(models_module, "_OMIT_LIST_PATH", root / fr.EXPLORER / "omit_list.yaml")
     monkeypatch.setenv("EXPLORER_SKIP_WARMUP", "1")
     monkeypatch.setattr(sys, "path", list(sys.path))  # `check` puts its tree first
@@ -993,13 +1027,6 @@ def test_waiver_wildcards_match_one_whole_token_or_segment(
 # ---------------------------------------------------------------------------
 
 
-def git(repo: Path, *args: str) -> str:
-    """Run git in `repo` without the user's hooks or commit signing."""
-    command = ["git", "-C", str(repo), "-c", "user.name=t", "-c", "user.email=t@t"]
-    command += ["-c", "commit.gpgsign=false", "-c", "core.hooksPath=/dev/null", *args]
-    return subprocess.run(command, check=True, capture_output=True, text=True).stdout.strip()
-
-
 @pytest.fixture
 def two_commit_repo(tmp_path: Path) -> tuple[Path, str, str]:
     """A: the fixture plus this checkout's explorer code, static/js and serving set. B: A
@@ -1011,10 +1038,7 @@ def two_commit_repo(tmp_path: Path) -> tuple[Path, str, str]:
         shutil.copy(source, repo / fr.EXPLORER / source.name)
     shutil.copytree(CHECKOUT / fr.STATIC_JS, repo / fr.STATIC_JS)
     shutil.copy(CHECKOUT / SERVING_SET, repo / SERVING_SET)
-    git(repo, "init", "-q")
-    git(repo, "add", "-A")
-    git(repo, "commit", "-q", "-m", "A")
-    a = git(repo, "rev-parse", "HEAD")
+    a = commit_all(repo, "A")
     edit_json(repo / DATA / "concept_registry.json", _drop_05_from_registry)
     git(repo, "commit", "-q", "-am", "B: 05 leaves the registry")
     return repo, a, git(repo, "rev-parse", "HEAD")
@@ -1032,21 +1056,29 @@ def _extracted(repo: Path, sha: str) -> Path:
     return tree
 
 
+def record_extract(
+    repo: Path, sha: str, tree: Path, contract_path: Path, *flags: str
+) -> subprocess.CompletedProcess[str]:
+    """`contract.py record` on `tree`, an extract of commit `sha` in `repo`."""
+    argv = ["record", "--tree", str(tree), "--pin", sha, "--repo", str(repo)]
+    return _contract_cli(*argv, "--contract", str(contract_path), *flags)
+
+
 def record_from_git(
     repo: Path, sha: str, contract_path: Path, *flags: str
 ) -> subprocess.CompletedProcess[str]:
-    tree = _extracted(repo, sha)
-    return _contract_cli(
-        "record", "--tree", str(tree), "--pin", sha, "--contract", str(contract_path), *flags
-    )
+    return record_extract(repo, sha, _extracted(repo, sha), contract_path, *flags)
 
 
 def check_from_git(repo: Path, sha: str, contract_path: Path) -> subprocess.CompletedProcess[str]:
-    tree = _extracted(repo, sha)
-    waivers = tree.parent / "waivers.toml"
+    """`contract.py check` on a clone of `repo` at `sha`, a checkout as CI has one."""
+    clone = Path(tempfile.mkdtemp(dir=repo.parent)) / "clone"
+    git(repo.parent, "clone", "-q", str(repo), str(clone))
+    git(clone, "checkout", "-q", sha)
+    waivers = clone.parent / "waivers.toml"
     waivers.write_text("")
     return _contract_cli(
-        "check", "--tree", str(tree), "--contract", str(contract_path), "--waivers", str(waivers)
+        "check", "--tree", str(clone), "--contract", str(contract_path), "--waivers", str(waivers)
     )
 
 
@@ -1145,3 +1177,151 @@ def test_unverified_javascript_fails_recording_without_the_flag(
     out = capsys.readouterr().out
     assert reason in out.splitlines() and "re-verify Appendix A" in out
     assert (contract_path.read_text() if contract_path.exists() else None) == before
+
+
+# ---------------------------------------------------------------------------
+# The file audit and the Files rule (design D5, D6, Appendix G; decision 10)
+# ---------------------------------------------------------------------------
+
+FIT_TABLE_KEY = FIT_TABLE.as_posix()
+
+
+def test_a_tracked_file_missing_from_the_tree_fails(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    contract_path = record_in_process(fixture_root)
+    (fixture_root / FIT_TABLE).unlink()  # as if the checkout lacked the tables directory
+    run = run_check(fixture_root, contract_path, capsys)
+    assert run.code == c.EXIT_FAILED
+    assert f"files missing {FIT_TABLE_KEY}" in run.failed
+
+
+def test_dockerignore_excluding_a_touched_path_fails(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    contract_path = record_in_process(fixture_root)
+    current = (CHECKOUT / file_audit.DOCKERIGNORE).read_text()  # the real file's patterns
+    dockerignore = current + "exploration/concept_analysis/tables\n"
+    (fixture_root / file_audit.DOCKERIGNORE).write_text(dockerignore)
+    run = run_check(fixture_root, contract_path, capsys)
+    assert run.code == c.EXIT_FAILED
+    assert f"files dockerignore {FIT_TABLE_KEY}" in run.failed
+
+
+def test_a_tree_without_heads_dockerignore_fails(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Without the file the gate couldn't judge the image, so it doesn't pass."""
+    contract_path = record_in_process(fixture_root)
+    (fixture_root / file_audit.DOCKERIGNORE).unlink()
+    run = run_check(fixture_root, contract_path, capsys)
+    assert (run.code, run.failed) == (c.EXIT_FAILED, {"files missing .dockerignore"})
+
+
+def test_files_failures_ignore_waivers(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    contract_path = record_in_process(fixture_root)
+    (fixture_root / FIT_TABLE).unlink()
+    key = f"files missing {FIT_TABLE_KEY}"
+    run = run_check(fixture_root, contract_path, capsys, waiver(key))
+    assert run.code == c.EXIT_FAILED
+    assert key in run.failed and run.waived == set()
+
+
+@pytest.mark.parametrize("tracked", [False, True], ids=["untracked", "tracked"])
+def test_only_paths_tracked_at_head_count(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str], tracked: bool
+) -> None:
+    """The server reads 04's bytecode cache, which .dockerignore's **/__pycache__/ excludes.
+    Untracked, as caches are, it can't fail the gate (decision 10); tracked, it would."""
+    source = fixture_root / ANALYSES / "04-fake" / "model_setup.py"
+    cache = Path(py_compile.compile(str(source), doraise=True))
+    if tracked:
+        git(fixture_root, "add", "-f", str(cache))
+        git(fixture_root, "commit", "-q", "-m", "a tracked cache")
+    contract_path = record_in_process(fixture_root)
+    server_module._load_model_module.cache_clear()  # check reads the module afresh, as in the gate
+    run = run_check(fixture_root, contract_path, capsys)
+    key = f"files dockerignore {cache.relative_to(fixture_root).as_posix()}"
+    assert (run.code, run.failed) == ((c.EXIT_FAILED, {key}) if tracked else (0, set()))
+
+
+def test_an_unsupported_dockerignore_pattern_is_a_configuration_error(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    contract_path = record_in_process(fixture_root)
+    (fixture_root / file_audit.DOCKERIGNORE).write_text("*.py?\n")
+    run = run_check(fixture_root, contract_path, capsys)
+    assert run.code == c.EXIT_CONFIG
+    assert run.out.startswith("configuration error")
+
+
+def test_matcher_follows_docker_rules() -> None:
+    m = file_audit.Matcher(
+        ["archive/*", "!archive/concept_analysis_pre_rework", "*.pyc", "**/__pycache__/"]
+    )
+    assert m.excluded("archive/other/x.md")
+    assert not m.excluded("archive/concept_analysis_pre_rework/a/analysis.md")
+    assert m.excluded("x.pyc") and not m.excluded("exploration/x.pyc")  # anchored at the root
+
+
+@pytest.mark.parametrize(
+    ("patterns", "path", "excluded"),
+    [
+        pytest.param(["knowledge"], "knowledge/a/b.md", True, id="a-directory-excludes-its-tree"),
+        pytest.param(["knowledge"], "exploration/knowledge", False, id="anchored-at-the-root"),
+        pytest.param(["**/__pycache__/"], "__pycache__/m.pyc", True, id="leading-**-at-the-root"),
+        pytest.param(["**/__pycache__/"], "a/b/__pycache__/m.pyc", True, id="leading-**-deep"),
+        pytest.param(["**/__pycache__/"], "a/my__pycache__/m.pyc", False, id="whole-segment"),
+        pytest.param(["**/iter-*/"], "a/iter-3/out.md", True, id="leading-**-with-a-glob"),
+        pytest.param(["a/**/t"], "a/b/c/t/f.csv", True, id="inner-**"),
+        pytest.param(["a/**"], "a/b", True, id="trailing-**"),
+        pytest.param(["a/**"], "ab", False, id="trailing-**-needs-the-directory"),
+        pytest.param(["a/*"], "a/b/c", True, id="*-then-parent-match"),
+        pytest.param(["a/*.md"], "a/b/c.md", False, id="*-stays-in-one-segment"),
+        pytest.param(["a/*", "!a/keep"], "a/keep/x", False, id="!-re-includes"),
+        pytest.param(["!a/keep", "a/*"], "a/keep/x", True, id="the-last-match-wins"),
+        # BuildKit judges each path with its parent's per-pattern results, and a pattern
+        # it skipped at a directory isn't inherited: the third pattern was skipped at
+        # `a` (already excluded), so the re-include of `a/b` stands (fsutil filter.go).
+        pytest.param(["a", "!a/b", "a"], "a/b/c", False, id="skipped-patterns-not-inherited"),
+    ],
+)
+def test_matcher_cases_from_docker(patterns: list[str], path: str, excluded: bool) -> None:
+    assert file_audit.Matcher(patterns).excluded(path) is excluded
+
+
+@pytest.mark.parametrize("pattern", ["*.py?", "data/[ab].json", "a\\b", "!"])
+def test_the_matcher_refuses_syntax_it_does_not_implement(pattern: str) -> None:
+    with pytest.raises(file_audit.UnsupportedPattern):
+        file_audit.Matcher([pattern])
+
+
+def test_dockerignore_lines_are_read_as_docker_reads_them() -> None:
+    text = "\ufeff# comment\n\n/knowledge/\r\n ! archive/./keep \n  # a pattern\n**/x/\n"
+    assert file_audit.dockerignore_patterns(text) == [
+        "knowledge",
+        "!archive/keep",
+        "# a pattern",  # only a line that starts with "#" is a comment
+        "**/x",
+    ]
+
+
+def test_tracked_paths_include_directories(fixture_root: Path) -> None:
+    tracked = file_audit.tracked_paths(fixture_root, "HEAD")
+    assert {FIT_TABLE_KEY, "exploration/concept_analysis/tables", "exploration"} <= tracked
+    assert "" not in tracked and "exploration/concept_explorer/dist" not in tracked
+
+
+def test_recording_fails_when_the_extract_lacks_a_file_the_pin_reads(
+    two_commit_repo: tuple[Path, str, str], tmp_path: Path
+) -> None:
+    repo, a, _ = two_commit_repo
+    tree = _extracted(repo, a)
+    (tree / FIT_TABLE).unlink()  # as if runtime_paths.txt missed the tables directory
+    contract_path = tmp_path / "contract.txt"
+    run = record_extract(repo, a, tree, contract_path, "--js-reverified")
+    assert run.returncode == c.EXIT_FAILED, run.stdout + run.stderr
+    assert f"FAIL files missing {FIT_TABLE_KEY}" in run.stdout.splitlines()
+    assert not contract_path.exists()

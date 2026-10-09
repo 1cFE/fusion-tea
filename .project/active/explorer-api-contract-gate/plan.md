@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phases 1–3 complete, and `contract.py` split by concern; Phase 4 next.
+**Status:** In Progress. Phases 1–4 complete, after `contract.py` was split by concern; Phase 5 next.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -416,32 +416,32 @@ def test_matcher_follows_docker_rules():
 
 #### 1. Tests (write first)
 
-- [ ] Appendix D Machinery: a tracked file missing from the tree fails; a touched path that `.dockerignore` excludes fails, using the current `.dockerignore` file's patterns; the matcher refuses `?`, `[...]` and `\`.
-- [ ] Appendix D Waivers: a Files failure ignores a matching waiver.
-- [ ] Matcher cases from Docker's rules: root anchoring, `**`, `!`, last match wins, a parent directory match excludes its children.
-- [ ] Decision 10: an untracked touched path that `.dockerignore` excludes (a `__pycache__` lookup) does not fail.
+- [x] Appendix D Machinery: a tracked file missing from the tree fails; a touched path that `.dockerignore` excludes fails, using the current `.dockerignore` file's patterns; the matcher refuses `?`, `[...]` and `\`.
+- [x] Appendix D Waivers: a Files failure ignores a matching waiver.
+- [x] Matcher cases from Docker's rules: root anchoring, `**`, `!`, last match wins, a parent directory match excludes its children.
+- [x] Decision 10: an untracked touched path that `.dockerignore` excludes (a `__pycache__` lookup) does not fail.
 
 #### 2. `exploration/concept_explorer/website_contract/file_audit.py` (NEW)
 
-- [ ] Install the audit hook once per process; toggle it per `observe`. Read the contract and waivers before turning it on.
-- [ ] Wrap `os.stat` for existence checks; record paths under the tree root only.
-- [ ] "Tracked" via `git ls-tree -r --name-only <ref>`, never `git ls-files`. The reference is HEAD for check and the pin for record.
-- [ ] The Files rule (decision 10), keyed so it can't be waived.
+- [x] Install the audit hook once per process; toggle it per `observe`. Read the contract and waivers before turning it on.
+- [x] Wrap `os.stat` for existence checks; record paths under the tree root only.
+- [x] "Tracked" via `git ls-tree -r --name-only <ref>`, never `git ls-files`. The reference is HEAD for check and the pin for record.
+- [x] The Files rule (decision 10), keyed so it can't be waived.
 
 #### 3. Wire-up
 
-- [ ] `observe` runs with the audit on in both record and check. Record applies the Files rule against the pin, which catches a `runtime_paths.txt` that misses a directory the pin's server touches.
+- [x] `observe` runs with the audit on in both record and check. Record applies the Files rule against the pin, which catches a `runtime_paths.txt` that misses a directory the pin's server touches.
 
 ### Validation
 
 **Automated:**
-- [ ] `test_website_contract.py` and `test_cors.py` pass.
-- [ ] `gate.sh` in the worktree is green with the audit on.
-- [ ] `gate.sh record 10f7b9b…` leaves `contract.txt` byte-identical (the audit writes nothing into it).
+- [x] `test_website_contract.py` and `test_cors.py` pass.
+- [x] `gate.sh` in the worktree is green with the audit on.
+- [x] `gate.sh record 10f7b9b…` leaves `contract.txt` byte-identical (the audit writes nothing into it).
 
 **Manual:**
-- [ ] Print the audit's touched-path list once. Confirm it includes `data/`, findings `analysis.md` files, the archive fallback directory, `archetype_fit.csv` and `model_setup.py` files.
-- [ ] Add `exploration/concept_analysis/tables` to `.dockerignore` in the worktree, run `gate.sh`, see a Files failure, then `git checkout .dockerignore`.
+- [x] Print the audit's touched-path list once. Confirm it includes `data/`, findings `analysis.md` files, the archive fallback directory, `archetype_fit.csv` and `model_setup.py` files.
+- [x] Add `exploration/concept_analysis/tables` to `.dockerignore` in the worktree, run `gate.sh`, see a Files failure, then `git checkout .dockerignore`.
 
 **What We Know Works After This Phase:** an over-broad `.dockerignore` or an incomplete runtime path list fails the gate, unwaivably.
 
@@ -915,10 +915,53 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - `ruff check` and `ruff format --check` are clean on the gate, the tests and the harness.
 
 ### Phase 4 Completion
-**Completed:**
+**Completed:** 2026-10-08.
+
 **Actual Changes:**
+- `website_contract/file_audit.py` (new, 274 lines):
+  - `touched_paths(tree)`: a context manager. Inside it, an audit hook (installed once per process, since PEP 578 hooks can't be removed) records `open` for reading, `os.listdir` and `os.scandir`, and a wrapper on `os.stat` records existence checks. The wrapper is put in place for the block and taken out after it, so nothing else in the process runs through it. On exit the yielded set holds the paths under the tree, relative to it.
+  - `tracked_paths(repo, ref)`: files from `git ls-tree -r --name-only -z`, plus every directory holding one.
+  - `Matcher` and `dockerignore_patterns`: a port of Docker's rules as BuildKit applies them. See "How the matcher follows Docker" below.
+  - The Files rule as two functions, one per half: `missing_failures` (`files missing <path>`) and `excluded_failures` (`files dockerignore <path>`).
+- `contract.py`:
+  - `check` reads the contract, `waivers.toml` and `.dockerignore`, and lists HEAD's tracked paths, all before the audit starts. It audits `check_tree`, then applies both halves of the Files rule to the touched paths tracked at HEAD.
+  - `record` takes `--repo` (default: this checkout), the clone holding the pin, for the pin's tracked paths. It audits the server import and `record_tree`, applies the missing half against the pin, and writes nothing if any key fails.
+  - A `.dockerignore` with syntax the matcher refuses is a configuration error, exit 2, like a malformed `waivers.toml`.
+  - `files` has a printed meaning: "fix runtime_paths.txt or .dockerignore, never waive".
+- `waivers.py`: `files` joins `cors` in `UNWAIVABLE`.
+- `pin_source.py`: its git helper is now `git_stdout`, shared with `file_audit`.
+- `tests/test_website_contract.py`, 29 more tests:
+  - Files rule through the CLI: a tracked file missing from the tree; `.dockerignore` excluding a touched path, starting from the real file's patterns; a matching waiver ignored; a tree without HEAD's `.dockerignore`; an unsupported pattern as a configuration error.
+  - Decision 10, end to end: the server reads 04's bytecode cache, which the fixture's `**/__pycache__/` excludes. Untracked, it passes; committed, the same read fails with `files dockerignore …/__pycache__/model_setup.cpython-312.pyc`, which shows the read is seen.
+  - Record: an extract lacking a file the pin's server reads fails with `files missing …` and writes nothing.
+  - Matcher: the stencil, 14 cases from Docker's rules, 4 refusals (`?`, `[...]`, `\`, a bare `!`), how lines are read, and tracked directories.
+- `design.md` Appendix E: rows for the CORS and Files key shapes.
+
+**How the matcher follows Docker.** I read the code Docker runs, not only its documentation (fetched 2026-10-08): `moby/patternmatcher` `patternmatcher.go` and `ignorefile/ignorefile.go`, and `tonistiigi/fsutil` `filter.go`, which BuildKit uses to send the build context.
+- **Reading lines** (`ignorefile.ReadAll`): a byte-order mark is dropped; only a line that *starts* with `#` is a comment; patterns are trimmed and cleaned and lose a leading `/`.
+- **One pattern** (`Pattern.compile` and `match`): no wildcard is an exact match; a trailing `**` a prefix match; a leading `**` a suffix match, unless another wildcard follows; anything else is a regular expression where `*` stays in one segment and `**` spans segments.
+- **One path** (`MatchesUsingParentResults`, which `filter.go` calls during the walk): each path is judged with its parent directory's per-pattern results, so a match on a directory covers everything under it, and the last matching pattern decides. One subtlety is kept: a pattern skipped at a directory, because it couldn't change that directory's result, isn't inherited. So `a`, `!a/b`, `a` leaves `a/b/c` in the context. A test pins that case.
+- **The current `.dockerignore` gives no disagreement.** Docker's older per-path algorithm (`MatchesOrParentMatches`) and the walk agree on all 100,919 tracked files and directories at HEAD. The only runtime-path exclusions are `iter-*` directories, as the file intends. Docker itself wasn't run (no Docker, per the working rules).
+
+**Validation:**
+- `test_cors.py` and `test_website_contract.py`: 111 passed in the scratch serving venv.
+- `gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b`, with the audit on: `contract.txt` byte-identical. Its closing check run on HEAD is green: 0 failing, 111 passed. Steps: record 31.8 s; check: venv 0.0 s, install 0.6 s, contract 33.4 s, self-tests 22.6 s, total 56.7 s (i7-9750H, `nproc` 12).
+- **Touched paths on HEAD** (printed once): 288 paths, 213 of them tracked. They include `data/` and its 39 files, 37 `analysis.md` and 37 `synthesis.md`, 33 `model_setup.py`, the archive fallback directory `archive/concept_analysis_pre_rework`, `tables/archetype_fit.csv`, `scripts/lib/` and its two modules, the explorer's `.py` files and six templates. None is excluded by the current `.dockerignore`. The 75 untracked touches are local `__pycache__/*.pyc` files and `analyses/*/scripts/lib/model_setup_helpers.py` paths that model modules probe and don't find. Decision 10 is what keeps them from failing.
+- **Manual break:** adding `exploration/concept_analysis/tables` to `.dockerignore` and running `gate.sh` gave exactly `FAIL files dockerignore exploration/concept_analysis/tables/archetype_fit.csv` and exit 1, with the self-tests green. `git checkout .dockerignore` restored it.
+- `ruff check` and `ruff format --check` are clean.
+
 **Issues:**
+- **The first fixture copied the live `.dockerignore`, and that coupled 16 self-tests to repo config.** The manual break above failed them too. The fixture now writes a fixed `.dockerignore` in the shape of the real one. Only the exclusion test starts from the real file, as the plan asks, and it can fail only if the real file is unreadable, which already fails the check.
+- **The Files rule needs git, so the fixtures became repositories.** Every fixture tree is now a committed repository, and the purity test checks a clone of commit B instead of an extract, as CI checks a checkout. This and the new tests put the self-test step at about 22 s, up from 14 s.
+- **The audit costs about 5 s locally** on the contract step: the hook sees every audit event in the process.
+- **B4 holds on the evidence above,** with the named blind spot unchanged: a module missing from the tree is invisible to the audit, because `server.py:143-155` swallows the failed import.
+
 **Deviations:**
+- **Files keys**, which Appendix E didn't shape: `files missing <path>` and `files dockerignore <path>`, one per touched path.
+- **Record applies only the missing half.** Railway builds HEAD's image, so the pin's `.dockerignore`, which the extract doesn't contain, has nothing to say.
+- **`.dockerignore` must be in the tree when HEAD tracks it.** Check adds it to the paths judged for the missing half. Otherwise a checkout without root files would pass with nothing excluded. A commit that deletes it passes, as Docker then excludes nothing.
+- **Reads only.** An `open` for writing isn't a dependency; the server writes only the untracked `dist/`.
+- **The audit window is in the CLI commands, not in `observe` or `record_tree`.** Record's window also covers the decision-11 server import, so its import-time reads are audited. In-process self-tests call `record_tree` without the audit.
 
 ### Phase 5 Completion
 **Completed:**

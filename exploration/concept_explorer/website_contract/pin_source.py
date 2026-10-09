@@ -35,7 +35,7 @@ def extract(repo: Path, sha: str, dest: Path) -> list[str]:
     Returns the paths written.
     """
     wanted = [*runtime_paths(), SERVING_SET]
-    present = _git(repo, "ls-tree", "--name-only", sha, "--", *wanted).splitlines()
+    present = git_stdout(repo, "ls-tree", "--name-only", sha, "--", *wanted).splitlines()
     if SERVING_SET not in present:
         raise RuntimeError(f"{sha} has no {SERVING_SET}, so its serving set is unknown")
     archive = subprocess.run(
@@ -49,7 +49,8 @@ def extract(repo: Path, sha: str, dest: Path) -> list[str]:
     return present
 
 
-def _git(repo: Path, *args: str) -> str:
+def git_stdout(repo: Path, *args: str) -> str:
+    """What `git -C repo args...` prints; fails on a non-zero exit."""
     return subprocess.run(
         ["git", "-C", str(repo), *args], check=True, capture_output=True, text=True
     ).stdout
