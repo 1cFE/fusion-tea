@@ -12,3 +12,5 @@
 - 0008 · A non-Zotero source's durable identity is the SHA-256 of its raw bytes as fetched
 - 0009 · Integration is a fixed-point proof, not a transformation
 - 0010 · The independent oracle mirrors the model's audited held bindings — and is demo-scoped, not permanent · seams: "integrate gate 8 (verification)", "run-study steps 7/10 (retiring per align ruling)", "modeling-item close: held-input changes"
+- 0011 · Explorer deploys wait for the website-contract workflow
+- 0012 · The website contract is recorded from the pinned commit

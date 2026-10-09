@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phases 1–5 complete, after `contract.py` was split by concern; Phase 6 next.
+**Status:** In Progress. Phases 1–6 complete, after `contract.py` was split by concern; Phase 7 next.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -526,23 +526,23 @@ No code tests. The checks are in Validation, and Phase 7 runs the re-pin step fr
 
 **See the design for:** the RUNBOOK section's contents and the other doc edits ([Appendix H](design.md#appendix-h--change-inventory), Docs); the re-pin step and owner steps ([Integration Strategy](design.md#integration-strategy)); both ADRs and ADR (a)'s split grade ([Component Overview](design.md#component-overview)).
 
-- [ ] `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`: a new "Deploy gate" section covering every item in Appendix H's list, including the re-pin step (6 steps, from the Integration Strategy) and turning "Wait for CI" on and off. Update step 7 and the troubleshooting entry "Push to main didn't redeploy". Mark the Railway wording for a skipped deploy as unconfirmed until the owner sees it.
-- [ ] `exploration/concept_explorer/README.md` §9 (line 688): the gate, both new-concept paths with their costs, the re-pin step (pointing at the RUNBOOK rather than copying it).
-- [ ] `CLAUDE.md` § Live Deployments (line 255): replace "No CI runs first", and add "Any failing push-triggered workflow skips the production deploy." `AGENTS.md` only points at `CLAUDE.md`, so it needs no edit.
-- [ ] `railway.toml` lines 1-4: cite the gate and ADR (a), not FR-6. Keep it valid TOML.
-- [ ] ADR (a), "Explorer deploys wait for the website-contract workflow": `.project/scripts/adr.sh new explorer-deploys-wait-for-website-contract --title "..."`. Split grade as the design states. Name both FR-6 clauses it changes.
-- [ ] ADR (b), "The website contract is recorded from the pinned commit": `adr.sh new website-contract-recorded-from-pin --title "..."`. Grade: orchestrator, 2026-10-08.
-- [ ] Confirm `adr.sh` updated `.project/adr/INDEX.md`; update it by hand only if the script doesn't.
+- [x] `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`: a new "Deploy gate" section covering every item in Appendix H's list, including the re-pin step (6 steps, from the Integration Strategy) and turning "Wait for CI" on and off. Update step 7 and the troubleshooting entry "Push to main didn't redeploy". Mark the Railway wording for a skipped deploy as unconfirmed until the owner sees it.
+- [x] `exploration/concept_explorer/README.md` §9 (line 688): the gate, both new-concept paths with their costs, the re-pin step (pointing at the RUNBOOK rather than copying it).
+- [x] `CLAUDE.md` § Live Deployments (line 255): replace "No CI runs first", and add "Any failing push-triggered workflow skips the production deploy." `AGENTS.md` only points at `CLAUDE.md`, so it needs no edit.
+- [x] `railway.toml` lines 1-4: cite the gate and ADR (a), not FR-6. Keep it valid TOML.
+- [x] ADR (a), "Explorer deploys wait for the website-contract workflow": `.project/scripts/adr.sh new explorer-deploys-wait-for-website-contract --title "..."`. Split grade as the design states. Name both FR-6 clauses it changes.
+- [x] ADR (b), "The website contract is recorded from the pinned commit": `adr.sh new website-contract-recorded-from-pin --title "..."`. Grade: orchestrator, 2026-10-08.
+- [x] Confirm `adr.sh` updated `.project/adr/INDEX.md`; update it by hand only if the script doesn't.
 
 ### Validation
 
 **Automated:**
-- [ ] `/home/reid/1cfe/fusion-tea/.venv/bin/python -c "import tomllib; tomllib.load(open('railway.toml','rb'))"` succeeds.
-- [ ] `grep -n "No CI runs first" CLAUDE.md` finds nothing.
+- [x] `/home/reid/1cfe/fusion-tea/.venv/bin/python -c "import tomllib; tomllib.load(open('railway.toml','rb'))"` succeeds.
+- [x] `grep -n "No CI runs first" CLAUDE.md` finds nothing.
 
 **Manual:**
-- [ ] The RUNBOOK section answers spec criterion 6's three questions: how a skipped deploy looks in Railway, how to get a deploy out after a fix, how to turn "Wait for CI" on and off.
-- [ ] Every command in the re-pin step exists and matches `gate.sh`'s actual interface.
+- [x] The RUNBOOK section answers spec criterion 6's three questions: how a skipped deploy looks in Railway, how to get a deploy out after a fix, how to turn "Wait for CI" on and off.
+- [x] Every command in the re-pin step exists and matches `gate.sh`'s actual interface.
 
 **What We Know Works After This Phase:** the gate is documented where operators look, and its decisions are recorded.
 
@@ -999,10 +999,44 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - **Drift matches full 40-character SHAs only**, as the live page links. A short-SHA link would read as "no link" and turn red.
 
 ### Phase 6 Completion
-**Completed:**
+**Completed:** 2026-10-08.
+
 **Actual Changes:**
+- `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`: a new "Deploy gate" section, written for someone who never reads the gate's code. Its parts:
+  - the point, and a table of the four kinds of failure that hold a deploy (real break, false block, new concept, infrastructure) with how each clears, plus the measured false-block rate;
+  - "When a deploy didn't happen": how it looks in GitHub and Railway, how to tell the four kinds apart from the log, and a table of the nine rules and whether a waiver can clear each;
+  - "Getting a deploy out after the fix", including the empty commit for infrastructure failures;
+  - "Clearing a false block": judging the key against the pinned JavaScript, the waiver's four fields with a worked example, what a waiver costs, and how to fix `cors` and `files` failures instead;
+  - "A new concept": the keys it produces, then omit or waive, with steps and costs for each, and ready-to-paste waivers;
+  - "Emergency bypass", "Re-pinning" (the design's six steps), "A red drift run" (including the 60-day schedule shutoff), "Turning 'Wait for CI' on and off", "Owner setup steps" and "Rules the gate enforces".
+- The same RUNBOOK's step 7, Goal line, bumping step 4, the troubleshooting entry "Push to `main` didn't redeploy", and a "Notes / decisions of record" bullet pointing at the two ADRs.
+- `exploration/concept_explorer/README.md` §9: the opening no longer says no tests run first; the deploy, CORS, served-IDs and re-import lines mention the gate; a new "The deploy gate" subsection covers running it, waivers, both new-concept paths with their costs, and the re-pin step by pointer.
+- `CLAUDE.md` § Live Deployments: "No CI runs first" removed; one sub-bullet carries the design's line ("Any failing push-triggered workflow skips the production deploy"), the consequence for new push workflows, and a pointer to the RUNBOOK section.
+- `railway.toml`: the header cites the gate's workflow, "Wait for CI" and ADR 0011 instead of FR-6's "no GitHub Actions". It parses with `tomllib`.
+- `.project/adr/0011-explorer-deploys-wait-for-website-contract.md` (ADR (a)): split grade in `provenance` and in Why; names both FR-6 clauses; states 5 of 23 (22%) and 5 of 27 (19%), at most 2 waiver lines, newest `84422dd08` (2026-06-15).
+- `.project/adr/0012-website-contract-recorded-from-pin.md` (ADR (b)): `[AGENT] (orchestrator, 2026-10-08)`, the same measured rate.
+- `.project/adr/INDEX.md`: regenerated by `adr.sh new`; no hand edit.
+- `website_contract/waivers.toml`: the header comment now says `files` keys can't be waived either (a Phase 4 slip). Comment only; the file still loads with no entries.
+
+**Validation:**
+- `railway.toml` and `waivers.toml` load with `tomllib`. `grep -n "No CI runs first" CLAUDE.md` finds nothing.
+- The RUNBOOK answers criterion 6's three questions: how a skipped deploy looks ("When a deploy didn't happen"), how to get a deploy out ("Getting a deploy out after the fix"), and turning "Wait for CI" on and off (its own subsection).
+- Every command in the re-pin step matches `gate.sh`: `gate.sh record <full-sha>` with an optional trailing `--js-reverified`, then `gate.sh`. Phase 7 runs it literally.
+- **New-concept paths, simulated** in a scratch blobless clone of this branch with a scratch serving venv, both deleted afterwards. Concept 40 was a copy of `data/04.json` with no archetype-fit row and nothing else.
+  - The check gave exactly `concept-unlisted manifest 40`, `concept-unlisted parameters/{name} 40` and `shape GET /api/manifest .concepts[].fit_grade`.
+  - The RUNBOOK's two waivers cleared all three: 0 failing, 3 waived, exit 0.
+  - The RUNBOOK's omit-list line instead gave 0 failing, exit 0.
+- Every pinned JavaScript cite in the RUNBOOK's waiver examples was read at `10f7b9b`: `caveat_marker.js:53`, `matrix_data.js:220` (null grouped as unspecified), `concept_page.js:144`. `data_grounded`, the false-block example, has no reader in the pinned `static/js`.
+
 **Issues:**
+- **Bringing an omitted concept back takes an order the design doesn't spell out.** The design says "omit it until the website re-pins", but the website can only list a concept its pinned commit serves. The RUNBOOK gives this sequence: remove the omit-list line on a branch, the website imports that branch commit, then re-pin the gate to it and merge both together. Whichever site updates first, the other shows a broken page or a dead link for that concept until the second lands. This is agent-grade, for the orchestrator to check.
+- **A new concept's Shape waivers are path-wide.** `shape GET /api/manifest .concepts[].fit_grade` also hides a website concept's fit grade going null while it stands. The pinned pages handle null there, so that is a loss of content, not a crash. The RUNBOOK states this cost.
+- **Unconfirmed lines left for the owner:** Railway's wording for a waiting and a skipped deploy, and whether re-running a failed gate deploys. Each is marked in the RUNBOOK, with a step asking the owner to record it.
+
 **Deviations:**
+- The RUNBOOK's Goal line, bumping step 4 and notes section got one-line edits beyond the plan's "step 7 and troubleshooting", so the RUNBOOK no longer contradicts itself about every push deploying.
+- The `waivers.toml` header fix above, outside the plan's file list.
+- `CLAUDE.md` keeps the `docs/` bullet unchanged; the removed sentence covered both sites, and nothing gates GitHub Pages.
 
 ### Phase 7 Completion
 **Checkout estimate (orchestrator, 2026-10-08):** use the measured extract size, about 44 MB of blobs for the three runtime paths (Phase 1, `du --apparent-size` on `git archive` output), not Appendix F's 21 MB.

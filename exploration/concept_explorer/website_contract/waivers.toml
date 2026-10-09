@@ -9,7 +9,7 @@
 #           the path (file.js:N), or says "unread:" and the search terms that found no reader.
 # date:     a TOML date.
 #
-# cors keys are never waived: fix the allowlist instead.
+# cors and files keys are never waived: fix the allowlist, runtime_paths.txt or .dockerignore.
 #
 # [[waiver]]
 # match = "unpopulated GET /api/concepts/{id} .cost_model.cas71"
