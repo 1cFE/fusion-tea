@@ -1,3 +1,12 @@
+# Explorer API contract gate — Phases 6 and 7 done; implementation complete — 2026-10-08
+
+[AGENT] Three commits on `feat/explorer-api-contract-gate`, none pushed.
+- **Phase 6:** the hosting RUNBOOK has a "Deploy gate" section for someone who never reads the gate's code: held deploys and the four kinds of failure, waivers, both new-concept paths with their costs, the emergency bypass, the six-step re-pin, red drift runs, "Wait for CI" on and off, and the owner's setup steps (no secrets). README §9, `CLAUDE.md` and the `railway.toml` header point at it. ADR 0011 (deploys wait for the gate; split grade; the two FR-6 clauses) and ADR 0012 (the contract is recorded from the pin) state the 5-of-23 / 5-of-27 false-block rate. An independent cold read found nine gaps in the RUNBOOK; all fixed.
+- **Phase 7:** `gate.sh` from a fresh shallow, sparse, blobless clone of the branch head, cold `uv` cache: green, 0 failing, 119 passed, 56 s. Projected 2.9 min on a GitHub runner (3.5 min conservative). The RUNBOOK's re-pin step, followed literally for the current pin, gives no diff.
+- **Spec:** criteria 1, 2, 4, 5 and 6 checked with evidence. Criterion 3 waits on a pushed run.
+
+Next: `/_my_audit`. Then, after merge, the owner acceptance list in the plan: the first GitHub run, turning on "Wait for CI", Railway's wording, and what a re-run does.
+
 # Explorer API contract gate — contract.py split; Phases 4 and 5 done — 2026-10-08
 
 [AGENT] Three commits on `feat/explorer-api-contract-gate`, none pushed.

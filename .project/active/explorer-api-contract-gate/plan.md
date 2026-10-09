@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phases 1–6 complete, after `contract.py` was split by concern; Phase 7 next.
+**Status:** Complete. Phases 1–7 done, after `contract.py` was split by concern. Next: `/_my_audit`; owner acceptance after merge.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -566,7 +566,7 @@ No new tests. This phase runs the full suite inside `gate.sh`.
 
 ### Steps
 
-- [ ] **CI-shaped clone**, read-only against the shared repository:
+- [x] **CI-shaped clone**, read-only against the shared repository:
   ```bash
   CI=$(mktemp -d)
   git clone --sparse --depth 1 --filter=blob:none --branch feat/explorer-api-contract-gate \
@@ -575,24 +575,24 @@ No new tests. This phase runs the full suite inside `gate.sh`.
   git -C "$CI/repo" sparse-checkout set exploration/concept_explorer/website_contract .github/workflows
   ```
   The `file://` URL is needed for `--depth` to apply. The `-u` option is stored as the clone's `remote.origin.uploadpack`, so the clone and its later lazy blob fetches (including `gate.sh`'s `sparse-checkout add`) can filter, without changing the shared repository's config.
-- [ ] Run `time timeout 480 "$CI/repo/exploration/concept_explorer/website_contract/gate.sh"` from `$CI/repo`. Record each `step` line and the total.
-- [ ] **Projection to a GitHub-hosted runner** `[AGENT]` assumption: twice the local time of the venv, observe and pytest steps, plus Appendix F's upper bounds for runner start and checkout, re-estimating checkout for the measured 44 MB of runtime blobs (see Phase 7 notes). Record the local `nproc` and CPU model. If the projection exceeds 5 minutes, apply the compute trim and rerun. The owner's first pushed run confirms the real time.
-- [ ] **Re-pin step, followed literally** from the RUNBOOK text for the current pin. Expect no diff in `contract.txt` or `waivers.toml`.
-- [ ] Fill the criteria table below with evidence.
-- [ ] Hand the Owner Acceptance list to the orchestrator unchecked.
+- [x] Run `time timeout 480 "$CI/repo/exploration/concept_explorer/website_contract/gate.sh"` from `$CI/repo`. Record each `step` line and the total.
+- [x] **Projection to a GitHub-hosted runner** `[AGENT]` assumption: twice the local time of the venv, observe and pytest steps, plus Appendix F's upper bounds for runner start and checkout, re-estimating checkout for the measured 44 MB of runtime blobs (see Phase 7 notes). Record the local `nproc` and CPU model. If the projection exceeds 5 minutes, apply the compute trim and rerun. The owner's first pushed run confirms the real time.
+- [x] **Re-pin step, followed literally** from the RUNBOOK text for the current pin. Expect no diff in `contract.txt` or `waivers.toml`.
+- [x] Fill the criteria table below with evidence.
+- [x] Hand the Owner Acceptance list to the orchestrator unchecked.
 
 ### Spec criteria, verifiable on this branch
 
-| Criterion (spec Success Criteria) | Evidence to record |
-|---|---|
-| 1. A break fails the gate: fields, requests, concepts, CORS; each with a kept self-test | Phase 2 tests by name, plus the Phase 4 Files tests; all green inside `gate.sh` |
-| 2. Additive changes pass | Phase 2 *Changes that must pass* tests |
-| 3. A push workflow with no filter, green on the branch head | Phase 5 I5 test; Phase 7 CI-shaped `gate.sh` green. The GitHub-hosted run can't be observed without a push, so it moves to owner acceptance |
-| 4. Steps project to under 5 minutes | Phase 7 step times and projection |
-| 5. A written re-pin step a person can follow without the code | RUNBOOK section; Phase 7 literal run, no diff |
-| 6. RUNBOOK covers skipped deploys, recovery, "Wait for CI" | Phase 6 manual check |
+| Criterion (spec Success Criteria) | Evidence to record | Evidence recorded, 2026-10-08 | Verdict |
+|---|---|---|---|
+| 1. A break fails the gate: fields, requests, concepts, CORS; each with a kept self-test | Phase 2 tests by name, plus the Phase 4 Files tests; all green inside `gate.sh` | Fields: `test_response_field_breaks_fail` (removed, renamed, number-to-string, enum-value-renamed), `test_required_value_turned_null_fails`, `test_always_null_field_carrying_data_is_unpopulated_only`, `test_fit_grade_outside_the_pinned_palette_fails`. Requests: `test_request_breaks_fail` (route-removed, post-turned-into-put), `test_request_model_breaks_fail` (new-required-compute-field, state-rejects-null-concept, state-rejects-empty-timestamp). Concepts: `test_omitted_concept_fails`, `test_concept_dropped_from_one_joined_list_fails` (registry, tree), `test_lost_feature_fails_coverage` (sliders, toggle, findings), `test_unlisted_concept_fails`. CORS: `test_website_origin_dropped_from_cors_fails`. Files: `test_a_tracked_file_missing_from_the_tree_fails`, `test_dockerignore_excluding_a_touched_path_fails`. Each runs `contract.py check` and asserts its named key. All in the 119 passed by the CI-shaped `gate.sh` at `758577a18`. | Met |
+| 2. Additive changes pass | Phase 2 *Changes that must pass* tests | `test_additive_change_passes` (new-response-field, new-optional-request-field, new-map-key, concept-leaves-a-parameter) and `test_new_concept_with_a_waiver_passes`, green in the same run. | Met |
+| 3. A push workflow with no filter, green on the branch head | Phase 5 I5 test; Phase 7 CI-shaped `gate.sh` green. The GitHub-hosted run can't be observed without a push, so it moves to owner acceptance | `website-contract.yml` triggers on `push` with no filter, plus `pull_request` and `workflow_dispatch`; `test_the_gate_workflow_has_no_filters` and `test_push_workflows_equal_the_reviewed_list` green. `gate.sh` from a fresh shallow, sparse, blobless clone of the branch head `758577a18`: exit 0, 0 failing, 119 passed. | Met on this branch; the GitHub-hosted run is owner acceptance item 1, so the spec box stays unchecked |
+| 4. Steps project to under 5 minutes | Phase 7 step times and projection | Local `gate.sh` total 56.4 s (cold `uv` cache). Projection 2.9 min by the plan's formula, 3.5 min with conservative install and `setup-uv` allowances (Phase 7 Completion). | Met (projection; the real time is owner acceptance item 3) |
+| 5. A written re-pin step a person can follow without the code | RUNBOOK section; Phase 7 literal run, no diff | RUNBOOK "Re-pinning when the website re-imports the explorer". Followed literally for the current pin: printed concepts equal the website's 37 IDs; no refusal; no stale waivers; `contract.txt` and `waivers.toml` byte-identical (`sha256sum -c`); step 6 green. An independent cold read found two gaps in it, both fixed (Phase 6 Completion). | Met |
+| 6. RUNBOOK covers skipped deploys, recovery, "Wait for CI" | Phase 6 manual check | RUNBOOK "When a deploy didn't happen", "Getting a deploy out after the fix", "Turning 'Wait for CI' on and off", "Emergency bypass". Railway's exact wording for a skipped deploy is marked unconfirmed for the owner (owner acceptance item 4). | Met, wording to be confirmed by the owner |
 
-Also from the design's [Validation Approach](design.md#validation-approach): `gate.sh record 10f7b9b…` reproduces `contract.txt` byte for byte; `test_cors.py` passes under the serving set.
+Also from the design's [Validation Approach](design.md#validation-approach): `gate.sh record 10f7b9b…` reproduces `contract.txt` byte for byte; `test_cors.py` passes under the serving set. Both confirmed in Phase 7: the literal re-pin run reproduced `contract.txt` byte for byte, and `test_cors.py`'s 27 tests are among the 119 passed.
 
 **Commit point**, then suggest `/_my_audit` to the orchestrator.
 
@@ -1053,11 +1053,59 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 ### Phase 7 Completion
 **Checkout estimate (orchestrator, 2026-10-08):** use the measured extract size, about 44 MB of blobs for the three runtime paths (Phase 1, `du --apparent-size` on `git archive` output), not Appendix F's 21 MB.
 
-**Completed:**
-**Step times and projection:**
-**Criteria table filled:**
+**Completed:** 2026-10-08.
+
+**The CI-shaped run.** A fresh clone of the branch head `758577a18`, made with the plan's recipe: `--sparse --depth 1 --filter=blob:none` over `file://`, then `sparse-checkout set` of `website_contract` and `.github/workflows`. The clone was shallow and blobless: 38,074 blobs missing and a 25 MB `.git` before the gate ran. Then `time timeout 480 exploration/concept_explorer/website_contract/gate.sh` from the clone, with a fresh `UV_CACHE_DIR` so the install was cold, as on a runner's first run.
+- Result: exit 0; `website contract (pin 10f7b9b1f): 0 failing, 0 waived, 0 stale waivers`; `119 passed`.
+- `gate.sh`'s own `sparse-checkout add` fetched 2,663 blobs: the clone's `.git` grew from 25 MB to 34 MB, and the three runtime directories hold 45 MB on disk (4.0 + 20 + 21 MB apparent), matching the 44 MB extract measured in Phase 1.
+- Machine: Intel i7-9750H, `nproc` 12, git 2.43.0, uv 0.10.0.
+
+**Step times** (seconds):
+
+| Run | Commit | Clone + sparse set | `sparse-checkout` | `venv` | `install` | `contract` | `self-tests` | `gate.sh` total |
+|---|---|---|---|---|---|---|---|---|
+| CI-shaped, cold `uv` cache (the evidence run) | `758577a18` | 0.7 + 0.3 | 1.1 | 0.1 | 2.6 | 31.2 | 21.3 | 56.4 |
+| CI-shaped, cold `uv` cache | `d3756f644` | 0.6 + 0.3 | 1.1 | 0.1 | 3.6 | 30.8 | 20.6 | 56.2 |
+| Same clone, warm `uv` cache | `d3756f644` | — | 0.2 | 0.0 | 0.5 | 31.2 | 20.9 | 52.9 |
+| Worktree, re-pin step 6 (full checkout) | `bc0bbae1c` code | — | — | 0.0 | 0.7 | 30.7 | 21.1 | 52.6 |
+
+Re-pin step 2, `gate.sh record 10f7b9b…` in the worktree: `extract` 0.9, `install` 0.9, `install-tools` 0.2, `record` 32.2, then its closing check 52.4; 86.7 s wall. The clone times are over `file://` and say nothing about a runner's network.
+
+**Projection to a GitHub-hosted runner** `[AGENT]`, by the plan's formula: twice the local venv, install, contract and self-test times, plus Appendix F's upper bound for runner start and checkout, re-estimated for 44 MB of blobs.
+
+| Item | Seconds | Basis |
+|---|---|---|
+| Runner start and checkout, including `gate.sh`'s blob fetch | 63 | Appendix F's 30 s upper bound was for 21 MB of blobs. Scaled in full to 44 MB, as if all of it were blob transfer. About 9 MB crossed the wire compressed. |
+| `venv` and `install` | 5 | 2 × (0.1 + 2.6) |
+| `contract` (observe, compute included, and the rules) | 62 | 2 × 31.2 |
+| `self-tests` | 43 | 2 × 21.3 |
+| **Total** | **173 (2.9 min)** | against 5 min |
+
+- A more conservative total takes the install at Appendix F's 30 s cold bound (a `1costingfe` source build, say) instead of 5 s, and adds 10 s for the `setup-uv` step, which Appendix F doesn't list: **208 s (3.5 min)**. Still under 5 minutes.
+- The `gate.sh` part alone projects to about 140 s even then, well inside its `timeout 480`.
+- No compute trim is needed, confirming the Phase 3 decision. The owner's first pushed run is the real measure (owner acceptance item 3).
+
+**Re-pin step, followed literally** from the RUNBOOK's "Re-pinning" text, for the current pin `10f7b9b1f1466d2057a211bf25f09fc35d80a12b`:
+1. The pin and the website's 37 IDs came from the spec, which recorded them from the website's `provenance.json` on 2026-10-08. The website repo isn't reachable from here.
+2. `gate.sh record 10f7b9b…`: exit 0.
+3. The printed `concepts` line equals the spec's 37 IDs exactly (checked by script).
+4. No refusal: no uncited `fetch(`, no changed JS blob, no `files missing`.
+5. No `STALE` lines.
+6. `gate.sh`: 0 failing, 0 waived, 0 stale waivers; 119 passed. `contract.txt` and `waivers.toml` were byte-identical before and after (`sha256sum -c`), and `git diff` of `contract.txt` was empty.
+
+**Criteria table filled:** see "Spec criteria, verifiable on this branch" above. Criteria 1, 2, 4, 5 and 6 are met on this branch, and their spec boxes are checked with the evidence cited there. Criterion 3 is met as far as a branch can show; its "green on GitHub" half needs a push, so its spec box stays unchecked and the owner acceptance list carries it. The owner acceptance list below is handed over unchecked.
+
 **Issues:**
+- **`-u` isn't stored as `remote.origin.uploadpack` on git 2.43.0,** contrary to the plan's note. The clone itself was filtered, since 38,074 blobs were missing. Later lazy fetches (the checkout, `sparse-checkout set`, and `gate.sh`'s `add`) print `warning: filtering not recognized by server, ignoring`, but fetch only the blobs they need: 2,663 blobs, about 9 MB. This affects only the local recipe. GitHub's server supports filters.
+- None in the gate. All four runs were green with 0 failing.
+
 **Deviations:**
+- **Re-pin step, three departures from the literal text,** none changing a command the RUNBOOK gives:
+  - Steps 1 and 3 used the spec's copy of `provenance.json`'s values.
+  - Step 2's `git fetch origin` was replaced by `git cat-file -e 10f7b9b…^{commit}`. The commit was already present, and a fetch would rewrite the shared repository's remote-tracking refs.
+  - It ran on this branch rather than a new branch from `main`, since the point was to show no diff here.
+  - It also ran before the review fixes reworded step 4 into two sub-bullets. No command changed.
+- **The CI-shaped run was repeated at the final head** `758577a18` after the Phase 6 review-fix commit, which changed a comment in `waivers.toml`, a file the gate reads. The two earlier runs at `d3756f644` stay in the table as variance data.
 
 ---
 
