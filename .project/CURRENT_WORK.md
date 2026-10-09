@@ -1,3 +1,12 @@
+# Explorer API contract gate — audited: needs work — 2026-10-08
+
+[AGENT] `/_my_audit` verdict **Needs Work**, one blocker ([audit.md](active/explorer-api-contract-gate/audit.md)).
+- **Blocker B1:** renaming a request-body field the website sends passes the gate when the server gives the new name a default. Pydantic drops the old name, so the response is unchanged. Probed both ways: `apply_analyst_overrides` and `overrides` renamed, 0 failing. The website's override toggle or sliders would silently stop working. Spec criterion 1 is unchecked until a rule and self-tests cover it, which needs a design amendment ("Check reads no schema").
+- **Verified by re-running:** the gate on HEAD is green (119 passed, 54 s), and the record at the pin is byte-identical. Four of my own breaks are caught: a deep compute type change, a new registry enum value, a `.dockerignore` exclude and a missing file. 13 of 15 rule mutations turn a self-test red. The RUNBOOK's waiver, new-concept and re-pin examples all behave as written, and the scope diff is empty.
+- **Advisory A1–A9:** two rule clauses have no test; a key with a space crashes the check unwaivably; a `cors` waiver prints a wrong "delete it" message; harness-only `skip` and timings sit in the shipped module; the owner's strictness ruling is untracked; README §9 and `CLAUDE.md` assume "Wait for CI" is already on; the concept-return sequence needs "merge with a merge commit".
+
+Next: fix B1 (design amendment, then code and self-tests), then a targeted re-check of B1. Owner acceptance stays open.
+
 # Explorer API contract gate — Phases 6 and 7 done; implementation complete — 2026-10-08
 
 [AGENT] Three commits on `feat/explorer-api-contract-gate`, none pushed.

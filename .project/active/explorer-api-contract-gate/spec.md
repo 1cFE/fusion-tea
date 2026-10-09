@@ -1,6 +1,6 @@
 # Spec: Concept Explorer API Contract Gate
 
-**Status:** Implementation Complete (Phases 1–7 of 7); audit and owner acceptance pending
+**Status:** Implementation Complete (Phases 1–7 of 7); audit 2026-10-08: needs work (`audit.md`, Blocker B1); owner acceptance pending
 **Owner:** Reid W
 **Created:** 2026-10-08 11:59
 **Complexity:** MEDIUM
@@ -23,7 +23,7 @@ The owner asked for this dependency to be guarded (2026-10-08): "would it make s
 
 Verifiable on this branch:
 
-- [x] A fusion-tea change that would break the website's concept explorer fails the gate. "Would break" covers at least:
+- [ ] A fusion-tea change that would break the website's concept explorer fails the gate. Audit 2026-10-08: not met for a renamed request-body field that the server silently ignores (`audit.md`, Blocker B1). "Would break" covers at least:
   - removing or renaming a response field the website's frontend reads, changing its type, or making it null where the frontend expects a value;
   - changing a path, method or request-body field the frontend sends, newly requiring one, or rejecting a value it sends today (the comparison page sends `current_concept_id: null` and `timestamp: ""`);
   - no longer serving one of the website's concept IDs, or serving a concept the website doesn't list (the pinned frontend links every served concept, and the website has no page for it, so it shows a dead link);

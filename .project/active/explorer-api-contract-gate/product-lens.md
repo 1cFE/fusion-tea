@@ -43,3 +43,26 @@ Gate: DISPOSED (design-F1 to design-F5; no BLOCK). F1 and F2 need the owner flag
 - design-F4: carried into design-review M8. Proposed: the `CLAUDE.md` line, plus a self-test over `.github/workflows` for I4 and I5.
 - design-F5: carried into design-review M7. Proposed: split ADR (a)'s grade and name both FR-6 clauses.
 - Smells: both stated in the design, so not hidden ownership changes. Smell 2's enforcement gap escalates into M8.
+
+## audit — 2026-10-08 — rev 239f97529 (base f96ad312c)
+Point (re-derived): A push to `main` that would break `1cf.energy/tools/concepts/` (frontend frozen at `10f7b9b`) must not deploy, guarded by tests on the API it calls (contract + `test_cors.py` only). Other pushes still redeploy with no manual step, operable from the runbook.   [source: owner-verbatim 2026-10-08 "so we don't break anything", "what would tests look like to protect the API?"; option "3", Align intent; hosting FR-6, FR-8; ADR-0011, ADR-0012; grade: owner (goal, FR-6), agent/ratified (failing push doesn't deploy), AGENT (strictness)]
+Falsifier: With "Wait for CI" on, a push deploys that renames a field the pinned JS reads, drops a website concept, changes a pinned request body, drops `https://1cf.energy` from CORS, or lets `.dockerignore` drop a served file.
+Checked, no DON'T: each falsifier case has a kept failing self-test; all 37 concepts replayed on real data; workflow unfiltered; drift verified live (concept/01 page links the contract pin).
+Smells: two-representations (pin vs `provenance.json`; `runtime_paths.txt` vs `.dockerignore`), downstream-internal-knowledge (pinned-JS slider rules) and baseline-vs-purpose (37-ID list holds new concepts) fired; all disposed (drift job, Files rule, `--js-reverified` refusal, ADR-0011).
+Findings:
+- audit-F1 [DO] The owner's ruling on gate strictness (5 of 23 replayed changes needed a waiver) is "parked with the owner" (ADR-0011, `plan.md:754`) but missing from the spec's owner-acceptance list (`spec.md:39-43`), so close and pre_pr won't surface it. Not a BLOCK: the owner ratified that a failing push doesn't deploy; strictness is agent calibration. — ADR-0011 (agent/ratified), FR-6 (owner) — disposition: pending; proposed: add "owner rules on the false-block rate before turning on Wait for CI" to owner acceptance.
+- audit-F2 [DO] `CLAUDE.md:258` and README §9's intro say failing pushes are held. Until the owner turns on "Wait for CI", a red push still deploys while the agent note says it won't. The RUNBOOK's decisions note names only FR-6's "no GitHub Actions" clause. — owner-verbatim #2 (owner goal; inference AGENT) — disposition: pending; proposed: condition the line on "Wait for CI" (or toggle at merge); name both FR-6 clauses.
+- audit-F3 [DO] No `.project/product/` entry records the owner-stated promise that website-breaking pushes don't deploy, though a cold agent could undo it (a push workflow that can fail). — product-lens §1.4, owner-verbatim #2 (owner) — disposition: pending; proposed: `_my_close` weighs an entry citing ADR-0011 and ADR-0012.
+Resolves:
+- spec-F1: FIXED — authority: AGENT — basis: owner-acceptance criterion; `test_the_gate_workflow_has_no_filters`.
+- spec-F2: FIXED — authority: AGENT — basis: unwaivable Files rule.
+- spec-F3: FIXED — authority: AGENT — basis: `test_request_breaks_fail`, `test_request_model_breaks_fail`.
+- spec-F4: FIXED — authority: adr-0011 — basis: RUNBOOK "Deploy gate"; residual in audit-F2.
+- spec-F5: FIXED — authority: AGENT — basis: daily drift job, verified live.
+- spec-F6: FIXED — authority: owner (#5) — basis: `AGENTS.md` routes to `CLAUDE.md`.
+- design-F1: DEFERRED — authority: AGENT — basis: carried as audit-F1.
+- design-F2: FIXED — authority: adr-0011 — basis: both new-concept paths, with costs, documented.
+- design-F3: FIXED — authority: AGENT — basis: install retry, `timeout 480`, new-push recovery.
+- design-F4: FIXED — authority: AGENT — basis: `CLAUDE.md:258`; `test_push_workflows_equal_the_reviewed_list`.
+- design-F5: FIXED — authority: AGENT — basis: ADR-0011 splits the grade.
+Gate: DISPOSED (audit-F1, audit-F2, audit-F3). No BLOCK.
