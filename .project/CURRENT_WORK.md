@@ -1,3 +1,11 @@
+# Explorer API contract gate — Phase 3 done: contract recorded at the pin — 2026-10-08
+
+[AGENT] `website_contract/contract.txt` is recorded at `10f7b9b` (37 concepts, 13 cited JS blobs, 778 lines). `gate.sh record 10f7b9b…` reproduces it byte for byte, and `gate.sh` on the branch is green against it with real compute: 0 failing, 81 self-tests pass, 45 s locally, about 2.4 min projected. No compute trim. Open for the orchestrator:
+- `contract.py` is 1323 lines; plan Phase 3 Completion proposes a four-module split (changes D12).
+- New concepts will usually also trip Shape (`company`, `fit_grade`, `fuel`, LCOE were never null at the pin); Phase 6's RUNBOOK should say so.
+- The corrected Phase 1 rate (below).
+Next: Phase 4 (file audit). Nothing is pushed.
+
 # Explorer API contract gate — Phase 2 done; Phase 1 rate corrected — 2026-10-08
 
 [AGENT] Phase 2 added waivers, the CORS rule and the `contract.py check` CLI, with Appendix D's break, pass and waiver self-tests (49, plus `test_cors.py`: 76 pass). Its "field removed" test found a core bug: a field removed from every response passed silently. Fixed in `observed_shapes`. Re-running Phase 1's first set with the fix adds one false-block pair, `84422dd08` (2026-06-15, `sources` removed, unread at the pin). The false-block rate is now 5 of 23 (22%, fails condition 1) on the design's count, or 5 of 27 (19%, passes) on the combined count the go-ahead used. The orchestrator should tell the owner the corrected figure. Details: plan Phase 2 Completion. Next: Phase 3. Nothing is pushed.

@@ -7,6 +7,8 @@ requests and reports, as failure keys, every change the pinned frontend could br
 Design: .project/active/explorer-api-contract-gate/design.md.
 
     contract.py check [--tree ROOT] [--contract FILE] [--waivers FILE]
+    contract.py extract SHA DEST
+    contract.py record --tree EXTRACT --pin SHA [--contract FILE] [--js-reverified]
 
 Module-level imports are standard library only. The server and FastAPI load inside
 `serve`, so this file can run before a serving venv exists.
@@ -16,10 +18,15 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import hashlib
+import importlib.metadata
+import io
 import math
 import os
 import re
+import subprocess
 import sys
+import tarfile
 import time
 import tomllib
 import urllib.parse
@@ -119,8 +126,7 @@ LINKED_LISTS: dict[str, tuple[str, ...]] = {
 }
 
 # Plain strings the pinned JavaScript compares to literals (Appendix B, N1). The
-# allowed set comes from the JavaScript, not from data: caveat_marker.js:53 tests
-# fit_grade === "None", and ontology_palette.js:108-113 is the full grade palette.
+# allowed set comes from the JavaScript, not from data: the grade palette (USAGE_SITES).
 # No literal map-key read needs a required-key table at this pin (Appendix B).
 _FIT_GRADES = ("High", "Med", "Low", "None")
 LITERAL_READS: dict[tuple[str, str], tuple[str, ...]] = {
@@ -128,8 +134,28 @@ LITERAL_READS: dict[tuple[str, str], tuple[str, ...]] = {
     (CONCEPT, ".fit_grade"): _FIT_GRADES,
 }
 
+# Where the pinned JavaScript uses the maps and the literal values (Appendix B). No rule
+# reads these; they are cited so recording tracks these files' blob SHAs too (M5, N6).
+USAGE_SITES = (
+    "tornado.js:99",  # sensitivities.engineering iterated
+    "tornado.js:105",  # sensitivities.financial iterated
+    "tornado.js:101-108",  # parameter_metadata: guarded lookup by name
+    "tornado.js:135-136",  # parameter_index.parameters: guarded lookup by name
+    "view_sensitivity.js:98",  # compare page: sensitivity maps iterated
+    "view_sensitivity.js:101",
+    "view_sensitivity.js:194",  # compare page: parameter_metadata iterated
+    "cas_breakdown.js:20-24",  # CAS22_ORDER, the fixed codes read behind an existence check
+    "cas_breakdown.js:221-229",  # cas22_detail iterated
+    "caveat_marker.js:53",  # fit_grade === "None"
+    "ontology_palette.js:108-113",  # the Archetype Fit palette: High, Med, Low, None
+    "ontology_palette.js:161",  # the matrix facet that uses it
+)
+
 WEBSITE_ORIGIN = "https://1cf.energy"
-EXPLORER = Path("exploration/concept_explorer")  # the explorer app, relative to a repo root
+# Relative to a repo root.
+EXPLORER = Path("exploration/concept_explorer")
+STATIC_JS = EXPLORER / "static" / "js"  # where every cite above resolves
+SERVING_SET = "requirements-serve.txt"
 
 # ---------------------------------------------------------------------------
 # Observe: serve a tree and send every request the pinned frontend makes
@@ -1040,12 +1066,141 @@ def apply_waivers(failures: Sequence[str], waivers: Sequence[Waiver]) -> Verdict
 
 
 # ---------------------------------------------------------------------------
-# Command line (gate.sh runs `contract.py check` on every push)
+# Record at the pin: extract it, check the cited JavaScript (I2, M5), record
 # ---------------------------------------------------------------------------
 
-EXIT_FAILED = 1  # an unwaived failure
-EXIT_CONFIG = 2  # waivers.toml breaks the grammar
 _HERE = Path(__file__).resolve().parent
+REPO_ROOT = _HERE.parents[2]  # the checkout this file belongs to
+CONTRACT_PATH = _HERE / "contract.txt"
+WAIVERS_PATH = _HERE / "waivers.toml"
+RUNTIME_PATHS = _HERE / "runtime_paths.txt"
+TEST_TOOLS = ("httpx", "pytest")  # their record-mode versions form the tools line (m6)
+
+
+def runtime_paths() -> list[str]:
+    """The repo directories the explorer server reads at runtime (runtime_paths.txt)."""
+    lines = RUNTIME_PATHS.read_text(encoding="utf-8").splitlines()
+    return [line for line in lines if line and not line.startswith("#")]
+
+
+def extract(repo: Path, sha: str, dest: Path) -> list[str]:
+    """Write commit `sha`'s runtime paths and serving set into a new directory `dest`.
+
+    Runtime paths the commit doesn't have are skipped; the serving set is required (N2).
+    Returns the paths written.
+    """
+    wanted = [*runtime_paths(), SERVING_SET]
+    present = _git(repo, "ls-tree", "--name-only", sha, "--", *wanted).splitlines()
+    if SERVING_SET not in present:
+        raise RuntimeError(f"{sha} has no {SERVING_SET}, so its serving set is unknown")
+    archive = subprocess.run(
+        ["git", "-C", str(repo), "archive", "--format=tar", sha, "--", *present],
+        check=True,
+        capture_output=True,
+    ).stdout
+    dest.mkdir(parents=True)
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+        tar.extractall(dest, filter="data")
+    return present
+
+
+def _git(repo: Path, *args: str) -> str:
+    return subprocess.run(
+        ["git", "-C", str(repo), *args], check=True, capture_output=True, text=True
+    ).stdout
+
+
+def cites() -> list[str]:
+    """Every file.js:N cite in the request, join, link and usage tables, sorted."""
+    sites = {site for r in REQUESTS.values() for site in (*r.fetch_sites, *r.derived_by)}
+    sites |= {site for table in (JOINED_LISTS, LINKED_LISTS) for s in table.values() for site in s}
+    return sorted(sites | set(USAGE_SITES))
+
+
+def fetch_sites(tree: Path) -> set[str]:
+    """Every line of the frontend's JavaScript and templates in `tree` that calls fetch(.
+
+    JavaScript sites are named like the cites, relative to static/js (`index_page.js:247`);
+    template sites relative to the explorer (`templates/concept.html.j2:12`).
+    """
+    explorer, js = tree / EXPLORER, tree / STATIC_JS
+    files = [(path, path.relative_to(js).as_posix()) for path in js.rglob("*.js")]
+    files += [
+        (path, path.relative_to(explorer).as_posix())
+        for path in (explorer / "templates").rglob("*")
+        if path.is_file()
+    ]
+    return {
+        f"{name}:{number}"
+        for path, name in files
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1)
+        if "fetch(" in line
+    }
+
+
+def cite_errors(tree: Path) -> list[str]:
+    """Where the cite tables and the frontend in `tree` disagree (I2); empty when they agree."""
+    sites = fetch_sites(tree)
+    cited = {site for request in REQUESTS.values() for site in request.fetch_sites}
+    errors = [f"{site}: calls fetch( but no request cites it" for site in sorted(sites - cited)]
+    errors += [
+        f"{site}: cited as a fetch( site, but has no fetch(" for site in sorted(cited - sites)
+    ]
+    for cite in cites():
+        name, lines = cite.split(":")
+        path = tree / STATIC_JS / name
+        if not path.is_file():
+            errors.append(f"{cite}: no such file")
+        elif int(lines.split("-")[-1]) > len(path.read_text(encoding="utf-8").splitlines()):
+            errors.append(f"{cite}: past the end of the file")
+    return errors
+
+
+def js_blobs(tree: Path) -> dict[str, str]:
+    """Repo path -> git blob SHA of every cited JavaScript file in `tree` (M5, N6)."""
+    names = sorted({cite.split(":")[0] for cite in cites()})
+    return {
+        (STATIC_JS / name).as_posix(): _blob_sha((tree / STATIC_JS / name).read_bytes())
+        for name in names
+    }
+
+
+def _blob_sha(data: bytes) -> str:
+    """The SHA git gives `data` as a blob, so it compares with `git rev-parse <pin>:<path>`."""
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def unverified_js(contract_path: Path, js: Mapping[str, str]) -> list[str]:
+    """Why the cited JavaScript isn't known to match the cite tables; empty when it is.
+
+    It is known to match when every blob equals the previous recording's header (M5).
+    """
+    if not contract_path.exists():
+        return [f"no earlier {contract_path.name} to compare the cited JavaScript with"]
+    previous = parse(contract_path.read_text(encoding="utf-8")).js
+    return [
+        f"{path}: blob changed since the last recording"
+        for path in sorted(previous.keys() | js.keys())
+        if previous.get(path) != js.get(path)
+    ]
+
+
+def _require_own_server(tree: Path) -> None:
+    """Fail unless the explorer server imports from `tree`, the pin's own code (decision 11)."""
+    import exploration.concept_explorer.server as server
+
+    if not Path(server.__file__).resolve().is_relative_to(tree):
+        raise RuntimeError(
+            f"recording imported {server.__file__}, not the extract's server; run it as python -I"
+        )
+
+
+# ---------------------------------------------------------------------------
+# Command line (gate.sh runs `check` on every push, and `extract` and `record` to re-pin)
+# ---------------------------------------------------------------------------
+
+EXIT_FAILED = 1  # an unwaived failure, or a recording refused
+EXIT_CONFIG = 2  # waivers.toml breaks the grammar
 
 # What each rule's failure means, printed under the keys for a reader without the code.
 _RULE_MEANINGS = {
@@ -1065,12 +1220,32 @@ def main(argv: Sequence[str]) -> int:
     parser = argparse.ArgumentParser(prog="contract.py", description=__doc__.split("\n")[0])
     commands = parser.add_subparsers(required=True)
     check_parser = commands.add_parser("check", help="check a checkout against contract.txt")
-    check_parser.add_argument("--tree", type=Path, default=_HERE.parents[2], help="repo root")
-    check_parser.add_argument("--contract", type=Path, default=_HERE / "contract.txt")
-    check_parser.add_argument("--waivers", type=Path, default=_HERE / "waivers.toml")
+    check_parser.add_argument("--tree", type=Path, default=REPO_ROOT, help="repo root")
+    check_parser.add_argument("--contract", type=Path, default=CONTRACT_PATH)
+    check_parser.add_argument("--waivers", type=Path, default=WAIVERS_PATH)
     check_parser.set_defaults(command=_check_command)
+    extract_parser = commands.add_parser("extract", help="git archive a commit's runtime paths")
+    extract_parser.add_argument("sha", type=_full_sha)
+    extract_parser.add_argument("dest", type=Path, help="a directory that doesn't exist yet")
+    extract_parser.set_defaults(command=_extract_command)
+    record_parser = commands.add_parser("record", help="record contract.txt from the pin")
+    record_parser.add_argument("--tree", type=Path, required=True, help="the pin's extract")
+    record_parser.add_argument("--pin", type=_full_sha, required=True)
+    record_parser.add_argument("--contract", type=Path, default=CONTRACT_PATH)
+    record_parser.add_argument(
+        "--js-reverified",
+        action="store_true",
+        help="a developer re-verified Appendix A against the cited JavaScript",
+    )
+    record_parser.set_defaults(command=_record_command)
     args = parser.parse_args(argv)
     return args.command(args)
+
+
+def _full_sha(text: str) -> str:
+    if not re.fullmatch(r"[0-9a-f]{40}", text):
+        raise argparse.ArgumentTypeError(f"not a full 40-character commit SHA: {text!r}")
+    return text
 
 
 def _check_command(args: argparse.Namespace) -> int:
@@ -1085,6 +1260,41 @@ def _check_command(args: argparse.Namespace) -> int:
     verdict = apply_waivers(check_tree(tree, contract), waivers)
     print(report(verdict, contract.pin))
     return EXIT_FAILED if verdict.failing else 0
+
+
+def _extract_command(args: argparse.Namespace) -> int:
+    paths = extract(REPO_ROOT, args.sha, args.dest)
+    print(f"extracted {args.sha} into {args.dest}: {' '.join(paths)}")
+    return 0
+
+
+def _record_command(args: argparse.Namespace) -> int:
+    tree = args.tree.resolve()
+    errors = cite_errors(tree)
+    if errors:
+        print("\n".join(errors))
+        print(
+            "The cite tables no longer match the pinned frontend: a developer must re-verify "
+            "Appendix A and update REQUESTS and the other cite tables in contract.py."
+        )
+        return EXIT_FAILED
+    js = js_blobs(tree)
+    reasons = [] if args.js_reverified else unverified_js(args.contract, js)
+    if reasons:
+        print("\n".join(reasons))
+        print(
+            "A developer must re-verify Appendix A against the cited JavaScript, "
+            "then rerun with --js-reverified."
+        )
+        return EXIT_FAILED
+    sys.path.insert(0, str(tree))  # import the pin's own server (I1)
+    _require_own_server(tree)
+    tools = [f"{name}=={importlib.metadata.version(name)}" for name in TEST_TOOLS]
+    contract = record_tree(tree, args.pin, tools, js)
+    args.contract.write_bytes(render(contract).encode("utf-8"))
+    print(f"recorded {args.contract} from {args.pin}")
+    print(" ".join(["concepts", *contract.concepts]))
+    return 0
 
 
 def report(verdict: Verdict, pin: str) -> str:

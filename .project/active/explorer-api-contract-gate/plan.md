@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** In Progress. Phases 1–2 complete; Phase 3 next.
+**Status:** In Progress. Phases 1–3 complete; Phase 4 next.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -333,49 +333,49 @@ def test_rerecording_after_a_break_gives_identical_bytes(two_commit_repo):
 
 #### 1. Tests (write first), in `test_website_contract.py`
 
-- [ ] **Purity (I1).** The two-commit git fixture is the Phase 2 fixture plus copies of the worktree's top-level `exploration/concept_explorer/*.py` (so record really imports the extract's own server, decision 11), the worktree's `static/js/` (identical to the pin's, so the real cites resolve) and `requirements-serve.txt`. Use `git -c user.name=t -c user.email=t@t` for commits. Reuse the gate's venv (`sys.executable`); no test builds a second venv (N7).
-- [ ] **Machinery:**
+- [x] **Purity (I1).** The two-commit git fixture is the Phase 2 fixture plus copies of the worktree's top-level `exploration/concept_explorer/*.py` (so record really imports the extract's own server, decision 11), the worktree's `static/js/` (identical to the pin's, so the real cites resolve) and `requirements-serve.txt`. Use `git -c user.name=t -c user.email=t@t` for commits. Reuse the gate's venv (`sys.executable`); no test builds a second venv (N7).
+- [x] **Machinery:**
   - the committed `{*}` paths equal Appendix B's six fields (`engineering`, `financial`, `cas22_detail`, `params`, `parameter_metadata`, `parameters`);
   - the `fetch(` coverage check fails on a synthetic extra `fetch(` added to a temp copy of `static/js`;
   - a changed JS blob fails recording unless `--js-reverified` is passed.
 
 #### 2. `contract.py` additions
 
-- [ ] `extract` subcommand: `git archive <sha>` of the paths in `runtime_paths.txt` that exist at that commit, plus the root `requirements-serve.txt` (N2).
-- [ ] `record` subcommand, run as `python -I -B contract.py record --tree <extract> --pin <sha>`:
+- [x] `extract` subcommand: `git archive <sha>` of the paths in `runtime_paths.txt` that exist at that commit, plus the root `requirements-serve.txt` (N2).
+- [x] `record` subcommand, run as `python -I -B contract.py record --tree <extract> --pin <sha>`:
   - it asserts the imported server lives inside the extract (decision 11);
   - it skips CORS headers and preflights;
   - it fails if any `fetch(` in the extract's `static/js/` or `templates/` is uncited, or a cite points at a line without `fetch(`;
   - it computes blob SHAs in Python (`sha1(b"blob %d\0" % len(data) + data)`) for every cited JS file, including the Appendix A join and link sites, `caveat_marker.js`, `ontology_palette.js` and Appendix B's usage cites;
   - it fails if any SHA differs from the existing `contract.txt` header, unless `--js-reverified`, with the message "a developer must re-verify Appendix A";
   - it reads tool versions with `importlib.metadata` for the `tools` line.
-- [ ] Apply the compute trim if the Phase 1 timings require it (decision 4). Record the decision in Implementation Notes either way.
+- [x] Apply the compute trim if the Phase 1 timings require it (decision 4). Record the decision in Implementation Notes either way.
 
 #### 3. `exploration/concept_explorer/website_contract/gate.sh` (NEW) and `runtime_paths.txt` (NEW)
 
-- [ ] `runtime_paths.txt`: `exploration/concept_explorer`, `exploration/concept_analysis`, `archive/concept_analysis_pre_rework`, matching the "MUST survive" list in `.dockerignore:9-13`.
-- [ ] `gate.sh` per Appendix H, with `set -euo pipefail` and these specifics:
+- [x] `runtime_paths.txt`: `exploration/concept_explorer`, `exploration/concept_analysis`, `archive/concept_analysis_pre_rework`, matching the "MUST survive" list in `.dockerignore:9-13`.
+- [x] `gate.sh` per Appendix H, with `set -euo pipefail` and these specifics:
   - a fresh venv under `mktemp -d` (or `$RUNNER_TEMP`) every run, `uv venv --python 3.12`, the install retried up to 3 times;
   - **check mode** installs `requirements-serve.txt` plus the `pytest` and `httpx` versions pinned from Phase 1, then runs `python -I -B contract.py check` and `python -B -m pytest -p no:cacheprovider` on `test_cors.py` and `test_website_contract.py`; both always run, and the script exits non-zero if either failed;
   - **record mode** (`gate.sh record <sha> [--js-reverified]`) runs `python3 contract.py extract`, installs the extract's serving set, then resolves the test tools in a second `uv pip install --exclude-newer "$(git show -s --format=%cI <sha>)"` call (N2), runs `record`, then runs check mode on the working tree (decision 12);
   - each step prints its elapsed seconds (`step <name> <n>s`), for Phase 7 and for CI logs;
   - `PYTHONDONTWRITEBYTECODE=1` exported.
-- [ ] `chmod +x gate.sh`.
+- [x] `chmod +x gate.sh`.
 
 #### 4. Record and commit the contract
 
-- [ ] Run `gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b` and commit `contract.txt`.
+- [x] Run `gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b` and commit `contract.txt`.
 
 ### Validation
 
 **Automated:**
-- [ ] `gate.sh` (check mode) in the worktree reports zero contract failures and green self-tests. Record each step's time in Implementation Notes.
-- [ ] `cp contract.txt /tmp/c1 && gate.sh record 10f7b9b… && cmp /tmp/c1 contract.txt` succeeds (byte for byte).
+- [x] `gate.sh` (check mode) in the worktree reports zero contract failures and green self-tests. Record each step's time in Implementation Notes.
+- [x] `cp contract.txt /tmp/c1 && gate.sh record 10f7b9b… && cmp /tmp/c1 contract.txt` succeeds (byte for byte).
 
 **Manual:**
-- [ ] The `concepts` line equals the website's 37 IDs from the spec: `01`–`16`, `17a`, `17b`, `18`, `19`, `20a`, `20b`, `21`–`25`, `28`–`33`, `35`–`37`, `39`.
-- [ ] The `{*}` lines trace to Appendix B, and `literal` lines carry `High Low Med None` for both `fit_grade` paths.
-- [ ] Rename one field in one worktree `data/<id>.json`, run `gate.sh`, see the `shape` key, then `git checkout` the file.
+- [x] The `concepts` line equals the website's 37 IDs from the spec: `01`–`16`, `17a`, `17b`, `18`, `19`, `20a`, `20b`, `21`–`25`, `28`–`33`, `35`–`37`, `39`.
+- [x] The `{*}` lines trace to Appendix B, and `literal` lines carry `High Low Med None` for both `fit_grade` paths.
+- [x] Rename one field in one worktree `data/<id>.json`, run `gate.sh`, see the `shape` key, then `git checkout` the file.
 
 **What We Know Works After This Phase:** the real contract exists and reproduces exactly; HEAD passes against it with real compute; the gate's full local run time is known.
 
@@ -795,12 +795,90 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - **A waiver that names only CORS keys is reported `STALE`**, with the CORS failure still printed. Appendix E: CORS keys are "printed but never matched".
 
 ### Phase 3 Completion
-**Completed:**
+**Completed:** 2026-10-08.
+
 **Actual Changes:**
-**`gate.sh` step times:**
-**Compute trim decision:**
+- `website_contract/contract.py`:
+  - `USAGE_SITES`: Appendix B's usage cites as data (`tornado.js`, `view_sensitivity.js`, `cas_breakdown.js`, `caveat_marker.js`, `ontology_palette.js`). No rule reads it; it puts those files' blob SHAs in the header.
+  - `extract(repo, sha, dest)` and `contract.py extract SHA DEST`: `git archive` of the `runtime_paths.txt` paths that exist at `sha`, plus `requirements-serve.txt`, which is required.
+  - `cites()`, `fetch_sites(tree)` and `cite_errors(tree)` (I2): every `fetch(` line in `static/js` and `templates/` must be cited, every fetch cite must sit on a `fetch(` line, and every cite must name an existing file and line.
+  - `js_blobs(tree)`: git blob SHAs computed in Python for the 13 cited files. `unverified_js(contract_path, js)` names files whose blob differs from the previous header (M5).
+  - `contract.py record --tree EXTRACT --pin SHA [--contract FILE] [--js-reverified]`, in this order: cite errors, then the JS blob check, then the decision-11 server check, then `record_tree` with the `tools` line from `importlib.metadata`. Nothing is written when any check fails. It prints the recorded concept list for re-pin step 3.
+  - `REPO_ROOT`, `CONTRACT_PATH`, `WAIVERS_PATH`, `RUNTIME_PATHS` and `SERVING_SET` constants, shared by the CLI defaults and the tests.
+- `website_contract/runtime_paths.txt` (new): the three directories, with a header pointing at `.dockerignore`'s "MUST survive" list.
+- `website_contract/gate.sh` (new, executable): check mode and `record <sha> [--js-reverified]`, per Appendix H. Details are under Deviations.
+- `website_contract/contract.txt` (new): recorded at `10f7b9b1f1466d2057a211bf25f09fc35d80a12b`, 778 lines.
+  - The 37 website concepts; `tools httpx==0.28.1 pytest==9.1.1`; 13 `js` lines whose SHAs equal `git rev-parse 10f7b9b:<path>`.
+  - Every template records exactly `200`.
+  - 32 `map` lines: Appendix B's fields under the concept and the three compute templates, `parameter_index.parameters`, and the state response root.
+- `tests/test_website_contract.py`: 5 more tests, 54 in all.
+  - The two-commit purity test (I1). It records A with `--js-reverified`, sees B fail with `concept-missing registry 05`, then re-records A without the flag and gets identical bytes. Recording and checking run in `python -I -B` subprocesses of the test's venv (N7).
+  - The committed `{*}` set, as exact `(template, path)` pairs with model cites.
+  - An uncited `fetch(` fails recording and writes nothing. The cite tables match this checkout's `static/js`.
+  - A changed JS blob, or no earlier header, fails recording without `--js-reverified` and leaves the contract untouched.
+
+**Validation:**
+- First recording: `gate.sh record 10f7b9b… --js-reverified`, since no earlier header existed. Phase 1 verified Appendix A against the pin. 73 s wall.
+- **Byte for byte:** `cp contract.txt /tmp/c1 && gate.sh record 10f7b9b…` (no flag) `&& cmp` passes. 70 s wall.
+- **HEAD against the pin's real contract, compute included:** 0 failing, 0 waived. Self-tests: 81 passed (`test_cors.py` 27, `test_website_contract.py` 54).
+- **I1 premise:** in a scratch venv with the pin's serving set, installing the test tools under `--exclude-newer 2026-10-01T07:16:23-07:00` only added packages (`pytest 9.1.1`, `httpx 0.28.1`, `httpcore`, `certifi`, `iniconfig`, `packaging`, `pluggy`, `pygments`). No serving-set package changed.
+- **Manual checks:**
+  - The `concepts` line is the website's 37 IDs.
+  - `literal` lines carry `High Low Med None` for both `fit_grade` paths.
+  - The `{*}` set equals the test's Appendix B pairs.
+  - Renaming `model_type` in `data/04.json` and running `gate.sh` gave `FAIL shape GET /api/concepts/{id} .model_type`, `FAIL shape GET /api/manifest .concepts[].model_type`, and slider and toggle coverage for `04`. Exit 1. The file was restored with `git checkout`.
+- `ruff check` and `ruff format --check` are clean; `bash -n gate.sh` passes. `shellcheck` isn't installed.
+
+**`gate.sh` step times** (i7-9750H, `nproc` 12):
+
+| Run | venv | install | contract | self-tests | total |
+|---|---|---|---|---|---|
+| check, warm `uv` cache | 0.0 s | 0.5 s | 27.1 s | 14.3 s | 42.0 s |
+| check, cold `uv` cache (`UV_CACHE_DIR` fresh) | 0.1 s | 2.3 s | 28.5 s | 14.4 s | 45.3 s |
+| record steps (second run) | 0.0 s | 0.4 s + tools 0.0 s | record 26.6 s (extract 0.8 s) | — | then check as above |
+
+- Projection to a GitHub runner, Phase 7's assumption: 2 × (28.5 + 14.4) = 86 s, plus Appendix F's upper bounds of 30 s for runner and checkout and 30 s for venv and install. About 2.4 minutes. Phase 7 re-estimates checkout for the 44 MB of blobs.
+
+**Compute trim decision:** none. Compute is nearly all module import (Phase 1). The local check-mode total is 45 s and the projection is about 2.4 minutes against 5. Trimming toggle bodies would save about 0.05 s.
+
 **Issues:**
+- **`contract.py` is 1323 lines, past what a reader can hold.** The design expected 700–800 across all three modules. I kept D12's layout and propose a split for the orchestrator to decide, since D12 is orchestrator-grade. Its sections today:
+
+  | Section | Lines |
+  |---|---|
+  | request list and cite tables | ~120 |
+  | observe and request derivation | ~210 |
+  | flatten | ~90 |
+  | classify | ~75 |
+  | `Contract`, record, render, parse | ~265 |
+  | check rules | ~125 |
+  | CORS, record_tree and check_tree | ~55 |
+  | waivers | ~100 |
+  | record at the pin | ~130 |
+  | CLI and report | ~125 |
+
+  **Proposed split:**
+  - `requests.py`: the cited request list and `observe`.
+  - `contract.py`: shapes, classify, the `contract.txt` format, the rules, CORS and the CLI; about 750 lines.
+  - `waivers.py`.
+  - `pin.py`: extract, the cite and blob checks.
+
+  Each has one subject, and `gate.sh` still runs `contract.py`. Best done before Phase 4 adds `file_audit.py` wiring to `observe`.
+- **New concepts will usually trip Shape too, not only `concept-unlisted`.** At the pin, `company`, `fit_grade`, `lcoe_per_mwh` (manifest) and `fuel` (concept) are never null. A new concept without a `_COMPANIES` entry (`server.py:397`), an `archetype_fit.csv` row, a cost model or a registry entry turns one of them null. Taking the omit-list path avoids this. On the waiver path, the waivers include those Shape keys (B1-type false blocks: the pinned JS null-checks them). Phase 6's RUNBOOK should say so.
+- Model modules print `UserWarning`s and `RuntimeWarning`s to stderr while compute imports them, about 40 lines per run. The `FAIL` lines and summary print together at the end, after the warnings, so the verdict stays readable. Left as is.
+- `observe` renders templates into the gitignored `exploration/concept_explorer/dist/`, as the design notes.
+
 **Deviations:**
+- **`extract` runs with the new venv's interpreter, not bare `python3`.** `gate.sh record` creates the venv first (the bare interpreter, before any install), then runs `$PY -I -B contract.py extract`. It is still standard library only, but no longer depends on whatever `python3` the machine has.
+- **The first recording needs `--js-reverified`.** With no earlier `contract.txt`, there is no header to compare blobs with, so recording fails closed. Every later recording, including the reproduction run, needs no flag while the JS is unchanged.
+- **`record` takes `--contract`**, defaulting to the committed file, so the purity test records elsewhere. `--pin` and `extract`'s SHA must be full 40-character SHAs.
+- **Template `fetch(` sites would be named `templates/<file>:N`.** The cite tables can't cite one today, so a template `fetch(` fails recording as uncited. The pin has none.
+- **`gate.sh` details:**
+  - Step names are `sparse-checkout`, `venv`, `install`, `contract` and `self-tests`; record mode adds `extract`, `install-tools` and `record`.
+  - It also prints `step total`.
+  - `LC_NUMERIC=C` keeps the timings' decimal point fixed.
+  - Record mode runs `gate.sh` again for decision 12, so the check uses a fresh venv with HEAD's serving set and the pinned check-mode tools.
+- **The map test asserts exact `(template, path)` pairs**, 32 of them, rather than the six field names, so a map moving between templates also shows.
 
 ### Phase 4 Completion
 **Completed:**

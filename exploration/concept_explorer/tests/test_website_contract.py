@@ -11,7 +11,10 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -959,3 +962,164 @@ def test_waiver_wildcards_match_one_whole_token_or_segment(
     match: str, key: str, matches: bool
 ) -> None:
     assert c.waiver_matches(match, key) is matches
+
+
+# ---------------------------------------------------------------------------
+# Recording at the pin: purity (I1), the cited JavaScript (I2, M5), Appendix B
+# ---------------------------------------------------------------------------
+
+CHECKOUT = c.REPO_ROOT  # this checkout; its static/js equals the pin's
+
+
+def git(repo: Path, *args: str) -> str:
+    """Run git in `repo` without the user's hooks or commit signing."""
+    command = ["git", "-C", str(repo), "-c", "user.name=t", "-c", "user.email=t@t"]
+    command += ["-c", "commit.gpgsign=false", "-c", "core.hooksPath=/dev/null", *args]
+    return subprocess.run(command, check=True, capture_output=True, text=True).stdout.strip()
+
+
+@pytest.fixture
+def two_commit_repo(tmp_path: Path) -> tuple[Path, str, str]:
+    """A: the fixture plus this checkout's explorer code, static/js and serving set. B: A
+    with 05 dropped from the registry. The explorer code makes record import the
+    extract's own server (decision 11); the static/js makes the real cites resolve."""
+    repo = tmp_path / "repo"
+    build_fixture(repo)
+    for source in (CHECKOUT / c.EXPLORER).glob("*.py"):
+        shutil.copy(source, repo / c.EXPLORER / source.name)
+    shutil.copytree(CHECKOUT / c.STATIC_JS, repo / c.STATIC_JS)
+    shutil.copy(CHECKOUT / c.SERVING_SET, repo / c.SERVING_SET)
+    git(repo, "init", "-q")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "A")
+    a = git(repo, "rev-parse", "HEAD")
+    edit_json(repo / DATA / "concept_registry.json", _drop_05_from_registry)
+    git(repo, "commit", "-q", "-am", "B: 05 leaves the registry")
+    return repo, a, git(repo, "rev-parse", "HEAD")
+
+
+def _contract_cli(*args: str) -> subprocess.CompletedProcess[str]:
+    """`contract.py` in a `python -I -B` subprocess of this venv, as gate.sh runs it (N7)."""
+    command = [sys.executable, "-I", "-B", str(Path(c.__file__)), *args]
+    return subprocess.run(command, capture_output=True, text=True, timeout=300)
+
+
+def _extracted(repo: Path, sha: str) -> Path:
+    tree = Path(tempfile.mkdtemp(dir=repo.parent)) / "tree"
+    c.extract(repo, sha, tree)
+    return tree
+
+
+def record_from_git(
+    repo: Path, sha: str, contract_path: Path, *flags: str
+) -> subprocess.CompletedProcess[str]:
+    tree = _extracted(repo, sha)
+    return _contract_cli(
+        "record", "--tree", str(tree), "--pin", sha, "--contract", str(contract_path), *flags
+    )
+
+
+def check_from_git(repo: Path, sha: str, contract_path: Path) -> subprocess.CompletedProcess[str]:
+    tree = _extracted(repo, sha)
+    waivers = tree.parent / "waivers.toml"
+    waivers.write_text("")
+    return _contract_cli(
+        "check", "--tree", str(tree), "--contract", str(contract_path), "--waivers", str(waivers)
+    )
+
+
+def test_rerecording_after_a_break_gives_identical_bytes(
+    two_commit_repo: tuple[Path, str, str], tmp_path: Path
+) -> None:
+    repo, a, b = two_commit_repo
+    contract_path = tmp_path / "contract.txt"
+    first = record_from_git(repo, a, contract_path, "--js-reverified")  # no earlier header
+    assert first.returncode == 0, first.stdout + first.stderr
+    recorded = contract_path.read_bytes()
+    contract = c.parse(recorded.decode())
+    assert (contract.pin, contract.concepts) == (a, ("01", "04", "05"))
+    assert contract.js == c.js_blobs(CHECKOUT)
+    checked = check_from_git(repo, b, contract_path)
+    assert checked.returncode == c.EXIT_FAILED, checked.stdout + checked.stderr
+    assert "FAIL concept-missing registry 05" in checked.stdout.splitlines()
+    again = record_from_git(repo, a, contract_path)  # the header now matches: no flag needed
+    assert again.returncode == 0, again.stdout + again.stderr
+    assert contract_path.read_bytes() == recorded
+
+
+def test_committed_map_paths_trace_to_appendix_b() -> None:
+    """Every {*} path in contract.txt is a field Appendix B declares dict[str, X]."""
+    cost_model = {
+        ".sensitivities.engineering",  # SensitivityAnalysis.engineering, models.py:125
+        ".sensitivities.financial",  # .financial, models.py:126
+        ".sensitivities_bare.engineering",
+        ".sensitivities_bare.financial",
+        ".cas22_detail",  # CostModelData.cas22_detail, models.py:163
+        ".params",  # CostModelData.params, models.py:174
+    }
+    expected = {(c.CONCEPT, ".cost_model" + path) for path in cost_model}
+    expected |= {(t, path) for t in (c.SLIDER, c.SLIDER_RANGE, c.TOGGLE) for path in cost_model}
+    expected.add((c.CONCEPT, ".parameter_metadata"))  # ConceptData, models.py:483
+    expected.add((c.PARAMETER_INDEX, ".parameters"))  # ParameterIndex, models.py:594
+    # The POST /api/state response is declared dict[str, str] (server.py:851).
+    expected |= {(c.STATE_CONCEPT, "."), (c.STATE_COMPARE, ".")}
+    assert set(c.parse(c.CONTRACT_PATH.read_text()).maps) == expected
+
+
+def _frontend_copy(tmp_path: Path) -> Path:
+    """A repo-shaped tree holding a copy of this checkout's static/js."""
+    tree = tmp_path / "tree"
+    shutil.copytree(CHECKOUT / c.STATIC_JS, tree / c.STATIC_JS)
+    return tree
+
+
+def test_an_uncited_fetch_fails_recording(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    tree = _frontend_copy(tmp_path)
+    assert c.cite_errors(tree) == []  # the cite tables match this checkout's frontend
+    page = tree / c.STATIC_JS / "index_page.js"
+    page.write_text(page.read_text() + 'fetch("/api/new");\n')
+    lines = len(page.read_text().splitlines())
+    argv = ["record", "--tree", str(tree), "--pin", PIN, "--contract", str(tmp_path / "c.txt")]
+    assert c.main([*argv, "--js-reverified"]) == c.EXIT_FAILED
+    assert f"index_page.js:{lines}: calls fetch( but no request cites it" in capsys.readouterr().out
+    assert not (tmp_path / "c.txt").exists()
+
+
+def _changed_tornado(tree: Path, contract_path: Path) -> None:
+    header = [f"pin {PIN}", *(f"js {p} {sha}" for p, sha in sorted(c.js_blobs(tree).items()))]
+    contract_path.write_text("\n".join(header) + "\n")
+    tornado = tree / c.STATIC_JS / "tornado.js"
+    tornado.write_text(tornado.read_text() + "// a changed derivation rule\n")
+
+
+@pytest.mark.parametrize(
+    ("setup", "reason"),
+    [
+        pytest.param(
+            _changed_tornado,
+            f"{c.STATIC_JS.as_posix()}/tornado.js: blob changed since the last recording",
+            id="changed-blob",
+        ),
+        pytest.param(
+            lambda tree, contract_path: None,
+            "no earlier c.txt to compare the cited JavaScript with",
+            id="no-earlier-header",
+        ),
+    ],
+)
+def test_unverified_javascript_fails_recording_without_the_flag(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    setup: Callable[[Path, Path], None],
+    reason: str,
+) -> None:
+    tree, contract_path = _frontend_copy(tmp_path), tmp_path / "c.txt"
+    setup(tree, contract_path)
+    before = contract_path.read_text() if contract_path.exists() else None
+    argv = ["record", "--tree", str(tree), "--pin", PIN, "--contract", str(contract_path)]
+    assert c.main(argv) == c.EXIT_FAILED
+    out = capsys.readouterr().out
+    assert reason in out.splitlines() and "re-verify Appendix A" in out
+    assert (contract_path.read_text() if contract_path.exists() else None) == before
