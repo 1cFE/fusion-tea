@@ -13,7 +13,11 @@ from typing import Any
 
 from contract_rules import rule_of
 
-UNWAIVABLE = frozenset({"cors", "files"})  # rules whose keys are printed, never matched (M4)
+# Rules whose keys are printed, never matched (M4), and how each failure clears instead.
+UNWAIVABLE = {
+    "cors": "put https://1cf.energy back in the CORS allowlist (_ExplorerApp in server.py)",
+    "files": "fix runtime_paths.txt or .dockerignore",
+}
 _WAIVER_FIELDS = ("match", "reason", "evidence", "date")
 # An unpopulated waiver must show the pinned JavaScript was read: a file.js:N cite of
 # the JS that reads the path, or "unread:" and the search terms that found no reader
@@ -60,6 +64,9 @@ def _waiver(entry: Mapping[str, Any], where: str) -> Waiver:
         raise WaiverError(f"{where}: date must be a TOML date, like 2026-10-08")
     waiver = Waiver(**entry)
     _check_match(waiver.match, where)
+    rule = rule_of(waiver.match)
+    if rule in UNWAIVABLE:
+        raise WaiverError(f"{where}: {rule} failures can't be waived; {UNWAIVABLE[rule]}")
     if waiver.match.startswith("unpopulated ") and not (
         _JS_CITE.search(waiver.evidence) or _UNREAD.search(waiver.evidence)
     ):

@@ -32,7 +32,7 @@ from frontend_requests import (
     route,
     serve,
 )
-from json_shapes import VACANT, field_path, flatten, strings_at
+from json_shapes import VACANT, field_path, flatten, strings_at, unwritable_keys
 
 # ---------------------------------------------------------------------------
 # Classify: map paths and enum paths from the pinned server's /openapi.json
@@ -148,6 +148,15 @@ def record(
 ) -> Contract:
     """The contract an observation of the pinned server establishes."""
     maps = frozenset((template, path) for template, path in schema.maps if template in observation)
+    for template, responses in observation.items():
+        map_paths = {path for t, path in maps if t == template}
+        unwritable = unwritable_keys(bodies(responses), map_paths)
+        if unwritable:
+            where = ", ".join(f"{key!r} under {path}" for path, key in unwritable)
+            raise ValueError(
+                f"{template}: record keys can't be written as paths: {where}. A data-driven "
+                "key like this most likely means a map was classified as a record"
+            )
     shapes = shapes_of(observation, maps, schema.enum_paths)
     used_enums = {
         kind.removeprefix("enum:")

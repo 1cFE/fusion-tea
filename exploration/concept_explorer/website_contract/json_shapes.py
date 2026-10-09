@@ -23,7 +23,8 @@ def flatten(bodies: Iterable[Any], map_paths: Collection[str]) -> dict[str, set[
     Objects at `map_paths` are maps: their values share one `{*}` path, and an empty map
     is `empty`. Every other object is a record, whose fields get their own paths. A field
     is `absent` where an object at its record path lacks it; a path under a parent never
-    observed as an object is not observed at all.
+    observed as an object is not observed at all. A record key that can't be written as a
+    path segment is skipped with everything under it (`unwritable_keys` lists them).
     """
     kinds: dict[str, set[str]] = defaultdict(set)
     objects_seen: dict[str, int] = defaultdict(int)
@@ -55,9 +56,31 @@ def strings_at(
     }
 
 
+def unwritable_keys(bodies: Iterable[Any], map_paths: Collection[str]) -> list[tuple[str, str]]:
+    """(record path, key) for each record key that can't be written as a path segment, sorted.
+
+    The contract can't hold such a key, so a check skips it as new; a recording refuses it.
+    """
+    return sorted(
+        {
+            (path, key)
+            for body in bodies
+            for path, value in _nodes(body, ".", map_paths)
+            if isinstance(value, dict) and path not in map_paths
+            for key in value
+            if not is_path_segment(key)
+        }
+    )
+
+
+def is_path_segment(key: str) -> bool:
+    """Whether a record key can be written as a path segment."""
+    return not PATH_BREAKERS.search(key)
+
+
 def field_path(path: str, key: str) -> str:
     """The path of record field `key` under `path`; fails on a key a path can't hold."""
-    if PATH_BREAKERS.search(key):
+    if not is_path_segment(key):
         raise ValueError(
             f"record key {key!r} under {path} can't be written as a path; "
             "a data-driven key like this most likely means a map was classified as a record"
@@ -72,7 +95,11 @@ def _nodes(value: Any, path: str, map_paths: Collection[str]) -> Iterator[tuple[
         if path in map_paths:
             children = ((path + "{*}", child) for child in value.values())
         else:
-            children = ((field_path(path, key), child) for key, child in value.items())
+            children = (
+                (field_path(path, key), child)
+                for key, child in value.items()
+                if is_path_segment(key)
+            )
     elif isinstance(value, list):
         children = ((path + "[]", child) for child in value)
     else:

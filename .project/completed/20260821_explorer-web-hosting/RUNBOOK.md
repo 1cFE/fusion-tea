@@ -200,7 +200,7 @@ A false block is a failure the website can't notice: the push removed or changed
 - A waived `unpopulated` field stays unprotected until the next re-pin records it.
 - A waiver that no longer matches anything prints `STALE` in the gate's output. Delete it. Re-pinning clears them too.
 
-**`cors` and `files` failures can't be waived.** The gate prints a waiver for them as `STALE`, and the failure stays. Fix them instead:
+**`cors` and `files` failures can't be waived.** A waiver for one stops the gate with `configuration error in …/waivers.toml`. Fix them instead:
 
 - `cors <request>`: the website's origin lost access, or a preflight (the browser's `OPTIONS` check before a `POST`) stopped succeeding. Put `https://1cf.energy` back in the allowlist (`_ExplorerApp` in `exploration/concept_explorer/server.py`) and keep `POST` with a `content-type` header allowed.
 - `files missing <path>`: the server reads a file outside the directories the gate checks out. Add its directory to `exploration/concept_explorer/website_contract/runtime_paths.txt` and to the "MUST survive" list at the top of `.dockerignore`.

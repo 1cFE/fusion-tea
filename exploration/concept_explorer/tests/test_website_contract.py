@@ -11,6 +11,7 @@ entry point (design Appendix D).
 
 from __future__ import annotations
 
+import datetime
 import importlib.metadata
 import json
 import py_compile
@@ -21,7 +22,7 @@ import sys
 import tempfile
 import urllib.error
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
 
@@ -75,7 +76,7 @@ from contract_rules import record_tree  # noqa: E402
 from contract_text import parse, render  # noqa: E402
 from json_shapes import flatten  # noqa: E402
 from pin_source import SERVING_SET, cite_errors, extract, js_blobs  # noqa: E402
-from waivers import waiver_matches  # noqa: E402
+from waivers import Verdict, Waiver, apply_waivers, waiver_matches  # noqa: E402
 
 PIN = "0" * 40
 CHECKOUT = c.REPO_ROOT  # this checkout; its static/js equals the pin's
@@ -648,6 +649,21 @@ def test_request_breaks_fail(
     assert keys <= run.failed
 
 
+def test_a_template_with_no_200_left_fails_status(
+    fixture_root: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Plan decision 8: where the pin also saw a status the website tolerates, such as a
+    bare-only parameter's 404, every instance answering it still fails, as a removed route
+    would. This fixture's pin saw only 200, so the recording gains the 404 here."""
+    contract_path = record_in_process(fixture_root)
+    contract = parse(contract_path.read_text())
+    contract = replace(contract, status={**contract.status, fr.PARAMETER: (200, 404)})
+    contract_path.write_text(render(contract))
+    answer_with_status(monkeypatch, "GET", "/api/parameters/{name}", 404)
+    run = run_check(fixture_root, contract_path, capsys)
+    assert (run.code, run.failed) == (c.EXIT_FAILED, {f"status {fr.PARAMETER}"})
+
+
 class _ComputeRequestWithRequiredField(ComputeRequest):
     scenario: str  # the pinned frontend never sends it
 
@@ -881,6 +897,28 @@ def test_website_origin_dropped_from_cors_fails(
     assert run.failed == {f"cors {t}" for t in [*fr.REQUESTS, *fr.PREFLIGHTS]}
 
 
+class _PostRefusingCorsApp(FastAPI):
+    """The explorer app still allowing https://1cf.energy, but not POST. Each preflight
+    answers 400 and still carries the origin header, so only its status shows it."""
+
+    def build_middleware_stack(self) -> ASGIApp:
+        return CORSMiddleware(
+            super().build_middleware_stack(),
+            allow_origins=["https://1cf.energy"],
+            allow_methods=["GET"],
+            allow_headers=["Content-Type"],
+        )
+
+
+def test_a_refused_preflight_fails_cors(
+    fixture_root: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    contract_path = record_in_process(fixture_root)
+    monkeypatch.setattr(server_module, "_ExplorerApp", _PostRefusingCorsApp)
+    run = run_check(fixture_root, contract_path, capsys)
+    assert (run.code, run.failed) == (c.EXIT_FAILED, {f"cors {t}" for t in fr.PREFLIGHTS})
+
+
 # ---------------------------------------------------------------------------
 # Changes that must pass (spec criterion 2)
 # ---------------------------------------------------------------------------
@@ -906,6 +944,11 @@ def _drop_availability_from_05(root: Path) -> None:
     edit_json(root / DATA / "05.json", change)
 
 
+def _add_unwritable_tree_key(root: Path) -> None:
+    """A key with a space in the untyped tree, which takes its keys from data (audit A2)."""
+    edit_json(root / DATA / "decision_tree.json", lambda body: body["root"].update({"a b": "c"}))
+
+
 def _new_response_field(monkeypatch: pytest.MonkeyPatch) -> None:
     rewrite_json(monkeypatch, "GET", "/api/concepts/{id}", lambda body: {**body, "new_field": 1})
 
@@ -921,6 +964,7 @@ def _new_optional_request_field(monkeypatch: pytest.MonkeyPatch) -> None:
         pytest.param(None, _new_optional_request_field, id="new-optional-request-field"),
         pytest.param(_add_cas22_account, None, id="new-map-key"),
         pytest.param(_drop_availability_from_05, None, id="concept-leaves-a-parameter"),
+        pytest.param(_add_unwritable_tree_key, None, id="new-key-that-cannot-be-a-path"),
     ],
 )
 def test_additive_change_passes(
@@ -937,6 +981,13 @@ def test_additive_change_passes(
         server_change(monkeypatch)
     run = run_check(fixture_root, contract_path, capsys)
     assert (run.code, run.failed) == (0, set())
+
+
+def test_recording_fails_on_a_key_that_cannot_be_a_path(fixture_root: Path) -> None:
+    """The contract can't hold such a key, so recording stops rather than drop it."""
+    _add_unwritable_tree_key(fixture_root)
+    with pytest.raises(ValueError, match=r"can't be written as paths: 'a b' under \.root\."):
+        record_in_process(fixture_root)
 
 
 def test_new_concept_with_a_waiver_passes(
@@ -1035,14 +1086,41 @@ def test_an_unpopulated_waiver_with_evidence_clears_its_key(
     assert (run.code, run.waived) == (0, {"unpopulated GET /api/concepts/{id} .narrative"})
 
 
-def test_cors_failures_ignore_waivers(
-    fixture_root: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+@pytest.mark.parametrize(
+    ("match", "fix"),
+    [
+        pytest.param("cors GET /api/manifest", "CORS allowlist", id="cors"),
+        pytest.param(
+            f"files missing {FIT_TABLE}", "runtime_paths.txt or .dockerignore", id="files"
+        ),
+    ],
+)
+def test_a_cors_or_files_waiver_is_a_configuration_error(
+    fixture_root: Path, capsys: pytest.CaptureFixture[str], match: str, fix: str
 ) -> None:
-    contract_path = record_in_process(fixture_root)
-    monkeypatch.setattr(server_module, "_ExplorerApp", _StaticOnlyCorsApp)
-    run = run_check(fixture_root, contract_path, capsys, waiver("cors GET /api/manifest"))
-    assert run.code == c.EXIT_FAILED
-    assert "cors GET /api/manifest" in run.failed and run.waived == set()
+    run = run_check(fixture_root, record_in_process(fixture_root), capsys, waiver(match))
+    assert run.code == c.EXIT_CONFIG
+    assert "can't be waived" in run.out and fix in run.out
+
+
+def test_cors_and_files_keys_are_never_waived() -> None:
+    keys = ("cors GET /api/manifest", f"files missing {FIT_TABLE}")
+    waivers = [Waiver(key, "fixture", "fixture", datetime.date(2026, 10, 8)) for key in keys]
+    assert apply_waivers(keys, waivers) == Verdict(failing=keys, waived=(), stale=tuple(waivers))
+
+
+@pytest.mark.parametrize(
+    ("failing", "hint"),
+    [
+        pytest.param(("cors GET /api/manifest", "files missing x"), False, id="unwaivable-only"),
+        pytest.param(("cors GET /api/manifest", "shape GET /api/manifest .x"), True, id="waivable"),
+    ],
+)
+def test_the_waiver_hint_prints_only_for_a_waivable_failure(
+    failing: tuple[str, ...], hint: bool
+) -> None:
+    out = c.report(Verdict(failing=failing, waived=(), stale=()), PIN)
+    assert ("[[waiver]]" in out) is hint
 
 
 @pytest.mark.parametrize(
@@ -1278,17 +1356,6 @@ def test_a_tree_without_heads_dockerignore_fails(
     (fixture_root / file_audit.DOCKERIGNORE).unlink()
     run = run_check(fixture_root, contract_path, capsys)
     assert (run.code, run.failed) == (c.EXIT_FAILED, {"files missing .dockerignore"})
-
-
-def test_files_failures_ignore_waivers(
-    fixture_root: Path, capsys: pytest.CaptureFixture[str]
-) -> None:
-    contract_path = record_in_process(fixture_root)
-    (fixture_root / FIT_TABLE).unlink()
-    key = f"files missing {FIT_TABLE_KEY}"
-    run = run_check(fixture_root, contract_path, capsys, waiver(key))
-    assert run.code == c.EXIT_FAILED
-    assert key in run.failed and run.waived == set()
 
 
 @pytest.mark.parametrize("tracked", [False, True], ids=["untracked", "tracked"])

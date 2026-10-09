@@ -53,7 +53,7 @@ from pin_source import (  # noqa: E402
     require_own_server,
     unverified_js,
 )
-from waivers import Verdict, WaiverError, apply_waivers, load_waivers  # noqa: E402
+from waivers import UNWAIVABLE, Verdict, WaiverError, apply_waivers, load_waivers  # noqa: E402
 
 REPO_ROOT = _HERE.parents[2]  # the checkout this file belongs to
 CONTRACT_PATH = _HERE / "contract.txt"
@@ -209,6 +209,7 @@ def report(verdict: Verdict, pin: str) -> str:
     if rules:
         lines += ["", "Each key is the rule, the request, then a path or instance. Rules failing:"]
         lines += [f"  {rule}: {_RULE_MEANINGS[rule]}" for rule in rules]
+    if set(rules) - UNWAIVABLE.keys():
         lines += [
             "A false block clears with a [[waiver]] in "
             "exploration/concept_explorer/website_contract/waivers.toml (RUNBOOK, Deploy gate)."
