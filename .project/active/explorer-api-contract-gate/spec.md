@@ -1,6 +1,6 @@
 # Spec: Concept Explorer API Contract Gate
 
-**Status:** Implementation Complete (Phases 1–7 of 7); audit 2026-10-08: needs work (`audit.md`, Blocker B1); owner acceptance pending
+**Status:** Implementation Complete (Phases 1–7 of 7); audit 2026-10-08: needs work (`audit.md`, Blocker B1); audit fixes applied 2026-10-08 (`plan.md`, Audit fixes), re-audit pending; owner acceptance pending
 **Owner:** Reid W
 **Created:** 2026-10-08 11:59
 **Complexity:** MEDIUM

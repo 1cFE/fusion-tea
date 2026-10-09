@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Explorer API Contract Gate
 
-**Status:** Complete. Phases 1–7 done, after `contract.py` was split by concern. Next: `/_my_audit`; owner acceptance after merge.
+**Status:** Complete. Phases 1–7 done, after `contract.py` was split by concern. Audit fixes applied (B1, A1–A8; see Implementation Notes). Next: re-audit; owner acceptance after merge.
 **Created:** 2026-10-08
 **Last Updated:** 2026-10-08
 **Branch:** `feat/explorer-api-contract-gate`, worktree `/home/reid/1cfe/fusion-tea-explorer-api-gate`, at `9dd752521`
@@ -1107,6 +1107,34 @@ Re-pin step 2, `gate.sh record 10f7b9b…` in the worktree: `extract` 0.9, `inst
   - It ran on this branch rather than a new branch from `main`, since the point was to show no diff here.
   - It also ran before the review fixes reworded step 4 into two sub-bullets. No command changed.
 - **The CI-shaped run was repeated at the final head** `758577a18` after the Phase 6 review-fix commit, which changed a comment in `waivers.toml`, a file the gate reads. The two earlier runs at `d3756f644` stay in the table as variance data.
+
+### Audit fixes
+**Completed:** 2026-10-08, from `audit.md` (Needs Work, Blocker B1). The decision for each finding is the orchestrator's, agent-grade (`briefs/implement_audit_fixes.md`). Commits: `a1aa94bd8` (B1), `aa4ea009a` (A1–A3), `9f2191b1a` (A4, A8), `84258abd8` (A5–A7).
+
+- **B1, a renamed request field the server ignores.** Design amended (header line, Core Concept, Architecture, rules table, Appendices D and E). The new Request fields rule (`contract_rules.py`): `request_fields` reads each route's JSON request-body properties from the served app's own `/openapi.json`, through `$ref`, `anyOf` and `allOf`. `request_field_failures` fails each top-level field the gate sent that the route doesn't declare, as `request-field <template> <field>`. `check_tree` applies it beside CORS. `Response.sent` carries each request's body. Waivable; `contract.txt` unchanged.
+  - Self-tests: `test_a_renamed_request_field_fails`, seven cases, renaming each sent field of both POST bodies to an optional `renamed_<field>`. `new-optional-request-field` still passes. Removing the rule turned all seven red.
+  - The audit's two breaks, remade in a scratch clone of `a1aa94bd8` (`apply_analyst_overrides` → `use_analyst_overrides`; `overrides` → `param_overrides` with a `{}` default), each now fail with exactly three keys, `request-field POST /api/compute:{slider,slider-range,toggle} <field>`, exit 1. The audit saw 0 failing.
+  - RUNBOOK rules table and "Clearing a false block" (the `timestamp` case), README §9 "Request bodies".
+- **A1.** `test_a_template_with_no_200_left_fails_status`: a recording whose `GET /api/parameters/{name}` saw `200 404`, then every instance answers 404. `test_a_refused_preflight_fails_cors`: CORS still allows the origin but not POST, so each preflight answers 400 with the origin header. Mutating each clause out turned its test red; both restored.
+- **A2.** Check skips a record key that can't be a path segment, with its subtree (`json_shapes._nodes`). Recording still refuses it, naming every such key (`_refuse_unwritable_keys`). Self-tests: the `new-key-that-cannot-be-a-path` pass case (a key `a b` in the tree's root) and `test_recording_fails_on_a_key_that_cannot_be_a_path`. Each half's test went red when that half was removed.
+- **A3.** `waivers.UNWAIVABLE` maps `cors` and `files` to their fix. A waiver whose rule is one of them is a configuration error naming the fix; the rule token can't be `*`, so that is exactly the set that can only match those keys. The waiver hint prints only when a waivable rule failed. `apply_waivers` still never clears those keys. The two "ignore waivers" self-tests became `test_a_cors_or_files_waiver_is_a_configuration_error`, `test_cors_and_files_keys_are_never_waived` and `test_the_waiver_hint_prints_only_for_a_waivable_failure`; each of the three behaviours, mutated out, turned its test red.
+- **A4.** `observe` lost `skip`, `Response` lost `seconds`, and `_timed` is gone. `record` no longer filters maps to observed templates, which only skipped templates needed. The harness's `side.py` wraps the TestClient in `HarnessClient`, which times every request and, under `--skip-compute`, leaves compute unsent and drops those templates. `replay.py identity` on `9f2191b1a`: all three checks 0 keys, with timings (observe with compute 30.2 s).
+- **A5.** Both owner-acceptance lists carry the owner's ruling on how strict the gate is, pointing at ADR 0011.
+- **A6.** README §9 and `CLAUDE.md`: the gate holds deploys only once "Wait for CI" is on; a warning only until then. Also the RUNBOOK's decision note now names both FR-6 clauses, as ADR 0011 does. The audit's A6 asked for it; the orchestrator's decision named only the README and `CLAUDE.md`.
+- **A7.** The RUNBOOK's bring-back sequence merges with a merge commit, so the pinned commit stays in `main`'s history.
+- **A8.** `website_contract/test_tools.txt` is the one list. Check mode installs its pins; record mode resolves its names at the pin's time; `contract.py` writes the `tools` line from it. Design Architecture, Component Overview and Appendix H updated.
+- **A9.** Left for `/_my_close`; no `.project/product/` entry.
+
+**Validation:**
+- `gate.sh` from a CI-shaped clone of `84258abd8` (shallow, sparse, blobless, cold `uv` cache): exit 0, 0 failing, 133 passed. Steps: sparse-checkout 1.2 s, venv 0.1 s, install 2.6 s, contract 31.4 s, self-tests 29.5 s, total 64.8 s (i7-9750H, `nproc` 12). Self-tests grew from 119 to 133, about 8 s.
+- `gate.sh record 10f7b9b1f1466d2057a211bf25f09fc35d80a12b`: `contract.txt` byte-identical (`cmp`). Record 31.4 s; closing check 62.4 s; 95.9 s wall.
+- `ruff check` and `ruff format --check` clean on the gate, its tests and the harness.
+
+**Deviations:**
+- Design lines beyond the B1 list, each made false or incomplete by a fix: Core Concept's failure list (B1), Appendix D's waiver row and Appendix E's "What can't be waived" (A3), Appendix D's A1 and A2 cases, and the A8 lines.
+- `check_tree` and `record_tree` read `/openapi.json` through one `_openapi` helper that raises on a non-200, instead of parsing whatever came back.
+- The harness's timing output changed shape: per route (`routes`), and compute calls by concept ID and toggle flag. The committed Phase 1 results keep the old per-template shape.
+- Spec criterion 1 is not re-checked; that is the re-audit's call.
 
 ---
 

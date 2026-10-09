@@ -1,3 +1,12 @@
+# Explorer API contract gate — audit fixes applied; re-audit next — 2026-10-08
+
+[AGENT] Four commits on `feat/explorer-api-contract-gate`, none pushed. Detail: [plan.md, Audit fixes](active/explorer-api-contract-gate/plan.md).
+- **B1:** a new waivable Request fields rule checks every field the website sends in its POST bodies against the server's own request schema. The audit's two renames now fail with three `request-field` keys each. Seven self-tests rename each sent field. The design is amended.
+- **A1–A8:** tests for the two untested clauses; unwritable new keys skipped in check, refused in record; `cors`/`files` waivers are configuration errors; harness-only `skip` and timings moved into the harness; the strictness ruling on both owner lists; "Wait for CI" starts off in README §9 and `CLAUDE.md`; merge-commit caution; one `test_tools.txt`. A9 is left for close.
+- **Verified:** CI-shaped `gate.sh` green (0 failing, 133 passed, 64.8 s); record at the pin byte-identical; harness identity checks 0 keys.
+
+Next: re-audit, including spec criterion 1. Owner acceptance stays open.
+
 # Explorer API contract gate — audited: needs work — 2026-10-08
 
 [AGENT] `/_my_audit` verdict **Needs Work**, one blocker ([audit.md](active/explorer-api-contract-gate/audit.md)).
