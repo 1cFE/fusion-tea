@@ -66,6 +66,7 @@ EXIT_CONFIG = 2  # waivers.toml or .dockerignore uses syntax the gate can't read
 # What each rule's failure means, printed under the keys for a reader without the code.
 _RULE_MEANINGS = {
     "status": "a request the website sends no longer gets the status it got at the pin",
+    "request-field": "the server no longer declares a field the website sends, so ignores it",
     "shape": "a response path now carries a JSON kind the website never received there",
     "unpopulated": "a path the pin only sent empty now carries data; read the pinned JS first",
     "enum": "a value outside the enum the pinned website knows",

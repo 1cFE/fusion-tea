@@ -3,6 +3,7 @@
 **Status:** Draft, revision 2 (applies `design-review.md` Resolutions and Round 2 resolutions)
 **Owner:** Reid W
 **Created:** 2026-10-08 14:56 PDT · **Revised:** 2026-10-08
+**Amended after audit B1** (`audit.md`; orchestrator, 2026-10-08): a Request fields rule, in Core Concept, Architecture and its rules table, Appendix D and Appendix E.
 **Branch:** `feat/explorer-api-contract-gate` (worktree `../fusion-tea-explorer-api-gate`), at `64683cb39`
 
 ---
@@ -102,7 +103,7 @@ On every push, the gate makes the same kinds of requests against the checkout's 
 - a recorded field is gone, changed type, or is null where the pin never sent null;
 - a value falls outside the literal values the pinned JavaScript compares against;
 - a path the pin never populated starts carrying data;
-- a request the frontend sends is now rejected, or a concept stops producing a request it produced at the pin;
+- a request the frontend sends is now rejected or carries a field the server no longer declares, or a concept stops producing a request it produced at the pin;
 - a website concept leaves a joined list, or a concept the website doesn't list appears where the frontend links it;
 - the website's origin lost CORS access.
 
@@ -205,7 +206,7 @@ drift   (daily schedule, never on push):
   - The `MAP_KEYS_READ` table makes cited literal map-key reads required. It is empty at this pin.
   - A string whose schema is an enum is recorded with the pinned enum's full value list.
   - The `LITERAL_READS` table holds the values the pinned JavaScript compares a plain string against, cited to the JavaScript and not observed from data. It has one entry: `fit_grade` → `High`, `Med`, `Low`, `None` (N1; Appendix B).
-- **Check reads no schema.** It flattens with the map paths, enum lists and literal-value sets stored in `contract.txt`.
+- **Check reads no response schema; the Request fields rule reads the current server's request schemas.** Check flattens with the map paths, enum lists and literal-value sets stored in `contract.txt`.
 - **Preflights and CORS headers are judged only by the fixed CORS rule.**
 
 **How a reviewer checks the map/record split.** Every `{*}` line must trace to Appendix B. A self-test asserts that set, and any re-pin diff shows a `{*}` line appearing or disappearing.
@@ -217,6 +218,7 @@ drift   (daily schedule, never on push):
 | Rule | Fails when | Waive? | Criterion-1 case |
 |---|---|---|---|
 | Status | a request the pinned frontend sends doesn't return the recorded status (200 today) | yes | path or method changed; field newly required; value rejected |
+| Request fields (orchestrator, audit B1) | a top-level field the pinned frontend sends in a POST body is not a declared property of the current server's request-body schema for that route. Check reads that schema from the in-process app's own `/openapi.json`, resolving `$ref`. Keys inside data-keyed maps such as `overrides` aren't checked. `contract.txt` is unchanged: the sent bodies are the cited request list, tied to the pin by the JS blob check. | yes, because a field the server sets itself, such as `timestamp`, can be dropped harmlessly | request-body field renamed or removed while the server still accepts the request |
 | Shape | a recorded path now has a kind the pin never sent there. A path recorded only as null, absent or empty never reports here, only as Unpopulated (N3). | yes | field removed or renamed; type change; null where a value was always sent |
 | Unpopulated | a path the pin only ever sent as null, absent or empty now carries a value (C1) | yes, but `check` rejects the waiver unless its evidence cites at least one `file.js:N` that reads the path (N4) | shape under `narrative`, `illustration` and similar |
 | Enum / Literal | a value falls outside the pinned enum, or outside the cited `LITERAL_READS` set | yes | enum value renamed; `fit_grade` outside `High`/`Med`/`Low`/`None` |
@@ -500,7 +502,7 @@ The tests use the richer fixture, laid out as a repo root under `tmp/exploration
 
 | Group | Cases |
 |---|---|
-| Breaks that must fail | field removed; field renamed; number turned into a string; required value turned null; always-null field turns into an object (reported as Unpopulated only, never also as Shape; C1, N3); enum value renamed; `fit_grade` value outside `High`/`Med`/`Low`/`None`; route removed (404); POST turned into PUT; new required `ComputeRequest` field (422); `ExplorerState` rejecting `current_concept_id: null` or `timestamp: ""` (422); concept omitted by monkeypatching `_OMIT_LIST_PATH`; concept dropped from the registry or tree only; slider coverage lost (sensitivities nulled for one concept); unlisted concept in the manifest or a parameter's `concepts[]`; `https://1cf.energy` dropped by monkeypatching `_ExplorerApp` |
+| Breaks that must fail | field removed; field renamed; number turned into a string; required value turned null; always-null field turns into an object (reported as Unpopulated only, never also as Shape; C1, N3); enum value renamed; `fit_grade` value outside `High`/`Med`/`Low`/`None`; route removed (404); POST turned into PUT; new required `ComputeRequest` field (422); `ExplorerState` rejecting `current_concept_id: null` or `timestamp: ""` (422); each field the frontend sends in the `POST /api/compute` and `POST /api/state` bodies renamed to a new optional name (Request fields, audit B1); concept omitted by monkeypatching `_OMIT_LIST_PATH`; concept dropped from the registry or tree only; slider coverage lost (sensitivities nulled for one concept); unlisted concept in the manifest or a parameter's `concepts[]`; `https://1cf.energy` dropped by monkeypatching `_ExplorerApp` |
 | Changes that must pass | new response field; new optional request field; new map key; concept leaves one parameter's `concepts[]`; new concept with a waiver |
 | Waivers | a waiver clears exactly its key; a waiver missing its reason is an error; an `unpopulated` waiver whose evidence has no `file.js:N` cite is an error (N4); Files and CORS failures ignore waivers |
 | Purity (I1) | two-commit git fixture: record commit A, break and commit B, check fails, re-record A gives the same bytes |
@@ -514,6 +516,7 @@ The tests use the richer fixture, laid out as a repo root under `tmp/exploration
 | Rule | Key shape | Example |
 |---|---|---|
 | Status | `status <template> [<instance>]` | `status POST /api/compute:slider 05` |
+| Request fields | `request-field <template> <field>` | `request-field POST /api/state:compare timestamp` |
 | Shape | `shape <template> <path>` | `shape GET /api/concepts/{id} .cost_model.params{*}` |
 | Unpopulated | `unpopulated <template> <path>` | `unpopulated GET /api/concepts/{id} .narrative` |
 | Enum / Literal | `enum <template> <path>` or `literal <template> <path>` | `literal GET /api/manifest .concepts[].fit_grade` |

@@ -148,6 +148,7 @@ STATIC_JS = EXPLORER / "static" / "js"  # where every cite above resolves
 @dataclass(frozen=True)
 class Response:
     instance: str | None  # concept ID or parameter name; None for a single-instance template
+    sent: Mapping[str, Any] | None  # the JSON body the request carried; None for a GET or preflight
     status: int
     body: Any  # parsed JSON when the status is 2xx, else None
     seconds: float
@@ -189,21 +190,24 @@ def observe(client: Any, concept_ids: Sequence[str], skip: Collection[str] = ())
     observation: Observation = {template: [] for template in REQUESTS if template not in skip}
     origin = {"Origin": WEBSITE_ORIGIN}
 
-    def send(template: str, instance: str | None, call: Callable[[], Any]) -> Any:
+    def send(
+        template: str, instance: str | None, sent: Mapping[str, Any] | None, call: Callable[[], Any]
+    ) -> Any:
         if template not in observation:
             return None
         response, seconds = _timed(call)
         body = response.json() if _is_success(response.status_code) else None
         observation[template].append(
-            Response(instance, response.status_code, body, seconds, _allow_origin(response))
+            Response(instance, sent, response.status_code, body, seconds, _allow_origin(response))
         )
         return body
 
     def get(template: str, instance: str | None, url: str) -> Any:
-        return send(template, instance, lambda: client.get(url, headers=origin))
+        return send(template, instance, None, lambda: client.get(url, headers=origin))
 
     def post(template: str, instance: str | None, body: dict[str, Any]) -> None:
-        send(template, instance, lambda: client.post(route(template), json=body, headers=origin))
+        url = route(template)
+        send(template, instance, body, lambda: client.post(url, json=body, headers=origin))
 
     for template in (MANIFEST, REGISTRY, TREE, COST_LANDSCAPE):
         get(template, None, route(template))
@@ -270,7 +274,7 @@ def preflight(client: Any) -> Observation:
     for template in PREFLIGHTS:
         response, seconds = _timed(client.options, route(template), headers=headers)
         observation[template] = [
-            Response(None, response.status_code, None, seconds, _allow_origin(response))
+            Response(None, None, response.status_code, None, seconds, _allow_origin(response))
         ]
     return observation
 

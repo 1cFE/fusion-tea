@@ -1,8 +1,9 @@
 """Record a contract from an observation of the pin, and check an observation against it.
 
-Recording classifies map and enum paths from the pinned server's /openapi.json; check
-reads no schema, only what contract.txt stores (design Architecture). The rules and their
-failure keys follow the design's rules table and Appendix E.
+Recording classifies map and enum paths from the pinned server's /openapi.json. Check
+reads no response schema, only what contract.txt stores; the Request fields rule reads the
+current server's request schemas (design Architecture). The rules and their failure keys
+follow the design's rules table and Appendix E.
 """
 
 from __future__ import annotations
@@ -83,12 +84,8 @@ def classify(openapi: Mapping[str, Any]) -> Schema:
         for child in [node["items"]] if "items" in node else node.get("prefixItems", []):
             walk(template, child, path + "[]")
 
-    routes = {
-        _route_pattern(path): operations for path, operations in openapi.get("paths", {}).items()
-    }
     for template in REQUESTS:
-        method = template.split(" ")[0].lower()
-        operation = routes.get(_route_pattern(route(template)), {}).get(method)
+        operation = _operation(openapi, template)
         if operation is None:
             continue
         schema = (
@@ -100,6 +97,40 @@ def classify(openapi: Mapping[str, Any]) -> Schema:
         if schema is not None:
             walk(template, schema, ".")
     return Schema(frozenset(maps), enum_paths, enums)
+
+
+def request_fields(openapi: Mapping[str, Any]) -> dict[str, frozenset[str]]:
+    """For each template, the top-level fields its route's JSON request body declares.
+
+    A route that takes no JSON body, or isn't there, declares none.
+    """
+    components = openapi.get("components", {}).get("schemas", {})
+    declared = {}
+    for template in REQUESTS:
+        operation = _operation(openapi, template) or {}
+        content = operation.get("requestBody", {}).get("content", {})
+        schema = content.get("application/json", {}).get("schema")
+        declared[template] = frozenset() if schema is None else _properties(schema, components)
+    return declared
+
+
+def _properties(node: Mapping[str, Any], components: Mapping[str, Any]) -> frozenset[str]:
+    """The property names an object schema declares, through `$ref`, `anyOf` and `allOf`."""
+    if "$ref" in node:
+        node = components[node["$ref"].rsplit("/", 1)[1]]
+    names = frozenset(node.get("properties", {}))
+    for alternative in node.get("anyOf", []) + node.get("allOf", []):
+        names |= _properties(alternative, components)
+    return names
+
+
+def _operation(openapi: Mapping[str, Any], template: str) -> Mapping[str, Any] | None:
+    """The OpenAPI operation serving `template`; None if the server has no such route."""
+    method = template.split(" ")[0].lower()
+    for path, operations in openapi.get("paths", {}).items():
+        if _route_pattern(path) == _route_pattern(route(template)):
+            return operations.get(method)
+    return None
 
 
 def _route_pattern(path: str) -> str:
@@ -275,6 +306,21 @@ def coverage_failures(observation: Observation, contract: Contract) -> set[str]:
     }
 
 
+def request_field_failures(
+    observation: Observation, declared: Mapping[str, frozenset[str]]
+) -> set[str]:
+    """Request fields: a top-level field the pinned frontend sends that the current server's
+    request schema doesn't declare, so the server ignores it (audit B1). Keys inside a sent
+    map, such as `overrides`, are data and aren't checked."""
+    return {
+        failure_key("request-field", template, field)
+        for template, responses in observation.items()
+        for r in responses
+        if r.sent is not None
+        for field in r.sent.keys() - declared[template]
+    }
+
+
 def cors_failures(observation: Observation) -> set[str]:
     """CORS, the fixed rule: a response the website's origin may not read, or a preflight
     that didn't succeed. Never recorded, because the pinned server had no CORS."""
@@ -304,14 +350,27 @@ def rule_of(key: str) -> str:
 def record_tree(tree: Path, pin: str, tools: Iterable[str], js: Mapping[str, str]) -> Contract:
     """Serve the explorer in repo root `tree` and record the contract its responses establish."""
     with serve(tree / EXPLORER) as client:
-        schema = classify(client.get("/openapi.json").json())
+        schema = classify(_openapi(client))
         observation = observe(client, manifest_concept_ids(client))
     return record(observation, schema, pin, tools, js)
 
 
 def check_tree(tree: Path, contract: Contract) -> list[str]:
-    """Every failure key the explorer in repo root `tree` earns, CORS included, sorted."""
+    """Every failure key the explorer in repo root `tree` earns, sorted: the recorded rules,
+    plus the fixed Request fields and CORS rules."""
     with serve(tree / EXPLORER) as client:
+        declared = request_fields(_openapi(client))
         observation = observe(client, contract.concepts)
         preflights = preflight(client)
-    return sorted(set(check(observation, contract)) | cors_failures({**observation, **preflights}))
+    return sorted(
+        set(check(observation, contract))
+        | request_field_failures(observation, declared)
+        | cors_failures({**observation, **preflights})
+    )
+
+
+def _openapi(client: Any) -> dict[str, Any]:
+    """The served app's own /openapi.json."""
+    response = client.get("/openapi.json")
+    response.raise_for_status()
+    return response.json()

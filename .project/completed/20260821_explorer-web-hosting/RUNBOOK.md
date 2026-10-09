@@ -134,11 +134,12 @@ Replaying fusion-tea's history from April to October 2026 found false blocks in 
    - A Python traceback in the contract step, or a pytest line starting `ERROR`: the server no longer starts or imports. A real break: fix the code.
    - A pytest line `FAILED …/test_cors.py::…`: the CORS allowlist changed. If `https://1cf.energy` lost access, it's a real break. If the allowlist was changed on purpose, ask a developer.
    - A pytest line `FAILED …/test_website_contract.py::…`: the gate's own self-tests failed. If the test name mentions workflows, see **Rules the gate enforces**. Otherwise ask a developer; it is not something a waiver can clear.
-4. Read each `FAIL` line. After `FAIL` comes a *failure key*: the rule, then the request, then a field path or a concept ID. For example, `FAIL shape GET /api/concepts/{id} .confinement_family` means the concept response's `confinement_family` field no longer has the kind of value the website got at the pin. Under the keys, the gate prints one line per failing rule saying what it means. The rules:
+4. Read each `FAIL` line. After `FAIL` comes a *failure key*: the rule, then the request, then a field path, a field the website sends, or a concept ID. For example, `FAIL shape GET /api/concepts/{id} .confinement_family` means the concept response's `confinement_family` field no longer has the kind of value the website got at the pin. Under the keys, the gate prints one line per failing rule saying what it means. The rules:
 
 | Rule | Fails when | Can a waiver clear it? |
 |---|---|---|
 | `status` | a request the website sends gets a different HTTP status than at the pin, such as 404 or 422 | yes |
+| `request-field` | a field the website sends in a `POST` body is no longer declared by the server's request model, so the server ignores it. For example, `apply_analyst_overrides` was renamed. | yes, if the server never needed it (see **Clearing a false block**) |
 | `shape` | a response field is gone, has a different type, or is null where the pin always sent a value | yes |
 | `unpopulated` | a field the pin only ever sent empty or null now carries data | yes, with a cite (below) |
 | `enum`, `literal` | a value is outside the set the frozen copy knows, such as a new fit grade | yes |
@@ -175,6 +176,7 @@ A false block is a failure the website can't notice: the push removed or changed
    - No hits, or only comments: nothing reads it. A false block.
    - Hits: read each one. If the code checks the value before using it (`!= null`, `if (x)`), a false block. If it would crash or show a wrong value, a real break: fix the change instead.
    - The design's Appendix C lists the fields the frozen copy never reads and the ones that crash it. It is in `design.md` of the `explorer-api-contract-gate` work item, under `.project/active/` (or `.project/completed/` once the item closes).
+   - For a `request-field` key, the last word is a field the website sends. It is a false block only if the server never needed it, such as `timestamp`, which the server sets itself. If the server now reads the value under another name, the website's request does nothing: a real break.
    - If you can't tell, don't waive. Ask someone who reads JavaScript, or undo the change.
 2. **Add a waiver** at the end of `exploration/concept_explorer/website_contract/waivers.toml`:
    ```toml

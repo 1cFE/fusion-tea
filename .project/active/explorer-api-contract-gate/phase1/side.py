@@ -221,7 +221,7 @@ def observe_findings(tree: Path, result: dict) -> dict:
             "analysis_html": payload.analysis_html,
             "analysis_from_archive": payload.analysis_from_archive,
         }
-        responses.append(Response(concept_id, 200, body, 0.0, allow_origin=None))
+        responses.append(Response(concept_id, None, 200, body, 0.0, allow_origin=None))
     result["concept_ids"] = concept_ids
     return {FINDINGS: responses}
 

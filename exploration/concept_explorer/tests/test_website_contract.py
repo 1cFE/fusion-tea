@@ -29,7 +29,7 @@ import pytest
 import yaml
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import Field
+from pydantic import BaseModel, Field, create_model
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 import exploration.concept_explorer.models as models_module
@@ -698,6 +698,65 @@ def test_request_model_breaks_fail(
     run = run_check(fixture_root, contract_path, capsys)
     assert run.code == c.EXIT_FAILED
     assert key in run.failed
+
+
+def _with_field_renamed(model: type[BaseModel], old: str, new: str) -> type[BaseModel]:
+    """`model` with field `old` renamed to an optional `new`, keeping any default it had.
+
+    Pydantic ignores the old name the pinned frontend still sends. The server's own code
+    reads the new name through the old attribute, as a real rename would update it."""
+    fields: dict[str, Any] = {
+        name: (info.annotation, info) for name, info in model.model_fields.items()
+    }
+    annotation, info = fields.pop(old)
+    fields[new] = (annotation | None, None if info.is_required() else info)
+    renamed = create_model(model.__name__, **fields)
+    setattr(renamed, old, property(lambda self: getattr(self, new)))
+    return renamed
+
+
+_COMPUTE_TEMPLATES = (fr.SLIDER, fr.SLIDER_RANGE, fr.TOGGLE)
+_STATE_TEMPLATES = (fr.STATE_CONCEPT, fr.STATE_COMPARE)
+
+
+@pytest.mark.parametrize(
+    ("name", "field", "templates"),
+    [
+        pytest.param("ComputeRequest", "concept_id", _COMPUTE_TEMPLATES, id="compute-concept_id"),
+        pytest.param("ComputeRequest", "overrides", _COMPUTE_TEMPLATES, id="compute-overrides"),
+        pytest.param(
+            "ComputeRequest",
+            "apply_analyst_overrides",
+            _COMPUTE_TEMPLATES,
+            id="compute-apply_analyst_overrides",
+        ),
+        pytest.param(
+            "ExplorerState", "current_concept_id", _STATE_TEMPLATES, id="state-current_concept_id"
+        ),
+        pytest.param(
+            "ExplorerState", "slider_overrides", _STATE_TEMPLATES, id="state-slider_overrides"
+        ),
+        pytest.param(
+            "ExplorerState", "comparison_set", _STATE_TEMPLATES, id="state-comparison_set"
+        ),
+        pytest.param("ExplorerState", "timestamp", (fr.STATE_COMPARE,), id="state-timestamp"),
+    ],
+)
+def test_a_renamed_request_field_fails(
+    fixture_root: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    name: str,
+    field: str,
+    templates: tuple[str, ...],
+) -> None:
+    """Audit B1: the server accepts the request but no longer reads a field the website sends."""
+    contract_path = record_in_process(fixture_root)
+    renamed = _with_field_renamed(getattr(models_module, name), field, f"renamed_{field}")
+    monkeypatch.setattr(server_module, name, renamed)
+    run = run_check(fixture_root, contract_path, capsys)
+    assert run.code == c.EXIT_FAILED
+    assert {f"request-field {template} {field}" for template in templates} <= run.failed
 
 
 def test_omitted_concept_fails(
